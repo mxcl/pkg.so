@@ -1,0 +1,78 @@
+id: brew:elasticmq
+display-name: ElasticMQ
+repo: null
+docs:
+  - https://github.com/softwaremill/elasticmq#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Its documented distribution surfaces include Docker and JVM dependencies through
+      Maven and sbt; no adoption counts are established.
+  package-nerd-significance:
+    - >
+      Standalone and embedded operation make the same queue implementation useful in
+      local development and automated tests.
+  project-history:
+    - >
+      SoftwareMill maintains ElasticMQ as an actor-based Scala implementation with an
+      SQS-compatible interface.
+  related-projects:
+    - >
+      Amazon SQS supplies the compatibility model; Typesafe Config supplies
+      configuration handling.
+  sources:
+    - https://github.com/softwaremill/elasticmq#readme
+  summary:
+    - >
+      ElasticMQ is an open-source message queue used to run SQS-style workflows locally
+      or embedded in JVM applications.
+  timeline:
+    - >
+      2026: Official documentation describes optional queue and message persistence
+      alongside in-memory operation.
+  usage:
+    - >
+      Point an AWS SDK at its local endpoint. Consumers should tolerate duplicate
+      delivery and respect visibility timeouts.
+tags:
+  - amazon-sqs
+  - cli
+  - integration-testing
+  - jvm
+  - local-development
+  - message-queue
+  - scala
+provenance:
+  category-sources:
+    - >
+      [Official README](https://github.com/softwaremill/elasticmq#readme):
+      SQS-compatible message queue.
+  display-name-sources:
+    - '[Official README](https://github.com/softwaremill/elasticmq#readme).'
+  docs-sources:
+    - >
+      Configuration confidence: high that configuration is user-selected; examples use
+      custom HOCON files and -Dconfig.file, without a fixed host installation path.
+    - >
+      Credentials confidence: high; documented SDK examples use dummy credentials, with
+      no ElasticMQ credentials file.
+    - >
+      [Official README](https://github.com/softwaremill/elasticmq#readme): substantive
+      configuration, embedding and client documentation; wiki has no substantive guide.
+  history-sources:
+    - https://github.com/softwaremill/elasticmq#readme
+  repo-sources:
+    - source_facts.repo already contains a value; repository enrichment intentionally omitted.
+  tags-sources:
+    - '[Official README](https://github.com/softwaremill/elasticmq#readme).'
+category-confidence: high
+category-path:
+  - cloud-infrastructure
+  - message-queues
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
