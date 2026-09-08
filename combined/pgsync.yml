@@ -6,7 +6,13 @@ docs:
   - https://github.com/ankane/pgsync#readme
 config-file-location:
   unix: .pgsync.yml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - .pgsync.yml
+    - .pgsync-<database>.yml
+  windows:
+    - .pgsync.yml
+    - .pgsync-<database>.yml
 history:
   adoption-history:
     - The official README describes pgsync as battle-tested at Instacart.
