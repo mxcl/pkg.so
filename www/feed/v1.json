@@ -122,18 +122,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:tgrep",
+        "brew:cask:open-science",
         "brew:cask:omniwm",
         "brew:cask:agentide",
         "brew:cask:markviewer",
         "brew:sabiql",
         "brew:jcode",
         "brew:cask:mangodisk",
-        "brew:tgrep",
         "brew:cask:token-monitor",
         "brew:linecast",
         "brew:cask:clawd-on-desk",
-        "brew:cask:terminal-browser",
-        "brew:tailcat"
+        "brew:cask:terminal-browser"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -141,6 +141,8 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:tgrep",
+        "brew:cask:open-science",
         "brew:cask:omniwm",
         "brew:cask:dockdoor-pro",
         "brew:cask:agentide",
@@ -149,10 +151,8 @@
         "brew:sabiql",
         "brew:jcode",
         "brew:cask:mangodisk",
-        "brew:tgrep",
         "brew:cask:token-monitor",
-        "brew:linecast",
-        "brew:cask:clawd-on-desk"
+        "brew:linecast"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -747,7 +747,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-07T06:31:55Z",
+  "generatedAt": "2026-09-08T07:29:03Z",
   "packages": {
     "brew:alive2": {
       "agentSummary": "Alive2 checks whether LLVM IR transformations preserve behavior, offering standalone and compiler-integrated translation validation while explicitly bounding unsupported interprocedural cases and solver limits.",
@@ -1535,6 +1535,61 @@
       ],
       "upstreamSummary": "Tiling window manager",
       "version": "0.6.7"
+    },
+    "brew:cask:open-science": {
+      "agentSummary": "Open Science combines scientific agents, Python and R notebooks, local projects, and artifact provenance in a desktop workbench for inspecting and repeating computational research.",
+      "assessment": {
+        "alternatives": [
+          "JupyterLab for manually controlled notebook workflows",
+          "RStudio for an R-centered research environment"
+        ],
+        "audiences": [
+          "Computational researchers",
+          "Scientists comfortable reviewing generated analysis code"
+        ],
+        "caveats": [
+          "Model requests can send research context to external providers despite local project storage",
+          "Generated methods and conclusions require scientific review",
+          "Young, actively changing application; upstream demonstrations do not establish broad research validation"
+        ],
+        "complements": [
+          "Scientific datasets and data connectors",
+          "Existing Python and R analysis workflows"
+        ],
+        "prerequisites": [
+          "A supported desktop operating system",
+          "Configured agent runtime and model-provider access",
+          "Python or R environment for notebook execution"
+        ],
+        "useCases": [
+          "Analyzing datasets with inspectable agent tool activity",
+          "Keeping reports, figures, and execution evidence together"
+        ]
+      },
+      "category": "ai",
+      "displayName": "Open Science",
+      "docs": "https://aipoch.com/docs",
+      "homepage": "https://aipoch.com/open-science",
+      "id": "brew:cask:open-science",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopen-science",
+      "lastUpdatedAt": "2026-09-07T07:41:54Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/aipoch/open-science",
+      "researchedAt": "2026-09-08T07:29:03Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "aipoch/open-science official documentation",
+          "url": "https://github.com/aipoch/open-science"
+        },
+        {
+          "kind": "primary",
+          "title": "aipoch/open-science first release",
+          "url": "https://github.com/aipoch/open-science/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "AI research workbench with scientific agents and notebooks",
+      "version": "0.26.0"
     },
     "brew:cask:opencode-desktop": {
       "agentSummary": "OpenCode is a model-flexible coding agent spanning terminal, desktop, and editor surfaces, with parallel sessions, configurable agents, permissions, and shareable work.",
@@ -4137,34 +4192,32 @@
       "version": "0.5.0"
     },
     "brew:tgrep": {
-      "agentSummary": "Indexes source trees by trigrams, then serves regex searches through a file-watching client-server design intended to reduce repeated scans of very large repositories.",
+      "agentSummary": "tgrep accelerates repeated code searches with a trigram index and a file-watching server, trading initial indexing and storage overhead for selective regex scanning.",
       "assessment": {
         "alternatives": [
-          "ripgrep for mature stateless recursive search",
-          "Zoekt for indexed code search at broader service scale",
-          "Livegrep for web-accessible indexed code search"
+          "ripgrep for direct searches without maintaining an index",
+          "Zoekt for indexed code search"
         ],
         "audiences": [
-          "Developers searching very large monorepositories",
-          "Teams repeating regex searches over mostly stable source trees"
+          "Developers repeatedly searching large repositories",
+          "Teams maintaining monorepos"
         ],
         "caveats": [
-          "Maintaining an index and server adds state absent from ordinary grep tools",
-          "Benefits depend on corpus size, platform, query selectivity, and index freshness",
-          "Published benchmarks are produced by the project itself"
+          "Index creation and storage add overhead; gains depend on workload",
+          "Hidden-file and ignore-override searches bypass the index",
+          "Files above 64 MiB are skipped by default; adjust the size limit when needed"
         ],
         "complements": [
-          "ripgrep for unindexed or one-off searches",
-          "Repository ignore files for controlling search scope"
+          "GitHub Copilot CLI, which upstream documents as an integration",
+          "Editor navigation and shell pipelines"
         ],
         "prerequisites": [
-          "Disk space and initial processing time for the index",
-          "A workflow where a persistent local search server is acceptable"
+          "A supported macOS, Linux, or Windows build",
+          "Local source files and disk space for the index"
         ],
         "useCases": [
-          "Build a reusable trigram index for a codebase",
-          "Serve low-latency searches while watching file changes",
-          "Search large trees where full rescans dominate query time"
+          "Finding regex matches across source trees",
+          "Serving repeated searches while tracking file changes"
         ]
       },
       "category": "developer-tools",
@@ -4173,29 +4226,24 @@
       "homepage": "https://github.com/microsoft/tgrep",
       "id": "brew:tgrep",
       "installURL": "pkgmgrmgr://install?package=brew%3Atgrep",
-      "lastUpdatedAt": "2026-09-04T20:43:34Z",
+      "lastUpdatedAt": "2026-09-07T10:52:02Z",
       "manager": "homebrew",
       "repository": "https://github.com/microsoft/tgrep",
-      "researchedAt": "2026-09-05T10:02:13Z",
+      "researchedAt": "2026-09-08T07:29:03Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "tgrep repository and README",
+          "title": "microsoft/tgrep official documentation",
           "url": "https://github.com/microsoft/tgrep"
         },
         {
           "kind": "primary",
-          "title": "tgrep benchmark methodology and results",
-          "url": "https://github.com/microsoft/tgrep/blob/main/BENCHMARKS.md"
-        },
-        {
-          "kind": "primary",
-          "title": "tgrep v0.1.0 release",
+          "title": "microsoft/tgrep first release",
           "url": "https://github.com/microsoft/tgrep/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Trigram-indexed grep for fast regex search in large codebases",
-      "version": "1.0.3"
+      "version": "1.0.4"
     },
     "brew:threatcl": {
       "agentSummary": "threatcl stores threat models as reviewable HCL or JSON, then validates, queries, diagrams, and exports them for version-controlled security workflows.",
@@ -4535,7 +4583,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-07T06:31:21Z",
+    "generatedAt": "2026-09-08T07:28:07Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
