@@ -3,8 +3,22 @@ display-name: oh-my-reddit
 repo: null
 docs:
   - https://github.com/renatoworks/oh-my-reddit#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - <repository-clone>/.env
+  windows:
+    - <repository-clone>/.env
+credentials-file-location:
+  linux:
+    - $XDG_CONFIG_HOME/oh-my-reddit/session.json
+    - ~/.config/oh-my-reddit/session.json
+    - <repository-clone>/.env
+  macos:
+    - ~/Library/Application Support/oh-my-reddit/session.json
+    - <repository-clone>/.env
+  windows:
+    - '%AppData%\oh-my-reddit\session.json'
+    - <repository-clone>/.env
 history:
   adoption-history:
     - >
