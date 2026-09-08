@@ -6,7 +6,33 @@ docs:
   - https://github.com/influxdata/pkg-config#readme
 config-file-location: null
 credentials-file-location: null
-history: null
+history:
+  adoption-history:
+    - >
+      The supplied source_facts.package-manager records Homebrew distribution under
+      pkg-config-wrapper. Upstream does not establish broader adoption.
+  package-nerd-significance:
+    - >
+      The wrapper connects Go builds with native-library compilation while retaining the
+      system pkg-config as a fallback.
+  project-history:
+    - >
+      InfluxData presents the project as a prototype pkg-config replacement for
+      compiling C libraries used by its software.
+  related-projects:
+    - Go and the system pkg-config are its principal integration points.
+  sources:
+    - '[Official repository and README](https://github.com/influxdata/pkg-config#readme)'
+    - source_facts.package-manager
+  summary:
+    - Go Pkg-Config helps Go programs incorporate C code.
+  timeline:
+    - 'Project origin: Published as an InfluxData prototype for C-library compilation.'
+  usage:
+    - >
+      Configure Go to invoke this binary for pkg-config requests. It compiles recognized
+      libraries and returns their locations; unrecognized requests are delegated to the
+      system pkg-config.
 category: developer-tools
 package-manager:
   brew: pkg-config-wrapper
