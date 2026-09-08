@@ -10,7 +10,13 @@ config-file-location:
     - <CONFIG_DIR_PATH>/ord.yaml
     - <DATA_DIR_PATH>/ord.yaml
     - ord.yaml in the default data directory
-credentials-file-location: null
+credentials-file-location:
+  linux:
+    - ~/.bitcoin/.cookie
+  macos:
+    - ~/Library/Application Support/Bitcoin/.cookie
+  windows:
+    - '%APPDATA%\Bitcoin\.cookie'
 history:
   adoption-history:
     - >
