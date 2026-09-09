@@ -1,0 +1,54 @@
+id: brew:ntfs2btrfs
+display-name: Ntfs2btrfs
+homepage: https://github.com/maharmstone/ntfs2btrfs
+repo: https://github.com/maharmstone/ntfs2btrfs
+docs:
+  - https://github.com/maharmstone/ntfs2btrfs#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The upstream installation guide lists Windows package managers and several Linux
+      distributions, documenting packaging beyond direct source builds.
+  package-nerd-significance:
+    - >
+      It fills a specialized filesystem-migration niche and connects Linux Btrfs tooling
+      with Windows filesystem interoperability.
+  project-history:
+    - >
+      The initial release appeared in March 2020. Subsequent releases added compressed
+      NTFS data handling, Btrfs compression, rollback, and preservation of WSL metadata.
+  related-projects:
+    - WinBtrfs; Quibble; btrfs-convert.
+  sources:
+    - https://github.com/maharmstone/ntfs2btrfs#readme
+  summary:
+    - Ntfs2btrfs converts NTFS volumes to Btrfs in place.
+  timeline:
+    - '2020-03-30: Initial release.'
+    - '2021-09-23: Added compression and rollback support.'
+    - '2022-08-12: Added preservation of LXSS/WSL metadata.'
+  usage:
+    - >
+      Run against a target volume with administrative privileges. The original
+      filesystem image is retained at image/ntfs.img for rollback; upstream documents
+      restrictions on active Windows boot and pagefile volumes.
+category: system
+package-manager:
+  brew: ntfs2btrfs
+package-manager-url: https://formulae.brew.sh/formula/ntfs2btrfs
+license: GPL-2.0-only
+tags:
+  - btrfs
+  - cli
+  - filesystem
+  - migration
+  - ntfs
+description: In-place conversion of NTFS filesystem to Btrfs
+executables:
+  - ntfs2btrfs
+provenance:
+  formula: ntfs2btrfs
+  provider: brew
+  source: https://formulae.brew.sh/api/formula.json

@@ -1,0 +1,93 @@
+id: brew:forgejo-runner
+display-name: Forgejo Runner
+repo: https://code.forgejo.org/forgejo/runner
+docs:
+  - https://forgejo.org/docs/latest/admin/actions
+  - https://forgejo.org/docs/latest/admin/actions/configuration
+  - https://forgejo.org/docs/latest/admin/actions/registration
+config-file-location:
+  linux:
+    - /home/runner/runner-config.yml
+credentials-file-location:
+  linux:
+    - /home/runner/runner-config.yml
+history:
+  adoption-history:
+    - >
+      Forgejo documents binary, container, and distribution-package installation routes.
+      These establish supported deployment channels without quantifying adoption.
+  package-nerd-significance:
+    - >
+      Its separate installation lets administrators manage workflow execution
+      infrastructure independently of the forge server.
+  project-history:
+    - >
+      Forgejo Runner is maintained as the execution service for Forgejo Actions. Forgejo
+      schedules workflows, while separately installed runners fetch and execute their
+      jobs.
+  related-projects:
+    - Forgejo; Docker; Podman; LXC.
+  sources:
+    - https://forgejo.org/docs/latest/admin/actions/
+    - https://forgejo.org/docs/latest/admin/actions/configuration/
+    - https://forgejo.org/docs/latest/admin/actions/installation/binary/
+  summary:
+    - >
+      Forgejo Runner is the official worker program for Forgejo Actions continuous
+      integration.
+  timeline:
+    - 'Forgejo 1.21: Actions became enabled by default in Forgejo.'
+  usage:
+    - >
+      Register the runner, configure execution labels, and start its daemon with an
+      explicit configuration path. Labels select container-based or direct host
+      execution.
+tags:
+  - automation
+  - cli
+  - continuous-integration
+  - forgejo
+  - self-hosted
+provenance:
+  category-sources:
+    - >
+      [Forgejo Actions administrator
+      guide](https://forgejo.org/docs/latest/admin/actions/) describes the separate
+      workflow execution service.
+  display-name-sources:
+    - >
+      [Official administrator guide](https://forgejo.org/docs/latest/admin/actions/)
+      uses Forgejo Runner.
+  docs-sources:
+    - >
+      [Binary installation
+      guide](https://forgejo.org/docs/latest/admin/actions/installation/binary/)
+      documents /home/runner/runner-config.yml as a Linux deployment example, not a
+      default. The actual path must be supplied with -c. Path confidence: high for the
+      example.
+    - >
+      [Registration guide](https://forgejo.org/docs/latest/admin/actions/registration/)
+      places UUIDs and secret tokens in server.connections within that configuration
+      file. Credentials-location confidence: high for this documented deployment.
+  history-sources:
+    - https://forgejo.org/docs/latest/admin/actions/
+    - https://forgejo.org/docs/latest/admin/actions/configuration/
+    - https://forgejo.org/docs/latest/admin/actions/installation/binary/
+  repo-sources:
+    - >
+      source_facts.homepage; [official installation
+      instructions](https://forgejo.org/docs/latest/admin/actions/installation/binary/)
+      link releases and service files in this project.
+  tags-sources:
+    - >
+      [Forgejo Actions guide](https://forgejo.org/docs/latest/admin/actions/) documents
+      independently hosted workflow workers.
+category-confidence: high
+category-path:
+  - developer-tools
+  - continuous-integration
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
