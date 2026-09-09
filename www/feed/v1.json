@@ -123,6 +123,7 @@
       "id": "new-packages",
       "packageIDs": [
         "brew:tgrep",
+        "brew:cask:zentty",
         "brew:cask:open-science",
         "brew:cask:omniwm",
         "brew:cask:agentide",
@@ -132,8 +133,7 @@
         "brew:cask:mangodisk",
         "brew:cask:token-monitor",
         "brew:linecast",
-        "brew:cask:clawd-on-desk",
-        "brew:cask:terminal-browser"
+        "brew:cask:clawd-on-desk"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -142,6 +142,7 @@
       "id": "recently-updated",
       "packageIDs": [
         "brew:tgrep",
+        "brew:cask:zentty",
         "brew:cask:open-science",
         "brew:cask:omniwm",
         "brew:cask:dockdoor-pro",
@@ -151,8 +152,7 @@
         "brew:sabiql",
         "brew:jcode",
         "brew:cask:mangodisk",
-        "brew:cask:token-monitor",
-        "brew:linecast"
+        "brew:cask:token-monitor"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -747,7 +747,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-08T07:29:03Z",
+  "generatedAt": "2026-09-09T10:02:01Z",
   "packages": {
     "brew:alive2": {
       "agentSummary": "Alive2 checks whether LLVM IR transformations preserve behavior, offering standalone and compiler-integrated translation validation while explicitly bounding unsupported interprocedural cases and solver limits.",
@@ -1709,65 +1709,6 @@
       "upstreamSummary": "Windows-style taskbar as a Dock replacement",
       "version": "1.6.3,2026,09"
     },
-    "brew:cask:terminal-browser": {
-      "agentSummary": "A Chromium-based browser rendered inside compatible terminals, keeping web previews beside command-line work and supporting remote development through SSH-aware rendering modes.",
-      "assessment": {
-        "alternatives": [
-          "A conventional graphical Chromium browser",
-          "Text-mode browsers such as w3m or Lynx",
-          "Browser automation tools such as Playwright"
-        ],
-        "audiences": [
-          "Developers who keep coding agents and previews in one terminal workspace",
-          "Remote developers previewing web applications over SSH",
-          "Terminal users with graphics-capable emulators"
-        ],
-        "caveats": [
-          "Remote rendering can transmit every frame and input event across the network",
-          "Terminal compatibility depends on graphics-protocol support",
-          "Chrome extension support remains on the project's roadmap"
-        ],
-        "complements": [
-          "Terminal multiplexers and split-pane workflows",
-          "Coding agents that can interact with the open browser",
-          "Remote development environments"
-        ],
-        "prerequisites": [
-          "A supported graphics-capable terminal",
-          "Chromium runtime requirements supported by the packaged application",
-          "Adequate SSH bandwidth for remote-frame rendering"
-        ],
-        "useCases": [
-          "Previewing a local web application in a terminal split",
-          "Giving an agent access to an already-open browser session",
-          "Viewing remote web services without a separate desktop browser window"
-        ]
-      },
-      "category": "networking",
-      "displayName": "terminal-browser",
-      "docs": "https://github.com/zenbu-labs/terminal-browser#readme",
-      "homepage": "https://terminal-browser.com/",
-      "id": "brew:cask:terminal-browser",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aterminal-browser",
-      "lastUpdatedAt": "2026-09-04T02:18:35Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/zenbu-labs/terminal-browser",
-      "researchedAt": "2026-09-04T10:33:56Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "terminal-browser project documentation",
-          "url": "https://github.com/zenbu-labs/terminal-browser"
-        },
-        {
-          "kind": "primary",
-          "title": "terminal-browser initial release",
-          "url": "https://github.com/zenbu-labs/terminal-browser/releases/tag/v0.1.2"
-        }
-      ],
-      "upstreamSummary": "Terminal-based web browser",
-      "version": "0.8.0"
-    },
     "brew:cask:token-monitor": {
       "agentSummary": "Local-first desktop dashboard aggregates token usage, estimated costs, limits, sessions, and model activity across numerous coding tools, with optional self-hosted multi-device synchronization.",
       "assessment": {
@@ -1827,6 +1768,72 @@
       ],
       "upstreamSummary": "Monitor token usage, costs, and limits across AI coding tools",
       "version": "0.54.0"
+    },
+    "brew:cask:zentty": {
+      "agentSummary": "Native macOS terminal arranges shells into scrolling worklanes and surfaces coding-agent attention states, combining Ghostty rendering with workspace restoration and scriptable pane control.",
+      "assessment": {
+        "alternatives": [
+          "Ghostty for a general terminal",
+          "iTerm2 for a mature Mac terminal",
+          "tmux for sessions that survive SSH disconnection"
+        ],
+        "audiences": [
+          "Mac developers running several terminal sessions",
+          "Users coordinating command-line coding agents"
+        ],
+        "caveats": [
+          "Upstream warns of rough edges and occasional breaking changes during active development.",
+          "The terminal manages agent visibility; it does not replace the agents.",
+          "Workspace restoration should not be confused with keeping remote processes alive."
+        ],
+        "complements": [
+          "Existing shells and command-line development tools",
+          "Ghostty themes"
+        ],
+        "prerequisites": [
+          "macOS Sonoma or later",
+          "Separately configured agent CLIs for agent-specific workflows"
+        ],
+        "useCases": [
+          "Keeping project shells and development servers together",
+          "Finding agent sessions that need attention",
+          "Restoring pane layouts after relaunch"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "Zentty",
+      "docs": "https://zentty.org/docs",
+      "homepage": "https://zentty.org/",
+      "id": "brew:cask:zentty",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Azentty",
+      "lastUpdatedAt": "2026-09-08T17:55:56Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/dedene/zentty",
+      "researchedAt": "2026-09-09T10:02:01Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Zentty upstream features and development status",
+          "url": "https://github.com/dedene/zentty"
+        },
+        {
+          "kind": "primary",
+          "title": "Zentty documentation",
+          "url": "https://zentty.org/docs/"
+        },
+        {
+          "kind": "primary",
+          "title": "Zentty comparisons and workflow boundaries",
+          "url": "https://zentty.org/compare/"
+        },
+        {
+          "kind": "primary",
+          "title": "Zentty first public release announcement",
+          "url": "https://github.com/dedene/zentty/releases/tag/v0.1.7"
+        }
+      ],
+      "upstreamSummary": "Terminal for agent-driven development",
+      "version": "0.3.0"
     },
     "brew:claude-squad": {
       "agentSummary": "Claude Squad wraps terminal agents in a TUI, using tmux sessions and Git worktrees to isolate parallel tasks and simplify diff review.",
@@ -4192,32 +4199,31 @@
       "version": "0.5.0"
     },
     "brew:tgrep": {
-      "agentSummary": "tgrep accelerates repeated code searches with a trigram index and a file-watching server, trading initial indexing and storage overhead for selective regex scanning.",
+      "agentSummary": "Trigram indexing accelerates repeated searches through large repositories, with a local server tracking changes; initial indexing and resource costs make occasional searches less compelling.",
       "assessment": {
         "alternatives": [
-          "ripgrep for direct searches without maintaining an index",
-          "Zoekt for indexed code search"
+          "ripgrep for searches without maintaining an index"
         ],
         "audiences": [
-          "Developers repeatedly searching large repositories",
-          "Teams maintaining monorepos"
+          "Developers repeatedly searching large codebases",
+          "Teams building local code-search integrations"
         ],
         "caveats": [
-          "Index creation and storage add overhead; gains depend on workload",
-          "Hidden-file and ignore-override searches bypass the index",
-          "Files above 64 MiB are skipped by default; adjust the size limit when needed"
+          "Index construction consumes time, memory, and disk space.",
+          "Upstream benchmarks exclude initial indexing; gains vary with platform, repository, and result volume.",
+          "A cold server can initially expose an empty index while building it."
         ],
         "complements": [
-          "GitHub Copilot CLI, which upstream documents as an integration",
-          "Editor navigation and shell pipelines"
+          "Editors and shell pipelines",
+          "GitHub Copilot CLI, which upstream reports integrates tgrep"
         ],
         "prerequisites": [
-          "A supported macOS, Linux, or Windows build",
-          "Local source files and disk space for the index"
+          "Local source files and storage for a generated index",
+          "A running search server for the documented persistent workflow"
         ],
         "useCases": [
-          "Finding regex matches across source trees",
-          "Serving repeated searches while tracking file changes"
+          "Repeated regex queries over monorepos",
+          "Serving multiple search clients from one local index"
         ]
       },
       "category": "developer-tools",
@@ -4226,24 +4232,29 @@
       "homepage": "https://github.com/microsoft/tgrep",
       "id": "brew:tgrep",
       "installURL": "pkgmgrmgr://install?package=brew%3Atgrep",
-      "lastUpdatedAt": "2026-09-07T10:52:02Z",
+      "lastUpdatedAt": "2026-09-08T19:14:15Z",
       "manager": "homebrew",
       "repository": "https://github.com/microsoft/tgrep",
-      "researchedAt": "2026-09-08T07:29:03Z",
+      "researchedAt": "2026-09-09T10:02:01Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "microsoft/tgrep official documentation",
+          "title": "tgrep upstream architecture and usage",
           "url": "https://github.com/microsoft/tgrep"
         },
         {
           "kind": "primary",
-          "title": "microsoft/tgrep first release",
+          "title": "tgrep benchmark methodology and results",
+          "url": "https://github.com/microsoft/tgrep/blob/main/BENCHMARKS.md"
+        },
+        {
+          "kind": "primary",
+          "title": "tgrep initial upstream release",
           "url": "https://github.com/microsoft/tgrep/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Trigram-indexed grep for fast regex search in large codebases",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     "brew:threatcl": {
       "agentSummary": "threatcl stores threat models as reviewable HCL or JSON, then validates, queries, diagrams, and exports them for version-controlled security workflows.",
@@ -4583,7 +4594,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-08T07:28:07Z",
+    "generatedAt": "2026-09-09T10:01:10Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
