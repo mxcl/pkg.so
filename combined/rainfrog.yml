@@ -15,7 +15,23 @@ config-file-location:
   windows:
     - '%RAINFROG_CONFIG%\rainfrog_config.toml'
     - '%LOCALAPPDATA%\<project_path>\config\rainfrog_config.toml'
-credentials-file-location: null
+credentials-file-location:
+  linux:
+    - .env (current directory
+    - an ancestor)
+    - $RAINFROG_CONFIG/rainfrog_config.toml
+    - $XDG_CONFIG_HOME/rainfrog/rainfrog_config.toml
+    - ~/.config/rainfrog/rainfrog_config.toml
+  macos:
+    - .env (current directory
+    - an ancestor)
+    - $RAINFROG_CONFIG/rainfrog_config.toml
+    - ~/Library/Application Support/dev.rainfrog.rainfrog/rainfrog_config.toml
+  windows:
+    - .env (current directory
+    - an ancestor)
+    - '%RAINFROG_CONFIG%\rainfrog_config.toml'
+    - '%LOCALAPPDATA%\rainfrog\rainfrog\config\rainfrog_config.toml'
 history:
   adoption-history:
     - >
