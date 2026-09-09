@@ -1,6 +1,5 @@
 id: cask:mqttfx
 display-name: MQTT.fx
-homepage: https://www.softblade.de/
 repo: null
 docs:
   - https://mqttfx-manual.softblade.net/index.html
@@ -41,10 +40,6 @@ history:
       Create a connection profile with the broker address and required authentication,
       then publish or subscribe to topics. The client also offers payload decoding,
       logging, and JavaScript automation.
-category: developer-tools
-package-manager:
-  brew-cask: mqttfx
-package-manager-url: https://formulae.brew.sh/cask/mqttfx
 tags:
   - cross-platform
   - debugging
@@ -52,10 +47,46 @@ tags:
   - mqtt
   - pubsub
   - sparkplug
-description: IoT route testing tool
-applications:
-  - MQTT.fx.app
 provenance:
-  cask: mqttfx
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      [Official manual](https://mqttfx-manual.softblade.net/index.html): desktop MQTT
+      client for broker interaction and diagnostics.
+  display-name-sources:
+    - '[Official vendor website](https://www.softblade.de/).'
+  docs-sources:
+    - >
+      Config location: low confidence for an absolute path. [Connection
+      profiles](https://mqttfx-manual.softblade.net/connection-profiles.html) identifies
+      mqttfx-config.xml in the working directory, but the per-platform appendix could
+      not be retrieved.
+    - >
+      Credentials location: low confidence for an absolute path. The official profile
+      documentation states that profiles and settings share mqttfx-config.xml and
+      exported profiles may contain credentials; no platform-specific location was
+      verified.
+    - >
+      [Official MQTT.fx manual](https://mqttfx-manual.softblade.net/index.html),
+      available in indexed official content; direct retrieval failed.
+  history-sources:
+    - '[Official installation manual](https://mqttfx-manual.softblade.net/installation.html).'
+    - '[Official payload decoders](https://github.com/Jerady/mqttfx-payload-decoders).'
+    - '[Official vendor overview](https://www.softblade.de/).'
+  repo-sources:
+    - >
+      [Official vendor website](https://www.softblade.de/) links public add-on
+      repositories, including payload decoders. These are components, not the complete
+      MQTT.fx application; no official public application repository was verified.
+  tags-sources:
+    - >
+      [Official manual](https://mqttfx-manual.softblade.net/index.html): MQTT, IoT
+      messaging, diagnostics, Sparkplug, and supported desktop platforms.
+category-confidence: high
+category-path:
+  - developer-tools
+  - protocol-testing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

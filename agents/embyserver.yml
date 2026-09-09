@@ -1,15 +1,16 @@
 id: cask:embyserver
 display-name: Emby Server
-homepage: https://emby.media/
-repo: https://github.com/MediaBrowser/Emby.Releases
+repo: null
 docs:
   - https://emby.media/support/index.html
 config-file-location:
-  linux: /var/lib/emby/config/system.xml
+  linux:
+    - /var/lib/emby/config/system.xml
   macos:
     - ~/emby-server/config/system.xml
     - ~/.config/emby-server/config/system.xml
-  windows: '%APPDATA%\Emby-Server\programdata\config\system.xml'
+  windows:
+    - '%APPDATA%\Emby-Server\programdata\config\system.xml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -45,10 +46,6 @@ history:
       Install the server on a computer or NAS, add media folders, and connect playback
       applications. Separate users can receive individual access rules and parental
       controls.
-category: media
-package-manager:
-  brew-cask: embyserver
-package-manager-url: https://formulae.brew.sh/cask/embyserver
 tags:
   - live-tv
   - media-server
@@ -56,12 +53,39 @@ tags:
   - self-hosted
   - streaming
   - video
-description: Personal media server with apps on just about every device
-applications:
-  - EmbyServer.app
 provenance:
-  cask: embyserver
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - emby-server
+  category-sources:
+    - '[Official overview](https://emby.media/): organizes and streams personal media.'
+  display-name-sources:
+    - '[Official homepage](https://emby.media/): uses Emby Server.'
+  docs-sources:
+    - >
+      Config paths: medium confidence; combine the documented [platform data
+      directories](https://emby.media/support/articles/Server-Data-Folder.html) with the
+      Emby administrator's documented [config/system.xml
+      location](https://emby.media/community/topic/40388-cant-access-control-panel/).
+      Actual data directory is visible through Dashboard → Get Server Info.
+    - >
+      Credentials location: low confidence; no credential-file path verified in the
+      official documentation reviewed.
+    - '[Official documentation](https://emby.media/support/index.html).'
+  history-sources:
+    - '[Introducing Emby](https://emby.tv/introducing-emby.html).'
+    - '[Official product overview](https://emby.media/).'
+  repo-sources:
+    - >
+      source_facts.repo already contains a value; repository determination was
+      intentionally skipped as instructed.
+  tags-sources:
+    - >
+      [Official overview](https://emby.media/): personal server, media libraries,
+      streaming, and live television.
+category-confidence: high
+category-path:
+  - media
+  - media-servers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
