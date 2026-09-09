@@ -1,11 +1,11 @@
 id: cask:ubar
 display-name: uBar
-homepage: https://ubarapp.com/
 repo: null
 docs:
   - https://ubarapp.com/documentation
 config-file-location:
-  macos: ~/Library/Application Support/uBar/Timepieces/<timepiece>/Timepiece.plist
+  macos:
+    - ~/Library/Application Support/uBar/Timepieces/<timepiece>/Timepiece.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -43,20 +43,47 @@ history:
       Users configure window grouping, favorites, display placement, and appearance
       through preferences. Custom timepieces use a Timepiece.plist and associated PNG
       assets.
-category: productivity
-package-manager:
-  brew-cask: ubar
-package-manager-url: https://formulae.brew.sh/cask/ubar
 tags:
   - desktop-customization
   - dock-replacement
   - macos
   - taskbar
   - window-management
-description: Dock replacement and taskbar
-applications:
-  - uBar.app
 provenance:
-  cask: ubar
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      [Official overview](https://ubarapp.com/) describes a macOS Dock replacement and
+      application/window manager.
+  display-name-sources:
+    - '[Official website](https://ubarapp.com/) uses the spelling uBar.'
+  docs-sources:
+    - >
+      Credentials-path confidence: low; no local license or credentials-file location
+      was verified.
+    - >
+      [Official documentation](https://ubarapp.com/documentation) covers preferences and
+      customization; it explicitly documents Timepiece.plist inside each custom
+      timepiece folder. Config-path confidence: high for this customization file; a main
+      preferences-file path is not documented there.
+  history-sources:
+    - '[Customization documentation](https://ubarapp.com/documentation)'
+    - '[Official overview](https://ubarapp.com/)'
+    - '[Release history](https://ubarapp.com/release-notes)'
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      No official public source-control project was identified from the [vendor
+      website](https://ubarapp.com/).
+  tags-sources:
+    - >
+      [Official overview](https://ubarapp.com/) describes these platform and
+      desktop-management capabilities.
+category-confidence: high
+category-path:
+  - productivity
+  - desktop-customization
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: low
+tags-confidence: high

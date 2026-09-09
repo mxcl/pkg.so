@@ -1,7 +1,6 @@
 id: cask:zentty
 display-name: Zentty
-homepage: https://zentty.org/
-repo: https://github.com/dedene/zentty
+repo: null
 docs:
   - https://zentty.org/docs
 config-file-location:
@@ -46,20 +45,50 @@ history:
       Users group shells, development servers, and agents into worklanes, then navigate
       to panes needing attention. Layout restoration preserves workspace structure
       between sessions.
-category: developer-tools
-package-manager:
-  brew-cask: zentty
-package-manager-url: https://formulae.brew.sh/cask/zentty
 tags:
   - coding-agents
   - developer-workflow
   - ghostty
   - macos
   - terminal-emulator
-description: Terminal for agent-driven development
-applications:
-  - Zentty.app
 provenance:
-  cask: zentty
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      [Official documentation](https://zentty.org/docs/) identifies a native macOS
+      terminal for agent-driven development.
+  display-name-sources:
+    - '[Official website](https://zentty.org/) uses Zentty.'
+  docs-sources:
+    - >
+      [Environment reference](https://zentty.org/docs/reference/) documents
+      ZENTTY_PANE_TOKEN for local IPC, but no credentials file. Credentials-path
+      confidence: medium; null means no documented file.
+    - >
+      [Official documentation](https://zentty.org/docs/) is the dedicated documentation
+      section.
+    - >
+      [Settings guide](https://zentty.org/docs/themes-settings/) and [file
+      reference](https://zentty.org/docs/reference/) explicitly document config.toml and
+      bookmarks.json. Config-path confidence: high; documentation describes macOS.
+  history-sources:
+    - '[Documentation overview](https://zentty.org/docs/)'
+    - '[Official website](https://zentty.org/)'
+    - '[Settings and portability](https://zentty.org/docs/themes-settings/)'
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo already contains a repository URL; repo is null as instructed,
+      without reassessing it.
+  tags-sources:
+    - >
+      [Official documentation](https://zentty.org/docs/) describes the platform,
+      terminal engine, and agent workflows.
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminal-emulators
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
