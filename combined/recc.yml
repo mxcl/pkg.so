@@ -4,7 +4,13 @@ homepage: https://buildgrid.gitlab.io/recc
 repo: https://gitlab.com/BuildGrid/buildbox/buildbox
 docs:
   - https://buildgrid.gitlab.io/buildbox/buildbox/recc.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ./recc/recc.conf
+    - ${RECC_CONFIG_DIRECTORY}/recc.conf
+    - ~/.recc/recc.conf
+    - ${RECC_CONFIG_PREFIX_DIR}/recc.conf
+    - ${INSTALL_DIR}/../etc/recc/recc.conf
 credentials-file-location: null
 history:
   adoption-history:
