@@ -10,7 +10,12 @@ config-file-location:
     - ~/.proxychains/proxychains.conf
     - $(sysconfdir)/proxychains.conf
     - /etc/proxychains.conf
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - $PROXYCHAINS_CONF_FILE
+    - ./proxychains.conf
+    - ~/.proxychains/proxychains.conf
+    - $(sysconfdir)/proxychains.conf
 history:
   adoption-history:
     - >
