@@ -4,8 +4,22 @@ homepage: https://rattler.build
 repo: https://github.com/prefix-dev/rattler-build
 docs:
   - https://rattler-build.prefix.dev/latest
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - /etc/rattler/config.toml
+    - /etc/rattler-build/config.toml
+    - $XDG_CONFIG_HOME/rattler/config.toml
+    - $RATTLER_HOME/config.toml
+    - $XDG_CONFIG_HOME/rattler-build/config.toml
+    - ~/.rattler-build/config.toml
+    - $RATTLER_BUILD_HOME/config.toml
+  windows: C:\ProgramData\rattler\config.toml
+credentials-file-location:
+  unix:
+    - ~/.rattler/credentials.json
+    - ~/.netrc
+    - $RATTLER_AUTH_FILE
+    - $NETRC
 history:
   adoption-history:
     - >
