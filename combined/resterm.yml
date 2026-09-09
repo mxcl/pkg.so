@@ -17,7 +17,13 @@ config-file-location:
     - '%APPDATA%\resterm\bindings.toml'
     - '%APPDATA%\resterm\bindings.json'
     - '%APPDATA%\resterm\themes\*.toml'
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - <environment-search-directory>/resterm.env.json
+    - <environment-search-directory>/rest-client.env.json
+  windows:
+    - <environment-search-directory>\resterm.env.json
+    - <environment-search-directory>\rest-client.env.json
 history:
   adoption-history:
     - >
