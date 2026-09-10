@@ -1,7 +1,6 @@
 id: cask:homebrew-app
 display-name: Homebrew
-homepage: https://github.com/Homebrew/BrewUI
-repo: https://github.com/Homebrew/BrewUI
+repo: null
 docs:
   - https://github.com/Homebrew/BrewUI#readme
 config-file-location: null
@@ -33,10 +32,6 @@ history:
       homebrew-app.
   usage:
     - Discover, install, update, and manage Homebrew packages through the graphical interface.
-category: system
-package-manager:
-  brew-cask: homebrew-app
-package-manager-url: https://formulae.brew.sh/cask/homebrew-app
 tags:
   - gui
   - homebrew
@@ -44,10 +39,36 @@ tags:
   - open-source
   - package-manager
   - swiftui
-description: Homebrew's official GUI
-applications:
-  - Homebrew.app
 provenance:
-  cask: homebrew-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      [Official README](https://github.com/Homebrew/BrewUI#readme): graphical Homebrew
+      package management.
+  display-name-sources:
+    - >
+      source_facts.applications: Homebrew.app; current_curation.display-name: Homebrew.
+      The upstream project calls its implementation BrewUI.
+  docs-sources:
+    - >
+      [Official README](https://github.com/Homebrew/BrewUI#readme): installation,
+      motivation, and development instructions. No end-user configuration or credentials
+      file location documented there.
+  history-sources:
+    - https://github.com/Homebrew/BrewUI#readme
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/Homebrew/BrewUI; repo
+      intentionally returned as null as instructed.
+  tags-sources:
+    - >
+      [Official README](https://github.com/Homebrew/BrewUI#readme): functionality,
+      platform, SwiftUI implementation, and AGPL license.
+category-confidence: high
+category-path:
+  - system
+  - package-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
