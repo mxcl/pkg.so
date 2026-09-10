@@ -6,7 +6,42 @@ docs:
   - https://codeberg.org/maandree/sha3sum
 config-file-location: null
 credentials-file-location: null
-history: null
+history:
+  adoption-history:
+    - >
+      source_facts.package-manager records Homebrew, DNF, pacman, and Zypper packaging.
+      These records demonstrate distribution availability rather than adoption scale.
+  package-nerd-significance:
+    - >
+      The author advises distributions to package the compatibility sha3sum command
+      separately because its name can conflict with other implementations, including
+      BusyBox. The suite can also be built as a multicall executable.
+  project-history:
+    - >
+      Mattias Andrée developed sha3sum as a collection of Keccak-family checksum tools.
+      The author's source-control history documents development by November 2014.
+  related-projects:
+    - >
+      The README references libkeccak and traditional checksum commands. BusyBox
+      compatibility influences the common sha3sum command and packaging guidance.
+  sources:
+    - "[Author's project page](https://www.maandree.se/proj/sha3sum.html)"
+    - "[Maintainer's README](https://github.com/maandree/sha3sum#readme)"
+    - >
+      [Official development
+      history](https://git.maandree.se/sha3sum/commit/?h=1.2&id=ab6409ba17177d397fdfd732ebba8a8a7d8ca77e)
+    - source_facts.package-manager
+  summary:
+    - >
+      sha3sum is a C collection of checksum utilities covering Keccak, SHA-3, SHAKE, and
+      RawSHAKE.
+  timeline:
+    - '2014: The official repository records development in November.'
+  usage:
+    - >
+      The utilities generate or verify file checksums and expose hashing parameters
+      through command-line options. No default persistent configuration or credential
+      file is documented in the README.
 category: security
 package-manager:
   brew: sha3sum
