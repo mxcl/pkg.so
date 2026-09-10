@@ -1,0 +1,81 @@
+id: brew:osctrl-mcp
+display-name: osctrl-mcp
+repo: null
+docs:
+  - https://docs.osctrl.net/
+  - https://docs.osctrl.net/components/osctrl-mcp
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The parent osctrl project reports production use, but the reviewed sources do not
+      establish separate adoption figures for its MCP component.
+  package-nerd-significance:
+    - >
+      The separately packaged executable connects the osquery fleet-management ecosystem
+      with clients implementing Model Context Protocol.
+  project-history:
+    - >
+      osctrl-mcp is developed within osctrl, whose purpose is managing systems through
+      osquery's remote API. The project provides both a standalone MCP executable and an
+      optional hosted MCP endpoint.
+  related-projects:
+    - osctrl; osquery; Model Context Protocol.
+  sources:
+    - '[Official osctrl README](https://github.com/jmpsec/osctrl#readme).'
+    - >
+      source_facts.executables and source_facts.package-manager identify the separately
+      packaged executable.
+  summary:
+    - osctrl-mcp provides MCP clients with access to osctrl fleet-management capabilities.
+  timeline:
+    - '2026: The official README documents standalone and hosted MCP interfaces.'
+  usage:
+    - >
+      The standalone server communicates over standard input and output. Fleet tools
+      enforce permissions; mutating tools are separately gated and disabled by default.
+tags:
+  - cli
+  - endpoint-management
+  - fleet-management
+  - mcp-server
+  - osquery
+provenance:
+  category-sources:
+    - >
+      [Official README](https://github.com/jmpsec/osctrl#readme): osctrl-mcp exposes
+      permission-checked fleet inspection through MCP.
+  display-name-sources:
+    - source_facts.name and source_facts.executables; confirmed by the official osctrl README.
+  docs-sources:
+    - >
+      No component-specific configuration or credentials file location was verified;
+      both locations are null. General osctrl server configuration paths were not
+      applied to this executable.
+    - >
+      [Official README](https://github.com/jmpsec/osctrl#documentation) confirms
+      docs.osctrl.net as the documentation site.
+    - >
+      source_facts.homepage supplies the component documentation URL; its contents could
+      not be retrieved.
+  history-sources:
+    - '[Official osctrl README](https://github.com/jmpsec/osctrl#readme).'
+    - >
+      source_facts.executables and source_facts.package-manager identify the separately
+      packaged executable.
+  repo-sources:
+    - source_facts.repo is already populated; repo is null as instructed.
+  tags-sources:
+    - >
+      [Official README](https://github.com/jmpsec/osctrl#readme): standalone stdio MCP
+      server and osquery fleet management.
+category-confidence: high
+category-path:
+  - security
+  - endpoint-management
+display-name-confidence: high
+docs-confidence: medium
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
