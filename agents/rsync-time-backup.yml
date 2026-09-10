@@ -5,7 +5,38 @@ docs:
   - https://github.com/laurent22/rsync-time-backup#readme
 config-file-location: null
 credentials-file-location: null
-history: null
+history:
+  adoption-history:
+    - >
+      The README documents Linux, macOS, and Windows through WSL or Cygwin, and lists
+      community extensions. source_facts.package-manager records Homebrew distribution.
+  package-nerd-significance:
+    - >
+      It assembles rsync and filesystem hard links into browsable snapshots that can be
+      restored with ordinary file tools.
+  project-history:
+    - >
+      Laurent Cozic developed the script to provide Time Machine-style backups using
+      rsync. Its copyright statement begins in 2013.
+  related-projects:
+    - >
+      rsync supplies transfer functionality; Apple's Time Machine inspired the backup
+      model. The README lists rtb-wrapper and time-travel as extensions.
+  sources:
+    - https://github.com/laurent22/rsync-time-backup#readme
+    - source_facts.package-manager
+  summary:
+    - >
+      Rsync time backup is a shell script for incremental snapshots stored as ordinary
+      directories.
+  timeline:
+    - "2013: Earliest year in Laurent Cozic's upstream copyright statement."
+  usage:
+    - >
+      Pass a source, destination, and optional exclusion file. Unchanged files share
+      hard links with earlier backups. SSH supports remote endpoints; retention rules
+      expire old snapshots. Configuration is supplied through arguments, and SSH
+      identity files are user-selected.
 tags:
   - backup
   - cli
@@ -33,10 +64,8 @@ provenance:
   docs-sources:
     - Official GitHub README is the primary documentation surface for usage and configuration.
   history-sources:
-    - >
-      The official README documents purpose, platforms, installation, and usage, but
-      provides insufficient reliable project-origin and adoption chronology for a
-      neutral package history.
+    - https://github.com/laurent22/rsync-time-backup#readme
+    - source_facts.package-manager
   repo-sources:
     - >
       source_facts.repo already contains https://github.com/laurent22/rsync-time-backup,
@@ -50,6 +79,6 @@ category-path:
   - backup
 display-name-confidence: high
 docs-confidence: high
-history-confidence: medium
+history-confidence: high
 repo-confidence: high
 tags-confidence: high
