@@ -14,7 +14,19 @@ config-file-location:
     - ~/.config/rustypaste/config.toml
     - ~/Library/Application Support/rustypaste/config.toml
     - ~/.rustypaste/config.toml
-credentials-file-location: null
+credentials-file-location:
+  linux:
+    - $XDG_CONFIG_HOME/rustypaste/config.toml
+    - ~/.config/rustypaste/config.toml
+    - ~/.rustypaste/config.toml
+  macos:
+    - $XDG_CONFIG_HOME/rustypaste/config.toml
+    - ~/.config/rustypaste/config.toml
+    - ~/Library/Application Support/rustypaste/config.toml
+    - ~/.rustypaste/config.toml
+  windows:
+    - '%APPDATA%\rustypaste\config.toml'
+    - '%USERPROFILE%\.rustypaste\config.toml'
 history:
   adoption-history:
     - >
