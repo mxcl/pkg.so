@@ -4,9 +4,45 @@ homepage: https://sispmctl.sourceforge.net/
 repo: https://git.code.sf.net/p/sispmctl/git
 docs:
   - https://sispmctl.sourceforge.net/
-config-file-location: null
-credentials-file-location: null
-history: null
+config-file-location:
+  linux: /lib/udev/rules.d/60-sispmctl.rules
+credentials-file-location:
+  unix: /etc/sispmctl/password
+history:
+  adoption-history:
+    - >
+      The official site lists Debian, Gentoo, openSUSE, OpenWrt and Ubuntu packages. It
+      also reports successful use on Solaris and older macOS releases, reflecting
+      portability through libusb and POSIX interfaces.
+  package-nerd-significance:
+    - >
+      sispmctl illustrates how a small packaged utility can expose specialized USB
+      hardware to shell automation. Linux integration includes device-access rules and
+      an optional systemd service.
+  project-history:
+    - >
+      The repository credits Mondrian Nuessle and collaborators for 2005–2011, Pete
+      Hildebrandt for 2011–2016, and Heinrich Schuchardt for 2015–2023. Device support
+      encompasses Gembird Silver Shield and later Energenie-branded power strips.
+  related-projects:
+    - libusb supplies USB access; udev and systemd provide documented Linux integration.
+  sources:
+    - '[Official homepage](https://sispmctl.sourceforge.net/)'
+    - >
+      [Upstream README and repository
+      history](https://sourceforge.net/p/sispmctl/git/ci/master/tree/)
+  summary:
+    - >
+      sispmctl controls programmable USB power strips from the command line or an
+      embedded web interface.
+  timeline:
+    - '2005: Beginning of the earliest contributor period credited in the README.'
+    - '2006: Repository records an initial revision.'
+  usage:
+    - >
+      Users scan for supported devices, switch or query outlets, and program schedules.
+      The optional web interface supports Basic authentication using a dedicated
+      password file.
 category: system
 package-manager:
   brew: sispmctl
