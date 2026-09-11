@@ -204,7 +204,12 @@ def cask_app_evidence_hash(evidence: dict[str, Any]) -> str:
 def cask_app_bundle_identifier_candidates(evidence: dict[str, Any]) -> set[str]:
     explicit = {value for value in evidence["uninstall_quit"] if is_bundle_identifier(value)}
     if explicit:
-        return explicit
+        parents = {
+            candidate
+            for candidate in explicit
+            if all(other == candidate or other.startswith(f"{candidate}.") for other in explicit)
+        }
+        return parents or explicit
     zap_identifiers = Counter(
         bundle_identifier
         for path in evidence["zap_trash"]

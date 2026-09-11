@@ -100,18 +100,18 @@ class CaskAuthorityTests(unittest.TestCase):
                 "artifacts": [{"app": ["Aardvark.app"]}],
             },
             {
-                "token": "claude",
+                "token": "zebra",
                 "artifacts": [
-                    {"app": ["Claude.app"]},
+                    {"app": ["Zebra.app"]},
                     {"uninstall": [{"quit": [
-                        "com.anthropic.claudefordesktop",
-                        "com.anthropic.claudefordesktop.helper",
+                        "com.vendor.Zebra",
+                        "com.vendor.Helper",
                     ]}]},
                 ],
             },
         ])
 
-        self.assertEqual([item["token"] for item in unresolved], ["claude", "aardvark"])
+        self.assertEqual([item["token"] for item in unresolved], ["zebra", "aardvark"])
 
     def test_bundle_identifier_rejects_empty_segments(self):
         self.assertFalse(is_bundle_identifier("com.google.Chrome."))
@@ -201,6 +201,22 @@ class CaskAuthorityTests(unittest.TestCase):
 
         self.assertEqual(apps, {"com.openai.codex": {"cask": "chatgpt", "version_source": "cask"}})
         self.assertEqual(casks["chatgpt"]["version"], "26.730.61639")
+
+    def test_app_catalog_prefers_parent_quit_identifier_over_helpers(self):
+        apps, _ = app_catalog_from_casks([{
+            "token": "claude",
+            "artifacts": [
+                {"app": ["Claude.app"]},
+                {"uninstall": [{"quit": [
+                    "com.anthropic.claudefordesktop",
+                    "com.anthropic.claudefordesktop.helper",
+                ]}]},
+            ],
+        }])
+
+        self.assertEqual(apps, {
+            "com.anthropic.claudefordesktop": {"cask": "claude", "version_source": "cask"}
+        })
 
     def test_app_catalog_associates_vlc_by_repeated_zap_bundle_identifier(self):
         apps, casks = app_catalog_from_casks([
