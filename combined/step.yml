@@ -10,7 +10,11 @@ config-file-location:
   unix:
     - $STEPPATH/config/defaults.json
     - $(step path)/config/ca.json
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.step/secrets/
+    - $STEPPATH/secrets/
+    - $STEPPATH/authorities/<authority>/secrets/
 history:
   adoption-history:
     - >
