@@ -9,10 +9,14 @@ from unittest import mock
 from scripts.bootstrap.lib.authority import formula_metadata_from_project_yaml, stable_cask_metadata
 from scripts.bootstrap.lib.casks import (
     app_catalog_from_casks,
+    cask_app_evidence_hash,
+    cask_app_identity_evidence,
     cask_metadata,
     collect_cask_entries,
+    is_bundle_identifier,
     parse_binary_artifact,
     read_cask_catalog,
+    unresolved_cask_app_associations,
 )
 from scripts.bootstrap.lib.render import cask_project_record
 
@@ -32,6 +36,66 @@ def load_public_db_export():
 
 
 class CaskAuthorityTests(unittest.TestCase):
+    @staticmethod
+    def chrome_cask():
+        return {
+            "token": "google-chrome",
+            "name": ["Google Chrome"],
+            "desc": "Web browser",
+            "homepage": "https://www.google.com/chrome/",
+            "version": "153.0.8010.37",
+            "artifacts": [
+                {"app": ["Google Chrome.app"]},
+                {"zap": [{"trash": [
+                    "~/Library/Caches/com.google.Chrome",
+                    "~/Library/Preferences/com.google.Chrome.plist",
+                    "~/Library/Saved Application State/com.google.Chrome.savedState",
+                    "~/Library/WebKit/com.google.Chrome",
+                    "~/Library/Caches/com.google.Keystone.Agent",
+                    "~/Library/Preferences/com.google.Keystone.Agent.plist",
+                ]}]},
+            ],
+        }
+
+    def test_ambiguous_app_cask_can_use_current_high_confidence_association(self):
+        cask = self.chrome_cask()
+        evidence = cask_app_identity_evidence(cask)
+        assert evidence is not None
+        associations = {
+            "google-chrome": {
+                "bundle_identifier": "com.google.Chrome",
+                "confidence": "high",
+                "evidence_hash": cask_app_evidence_hash(evidence),
+                "sources": ["https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/google-chrome.rb"],
+            }
+        }
+
+        apps, casks = app_catalog_from_casks([cask], associations)
+
+        self.assertEqual(apps["com.google.Chrome"]["cask"], "google-chrome")
+        self.assertIn("google-chrome", casks)
+
+    def test_stale_app_cask_association_is_queued_again(self):
+        cask = self.chrome_cask()
+        associations = {
+            "google-chrome": {
+                "bundle_identifier": "com.google.Chrome",
+                "confidence": "high",
+                "evidence_hash": "stale",
+                "sources": ["https://example.com"],
+            }
+        }
+
+        apps, casks = app_catalog_from_casks([cask], associations)
+        unresolved = unresolved_cask_app_associations([cask], associations)
+
+        self.assertEqual(apps, {})
+        self.assertEqual(casks, {})
+        self.assertEqual([item["token"] for item in unresolved], ["google-chrome"])
+
+    def test_bundle_identifier_rejects_empty_segments(self):
+        self.assertFalse(is_bundle_identifier("com.google.Chrome."))
+
     def test_formula_authority_gets_version_from_brew_cache_not_yaml(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

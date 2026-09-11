@@ -5,10 +5,11 @@ import sys
 from collections import Counter
 from typing import Any
 
-from .common import CACHE_DIR, fetch_json, read_json, write_json
+from .common import CACHE_DIR, ROOT, fetch_json, read_json, stable_hash, write_json
 
 
 CASKS_URL = "https://formulae.brew.sh/api/cask.json"
+CASK_APP_ASSOCIATIONS_PATH = ROOT / "data" / "cask-app-associations.json"
 
 
 def cask_url(token: str) -> str:
@@ -149,59 +150,145 @@ def collect_cask_entries(casks: list[dict[str, Any]]) -> tuple[dict[str, str], d
     return dict(sorted(entries.items())), dict(sorted(metadata.items()))
 
 
-def app_catalog_from_casks(casks: list[dict[str, Any]]) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+def cask_app_identity_evidence(cask: dict[str, Any]) -> dict[str, Any] | None:
+    token = cask.get("token")
+    artifacts = cask.get("artifacts")
+    if (
+        not isinstance(token, str)
+        or not token
+        or cask.get("disabled")
+        or cask.get("deprecated")
+        or not isinstance(artifacts, list)
+    ):
+        return None
+
+    applications = sorted({
+        os.path.basename(app)
+        for artifact in artifacts
+        if isinstance(artifact, dict)
+        for app in artifact_values(artifact.get("app"))
+    })
+    if not applications:
+        return None
+
+    uninstall_quit = []
+    zap_trash = []
+    for artifact in artifacts:
+        if not isinstance(artifact, dict):
+            continue
+        for rule in artifact.get("uninstall") if isinstance(artifact.get("uninstall"), list) else []:
+            if isinstance(rule, dict):
+                uninstall_quit.extend(artifact_values(rule.get("quit")))
+        for rule in artifact.get("zap") if isinstance(artifact.get("zap"), list) else []:
+            if isinstance(rule, dict):
+                zap_trash.extend(artifact_values(rule.get("trash")))
+
+    return {
+        "token": token,
+        "applications": applications,
+        "names": artifact_values(cask.get("name")),
+        "summary": cask.get("desc") if isinstance(cask.get("desc"), str) else "",
+        "homepage": cask.get("homepage") if isinstance(cask.get("homepage"), str) else "",
+        "uninstall_quit": sorted(set(uninstall_quit)),
+        "zap_trash": sorted(zap_trash),
+    }
+
+
+def cask_app_evidence_hash(evidence: dict[str, Any]) -> str:
+    return stable_hash({
+        key: evidence[key]
+        for key in ("token", "applications", "uninstall_quit", "zap_trash")
+    })
+
+
+def cask_app_bundle_identifier_candidates(evidence: dict[str, Any]) -> set[str]:
+    explicit = {value for value in evidence["uninstall_quit"] if is_bundle_identifier(value)}
+    if explicit:
+        return explicit
+    zap_identifiers = Counter(
+        bundle_identifier
+        for path in evidence["zap_trash"]
+        if (bundle_identifier := zap_bundle_identifier(path)) is not None
+    )
+    return {
+        bundle_identifier
+        for bundle_identifier, count in zap_identifiers.items()
+        if count >= 2
+    }
+
+
+def read_cask_app_associations(path=CASK_APP_ASSOCIATIONS_PATH) -> dict[str, dict[str, Any]]:
+    payload = read_json(path, {})
+    if not isinstance(payload, dict) or payload.get("schema") != 1:
+        return {}
+    associations = payload.get("associations")
+    if not isinstance(associations, dict):
+        return {}
+    return {
+        str(token): record
+        for token, record in associations.items()
+        if isinstance(token, str) and token and isinstance(record, dict)
+    }
+
+
+def curated_cask_bundle_identifier(
+    evidence: dict[str, Any],
+    associations: dict[str, dict[str, Any]],
+) -> str | None:
+    record = associations.get(evidence["token"])
+    if (
+        not isinstance(record, dict)
+        or record.get("confidence") != "high"
+        or record.get("evidence_hash") != cask_app_evidence_hash(evidence)
+        or not is_bundle_identifier(record.get("bundle_identifier"))
+    ):
+        return None
+    return record["bundle_identifier"]
+
+
+def unresolved_cask_app_associations(
+    casks: list[dict[str, Any]],
+    associations: dict[str, dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    associations = associations or {}
+    unresolved = []
+    for cask in casks:
+        evidence = cask_app_identity_evidence(cask)
+        if evidence is None:
+            continue
+        candidates = cask_app_bundle_identifier_candidates(evidence)
+        if len(candidates) == 1:
+            continue
+        record = associations.get(evidence["token"])
+        evidence_hash = cask_app_evidence_hash(evidence)
+        if isinstance(record, dict) and record.get("evidence_hash") == evidence_hash:
+            continue
+        unresolved.append({
+            **evidence,
+            "candidate_bundle_identifiers": sorted(candidates),
+            "evidence_hash": evidence_hash,
+        })
+    return sorted(unresolved, key=lambda item: item["token"])
+
+
+def app_catalog_from_casks(
+    casks: list[dict[str, Any]],
+    associations: dict[str, dict[str, Any]] | None = None,
+) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+    associations = associations or {}
     candidates: dict[str, list[tuple[str, dict[str, Any]]]] = {}
     for cask in casks:
-        token = cask.get("token")
-        artifacts = cask.get("artifacts")
-        if (
-            not isinstance(token, str)
-            or not token
-            or cask.get("disabled")
-            or cask.get("deprecated")
-            or not isinstance(artifacts, list)
-        ):
+        evidence = cask_app_identity_evidence(cask)
+        if evidence is None:
             continue
-        applications = sorted({
-            os.path.basename(app)
-            for artifact in artifacts
-            if isinstance(artifact, dict)
-            for app in artifact_values(artifact.get("app"))
-        })
-        if not applications:
-            continue
-        bundle_identifiers = set()
-        zap_bundle_identifiers = Counter()
-        for artifact in artifacts:
-            if not isinstance(artifact, dict):
-                continue
-            uninstall = artifact.get("uninstall")
-            if not isinstance(uninstall, list):
-                uninstall = []
-            for rule in uninstall:
-                values = rule.get("quit") if isinstance(rule, dict) else None
-                values = [values] if isinstance(values, str) else values if isinstance(values, list) else []
-                bundle_identifiers.update(value for value in values if is_bundle_identifier(value))
-
-            zap = artifact.get("zap")
-            if not isinstance(zap, list):
-                continue
-            for rule in zap:
-                values = rule.get("trash") if isinstance(rule, dict) else None
-                values = [values] if isinstance(values, str) else values if isinstance(values, list) else []
-                for path in values:
-                    bundle_identifier = zap_bundle_identifier(path)
-                    if bundle_identifier is None:
-                        continue
-                    zap_bundle_identifiers[bundle_identifier] += 1
-        if not bundle_identifiers:
-            bundle_identifiers.update(
-                bundle_identifier
-                for bundle_identifier, count in zap_bundle_identifiers.items()
-                if count >= 2
-            )
+        token = evidence["token"]
+        applications = evidence["applications"]
+        bundle_identifiers = cask_app_bundle_identifier_candidates(evidence)
         if len(bundle_identifiers) != 1:
-            continue
+            curated = curated_cask_bundle_identifier(evidence, associations)
+            if curated is None:
+                continue
+            bundle_identifiers = {curated}
         names = artifact_values(cask.get("name"))
         url = cask.get("url")
         depends_on = cask.get("depends_on") or {}
@@ -247,6 +334,7 @@ def is_bundle_identifier(value: Any) -> bool:
     return (
         isinstance(value, str)
         and value.count(".") >= 2
+        and all(value.split("."))
         and all(character.isalnum() or character in ".-" for character in value)
     )
 
@@ -303,5 +391,5 @@ def read_cask_cache() -> list[dict[str, Any]]:
 
 def read_cask_catalog() -> tuple[dict[str, str], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     entries, binary_casks = read_cask_authority()
-    apps, app_casks = app_catalog_from_casks(read_cask_cache())
+    apps, app_casks = app_catalog_from_casks(read_cask_cache(), read_cask_app_associations())
     return entries, apps, dict(sorted({**app_casks, **binary_casks}.items()))
