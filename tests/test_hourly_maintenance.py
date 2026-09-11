@@ -81,6 +81,10 @@ class HourlyMaintenanceTests(unittest.TestCase):
             self.assertEqual(maintenance.main(), 0)
 
         commands = [call.args[0] for call in run.call_args_list]
+        association = next(command for command in commands if "scripts/resolve-cask-app-associations.py" in command)
+        self.assertEqual(association[association.index("--limit") + 1], "50")
+        self.assertEqual(association[association.index("--batch-size") + 1], "5")
+        self.assertIn([sys.executable, "scripts/build.py"], commands)
         enrichment = next(command for command in commands if "scripts/enrich-projects.py" in command)
         self.assertIn("codex-cli", enrichment)
         self.assertIn("run", enrichment)

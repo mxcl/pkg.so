@@ -23,6 +23,7 @@ COMMIT_PATHS = [
     "agents",
     "human-override",
     "data/approval-gates",
+    "data/cask-app-associations.json",
     "data/pkg-hubs.json",
     "data/pkg-i18n",
     "data/pkg-pages",
@@ -30,6 +31,8 @@ COMMIT_PATHS = [
 ]
 DEFAULT_HOURLY_ENRICH_LIMIT = int(os.environ.get("AVDB_HOURLY_ENRICH_LIMIT", "250"))
 DEFAULT_HOURLY_ENRICH_BATCH_SIZE = int(os.environ.get("AVDB_HOURLY_ENRICH_BATCH_SIZE", "5"))
+DEFAULT_CASK_APP_ASSOCIATION_LIMIT = int(os.environ.get("AVDB_CASK_APP_ASSOCIATION_LIMIT", "50"))
+DEFAULT_CASK_APP_ASSOCIATION_BATCH_SIZE = int(os.environ.get("AVDB_CASK_APP_ASSOCIATION_BATCH_SIZE", "5"))
 DEFAULT_HOURLY_ENRICH_PREPARE_TIMEOUT_SECONDS = int(os.environ.get("AVDB_HOURLY_ENRICH_PREPARE_TIMEOUT_SECONDS", "300"))
 DEFAULT_PKG_GRAPH_CURATION_TIMEOUT_SECONDS = int(
     os.environ.get("AVDB_PKG_GRAPH_CURATION_TIMEOUT_SECONDS", "600")
@@ -182,6 +185,8 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_HOURLY_ENRICH_BATCH_SIZE,
         help="Projects to send to Codex per nightly enrichment batch.",
     )
+    parser.add_argument("--cask-association-limit", type=int, default=DEFAULT_CASK_APP_ASSOCIATION_LIMIT)
+    parser.add_argument("--cask-association-batch-size", type=int, default=DEFAULT_CASK_APP_ASSOCIATION_BATCH_SIZE)
     return parser.parse_args()
 
 
@@ -203,6 +208,16 @@ def main() -> int:
     run([py, "scripts/build-db.py", "--refresh", "--npm-full-scan-parts=7"])
     run([py, "scripts/build.py", "--refresh"])
     if not args.skip_enrichment and args.enrich_limit > 0:
+        if os.environ.get("AVDB_ENRICH_BACKEND") == "codex-cli":
+            run([
+                py,
+                "scripts/resolve-cask-app-associations.py",
+                "--limit",
+                str(args.cask_association_limit),
+                "--batch-size",
+                str(args.cask_association_batch_size),
+            ])
+            run([py, "scripts/build.py"])
         command = [
             py,
             "scripts/enrich-projects.py",
