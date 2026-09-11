@@ -11,7 +11,15 @@ config-file-location:
     - ~/.config/systemd/user.conf
     - /etc/systemd/user.conf
     - /etc/systemd/user.conf.d/*.conf
-credentials-file-location: null
+credentials-file-location:
+  linux:
+    - /etc/credstore/
+    - /run/credstore/
+    - /usr/lib/credstore/
+    - /etc/credstore.encrypted/
+    - /run/credstore.encrypted/
+    - /usr/lib/credstore.encrypted/
+    - $CREDENTIALS_DIRECTORY/
 history:
   adoption-history:
     - >
