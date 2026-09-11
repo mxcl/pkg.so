@@ -1,0 +1,1989 @@
+{
+  "content": [
+    {
+      "artwork": {
+        "alt": "A luminous origami rulebook connects by teal, amber, and violet paths to six abstract developer workspaces on a deep navy background.",
+        "attribution": "Generated with OpenAI image generation",
+        "boxColors": {
+          "backgroundEnd": "#112548",
+          "backgroundStart": "#061329",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/rulesync-unified-agent-rules.png"
+      },
+      "batchID": "20260727T130116Z-f872b433",
+      "body": "## Configuration Is Becoming a Compatibility Problem\n\nA repository can now carry instructions for several coding agents: project rules, commands, skills, tool permissions, hooks, ignore lists, and MCP servers. Each agent has useful ideas about filenames and structure, but the formats are not interchangeable. A change to one policy can become a small, error-prone copy-and-paste campaign. The obvious shortcut—keeping only one tool's file—makes the setup less portable and gives contributors different behavior depending on the agent they choose.\n\n**Rulesync** takes a different route. It keeps a source tree for shared AI-agent guidance, imports some existing configurations, and generates target-specific output. Its repository documents targets for Claude Code, Codex CLI, GitHub Copilot, Cursor, OpenCode, and many other tools, alongside an `AGENTS.md` target. The intent is not to claim every agent behaves identically. It is to make the differences explicit while giving the common policy one place to live.\n\n## A Young Tool in a Fast-Moving Space\n\nRulesync published its first stable `0.1.0` release on June 18, 2025. That timing matters: the surrounding agent ecosystem changes quickly, with new configuration surfaces appearing alongside familiar instruction files. The project's release history shows steady iteration, and the documentation tracks feature support per target rather than pretending every output can represent every capability. That is the right posture for a compatibility tool: generation is useful only if it is honest about what can be generated.\n\nThe basic workflow is deliberately small. Initialize a rulesync layout, put reusable rules and components in it, then generate selected targets. Existing repositories can also import tool-specific files before adopting the source-of-truth layout. A conversion command supports direct translation when a repository needs to move from one format to another without immediately adopting a managed tree. Generated files should still be reviewed like any other derived artifact; they influence how tools read, edit, and execute inside a repository.\n\n## What Belongs in the Shared Layer\n\nThe shared layer works best for stable repository facts and working agreements:\n\n- architecture boundaries and naming conventions;\n- test and validation commands;\n- security or data-handling constraints;\n- review expectations and prohibited shortcuts;\n- reusable agent skills and task commands.\n\nIt works less well for instructions that only make sense in a single product. One agent may support a hook event, permission rule, or custom-agent setting that another does not expose. Flattening that distinction can create a configuration that looks standardized but silently loses behavior. Rulesync's supported-tools matrix is useful here: treat it as a compatibility map, not a promise of semantic equivalence. Keep genuinely tool-specific settings scoped to the target that needs them.\n\nA shared file also needs normal software ownership. Put changes through review, pin the generator version where repeatability matters, and decide whether CI should regenerate and fail on a diff. A generated configuration file is not documentation someone can casually edit in a panic; the source layout is the place to make the enduring change. That discipline prevents the source and output from drifting apart.\n\n## Evidence of Use, With Limits\n\nThe upstream repository shows an active project with over a thousand GitHub stars, forks, issue activity, releases, and documentation for a broad set of agent targets. Those signals demonstrate attention and public use beyond an unpublished experiment. They do not measure production deployments, reliability in a particular organization, or the quality of every generated integration. The project is still young enough that a cautious evaluation is sensible.\n\nStart with one repository that already has two or three agent configurations. Import or recreate only the instructions that are actually shared, generate those targets, and inspect the diff line by line. Run each agent's normal workflow against a disposable branch. Pay special attention to permissions, hooks, commands, and MCP settings because those surfaces can have real operational consequences. If the generated output is clearer and remains in sync through one policy change, expand from there.\n\n## Adjacent Tools, Different Jobs\n\nThis pattern is broader than agent configuration. **vfox** offers one command surface for selecting several language runtimes, while recognizing familiar version files; it is a practical companion when teams want fewer per-language setup rituals. **yutu** shows the opposite boundary: it automates authenticated YouTube work, where capabilities are intentionally specific and account permissions matter. Neither tool is a Rulesync substitute, but together they underline the principle: consolidate the policy that is truly shared, and leave specialized behavior close to the system that owns it.\n\nRulesync earns its place when a team already maintains multiple agent files and can name the common rules. For a single agent or a small repository, a well-kept `AGENTS.md` may be all that is needed. The value begins when duplication is real—and ends if the generator obscures more than it removes.",
+      "deck": "A focused CLI for turning one maintained ruleset into the differing files that modern coding agents expect.",
+      "id": "editorial:2026-07-27:rulesync-shared-agent-instructions",
+      "package": {
+        "agentSummary": "Rulesync keeps AI coding-agent instructions in one source tree, then generates and imports tool-specific rules, commands, skills, hooks, permissions, and MCP configuration.",
+        "assessment": {
+          "alternatives": [
+            "Maintaining each agent configuration by hand",
+            "Using only a cross-tool AGENTS.md file"
+          ],
+          "audiences": [
+            "Teams using more than one AI coding agent",
+            "Maintainers standardizing repository guidance"
+          ],
+          "caveats": [
+            "Tool capabilities and file formats differ, so generated output cannot make every feature portable",
+            "A shared source still needs careful ownership and review"
+          ],
+          "complements": [
+            "Version control review",
+            "Repository-local AGENTS.md guidance",
+            "CI checks for generated configuration"
+          ],
+          "prerequisites": [
+            "A repository with AI-agent configuration worth maintaining",
+            "Time to review generated files before committing them"
+          ],
+          "useCases": [
+            "Generating agent-specific configuration from shared rules",
+            "Migrating existing agent instructions into a managed source tree"
+          ]
+        },
+        "category": "ai",
+        "displayName": "rulesync",
+        "docs": "https://rulesync.dyoshikawa.com/",
+        "homepage": "https://github.com/dyoshikawa/rulesync",
+        "id": "brew:rulesync",
+        "installURL": "pkgmgrmgr://install?package=brew%3Arulesync",
+        "lastUpdatedAt": "2026-07-26T04:19:04Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/dyoshikawa/rulesync",
+        "researchedAt": "2026-07-27T13:01:16Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Rulesync project repository",
+            "url": "https://github.com/dyoshikawa/rulesync"
+          },
+          {
+            "kind": "primary",
+            "title": "Rulesync documentation",
+            "url": "https://rulesync.dyoshikawa.com/"
+          }
+        ],
+        "upstreamSummary": "Unified AI rules management CLI tool",
+        "version": null
+      },
+      "primaryPackageID": "brew:rulesync",
+      "publishedAt": "2026-07-27T13:01:16Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Rulesync keeps AI coding-agent instructions in one source tree, then generates and imports tool-specific rules, commands, skills, hooks, permissions, and MCP configuration.",
+          "assessment": {
+            "alternatives": [
+              "Maintaining each agent configuration by hand",
+              "Using only a cross-tool AGENTS.md file"
+            ],
+            "audiences": [
+              "Teams using more than one AI coding agent",
+              "Maintainers standardizing repository guidance"
+            ],
+            "caveats": [
+              "Tool capabilities and file formats differ, so generated output cannot make every feature portable",
+              "A shared source still needs careful ownership and review"
+            ],
+            "complements": [
+              "Version control review",
+              "Repository-local AGENTS.md guidance",
+              "CI checks for generated configuration"
+            ],
+            "prerequisites": [
+              "A repository with AI-agent configuration worth maintaining",
+              "Time to review generated files before committing them"
+            ],
+            "useCases": [
+              "Generating agent-specific configuration from shared rules",
+              "Migrating existing agent instructions into a managed source tree"
+            ]
+          },
+          "category": "ai",
+          "displayName": "rulesync",
+          "docs": "https://rulesync.dyoshikawa.com/",
+          "homepage": "https://github.com/dyoshikawa/rulesync",
+          "id": "brew:rulesync",
+          "installURL": "pkgmgrmgr://install?package=brew%3Arulesync",
+          "lastUpdatedAt": "2026-07-26T04:19:04Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/dyoshikawa/rulesync",
+          "researchedAt": "2026-07-27T13:01:16Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Rulesync project repository",
+              "url": "https://github.com/dyoshikawa/rulesync"
+            },
+            {
+              "kind": "primary",
+              "title": "Rulesync documentation",
+              "url": "https://rulesync.dyoshikawa.com/"
+            }
+          ],
+          "upstreamSummary": "Unified AI rules management CLI tool",
+          "version": null
+        },
+        {
+          "agentSummary": "vfox is a cross-platform, plugin-driven SDK version manager that installs and selects language runtimes globally or per project while recognizing several existing version files.",
+          "assessment": {
+            "alternatives": [
+              "asdf for a long-established plugin ecosystem",
+              "Dedicated managers such as nvm, pyenv, or sdkman"
+            ],
+            "audiences": [
+              "Developers who work across several language runtimes",
+              "Teams seeking one version-manager command surface"
+            ],
+            "caveats": [
+              "Plugin quality and maintenance vary by runtime",
+              "Shell hooks add another startup integration to support"
+            ],
+            "complements": [
+              "Pinned runtime files",
+              "CI runtime setup",
+              "Project onboarding documentation"
+            ],
+            "prerequisites": [
+              "A shell activation hook",
+              "Plugins for the runtimes a project needs"
+            ],
+            "useCases": [
+              "Selecting project-specific Node, Python, Go, or Java versions",
+              "Migrating from existing runtime-version files"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "vfox",
+          "docs": "https://vfox.dev/",
+          "homepage": "https://vfox.dev/",
+          "id": "brew:vfox",
+          "installURL": "pkgmgrmgr://install?package=brew%3Avfox",
+          "lastUpdatedAt": "2026-07-25T22:30:01Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/version-fox/vfox",
+          "researchedAt": "2026-07-27T13:01:16Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "vfox project repository",
+              "url": "https://github.com/version-fox/vfox"
+            },
+            {
+              "kind": "primary",
+              "title": "vfox documentation",
+              "url": "https://vfox.dev/"
+            }
+          ],
+          "upstreamSummary": "Version manager with support for Java, Node.js, Flutter, .NET & more",
+          "version": null
+        },
+        {
+          "agentSummary": "yutu is an AI-assisted command-line and agent toolkit for authenticated YouTube workflows, including research, uploads, metadata, playlists, comments, captions, and channel management.",
+          "assessment": {
+            "alternatives": [
+              "YouTube Studio for manual management",
+              "Purpose-built scripts using the YouTube Data API"
+            ],
+            "audiences": [
+              "YouTube channel operators comfortable with command-line tools",
+              "Developers automating approved YouTube workflows"
+            ],
+            "caveats": [
+              "Automation can make consequential public changes",
+              "OAuth tokens and channel permissions require careful handling"
+            ],
+            "complements": [
+              "YouTube Studio",
+              "Secure credential storage",
+              "A human editorial review process"
+            ],
+            "prerequisites": [
+              "A Google OAuth client and authorized YouTube account",
+              "Understanding of YouTube permissions and API quotas"
+            ],
+            "useCases": [
+              "Managing video metadata and playlists",
+              "Researching channel and video information through authenticated APIs"
+            ]
+          },
+          "category": "ai",
+          "displayName": "yutu",
+          "docs": "https://github.com/eat-pray-ai/yutu#readme",
+          "homepage": "https://yutu.ifor.dev",
+          "id": "brew:yutu",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ayutu",
+          "lastUpdatedAt": "2026-07-25T22:12:53Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/eat-pray-ai/yutu",
+          "researchedAt": "2026-07-27T13:01:16Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "yutu project repository",
+              "url": "https://github.com/eat-pray-ai/yutu"
+            },
+            {
+              "kind": "primary",
+              "title": "yutu product documentation",
+              "url": "https://yutu.ifor.dev/"
+            }
+          ],
+          "upstreamSummary": "MCP server and CLI for YouTube",
+          "version": null
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2025-06-18T14:13:17Z",
+        "firstStableReleaseSourceURL": "https://github.com/dyoshikawa/rulesync/releases/tag/0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Rulesync project repository",
+          "url": "https://github.com/dyoshikawa/rulesync"
+        },
+        {
+          "kind": "primary",
+          "title": "Rulesync releases",
+          "url": "https://github.com/dyoshikawa/rulesync/releases"
+        },
+        {
+          "kind": "primary",
+          "title": "Rulesync documentation",
+          "url": "https://rulesync.dyoshikawa.com/"
+        },
+        {
+          "kind": "independent",
+          "title": "AGENTS.md open format",
+          "url": "https://agents.md/"
+        }
+      ],
+      "title": "Rulesync: One Set of Instructions, Many Agents",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260727T130116Z-edd93d29",
+      "id": "recently-updated:language-runtime:20260911T100100Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Small prototype-based programming language",
+          "category": "language-runtime",
+          "displayName": "io",
+          "homepage": null,
+          "id": "brew:io",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aio",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Go compiler based on LLVM integrate with the C ecosystem and Python",
+          "category": "language-runtime",
+          "displayName": "llgo",
+          "homepage": "https://github.com/xgo-dev/llgo",
+          "id": "brew:llgo",
+          "installURL": "pkgmgrmgr://install?package=brew%3Allgo",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Compiler for the C3 language",
+          "category": "language-runtime",
+          "displayName": "c3c",
+          "homepage": "https://c3-lang.org",
+          "id": "brew:c3c",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ac3c",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Ruby implementation in pure Java",
+          "category": "language-runtime",
+          "displayName": "jruby",
+          "homepage": "https://www.jruby.org/",
+          "id": "brew:jruby",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ajruby",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Small footprint implementation of Tcl",
+          "category": "language-runtime",
+          "displayName": "jimtcl",
+          "homepage": "https://jim.tcl.tk/index.html",
+          "id": "brew:jimtcl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ajimtcl",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-07-27T13:01:16Z",
+      "title": "Recently Updated in Language Runtime",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260727T130116Z-edd93d29",
+      "id": "for-you:system:20260911T100100Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Like which(1) unix command. Find the first instance of an executable in the PATH.",
+          "category": "system",
+          "displayName": "which",
+          "homepage": "https://github.com/npm/node-which#readme",
+          "id": "npm:which",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awhich",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A deep deletion module for node (like `rm -rf`)",
+          "category": "system",
+          "displayName": "rimraf",
+          "homepage": "https://github.com/isaacs/rimraf#readme",
+          "id": "npm:rimraf",
+          "installURL": "pkgmgrmgr://install?package=npm%3Arimraf",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Recursively mkdir, like `mkdir -p`",
+          "category": "system",
+          "displayName": "mkdirp",
+          "homepage": "https://github.com/isaacs/node-mkdirp#readme",
+          "id": "npm:mkdirp",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amkdirp",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a Docker container",
+          "category": "system",
+          "displayName": "is-docker",
+          "homepage": "https://github.com/sindresorhus/is-docker#readme",
+          "id": "npm:is-docker",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-docker",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a container (Docker/Podman)",
+          "category": "system",
+          "displayName": "is-inside-container",
+          "homepage": "https://github.com/sindresorhus/is-inside-container#readme",
+          "id": "npm:is-inside-container",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-inside-container",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-07-27T13:01:16Z",
+      "title": "For You in System",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "An abstract compass joins three looping paths on a luminous mountain grid at sunrise.",
+        "attribution": "Generated with OpenAI image generation",
+        "boxColors": {
+          "backgroundEnd": "#B8DCCB",
+          "backgroundStart": "#09253A",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI-generated asset for PMM Discover",
+        "path": "feed/assets/feedback-loops-2026-07-23.png"
+      },
+      "batchID": "20260723T140545Z-5a5a6745",
+      "body": "## A faster tool is not automatically a faster team\n\nDeveloper tooling earns its keep by shortening the interval between a change and a trustworthy decision. A formatter that finishes quickly is useful when it lets a pull request move from \"did we agree on this file?\" to the next substantive question. A type checker is useful when its diagnostics arrive while the code is still in the editor, not after a long CI queue. Browser automation is useful when it makes a real workflow observable without turning every verification into a manual ritual.\n\nThat framing matters because tool speed is easy to measure and team feedback is not. The three projects here—Oxfmt, ty, and agent-browser—sit at different points in the loop. Their appeal is not that every repository should replace its existing stack. It is that they make the boundaries of the loop visible: formatting, static analysis, and behavior in an actual browser.\n\n## Oxfmt: a new formatter direction\n\nOxfmt entered alpha in December 2025 and reached beta in February 2026. The Oxc team describes it as a Rust-powered, Prettier-compatible formatter for JavaScript and TypeScript. Its stated early performance figures are impressive, but compatibility is the more practical reason to look: formatters only save time when they produce stable, reviewable output across the code a team actually owns.\n\nFor a repository already using Prettier, the safe question is not \"is Oxfmt faster?\" It is **which files, options, embedded languages, and plugins behave the same enough for us?** Start with `--check` on a representative branch, then inspect differences by category. A one-off formatting migration can create a noisy diff; a gradual trial on new or contained packages gives the team a clean rollback path.\n\nBeta status is a real tradeoff. Oxfmt's roadmap still includes compatibility and plugin work, and a formatter's edge cases can be exactly where a mature codebase has accumulated conventions. That does not rule it out. It argues for treating it as a measured experiment, with a baseline and an exit.\n\n## Ty: keep type feedback near the edit\n\nAstral's ty is a Rust-based Python type checker with official binaries, package installation paths, and editor-oriented documentation. It belongs in the same conversation because formatting is only one kind of cheap feedback. Type diagnostics can turn an integration mistake into a local correction before it becomes a failed test, a review comment, or a production bug.\n\nPython teams should expect differences from their current checker. Annotation interpretation, supported features, configuration, and diagnostic wording all affect adoption. That makes a shadow run more useful than a wholesale switch: run ty beside Pyright or mypy in CI, classify the new findings, and decide which are signal. The goal is not to maximize the number of warnings. The goal is to make **useful** warnings arrive early enough to change behavior.\n\n## Agent Browser: the boundary where state becomes real\n\nAgent-browser addresses the last, messier segment of the loop: observing and interacting with a browser. Its release history documents a fast-moving command-line surface for snapshots, navigation, sessions, network inspection, and browser providers. That can be a strong fit for agent workflows and repeatable browser checks, especially when raw browser state is easier to inspect than a screenshot alone.\n\nBut browser automation has a different failure mode from formatting and type checking: it can cause side effects. A script that clicks a destructive control, submits a form, or operates with a logged-in session needs explicit limits. Keep production credentials out of exploratory runs, use test accounts where possible, and constrain destinations with allowlists or environment-level safeguards. Speed without containment is merely a quicker route to a bad action.\n\n## Build the loop in layers\n\nA pragmatic trial can be small:\n\n- Use Oxfmt in check-only mode on one JavaScript or TypeScript package.\n- Run ty alongside the existing Python checker and review only the disagreements.\n- Point agent-browser at a staging workflow with a deliberately narrow action policy.\n\nThe shared lesson is that fast tools work best as **small, reversible feedback loops**. Measure wall-clock time, but also measure review noise, false positives, and whether a developer can act on the result without opening another ticket. Retain the tools that make a decision faster; leave the rest at the boundary until their maturity catches up.",
+      "deck": "Three newer developer tools show why speed matters most when it shortens a decision, not simply a benchmark.",
+      "id": "editorial:2026-07-23:feedback-loops-where-fast-tools-help-and-where-they-dont",
+      "package": {
+        "agentSummary": "Oxfmt is a Rust-powered formatter for JavaScript and TypeScript projects, aiming for Prettier compatibility while reducing formatting time in large repositories and continuous-integration workflows.",
+        "assessment": {
+          "alternatives": [
+            "Prettier",
+            "Biome formatter"
+          ],
+          "audiences": [
+            "JavaScript and TypeScript teams with slow formatting checks"
+          ],
+          "caveats": [
+            "Oxfmt is beta and compatibility gaps may remain",
+            "Plugin and embedded-language support should be verified per repository"
+          ],
+          "complements": [
+            "Type checking",
+            "Linting",
+            "Pre-commit hooks"
+          ],
+          "prerequisites": [
+            "A JavaScript or TypeScript project",
+            "Tolerance for a beta-stage formatter"
+          ],
+          "useCases": [
+            "Replacing or evaluating Prettier-compatible repository formatting",
+            "Running formatting checks in CI"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "oxfmt",
+        "docs": "https://github.com/oxc-project/oxc#readme",
+        "homepage": "https://oxc.rs/",
+        "id": "brew:oxfmt",
+        "installURL": "pkgmgrmgr://install?package=brew%3Aoxfmt",
+        "lastUpdatedAt": "2026-07-23T01:09:21Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/oxc-project/oxc",
+        "researchedAt": "2026-07-23T14:05:45Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Oxfmt beta announcement",
+            "url": "https://oxc.rs/blog/2026-02-24-oxfmt-beta"
+          },
+          {
+            "kind": "primary",
+            "title": "Oxfmt alpha announcement",
+            "url": "https://oxc.rs/blog/2025-12-01-oxfmt-alpha.html"
+          }
+        ],
+        "upstreamSummary": "High-performance formatting tool for JavaScript and TypeScript",
+        "version": null
+      },
+      "primaryPackageID": "brew:oxfmt",
+      "publishedAt": "2026-07-23T14:05:45Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Oxfmt is a Rust-powered formatter for JavaScript and TypeScript projects, aiming for Prettier compatibility while reducing formatting time in large repositories and continuous-integration workflows.",
+          "assessment": {
+            "alternatives": [
+              "Prettier",
+              "Biome formatter"
+            ],
+            "audiences": [
+              "JavaScript and TypeScript teams with slow formatting checks"
+            ],
+            "caveats": [
+              "Oxfmt is beta and compatibility gaps may remain",
+              "Plugin and embedded-language support should be verified per repository"
+            ],
+            "complements": [
+              "Type checking",
+              "Linting",
+              "Pre-commit hooks"
+            ],
+            "prerequisites": [
+              "A JavaScript or TypeScript project",
+              "Tolerance for a beta-stage formatter"
+            ],
+            "useCases": [
+              "Replacing or evaluating Prettier-compatible repository formatting",
+              "Running formatting checks in CI"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "oxfmt",
+          "docs": "https://github.com/oxc-project/oxc#readme",
+          "homepage": "https://oxc.rs/",
+          "id": "brew:oxfmt",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aoxfmt",
+          "lastUpdatedAt": "2026-07-23T01:09:21Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/oxc-project/oxc",
+          "researchedAt": "2026-07-23T14:05:45Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Oxfmt beta announcement",
+              "url": "https://oxc.rs/blog/2026-02-24-oxfmt-beta"
+            },
+            {
+              "kind": "primary",
+              "title": "Oxfmt alpha announcement",
+              "url": "https://oxc.rs/blog/2025-12-01-oxfmt-alpha.html"
+            }
+          ],
+          "upstreamSummary": "High-performance formatting tool for JavaScript and TypeScript",
+          "version": null
+        },
+        {
+          "agentSummary": "Ty is Astral's Rust-based Python type checker, designed for rapid feedback and gradual adoption while its evolving diagnostics, configuration, and language support continue to mature.",
+          "assessment": {
+            "alternatives": [
+              "Pyright",
+              "mypy"
+            ],
+            "audiences": [
+              "Python developers adding or accelerating static analysis"
+            ],
+            "caveats": [
+              "Ty remains pre-1.0",
+              "Migration may expose different interpretation of annotations"
+            ],
+            "complements": [
+              "Ruff",
+              "Pyright",
+              "pytest"
+            ],
+            "prerequisites": [
+              "Python code with useful annotations",
+              "A plan for handling checker differences"
+            ],
+            "useCases": [
+              "Editor diagnostics",
+              "CI type-checking experiments",
+              "Comparing type checker behavior"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "ty",
+          "docs": "https://docs.astral.sh/ty",
+          "homepage": "https://docs.astral.sh/ty/",
+          "id": "brew:ty",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aty",
+          "lastUpdatedAt": "2026-07-23T04:05:44Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/astral-sh/ty",
+          "researchedAt": "2026-07-23T14:05:45Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Ty documentation",
+              "url": "https://docs.astral.sh/ty/"
+            },
+            {
+              "kind": "primary",
+              "title": "Ty installation documentation",
+              "url": "https://docs.astral.sh/ty/installation/"
+            }
+          ],
+          "upstreamSummary": "Extremely fast Python type checker, written in Rust",
+          "version": null
+        },
+        {
+          "agentSummary": "Agent Browser is a command-line browser automation tool for AI agents, exposing structured navigation, inspection, interaction, and session controls through a compact terminal-first interface.",
+          "assessment": {
+            "alternatives": [
+              "Playwright",
+              "Selenium",
+              "Puppeteer"
+            ],
+            "audiences": [
+              "Developers building browser-using agents",
+              "Teams testing browser workflows"
+            ],
+            "caveats": [
+              "Browser automation can trigger real side effects",
+              "Version changes may alter commands and integrations"
+            ],
+            "complements": [
+              "End-to-end tests",
+              "Domain allowlists",
+              "CI isolation"
+            ],
+            "prerequisites": [
+              "A supported browser or remote browser provider",
+              "Clear safeguards for real-world actions"
+            ],
+            "useCases": [
+              "Structured browser automation",
+              "Inspecting page state",
+              "Repeatable agent-driven checks"
+            ]
+          },
+          "category": "ai",
+          "displayName": "agent-browser",
+          "docs": "https://agent-browser.dev/",
+          "homepage": "https://agent-browser.dev/",
+          "id": "brew:agent-browser",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aagent-browser",
+          "lastUpdatedAt": "2026-07-23T03:37:51Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/vercel-labs/agent-browser",
+          "researchedAt": "2026-07-23T14:05:45Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Agent Browser documentation",
+              "url": "https://agent-browser.dev/"
+            },
+            {
+              "kind": "primary",
+              "title": "Agent Browser release history",
+              "url": "https://github.com/vercel-labs/agent-browser/releases"
+            }
+          ],
+          "upstreamSummary": "Browser automation CLI for AI agents",
+          "version": null
+        }
+      ],
+      "selection": {
+        "newerOverride": {
+          "reason": "Oxfmt is a newly introduced formatter direction: it entered alpha in December 2025 and beta in February 2026, with a distinct Prettier-compatible Rust implementation.",
+          "sourceURL": "https://oxc.rs/blog/2026-02-24-oxfmt-beta"
+        },
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Oxfmt alpha announcement",
+          "url": "https://oxc.rs/blog/2025-12-01-oxfmt-alpha.html"
+        },
+        {
+          "kind": "primary",
+          "title": "Oxfmt beta announcement",
+          "url": "https://oxc.rs/blog/2026-02-24-oxfmt-beta"
+        },
+        {
+          "kind": "primary",
+          "title": "Ty documentation",
+          "url": "https://docs.astral.sh/ty/"
+        },
+        {
+          "kind": "primary",
+          "title": "Agent Browser release history",
+          "url": "https://github.com/vercel-labs/agent-browser/releases"
+        }
+      ],
+      "title": "Faster Feedback Loops Need Clear Boundaries",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260723T140545Z-264ab575",
+      "id": "recently-updated:data:20260911T100100Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Serves a fully RESTful API from any existing PostgreSQL database",
+          "category": "data",
+          "displayName": "postgrest",
+          "homepage": "https://github.com/PostgREST/postgrest",
+          "id": "brew:postgrest",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apostgrest",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Command-line interface for interacting with the IoTeX blockchain",
+          "category": "data",
+          "displayName": "ioctl",
+          "homepage": "https://docs.iotex.io/",
+          "id": "brew:ioctl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aioctl",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Time series, events, and metrics database",
+          "category": "data",
+          "displayName": "influxdb",
+          "homepage": "https://influxdata.com/time-series-platform/influxdb/",
+          "id": "brew:influxdb",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ainfluxdb",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Command-line pager for JSON data",
+          "category": "data",
+          "displayName": "jless",
+          "homepage": "https://jless.io/",
+          "id": "brew:jless",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ajless",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "CLI program that helps you to create quality random data for your applications",
+          "category": "data",
+          "displayName": "jr",
+          "homepage": "https://jrnd.io/",
+          "id": "brew:jr",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ajr",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-07-23T14:05:45Z",
+      "title": "Recently Updated in Data",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260723T140545Z-264ab575",
+      "id": "for-you:other:20260911T100100Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "opencontrol is available through npm for installation and management in Package Manager Manager.",
+          "category": "other",
+          "displayName": "opencontrol",
+          "homepage": null,
+          "id": "npm:opencontrol",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aopencontrol",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "conjure-lite is available through npm for installation and management in Package Manager Manager.",
+          "category": "other",
+          "displayName": "conjure-lite",
+          "homepage": null,
+          "id": "npm:conjure-lite",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aconjure-lite",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "dooboolab welcome console message.",
+          "category": "other",
+          "displayName": "dooboolab-welcome",
+          "homepage": null,
+          "id": "npm:dooboolab-welcome",
+          "installURL": "pkgmgrmgr://install?package=npm%3Adooboolab-welcome",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "bluefairy is available through npm for installation and management in Package Manager Manager.",
+          "category": "other",
+          "displayName": "bluefairy",
+          "homepage": null,
+          "id": "npm:bluefairy",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abluefairy",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Dash - Reinventing Cryptocurrency",
+          "category": "other",
+          "displayName": "Dash Core",
+          "homepage": "https://www.dash.org/",
+          "id": "brew:cask:dash-dash",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adash-dash",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-07-23T14:05:45Z",
+      "title": "For You in Other",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260723T140545Z-264ab575",
+      "id": "recently-updated:productivity:20260911T100100Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Like IntelliSense, but for shells",
+          "category": "productivity",
+          "displayName": "intelli-shell",
+          "homepage": "https://lasantosr.github.io/intelli-shell/",
+          "id": "brew:intelli-shell",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aintelli-shell",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Emacs-style editor with vi-like memory, CPU, and size requirements",
+          "category": "productivity",
+          "displayName": "jove",
+          "homepage": "https://directory.fsf.org/wiki/Jove",
+          "id": "brew:jove",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ajove",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Library to support OFX command responses",
+          "category": "productivity",
+          "displayName": "libofx",
+          "homepage": "https://github.com/libofx/libofx",
+          "id": "brew:libofx",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibofx",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Command-line note taker",
+          "category": "productivity",
+          "displayName": "jrnl",
+          "homepage": "https://jrnl.sh/en/stable/",
+          "id": "brew:jrnl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ajrnl",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Text editor development kit",
+          "category": "productivity",
+          "displayName": "zile",
+          "homepage": "https://www.gnu.org/software/zile/",
+          "id": "brew:zile",
+          "installURL": "pkgmgrmgr://install?package=brew%3Azile",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-07-23T14:05:45Z",
+      "title": "Recently Updated in Productivity",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "Layered blue translucent architectural planes on a dark background with a warm amber edge glow.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#273D88",
+          "backgroundStart": "#08142D",
+          "foreground": "#FFFFFF"
+        },
+        "license": "CC-BY-4.0",
+        "path": "feed/assets/typescript-static-checking-2026-07-20.png"
+      },
+      "batchID": "20260720T130253Z-6a16f0bf",
+      "body": "## A deliberately incremental history\n\nJavaScript's reach is part of its appeal. The same language can sit in a browser, power a build step, serve an API, and automate a small task. That reach also makes the edges of a codebase easy to blur: an object arrives from a request, a configuration file grows fields, or a library changes an API, and the first sign of trouble can be a production exception. TypeScript was created to move a useful share of those mistakes earlier, into an editor or build.\n\nMicrosoft introduced TypeScript publicly in 2012 and released version 1.0 in 2014. Its central choice was conservative: add a type system to JavaScript, then emit JavaScript. Existing code can be adopted incrementally, and the compiler is not a separate application runtime. That history explains both the project's durability and its limit. Teams can add checking around a mature codebase without translating every file, but annotations do not turn unknown runtime data into validated data.\n\nThe official Handbook describes TypeScript as a static type checker: it examines a program before it runs. That is a more useful claim than a blanket promise of safe JavaScript. A renamed property can reveal callers that still expect the old shape; a function signature makes inputs and outputs visible; editor integrations use the same program model for completion, navigation, and refactoring.\n\n## Type checking has a boundary\n\nIn normal work, `tsc` is most valuable as feedback close to a change. It fits naturally as a development dependency, with `tsconfig.json` recording decisions about module output, strictness, library targets, and file inclusion. Modern projects often let a framework or bundler transpile files while `tsc --noEmit` handles checking. Others ask the compiler to emit JavaScript directly. Either arrangement can work when one tool clearly owns each task.\n\nTypeScript's types disappear at runtime. That means a JSON payload, environment variable, database row, or third-party service response can still be malformed even when its declared type looks perfect. Validate external inputs, test observable behavior, and review dependency changes. Types are strongest at expressing contracts inside code the team controls; they are weaker at enforcing facts beyond that boundary.\n\nA useful rollout is intentionally small:\n\n- check a new or well-contained area first;\n- enable stricter compiler options deliberately;\n- add runtime validation where data enters the system; and\n- make type checking part of CI only after the errors are understood.\n\nThis approach avoids the common trap of treating a large annotation campaign as an end in itself. A loose configuration can create a false sense of safety, while turning every strict option on at once may surface years of assumptions with little guidance about priority.\n\n## A practical toolchain role\n\nActual use extends beyond one framework. Libraries publish declaration files so consumers can inspect APIs before calling them. Application teams use typed boundaries between UI components, services, and persistence. Tooling authors use the compiler and language service to understand source code. The public repository and npm distribution make the source and release trail inspectable; the Stack Overflow survey is an independent, imperfect signal that the language is familiar to many working developers. Familiarity alone is not a reason to add a dependency, but it can reduce collaboration friction.\n\nThe surrounding tools matter. esbuild can transform or bundle TypeScript-adjacent source quickly, but it does not replace a deliberate type-checking step. Vitest can exercise behavior in the same project, but passing tests do not prove that every interface change is sound. Together they illustrate a healthy division of labor: a compiler checks declared relationships, a build tool prepares code for its target, and tests observe behavior.\n\n## Adoption should stay measurable\n\nTypeScript asks teams to learn a second way of describing JavaScript. Inference removes much of the ceremony, yet generics, narrowing, declaration files, and module resolution become real design concerns. The payoff should be measured in clearer changes, earlier interface mistakes, and easier maintenance rather than in annotation counts.\n\nFor a JavaScript project that has grown beyond a few files, the adoption path is reversible and testable. Start with the official documentation, choose an explicit configuration, and decide which compiler errors should block a merge. If that produces better reviews and fewer surprises, continue. If the configuration becomes ceremony without catching meaningful defects, scale it back. The aim is not a more elaborate type system; it is a codebase whose assumptions are easier to see, test, and change.",
+      "deck": "Why TypeScript remains a useful boundary around JavaScript, and where its guarantees end.",
+      "id": "editorial:2026-07-20:typescript-static-checking-without-a-runtime-rewrite",
+      "package": {
+        "agentSummary": "TypeScript adds static analysis to JavaScript projects, helping teams surface interface mismatches before execution while retaining JavaScript output and gradual adoption paths.",
+        "assessment": {
+          "alternatives": [
+            "JavaScript with JSDoc checking or another typed language"
+          ],
+          "audiences": [
+            "JavaScript application and library teams"
+          ],
+          "caveats": [
+            "Types are erased at runtime and cannot validate untrusted data"
+          ],
+          "complements": [
+            "Runtime input validation and automated tests"
+          ],
+          "prerequisites": [
+            "A JavaScript project and an agreed compiler configuration"
+          ],
+          "useCases": [
+            "Checking application and library interfaces before runtime"
+          ]
+        },
+        "category": null,
+        "displayName": "typescript",
+        "docs": null,
+        "homepage": "https://www.typescriptlang.org/",
+        "id": "npm:typescript",
+        "installURL": "pkgmgrmgr://install?package=npm%3Atypescript",
+        "lastUpdatedAt": "2026-07-08T15:55:18Z",
+        "manager": "npm",
+        "repository": null,
+        "researchedAt": "2026-07-20T13:02:53Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "TypeScript Handbook",
+            "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          },
+          {
+            "kind": "primary",
+            "title": "TypeScript source repository",
+            "url": "https://github.com/microsoft/TypeScript"
+          }
+        ],
+        "upstreamSummary": "TypeScript is a language for application scale JavaScript development",
+        "version": "7.0.2"
+      },
+      "primaryPackageID": "npm:typescript",
+      "publishedAt": "2026-07-20T13:02:53Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "TypeScript adds static analysis to JavaScript projects, helping teams surface interface mismatches before execution while retaining JavaScript output and gradual adoption paths.",
+          "assessment": {
+            "alternatives": [
+              "JavaScript with JSDoc checking or another typed language"
+            ],
+            "audiences": [
+              "JavaScript application and library teams"
+            ],
+            "caveats": [
+              "Types are erased at runtime and cannot validate untrusted data"
+            ],
+            "complements": [
+              "Runtime input validation and automated tests"
+            ],
+            "prerequisites": [
+              "A JavaScript project and an agreed compiler configuration"
+            ],
+            "useCases": [
+              "Checking application and library interfaces before runtime"
+            ]
+          },
+          "category": null,
+          "displayName": "typescript",
+          "docs": null,
+          "homepage": "https://www.typescriptlang.org/",
+          "id": "npm:typescript",
+          "installURL": "pkgmgrmgr://install?package=npm%3Atypescript",
+          "lastUpdatedAt": "2026-07-08T15:55:18Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-20T13:02:53Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "TypeScript Handbook",
+              "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+            },
+            {
+              "kind": "primary",
+              "title": "TypeScript source repository",
+              "url": "https://github.com/microsoft/TypeScript"
+            }
+          ],
+          "upstreamSummary": "TypeScript is a language for application scale JavaScript development",
+          "version": "7.0.2"
+        },
+        {
+          "agentSummary": "esbuild bundles and transforms JavaScript and TypeScript quickly, making it a pragmatic build component when its compatibility targets and plugin boundaries suit a project.",
+          "assessment": {
+            "alternatives": [
+              "Rollup, webpack, or framework-provided build tooling"
+            ],
+            "audiences": [
+              "Web developers maintaining JavaScript or TypeScript builds"
+            ],
+            "caveats": [
+              "Review target support and plugin behavior before replacing an established build"
+            ],
+            "complements": [
+              "A framework, test runner, and deployment pipeline"
+            ],
+            "prerequisites": [
+              "A Node.js-based build workflow"
+            ],
+            "useCases": [
+              "Bundling and transforming web application assets"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "esbuild",
+          "docs": null,
+          "homepage": "https://github.com/evanw/esbuild#readme",
+          "id": "npm:esbuild",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aesbuild",
+          "lastUpdatedAt": "2026-06-11T22:47:05Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-20T13:02:53Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "esbuild documentation",
+              "url": "https://esbuild.github.io/"
+            },
+            {
+              "kind": "primary",
+              "title": "esbuild source repository",
+              "url": "https://github.com/evanw/esbuild"
+            }
+          ],
+          "upstreamSummary": "An extremely fast JavaScript and CSS bundler and minifier.",
+          "version": "0.28.1"
+        },
+        {
+          "agentSummary": "Vitest provides a Vite-powered test runner for modern JavaScript and TypeScript projects, with familiar assertions and fast feedback where its environment model fits the application.",
+          "assessment": {
+            "alternatives": [
+              "Jest, Node's built-in test runner, or Playwright"
+            ],
+            "audiences": [
+              "Teams building Vite-oriented JavaScript and TypeScript applications"
+            ],
+            "caveats": [
+              "Confirm environment emulation and mocking behavior against production requirements"
+            ],
+            "complements": [
+              "Type checking, browser testing, and continuous integration"
+            ],
+            "prerequisites": [
+              "A compatible Node.js project and test configuration"
+            ],
+            "useCases": [
+              "Running unit and integration tests with development feedback"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "vitest",
+          "docs": null,
+          "homepage": "https://vitest.dev",
+          "id": "npm:vitest",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avitest",
+          "lastUpdatedAt": "2026-07-06T06:44:42Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-20T13:02:53Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Vitest guide",
+              "url": "https://vitest.dev/guide/"
+            },
+            {
+              "kind": "primary",
+              "title": "Vitest source repository",
+              "url": "https://github.com/vitest-dev/vitest"
+            }
+          ],
+          "upstreamSummary": "Next generation testing framework powered by Vite",
+          "version": "4.1.10"
+        }
+      ],
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "TypeScript Handbook",
+          "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+        },
+        {
+          "kind": "primary",
+          "title": "TypeScript source repository",
+          "url": "https://github.com/microsoft/TypeScript"
+        },
+        {
+          "kind": "primary",
+          "title": "TypeScript package on npm",
+          "url": "https://www.npmjs.com/package/typescript"
+        },
+        {
+          "kind": "independent",
+          "title": "2025 Stack Overflow Developer Survey: Technology",
+          "url": "https://survey.stackoverflow.co/2025/technology/"
+        }
+      ],
+      "title": "TypeScript: Static Checking Without a Runtime Rewrite",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260720T130253Z-661909b5",
+      "id": "for-you:developer-tools:20260911T100100Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "The semantic version parser used by npm.",
+          "category": "developer-tools",
+          "displayName": "semver",
+          "homepage": "https://github.com/npm/node-semver#readme",
+          "id": "npm:semver",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asemver",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "RFC9562 UUIDs",
+          "category": "developer-tools",
+          "displayName": "uuid",
+          "homepage": "https://github.com/uuidjs/uuid#readme",
+          "id": "npm:uuid",
+          "installURL": "pkgmgrmgr://install?package=npm%3Auuid",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "An extremely fast JavaScript and CSS bundler and minifier.",
+          "category": "developer-tools",
+          "displayName": "esbuild",
+          "homepage": "https://github.com/evanw/esbuild#readme",
+          "id": "npm:esbuild",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aesbuild",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "resolve like require.resolve() on behalf of files asynchronously and synchronously",
+          "category": "developer-tools",
+          "displayName": "resolve",
+          "homepage": "https://github.com/browserify/resolve#readme",
+          "id": "npm:resolve",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aresolve",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Native-ESM powered web dev build tool",
+          "category": "developer-tools",
+          "displayName": "vite",
+          "homepage": "https://vite.dev",
+          "id": "npm:vite",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avite",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-07-20T13:02:53Z",
+      "title": "For You in Developer Tools",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "Three glass browser stages render matching geometric scenes above a luminous automation rail and diagnostic timeline.",
+        "attribution": "Generated with OpenAI image generation",
+        "boxColors": {
+          "backgroundEnd": "#30144E",
+          "backgroundStart": "#090822",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/playwright-browsers-under-test.png"
+      },
+      "batchID": "20260716T225252Z-3e0a01bd",
+      "body": "## Waiting Is Part of the Model\n\nA browser test often fails in the gap between what the page has drawn and what a person can use. A button exists in the DOM but still moves under an animation. A request has finished, though a client-side state update has not. A selector matches a hidden copy of the control. Test code can paper over each race with a delay, and the suite grows slower while remaining unreliable. Playwright treats these timing problems as part of browser control.\n\nMicrosoft released Playwright 1.0 in 2020 after engineers who had worked on browser automation began building a new cross-browser API. The project shared some ancestry and design experience with Puppeteer, then expanded the target from Chromium to Chromium, Firefox, and WebKit. That choice shaped its architecture. Playwright ships browser builds matched to each release and speaks to those browsers through project-maintained protocol layers. The package owns more of the stack than a generic WebDriver client, which gives it consistent features and creates a tight relationship between library and browser versions.\n\n## Actionable Locators\n\nAuto-waiting provides the first visible benefit. Before a click, Playwright checks that a locator resolves to one element and that the element is visible, stable, enabled, and able to receive events. Assertions can retry until their conditions hold. A test expresses the state it expects instead of estimating how many milliseconds the interface needs. Timeouts remain, because a broken page must stop somewhere, but they become failure boundaries rather than routine synchronization. Teams still need to wait on meaningful product state. A spinner disappearing may say less than an order reaching the expected status.\n\nLocators reinforce that approach. Playwright encourages roles, labels, text, test identifiers, and relationships that resemble the way a user or accessibility tree finds a control. A long CSS chain tied to layout can break after harmless markup work. A role and accessible name can survive the same refactor while checking something the product should preserve. Test identifiers remain useful for controls with unstable content or no natural semantic handle. The tool cannot choose a durable contract for the team; it gives the team better contracts to choose from.\n\n## Isolation and Evidence\n\nEach test can run in a fresh browser context, an isolated profile that costs less than starting another browser process. Contexts separate cookies, local storage, and session state. A suite can create two contexts to test collaboration or permissions without two machines. Saved authentication state can speed setup, though teams must protect those files because they may contain credentials. Isolation also stops one failed test from poisoning the next with leftover state, provided the application resets its server-side data with equal care.\n\nPlaywright's trace viewer changes the debugging loop. A retained trace can include actions, DOM snapshots, network events, console messages, and screenshots around a failure. CI no longer has to report a bare timeout from a machine nobody can inspect. A developer can walk the action timeline and compare the page before and after the failed step. Video and screenshots remain available, but a structured trace often identifies whether the selector, application, data, or network caused the failure. Traces contain application data, so storage and retention policies should treat them as diagnostic records rather than harmless build output.\n\n## Where Teams Use It\n\nTeams use Playwright for end-to-end tests, component tests, visual comparisons, scraping, and browser-based developer tools. Language bindings cover JavaScript and TypeScript, Python, Java, and .NET, while `playwright-core` serves authors who need browser control without Playwright's test runner. State of JavaScript's 2024 testing results recorded Playwright among the leading tools used at work, with 3,674 respondents selecting it in that survey section. Survey participation skews toward engaged JavaScript developers, but the result supports what the project's release pace and integration ecosystem show: this is production infrastructure, not a laboratory demo.\n\nCross-browser coverage carries a bill. The browser downloads are large, CI images need system dependencies, and parallel workers consume memory. A release may update all three browser revisions, so teams should upgrade the library and its binaries together. WebKit on Linux provides useful engine coverage without reproducing every macOS or iOS behavior. Mobile emulation changes viewport, input, and user agent; it does not replace testing on a real device when hardware, operating-system integration, or the platform browser matters.\n\n## Keep the Browser Layer Narrow\n\nA healthy suite keeps the browser layer narrow. Test the journeys whose failure would hurt a user or the business, then cover smaller logic with faster tests. Give each browser test controlled data, semantic locators, and a clear assertion. Collect traces on the first retry instead of on every passing run. Measure whether multiple browsers catch distinct defects before tripling the full matrix.\n\nPlaywright reduces several causes of test flakiness through actionability checks, isolated contexts, and useful evidence after failure. It cannot stabilize an environment with shared mutable data or turn an ambiguous workflow into a trustworthy assertion. Teams get the best result when they use its browser knowledge and keep responsibility for test design, data, and scope.",
+      "deck": "One automation model for Chromium, Firefox, and WebKit, with waiting, isolation, and traces built around modern web applications.",
+      "id": "editorial:2026-07-16:playwright-browsers-under-test",
+      "package": {
+        "agentSummary": "Playwright Core provides cross-browser automation without the bundled test runner, fitting crawlers, agents, visual checks, and fully custom testing harnesses.",
+        "assessment": {
+          "alternatives": [
+            "Puppeteer for Chromium-centered automation",
+            "WebDriver clients for remote browser grids and standards-based control"
+          ],
+          "audiences": [
+            "Authors of browser automation tools and custom test infrastructure"
+          ],
+          "caveats": [
+            "Browser downloads consume storage and CI time",
+            "Selectors and workflows still change when the product changes"
+          ],
+          "complements": [
+            "Playwright Test, CI traces, accessibility checks, and stable test data"
+          ],
+          "prerequisites": [
+            "A supported Node.js release and Playwright-managed browser binaries"
+          ],
+          "useCases": [
+            "Controlling Chromium, Firefox, and WebKit through one API",
+            "Building crawlers, browser agents, or visual inspection systems"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "playwright-core",
+        "docs": null,
+        "homepage": "https://playwright.dev",
+        "id": "npm:playwright-core",
+        "installURL": "pkgmgrmgr://install?package=npm%3Aplaywright-core",
+        "lastUpdatedAt": "2026-06-23T19:49:07Z",
+        "manager": "npm",
+        "repository": null,
+        "researchedAt": "2026-07-16T22:52:52Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Playwright documentation",
+            "url": "https://playwright.dev/docs/intro"
+          },
+          {
+            "kind": "primary",
+            "title": "Microsoft Playwright source repository",
+            "url": "https://github.com/microsoft/playwright"
+          }
+        ],
+        "upstreamSummary": "A high-level API to automate web browsers",
+        "version": "1.61.1"
+      },
+      "primaryPackageID": "npm:playwright-core",
+      "publishedAt": "2026-07-16T22:52:52Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Playwright Core provides cross-browser automation without the bundled test runner, fitting crawlers, agents, visual checks, and fully custom testing harnesses.",
+          "assessment": {
+            "alternatives": [
+              "Puppeteer for Chromium-centered automation",
+              "WebDriver clients for remote browser grids and standards-based control"
+            ],
+            "audiences": [
+              "Authors of browser automation tools and custom test infrastructure"
+            ],
+            "caveats": [
+              "Browser downloads consume storage and CI time",
+              "Selectors and workflows still change when the product changes"
+            ],
+            "complements": [
+              "Playwright Test, CI traces, accessibility checks, and stable test data"
+            ],
+            "prerequisites": [
+              "A supported Node.js release and Playwright-managed browser binaries"
+            ],
+            "useCases": [
+              "Controlling Chromium, Firefox, and WebKit through one API",
+              "Building crawlers, browser agents, or visual inspection systems"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "playwright-core",
+          "docs": null,
+          "homepage": "https://playwright.dev",
+          "id": "npm:playwright-core",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aplaywright-core",
+          "lastUpdatedAt": "2026-06-23T19:49:07Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-16T22:52:52Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Playwright documentation",
+              "url": "https://playwright.dev/docs/intro"
+            },
+            {
+              "kind": "primary",
+              "title": "Microsoft Playwright source repository",
+              "url": "https://github.com/microsoft/playwright"
+            }
+          ],
+          "upstreamSummary": "A high-level API to automate web browsers",
+          "version": "1.61.1"
+        },
+        {
+          "agentSummary": "Playwright automates Chromium, Firefox, and WebKit through one API, supporting reliable end-to-end testing across browsers, devices, platforms, and isolated contexts.",
+          "assessment": {
+            "alternatives": [
+              "Built-in platform tools or another package in the same category"
+            ],
+            "audiences": [
+              "Developers and teams whose workflow matches the documented scope"
+            ],
+            "caveats": [
+              "Confirm compatibility, update policy, and operational impact before production use"
+            ],
+            "complements": [
+              "Version control, CI, and project-specific documentation"
+            ],
+            "prerequisites": [
+              "A compatible runtime, operating system, or project configuration"
+            ],
+            "useCases": [
+              "Automating the task described by the upstream project"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "playwright",
+          "docs": null,
+          "homepage": "https://playwright.dev",
+          "id": "npm:playwright",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aplaywright",
+          "lastUpdatedAt": "2026-06-23T19:49:00Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-16T17:09:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "playwright documentation",
+              "url": "https://playwright.dev"
+            },
+            {
+              "kind": "primary",
+              "title": "playwright project and release information",
+              "url": "https://www.npmjs.com/package/playwright"
+            }
+          ],
+          "upstreamSummary": "A high-level API to automate web browsers",
+          "version": "1.61.1"
+        },
+        {
+          "agentSummary": "Vitest is a Vite-native testing framework with fast watch mode, TypeScript support, familiar assertions, mocking, coverage, and flexible workspace-aware configuration.",
+          "assessment": {
+            "alternatives": [
+              "Built-in platform tools or another package in the same category"
+            ],
+            "audiences": [
+              "Developers and teams whose workflow matches the documented scope"
+            ],
+            "caveats": [
+              "Confirm compatibility, update policy, and operational impact before production use"
+            ],
+            "complements": [
+              "Version control, CI, and project-specific documentation"
+            ],
+            "prerequisites": [
+              "A compatible runtime, operating system, or project configuration"
+            ],
+            "useCases": [
+              "Automating the task described by the upstream project"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "vitest",
+          "docs": null,
+          "homepage": "https://vitest.dev",
+          "id": "npm:vitest",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avitest",
+          "lastUpdatedAt": "2026-07-06T06:44:42Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-16T17:09:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "vitest documentation",
+              "url": "https://vitest.dev"
+            },
+            {
+              "kind": "primary",
+              "title": "vitest project and release information",
+              "url": "https://www.npmjs.com/package/vitest"
+            }
+          ],
+          "upstreamSummary": "Next generation testing framework powered by Vite",
+          "version": "4.1.10"
+        }
+      ],
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Playwright documentation",
+          "url": "https://playwright.dev/docs/intro"
+        },
+        {
+          "kind": "primary",
+          "title": "Playwright source and release history",
+          "url": "https://github.com/microsoft/playwright"
+        },
+        {
+          "kind": "primary",
+          "title": "Playwright auto-waiting documentation",
+          "url": "https://playwright.dev/docs/actionability"
+        },
+        {
+          "kind": "independent",
+          "title": "State of JavaScript 2024 testing results",
+          "url": "https://2024.stateofjs.com/en-US/libraries/testing/"
+        }
+      ],
+      "title": "Playwright Puts Browsers Under Test",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260716T225252Z-72f77757",
+      "id": "recently-updated:system:20260911T100100Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Utility for IPMI control with kernel driver or LAN interface",
+          "category": "system",
+          "displayName": "ipmitool",
+          "homepage": "https://codeberg.org/IPMITool/ipmitool",
+          "id": "brew:ipmitool",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aipmitool",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Round Robin Database",
+          "category": "system",
+          "displayName": "rrdtool",
+          "homepage": "https://oss.oetiker.ch/rrdtool/",
+          "id": "brew:rrdtool",
+          "installURL": "pkgmgrmgr://install?package=brew%3Arrdtool",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Tools for managing the libosinfo database files",
+          "category": "system",
+          "displayName": "osinfo-db-tools",
+          "homepage": "https://libosinfo.org/",
+          "id": "brew:osinfo-db-tools",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aosinfo-db-tools",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "List system USB buses and devices",
+          "category": "system",
+          "displayName": "cyme",
+          "homepage": "https://github.com/tuna-f1sh/cyme",
+          "id": "brew:cyme",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acyme",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Tools and libraries to work with AppStream metadata",
+          "category": "system",
+          "displayName": "appstream",
+          "homepage": "https://www.freedesktop.org/wiki/Distributions/AppStream/",
+          "id": "brew:appstream",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aappstream",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-07-16T22:52:52Z",
+      "title": "Recently Updated in System",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "A luminous runtime core sits inside a transparent sphere, with gated beams connecting files, a network, and an isolated environment.",
+        "attribution": "Generated with OpenAI image generation",
+        "boxColors": {
+          "backgroundEnd": "#123B33",
+          "backgroundStart": "#071413",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/deno-permissioned-runtime.png"
+      },
+      "batchID": "20260716T225102Z-c61179bc",
+      "body": "## Authority on the Command Line\n\nA small automation script can read every file your account can reach, open a network connection, inspect environment variables, and launch another process. Node.js grants those abilities because operating-system access made server-side JavaScript useful. Deno asks the caller to name them. A script that needs the network runs with network permission; one that reads a configuration directory receives access to that path. The command line records part of the program's security boundary.\n\nRyan Dahl presented the first public version of Deno in 2018, nine years after creating Node.js. The team released Deno 1.0 in May 2020. Its early design reacted to several costs that had accumulated around Node: a centralized package installation convention, legacy callback APIs, a split between JavaScript tools, and unrestricted access to the host machine. Deno used Rust, V8, and Tokio underneath, adopted promises throughout its APIs, and treated browser standards such as `fetch`, `Request`, `Response`, and web streams as the common surface. TypeScript support arrived as part of the runtime rather than a separate project setup.\n\n## Permissions and Their Limits\n\nPermissions gave the project its sharpest identity. Deno denies file, network, environment, subprocess, foreign-function, and system access unless a command grants it. Flags can cover a whole capability or narrow it to hosts, paths, or variables. That model helps most when an operator knows what the program should touch. A web service might receive access to one listening address and a short list of environment variables. A formatter may need read and write access to the current repository without network access. The permission line makes unexpected expansion visible in a code review or deployment manifest.\n\nThe boundary has limits. Permission to run a subprocess can hand control to a program with broader operating-system access. Reading a sensitive file lets application code transmit its contents through any allowed network destination. A broad `--allow-all` restores the conventional runtime posture. Deno's controls reduce ambient authority; they do not inspect intent, sanitize untrusted input, or replace operating-system isolation. Containers, service accounts, filesystem permissions, and network policy still carry the production security load.\n\n## One Executable, Familiar Packages\n\nDeno also ships a formatter, linter, test runner, documentation generator, language server, compiler, task runner, and dependency commands. One executable can take a TypeScript file from edit to test without a local transpiler configuration. Teams gain consistent defaults and fewer versioned tools. They also accept the runtime's choices. A repository with specialized lint rules, a mature Jest setup, or a bundler tuned around a framework may gain little from replacing working parts. Integrated tooling has the most value in new scripts, services, and libraries where the team can keep the setup small.\n\nCompatibility changed the project more than its original clean-slate pitch suggested. JavaScript developers rely on npm's registry and Node's APIs, and asking every library to publish a Deno-specific build constrained adoption. Deno added npm package support, `package.json` workflows, Node built-ins, and familiar `node_modules` options. Deno 2 made that compatibility central while retaining permissions, web APIs, TypeScript, and the built-in tools. Current releases can run a much larger share of existing projects, though compatibility claims deserve a test against each application's native modules, install scripts, module resolution, and framework adapters.\n\n## Where Deno Fits\n\nDevelopers use Deno for command-line tools, build scripts, HTTP services, edge functions, and distributable single executables. The project repository shows an active release stream, and developer surveys continue to include Deno among the runtimes and web technologies respondents report using or wanting to use. Deno Deploy and the JSR registry extend the same ecosystem into hosting and package publication. Those signals establish real use without putting Deno near Node's installed base. Operational familiarity, third-party support, and hiring remain easier in the older ecosystem.\n\nA fair evaluation starts with a bounded program. Pick a script that touches the filesystem and one API, express the exact permissions it needs, and put its test and format commands under Deno's task runner. Then try a representative npm dependency and the deployment environment. Record every compatibility shim and every permission that must widen. The experiment shows whether Deno's defaults remove maintenance or move it into unfamiliar places.\n\n## Run a Bounded Trial\n\nDeno offers the clearest payoff when a team values explicit authority and a compact toolchain more than perfect continuity with Node conventions. Existing applications can migrate in pieces because npm compatibility now covers common paths. New programs can begin with narrow permissions and web APIs. The runtime deserves selection for those concrete properties, after the dependencies and deployment path survive a real trial.",
+      "deck": "JavaScript with explicit access to files, networks, and processes, plus a toolchain that arrives in one executable.",
+      "id": "editorial:2026-07-16:deno-permissioned-runtime",
+      "package": {
+        "agentSummary": "Deno combines JavaScript and TypeScript execution with formatting, linting, testing, package management, and explicit permissions in one cohesive web-platform-oriented runtime.",
+        "assessment": {
+          "alternatives": [
+            "Node.js for the broadest existing ecosystem",
+            "Bun for a different integrated runtime and package toolchain"
+          ],
+          "audiences": [
+            "JavaScript and TypeScript developers evaluating an integrated runtime"
+          ],
+          "caveats": [
+            "Permission flags become part of deployment and support",
+            "Node-focused dependencies can still expose compatibility gaps"
+          ],
+          "complements": [
+            "JSR packages, Deno Deploy, web-standard APIs, and project task definitions"
+          ],
+          "prerequisites": [
+            "A review of npm and Node compatibility for the project's dependencies"
+          ],
+          "useCases": [
+            "Writing permission-scoped automation",
+            "Building web services with built-in TypeScript tooling"
+          ]
+        },
+        "category": "language-runtime",
+        "displayName": "deno",
+        "docs": "https://docs.deno.com/",
+        "homepage": "https://deno.com/",
+        "id": "brew:deno",
+        "installURL": "pkgmgrmgr://install?package=brew%3Adeno",
+        "lastUpdatedAt": "2026-07-15T20:55:35Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/denoland/deno",
+        "researchedAt": "2026-07-16T22:51:02Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Deno runtime documentation",
+            "url": "https://docs.deno.com/runtime/"
+          },
+          {
+            "kind": "primary",
+            "title": "Deno source repository",
+            "url": "https://github.com/denoland/deno"
+          }
+        ],
+        "upstreamSummary": "Secure runtime for JavaScript and TypeScript",
+        "version": null
+      },
+      "primaryPackageID": "brew:deno",
+      "publishedAt": "2026-07-16T22:51:02Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Deno combines JavaScript and TypeScript execution with formatting, linting, testing, package management, and explicit permissions in one cohesive web-platform-oriented runtime.",
+          "assessment": {
+            "alternatives": [
+              "Node.js for the broadest existing ecosystem",
+              "Bun for a different integrated runtime and package toolchain"
+            ],
+            "audiences": [
+              "JavaScript and TypeScript developers evaluating an integrated runtime"
+            ],
+            "caveats": [
+              "Permission flags become part of deployment and support",
+              "Node-focused dependencies can still expose compatibility gaps"
+            ],
+            "complements": [
+              "JSR packages, Deno Deploy, web-standard APIs, and project task definitions"
+            ],
+            "prerequisites": [
+              "A review of npm and Node compatibility for the project's dependencies"
+            ],
+            "useCases": [
+              "Writing permission-scoped automation",
+              "Building web services with built-in TypeScript tooling"
+            ]
+          },
+          "category": "language-runtime",
+          "displayName": "deno",
+          "docs": "https://docs.deno.com/",
+          "homepage": "https://deno.com/",
+          "id": "brew:deno",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adeno",
+          "lastUpdatedAt": "2026-07-15T20:55:35Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/denoland/deno",
+          "researchedAt": "2026-07-16T22:51:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Deno runtime documentation",
+              "url": "https://docs.deno.com/runtime/"
+            },
+            {
+              "kind": "primary",
+              "title": "Deno source repository",
+              "url": "https://github.com/denoland/deno"
+            }
+          ],
+          "upstreamSummary": "Secure runtime for JavaScript and TypeScript",
+          "version": null
+        },
+        {
+          "agentSummary": "TypeScript adds static types and tooling to JavaScript, catching mistakes during development while compiling to portable code for browsers and runtimes.",
+          "assessment": {
+            "alternatives": [
+              "Built-in platform tools or another package in the same category"
+            ],
+            "audiences": [
+              "Developers and teams whose workflow matches the documented scope"
+            ],
+            "caveats": [
+              "Confirm compatibility, update policy, and operational impact before production use"
+            ],
+            "complements": [
+              "Version control, CI, and project-specific documentation"
+            ],
+            "prerequisites": [
+              "A compatible runtime, operating system, or project configuration"
+            ],
+            "useCases": [
+              "Automating the task described by the upstream project"
+            ]
+          },
+          "category": null,
+          "displayName": "typescript",
+          "docs": null,
+          "homepage": "https://www.typescriptlang.org/",
+          "id": "npm:typescript",
+          "installURL": "pkgmgrmgr://install?package=npm%3Atypescript",
+          "lastUpdatedAt": "2026-07-08T15:55:18Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-16T17:09:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "typescript documentation",
+              "url": "https://www.typescriptlang.org/"
+            },
+            {
+              "kind": "primary",
+              "title": "typescript project and release information",
+              "url": "https://www.npmjs.com/package/typescript"
+            }
+          ],
+          "upstreamSummary": "TypeScript is a language for application scale JavaScript development",
+          "version": "7.0.2"
+        },
+        {
+          "agentSummary": "tsx runs TypeScript and ECMAScript modules directly through esbuild, providing a quick development runtime for scripts, tools, and Node applications.",
+          "assessment": {
+            "alternatives": [
+              "Built-in platform tools or another package in the same category"
+            ],
+            "audiences": [
+              "Developers and teams whose workflow matches the documented scope"
+            ],
+            "caveats": [
+              "Confirm compatibility, update policy, and operational impact before production use"
+            ],
+            "complements": [
+              "Version control, CI, and project-specific documentation"
+            ],
+            "prerequisites": [
+              "A compatible runtime, operating system, or project configuration"
+            ],
+            "useCases": [
+              "Automating the task described by the upstream project"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "tsx",
+          "docs": null,
+          "homepage": "https://tsx.hirok.io",
+          "id": "npm:tsx",
+          "installURL": "pkgmgrmgr://install?package=npm%3Atsx",
+          "lastUpdatedAt": "2026-07-03T14:25:06Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-16T17:09:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "tsx documentation",
+              "url": "https://tsx.hirok.io"
+            },
+            {
+              "kind": "primary",
+              "title": "tsx project and release information",
+              "url": "https://www.npmjs.com/package/tsx"
+            }
+          ],
+          "upstreamSummary": "TypeScript Execute (tsx): Node.js enhanced with esbuild to run TypeScript & ESM files",
+          "version": "4.23.0"
+        }
+      ],
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Deno 1.0 announcement",
+          "url": "https://deno.com/blog/v1"
+        },
+        {
+          "kind": "primary",
+          "title": "Deno runtime documentation",
+          "url": "https://docs.deno.com/runtime/"
+        },
+        {
+          "kind": "primary",
+          "title": "Deno source and release history",
+          "url": "https://github.com/denoland/deno"
+        },
+        {
+          "kind": "independent",
+          "title": "Stack Overflow Developer Survey 2025 technology results",
+          "url": "https://survey.stackoverflow.co/2025/technology/"
+        }
+      ],
+      "title": "Deno and the Permissioned Runtime",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260716T225102Z-e7dac710",
+      "id": "for-you:language-runtime:20260911T100100Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Runtime typescript and ESM support for Node.js",
+          "category": "language-runtime",
+          "displayName": "jiti",
+          "homepage": "https://github.com/unjs/jiti#readme",
+          "id": "npm:jiti",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajiti",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Vite as Node.js runtime",
+          "category": "language-runtime",
+          "displayName": "vite-node",
+          "homepage": "https://github.com/antfu-collective/vite-node#readme",
+          "id": "npm:vite-node",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avite-node",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "👷 workerd, Cloudflare's JavaScript/Wasm Runtime",
+          "category": "language-runtime",
+          "displayName": "workerd",
+          "homepage": "https://github.com/cloudflare/workerd#readme",
+          "id": "npm:workerd",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aworkerd",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Run any Edge Function from CLI or Node.js module.",
+          "category": "language-runtime",
+          "displayName": "edge-runtime",
+          "homepage": "https://edge-runtime.vercel.app/packages/runtime",
+          "id": "npm:edge-runtime",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aedge-runtime",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "node",
+          "category": "language-runtime",
+          "displayName": "node",
+          "homepage": "https://github.com/aredridel/node-bin-gen#readme",
+          "id": "npm:node",
+          "installURL": "pkgmgrmgr://install?package=npm%3Anode",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-07-16T22:51:02Z",
+      "title": "For You in Language Runtime",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "Translucent package blocks flow into a luminous shared vault and branch into several project folders on a dark indigo field.",
+        "attribution": "Generated with OpenAI image generation",
+        "boxColors": {
+          "backgroundEnd": "#06244D",
+          "backgroundStart": "#11183E",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/pnpm-one-store-many-projects.png"
+      },
+      "batchID": "20260716T224902Z-d416c6f1",
+      "body": "## The Duplicate Dependency Problem\n\nJavaScript projects collect dependencies fast. A modest application can pull thousands of files into `node_modules`, and a laptop with ten related repositories may store the same versions ten times. pnpm approaches that waste as a storage problem. It keeps package contents in a shared, content-addressed store, then links the files each project needs into place. The result looks familiar to Node.js tooling while using far less physical space across projects.\n\nThe project dates to 2016 and grew alongside two pressures in JavaScript development: dependency trees became larger, and monorepos moved from unusual infrastructure to an ordinary way of keeping applications, libraries, and configuration together. npm and Yarn have changed a great deal during the same period, so pnpm cannot claim every speed or storage win in every environment. Its lasting contribution is a clear model: identical package content belongs in one store, and a project should access only the dependencies it declares.\n\n## A Stricter Dependency Graph\n\nThat second property catches teams by surprise. Traditional flat `node_modules` layouts can make transitive dependencies appear importable from application code. The package exists on disk because another dependency requested it, even though your own `package.json` says nothing about it. Code built on that accident can break when the dependency tree changes. pnpm's linked layout makes those undeclared imports harder to get away with. A migration may expose failures on day one, but each failure identifies a missing contract that was already present in the codebase.\n\nThe shared store does not mean projects share mutable package files. pnpm addresses package content by integrity and links it into a virtual store before constructing the dependency view a project expects. Different projects can pin different versions. A changed file gets new content rather than rewriting the old object under another project's feet. Developers still get a `node_modules` directory, lifecycle scripts, registry configuration, and a lockfile. The machinery underneath is different, while the working surface stays close to the npm ecosystem.\n\n## Workspaces and CI\n\nWorkspaces make the design more compelling. A repository can declare several packages in `pnpm-workspace.yaml`, run commands across them, and use the `workspace:` protocol when one local package depends on another. The lockfile records the resolved graph for repeatable installs. Teams often pair this with a task runner, but pnpm's filtering and recursive commands cover many release, test, and build routines on their own. The official project site lists Next.js, Vue, Vite, Nuxt, Prisma, and other open-source projects among its users. State of JavaScript's 2024 monorepo results also place pnpm at the front of that survey's respondents. Those examples do not predict performance in your repository, but they show that the layout works beyond small demonstrations.\n\nCI needs deliberate setup. Caching the pnpm store can save downloads, though restoring a huge cache may cost more than fetching the missing packages. A committed lockfile and `--frozen-lockfile` give the build a stable input. Corepack or an explicit setup action can pin the package-manager version so local machines and CI interpret that lockfile with the same release. Container builds need another decision: copy only the manifests first for layer reuse, then install and build, or use pnpm's deployment commands to produce a pruned application tree.\n\n## Plan the Migration\n\nMigration starts with the lockfile and the dependency graph, not the install command. Remove the previous manager's artifacts, generate `pnpm-lock.yaml`, run the complete test suite, and inspect failures for undeclared dependencies or tools that resolve modules through undocumented paths. Native modules and postinstall scripts deserve attention. Deployment platforms may need a package-manager declaration in `package.json`, and contributor documentation should name the expected version. Keep the change separate from dependency upgrades so reviewers can distinguish layout problems from new package behavior.\n\npnpm will not rescue a disorganized workspace. Catalogs, overrides, peer-dependency settings, and filters can become another configuration language if a team adopts them without a concrete need. The symlinked layout can confuse software that assumes every file has a conventional physical path. Security controls around dependency age and script execution help only when teams understand their settings and review exceptions. npm remains a sensible default for many repositories because it ships with Node and asks less of new contributors. Yarn and Bun offer their own workspace, performance, and runtime choices.\n\n## Measure the Result\n\nThe useful test is small: convert one representative repository, measure clean and warm installs, compare disk use, run CI, and ask maintainers whether the stricter graph exposed real defects or created busywork. pnpm earns its place when the shared store reduces waste and the workspace model clarifies ownership. If those gains do not appear, switching package managers adds churn without improving the software.",
+      "deck": "A package manager built around shared files, stricter dependency boundaries, and the practical demands of JavaScript monorepos.",
+      "id": "editorial:2026-07-16:pnpm-one-store-many-projects",
+      "package": {
+        "agentSummary": "pnpm installs JavaScript dependencies through a shared content-addressed store, saving disk space while enforcing stricter, more predictable dependency boundaries across projects.",
+        "assessment": {
+          "alternatives": [
+            "npm for the Node.js default",
+            "Yarn or Bun for different workspace and runtime tradeoffs"
+          ],
+          "audiences": [
+            "JavaScript and TypeScript teams managing several projects or a monorepo"
+          ],
+          "caveats": [
+            "Some tools still assume a flat dependency tree",
+            "Changing package managers creates a large lockfile and CI review"
+          ],
+          "complements": [
+            "Corepack, committed lockfiles, CI dependency caches, and workspace-aware build tools"
+          ],
+          "prerequisites": [
+            "A supported JavaScript runtime and a project whose tooling accepts pnpm's node_modules layout"
+          ],
+          "useCases": [
+            "Reducing repeated dependency storage",
+            "Running workspace commands across related packages"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "pnpm",
+        "docs": "https://pnpm.io/",
+        "homepage": "https://pnpm.io/",
+        "id": "brew:pnpm",
+        "installURL": "pkgmgrmgr://install?package=brew%3Apnpm",
+        "lastUpdatedAt": "2026-07-16T04:48:52Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/pnpm/pnpm",
+        "researchedAt": "2026-07-16T22:49:02Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "pnpm documentation",
+            "url": "https://pnpm.io/"
+          },
+          {
+            "kind": "primary",
+            "title": "pnpm source repository",
+            "url": "https://github.com/pnpm/pnpm"
+          }
+        ],
+        "upstreamSummary": "Fast, disk space efficient package manager",
+        "version": null
+      },
+      "primaryPackageID": "brew:pnpm",
+      "publishedAt": "2026-07-16T22:49:02Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "pnpm installs JavaScript dependencies through a shared content-addressed store, saving disk space while enforcing stricter, more predictable dependency boundaries across projects.",
+          "assessment": {
+            "alternatives": [
+              "npm for the Node.js default",
+              "Yarn or Bun for different workspace and runtime tradeoffs"
+            ],
+            "audiences": [
+              "JavaScript and TypeScript teams managing several projects or a monorepo"
+            ],
+            "caveats": [
+              "Some tools still assume a flat dependency tree",
+              "Changing package managers creates a large lockfile and CI review"
+            ],
+            "complements": [
+              "Corepack, committed lockfiles, CI dependency caches, and workspace-aware build tools"
+            ],
+            "prerequisites": [
+              "A supported JavaScript runtime and a project whose tooling accepts pnpm's node_modules layout"
+            ],
+            "useCases": [
+              "Reducing repeated dependency storage",
+              "Running workspace commands across related packages"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "pnpm",
+          "docs": "https://pnpm.io/",
+          "homepage": "https://pnpm.io/",
+          "id": "brew:pnpm",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apnpm",
+          "lastUpdatedAt": "2026-07-16T04:48:52Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/pnpm/pnpm",
+          "researchedAt": "2026-07-16T22:49:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "pnpm documentation",
+              "url": "https://pnpm.io/"
+            },
+            {
+              "kind": "primary",
+              "title": "pnpm source repository",
+              "url": "https://github.com/pnpm/pnpm"
+            }
+          ],
+          "upstreamSummary": "Fast, disk space efficient package manager",
+          "version": null
+        },
+        {
+          "agentSummary": "Vite provides a fast development server and optimized production builds for modern web projects, with native modules and a broad plugin ecosystem.",
+          "assessment": {
+            "alternatives": [
+              "Built-in platform tools or another package in the same category"
+            ],
+            "audiences": [
+              "Developers and teams whose workflow matches the documented scope"
+            ],
+            "caveats": [
+              "Confirm compatibility, update policy, and operational impact before production use"
+            ],
+            "complements": [
+              "Version control, CI, and project-specific documentation"
+            ],
+            "prerequisites": [
+              "A compatible runtime, operating system, or project configuration"
+            ],
+            "useCases": [
+              "Automating the task described by the upstream project"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "vite",
+          "docs": null,
+          "homepage": "https://vite.dev",
+          "id": "npm:vite",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avite",
+          "lastUpdatedAt": "2026-07-09T04:44:45Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-16T17:09:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "vite documentation",
+              "url": "https://vite.dev"
+            },
+            {
+              "kind": "primary",
+              "title": "vite project and release information",
+              "url": "https://www.npmjs.com/package/vite"
+            }
+          ],
+          "upstreamSummary": "Native-ESM powered web dev build tool",
+          "version": "8.1.4"
+        },
+        {
+          "agentSummary": "Vitest is a Vite-native testing framework with fast watch mode, TypeScript support, familiar assertions, mocking, coverage, and flexible workspace-aware configuration.",
+          "assessment": {
+            "alternatives": [
+              "Built-in platform tools or another package in the same category"
+            ],
+            "audiences": [
+              "Developers and teams whose workflow matches the documented scope"
+            ],
+            "caveats": [
+              "Confirm compatibility, update policy, and operational impact before production use"
+            ],
+            "complements": [
+              "Version control, CI, and project-specific documentation"
+            ],
+            "prerequisites": [
+              "A compatible runtime, operating system, or project configuration"
+            ],
+            "useCases": [
+              "Automating the task described by the upstream project"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "vitest",
+          "docs": null,
+          "homepage": "https://vitest.dev",
+          "id": "npm:vitest",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avitest",
+          "lastUpdatedAt": "2026-07-06T06:44:42Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-16T17:09:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "vitest documentation",
+              "url": "https://vitest.dev"
+            },
+            {
+              "kind": "primary",
+              "title": "vitest project and release information",
+              "url": "https://www.npmjs.com/package/vitest"
+            }
+          ],
+          "upstreamSummary": "Next generation testing framework powered by Vite",
+          "version": "4.1.10"
+        },
+        {
+          "agentSummary": "TypeScript adds static types and tooling to JavaScript, catching mistakes during development while compiling to portable code for browsers and runtimes.",
+          "assessment": {
+            "alternatives": [
+              "Built-in platform tools or another package in the same category"
+            ],
+            "audiences": [
+              "Developers and teams whose workflow matches the documented scope"
+            ],
+            "caveats": [
+              "Confirm compatibility, update policy, and operational impact before production use"
+            ],
+            "complements": [
+              "Version control, CI, and project-specific documentation"
+            ],
+            "prerequisites": [
+              "A compatible runtime, operating system, or project configuration"
+            ],
+            "useCases": [
+              "Automating the task described by the upstream project"
+            ]
+          },
+          "category": null,
+          "displayName": "typescript",
+          "docs": null,
+          "homepage": "https://www.typescriptlang.org/",
+          "id": "npm:typescript",
+          "installURL": "pkgmgrmgr://install?package=npm%3Atypescript",
+          "lastUpdatedAt": "2026-07-08T15:55:18Z",
+          "manager": "npm",
+          "repository": null,
+          "researchedAt": "2026-07-16T17:09:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "typescript documentation",
+              "url": "https://www.typescriptlang.org/"
+            },
+            {
+              "kind": "primary",
+              "title": "typescript project and release information",
+              "url": "https://www.npmjs.com/package/typescript"
+            }
+          ],
+          "upstreamSummary": "TypeScript is a language for application scale JavaScript development",
+          "version": "7.0.2"
+        }
+      ],
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "pnpm documentation and project users",
+          "url": "https://pnpm.io/"
+        },
+        {
+          "kind": "primary",
+          "title": "pnpm source repository",
+          "url": "https://github.com/pnpm/pnpm"
+        },
+        {
+          "kind": "primary",
+          "title": "pnpm release history",
+          "url": "https://github.com/pnpm/pnpm/releases"
+        },
+        {
+          "kind": "independent",
+          "title": "State of JavaScript 2024 monorepo tools results",
+          "url": "https://2024.stateofjs.com/en-US/libraries/monorepo_tools/"
+        }
+      ],
+      "title": "pnpm: One Store, Many Projects",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260716T224902Z-c0b4136e",
+      "id": "new-packages:security:20260911T100100Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Fast and efficient osquery management",
+          "category": "security",
+          "displayName": "osctrl-mcp",
+          "homepage": "https://docs.osctrl.net/components/osctrl-mcp/",
+          "id": "brew:osctrl-mcp",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aosctrl-mcp",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-07-16T22:49:02Z",
+      "title": "New Packages in Security",
+      "type": "newPackages"
+    }
+  ],
+  "generatedAt": "2026-09-11T10:01:00Z",
+  "nextPageURL": null,
+  "pageID": "20260911T100100Z-71e73b5d",
+  "schemaVersion": 2
+}

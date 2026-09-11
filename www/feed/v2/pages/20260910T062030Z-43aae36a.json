@@ -2,291 +2,6 @@
   "content": [
     {
       "artwork": {
-        "alt": "Changed coral and amber chunks cross a bridge between layered data blocks while a research notebook unfolds into paper strips.",
-        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#101F2A",
-          "backgroundStart": "#173D50",
-          "foreground": "#F5F0E6"
-        },
-        "license": "AI-generated artwork; no third-party source artwork used.",
-        "path": "feed/assets/git-xet-changed-chunks.png"
-      },
-      "batchID": "20260911T100100Z-8b9b8e78",
-      "body": "## When a small revision moves a large file\n\nA research repository can contain a short training notebook beside gigabytes of model weights. A collaborator needs to understand the changed experiment and retrieve its artifacts, but those are different jobs. Git-Xet addresses the transfer side: it is a Git LFS custom transfer agent for uploading and downloading through Hugging Face’s Xet protocol. The familiar Git workflow remains visible while the large-file transport changes underneath it. [The upstream guide](https://github.com/huggingface/xet-core/blob/main/git_xet/README.md) describes that boundary explicitly.\n\nThe useful distinction is **file identity versus shared content**. Two checkpoint files can have different identities while retaining some identical bytes. Xet divides content into chunks and identifies reusable pieces, so a revision need not resend everything that already exists remotely. Its protocol also specifies how stored pieces are assembled into complete files. That makes repeated, related artifacts an interesting workload; entirely different data offers less opportunity for reuse. [The protocol specification](https://huggingface.co/docs/xet/index) explains the mechanism without requiring a universal speed claim.\n\n## A familiar name takes a new direction\n\nXet’s history predates its arrival on the Hub. Hugging Face acquired XetHub in August 2024, and its history documentation describes the move from whole-file deduplication toward reuse below the file level. The current client repository explicitly acknowledges its earlier codebase and a different backend implementation. This is a substantial change in deployment and audience, rather than evidence that the underlying project was invented recently. [Xet history](https://huggingface.co/docs/hub/xet/overview) and the [client repository](https://github.com/huggingface/xet-core) establish that lineage.\n\nThe operational turning point came in 2025. In its July migration account, Hugging Face reported that 500,000 repositories holding 20 petabytes had moved onto Xet during six months. It also described the compatibility bridge that let older clients continue working. Those are the operator’s figures, and they describe the storage platform rather than adoption of the Git-Xet executable specifically. [The migration report](https://huggingface.co/blog/migrating-the-hub-to-xet) provides both scale and an unusually useful account of failures encountered along the way.\n\n## Where the executable is actually used\n\nA concrete example is Hugging Face’s cross-region copying application. Its repository-copying worker fetches Git branches and tags, transfers large objects, and enables Git-Xet locally for the push phase. The implementation preserves repository content and history, while explicitly leaving settings such as privacy, hardware, and secrets for separate handling. This is evidence of an implemented operational workflow, although it does not establish how many people run it. [The application README](https://huggingface.co/spaces/huggingface-projects/hf-cross-region-copy/raw/main/README.md) documents those choices.\n\nThat distinction matters when planning a migration. Moving bytes and commits does not reproduce the surrounding service configuration. A successful copy still needs a review of access settings and other repository behavior. For a team publishing related model revisions, Git-Xet is most relevant when Git is already the interface they want to retain. It adds little conceptual value to a workflow that never uses Git directly.\n\n## Make the notebook readable, too\n\nJupytext addresses the other half of the research repository. It stores notebook inputs as scripts or Markdown and can pair that representation with an ordinary notebook holding outputs. Reviewers can inspect a compact text diff while researchers retain an interactive notebook locally. Text-only storage omits results, so teams must decide which outputs deserve preservation. [Jupytext’s repository](https://github.com/jupytext/jupytext) explains the formats and pairing behavior.\n\nThis is an established companion: its changelog reaches back to the initial converter in June 2018. [The release history](https://github.com/jupytext/jupytext/blob/main/CHANGELOG.md) shows years of development around notebook conversion. Pairing it with Git-Xet is an editorial workflow suggestion, not a claimed integration between the projects. One improves the representation people review; the other improves how large artifacts travel.\n\n## Evaluate the whole round trip\n\nGit-Xet requires configured Git and Git LFS. Python users may already reach the same storage through `huggingface_hub`, so they should check their existing path before adding another tool. [Hugging Face’s usage guide](https://huggingface.co/docs/hub/xet/using-xet-storage) distinguishes those entry points.\n\nA useful evaluation would compare a first upload, a representative revision, and retrieval on another machine. Record transfer time, local resource demands, and whether the resulting repository contains the expected files. Separately, review a notebook change and confirm its retained outputs still make sense. These are suggested checks, not benchmarks performed for this article. The practical goal is a repository that collaborators can both understand and retrieve, with clear boundaries around what each tool preserves.",
-      "deck": "Chunk-based transfers and readable notebooks tackle two different obstacles to sharing research repositories.",
-      "id": "editorial:2026-09-11:git-xet-moving-the-changed-pieces",
-      "package": {
-        "agentSummary": "Git-Xet connects familiar Git workflows to Hugging Face’s chunk-based storage, reducing redundant large-file transfers while retaining Git LFS as a required integration layer.",
-        "assessment": {
-          "alternatives": [
-            "Use huggingface_hub directly or retain compatible Git LFS transfers."
-          ],
-          "audiences": [
-            "Model publishers and dataset maintainers using Hugging Face Hub."
-          ],
-          "caveats": [
-            "This integration targets Hugging Face storage, not arbitrary Git remotes.",
-            "Deduplication savings depend on shared content; it does not guarantee a fixed speedup."
-          ],
-          "complements": [
-            "Jupytext for readable notebook inputs; huggingface_hub for Python workflows."
-          ],
-          "prerequisites": [
-            "Configured Git, Git LFS, and appropriate Hub access."
-          ],
-          "useCases": [
-            "Transfer revisions of large binary files through Git."
-          ]
-        },
-        "category": "developer-tools",
-        "displayName": "git-xet",
-        "docs": "https://github.com/xetdata/xet-core#readme",
-        "homepage": "https://github.com/huggingface/xet-core",
-        "id": "brew:git-xet",
-        "installURL": "pkgmgrmgr://install?package=brew%3Agit-xet",
-        "lastUpdatedAt": "2026-09-11T08:37:00Z",
-        "manager": "homebrew",
-        "repository": "https://github.com/huggingface/xet-core",
-        "researchedAt": "2026-09-11T10:01:00Z",
-        "sources": [
-          {
-            "kind": "primary",
-            "title": "Git-Xet transfer agent documentation",
-            "url": "https://github.com/huggingface/xet-core/blob/main/git_xet/README.md"
-          },
-          {
-            "kind": "primary",
-            "title": "Xet client repository and project lineage",
-            "url": "https://github.com/huggingface/xet-core"
-          },
-          {
-            "kind": "primary",
-            "title": "Using Xet Storage",
-            "url": "https://huggingface.co/docs/hub/xet/using-xet-storage"
-          }
-        ],
-        "upstreamSummary": "Git LFS plugin that uploads and downloads using the Xet protocol",
-        "version": "0.2.1"
-      },
-      "primaryPackageID": "brew:git-xet",
-      "publishedAt": "2026-09-11T10:01:00Z",
-      "relatedPackages": [
-        {
-          "agentSummary": "Git-Xet connects familiar Git workflows to Hugging Face’s chunk-based storage, reducing redundant large-file transfers while retaining Git LFS as a required integration layer.",
-          "assessment": {
-            "alternatives": [
-              "Use huggingface_hub directly or retain compatible Git LFS transfers."
-            ],
-            "audiences": [
-              "Model publishers and dataset maintainers using Hugging Face Hub."
-            ],
-            "caveats": [
-              "This integration targets Hugging Face storage, not arbitrary Git remotes.",
-              "Deduplication savings depend on shared content; it does not guarantee a fixed speedup."
-            ],
-            "complements": [
-              "Jupytext for readable notebook inputs; huggingface_hub for Python workflows."
-            ],
-            "prerequisites": [
-              "Configured Git, Git LFS, and appropriate Hub access."
-            ],
-            "useCases": [
-              "Transfer revisions of large binary files through Git."
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "git-xet",
-          "docs": "https://github.com/xetdata/xet-core#readme",
-          "homepage": "https://github.com/huggingface/xet-core",
-          "id": "brew:git-xet",
-          "installURL": "pkgmgrmgr://install?package=brew%3Agit-xet",
-          "lastUpdatedAt": "2026-09-11T08:37:00Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/huggingface/xet-core",
-          "researchedAt": "2026-09-11T10:01:00Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Git-Xet transfer agent documentation",
-              "url": "https://github.com/huggingface/xet-core/blob/main/git_xet/README.md"
-            },
-            {
-              "kind": "primary",
-              "title": "Xet client repository and project lineage",
-              "url": "https://github.com/huggingface/xet-core"
-            },
-            {
-              "kind": "primary",
-              "title": "Using Xet Storage",
-              "url": "https://huggingface.co/docs/hub/xet/using-xet-storage"
-            }
-          ],
-          "upstreamSummary": "Git LFS plugin that uploads and downloads using the Xet protocol",
-          "version": "0.2.1"
-        },
-        {
-          "agentSummary": "Jupytext represents notebook inputs as scripts or Markdown, making code review and editor workflows easier while paired notebooks retain outputs in a separate notebook file.",
-          "assessment": {
-            "alternatives": [
-              "Keep native notebooks and use notebook-aware diff tools."
-            ],
-            "audiences": [
-              "Researchers reviewing notebook code in Git."
-            ],
-            "caveats": [
-              "Text representations omit outputs.",
-              "Concurrent edits to paired files require careful synchronization."
-            ],
-            "complements": [
-              "Git-Xet for large model artifacts; JupyterLab for interactive work."
-            ],
-            "prerequisites": [
-              "Python; Jupyter integration belongs in the environment running the server."
-            ],
-            "useCases": [
-              "Review notebook inputs as text and edit them in an IDE."
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "jupytext",
-          "docs": "https://jupytext.readthedocs.io/en/latest",
-          "homepage": "https://jupytext.readthedocs.io/en/latest/",
-          "id": "brew:jupytext",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ajupytext",
-          "lastUpdatedAt": "2026-09-11T09:05:58Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/mwouts/jupytext",
-          "researchedAt": "2026-09-11T10:01:00Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Jupytext notebook formats and collaboration",
-              "url": "https://github.com/jupytext/jupytext"
-            },
-            {
-              "kind": "primary",
-              "title": "Jupytext release history",
-              "url": "https://github.com/jupytext/jupytext/blob/main/CHANGELOG.md"
-            }
-          ],
-          "upstreamSummary": "Jupyter notebooks as Markdown documents, Julia, Python or R scripts",
-          "version": "1.19.5"
-        }
-      ],
-      "selection": {
-        "newerOverride": {
-          "reason": "The documented 2025 move to Hugging Face Hub storage is a major new deployment direction for Xet; the current Git-Xet transfer agent brings that chunk-based backend into Git LFS workflows. This selection does not claim the older Xet project or the CLI has a newly established first stable release.",
-          "sourceURL": "https://huggingface.co/blog/migrating-the-hub-to-xet"
-        },
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Git-Xet transfer agent documentation",
-          "url": "https://github.com/huggingface/xet-core/blob/main/git_xet/README.md"
-        },
-        {
-          "kind": "primary",
-          "title": "Xet Protocol Specification",
-          "url": "https://huggingface.co/docs/xet/index"
-        },
-        {
-          "kind": "primary",
-          "title": "Xet History and Overview",
-          "url": "https://huggingface.co/docs/hub/xet/overview"
-        },
-        {
-          "kind": "primary",
-          "title": "Xet client repository and project lineage",
-          "url": "https://github.com/huggingface/xet-core"
-        },
-        {
-          "kind": "primary",
-          "title": "Migrating the Hub from Git LFS to Xet",
-          "url": "https://huggingface.co/blog/migrating-the-hub-to-xet"
-        },
-        {
-          "kind": "primary",
-          "title": "Hugging Face cross-region copy implementation",
-          "url": "https://huggingface.co/spaces/huggingface-projects/hf-cross-region-copy/raw/main/README.md"
-        },
-        {
-          "kind": "primary",
-          "title": "Jupytext notebook formats and collaboration",
-          "url": "https://github.com/jupytext/jupytext"
-        },
-        {
-          "kind": "primary",
-          "title": "Jupytext release history",
-          "url": "https://github.com/jupytext/jupytext/blob/main/CHANGELOG.md"
-        },
-        {
-          "kind": "primary",
-          "title": "Using Xet Storage",
-          "url": "https://huggingface.co/docs/hub/xet/using-xet-storage"
-        }
-      ],
-      "title": "Git-Xet: moving the changed pieces",
-      "type": "editorial"
-    },
-    {
-      "batchID": "20260911T100100Z-195c076e",
-      "id": "recently-updated:networking:20260911T100100Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Tunnel IPv4 traffic through a DNS server",
-          "category": "networking",
-          "displayName": "iodine",
-          "homepage": "https://code.kryo.se/iodine",
-          "id": "brew:iodine",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aiodine",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Command-line utility for BitTorrent torrent file creation, verification, etc.",
-          "category": "networking",
-          "displayName": "intermodal",
-          "homepage": "https://imdl.io",
-          "id": "brew:intermodal",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aintermodal",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Website copier/offline browser",
-          "category": "networking",
-          "displayName": "httrack",
-          "homepage": "https://www.httrack.com/",
-          "id": "brew:httrack",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ahttrack",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Tools to work with Internet routing policies",
-          "category": "networking",
-          "displayName": "irrtoolset",
-          "homepage": "https://github.com/irrtoolset/irrtoolset",
-          "id": "brew:irrtoolset",
-          "installURL": "pkgmgrmgr://install?package=brew%3Airrtoolset",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "IRC and ICB client",
-          "category": "networking",
-          "displayName": "ircii",
-          "homepage": null,
-          "id": "brew:ircii",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aircii",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-11T10:01:00Z",
-      "title": "Recently Updated in Networking",
-      "type": "recentlyUpdated"
-    },
-    {
-      "artwork": {
         "alt": "Three luminous paths through a dark abstract desktop converge on tiled windows, a widget-rich dock, and a row of window tabs.",
         "attribution": "Generated with OpenAI image generation",
         "boxColors": {
@@ -598,183 +313,165 @@
     },
     {
       "batchID": "20260907T063155Z-f65b3609",
-      "id": "for-you:productivity:20260911T100100Z-f220bb45",
+      "id": "recently-updated:media:20260907T063155Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "A live preview of your emails right in your browser.",
-          "category": "productivity",
-          "displayName": "react-email",
-          "homepage": null,
-          "id": "npm:react-email",
-          "installURL": "pkgmgrmgr://install?package=npm%3Areact-email",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Read and modify Office Add-in manifest files.",
-          "category": "productivity",
-          "displayName": "office-addin-manifest",
-          "homepage": "https://github.com/OfficeDev/Office-Addin-Scripts#readme",
-          "id": "npm:office-addin-manifest",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aoffice-addin-manifest",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "This package helps to transform resources to be used in a typesafe i18next project.",
-          "category": "productivity",
-          "displayName": "i18next-resources-for-ts",
-          "homepage": "https://github.com/i18next/i18next-resources-for-ts",
-          "id": "npm:i18next-resources-for-ts",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ai18next-resources-for-ts",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "A unified, high-performance i18next CLI.",
-          "category": "productivity",
-          "displayName": "i18next-cli",
-          "homepage": "https://github.com/i18next/i18next-cli",
-          "id": "npm:i18next-cli",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ai18next-cli",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "The Bump CLI is used to interact with your API documentation hosted on Bump.sh by using the APIs of developers.bump.sh",
-          "category": "productivity",
-          "displayName": "bump-cli",
-          "homepage": "https://bump.sh",
-          "id": "npm:bump-cli",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abump-cli",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-07T06:31:55Z",
-      "title": "For You in Productivity",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260907T063155Z-f65b3609",
-      "id": "recently-updated:ai:20260911T100100Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Test your LLM app locally",
-          "category": "ai",
-          "displayName": "promptfoo",
-          "homepage": "https://promptfoo.dev/",
-          "id": "brew:promptfoo",
-          "installURL": "pkgmgrmgr://install?package=brew%3Apromptfoo",
+          "agentSummary": "CLI tool for Dolby Vision metadata on video streams",
+          "category": "media",
+          "displayName": "dovi_tool",
+          "homepage": "https://github.com/quietvoid/dovi_tool/",
+          "id": "brew:dovi_tool",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adovi_tool",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Constrain, log and scan your MCP connections for security vulnerabilities",
-          "category": "ai",
-          "displayName": "snyk-agent-scan",
-          "homepage": "https://github.com/snyk/agent-scan",
-          "id": "brew:snyk-agent-scan",
-          "installURL": "pkgmgrmgr://install?package=brew%3Asnyk-agent-scan",
+          "agentSummary": "Photo editing and beautification software",
+          "category": "media",
+          "displayName": "美图秀秀",
+          "homepage": "https://pc.meitu.com/",
+          "id": "brew:cask:meituxiuxiu",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ameituxiuxiu",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Memory-first coding agent",
-          "category": "ai",
-          "displayName": "letta-code",
-          "homepage": "https://docs.letta.com/letta-code",
-          "id": "brew:letta-code",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aletta-code",
+          "agentSummary": "Download videos from",
+          "category": "media",
+          "displayName": "svtplay-dl",
+          "homepage": "https://svtplay-dl.se/",
+          "id": "brew:svtplay-dl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asvtplay-dl",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Turn any Git repository into a prompt-friendly text ingest for LLMs",
-          "category": "ai",
-          "displayName": "gitingest",
-          "homepage": "https://gitingest.com",
-          "id": "brew:gitingest",
-          "installURL": "pkgmgrmgr://install?package=brew%3Agitingest",
+          "agentSummary": "Screen capturing and editing tool",
+          "category": "media",
+          "displayName": "BetterShot",
+          "homepage": "https://bettershot.site/",
+          "id": "brew:cask:bettershot",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Abettershot",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Interactive with Gitea instances with MCP",
-          "category": "ai",
-          "displayName": "gitea-mcp-server",
-          "homepage": "https://gitea.com/gitea/gitea-mcp",
-          "id": "brew:gitea-mcp-server",
-          "installURL": "pkgmgrmgr://install?package=brew%3Agitea-mcp-server",
+          "agentSummary": "Lossless audio codec",
+          "category": "media",
+          "displayName": "tta",
+          "homepage": "https://sourceforge.net/projects/tta/",
+          "id": "brew:tta",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atta",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-07T06:31:55Z",
-      "title": "Recently Updated in Ai",
+      "title": "Recently Updated in Media",
       "type": "recentlyUpdated"
     },
     {
       "batchID": "20260907T063155Z-f65b3609",
-      "id": "for-you:games:20260911T100100Z-f220bb45",
+      "id": "for-you:networking:20260907T063155Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Query for the status of any game server in Node.JS",
-          "category": "games",
-          "displayName": "gamedig",
-          "homepage": "https://github.com/gamedig/node-gamedig#readme",
-          "id": "npm:gamedig",
-          "installURL": "pkgmgrmgr://install?package=npm%3Agamedig",
+          "agentSummary": "ECMAScript parser",
+          "category": "networking",
+          "displayName": "acorn",
+          "homepage": "https://github.com/acornjs/acorn",
+          "id": "npm:acorn",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aacorn",
           "manager": "npm"
         },
         {
-          "agentSummary": "The Stockfish chess engine in Web Assembly (WASM)",
-          "category": "games",
-          "displayName": "stockfish",
-          "homepage": "https://github.com/nmrugg/stockfish.js#readme",
-          "id": "npm:stockfish",
-          "installURL": "pkgmgrmgr://install?package=npm%3Astockfish",
+          "agentSummary": "Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset",
+          "category": "networking",
+          "displayName": "browserslist",
+          "homepage": "https://github.com/browserslist/browserslist#readme",
+          "id": "npm:browserslist",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abrowserslist",
           "manager": "npm"
         },
         {
-          "agentSummary": "Rom manager for AdvanceMAME/MESS",
-          "category": "games",
-          "displayName": "advancescan",
-          "homepage": "https://www.advancemame.it/scan-readme.html",
-          "id": "brew:advancescan",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aadvancescan",
-          "manager": "homebrew"
+          "agentSummary": "A library for obtaining browser versions with their maximum supported Baseline feature set and Widely Available status.",
+          "category": "networking",
+          "displayName": "baseline-browser-mapping",
+          "homepage": "https://github.com/web-platform-dx/baseline-browser-mapping#readme",
+          "id": "npm:baseline-browser-mapping",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abaseline-browser-mapping",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Near-future Sci-Fi roguelike and tactical squad combat game",
-          "category": "games",
-          "displayName": "allureofthestars",
-          "homepage": "https://allureofthestars.com/",
-          "id": "brew:allureofthestars",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aallureofthestars",
-          "manager": "homebrew"
+          "agentSummary": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
+          "category": "networking",
+          "displayName": "autoprefixer",
+          "homepage": "https://github.com/postcss/autoprefixer#readme",
+          "id": "npm:autoprefixer",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aautoprefixer",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Dungeon exploration game",
-          "category": "games",
-          "displayName": "angband",
-          "homepage": "https://rephial.org/",
-          "id": "brew:angband",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aangband",
-          "manager": "homebrew"
+          "agentSummary": "Minimal H(TTP) framework built for high performance and portability.",
+          "category": "networking",
+          "displayName": "h3",
+          "homepage": "https://h3.dev",
+          "id": "npm:h3",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ah3",
+          "manager": "npm"
         }
       ],
       "publishedAt": "2026-09-07T06:31:55Z",
-      "title": "For You in Games",
+      "title": "For You in Networking",
       "type": "personalizedRecommendations"
     },
     {
       "batchID": "20260907T063155Z-f65b3609",
-      "id": "new-packages:ai:20260911T100100Z-f220bb45",
+      "id": "recently-updated:security:20260907T063155Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "AI research workbench with scientific agents and notebooks",
-          "category": "ai",
-          "displayName": "Open Science",
-          "homepage": "https://aipoch.com/open-science",
-          "id": "brew:cask:open-science",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopen-science",
+          "agentSummary": "Research tool for iOS & macOS devices",
+          "category": "security",
+          "displayName": "ipsw",
+          "homepage": "https://blacktop.github.io/ipsw",
+          "id": "brew:ipsw",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aipsw",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Password manager",
+          "category": "security",
+          "displayName": "Bramble",
+          "homepage": "https://bramble.sh/",
+          "id": "brew:cask:bramble",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Abramble",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Slightly more awesome Standard Unix Password Manager for Teams",
+          "category": "security",
+          "displayName": "gopass",
+          "homepage": "https://www.gopass.pw/",
+          "id": "brew:gopass",
+          "installURL": "pkgmgrmgr://install?package=brew%3Agopass",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Security scanner for AI agent skills",
+          "category": "security",
+          "displayName": "skillspector",
+          "homepage": "https://github.com/NVIDIA/SkillSpector",
+          "id": "brew:skillspector",
+          "installURL": "pkgmgrmgr://install?package=brew%3Askillspector",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Libraries for security-enabled client and server applications",
+          "category": "security",
+          "displayName": "nss",
+          "homepage": "https://firefox-source-docs.mozilla.org/security/nss/index.html",
+          "id": "brew:nss",
+          "installURL": "pkgmgrmgr://install?package=brew%3Anss",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-07T06:31:55Z",
-      "title": "New Packages in Ai",
-      "type": "newPackages"
+      "title": "Recently Updated in Security",
+      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -1020,111 +717,165 @@
     },
     {
       "batchID": "20260903T095638Z-a67d98ee",
-      "id": "for-you:networking:20260911T100100Z-f220bb45",
+      "id": "new-packages:system:20260907T063155Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "ECMAScript parser",
-          "category": "networking",
-          "displayName": "acorn",
-          "homepage": "https://github.com/acornjs/acorn",
-          "id": "npm:acorn",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aacorn",
-          "manager": "npm"
+          "agentSummary": "Manage native Linux VMs and remote WSL distros",
+          "category": "system",
+          "displayName": "WSL Manager",
+          "homepage": "https://wslmanager.com/",
+          "id": "brew:cask:wsl-manager",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Awsl-manager",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset",
-          "category": "networking",
-          "displayName": "browserslist",
-          "homepage": "https://github.com/browserslist/browserslist#readme",
-          "id": "npm:browserslist",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abrowserslist",
-          "manager": "npm"
+          "agentSummary": "Disk cleaner and storage analyser",
+          "category": "system",
+          "displayName": "MangoDisk",
+          "homepage": "https://mangodisk.app/",
+          "id": "brew:cask:mangodisk",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amangodisk",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "A library for obtaining browser versions with their maximum supported Baseline feature set and Widely Available status.",
-          "category": "networking",
-          "displayName": "baseline-browser-mapping",
-          "homepage": "https://github.com/web-platform-dx/baseline-browser-mapping#readme",
-          "id": "npm:baseline-browser-mapping",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abaseline-browser-mapping",
-          "manager": "npm"
+          "agentSummary": "Homebrew's official GUI",
+          "category": "system",
+          "displayName": "Homebrew",
+          "homepage": "https://github.com/Homebrew/BrewUI",
+          "id": "brew:cask:homebrew-app",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahomebrew-app",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
-          "category": "networking",
-          "displayName": "autoprefixer",
-          "homepage": "https://github.com/postcss/autoprefixer#readme",
-          "id": "npm:autoprefixer",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aautoprefixer",
-          "manager": "npm"
+          "agentSummary": "Cleaning, privacy, and system optimisation utility",
+          "category": "system",
+          "displayName": "EasyMac Cleaner",
+          "homepage": "https://martiancat.space/products/cleaner.html",
+          "id": "brew:cask:easymac-cleaner",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aeasymac-cleaner",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Minimal H(TTP) framework built for high performance and portability.",
-          "category": "networking",
-          "displayName": "h3",
-          "homepage": "https://h3.dev",
-          "id": "npm:h3",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ah3",
-          "manager": "npm"
+          "agentSummary": "In-place conversion of NTFS filesystem to Btrfs",
+          "category": "system",
+          "displayName": "ntfs2btrfs",
+          "homepage": "https://github.com/maharmstone/ntfs2btrfs",
+          "id": "brew:ntfs2btrfs",
+          "installURL": "pkgmgrmgr://install?package=brew%3Antfs2btrfs",
+          "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-03T09:56:38Z",
-      "title": "For You in Networking",
-      "type": "personalizedRecommendations"
+      "title": "New Packages in System",
+      "type": "newPackages"
     },
     {
       "batchID": "20260903T095638Z-a67d98ee",
-      "id": "recently-updated:cloud-infrastructure:20260911T100100Z-f220bb45",
+      "id": "recently-updated:data:20260907T063155Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Acquire AWS credentials using Google Apps",
-          "category": "cloud-infrastructure",
-          "displayName": "aws-google-auth",
-          "homepage": "https://github.com/cevoaustralia/aws-google-auth",
-          "id": "brew:aws-google-auth",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aaws-google-auth",
+          "agentSummary": "Business intelligence report server",
+          "category": "data",
+          "displayName": "metabase",
+          "homepage": "https://www.metabase.com/",
+          "id": "brew:metabase",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ametabase",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Terminal user interface for navigating and managing Kubernetes clusters",
-          "category": "cloud-infrastructure",
-          "displayName": "lfk",
-          "homepage": "https://github.com/janosmiko/lfk",
-          "id": "brew:lfk",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alfk",
+          "agentSummary": "Creating SQL dump from a MySQL-compatible database",
+          "category": "data",
+          "displayName": "dumpling",
+          "homepage": "https://github.com/pingcap/tidb",
+          "id": "brew:dumpling",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adumpling",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "DevOps management tool",
-          "category": "cloud-infrastructure",
-          "displayName": "juju",
-          "homepage": "https://canonical.com/juju",
-          "id": "brew:juju",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ajuju",
+          "agentSummary": "Data wrangler with jq-like query language",
+          "category": "data",
+          "displayName": "sq",
+          "homepage": "https://sq.io",
+          "id": "brew:sq",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asq",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Cloud-based, distributed POSIX file system built on top of Redis and S3",
-          "category": "cloud-infrastructure",
-          "displayName": "juicefs",
-          "homepage": "https://juicefs.com",
-          "id": "brew:juicefs",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ajuicefs",
+          "agentSummary": "Database management tool",
+          "category": "data",
+          "displayName": "DBX",
+          "homepage": "https://dbxio.com/",
+          "id": "brew:cask:dbx",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adbx",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Clones a git repository and keeps it synchronized with the upstream",
-          "category": "cloud-infrastructure",
-          "displayName": "git-sync",
-          "homepage": "https://github.com/kubernetes/git-sync",
-          "id": "brew:git-sync",
-          "installURL": "pkgmgrmgr://install?package=brew%3Agit-sync",
+          "agentSummary": "Time series, events, and metrics database",
+          "category": "data",
+          "displayName": "influxdb@1",
+          "homepage": "https://influxdata.com/time-series-platform/influxdb/",
+          "id": "brew:influxdb@1",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ainfluxdb%401",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-03T09:56:38Z",
-      "title": "Recently Updated in Cloud Infrastructure",
+      "title": "Recently Updated in Data",
       "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260903T095638Z-a67d98ee",
+      "id": "for-you:productivity:20260907T063155Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "A live preview of your emails right in your browser.",
+          "category": "productivity",
+          "displayName": "react-email",
+          "homepage": null,
+          "id": "npm:react-email",
+          "installURL": "pkgmgrmgr://install?package=npm%3Areact-email",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Read and modify Office Add-in manifest files.",
+          "category": "productivity",
+          "displayName": "office-addin-manifest",
+          "homepage": "https://github.com/OfficeDev/Office-Addin-Scripts#readme",
+          "id": "npm:office-addin-manifest",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aoffice-addin-manifest",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "This package helps to transform resources to be used in a typesafe i18next project.",
+          "category": "productivity",
+          "displayName": "i18next-resources-for-ts",
+          "homepage": "https://github.com/i18next/i18next-resources-for-ts",
+          "id": "npm:i18next-resources-for-ts",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ai18next-resources-for-ts",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A unified, high-performance i18next CLI.",
+          "category": "productivity",
+          "displayName": "i18next-cli",
+          "homepage": "https://github.com/i18next/i18next-cli",
+          "id": "npm:i18next-cli",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ai18next-cli",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The Bump CLI is used to interact with your API documentation hosted on Bump.sh by using the APIs of developers.bump.sh",
+          "category": "productivity",
+          "displayName": "bump-cli",
+          "homepage": "https://bump.sh",
+          "id": "npm:bump-cli",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abump-cli",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-03T09:56:38Z",
+      "title": "For You in Productivity",
+      "type": "personalizedRecommendations"
     },
     {
       "artwork": {
@@ -1375,219 +1126,21 @@
     },
     {
       "batchID": "20260831T055156Z-36eb312d",
-      "id": "for-you:toys:20260911T100100Z-f220bb45",
+      "id": "new-packages:security:20260907T063155Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Returns from a pool of 15m human-readable IDs",
-          "category": "toys",
-          "displayName": "human-id",
-          "homepage": "https://github.com/RienNeVaPlus/human-id#readme",
-          "id": "npm:human-id",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ahuman-id",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Creates ASCII Art from text. A full implementation of the FIGfont spec.",
-          "category": "toys",
-          "displayName": "figlet",
-          "homepage": "https://github.com/patorjk/figlet.js#readme",
-          "id": "npm:figlet",
-          "installURL": "pkgmgrmgr://install?package=npm%3Afiglet",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Tell Yeoman what to say",
-          "category": "toys",
-          "displayName": "yosay",
-          "homepage": "https://github.com/yeoman/yosay#readme",
-          "id": "npm:yosay",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ayosay",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Generates lorem ipsum placeholder text for Node.js, Deno, browsers, and React Native. Developed with Bun.",
-          "category": "toys",
-          "displayName": "lorem-ipsum",
-          "homepage": null,
-          "id": "npm:lorem-ipsum",
-          "installURL": "pkgmgrmgr://install?package=npm%3Alorem-ipsum",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "The Yeoman character in your CLI. Like wat.",
-          "category": "toys",
-          "displayName": "yeoman-character",
-          "homepage": "https://github.com/yeoman/yeoman-character#readme",
-          "id": "npm:yeoman-character",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ayeoman-character",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-08-31T05:51:56Z",
-      "title": "For You in Toys",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260831T055156Z-36eb312d",
-      "id": "recently-updated:media:20260911T100100Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Companion to Sonarr and Radarr for managing and downloading subtitles",
-          "category": "media",
-          "displayName": "bazarr",
-          "homepage": "https://www.bazarr.media",
-          "id": "brew:bazarr",
-          "installURL": "pkgmgrmgr://install?package=brew%3Abazarr",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Graph based image processing framework",
-          "category": "media",
-          "displayName": "gegl",
-          "homepage": "https://www.gegl.org/",
-          "id": "brew:gegl",
-          "installURL": "pkgmgrmgr://install?package=brew%3Agegl",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Two-pass large vocabulary continuous speech recognition engine",
-          "category": "media",
-          "displayName": "julius",
-          "homepage": "https://github.com/julius-speech/julius",
-          "id": "brew:julius",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ajulius",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Extract Digicam setting info from EXIF JPEG headers",
-          "category": "media",
-          "displayName": "jhead",
-          "homepage": "https://github.com/Matthias-Wandel/jhead",
-          "id": "brew:jhead",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ajhead",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Convert PDFs to images",
-          "category": "media",
-          "displayName": "pdf2image",
-          "homepage": "https://code.google.com/p/pdf2image/",
-          "id": "brew:pdf2image",
-          "installURL": "pkgmgrmgr://install?package=brew%3Apdf2image",
+          "agentSummary": "Fast and efficient osquery management",
+          "category": "security",
+          "displayName": "osctrl-mcp",
+          "homepage": "https://docs.osctrl.net/components/osctrl-mcp/",
+          "id": "brew:osctrl-mcp",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aosctrl-mcp",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-08-31T05:51:56Z",
-      "title": "Recently Updated in Media",
-      "type": "recentlyUpdated"
-    },
-    {
-      "batchID": "20260831T055156Z-36eb312d",
-      "id": "for-you:cloud-infrastructure:20260911T100100Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Command-line interface for all things Cloudflare Workers",
-          "category": "cloud-infrastructure",
-          "displayName": "wrangler",
-          "homepage": "https://github.com/cloudflare/workers-sdk#readme",
-          "id": "npm:wrangler",
-          "installURL": "pkgmgrmgr://install?package=npm%3Awrangler",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "AWS CDK Toolkit CLI, the command line tool for CDK apps",
-          "category": "cloud-infrastructure",
-          "displayName": "aws-cdk",
-          "homepage": "https://github.com/aws/aws-cdk",
-          "id": "npm:aws-cdk",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aaws-cdk",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "The command-line interface for Vercel",
-          "category": "cloud-infrastructure",
-          "displayName": "vercel",
-          "homepage": "https://vercel.com",
-          "id": "npm:vercel",
-          "installURL": "pkgmgrmgr://install?package=npm%3Avercel",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Supabase CLI",
-          "category": "cloud-infrastructure",
-          "displayName": "supabase",
-          "homepage": "https://github.com/supabase/cli#readme",
-          "id": "npm:supabase",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asupabase",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
-          "category": "cloud-infrastructure",
-          "displayName": "expo-updates",
-          "homepage": "https://docs.expo.dev/versions/latest/sdk/updates/",
-          "id": "npm:expo-updates",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aexpo-updates",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-08-31T05:51:56Z",
-      "title": "For You in Cloud Infrastructure",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260831T055156Z-36eb312d",
-      "id": "recently-updated:toys:20260911T100100Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Desktop pet that reflects coding agent activity",
-          "category": "toys",
-          "displayName": "Petdex",
-          "homepage": "https://petdex.dev/",
-          "id": "brew:cask:petdex",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apetdex",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Frontend application for the Buttplug sex toy control library",
-          "category": "toys",
-          "displayName": "Intiface Central",
-          "homepage": "https://github.com/intiface/intiface-central",
-          "id": "brew:cask:intiface-central",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aintiface-central",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Cowsay but with ponies",
-          "category": "toys",
-          "displayName": "ponysay",
-          "homepage": "https://github.com/erkin/ponysay/",
-          "id": "brew:ponysay",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aponysay",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Desktop pet that reacts to AI coding agents",
-          "category": "toys",
-          "displayName": "Clawd on Desk",
-          "homepage": "https://github.com/rullerzhou-afk/clawd-on-desk",
-          "id": "brew:cask:clawd-on-desk",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclawd-on-desk",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Control your Nanoleaf lights",
-          "category": "toys",
-          "displayName": "Nanoleaf Desktop App",
-          "homepage": "https://nanoleaf.me/",
-          "id": "brew:cask:nanoleaf",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ananoleaf",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-08-31T05:51:56Z",
-      "title": "Recently Updated in Toys",
-      "type": "recentlyUpdated"
+      "title": "New Packages in Security",
+      "type": "newPackages"
     },
     {
       "artwork": {
@@ -1838,110 +1391,56 @@
     },
     {
       "batchID": "20260827T094859Z-d8857921",
-      "id": "for-you:ai:20260911T100100Z-f220bb45",
+      "id": "recently-updated:productivity:20260907T063155Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "The open agent skills ecosystem",
-          "category": "ai",
-          "displayName": "skills",
-          "homepage": "https://github.com/vercel-labs/skills#readme",
-          "id": "npm:skills",
-          "installURL": "pkgmgrmgr://install?package=npm%3Askills",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Multi-channel AI gateway with extensible messaging integrations",
-          "category": "ai",
-          "displayName": "openclaw",
-          "homepage": "https://github.com/openclaw/openclaw#readme",
-          "id": "npm:openclaw",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aopenclaw",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "opencode-ai is available through npm for installation and management in Package Manager Manager.",
-          "category": "ai",
-          "displayName": "opencode-ai",
-          "homepage": null,
-          "id": "npm:opencode-ai",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aopencode-ai",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "MCP server for Chrome DevTools",
-          "category": "ai",
-          "displayName": "chrome-devtools-mcp",
-          "homepage": "https://github.com/ChromeDevTools/chrome-devtools-mcp#readme",
-          "id": "npm:chrome-devtools-mcp",
-          "installURL": "pkgmgrmgr://install?package=npm%3Achrome-devtools-mcp",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Detect agentic coding environments and AI assistant tools",
-          "category": "ai",
-          "displayName": "am-i-vibing",
-          "homepage": "https://github.com/ascorbic/am-i-vibing",
-          "id": "npm:am-i-vibing",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aam-i-vibing",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-08-27T09:48:59Z",
-      "title": "For You in Ai",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260827T094859Z-d8857921",
-      "id": "recently-updated:other:20260911T100100Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Dash - Reinventing Cryptocurrency",
-          "category": "other",
-          "displayName": "Dash Core",
-          "homepage": "https://www.dash.org/",
-          "id": "brew:cask:dash-dash",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adash-dash",
+          "agentSummary": "Unofficial desktop GUI for OpenCode",
+          "category": "productivity",
+          "displayName": "OpenWork",
+          "homepage": "https://openworklabs.com/",
+          "id": "brew:cask:openwork",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopenwork",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "TIFF library and utilities",
-          "category": "other",
-          "displayName": "libtiff",
-          "homepage": "https://libtiff.gitlab.io/libtiff/",
-          "id": "brew:libtiff",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibtiff",
+          "agentSummary": "Microblogging and social networking service",
+          "category": "productivity",
+          "displayName": "Micro.blog",
+          "homepage": "https://help.micro.blog/t/micro-blog-for-mac/45",
+          "id": "brew:cask:microblog",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amicroblog",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Generic library support script",
-          "category": "other",
-          "displayName": "libtool",
-          "homepage": "https://www.gnu.org/software/libtool/",
-          "id": "brew:libtool",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibtool",
+          "agentSummary": "Generate a timeline of your day, automatically",
+          "category": "productivity",
+          "displayName": "Dayflow",
+          "homepage": "https://github.com/JerryZLiu/Dayflow",
+          "id": "brew:cask:dayflow",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adayflow",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "ASN.1 structure parser library",
-          "category": "other",
-          "displayName": "libtasn1",
-          "homepage": "https://www.gnu.org/software/libtasn1/",
-          "id": "brew:libtasn1",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibtasn1",
+          "agentSummary": "Messaging and calling application",
+          "category": "productivity",
+          "displayName": "WeCom",
+          "homepage": "https://work.weixin.qq.com/",
+          "id": "brew:cask:wechatwork",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Awechatwork",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Fork of SQLite that is both Open Source, and Open Contributions",
-          "category": "other",
-          "displayName": "libsql",
-          "homepage": "https://turso.tech/libsql",
-          "id": "brew:libsql",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibsql",
+          "agentSummary": "Save articles to read, highlight key content, and organise notes for review",
+          "category": "productivity",
+          "displayName": "Readwise Reader",
+          "homepage": "https://readwise.io/read/",
+          "id": "brew:cask:reader",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Areader",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-08-27T09:48:59Z",
-      "title": "Recently Updated in Other",
+      "title": "Recently Updated in Productivity",
       "type": "recentlyUpdated"
     },
     {
@@ -2244,61 +1743,777 @@
     },
     {
       "batchID": "20260824T071230Z-fc42cbc0",
-      "id": "for-you:science:20260911T100100Z-f220bb45",
+      "id": "for-you:language-runtime:20260907T063155Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Miller Rabin algorithm for primality test",
-          "category": "science",
-          "displayName": "miller-rabin",
-          "homepage": "https://github.com/indutny/miller-rabin",
-          "id": "npm:miller-rabin",
-          "installURL": "pkgmgrmgr://install?package=npm%3Amiller-rabin",
+          "agentSummary": "Runtime typescript and ESM support for Node.js",
+          "category": "language-runtime",
+          "displayName": "jiti",
+          "homepage": "https://github.com/unjs/jiti#readme",
+          "id": "npm:jiti",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajiti",
           "manager": "npm"
         },
         {
-          "agentSummary": "Math.js is an extensive math library for JavaScript and Node.js. It features a flexible expression parser with support for symbolic computation, comes with a large set of built-in functions and constants, and offers an integrated solution to work with dif",
-          "category": "science",
-          "displayName": "mathjs",
-          "homepage": "https://mathjs.org",
-          "id": "npm:mathjs",
-          "installURL": "pkgmgrmgr://install?package=npm%3Amathjs",
+          "agentSummary": "Vite as Node.js runtime",
+          "category": "language-runtime",
+          "displayName": "vite-node",
+          "homepage": "https://github.com/antfu-collective/vite-node#readme",
+          "id": "npm:vite-node",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avite-node",
           "manager": "npm"
         },
         {
-          "agentSummary": "Simple and Performant Language detection library (pure JS and zero dependencies)",
-          "category": "science",
-          "displayName": "tinyld",
-          "homepage": null,
-          "id": "npm:tinyld",
-          "installURL": "pkgmgrmgr://install?package=npm%3Atinyld",
+          "agentSummary": "👷 workerd, Cloudflare's JavaScript/Wasm Runtime",
+          "category": "language-runtime",
+          "displayName": "workerd",
+          "homepage": "https://github.com/cloudflare/workerd#readme",
+          "id": "npm:workerd",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aworkerd",
           "manager": "npm"
         },
         {
-          "agentSummary": "convert wkt to geojson",
-          "category": "science",
-          "displayName": "wellknown",
-          "homepage": "https://github.com/mapbox/wellknown#readme",
-          "id": "npm:wellknown",
-          "installURL": "pkgmgrmgr://install?package=npm%3Awellknown",
+          "agentSummary": "Run any Edge Function from CLI or Node.js module.",
+          "category": "language-runtime",
+          "displayName": "edge-runtime",
+          "homepage": "https://edge-runtime.vercel.app/packages/runtime",
+          "id": "npm:edge-runtime",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aedge-runtime",
           "manager": "npm"
         },
         {
-          "agentSummary": "Porter Stemmer algorithm",
-          "category": "science",
-          "displayName": "stemmer",
-          "homepage": "https://words.github.io/stemmer/",
-          "id": "npm:stemmer",
-          "installURL": "pkgmgrmgr://install?package=npm%3Astemmer",
+          "agentSummary": "node",
+          "category": "language-runtime",
+          "displayName": "node",
+          "homepage": "https://github.com/aredridel/node-bin-gen#readme",
+          "id": "npm:node",
+          "installURL": "pkgmgrmgr://install?package=npm%3Anode",
           "manager": "npm"
         }
       ],
       "publishedAt": "2026-08-24T07:12:30Z",
-      "title": "For You in Science",
+      "title": "For You in Language Runtime",
       "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260824T071230Z-fc42cbc0",
+      "id": "recently-updated:ai:20260907T063155Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Desktop app for GPT-4 / GPT-3.5 (OpenAI API)",
+          "category": "ai",
+          "displayName": "Chatbox",
+          "homepage": "https://chatboxai.app/en",
+          "id": "brew:cask:chatbox",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Achatbox",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Terminal interface for Antigravity agents",
+          "category": "ai",
+          "displayName": "Antigravity CLI",
+          "homepage": "https://antigravity.google/product/antigravity-cli",
+          "id": "brew:cask:antigravity-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aantigravity-cli",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "AI-powered software engineering agent by Factory",
+          "category": "ai",
+          "displayName": "Droid CLI",
+          "homepage": "https://docs.factory.ai/cli/getting-started/overview",
+          "id": "brew:cask:droid",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adroid",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "OpenAI's coding agent that runs in your terminal",
+          "category": "ai",
+          "displayName": "Codex",
+          "homepage": "https://github.com/openai/codex",
+          "id": "brew:cask:codex",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acodex",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Memory-first coding agent",
+          "category": "ai",
+          "displayName": "letta-code",
+          "homepage": "https://docs.letta.com/letta-code",
+          "id": "brew:letta-code",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aletta-code",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-08-24T07:12:30Z",
+      "title": "Recently Updated in Ai",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260824T071230Z-fc42cbc0",
+      "id": "new-packages:cloud-infrastructure:20260907T063155Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "In-memory message queue with an Amazon SQS-compatible interface",
+          "category": "cloud-infrastructure",
+          "displayName": "elasticmq",
+          "homepage": "https://softwaremill.com/open-source/",
+          "id": "brew:elasticmq",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aelasticmq",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-08-24T07:12:30Z",
+      "title": "New Packages in Cloud Infrastructure",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
+        "alt": "An operator supervises three glowing, isolated work lanes that converge through a review gate in a dark geometric studio.",
+        "attribution": "Generated by OpenAI for Package Manager Manager",
+        "boxColors": {
+          "backgroundEnd": "#1B1938",
+          "backgroundStart": "#0B0D20",
+          "foreground": "#F7F3E8"
+        },
+        "license": "CC BY 4.0",
+        "path": "feed/assets/agent-mission-control.png"
+      },
+      "batchID": "20260820T100322Z-7533849b",
+      "body": "## The new bottleneck is attention\n\nRunning a second coding agent feels like free throughput. Running a fifth reveals the catch: parallel generation does not create parallel judgment. Sessions disappear behind terminal tabs, two tasks drift toward the same file, and several plausible diffs arrive together for one human to understand. The emerging category of agent supervisors is therefore less about making models smarter than making their work *legible*.\n\nMonet is a young, macOS-native entry in that category. Its repository describes a single workspace for Claude Code and Codex sessions: users can browse and search history, launch work, watch activity, and send input without finding the right terminal first. The project appeared in April 2026 and reached its first stable release on July 26. That youth matters. Monet is promising precisely because it treats agent coordination as a desktop information-design problem, but it has not accumulated years of hardening or a broad engine matrix.\n\n## A control room, not another coder\n\nThe useful distinction is between an **agent** and a **supervisor**. OpenCode is primarily the former: it reads and edits a repository, runs tools, supports configurable primary agents and subagents, and exposes terminal, desktop, and editor interfaces. Its official material also highlights parallel sessions and broad model-provider choice. Monet sits above existing Claude Code and Codex processes instead. It does not erase their behavior, model costs, permissions, or failure modes; it organizes the operator's view of them.\n\nThat makes Monet attractive when a developer already likes those engines but dislikes managing their windows. Searchable cross-project history can recover a decision buried in an old session. A unified activity view can show which worker is waiting. Direct input can shorten the loop between noticing drift and correcting it. The native interface may also be easier to scan than a dense collection of panes.\n\nThe tradeoff is dependency on the underlying tools. Current engine coverage is narrower than OpenCode's provider-flexible environment or claude-squad's configurable terminal commands. Monet also requires macOS 14 or later. If terminal portability, remote servers, or transparent shell primitives matter more than desktop polish, another approach will fit better.\n\n## Isolation is more than separate windows\n\nClaude-squad illustrates the terminal-first alternative. It uses tmux to preserve sessions and Git worktrees to give concurrent tasks separate checkouts. Its TUI supports creating, inspecting, pausing, resuming, and reviewing agent work. That design makes a strong operational point: a cleaner dashboard is useful, but file isolation is what prevents two workers from casually editing the same working tree.\n\nEven worktrees are only part of the boundary. Independent practitioners report that parallel agents can still collide through shared databases, ports, caches, generated files, or absolute paths. A safe setup commonly needs:\n\n- one narrowly scoped task, branch, and worktree per agent;\n- separate runtime resources when tasks start services or migrations;\n- automated tests and static checks inside each lane;\n- a human review gate before changes converge.\n\nMonet's mission-control metaphor should be read in that context. Visibility helps an operator catch problems; it does not create sandboxing by itself. Teams should verify what each underlying agent can execute and where it writes, especially before enabling broad permissions or unattended operation.\n\n## Throughput ends at the review queue\n\nReal-world interest in this workflow is visible well beyond product pages. Claude-squad's public repository has attracted thousands of stars, while independent reviews and practitioner discussions repeatedly describe worktrees as the practical unit for parallel sessions. OpenCode's much larger community and a hands-on four-month review substantiate demand for persistent, multi-session, provider-flexible coding. These signals demonstrate usage of the pattern, not that every team benefits from maximum concurrency.\n\nThe limiting resource is often review bandwidth. Three agents can produce three diffs faster than one engineer can build a trustworthy mental model of them. Smaller tasks, non-overlapping ownership, bounded permissions, and explicit acceptance criteria usually improve the equation more than adding another worker. A supervisor earns its place when it reduces that cognitive tax: showing status clearly, preserving context, and making the next review obvious.\n\nMonet is worth watching—and, for macOS users already committed to Claude Code or Codex, worth evaluating—because it focuses directly on that human control layer. Claude-squad remains compelling for operators who want worktree isolation expressed through familiar terminal machinery. OpenCode is the broader choice when the agent runtime, model routing, and multi-session interface should come as one system. The best choice is not the one that launches the most agents. It is the one that lets you stop, inspect, and confidently integrate their work.",
+      "deck": "Monet turns scattered Claude Code and Codex sessions into a native control room—but parallel work only pays when isolation and review keep pace.",
+      "id": "editorial:2026-08-20:mission-control-for-coding-agents",
+      "package": {
+        "agentSummary": "Monet provides a native macOS control room for browsing, searching, launching, and supervising concurrent Claude Code and Codex sessions across projects.",
+        "assessment": {
+          "alternatives": [
+            "claude-squad for a terminal-first supervisor",
+            "OpenCode for an agent with built-in multi-session interfaces",
+            "Separate terminal panes and manually managed worktrees"
+          ],
+          "audiences": [
+            "macOS developers already using Claude Code or Codex",
+            "Engineers supervising several repository tasks at once",
+            "Teams evaluating multi-agent workflows on local machines"
+          ],
+          "caveats": [
+            "The young project has a short operational track record",
+            "Current support centers on Claude Code and Codex",
+            "A dashboard does not isolate shared databases, ports, or caches"
+          ],
+          "complements": [
+            "Git branches or worktrees for task isolation",
+            "Repository tests and static analysis",
+            "A deliberate human review queue"
+          ],
+          "prerequisites": [
+            "macOS 14 or later",
+            "At least one supported coding-agent CLI configured separately",
+            "Comfort reviewing agent-generated changes before integration"
+          ],
+          "useCases": [
+            "Monitor concurrent agent sessions from one desktop window",
+            "Search session history across projects and engines",
+            "Inspect activity and redirect agents without juggling terminals"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "Monet",
+        "docs": "https://github.com/zenolab124/monet",
+        "homepage": "https://github.com/zenolab124/monet",
+        "id": "brew:cask:monet",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amonet",
+        "lastUpdatedAt": "2026-08-19T14:17:58Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/zenolab124/monet",
+        "researchedAt": "2026-08-20T10:03:22Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Monet repository and product documentation",
+            "url": "https://github.com/zenolab124/monet"
+          },
+          {
+            "kind": "primary",
+            "title": "Monet 1.0.0 release",
+            "url": "https://github.com/zenolab124/monet/releases/tag/v1.0.0"
+          }
+        ],
+        "upstreamSummary": "Multi-engine mission control for coding agents",
+        "version": "2.1.16"
+      },
+      "primaryPackageID": "brew:cask:monet",
+      "publishedAt": "2026-08-20T10:03:22Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Monet provides a native macOS control room for browsing, searching, launching, and supervising concurrent Claude Code and Codex sessions across projects.",
+          "assessment": {
+            "alternatives": [
+              "claude-squad for a terminal-first supervisor",
+              "OpenCode for an agent with built-in multi-session interfaces",
+              "Separate terminal panes and manually managed worktrees"
+            ],
+            "audiences": [
+              "macOS developers already using Claude Code or Codex",
+              "Engineers supervising several repository tasks at once",
+              "Teams evaluating multi-agent workflows on local machines"
+            ],
+            "caveats": [
+              "The young project has a short operational track record",
+              "Current support centers on Claude Code and Codex",
+              "A dashboard does not isolate shared databases, ports, or caches"
+            ],
+            "complements": [
+              "Git branches or worktrees for task isolation",
+              "Repository tests and static analysis",
+              "A deliberate human review queue"
+            ],
+            "prerequisites": [
+              "macOS 14 or later",
+              "At least one supported coding-agent CLI configured separately",
+              "Comfort reviewing agent-generated changes before integration"
+            ],
+            "useCases": [
+              "Monitor concurrent agent sessions from one desktop window",
+              "Search session history across projects and engines",
+              "Inspect activity and redirect agents without juggling terminals"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "Monet",
+          "docs": "https://github.com/zenolab124/monet",
+          "homepage": "https://github.com/zenolab124/monet",
+          "id": "brew:cask:monet",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amonet",
+          "lastUpdatedAt": "2026-08-19T14:17:58Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/zenolab124/monet",
+          "researchedAt": "2026-08-20T10:03:22Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Monet repository and product documentation",
+              "url": "https://github.com/zenolab124/monet"
+            },
+            {
+              "kind": "primary",
+              "title": "Monet 1.0.0 release",
+              "url": "https://github.com/zenolab124/monet/releases/tag/v1.0.0"
+            }
+          ],
+          "upstreamSummary": "Multi-engine mission control for coding agents",
+          "version": "2.1.16"
+        },
+        {
+          "agentSummary": "Claude Squad wraps terminal agents in a TUI, using tmux sessions and Git worktrees to isolate parallel tasks and simplify diff review.",
+          "assessment": {
+            "alternatives": [
+              "Monet for a native macOS overview",
+              "OpenCode multi-session workflows",
+              "Manual tmux panes plus Git worktrees"
+            ],
+            "audiences": [
+              "Terminal-oriented developers",
+              "Git users comfortable with branches and worktrees",
+              "Engineers mixing several supported coding-agent CLIs"
+            ],
+            "caveats": [
+              "Terminal dependencies create a steeper setup curve",
+              "Worktrees isolate files but not external runtime state",
+              "Parallel output can overwhelm human review capacity"
+            ],
+            "complements": [
+              "Automated tests in each worktree",
+              "Small, non-overlapping task definitions",
+              "Branch protection and pull-request review"
+            ],
+            "prerequisites": [
+              "Git and tmux",
+              "A supported coding-agent command",
+              "GitHub CLI for the documented pull-request workflow"
+            ],
+            "useCases": [
+              "Run independent coding tasks in parallel worktrees",
+              "Pause, resume, and inspect agent sessions from one TUI",
+              "Review a task diff before applying it to the main workspace"
+            ]
+          },
+          "category": "ai",
+          "displayName": "claude-squad",
+          "docs": "https://github.com/smtg-ai/claude-squad#readme",
+          "homepage": "https://smtg-ai.github.io/claude-squad/",
+          "id": "brew:claude-squad",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aclaude-squad",
+          "lastUpdatedAt": "2026-08-20T09:09:47Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/smtg-ai/claude-squad",
+          "researchedAt": "2026-08-20T10:03:22Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Claude Squad repository documentation",
+              "url": "https://github.com/smtg-ai/claude-squad"
+            },
+            {
+              "kind": "independent",
+              "title": "Claude Squad review: terminal control, worktrees, and tradeoffs",
+              "url": "https://vibecodinghub.org/blog/claude-squad-review"
+            }
+          ],
+          "upstreamSummary": "Manage multiple AI agents like Claude Code, Aider and Codex in your terminal",
+          "version": null
+        },
+        {
+          "agentSummary": "OpenCode is a model-flexible coding agent spanning terminal, desktop, and editor surfaces, with parallel sessions, configurable agents, permissions, and shareable work.",
+          "assessment": {
+            "alternatives": [
+              "Monet layered over existing Claude Code or Codex sessions",
+              "claude-squad for worktree-centered terminal supervision",
+              "A single-provider coding-agent CLI"
+            ],
+            "audiences": [
+              "Developers wanting provider choice",
+              "Teams needing terminal and desktop interfaces",
+              "Users designing specialized primary agents and subagents"
+            ],
+            "caveats": [
+              "Provider flexibility also increases configuration choices",
+              "Concurrent sessions can contend for the same project resources",
+              "Model usage costs remain separate from the open-source client"
+            ],
+            "complements": [
+              "Language servers for code diagnostics",
+              "MCP servers for approved external tools",
+              "Version control and automated test suites"
+            ],
+            "prerequisites": [
+              "Credentials or access for a chosen model provider",
+              "A repository with clear project instructions",
+              "Explicit permission and cost limits for autonomous work"
+            ],
+            "useCases": [
+              "Run several agent sessions on one project",
+              "Assign distinct prompts and permissions to specialized agents",
+              "Move between terminal, desktop, and editor workflows"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "OpenCode",
+          "docs": "https://opencode.ai/docs",
+          "homepage": "https://opencode.ai/",
+          "id": "brew:cask:opencode-desktop",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopencode-desktop",
+          "lastUpdatedAt": "2026-08-20T07:22:39Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/anomalyco/opencode",
+          "researchedAt": "2026-08-20T10:03:22Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "OpenCode official overview",
+              "url": "https://opencode.ai/"
+            },
+            {
+              "kind": "independent",
+              "title": "OpenCode hands-on review after four months of daily use",
+              "url": "https://postcursors.dev/en/tools/opencode/"
+            }
+          ],
+          "upstreamSummary": "AI coding agent desktop client",
+          "version": "1.18.18"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-26T13:42:59Z",
+        "firstStableReleaseSourceURL": "https://github.com/zenolab124/monet/releases/tag/v1.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Monet repository and documentation",
+          "url": "https://github.com/zenolab124/monet"
+        },
+        {
+          "kind": "primary",
+          "title": "Monet 1.0.0 release",
+          "url": "https://github.com/zenolab124/monet/releases/tag/v1.0.0"
+        },
+        {
+          "kind": "independent",
+          "title": "Claude Squad review: terminal control and worktree tradeoffs",
+          "url": "https://vibecodinghub.org/blog/claude-squad-review"
+        },
+        {
+          "kind": "independent",
+          "title": "OpenCode hands-on review after four months of daily use",
+          "url": "https://postcursors.dev/en/tools/opencode/"
+        }
+      ],
+      "title": "When coding agents multiply, supervision becomes the product",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260820T100322Z-299838df",
+      "id": "recently-updated:system:20260907T063155Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Cross-platform disk diagnostics TUI",
+          "category": "system",
+          "displayName": "diskwatch",
+          "homepage": "https://www.netwatchlabs.com/labs/diskwatch",
+          "id": "brew:diskwatch",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adiskwatch",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Get/set bluetooth power and discoverable state",
+          "category": "system",
+          "displayName": "blueutil",
+          "homepage": "https://github.com/toy/blueutil",
+          "id": "brew:blueutil",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ablueutil",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Utility for manipulating APFS and ZFS compressed files",
+          "category": "system",
+          "displayName": "afsctool",
+          "homepage": "https://brkirch.wordpress.com/afsctool/",
+          "id": "brew:afsctool",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aafsctool",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Sliding, tiling window manager for MacOS",
+          "category": "system",
+          "displayName": "paneru",
+          "homepage": "https://github.com/karinushka/paneru",
+          "id": "brew:paneru",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apaneru",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Duplicate file utility",
+          "category": "system",
+          "displayName": "czkawka",
+          "homepage": "https://github.com/qarmin/czkawka",
+          "id": "brew:czkawka",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aczkawka",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-08-20T10:03:22Z",
+      "title": "Recently Updated in System",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260820T100322Z-299838df",
+      "id": "new-packages:ai:20260907T063155Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "AI research workbench with scientific agents and notebooks",
+          "category": "ai",
+          "displayName": "Open Science",
+          "homepage": "https://aipoch.com/open-science",
+          "id": "brew:cask:open-science",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopen-science",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-08-20T10:03:22Z",
+      "title": "New Packages in Ai",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
+        "alt": "Abstract glass database cylinder routing luminous data streams into orderly schema blocks and an unlabeled inspection panel.",
+        "attribution": "Generated by OpenAI for Package Manager Manager",
+        "boxColors": {
+          "backgroundEnd": "#0A315B",
+          "backgroundStart": "#061A3A",
+          "foreground": "#FFFFFF"
+        },
+        "license": "CC BY 4.0",
+        "path": "feed/assets/postgresql-18-data-flow-2026-08-17.png"
+      },
+      "batchID": "20260817T062537Z-c920ea65",
+      "body": "## A mature database changes the floor beneath it\n\nPostgreSQL 18 is not a reinvention of Postgres. That is precisely why it is interesting. Released on September 25, 2025, the major version concentrates on work that sits below application features: moving pages from storage, choosing indexes, preserving planner knowledge during upgrades, and making common identifiers cooperate better with B-trees. For a database with decades of accumulated behavior, these changes can matter more than a flashy new query surface.\n\nThe headline is a new asynchronous I/O subsystem. PostgreSQL can now issue and combine some read work more effectively for operations including sequential scans, bitmap heap scans, and vacuum. The project reported substantial gains in its own testing, but operators should read that as a reason to benchmark, not as a universal multiplier. Storage, kernel support, cache state, query shape, and concurrency still decide what an application will observe.\n\nPostgreSQL 18 also adds skip scans for multicolumn B-tree indexes. An index whose leading column is not constrained may now help in cases where older planning choices were less attractive. Again, this is an expanded option for the planner, not permission to stop designing indexes deliberately.\n\n## The upgrade story is operational, not ceremonial\n\nMajor database upgrades are rarely difficult because one command is obscure. They are difficult because extensions, drivers, replicas, backup procedures, query plans, and maintenance windows all meet at once. PostgreSQL 18 improves one important part of that sequence: `pg_upgrade` transfers most optimizer statistics unless told not to. Earlier upgrades could open successfully and then perform unevenly while fresh statistics accumulated. Preserving more of that knowledge should shorten the uncomfortable period after cutover.\n\nThere are boundaries. Explicit extended statistics, extension-defined statistics, and some cumulative statistics are not all transferred. The documentation still directs administrators to regenerate missing and cumulative information after the upgrade. A sensible rehearsal therefore includes:\n\n- checking every extension against version 18;\n- comparing representative plans before and after migration;\n- timing the statistics refresh on production-shaped data;\n- testing backup restoration and rollback, not merely taking a backup.\n\nThat list is intentionally unglamorous. PostgreSQL 18 reduces migration friction; it does not turn a stateful system into an ordinary application binary.\n\n## Small features meet real application habits\n\nThe built-in `uuidv7()` function addresses a familiar compromise. Random UUIDs are convenient across distributed application processes, but their insertion order is unfriendly to B-tree locality. UUIDv7 retains UUID semantics while incorporating time ordering, which can improve index behavior for newly generated identifiers. Teams still need to decide whether exposing approximate creation order is acceptable and whether every writer will generate the same UUID version.\n\nVirtual generated columns are now the default form of generated column, computing values when read rather than storing them. PostgreSQL 18 also brings OAuth 2.0 authentication and allows `OLD` and `NEW` values in `RETURNING` for data-changing statements. None is a universal reason to migrate alone. Together they show a release tuned to patterns already present in production systems: federated identity, fewer application round trips, and schemas that carry more intent.\n\nActual use is not speculative. The 2025 Stack Overflow Developer Survey recorded PostgreSQL among the database environments used extensively by a large developer sample. That breadth is why conservative release engineering matters: a planner improvement or migration refinement reaches far more kinds of workload than any single benchmark represents.\n\n## Follow the change, then inspect it\n\nA database version is only one part of the working system. **pgstream** focuses on what happens after rows and schemas begin moving. It consumes PostgreSQL logical replication and can send snapshots and continuous changes to PostgreSQL, Kafka, OpenSearch, Elasticsearch, or webhooks. Its 1.0 direction made schema replication stateless: DDL events are emitted into WAL rather than reconstructed through a maintained schema-log table. That is compelling when downstream systems must follow schema evolution, but it also creates an operational obligation to monitor replication slots, WAL retention, lag, and target compatibility.\n\nFor a more immediate view, **rainfrog** offers a terminal interface for browsing schemas, editing queries, filtering results, and saving history or favorites across several database engines. Its lightweight interface is useful over SSH or for developers who live in a terminal. The honest tradeoff is maturity: rainfrog still calls itself beta, grades database support in tiers, and documents clipboard and geometry-type limitations.\n\nThe practical story of PostgreSQL 18 is therefore not “upgrade and become faster.” It is: benchmark the new I/O path, rehearse the migration, observe the change stream, and keep a close inspection tool nearby. Mature infrastructure earns trust by improving those loops without pretending they disappear.",
+      "deck": "A mature database release puts its energy into I/O, upgrades, identifiers, and the everyday tools that keep changing data understandable.",
+      "id": "editorial:2026-08-17:postgresql-18-moving-data-with-less-friction",
+      "package": {
+        "agentSummary": "PostgreSQL 18 advances the established relational database with asynchronous I/O, skip scans, UUIDv7, OAuth authentication, richer EXPLAIN output, and smoother major upgrades.",
+        "assessment": {
+          "alternatives": [
+            "PostgreSQL 17",
+            "MySQL",
+            "SQLite"
+          ],
+          "audiences": [
+            "Application developers",
+            "Database administrators",
+            "Platform teams"
+          ],
+          "caveats": [
+            "Major upgrades still require rehearsal and extension review",
+            "Asynchronous I/O gains vary by workload and platform",
+            "Transferred optimizer statistics are not exhaustive"
+          ],
+          "complements": [
+            "pgstream",
+            "rainfrog",
+            "pg_upgrade"
+          ],
+          "prerequisites": [
+            "A planned major-version migration",
+            "Extension and driver compatibility checks",
+            "Tested backups and rollback procedures"
+          ],
+          "useCases": [
+            "Run transactional relational workloads",
+            "Upgrade clusters with less post-upgrade recovery work",
+            "Use timestamp-ordered UUIDs and OAuth authentication"
+          ]
+        },
+        "category": "data",
+        "displayName": "postgresql@18",
+        "docs": "https://www.postgresql.org/docs/18/index.html",
+        "homepage": "https://www.postgresql.org/",
+        "id": "brew:postgresql@18",
+        "installURL": "pkgmgrmgr://install?package=brew%3Apostgresql%4018",
+        "lastUpdatedAt": "2026-08-16T10:20:06Z",
+        "manager": "homebrew",
+        "repository": "https://git.postgresql.org/gitweb?p=postgresql.git",
+        "researchedAt": "2026-08-17T06:25:37Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "PostgreSQL 18 release notes",
+            "url": "https://www.postgresql.org/docs/18/release-18.html"
+          },
+          {
+            "kind": "independent",
+            "title": "2025 Stack Overflow Developer Survey: Technology",
+            "url": "https://survey.stackoverflow.co/2025/technology/"
+          }
+        ],
+        "upstreamSummary": "Object-relational database system",
+        "version": null
+      },
+      "primaryPackageID": "brew:postgresql@18",
+      "publishedAt": "2026-08-17T06:25:37Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "PostgreSQL 18 advances the established relational database with asynchronous I/O, skip scans, UUIDv7, OAuth authentication, richer EXPLAIN output, and smoother major upgrades.",
+          "assessment": {
+            "alternatives": [
+              "PostgreSQL 17",
+              "MySQL",
+              "SQLite"
+            ],
+            "audiences": [
+              "Application developers",
+              "Database administrators",
+              "Platform teams"
+            ],
+            "caveats": [
+              "Major upgrades still require rehearsal and extension review",
+              "Asynchronous I/O gains vary by workload and platform",
+              "Transferred optimizer statistics are not exhaustive"
+            ],
+            "complements": [
+              "pgstream",
+              "rainfrog",
+              "pg_upgrade"
+            ],
+            "prerequisites": [
+              "A planned major-version migration",
+              "Extension and driver compatibility checks",
+              "Tested backups and rollback procedures"
+            ],
+            "useCases": [
+              "Run transactional relational workloads",
+              "Upgrade clusters with less post-upgrade recovery work",
+              "Use timestamp-ordered UUIDs and OAuth authentication"
+            ]
+          },
+          "category": "data",
+          "displayName": "postgresql@18",
+          "docs": "https://www.postgresql.org/docs/18/index.html",
+          "homepage": "https://www.postgresql.org/",
+          "id": "brew:postgresql@18",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apostgresql%4018",
+          "lastUpdatedAt": "2026-08-16T10:20:06Z",
+          "manager": "homebrew",
+          "repository": "https://git.postgresql.org/gitweb?p=postgresql.git",
+          "researchedAt": "2026-08-17T06:25:37Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "PostgreSQL 18 release notes",
+              "url": "https://www.postgresql.org/docs/18/release-18.html"
+            },
+            {
+              "kind": "independent",
+              "title": "2025 Stack Overflow Developer Survey: Technology",
+              "url": "https://survey.stackoverflow.co/2025/technology/"
+            }
+          ],
+          "upstreamSummary": "Object-relational database system",
+          "version": null
+        },
+        {
+          "agentSummary": "A PostgreSQL change-data-capture tool and Go library that streams snapshots, row changes, and DDL to Postgres, Kafka, search indexes, or webhooks.",
+          "assessment": {
+            "alternatives": [
+              "Debezium",
+              "pglogical",
+              "Airbyte"
+            ],
+            "audiences": [
+              "Data engineers",
+              "PostgreSQL operators",
+              "Search and event-pipeline teams"
+            ],
+            "caveats": [
+              "Logical replication adds operational state and monitoring needs",
+              "DDL replay must be tested against downstream behavior",
+              "Large snapshots require throughput and retention planning"
+            ],
+            "complements": [
+              "PostgreSQL 18",
+              "Kafka",
+              "OpenSearch"
+            ],
+            "prerequisites": [
+              "PostgreSQL logical replication configuration",
+              "Capacity planning for snapshots and WAL retention",
+              "A configured downstream target"
+            ],
+            "useCases": [
+              "Replicate PostgreSQL changes",
+              "Keep downstream schemas aligned",
+              "Anonymize selected columns in transit"
+            ]
+          },
+          "category": "data",
+          "displayName": "pgstream",
+          "docs": "https://github.com/xataio/pgstream#readme",
+          "homepage": "https://github.com/xataio/pgstream",
+          "id": "brew:pgstream",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apgstream",
+          "lastUpdatedAt": "2026-08-16T10:20:06Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/xataio/pgstream",
+          "researchedAt": "2026-08-17T06:25:37Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "pgstream project repository",
+              "url": "https://github.com/xataio/pgstream"
+            },
+            {
+              "kind": "primary",
+              "title": "pgstream 1.0 stateless schema replication",
+              "url": "https://xata.io/blog/pgstream-v100-stateless-schema-change-replication"
+            }
+          ],
+          "upstreamSummary": "PostgreSQL replication with DDL changes",
+          "version": null
+        },
+        {
+          "agentSummary": "A keyboard-friendly database TUI for PostgreSQL, MySQL, SQLite, and other engines, combining query editing, schema browsing, history, filtering, and favorites in one terminal.",
+          "assessment": {
+            "alternatives": [
+              "Harlequin",
+              "mycli",
+              "DBeaver"
+            ],
+            "audiences": [
+              "Terminal-oriented developers",
+              "Database engineers",
+              "Operators working over SSH"
+            ],
+            "caveats": [
+              "The project still labels itself beta",
+              "Database support is tiered and experimental drivers may change",
+              "Some clipboard behavior is limited under X11 and Wayland"
+            ],
+            "complements": [
+              "PostgreSQL",
+              "MySQL",
+              "SQLite"
+            ],
+            "prerequisites": [
+              "A reachable supported database",
+              "A terminal with suitable color support",
+              "A Nerd Font for the intended icon rendering"
+            ],
+            "useCases": [
+              "Browse schemas and table metadata",
+              "Run and revisit SQL queries",
+              "Inspect databases without a desktop client"
+            ]
+          },
+          "category": "data",
+          "displayName": "rainfrog",
+          "docs": "https://github.com/achristmascarl/rainfrog#readme",
+          "homepage": "https://github.com/achristmascarl/rainfrog",
+          "id": "brew:rainfrog",
+          "installURL": "pkgmgrmgr://install?package=brew%3Arainfrog",
+          "lastUpdatedAt": "2026-08-17T03:54:25Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/achristmascarl/rainfrog",
+          "researchedAt": "2026-08-17T06:25:37Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "rainfrog project repository",
+              "url": "https://github.com/achristmascarl/rainfrog"
+            },
+            {
+              "kind": "independent",
+              "title": "rainfrog package page in Arch Linux",
+              "url": "https://archlinux.org/packages/extra/x86_64/rainfrog/"
+            }
+          ],
+          "upstreamSummary": "Database management TUI for PostgreSQL/MySQL/SQLite",
+          "version": null
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2025-09-25T00:00:00Z",
+        "firstStableReleaseSourceURL": "https://www.postgresql.org/about/news/postgresql-18-released-3142/",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "PostgreSQL 18 released",
+          "url": "https://www.postgresql.org/about/news/postgresql-18-released-3142/"
+        },
+        {
+          "kind": "primary",
+          "title": "PostgreSQL 18 release notes",
+          "url": "https://www.postgresql.org/docs/18/release-18.html"
+        },
+        {
+          "kind": "independent",
+          "title": "2025 Stack Overflow Developer Survey: Technology",
+          "url": "https://survey.stackoverflow.co/2025/technology/"
+        },
+        {
+          "kind": "independent",
+          "title": "PostgreSQL Europe talk: anonymizing data with pgstream",
+          "url": "https://www.postgresql.eu/events/pgconfeu2025/sessions/session/7067/slides/749/Slides%20Anonymizing%20Data%20in%20Postgres%20Without%20Losing%20Your%20Mind%20%28or%20Your%20Schema%29.pdf"
+        }
+      ],
+      "title": "PostgreSQL 18 Makes the Boring Parts Better",
+      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-11T10:01:00Z",
-  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20260911T100100Z-c4fd05de.json",
-  "pageID": "20260911T100100Z-d80e860a",
+  "generatedAt": "2026-09-10T06:20:30Z",
+  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20260910T062030Z-01be8944.json",
+  "pageID": "20260910T062030Z-43aae36a",
   "schemaVersion": 2
 }

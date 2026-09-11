@@ -2,64 +2,80 @@
   "content": [
     {
       "artwork": {
-        "alt": "Three luminous paths through a dark abstract desktop converge on tiled windows, a widget-rich dock, and a row of window tabs.",
-        "attribution": "Generated with OpenAI image generation",
+        "alt": "Changed coral and amber chunks cross a bridge between layered data blocks while a research notebook unfolds into paper strips.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
         "boxColors": {
-          "backgroundEnd": "#171746",
-          "backgroundStart": "#050B25",
-          "foreground": "#FFFFFF"
+          "backgroundEnd": "#101F2A",
+          "backgroundStart": "#173D50",
+          "foreground": "#F5F0E6"
         },
-        "license": "OpenAI terms of use",
-        "path": "feed/assets/rethinking-mac-desktop-2026-09-07.png"
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/git-xet-changed-chunks.png"
       },
-      "body": "## The desktop is a navigation system\n\nWindow utilities are often sold as cures for dragging and resizing, but the deeper problem is **retrieval**: after opening a browser, editor, terminal, chat, and documentation, how do you return to the exact window you need? macOS offers overlapping windows, Mission Control, app-centric Command-Tab, and a Dock whose icons usually represent applications rather than individual windows. Three current tools challenge that model at different depths.\n\nOmniWM reorganizes the whole workspace. DockDoor Pro turns the Dock into a control surface. Taskbar makes each window a persistent target. They are not interchangeable skins. Each chooses what should remain visible, what should move automatically, and how much configuration the user should own.\n\n## OmniWM makes space flow\n\nOmniWM is the genuinely new entrant. Its first public tagged release appeared on December 25, 2025, and the project has evolved quickly since. The headline layout borrows from Niri: windows sit in columns on a horizontally scrolling strip, so opening another window extends the workspace instead of repeatedly subdividing one fixed screen. A Hyprland-inspired dwindle mode offers more conventional automatic splitting. Workspaces, trackpad gestures, application rules, a command palette, native tab handling, and `omniwmctl` IPC make the system unusually broad for a young Mac utility.\n\nActual use has moved beyond a quiet repository. A community demonstration of version 0.4.0 drew substantial discussion among Niri users, including reports from people trying its multi-monitor support. The feedback is mixed in the useful sense: some users welcome a Linux-like flow on macOS, while others report awkward behavior with multiple displays or unexpected window placement. The upstream discussion history shows the maintainer actively responding to these cases.\n\nThat friction is structural, not simply unfinished polish. macOS window managers generally steer other applications through Accessibility interfaces rather than replacing the operating system's compositor. Apps can expose unusual auxiliary windows, insist on minimum sizes, or react differently when moved. OmniWM also changes quickly: a recent release renamed configuration fields and advanced its IPC protocol, requiring scripts and clients to update together. The current build targets Apple Silicon and macOS 26 or later, even though earlier releases supported macOS 15. This is an ambitious environment for users willing to tune rules and follow releases, not an invisible utility.\n\n## DockDoor Pro concentrates control at the edge\n\nDockDoor Pro leaves windows overlapping but rebuilds the place used to find them. Hover previews expose individual windows; per-display profiles can show different app sets; app focus can switch profiles automatically. The same strip can hold folders, files, app groups, a file tray, media controls, audio-device switching, and widget stacks. A control drawer reaches sleep, restart, shortcuts, and other actions.\n\nThe attraction is consolidation. Instead of memorizing a tiler's directional grammar, a user can keep spatially familiar icons and add richer previews and controls. Independent walkthroughs document the replacement in use, and reviews praise the scope. Yet breadth is also its tax: the official feature inventory advertises more than 300 settings across 16 preference pages. The app can hide the native Dock, but macOS may still surface Apple's Dock in system-controlled places such as Mission Control. Users should expect to spend time deciding which profiles, widgets, gestures, and visual effects actually reduce work.\n\nDockDoor Pro is also a separate commercial product from DockDoor Free. The free app augments Apple's Dock with previews; Pro substitutes its own Dock environment. Running both is generally unnecessary. That distinction matters when evaluating permissions, purchasing, and how difficult it will be to return to stock behavior.\n\n## Taskbar favors one-click certainty\n\nTaskbar begins with a narrower observation: app icons are poor targets when one app owns several windows. Its developer describes trying Command-Tab, Mission Control, Dock menus, and another Windows-style replacement before building a persistent strip of individual window buttons. The benefit is mundane and powerful—targets remain visible and tend to stay in predictable positions, so reaching a particular document can become one click rather than an app switch followed by another selection.\n\nThe project is not new; its developer says it followed roughly eighteen months of development, and the product has continued through multi-monitor work and repeated manual regression testing. That history makes it the conservative comparison here. It does less than DockDoor Pro and imposes less of a worldview than OmniWM. It also remains commercial and closed source, and a permanent task strip consumes screen space.\n\n## Choose the object you want to navigate\n\nThe cleanest decision is to identify the object your attention follows:\n\n- Choose **OmniWM** when you think in workspaces, columns, and keyboard-directed layouts, and accept active configuration.\n- Choose **DockDoor Pro** when applications remain the anchor but the Dock should expose previews, profiles, files, and controls.\n- Choose **Taskbar** when individual windows should remain visible as stable, clickable destinations.\n\nAll three need privileged visibility into windows to deliver their central features, so review requested Accessibility and screen-recording permissions and test with the applications and monitors that define your real workload. A demo with tidy browser windows proves little about IDE dialogs, floating palettes, remote desktops, or apps with rigid dimensions.\n\nThe most interesting lesson is that desktop productivity is not synonymous with maximum automation. OmniWM reduces manual placement by imposing flow; DockDoor Pro reduces trips elsewhere by concentrating controls; Taskbar reduces ambiguity by exposing every destination. The right replacement is the one whose organizing unit matches how you remember your work.",
-      "deck": "OmniWM, DockDoor Pro, and Taskbar challenge different parts of macOS window navigation—and reveal why no single desktop model fits every multitasker.",
-      "id": "editorial:2026-09-07:three-ways-to-rebuild-the-mac-desktop",
-      "primaryPackageID": "brew:cask:omniwm",
-      "publishedAt": "2026-09-07T06:31:55Z",
+      "body": "## When a small revision moves a large file\n\nA research repository can contain a short training notebook beside gigabytes of model weights. A collaborator needs to understand the changed experiment and retrieve its artifacts, but those are different jobs. Git-Xet addresses the transfer side: it is a Git LFS custom transfer agent for uploading and downloading through Hugging Face’s Xet protocol. The familiar Git workflow remains visible while the large-file transport changes underneath it. [The upstream guide](https://github.com/huggingface/xet-core/blob/main/git_xet/README.md) describes that boundary explicitly.\n\nThe useful distinction is **file identity versus shared content**. Two checkpoint files can have different identities while retaining some identical bytes. Xet divides content into chunks and identifies reusable pieces, so a revision need not resend everything that already exists remotely. Its protocol also specifies how stored pieces are assembled into complete files. That makes repeated, related artifacts an interesting workload; entirely different data offers less opportunity for reuse. [The protocol specification](https://huggingface.co/docs/xet/index) explains the mechanism without requiring a universal speed claim.\n\n## A familiar name takes a new direction\n\nXet’s history predates its arrival on the Hub. Hugging Face acquired XetHub in August 2024, and its history documentation describes the move from whole-file deduplication toward reuse below the file level. The current client repository explicitly acknowledges its earlier codebase and a different backend implementation. This is a substantial change in deployment and audience, rather than evidence that the underlying project was invented recently. [Xet history](https://huggingface.co/docs/hub/xet/overview) and the [client repository](https://github.com/huggingface/xet-core) establish that lineage.\n\nThe operational turning point came in 2025. In its July migration account, Hugging Face reported that 500,000 repositories holding 20 petabytes had moved onto Xet during six months. It also described the compatibility bridge that let older clients continue working. Those are the operator’s figures, and they describe the storage platform rather than adoption of the Git-Xet executable specifically. [The migration report](https://huggingface.co/blog/migrating-the-hub-to-xet) provides both scale and an unusually useful account of failures encountered along the way.\n\n## Where the executable is actually used\n\nA concrete example is Hugging Face’s cross-region copying application. Its repository-copying worker fetches Git branches and tags, transfers large objects, and enables Git-Xet locally for the push phase. The implementation preserves repository content and history, while explicitly leaving settings such as privacy, hardware, and secrets for separate handling. This is evidence of an implemented operational workflow, although it does not establish how many people run it. [The application README](https://huggingface.co/spaces/huggingface-projects/hf-cross-region-copy/raw/main/README.md) documents those choices.\n\nThat distinction matters when planning a migration. Moving bytes and commits does not reproduce the surrounding service configuration. A successful copy still needs a review of access settings and other repository behavior. For a team publishing related model revisions, Git-Xet is most relevant when Git is already the interface they want to retain. It adds little conceptual value to a workflow that never uses Git directly.\n\n## Make the notebook readable, too\n\nJupytext addresses the other half of the research repository. It stores notebook inputs as scripts or Markdown and can pair that representation with an ordinary notebook holding outputs. Reviewers can inspect a compact text diff while researchers retain an interactive notebook locally. Text-only storage omits results, so teams must decide which outputs deserve preservation. [Jupytext’s repository](https://github.com/jupytext/jupytext) explains the formats and pairing behavior.\n\nThis is an established companion: its changelog reaches back to the initial converter in June 2018. [The release history](https://github.com/jupytext/jupytext/blob/main/CHANGELOG.md) shows years of development around notebook conversion. Pairing it with Git-Xet is an editorial workflow suggestion, not a claimed integration between the projects. One improves the representation people review; the other improves how large artifacts travel.\n\n## Evaluate the whole round trip\n\nGit-Xet requires configured Git and Git LFS. Python users may already reach the same storage through `huggingface_hub`, so they should check their existing path before adding another tool. [Hugging Face’s usage guide](https://huggingface.co/docs/hub/xet/using-xet-storage) distinguishes those entry points.\n\nA useful evaluation would compare a first upload, a representative revision, and retrieval on another machine. Record transfer time, local resource demands, and whether the resulting repository contains the expected files. Separately, review a notebook change and confirm its retained outputs still make sense. These are suggested checks, not benchmarks performed for this article. The practical goal is a repository that collaborators can both understand and retrieve, with clear boundaries around what each tool preserves.",
+      "deck": "Chunk-based transfers and readable notebooks tackle two different obstacles to sharing research repositories.",
+      "id": "editorial:2026-09-11:git-xet-moving-the-changed-pieces",
+      "primaryPackageID": "brew:git-xet",
+      "publishedAt": "2026-09-11T10:01:00Z",
       "relatedPackageIDs": [
-        "brew:cask:omniwm",
-        "brew:cask:dockdoor-pro",
-        "brew:cask:taskbar"
+        "brew:git-xet",
+        "brew:jupytext"
       ],
       "selection": {
-        "firstStableReleaseAt": "2025-12-25T21:17:10Z",
-        "firstStableReleaseSourceURL": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0",
+        "newerOverride": {
+          "reason": "The documented 2025 move to Hugging Face Hub storage is a major new deployment direction for Xet; the current Git-Xet transfer agent brings that chunk-based backend into Git LFS workflows. This selection does not claim the older Xet project or the CLI has a newly established first stable release.",
+          "sourceURL": "https://huggingface.co/blog/migrating-the-hub-to-xet"
+        },
         "rationale": "newer"
       },
       "sources": [
         {
           "kind": "primary",
-          "title": "OmniWM official site and documentation",
-          "url": "https://omniwm.app/"
+          "title": "Git-Xet transfer agent documentation",
+          "url": "https://github.com/huggingface/xet-core/blob/main/git_xet/README.md"
         },
         {
           "kind": "primary",
-          "title": "OmniWM v0.1.0 first public release",
-          "url": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0"
+          "title": "Xet Protocol Specification",
+          "url": "https://huggingface.co/docs/xet/index"
         },
         {
           "kind": "primary",
-          "title": "DockDoor Pro complete feature list",
-          "url": "https://pro.dockdoor.net/features/"
+          "title": "Xet History and Overview",
+          "url": "https://huggingface.co/docs/hub/xet/overview"
         },
         {
           "kind": "primary",
-          "title": "Taskbar developer introduction and history",
-          "url": "https://lawand.io/taskbar/intro/"
+          "title": "Xet client repository and project lineage",
+          "url": "https://github.com/huggingface/xet-core"
         },
         {
-          "kind": "independent",
-          "title": "Niri community discussion of OmniWM v0.4.0",
-          "url": "https://www.reddit.com/r/niri/comments/1ruh6um/omni_macos_niri_v040/"
+          "kind": "primary",
+          "title": "Migrating the Hub from Git LFS to Xet",
+          "url": "https://huggingface.co/blog/migrating-the-hub-to-xet"
         },
         {
-          "kind": "independent",
-          "title": "ScreencastsOnline DockDoor walkthrough",
-          "url": "https://www.screencastsonline.com/tutorials/macos/dock-tips-dockdoor"
+          "kind": "primary",
+          "title": "Hugging Face cross-region copy implementation",
+          "url": "https://huggingface.co/spaces/huggingface-projects/hf-cross-region-copy/raw/main/README.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Jupytext notebook formats and collaboration",
+          "url": "https://github.com/jupytext/jupytext"
+        },
+        {
+          "kind": "primary",
+          "title": "Jupytext release history",
+          "url": "https://github.com/jupytext/jupytext/blob/main/CHANGELOG.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Using Xet Storage",
+          "url": "https://huggingface.co/docs/hub/xet/using-xet-storage"
         }
       ],
-      "title": "Three Ways to Rebuild the Mac Desktop",
+      "title": "Git-Xet: moving the changed pieces",
       "type": "editorial"
     },
     {
@@ -122,18 +138,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:homebrew-app",
+        "brew:hister",
         "brew:cask:omniwm",
         "brew:cask:open-science",
         "brew:cask:mangodisk",
-        "brew:cask:homebrew-app",
         "brew:cask:agentide",
         "brew:tgrep",
         "brew:cask:zentty",
         "brew:cask:markviewer",
         "brew:sabiql",
         "brew:jcode",
-        "brew:cask:token-monitor",
-        "brew:linecast"
+        "brew:cask:token-monitor"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -141,21 +157,83 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:jupytext",
+        "brew:git-xet",
+        "brew:cask:homebrew-app",
+        "brew:hister",
         "brew:cask:omniwm",
         "brew:cask:open-science",
         "brew:cask:mangodisk",
-        "brew:cask:homebrew-app",
         "brew:cask:agentide",
         "brew:tgrep",
         "brew:cask:zentty",
         "brew:cask:dockdoor-pro",
-        "brew:cask:taskbar",
-        "brew:cask:markviewer",
-        "brew:sabiql",
-        "brew:jcode"
+        "brew:cask:taskbar"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "Three luminous paths through a dark abstract desktop converge on tiled windows, a widget-rich dock, and a row of window tabs.",
+        "attribution": "Generated with OpenAI image generation",
+        "boxColors": {
+          "backgroundEnd": "#171746",
+          "backgroundStart": "#050B25",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/rethinking-mac-desktop-2026-09-07.png"
+      },
+      "body": "## The desktop is a navigation system\n\nWindow utilities are often sold as cures for dragging and resizing, but the deeper problem is **retrieval**: after opening a browser, editor, terminal, chat, and documentation, how do you return to the exact window you need? macOS offers overlapping windows, Mission Control, app-centric Command-Tab, and a Dock whose icons usually represent applications rather than individual windows. Three current tools challenge that model at different depths.\n\nOmniWM reorganizes the whole workspace. DockDoor Pro turns the Dock into a control surface. Taskbar makes each window a persistent target. They are not interchangeable skins. Each chooses what should remain visible, what should move automatically, and how much configuration the user should own.\n\n## OmniWM makes space flow\n\nOmniWM is the genuinely new entrant. Its first public tagged release appeared on December 25, 2025, and the project has evolved quickly since. The headline layout borrows from Niri: windows sit in columns on a horizontally scrolling strip, so opening another window extends the workspace instead of repeatedly subdividing one fixed screen. A Hyprland-inspired dwindle mode offers more conventional automatic splitting. Workspaces, trackpad gestures, application rules, a command palette, native tab handling, and `omniwmctl` IPC make the system unusually broad for a young Mac utility.\n\nActual use has moved beyond a quiet repository. A community demonstration of version 0.4.0 drew substantial discussion among Niri users, including reports from people trying its multi-monitor support. The feedback is mixed in the useful sense: some users welcome a Linux-like flow on macOS, while others report awkward behavior with multiple displays or unexpected window placement. The upstream discussion history shows the maintainer actively responding to these cases.\n\nThat friction is structural, not simply unfinished polish. macOS window managers generally steer other applications through Accessibility interfaces rather than replacing the operating system's compositor. Apps can expose unusual auxiliary windows, insist on minimum sizes, or react differently when moved. OmniWM also changes quickly: a recent release renamed configuration fields and advanced its IPC protocol, requiring scripts and clients to update together. The current build targets Apple Silicon and macOS 26 or later, even though earlier releases supported macOS 15. This is an ambitious environment for users willing to tune rules and follow releases, not an invisible utility.\n\n## DockDoor Pro concentrates control at the edge\n\nDockDoor Pro leaves windows overlapping but rebuilds the place used to find them. Hover previews expose individual windows; per-display profiles can show different app sets; app focus can switch profiles automatically. The same strip can hold folders, files, app groups, a file tray, media controls, audio-device switching, and widget stacks. A control drawer reaches sleep, restart, shortcuts, and other actions.\n\nThe attraction is consolidation. Instead of memorizing a tiler's directional grammar, a user can keep spatially familiar icons and add richer previews and controls. Independent walkthroughs document the replacement in use, and reviews praise the scope. Yet breadth is also its tax: the official feature inventory advertises more than 300 settings across 16 preference pages. The app can hide the native Dock, but macOS may still surface Apple's Dock in system-controlled places such as Mission Control. Users should expect to spend time deciding which profiles, widgets, gestures, and visual effects actually reduce work.\n\nDockDoor Pro is also a separate commercial product from DockDoor Free. The free app augments Apple's Dock with previews; Pro substitutes its own Dock environment. Running both is generally unnecessary. That distinction matters when evaluating permissions, purchasing, and how difficult it will be to return to stock behavior.\n\n## Taskbar favors one-click certainty\n\nTaskbar begins with a narrower observation: app icons are poor targets when one app owns several windows. Its developer describes trying Command-Tab, Mission Control, Dock menus, and another Windows-style replacement before building a persistent strip of individual window buttons. The benefit is mundane and powerful—targets remain visible and tend to stay in predictable positions, so reaching a particular document can become one click rather than an app switch followed by another selection.\n\nThe project is not new; its developer says it followed roughly eighteen months of development, and the product has continued through multi-monitor work and repeated manual regression testing. That history makes it the conservative comparison here. It does less than DockDoor Pro and imposes less of a worldview than OmniWM. It also remains commercial and closed source, and a permanent task strip consumes screen space.\n\n## Choose the object you want to navigate\n\nThe cleanest decision is to identify the object your attention follows:\n\n- Choose **OmniWM** when you think in workspaces, columns, and keyboard-directed layouts, and accept active configuration.\n- Choose **DockDoor Pro** when applications remain the anchor but the Dock should expose previews, profiles, files, and controls.\n- Choose **Taskbar** when individual windows should remain visible as stable, clickable destinations.\n\nAll three need privileged visibility into windows to deliver their central features, so review requested Accessibility and screen-recording permissions and test with the applications and monitors that define your real workload. A demo with tidy browser windows proves little about IDE dialogs, floating palettes, remote desktops, or apps with rigid dimensions.\n\nThe most interesting lesson is that desktop productivity is not synonymous with maximum automation. OmniWM reduces manual placement by imposing flow; DockDoor Pro reduces trips elsewhere by concentrating controls; Taskbar reduces ambiguity by exposing every destination. The right replacement is the one whose organizing unit matches how you remember your work.",
+      "deck": "OmniWM, DockDoor Pro, and Taskbar challenge different parts of macOS window navigation—and reveal why no single desktop model fits every multitasker.",
+      "id": "editorial:2026-09-07:three-ways-to-rebuild-the-mac-desktop",
+      "primaryPackageID": "brew:cask:omniwm",
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "relatedPackageIDs": [
+        "brew:cask:omniwm",
+        "brew:cask:dockdoor-pro",
+        "brew:cask:taskbar"
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2025-12-25T21:17:10Z",
+        "firstStableReleaseSourceURL": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "OmniWM official site and documentation",
+          "url": "https://omniwm.app/"
+        },
+        {
+          "kind": "primary",
+          "title": "OmniWM v0.1.0 first public release",
+          "url": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "primary",
+          "title": "DockDoor Pro complete feature list",
+          "url": "https://pro.dockdoor.net/features/"
+        },
+        {
+          "kind": "primary",
+          "title": "Taskbar developer introduction and history",
+          "url": "https://lawand.io/taskbar/intro/"
+        },
+        {
+          "kind": "independent",
+          "title": "Niri community discussion of OmniWM v0.4.0",
+          "url": "https://www.reddit.com/r/niri/comments/1ruh6um/omni_macos_niri_v040/"
+        },
+        {
+          "kind": "independent",
+          "title": "ScreencastsOnline DockDoor walkthrough",
+          "url": "https://www.screencastsonline.com/tutorials/macos/dock-tips-dockdoor"
+        }
+      ],
+      "title": "Three Ways to Rebuild the Mac Desktop",
+      "type": "editorial"
     },
     {
       "artwork": {
@@ -693,61 +771,9 @@
       ],
       "title": "Terminal Observability Starts With What You Schedule",
       "type": "editorial"
-    },
-    {
-      "artwork": {
-        "alt": "A luminous origami rulebook connects by teal, amber, and violet paths to six abstract developer workspaces on a deep navy background.",
-        "attribution": "Generated with OpenAI image generation",
-        "boxColors": {
-          "backgroundEnd": "#112548",
-          "backgroundStart": "#061329",
-          "foreground": "#FFFFFF"
-        },
-        "license": "OpenAI terms of use",
-        "path": "feed/assets/rulesync-unified-agent-rules.png"
-      },
-      "body": "## Configuration Is Becoming a Compatibility Problem\n\nA repository can now carry instructions for several coding agents: project rules, commands, skills, tool permissions, hooks, ignore lists, and MCP servers. Each agent has useful ideas about filenames and structure, but the formats are not interchangeable. A change to one policy can become a small, error-prone copy-and-paste campaign. The obvious shortcut—keeping only one tool's file—makes the setup less portable and gives contributors different behavior depending on the agent they choose.\n\n**Rulesync** takes a different route. It keeps a source tree for shared AI-agent guidance, imports some existing configurations, and generates target-specific output. Its repository documents targets for Claude Code, Codex CLI, GitHub Copilot, Cursor, OpenCode, and many other tools, alongside an `AGENTS.md` target. The intent is not to claim every agent behaves identically. It is to make the differences explicit while giving the common policy one place to live.\n\n## A Young Tool in a Fast-Moving Space\n\nRulesync published its first stable `0.1.0` release on June 18, 2025. That timing matters: the surrounding agent ecosystem changes quickly, with new configuration surfaces appearing alongside familiar instruction files. The project's release history shows steady iteration, and the documentation tracks feature support per target rather than pretending every output can represent every capability. That is the right posture for a compatibility tool: generation is useful only if it is honest about what can be generated.\n\nThe basic workflow is deliberately small. Initialize a rulesync layout, put reusable rules and components in it, then generate selected targets. Existing repositories can also import tool-specific files before adopting the source-of-truth layout. A conversion command supports direct translation when a repository needs to move from one format to another without immediately adopting a managed tree. Generated files should still be reviewed like any other derived artifact; they influence how tools read, edit, and execute inside a repository.\n\n## What Belongs in the Shared Layer\n\nThe shared layer works best for stable repository facts and working agreements:\n\n- architecture boundaries and naming conventions;\n- test and validation commands;\n- security or data-handling constraints;\n- review expectations and prohibited shortcuts;\n- reusable agent skills and task commands.\n\nIt works less well for instructions that only make sense in a single product. One agent may support a hook event, permission rule, or custom-agent setting that another does not expose. Flattening that distinction can create a configuration that looks standardized but silently loses behavior. Rulesync's supported-tools matrix is useful here: treat it as a compatibility map, not a promise of semantic equivalence. Keep genuinely tool-specific settings scoped to the target that needs them.\n\nA shared file also needs normal software ownership. Put changes through review, pin the generator version where repeatability matters, and decide whether CI should regenerate and fail on a diff. A generated configuration file is not documentation someone can casually edit in a panic; the source layout is the place to make the enduring change. That discipline prevents the source and output from drifting apart.\n\n## Evidence of Use, With Limits\n\nThe upstream repository shows an active project with over a thousand GitHub stars, forks, issue activity, releases, and documentation for a broad set of agent targets. Those signals demonstrate attention and public use beyond an unpublished experiment. They do not measure production deployments, reliability in a particular organization, or the quality of every generated integration. The project is still young enough that a cautious evaluation is sensible.\n\nStart with one repository that already has two or three agent configurations. Import or recreate only the instructions that are actually shared, generate those targets, and inspect the diff line by line. Run each agent's normal workflow against a disposable branch. Pay special attention to permissions, hooks, commands, and MCP settings because those surfaces can have real operational consequences. If the generated output is clearer and remains in sync through one policy change, expand from there.\n\n## Adjacent Tools, Different Jobs\n\nThis pattern is broader than agent configuration. **vfox** offers one command surface for selecting several language runtimes, while recognizing familiar version files; it is a practical companion when teams want fewer per-language setup rituals. **yutu** shows the opposite boundary: it automates authenticated YouTube work, where capabilities are intentionally specific and account permissions matter. Neither tool is a Rulesync substitute, but together they underline the principle: consolidate the policy that is truly shared, and leave specialized behavior close to the system that owns it.\n\nRulesync earns its place when a team already maintains multiple agent files and can name the common rules. For a single agent or a small repository, a well-kept `AGENTS.md` may be all that is needed. The value begins when duplication is real—and ends if the generator obscures more than it removes.",
-      "deck": "A focused CLI for turning one maintained ruleset into the differing files that modern coding agents expect.",
-      "id": "editorial:2026-07-27:rulesync-shared-agent-instructions",
-      "primaryPackageID": "brew:rulesync",
-      "publishedAt": "2026-07-27T13:01:16Z",
-      "relatedPackageIDs": [
-        "brew:rulesync",
-        "brew:vfox",
-        "brew:yutu"
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2025-06-18T14:13:17Z",
-        "firstStableReleaseSourceURL": "https://github.com/dyoshikawa/rulesync/releases/tag/0.1.0",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Rulesync project repository",
-          "url": "https://github.com/dyoshikawa/rulesync"
-        },
-        {
-          "kind": "primary",
-          "title": "Rulesync releases",
-          "url": "https://github.com/dyoshikawa/rulesync/releases"
-        },
-        {
-          "kind": "primary",
-          "title": "Rulesync documentation",
-          "url": "https://rulesync.dyoshikawa.com/"
-        },
-        {
-          "kind": "independent",
-          "title": "AGENTS.md open format",
-          "url": "https://agents.md/"
-        }
-      ],
-      "title": "Rulesync: One Set of Instructions, Many Agents",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-10T06:20:30Z",
+  "generatedAt": "2026-09-11T10:01:00Z",
   "packages": {
     "brew:alive2": {
       "agentSummary": "Alive2 checks whether LLVM IR transformations preserve behavior, offering standalone and compiler-integrated translation validation while explicitly bounding unsupported interprocedural cases and solver limits.",
@@ -1241,32 +1267,26 @@
       "version": "1.3.3"
     },
     "brew:cask:homebrew-app": {
-      "agentSummary": "Homebrew’s native Mac interface exposes package discovery, upgrades, dependencies, and removal while keeping underlying brew operations visible, making routine maintenance approachable for graphical users.",
+      "agentSummary": "BrewUI provides Homebrew’s official native Mac interface for discovering and managing packages, with visible command output and an evolving feature set built around existing brew operations.",
       "assessment": {
         "alternatives": [
-          "Applite",
-          "Cakebrew",
-          "Homebrew CLI"
+          "Use brew directly or another Homebrew GUI."
         ],
         "audiences": [
-          "Mac users who prefer graphical package management"
+          "Mac users who prefer graphical package management."
         ],
         "caveats": [
-          "Requires a recent macOS release",
-          "Operations still depend on Homebrew and its package behavior",
-          "Young interface under active development"
+          "The project remains young and its interface is evolving.",
+          "It manages Homebrew operations rather than isolating applications from their system effects."
         ],
         "complements": [
-          "Homebrew CLI for scripted workflows"
+          "The brew command line and Homebrew package catalog."
         ],
         "prerequisites": [
-          "macOS 26 or later",
-          "Homebrew installation"
+          "A supported macOS system and Homebrew."
         ],
         "useCases": [
-          "Browsing packages",
-          "Reviewing upgrades and dependencies",
-          "Removing installed packages"
+          "Browse packages and manage installed software with a native interface."
         ]
       },
       "category": "system",
@@ -1275,24 +1295,24 @@
       "homepage": "https://github.com/Homebrew/BrewUI",
       "id": "brew:cask:homebrew-app",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahomebrew-app",
-      "lastUpdatedAt": "2026-09-09T14:57:57Z",
+      "lastUpdatedAt": "2026-09-10T16:01:49Z",
       "manager": "homebrew",
       "repository": "https://github.com/Homebrew/BrewUI",
-      "researchedAt": "2026-09-10T06:20:30Z",
+      "researchedAt": "2026-09-11T10:01:00Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "BrewUI upstream documentation",
+          "title": "BrewUI upstream repository",
           "url": "https://github.com/Homebrew/BrewUI"
         },
         {
           "kind": "primary",
-          "title": "BrewUI initial release v0.1.0",
+          "title": "BrewUI initial release",
           "url": "https://github.com/Homebrew/BrewUI/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Homebrew's official GUI",
-      "version": "0.3.0"
+      "version": "0.4.0"
     },
     "brew:cask:mangodisk": {
       "agentSummary": "Open-source storage utility combines disk visualization, duplicate detection, application cleanup, and developer-cache inspection, with scan previews and operation history to support deliberate cleanup decisions.",
@@ -2469,6 +2489,59 @@
       "upstreamSummary": "Command-line fuzzy finder written in Go",
       "version": null
     },
+    "brew:git-xet": {
+      "agentSummary": "Git-Xet connects familiar Git workflows to Hugging Face’s chunk-based storage, reducing redundant large-file transfers while retaining Git LFS as a required integration layer.",
+      "assessment": {
+        "alternatives": [
+          "Use huggingface_hub directly or retain compatible Git LFS transfers."
+        ],
+        "audiences": [
+          "Model publishers and dataset maintainers using Hugging Face Hub."
+        ],
+        "caveats": [
+          "This integration targets Hugging Face storage, not arbitrary Git remotes.",
+          "Deduplication savings depend on shared content; it does not guarantee a fixed speedup."
+        ],
+        "complements": [
+          "Jupytext for readable notebook inputs; huggingface_hub for Python workflows."
+        ],
+        "prerequisites": [
+          "Configured Git, Git LFS, and appropriate Hub access."
+        ],
+        "useCases": [
+          "Transfer revisions of large binary files through Git."
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "git-xet",
+      "docs": "https://github.com/xetdata/xet-core#readme",
+      "homepage": "https://github.com/huggingface/xet-core",
+      "id": "brew:git-xet",
+      "installURL": "pkgmgrmgr://install?package=brew%3Agit-xet",
+      "lastUpdatedAt": "2026-09-11T08:37:00Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/huggingface/xet-core",
+      "researchedAt": "2026-09-11T10:01:00Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Git-Xet transfer agent documentation",
+          "url": "https://github.com/huggingface/xet-core/blob/main/git_xet/README.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Xet client repository and project lineage",
+          "url": "https://github.com/huggingface/xet-core"
+        },
+        {
+          "kind": "primary",
+          "title": "Using Xet Storage",
+          "url": "https://huggingface.co/docs/hub/xet/using-xet-storage"
+        }
+      ],
+      "upstreamSummary": "Git LFS plugin that uploads and downloads using the Xet protocol",
+      "version": "0.2.1"
+    },
     "brew:hermes-agent": {
       "agentSummary": "Hermes Agent is a model-flexible personal agent that runs locally or remotely, retains conversational memory, and turns repeated work into reusable skills.",
       "assessment": {
@@ -2530,6 +2603,54 @@
       ],
       "upstreamSummary": "Self-improving AI agent that creates skills from experience",
       "version": null
+    },
+    "brew:hister": {
+      "agentSummary": "Hister builds a self-hosted search index of visited pages and imported documents, helping researchers recover useful material while taking responsibility for capture rules and storage.",
+      "assessment": {
+        "alternatives": [
+          "Built-in browser history or a dedicated bookmark archive."
+        ],
+        "audiences": [
+          "Researchers and readers who repeatedly revisit online material."
+        ],
+        "caveats": [
+          "Captured pages can contain private information; configure indexing exclusions and access controls.",
+          "Self-hosting requires storage, backups, and maintenance."
+        ],
+        "complements": [
+          "Browser bookmarks and document collections."
+        ],
+        "prerequisites": [
+          "A running Hister server and browser extension for live capture."
+        ],
+        "useCases": [
+          "Search captured browsing content and imported documents."
+        ]
+      },
+      "category": "productivity",
+      "displayName": "hister",
+      "docs": "https://hister.org/docs",
+      "homepage": "https://hister.org/",
+      "id": "brew:hister",
+      "installURL": "pkgmgrmgr://install?package=brew%3Ahister",
+      "lastUpdatedAt": "2026-09-10T09:19:41Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/asciimoo/hister",
+      "researchedAt": "2026-09-11T10:01:00Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Hister upstream repository",
+          "url": "https://github.com/asciimoo/hister"
+        },
+        {
+          "kind": "primary",
+          "title": "Hister documentation",
+          "url": "https://hister.org/docs"
+        }
+      ],
+      "upstreamSummary": "Self-hosted search engine for your browsing history",
+      "version": "0.19.0"
     },
     "brew:httpx2": {
       "agentSummary": "HTTPX2 is Pydantic’s next-generation Python HTTP client, aiming to provide an ergonomic asynchronous and synchronous request interface for applications that need modern transport behavior.",
@@ -2699,6 +2820,54 @@
       ],
       "upstreamSummary": "AI coding agent harness for the terminal",
       "version": "0.81.7"
+    },
+    "brew:jupytext": {
+      "agentSummary": "Jupytext represents notebook inputs as scripts or Markdown, making code review and editor workflows easier while paired notebooks retain outputs in a separate notebook file.",
+      "assessment": {
+        "alternatives": [
+          "Keep native notebooks and use notebook-aware diff tools."
+        ],
+        "audiences": [
+          "Researchers reviewing notebook code in Git."
+        ],
+        "caveats": [
+          "Text representations omit outputs.",
+          "Concurrent edits to paired files require careful synchronization."
+        ],
+        "complements": [
+          "Git-Xet for large model artifacts; JupyterLab for interactive work."
+        ],
+        "prerequisites": [
+          "Python; Jupyter integration belongs in the environment running the server."
+        ],
+        "useCases": [
+          "Review notebook inputs as text and edit them in an IDE."
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "jupytext",
+      "docs": "https://jupytext.readthedocs.io/en/latest",
+      "homepage": "https://jupytext.readthedocs.io/en/latest/",
+      "id": "brew:jupytext",
+      "installURL": "pkgmgrmgr://install?package=brew%3Ajupytext",
+      "lastUpdatedAt": "2026-09-11T09:05:58Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/mwouts/jupytext",
+      "researchedAt": "2026-09-11T10:01:00Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Jupytext notebook formats and collaboration",
+          "url": "https://github.com/jupytext/jupytext"
+        },
+        {
+          "kind": "primary",
+          "title": "Jupytext release history",
+          "url": "https://github.com/jupytext/jupytext/blob/main/CHANGELOG.md"
+        }
+      ],
+      "upstreamSummary": "Jupyter notebooks as Markdown documents, Julia, Python or R scripts",
+      "version": "1.19.5"
     },
     "brew:letta-code": {
       "agentSummary": "Memory-first coding agent that preserves learned context across sessions, models, and machines, with local operation available alongside optional hosted synchronization and remote environments.",
@@ -3893,60 +4062,6 @@
       "upstreamSummary": "Hardware-accelerated GPU terminal emulator powered by WebGPU",
       "version": "0.5.27"
     },
-    "brew:rulesync": {
-      "agentSummary": "Rulesync keeps AI coding-agent instructions in one source tree, then generates and imports tool-specific rules, commands, skills, hooks, permissions, and MCP configuration.",
-      "assessment": {
-        "alternatives": [
-          "Maintaining each agent configuration by hand",
-          "Using only a cross-tool AGENTS.md file"
-        ],
-        "audiences": [
-          "Teams using more than one AI coding agent",
-          "Maintainers standardizing repository guidance"
-        ],
-        "caveats": [
-          "Tool capabilities and file formats differ, so generated output cannot make every feature portable",
-          "A shared source still needs careful ownership and review"
-        ],
-        "complements": [
-          "Version control review",
-          "Repository-local AGENTS.md guidance",
-          "CI checks for generated configuration"
-        ],
-        "prerequisites": [
-          "A repository with AI-agent configuration worth maintaining",
-          "Time to review generated files before committing them"
-        ],
-        "useCases": [
-          "Generating agent-specific configuration from shared rules",
-          "Migrating existing agent instructions into a managed source tree"
-        ]
-      },
-      "category": "ai",
-      "displayName": "rulesync",
-      "docs": "https://rulesync.dyoshikawa.com/",
-      "homepage": "https://github.com/dyoshikawa/rulesync",
-      "id": "brew:rulesync",
-      "installURL": "pkgmgrmgr://install?package=brew%3Arulesync",
-      "lastUpdatedAt": "2026-07-26T04:19:04Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/dyoshikawa/rulesync",
-      "researchedAt": "2026-07-27T13:01:16Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Rulesync project repository",
-          "url": "https://github.com/dyoshikawa/rulesync"
-        },
-        {
-          "kind": "primary",
-          "title": "Rulesync documentation",
-          "url": "https://rulesync.dyoshikawa.com/"
-        }
-      ],
-      "upstreamSummary": "Unified AI rules management CLI tool",
-      "version": null
-    },
     "brew:rumdl": {
       "agentSummary": "Rust Markdown linter and formatter with configurable rules, automatic markdownlint configuration discovery, editor integration, CI reporting, and dedicated pre-commit-compatible hooks.",
       "assessment": {
@@ -4417,60 +4532,6 @@
       "upstreamSummary": "Live USB device tree in your terminal",
       "version": null
     },
-    "brew:vfox": {
-      "agentSummary": "vfox is a cross-platform, plugin-driven SDK version manager that installs and selects language runtimes globally or per project while recognizing several existing version files.",
-      "assessment": {
-        "alternatives": [
-          "asdf for a long-established plugin ecosystem",
-          "Dedicated managers such as nvm, pyenv, or sdkman"
-        ],
-        "audiences": [
-          "Developers who work across several language runtimes",
-          "Teams seeking one version-manager command surface"
-        ],
-        "caveats": [
-          "Plugin quality and maintenance vary by runtime",
-          "Shell hooks add another startup integration to support"
-        ],
-        "complements": [
-          "Pinned runtime files",
-          "CI runtime setup",
-          "Project onboarding documentation"
-        ],
-        "prerequisites": [
-          "A shell activation hook",
-          "Plugins for the runtimes a project needs"
-        ],
-        "useCases": [
-          "Selecting project-specific Node, Python, Go, or Java versions",
-          "Migrating from existing runtime-version files"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "vfox",
-      "docs": "https://vfox.dev/",
-      "homepage": "https://vfox.dev/",
-      "id": "brew:vfox",
-      "installURL": "pkgmgrmgr://install?package=brew%3Avfox",
-      "lastUpdatedAt": "2026-07-25T22:30:01Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/version-fox/vfox",
-      "researchedAt": "2026-07-27T13:01:16Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "vfox project repository",
-          "url": "https://github.com/version-fox/vfox"
-        },
-        {
-          "kind": "primary",
-          "title": "vfox documentation",
-          "url": "https://vfox.dev/"
-        }
-      ],
-      "upstreamSummary": "Version manager with support for Java, Node.js, Flutter, .NET & more",
-      "version": null
-    },
     "brew:vi-sql": {
       "agentSummary": "vi-sql is a customizable terminal database client with Vim-style navigation, multiple SQL backends, schema browsing, query plans, encrypted credentials, exports, and an MCP server.",
       "assessment": {
@@ -4531,65 +4592,11 @@
       ],
       "upstreamSummary": "Terminal UI for SQL databases",
       "version": null
-    },
-    "brew:yutu": {
-      "agentSummary": "yutu is an AI-assisted command-line and agent toolkit for authenticated YouTube workflows, including research, uploads, metadata, playlists, comments, captions, and channel management.",
-      "assessment": {
-        "alternatives": [
-          "YouTube Studio for manual management",
-          "Purpose-built scripts using the YouTube Data API"
-        ],
-        "audiences": [
-          "YouTube channel operators comfortable with command-line tools",
-          "Developers automating approved YouTube workflows"
-        ],
-        "caveats": [
-          "Automation can make consequential public changes",
-          "OAuth tokens and channel permissions require careful handling"
-        ],
-        "complements": [
-          "YouTube Studio",
-          "Secure credential storage",
-          "A human editorial review process"
-        ],
-        "prerequisites": [
-          "A Google OAuth client and authorized YouTube account",
-          "Understanding of YouTube permissions and API quotas"
-        ],
-        "useCases": [
-          "Managing video metadata and playlists",
-          "Researching channel and video information through authenticated APIs"
-        ]
-      },
-      "category": "ai",
-      "displayName": "yutu",
-      "docs": "https://github.com/eat-pray-ai/yutu#readme",
-      "homepage": "https://yutu.ifor.dev",
-      "id": "brew:yutu",
-      "installURL": "pkgmgrmgr://install?package=brew%3Ayutu",
-      "lastUpdatedAt": "2026-07-25T22:12:53Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/eat-pray-ai/yutu",
-      "researchedAt": "2026-07-27T13:01:16Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "yutu project repository",
-          "url": "https://github.com/eat-pray-ai/yutu"
-        },
-        {
-          "kind": "primary",
-          "title": "yutu product documentation",
-          "url": "https://yutu.ifor.dev/"
-        }
-      ],
-      "upstreamSummary": "MCP server and CLI for YouTube",
-      "version": null
     }
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-10T06:19:29Z",
+    "generatedAt": "2026-09-11T09:58:50Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
