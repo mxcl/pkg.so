@@ -12,7 +12,11 @@ config-file-location:
     - /etc/swtpm_setup.conf
     - /etc/swtpm-localca.conf
     - /etc/swtpm-localca.options
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ${XDG_CONFIG_HOME}/swtpm-localca.conf
+    - ${HOME}/.config/swtpm-localca.conf
+    - /etc/swtpm-localca.conf
 history:
   adoption-history:
     - >
