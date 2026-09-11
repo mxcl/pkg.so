@@ -268,7 +268,7 @@ def unresolved_cask_app_associations(
             "candidate_bundle_identifiers": sorted(candidates),
             "evidence_hash": evidence_hash,
         })
-    return sorted(unresolved, key=lambda item: item["token"])
+    return sorted(unresolved, key=lambda item: (not bool(item["candidate_bundle_identifiers"]), item["token"]))
 
 
 def app_catalog_from_casks(

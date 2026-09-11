@@ -93,6 +93,26 @@ class CaskAuthorityTests(unittest.TestCase):
         self.assertEqual(casks, {})
         self.assertEqual([item["token"] for item in unresolved], ["google-chrome"])
 
+    def test_unresolved_apps_with_bundle_identifier_evidence_are_prioritized(self):
+        unresolved = unresolved_cask_app_associations([
+            {
+                "token": "aardvark",
+                "artifacts": [{"app": ["Aardvark.app"]}],
+            },
+            {
+                "token": "claude",
+                "artifacts": [
+                    {"app": ["Claude.app"]},
+                    {"uninstall": [{"quit": [
+                        "com.anthropic.claudefordesktop",
+                        "com.anthropic.claudefordesktop.helper",
+                    ]}]},
+                ],
+            },
+        ])
+
+        self.assertEqual([item["token"] for item in unresolved], ["claude", "aardvark"])
+
     def test_bundle_identifier_rejects_empty_segments(self):
         self.assertFalse(is_bundle_identifier("com.google.Chrome."))
 

@@ -207,17 +207,21 @@ def main() -> int:
 
     run([py, "scripts/build-db.py", "--refresh", "--npm-full-scan-parts=7"])
     run([py, "scripts/build.py", "--refresh"])
+    if (
+        not args.skip_enrichment
+        and args.cask_association_limit > 0
+        and os.environ.get("AVDB_ENRICH_BACKEND") == "codex-cli"
+    ):
+        run([
+            py,
+            "scripts/resolve-cask-app-associations.py",
+            "--limit",
+            str(args.cask_association_limit),
+            "--batch-size",
+            str(args.cask_association_batch_size),
+        ])
+        run([py, "scripts/build.py"])
     if not args.skip_enrichment and args.enrich_limit > 0:
-        if os.environ.get("AVDB_ENRICH_BACKEND") == "codex-cli":
-            run([
-                py,
-                "scripts/resolve-cask-app-associations.py",
-                "--limit",
-                str(args.cask_association_limit),
-                "--batch-size",
-                str(args.cask_association_batch_size),
-            ])
-            run([py, "scripts/build.py"])
         command = [
             py,
             "scripts/enrich-projects.py",

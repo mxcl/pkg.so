@@ -93,6 +93,23 @@ class HourlyMaintenanceTests(unittest.TestCase):
             commands,
         )
 
+    def test_cask_resolution_does_not_depend_on_project_enrichment_limit(self):
+        maintenance = load_hourly_maintenance()
+        with (
+            mock.patch.dict("os.environ", {"AVDB_ENRICH_BACKEND": "codex-cli"}),
+            mock.patch.object(
+                sys,
+                "argv",
+                ["hourly-maintenance.py", "--no-commit", "--skip-sqlite", "--enrich-limit", "0"],
+            ),
+            mock.patch.object(maintenance, "run") as run,
+        ):
+            self.assertEqual(maintenance.main(), 0)
+
+        commands = [call.args[0] for call in run.call_args_list]
+        self.assertTrue(any("scripts/resolve-cask-app-associations.py" in command for command in commands))
+        self.assertFalse(any("scripts/enrich-projects.py" in command for command in commands))
+
     def test_snapshots_dirty_paths_before_running_commit_flow(self):
         maintenance = load_hourly_maintenance()
 
