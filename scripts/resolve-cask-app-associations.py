@@ -76,6 +76,10 @@ def write_output_schema(path: Path, tokens: list[str]) -> None:
 def invoke_codex(input_path: Path, output_path: Path, schema_path: Path) -> None:
     command = [
         "codex",
+        "--model",
+        "gpt-5.6",
+        "--config",
+        'model_reasoning_effort="medium"',
         "--search",
         "--ask-for-approval",
         "never",

@@ -150,6 +150,10 @@ def invoke_codex(prompt_path: Path, output_path: Path, output_schema_path: Path)
     prompt = prompt_path.read_text(encoding="utf-8")
     command = [
         "codex",
+        "--model",
+        "gpt-5.6",
+        "--config",
+        'model_reasoning_effort="medium"',
         "--search",
         "--ask-for-approval",
         "never",
