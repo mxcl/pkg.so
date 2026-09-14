@@ -67,6 +67,9 @@ def project_record(formula: dict[str, Any], executables: list[str], matcher: dic
 
 def cask_project_record(token: str, metadata: dict[str, Any], executables: list[str]) -> dict[str, Any] | None:
     applications = sorted(set(item for item in metadata.get("applications", []) if isinstance(item, str) and item))
+    version = metadata.get("version")
+    if isinstance(version, str) and version:
+        applications = [item for item in applications if version not in item]
     if not token or not (executables or applications):
         return None
     homepage = metadata.get("homepage") if isinstance(metadata.get("homepage"), str) else ""

@@ -111,8 +111,6 @@ def validated_results(payload: Any, expected_tokens: set[str]) -> list[dict[str,
         confidence = item.get("confidence")
         sources = item.get("sources")
         reason = item.get("reason")
-        if bundle_identifier is not None and not is_bundle_identifier(bundle_identifier):
-            raise ValueError(f"{item['token']}: invalid bundle identifier")
         if confidence not in {"high", "medium", "low"}:
             raise ValueError(f"{item['token']}: invalid confidence")
         if not isinstance(sources, list) or not sources or not all(
@@ -121,6 +119,10 @@ def validated_results(payload: Any, expected_tokens: set[str]) -> list[dict[str,
             raise ValueError(f"{item['token']}: sources must be non-empty HTTPS URLs")
         if not isinstance(reason, str) or not reason.strip():
             raise ValueError(f"{item['token']}: reason is required")
+        if bundle_identifier is not None and not is_bundle_identifier(bundle_identifier):
+            print(f"WARN: {item['token']}: invalid bundle identifier; leaving unresolved", file=sys.stderr)
+            item["bundle_identifier"] = None
+            item["confidence"] = "low"
     return results
 
 
