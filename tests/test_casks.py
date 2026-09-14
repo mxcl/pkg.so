@@ -218,6 +218,67 @@ class CaskAuthorityTests(unittest.TestCase):
             "com.anthropic.claudefordesktop": {"cask": "claude", "version_source": "cask"}
         })
 
+    def test_app_catalog_prefers_stable_cask_over_channel_variants(self):
+        casks = [
+            {
+                "token": token,
+                "version": version,
+                "artifacts": [
+                    {"app": ["Fork.app"]},
+                    {"zap": [{"trash": [
+                        "~/Library/Caches/com.DanPristupov.Fork",
+                        "~/Library/Preferences/com.DanPristupov.Fork.plist",
+                    ]}]},
+                ],
+            }
+            for token, version in (("fork@dev", "9.0-dev"), ("fork", "2.0"))
+        ]
+
+        apps, app_casks = app_catalog_from_casks(casks)
+
+        self.assertEqual(apps["com.DanPristupov.Fork"]["cask"], "fork")
+        self.assertEqual(app_casks["fork"]["version"], "2.0")
+        self.assertNotIn("fork@dev", app_casks)
+
+    def test_app_catalog_does_not_choose_among_distinct_products(self):
+        casks = [
+            {
+                "token": token,
+                "artifacts": [
+                    {"app": [app]},
+                    {"zap": [{"trash": [
+                        "~/Library/Caches/com.example.shared",
+                        "~/Library/Preferences/com.example.shared.plist",
+                    ]}]},
+                ],
+            }
+            for token, app in (("product", "Product.app"), ("product-mono", "Product Mono.app"))
+        ]
+
+        apps, app_casks = app_catalog_from_casks(casks)
+
+        self.assertNotIn("com.example.shared", apps)
+        self.assertNotIn("product", app_casks)
+
+    def test_app_catalog_does_not_conflate_differently_named_channel_apps(self):
+        casks = [
+            {
+                "token": token,
+                "artifacts": [
+                    {"app": [app]},
+                    {"zap": [{"trash": [
+                        "~/Library/Caches/app.example.shared",
+                        "~/Library/Preferences/app.example.shared.plist",
+                    ]}]},
+                ],
+            }
+            for token, app in (("zen", "Zen.app"), ("zen@twilight", "Twilight.app"))
+        ]
+
+        apps, _ = app_catalog_from_casks(casks)
+
+        self.assertNotIn("app.example.shared", apps)
+
     def test_app_catalog_associates_vlc_by_repeated_zap_bundle_identifier(self):
         apps, casks = app_catalog_from_casks([
             {

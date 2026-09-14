@@ -320,7 +320,17 @@ def app_catalog_from_casks(
     app_casks = {}
     for bundle_identifier, matches in candidates.items():
         if len(matches) != 1:
-            continue
+            stable = [
+                match for match in matches
+                if "@" not in match[0] and all(
+                    other[0].startswith(f"{match[0]}@")
+                    and other[1]["applications"] == match[1]["applications"]
+                    for other in matches if other is not match
+                )
+            ]
+            if len(stable) != 1:
+                continue
+            matches = stable
         token, metadata = matches[0]
         apps[bundle_identifier] = {"cask": token, "version_source": "cask"}
         app_casks[token] = metadata
