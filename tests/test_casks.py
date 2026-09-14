@@ -116,6 +116,23 @@ class CaskAuthorityTests(unittest.TestCase):
     def test_bundle_identifier_rejects_empty_segments(self):
         self.assertFalse(is_bundle_identifier("com.google.Chrome."))
 
+    def test_bundle_identifier_accepts_two_segments(self):
+        self.assertTrue(is_bundle_identifier("notion.id"))
+
+    def test_versioned_zap_path_is_not_inferred_as_two_segment_bundle_id(self):
+        apps, _ = app_catalog_from_casks([{
+            "token": "rider",
+            "artifacts": [
+                {"app": ["Rider.app"]},
+                {"zap": [{"trash": [
+                    "~/Library/Caches/Rider2026.2",
+                    "~/Library/Preferences/Rider2026.2.plist",
+                ]}]},
+            ],
+        }])
+
+        self.assertNotIn("Rider2026.2", apps)
+
     def test_formula_authority_gets_version_from_brew_cache_not_yaml(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

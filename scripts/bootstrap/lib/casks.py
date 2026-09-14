@@ -348,7 +348,7 @@ def artifact_values(value: Any) -> list[str]:
 def is_bundle_identifier(value: Any) -> bool:
     return (
         isinstance(value, str)
-        and value.count(".") >= 2
+        and value.count(".") >= 1
         and all(value.split("."))
         and all(character.isalnum() or character in ".-" for character in value)
     )
@@ -362,7 +362,7 @@ def zap_bundle_identifier(path: Any) -> str | None:
         if leaf.endswith(suffix):
             leaf = leaf.removesuffix(suffix).rstrip("*")
             break
-    if leaf.startswith("com.apple.") or not is_bundle_identifier(leaf):
+    if leaf.count(".") < 2 or leaf.startswith("com.apple.") or not is_bundle_identifier(leaf):
         return None
     return leaf
 
