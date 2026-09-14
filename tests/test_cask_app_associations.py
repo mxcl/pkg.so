@@ -56,6 +56,21 @@ class CaskAppAssociationAgentTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             module.validated_results({"results": [result, result]}, {"google-chrome", "firefox"})
 
+    def test_invalid_identifier_is_left_unresolved(self):
+        module = load_module()
+        result = {
+            "token": "brightvpn",
+            "bundle_identifier": "not an identifier",
+            "confidence": "high",
+            "sources": ["https://formulae.brew.sh/cask/brightvpn"],
+            "reason": "Inconclusive candidate.",
+        }
+
+        validated = module.validated_results({"results": [result]}, {"brightvpn"})
+
+        self.assertIsNone(validated[0]["bundle_identifier"])
+        self.assertEqual(validated[0]["confidence"], "low")
+
 
 if __name__ == "__main__":
     unittest.main()

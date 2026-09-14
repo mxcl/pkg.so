@@ -392,6 +392,13 @@ class CaskAuthorityTests(unittest.TestCase):
         self.assertNotIn("executables", record)
         self.assertNotIn("version", record)
 
+    def test_cask_project_record_omits_versioned_application_names(self):
+        self.assertIsNone(cask_project_record(
+            "butterkit",
+            {"version": "2.3.02", "applications": ["ButterKit-Direct-2.3.02-macOS.app"]},
+            [],
+        ))
+
 
 if __name__ == "__main__":
     unittest.main()
