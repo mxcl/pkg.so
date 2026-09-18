@@ -1,6 +1,5 @@
 id: cask:docker-desktop
 display-name: Docker Desktop
-homepage: https://www.docker.com/products/docker-desktop
 repo: null
 docs:
   - https://docs.docker.com/desktop
@@ -91,10 +90,6 @@ history:
       The application supplies desktop-friendly lifecycle and resource controls while
       retaining scriptable Docker commands, allowing local workflows to resemble CI and
       deployment workflows.
-category: developer-tools
-package-manager:
-  brew-cask: docker-desktop
-package-manager-url: https://formulae.brew.sh/cask/docker-desktop
 tags:
   - containerization
   - containers
@@ -102,12 +97,44 @@ tags:
   - docker
   - docker-compose
   - kubernetes
-description: App to build and share containerised applications and microservices
-applications:
-  - Docker.app
 provenance:
-  cask: docker-desktop
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - docker
+  category-sources:
+    - >
+      Official product page: https://www.docker.com/products/docker-desktop/ describes
+      an integrated container-development environment.
+    - >
+      source_facts.description identifies building and sharing containerized
+      applications and microservices.
+  display-name-sources:
+    - 'Official product heading: https://www.docker.com/products/docker-desktop/'
+    - current_curation.display-name
+  docs-sources:
+    - Dedicated official Docker Desktop documentation.
+  history-sources:
+    - https://docs.docker.com/get-started/docker-overview/
+    - https://www.docker.com/blog/docker-hearts-wsl-2/
+    - https://www.docker.com/blog/docker-windows-desktop-now-kubernetes/
+    - https://www.docker.com/blog/getting-started-with-docker-desktop/
+    - https://www.docker.com/products/docker-desktop/
+  repo-sources:
+    - >
+      Docker's official GitHub organization describes docker/desktop-feedback as a
+      feedback repository, while docker/for-mac explicitly identifies itself as an issue
+      tracker rather than the Docker Desktop source repository. No official public
+      source repository for the complete Docker Desktop product is identified.
+  tags-sources:
+    - >
+      https://docs.docker.com/get-started/docker-overview/ lists the principal bundled
+      components.
+    - >
+      https://www.docker.com/products/docker-desktop/ documents Engine, CLI, Compose,
+      Build, Kubernetes, volumes, and development workflows.
+category-confidence: high
+category-path:
+  - developer-tools
+  - containers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
