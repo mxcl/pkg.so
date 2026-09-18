@@ -1,11 +1,11 @@
 id: cask:nrfutil
 display-name: nRF Util
-homepage: https://www.nordicsemi.com/Products/Development-tools/nrf-util
 repo: null
 docs:
   - https://docs.nordicsemi.com/bundle/nrfutil
 config-file-location:
-  unix: ~/.nrfutil/config
+  unix:
+    - ~/.nrfutil/config
 credentials-file-location: null
 history:
   adoption-history:
@@ -55,10 +55,6 @@ history:
       commands, and install capabilities such as `device`, `toolchain-manager`, `trace`,
       or `ble-sniffer`. Typical uses include programming and recovering devices,
       managing SDK toolchains, creating DFU packages, and capturing diagnostic data.
-category: developer-tools
-package-manager:
-  brew-cask: nrfutil
-package-manager-url: https://formulae.brew.sh/cask/nrfutil
 tags:
   - cli
   - device-programming
@@ -67,10 +63,38 @@ tags:
   - firmware
   - nordic-semiconductor
   - toolchain-management
-description: Unified CLI utility for Nordic Semiconductor products
-executables:
-  - nrfutil
 provenance:
-  cask: nrfutil
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official nRF Util product page describes a unified command-line utility for Nordic
+      products, including device programming, DFU, tracing, sniffing, and toolchain
+      management.
+    - source_facts.description
+  display-name-sources:
+    - https://docs.nordicsemi.com/bundle/nrfutil/
+    - https://www.nordicsemi.com/Products/Development-tools/nRF-Util
+  docs-sources:
+    - Nordic Semiconductor's dedicated nRF Util documentation.
+  history-sources:
+    - https://docs.nordicsemi.com/bundle/nrfutil/
+    - https://github.com/NordicSemiconductor/pc-nrfutil
+    - https://www.nordicsemi.com/Products/Development-tools/nRF-Util
+  repo-sources:
+    - >
+      The official `NordicSemiconductor/pc-nrfutil` repository is explicitly archived
+      and identifies itself as the deprecated predecessor, so it is not returned as the
+      current repository.
+    - >
+      The official current product and documentation pages do not identify a public
+      source repository.
+  tags-sources:
+    - Official nRF Util product page and documentation.
+category-confidence: high
+category-path:
+  - developer-tools
+  - embedded-development
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

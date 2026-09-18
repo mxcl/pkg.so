@@ -1,17 +1,20 @@
 id: cask:nvidia-pair
 display-name: NVIDIA Personal AI Router
-homepage: https://github.com/NVIDIA/Personal-AI-Router
-repo: https://github.com/NVIDIA/Personal-AI-Router
+repo: null
 docs:
   - https://github.com/NVIDIA/Personal-AI-Router/blob/main/docs/getting-started.mdx
   - https://github.com/NVIDIA/Personal-AI-Router/blob/main/docs/overview.mdx
   - https://github.com/NVIDIA/Personal-AI-Router/blob/main/README.md
 config-file-location:
-  linux: ~/.config/Nvidia Corporation/Personal AI Router
-  windows: '%LOCALAPPDATA%\Nvidia Corporation\Personal AI Router'
+  linux:
+    - ~/.config/Nvidia Corporation/Personal AI Router
+  windows:
+    - '%LOCALAPPDATA%\Nvidia Corporation\Personal AI Router'
 credentials-file-location:
-  linux: ~/.config/Nvidia Corporation/Personal AI Router/cluster
-  windows: '%LOCALAPPDATA%\Nvidia Corporation\Personal AI Router\cluster'
+  linux:
+    - ~/.config/Nvidia Corporation/Personal AI Router/cluster
+  windows:
+    - '%LOCALAPPDATA%\Nvidia Corporation\Personal AI Router\cluster'
 history:
   adoption-history:
     - >
@@ -57,10 +60,6 @@ history:
       six-digit PIN, start or adopt an Ollama or LM Studio engine, add models, and point
       compatible applications at PAIR's local proxy endpoint. PAIR selects an eligible
       node according to engine availability, model availability, and workload.
-category: ai
-package-manager:
-  brew-cask: nvidia-pair
-package-manager-url: https://formulae.brew.sh/cask/nvidia-pair
 tags:
   - distributed-computing
   - inference-routing
@@ -69,10 +68,35 @@ tags:
   - ollama
   - openai-compatible
   - self-hosted
-description: Local inference router for a group of compatible computers
-applications:
-  - PAIR.app
 provenance:
-  cask: nvidia-pair
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official NVIDIA repository describes PAIR as a local inference router for
+      compatible computers on the same network.
+    - source_facts.description
+  display-name-sources:
+    - https://github.com/NVIDIA/Personal-AI-Router/blob/main/README.md
+    - source_facts.description
+  docs-sources:
+    - Official NVIDIA repository README and project guides.
+  history-sources:
+    - https://github.com/NVIDIA/Personal-AI-Router
+    - https://github.com/NVIDIA/Personal-AI-Router/blob/main/docs/getting-started.mdx
+    - https://github.com/NVIDIA/Personal-AI-Router/blob/main/docs/overview.mdx
+    - https://github.com/NVIDIA/Personal-AI-Router/releases
+  repo-sources:
+    - >
+      source_facts.repo already contains `https://github.com/NVIDIA/Personal-AI-Router`;
+      repo is therefore returned as null as required.
+  tags-sources:
+    - Official NVIDIA README, overview, and getting-started guide.
+category-confidence: high
+category-path:
+  - ai
+  - local-inference
+  - routing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,15 +1,17 @@
 id: cask:obs
 display-name: OBS Studio
-homepage: https://obsproject.com/
 repo: https://github.com/obsproject/obs-studio
 docs:
   - https://docs.obsproject.com/
   - https://github.com/obsproject/obs-studio/wiki
   - https://obsproject.com/kb
 config-file-location:
-  linux: ~/.config/obs-studio
-  macos: ~/Library/Application Support/obs-studio
-  windows: '%APPDATA%\obs-studio'
+  linux:
+    - ~/.config/obs-studio
+  macos:
+    - ~/Library/Application Support/obs-studio
+  windows:
+    - '%APPDATA%\obs-studio'
 credentials-file-location: null
 history:
   adoption-history:
@@ -67,10 +69,6 @@ history:
       scenes, switch or transition between scenes, mix audio, and record locally or
       stream to a configured service. Profiles separate output and service settings,
       while scene collections separate production layouts.
-category: media
-package-manager:
-  brew-cask: obs
-package-manager-url: https://formulae.brew.sh/cask/obs
 tags:
   - broadcasting
   - live-streaming
@@ -79,10 +77,37 @@ tags:
   - screen-recording
   - screencasting
   - video-recording
-description: Open-source software for live streaming and screen recording
-applications:
-  - OBS.app
 provenance:
-  cask: obs
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official OBS repository and knowledge base describe OBS Studio as software for
+      capturing, compositing, encoding, recording, and streaming video.
+    - source_facts.description
+  display-name-sources:
+    - https://github.com/obsproject/obs-studio
+    - https://obsproject.com/
+  docs-sources:
+    - >
+      Official OBS Knowledge Base and project wiki provide user guides; the official
+      documentation domain provides developer and API documentation.
+  history-sources:
+    - https://github.com/obsproject/obs-studio
+    - https://obsproject.com/
+    - https://obsproject.com/blog/obs-progress-report-august-2018
+    - https://obsproject.com/kb/
+  repo-sources:
+    - >
+      Official OBS website links to the `obsproject/obs-studio` repository, whose README
+      identifies it as OBS Studio.
+  tags-sources:
+    - Official OBS repository description, README topics, and Knowledge Base categories.
+category-confidence: high
+category-path:
+  - media
+  - video
+  - live-streaming
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
