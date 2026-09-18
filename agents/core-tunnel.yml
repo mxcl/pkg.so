@@ -1,6 +1,5 @@
 id: cask:core-tunnel
 display-name: Core Tunnel
-homepage: https://codinn.com/tunnel/
 repo: null
 docs:
   - https://codinn.com/tunnel
@@ -14,7 +13,8 @@ config-file-location:
     - ~/.ssh/config
     - /etc/ssh/ssh_config
 credentials-file-location:
-  macos: ~/Library/Group Containers/E78WKS7W4U.io.coressh.ssh/.ssh/
+  macos:
+    - ~/Library/Group Containers/E78WKS7W4U.io.coressh.ssh/.ssh/
 history:
   adoption-history:
     - >
@@ -85,10 +85,6 @@ history:
     - >
       Passphrases can be stored through macOS Keychain. Imported identity files are kept
       in the shared Core Shell/Core Tunnel group container.
-category: networking
-package-manager:
-  brew-cask: core-tunnel
-package-manager-url: https://formulae.brew.sh/cask/core-tunnel
 tags:
   - keychain
   - macos
@@ -96,10 +92,48 @@ tags:
   - port-forwarding
   - ssh
   - tunnel-manager
-description: SSH tunnel manager
-applications:
-  - Core Tunnel.app
 provenance:
-  cask: core-tunnel
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official Core Tunnel how-to index: https://community.codinn.com/t/howtos-core-tunnel/346'
+    - 'Official product page: https://codinn.com/tunnel/'
+    - source_facts.description
+  display-name-sources:
+    - 'Official product page: https://codinn.com/tunnel/'
+    - current_curation.display-name
+    - source_facts.applications
+  docs-sources:
+    - Codinn's official community maintains a dedicated Core Tunnel how-to index.
+    - The official product page documents supported tunneling and authentication features.
+  history-sources:
+    - 'Official 1.0 announcement: https://community.codinn.com/t/core-tunnel-1-0/347'
+    - >
+      Official SSH configuration guidance:
+      https://community.codinn.com/t/use-system-default-ssh-config-and-known-hosts-configuration/742
+    - 'Official how-to index: https://community.codinn.com/t/howtos-core-tunnel/346'
+    - 'Official product page: https://codinn.com/tunnel/'
+    - 'Official release plan: https://community.codinn.com/t/core-tunnel-1-0-release-plan/317'
+    - >
+      Official storage guidance:
+      https://community.codinn.com/t/where-are-my-profiles-and-imported-identities-stored/3038/
+  repo-sources:
+    - >
+      Codinn's official product and documentation surfaces describe a distributed
+      commercial application but do not identify an official public source-control
+      repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - >
+      Official Core Tunnel 1.0 announcement:
+      https://community.codinn.com/t/core-tunnel-1-0/347
+    - 'Official product page: https://codinn.com/tunnel/'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - ssh
+  - tunneling
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
