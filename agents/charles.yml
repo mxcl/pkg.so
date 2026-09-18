@@ -1,15 +1,18 @@
 id: cask:charles
 display-name: Charles
-homepage: https://www.charlesproxy.com/
 repo: null
 docs:
   - https://www.charlesproxy.com/documentation
 config-file-location:
-  macos: ~/Library/Preferences/com.xk72.charles.config
-  windows: '%APPDATA%\Charles\charles.config'
+  macos:
+    - ~/Library/Preferences/com.xk72.charles.config
+  windows:
+    - '%APPDATA%\Charles\charles.config'
 credentials-file-location:
-  macos: ~/Library/Preferences/com.xk72.charles.config
-  windows: '%APPDATA%\Charles\charles.config'
+  macos:
+    - ~/Library/Preferences/com.xk72.charles.config
+  windows:
+    - '%APPDATA%\Charles\charles.config'
 history:
   adoption-history:
     - >
@@ -84,10 +87,6 @@ history:
       HTTPS inspection requires clients to trust the Charles root certificate and SSL
       Proxying to be enabled for the relevant locations. The default configuration can
       be replaced with an explicit path using the -config command-line option.
-category: developer-tools
-package-manager:
-  brew-cask: charles
-package-manager-url: https://formulae.brew.sh/cask/charles
 tags:
   - http-proxy
   - https-proxy
@@ -97,10 +96,41 @@ tags:
   - throttling
   - traffic-inspection
   - web-development
-description: Web debugging Proxy application
-applications:
-  - Charles.app
 provenance:
-  cask: charles
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official site identifies Charles as a web-debugging proxy for Windows, macOS,
+      and Linux: https://www.charlesproxy.com/
+    - source_facts.description
+  display-name-sources:
+    - >
+      Official documentation brands the application as Charles:
+      https://www.charlesproxy.com/documentation/
+    - current_curation.display-name
+  docs-sources:
+    - Dedicated official Charles documentation site.
+  history-sources:
+    - >
+      https://www.charlesproxy.com/documentation/configuration/browser-and-system-configuration/
+    - https://www.charlesproxy.com/documentation/getting-started/
+    - https://www.charlesproxy.com/documentation/using-charles/command-line-options/
+    - https://www.charlesproxy.com/documentation/version-history/
+    - https://www.charlesproxy.com/documentation/version-history/old-versions/
+  repo-sources:
+    - >
+      source_facts.repo is empty; the official Charles product and documentation sites
+      do not identify an official public source-control repository.
+  tags-sources:
+    - >
+      Official Charles documentation covers recording, proxy configuration, SSL
+      certificates, throttling, rewriting, mapping, and request inspection:
+      https://www.charlesproxy.com/documentation/
+category-confidence: high
+category-path:
+  - developer-tools
+  - network-debugging
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

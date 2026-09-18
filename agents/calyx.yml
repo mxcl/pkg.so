@@ -1,11 +1,11 @@
 id: cask:calyx
 display-name: Calyx
-homepage: https://github.com/yuuichieguchi/Calyx
-repo: https://github.com/yuuichieguchi/Calyx
+repo: null
 docs:
   - https://help.getcalyx.app/
 config-file-location:
-  macos: ~/.config/ghostty/config
+  macos:
+    - ~/.config/ghostty/config
 credentials-file-location: null
 history:
   adoption-history:
@@ -62,10 +62,6 @@ history:
       Enabling AI Agent IPC writes integration entries into supported agents' own
       configuration files. Calyx also reads the standard Ghostty configuration at
       ~/.config/ghostty/config and hot-reloads most compatible settings.
-category: developer-tools
-package-manager:
-  brew-cask: calyx
-package-manager-url: https://formulae.brew.sh/cask/calyx
 tags:
   - agent-orchestration
   - code-review
@@ -75,10 +71,36 @@ tags:
   - mcp
   - persistent-sessions
   - terminal
-description: Terminal for running and supervising coding agents
-applications:
-  - Calyx.app
 provenance:
-  cask: calyx
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official README describes Calyx as a native macOS terminal for running and
+      supervising coding agents: https://github.com/yuuichieguchi/Calyx#readme
+  display-name-sources:
+    - 'Official repository title and README: https://github.com/yuuichieguchi/Calyx'
+    - source_facts.name
+  docs-sources:
+    - >
+      The repository links the dedicated Calyx Help site, which identifies itself as
+      official documentation: https://help.getcalyx.app/
+  history-sources:
+    - https://github.com/yuuichieguchi/Calyx
+    - https://github.com/yuuichieguchi/Calyx/releases
+    - https://help.getcalyx.app/
+  repo-sources:
+    - >
+      source_facts.repo already contains a value; repo is intentionally returned as null
+      under the supplied-repository rule.
+  tags-sources:
+    - >
+      Official README features and repository topics:
+      https://github.com/yuuichieguchi/Calyx#readme
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminals
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

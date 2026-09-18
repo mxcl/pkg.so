@@ -1,6 +1,5 @@
 id: cask:carbon-copy-cloner
 display-name: Carbon Copy Cloner
-homepage: https://bombich.com/
 repo: null
 docs:
   - https://support.bombich.com/hc/en-us/categories/4411543022103-Carbon-Copy-Cloner
@@ -9,7 +8,8 @@ config-file-location:
     - /Library/Application Support/com.bombich.ccc
     - ~/Library/Preferences/com.bombich.ccc.plist
 credentials-file-location:
-  macos: /Library/Application Support/com.bombich.ccc/CCC-global.keychain
+  macos:
+    - /Library/Application Support/com.bombich.ccc/CCC-global.keychain
 history:
   adoption-history:
     - >
@@ -81,10 +81,6 @@ history:
       CCC records task events and optional per-file audit data for troubleshooting and
       verification. Automated access to NAS volumes, encrypted volumes, disk images, and
       SMTP services can use credentials protected in CCC's private macOS keychain.
-category: system
-package-manager:
-  brew-cask: carbon-copy-cloner
-package-manager-url: https://formulae.brew.sh/cask/carbon-copy-cloner
 tags:
   - apfs
   - backup
@@ -94,10 +90,39 @@ tags:
   - macos
   - scheduled-backups
   - snapshots
-description: Hard disk backup and cloning utility
-applications:
-  - Carbon Copy Cloner.app
 provenance:
-  cask: carbon-copy-cloner
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Bombich Software describes Carbon Copy Cloner as advanced backup and copying
+      software for macOS: https://bombich.com/
+    - source_facts.description
+  display-name-sources:
+    - 'Official Bombich Software product page: https://bombich.com/'
+    - current_curation.display-name
+  docs-sources:
+    - Official Carbon Copy Cloner 7 Knowledge Base hosted by Bombich Software.
+  history-sources:
+    - https://bombich.com/
+    - https://bombich.com/en/kb/ccc/4/release-notes
+    - https://bombich.com/time-machine
+    - https://support.bombich.com/hc/en-us/articles/20686511433623-How-to-verify-a-backup
+    - https://support.bombich.com/hc/en-us/categories/4411543022103-Carbon-Copy-Cloner
+  repo-sources:
+    - >
+      source_facts.repo is empty; Bombich Software's official product and support sites
+      do not identify an official public source-control repository for Carbon Copy
+      Cloner.
+  tags-sources:
+    - >
+      Official Bombich product page and Knowledge Base describe configurable backups,
+      copying, scheduling, snapshots, verification, and restoration:
+      https://bombich.com/
+category-confidence: high
+category-path:
+  - system
+  - backup
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

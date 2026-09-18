@@ -1,6 +1,5 @@
 id: cask:burp-suite
 display-name: Burp Suite Community Edition
-homepage: https://portswigger.net/burp/
 repo: null
 docs:
   - https://portswigger.net/burp/documentation
@@ -68,10 +67,6 @@ history:
       Settings may be global to the user or scoped to a project. Burp can export and
       import JSON configuration files, but the official documentation leaves their save
       location to the user rather than defining a fixed configuration path.
-category: security
-package-manager:
-  brew-cask: burp-suite
-package-manager-url: https://formulae.brew.sh/cask/burp-suite
 tags:
   - http-proxy
   - interception-proxy
@@ -79,12 +74,42 @@ tags:
   - request-replay
   - vulnerability-testing
   - web-security
-description: Web security testing toolkit
-applications:
-  - Burp Suite.app
 provenance:
-  cask: burp-suite
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - burp-suite-professional
+  category-sources:
+    - >
+      PortSwigger describes Burp Suite as a web-security testing toolkit:
+      https://portswigger.net/burp
+    - source_facts.description
+  display-name-sources:
+    - >
+      PortSwigger documentation identifies the Community Edition:
+      https://portswigger.net/burp/documentation/desktop
+    - current_curation.display-name
+  docs-sources:
+    - >
+      Official PortSwigger Burp Suite documentation contents:
+      https://portswigger.net/burp/documentation/contents
+  history-sources:
+    - https://portswigger.net/about
+    - https://portswigger.net/blog/burp-suite-v1-1-released
+    - https://portswigger.net/blog/burp-through-the-ages
+    - https://portswigger.net/burp/documentation/desktop/settings
+    - https://portswigger.net/burp/documentation/desktop/tools/proxy/http-history
+  repo-sources:
+    - >
+      source_facts.repo is empty; PortSwigger's official product and documentation sites
+      do not identify an official public source-control repository for Burp Suite.
+  tags-sources:
+    - >
+      Official Burp documentation describes Proxy, HTTP history, request interception,
+      modification, and security-testing workflows:
+      https://portswigger.net/burp/documentation
+category-confidence: high
+category-path:
+  - security
+  - web-application-security
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
