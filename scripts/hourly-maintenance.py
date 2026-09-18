@@ -205,8 +205,22 @@ def main() -> int:
     if not args.no_commit:
         preserved_tracked_dirty, preserved_untracked_dirty = git_dirty_paths(COMMIT_PATHS)
 
+    def checkpoint(message: str) -> None:
+        if args.no_commit:
+            return
+        commit = git_commit_if_changed(
+            message,
+            COMMIT_PATHS,
+            preserve_existing_dirty=True,
+            preserved_tracked_dirty=preserved_tracked_dirty,
+            preserved_untracked_dirty=preserved_untracked_dirty,
+        )
+        print(f"commit={commit or 'none'}")
+
     run([py, "scripts/build-db.py", "--refresh", "--npm-full-scan-parts=7"])
     run([py, "scripts/build.py", "--refresh"])
+    # Preserve successful generation before a fallible remote research stage.
+    checkpoint("nightly: refresh source metadata")
     if (
         not args.skip_enrichment
         and args.cask_association_limit > 0
@@ -221,6 +235,7 @@ def main() -> int:
             str(args.cask_association_batch_size),
         ])
         run([py, "scripts/build.py"])
+        checkpoint("nightly: publish resolved app casks")
     if not args.skip_enrichment and args.enrich_limit > 0:
         command = [
             py,
@@ -257,15 +272,7 @@ def main() -> int:
     if not args.skip_sqlite:
         run([py, "scripts/generate-pkg-sqlite.py", "--output", args.sqlite_output])
 
-    if not args.no_commit:
-        commit = git_commit_if_changed(
-            "nightly: refresh package database",
-            COMMIT_PATHS,
-            preserve_existing_dirty=True,
-            preserved_tracked_dirty=preserved_tracked_dirty,
-            preserved_untracked_dirty=preserved_untracked_dirty,
-        )
-        print(f"commit={commit or 'none'}")
+    checkpoint("nightly: refresh package database")
     # Keep this last so the export reflects every successful daily update.
     run([py, "scripts/export-automic-vault-db.py", "--output", args.db_json_output])
     return 0

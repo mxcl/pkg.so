@@ -124,12 +124,36 @@ class HourlyMaintenanceTests(unittest.TestCase):
                 self.assertEqual(maintenance.main(), 0)
 
         git_dirty_paths.assert_called_once_with(maintenance.COMMIT_PATHS)
-        git_commit_if_changed.assert_called_once()
+        self.assertEqual(git_commit_if_changed.call_count, 2)
         self.assertEqual(
             git_commit_if_changed.call_args.kwargs["preserved_tracked_dirty"],
             ["combined/existing.yml"],
         )
         self.assertEqual(git_commit_if_changed.call_args.kwargs["preserved_untracked_dirty"], [])
+
+    def test_checkpoints_generated_data_before_failed_cask_research(self):
+        maintenance = load_hourly_maintenance()
+        events = []
+
+        def run(command):
+            events.append(command[1])
+            if command[1] == "scripts/resolve-cask-app-associations.py":
+                raise subprocess.CalledProcessError(1, command)
+
+        with (
+            mock.patch.dict("os.environ", {"AVDB_ENRICH_BACKEND": "codex-cli"}),
+            mock.patch.object(sys, "argv", ["hourly-maintenance.py"]),
+            mock.patch.object(maintenance, "run", side_effect=run),
+            mock.patch.object(maintenance, "git_dirty_paths", return_value=([], [])),
+            mock.patch.object(maintenance, "git_commit_if_changed", side_effect=lambda *a, **kw: events.append("commit")),
+        ):
+            with self.assertRaises(subprocess.CalledProcessError):
+                maintenance.main()
+
+        self.assertEqual(events, [
+            "scripts/build-db.py", "scripts/build.py", "commit",
+            "scripts/resolve-cask-app-associations.py",
+        ])
 
     def test_parse_prepared_run_dir_reads_prepare_output(self):
         maintenance = load_hourly_maintenance()

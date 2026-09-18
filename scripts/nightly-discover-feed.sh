@@ -28,7 +28,7 @@ for ((pass = 1; pass <= max_agent_passes; pass++)); do
 
   if grep -q '^PMM_FEED_STATUS=NEEDS_AGENT$' "${output_path}"; then
     echo "Discover feed requires Codex research (pass ${pass}/${max_agent_passes})"
-    codex --model gpt-5.6 --config 'model_reasoning_effort="medium"' \
+    codex --model gpt-5.6-sol --config 'model_reasoning_effort="medium"' \
       --search --ask-for-approval never exec \
       --ephemeral --ignore-user-config --color never \
       --sandbox danger-full-access -C "${repo_root}" \

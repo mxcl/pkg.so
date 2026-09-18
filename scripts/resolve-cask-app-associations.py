@@ -77,7 +77,7 @@ def invoke_codex(input_path: Path, output_path: Path, schema_path: Path) -> None
     command = [
         "codex",
         "--model",
-        "gpt-5.6",
+        "gpt-5.6-sol",
         "--config",
         'model_reasoning_effort="medium"',
         "--search",
