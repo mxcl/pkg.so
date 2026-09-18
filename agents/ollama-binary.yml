@@ -1,17 +1,20 @@
 id: cask:ollama-binary
 display-name: Ollama
-homepage: https://ollama.com/
-repo: https://github.com/ollama/ollama
+repo: null
 docs:
   - https://docs.ollama.com/
   - https://docs.ollama.com/api/introduction
   - https://docs.ollama.com/faq
 config-file-location:
-  unix: ~/.ollama/server.json
+  unix:
+    - ~/.ollama/server.json
 credentials-file-location:
-  linux: /usr/share/ollama/.ollama/id_ed25519
-  macos: ~/.ollama/id_ed25519
-  windows: C:\Users\<username>\.ollama\id_ed25519
+  linux:
+    - /usr/share/ollama/.ollama/id_ed25519
+  macos:
+    - ~/.ollama/id_ed25519
+  windows:
+    - C:\Users\<username>\.ollama\id_ed25519
 history:
   adoption-history:
     - >
@@ -66,10 +69,6 @@ history:
       also call the local server through Ollama's native API or compatible clients,
       embed it in applications, run it in containers, and adjust model storage,
       networking, concurrency, and GPU behavior with environment variables.
-category: ai
-package-manager:
-  brew-cask: ollama-binary
-package-manager-url: https://formulae.brew.sh/cask/ollama-binary
 tags:
   - api
   - cli
@@ -77,10 +76,34 @@ tags:
   - llm
   - local-ai
   - model-runner
-description: Get up and running with large language models locally
-executables:
-  - ollama
 provenance:
-  cask: ollama-binary
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Ollama documentation describes running local and cloud models in desktop
+      apps, coding agents, and applications.
+  display-name-sources:
+    - Official Ollama documentation
+    - source_facts.description
+  docs-sources:
+    - Official documentation index, API reference, and FAQ.
+  history-sources:
+    - https://docs.ollama.com/
+    - https://github.com/ollama/ollama
+    - https://ollama.com/blog
+    - https://ollama.com/blog/all-aboard-open-models
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/ollama/ollama; repo is
+      therefore returned as null as instructed.
+  tags-sources:
+    - Official Ollama documentation and repository README.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - ai
+  - local-model-runtime
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
