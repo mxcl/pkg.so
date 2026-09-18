@@ -1,12 +1,13 @@
 id: cask:rstudio
 display-name: RStudio Desktop
-homepage: https://posit.co/products/open-source/rstudio/
 repo: https://github.com/rstudio/rstudio
 docs:
   - https://docs.posit.co/ide/user
 config-file-location:
-  unix: ~/.config/rstudio/rstudio-prefs.json
-  windows: '%APPDATA%\RStudio\rstudio-prefs.json'
+  unix:
+    - ~/.config/rstudio/rstudio-prefs.json
+  windows:
+    - '%APPDATA%\RStudio\rstudio-prefs.json'
 credentials-file-location: null
 history:
   adoption-history:
@@ -62,10 +63,6 @@ history:
       Users write and execute R code, inspect data and plots, manage packages and
       projects, debug programs, use version control, author reproducible documents,
       develop Shiny applications, and build R packages.
-category: science
-package-manager:
-  brew-cask: rstudio
-package-manager-url: https://formulae.brew.sh/cask/rstudio
 tags:
   - data-science
   - ide
@@ -73,10 +70,36 @@ tags:
   - r
   - reproducible-research
   - statistics
-description: Data science software focusing on R and Python
-applications:
-  - RStudio.app
 provenance:
-  cask: rstudio
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://posit.co/products/open-source/rstudio
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://posit.co/products/open-source/rstudio
+  docs-sources:
+    - Official Posit RStudio User Guide.
+  history-sources:
+    - https://docs.posit.co/ide/user/
+    - https://github.com/rstudio/rstudio
+    - https://posit.co/blog/announcing-rstudio-v1-0
+    - https://posit.co/blog/rstudio-is-becoming-posit
+    - https://posit.co/blog/rstudio-new-open-source-ide-for-r
+  repo-sources:
+    - >
+      The official repository identifies itself as RStudio's source repository and
+      belongs to GitHub's domain-verified rstudio organization.
+    - https://github.com/rstudio/rstudio
+  tags-sources:
+    - https://github.com/rstudio/rstudio
+    - https://posit.co/products/open-source/rstudio
+    - source_facts.description
+category-confidence: high
+category-path:
+  - science
+  - data-science
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

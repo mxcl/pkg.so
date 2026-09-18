@@ -1,13 +1,15 @@
 id: cask:rider
 display-name: JetBrains Rider
-homepage: https://www.jetbrains.com/rider/
 repo: null
 docs:
   - https://www.jetbrains.com/help/rider
 config-file-location:
-  linux: ~/.config/JetBrains/Rider<version>/
-  macos: ~/Library/Application Support/JetBrains/Rider<version>/
-  windows: '%APPDATA%\JetBrains\Rider<version>\'
+  linux:
+    - ~/.config/JetBrains/Rider<version>/
+  macos:
+    - ~/Library/Application Support/JetBrains/Rider<version>/
+  windows:
+    - '%APPDATA%\JetBrains\Rider<version>\'
 credentials-file-location: null
 history:
   adoption-history:
@@ -48,10 +50,6 @@ history:
     - >
       Developers use Rider to edit, build, test, debug, profile, and refactor .NET
       applications on Windows, macOS, and Linux, including ASP.NET and Unity projects.
-category: developer-tools
-package-manager:
-  brew-cask: rider
-package-manager-url: https://formulae.brew.sh/cask/rider
 tags:
   - csharp
   - dotnet
@@ -59,10 +57,35 @@ tags:
   - ide
   - jetbrains
   - unity
-description: .NET IDE
-applications:
-  - Rider.app
 provenance:
-  cask: rider
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://www.jetbrains.com/rider/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.jetbrains.com/rider/
+  docs-sources:
+    - Official JetBrains Rider documentation.
+  history-sources:
+    - https://blog.jetbrains.com/dotnet/2017/08/03/rider-2017-1-jetbrains-net-ide-hits-rtm/
+    - https://blog.jetbrains.com/dotnet/2022/08/03/happy-5th-birthday-rider/
+    - https://www.jetbrains.com/rider/
+    - source_facts.package-manager.brew-cask
+  repo-sources:
+    - >
+      No official public source-control repository for the Rider product is identified
+      by its official product and documentation pages.
+    - https://www.jetbrains.com/help/rider/
+    - https://www.jetbrains.com/rider/
+  tags-sources:
+    - https://www.jetbrains.com/rider/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - ide
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
