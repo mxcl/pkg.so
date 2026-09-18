@@ -2,6 +2,162 @@
   "content": [
     {
       "artwork": {
+        "alt": "A developer oversees four luminous terminal workspaces connected by branching teal paths and amber review shields in a dark studio.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#07141F",
+          "backgroundStart": "#0B2133",
+          "foreground": "#F7E8CC"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/workmux-parallel-worktrees.png"
+      },
+      "body": "## The branch is only half the workspace\n\nA Git branch separates history, but it does not separate the rest of a developer's working state. A second task may need its own checked-out files, editor, test watcher, environment preparation, and coding-agent conversation. Git worktrees supply additional working directories, while terminal multiplexers preserve sessions. **workmux joins those two primitives into one lifecycle**: create a worktree, open a matching terminal workspace, arrange its panes, and later merge or remove the task. The [upstream documentation](https://github.com/raine/workmux) describes tmux as the original target and also documents Zellij, Kitty, and WezTerm backends.\n\nThat scope is narrower than a new IDE, and that is the point. The tool does not attempt to replace Git or the terminal. Its configuration can copy selected files, link dependencies, run post-creation commands, choose pane layouts, and expose agent state in a dashboard or sidebar. For a developer who already thinks in terminal windows, switching tasks becomes switching workspaces rather than stashing changes and rebuilding context. For someone who does not use a multiplexer, the prerequisites may outweigh the convenience.\n\n## A young tool shaped by agent concurrency\n\nworkmux's upstream changelog marks **v0.1.1 on 5 November 2025** as its initial release. Early entries focus on basic worktree creation, merging, cleanup, global configuration, and pane startup. Within weeks, releases added prompt handoff and multi-agent creation. Later history records dashboards, agent-status hooks, alternative multiplexer backends, sandbox support, pull-request checkout, session restoration, and dry-run previews. The [release history](https://github.com/raine/workmux/blob/main/CHANGELOG.md) makes the progression unusually legible: a small worktree helper expanded as concurrent agent sessions created new coordination problems.\n\nThe release cadence is also a warning. A fast-moving pre-1.0 tool can change configuration and behavior quickly. Users should read changes before updating and keep project configuration reviewable. A command that creates directories and windows is convenient; one that also copies secrets, links dependency trees, runs hooks, merges branches, and removes worktrees deserves the same scrutiny as any automation touching source control.\n\n## Evidence beyond the feature list\n\nThere is public evidence of real use, though it is anecdotal rather than a representative adoption survey. In November 2025, a Hacker News participant said they were already using workmux to combine tmux, worktrees, and command-line agents; another participant in the same thread reported setting it up. [The discussion](https://news.ycombinator.com/item?id=46029809) supports actual use but says nothing reliable about the size of the user base.\n\nUser-filed issues show more specific workflows. One request described creating temporary worktrees to review GitHub pull requests, then running automated and manual review inside them. Another issue came from a user calling workmux a daily driver and documenting a stale agent-status indicator after a permission prompt, including a locally tested hook change. Those reports are useful precisely because they include friction as well as enthusiasm. The [pull-request workflow request](https://github.com/raine/workmux/issues/2) and [status-hook bug report](https://github.com/raine/workmux/issues/33) show the tool being adapted to concrete review and agent-monitoring routines. They do not substitute for a controlled reliability assessment.\n\n## Isolation is a workflow property, not a security boundary\n\nA separate worktree prevents two tasks from editing the same checkout, but it does not automatically isolate processes, credentials, network access, or shared services. Two agents can still target the same database, reuse the same environment file, or race on resources outside their directories. workmux documents container and virtual-machine sandbox options, yet safe boundaries still depend on how a project configures them.\n\nBefore adopting it broadly, test a deliberately small loop:\n\n- create two disposable tasks and confirm their branches, directories, and terminal targets;\n- inspect every file-copy rule and lifecycle hook;\n- run the project's tests independently in both worktrees;\n- exercise merge and removal with uncommitted changes present;\n- verify that secrets and local services are not unintentionally shared.\n\nThis is where a companion such as [bashka](https://github.com/dmtrKovalenko/bashka) offers a useful contrast. bashka statically reviews fetched shell installers and follows additional script stages, but its own documentation states that Bash's dynamic behavior prevents a guarantee of safety. Static warnings can improve a decision; they cannot turn downloaded code into trusted code. Likewise, workmux can make concurrent state visible and repeatable without making every command inside a workspace safe.\n\n## The practical fit\n\nworkmux is most compelling for developers who already trust Git worktrees and multiplexers but find their connective tissue repetitive. It creates a consistent place for each task, keeps agent progress observable, and makes cleanup part of the routine. Manual `git worktree` and tmux commands remain a strong alternative when a team wants fewer abstractions or only occasional concurrency. Graphical agent workspaces may suit people who prefer an integrated review surface.\n\nThe honest evaluation is not how many agents fit on screen. It is whether each task remains understandable: which branch it owns, which commands ran, what changed, and what cleanup will do. workmux earns its layer when those answers become clearer without obscuring the underlying Git state.",
+      "deck": "An opinionated layer over worktrees and terminal multiplexers makes concurrent coding sessions easier to see, separate, and retire.",
+      "id": "editorial:2026-09-18:workmux-parallel-work-without-hiding-git",
+      "primaryPackageID": "brew:workmux",
+      "publishedAt": "2026-09-18T19:51:37Z",
+      "relatedPackageIDs": [
+        "brew:workmux",
+        "brew:bashka"
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2025-11-05T00:00:00Z",
+        "firstStableReleaseSourceURL": "https://github.com/raine/workmux/blob/main/CHANGELOG.md",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "workmux documentation and repository",
+          "url": "https://github.com/raine/workmux"
+        },
+        {
+          "kind": "primary",
+          "title": "workmux release history",
+          "url": "https://github.com/raine/workmux/blob/main/CHANGELOG.md"
+        },
+        {
+          "kind": "independent",
+          "title": "Hacker News discussion from workmux users",
+          "url": "https://news.ycombinator.com/item?id=46029809"
+        },
+        {
+          "kind": "independent",
+          "title": "Daily-driver status integration report",
+          "url": "https://github.com/raine/workmux/issues/33"
+        },
+        {
+          "kind": "primary",
+          "title": "Git worktree documentation",
+          "url": "https://git-scm.com/docs/git-worktree"
+        },
+        {
+          "kind": "primary",
+          "title": "bashka documentation and limitations",
+          "url": "https://github.com/dmtrKovalenko/bashka"
+        }
+      ],
+      "title": "workmux: Parallel Work Without Hiding Git",
+      "type": "editorial"
+    },
+    {
+      "candidatePackageIDs": [
+        "brew:letta-code",
+        "brew:ipsw",
+        "brew:nushell",
+        "brew:ty",
+        "brew:diffoscope",
+        "brew:croc",
+        "brew:osv-scanner",
+        "brew:rainfrog",
+        "brew:apko",
+        "brew:aube",
+        "brew:cargo-llvm-cov",
+        "brew:octodns",
+        "brew:hermes-agent",
+        "brew:sourcedocs",
+        "brew:fzf",
+        "brew:pup",
+        "brew:rattler-build",
+        "brew:b4n",
+        "brew:qwen-code",
+        "brew:alive2",
+        "brew:cask:monet",
+        "brew:workmux",
+        "brew:bashka",
+        "brew:termaid"
+      ],
+      "fallbackPackageIDs": [
+        "brew:workmux",
+        "brew:termaid",
+        "brew:bashka",
+        "brew:cask:monet",
+        "brew:qwen-code",
+        "brew:alive2",
+        "brew:rattler-build",
+        "brew:pup",
+        "brew:b4n",
+        "brew:sourcedocs",
+        "brew:hermes-agent",
+        "brew:fzf",
+        "brew:octodns",
+        "brew:cargo-llvm-cov",
+        "brew:aube",
+        "brew:rainfrog",
+        "brew:osv-scanner",
+        "brew:apko",
+        "brew:ty",
+        "brew:diffoscope",
+        "brew:croc",
+        "brew:nushell",
+        "brew:letta-code",
+        "brew:ipsw"
+      ],
+      "id": "for-you",
+      "title": "For You",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "id": "new-packages",
+      "packageIDs": [
+        "brew:termaid",
+        "brew:workmux",
+        "brew:bashka",
+        "brew:cask:homebrew-app",
+        "brew:hister",
+        "brew:cask:omniwm",
+        "brew:cask:open-science",
+        "brew:cask:mangodisk",
+        "brew:cask:agentide",
+        "brew:tgrep",
+        "brew:cask:zentty",
+        "brew:cask:markviewer"
+      ],
+      "title": "New Packages",
+      "type": "newPackages"
+    },
+    {
+      "id": "recently-updated",
+      "packageIDs": [
+        "brew:termaid",
+        "brew:workmux",
+        "brew:bashka",
+        "brew:jupytext",
+        "brew:git-xet",
+        "brew:cask:homebrew-app",
+        "brew:hister",
+        "brew:cask:omniwm",
+        "brew:cask:open-science",
+        "brew:cask:mangodisk",
+        "brew:cask:agentide",
+        "brew:tgrep"
+      ],
+      "title": "Recently Updated",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
         "alt": "Changed coral and amber chunks cross a bridge between layered data blocks while a research notebook unfolds into paper strips.",
         "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
         "boxColors": {
@@ -77,101 +233,6 @@
       ],
       "title": "Git-Xet: moving the changed pieces",
       "type": "editorial"
-    },
-    {
-      "candidatePackageIDs": [
-        "brew:open-code-review",
-        "brew:threatcl",
-        "brew:fluent-bit",
-        "brew:letta-code",
-        "brew:ipsw",
-        "brew:nushell",
-        "brew:ty",
-        "brew:diffoscope",
-        "brew:croc",
-        "brew:osv-scanner",
-        "brew:rainfrog",
-        "brew:apko",
-        "brew:aube",
-        "brew:cargo-llvm-cov",
-        "brew:octodns",
-        "brew:hermes-agent",
-        "brew:sourcedocs",
-        "brew:fzf",
-        "brew:pup",
-        "brew:rattler-build",
-        "brew:b4n",
-        "brew:qwen-code",
-        "brew:alive2",
-        "brew:cask:monet"
-      ],
-      "fallbackPackageIDs": [
-        "brew:cask:monet",
-        "brew:qwen-code",
-        "brew:alive2",
-        "brew:rattler-build",
-        "brew:pup",
-        "brew:b4n",
-        "brew:sourcedocs",
-        "brew:hermes-agent",
-        "brew:fzf",
-        "brew:octodns",
-        "brew:cargo-llvm-cov",
-        "brew:aube",
-        "brew:rainfrog",
-        "brew:osv-scanner",
-        "brew:apko",
-        "brew:ty",
-        "brew:diffoscope",
-        "brew:croc",
-        "brew:nushell",
-        "brew:letta-code",
-        "brew:ipsw",
-        "brew:threatcl",
-        "brew:open-code-review",
-        "brew:fluent-bit"
-      ],
-      "id": "for-you",
-      "title": "For You",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "id": "new-packages",
-      "packageIDs": [
-        "brew:cask:homebrew-app",
-        "brew:hister",
-        "brew:cask:omniwm",
-        "brew:cask:open-science",
-        "brew:cask:mangodisk",
-        "brew:cask:agentide",
-        "brew:tgrep",
-        "brew:cask:zentty",
-        "brew:cask:markviewer",
-        "brew:sabiql",
-        "brew:jcode",
-        "brew:cask:token-monitor"
-      ],
-      "title": "New Packages",
-      "type": "newPackages"
-    },
-    {
-      "id": "recently-updated",
-      "packageIDs": [
-        "brew:jupytext",
-        "brew:git-xet",
-        "brew:cask:homebrew-app",
-        "brew:hister",
-        "brew:cask:omniwm",
-        "brew:cask:open-science",
-        "brew:cask:mangodisk",
-        "brew:cask:agentide",
-        "brew:tgrep",
-        "brew:cask:zentty",
-        "brew:cask:dockdoor-pro",
-        "brew:cask:taskbar"
-      ],
-      "title": "Recently Updated",
-      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -719,61 +780,9 @@
       ],
       "title": "mcpsnoop: Inspect the Tool Calls That Actually Happen",
       "type": "editorial"
-    },
-    {
-      "artwork": {
-        "alt": "A glowing clockwork schedule ring joins a container panel, a network wave panel, and a timeline on a deep navy background.",
-        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#0B2944",
-          "backgroundStart": "#06172E",
-          "foreground": "#FFFFFF"
-        },
-        "license": "OpenAI terms of use",
-        "path": "feed/assets/cronboard-observability-2026-07-31.png"
-      },
-      "body": "## Start with the work that runs when nobody is watching\n\nScheduled tasks are easy to overlook because a crontab is deliberately quiet. A backup, report, cleanup, or certificate renewal often exists as one compact line that only becomes visible after it fails. **Cronboard** is a new terminal-first attempt to make that layer easier to inspect. Its project site describes a keyboard-driven dashboard for local cron jobs and remote servers, with creation, editing, pausing, resuming, search, human-readable schedules, and SSH-based management. The goal is not a different scheduling engine. It is a clearer view of the cron configuration already responsible for work.\n\nThat is a useful distinction. A dashboard can reduce the friction of reading a crowded crontab, but it does not make the command correct, give it retries, or prove that an unattended job succeeded. Keep the script itself in version control when practical, write its output somewhere intentional, and decide which failures need an external alert. Cronboard can make an operator's next question faster: *what is meant to run, where, and when?* It should not become the only record of that answer.\n\nThe project reached its stable 1.0.0 release on July 27, 2026, so this is a younger tool than the venerable cron subsystem it works with. That makes a small trial the sensible route. Start on a personal machine or an unimportant server, compare its view to `crontab -l`, and verify exactly which account and remote user each edit reaches.\n\n## Observation is not administration\n\n**dtop** lives one layer above the scheduler. The project's documentation and repository describe a terminal dashboard for monitoring Docker across multiple hosts, including container actions, health information, filtering, and integration with Dozzle for logs. Used together with a scheduler, it can help an operator move from “this job should have run” to “what is the container doing now?” without immediately opening a web control panel.\n\nThat convenience needs a boundary. A view that can start, stop, or remove containers is no longer read-only. Docker socket access and remote host credentials are operationally powerful, so the right setup is the least privileged one that still answers the question. dtop also does not replace a deployment definition, resource limits, central metrics, or paging. For a small fleet, it can shorten an investigation; for a production service, use it alongside durable telemetry and alerts rather than as the signal that wakes someone up.\n\nThe shared theme with Cronboard is **interactive inspection**. Both tools surface state that otherwise hides in configuration files, process lists, or several remote shells. Neither removes the need to document ownership. Before adopting either, name the job or container owner, where logs belong, and the condition that counts as failure. A clean terminal interface is most helpful when it reflects an already-clear operating model.\n\n## Network measurements have a different kind of consequence\n\n**OONI Probe CLI** makes another hidden system visible: network interference. OONI's user guide says the command-line client can test website blocking, messaging apps, circumvention tools, middleboxes, and network performance. Measurements are submitted to OONI and published as open data in near real time; OONI reports more than 400 million measurements from 23,000 networks in 240 countries and territories since 2012. That documented public record is why it belongs here as the underexposed companion rather than merely another diagnostic utility.\n\nIts tradeoff is sharper than the other two tools'. OONI explicitly says the probe is not a privacy tool and that testing can carry legal or personal risk depending on the country, network, sites tested, and threat model. Do not treat it as a casual speed test or run automated measurements for someone else without informed judgment. Read the onboarding and risk guidance, understand whether results will be public, and seek local expertise when the consequences are unclear. A blocked connection can also have multiple explanations, so compare evidence before drawing a conclusion.\n\n## A small, auditable practice\n\nThese tools work best as a compact loop:\n\n- inspect a schedule in Cronboard before changing it;\n- inspect the affected container or logs in dtop when the job touches Docker; and\n- use OONI Probe only when its research purpose and publication model fit the situation.\n\nThe common win is not more dashboards. It is making a specific operational question visible while preserving the underlying boundaries: cron remains the scheduler, Docker permissions remain sensitive, and network measurements can be consequential public research. Start with one question, verify the data against the native tools, and retain the plain-text configuration and logs that let another person audit what happened.",
-      "deck": "Cronboard, dtop, and OONI Probe make different systems visible—provided their operational and privacy boundaries stay explicit.",
-      "id": "editorial:2026-07-31:terminal-observability-with-cronboard",
-      "primaryPackageID": "brew:cronboard",
-      "publishedAt": "2026-07-31T13:02:36Z",
-      "relatedPackageIDs": [
-        "brew:cronboard",
-        "brew:dtop",
-        "brew:ooniprobe"
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2026-07-27T15:39:00Z",
-        "firstStableReleaseSourceURL": "https://github.com/antoniorodr/cronboard/releases/tag/v1.0.0",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Cronboard releases",
-          "url": "https://github.com/antoniorodr/cronboard/releases"
-        },
-        {
-          "kind": "primary",
-          "title": "Cronboard project site",
-          "url": "https://cronboard.dev/"
-        },
-        {
-          "kind": "primary",
-          "title": "dtop repository",
-          "url": "https://github.com/amir20/dtop"
-        },
-        {
-          "kind": "primary",
-          "title": "OONI Probe CLI user guide",
-          "url": "https://openobservatory.github.io/support/ooni-probe-cli/"
-        }
-      ],
-      "title": "Terminal Observability Starts With What You Schedule",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-11T14:58:57Z",
+  "generatedAt": "2026-09-18T19:51:37Z",
   "packages": {
     "brew:alive2": {
       "agentSummary": "Alive2 checks whether LLVM IR transformations preserve behavior, offering standalone and compiler-integrated translation validation while explicitly bounding unsupported interprocedural cases and solver limits.",
@@ -1023,6 +1032,65 @@
       ],
       "upstreamSummary": "Terminal user interface (TUI) for Kubernetes API written in Rust",
       "version": null
+    },
+    "brew:bashka": {
+      "agentSummary": "bashka statically inspects piped shell installers, follows additional scripts, flags suspicious behavior, and records installed files, but cannot guarantee safety against dynamic shell behavior.",
+      "assessment": {
+        "alternatives": [
+          "Download and manually audit the complete script chain before running it",
+          "Prefer a signed system-package or reproducible source build"
+        ],
+        "audiences": [
+          "Developers evaluating convenience installers before execution",
+          "Security-conscious terminal users who still need shell-based installation paths"
+        ],
+        "caveats": [
+          "Static analysis cannot prove a Bash program safe or detect every obfuscation technique",
+          "Absolute shell paths and content that changes between analysis and execution can bypass parts of its model",
+          "The project is extremely new and its rules and interfaces may change rapidly"
+        ],
+        "complements": [
+          "Pinned checksums or signatures published by the software vendor",
+          "Sandboxing, least privilege, and package-manager receipts"
+        ],
+        "prerequisites": [
+          "A supported macOS or Linux environment",
+          "Human review of findings before approving any installer"
+        ],
+        "useCases": [
+          "Reviewing a fetched installer and its forwarded script stages",
+          "Flagging credential access, exfiltration patterns, unsafe deletion, or mutable downloads"
+        ]
+      },
+      "category": "security",
+      "displayName": "bashka",
+      "docs": "https://github.com/dmtrKovalenko/bashka#readme",
+      "homepage": "https://github.com/dmtrKovalenko/bashka",
+      "id": "brew:bashka",
+      "installURL": "pkgmgrmgr://install?package=brew%3Abashka",
+      "lastUpdatedAt": "2026-09-17T23:12:00Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/dmtrKovalenko/bashka",
+      "researchedAt": "2026-09-18T19:51:37Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "bashka documentation and limitations",
+          "url": "https://github.com/dmtrKovalenko/bashka"
+        },
+        {
+          "kind": "primary",
+          "title": "bashka initial release",
+          "url": "https://github.com/dmtrKovalenko/bashka/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "bashka package record on crates.io",
+          "url": "https://crates.io/crates/bashka"
+        }
+      ],
+      "upstreamSummary": "Static verification of installation bash scripts",
+      "version": "0.11.0"
     },
     "brew:cargo-llvm-cov": {
       "agentSummary": "Cargo LLVM Cov wraps Rust’s LLVM source coverage, producing several report formats while supporting workspaces, nextest, merged runs, continuous integration, and linked native code.",
@@ -1724,66 +1792,6 @@
       "upstreamSummary": "Windows-style taskbar as a Dock replacement",
       "version": "1.6.3,2026,09"
     },
-    "brew:cask:token-monitor": {
-      "agentSummary": "Local-first desktop dashboard aggregates token usage, estimated costs, limits, sessions, and model activity across numerous coding tools, with optional self-hosted multi-device synchronization.",
-      "assessment": {
-        "alternatives": [
-          "Native usage pages from individual model providers",
-          "Open-source telemetry pipelines for centrally instrumented applications"
-        ],
-        "audiences": [
-          "Heavy users of multiple AI coding tools",
-          "Teams and individuals tracking local token costs and quotas"
-        ],
-        "caveats": [
-          "Cost figures can be estimates and should not replace provider invoices",
-          "Adapters may lag when upstream log formats, APIs, or local schemas change",
-          "Multi-device features expand the data-handling and configuration surface"
-        ],
-        "complements": [
-          "Provider billing dashboards for authoritative charges",
-          "A self-hosted hub when multi-device synchronization is needed"
-        ],
-        "prerequisites": [
-          "At least one supported AI tool or provider account",
-          "Access to local logs, databases, or provider endpoints required by each adapter"
-        ],
-        "useCases": [
-          "Combine usage and limit views across supported tools",
-          "Inspect per-session token breakdowns from local data",
-          "Export usage or synchronize summaries across devices"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "Token Monitor",
-      "docs": "https://github.com/Javis603/token-monitor#readme",
-      "homepage": "https://javis-ai.com/token-monitor/",
-      "id": "brew:cask:token-monitor",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atoken-monitor",
-      "lastUpdatedAt": "2026-09-04T17:04:16Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/Javis603/token-monitor",
-      "researchedAt": "2026-09-05T10:02:13Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Token Monitor repository and feature documentation",
-          "url": "https://github.com/Javis603/token-monitor"
-        },
-        {
-          "kind": "primary",
-          "title": "Token Monitor export documentation",
-          "url": "https://github.com/Javis603/token-monitor/blob/main/docs/export.md"
-        },
-        {
-          "kind": "primary",
-          "title": "Token Monitor v0.1.0 release",
-          "url": "https://github.com/Javis603/token-monitor/releases/tag/v0.1.0"
-        }
-      ],
-      "upstreamSummary": "Monitor token usage, costs, and limits across AI coding tools",
-      "version": "0.54.0"
-    },
     "brew:cask:zentty": {
       "agentSummary": "Native macOS terminal arranges shells into scrolling worklanes and surfaces coding-agent attention states, combining Ghostty rendering with workspace restoration and scriptable pane control.",
       "assessment": {
@@ -1966,60 +1974,6 @@
         }
       ],
       "upstreamSummary": "Securely send things from one computer to another",
-      "version": null
-    },
-    "brew:cronboard": {
-      "agentSummary": "Cronboard is a keyboard-driven terminal dashboard for viewing and editing local or SSH-managed crontabs, showing schedules in human terms and bringing job output closer to operations.",
-      "assessment": {
-        "alternatives": [
-          "Editing crontabs with crontab -e",
-          "Systemd timers for systems that standardize on systemd"
-        ],
-        "audiences": [
-          "People maintaining local cron jobs",
-          "Operators responsible for a small set of SSH-accessible servers"
-        ],
-        "caveats": [
-          "Cronboard manages cron rather than replacing it with a scheduler",
-          "Remote access and job-editing privileges deserve the same care as direct SSH access"
-        ],
-        "complements": [
-          "Version-controlled scripts",
-          "Service monitoring and alerting",
-          "Regular backups of important job configuration"
-        ],
-        "prerequisites": [
-          "A Unix-like system with cron",
-          "SSH key access for remote-server management"
-        ],
-        "useCases": [
-          "Reviewing schedules before changing a crontab",
-          "Creating, pausing, or editing scheduled jobs without manually editing a crontab"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "cronboard",
-      "docs": "https://github.com/antoniorodr/cronboard#readme",
-      "homepage": "https://cronboard.dev/",
-      "id": "brew:cronboard",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acronboard",
-      "lastUpdatedAt": "2026-07-27T19:29:23Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/antoniorodr/cronboard",
-      "researchedAt": "2026-07-31T13:02:36Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Cronboard project site",
-          "url": "https://cronboard.dev/"
-        },
-        {
-          "kind": "primary",
-          "title": "Cronboard getting-started guide",
-          "url": "https://cronboard.dev/getting-started/"
-        }
-      ],
-      "upstreamSummary": "Terminal-based dashboard for managing cron jobs locally and on servers",
       "version": null
     },
     "brew:defuddle": {
@@ -2244,59 +2198,6 @@
       "upstreamSummary": "Global DNS propagation checker TUI",
       "version": null
     },
-    "brew:dtop": {
-      "agentSummary": "Dtop is a Rust terminal dashboard for Docker hosts that surfaces containers, health, resource activity, and Dozzle log access across multiple machines without becoming an orchestrator.",
-      "assessment": {
-        "alternatives": [
-          "docker ps and docker stats",
-          "Portainer or other web-based Docker dashboards"
-        ],
-        "audiences": [
-          "Developers operating Docker hosts",
-          "Small teams that need a terminal view across several container machines"
-        ],
-        "caveats": [
-          "A terminal dashboard is an investigation aid, not a replacement for alerts",
-          "Host and Docker-socket access can expose sensitive operational control"
-        ],
-        "complements": [
-          "Docker Compose or another deployment definition",
-          "Metrics and alerting for unattended production monitoring"
-        ],
-        "prerequisites": [
-          "Docker access on each monitored host",
-          "Network connectivity and credentials appropriate for the configured hosts"
-        ],
-        "useCases": [
-          "Inspecting container health and resource activity",
-          "Opening related logs while investigating a Docker workload"
-        ]
-      },
-      "category": "cloud-infrastructure",
-      "displayName": "dtop",
-      "docs": "https://dtop.dev/",
-      "homepage": "https://dtop.dev/",
-      "id": "brew:dtop",
-      "installURL": "pkgmgrmgr://install?package=brew%3Adtop",
-      "lastUpdatedAt": "2026-07-27T18:28:47Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/amir20/dtop",
-      "researchedAt": "2026-07-31T13:02:36Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "dtop repository",
-          "url": "https://github.com/amir20/dtop"
-        },
-        {
-          "kind": "primary",
-          "title": "dtop documentation",
-          "url": "https://dtop.dev/"
-        }
-      ],
-      "upstreamSummary": "Terminal dashboard for Docker monitoring across multiple hosts",
-      "version": null
-    },
     "brew:edgevpn": {
       "agentSummary": "EdgeVPN builds decentralized private networks, reverse proxies, and file transfers on libp2p, using shared configuration tokens and an embedded distributed coordination layer.",
       "assessment": {
@@ -2360,72 +2261,6 @@
       ],
       "upstreamSummary": "Immutable, decentralized, statically built p2p VPN",
       "version": "0.35.4"
-    },
-    "brew:fluent-bit": {
-      "agentSummary": "Fluent Bit collects, transforms, and routes logs, metrics, and traces with a small footprint, fitting edge agents and central cloud-native telemetry pipelines.",
-      "assessment": {
-        "alternatives": [
-          "Vector for a Rust-based telemetry pipeline",
-          "Fluentd for richer legacy plugin coverage",
-          "OpenTelemetry Collector for OpenTelemetry-centric pipelines",
-          "Filebeat for Elastic-focused log shipping"
-        ],
-        "audiences": [
-          "Platform and site-reliability engineers",
-          "Kubernetes operators",
-          "Teams building vendor-neutral observability pipelines",
-          "Embedded and edge-system developers"
-        ],
-        "caveats": [
-          "Production reliability depends on careful buffering, retry, and storage configuration",
-          "Plugin behavior and configuration vary by source and destination",
-          "High-cardinality enrichment can increase resource use and downstream cost",
-          "Its frequent major-release cadence requires deliberate upgrade testing"
-        ],
-        "complements": [
-          "Kubernetes",
-          "OpenTelemetry",
-          "Prometheus",
-          "Kafka and cloud object storage",
-          "Fluentd for workflows needing its broader Ruby plugin ecosystem"
-        ],
-        "prerequisites": [
-          "A planned input, filter, and output pipeline",
-          "Credentials and network access for destination backends",
-          "Operational capacity to monitor buffering and backpressure"
-        ],
-        "useCases": [
-          "Collecting container and host logs",
-          "Enriching Kubernetes telemetry",
-          "Routing records to multiple observability backends",
-          "Aggregating logs, metrics, and traces centrally",
-          "Processing telemetry on resource-constrained systems"
-        ]
-      },
-      "category": "data",
-      "displayName": "fluent-bit",
-      "docs": "https://docs.fluentbit.io/manual",
-      "homepage": "https://fluentbit.io",
-      "id": "brew:fluent-bit",
-      "installURL": "pkgmgrmgr://install?package=brew%3Afluent-bit",
-      "lastUpdatedAt": "2026-08-16T05:29:15Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/fluent/fluent-bit",
-      "researchedAt": "2026-08-16T06:29:16Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "What is Fluent Bit?",
-          "url": "https://docs.fluentbit.io/manual/about/what-is-fluent-bit"
-        },
-        {
-          "kind": "independent",
-          "title": "Fluent Bit reaches one billion downloads",
-          "url": "https://www.cncf.io/blog/2022/03/22/fluent-bit-reaches-1-billion-downloads/"
-        }
-      ],
-      "upstreamSummary": "Fast and Lightweight Logs and Metrics processor",
-      "version": null
     },
     "brew:fzf": {
       "agentSummary": "fzf brings fast fuzzy selection to files, command history, processes, Git objects, and arbitrary text streams, with extensive shell and editor integration.",
@@ -2762,64 +2597,6 @@
       ],
       "upstreamSummary": "Research tool for iOS & macOS devices",
       "version": null
-    },
-    "brew:jcode": {
-      "agentSummary": "jcode is a Rust terminal coding-agent harness offering model and provider selection, persistent sessions, browser tooling, and native builds across major desktop platforms.",
-      "assessment": {
-        "alternatives": [
-          "Codex CLI for OpenAI-centered terminal agent workflows",
-          "Claude Code for Anthropic-centered terminal workflows",
-          "Editor-integrated coding assistants when a terminal interface is unnecessary"
-        ],
-        "audiences": [
-          "Developers who prefer terminal-based AI coding workflows",
-          "Users comparing multiple model providers from one agent interface"
-        ],
-        "caveats": [
-          "Rapid early releases imply meaningful interface and behavior churn",
-          "Some capabilities depend on external model services and their pricing or availability",
-          "Browser integration and autonomous tool use expand the security boundary"
-        ],
-        "complements": [
-          "Git for reviewing and containing generated changes",
-          "Provider-specific usage and cost controls",
-          "Operating-system sandboxes or isolated worktrees"
-        ],
-        "prerequisites": [
-          "Credentials for any selected model provider",
-          "A supported Linux, macOS, Windows, FreeBSD, or Termux environment",
-          "Careful review before granting an agent access to repositories or browser automation"
-        ],
-        "useCases": [
-          "Running interactive coding-agent sessions in a terminal",
-          "Switching among configured models and compatible providers",
-          "Maintaining persistent local sessions across supported operating systems"
-        ]
-      },
-      "category": "ai",
-      "displayName": "jcode",
-      "docs": "https://github.com/1jehuang/jcode#readme",
-      "homepage": "https://jcode.sh",
-      "id": "brew:jcode",
-      "installURL": "pkgmgrmgr://install?package=brew%3Ajcode",
-      "lastUpdatedAt": "2026-09-05T14:57:20Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/1jehuang/jcode",
-      "researchedAt": "2026-09-06T06:20:50Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "jcode project repository and documentation",
-          "url": "https://github.com/1jehuang/jcode"
-        },
-        {
-          "kind": "primary",
-          "title": "jcode 0.1.0 first stable release",
-          "url": "https://github.com/1jehuang/jcode/releases/tag/v0.1.0"
-        }
-      ],
-      "upstreamSummary": "AI coding agent harness for the terminal",
-      "version": "0.81.7"
     },
     "brew:jupytext": {
       "agentSummary": "Jupytext represents notebook inputs as scripts or Markdown, making code review and editor workflows easier while paired notebooks retain outputs in a separate notebook file.",
@@ -3403,121 +3180,6 @@
         }
       ],
       "upstreamSummary": "Tools for managing DNS across multiple providers",
-      "version": null
-    },
-    "brew:ooniprobe": {
-      "agentSummary": "OONI Probe CLI runs open network-interference measurements for websites, messaging apps, circumvention tools, and performance, publishing results that can support censorship research and local troubleshooting.",
-      "assessment": {
-        "alternatives": [
-          "Manual connectivity tests that do not create comparable public measurements",
-          "Commercial network-monitoring products for private infrastructure"
-        ],
-        "audiences": [
-          "Researchers and advocates studying internet interference",
-          "Technically confident users investigating access problems on their own network"
-        ],
-        "caveats": [
-          "OONI explicitly warns that running censorship measurements can carry risk in some places",
-          "A measurement is evidence to interpret carefully, not proof of a single cause"
-        ],
-        "complements": [
-          "OONI Explorer",
-          "Local legal and digital-security advice",
-          "Independent network diagnostics"
-        ],
-        "prerequisites": [
-          "A considered threat model",
-          "Awareness that measurements may be uploaded and publicly published"
-        ],
-        "useCases": [
-          "Measuring suspected blocking of a website or app",
-          "Contributing reproducible network measurements to OONI's open-data work"
-        ]
-      },
-      "category": "networking",
-      "displayName": "ooniprobe",
-      "docs": "https://github.com/ooni/probe-cli#readme",
-      "homepage": "https://ooni.org/",
-      "id": "brew:ooniprobe",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aooniprobe",
-      "lastUpdatedAt": "2026-07-28T01:00:56Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/ooni/probe-cli",
-      "researchedAt": "2026-07-31T13:02:36Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "OONI Probe CLI user guide",
-          "url": "https://openobservatory.github.io/support/ooni-probe-cli/"
-        },
-        {
-          "kind": "primary",
-          "title": "OONI Probe CLI repository",
-          "url": "https://github.com/ooni/probe-cli"
-        }
-      ],
-      "upstreamSummary": "Network interference detection tool",
-      "version": null
-    },
-    "brew:open-code-review": {
-      "agentSummary": "Open Code Review combines deterministic change selection with an LLM agent to produce repository-aware, line-level reviews, trading some recall for fewer noisy findings.",
-      "assessment": {
-        "alternatives": [
-          "CodeRabbit for hosted pull-request review",
-          "SonarQube for deterministic static analysis",
-          "General-purpose coding agents with review prompts"
-        ],
-        "audiences": [
-          "Teams adding AI-assisted review to Git workflows",
-          "Maintainers reviewing large or multi-file changes",
-          "Developers who want configurable model providers"
-        ],
-        "caveats": [
-          "Model-backed review can incur API cost and expose code to the configured provider",
-          "The published benchmark reports lower recall than a general-purpose agent, reflecting a deliberate precision-first tradeoff",
-          "AI findings still require human validation",
-          "The open-source release is young despite claimed prior internal use"
-        ],
-        "complements": [
-          "Existing pull-request review processes",
-          "Repository-specific coding and security rules",
-          "OpenTelemetry collectors when optional telemetry is enabled"
-        ],
-        "prerequisites": [
-          "Git 2.41 or newer",
-          "An OpenAI- or Anthropic-compatible model endpoint for managed review",
-          "A Git repository for diff-oriented modes"
-        ],
-        "useCases": [
-          "Reviewing staged, branch, or commit diffs",
-          "Scanning whole files without meaningful Git history",
-          "Applying path-specific review rules",
-          "Delegating review execution to supported coding agents"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "open-code-review",
-      "docs": "https://github.com/alibaba/open-code-review#readme",
-      "homepage": "https://github.com/alibaba/open-code-review",
-      "id": "brew:open-code-review",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aopen-code-review",
-      "lastUpdatedAt": "2026-08-15T06:45:57Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/alibaba/open-code-review",
-      "researchedAt": "2026-08-16T06:29:16Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Open Code Review repository and documentation",
-          "url": "https://github.com/alibaba/open-code-review"
-        },
-        {
-          "kind": "primary",
-          "title": "Open Code Review releases",
-          "url": "https://github.com/alibaba/open-code-review/releases"
-        }
-      ],
-      "upstreamSummary": "AI-powered code review tool with deterministic pipelines and an LLM agent",
       "version": null
     },
     "brew:osv-scanner": {
@@ -4124,64 +3786,6 @@
       "upstreamSummary": "Markdown Linter and Formatter written in Rust",
       "version": "0.2.61"
     },
-    "brew:sabiql": {
-      "agentSummary": "sabiql is a Vim-oriented database TUI that delegates PostgreSQL, MySQL, and SQLite access to their native command-line clients while adding browsing and editing workflows.",
-      "assessment": {
-        "alternatives": [
-          "The underlying psql, mysql, or sqlite3 shells",
-          "A graphical multi-database client",
-          "Other terminal database interfaces such as rainfrog or gobang"
-        ],
-        "audiences": [
-          "Terminal-focused database developers and administrators",
-          "Vim users who want keyboard-driven schema and data exploration"
-        ],
-        "caveats": [
-          "It is driverless only because it shells out to separately installed database clients",
-          "SQLite lacks ER diagrams and several PostgreSQL-specific analysis features",
-          "Windows support is described as experimental"
-        ],
-        "complements": [
-          "PostgreSQL, MySQL, or SQLite command-line clients",
-          "Graphviz for PostgreSQL relationship diagrams",
-          "A secure credential-management workflow"
-        ],
-        "prerequisites": [
-          "The native CLI for each database, such as psql, mysql, or sqlite3",
-          "Graphviz when exporting PostgreSQL ER diagrams",
-          "Database credentials and network access where applicable"
-        ],
-        "useCases": [
-          "Browsing and editing PostgreSQL, MySQL, or SQLite data",
-          "Running ad-hoc SQL and inspecting query plans",
-          "Exploring PostgreSQL relationships through exported ER diagrams"
-        ]
-      },
-      "category": "data",
-      "displayName": "sabiql",
-      "docs": "https://github.com/riii111/sabiql#readme",
-      "homepage": "https://github.com/riii111/sabiql",
-      "id": "brew:sabiql",
-      "installURL": "pkgmgrmgr://install?package=brew%3Asabiql",
-      "lastUpdatedAt": "2026-09-05T19:43:10Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/riii111/sabiql",
-      "researchedAt": "2026-09-06T06:20:50Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "sabiql repository and usage documentation",
-          "url": "https://github.com/riii111/sabiql"
-        },
-        {
-          "kind": "primary",
-          "title": "sabiql 0.1.0 release",
-          "url": "https://github.com/riii111/sabiql/releases/tag/v0.1.0"
-        }
-      ],
-      "upstreamSummary": "Fast, safe-by-design, driverless, Vim-first DB TUI with ER diagrams",
-      "version": "3.0.1"
-    },
     "brew:sourcedocs": {
       "agentSummary": "SourceDocs generates browsable Markdown API references from Swift packages and Xcode projects, keeping generated documentation beside hand-written guides in a repository.",
       "assessment": {
@@ -4308,6 +3912,65 @@
       "upstreamSummary": "Netcat-like tool over Tailscale's data plane, without its control plane",
       "version": "0.5.0"
     },
+    "brew:termaid": {
+      "agentSummary": "termaid renders Mermaid syntax as terminal-friendly Unicode or ASCII diagrams and Python widgets, covering many diagram types without requiring a browser or remote rendering service.",
+      "assessment": {
+        "alternatives": [
+          "mermaid-ascii for a Go-based terminal renderer",
+          "Mermaid CLI or browser rendering for graphical output"
+        ],
+        "audiences": [
+          "Terminal users who keep architecture notes in Mermaid",
+          "Python TUI authors and developers working through SSH or CI logs"
+        ],
+        "caveats": [
+          "Text layout cannot reproduce every visual detail of graphical Mermaid rendering",
+          "Dense diagrams may compact poorly in narrow terminals",
+          "The earliest published release is v0.1.3, so pre-release development history is limited"
+        ],
+        "complements": [
+          "Mermaid source files stored with project documentation",
+          "A browser-based Mermaid renderer for final visual verification"
+        ],
+        "prerequisites": [
+          "A terminal with suitable width and Unicode support for the best output",
+          "Optional Rich or Textual dependencies for colored output or widgets"
+        ],
+        "useCases": [
+          "Previewing Mermaid files without launching a browser",
+          "Embedding text diagrams in Python terminal applications"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "termaid",
+      "docs": "https://github.com/fasouto/termaid#readme",
+      "homepage": "https://github.com/fasouto/termaid",
+      "id": "brew:termaid",
+      "installURL": "pkgmgrmgr://install?package=brew%3Atermaid",
+      "lastUpdatedAt": "2026-09-18T13:31:17Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/fasouto/termaid",
+      "researchedAt": "2026-09-18T19:51:37Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "termaid documentation and supported diagrams",
+          "url": "https://github.com/fasouto/termaid"
+        },
+        {
+          "kind": "primary",
+          "title": "termaid first published release",
+          "url": "https://github.com/fasouto/termaid/releases/tag/v0.1.3"
+        },
+        {
+          "kind": "independent",
+          "title": "termaid project page on PyPI",
+          "url": "https://pypi.org/project/termaid/"
+        }
+      ],
+      "upstreamSummary": "Render Mermaid diagrams in the terminal",
+      "version": "0.9.0"
+    },
     "brew:tgrep": {
       "agentSummary": "Trigram indexing accelerates repeated searches through large repositories, with a local server tracking changes; initial indexing and resource costs make occasional searches less compelling.",
       "assessment": {
@@ -4365,68 +4028,6 @@
       ],
       "upstreamSummary": "Trigram-indexed grep for fast regex search in large codebases",
       "version": "1.0.5"
-    },
-    "brew:threatcl": {
-      "agentSummary": "threatcl stores threat models as reviewable HCL or JSON, then validates, queries, diagrams, and exports them for version-controlled security workflows.",
-      "assessment": {
-        "alternatives": [
-          "OWASP Threat Dragon for diagram-led modeling",
-          "IriusRisk for a managed modeling platform",
-          "Markdown templates for simpler documentation-only workflows"
-        ],
-        "audiences": [
-          "Application security engineers",
-          "Platform teams practicing threat modeling as code",
-          "Developers who already review infrastructure definitions"
-        ],
-        "caveats": [
-          "A schema cannot replace security judgment or stakeholder review",
-          "JSON input does not support imports and variables",
-          "Custom classifications require consistently supplying the same configuration",
-          "The smaller ecosystem offers fewer integrations than commercial platforms"
-        ],
-        "complements": [
-          "OWASP threat-modeling guidance",
-          "MITRE ATT&CK mitigation references",
-          "Terraform workflows",
-          "GitHub Actions through the companion threatcl action"
-        ],
-        "prerequisites": [
-          "Familiarity with HCL or structured JSON",
-          "A defined threat-modeling process and accountable reviewers",
-          "Version control for its intended DevOps-first workflow"
-        ],
-        "useCases": [
-          "Keeping threat models beside application code",
-          "Validating threat-model structure in continuous integration",
-          "Generating data-flow diagrams and Markdown dashboards",
-          "Querying models through GraphQL or an MCP server"
-        ]
-      },
-      "category": "security",
-      "displayName": "threatcl",
-      "docs": "https://github.com/threatcl/threatcl#readme",
-      "homepage": "https://github.com/threatcl/threatcl",
-      "id": "brew:threatcl",
-      "installURL": "pkgmgrmgr://install?package=brew%3Athreatcl",
-      "lastUpdatedAt": "2026-08-15T04:29:59Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/threatcl/threatcl",
-      "researchedAt": "2026-08-16T06:29:16Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "threatcl repository README",
-          "url": "https://github.com/threatcl/threatcl"
-        },
-        {
-          "kind": "primary",
-          "title": "threatcl documentation",
-          "url": "https://threatcl.dev/"
-        }
-      ],
-      "upstreamSummary": "Documenting your Threat Models with HCL",
-      "version": null
     },
     "brew:ty": {
       "agentSummary": "Ty is Astral’s Rust-based Python type checker and language server, offering rapid incremental analysis, configurable diagnostics, and editor integration while remaining pre-1.0.",
@@ -4592,11 +4193,70 @@
       ],
       "upstreamSummary": "Terminal UI for SQL databases",
       "version": null
+    },
+    "brew:workmux": {
+      "agentSummary": "workmux pairs Git worktrees with terminal-multiplexer workspaces, automating setup, agent status, review, and cleanup while preserving familiar Git and terminal primitives.",
+      "assessment": {
+        "alternatives": [
+          "Manual git worktree and tmux commands",
+          "Graphical multi-agent workspaces such as Ghostex or Calyx"
+        ],
+        "audiences": [
+          "Terminal-oriented developers running concurrent coding tasks or agents",
+          "Teams already comfortable with Git worktrees and multiplexers"
+        ],
+        "caveats": [
+          "Its opinionated lifecycle and cleanup commands require understanding which branches, windows, and files they affect",
+          "Automated setup hooks execute project-configured commands and should be reviewed before use",
+          "Agent-status integrations can be limited by the events exposed by each agent tool"
+        ],
+        "complements": [
+          "A code-review workflow and project-specific test commands",
+          "Container or virtual-machine isolation for higher-risk agent tasks"
+        ],
+        "prerequisites": [
+          "Git and a supported multiplexer such as tmux, Zellij, Kitty, or WezTerm",
+          "Careful project configuration for setup hooks and copied or linked files"
+        ],
+        "useCases": [
+          "Creating an isolated branch, worktree, and terminal workspace together",
+          "Monitoring several agent sessions and cleaning up completed work"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "workmux",
+      "docs": "https://github.com/raine/workmux#readme",
+      "homepage": "https://workmux.raine.dev",
+      "id": "brew:workmux",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aworkmux",
+      "lastUpdatedAt": "2026-09-18T09:24:45Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/raine/workmux",
+      "researchedAt": "2026-09-18T19:51:37Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "workmux documentation and repository",
+          "url": "https://github.com/raine/workmux"
+        },
+        {
+          "kind": "primary",
+          "title": "workmux release history",
+          "url": "https://github.com/raine/workmux/blob/main/CHANGELOG.md"
+        },
+        {
+          "kind": "independent",
+          "title": "Hacker News discussion from a workmux user",
+          "url": "https://news.ycombinator.com/item?id=46029809"
+        }
+      ],
+      "upstreamSummary": "Git worktrees + tmux windows for zero-friction parallel dev",
+      "version": "0.1.263"
     }
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-11T14:58:00Z",
+    "generatedAt": "2026-09-18T19:50:07Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
