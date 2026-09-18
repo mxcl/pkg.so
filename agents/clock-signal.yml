@@ -1,7 +1,6 @@
 id: cask:clock-signal
 display-name: Clock Signal
-homepage: https://github.com/TomHarte/CLK
-repo: https://github.com/TomHarte/CLK
+repo: null
 docs:
   - https://github.com/TomHarte/CLK#readme
   - https://github.com/TomHarte/CLK/blob/master/BUILD.md
@@ -60,10 +59,6 @@ history:
       to infer the platform, configure the emulated machine, and issue required loading
       commands. Cross-platform builds can also be launched from the command line with a
       media-file argument.
-category: games
-package-manager:
-  brew-cask: clock-signal
-package-manager-url: https://formulae.brew.sh/cask/clock-signal
 tags:
   - cycle-accurate
   - emulator
@@ -71,10 +66,39 @@ tags:
   - macos
   - retro-computing
   - signal-processing
-description: Latency-hating emulator of 8- and 16-bit platforms
-applications:
-  - Clock Signal.app
 provenance:
-  cask: clock-signal
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official README enumerates emulated computers and consoles:
+      https://github.com/TomHarte/CLK#readme
+    - source_facts.description identifies an emulator of 8- and 16-bit platforms.
+  display-name-sources:
+    - 'Official repository README heading: https://github.com/TomHarte/CLK#readme'
+    - current_curation.display-name
+  docs-sources:
+    - The official BUILD.md documents native macOS, SDL, and Qt build and launch procedures.
+    - >
+      The official README documents goals, supported machines, loading behavior, signal
+      processing, and latency.
+  history-sources:
+    - Input fields source_facts.repo and source_facts.package-manager.
+    - 'Official build guide: https://github.com/TomHarte/CLK/blob/master/BUILD.md'
+    - 'Official releases: https://github.com/TomHarte/CLK/releases'
+    - 'Official repository and README: https://github.com/TomHarte/CLK'
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/TomHarte/CLK; per
+      the enrichment rule, repo is returned as null without re-evaluation.
+  tags-sources:
+    - 'Official repository README: https://github.com/TomHarte/CLK#readme'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - emulation
+  - retro-computing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
