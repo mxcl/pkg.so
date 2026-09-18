@@ -1,6 +1,5 @@
 id: cask:slack
 display-name: Slack
-homepage: https://slack.com/
 repo: null
 docs:
   - https://slack.com/help
@@ -8,7 +7,8 @@ docs:
   - https://slack.com/help/articles/11906214948755-Manage-desktop-app-configurations
   - https://slack.com/help/articles/360059928654-How-to-use-Slack--your-quick-start-guide
 config-file-location:
-  linux: /etc/slack-desktop.conf
+  linux:
+    - /etc/slack-desktop.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,10 +71,6 @@ history:
       /etc/slack-desktop.conf for Linux; macOS management uses plist or mobileconfig
       profiles under the com.tinyspeck.slackmacgap domain, while Windows management uses
       Group Policy registry locations.
-category: productivity
-package-manager:
-  brew-cask: slack
-package-manager-url: https://formulae.brew.sh/cask/slack
 tags:
   - channels
   - collaboration
@@ -84,10 +80,42 @@ tags:
   - saas
   - team-chat
   - workplace
-description: Team communication and collaboration software
-applications:
-  - Slack.app
 provenance:
-  cask: slack
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official overview: https://slack.com/help/articles/115004071768-What-is-Slack'
+    - >
+      source_facts.description identifies Slack as team communication and collaboration
+      software.
+  display-name-sources:
+    - 'Official product and help sites: https://slack.com/ and https://slack.com/help'
+    - source_facts.name
+  docs-sources:
+    - >
+      Slack operates a dedicated official Help Center with product, onboarding, and
+      desktop-administration documentation.
+  history-sources:
+    - 'Official Salesforce acquisition announcement: https://www.salesforce.com/news/?p=49185'
+    - >
+      Official desktop configuration guide:
+      https://slack.com/help/articles/11906214948755-Manage-desktop-app-configurations
+    - 'Official product overview: https://slack.com/help/articles/115004071768-What-is-Slack'
+    - 'Official tenth-anniversary history: https://slack.com/blog/news/slack-turns-10'
+  repo-sources:
+    - >
+      source_facts.repo is empty. Slack's official product and developer surfaces
+      document a proprietary service, SDKs, and integrations but do not identify an
+      official public source repository for the Slack desktop application.
+  tags-sources:
+    - 'Official overview: https://slack.com/help/articles/115004071768-What-is-Slack'
+    - >
+      Official quick-start guide:
+      https://slack.com/help/articles/360059928654-How-to-use-Slack--your-quick-start-guide
+category-confidence: high
+category-path:
+  - productivity
+  - team-communication
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
