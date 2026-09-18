@@ -1,13 +1,14 @@
 id: brew:solod
 display-name: Solod
-homepage: https://solod.dev/
-repo: https://github.com/solod-dev/solod
+repo: null
 docs:
   - https://github.com/solod-dev/solod
   - https://solod.dev/
 config-file-location:
-  unix: <project-directory>/go.mod
-  windows: <project-directory>\go.mod
+  unix:
+    - <project-directory>/go.mod
+  windows:
+    - <project-directory>\go.mod
 credentials-file-location: null
 history:
   adoption-history:
@@ -73,15 +74,6 @@ history:
       Solod is aimed at Go programmers seeking runtime-free native output and C
       programmers who prefer Go-like structure and tooling. It does not document a
       separate credential file; project metadata follows Go's `go.mod` convention.
-category: language-runtime
-package-manager:
-  apk: so
-  brew: solod
-  macports: so
-  nix: so
-  scoop: extras/so
-package-manager-url: https://formulae.brew.sh/formula/solod
-license: BSD-3-Clause
 tags:
   - c-interop
   - c11
@@ -93,10 +85,36 @@ tags:
   - systems-programming
   - transpiler
   - zero-runtime
-description: Strict subset of Go with transpiler that translates to regular C
-executables:
-  - so
 provenance:
-  formula: solod
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      The official site defines Solod as a strict subset of Go that translates to C11:
+      https://solod.dev/
+    - source_facts.description
+  display-name-sources:
+    - 'Official site and README use the capitalized name Solod: https://solod.dev/'
+  docs-sources:
+    - 'Dedicated official project site: https://solod.dev/'
+    - >
+      Official repository README contains installation, usage, language,
+      standard-library, and example guides: https://github.com/solod-dev/solod#readme
+  history-sources:
+    - https://github.com/solod-dev/solod#readme
+    - https://solod.dev/
+  repo-sources:
+    - Not determined because source_facts.repo is already populated, as required.
+  tags-sources:
+    - >
+      Official README usage and compatibility sections:
+      https://github.com/solod-dev/solod#readme
+    - 'Official project overview and highlights: https://solod.dev/'
+category-confidence: high
+category-path:
+  - language-runtime
+  - compilers
+  - source-to-source-compilers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,15 +1,16 @@
 id: brew:kpt
 display-name: kpt
-homepage: https://kpt.dev
-repo: https://github.com/kptdev/kpt
+repo: null
 docs:
   - https://kpt.dev/
   - https://kpt.dev/book
   - https://kpt.dev/guides
   - https://kpt.dev/reference/cli
 config-file-location:
-  unix: <package-directory>/Kptfile
-  windows: <package-directory>\Kptfile
+  unix:
+    - <package-directory>/Kptfile
+  windows:
+    - <package-directory>\Kptfile
 credentials-file-location: null
 history:
   adoption-history:
@@ -83,11 +84,6 @@ history:
       Cluster deployment requires Kubernetes credentials supplied through the user's
       environment or an explicitly provided credential file; the kpt documentation does
       not establish a kpt-specific credential-file location.
-category: cloud-infrastructure
-package-manager:
-  brew: kpt
-package-manager-url: https://formulae.brew.sh/formula/kpt
-license: Apache-2.0
 tags:
   - cli
   - configuration-as-data
@@ -99,10 +95,37 @@ tags:
   - kubernetes
   - package-management
   - yaml
-description: Toolchain for composing, customizing, and deploying Kubernetes packages
-executables:
-  - kpt
 provenance:
-  formula: kpt
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      Official documentation calls kpt a package-centric toolchain for Kubernetes
+      Resource Model configuration: https://kpt.dev/
+    - source_facts.description
+  display-name-sources:
+    - 'Official documentation consistently uses the lowercase name kpt: https://kpt.dev/'
+    - source_facts.name
+  docs-sources:
+    - >
+      Dedicated official documentation site and its book, guides, and CLI reference:
+      https://kpt.dev/
+  history-sources:
+    - https://github.com/kptdev/kpt
+    - https://kpt.dev/
+    - https://kpt.dev/faq/
+    - https://opensource.googleblog.com/2020/03/kpt-packaging-up-your-kubernetes.html
+    - https://porch.kpt.dev/
+  repo-sources:
+    - Not determined because source_facts.repo is already populated, as required.
+  tags-sources:
+    - 'Official overview, concepts, and FAQ: https://kpt.dev/'
+    - 'Official repository description: https://github.com/kptdev/kpt'
+category-confidence: high
+category-path:
+  - cloud-infrastructure
+  - kubernetes
+  - configuration-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
