@@ -1,14 +1,14 @@
 id: cask:tablepro
 display-name: TablePro
-homepage: https://tablepro.app/
-repo: https://github.com/TableProApp/TablePro
+repo: null
 docs:
   - https://docs.tablepro.app/
 config-file-location: null
 credentials-file-location:
-  macos: >
-    ~/Library/Application Support/TablePro/mcp-tokens.json (salted hashes of MCP bearer
-    tokens; plaintext tokens are not persisted)
+  macos:
+    - >
+      ~/Library/Application Support/TablePro/mcp-tokens.json (salted hashes of MCP
+      bearer tokens; plaintext tokens are not persisted)
 history:
   adoption-history:
     - >
@@ -77,10 +77,6 @@ history:
       External AI clients can use TablePro's bundled stdio bridge or its HTTP MCP
       endpoint. Access is controlled with scoped tokens and optional connection
       allowlists; the service does not expose saved database passwords to MCP clients.
-category: developer-tools
-package-manager:
-  brew-cask: tablepro
-package-manager-url: https://formulae.brew.sh/cask/tablepro
 tags:
   - data-grid
   - database-client
@@ -90,10 +86,42 @@ tags:
   - native-app
   - open-source
   - sql-editor
-description: Native database client for many database types
-applications:
-  - TablePro.app
 provenance:
-  cask: tablepro
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official site and README call TablePro a native database client for developers:
+      https://tablepro.app/
+    - https://github.com/TableProApp/TablePro#readme
+  display-name-sources:
+    - >
+      Official website, documentation, and repository use the name TablePro:
+      https://tablepro.app/
+    - current_curation.display-name
+  docs-sources:
+    - >
+      Dedicated official documentation referenced by the official README:
+      https://github.com/TableProApp/TablePro#documentation
+  history-sources:
+    - 'Official MCP documentation: https://docs.tablepro.app/features/mcp'
+    - 'Official documentation: https://docs.tablepro.app/'
+    - 'Official repository README: https://github.com/TableProApp/TablePro#readme'
+    - 'Official website: https://tablepro.app/'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per instructions it was not reassessed and
+      the returned repo is null.
+  tags-sources:
+    - >
+      Official README feature and platform descriptions:
+      https://github.com/TableProApp/TablePro#readme
+    - 'Official documentation: https://docs.tablepro.app/'
+category-confidence: high
+category-path:
+  - developer-tools
+  - database-tools
+  - database-client
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
