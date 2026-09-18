@@ -1,7 +1,6 @@
 id: cask:transmission
 display-name: Transmission
-homepage: https://transmissionbt.com/
-repo: https://github.com/transmission/transmission
+repo: null
 docs:
   - https://github.com/transmission/transmission/blob/main/docs/Configuration-Files.md
   - https://github.com/transmission/transmission/blob/main/docs/Web-Interface.md
@@ -77,10 +76,6 @@ history:
       $HOME/Library/Preferences/org.m0k.transmission.plist and per-torrent state under
       $HOME/Library/Application Support/Transmission. Other clients use their documented
       platform-specific configuration directories.
-category: networking
-package-manager:
-  brew-cask: transmission
-package-manager-url: https://formulae.brew.sh/cask/transmission
 tags:
   - bittorrent
   - daemon
@@ -89,10 +84,43 @@ tags:
   - rpc
   - torrent-client
   - web-interface
-description: Open-source BitTorrent client
-applications:
-  - Transmission.app
 provenance:
-  cask: transmission
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official repository README calls Transmission a BitTorrent client:
+      https://github.com/transmission/transmission/blob/main/README.md
+  display-name-sources:
+    - 'Official project site and source_facts.name: https://transmissionbt.com/'
+  docs-sources:
+    - >
+      The official repository README points to its bundled documentation; the selected
+      official pages cover configuration and the remote web interface.
+  history-sources:
+    - >
+      Official configuration documentation:
+      https://github.com/transmission/transmission/blob/main/docs/Configuration-Files.md
+    - >
+      Official project site source:
+      https://github.com/transmission/transmission.github.io/blob/master/index.html
+    - >
+      Official repository README:
+      https://github.com/transmission/transmission/blob/main/README.md
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/transmission/transmission; per instruction, repo is returned as
+      null without re-determination.
+  tags-sources:
+    - >
+      Official README documents BitTorrent, open-source licensing, desktop clients, the
+      daemon, CLI, web UI, and remote-control support:
+      https://github.com/transmission/transmission/blob/main/README.md
+category-confidence: high
+category-path:
+  - networking
+  - bittorrent-clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

@@ -1,15 +1,17 @@
 id: cask:thunderbird
 display-name: Mozilla Thunderbird
-homepage: https://www.thunderbird.net/en-US/
 repo: https://hg.mozilla.org/comm-central
 docs:
   - https://developer.thunderbird.net/
   - https://source-docs.thunderbird.net/en/latest
   - https://support.mozilla.org/en-US/products/thunderbird
 config-file-location:
-  linux: ~/.thunderbird/<profile>/prefs.js
-  macos: ~/Library/Thunderbird/Profiles/<profile>/prefs.js
-  windows: '%APPDATA%\Thunderbird\Profiles\<profile>\prefs.js'
+  linux:
+    - ~/.thunderbird/<profile>/prefs.js
+  macos:
+    - ~/Library/Thunderbird/Profiles/<profile>/prefs.js
+  windows:
+    - '%APPDATA%\Thunderbird\Profiles\<profile>\prefs.js'
 credentials-file-location:
   linux:
     - ~/.thunderbird/<profile>/logins.json
@@ -87,10 +89,6 @@ history:
       contacts locally. Unified inboxes, filters, tags, add-ons, RSS support, OpenPGP,
       and profile portability make it suitable for both ordinary desktop mail and highly
       customized workflows.
-category: productivity
-package-manager:
-  brew-cask: thunderbird
-package-manager-url: https://formulae.brew.sh/cask/thunderbird
 tags:
   - calendar
   - contacts
@@ -99,10 +97,43 @@ tags:
   - extensions
   - open-source
   - privacy
-description: Customizable email client
-applications:
-  - Thunderbird.app
 provenance:
-  cask: thunderbird
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official homepage describes Thunderbird Desktop as an email, calendar, and
+      contacts application: https://www.thunderbird.net/en-US/
+  display-name-sources:
+    - 'current_curation.display-name; official project site: https://www.thunderbird.net/en-US/'
+  docs-sources:
+    - >
+      The official Thunderbird homepage links Mozilla Support for desktop help;
+      Thunderbird also publishes dedicated source and developer documentation:
+      https://www.thunderbird.net/en-US/
+  history-sources:
+    - 'Official MZLA announcement: https://blog.thunderbird.net/2020/01/thunderbirds-new-home/'
+    - >
+      Official organizational history:
+      https://blog.thunderbird.net/2023/11/the-untold-history-of-thunderbird/
+    - 'Official project overview: https://www.thunderbird.net/en-US/about/'
+    - >
+      Official twentieth-anniversary history:
+      https://blog.thunderbird.net/2024/12/celebrating-20-years-of-thunderbird/
+  repo-sources:
+    - >
+      Official Thunderbird developer documentation identifies Mozilla's comm-central
+      Mercurial repository as the latest Thunderbird source repository:
+      https://developer.thunderbird.net/thunderbird-development/setting-up-a-build-environment
+  tags-sources:
+    - >
+      Official homepage describes email, calendar, contacts, privacy, open-source
+      licensing, cross-platform availability, and customization:
+      https://www.thunderbird.net/en-US/
+category-confidence: high
+category-path:
+  - productivity
+  - email-clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
