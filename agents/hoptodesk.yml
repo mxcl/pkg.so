@@ -1,6 +1,5 @@
 id: cask:hoptodesk
 display-name: HopToDesk
-homepage: https://www.hoptodesk.com/
 repo: https://gitlab.com/hoptodesk/hoptodesk
 docs:
   - https://www.hoptodesk.com/docs
@@ -10,7 +9,8 @@ config-file-location:
   linux:
     - ~/.config/hoptodesk/api.json
     - /root/.config/hoptodesk/api.json (background service)
-  macos: ~/Library/Preferences/com.hoptodesk.HopToDesk/api.json
+  macos:
+    - ~/Library/Preferences/com.hoptodesk.HopToDesk/api.json
   windows:
     - '%APPDATA%\HopToDesk\config\api.json'
     - C:\ProgramData\HopToDesk\config\api.json (all users and service)
@@ -61,10 +61,6 @@ history:
       permanent password, and optionally enable two-factor authentication.
       Administrators can enroll devices in the Dashboard or point clients at custom
       infrastructure using the documented api.json override.
-category: networking
-package-manager:
-  brew-cask: hoptodesk
-package-manager-url: https://formulae.brew.sh/cask/hoptodesk
 tags:
   - cross-platform
   - end-to-end-encryption
@@ -74,10 +70,44 @@ tags:
   - screen-sharing
   - self-hosting
   - unattended-access
-description: Remote desktop and remote support tool with end-to-end encryption
-applications:
-  - HopToDesk.app
 provenance:
-  cask: hoptodesk
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://help.hoptodesk.com/ documents remote control, file transfer, port
+      forwarding, unattended access, and self-hosting.
+    - >
+      source_facts.description identifies HopToDesk as a remote desktop and remote
+      support tool.
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.hoptodesk.com/ uses the product name HopToDesk.
+  docs-sources:
+    - https://help.hoptodesk.com/ is the official product help center.
+    - https://www.hoptodesk.com/docs is the official Dashboard documentation.
+    - https://www.hoptodesk.com/on-premises is the official self-hosting guide.
+  history-sources:
+    - https://gitlab.com/hoptodesk/hoptodesk
+    - https://help.hoptodesk.com/
+    - https://www.hoptodesk.com/on-premises
+    - source_facts.description
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      The official HopToDesk website and official packaging metadata point to the
+      hoptodesk organization; https://gitlab.com/hoptodesk/hoptodesk is the primary
+      cross-platform project.
+    - source_facts.repo is empty, so repository discovery was required.
+  tags-sources:
+    - >
+      https://help.hoptodesk.com/ documents remote desktop, file transfer, unattended
+      access, encryption, and self-hosting.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - remote-access
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

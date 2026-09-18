@@ -1,7 +1,6 @@
 id: cask:insomnia
 display-name: Insomnia
-homepage: https://insomnia.rest/
-repo: https://github.com/Kong/insomnia
+repo: null
 docs:
   - https://developer.konghq.com/insomnia
   - https://developer.konghq.com/insomnia/environments
@@ -11,8 +10,10 @@ config-file-location:
   linux:
     - $XDG_CONFIG_HOME/Insomnia
     - ~/.config/Insomnia
-  macos: ~/Library/Application Support/Insomnia
-  windows: '%APPDATA%\Insomnia'
+  macos:
+    - ~/Library/Application Support/Insomnia
+  windows:
+    - '%APPDATA%\Insomnia'
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,10 +72,6 @@ history:
       or command-line requests. Teams can choose local storage, encrypted cloud
       collaboration, or Git-backed project storage, while Inso CLI supports linting and
       test automation.
-category: developer-tools
-package-manager:
-  brew-cask: insomnia
-package-manager-url: https://formulae.brew.sh/cask/insomnia
 tags:
   - api-client
   - api-design
@@ -86,10 +83,40 @@ tags:
   - openapi
   - rest
   - websocket
-description: HTTP and GraphQL Client
-applications:
-  - Insomnia.app
 provenance:
-  cask: insomnia
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://developer.konghq.com/insomnia/ documents API design, debugging, testing,
+      and support for multiple API protocols.
+    - source_facts.description identifies Insomnia as an HTTP and GraphQL client.
+  display-name-sources:
+    - current_curation.display-name
+    - https://insomnia.rest/ and official Kong documentation use the name Insomnia.
+  docs-sources:
+    - >
+      The selected official documentation pages cover requests, environments, and
+      storage choices.
+    - https://developer.konghq.com/insomnia/ is Kong's official Insomnia documentation.
+  history-sources:
+    - https://developer.konghq.com/insomnia/
+    - https://developer.konghq.com/insomnia/collected-data/
+    - https://developer.konghq.com/insomnia/storage/
+    - https://github.com/Kong/insomnia/discussions/6626
+    - https://konghq.com/blog/news/kong-acquires-insomnia
+    - source_facts.description
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/Kong/insomnia; per
+      the task rule, repo is intentionally returned as null and was not re-determined.
+  tags-sources:
+    - https://developer.konghq.com/insomnia/ official feature and protocol documentation.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - api-development
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

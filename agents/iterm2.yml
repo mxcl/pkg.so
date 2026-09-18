@@ -1,6 +1,5 @@
 id: cask:iterm2
 display-name: iTerm2
-homepage: https://iterm2.com/
 repo: https://github.com/gnachman/iTerm2
 docs:
   - https://iterm2.com/documentation-preferences.html
@@ -65,10 +64,6 @@ history:
       and split panes, configure colors and key mappings, and add shell integration for
       command-aware features. Advanced users automate the application with AppleScript
       or the Python API and use tmux control mode for persistent remote sessions.
-category: developer-tools
-package-manager:
-  brew-cask: iterm2
-package-manager-url: https://formulae.brew.sh/cask/iterm2
 tags:
   - automation
   - cli
@@ -80,10 +75,44 @@ tags:
   - terminal
   - terminal-emulator
   - tmux
-description: Terminal emulator as alternative to Apple's Terminal app
-applications:
-  - iTerm.app
 provenance:
-  cask: iterm2
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://iterm2.com/help/ calls iTerm2 a replacement for Terminal and the successor
+      to iTerm.
+    - >
+      source_facts.description identifies iTerm2 as a terminal emulator and an
+      alternative to Apple's Terminal.
+  display-name-sources:
+    - current_curation.display-name
+    - https://iterm2.com/ and the official repository use the capitalization iTerm2.
+  docs-sources:
+    - >
+      The official preferences and Python API documentation cover configuration and
+      automation.
+    - https://iterm2.com/documentation.html is the official documentation index.
+  history-sources:
+    - https://github.com/gnachman/iTerm2
+    - https://iterm2.com/documentation.html
+    - https://iterm2.com/downloads.html
+    - https://iterm2.com/help/
+    - source_facts.description
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      https://github.com/gnachman/iTerm2 is linked by the official iTerm2 site and
+      identifies itself as the application source repository.
+    - source_facts.repo is empty, so repository discovery was required.
+  tags-sources:
+    - https://github.com/gnachman/iTerm2 official feature list.
+    - https://iterm2.com/documentation.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminal-emulators
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

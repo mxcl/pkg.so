@@ -1,7 +1,6 @@
 id: cask:hyper
 display-name: Hyper
-homepage: https://hyper.is/
-repo: https://github.com/vercel/hyper
+repo: null
 docs:
   - https://github.com/vercel/hyper/blob/canary/PLUGINS.md
   - https://hyper.is/
@@ -9,8 +8,10 @@ config-file-location:
   linux:
     - $XDG_CONFIG_HOME/Hyper/.hyper.js
     - ~/.config/Hyper/.hyper.js
-  macos: ~/Library/Application Support/Hyper/.hyper.js
-  windows: '%APPDATA%\Hyper\.hyper.js'
+  macos:
+    - ~/Library/Application Support/Hyper/.hyper.js
+  windows:
+    - '%APPDATA%\Hyper\.hyper.js'
 credentials-file-location: null
 history:
   adoption-history:
@@ -62,10 +63,6 @@ history:
       fonts, colors, key behavior, shell arguments, plugins, and local plugins in
       .hyper.js. It is commonly used as a visually customizable front end for ordinary
       shells and command-line development workflows.
-category: developer-tools
-package-manager:
-  brew-cask: hyper
-package-manager-url: https://formulae.brew.sh/cask/hyper
 tags:
   - cli
   - cross-platform
@@ -76,10 +73,41 @@ tags:
   - terminal
   - terminal-emulator
   - themes
-description: Terminal built on web technologies
-applications:
-  - Hyper.app
 provenance:
-  cask: hyper
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://github.com/vercel/hyper describes the project as a terminal for
+      command-line users built on open web standards.
+    - source_facts.description identifies Hyper as a terminal built on web technologies.
+  display-name-sources:
+    - current_curation.display-name
+    - https://hyper.is/ and https://github.com/vercel/hyper use the name Hyper.
+  docs-sources:
+    - >
+      https://github.com/vercel/hyper/blob/canary/PLUGINS.md is the official
+      extension-development guide.
+    - https://hyper.is/ is the official product and configuration documentation surface.
+  history-sources:
+    - https://github.com/vercel/hyper
+    - https://github.com/vercel/hyper/blob/canary/PLUGINS.md
+    - https://github.com/vercel/hyper/releases
+    - https://hyper.is/
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/vercel/hyper; per
+      the task rule, repo is intentionally returned as null and was not re-determined.
+  tags-sources:
+    - >
+      https://github.com/vercel/hyper project description, topics, goals, and plugin
+      documentation.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminal-emulators
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
