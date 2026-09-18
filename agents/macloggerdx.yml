@@ -1,14 +1,15 @@
 id: cask:macloggerdx
 display-name: MacLoggerDX
-homepage: https://www.dogparksoftware.com/MacLoggerDX.html
 repo: null
 docs:
   - https://www.dogparksoftware.com/MacLoggerDX%20Help/MacLoggerDX%20Help.html
   - https://www.dogparksoftware.com/MacLoggerDX%20Help/mldxfc_faq.html
 config-file-location:
-  macos: ~/Library/Preferences/com.dogparksoftware.MacLoggerDX.plist
+  macos:
+    - ~/Library/Preferences/com.dogparksoftware.MacLoggerDX.plist
 credentials-file-location:
-  macos: ~/Library/Preferences/com.dogparksoftware.MacLoggerDX.plist
+  macos:
+    - ~/Library/Preferences/com.dogparksoftware.MacLoggerDX.plist
 history:
   adoption-history:
     - >
@@ -77,10 +78,6 @@ history:
       The application creates an MLDX_Logs folder in Documents by default, but users can
       select another log folder. The preferences plist stores application settings,
       registration information, and service-related settings.
-category: science
-package-manager:
-  brew-cask: macloggerdx
-package-manager-url: https://formulae.brew.sh/cask/macloggerdx
 tags:
   - adif
   - amateur-radio
@@ -89,10 +86,49 @@ tags:
   - macos
   - qso-logging
   - rig-control
-description: Ham radio logging and rig control software
-applications:
-  - MacLoggerDX.app
 provenance:
-  cask: macloggerdx
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official manual documents radio control, QSO logging, DX-cluster integration,
+      maps, awards, and related amateur-radio workflows:
+      https://www.dogparksoftware.com/MacLoggerDX%20Help/MacLoggerDX%20Help.html
+    - source_facts.description identifies it as ham-radio logging and rig-control software.
+  display-name-sources:
+    - >
+      Official product page and manual use “MacLoggerDX”:
+      https://www.dogparksoftware.com/MacLoggerDX.html and
+      https://www.dogparksoftware.com/MacLoggerDX%20Help/MacLoggerDX%20Help.html
+  docs-sources:
+    - 'Official FAQ: https://www.dogparksoftware.com/MacLoggerDX%20Help/mldxfc_faq.html'
+    - >
+      Official online reference manual:
+      https://www.dogparksoftware.com/MacLoggerDX%20Help/MacLoggerDX%20Help.html
+  history-sources:
+    - 'Official FAQ: https://www.dogparksoftware.com/MacLoggerDX%20Help/mldxfc_faq.html'
+    - >
+      Official current change log:
+      https://www.dogparksoftware.com/MacLoggerDX%20Help/mldxfc_changelog.html
+    - >
+      Official legacy change log:
+      https://dogparksoftware.com/MacLoggerDX/Manual/Pages/changelog.html
+    - >
+      Official manual:
+      https://www.dogparksoftware.com/MacLoggerDX%20Help/MacLoggerDX%20Help.html
+  repo-sources:
+    - >
+      The official product site and documentation do not identify an official public
+      source-control repository.
+  tags-sources:
+    - >
+      Official manual feature index and operating guides:
+      https://www.dogparksoftware.com/MacLoggerDX%20Help/MacLoggerDX%20Help.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - science
+  - amateur-radio
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

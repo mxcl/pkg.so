@@ -1,14 +1,16 @@
 id: cask:mattermost
 display-name: Mattermost
-homepage: https://mattermost.com/
 repo: https://github.com/mattermost/desktop
 docs:
   - https://docs.mattermost.com/deployment-guide/desktop/desktop-app-deployment
   - https://docs.mattermost.com/product-overview/desktop
 config-file-location:
-  linux: ~/.config/Mattermost/config.json
-  macos: ~/Library/Application Support/Mattermost/config.json
-  windows: '%APPDATA%\Mattermost\config.json'
+  linux:
+    - ~/.config/Mattermost/config.json
+  macos:
+    - ~/Library/Application Support/Mattermost/config.json
+  windows:
+    - '%APPDATA%\Mattermost\config.json'
 credentials-file-location: null
 history:
   adoption-history:
@@ -80,10 +82,6 @@ history:
       Organizations commonly pair the desktop client with a self-hosted Mattermost
       deployment when data control, private-cloud operation, or integration with
       development and incident-response workflows is important.
-category: productivity
-package-manager:
-  brew-cask: mattermost
-package-manager-url: https://formulae.brew.sh/cask/mattermost
 tags:
   - collaboration
   - desktop-client
@@ -92,10 +90,44 @@ tags:
   - open-source
   - self-hosted
   - team-chat
-description: Open-source, self-hosted Slack-alternative
-applications:
-  - Mattermost.app
 provenance:
-  cask: mattermost
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes the desktop app as a cross-platform client for
+      the Mattermost collaboration platform:
+      https://docs.mattermost.com/product-overview/desktop
+  display-name-sources:
+    - >
+      Official website and desktop documentation use “Mattermost”:
+      https://mattermost.com/ and https://docs.mattermost.com/product-overview/desktop
+  docs-sources:
+    - >
+      Dedicated official desktop-app overview:
+      https://docs.mattermost.com/product-overview/desktop
+    - >
+      Official deployment documentation:
+      https://docs.mattermost.com/deployment-guide/desktop/desktop-app-deployment
+  history-sources:
+    - 'Official desktop documentation: https://docs.mattermost.com/product-overview/desktop'
+    - 'Official desktop repository: https://github.com/mattermost/desktop'
+    - 'Official newsroom archive: https://mattermost.com/newsroom/news/'
+    - 'Official open-source history: https://mattermost.com/open-source/'
+  repo-sources:
+    - >
+      The official desktop README identifies this as the native Mattermost desktop
+      application repository: https://github.com/mattermost/desktop
+  tags-sources:
+    - >
+      Official desktop overview and repository README:
+      https://docs.mattermost.com/product-overview/desktop and
+      https://github.com/mattermost/desktop
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - team-collaboration
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
