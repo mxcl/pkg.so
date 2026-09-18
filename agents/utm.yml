@@ -1,11 +1,11 @@
 id: cask:utm
 display-name: UTM
-homepage: https://mac.getutm.app/
-repo: https://github.com/utmapp/UTM
+repo: null
 docs:
   - https://docs.getutm.app/
 config-file-location:
-  macos: <VM>.utm/config.plist
+  macos:
+    - <VM>.utm/config.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,10 +63,6 @@ history:
       Each virtual machine is stored as a .utm package containing its configuration and
       virtual storage. Power users can automate common lifecycle operations through
       Shortcuts, AppleScript, or utmctl.
-category: system
-package-manager:
-  brew-cask: utm
-package-manager-url: https://formulae.brew.sh/cask/utm
 tags:
   - emulation
   - guest-operating-systems
@@ -76,10 +72,31 @@ tags:
   - qemu
   - virtual-machine
   - virtualization
-description: Virtual machines UI using QEMU
-applications:
-  - UTM.app
 provenance:
-  cask: utm
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      UTM documentation describes UTM as a system emulator and virtual-machine host
+      based on QEMU: https://docs.getutm.app/
+  display-name-sources:
+    - 'Official UTM documentation: https://docs.getutm.app/'
+    - source_facts.applications
+  docs-sources:
+    - Dedicated official documentation site linked by the project.
+  history-sources:
+    - https://docs.getutm.app/
+    - https://github.com/utmapp/UTM#readme
+    - https://github.com/utmapp/UTM/blob/main/Documentation/Architecture.md
+    - https://github.com/utmapp/UTM/blob/main/Documentation/Release.md
+  repo-sources:
+    - Repository lookup intentionally skipped because source_facts.repo is already populated.
+  tags-sources:
+    - Official UTM documentation and repository README.
+category-confidence: high
+category-path:
+  - system
+  - virtualization
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
