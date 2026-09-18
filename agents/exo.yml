@@ -1,13 +1,14 @@
 id: cask:exo
 display-name: Exo
-homepage: https://exolabs.net/
 repo: https://github.com/exo-explore/exo
 docs:
   - https://github.com/exo-explore/exo/blob/main/docs/api.md
   - https://github.com/exo-explore/exo#readme
 config-file-location:
-  linux: ${XDG_CONFIG_HOME:-~/.config}/exo/config.toml
-  macos: ~/.exo/config.toml
+  linux:
+    - ${XDG_CONFIG_HOME:-~/.config}/exo/config.toml
+  macos:
+    - ~/.exo/config.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,10 +64,6 @@ history:
       Typical uses include private local inference, pooling memory across Macs, serving
       models to coding tools or chat interfaces, and benchmarking model performance on
       consumer hardware.
-category: ai
-package-manager:
-  brew-cask: exo
-package-manager-url: https://formulae.brew.sh/cask/exo
 tags:
   - apple-silicon
   - distributed-computing
@@ -76,10 +73,39 @@ tags:
   - macos
   - model-serving
   - openai-compatible-api
-description: Run AI models locally across multiple devices
-applications:
-  - EXO.app
 provenance:
-  cask: exo
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Exo Labs describes Exo as open-source software that connects devices into a local
+      AI cluster: https://exolabs.net/
+    - source_facts.description
+  display-name-sources:
+    - 'Official Exo Labs product page: https://exolabs.net/'
+  docs-sources:
+    - >
+      The official repository README provides installation, configuration, clustering,
+      environment-variable, and API guidance.
+    - The repository's official API reference documents its REST interfaces.
+  history-sources:
+    - https://blog.exolabs.net/day-1/
+    - https://blog.exolabs.net/day-7/
+    - https://exolabs.net/
+    - https://github.com/exo-explore/exo
+  repo-sources:
+    - >
+      The official Exo Labs site links directly to https://github.com/exo-explore/exo as
+      Exo's source repository.
+  tags-sources:
+    - >
+      Official feature and API descriptions: https://exolabs.net/ and
+      https://github.com/exo-explore/exo#readme
+category-confidence: high
+category-path:
+  - ai
+  - local-ai
+  - distributed-inference
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
