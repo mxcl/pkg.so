@@ -1,13 +1,15 @@
 id: cask:google-chrome
 display-name: Google Chrome
-homepage: https://www.google.com/chrome/
 repo: null
 docs:
   - https://support.google.com/chrome
 config-file-location:
-  linux: ~/.config/google-chrome
-  macos: ~/Library/Application Support/Google/Chrome
-  windows: '%LOCALAPPDATA%\Google\Chrome\User Data'
+  linux:
+    - ~/.config/google-chrome
+  macos:
+    - ~/Library/Application Support/Google/Chrome
+  windows:
+    - '%LOCALAPPDATA%\Google\Chrome\User Data'
 credentials-file-location: null
 history:
   adoption-history:
@@ -61,20 +63,54 @@ history:
       People use Chrome for general browsing, web applications, extensions, synchronized
       profiles, password management, and developer tools. Organizations can centrally
       manage Chrome through enterprise policies.
-category: networking
-package-manager:
-  brew-cask: google-chrome
-package-manager-url: https://formulae.brew.sh/cask/google-chrome
 tags:
   - chromium-based
   - cross-platform
   - extensions
   - web
   - web-browser
-description: Web browser
-applications:
-  - Google Chrome.app
 provenance:
-  cask: google-chrome
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official Chrome Help: https://support.google.com/chrome/'
+    - 'Official Chrome site: https://www.google.com/chrome/'
+    - source_facts.description
+  display-name-sources:
+    - 'Official Chrome site: https://www.google.com/chrome/'
+    - current_curation.display-name
+  docs-sources:
+    - Official Google Chrome Help center.
+  history-sources:
+    - >
+      Official 100-release retrospective:
+      https://blog.google/products-and-platforms/products/chrome/100-versions-chrome-later-what-we-learned-along-way/
+    - 'Official Chrome Help: https://support.google.com/chrome/'
+    - >
+      Official Chrome history article:
+      https://blog.google/products-and-platforms/products/chrome/happy-10th-birthday-chrome-best-yet-come/
+    - >
+      Official Chromium user-data documentation:
+      https://chromium.googlesource.com/chromium/src/+/HEAD/docs/user_data_dir.md
+    - source_facts.description
+  repo-sources:
+    - >
+      Chromium is the official open-source upstream, not an exact Google Chrome
+      repository: https://chromium.googlesource.com/chromium/src/
+    - >
+      Official Chrome product and help pages do not identify a source repository for the
+      branded proprietary browser.
+    - source_facts.repo is empty.
+  tags-sources:
+    - 'Official Chrome Help: https://support.google.com/chrome/'
+    - >
+      Official Chrome history article:
+      https://blog.google/products-and-platforms/products/chrome/happy-10th-birthday-chrome-best-yet-come/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - web-browsers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
