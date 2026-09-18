@@ -1,18 +1,23 @@
 id: cask:dcp-o-matic
 display-name: DCP-o-matic
-homepage: https://dcpomatic.com/
 repo: https://git.carlh.net/cgit/dcpomatic
 docs:
   - https://dcpomatic.com/manual/html
   - https://dcpomatic.com/building
 config-file-location:
-  linux: ~/.config/dcpomatic2/config.xml
-  macos: /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
-  windows: C:\Users\<user>\AppData\Local\dcpomatic\config.xml
+  linux:
+    - ~/.config/dcpomatic2/config.xml
+  macos:
+    - /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
+  windows:
+    - C:\Users\<user>\AppData\Local\dcpomatic\config.xml
 credentials-file-location:
-  linux: ~/.config/dcpomatic2/config.xml
-  macos: /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
-  windows: C:\Users\<user>\AppData\Local\dcpomatic\config.xml
+  linux:
+    - ~/.config/dcpomatic2/config.xml
+  macos:
+    - /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
+  windows:
+    - C:\Users\<user>\AppData\Local\dcpomatic\config.xml
 history:
   adoption-history:
     - >
@@ -68,10 +73,6 @@ history:
       resolution, frame-rate, audio, subtitle, and metadata settings, then encode a DCP.
       Advanced deployments can distribute JPEG 2000 encoding to encode servers, create
       KDMs for encrypted packages, or configure transfer to a theatre-management system.
-category: media
-package-manager:
-  brew-cask: dcp-o-matic
-package-manager-url: https://formulae.brew.sh/cask/dcp-o-matic
 tags:
   - cinema
   - cross-platform
@@ -81,10 +82,44 @@ tags:
   - open-source
   - subtitles
   - video-conversion
-description: Convert video, audio and subtitles into DCP (Digital Cinema Package)
-applications:
-  - DCP-o-matic 2.app
 provenance:
-  cask: dcp-o-matic
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official manual describes DCP-o-matic as software for creating and
+      manipulating Digital Cinema Packages: https://dcpomatic.com/manual/html/
+  display-name-sources:
+    - >
+      Official project site and manual: https://dcpomatic.com/ and
+      https://dcpomatic.com/manual/html/
+  docs-sources:
+    - 'Official DCP-o-matic users’ manual: https://dcpomatic.com/manual/html/'
+    - 'Official source-build documentation: https://dcpomatic.com/building/'
+    - >
+      The manual’s configuration chapter documents config.xml and its platform-specific
+      locations: https://dcpomatic.com/manual/html/ch24.html
+  history-sources:
+    - >
+      Official announcement archive:
+      https://lists.dcpomatic.com/hyperkitty/list/announce@lists.dcpomatic.com/latest
+    - 'Official development page: https://dcpomatic.com/development'
+    - 'Official downloads page: https://dcpomatic.com/download'
+    - 'Official manual: https://dcpomatic.com/manual/html/'
+  repo-sources:
+    - >
+      The official development page identifies this as the project’s Git repository and
+      separately labels GitHub as a mirror: https://dcpomatic.com/development
+  tags-sources:
+    - >
+      Official manual, development page, and download page:
+      https://dcpomatic.com/manual/html/ and https://dcpomatic.com/development and
+      https://dcpomatic.com/download
+category-confidence: high
+category-path:
+  - media
+  - video
+  - digital-cinema
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
