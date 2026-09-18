@@ -1,12 +1,12 @@
 id: cask:claude
 display-name: Claude
-homepage: https://claude.com/download
 repo: null
 docs:
   - https://support.claude.com/en
   - https://support.claude.com/en/articles/10065433-install-claude-desktop
 config-file-location:
-  macos: ~/Library/Application Support/Claude/claude_desktop_config.json
+  macos:
+    - ~/Library/Application Support/Claude/claude_desktop_config.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -90,10 +90,6 @@ history:
       file. Desktop extensions provide packaged access to local files, databases,
       calendars, and other applications; account credentials and extension secrets are
       managed by the application rather than through a documented credentials file.
-category: ai
-package-manager:
-  brew-cask: claude
-package-manager-url: https://formulae.brew.sh/cask/claude
 tags:
   - ai
   - anthropic
@@ -105,10 +101,53 @@ tags:
   - llm
   - mcp
   - productivity
-description: Anthropic's official Claude AI desktop app
-applications:
-  - Claude.app
 provenance:
-  cask: claude
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official download page describes Claude as a desktop assistant for thinking,
+      delegated tasks, and coding: https://claude.com/download
+    - >
+      Official help center identifies Claude as Anthropic's large-language-model
+      assistant: https://support.claude.com/en/articles/8114491-get-started-with-claude
+    - source_facts.description identifies this as Anthropic's official Claude AI desktop app.
+  display-name-sources:
+    - 'Official product and download pages use the name Claude: https://claude.com/download'
+    - source_facts.applications lists Claude.app.
+  docs-sources:
+    - >
+      Anthropic's official download page directs users to the Claude Help Center for
+      setup, troubleshooting, and system requirements.
+    - The installation article is the official desktop-specific setup guide.
+  history-sources:
+    - 'Official Claude 2 announcement: https://www.anthropic.com/news/claude-2'
+    - 'Official Claude 3 announcement: https://www.anthropic.com/news/claude-3-family'
+    - 'Official Claude introduction: https://www.anthropic.com/news/introducing-claude'
+    - >
+      Official MCP SDK host guide:
+      https://py.sdk.modelcontextprotocol.io/get-started/real-host/
+    - 'Official desktop download page: https://claude.com/download'
+    - >
+      Official desktop installation guide:
+      https://support.claude.com/en/articles/10065433-install-claude-desktop
+  repo-sources:
+    - >
+      Anthropic's official Claude download and support surfaces do not identify a public
+      source repository for the proprietary desktop application.
+    - Source facts contain no repository.
+  tags-sources:
+    - 'Official Claude download page: https://claude.com/download'
+    - >
+      Official desktop installation guide:
+      https://support.claude.com/en/articles/10065433-install-claude-desktop
+    - >
+      Official getting-started guide:
+      https://support.claude.com/en/articles/8114491-get-started-with-claude
+category-confidence: high
+category-path:
+  - ai
+  - assistants
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
