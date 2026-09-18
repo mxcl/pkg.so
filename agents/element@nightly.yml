@@ -1,13 +1,13 @@
 id: cask:element@nightly
 display-name: Element Nightly
-homepage: https://element.io/get-started
 repo: https://github.com/element-hq/element-web
 docs:
   - https://docs.element.io/latest
   - https://github.com/element-hq/element-web/blob/develop/apps/desktop/README.md
   - https://web-docs.element.dev/
 config-file-location:
-  macos: ~/Library/Application Support/Element/config.json
+  macos:
+    - ~/Library/Application Support/Element/config.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -65,10 +65,6 @@ history:
     - >
       Nightly builds expose recent changes ahead of stable releases and therefore trade
       release stability for earlier testing access.
-category: productivity
-package-manager:
-  brew-cask: element@nightly
-package-manager-url: https://formulae.brew.sh/cask/element@nightly
 tags:
   - chat
   - collaboration
@@ -77,10 +73,43 @@ tags:
   - federated-messaging
   - matrix
   - nightly
-description: Matrix collaboration client
-applications:
-  - Element Nightly.app
 provenance:
-  cask: element@nightly
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Element documentation and product history:
+      https://docs.element.io/latest/ and https://element.io/about
+    - 'source_facts.description: "Matrix collaboration client".'
+  display-name-sources:
+    - The official nightly configuration uses the brand name Element Nightly.
+    - current_curation.display-name
+    - source_facts.applications contains Element Nightly.app.
+  docs-sources:
+    - >
+      Official Element user/administration documentation, official Web/Desktop technical
+      documentation, and the current official desktop README.
+  history-sources:
+    - https://element.io/about
+    - https://element.io/blog/e2e-encryption-by-default-cross-signing-is-here/
+    - https://element.io/blog/welcome-to-element/
+    - https://github.com/element-hq/element-desktop
+    - https://github.com/element-hq/element-web
+  repo-sources:
+    - >
+      The current official element-web workflow builds and publishes Element Desktop
+      nightly artifacts.
+    - >
+      The official element-desktop repository states that it was merged into
+      https://github.com/element-hq/element-web under apps/desktop.
+  tags-sources:
+    - Official Element product history, documentation, and repositories.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - communication
+  - matrix-client
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
