@@ -1,7 +1,6 @@
 id: cask:airsync
 display-name: AirSync
-homepage: https://github.com/sameerasw/airsync-mac
-repo: https://github.com/sameerasw/airsync-mac
+repo: null
 docs:
   - https://github.com/sameerasw/airsync-mac/blob/main/DOCUMENTATION.md
   - https://airsync.notion.site/
@@ -63,10 +62,6 @@ history:
       The protocol uses port 5297 and the `/socket` WebSocket endpoint by default. Its
       symmetric encryption key is stored in macOS UserDefaults, but the official
       documentation does not specify a stable filesystem pathname.
-category: productivity
-package-manager:
-  brew-cask: airsync
-package-manager-url: https://formulae.brew.sh/cask/airsync
 tags:
   - android
   - clipboard-sync
@@ -76,10 +71,42 @@ tags:
   - macos
   - notifications
   - websocket
-description: Continuity tools for use with Android devices
-applications:
-  - AirSync.app
 provenance:
-  cask: airsync
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes AirSync as a bridge providing Apple-style
+      continuity features between Android devices and Macs: https://airsync.notion.site/
+  display-name-sources:
+    - Official repository and documentation both use “AirSync”.
+    - source_facts.applications lists AirSync.app.
+  docs-sources:
+    - >
+      The official repository links the dedicated AirSync documentation site and
+      contains an official protocol specification.
+  history-sources:
+    - >
+      Official initial-beta announcement:
+      https://github.com/sameerasw/airsync-mac/discussions/1
+    - 'Official product documentation and origin account: https://airsync.notion.site/'
+    - >
+      Official protocol specification:
+      https://github.com/sameerasw/airsync-mac/blob/main/DOCUMENTATION.md
+    - 'Official repository README: https://github.com/sameerasw/airsync-mac'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per instructions, repo is returned as null
+      without reassessment.
+  tags-sources:
+    - >
+      Official documentation lists notification synchronization, clipboard sharing,
+      mirroring, file transfer, device status, and media controls.
+    - Official protocol documentation specifies WebSocket transport.
+category-confidence: high
+category-path:
+  - productivity
+  - device-integration
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

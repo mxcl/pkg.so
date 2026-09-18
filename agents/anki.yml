@@ -1,7 +1,6 @@
 id: cask:anki
 display-name: Anki
-homepage: https://apps.ankiweb.net/
-repo: https://github.com/ankitects/anki
+repo: null
 docs:
   - https://docs.ankiweb.net/
   - https://faqs.ankiweb.net/
@@ -9,8 +8,10 @@ config-file-location:
   linux:
     - ~/.local/share/Anki2/prefs.db
     - $XDG_DATA_HOME/Anki2/prefs.db
-  macos: ~/Library/Application Support/Anki2/prefs.db
-  windows: '%APPDATA%\Anki2\prefs.db'
+  macos:
+    - ~/Library/Application Support/Anki2/prefs.db
+  windows:
+    - '%APPDATA%\Anki2\prefs.db'
 credentials-file-location: null
 history:
   adoption-history:
@@ -90,10 +91,6 @@ history:
       Each profile stores its collection in `collection.anki2`, with media in
       `collection.media`; program-level and profile-level preferences are held in
       `prefs.db`.
-category: productivity
-package-manager:
-  brew-cask: anki
-package-manager-url: https://formulae.brew.sh/cask/anki
 tags:
   - active-recall
   - add-ons
@@ -104,10 +101,43 @@ tags:
   - learning
   - open-source
   - spaced-repetition
-description: Memory training application
-applications:
-  - Anki.app
 provenance:
-  cask: anki
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Anki site and manual describe a flashcard application based on active
+      recall and spaced repetition: https://apps.ankiweb.net/ and
+      https://docs.ankiweb.net/background.html
+  display-name-sources:
+    - Official site and manual use “Anki”.
+    - source_facts.applications lists Anki.app.
+  docs-sources:
+    - >
+      The official application site links the dedicated Anki Manual; the manual links
+      the official FAQ for additional guidance.
+  history-sources:
+    - 'Official manual background: https://docs.ankiweb.net/background.html'
+    - >
+      Official manual deck options and FSRS guidance:
+      https://docs.ankiweb.net/deck-options.html
+    - 'Official manual file locations: https://docs.ankiweb.net/files.html'
+    - 'Official product site: https://apps.ankiweb.net/'
+    - 'Official source repository: https://github.com/ankitects/anki'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per instructions, repo is returned as null
+      without reassessment.
+  tags-sources:
+    - >
+      Official manual documents active recall, spaced repetition, legacy SM-2
+      scheduling, and FSRS.
+    - Official site documents flashcards, synchronization, media, customization, and add-ons.
+category-confidence: high
+category-path:
+  - productivity
+  - education
+  - spaced-repetition
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
