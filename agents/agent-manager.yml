@@ -1,7 +1,6 @@
 id: brew:agent-manager
 display-name: Agent Manager
-homepage: https://github.com/YoanWai/agent-manager
-repo: https://github.com/YoanWai/agent-manager
+repo: null
 docs:
   - https://agent-manager.dev/docs
   - https://agent-manager.dev/docs/config
@@ -9,7 +8,8 @@ config-file-location:
   linux:
     - ~/.config/agent-manager/config.toml
     - $XDG_CONFIG_HOME/agent-manager/config.toml
-  macos: ~/Library/Application Support/agent-manager/config.toml
+  macos:
+    - ~/Library/Application Support/agent-manager/config.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -64,11 +64,6 @@ history:
       Configuration is generated on first run. Agent Manager itself does not define a
       credentials file; each managed CLI continues to use its own authentication and
       configuration.
-category: developer-tools
-package-manager:
-  brew: agent-manager
-package-manager-url: https://formulae.brew.sh/formula/agent-manager
-license: Apache-2.0
 tags:
   - ai-agents
   - cli
@@ -78,10 +73,32 @@ tags:
   - session-management
   - tmux
   - tui
-description: Terminal UI to manage AI coding-agent tmux sessions
-executables:
-  - agent-manager
 provenance:
-  formula: agent-manager
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - 'Official overview: https://agent-manager.dev/docs/'
+    - source_facts.description
+  display-name-sources:
+    - 'Official documentation title: https://agent-manager.dev/docs/'
+  docs-sources:
+    - Official Agent Manager documentation
+    - Official configuration reference
+  history-sources:
+    - https://agent-manager.dev/docs/
+    - https://agent-manager.dev/docs/config/
+    - https://agent-manager.dev/docs/install/
+    - https://github.com/YoanWai/agent-manager/releases
+    - source_facts.package-manager
+  repo-sources:
+    - source_facts.repo is already populated; repo is intentionally null per the task rule.
+  tags-sources:
+    - 'Official overview: https://agent-manager.dev/docs/'
+    - 'Official repository README: https://github.com/YoanWai/agent-manager'
+category-confidence: high
+category-path:
+  - developer-tools
+  - ai-agent-orchestration
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

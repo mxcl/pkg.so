@@ -1,12 +1,12 @@
 id: brew:cargo-mutants
 display-name: cargo-mutants
-homepage: https://mutants.rs/
-repo: https://github.com/sourcefrog/cargo-mutants
+repo: null
 docs:
   - https://mutants.rs/
   - https://mutants.rs/config-file.html
 config-file-location:
-  unix: .cargo/mutants.toml
+  unix:
+    - .cargo/mutants.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -68,14 +68,6 @@ history:
       line, or supplied through `CARGO_MUTANTS_` environment variables. The documented
       recommendation is to commit a configuration that lets contributors run the default
       command without extra arguments.
-category: developer-tools
-package-manager:
-  brew: cargo-mutants
-  debian: cargo-mutants
-  nix: cargo-mutants
-  ubuntu: cargo-mutants
-package-manager-url: https://formulae.brew.sh/formula/cargo-mutants
-license: MIT
 tags:
   - cargo
   - ci
@@ -85,10 +77,33 @@ tags:
   - nextest
   - rust
   - test-quality
-description: Inject bugs and see if your tests catch them
-executables:
-  - cargo-mutants
 provenance:
-  formula: cargo-mutants
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - 'Official documentation: https://mutants.rs/'
+    - source_facts.description
+  display-name-sources:
+    - 'Official documentation title: https://mutants.rs/'
+  docs-sources:
+    - Dedicated official documentation site
+    - Official configuration-file reference
+  history-sources:
+    - https://mutants.rs/
+    - https://mutants.rs/changelog.html
+    - https://mutants.rs/config-file.html
+    - https://mutants.rs/how-it-works.html
+    - source_facts.package-manager
+  repo-sources:
+    - source_facts.repo is already populated; repo is intentionally null per the task rule.
+  tags-sources:
+    - 'Official changelog: https://mutants.rs/changelog.html'
+    - 'Official documentation: https://mutants.rs/'
+category-confidence: high
+category-path:
+  - developer-tools
+  - testing
+  - mutation-testing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

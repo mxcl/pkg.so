@@ -1,11 +1,11 @@
 id: brew:bashka
 display-name: bashka
-homepage: https://github.com/dmtrKovalenko/bashka
-repo: https://github.com/dmtrKovalenko/bashka
+repo: null
 docs:
   - https://github.com/dmtrKovalenko/bashka#readme
 config-file-location:
-  unix: ~/.config/bashka/config.toml
+  unix:
+    - ~/.config/bashka/config.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -57,11 +57,6 @@ history:
       installations with `bashka list`, `bashka info`, `bashka update`, and `bashka
       remove`. The project cautions that static analysis cannot completely reason about
       arbitrary Bash programs.
-category: security
-package-manager:
-  brew: bashka
-package-manager-url: https://formulae.brew.sh/formula/bashka
-license: MIT
 tags:
   - bash
   - cli
@@ -71,10 +66,31 @@ tags:
   - shell-security
   - software-supply-chain
   - static-analysis
-description: Static verification of installation bash scripts
-executables:
-  - bashka
 provenance:
-  formula: bashka
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - 'Official README: https://github.com/dmtrKovalenko/bashka#readme'
+    - source_facts.description
+  display-name-sources:
+    - 'Official README heading: https://github.com/dmtrKovalenko/bashka#readme'
+  docs-sources:
+    - >
+      Official repository README containing installation, commands, configuration,
+      checks, and limitations
+  history-sources:
+    - https://github.com/dmtrKovalenko/bashka#readme
+    - source_facts.package-manager
+  repo-sources:
+    - source_facts.repo is already populated; repo is intentionally null per the task rule.
+  tags-sources:
+    - >
+      Official README description, checks, registry, and configuration sections:
+      https://github.com/dmtrKovalenko/bashka#readme
+category-confidence: high
+category-path:
+  - security
+  - software-supply-chain
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
