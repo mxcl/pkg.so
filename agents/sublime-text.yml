@@ -1,13 +1,15 @@
 id: cask:sublime-text
 display-name: Sublime Text
-homepage: https://www.sublimetext.com/
 repo: null
 docs:
   - https://www.sublimetext.com/docs
 config-file-location:
-  linux: ~/.config/sublime-text/Packages/User/Preferences.sublime-settings
-  macos: ~/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings
-  windows: '%APPDATA%\Sublime Text\Packages\User\Preferences.sublime-settings'
+  linux:
+    - ~/.config/sublime-text/Packages/User/Preferences.sublime-settings
+  macos:
+    - ~/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings
+  windows:
+    - '%APPDATA%\Sublime Text\Packages\User\Preferences.sublime-settings'
 credentials-file-location: null
 history:
   adoption-history:
@@ -81,10 +83,6 @@ history:
       Packages/User/Preferences.sublime-settings beneath the platform's Sublime Text
       data directory. Syntax-specific settings, key bindings, snippets, build systems,
       and plugins can also be placed in Packages/User.
-category: developer-tools
-package-manager:
-  brew-cask: sublime-text
-package-manager-url: https://formulae.brew.sh/cask/sublime-text
 tags:
   - code-editor
   - cross-platform
@@ -93,10 +91,41 @@ tags:
   - source-code
   - syntax-highlighting
   - text-editor
-description: Text editor for code, markup and prose
-applications:
-  - Sublime Text.app
 provenance:
-  cask: sublime-text
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official documentation: https://www.sublimetext.com/docs/'
+    - 'source_facts.description: "Text editor for code, markup and prose"'
+  display-name-sources:
+    - 'Official homepage: https://www.sublimetext.com/'
+    - current_curation.display-name
+  docs-sources:
+    - Dedicated official Sublime Text documentation.
+  history-sources:
+    - https://www.sublimetext.com/blog/
+    - https://www.sublimetext.com/blog/articles/130
+    - https://www.sublimetext.com/blog/articles/introduction
+    - https://www.sublimetext.com/docs/packages.html
+    - https://www.sublimetext.com/docs/revert.html
+    - https://www.sublimetext.com/docs/settings.html
+  repo-sources:
+    - >
+      source_facts.repo is empty. Sublime HQ does not publish the Sublime Text
+      application source in an official repository; public sublimehq repositories such
+      as Packages contain supporting resources rather than the proprietary editor core.
+  tags-sources:
+    - >
+      Official homepage and source_facts.description identify it as an editor for code,
+      markup, and prose.
+    - >
+      Official package documentation describes plugins, syntax definitions, snippets,
+      and other extension resources: https://www.sublimetext.com/docs/packages.html
+category-confidence: high
+category-path:
+  - developer-tools
+  - editors
+  - code-editor
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

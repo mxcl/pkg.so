@@ -1,13 +1,15 @@
 id: cask:sublime-merge
 display-name: Sublime Merge
-homepage: https://www.sublimemerge.com/
 repo: null
 docs:
   - https://www.sublimemerge.com/docs
 config-file-location:
-  linux: ~/.config/sublime-merge/Packages/User/
-  macos: ~/Library/Application Support/Sublime Merge/Packages/User/
-  windows: '%APPDATA%\Sublime Merge\Packages\User\'
+  linux:
+    - ~/.config/sublime-merge/Packages/User/
+  macos:
+    - ~/Library/Application Support/Sublime Merge/Packages/User/
+  windows:
+    - '%APPDATA%\Sublime Merge\Packages\User\'
 credentials-file-location: null
 history:
   adoption-history:
@@ -78,10 +80,6 @@ history:
       The smerge command opens repositories and files from a shell and can act as Git's
       configured merge tool. User customization is stored in the platform-specific
       Packages/User directory.
-category: developer-tools
-package-manager:
-  brew-cask: sublime-merge
-package-manager-url: https://formulae.brew.sh/cask/sublime-merge
 tags:
   - code-review
   - cross-platform
@@ -90,10 +88,40 @@ tags:
   - gui-client
   - merge-tool
   - version-control
-description: Git client
-applications:
-  - Sublime Merge.app
 provenance:
-  cask: sublime-merge
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Sublime Merge FAQ calls it a graphical Git client:
+      https://www.sublimemerge.com/docs/faq
+    - 'source_facts.description: "Git client"'
+  display-name-sources:
+    - 'Official homepage: https://www.sublimemerge.com/'
+    - current_curation.display-name
+  docs-sources:
+    - Dedicated official Sublime Merge documentation.
+  history-sources:
+    - https://www.sublimemerge.com/
+    - https://www.sublimemerge.com/docs/command_line
+    - https://www.sublimemerge.com/docs/getting_started
+    - https://www.sublimemerge.com/docs/packages
+    - https://www.sublimemerge.com/download
+  repo-sources:
+    - >
+      source_facts.repo is empty. Sublime HQ's official product and documentation pages
+      do not identify a public source repository for the proprietary Sublime Merge
+      application; sublimehq/Packages contains shared syntax packages, not the
+      application source.
+  tags-sources:
+    - 'Official command-line documentation: https://www.sublimemerge.com/docs/command_line'
+    - 'Official getting-started guide: https://www.sublimemerge.com/docs/getting_started'
+    - 'Official homepage: https://www.sublimemerge.com/'
+category-confidence: high
+category-path:
+  - developer-tools
+  - version-control
+  - git-client
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

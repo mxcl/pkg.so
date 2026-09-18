@@ -1,11 +1,11 @@
 id: cask:steam
 display-name: Steam
-homepage: https://store.steampowered.com/about/
 repo: null
 docs:
   - https://help.steampowered.com/en
 config-file-location:
-  macos: ~/Library/Application Support/Steam/
+  macos:
+    - ~/Library/Application Support/Steam/
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,10 +70,6 @@ history:
       Support/Steam. Valve's uninstall guidance distinguishes the Steam application from
       this data and notes that preserving SteamApps retains downloaded games and local
       data.
-category: games
-package-manager:
-  brew-cask: steam
-package-manager-url: https://formulae.brew.sh/cask/steam
 tags:
   - community
   - digital-distribution
@@ -82,10 +78,35 @@ tags:
   - gaming
   - multiplayer
   - self-updating
-description: Video game digital distribution service
-applications:
-  - Steam.app
 provenance:
-  cask: steam
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - "Valve's official company history: https://www.valvesoftware.com/en/about"
+    - 'source_facts.description: "Video game digital distribution service"'
+  display-name-sources:
+    - 'Official Steam page: https://store.steampowered.com/about'
+    - current_curation.display-name
+  docs-sources:
+    - Steam Support is Valve's official end-user documentation and troubleshooting surface.
+  history-sources:
+    - https://help.steampowered.com/en/faqs/view/30EB-87BF-531F-512D
+    - https://store.steampowered.com/about
+    - https://store.steampowered.com/oldnews/183
+    - https://www.valvesoftware.com/en/about
+  repo-sources:
+    - >
+      source_facts.repo is empty. Steam is an official Valve product, and Valve's
+      product, company, support, and developer surfaces do not present an official
+      public repository for the Steam client.
+  tags-sources:
+    - 'Official Steam product page: https://store.steampowered.com/about'
+    - 'Valve company history: https://www.valvesoftware.com/en/about'
+category-confidence: high
+category-path:
+  - games
+  - distribution
+  - game-platform
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
