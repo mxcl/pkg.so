@@ -1,13 +1,13 @@
 id: cask:bitwarden
 display-name: Bitwarden
-homepage: https://bitwarden.com/
-repo: https://github.com/bitwarden/clients
+repo: null
 docs:
   - https://bitwarden.com/help
   - https://bitwarden.com/help/data-storage
   - https://bitwarden.com/help/getting-started-desktop
 config-file-location:
-  linux: ~/.config/Bitwarden/data.json
+  linux:
+    - ~/.config/Bitwarden/data.json
   macos:
     - ~/Library/Application Support/Bitwarden/data.json
     - >
@@ -69,10 +69,6 @@ history:
       Encrypted vault data rests in the application-data directory, while authentication
       tokens and biometric-unlock data use the operating system's secure credential
       store rather than a documented credentials file.
-category: security
-package-manager:
-  brew-cask: bitwarden
-package-manager-url: https://formulae.brew.sh/cask/bitwarden
 tags:
   - credential-vault
   - cross-platform
@@ -80,10 +76,40 @@ tags:
   - open-source
   - password-manager
   - self-hosting
-description: Desktop password and login vault
-applications:
-  - Bitwarden.app
 provenance:
-  cask: bitwarden
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://bitwarden.com/help/getting-started-desktop/ — official desktop
+      documentation describes an encrypted password and login vault.
+  display-name-sources:
+    - current_curation.display-name
+    - https://bitwarden.com/
+  docs-sources:
+    - https://bitwarden.com/help/ is the official help center.
+    - >
+      https://bitwarden.com/help/data-storage/ documents desktop storage paths;
+      https://bitwarden.com/help/configure-clients-selfhost/ identifies data.json as the
+      editable desktop settings file.
+    - https://bitwarden.com/help/getting-started-desktop/ is the official desktop-app guide.
+  history-sources:
+    - https://bitwarden.com/blog/defining-and-sustaining-value-for-bitwarden-users/
+    - https://bitwarden.com/blog/q-and-a-with-bitwarden-founder-and-cto/
+    - https://bitwarden.com/blog/the-bitwarden-tech-stack-built-for-security-and-scalability/
+    - https://bitwarden.com/help/data-storage/
+    - https://bitwarden.com/help/getting-started-desktop/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per task rules, repository determination
+      was skipped and repo is returned as null.
+  tags-sources:
+    - https://bitwarden.com/blog/host-your-own-open-source-password-manager/
+    - https://bitwarden.com/help/getting-started-desktop/
+category-confidence: high
+category-path:
+  - security
+  - password-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
