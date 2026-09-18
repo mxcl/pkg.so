@@ -1,6 +1,5 @@
 id: cask:mixxx
 display-name: Mixxx
-homepage: https://www.mixxx.org/
 repo: https://github.com/mixxxdj/mixxx
 docs:
   - https://manual.mixxx.org/
@@ -8,8 +7,10 @@ config-file-location:
   linux:
     - ~/.mixxx/mixxx.cfg
     - ~/.var/app/org.mixxx.Mixxx/.mixxx/mixxx.cfg
-  macos: ~/Library/Containers/org.mixxx.mixxx/Data/Library/Application Support/Mixxx/mixxx.cfg
-  windows: '%LOCALAPPDATA%\Mixxx\mixxx.cfg'
+  macos:
+    - ~/Library/Containers/org.mixxx.mixxx/Data/Library/Application Support/Mixxx/mixxx.cfg
+  windows:
+    - '%LOCALAPPDATA%\Mixxx\mixxx.cfg'
 credentials-file-location: null
 history:
   adoption-history:
@@ -68,10 +69,6 @@ history:
       DJs use Mixxx to organize a music library, analyze tracks, control decks and
       effects, beatmatch, record mixes, broadcast, run Auto DJ, and operate supported
       MIDI or HID controllers.
-category: media
-package-manager:
-  brew-cask: mixxx
-package-manager-url: https://formulae.brew.sh/cask/mixxx
 tags:
   - audio
   - beatmatching
@@ -83,10 +80,36 @@ tags:
   - music-library
   - open-source
   - recording
-description: Open-source DJ software
-applications:
-  - Mixxx.app
 provenance:
-  cask: mixxx
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official project repository and manual describe Mixxx as free DJ software for live
+      mixing: https://github.com/mixxxdj/mixxx and https://manual.mixxx.org/
+  display-name-sources:
+    - 'Official project name: https://mixxx.org/'
+    - source_facts.name
+  docs-sources:
+    - 'Dedicated official Mixxx User Manual: https://manual.mixxx.org/'
+  history-sources:
+    - https://github.com/mixxxdj/mixxx
+    - https://manual.mixxx.org/
+    - https://manual.mixxx.org/2.6/en/chapters/appendix/settings_directory
+    - https://mixxx.org/discover/
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      Official Mixxx GitHub organization and project README identify this as the source
+      repository: https://github.com/mixxxdj/mixxx
+    - 'Official site links to the Mixxx GitHub project: https://mixxx.org/'
+  tags-sources:
+    - 'Official manual feature chapters: https://manual.mixxx.org/'
+    - 'Official repository feature summary: https://github.com/mixxxdj/mixxx'
+category-confidence: high
+category-path:
+  - media
+  - dj-software
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

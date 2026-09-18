@@ -1,13 +1,15 @@
 id: cask:mouseless
 display-name: Mouseless
-homepage: https://mouseless.click/
-repo: https://github.com/croian/mouseless
+repo: null
 docs:
   - https://mouseless.click/docs
 config-file-location:
-  linux: ~/.var/app/net.sonuscape.mouseless/data/mouseless/configs/config.yaml
-  macos: ~/Library/Application Support/Mouseless/configs/config.yaml
-  windows: ~/AppData/Local/Mouseless/configs/config.yaml
+  linux:
+    - ~/.var/app/net.sonuscape.mouseless/data/mouseless/configs/config.yaml
+  macos:
+    - ~/Library/Application Support/Mouseless/configs/config.yaml
+  windows:
+    - ~/AppData/Local/Mouseless/configs/config.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -54,10 +56,6 @@ history:
       mode for relative cursor movement. Keybindings, grid behavior, timing, scrolling,
       appearance, and multi-monitor behavior are editable in the application or in
       `config.yaml`.
-category: productivity
-package-manager:
-  brew-cask: mouseless
-package-manager-url: https://formulae.brew.sh/cask/mouseless
 tags:
   - accessibility
   - cross-platform
@@ -66,10 +64,35 @@ tags:
   - keyboard-navigation
   - mouse-control
   - productivity
-description: Mouse control with the keyboard
-applications:
-  - Mouseless.app
 provenance:
-  cask: mouseless
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes Mouseless as a productivity utility for
+      controlling the mouse with the keyboard: https://mouseless.click/docs/
+  display-name-sources:
+    - 'Official documentation uses the name Mouseless: https://mouseless.click/docs/'
+    - source_facts.name
+  docs-sources:
+    - 'Dedicated official Mouseless documentation: https://mouseless.click/docs/'
+  history-sources:
+    - https://mouseless.click/docs/
+    - https://mouseless.click/docs/customizing_mouseless.html
+    - https://mouseless.click/docs/using_mouseless.html
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repository discovery
+      was not performed and repo is returned as null.
+  tags-sources:
+    - >
+      Official documentation overview and command reference:
+      https://mouseless.click/docs/ and https://mouseless.click/docs/keybindings.html
+category-confidence: high
+category-path:
+  - productivity
+  - keyboard-navigation
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

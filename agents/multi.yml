@@ -1,13 +1,14 @@
 id: cask:multi
 display-name: Multi
-homepage: https://github.com/hkgumbs/multi
-repo: https://github.com/hkgumbs/multi
+repo: null
 docs:
   - https://github.com/kofigumbs/multi#readme
 config-file-location:
-  macos: /Applications/Multi/<App Name>.app/Contents/Resources/config.json
+  macos:
+    - /Applications/Multi/<App Name>.app/Contents/Resources/config.json
 credentials-file-location:
-  macos: /Applications/Multi/<App Name>.app/Contents/Resources/config.json
+  macos:
+    - /Applications/Multi/<App Name>.app/Contents/Resources/config.json
 history:
   adoption-history:
     - >
@@ -59,10 +60,6 @@ history:
       Users define tabs and URLs in JSON, choose tabbed or separate windows, and
       optionally inject local or remote JavaScript and CSS. Generated apps can be
       created or updated through the bundled CLI using environment variables.
-category: developer-tools
-package-manager:
-  brew-cask: multi
-package-manager-url: https://formulae.brew.sh/cask/multi
 tags:
   - app-generator
   - cli
@@ -73,10 +70,35 @@ tags:
   - site-specific-browser
   - web-app
   - webkit
-description: Create apps from groups of websites
-applications:
-  - Multi.app
 provenance:
-  cask: multi
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README describes Multi as a tool for creating lightweight custom macOS
+      applications from groups of websites: https://github.com/kofigumbs/multi#readme
+  display-name-sources:
+    - 'Official README uses the product name Multi: https://github.com/kofigumbs/multi#readme'
+    - source_facts.name
+  docs-sources:
+    - >
+      The official repository README is the primary installation, configuration, CLI,
+      and customization manual: https://github.com/kofigumbs/multi#readme
+  history-sources:
+    - https://github.com/kofigumbs/multi
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repository discovery
+      was not performed and repo is returned as null.
+  tags-sources:
+    - >
+      Official README feature, configuration, and CLI documentation:
+      https://github.com/kofigumbs/multi#readme
+category-confidence: high
+category-path:
+  - developer-tools
+  - site-specific-browsers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
