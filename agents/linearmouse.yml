@@ -1,12 +1,12 @@
 id: cask:linearmouse
 display-name: LinearMouse
-homepage: https://linearmouse.org/
 repo: https://github.com/linearmouse/linearmouse
 docs:
   - https://github.com/linearmouse/linearmouse/blob/main/Documentation/Configuration.md
   - https://linearmouse.app/
 config-file-location:
-  macos: ~/.config/linearmouse/linearmouse.json
+  macos:
+    - ~/.config/linearmouse/linearmouse.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -59,10 +59,6 @@ history:
       Advanced users can edit ~/.config/linearmouse/linearmouse.json. The official
       documentation recommends the GUI for ordinary changes and documents the JSON
       schema for advanced configuration.
-category: system
-package-manager:
-  brew-cask: linearmouse
-package-manager-url: https://formulae.brew.sh/cask/linearmouse
 tags:
   - button-remapping
   - macos
@@ -71,10 +67,42 @@ tags:
   - profiles
   - scrolling
   - trackpad
-description: Customise mouse behavior
-applications:
-  - LinearMouse.app
 provenance:
-  cask: linearmouse
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official site describes per-device and per-application control of mouse and
+      trackpad scrolling, pointer behavior, and buttons: https://linearmouse.app/
+    - source_facts.description says LinearMouse customizes mouse behavior.
+  display-name-sources:
+    - >
+      The official site and repository consistently use LinearMouse:
+      https://linearmouse.app/ and https://github.com/linearmouse/linearmouse
+    - source_facts.applications lists LinearMouse.app.
+  docs-sources:
+    - The official product site is the primary feature and installation surface.
+    - The project's official repository contains its detailed configuration reference.
+  history-sources:
+    - https://github.com/linearmouse/linearmouse
+    - https://github.com/linearmouse/linearmouse/blob/main/Documentation/Configuration.md
+    - https://linearmouse.app/
+  repo-sources:
+    - >
+      The official LinearMouse site directs users to the project, and the repository
+      identifies itself as the source for the Mac mouse and trackpad utility:
+      https://github.com/linearmouse/linearmouse
+  tags-sources:
+    - >
+      The official repository topics include acceleration, cursor, macOS, mouse,
+      productivity, scrolling, sensitivity, and utility.
+    - >
+      The official site documents mouse and trackpad profiles, scrolling, pointer speed,
+      and button actions: https://linearmouse.app/
+category-confidence: high
+category-path:
+  - system
+  - input-device-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

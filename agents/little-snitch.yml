@@ -1,13 +1,13 @@
 id: cask:little-snitch
 display-name: Little Snitch
-homepage: https://www.obdev.at/products/littlesnitch/index.html
 repo: null
 docs:
   - https://help.obdev.at/littlesnitch6
   - https://help.obdev.at/littlesnitch6/lsc-backup
   - https://www.obdev.at/support/littlesnitch
 config-file-location:
-  macos: /Library/Application Support/Objective Development/Little Snitch/configuration6.xpl
+  macos:
+    - /Library/Application Support/Objective Development/Little Snitch/configuration6.xpl
 credentials-file-location: null
 history:
   adoption-history:
@@ -79,10 +79,6 @@ history:
       portable, human-readable .lsbackup exports from the application; the encryption
       key for the internal configuration is held in the macOS System keychain rather
       than a documented credentials file.
-category: security
-package-manager:
-  brew-cask: little-snitch
-package-manager-url: https://formulae.brew.sh/cask/little-snitch
 tags:
   - application-firewall
   - blocklists
@@ -91,10 +87,44 @@ tags:
   - network-monitor
   - privacy
   - traffic-analysis
-description: Host-based application firewall
-applications:
-  - Little Snitch.app
 provenance:
-  cask: little-snitch
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official manual explicitly describes Little Snitch as a local,
+      application-based, interactive firewall:
+      https://help.obdev.at/littlesnitch6/intro-whatis
+    - source_facts.description identifies Little Snitch as a host-based application firewall.
+  display-name-sources:
+    - Objective Development's product site and official manual use the name Little Snitch.
+    - source_facts.applications lists Little Snitch.app.
+  docs-sources:
+    - Objective Development publishes the official Little Snitch 6 manual and support center.
+    - The official backup guide documents the active configuration storage format and path.
+  history-sources:
+    - https://help.obdev.at/littlesnitch6/intro-whatis
+    - https://help.obdev.at/littlesnitch6/lsc-backup
+    - https://www.obdev.at/products/littlesnitch/download-previous-versions.html
+    - https://www.obdev.at/products/littlesnitch/index.html
+    - https://www.obdev.at/products/littlesnitch/releasenotes.html
+  repo-sources:
+    - >
+      Repositories for Little Snitch for Linux are a separate product and are not
+      returned for this macOS cask.
+    - >
+      The macOS product is proprietary according to Objective Development's official
+      manual, and no official public source-control repository for the macOS application
+      is linked: https://help.obdev.at/littlesnitch6/intro-whatis
+  tags-sources:
+    - >
+      The official manual documents application-aware firewall rules, interactive
+      connection control, blocklists, profiles, and historical network analysis:
+      https://help.obdev.at/littlesnitch6/intro-whatis
+category-confidence: high
+category-path:
+  - security
+  - firewalls
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

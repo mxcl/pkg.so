@@ -1,7 +1,6 @@
 id: cask:lapce
 display-name: Lapce
-homepage: https://lapce.dev/
-repo: https://github.com/lapce/lapce
+repo: null
 docs:
   - https://docs.lapce.dev/
   - https://docs.lapce.dev/get-started/settings
@@ -57,10 +56,6 @@ history:
       Settings File command. The official documentation discusses settings.toml but does
       not document a stable platform-specific filesystem path, so no location is
       asserted here.
-category: developer-tools
-package-manager:
-  brew-cask: lapce
-package-manager-url: https://formulae.brew.sh/cask/lapce
 tags:
   - code-editor
   - lsp
@@ -68,10 +63,41 @@ tags:
   - rust
   - vim-mode
   - wasi-plugins
-description: Open source code editor written in Rust
-applications:
-  - Lapce.app
 provenance:
-  cask: lapce
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official Lapce site describes a developer-focused editor with LSP, remote
+      development, Vim-style editing, plugins, and a terminal: https://lap.dev/lapce/
+    - source_facts.description identifies Lapce as an open-source code editor.
+  display-name-sources:
+    - >
+      The official project documentation and repository use the name Lapce:
+      https://docs.lapce.dev/ and https://github.com/lapce/lapce
+    - source_facts.applications lists Lapce.app.
+  docs-sources:
+    - The official Lapce site links docs.lapce.dev as its user-documentation site.
+    - >
+      The official documentation index identifies the settings guide:
+      https://docs.lapce.dev/llms.txt
+  history-sources:
+    - https://docs.lapce.dev/
+    - https://github.com/lapce/lapce
+    - https://lap.dev/lapce/
+  repo-sources:
+    - >
+      source_facts.repo already supplies https://github.com/lapce/lapce; per the
+      enrichment rule, repo is returned as null without re-determination.
+  tags-sources:
+    - >
+      The official Lapce repository lists code-editor, developer-tools, rust,
+      text-editor, and vim topics and documents LSP, remote-development, terminal, and
+      WASI-plugin features: https://github.com/lapce/lapce
+category-confidence: high
+category-path:
+  - developer-tools
+  - text-editors
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

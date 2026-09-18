@@ -1,13 +1,13 @@
 id: cask:lm-studio
 display-name: LM Studio
-homepage: https://lmstudio.ai/
 repo: null
 docs:
   - https://lmstudio.ai/docs/app
   - https://lmstudio.ai/docs/cli
   - https://lmstudio.ai/docs/developer
 config-file-location:
-  unix: ~/.lmstudio/config-presets/*.json
+  unix:
+    - ~/.lmstudio/config-presets/*.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -83,10 +83,6 @@ history:
       Local API authentication is optional. Tokens are created and managed in the
       Developer page and are not shown again after creation; official documentation does
       not expose a stable token-storage file, so credentials-file-location is null.
-category: ai
-package-manager:
-  brew-cask: lm-studio
-package-manager-url: https://formulae.brew.sh/cask/lm-studio
 tags:
   - desktop-ai
   - hugging-face
@@ -95,10 +91,46 @@ tags:
   - mcp
   - model-runner
   - openai-compatible-api
-description: Discover, download, and run local LLMs
-applications:
-  - LM Studio.app
 provenance:
-  cask: lm-studio
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official documentation describes local model execution, chat, Hugging Face
+      model discovery, local APIs, MCP, and configuration management:
+      https://lmstudio.ai/docs/app
+    - source_facts.description says LM Studio discovers, downloads, and runs local LLMs.
+  display-name-sources:
+    - >
+      The official site and documentation consistently use LM Studio:
+      https://lmstudio.ai/ and https://lmstudio.ai/docs/app
+    - source_facts.applications lists LM Studio.app.
+  docs-sources:
+    - >
+      LM Studio publishes dedicated official application, developer, and CLI
+      documentation under lmstudio.ai/docs.
+  history-sources:
+    - https://github.com/lmstudio-ai
+    - https://lmstudio.ai/blog/0.4.0
+    - https://lmstudio.ai/blog/introducing-lmstudio-sdk
+    - https://lmstudio.ai/blog/lms
+    - https://lmstudio.ai/blog/lmstudio-v0.3.0
+    - https://lmstudio.ai/docs/app
+  repo-sources:
+    - Component repositories are not substituted for the desktop application's repository.
+    - >
+      LM Studio's verified GitHub organization publishes the CLI, SDKs, documentation,
+      engines, and bug tracker, but does not identify a public source repository for the
+      LM Studio desktop application itself: https://github.com/lmstudio-ai
+  tags-sources:
+    - >
+      The official documentation describes local model discovery and execution, Hugging
+      Face downloads, REST and compatibility APIs, MCP, chat, and headless operation:
+      https://lmstudio.ai/docs/app and https://lmstudio.ai/docs/developer
+category-confidence: high
+category-path:
+  - ai
+  - local-ai
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
