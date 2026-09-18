@@ -1,6 +1,5 @@
 id: cask:emby
 display-name: Emby
-homepage: https://emby.media/
 repo: null
 docs:
   - https://support.emby.media/support
@@ -59,10 +58,6 @@ history:
       Users connect the app to an Emby Server to browse and play personal video, music,
       photo, and live-TV libraries. Hosting and library administration belong to Emby
       Server; this package supplies a client player.
-category: media
-package-manager:
-  brew-cask: emby
-package-manager-url: https://formulae.brew.sh/cask/emby
 tags:
   - home-server
   - media-client
@@ -70,10 +65,40 @@ tags:
   - personal-media
   - streaming
   - video
-description: Client for emby media server
-applications:
-  - Emby.app
 provenance:
-  cask: emby
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation distinguishes Emby Server from client apps used for
+      playback: https://support.emby.media/support/articles/Home.html
+    - source_facts.description identifies this package as a client for Emby Media Server.
+  display-name-sources:
+    - The official product and documentation consistently use the name Emby.
+    - current_curation.display-name
+  docs-sources:
+    - Emby's official support domain is its documentation hub.
+    - >
+      The official documentation home explains the server-and-client architecture and
+      links app guidance.
+  history-sources:
+    - https://docs.emby.media/
+    - https://emby.media/community/blogs/entry/576-the-history-and-evolution-of-emby/
+    - https://support.emby.media/support/articles/Home.html
+  repo-sources:
+    - >
+      The official product and documentation describe the current client as part of
+      Emby's proprietary app ecosystem and do not identify an official public source
+      repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - 'Official Emby documentation: https://support.emby.media/support/articles/Home.html'
+    - 'Official product overview: https://docs.emby.media/'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - media-players
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

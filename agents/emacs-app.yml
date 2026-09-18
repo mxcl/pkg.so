@@ -1,6 +1,5 @@
 id: cask:emacs-app
 display-name: Emacs
-homepage: https://emacsformacosx.com/
 repo: https://github.com/caldwell/build-emacs
 docs:
   - https://www.gnu.org/software/emacs/documentation.html
@@ -66,10 +65,6 @@ history:
       Users edit text and source code, run language-aware major modes, interact with
       shells and version-control tools, and extend the environment with Emacs Lisp
       packages. Persistent customization normally lives in an Emacs initialization file.
-category: developer-tools
-package-manager:
-  brew-cask: emacs-app
-package-manager-url: https://formulae.brew.sh/cask/emacs-app
 tags:
   - code-editor
   - emacs-lisp
@@ -77,12 +72,40 @@ tags:
   - gnu
   - macos
   - text-editor
-description: GNU Emacs text editor
-applications:
-  - Emacs.app
 provenance:
-  cask: emacs-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - emacs
+  category-sources:
+    - >
+      GNU's official documentation describes Emacs as an extensible, customizable text
+      editor: https://www.gnu.org/software/emacs/documentation.html
+    - source_facts.description identifies it as the GNU Emacs text editor.
+  display-name-sources:
+    - >
+      The official GNU documentation uses the name GNU Emacs:
+      https://www.gnu.org/software/emacs/documentation.html
+    - current_curation.display-name
+  docs-sources:
+    - GNU's official documentation hub links the Emacs, Emacs Lisp, and related manuals.
+    - The GNU Emacs Manual is the authoritative user manual.
+  history-sources:
+    - https://github.com/caldwell/build-emacs
+    - https://www.gnu.org/software/emacs/documentation.html
+    - https://www.gnu.org/software/emacs/download
+    - https://www.gnu.org/software/emacs/history.html
+  repo-sources:
+    - >
+      The official build repository contains launcher code explicitly identified as
+      coming from emacsformacosx.com and copyrighted by distribution maintainer David
+      Caldwell: https://github.com/caldwell/build-emacs/blob/master/launch.rs
+  tags-sources:
+    - 'GNU Emacs documentation: https://www.gnu.org/software/emacs/documentation.html'
+    - 'Official build repository: https://github.com/caldwell/build-emacs'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - text-editors
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
