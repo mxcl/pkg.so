@@ -1,7 +1,6 @@
 id: cask:keepassxc
 display-name: KeePassXC
-homepage: https://keepassxc.org/
-repo: https://github.com/keepassxreboot/keepassxc
+repo: null
 docs:
   - https://keepassxc.org/docs
   - https://keepassxc.org/docs/KeePassXC_GettingStarted
@@ -86,10 +85,6 @@ history:
       Common companion workflows include KeePassXC-Browser for browser filling,
       Auto-Type for desktop applications, TOTP storage, SSH-agent integration, and
       keepassxc-cli for scripts or terminal access.
-category: security
-package-manager:
-  brew-cask: keepassxc
-package-manager-url: https://formulae.brew.sh/cask/keepassxc
 tags:
   - browser-integration
   - credentials
@@ -101,10 +96,40 @@ tags:
   - ssh-agent
   - totp
   - yubikey
-description: Password manager app
-applications:
-  - KeePassXC.app
 provenance:
-  cask: keepassxc
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation: https://keepassxc.org/docs/ describes a local
+      encrypted-database password manager.
+    - 'source_facts.description: "Password manager app".'
+  display-name-sources:
+    - 'Official site and user guide consistently use KeePassXC: https://keepassxc.org/'
+    - source_facts.applications lists KeePassXC.app.
+  docs-sources:
+    - >
+      The official documentation landing page publishes the Getting Started guide, User
+      Guide, FAQ, and project comparisons.
+  history-sources:
+    - 'Official 2.2.0 announcement: https://keepassxc.org/blog/2017-06-26-2.2.0-released/'
+    - 'Official 2.3.0 announcement: https://keepassxc.org/blog/2018-02-28-2.3-released/'
+    - 'Official FAQ and project comparison: https://keepassxc.org/docs/'
+    - >
+      Official changelog:
+      https://github.com/keepassxreboot/keepassxc/blob/develop/CHANGELOG.md
+    - 'Official user guide: https://keepassxc.org/docs/KeePassXC_UserGuide'
+  repo-sources:
+    - >
+      source_facts.repo already supplies https://github.com/keepassxreboot/keepassxc;
+      per enrichment rules the repo result is therefore null.
+  tags-sources:
+    - 'Official User Guide: https://keepassxc.org/docs/KeePassXC_UserGuide'
+    - 'Official documentation and feature descriptions: https://keepassxc.org/docs/'
+category-confidence: high
+category-path:
+  - security
+  - password-managers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

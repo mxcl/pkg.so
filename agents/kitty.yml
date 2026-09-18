@@ -1,14 +1,14 @@
 id: cask:kitty
 display-name: kitty
-homepage: https://github.com/kovidgoyal/kitty
-repo: https://github.com/kovidgoyal/kitty
+repo: null
 docs:
   - https://sw.kovidgoyal.net/kitty
   - https://sw.kovidgoyal.net/kitty/conf
   - https://sw.kovidgoyal.net/kitty/overview
   - https://sw.kovidgoyal.net/kitty/quickstart
 config-file-location:
-  unix: ~/.config/kitty/kitty.conf
+  unix:
+    - ~/.config/kitty/kitty.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -77,10 +77,6 @@ history:
       The kitten toolset extends the terminal with image display, diffs, Unicode input,
       hints, themes, SSH conveniences, file transfer, and automation. kitty can also be
       controlled from scripts through its remote-control protocol.
-category: developer-tools
-package-manager:
-  brew-cask: kitty
-package-manager-url: https://formulae.brew.sh/cask/kitty
 tags:
   - cross-platform
   - gpu-accelerated
@@ -92,10 +88,36 @@ tags:
   - remote-control
   - shell-integration
   - terminal-emulator
-description: GPU-based terminal emulator
-applications:
-  - kitty.app
 provenance:
-  cask: kitty
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official overview: https://sw.kovidgoyal.net/kitty/overview/'
+    - 'source_facts.description: "GPU-based terminal emulator".'
+  display-name-sources:
+    - The official site and repository style the project name as lowercase kitty.
+    - source_facts.applications lists kitty.app.
+  docs-sources:
+    - >
+      The official dedicated documentation site provides installation, overview,
+      configuration, extension, protocol, and troubleshooting material.
+  history-sources:
+    - 'Official changelog: https://sw.kovidgoyal.net/kitty/changelog/'
+    - 'Official documentation: https://sw.kovidgoyal.net/kitty/'
+    - 'Official graphics protocol: https://sw.kovidgoyal.net/kitty/graphics-protocol/'
+    - 'Official overview: https://sw.kovidgoyal.net/kitty/overview/'
+    - 'Official repository: https://github.com/kovidgoyal/kitty'
+  repo-sources:
+    - >
+      source_facts.repo already supplies https://github.com/kovidgoyal/kitty; per
+      enrichment rules the repo result is therefore null.
+  tags-sources:
+    - 'Official overview and documentation navigation: https://sw.kovidgoyal.net/kitty/'
+    - 'Official repository topics: https://github.com/kovidgoyal/kitty'
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminal-emulators
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

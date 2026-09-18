@@ -1,7 +1,6 @@
 id: cask:kaku
 display-name: Kaku
-homepage: https://github.com/tw93/Kaku
-repo: https://github.com/tw93/Kaku
+repo: null
 docs:
   - https://github.com/tw93/Kaku/blob/main/docs/cli.md
   - https://github.com/tw93/Kaku/blob/main/docs/configuration.md
@@ -12,7 +11,8 @@ config-file-location:
     - ~/.config/kaku/kaku.lua
     - ~/.config/kaku/assistant.toml
 credentials-file-location:
-  macos: ~/.config/kaku/assistant.toml
+  macos:
+    - ~/.config/kaku/assistant.toml
 history:
   adoption-history:
     - >
@@ -57,10 +57,6 @@ history:
     - >
       Terminal behavior and appearance belong in kaku.lua. The kaku ai setup flow writes
       assistant provider, model, authentication, and API-key settings to assistant.toml.
-category: developer-tools
-package-manager:
-  brew-cask: kaku
-package-manager-url: https://formulae.brew.sh/cask/kaku
 tags:
   - ai-coding
   - developer-tool
@@ -70,10 +66,38 @@ tags:
   - open-source
   - terminal-emulator
   - wezterm-compatible
-description: Terminal optimised for AI coding
-applications:
-  - Kaku.app
 provenance:
-  cask: kaku
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README: https://github.com/tw93/Kaku describes Kaku as a terminal built
+      for AI coding and a customized WezTerm fork.
+    - 'source_facts.description: "Terminal optimised for AI coding".'
+  display-name-sources:
+    - 'Official README title: https://github.com/tw93/Kaku'
+    - source_facts.applications lists Kaku.app.
+  docs-sources:
+    - >
+      The official repository README links its docs directory and dedicated
+      configuration, features, CLI, keybinding, and FAQ documents.
+  history-sources:
+    - 'Official README and project background: https://github.com/tw93/Kaku'
+    - >
+      Official configuration documentation:
+      https://github.com/tw93/Kaku/blob/main/docs/configuration.md
+    - 'Official features documentation: https://github.com/tw93/Kaku/blob/main/docs/features.md'
+  repo-sources:
+    - >
+      source_facts.repo already supplies https://github.com/tw93/Kaku; per enrichment
+      rules the repo result is therefore null.
+  tags-sources:
+    - 'Official README features and repository topics: https://github.com/tw93/Kaku'
+    - source_facts.description.
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminal-emulators
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
