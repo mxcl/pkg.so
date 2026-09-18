@@ -1,6 +1,5 @@
 id: cask:gimp
 display-name: GIMP
-homepage: https://www.gimp.org/
 repo: https://gitlab.gnome.org/GNOME/gimp
 docs:
   - https://docs.gimp.org/3.0/en
@@ -9,7 +8,8 @@ config-file-location:
   linux:
     - $XDG_CONFIG_HOME/GIMP/3.0/gimprc
     - ~/.config/GIMP/3.0/gimprc
-  macos: ~/Library/Application Support/GIMP/3.0/gimprc
+  macos:
+    - ~/Library/Application Support/GIMP/3.0/gimprc
   windows:
     - '%APPDATA%\GIMP\3.0\gimprc'
     - '%USERPROFILE%\AppData\Roaming\GIMP\3.0\gimprc'
@@ -87,10 +87,6 @@ history:
       while official builds also support macOS and Windows. Advanced users customize
       resources and behavior through the preferences interface, the gimprc file,
       plug-ins, scripts, brushes, gradients, and related data directories.
-category: media
-package-manager:
-  brew-cask: gimp
-package-manager-url: https://formulae.brew.sh/cask/gimp
 tags:
   - cross-platform
   - digital-painting
@@ -101,10 +97,42 @@ tags:
   - open-source
   - photo-editing
   - raster-graphics
-description: Free and open-source image editor
-applications:
-  - GIMP.app
 provenance:
-  cask: gimp
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official About page defines GIMP as software for photo retouching, image
+      composition, and image authoring: https://www.gimp.org/about/
+    - source_facts.description
+  display-name-sources:
+    - >
+      Official site expands the name as GNU Image Manipulation Program:
+      https://www.gimp.org/about/
+    - current_curation.display-name
+  docs-sources:
+    - 'Official GIMP developer documentation: https://developer.gimp.org/'
+    - 'Official GIMP user manual: https://docs.gimp.org/3.0/en/'
+  history-sources:
+    - https://developer.gimp.org/core/setup/git/
+    - https://www.gimp.org/about/
+    - https://www.gimp.org/about/ancient_history.html
+    - https://www.gimp.org/about/history.html
+    - https://www.gimp.org/news/2015/11/22/20-years-of-gimp-release-of-gimp-2816/
+  repo-sources:
+    - >
+      Official developer documentation states that GIMP's source lives on the GNOME Git
+      server and identifies the gimp repository as the application and standard
+      plug-ins: https://developer.gimp.org/core/setup/git/
+  tags-sources:
+    - >
+      Official About page and twentieth-anniversary history: https://www.gimp.org/about/
+      ; https://www.gimp.org/news/2015/11/22/20-years-of-gimp-release-of-gimp-2816/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - image-editors
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
