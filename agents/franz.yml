@@ -1,7 +1,6 @@
 id: cask:franz
 display-name: Franz
-homepage: https://meetfranz.com/
-repo: https://github.com/meetfranz/franz-6
+repo: null
 docs:
   - https://meetfranz.com/changelog
   - https://meetfranz.com/support
@@ -13,8 +12,10 @@ config-file-location:
     - '%APPDATA%\Franz\app-state.json'
     - '%APPDATA%\Franz\app-state.json.backup'
 credentials-file-location:
-  macos: ~/Library/Application Support/Franz/partitions/
-  windows: '%APPDATA%\Franz\partitions\'
+  macos:
+    - ~/Library/Application Support/Franz/partitions/
+  windows:
+    - '%APPDATA%\Franz\partitions\'
 history:
   adoption-history:
     - >
@@ -71,10 +72,6 @@ history:
       keep separate accounts in persistent tabs, group services into workspaces, and
       synchronize their Franz setup across devices. Provider logins remain separate web
       sessions controlled by each connected service.
-category: productivity
-package-manager:
-  brew-cask: franz
-package-manager-url: https://formulae.brew.sh/cask/franz
 tags:
   - communication
   - electron
@@ -82,10 +79,42 @@ tags:
   - messaging
   - multi-service
   - workspaces
-description: Messaging app for WhatsApp, Facebook Messenger, Slack, Telegram and more
-applications:
-  - Franz.app
 provenance:
-  cask: franz
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Input `source_facts.description` identifies its WhatsApp, Messenger, Slack,
+      Telegram, and other messaging integrations.
+    - >
+      Official support and homepage describe Franz as a unified desktop workspace for
+      messaging, email, services, and workspaces: https://meetfranz.com/support
+  display-name-sources:
+    - 'Official homepage branding: https://meetfranz.com/'
+    - `current_curation.display-name`
+  docs-sources:
+    - The official changelog documents release-specific behavior and product evolution.
+    - >
+      The official support center covers installation, services, accounts,
+      synchronization, workspaces, billing, privacy, local data, and troubleshooting.
+  history-sources:
+    - 'Official Franz 5 repository: https://github.com/meetfranz/franz'
+    - 'Official changelog: https://meetfranz.com/changelog'
+    - 'Official product history article: https://meetfranz.com/blog/all-in-one-messenger'
+    - 'Official support center: https://meetfranz.com/support'
+  repo-sources:
+    - >
+      `source_facts.repo` is already populated, so the repository is intentionally
+      returned as null under the enrichment contract.
+  tags-sources:
+    - >
+      Official support center documents messaging services, email, multi-service
+      sessions, workspaces, and cross-device synchronization.
+    - The official Franz 5 repository documents the Electron-based desktop application.
+category-confidence: high
+category-path:
+  - productivity
+  - communication
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
