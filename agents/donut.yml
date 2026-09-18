@@ -1,7 +1,6 @@
 id: cask:donut
 display-name: Donut Browser
-homepage: https://donutbrowser.com/
-repo: https://github.com/zhom/donutbrowser
+repo: null
 docs:
   - https://donutbrowser.com/docs
   - https://donutbrowser.com/docs/mcp
@@ -59,10 +58,6 @@ history:
       distinct fingerprint. Advanced workflows can manage profiles through the loopback
       REST API or bundled MCP server, while profile import supports migration from
       Chromium-family browsers.
-category: networking
-package-manager:
-  brew-cask: donut
-package-manager-url: https://formulae.brew.sh/cask/donut
 tags:
   - anti-detect
   - automation
@@ -73,10 +68,36 @@ tags:
   - proxy
   - web-browser
   - wireguard
-description: Anti-detect web browser
-applications:
-  - Donut.app
 provenance:
-  cask: donut
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://donutbrowser.com/ describes isolated browser profiles, fingerprint
+      controls, proxies, and VPN support.
+    - source_facts.description identifies an anti-detect web browser.
+  display-name-sources:
+    - https://donutbrowser.com/
+    - https://github.com/zhom/donutbrowser/blob/main/README.md
+  docs-sources:
+    - https://donutbrowser.com/docs/ is the project's dedicated official documentation site.
+  history-sources:
+    - https://donutbrowser.com/docs/
+    - https://donutbrowser.com/docs/profile-import/
+    - https://github.com/zhom/donutbrowser/blob/main/CHANGELOG.md
+    - https://github.com/zhom/donutbrowser/blob/main/README.md
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/zhom/donutbrowser; per the
+      enrichment rule, repo is therefore returned as null without re-evaluation.
+  tags-sources:
+    - https://donutbrowser.com/
+    - https://donutbrowser.com/docs/
+    - https://github.com/zhom/donutbrowser/blob/main/README.md
+category-confidence: high
+category-path:
+  - networking
+  - web-browsers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

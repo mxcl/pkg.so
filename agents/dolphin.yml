@@ -1,6 +1,5 @@
 id: cask:dolphin
 display-name: Dolphin Emulator
-homepage: https://dolphin-emu.org/
 repo: https://github.com/dolphin-emu/dolphin
 docs:
   - https://dolphin-emu.org/docs
@@ -11,7 +10,8 @@ config-file-location:
   linux:
     - $XDG_CONFIG_HOME/dolphin-emu/
     - ~/.dolphin-emu/Config/ (legacy installations)
-  macos: ~/Library/Application Support/Dolphin/Config/
+  macos:
+    - ~/Library/Application Support/Dolphin/Config/
   windows:
     - '%APPDATA%\Dolphin Emulator\Config\'
     - '%USERPROFILE%\Documents\Dolphin Emulator\Config\ (existing legacy installations)'
@@ -62,10 +62,6 @@ history:
       configure graphics, audio, and emulated or physical controllers. Per-game settings
       and the official compatibility wiki help accommodate titles that need behavior
       different from the global defaults.
-category: games
-package-manager:
-  brew-cask: dolphin
-package-manager-url: https://formulae.brew.sh/cask/dolphin
 tags:
   - console-emulation
   - cross-platform
@@ -74,12 +70,34 @@ tags:
   - gaming
   - open-source
   - wii
-description: Emulator to play GameCube and Wii games
-applications:
-  - Dolphin.app
 provenance:
-  cask: dolphin
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - dolphin@beta
+  category-sources:
+    - https://dolphin-emu.org/docs/faq/ describes Dolphin as a GameCube and Wii emulator.
+    - source_facts.description identifies Dolphin as a GameCube and Wii emulator.
+  display-name-sources:
+    - https://dolphin-emu.org/
+    - https://github.com/dolphin-emu/dolphin
+  docs-sources:
+    - The official project site provides dedicated documentation, guides, and FAQ sections.
+    - The official site links wiki.dolphin-emu.org as its game and feature knowledge base.
+  history-sources:
+    - https://dolphin-emu.org/blog/2018/05/02/legend-dolphin-lens-between-worlds/
+    - https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/
+    - https://dolphin-emu.org/docs/faq/
+    - https://dolphin-emu.org/docs/guides/controlling-global-user-directory/
+  repo-sources:
+    - >
+      The official Dolphin site links https://github.com/dolphin-emu/dolphin for source,
+      contributors, builds, and development history.
+  tags-sources:
+    - https://dolphin-emu.org/docs/faq/
+    - https://github.com/dolphin-emu/dolphin
+category-confidence: high
+category-path:
+  - games
+  - emulators
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
