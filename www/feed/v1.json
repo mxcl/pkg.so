@@ -63,9 +63,6 @@
     },
     {
       "candidatePackageIDs": [
-        "brew:letta-code",
-        "brew:ipsw",
-        "brew:nushell",
         "brew:ty",
         "brew:diffoscope",
         "brew:croc",
@@ -86,9 +83,15 @@
         "brew:cask:monet",
         "brew:workmux",
         "brew:bashka",
-        "brew:termaid"
+        "brew:termaid",
+        "brew:ketch",
+        "brew:rumdl",
+        "brew:cask:openchrom"
       ],
       "fallbackPackageIDs": [
+        "brew:rumdl",
+        "brew:ketch",
+        "brew:cask:openchrom",
         "brew:workmux",
         "brew:termaid",
         "brew:bashka",
@@ -109,10 +112,7 @@
         "brew:apko",
         "brew:ty",
         "brew:diffoscope",
-        "brew:croc",
-        "brew:nushell",
-        "brew:letta-code",
-        "brew:ipsw"
+        "brew:croc"
       ],
       "id": "for-you",
       "title": "For You",
@@ -140,7 +140,10 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:rumdl",
+        "brew:ketch",
         "brew:termaid",
+        "brew:cask:openchrom",
         "brew:workmux",
         "brew:bashka",
         "brew:jupytext",
@@ -148,10 +151,7 @@
         "brew:cask:homebrew-app",
         "brew:hister",
         "brew:cask:omniwm",
-        "brew:cask:open-science",
-        "brew:cask:mangodisk",
-        "brew:cask:agentide",
-        "brew:tgrep"
+        "brew:cask:open-science"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -782,7 +782,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-18T19:51:37Z",
+  "generatedAt": "2026-09-18T19:56:21Z",
   "packages": {
     "brew:alive2": {
       "agentSummary": "Alive2 checks whether LLVM IR transformations preserve behavior, offering standalone and compiler-integrated translation validation while explicitly bounding unsupported interprocedural cases and solver limits.",
@@ -1674,6 +1674,64 @@
       "upstreamSummary": "AI research workbench with scientific agents and notebooks",
       "version": "0.27.0"
     },
+    "brew:cask:openchrom": {
+      "agentSummary": "OpenChrom provides cross-platform, vendor-independent chromatography and spectroscopy analysis, emphasizing GC/MS and GC/FID workflows with modular peak processing, identification, quantitation, and reporting.",
+      "assessment": {
+        "alternatives": [
+          "Vendor-supplied chromatography data systems",
+          "MZmine for mass-spectrometry data processing",
+          "OpenMS for programmable mass-spectrometry analysis pipelines"
+        ],
+        "audiences": [
+          "Analytical chemists working with chromatographic or spectrometric measurements",
+          "Laboratories seeking an open-source analysis layer across instrument vendors",
+          "Researchers teaching or reproducing GC/MS and GC/FID workflows"
+        ],
+        "caveats": [
+          "OpenChrom analyzes data but does not control instruments",
+          "The community source tree excludes some vendor-specific converters and commercial extensions",
+          "Its strongest documented focus is nominal-resolution chromatography and mass spectrometry, so specialized workflows need validation"
+        ],
+        "complements": [
+          "Validated reference spectra and compound libraries",
+          "Laboratory quality-control procedures and retained raw data",
+          "Vendor software when instrument control or unsupported proprietary formats are required"
+        ],
+        "prerequisites": [
+          "Measurement files in a supported format or an appropriate converter",
+          "Domain knowledge to validate peak detection, identification, calibration, and quantitation"
+        ],
+        "useCases": [
+          "Detecting, integrating, identifying, and quantifying chromatographic peaks",
+          "Reviewing measurements from multiple instrument formats on Windows, macOS, or Linux",
+          "Automating repeat analyses with process methods and batch workflows"
+        ]
+      },
+      "category": "science",
+      "displayName": "OpenChrom",
+      "docs": "https://github.com/OpenChrom/openchrom#readme",
+      "homepage": "https://www.openchrom.net/",
+      "id": "brew:cask:openchrom",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopenchrom",
+      "lastUpdatedAt": "2026-09-18T10:26:14Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/OpenChrom/openchrom",
+      "researchedAt": "2026-09-18T19:56:21Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "OpenChrom project site",
+          "url": "https://www.openchrom.net/"
+        },
+        {
+          "kind": "independent",
+          "title": "OpenChrom: a cross-platform open source software for chromatographic mass-spectrometry data",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2920884/"
+        }
+      ],
+      "upstreamSummary": "Data analysis for analytical chemistry",
+      "version": "1.6.33"
+    },
     "brew:cask:opencode-desktop": {
       "agentSummary": "OpenCode is a model-flexible coding agent spanning terminal, desktop, and editor surfaces, with parallel sessions, configurable agents, permissions, and shareable work.",
       "assessment": {
@@ -2534,70 +2592,6 @@
       "upstreamSummary": "HTTP client library for Python",
       "version": null
     },
-    "brew:ipsw": {
-      "agentSummary": "Specialized Apple-platform research toolkit for downloading and inspecting firmware, Mach-O binaries, kernelcaches, shared caches, crash logs, and connected devices from one CLI.",
-      "assessment": {
-        "alternatives": [
-          "Apple's native command-line tools for narrower Mach-O inspection",
-          "img4tool for focused IMG4 manipulation",
-          "Manual firmware extraction combined with dedicated reverse-engineering tools"
-        ],
-        "audiences": [
-          "Apple-platform security researchers and reverse engineers",
-          "Digital-forensics practitioners examining firmware artifacts",
-          "iOS developers diagnosing binaries, devices, and crash logs"
-        ],
-        "caveats": [
-          "Its broad command surface and domain-specific output create a steep learning curve",
-          "Firmware downloads and extraction can consume significant bandwidth, storage, and processing time",
-          "AI-assisted decompilation requires external model configuration and can produce plausible but inaccurate interpretations"
-        ],
-        "complements": [
-          "IDA Pro, Ghidra, or another disassembler for deeper interactive analysis",
-          "Frida for runtime instrumentation",
-          "Apple developer tools and device-support files"
-        ],
-        "prerequisites": [
-          "Working knowledge of Apple firmware formats and Mach-O internals",
-          "Substantial disk space for firmware images and extracted artifacts",
-          "Platform-specific dependencies or device access for some workflows"
-        ],
-        "useCases": [
-          "Download and inspect IPSW and OTA firmware metadata",
-          "Analyze Mach-O files, kernelcaches, dyld shared caches, and entitlements",
-          "Symbolicate crash logs and inspect supported Apple devices"
-        ]
-      },
-      "category": "security",
-      "displayName": "ipsw",
-      "docs": "https://blacktop.github.io/ipsw/docs/cli/ipsw",
-      "homepage": "https://blacktop.github.io/ipsw",
-      "id": "brew:ipsw",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aipsw",
-      "lastUpdatedAt": "2026-08-16T05:29:46Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/blacktop/ipsw",
-      "researchedAt": "2026-08-16T06:31:25Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "ipsw project repository",
-          "url": "https://github.com/blacktop/ipsw"
-        },
-        {
-          "kind": "primary",
-          "title": "ipsw guides",
-          "url": "https://blacktop.github.io/ipsw/docs/category/guides/"
-        },
-        {
-          "kind": "independent",
-          "title": "CellGuard research paper citing ipsw",
-          "url": "https://raid2024.github.io/papers/raid2024-8.pdf"
-        }
-      ],
-      "upstreamSummary": "Research tool for iOS & macOS devices",
-      "version": null
-    },
     "brew:jupytext": {
       "agentSummary": "Jupytext represents notebook inputs as scripts or Markdown, making code review and editor workflows easier while paired notebooks retain outputs in a separate notebook file.",
       "assessment": {
@@ -2646,69 +2640,60 @@
       "upstreamSummary": "Jupyter notebooks as Markdown documents, Julia, Python or R scripts",
       "version": "1.19.5"
     },
-    "brew:letta-code": {
-      "agentSummary": "Memory-first coding agent that preserves learned context across sessions, models, and machines, with local operation available alongside optional hosted synchronization and remote environments.",
+    "brew:ketch": {
+      "agentSummary": "Ketch unifies web, code, and documentation search with scraping, crawling, structured output, and MCP access, giving agents one configurable research interface.",
       "assessment": {
         "alternatives": [
-          "Codex CLI for task-focused coding sessions",
-          "Claude Code for Anthropic-centered terminal workflows",
-          "Aider for a Git-oriented, model-flexible coding loop"
+          "Direct provider APIs combined with curl and a document converter",
+          "Firecrawl for a hosted search, scrape, and crawl workflow",
+          "SearXNG for a self-hosted metasearch service"
         ],
         "audiences": [
-          "Developers managing long-running, multi-session coding work",
-          "Teams evaluating persistent, model-agnostic coding agents",
-          "Agent builders experimenting with durable memory and learned skills"
+          "Developers building research workflows for coding agents",
+          "Operators who want one command-line interface across several search providers"
         ],
         "caveats": [
-          "Persistent memory can retain stale assumptions, so important decisions still need explicit documentation and review",
-          "Hosted synchronization and remote environments expand the credential, privacy, and access-control surface",
-          "The project is moving quickly; workflows and configuration may change between releases"
+          "Coverage, latency, quotas, and result quality still depend on the configured upstream providers",
+          "Scraped content is untrusted input, and authenticated crawling requires careful cookie, cache, and authorization handling",
+          "Operators remain responsible for site terms, robots policies, and permitted use of retrieved material"
         ],
         "complements": [
-          "Version control for reviewing agent-made changes",
-          "Repository instruction files and narrowly scoped reusable skills",
-          "Disposable development environments for higher-risk autonomous work"
+          "An agent permission policy that limits which URLs and credentials may be used",
+          "Independent source verification for research assembled from search results"
         ],
         "prerequisites": [
-          "An account or provider API credentials for the chosen model, unless using another supported connection",
-          "A deliberate review of tool permissions before allowing repository changes or command execution",
-          "Comfort evaluating rapidly evolving agent behavior and release changes"
+          "Network access to the selected search, code, or documentation backend",
+          "Provider credentials or a self-hosted endpoint for backends that require them"
         ],
         "useCases": [
-          "Carry repository knowledge and preferences between coding sessions",
-          "Work with one agent through CLI, desktop, browser, or messaging channels",
-          "Switch language models without discarding the agent's accumulated memory"
+          "Searching the web or public source code and returning structured results",
+          "Converting web pages, documentation sites, and text-based PDFs into Markdown"
         ]
       },
-      "category": "ai",
-      "displayName": "letta-code",
-      "docs": "https://docs.letta.com/letta-code",
-      "homepage": "https://docs.letta.com/letta-code",
-      "id": "brew:letta-code",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aletta-code",
-      "lastUpdatedAt": "2026-08-16T05:57:42Z",
+      "category": "developer-tools",
+      "displayName": "ketch",
+      "docs": "https://chain.sh/ketch",
+      "homepage": "https://github.com/1broseidon/ketch",
+      "id": "brew:ketch",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aketch",
+      "lastUpdatedAt": "2026-09-18T17:30:40Z",
       "manager": "homebrew",
-      "repository": "https://github.com/letta-ai/letta-code",
-      "researchedAt": "2026-08-16T06:31:25Z",
+      "repository": "https://github.com/1broseidon/ketch",
+      "researchedAt": "2026-09-18T19:56:21Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Letta Code project repository",
-          "url": "https://github.com/letta-ai/letta-code"
+          "title": "Ketch repository and README",
+          "url": "https://github.com/1broseidon/ketch"
         },
         {
-          "kind": "independent",
-          "title": "A guide to getting started with Letta Code",
-          "url": "https://cameron.stream/blog/letta-code-guide/"
-        },
-        {
-          "kind": "independent",
-          "title": "Letta Code community discussion on Hacker News",
-          "url": "https://news.ycombinator.com/item?id=46294274"
+          "kind": "primary",
+          "title": "Ketch command reference",
+          "url": "https://chain.sh/ketch/reference/commands"
         }
       ],
-      "upstreamSummary": "Memory-first coding agent",
-      "version": null
+      "upstreamSummary": "Web search and scraping for agents",
+      "version": "0.17.0"
     },
     "brew:librefang": {
       "agentSummary": "LibreFang is a self-hostable Rust-based agent operating system with lifecycle management, channels, model drivers, MCP and A2A integration, policy controls, audit logging, and command-capable agent workflows.",
@@ -2988,70 +2973,6 @@
         }
       ],
       "upstreamSummary": "MCP for Claude Desktop, Claude Code, Windsurf, Cursor to build n8n workflows",
-      "version": null
-    },
-    "brew:nushell": {
-      "agentSummary": "Cross-platform shell and programming language that passes typed, structured values through pipelines, making JSON, tables, and system data easier to query without text parsing.",
-      "assessment": {
-        "alternatives": [
-          "PowerShell for mature object pipelines and Microsoft ecosystem integration",
-          "Fish for a friendly interactive shell with more conventional text pipelines",
-          "Bash or Zsh for POSIX-oriented compatibility and ubiquitous deployment"
-        ],
-        "audiences": [
-          "Developers who regularly transform structured data at the command line",
-          "Cross-platform users wanting consistent shell semantics",
-          "Scripters willing to learn a language distinct from POSIX shells"
-        ],
-        "caveats": [
-          "Nushell is a different language, not a drop-in Bash replacement, so existing shell scripts usually need rewriting",
-          "Structured pipelines are richest for built-ins; arbitrary external commands still commonly return text",
-          "The project describes some commands and design details as subject to change while it matures"
-        ],
-        "complements": [
-          "Starship for a portable customizable prompt",
-          "Carapace for broader command completion",
-          "Traditional shells for scripts that must remain POSIX-compatible"
-        ],
-        "prerequisites": [
-          "Time to learn Nushell syntax, types, and pipeline semantics",
-          "Migration planning before making it a login shell",
-          "Explicit adapters for external commands that emit unstructured text"
-        ],
-        "useCases": [
-          "Explore and reshape JSON, CSV, tables, and records interactively",
-          "Write cross-platform automation with typed values and pipelines",
-          "Inspect system information with table-oriented commands"
-        ]
-      },
-      "category": "system",
-      "displayName": "nushell",
-      "docs": "https://www.nushell.sh/book",
-      "homepage": "https://www.nushell.sh",
-      "id": "brew:nushell",
-      "installURL": "pkgmgrmgr://install?package=brew%3Anushell",
-      "lastUpdatedAt": "2026-08-16T01:34:03Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/nushell/nushell",
-      "researchedAt": "2026-08-16T06:31:25Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Nushell book introduction",
-          "url": "https://www.nushell.sh/book/"
-        },
-        {
-          "kind": "primary",
-          "title": "Nushell project repository",
-          "url": "https://github.com/nushell/nushell"
-        },
-        {
-          "kind": "independent",
-          "title": "Community discussion of Nushell tradeoffs",
-          "url": "https://www.reddit.com/r/commandline/comments/1rwqh94/hit_me_with_it_folks_why_nushell/"
-        }
-      ],
-      "upstreamSummary": "Modern shell for the GitHub era",
       "version": null
     },
     "brew:obscura": {
@@ -3725,35 +3646,35 @@
       "version": "0.5.27"
     },
     "brew:rumdl": {
-      "agentSummary": "Rust Markdown linter and formatter with configurable rules, automatic markdownlint configuration discovery, editor integration, CI reporting, and dedicated pre-commit-compatible hooks.",
+      "agentSummary": "rumdl is a fast Rust Markdown linter and formatter with markdownlint-compatible configuration, automatic fixes, multiple flavors, editor support, and structured CI output.",
       "assessment": {
         "alternatives": [
-          "markdownlint-cli2",
-          "Vale",
-          "mdformat"
+          "markdownlint-cli2 for the established Node-based markdownlint ecosystem",
+          "Vale for configurable prose and style guidance",
+          "Prettier for broader opinionated formatting across file types"
         ],
         "audiences": [
-          "Documentation-heavy repositories",
-          "Teams standardizing Markdown in CI and editors"
+          "Documentation teams maintaining large Markdown collections",
+          "Developers wanting the same Markdown checks in editors, hooks, and CI"
         ],
         "caveats": [
-          "Default style rules may conflict with existing documentation conventions",
-          "Automatic fixes require diff review",
-          "Compatibility with markdownlint configuration does not guarantee identical output for every edge case"
+          "The project still describes itself as beta while it formalizes 1.0 compatibility guarantees",
+          "Formatting and auto-fixes can create large diffs, so migration should begin with read-only checks",
+          "Flavor-specific syntax and rules require configuration rather than assuming every Markdown document renders identically"
         ],
         "complements": [
-          "prek",
-          "Documentation site generators",
-          "Editor LSP clients"
+          "Pre-commit hooks",
+          "A continuous-integration job that checks documentation",
+          "A prose or link checker for concerns outside Markdown structure"
         ],
         "prerequisites": [
-          "Markdown files",
-          "A reviewed rule configuration matching project conventions"
+          "A repository containing Markdown or a compatible documentation flavor",
+          "Agreement on enabled rules before automatic fixes are applied broadly"
         ],
         "useCases": [
-          "Lint Markdown for structural and style problems",
-          "Format documentation deterministically",
-          "Annotate Markdown violations in pull requests"
+          "Checking and automatically fixing Markdown style violations",
+          "Formatting Markdown and reporting diagnostics through SARIF, JUnit, JSON, or CI-specific output",
+          "Migrating an existing markdownlint configuration to a native binary workflow"
         ]
       },
       "category": "developer-tools",
@@ -3762,29 +3683,24 @@
       "homepage": "https://github.com/rvben/rumdl",
       "id": "brew:rumdl",
       "installURL": "pkgmgrmgr://install?package=brew%3Arumdl",
-      "lastUpdatedAt": "2026-08-27T03:23:02Z",
+      "lastUpdatedAt": "2026-09-18T18:18:03Z",
       "manager": "homebrew",
       "repository": "https://github.com/rvben/rumdl",
-      "researchedAt": "2026-08-27T09:48:59Z",
+      "researchedAt": "2026-09-18T19:56:21Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "rumdl repository and integration guide",
-          "url": "https://github.com/rvben/rumdl"
-        },
-        {
-          "kind": "primary",
-          "title": "rumdl release history",
-          "url": "https://github.com/rvben/rumdl/releases"
+          "title": "rumdl documentation",
+          "url": "https://rumdl.dev/"
         },
         {
           "kind": "independent",
-          "title": "MegaLinter rumdl descriptor",
-          "url": "https://megalinter.io/latest/descriptors/markdown_rumdl/"
+          "title": "Firefox Source Docs: rumdl",
+          "url": "https://firefox-source-docs.mozilla.org/code-quality/lint/linters/rumdl.html"
         }
       ],
       "upstreamSummary": "Markdown Linter and Formatter written in Rust",
-      "version": "0.2.61"
+      "version": "0.2.73"
     },
     "brew:sourcedocs": {
       "agentSummary": "SourceDocs generates browsable Markdown API references from Swift packages and Xcode projects, keeping generated documentation beside hand-written guides in a repository.",
