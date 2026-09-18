@@ -1,17 +1,22 @@
 id: cask:wasabi-wallet
 display-name: Wasabi Wallet
-homepage: https://github.com/zkSNACKs/WalletWasabi/
-repo: https://github.com/zkSNACKs/WalletWasabi
+repo: null
 docs:
   - https://docs.wasabiwallet.io/
 config-file-location:
-  linux: /home/{username}/.walletwasabi/client/UIConfig.json
-  macos: /Users/{username}/.walletwasabi/client/UIConfig.json
-  windows: /Users/{username}/AppData/Roaming/WalletWasabi/Client/UIConfig.json
+  linux:
+    - /home/{username}/.walletwasabi/client/UIConfig.json
+  macos:
+    - /Users/{username}/.walletwasabi/client/UIConfig.json
+  windows:
+    - /Users/{username}/AppData/Roaming/WalletWasabi/Client/UIConfig.json
 credentials-file-location:
-  linux: /home/{username}/.walletwasabi/client/Wallets/{WalletName}.json
-  macos: /Users/{username}/.walletwasabi/client/Wallets/{WalletName}.json
-  windows: /Users/{username}/AppData/Roaming/WalletWasabi/Client/Wallets/{WalletName}.json
+  linux:
+    - /home/{username}/.walletwasabi/client/Wallets/{WalletName}.json
+  macos:
+    - /Users/{username}/.walletwasabi/client/Wallets/{WalletName}.json
+  windows:
+    - /Users/{username}/AppData/Roaming/WalletWasabi/Client/Wallets/{WalletName}.json
 history:
   adoption-history:
     - >
@@ -78,10 +83,6 @@ history:
       Most settings are managed through the graphical interface. Advanced users can use
       startup arguments, environment variables, configuration files, a daemon mode, and
       an RPC server.
-category: security
-package-manager:
-  brew-cask: wasabi-wallet
-package-manager-url: https://formulae.brew.sh/cask/wasabi-wallet
 tags:
   - bitcoin
   - coinjoin
@@ -90,10 +91,33 @@ tags:
   - privacy
   - tor
   - wallet
-description: Open-source, non-custodial, privacy focused Bitcoin wallet
-applications:
-  - Wasabi Wallet.app
 provenance:
-  cask: wasabi-wallet
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes Wasabi as an open-source, non-custodial,
+      privacy-focused Bitcoin wallet: https://docs.wasabiwallet.io/
+  display-name-sources:
+    - 'Official documentation title: https://docs.wasabiwallet.io/'
+    - source_facts.applications
+  docs-sources:
+    - Dedicated official documentation site.
+  history-sources:
+    - https://docs.wasabiwallet.io/FAQ/FAQ-Introduction.html
+    - https://docs.wasabiwallet.io/FAQ/FAQ-UseWasabi.html
+    - https://docs.wasabiwallet.io/using-wasabi/StartupParameters.html
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped as required.
+  tags-sources:
+    - https://docs.wasabiwallet.io/
+    - https://docs.wasabiwallet.io/FAQ/FAQ-UseWasabi.html
+category-confidence: high
+category-path:
+  - security
+  - cryptocurrency-wallets
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
