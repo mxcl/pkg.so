@@ -1,12 +1,12 @@
 id: cask:mac-mouse-fix
 display-name: Mac Mouse Fix
-homepage: https://macmousefix.com/
-repo: https://github.com/noah-nuebling/mac-mouse-fix
+repo: null
 docs:
   - https://github.com/noah-nuebling/mac-mouse-fix#readme
   - https://github.com/noah-nuebling/mac-mouse-fix/discussions/101
 config-file-location:
-  macos: ~/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist
+  macos:
+    - ~/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -76,10 +76,6 @@ history:
       It is aimed at conventional third-party mice; the official README notes that some
       devices using proprietary protocols may expose only part of their button set, and
       Magic Mouse enhancement is not currently its focus.
-category: system
-package-manager:
-  brew-cask: mac-mouse-fix
-package-manager-url: https://formulae.brew.sh/cask/mac-mouse-fix
 tags:
   - accessibility
   - gestures
@@ -89,12 +85,40 @@ tags:
   - open-source
   - productivity
   - smooth-scrolling
-description: Mouse utility to add gesture functions and smooth scrolling to 3rd party mice
-applications:
-  - Mac Mouse Fix.app
 provenance:
-  cask: mac-mouse-fix
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - mouse-fix
+  category-sources:
+    - https://github.com/noah-nuebling/mac-mouse-fix
+    - https://macmousefix.com/
+    - >
+      source_facts.description: "Mouse utility to add gesture functions and smooth
+      scrolling to 3rd party mice"
+  display-name-sources:
+    - https://macmousefix.com/
+    - source_facts.applications
+  docs-sources:
+    - Official maintainer guide to granting Accessibility access
+    - Official repository README
+  history-sources:
+    - https://github.com/noah-nuebling/mac-mouse-fix
+    - https://github.com/noah-nuebling/mac-mouse-fix/discussions/133
+    - https://github.com/noah-nuebling/mac-mouse-fix/discussions/236
+    - https://github.com/noah-nuebling/mac-mouse-fix/releases
+    - https://macmousefix.com/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository enrichment was intentionally
+      omitted as instructed.
+  tags-sources:
+    - https://github.com/noah-nuebling/mac-mouse-fix
+    - https://macmousefix.com/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - system
+  - input-devices
+  - mouse-utilities
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
