@@ -1,6 +1,5 @@
 id: cask:mailsteward
 display-name: MailSteward
-homepage: https://mailsteward.com/
 repo: null
 docs:
   - https://mailsteward.com/manual
@@ -66,10 +65,6 @@ history:
       The standard edition uses a single SQLite database file that can be copied and
       backed up. MailSteward Pro targets larger archives through MySQL. Standard and Pro
       editions can schedule recurring archival runs.
-category: productivity
-package-manager:
-  brew-cask: mailsteward
-package-manager-url: https://formulae.brew.sh/cask/mailsteward
 tags:
   - backup
   - email
@@ -79,10 +74,40 @@ tags:
   - mysql
   - search
   - sqlite
-description: Email management tool for Apple Mail and Postbox
-applications:
-  - MailSteward.app
 provenance:
-  cask: mailsteward
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://mailsteward.com/
+    - source_facts.description identifies it as an email-management tool.
+  display-name-sources:
+    - current_curation.display-name
+    - https://mailsteward.com/
+  docs-sources:
+    - >
+      The official FAQ documents databases, Gmail backup, attachments, migration, and
+      edition differences.
+    - >
+      The official online user guide covers archiving, searching, scheduling, importing,
+      and exporting.
+  history-sources:
+    - https://mailsteward.com/
+    - https://mailsteward.com/faq/
+    - https://mailsteward.com/manual/
+    - https://mailsteward.com/upgrade/
+  repo-sources:
+    - >
+      The official product, documentation, download, and support pages provide
+      installers but identify no official public source-control repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://mailsteward.com/
+    - https://mailsteward.com/faq/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - email-archiving
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
