@@ -63,9 +63,6 @@
     },
     {
       "candidatePackageIDs": [
-        "brew:ty",
-        "brew:diffoscope",
-        "brew:croc",
         "brew:osv-scanner",
         "brew:rainfrog",
         "brew:apko",
@@ -86,15 +83,21 @@
         "brew:termaid",
         "brew:ketch",
         "brew:rumdl",
-        "brew:cask:openchrom"
+        "brew:cask:openchrom",
+        "brew:resterm",
+        "brew:beets",
+        "brew:locust"
       ],
       "fallbackPackageIDs": [
+        "brew:resterm",
+        "brew:locust",
+        "brew:beets",
+        "brew:bashka",
         "brew:rumdl",
         "brew:ketch",
         "brew:cask:openchrom",
         "brew:workmux",
         "brew:termaid",
-        "brew:bashka",
         "brew:cask:monet",
         "brew:qwen-code",
         "brew:alive2",
@@ -109,10 +112,7 @@
         "brew:aube",
         "brew:rainfrog",
         "brew:osv-scanner",
-        "brew:apko",
-        "brew:ty",
-        "brew:diffoscope",
-        "brew:croc"
+        "brew:apko"
       ],
       "id": "for-you",
       "title": "For You",
@@ -121,18 +121,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:telari",
+        "brew:cask:muse",
+        "brew:bashka",
         "brew:termaid",
         "brew:workmux",
-        "brew:bashka",
         "brew:cask:homebrew-app",
         "brew:hister",
         "brew:cask:omniwm",
         "brew:cask:open-science",
         "brew:cask:mangodisk",
         "brew:cask:agentide",
-        "brew:tgrep",
-        "brew:cask:zentty",
-        "brew:cask:markviewer"
+        "brew:tgrep"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -140,18 +140,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:telari",
+        "brew:cask:muse",
+        "brew:bashka",
+        "brew:resterm",
+        "brew:locust",
+        "brew:beets",
         "brew:rumdl",
         "brew:ketch",
         "brew:termaid",
         "brew:cask:openchrom",
         "brew:workmux",
-        "brew:bashka",
-        "brew:jupytext",
-        "brew:git-xet",
-        "brew:cask:homebrew-app",
-        "brew:hister",
-        "brew:cask:omniwm",
-        "brew:cask:open-science"
+        "brew:jupytext"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -782,7 +782,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-18T19:56:21Z",
+  "generatedAt": "2026-09-19T06:48:56Z",
   "packages": {
     "brew:alive2": {
       "agentSummary": "Alive2 checks whether LLVM IR transformations preserve behavior, offering standalone and compiler-integrated translation validation while explicitly bounding unsupported interprocedural cases and solver limits.",
@@ -1034,20 +1034,20 @@
       "version": null
     },
     "brew:bashka": {
-      "agentSummary": "bashka statically inspects piped shell installers, follows additional scripts, flags suspicious behavior, and records installed files, but cannot guarantee safety against dynamic shell behavior.",
+      "agentSummary": "bashka statically inspects fetched shell installers, follows additional script stages, flags suspicious behavior, and records installed files, but cannot guarantee safety against dynamic shell behavior.",
       "assessment": {
         "alternatives": [
           "Download and manually audit the complete script chain before running it",
-          "Prefer a signed system-package or reproducible source build"
+          "Prefer a signed system package or reproducible source build"
         ],
         "audiences": [
           "Developers evaluating convenience installers before execution",
-          "Security-conscious terminal users who still need shell-based installation paths"
+          "Security-conscious terminal users who still encounter shell-based installation paths"
         ],
         "caveats": [
           "Static analysis cannot prove a Bash program safe or detect every obfuscation technique",
-          "Absolute shell paths and content that changes between analysis and execution can bypass parts of its model",
-          "The project is extremely new and its rules and interfaces may change rapidly"
+          "Scripts can change between analysis and later retrieval unless content is pinned",
+          "The project is only days old, with a small evidence base and rapidly changing rules"
         ],
         "complements": [
           "Pinned checksums or signatures published by the software vendor",
@@ -1058,7 +1058,7 @@
           "Human review of findings before approving any installer"
         ],
         "useCases": [
-          "Reviewing a fetched installer and its forwarded script stages",
+          "Reviewing a fetched installer and scripts it downloads before approval",
           "Flagging credential access, exfiltration patterns, unsafe deletion, or mutable downloads"
         ]
       },
@@ -1068,29 +1068,91 @@
       "homepage": "https://github.com/dmtrKovalenko/bashka",
       "id": "brew:bashka",
       "installURL": "pkgmgrmgr://install?package=brew%3Abashka",
-      "lastUpdatedAt": "2026-09-17T23:12:00Z",
+      "lastUpdatedAt": "2026-09-18T23:41:59Z",
       "manager": "homebrew",
       "repository": "https://github.com/dmtrKovalenko/bashka",
-      "researchedAt": "2026-09-18T19:51:37Z",
+      "researchedAt": "2026-09-19T06:48:56Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "bashka documentation and limitations",
+          "title": "bashka repository and limitations",
           "url": "https://github.com/dmtrKovalenko/bashka"
         },
         {
           "kind": "primary",
-          "title": "bashka initial release",
+          "title": "bashka v0.1.0 release",
           "url": "https://github.com/dmtrKovalenko/bashka/releases/tag/v0.1.0"
         },
         {
           "kind": "independent",
-          "title": "bashka package record on crates.io",
-          "url": "https://crates.io/crates/bashka"
+          "title": "GitNova project assessment for bashka",
+          "url": "https://gitnova.dev/r/dmtrKovalenko/bashka"
         }
       ],
       "upstreamSummary": "Static verification of installation bash scripts",
-      "version": "0.11.0"
+      "version": "0.12.0"
+    },
+    "brew:beets": {
+      "agentSummary": "beets catalogs personal music libraries, matches releases through MusicBrainz, rewrites metadata and filenames, and extends into artwork, fingerprints, ReplayGain, queries, and automation through plugins.",
+      "assessment": {
+        "alternatives": [
+          "MusicBrainz Picard for a graphical tagging workflow",
+          "Kid3 or Mp3tag for direct manual tag editing",
+          "Player-managed libraries when filesystem organization is unimportant"
+        ],
+        "audiences": [
+          "Collectors maintaining large local music libraries",
+          "Self-hosters feeding organized libraries into players such as Navidrome or Plex"
+        ],
+        "caveats": [
+          "Initial imports can demand substantial review when releases are obscure, incomplete, or absent from MusicBrainz",
+          "Aggressive move, rename, or retag settings can create broad changes across a library",
+          "Its configuration and plugin surface are powerful but can feel demanding for small collections"
+        ],
+        "complements": [
+          "MusicBrainz for community-maintained release metadata",
+          "A local music server or player",
+          "Reliable backups for original audio and tags"
+        ],
+        "prerequisites": [
+          "A local music collection and willingness to review ambiguous matches",
+          "A tested configuration plus a backup before allowing metadata or file changes"
+        ],
+        "useCases": [
+          "Matching albums and correcting inconsistent tags during import",
+          "Renaming and reorganizing files from metadata-driven templates",
+          "Adding artwork, acoustic fingerprints, ReplayGain, and custom metadata through plugins"
+        ]
+      },
+      "category": "media",
+      "displayName": "beets",
+      "docs": "https://beets.readthedocs.io/",
+      "homepage": "https://beets.io/",
+      "id": "brew:beets",
+      "installURL": "pkgmgrmgr://install?package=brew%3Abeets",
+      "lastUpdatedAt": "2026-09-18T20:17:17Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/beetbox/beets",
+      "researchedAt": "2026-09-19T06:48:56Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "beets project overview",
+          "url": "https://beets.io/"
+        },
+        {
+          "kind": "primary",
+          "title": "beets documentation",
+          "url": "https://beets.readthedocs.io/"
+        },
+        {
+          "kind": "independent",
+          "title": "Hacker News discussion of long-term beets workflows and limitations",
+          "url": "https://news.ycombinator.com/item?id=45873037"
+        }
+      ],
+      "upstreamSummary": "Music library manager and tagger",
+      "version": "2.14.1"
     },
     "brew:cargo-llvm-cov": {
       "agentSummary": "Cargo LLVM Cov wraps Rust’s LLVM source coverage, producing several report formats while supporting workspaces, nextest, merged runs, continuous integration, and linked native code.",
@@ -1438,63 +1500,6 @@
       "upstreamSummary": "Disk cleaner and storage analyser",
       "version": "1.1.0"
     },
-    "brew:cask:markviewer": {
-      "agentSummary": "MarkViewer is a native macOS Markdown editor focused on offline review, inline annotations, rendered previews, and clipboard handoff to external AI assistants.",
-      "assessment": {
-        "alternatives": [
-          "A full-featured Markdown editor for long-form authoring",
-          "An IDE with Markdown preview and annotation extensions",
-          "macOS Quick Look for simple read-only inspection"
-        ],
-        "audiences": [
-          "Mac users reviewing Markdown drafts generated by AI assistants",
-          "Writers wanting a lightweight rendered editor that keeps documents local"
-        ],
-        "caveats": [
-          "The application is proprietary despite distributing releases through GitHub",
-          "AI handoff uses the clipboard rather than direct model integration",
-          "Its focused review workflow is narrower than a general-purpose editor"
-        ],
-        "complements": [
-          "Git for tracking Markdown revisions",
-          "Claude, ChatGPT, Cursor, Gemini, or another text-capable assistant",
-          "A privacy-conscious local document workflow"
-        ],
-        "prerequisites": [
-          "A supported macOS system",
-          "A separate AI assistant if using the clipboard handoff workflow"
-        ],
-        "useCases": [
-          "Reading and editing GitHub-flavored Markdown without a split preview",
-          "Annotating passages before sending a revision prompt to an AI assistant",
-          "Navigating long local documents with tables, tasks, code, and Mermaid diagrams"
-        ]
-      },
-      "category": "productivity",
-      "displayName": "MarkViewer",
-      "docs": "https://github.com/SeungbinBaik/markviewer-releases#readme",
-      "homepage": "https://markviewer.com/",
-      "id": "brew:cask:markviewer",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amarkviewer",
-      "lastUpdatedAt": "2026-09-06T04:05:42Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/SeungbinBaik/markviewer-releases",
-      "researchedAt": "2026-09-06T06:20:50Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Official MarkViewer releases repository and documentation",
-          "url": "https://github.com/SeungbinBaik/markviewer-releases"
-        },
-        {
-          "kind": "primary",
-          "title": "MarkViewer 1.0.0 release",
-          "url": "https://github.com/SeungbinBaik/markviewer-releases/releases/tag/v1.0.0"
-        }
-      ],
-      "upstreamSummary": "Minimal markdown editor",
-      "version": "1.8.6"
-    },
     "brew:cask:monet": {
       "agentSummary": "Monet provides a native macOS control room for browsing, searching, launching, and supervising concurrent Claude Code and Codex sessions across projects.",
       "assessment": {
@@ -1553,6 +1558,65 @@
       ],
       "upstreamSummary": "Multi-engine mission control for coding agents",
       "version": "2.1.16"
+    },
+    "brew:cask:muse": {
+      "agentSummary": "Muse is Meta’s personal AI agent for delegating multistep tasks through connected services, with approval gates and a dedicated cloud VM, but substantial access implications.",
+      "assessment": {
+        "alternatives": [
+          "A conventional assistant that drafts steps without acting on external services",
+          "Manual task management and service-specific automation"
+        ],
+        "audiences": [
+          "US consumers willing to delegate online errands to an AI agent",
+          "People managing recurring tasks, projects, travel, shopping, or scheduling"
+        ],
+        "caveats": [
+          "Useful automation requires granting a cloud-hosted agent access to sensitive accounts and context",
+          "Meta says users retain approval controls, but independent testing still describes discomfort with the breadth of access",
+          "Availability is initially limited, and service behavior and pricing may evolve quickly"
+        ],
+        "complements": [
+          "A password manager and strong multifactor authentication",
+          "Human review of messages, purchases, bookings, and other consequential actions"
+        ],
+        "prerequisites": [
+          "A supported US account and access to the Muse rollout",
+          "Explicit authorization for every external account or service Muse needs"
+        ],
+        "useCases": [
+          "Handling multistep browser tasks and connected-app workflows",
+          "Turning longer-term goals into plans and continuing work in the background"
+        ]
+      },
+      "category": "productivity",
+      "displayName": "Muse",
+      "docs": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent",
+      "homepage": "https://muse.ai/",
+      "id": "brew:cask:muse",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amuse",
+      "lastUpdatedAt": "2026-09-19T01:45:49Z",
+      "manager": "homebrew",
+      "repository": null,
+      "researchedAt": "2026-09-19T06:48:56Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Meta launch announcement for Muse",
+          "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+        },
+        {
+          "kind": "independent",
+          "title": "TechRadar hands-on review of Muse",
+          "url": "https://www.techradar.com/ai-platforms-assistants/i-tried-metas-new-muse-ai-agent-its-incredibly-useful-but-handing-it-my-digital-life-felt-deeply-uncomfortable"
+        },
+        {
+          "kind": "independent",
+          "title": "TechCrunch report on the Muse launch",
+          "url": "https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/"
+        }
+      ],
+      "upstreamSummary": "AI assistant for managing tasks, projects, and long-term goals",
+      "version": "1.0"
     },
     "brew:cask:omniwm": {
       "agentSummary": "Mac window manager brings scrolling columns and dwindle tiling to configurable workspaces, with multi-monitor routing and scriptable controls for users comfortable tuning desktop behavior.",
@@ -1850,71 +1914,64 @@
       "upstreamSummary": "Windows-style taskbar as a Dock replacement",
       "version": "1.6.3,2026,09"
     },
-    "brew:cask:zentty": {
-      "agentSummary": "Native macOS terminal arranges shells into scrolling worklanes and surfaces coding-agent attention states, combining Ghostty rendering with workspace restoration and scriptable pane control.",
+    "brew:cask:telari": {
+      "agentSummary": "Telari is a native macOS reader for Markdown and plain text, emphasizing Knuth–Plass justification, mixed CJK–Latin typography, mathematical typesetting, and local document handling.",
       "assessment": {
         "alternatives": [
-          "Ghostty for a general terminal",
-          "iTerm2 for a mature Mac terminal",
-          "tmux for sessions that survive SSH disconnection"
+          "A Markdown editor with a built-in preview",
+          "Pandoc or a static-site workflow for reproducible rendered output"
         ],
         "audiences": [
-          "Mac developers running several terminal sessions",
-          "Users coordinating command-line coding agents"
+          "macOS users who read long Markdown or plain-text documents",
+          "Writers and researchers working with mixed CJK and Latin typography"
         ],
         "caveats": [
-          "Upstream warns of rough edges and occasional breaking changes during active development.",
-          "The terminal manages agent visibility; it does not replace the agents.",
-          "Workspace restoration should not be confused with keeping remote processes alive."
+          "Telari is a reader rather than a full Markdown editor",
+          "The project is still in public beta and has limited independent usage evidence",
+          "Anonymous usage statistics are enabled by default but can be disabled"
         ],
         "complements": [
-          "Existing shells and command-line development tools",
-          "Ghostty themes"
+          "A separate Markdown editor for changing source files",
+          "Version control or backups for the documents being read"
         ],
         "prerequisites": [
-          "macOS Sonoma or later",
-          "Separately configured agent CLIs for agent-specific workflows"
+          "macOS 13 or newer",
+          "Acceptance of a young public-beta application whose eventual release will be paid"
         ],
         "useCases": [
-          "Keeping project shells and development servers together",
-          "Finding agent sessions that need attention",
-          "Restoring pane layouts after relaunch"
+          "Reading Markdown with book-like justification and configurable fonts",
+          "Rendering mathematical notation and exporting documents to PDF or PNG"
         ]
       },
-      "category": "developer-tools",
-      "displayName": "Zentty",
-      "docs": "https://zentty.org/docs",
-      "homepage": "https://zentty.org/",
-      "id": "brew:cask:zentty",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Azentty",
-      "lastUpdatedAt": "2026-09-08T17:55:56Z",
+      "category": "productivity",
+      "displayName": "Telari",
+      "docs": "https://telari.app/en",
+      "homepage": "https://telari.app/",
+      "id": "brew:cask:telari",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atelari",
+      "lastUpdatedAt": "2026-09-19T04:40:44Z",
       "manager": "homebrew",
-      "repository": "https://github.com/dedene/zentty",
-      "researchedAt": "2026-09-09T10:02:01Z",
+      "repository": null,
+      "researchedAt": "2026-09-19T06:48:56Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Zentty upstream features and development status",
-          "url": "https://github.com/dedene/zentty"
+          "title": "Telari product and feature overview",
+          "url": "https://telari.app/en/"
         },
         {
           "kind": "primary",
-          "title": "Zentty documentation",
-          "url": "https://zentty.org/docs/"
+          "title": "Telari changelog",
+          "url": "https://telari.app/en/changelog/"
         },
         {
           "kind": "primary",
-          "title": "Zentty comparisons and workflow boundaries",
-          "url": "https://zentty.org/compare/"
-        },
-        {
-          "kind": "primary",
-          "title": "Zentty first public release announcement",
-          "url": "https://github.com/dedene/zentty/releases/tag/v0.1.7"
+          "title": "Telari privacy policy",
+          "url": "https://telari.app/en/privacy/"
         }
       ],
-      "upstreamSummary": "Terminal for agent-driven development",
-      "version": "0.3.0"
+      "upstreamSummary": "Markdown reader built for typography",
+      "version": "0.5.7"
     },
     "brew:claude-squad": {
       "agentSummary": "Claude Squad wraps terminal agents in a TUI, using tmux sessions and Git worktrees to isolate parallel tasks and simplify diff review.",
@@ -1973,65 +2030,6 @@
         }
       ],
       "upstreamSummary": "Manage multiple AI agents like Claude Code, Aider and Codex in your terminal",
-      "version": null
-    },
-    "brew:croc": {
-      "agentSummary": "Croc transfers files and folders between platforms through relays with password-authenticated end-to-end encryption, resumable sessions, multiple-file support, and optional self-hosted infrastructure.",
-      "assessment": {
-        "alternatives": [
-          "Magic Wormhole for code-based encrypted transfers",
-          "Syncthing for continuous multi-device synchronization",
-          "rsync over SSH for managed hosts with direct connectivity"
-        ],
-        "audiences": [
-          "People needing simple cross-platform file transfers",
-          "Administrators wanting a self-hostable transfer relay",
-          "Terminal users sharing files across restrictive networks"
-        ],
-        "caveats": [
-          "Anyone who learns the transfer code can attempt to join, so code handling matters",
-          "Public relays still observe connection metadata even though payloads are end-to-end encrypted",
-          "Both live endpoints normally need to be online unless the separate stored-transfer mode is used"
-        ],
-        "complements": [
-          "A secure messenger for sharing transfer codes",
-          "Checksums or signatures for separately verifying important artifacts",
-          "A self-hosted relay when policy prohibits public infrastructure"
-        ],
-        "prerequisites": [
-          "Croc on both endpoints for the standard CLI workflow",
-          "A private channel for communicating the transfer code",
-          "Network access to a public or self-hosted relay"
-        ],
-        "useCases": [
-          "Sending files or folders without configuring inbound ports",
-          "Resuming interrupted transfers between different operating systems",
-          "Operating a private relay for organizational transfers"
-        ]
-      },
-      "category": "networking",
-      "displayName": "croc",
-      "docs": "https://github.com/schollz/croc#readme",
-      "homepage": "https://github.com/schollz/croc",
-      "id": "brew:croc",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acroc",
-      "lastUpdatedAt": "2026-08-15T23:14:05Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/schollz/croc",
-      "researchedAt": "2026-08-16T06:33:41Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Croc project repository and usage guide",
-          "url": "https://github.com/schollz/croc"
-        },
-        {
-          "kind": "primary",
-          "title": "Croc release history",
-          "url": "https://github.com/schollz/croc/releases"
-        }
-      ],
-      "upstreamSummary": "Securely send things from one computer to another",
       "version": null
     },
     "brew:defuddle": {
@@ -2150,64 +2148,6 @@
       ],
       "upstreamSummary": "Local searchable memory over the session histories of coding agents",
       "version": "0.19.1"
-    },
-    "brew:diffoscope": {
-      "agentSummary": "Diffoscope recursively compares archives, disk images, documents, and other build artifacts, transforming binary structures into readable differences that help diagnose reproducibility failures.",
-      "assessment": {
-        "alternatives": [
-          "Binary diff and hex-analysis tools for focused byte inspection",
-          "Native archive listing tools for simpler comparisons",
-          "try.diffoscope.org for occasional browser-based experiments"
-        ],
-        "audiences": [
-          "Release engineers investigating non-reproducible builds",
-          "Package maintainers comparing generated artifacts",
-          "Security reviewers inspecting binary differences"
-        ],
-        "caveats": [
-          "Deep comparisons can be slow and produce large reports",
-          "Full format coverage requires numerous optional external utilities",
-          "It explains differences but does not itself make a build reproducible"
-        ],
-        "complements": [
-          "Reprotest for varying build environments",
-          "Reproducible-build metadata and build logs",
-          "Checksums for first confirming byte-level differences"
-        ],
-        "prerequisites": [
-          "Two files, archives, or directories to compare",
-          "Format-specific external tools for the deepest available comparisons"
-        ],
-        "useCases": [
-          "Finding why two nominally identical builds differ",
-          "Recursively comparing archives and nested binary formats",
-          "Producing text or HTML reports for artifact review"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "diffoscope",
-      "docs": "https://diffoscope.org/",
-      "homepage": "https://diffoscope.org",
-      "id": "brew:diffoscope",
-      "installURL": "pkgmgrmgr://install?package=brew%3Adiffoscope",
-      "lastUpdatedAt": "2026-08-15T20:26:09Z",
-      "manager": "homebrew",
-      "repository": "https://salsa.debian.org/reproducible-builds/diffoscope",
-      "researchedAt": "2026-08-16T06:33:41Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Diffoscope source repository",
-          "url": "https://salsa.debian.org/reproducible-builds/diffoscope"
-        },
-        {
-          "kind": "independent",
-          "title": "Reproducible Builds tools guide",
-          "url": "https://reproducible-builds.org/tools/"
-        }
-      ],
-      "upstreamSummary": "In-depth comparison of files, archives, and directories",
-      "version": null
     },
     "brew:dnsglobe": {
       "agentSummary": "dnsglobe checks DNS records through public resolvers worldwide, grouping responses and showing propagation, latency, TTL, and disagreement in a terminal dashboard for deployment troubleshooting.",
@@ -2810,6 +2750,68 @@
       ],
       "upstreamSummary": "Weather, tides, the sun, the moon, and maps, drawn for the terminal",
       "version": "2.3.1"
+    },
+    "brew:locust": {
+      "agentSummary": "Locust models load-test users in ordinary Python, runs interactively or headlessly, and distributes traffic generation across workers for flexible, code-reviewed performance testing.",
+      "assessment": {
+        "alternatives": [
+          "k6 for JavaScript-authored load scenarios",
+          "Apache JMeter for a mature GUI-centered ecosystem",
+          "Gatling for JVM and Scala-oriented performance testing"
+        ],
+        "audiences": [
+          "Python-fluent developers, performance engineers, and site-reliability teams",
+          "Teams needing customizable user journeys rather than recorded request scripts"
+        ],
+        "caveats": [
+          "Client-side generator limits can be mistaken for limits in the tested system",
+          "Unrepresentative wait times, data, or user flows produce misleading capacity conclusions",
+          "High-scale or production testing can cause outages or unexpected infrastructure cost without strict safeguards"
+        ],
+        "complements": [
+          "Metrics, tracing, and log aggregation on the tested system",
+          "Representative test data and production-informed traffic models",
+          "Cloud or container orchestration for large distributed tests"
+        ],
+        "prerequisites": [
+          "Python knowledge for defining user behavior and custom clients",
+          "A safe target environment, agreed load limits, and server-side observability"
+        ],
+        "useCases": [
+          "Simulating realistic multi-step traffic against web services",
+          "Running repeatable performance tests in continuous integration",
+          "Distributing high-volume load generation across multiple workers"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "locust",
+      "docs": "https://docs.locust.io/",
+      "homepage": "https://locust.io/",
+      "id": "brew:locust",
+      "installURL": "pkgmgrmgr://install?package=brew%3Alocust",
+      "lastUpdatedAt": "2026-09-18T20:59:21Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/locustio/locust",
+      "researchedAt": "2026-09-19T06:48:56Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Locust documentation: What is Locust?",
+          "url": "https://docs.locust.io/en/stable/what-is-locust.html"
+        },
+        {
+          "kind": "independent",
+          "title": "Zalando Engineering production load-testing case study",
+          "url": "https://engineering.zalando.com/posts/2019/04/end-to-end-load-testing-zalandos-production-website.html"
+        },
+        {
+          "kind": "independent",
+          "title": "Microsoft Azure guide for running Locust tests",
+          "url": "https://learn.microsoft.com/en-us/azure/app-testing/load-testing/quickstart-create-run-load-test-with-locust"
+        }
+      ],
+      "upstreamSummary": "Scalable user load testing tool written in Python",
+      "version": "2.46.6"
     },
     "brew:mcpsnoop": {
       "agentSummary": "mcpsnoop is a terminal-first transparent proxy and inspector for observing real Model Context Protocol traffic, recording sessions, redacting sensitive values, comparing behavior, and gating captured runs in CI.",
@@ -3581,6 +3583,67 @@
       "upstreamSummary": "Universal conda package builder",
       "version": null
     },
+    "brew:resterm": {
+      "agentSummary": "Resterm is a keyboard-driven terminal client for HTTP, GraphQL, gRPC, WebSocket, and SSE workflows, keeping reviewable requests in local text files without cloud synchronization.",
+      "assessment": {
+        "alternatives": [
+          "curl or HTTPie for smaller command-oriented workflows",
+          "Postman or Insomnia for graphical, team-hosted API collections",
+          "grpcurl and websocat for focused protocol-specific tooling"
+        ],
+        "audiences": [
+          "API developers who prefer terminal and Vim-style workflows",
+          "Teams wanting request definitions that can be reviewed in version control"
+        ],
+        "caveats": [
+          "Request files or environment files can leak credentials if committed carelessly",
+          "Its broad feature set and custom scripting language introduce more concepts than a simple HTTP client",
+          "The project is young and community-maintained, so interfaces may continue changing"
+        ],
+        "complements": [
+          "Git for reviewing shared request definitions",
+          "A secrets manager or command-backed authentication provider"
+        ],
+        "prerequisites": [
+          "Comfort with terminal interfaces and text-based request files",
+          "Secure local handling of tokens, environment files, and client credentials"
+        ],
+        "useCases": [
+          "Exploring and debugging APIs across several protocols",
+          "Running request files headlessly with assertions in development or CI",
+          "Tracing, profiling, mocking, and comparing API responses"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "resterm",
+      "docs": "https://github.com/unkn0wn-root/resterm#readme",
+      "homepage": "https://github.com/unkn0wn-root/resterm",
+      "id": "brew:resterm",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aresterm",
+      "lastUpdatedAt": "2026-09-18T20:59:36Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/unkn0wn-root/resterm",
+      "researchedAt": "2026-09-19T06:48:56Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Resterm repository and documentation",
+          "url": "https://github.com/unkn0wn-root/resterm"
+        },
+        {
+          "kind": "independent",
+          "title": "LinuxLinks review of Resterm",
+          "url": "https://www.linuxlinks.com/resterm-terminal-based-rest-graphql-grpc-websocket-sse-client/"
+        },
+        {
+          "kind": "independent",
+          "title": "Terminal Trove Resterm overview",
+          "url": "https://terminaltrove.com/resterm/"
+        }
+      ],
+      "upstreamSummary": "Terminal client for .http/.rest files with HTTP, GraphQL, and gRPC support",
+      "version": "1.8.2"
+    },
     "brew:rio-terminal": {
       "agentSummary": "A cross-platform, GPU-accelerated terminal built in Rust around WebGPU, offering configurable navigation, panes, tabs, themes, and a deliberately modern rendering stack.",
       "assessment": {
@@ -3945,63 +4008,6 @@
       "upstreamSummary": "Trigram-indexed grep for fast regex search in large codebases",
       "version": "1.0.5"
     },
-    "brew:ty": {
-      "agentSummary": "Ty is Astral’s Rust-based Python type checker and language server, offering rapid incremental analysis, configurable diagnostics, and editor integration while remaining pre-1.0.",
-      "assessment": {
-        "alternatives": [
-          "Pyright for an established type checker and language server",
-          "mypy for mature configurable static checking",
-          "Pyrefly for another performance-focused Python type checker"
-        ],
-        "audiences": [
-          "Python teams seeking faster static-analysis feedback",
-          "Developers evaluating modern language-server tooling"
-        ],
-        "caveats": [
-          "Current releases remain in the 0.0 series, so behavior and configuration may change",
-          "Some type-system choices differ from other checkers and can produce migration work",
-          "Third-party import accuracy depends on discovering the intended Python environment and available stubs"
-        ],
-        "complements": [
-          "Ruff for Python linting and formatting",
-          "uv for Python environments and project management",
-          "Typeshed or project-specific stub packages"
-        ],
-        "prerequisites": [
-          "A Python project or source files to analyze",
-          "A discoverable virtual environment or configured Python interpreter for third-party imports"
-        ],
-        "useCases": [
-          "Checking whole Python projects or selected paths",
-          "Watching code changes and rechecking affected dependencies",
-          "Providing type-aware navigation and diagnostics in editors"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "ty",
-      "docs": "https://docs.astral.sh/ty",
-      "homepage": "https://docs.astral.sh/ty/",
-      "id": "brew:ty",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aty",
-      "lastUpdatedAt": "2026-08-16T01:24:27Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/astral-sh/ty",
-      "researchedAt": "2026-08-16T06:33:41Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Ty documentation",
-          "url": "https://docs.astral.sh/ty/"
-        },
-        {
-          "kind": "primary",
-          "title": "Ty release history",
-          "url": "https://github.com/astral-sh/ty/releases"
-        }
-      ],
-      "upstreamSummary": "Extremely fast Python type checker, written in Rust",
-      "version": null
-    },
     "brew:usbtree": {
       "agentSummary": "usbtree presents a live USB device tree in a Rust terminal interface, exposing topology and Linux activity metrics without requiring root access or libusb.",
       "assessment": {
@@ -4172,7 +4178,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-18T19:50:07Z",
+    "generatedAt": "2026-09-19T06:48:03Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
