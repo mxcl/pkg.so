@@ -1,13 +1,15 @@
 id: cask:rubymine
 display-name: RubyMine
-homepage: https://www.jetbrains.com/ruby/
 repo: null
 docs:
   - https://www.jetbrains.com/help/ruby
 config-file-location:
-  linux: ~/.config/JetBrains/RubyMine<version>
-  macos: ~/Library/Application Support/JetBrains/RubyMine<version>
-  windows: '%APPDATA%\JetBrains\RubyMine<version>'
+  linux:
+    - ~/.config/JetBrains/RubyMine<version>
+  macos:
+    - ~/Library/Application Support/JetBrains/RubyMine<version>
+  windows:
+    - '%APPDATA%\JetBrains\RubyMine<version>'
 credentials-file-location: null
 history:
   adoption-history:
@@ -59,10 +61,6 @@ history:
       Developers use RubyMine to navigate and refactor Ruby code, manage project
       dependencies, run and debug applications and tests, develop Rails applications,
       inspect databases, and work with integrated version control and terminal tools.
-category: developer-tools
-package-manager:
-  brew-cask: rubymine
-package-manager-url: https://formulae.brew.sh/cask/rubymine
 tags:
   - debugging
   - ide
@@ -70,10 +68,36 @@ tags:
   - refactoring
   - ruby
   - testing
-description: Ruby on Rails IDE
-applications:
-  - RubyMine.app
 provenance:
-  cask: rubymine
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://www.jetbrains.com/ruby/
+    - source_facts.description
+  display-name-sources:
+    - https://www.jetbrains.com/ruby/
+    - source_facts.name
+  docs-sources:
+    - 'Official RubyMine documentation: https://www.jetbrains.com/help/ruby/'
+  history-sources:
+    - https://blog.jetbrains.com/ruby/2008/11/rubymine-new-ruby-and-rails-ide-from-jetbrains/
+    - >
+      https://blog.jetbrains.com/ruby/2009/04/meet-jetbrains-rubymine-10-a-brand-new-ide-for-ruby-and-rails/
+    - https://www.jetbrains.com/help/ruby/
+    - https://www.jetbrains.com/ruby/
+  repo-sources:
+    - >
+      source_facts.repo is empty; JetBrains' official product and documentation pages
+      identify RubyMine as a proprietary product and provide no public source
+      repository.
+  tags-sources:
+    - https://www.jetbrains.com/ruby/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - ide
+  - ruby
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
