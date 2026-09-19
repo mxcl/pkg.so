@@ -63,9 +63,6 @@
     },
     {
       "candidatePackageIDs": [
-        "brew:osv-scanner",
-        "brew:rainfrog",
-        "brew:apko",
         "brew:aube",
         "brew:cargo-llvm-cov",
         "brew:octodns",
@@ -86,9 +83,15 @@
         "brew:cask:openchrom",
         "brew:resterm",
         "brew:beets",
-        "brew:locust"
+        "brew:locust",
+        "brew:fastmcp",
+        "brew:form",
+        "brew:sftpgo"
       ],
       "fallbackPackageIDs": [
+        "brew:sftpgo",
+        "brew:form",
+        "brew:fastmcp",
         "brew:resterm",
         "brew:locust",
         "brew:beets",
@@ -109,10 +112,7 @@
         "brew:fzf",
         "brew:octodns",
         "brew:cargo-llvm-cov",
-        "brew:aube",
-        "brew:rainfrog",
-        "brew:osv-scanner",
-        "brew:apko"
+        "brew:aube"
       ],
       "id": "for-you",
       "title": "For You",
@@ -143,15 +143,15 @@
         "brew:cask:telari",
         "brew:cask:muse",
         "brew:bashka",
+        "brew:sftpgo",
+        "brew:fastmcp",
         "brew:resterm",
         "brew:locust",
         "brew:beets",
+        "brew:form",
         "brew:rumdl",
         "brew:ketch",
-        "brew:termaid",
-        "brew:cask:openchrom",
-        "brew:workmux",
-        "brew:jupytext"
+        "brew:termaid"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -782,7 +782,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-19T06:48:56Z",
+  "generatedAt": "2026-09-19T06:52:52Z",
   "packages": {
     "brew:alive2": {
       "agentSummary": "Alive2 checks whether LLVM IR transformations preserve behavior, offering standalone and compiler-integrated translation validation while explicitly bounding unsupported interprocedural cases and solver limits.",
@@ -847,65 +847,6 @@
         }
       ],
       "upstreamSummary": "Automatic verification of LLVM optimizations",
-      "version": null
-    },
-    "brew:apko": {
-      "agentSummary": "Chainguard’s declarative image composer builds minimal OCI images from APK packages, emphasizing reproducibility, multi-architecture output, and automatically generated software bills of materials.",
-      "assessment": {
-        "alternatives": [
-          "Dockerfile with BuildKit",
-          "Buildah",
-          "ko"
-        ],
-        "audiences": [
-          "Platform engineers",
-          "Container image maintainers",
-          "Software supply-chain teams"
-        ],
-        "caveats": [
-          "It composes packages rather than running arbitrary build steps",
-          "Wolfi and Alpine repositories cannot be mixed",
-          "Custom software may first need packaging with melange"
-        ],
-        "complements": [
-          "Wolfi",
-          "melange",
-          "Cosign"
-        ],
-        "prerequisites": [
-          "APK-packaged components",
-          "An apko YAML configuration",
-          "A compatible container or OCI workflow"
-        ],
-        "useCases": [
-          "Compose minimal OCI base images",
-          "Build reproducible multi-architecture images",
-          "Generate SBOMs alongside images"
-        ]
-      },
-      "category": "cloud-infrastructure",
-      "displayName": "apko",
-      "docs": "https://edu.chainguard.dev/open-source/apko",
-      "homepage": "https://github.com/chainguard-dev/apko",
-      "id": "brew:apko",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aapko",
-      "lastUpdatedAt": "2026-08-17T02:30:48Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/chainguard-dev/apko",
-      "researchedAt": "2026-08-17T06:25:37Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Getting started with apko",
-          "url": "https://edu.chainguard.dev/open-source/build-tools/apko/getting-started-with-apko/"
-        },
-        {
-          "kind": "primary",
-          "title": "apko FAQ",
-          "url": "https://edu.chainguard.dev/open-source/build-tools/apko/faq/"
-        }
-      ],
-      "upstreamSummary": "Build OCI images from APK packages directly without Dockerfile",
       "version": null
     },
     "brew:aube": {
@@ -2260,6 +2201,131 @@
       "upstreamSummary": "Immutable, decentralized, statically built p2p VPN",
       "version": "0.35.4"
     },
+    "brew:fastmcp": {
+      "agentSummary": "FastMCP turns typed Python functions into MCP tools, resources, and prompts, while handling schemas, validation, transports, authentication, clients, and protocol compatibility.",
+      "assessment": {
+        "alternatives": [
+          "The lower-level official MCP Python SDK APIs",
+          "The official MCP TypeScript SDK for JavaScript and TypeScript services",
+          "Direct JSON-RPC and transport implementations for unusually constrained systems"
+        ],
+        "audiences": [
+          "Python developers building MCP servers and clients",
+          "Teams turning existing application functions into agent-accessible tools"
+        ],
+        "caveats": [
+          "The MCP protocol and FastMCP major versions are evolving quickly, so upgrades need compatibility testing",
+          "Project documentation follows the main branch and can describe features not yet present in a stable release",
+          "Remote tool endpoints require explicit authentication, authorization, input validation, and network controls"
+        ],
+        "complements": [
+          "Pydantic models for structured inputs and outputs",
+          "The Model Context Protocol specification and official SDK documentation",
+          "An identity provider, reverse proxy, or MCP gateway for network deployments"
+        ],
+        "prerequisites": [
+          "A supported Python environment",
+          "An MCP host or client for end-to-end use",
+          "A reviewed authentication and authorization model for remote transports"
+        ],
+        "useCases": [
+          "Expose typed Python functions as MCP tools, resources, and prompts",
+          "Build clients, proxies, and composed servers for local or remote MCP services"
+        ]
+      },
+      "category": "ai",
+      "displayName": "fastmcp",
+      "docs": "https://gofastmcp.com/getting-started/welcome",
+      "homepage": "https://gofastmcp.com/getting-started/welcome",
+      "id": "brew:fastmcp",
+      "installURL": "pkgmgrmgr://install?package=brew%3Afastmcp",
+      "lastUpdatedAt": "2026-09-18T21:32:22Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/PrefectHQ/fastmcp",
+      "researchedAt": "2026-09-19T06:52:52Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "FastMCP documentation",
+          "url": "https://gofastmcp.com/getting-started/welcome"
+        },
+        {
+          "kind": "primary",
+          "title": "FastMCP v1.0 release",
+          "url": "https://github.com/PrefectHQ/fastmcp/releases/tag/v1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "Official MCP Python SDK v1 documentation",
+          "url": "https://py.sdk.modelcontextprotocol.io/v1/"
+        }
+      ],
+      "upstreamSummary": "Fast, Pythonic way to build MCP servers and clients",
+      "version": "4.0.5"
+    },
+    "brew:form": {
+      "agentSummary": "FORM processes symbolic expressions too large for memory by streaming terms through disk-backed transformations, serving specialized high-energy-physics calculations rather than general interactive algebra.",
+      "assessment": {
+        "alternatives": [
+          "Mathematica or Maple for broader interactive computer algebra",
+          "SymPy for Python-native symbolic workflows",
+          "Cadabra for field-theory-oriented tensor algebra"
+        ],
+        "audiences": [
+          "High-energy physicists working with very large symbolic expressions",
+          "Researchers building repeatable batch-oriented algebra pipelines"
+        ],
+        "caveats": [
+          "Its textual batch language has a steeper learning curve than notebook-oriented algebra systems",
+          "Disk-backed processing trades lower memory pressure for potentially substantial storage and I/O demands",
+          "FORM is purpose-built for huge expressions and is not a general replacement for every computer algebra workflow"
+        ],
+        "complements": [
+          "FeynCalc and FormLink for Mathematica-connected workflows",
+          "GMP, MPFR, FLINT, and compression libraries for optional capabilities",
+          "Batch schedulers and reproducible research environments"
+        ],
+        "prerequisites": [
+          "Familiarity with FORM's domain-specific programming language",
+          "Enough local disk capacity and I/O performance for large intermediate expressions",
+          "Validated mathematical procedures and representative test calculations"
+        ],
+        "useCases": [
+          "Transform expressions whose intermediate terms exceed available memory",
+          "Automate perturbative quantum-field-theory and other large symbolic calculations",
+          "Apply specialized pattern matching and algebraic rewrites from text programs"
+        ]
+      },
+      "category": "science",
+      "displayName": "form",
+      "docs": "https://github.com/form-dev/form#readme",
+      "homepage": "https://www.nikhef.nl/~form/",
+      "id": "brew:form",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aform",
+      "lastUpdatedAt": "2026-09-18T19:56:22Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/form-dev/form",
+      "researchedAt": "2026-09-19T06:52:52Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "FORM project repository",
+          "url": "https://github.com/form-dev/form"
+        },
+        {
+          "kind": "primary",
+          "title": "FORM reference manual",
+          "url": "https://form-dev.github.io/form/"
+        },
+        {
+          "kind": "independent",
+          "title": "FORM version 4.2 paper",
+          "url": "https://arxiv.org/abs/1707.06453"
+        }
+      ],
+      "upstreamSummary": "Symbolic manipulation system",
+      "version": "5.0.2"
+    },
     "brew:fzf": {
       "agentSummary": "fzf brings fast fuzzy selection to files, command history, processes, Git objects, and arbitrary text streams, with extensive shell and editor integration.",
       "assessment": {
@@ -3105,63 +3171,6 @@
       "upstreamSummary": "Tools for managing DNS across multiple providers",
       "version": null
     },
-    "brew:osv-scanner": {
-      "agentSummary": "Google’s vulnerability scanner checks source trees, lockfiles, SBOMs, and container images against OSV data, with broad ecosystem coverage and remediation guidance.",
-      "assessment": {
-        "alternatives": [
-          "Trivy",
-          "Grype",
-          "Dependabot"
-        ],
-        "audiences": [
-          "Application developers",
-          "Security engineers",
-          "CI maintainers"
-        ],
-        "caveats": [
-          "Results depend on package identification and advisory coverage",
-          "Guided remediation can invoke package-manager behavior and should only be used on trusted projects"
-        ],
-        "complements": [
-          "OSV.dev",
-          "Pre-commit",
-          "CI pipelines"
-        ],
-        "prerequisites": [
-          "A supported manifest, lockfile, SBOM, or container image",
-          "Network access to current vulnerability data unless using an offline database"
-        ],
-        "useCases": [
-          "Scan dependency lockfiles",
-          "Inspect container images",
-          "Produce machine-readable vulnerability results"
-        ]
-      },
-      "category": "security",
-      "displayName": "osv-scanner",
-      "docs": "https://github.com/google/osv-scanner#readme",
-      "homepage": "https://google.github.io/osv-scanner/",
-      "id": "brew:osv-scanner",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aosv-scanner",
-      "lastUpdatedAt": "2026-08-17T06:12:20Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/google/osv-scanner",
-      "researchedAt": "2026-08-17T06:25:37Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "OSV-Scanner usage guide",
-          "url": "https://google.github.io/osv-scanner/usage/"
-        },
-        {
-          "kind": "primary",
-          "title": "Supported artifacts and manifests",
-          "url": "https://google.github.io/osv-scanner/supported-languages-and-lockfiles/"
-        }
-      ],
-      "upstreamSummary": "Vulnerability scanner which uses the OSV database",
-      "version": null
-    },
     "brew:pgstream": {
       "agentSummary": "A PostgreSQL change-data-capture tool and Go library that streams snapshots, row changes, and DDL to Postgres, Kafka, search indexes, or webhooks.",
       "assessment": {
@@ -3764,6 +3773,70 @@
       ],
       "upstreamSummary": "Markdown Linter and Formatter written in Rust",
       "version": "0.2.73"
+    },
+    "brew:sftpgo": {
+      "agentSummary": "SFTPGo provides managed file transfer across SFTP, SCP, FTPS, WebDAV, and web clients, combining local or cloud storage with granular access controls.",
+      "assessment": {
+        "alternatives": [
+          "OpenSSH internal-sftp for a narrower local-filesystem service",
+          "MinIO or native cloud object-storage APIs when legacy transfer protocols are unnecessary",
+          "Commercial managed file-transfer platforms with vendor-operated support"
+        ],
+        "audiences": [
+          "Administrators replacing legacy file-transfer servers",
+          "Teams exposing cloud object storage through established transfer protocols",
+          "Organizations needing self-hosted partner file exchange"
+        ],
+        "caveats": [
+          "The Community edition uses AGPL-3.0-only with additional terms, while some advanced capabilities belong to Enterprise",
+          "Every enabled protocol and automation hook expands the configuration and attack surface",
+          "The published independent audit covered important components but explicitly excluded several authentication and storage features"
+        ],
+        "complements": [
+          "A reverse proxy or load balancer for HTTPS deployments",
+          "Prometheus-compatible monitoring and centralized audit logging",
+          "Object storage lifecycle policies and independent backups"
+        ],
+        "prerequisites": [
+          "TLS and SSH host-key management appropriate to the exposed protocols",
+          "Least-privilege service and storage credentials",
+          "A database and shared storage design suitable for the intended deployment topology"
+        ],
+        "useCases": [
+          "Serve local, encrypted, S3-compatible, Google Cloud, or Azure storage over common transfer protocols",
+          "Manage per-user virtual folders, quotas, authentication, and protocol permissions",
+          "Trigger event-driven retention, notification, and cross-storage workflows"
+        ]
+      },
+      "category": "networking",
+      "displayName": "sftpgo",
+      "docs": "https://docs.sftpgo.com/latest",
+      "homepage": "https://sftpgo.com/",
+      "id": "brew:sftpgo",
+      "installURL": "pkgmgrmgr://install?package=brew%3Asftpgo",
+      "lastUpdatedAt": "2026-09-18T22:05:31Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/drakkan/sftpgo",
+      "researchedAt": "2026-09-19T06:52:52Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "SFTPGo Community documentation",
+          "url": "https://docs.sftpgo.com/latest/"
+        },
+        {
+          "kind": "primary",
+          "title": "SFTPGo project repository",
+          "url": "https://github.com/drakkan/sftpgo"
+        },
+        {
+          "kind": "independent",
+          "title": "Open Technology Fund SFTPGo security audit",
+          "url": "https://www.opentech.fund/security-safety-audits/sftpgo-security-audit/"
+        }
+      ],
+      "upstreamSummary": "Fully featured SFTP server with optional HTTP/S, FTP/S and WebDAV support",
+      "version": "2.7.5"
     },
     "brew:sourcedocs": {
       "agentSummary": "SourceDocs generates browsable Markdown API references from Swift packages and Xcode projects, keeping generated documentation beside hand-written guides in a repository.",
