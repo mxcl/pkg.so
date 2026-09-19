@@ -1,7 +1,6 @@
 id: cask:jupyterlab-app
 display-name: JupyterLab Desktop
-homepage: https://github.com/jupyterlab/jupyterlab-desktop
-repo: https://github.com/jupyterlab/jupyterlab-desktop
+repo: null
 docs:
   - https://jupyterlab.readthedocs.io/en/stable
   - https://github.com/jupyterlab/jupyterlab-desktop/blob/master/user-guide.md
@@ -75,10 +74,6 @@ history:
       existing local or remote JupyterLab servers. Authentication tokens may be retained
       through the operating system's secure credential store, but the project does not
       document a portable credentials file.
-category: science
-package-manager:
-  brew-cask: jupyterlab-app
-package-manager-url: https://formulae.brew.sh/cask/jupyterlab-app
 tags:
   - data-science
   - desktop-app
@@ -88,12 +83,43 @@ tags:
   - notebook
   - python
   - scientific-computing
-description: Desktop application for JupyterLab
-applications:
-  - JupyterLab.app
 provenance:
-  cask: jupyterlab-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - jupyterlab
+  category-sources:
+    - >
+      https://github.com/jupyterlab/jupyterlab-desktop describes the application as a
+      cross-platform JupyterLab desktop client.
+    - source_facts.description identifies the package as a desktop application for JupyterLab.
+  display-name-sources:
+    - >
+      https://github.com/jupyterlab/jupyterlab-desktop uses the official name JupyterLab
+      Desktop.
+    - source_facts.description identifies it as the desktop application for JupyterLab.
+  docs-sources:
+    - The official JupyterLab Desktop repository designates user-guide.md as its user guide.
+    - >
+      https://jupyterlab.readthedocs.io/en/stable/ is the official documentation for the
+      bundled JupyterLab interface.
+  history-sources:
+    - https://github.com/jupyterlab/jupyterlab-desktop
+    - https://github.com/jupyterlab/jupyterlab-desktop/blob/master/Release.md
+    - https://github.com/jupyterlab/jupyterlab-desktop/blob/master/user-guide.md
+    - https://jupyterlab.readthedocs.io/en/stable/
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/jupyterlab/jupyterlab-desktop; per the task rule, repo is
+      returned as null without re-evaluation.
+  tags-sources:
+    - https://github.com/jupyterlab/jupyterlab-desktop
+    - https://github.com/jupyterlab/jupyterlab-desktop/blob/master/user-guide.md
+    - source_facts.description
+category-confidence: high
+category-path:
+  - science
+  - data-science
+  - notebook
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

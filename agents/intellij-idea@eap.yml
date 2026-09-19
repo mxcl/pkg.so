@@ -1,14 +1,16 @@
 id: cask:intellij-idea@eap
 display-name: IntelliJ IDEA EAP
-homepage: https://www.jetbrains.com/idea/nextversion
 repo: https://github.com/JetBrains/intellij-community
 docs:
   - https://www.jetbrains.com/help/idea
   - https://www.jetbrains.com/idea/nextversion
 config-file-location:
-  linux: ~/.config/JetBrains/IntelliJIdea<version>
-  macos: ~/Library/Application Support/JetBrains/IntelliJIdea<version>
-  windows: '%APPDATA%\JetBrains\IntelliJIdea<version>'
+  linux:
+    - ~/.config/JetBrains/IntelliJIdea<version>
+  macos:
+    - ~/Library/Application Support/JetBrains/IntelliJIdea<version>
+  windows:
+    - '%APPDATA%\JetBrains\IntelliJIdea<version>'
 credentials-file-location: null
 history:
   adoption-history:
@@ -59,10 +61,6 @@ history:
       plugins against the next platform release, and report defects before stable
       release. Because EAP builds are previews, they are commonly kept separate from
       production IDE installations.
-category: developer-tools
-package-manager:
-  brew-cask: intellij-idea@eap
-package-manager-url: https://formulae.brew.sh/cask/intellij-idea@eap
 tags:
   - early-access
   - ide
@@ -71,10 +69,46 @@ tags:
   - jvm
   - kotlin
   - plugin-development
-description: IntelliJ IDEA Early Access Program
-applications:
-  - IntelliJ IDEA.app
 provenance:
-  cask: intellij-idea@eap
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://www.jetbrains.com/idea/ describes IntelliJ IDEA as an IDE for Java and
+      Kotlin development.
+    - >
+      source_facts.description identifies this package as the IntelliJ IDEA Early Access
+      Program.
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.jetbrains.com/idea/nextversion/
+  docs-sources:
+    - https://www.jetbrains.com/help/idea/ is JetBrains' official IntelliJ IDEA documentation.
+    - >
+      https://www.jetbrains.com/idea/nextversion/ is JetBrains' official Early Access
+      Program page.
+  history-sources:
+    - https://blog.jetbrains.com/idea/2009/10/intellij-idea-open-sourced/
+    - https://blog.jetbrains.com/idea/2011/10/intellij-idea-community-edition-now-on-github/
+    - https://blog.jetbrains.com/idea/2021/01/intellij-idea-turns-20/
+    - https://www.jetbrains.com/idea/nextversion/
+  repo-sources:
+    - >
+      https://blog.jetbrains.com/idea/2011/10/intellij-idea-community-edition-now-on-github/
+      identifies JetBrains/intellij-community as the official GitHub mirror.
+    - >
+      https://github.com/JetBrains/intellij-community is hosted by the official
+      JetBrains organization.
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://www.jetbrains.com/idea/
+    - https://www.jetbrains.com/idea/nextversion/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - ide
+  - jvm
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
