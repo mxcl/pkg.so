@@ -1,13 +1,13 @@
 id: cask:google-chrome@beta
 display-name: Google Chrome Beta
-homepage: https://www.google.com/chrome/beta/
 repo: null
 docs:
   - https://chromium.googlesource.com/chromium/src/+/HEAD/docs/user_data_dir.md
   - https://support.google.com/chrome
   - https://support.google.com/chrome/a/answer/9027636
 config-file-location:
-  macos: ~/Library/Application Support/Google/Chrome Beta
+  macos:
+    - ~/Library/Application Support/Google/Chrome Beta
 credentials-file-location: null
 history:
   adoption-history:
@@ -66,10 +66,6 @@ history:
     - >
       Its separate macOS user-data directory allows a current side-by-side build to keep
       an independent profile from the other Chrome channels.
-category: networking
-package-manager:
-  brew-cask: google-chrome@beta
-package-manager-url: https://formulae.brew.sh/cask/google-chrome@beta
 tags:
   - beta
   - browser
@@ -79,10 +75,50 @@ tags:
   - prerelease
   - testing
   - web
-description: Web browser
-applications:
-  - Google Chrome Beta.app
 provenance:
-  cask: google-chrome@beta
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official Chrome channel documentation: https://www.chromium.org/chrome-release-channels/'
+    - source_facts.description identifies it as a web browser.
+  display-name-sources:
+    - >
+      Official Chrome channel documentation:
+      https://support.google.com/chrome/a/answer/9027636
+    - source_facts.applications
+  docs-sources:
+    - >
+      Chromium's official user-data documentation gives the channel-specific macOS data
+      directory.
+    - Google Chrome Help is the official product support center.
+    - Google documents the purpose and expected audience of each Chrome release channel.
+  history-sources:
+    - https://chrome.googleblog.com/2009/12/google-chrome-for-holidays-mac-linux.html
+    - >
+      https://chromereleases.googleblog.com/2008/12/stable-release-google-chrome-is-out-of.html
+    - https://chromium.googlesource.com/chromium/src/+/HEAD/docs/user_data_dir.md
+    - https://developers.googleblog.com/google-chrome-chromium-and-v8-launch-today/
+    - https://support.google.com/chrome/a/answer/9027636
+    - https://www.chromium.org/chrome-release-channels/
+  repo-sources:
+    - >
+      Google's official launch material distinguishes the branded Google Chrome product
+      from its open-source Chromium foundation:
+      https://developers.googleblog.com/google-chrome-chromium-and-v8-launch-today/
+    - >
+      No official source-control repository for the exact proprietary Google Chrome Beta
+      product is documented; the related Chromium repository is not substituted.
+  tags-sources:
+    - >
+      Official Chromium release-channel documentation:
+      https://www.chromium.org/chrome-release-channels/
+    - 'Official channel descriptions: https://support.google.com/chrome/a/answer/9027636'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - web-browsers
+  - prerelease-channels
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

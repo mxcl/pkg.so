@@ -1,13 +1,13 @@
 id: cask:google-chrome@canary
 display-name: Google Chrome Canary
-homepage: https://www.google.com/chrome/canary/
 repo: null
 docs:
   - https://chromium.googlesource.com/chromium/src/+/HEAD/docs/user_data_dir.md
   - https://support.google.com/chrome
   - https://support.google.com/chrome/a/answer/9027636
 config-file-location:
-  macos: ~/Library/Application Support/Google/Chrome Canary
+  macos:
+    - ~/Library/Application Support/Google/Chrome Canary
 credentials-file-location: null
 history:
   adoption-history:
@@ -65,10 +65,6 @@ history:
     - >
       The current macOS build keeps its profile in a Canary-specific Application Support
       directory, enabling side-by-side use with other Chrome channels.
-category: networking
-package-manager:
-  brew-cask: google-chrome@canary
-package-manager-url: https://formulae.brew.sh/cask/google-chrome@canary
 tags:
   - bleeding-edge
   - browser
@@ -79,10 +75,50 @@ tags:
   - macos
   - testing
   - web
-description: Web browser
-applications:
-  - Google Chrome Canary.app
 provenance:
-  cask: google-chrome@canary
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official Chrome channel documentation: https://www.chromium.org/chrome-release-channels/'
+    - source_facts.description identifies it as a web browser.
+  display-name-sources:
+    - >
+      Official Canary announcement:
+      https://blog.chromium.org/2010/08/google-chrome-in-coal-mine.html
+    - source_facts.applications
+  docs-sources:
+    - >
+      Chromium's official user-data documentation gives the channel-specific macOS data
+      directory.
+    - Google Chrome Help is the official product support center.
+    - Google documents Canary's role and cautions that it is intended for advanced testing.
+  history-sources:
+    - https://blog.chromium.org/2010/08/google-chrome-in-coal-mine.html
+    - https://chromium.googlesource.com/chromium/src/+/HEAD/docs/user_data_dir.md
+    - https://developers.googleblog.com/google-chrome-chromium-and-v8-launch-today/
+    - https://support.google.com/chrome/a/answer/9027636
+    - https://www.chromium.org/chrome-release-channels/
+  repo-sources:
+    - >
+      Google's official launch material distinguishes branded Google Chrome from the
+      open-source Chromium project:
+      https://developers.googleblog.com/google-chrome-chromium-and-v8-launch-today/
+    - >
+      No official source-control repository for the exact proprietary Google Chrome
+      Canary product is documented; Chromium is related but not substituted.
+  tags-sources:
+    - >
+      Official Canary announcement:
+      https://blog.chromium.org/2010/08/google-chrome-in-coal-mine.html
+    - >
+      Official Chromium release-channel documentation:
+      https://www.chromium.org/chrome-release-channels/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - web-browsers
+  - prerelease-channels
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
