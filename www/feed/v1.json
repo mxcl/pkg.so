@@ -63,9 +63,6 @@
     },
     {
       "candidatePackageIDs": [
-        "brew:aube",
-        "brew:cargo-llvm-cov",
-        "brew:octodns",
         "brew:hermes-agent",
         "brew:sourcedocs",
         "brew:fzf",
@@ -86,9 +83,15 @@
         "brew:locust",
         "brew:fastmcp",
         "brew:form",
-        "brew:sftpgo"
+        "brew:sftpgo",
+        "brew:cask:executor",
+        "brew:metview",
+        "brew:dbmate"
       ],
       "fallbackPackageIDs": [
+        "brew:metview",
+        "brew:dbmate",
+        "brew:cask:executor",
         "brew:sftpgo",
         "brew:form",
         "brew:fastmcp",
@@ -109,10 +112,7 @@
         "brew:b4n",
         "brew:sourcedocs",
         "brew:hermes-agent",
-        "brew:fzf",
-        "brew:octodns",
-        "brew:cargo-llvm-cov",
-        "brew:aube"
+        "brew:fzf"
       ],
       "id": "for-you",
       "title": "For You",
@@ -141,6 +141,8 @@
       "id": "recently-updated",
       "packageIDs": [
         "brew:cask:telari",
+        "brew:metview",
+        "brew:dbmate",
         "brew:cask:muse",
         "brew:bashka",
         "brew:sftpgo",
@@ -149,9 +151,7 @@
         "brew:locust",
         "brew:beets",
         "brew:form",
-        "brew:rumdl",
-        "brew:ketch",
-        "brew:termaid"
+        "brew:cask:executor"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -782,7 +782,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-19T06:52:52Z",
+  "generatedAt": "2026-09-19T06:55:32Z",
   "packages": {
     "brew:alive2": {
       "agentSummary": "Alive2 checks whether LLVM IR transformations preserve behavior, offering standalone and compiler-integrated translation validation while explicitly bounding unsupported interprocedural cases and solver limits.",
@@ -847,72 +847,6 @@
         }
       ],
       "upstreamSummary": "Automatic verification of LLVM optimizations",
-      "version": null
-    },
-    "brew:aube": {
-      "agentSummary": "Aube is a newer Node.js package manager that auto-installs before scripts, reuses existing lockfiles, shares package storage, and applies unusually cautious dependency defaults.",
-      "assessment": {
-        "alternatives": [
-          "npm for the bundled, conventional Node.js workflow",
-          "pnpm for a mature content-addressed store and strict dependency layout",
-          "Yarn or Bun where their ecosystems and command surfaces are already established"
-        ],
-        "audiences": [
-          "Node.js developers evaluating newer package-manager workflows",
-          "Teams that want to trial a manager without immediately replacing their lockfile",
-          "Security-conscious maintainers willing to review dependency build permissions"
-        ],
-        "caveats": [
-          "Older pnpm lockfiles must be upgraded, and Yarn Plug'n'Play projects must switch to node_modules",
-          "Some pnpm account and setup commands are intentionally only compatibility stubs",
-          "Build-script jailing is opt-in today, so teams must enable and tune it deliberately",
-          "The project's performance comparisons are maintainer-run benchmarks, not neutral guarantees for every workload"
-        ],
-        "complements": [
-          "mise for tool and Node.js version management",
-          "Existing npm, pnpm, Yarn, or Bun lockfiles",
-          "Continuous-integration workflows using frozen dependency state"
-        ],
-        "prerequisites": [
-          "A Node.js project and a supported modern lockfile format",
-          "Team agreement on one canonical lockfile",
-          "Explicit approval for dependencies that require lifecycle scripts"
-        ],
-        "useCases": [
-          "Automatically refreshing dependencies before package scripts run",
-          "Sharing dependency files across multiple local projects",
-          "Running frozen installs in continuous integration",
-          "Adding cooling periods and approval gates to dependency installation"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "aube",
-      "docs": "https://aube.jdx.dev/",
-      "homepage": "https://aube.en.dev",
-      "id": "brew:aube",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aaube",
-      "lastUpdatedAt": "2026-08-16T22:39:56Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/jdx/aube",
-      "researchedAt": "2026-08-17T06:30:55Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Aube project repository and usage guide",
-          "url": "https://github.com/jdx/aube"
-        },
-        {
-          "kind": "primary",
-          "title": "Aube documentation",
-          "url": "https://aube.jdx.dev/"
-        },
-        {
-          "kind": "independent",
-          "title": "mise tool registry lock data referencing Aube releases",
-          "url": "https://github.com/jdx/mise/blob/main/mise.lock"
-        }
-      ],
-      "upstreamSummary": "Fast Node.js package manager",
       "version": null
     },
     "brew:b4n": {
@@ -1095,72 +1029,6 @@
       "upstreamSummary": "Music library manager and tagger",
       "version": "2.14.1"
     },
-    "brew:cargo-llvm-cov": {
-      "agentSummary": "Cargo LLVM Cov wraps Rust’s LLVM source coverage, producing several report formats while supporting workspaces, nextest, merged runs, continuous integration, and linked native code.",
-      "assessment": {
-        "alternatives": [
-          "Tarpaulin for a Linux-oriented Rust coverage workflow",
-          "Direct rustc instrumentation with llvm-profdata and llvm-cov",
-          "Language-neutral CI coverage wrappers where Rust-specific controls are unnecessary"
-        ],
-        "audiences": [
-          "Rust crate and workspace maintainers",
-          "Teams publishing coverage reports from continuous integration",
-          "Developers testing Rust projects that include C or C++ components"
-        ],
-        "caveats": [
-          "Branch coverage and doctest coverage still rely on nightly or unstable Rust capabilities",
-          "Cached instrumented artifacts can produce misleading results when no-clean workflows are used carelessly",
-          "Cross-compilation and foreign-function coverage require extra target and LLVM configuration",
-          "Some report consumers expose only line coverage even when richer LLVM data exists"
-        ],
-        "complements": [
-          "cargo-nextest for alternative Rust test execution",
-          "Codecov or GitLab coverage reporting",
-          "Coverage Gutters for displaying LCOV results in Visual Studio Code"
-        ],
-        "prerequisites": [
-          "A Rust project built with Cargo",
-          "The llvm-tools-preview component or compatible LLVM tools",
-          "Matching Clang and LLVM tool versions when including linked C or C++ code"
-        ],
-        "useCases": [
-          "Generating text, HTML, JSON, LCOV, Cobertura, or Codecov reports",
-          "Combining coverage collected under multiple feature sets",
-          "Collecting coverage through cargo test, cargo run, or cargo nextest",
-          "Uploading Rust coverage artifacts from CI"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "cargo-llvm-cov",
-      "docs": "https://github.com/taiki-e/cargo-llvm-cov#readme",
-      "homepage": "https://github.com/taiki-e/cargo-llvm-cov",
-      "id": "brew:cargo-llvm-cov",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acargo-llvm-cov",
-      "lastUpdatedAt": "2026-08-16T23:17:53Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/taiki-e/cargo-llvm-cov",
-      "researchedAt": "2026-08-17T06:30:55Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "cargo-llvm-cov repository and documentation",
-          "url": "https://github.com/taiki-e/cargo-llvm-cov"
-        },
-        {
-          "kind": "independent",
-          "title": "cargo-nextest coverage workflow using cargo-llvm-cov",
-          "url": "https://github.com/nextest-rs/nextest/blob/main/.github/workflows/coverage.yml"
-        },
-        {
-          "kind": "independent",
-          "title": "Sentry Codecov action format support",
-          "url": "https://github.com/getsentry/codecov-action"
-        }
-      ],
-      "upstreamSummary": "Cargo subcommand to easily use LLVM source-based code coverage",
-      "version": null
-    },
     "brew:cask:agentide": {
       "agentSummary": "Native Mac workspace combines sandboxed coding agents, Git worktrees, diff review, and pull request tracking, aimed at individual developers managing several concurrent changes.",
       "assessment": {
@@ -1336,6 +1204,69 @@
       ],
       "upstreamSummary": "Dock replacement with widgets, profiles and window previews",
       "version": "1.3.3"
+    },
+    "brew:cask:executor": {
+      "agentSummary": "Executor centralizes MCP, OpenAPI, and GraphQL tools for multiple AI agents, pairing shared credentials and catalogs with per-tool execution policies.",
+      "assessment": {
+        "alternatives": [
+          "Configuring each MCP server directly in every agent client",
+          "Building narrow OpenAPI-to-MCP adapters with FastMCP or similar frameworks",
+          "Using a managed API gateway when agent-specific tool discovery is unnecessary"
+        ],
+        "audiences": [
+          "Teams operating several MCP-compatible coding or automation agents",
+          "Platform engineers governing access to internal APIs and agent tools"
+        ],
+        "caveats": [
+          "The project is young and its interfaces and deployment model may change quickly",
+          "Centralizing credentials and execution policy creates a sensitive control point that needs careful hardening",
+          "Protocol support does not guarantee that every imported operation has safe descriptions, scopes, or side-effect metadata"
+        ],
+        "complements": [
+          "MCP-compatible clients such as Claude Code, Cursor, and OpenCode",
+          "OpenAPI specifications and GraphQL schemas",
+          "Secret providers and human approval workflows"
+        ],
+        "prerequisites": [
+          "An MCP-compatible agent or an application using Executor's SDK",
+          "Node.js 20 or newer for the documented local CLI workflow",
+          "Credentials and authorization rules for each connected service"
+        ],
+        "useCases": [
+          "Presenting one searchable tool catalog to multiple agent clients",
+          "Connecting OpenAPI, GraphQL, and MCP services behind shared authentication and approval policies",
+          "Running the integration layer locally, in a desktop app, or on self-hosted infrastructure"
+        ]
+      },
+      "category": "ai",
+      "displayName": "Executor",
+      "docs": "https://executor.sh/docs",
+      "homepage": "https://executor.sh/",
+      "id": "brew:cask:executor",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aexecutor",
+      "lastUpdatedAt": "2026-09-18T18:59:47Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/RhysSullivan/executor",
+      "researchedAt": "2026-09-19T06:55:32Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Executor repository and architecture overview",
+          "url": "https://github.com/UsefulSoftwareCo/executor"
+        },
+        {
+          "kind": "primary",
+          "title": "Executor v1.1.8 stable release",
+          "url": "https://github.com/UsefulSoftwareCo/executor/releases/tag/v1.1.8"
+        },
+        {
+          "kind": "independent",
+          "title": "Context.dev case study on Executor integrations",
+          "url": "https://www.context.dev/blog/executor-powers-3000-integrations-with-context-dev"
+        }
+      ],
+      "upstreamSummary": "Tool discovery and execution layer for AI agents",
+      "version": "1.6.10"
     },
     "brew:cask:homebrew-app": {
       "agentSummary": "BrewUI provides Homebrew’s official native Mac interface for discovering and managing packages, with visible command output and an evolving feature set built around existing brew operations.",
@@ -1972,6 +1903,71 @@
       ],
       "upstreamSummary": "Manage multiple AI agents like Claude Code, Aider and Codex in your terminal",
       "version": null
+    },
+    "brew:dbmate": {
+      "agentSummary": "Dbmate keeps SQL migrations framework-neutral and reviewable, combining timestamped files, transactional execution, schema dumps, and one binary across several database engines.",
+      "assessment": {
+        "alternatives": [
+          "Flyway or Liquibase for broader enterprise migration features",
+          "Goose or golang-migrate for Go-centered workflows",
+          "Framework-native systems such as Active Record, Alembic, or Prisma Migrate"
+        ],
+        "audiences": [
+          "Polyglot teams wanting one migration workflow across services",
+          "Developers who prefer explicit SQL over ORM-managed schemas",
+          "Small infrastructure teams seeking a self-contained migration binary"
+        ],
+        "caveats": [
+          "Rollback behavior must be authored explicitly in each migration",
+          "Pending files can run out of timestamp order unless strict mode is enabled",
+          "Automatic schema dumps rely on database-specific tools and may add review noise",
+          "It intentionally omits richer change planning and drift-management features found in larger platforms"
+        ],
+        "complements": [
+          "sqlc for generating typed code from SQL",
+          "Docker Compose development environments",
+          "Continuous-integration checks for migration ordering and schema drift"
+        ],
+        "prerequisites": [
+          "A supported PostgreSQL, MySQL, MariaDB, SQLite, ClickHouse, BigQuery, or Spanner database",
+          "A database connection URL and credentials with appropriate schema privileges",
+          "Enough SQL knowledge to write both forward and rollback sections safely"
+        ],
+        "useCases": [
+          "Creating, applying, and rolling back timestamped SQL migrations",
+          "Keeping a generated schema file reviewable in version control",
+          "Waiting for a database and applying migrations in CI or container startup"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "dbmate",
+      "docs": "https://github.com/amacneil/dbmate#readme",
+      "homepage": "https://github.com/amacneil/dbmate",
+      "id": "brew:dbmate",
+      "installURL": "pkgmgrmgr://install?package=brew%3Adbmate",
+      "lastUpdatedAt": "2026-09-19T02:33:23Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/amacneil/dbmate",
+      "researchedAt": "2026-09-19T06:55:32Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Dbmate official documentation",
+          "url": "https://github.com/amacneil/dbmate/blob/main/README.md"
+        },
+        {
+          "kind": "independent",
+          "title": "Dbmate Go library reference",
+          "url": "https://pkg.go.dev/github.com/amacneil/dbmate/v2/pkg/dbmate"
+        },
+        {
+          "kind": "independent",
+          "title": "Production-use discussion from data engineering practitioners",
+          "url": "https://www.reddit.com/r/dataengineering/comments/12hiyuw/automation_gitops_for_databases_schemas_tables/"
+        }
+      ],
+      "upstreamSummary": "Lightweight, framework-agnostic database migration tool",
+      "version": "2.36.0"
     },
     "brew:defuddle": {
       "agentSummary": "Extracts a page's main content and metadata into cleaner HTML or Markdown, offering a focused preprocessing layer for readers, archives, and language-model workflows.",
@@ -2933,6 +2929,70 @@
       "upstreamSummary": "Transparent proxy and TUI for debugging MCP traffic",
       "version": null
     },
+    "brew:metview": {
+      "agentSummary": "Metview gives operational and research meteorologists one environment for accessing, processing, scripting, and visualizing ECMWF-oriented weather data through desktop and Python workflows.",
+      "assessment": {
+        "alternatives": [
+          "Python stacks built from xarray, cfgrib, Cartopy, and Matplotlib",
+          "Panoply for lightweight NetCDF, HDF, and GRIB inspection",
+          "Command-line workflows using Climate Data Operators"
+        ],
+        "audiences": [
+          "Operational meteorologists working with forecast products",
+          "Atmospheric researchers analyzing GRIB, BUFR, NetCDF, or ODB data",
+          "Scientists building repeatable weather-data visualization workflows"
+        ],
+        "caveats": [
+          "Its concepts and interface are specialized for meteorology rather than general scientific visualization",
+          "ECMWF-oriented workflows and file formats carry a substantial learning curve",
+          "Some data-access examples depend on external services, accounts, and dataset licensing"
+        ],
+        "complements": [
+          "ECMWF ecCodes for GRIB and BUFR handling",
+          "Magics for meteorological plotting",
+          "Jupyter notebooks and the Metview Python interface"
+        ],
+        "prerequisites": [
+          "Familiarity with meteorological fields, coordinate systems, and forecast products",
+          "Access rights and credentials for any restricted ECMWF datasets",
+          "Native scientific libraries supplied by the package or operating-system environment"
+        ],
+        "useCases": [
+          "Exploring and plotting meteorological fields interactively",
+          "Automating forecast-data processing with Python or Metview Macro",
+          "Combining ECMWF data access, transformation, and publication-quality visualization"
+        ]
+      },
+      "category": "science",
+      "displayName": "metview",
+      "docs": "https://metview.readthedocs.io/en/latest",
+      "homepage": "https://metview.readthedocs.io/en/latest/",
+      "id": "brew:metview",
+      "installURL": "pkgmgrmgr://install?package=brew%3Ametview",
+      "lastUpdatedAt": "2026-09-19T04:37:11Z",
+      "manager": "homebrew",
+      "repository": "https://git.ecmwf.int/users/dabh/repos/metview/browse",
+      "researchedAt": "2026-09-19T06:55:32Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Metview documentation and new-user overview",
+          "url": "https://metview.readthedocs.io/en/latest/"
+        },
+        {
+          "kind": "primary",
+          "title": "ECMWF Metview workstation paper",
+          "url": "https://www.ecmwf.int/sites/default/files/elibrary/1991/11655-metviewws-manipulation-and-visualisation-meteorological-data-workstations.pdf"
+        },
+        {
+          "kind": "independent",
+          "title": "INPE paper on operational Metview use",
+          "url": "https://www.dpi.inpe.br/gilberto/papers/metview.pdf"
+        }
+      ],
+      "upstreamSummary": "Meteorological workstation software",
+      "version": "5.26.2"
+    },
     "brew:mycli": {
       "agentSummary": "mycli is a mature interactive MySQL-family shell with context-aware completion, syntax highlighting, multiline editing, favorite queries, table formatting, and optional database reconnection.",
       "assessment": {
@@ -3104,72 +3164,6 @@
       ],
       "upstreamSummary": "Headless browser for AI agents and web scraping",
       "version": "0.2.1"
-    },
-    "brew:octodns": {
-      "agentSummary": "octoDNS manages reviewed DNS configuration as code across many providers, separating reusable core planning from provider modules and supporting custom sources, targets, and processors.",
-      "assessment": {
-        "alternatives": [
-          "Terraform DNS providers for teams standardizing all infrastructure on Terraform",
-          "DNSControl for a JavaScript-based DNS-as-code workflow",
-          "Provider-native infrastructure templates for single-provider environments"
-        ],
-        "audiences": [
-          "Infrastructure teams managing DNS through version control",
-          "Organizations operating zones across multiple DNS providers",
-          "Python developers building custom DNS sources or provider integrations"
-        ],
-        "caveats": [
-          "Provider capabilities and release schedules vary because integrations are separate modules",
-          "Advanced GeoDNS behavior is provider-specific and can be inconsistent",
-          "Applying an incorrect desired state can change authoritative DNS broadly, so plan review and scoped credentials are essential",
-          "Teams committed to another infrastructure-as-code system may prefer avoiding a separate DNS configuration stack"
-        ],
-        "complements": [
-          "Git pull-request review and protected deployment branches",
-          "octoDNS provider modules such as Route 53, Cloudflare, or Google Cloud DNS",
-          "octoDNS-Sync for GitHub Actions automation"
-        ],
-        "prerequisites": [
-          "Credentials and API access for each target DNS provider",
-          "Separate provider modules for services beyond the built-in YAML provider",
-          "A deployment workflow that previews and reviews plans before applying them"
-        ],
-        "useCases": [
-          "Reviewing DNS record changes through normal repository workflows",
-          "Synchronizing one zone definition to multiple providers",
-          "Migrating or comparing records between DNS services",
-          "Filtering, validating, or augmenting planned DNS changes with processors"
-        ]
-      },
-      "category": "networking",
-      "displayName": "octodns",
-      "docs": "https://octodns.readthedocs.io/en/latest",
-      "homepage": "https://github.com/octodns/octodns",
-      "id": "brew:octodns",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aoctodns",
-      "lastUpdatedAt": "2026-08-17T00:02:42Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/octodns/octodns",
-      "researchedAt": "2026-08-17T06:30:55Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "octoDNS documentation",
-          "url": "https://octodns.readthedocs.io/en/latest/"
-        },
-        {
-          "kind": "primary",
-          "title": "octoDNS project repository",
-          "url": "https://github.com/octodns/octodns"
-        },
-        {
-          "kind": "independent",
-          "title": "Cloudflare on improving DNS resilience with octoDNS",
-          "url": "https://blog.cloudflare.com/improving-the-resiliency-of-our-infrastructure-dns-zone/"
-        }
-      ],
-      "upstreamSummary": "Tools for managing DNS across multiple providers",
-      "version": null
     },
     "brew:pgstream": {
       "agentSummary": "A PostgreSQL change-data-capture tool and Go library that streams snapshots, row changes, and DDL to Postgres, Kafka, search indexes, or webhooks.",
