@@ -1,0 +1,97 @@
+id: cask:openlogi
+display-name: OpenLogi
+homepage: https://openlogi.org/
+repo: https://github.com/AprilNEA/OpenLogi
+docs:
+  - https://openlogi.org/en/docs
+  - https://openlogi.org/en/docs/getting-started/installation
+  - https://openlogi.org/en/docs/guide
+  - https://openlogi.org/en/docs/guide/configuration
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/openlogi/config.toml
+    - ~/.config/openlogi/config.toml
+  windows: '%USERPROFILE%\.config\openlogi\config.toml'
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      OpenLogi entered Homebrew Cask and expanded from macOS-only distribution to Linux
+      packages and an early Windows preview. Its adoption remains relatively young and
+      hardware-dependent, with the project explicitly inviting testing across additional
+      Logitech devices.
+    - >
+      Community contributions quickly added device support, Linux input injection,
+      localization, keyboard lighting, platform packaging, and refinements to HID++
+      behavior.
+  package-nerd-significance:
+    - >
+      OpenLogi appeals to package enthusiasts as a local-first, inspectable alternative
+      to proprietary peripheral configuration suites. It combines a native graphical
+      editor with a plain-text TOML configuration file and a background agent.
+    - >
+      Its packaging spans a macOS cask, Linux DEB and RPM artifacts, and preview Windows
+      installers, making it an example of a young Rust desktop utility rapidly
+      developing cross-platform release infrastructure.
+  project-history:
+    - >
+      OpenLogi began as an experimental open-source controller for Logitech HID++
+      devices. Early releases focused on macOS and support for receiver-connected mice,
+      then added wired and direct-Bluetooth devices.
+    - >
+      Version 0.6.0 separated the always-running device and input logic into
+      `openlogi-agent` while turning the GUI into an on-demand configuration editor
+      communicating with that agent over IPC.
+  related-projects:
+    - >
+      OpenLogi acknowledges the Rust `hidpp` project, Solaar, and Mouser as related or
+      influential work.
+    - >
+      It is positioned as a local-first alternative to Logitech Options+; on Linux, its
+      documentation warns that OpenLogi and Solaar cannot simultaneously own the same
+      receiver.
+  sources:
+    - https://openlogi.org/en/docs/changelog
+    - https://openlogi.org/en/docs/getting-started/installation
+    - https://openlogi.org/en/docs/guide/configuration
+    - https://openlogi.org/en/docs/project/contributing
+  summary:
+    - >
+      OpenLogi is an open-source, local-first application for configuring and remapping
+      Logitech HID++ mice and keyboards. It provides a graphical editor, persistent
+      device profiles, and a background agent.
+  timeline:
+    - '2026-05-30: OpenLogi 0.0.1 was released.'
+    - >
+      2026-06-01: Version 0.2.0 added direct wired and Bluetooth devices, a macOS
+      menu-bar application, and Intel distribution.
+    - '2026-06-08: Version 0.6.0 split the project into a headless agent and an on-demand GUI.'
+  usage:
+    - >
+      Users configure button and gesture bindings, DPI presets, SmartShift behavior,
+      lighting, and per-application profiles through the GUI or its TOML file.
+    - >
+      On macOS, OpenLogi requires Accessibility or Input Monitoring permission for event
+      remapping. Linux packages install udev rules and use a systemd user service for
+      the background agent.
+category: system
+package-manager:
+  brew-cask: openlogi
+package-manager-url: https://formulae.brew.sh/cask/openlogi
+tags:
+  - button-remapping
+  - hidpp
+  - keyboard
+  - local-first
+  - logitech
+  - macos
+  - mouse
+  - open-source
+  - peripheral-configuration
+description: Local-first alternative to Logitech Options+ for HID++ devices
+applications:
+  - OpenLogi.app
+provenance:
+  cask: openlogi
+  provider: brew-cask
+  source: https://formulae.brew.sh/api/cask.json
