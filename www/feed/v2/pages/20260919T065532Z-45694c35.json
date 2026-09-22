@@ -2,389 +2,6 @@
   "content": [
     {
       "artwork": {
-        "alt": "A developer supervises four small robot work bays connected by glowing cyan paths, with one amber attention signal in a moonlit command room.",
-        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#123B49",
-          "backgroundStart": "#081D2C",
-          "foreground": "#F6F1E6"
-        },
-        "license": "AI-generated artwork; no third-party source artwork used.",
-        "path": "feed/assets/ccmux-attention-router.png"
-      },
-      "batchID": "20260922T164202Z-253564be",
-      "body": "## Parallelism creates an attention problem\n\nOpening another coding-agent session is easy. Remembering which of four sessions is compiling, waiting for approval, asking a question, or ready for review is harder. **ccmux treats that as a routing problem for human attention.** It runs alongside tmux, observes supported agent sessions, and presents their state in a single terminal interface. Instead of cycling through panes to rediscover what each agent is doing, the operator can start with the session that is blocked.\n\nThat boundary matters. ccmux does not replace the coding agents, Git, or tmux. Its documentation describes support for several agent CLIs and a daemon that watches existing sessions. The dashboard can group work by repository, show working or waiting state, surface diffs and pull-request checks, and send notifications. Worktree creation and spawning help start another task, while handoff features can pass context from one agent to another. The value is coordination around tools developers may already use.\n\n## A new project with a concrete workflow\n\nThe first tagged ccmux release, **v1.0.0, appeared on July 6, 2026**. That makes it genuinely new rather than an old project newly packaged by Homebrew. Its young age should shape expectations: agent output formats change, integrations can lag, and a status classifier that works well in the author's setup may meet unfamiliar prompts or terminal layouts elsewhere. A trial should use disposable branches before the dashboard becomes the team's control surface.\n\nThere is useful evidence beyond the feature list, though not yet evidence of broad adoption. An independent write-up describes coordinating three or four agents across multiple machines, checking sessions from a phone, and returning directly to those needing intervention. That is one practitioner's account, not a survey, but it identifies the real friction: parallel agents save elapsed time only when their questions do not sit unnoticed.\n\nThe model also makes failure visible. A green-looking overview cannot guarantee that an agent's changes are correct, and a waiting indicator cannot explain whether a permission request is reasonable. The dashboard shortens discovery; it does not transfer judgment.\n\n## Three layers for organizing the terminal\n\nccmux, workmux, and Zentty approach the same crowded workspace from different layers:\n\n- **ccmux** observes agent work already living in tmux and prioritizes sessions that need attention. It is the smallest change for an established tmux setup.\n- **workmux** owns more of the task lifecycle. It pairs branches and Git worktrees with terminal windows, applies setup hooks, and helps merge and clean up completed work.\n- **Zentty** is a native macOS terminal with persistent worklanes, a status-aware sidebar, task discovery, and an embedded CLI. It changes the terminal environment itself.\n\nThe tools can overlap, but they should not be stacked automatically. A developer satisfied with manual worktree creation may want only ccmux's overview. Someone repeatedly rebuilding the same task panes may gain more from workmux's opinionated automation. A Mac user who wants visual lanes without maintaining tmux configuration may prefer Zentty. The right layer is the one that removes a recurring coordination cost without hiding ownership of branches, processes, and credentials.\n\n## Isolation is not the same as supervision\n\nNeither a tmux pane nor a Git worktree is a security boundary. Concurrent agents can still share environment variables, cloud credentials, package caches, databases, and network services. They may edit separate directories while targeting the same external resource. ccmux can show where an agent is waiting, but it cannot determine whether the command awaiting approval is safe. workmux can create isolated checkouts and optionally connect sandbox workflows, but safe containment still depends on their configuration. Zentty organizes panes; it does not constrain what runs inside them.\n\nA cautious evaluation should therefore begin with a small routine:\n\n- create two disposable tasks with clearly different branches;\n- confirm that waiting, working, and completed states match what is actually on screen;\n- review notification destinations and every worktree or lifecycle command;\n- inspect diffs and test results outside the agent's summary;\n- verify what secrets and local services remain shared.\n\nThese checks test both the software and the operating habits around it. The goal is not a theatrical wall of autonomous workers. It is a legible queue in which a human can understand what changed and intervene at the right moment.\n\n## The dashboard should reduce uncertainty\n\nccmux is most compelling when developers already trust tmux but have outgrown serial navigation. Its attention-first view acknowledges that agent concurrency shifts the bottleneck: starting work becomes cheap, while review, clarification, and risk decisions remain scarce. workmux is stronger when workspace creation and cleanup are the repetitive burden. Zentty offers the broader native environment for users willing to move.\n\nWhichever layer wins, measure it by uncertainty removed. After glancing at the workspace, can the operator identify the blocked task, the branch it owns, the outstanding decision, and the path to review? If ccmux makes those answers immediate while leaving the underlying sessions inspectable, it earns its place as an attention router rather than merely another dashboard.",
-      "deck": "When several agents work in parallel, the scarce resource is no longer terminal space—it is knowing which session needs a human next.",
-      "id": "editorial:2026-09-22:ccmux-the-attention-router-for-coding-agents",
-      "package": {
-        "agentSummary": "ccmux monitors coding agents already running in tmux, surfaces sessions needing attention, and adds worktree spawning, diff review, notifications, and agent-to-agent handoffs.",
-        "assessment": {
-          "alternatives": [
-            "Native tmux session navigation and status lines",
-            "workmux for opinionated worktree lifecycle automation",
-            "Zentty for a native macOS terminal workspace"
-          ],
-          "audiences": [
-            "Developers running several terminal-based coding agents",
-            "tmux users coordinating parallel repositories or worktrees"
-          ],
-          "caveats": [
-            "Young project with a rapidly evolving workflow",
-            "Monitoring depends on supported agent output and tmux sessions",
-            "Coordination features do not sandbox agents or their credentials"
-          ],
-          "complements": [
-            "Git worktrees",
-            "Desktop or mobile notification delivery",
-            "Pull-request and continuous-integration workflows"
-          ],
-          "prerequisites": [
-            "tmux and Git",
-            "One of the supported coding-agent command-line tools",
-            "Willingness to run a local monitoring daemon"
-          ],
-          "useCases": [
-            "Finding sessions blocked on approval or user input",
-            "Reviewing diffs and handing context between agents",
-            "Starting isolated agent worktrees from one dashboard"
-          ]
-        },
-        "category": null,
-        "displayName": "ccmux",
-        "docs": null,
-        "homepage": "https://github.com/epilande/ccmux",
-        "id": "brew:ccmux",
-        "installURL": "pkgmgrmgr://install?package=brew%3Accmux",
-        "lastUpdatedAt": "2026-09-22T05:11:02Z",
-        "manager": "homebrew",
-        "repository": "https://github.com/epilande/ccmux",
-        "researchedAt": "2026-09-22T16:42:02Z",
-        "sources": [
-          {
-            "kind": "primary",
-            "title": "ccmux repository and documentation",
-            "url": "https://github.com/epilande/ccmux"
-          },
-          {
-            "kind": "independent",
-            "title": "Hands-on ccmux workflow review",
-            "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
-          },
-          {
-            "kind": "primary",
-            "title": "ccmux v1.0.0 release",
-            "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
-          }
-        ],
-        "upstreamSummary": "Run all your AI coding agents in tmux",
-        "version": "1.4.2"
-      },
-      "primaryPackageID": "brew:ccmux",
-      "publishedAt": "2026-09-22T16:42:02Z",
-      "relatedPackages": [
-        {
-          "agentSummary": "ccmux monitors coding agents already running in tmux, surfaces sessions needing attention, and adds worktree spawning, diff review, notifications, and agent-to-agent handoffs.",
-          "assessment": {
-            "alternatives": [
-              "Native tmux session navigation and status lines",
-              "workmux for opinionated worktree lifecycle automation",
-              "Zentty for a native macOS terminal workspace"
-            ],
-            "audiences": [
-              "Developers running several terminal-based coding agents",
-              "tmux users coordinating parallel repositories or worktrees"
-            ],
-            "caveats": [
-              "Young project with a rapidly evolving workflow",
-              "Monitoring depends on supported agent output and tmux sessions",
-              "Coordination features do not sandbox agents or their credentials"
-            ],
-            "complements": [
-              "Git worktrees",
-              "Desktop or mobile notification delivery",
-              "Pull-request and continuous-integration workflows"
-            ],
-            "prerequisites": [
-              "tmux and Git",
-              "One of the supported coding-agent command-line tools",
-              "Willingness to run a local monitoring daemon"
-            ],
-            "useCases": [
-              "Finding sessions blocked on approval or user input",
-              "Reviewing diffs and handing context between agents",
-              "Starting isolated agent worktrees from one dashboard"
-            ]
-          },
-          "category": null,
-          "displayName": "ccmux",
-          "docs": null,
-          "homepage": "https://github.com/epilande/ccmux",
-          "id": "brew:ccmux",
-          "installURL": "pkgmgrmgr://install?package=brew%3Accmux",
-          "lastUpdatedAt": "2026-09-22T05:11:02Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/epilande/ccmux",
-          "researchedAt": "2026-09-22T16:42:02Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "ccmux repository and documentation",
-              "url": "https://github.com/epilande/ccmux"
-            },
-            {
-              "kind": "independent",
-              "title": "Hands-on ccmux workflow review",
-              "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
-            },
-            {
-              "kind": "primary",
-              "title": "ccmux v1.0.0 release",
-              "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
-            }
-          ],
-          "upstreamSummary": "Run all your AI coding agents in tmux",
-          "version": "1.4.2"
-        },
-        {
-          "agentSummary": "workmux pairs Git worktrees with terminal windows, automating isolated task setup, agent status, review, merging, and cleanup while preserving familiar multiplexer workflows.",
-          "assessment": {
-            "alternatives": [
-              "Manual git worktree and tmux commands",
-              "ccmux for observing agents in existing tmux sessions",
-              "Graphical integrated agent workspaces"
-            ],
-            "audiences": [
-              "Developers who organize concurrent tasks with Git worktrees",
-              "Terminal-multiplexer users running coding agents"
-            ],
-            "caveats": [
-              "Hooks and copy rules can touch sensitive project files",
-              "Worktree separation is not a security boundary",
-              "Pre-1.0 configuration and behavior can change quickly"
-            ],
-            "complements": [
-              "Coding-agent command-line tools",
-              "Container or virtual-machine sandboxes",
-              "Pull-request review workflows"
-            ],
-            "prerequisites": [
-              "Git",
-              "A supported terminal multiplexer or terminal backend",
-              "Reviewed project configuration and lifecycle hooks"
-            ],
-            "useCases": [
-              "Creating a branch, worktree, and terminal workspace together",
-              "Applying repeatable project setup hooks",
-              "Reviewing, merging, and removing finished task workspaces"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "workmux",
-          "docs": "https://github.com/raine/workmux#readme",
-          "homepage": "https://workmux.raine.dev",
-          "id": "brew:workmux",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aworkmux",
-          "lastUpdatedAt": "2026-09-21T11:50:46Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/raine/workmux",
-          "researchedAt": "2026-09-22T16:42:02Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "workmux repository",
-              "url": "https://github.com/raine/workmux"
-            },
-            {
-              "kind": "independent",
-              "title": "Using worktrees and tmux as an IDE",
-              "url": "https://joe.sh/tmux-ide"
-            },
-            {
-              "kind": "independent",
-              "title": "Community workmux discussion",
-              "url": "https://www.reddit.com/r/tmux/comments/1p7bszd/workmux_git_worktrees_tmux_windows_for/"
-            }
-          ],
-          "upstreamSummary": "Git worktrees + tmux windows for zero-friction parallel dev",
-          "version": "0.1.264"
-        },
-        {
-          "agentSummary": "Zentty is a native macOS terminal for agent-heavy development, combining scrolling worklanes, persistent panes, status-aware sidebars, task discovery, and a scriptable embedded CLI.",
-          "assessment": {
-            "alternatives": [
-              "Terminal.app or iTerm2 with tmux",
-              "Ghostty",
-              "ccmux layered over existing tmux sessions"
-            ],
-            "audiences": [
-              "macOS developers wanting agent-aware terminal organization",
-              "Users who prefer a native graphical shell around terminal sessions"
-            ],
-            "caveats": [
-              "macOS only",
-              "Active development can bring interface or behavior changes",
-              "An integrated terminal changes more of the daily environment than a small tmux companion"
-            ],
-            "complements": [
-              "Git worktrees",
-              "Command-line coding agents",
-              "Shell scripts using the embedded CLI"
-            ],
-            "prerequisites": [
-              "A supported macOS system",
-              "Comfort evaluating an actively developed terminal application"
-            ],
-            "useCases": [
-              "Grouping panes into persistent worklanes",
-              "Seeing task and agent status from a sidebar",
-              "Restoring multi-pane terminal workspaces"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "Zentty",
-          "docs": "https://zentty.org/docs",
-          "homepage": "https://zentty.org/",
-          "id": "brew:cask:zentty",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Azentty",
-          "lastUpdatedAt": "2026-09-22T11:05:40Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/dedene/zentty",
-          "researchedAt": "2026-09-22T16:42:02Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Zentty repository",
-              "url": "https://github.com/dedene/zentty"
-            },
-            {
-              "kind": "independent",
-              "title": "Zentty documentation",
-              "url": "https://zentty.org/docs/"
-            }
-          ],
-          "upstreamSummary": "Terminal for agent-driven development",
-          "version": "0.3.4"
-        }
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2026-07-06T18:52:23Z",
-        "firstStableReleaseSourceURL": "https://github.com/epilande/ccmux/releases/tag/v1.0.0",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "ccmux repository and documentation",
-          "url": "https://github.com/epilande/ccmux"
-        },
-        {
-          "kind": "primary",
-          "title": "ccmux v1.0.0 release",
-          "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
-        },
-        {
-          "kind": "primary",
-          "title": "ccmux agent handoff documentation",
-          "url": "https://github.com/epilande/ccmux/blob/main/docs/handoff.md"
-        },
-        {
-          "kind": "independent",
-          "title": "Hands-on ccmux workflow review",
-          "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
-        },
-        {
-          "kind": "primary",
-          "title": "workmux documentation",
-          "url": "https://workmux.raine.dev/"
-        },
-        {
-          "kind": "independent",
-          "title": "Using worktrees and tmux as an IDE",
-          "url": "https://joe.sh/tmux-ide"
-        },
-        {
-          "kind": "primary",
-          "title": "Zentty documentation",
-          "url": "https://zentty.org/docs/"
-        }
-      ],
-      "title": "ccmux: The Attention Router for Coding Agents",
-      "type": "editorial"
-    },
-    {
-      "batchID": "20260922T164202Z-7725d80a",
-      "id": "for-you:networking:20260922T164202Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "ECMAScript parser",
-          "category": "networking",
-          "displayName": "acorn",
-          "homepage": "https://github.com/acornjs/acorn",
-          "id": "npm:acorn",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aacorn",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset",
-          "category": "networking",
-          "displayName": "browserslist",
-          "homepage": "https://github.com/browserslist/browserslist#readme",
-          "id": "npm:browserslist",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abrowserslist",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "A library for obtaining browser versions with their maximum supported Baseline feature set and Widely Available status.",
-          "category": "networking",
-          "displayName": "baseline-browser-mapping",
-          "homepage": "https://github.com/web-platform-dx/baseline-browser-mapping#readme",
-          "id": "npm:baseline-browser-mapping",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abaseline-browser-mapping",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
-          "category": "networking",
-          "displayName": "autoprefixer",
-          "homepage": "https://github.com/postcss/autoprefixer#readme",
-          "id": "npm:autoprefixer",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aautoprefixer",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Minimal H(TTP) framework built for high performance and portability.",
-          "category": "networking",
-          "displayName": "h3",
-          "homepage": "https://h3.dev",
-          "id": "npm:h3",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ah3",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-22T16:42:02Z",
-      "title": "For You in Networking",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260922T164202Z-7725d80a",
-      "id": "new-packages:data:20260922T164202Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Drop-in MySQL replacement",
-          "category": "data",
-          "displayName": "percona-server@8.4",
-          "homepage": "https://www.percona.com",
-          "id": "brew:percona-server@8.4",
-          "installURL": "pkgmgrmgr://install?package=brew%3Apercona-server%408.4",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-22T16:42:02Z",
-      "title": "New Packages in Data",
-      "type": "newPackages"
-    },
-    {
-      "artwork": {
         "alt": "A developer oversees four luminous terminal workspaces connected by branching teal paths and amber review shields in a dark studio.",
         "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
         "boxColors": {
@@ -622,156 +239,219 @@
     },
     {
       "batchID": "20260918T195137Z-767a8658",
-      "id": "for-you:system:20260922T164202Z-f220bb45",
+      "id": "for-you:media:20260918T195137Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Like which(1) unix command. Find the first instance of an executable in the PATH.",
-          "category": "system",
-          "displayName": "which",
-          "homepage": "https://github.com/npm/node-which#readme",
-          "id": "npm:which",
-          "installURL": "pkgmgrmgr://install?package=npm%3Awhich",
+          "agentSummary": "SVGO is a Node.js library and command-line application for optimizing vector images.",
+          "category": "media",
+          "displayName": "svgo",
+          "homepage": "https://svgo.dev",
+          "id": "npm:svgo",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asvgo",
           "manager": "npm"
         },
         {
-          "agentSummary": "A deep deletion module for node (like `rm -rf`)",
-          "category": "system",
-          "displayName": "rimraf",
-          "homepage": "https://github.com/isaacs/rimraf#readme",
-          "id": "npm:rimraf",
-          "installURL": "pkgmgrmgr://install?package=npm%3Arimraf",
+          "agentSummary": "get dimensions of any image file",
+          "category": "media",
+          "displayName": "image-size",
+          "homepage": "https://github.com/image-size/image-size#readme",
+          "id": "npm:image-size",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aimage-size",
           "manager": "npm"
         },
         {
-          "agentSummary": "Recursively mkdir, like `mkdir -p`",
-          "category": "system",
-          "displayName": "mkdirp",
-          "homepage": "https://github.com/isaacs/node-mkdirp#readme",
-          "id": "npm:mkdirp",
-          "installURL": "pkgmgrmgr://install?package=npm%3Amkdirp",
+          "agentSummary": "Fast math typesetting for the web.",
+          "category": "media",
+          "displayName": "katex",
+          "homepage": "https://katex.org",
+          "id": "npm:katex",
+          "installURL": "pkgmgrmgr://install?package=npm%3Akatex",
           "manager": "npm"
         },
         {
-          "agentSummary": "Check if the process is running inside a Docker container",
-          "category": "system",
-          "displayName": "is-docker",
-          "homepage": "https://github.com/sindresorhus/is-docker#readme",
-          "id": "npm:is-docker",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ais-docker",
+          "agentSummary": "QRCode / 2d Barcode api with both server side and client side support using canvas",
+          "category": "media",
+          "displayName": "qrcode",
+          "homepage": null,
+          "id": "npm:qrcode",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aqrcode",
           "manager": "npm"
         },
         {
-          "agentSummary": "Check if the process is running inside a container (Docker/Podman)",
-          "category": "system",
-          "displayName": "is-inside-container",
-          "homepage": "https://github.com/sindresorhus/is-inside-container#readme",
-          "id": "npm:is-inside-container",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ais-inside-container",
+          "agentSummary": "The smallest and fastest pixel-level image comparison library.",
+          "category": "media",
+          "displayName": "pixelmatch",
+          "homepage": "https://github.com/mapbox/pixelmatch#readme",
+          "id": "npm:pixelmatch",
+          "installURL": "pkgmgrmgr://install?package=npm%3Apixelmatch",
           "manager": "npm"
         }
       ],
       "publishedAt": "2026-09-18T19:51:37Z",
-      "title": "For You in System",
+      "title": "For You in Media",
       "type": "personalizedRecommendations"
     },
     {
       "batchID": "20260918T195137Z-767a8658",
-      "id": "new-packages:networking:20260922T164202Z-f220bb45",
+      "id": "recently-updated:language-runtime:20260918T195137Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Visualise network connections on an interactive world map",
-          "category": "networking",
-          "displayName": "TapMap",
-          "homepage": "https://tip.no/tapmap/",
-          "id": "brew:cask:tapmap",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atapmap",
+          "agentSummary": ".NET Core",
+          "category": "language-runtime",
+          "displayName": "dotnet@9",
+          "homepage": "https://dotnet.microsoft.com/",
+          "id": "brew:dotnet@9",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adotnet%409",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Proxy client",
-          "category": "networking",
-          "displayName": "INCY",
-          "homepage": "https://incy.cc/",
-          "id": "brew:cask:incy",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aincy",
+          "agentSummary": ".NET Core",
+          "category": "language-runtime",
+          "displayName": "dotnet",
+          "homepage": "https://dotnet.microsoft.com/",
+          "id": "brew:dotnet",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adotnet",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Fast and user friendly way to interact with SMB shares",
-          "category": "networking",
-          "displayName": "smbclient-ng",
-          "homepage": "https://github.com/p0dalirius/smbclient-ng",
-          "id": "brew:smbclient-ng",
-          "installURL": "pkgmgrmgr://install?package=brew%3Asmbclient-ng",
+          "agentSummary": "Tool for creating isolated virtual python environments",
+          "category": "language-runtime",
+          "displayName": "virtualenv",
+          "homepage": "https://virtualenv.pypa.io/",
+          "id": "brew:virtualenv",
+          "installURL": "pkgmgrmgr://install?package=brew%3Avirtualenv",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Remote desktop and remote support tool with end-to-end encryption",
-          "category": "networking",
-          "displayName": "HopToDesk",
-          "homepage": "https://www.hoptodesk.com/",
-          "id": "brew:cask:hoptodesk",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahoptodesk",
+          "agentSummary": "GNU implementation of the programming language APL",
+          "category": "language-runtime",
+          "displayName": "gnu-apl",
+          "homepage": "https://www.gnu.org/software/apl/",
+          "id": "brew:gnu-apl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Agnu-apl",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Compact and efficient ISO Prolog interpreter written in plain old C",
+          "category": "language-runtime",
+          "displayName": "trealla-prolog",
+          "homepage": "https://github.com/trealla-prolog/trealla-prolog",
+          "id": "brew:trealla-prolog",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atrealla-prolog",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-18T19:51:37Z",
-      "title": "New Packages in Networking",
+      "title": "Recently Updated in Language Runtime",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260918T195137Z-767a8658",
+      "id": "new-packages:developer-tools:20260918T195137Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Web search and scraping for agents",
+          "category": "developer-tools",
+          "displayName": "ketch",
+          "homepage": "https://github.com/1broseidon/ketch",
+          "id": "brew:ketch",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aketch",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Local-first administration workspace for terminals, SSH, and SFTP",
+          "category": "developer-tools",
+          "displayName": "KKTerm",
+          "homepage": "https://github.com/ryantsai/KKTerm",
+          "id": "brew:cask:kkterm",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akkterm",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Render Mermaid diagrams in the terminal",
+          "category": "developer-tools",
+          "displayName": "termaid",
+          "homepage": "https://github.com/fasouto/termaid",
+          "id": "brew:termaid",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atermaid",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Git worktrees + tmux windows for zero-friction parallel dev",
+          "category": "developer-tools",
+          "displayName": "workmux",
+          "homepage": "https://workmux.raine.dev",
+          "id": "brew:workmux",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aworkmux",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Git client built around a three-way merge tool",
+          "category": "developer-tools",
+          "displayName": "GitDifferent",
+          "homepage": "https://vheissulabs.com/projects/gitdifferent",
+          "id": "brew:cask:gitdifferent",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agitdifferent",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-18T19:51:37Z",
+      "title": "New Packages in Developer Tools",
       "type": "newPackages"
     },
     {
       "batchID": "20260918T195137Z-767a8658",
-      "id": "for-you:toys:20260922T164202Z-f220bb45",
+      "id": "recently-updated:productivity:20260918T195137Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Returns from a pool of 15m human-readable IDs",
-          "category": "toys",
-          "displayName": "human-id",
-          "homepage": "https://github.com/RienNeVaPlus/human-id#readme",
-          "id": "npm:human-id",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ahuman-id",
-          "manager": "npm"
+          "agentSummary": "Autonomous CRM",
+          "category": "productivity",
+          "displayName": "Clarify",
+          "homepage": "https://clarify.ai/",
+          "id": "brew:cask:clarify",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclarify",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Creates ASCII Art from text. A full implementation of the FIGfont spec.",
-          "category": "toys",
-          "displayName": "figlet",
-          "homepage": "https://github.com/patorjk/figlet.js#readme",
-          "id": "npm:figlet",
-          "installURL": "pkgmgrmgr://install?package=npm%3Afiglet",
-          "manager": "npm"
+          "agentSummary": "Tiling window manager",
+          "category": "productivity",
+          "displayName": "OmniWM",
+          "homepage": "https://omniwm.app/",
+          "id": "brew:cask:omniwm",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aomniwm",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Tell Yeoman what to say",
-          "category": "toys",
-          "displayName": "yosay",
-          "homepage": "https://github.com/yeoman/yosay#readme",
-          "id": "npm:yosay",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ayosay",
-          "manager": "npm"
+          "agentSummary": "GUI for Rclone",
+          "category": "productivity",
+          "displayName": "Rclone UI",
+          "homepage": "https://github.com/rclone-ui/rclone-ui",
+          "id": "brew:cask:rclone-ui",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Arclone-ui",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Generates lorem ipsum placeholder text for Node.js, Deno, browsers, and React Native. Developed with Bun.",
-          "category": "toys",
-          "displayName": "lorem-ipsum",
-          "homepage": null,
-          "id": "npm:lorem-ipsum",
-          "installURL": "pkgmgrmgr://install?package=npm%3Alorem-ipsum",
-          "manager": "npm"
+          "agentSummary": "Cross-platform screen sharing tool",
+          "category": "productivity",
+          "displayName": "p2p.kiwi",
+          "homepage": "https://p2p.kiwi/",
+          "id": "brew:cask:p2p-kiwi",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ap2p-kiwi",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "The Yeoman character in your CLI. Like wat.",
-          "category": "toys",
-          "displayName": "yeoman-character",
-          "homepage": "https://github.com/yeoman/yeoman-character#readme",
-          "id": "npm:yeoman-character",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ayeoman-character",
-          "manager": "npm"
+          "agentSummary": "Voice and text chat software",
+          "category": "productivity",
+          "displayName": "Discord Canary",
+          "homepage": "https://canary.discord.com/",
+          "id": "brew:cask:discord@canary",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adiscord%40canary",
+          "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-18T19:51:37Z",
-      "title": "For You in Toys",
-      "type": "personalizedRecommendations"
+      "title": "Recently Updated in Productivity",
+      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -1006,74 +686,164 @@
     },
     {
       "batchID": "20260911T100100Z-195c076e",
-      "id": "new-packages:ai:20260922T164202Z-f220bb45",
+      "id": "new-packages:system:20260918T195137Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Autonomous agent",
-          "category": "ai",
-          "displayName": "Agent!",
-          "homepage": "https://github.com/AgentiLoop/Agent",
-          "id": "brew:cask:agentiloop-agent",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aagentiloop-agent",
+          "agentSummary": "Disk space analyser",
+          "category": "system",
+          "displayName": "OpenDisk",
+          "homepage": "https://opendisk.app/",
+          "id": "brew:cask:opendisk",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopendisk",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Keyboard configurator for NuPhy devices",
+          "category": "system",
+          "displayName": "NuPhyIO",
+          "homepage": "https://www.nuphyio.com/",
+          "id": "brew:cask:nuphyio",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Anuphyio",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-11T10:01:00Z",
-      "title": "New Packages in Ai",
+      "title": "New Packages in System",
       "type": "newPackages"
     },
     {
       "batchID": "20260911T100100Z-195c076e",
-      "id": "for-you:games:20260922T164202Z-f220bb45",
+      "id": "for-you:developer-tools:20260918T195137Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Query for the status of any game server in Node.JS",
-          "category": "games",
-          "displayName": "gamedig",
-          "homepage": "https://github.com/gamedig/node-gamedig#readme",
-          "id": "npm:gamedig",
-          "installURL": "pkgmgrmgr://install?package=npm%3Agamedig",
+          "agentSummary": "The semantic version parser used by npm.",
+          "category": "developer-tools",
+          "displayName": "semver",
+          "homepage": "https://github.com/npm/node-semver#readme",
+          "id": "npm:semver",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asemver",
           "manager": "npm"
         },
         {
-          "agentSummary": "The Stockfish chess engine in Web Assembly (WASM)",
-          "category": "games",
-          "displayName": "stockfish",
-          "homepage": "https://github.com/nmrugg/stockfish.js#readme",
-          "id": "npm:stockfish",
-          "installURL": "pkgmgrmgr://install?package=npm%3Astockfish",
+          "agentSummary": "RFC9562 UUIDs",
+          "category": "developer-tools",
+          "displayName": "uuid",
+          "homepage": "https://github.com/uuidjs/uuid#readme",
+          "id": "npm:uuid",
+          "installURL": "pkgmgrmgr://install?package=npm%3Auuid",
           "manager": "npm"
         },
         {
-          "agentSummary": "Rom manager for AdvanceMAME/MESS",
-          "category": "games",
-          "displayName": "advancescan",
-          "homepage": "https://www.advancemame.it/scan-readme.html",
-          "id": "brew:advancescan",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aadvancescan",
+          "agentSummary": "An extremely fast JavaScript and CSS bundler and minifier.",
+          "category": "developer-tools",
+          "displayName": "esbuild",
+          "homepage": "https://github.com/evanw/esbuild#readme",
+          "id": "npm:esbuild",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aesbuild",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "resolve like require.resolve() on behalf of files asynchronously and synchronously",
+          "category": "developer-tools",
+          "displayName": "resolve",
+          "homepage": "https://github.com/browserify/resolve#readme",
+          "id": "npm:resolve",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aresolve",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Native-ESM powered web dev build tool",
+          "category": "developer-tools",
+          "displayName": "vite",
+          "homepage": "https://vite.dev",
+          "id": "npm:vite",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avite",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-11T10:01:00Z",
+      "title": "For You in Developer Tools",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260911T100100Z-195c076e",
+      "id": "new-packages:media:20260918T195137Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Bit-perfect music player for local hi-res libraries",
+          "category": "media",
+          "displayName": "BitMuse",
+          "homepage": "https://bitmuse.app/",
+          "id": "brew:cask:bitmuse",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Abitmuse",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Near-future Sci-Fi roguelike and tactical squad combat game",
-          "category": "games",
-          "displayName": "allureofthestars",
-          "homepage": "https://allureofthestars.com/",
-          "id": "brew:allureofthestars",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aallureofthestars",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Dungeon exploration game",
-          "category": "games",
-          "displayName": "angband",
-          "homepage": "https://rephial.org/",
-          "id": "brew:angband",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aangband",
+          "agentSummary": "Converts and compresses images, video, audio and PDFs locally",
+          "category": "media",
+          "displayName": "Picmal",
+          "homepage": "https://picmal.app/",
+          "id": "brew:cask:picmal",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apicmal",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-11T10:01:00Z",
-      "title": "For You in Games",
+      "title": "New Packages in Media",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20260911T100100Z-195c076e",
+      "id": "for-you:toys:20260918T195137Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Returns from a pool of 15m human-readable IDs",
+          "category": "toys",
+          "displayName": "human-id",
+          "homepage": "https://github.com/RienNeVaPlus/human-id#readme",
+          "id": "npm:human-id",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ahuman-id",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Creates ASCII Art from text. A full implementation of the FIGfont spec.",
+          "category": "toys",
+          "displayName": "figlet",
+          "homepage": "https://github.com/patorjk/figlet.js#readme",
+          "id": "npm:figlet",
+          "installURL": "pkgmgrmgr://install?package=npm%3Afiglet",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Tell Yeoman what to say",
+          "category": "toys",
+          "displayName": "yosay",
+          "homepage": "https://github.com/yeoman/yosay#readme",
+          "id": "npm:yosay",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ayosay",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Generates lorem ipsum placeholder text for Node.js, Deno, browsers, and React Native. Developed with Bun.",
+          "category": "toys",
+          "displayName": "lorem-ipsum",
+          "homepage": null,
+          "id": "npm:lorem-ipsum",
+          "installURL": "pkgmgrmgr://install?package=npm%3Alorem-ipsum",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The Yeoman character in your CLI. Like wat.",
+          "category": "toys",
+          "displayName": "yeoman-character",
+          "homepage": "https://github.com/yeoman/yeoman-character#readme",
+          "id": "npm:yeoman-character",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ayeoman-character",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-11T10:01:00Z",
+      "title": "For You in Toys",
       "type": "personalizedRecommendations"
     },
     {
@@ -1389,21 +1159,129 @@
     },
     {
       "batchID": "20260907T063155Z-f65b3609",
-      "id": "new-packages:toys:20260922T164202Z-f220bb45",
+      "id": "recently-updated:science:20260918T195137Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Tao of Unix Programming with Ruby-powered ANSI-colored fortunes",
-          "category": "toys",
-          "displayName": "taoup",
-          "homepage": "https://github.com/globalcitizen/taoup",
-          "id": "brew:taoup",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ataoup",
+          "agentSummary": "Meteorological workstation software",
+          "category": "science",
+          "displayName": "metview",
+          "homepage": "https://metview.readthedocs.io/en/latest/",
+          "id": "brew:metview",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ametview",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Command-line operators for netCDF and HDF files",
+          "category": "science",
+          "displayName": "nco",
+          "homepage": "https://nco.sourceforge.net/",
+          "id": "brew:nco",
+          "installURL": "pkgmgrmgr://install?package=brew%3Anco",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "ECMWF's meteorological plotting software",
+          "category": "science",
+          "displayName": "magics",
+          "homepage": "https://confluence.ecmwf.int/display/MAGP/Magics",
+          "id": "brew:magics",
+          "installURL": "pkgmgrmgr://install?package=brew%3Amagics",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Parallel netCDF library for scientific data using the OpenMPI library",
+          "category": "science",
+          "displayName": "pnetcdf",
+          "homepage": "https://parallel-netcdf.github.io/index.html",
+          "id": "brew:pnetcdf",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apnetcdf",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Efficient and flexible tool for processing single-cell sequencing data",
+          "category": "science",
+          "displayName": "alevin-fry",
+          "homepage": "https://github.com/COMBINE-lab/alevin-fry",
+          "id": "brew:alevin-fry",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aalevin-fry",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-07T06:31:55Z",
-      "title": "New Packages in Toys",
+      "title": "Recently Updated in Science",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260907T063155Z-f65b3609",
+      "id": "new-packages:security:20260918T195137Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Static verification of installation bash scripts",
+          "category": "security",
+          "displayName": "bashka",
+          "homepage": "https://github.com/dmtrKovalenko/bashka",
+          "id": "brew:bashka",
+          "installURL": "pkgmgrmgr://install?package=brew%3Abashka",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "title": "New Packages in Security",
       "type": "newPackages"
+    },
+    {
+      "batchID": "20260907T063155Z-f65b3609",
+      "id": "recently-updated:data:20260918T195137Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Utility to deal with Parquet data",
+          "category": "data",
+          "displayName": "go-parquet-tools",
+          "homepage": "https://github.com/hangxie/parquet-tools",
+          "id": "brew:go-parquet-tools",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ago-parquet-tools",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Database management tool with AI-powered features",
+          "category": "data",
+          "displayName": "WhoDB",
+          "homepage": "https://github.com/clidey/whodb",
+          "id": "brew:cask:whodb",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Awhodb",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Column-oriented database management system",
+          "category": "data",
+          "displayName": "ClickHouse",
+          "homepage": "https://clickhouse.com/",
+          "id": "brew:cask:clickhouse",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclickhouse",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Open source time series data processor",
+          "category": "data",
+          "displayName": "kapacitor",
+          "homepage": "https://github.com/influxdata/kapacitor",
+          "id": "brew:kapacitor",
+          "installURL": "pkgmgrmgr://install?package=brew%3Akapacitor",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Lightweight, distributed relational database built on SQLite",
+          "category": "data",
+          "displayName": "rqlite",
+          "homepage": "https://www.rqlite.io/",
+          "id": "brew:rqlite",
+          "installURL": "pkgmgrmgr://install?package=brew%3Arqlite",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "title": "Recently Updated in Data",
+      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -1649,7 +1527,7 @@
     },
     {
       "batchID": "20260903T095638Z-a67d98ee",
-      "id": "for-you:ai:20260922T164202Z-f220bb45",
+      "id": "for-you:ai:20260918T195137Z-f220bb45",
       "packages": [
         {
           "agentSummary": "The open agent skills ecosystem",
@@ -1700,60 +1578,6 @@
       "publishedAt": "2026-09-03T09:56:38Z",
       "title": "For You in Ai",
       "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260903T095638Z-a67d98ee",
-      "id": "new-packages:productivity:20260922T164202Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "AI assistant for managing tasks, projects, and long-term goals",
-          "category": "productivity",
-          "displayName": "Muse",
-          "homepage": "https://muse.ai/",
-          "id": "brew:cask:muse",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amuse",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Markdown reader built for typography",
-          "category": "productivity",
-          "displayName": "Telari",
-          "homepage": "https://telari.app/",
-          "id": "brew:cask:telari",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atelari",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Screenshot, screen recording and GIF tool",
-          "category": "productivity",
-          "displayName": "Snapline",
-          "homepage": "https://snap-line.app/",
-          "id": "brew:cask:snapline",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asnapline",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Dictation app for Swedish and Norwegian",
-          "category": "productivity",
-          "displayName": "Sæga",
-          "homepage": "https://saega.app/",
-          "id": "brew:cask:saega",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asaega",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Tencent application store",
-          "category": "productivity",
-          "displayName": "腾讯应用宝",
-          "homepage": "https://sj.qq.com/download/macbrand",
-          "id": "brew:cask:tencent-yingyongbao",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atencent-yingyongbao",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-03T09:56:38Z",
-      "title": "New Packages in Productivity",
-      "type": "newPackages"
     },
     {
       "artwork": {
@@ -2004,380 +1828,169 @@
     },
     {
       "batchID": "20260831T055156Z-36eb312d",
-      "id": "recently-updated:ai:20260922T164202Z-f220bb45",
+      "id": "recently-updated:security:20260918T195137Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "AI code review CLI",
-          "category": "ai",
-          "displayName": "CodeRabbit CLI",
-          "homepage": "https://www.coderabbit.ai/cli",
-          "id": "brew:cask:coderabbit",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acoderabbit",
+          "agentSummary": "World's fastest and most advanced password recovery utility",
+          "category": "security",
+          "displayName": "hashcat",
+          "homepage": "https://hashcat.net/hashcat/",
+          "id": "brew:hashcat",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ahashcat",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Anthropic's official Claude AI desktop app",
-          "category": "ai",
-          "displayName": "Claude",
-          "homepage": "https://claude.com/download",
-          "id": "brew:cask:claude",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclaude",
+          "agentSummary": "Trap AI web scrapers in an endless poison pit",
+          "category": "security",
+          "displayName": "miasma",
+          "homepage": "https://github.com/austin-weeks/miasma",
+          "id": "brew:miasma",
+          "installURL": "pkgmgrmgr://install?package=brew%3Amiasma",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "CLI Semantic Coding Agent",
-          "category": "ai",
-          "displayName": "vtcode",
-          "homepage": "https://vinhnx.github.io",
-          "id": "brew:vtcode",
-          "installURL": "pkgmgrmgr://install?package=brew%3Avtcode",
+          "agentSummary": "Security checklist app",
+          "category": "security",
+          "displayName": "Pareto Security",
+          "homepage": "https://paretosecurity.com/",
+          "id": "brew:cask:pareto-security",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apareto-security",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Lightweight coding agent harness written in Go",
-          "category": "ai",
-          "displayName": "zot",
-          "homepage": "https://www.zot.sh/",
-          "id": "brew:zot",
-          "installURL": "pkgmgrmgr://install?package=brew%3Azot",
+          "agentSummary": "CLI for Infisical",
+          "category": "security",
+          "displayName": "infisical",
+          "homepage": "https://infisical.com/docs/cli/overview",
+          "id": "brew:infisical",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ainfisical",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Open-source vector database that stores both objects and vectors",
-          "category": "ai",
-          "displayName": "weaviate",
-          "homepage": "https://weaviate.io/developers/weaviate/",
-          "id": "brew:weaviate",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aweaviate",
+          "agentSummary": "Next-generation aircrack with lots of new features",
+          "category": "security",
+          "displayName": "aircrack-ng",
+          "homepage": "https://aircrack-ng.org/",
+          "id": "brew:aircrack-ng",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aaircrack-ng",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-08-31T05:51:56Z",
-      "title": "Recently Updated in Ai",
+      "title": "Recently Updated in Security",
       "type": "recentlyUpdated"
     },
     {
-      "artwork": {
-        "alt": "Glowing file tiles stream through three glass inspection gates and converge into an orderly archive on a dark geometric workbench.",
-        "attribution": "Generated by OpenAI image generation for Package Manager Manager",
-        "boxColors": {
-          "backgroundEnd": "#0B2D35",
-          "backgroundStart": "#071522",
-          "foreground": "#F4FFF9"
-        },
-        "license": "OpenAI-generated artwork; use permitted for this editorial",
-        "path": "feed/assets/prek-fast-quality-gates-2026-08-27.png"
-      },
-      "batchID": "20260827T094859Z-db700b42",
-      "body": "## The familiar gate gets a new engine\n\nGit hooks occupy an awkward place in developer tooling. They catch formatting drift, malformed configuration, generated-file mistakes, and accidental secrets before review, yet every added check lengthens the pause between `git commit` and getting on with the work. Teams then face a bad bargain: keep useful policy and tolerate the delay, or move checks exclusively to CI and discover simple failures later.\n\n**prek changes the runner rather than demanding a new policy format.** The project is written in Rust and presents itself as a drop-in alternative to pre-commit. It reads the familiar `.pre-commit-config.yaml`, manages hook environments, and runs independent work concurrently. Its first public GitHub release appeared on October 31, 2024, placing it inside the feed's newer-tool window, while its current documentation also describes monorepo discovery, built-in Rust implementations of common hooks, and an optional native TOML configuration.\n\nCompatibility is the important product decision. A repository can evaluate prek against an existing configuration instead of rewriting every hook on day one. That lowers the cost of a trial and keeps the configuration legible to contributors still using pre-commit. The native `prek.toml` path exists for teams that want newer features, but choosing it deliberately gives up that two-runner compatibility.\n\n## Production adoption is more useful than a stopwatch\n\nMaintainer benchmarks are helpful for forming a hypothesis, not for settling it. Hook performance depends on file counts, cache warmth, environment creation, network access, and the actual programs invoked. If a Python formatter consumes most of the wall clock, replacing only the orchestrator cannot turn it into a native Rust check.\n\nHome Assistant supplies stronger evidence of actual use. Its developer documentation announced a migration from pre-commit to prek in January 2026, citing the shared configuration and parallel execution, and its public core configuration contains instructions that invoke `prek`. That does not establish universal compatibility, but it shows the tool operating in a large, polyglot repository rather than only in a demonstration fixture.\n\nA fair trial should record more than the fastest run:\n\n- compare cold and warm runs on the same commit;\n- exercise commit, push, manual, and CI stages the repository relies on;\n- remove caches once to test environment reconstruction;\n- confirm that changed-file selection and exit codes match expectations; and\n- inspect any hooks whose correctness depends on execution order.\n\nParallelism is valuable precisely because hooks are often independent. It can also reveal accidental dependencies that a serial runner concealed. If one hook generates a file that another consumes, encode that relationship explicitly or keep those operations serial instead of trusting historical timing.\n\n## The runner is not the rule\n\nprek coordinates checks; it does not decide whether those checks are appropriate. Remote hook repositories still execute code on developer machines, language environments still need versions, and mutable tags still weaken reproducibility. Pin revisions, review updates, and keep hook scope narrow enough that developers understand what runs when they commit. A faster path should not become a quieter supply-chain path.\n\nThe project includes several built-in hooks, which can avoid environment startup for routine file hygiene. For domain work, focused tools remain useful. **rumdl**, for example, is a Rust Markdown linter and formatter with a dedicated pre-commit hook repository, editor support, CI annotations, and compatibility with existing markdownlint configuration. Pairing it with prek illustrates the clean boundary: prek selects files, stages, and scheduling; rumdl owns Markdown rules and fixes.\n\nThat separation also makes failures easier to diagnose. A hook that never starts points toward configuration or environment setup. A Markdown diagnostic belongs to rumdl and its rule configuration. A CI-only discrepancy suggests different stages, versions, caches, or file sets. Collapsing all of those concerns into a generic “the hook failed” message would squander the operational clarity a composable toolchain can provide.\n\n## Adoption should remain reversible\n\nThe safest migration begins with the existing YAML. Run prek explicitly in local development and CI, compare results with pre-commit on representative changes, then replace installed Git shims only after the team understands the differences. Keep the earlier path documented during the evaluation so contributors can distinguish a runner problem from a policy problem.\n\nSpeed is not merely cosmetic. Short feedback loops make it more likely that checks stay enabled and run before code reaches review. Still, the goal is not the smallest benchmark number. It is a gate developers trust enough to keep, backed by pinned inputs, observable failures, and CI verification. prek's most compelling idea is therefore conservative: preserve the accumulated hook ecosystem, modernize the machinery underneath it, and make the result easy to reverse if the promised compatibility does not hold.",
-      "deck": "A compatible Rust runner can remove friction from established Git-hook policy, but speed pays off only when teams preserve reproducibility, review, and clear scope.",
-      "id": "editorial:2026-08-27:prek-makes-the-commit-gate-disappear",
-      "package": {
-        "agentSummary": "Rust-based Git hook manager compatible with established pre-commit configurations, adding parallel execution, monorepo support, built-in hooks, and a single-binary operational model.",
-        "assessment": {
-          "alternatives": [
-            "pre-commit",
-            "lefthook",
-            "Husky",
-            "Custom Git hook scripts"
-          ],
-          "audiences": [
-            "Teams already using pre-commit configuration",
-            "Polyglot repositories seeking faster local validation",
-            "Monorepo maintainers coordinating many hooks"
-          ],
-          "caveats": [
-            "Drop-in compatibility still needs verification against unusual hook languages and stages",
-            "Parallel execution can expose hidden ordering assumptions",
-            "A faster runner does not make unpinned or untrusted hook repositories safe"
-          ],
-          "complements": [
-            "rumdl",
-            "Ruff",
-            "Continuous integration"
-          ],
-          "prerequisites": [
-            "A Git repository",
-            "A reviewed hook configuration",
-            "Language runtimes required by non-built-in hooks"
-          ],
-          "useCases": [
-            "Run checks before commits and pushes",
-            "Reuse existing .pre-commit-config.yaml files",
-            "Parallelize independent hooks in local development and CI"
-          ]
-        },
-        "category": "developer-tools",
-        "displayName": "prek",
-        "docs": "https://prek.j178.dev/",
-        "homepage": "https://prek.j178.dev/",
-        "id": "brew:prek",
-        "installURL": "pkgmgrmgr://install?package=brew%3Aprek",
-        "lastUpdatedAt": "2026-08-27T09:26:21Z",
-        "manager": "homebrew",
-        "repository": "https://github.com/j178/prek",
-        "researchedAt": "2026-08-27T09:48:59Z",
-        "sources": [
-          {
-            "kind": "primary",
-            "title": "prek documentation",
-            "url": "https://prek.j178.dev/"
-          },
-          {
-            "kind": "primary",
-            "title": "prek release history",
-            "url": "https://github.com/j178/prek/releases"
-          },
-          {
-            "kind": "independent",
-            "title": "Home Assistant migration to prek",
-            "url": "https://developers.home-assistant.io/blog/2026/01/13/replace-pre-commit-with-prek"
-          }
-        ],
-        "upstreamSummary": "Fast Git hook manager written in Rust, drop-in alternative to pre-commit",
-        "version": "0.4.14"
-      },
-      "primaryPackageID": "brew:prek",
-      "publishedAt": "2026-08-27T09:48:59Z",
-      "relatedPackages": [
-        {
-          "agentSummary": "Rust-based Git hook manager compatible with established pre-commit configurations, adding parallel execution, monorepo support, built-in hooks, and a single-binary operational model.",
-          "assessment": {
-            "alternatives": [
-              "pre-commit",
-              "lefthook",
-              "Husky",
-              "Custom Git hook scripts"
-            ],
-            "audiences": [
-              "Teams already using pre-commit configuration",
-              "Polyglot repositories seeking faster local validation",
-              "Monorepo maintainers coordinating many hooks"
-            ],
-            "caveats": [
-              "Drop-in compatibility still needs verification against unusual hook languages and stages",
-              "Parallel execution can expose hidden ordering assumptions",
-              "A faster runner does not make unpinned or untrusted hook repositories safe"
-            ],
-            "complements": [
-              "rumdl",
-              "Ruff",
-              "Continuous integration"
-            ],
-            "prerequisites": [
-              "A Git repository",
-              "A reviewed hook configuration",
-              "Language runtimes required by non-built-in hooks"
-            ],
-            "useCases": [
-              "Run checks before commits and pushes",
-              "Reuse existing .pre-commit-config.yaml files",
-              "Parallelize independent hooks in local development and CI"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "prek",
-          "docs": "https://prek.j178.dev/",
-          "homepage": "https://prek.j178.dev/",
-          "id": "brew:prek",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aprek",
-          "lastUpdatedAt": "2026-08-27T09:26:21Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/j178/prek",
-          "researchedAt": "2026-08-27T09:48:59Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "prek documentation",
-              "url": "https://prek.j178.dev/"
-            },
-            {
-              "kind": "primary",
-              "title": "prek release history",
-              "url": "https://github.com/j178/prek/releases"
-            },
-            {
-              "kind": "independent",
-              "title": "Home Assistant migration to prek",
-              "url": "https://developers.home-assistant.io/blog/2026/01/13/replace-pre-commit-with-prek"
-            }
-          ],
-          "upstreamSummary": "Fast Git hook manager written in Rust, drop-in alternative to pre-commit",
-          "version": "0.4.14"
-        },
-        {
-          "agentSummary": "Rust Markdown linter and formatter with configurable rules, automatic markdownlint configuration discovery, editor integration, CI reporting, and dedicated pre-commit-compatible hooks.",
-          "assessment": {
-            "alternatives": [
-              "markdownlint-cli2",
-              "Vale",
-              "mdformat"
-            ],
-            "audiences": [
-              "Documentation-heavy repositories",
-              "Teams standardizing Markdown in CI and editors"
-            ],
-            "caveats": [
-              "Default style rules may conflict with existing documentation conventions",
-              "Automatic fixes require diff review",
-              "Compatibility with markdownlint configuration does not guarantee identical output for every edge case"
-            ],
-            "complements": [
-              "prek",
-              "Documentation site generators",
-              "Editor LSP clients"
-            ],
-            "prerequisites": [
-              "Markdown files",
-              "A reviewed rule configuration matching project conventions"
-            ],
-            "useCases": [
-              "Lint Markdown for structural and style problems",
-              "Format documentation deterministically",
-              "Annotate Markdown violations in pull requests"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "rumdl",
-          "docs": "https://rumdl.dev/",
-          "homepage": "https://github.com/rvben/rumdl",
-          "id": "brew:rumdl",
-          "installURL": "pkgmgrmgr://install?package=brew%3Arumdl",
-          "lastUpdatedAt": "2026-08-27T03:23:02Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/rvben/rumdl",
-          "researchedAt": "2026-08-27T09:48:59Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "rumdl repository and integration guide",
-              "url": "https://github.com/rvben/rumdl"
-            },
-            {
-              "kind": "primary",
-              "title": "rumdl release history",
-              "url": "https://github.com/rvben/rumdl/releases"
-            },
-            {
-              "kind": "independent",
-              "title": "MegaLinter rumdl descriptor",
-              "url": "https://megalinter.io/latest/descriptors/markdown_rumdl/"
-            }
-          ],
-          "upstreamSummary": "Markdown Linter and Formatter written in Rust",
-          "version": "0.2.61"
-        }
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2024-10-31T07:00:36Z",
-        "firstStableReleaseSourceURL": "https://github.com/j178/prek/releases/tag/v0.0.1",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "prek documentation",
-          "url": "https://prek.j178.dev/"
-        },
-        {
-          "kind": "primary",
-          "title": "prek first public release",
-          "url": "https://github.com/j178/prek/releases/tag/v0.0.1"
-        },
-        {
-          "kind": "independent",
-          "title": "Home Assistant migration to prek",
-          "url": "https://developers.home-assistant.io/blog/2026/01/13/replace-pre-commit-with-prek"
-        },
-        {
-          "kind": "independent",
-          "title": "Home Assistant core hook configuration",
-          "url": "https://github.com/home-assistant/core/blob/dev/.pre-commit-config.yaml"
-        },
-        {
-          "kind": "primary",
-          "title": "rumdl repository and pre-commit integration",
-          "url": "https://github.com/rvben/rumdl"
-        }
-      ],
-      "title": "Prek makes the commit gate feel smaller",
-      "type": "editorial"
-    },
-    {
-      "batchID": "20260827T094859Z-d8857921",
-      "id": "for-you:security:20260922T164202Z-f220bb45",
+      "batchID": "20260831T055156Z-36eb312d",
+      "id": "new-packages:productivity:20260918T195137Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "A tiny (118 bytes), secure URL-friendly unique string ID generator",
-          "category": "security",
-          "displayName": "nanoid",
-          "homepage": "https://github.com/ai/nanoid#readme",
-          "id": "npm:nanoid",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ananoid",
-          "manager": "npm"
+          "agentSummary": "Markdown reader built for typography",
+          "category": "productivity",
+          "displayName": "Telari",
+          "homepage": "https://telari.app/",
+          "id": "brew:cask:telari",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atelari",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Streamable SHA hashes in pure javascript",
-          "category": "security",
-          "displayName": "sha.js",
-          "homepage": "https://github.com/crypto-browserify/sha.js",
-          "id": "npm:sha.js",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asha.js",
-          "manager": "npm"
+          "agentSummary": "AI assistant for managing tasks, projects, and long-term goals",
+          "category": "productivity",
+          "displayName": "Muse",
+          "homepage": "https://muse.ai/",
+          "id": "brew:cask:muse",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amuse",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "detect possibly catastrophic, exponential-time regular expressions",
-          "category": "security",
-          "displayName": "safe-regex2",
-          "homepage": "https://github.com/fastify/safe-regex2",
-          "id": "npm:safe-regex2",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asafe-regex2",
-          "manager": "npm"
+          "agentSummary": "Screenshot, screen recording and GIF tool",
+          "category": "productivity",
+          "displayName": "Snapline",
+          "homepage": "https://snap-line.app/",
+          "id": "brew:cask:snapline",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asnapline",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Optimized bcrypt in plain JavaScript with zero dependencies, with TypeScript support. Compatible to 'bcrypt'.",
-          "category": "security",
-          "displayName": "bcryptjs",
-          "homepage": "https://github.com/dcodeIO/bcrypt.js#readme",
-          "id": "npm:bcryptjs",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abcryptjs",
-          "manager": "npm"
+          "agentSummary": "Live-animated widgets that sit on the desktop",
+          "category": "productivity",
+          "displayName": "BetterMacWidgets",
+          "homepage": "https://bettermacwidgets.de/",
+          "id": "brew:cask:bettermacwidgets",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Abettermacwidgets",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Sanitize untrusted HTML (to prevent XSS) with a configuration specified by a Whitelist",
-          "category": "security",
-          "displayName": "xss",
-          "homepage": "https://github.com/leizongmin/js-xss",
-          "id": "npm:xss",
-          "installURL": "pkgmgrmgr://install?package=npm%3Axss",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-08-27T09:48:59Z",
-      "title": "For You in Security",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260827T094859Z-d8857921",
-      "id": "new-packages:language-runtime:20260922T164202Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Language that blocks AI mistakes via proof",
-          "category": "language-runtime",
-          "displayName": "bend",
-          "homepage": "https://bend-lang.com",
-          "id": "brew:bend",
-          "installURL": "pkgmgrmgr://install?package=brew%3Abend",
+          "agentSummary": "Dictation app for Swedish and Norwegian",
+          "category": "productivity",
+          "displayName": "Sæga",
+          "homepage": "https://saega.app/",
+          "id": "brew:cask:saega",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asaega",
           "manager": "homebrew"
         }
       ],
-      "publishedAt": "2026-08-27T09:48:59Z",
-      "title": "New Packages in Language Runtime",
+      "publishedAt": "2026-08-31T05:51:56Z",
+      "title": "New Packages in Productivity",
       "type": "newPackages"
+    },
+    {
+      "batchID": "20260831T055156Z-36eb312d",
+      "id": "recently-updated:toys:20260918T195137Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Desktop pet that reacts to AI coding agents",
+          "category": "toys",
+          "displayName": "Clawd on Desk",
+          "homepage": "https://github.com/rullerzhou-afk/clawd-on-desk",
+          "id": "brew:cask:clawd-on-desk",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclawd-on-desk",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Generates ASCII tractor art",
+          "category": "toys",
+          "displayName": "tractorgen",
+          "homepage": "https://vergenet.net/~conrad/software/tractorgen/",
+          "id": "brew:tractorgen",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atractorgen",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Cowsay but with ponies",
+          "category": "toys",
+          "displayName": "ponysay",
+          "homepage": "https://github.com/erkin/ponysay/",
+          "id": "brew:ponysay",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aponysay",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Prints a steam locomotive if you type sl instead of ls",
+          "category": "toys",
+          "displayName": "sl",
+          "homepage": "https://github.com/mtoyoda/sl",
+          "id": "brew:sl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asl",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Infamous electronic fortune-cookie generator",
+          "category": "toys",
+          "displayName": "fortune",
+          "homepage": "https://www.ibiblio.org/pub/linux/games/amusements/fortune/!INDEX.html",
+          "id": "brew:fortune",
+          "installURL": "pkgmgrmgr://install?package=brew%3Afortune",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-08-31T05:51:56Z",
+      "title": "Recently Updated in Toys",
+      "type": "recentlyUpdated"
     }
   ],
-  "generatedAt": "2026-09-22T16:42:02Z",
-  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20260922T164202Z-804df497.json",
-  "pageID": "20260922T164202Z-9977cf2a",
+  "generatedAt": "2026-09-19T06:55:32Z",
+  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20260919T065532Z-cedba5e3.json",
+  "pageID": "20260919T065532Z-45694c35",
   "schemaVersion": 2
 }
