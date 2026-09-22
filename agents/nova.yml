@@ -1,6 +1,5 @@
 id: cask:nova
 display-name: Nova
-homepage: https://nova.app/
 repo: null
 docs:
   - https://docs.nova.app/
@@ -10,7 +9,8 @@ config-file-location:
     - <project-root>/.nova/
     - ~/Library/Application Support/Nova/Extensions
 credentials-file-location:
-  macos: macOS Keychain
+  macos:
+    - macOS Keychain
 history:
   adoption-history:
     - >
@@ -61,20 +61,44 @@ history:
       Nova keeps project-specific settings and data in a hidden .nova directory at the
       project root. Server passwords are stored in the macOS Keychain; Nova can also use
       SSH keys and Panic Sync.
-category: developer-tools
-package-manager:
-  brew-cask: nova
-package-manager-url: https://formulae.brew.sh/cask/nova
 tags:
   - code-editor
   - development
   - extensions
   - git
   - macos
-description: Native code editor
-applications:
-  - Nova.app
 provenance:
-  cask: nova
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Nova Library (https://help.nova.app/) identifies Nova as a native macOS
+      code editor.
+    - source_facts.description
+  display-name-sources:
+    - Official Nova Library (https://help.nova.app/).
+    - Official product site (https://nova.app/).
+  docs-sources:
+    - Official Nova extension API documentation (https://docs.nova.app/).
+    - Official Nova user documentation (https://help.nova.app/).
+  history-sources:
+    - 'Official announcement: https://blog.panic.com/nova-our-next-big-thing/'
+    - 'Official launch article: https://blog.panic.com/nova-is-here/'
+    - 'Official migration documentation: https://help.nova.app/faqs/moving-data/'
+    - 'Official product documentation: https://help.nova.app/'
+  repo-sources:
+    - >
+      Panic's official Nova product and documentation sites do not identify a public
+      source repository for the Nova application.
+    - source_facts.repo is empty.
+  tags-sources:
+    - Official Nova Library (https://help.nova.app/).
+    - Official product page (https://nova.app/).
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - code-editors
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

@@ -1,15 +1,18 @@
 id: cask:mountain-duck
 display-name: Mountain Duck
-homepage: https://mountainduck.io/
 repo: null
 docs:
   - https://docs.mountainduck.io/
 config-file-location:
-  macos: ~/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/
-  windows: '%AppData%\Cyberduck'
+  macos:
+    - ~/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/
+  windows:
+    - '%AppData%\Cyberduck'
 credentials-file-location:
-  macos: macOS Keychain
-  windows: Windows Credential Manager
+  macos:
+    - macOS Keychain
+  windows:
+    - Windows Credential Manager
 history:
   adoption-history:
     - >
@@ -62,20 +65,48 @@ history:
       Bookmarks, connection profiles, and history reside in the shared Cyberduck
       application-support directory. Saved login data uses Keychain on macOS or
       Credential Manager on Windows.
-category: system
-package-manager:
-  brew-cask: mountain-duck
-package-manager-url: https://formulae.brew.sh/cask/mountain-duck
 tags:
   - cloud-storage
   - filesystem
   - remote-storage
   - sftp
   - webdav
-description: Mounts servers and cloud storages as a disk on the desktop
-applications:
-  - Mountain Duck.app
 provenance:
-  cask: mountain-duck
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation (https://docs.mountainduck.io/) describes mounting server
+      and cloud storage as a Finder or File Explorer disk.
+    - source_facts.description
+  display-name-sources:
+    - Official product site (https://mountainduck.io/).
+    - current_curation.display-name
+  docs-sources:
+    - Official Cyberduck and Mountain Duck documentation (https://docs.mountainduck.io/).
+  history-sources:
+    - >
+      Official Cyberduck repository, whose core libraries are used by Mountain Duck:
+      https://github.com/iterate-ch/cyberduck
+    - 'Official changelog: https://mountainduck.io/changelog/'
+    - 'Official documentation overview: https://docs.mountainduck.io/'
+    - >
+      Official installation and storage documentation:
+      https://docs.mountainduck.io/mountainduck/installation/
+  repo-sources:
+    - >
+      The official Cyberduck repository (https://github.com/iterate-ch/cyberduck) states
+      that its core libraries are used in Mountain Duck, but it does not identify itself
+      as the Mountain Duck product repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - Official documentation overview (https://docs.mountainduck.io/).
+    - Official product changelog (https://mountainduck.io/changelog/).
+    - source_facts.description
+category-confidence: high
+category-path:
+  - system
+  - filesystems
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
