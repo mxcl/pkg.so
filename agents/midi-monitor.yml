@@ -1,11 +1,11 @@
 id: cask:midi-monitor
 display-name: MIDI Monitor
-homepage: https://www.snoize.com/MIDIMonitor/
 repo: https://github.com/krevis/MIDIApps
 docs:
   - https://www.snoize.com/MIDIMonitor/docs
 config-file-location:
-  macos: ~/Library/Preferences/com.snoize.MIDIMonitor.plist
+  macos:
+    - ~/Library/Preferences/com.snoize.MIDIMonitor.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,10 +70,6 @@ history:
       channel filters, and inspect events in arrival order. The application can act as a
       MIDI destination, observe output sent by other applications, show raw event data,
       save captured events, and export System Exclusive data.
-category: media
-package-manager:
-  brew-cask: midi-monitor
-package-manager-url: https://formulae.brew.sh/cask/midi-monitor
 tags:
   - audio
   - coremidi
@@ -81,10 +77,37 @@ tags:
   - macos
   - midi
   - music-development
-description: Display MIDI signals going in and out of your computer
-applications:
-  - MIDI Monitor.app
 provenance:
-  cask: midi-monitor
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://www.snoize.com/MIDIMonitor/
+    - https://www.snoize.com/MIDIMonitor/docs
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.snoize.com/MIDIMonitor/
+    - source_facts.applications
+  docs-sources:
+    - 'Official MIDI Monitor documentation: https://www.snoize.com/MIDIMonitor/docs'
+  history-sources:
+    - https://github.com/krevis/MIDIApps
+    - https://www.snoize.com/MIDIMonitor/
+    - https://www.snoize.com/MIDIMonitor/docs
+  repo-sources:
+    - >
+      The official Snoize product page links directly to
+      https://github.com/krevis/MIDIApps as the source code.
+    - The repository identifies itself as the source for MIDI Monitor and SysEx Librarian.
+  tags-sources:
+    - https://www.snoize.com/MIDIMonitor/
+    - https://www.snoize.com/MIDIMonitor/docs
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - audio
+  - midi
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
