@@ -4,8 +4,15 @@ homepage: https://github.com/ducaale/xh
 repo: https://github.com/ducaale/xh
 docs:
   - https://github.com/ducaale/xh#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix: $(HOME)/.config/xh/config.json
+  windows: '%APPDATA%\xh\config.json'
+credentials-file-location:
+  unix:
+    - $(HOME)/.netrc
+    - $(HOME)/_netrc
+    - $(HOME)/.config/xh/sessions
+  windows: '%APPDATA%\xh\sessions'
 history:
   adoption-history:
     - >
