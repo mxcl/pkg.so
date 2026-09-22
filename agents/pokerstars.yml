@@ -1,12 +1,12 @@
 id: cask:pokerstars
 display-name: PokerStars
-homepage: https://www.pokerstars.net/
 repo: null
 docs:
   - https://www.pokerstars.net/help
   - https://www.pokerstars.net/poker/learn
 config-file-location:
-  macos: ~/Library/Preferences/*user.ini
+  macos:
+    - ~/Library/Preferences/*user.ini
 credentials-file-location: null
 history:
   adoption-history:
@@ -46,20 +46,44 @@ history:
       the client keeps its settings in a user.ini file under ~/Library/Preferences;
       optional player notes are stored separately under the PokerStars folder in
       ~/Library/Application Support.
-category: games
-package-manager:
-  brew-cask: pokerstars
-package-manager-url: https://formulae.brew.sh/cask/pokerstars
 tags:
   - card-game
   - free-to-play
   - macos
   - online-multiplayer
   - poker
-description: Free-to-play online poker
-applications:
-  - PokerStars.app
 provenance:
-  cask: pokerstars
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://www.pokerstars.net/ and its official help center describe poker play and
+      social games.
+    - source_facts.description identifies free-to-play online poker.
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.pokerstars.net/
+  docs-sources:
+    - The official Learn section provides poker rules and play guidance.
+    - >
+      The official PokerStars help center covers accounts, gameplay, technical issues,
+      and responsible gaming.
+  history-sources:
+    - https://www.pokerstars.net/
+    - https://www.pokerstars.net/help/
+    - https://www.pokerstars.net/help/articles/tec-sft-reinst-mstr/
+  repo-sources:
+    - >
+      No official public source-code repository is linked from the PokerStars site or
+      official help center.
+  tags-sources:
+    - https://www.pokerstars.net/
+    - https://www.pokerstars.net/help/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - card-games
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: medium
+tags-confidence: high

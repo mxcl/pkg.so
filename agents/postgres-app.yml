@@ -1,7 +1,6 @@
 id: cask:postgres-app
 display-name: Postgres.app
-homepage: https://postgresapp.com/
-repo: https://github.com/PostgresApp/PostgresApp
+repo: null
 docs:
   - https://postgresapp.com/documentation
 config-file-location:
@@ -74,10 +73,6 @@ history:
       local authentication permits same-machine connections without a password; the
       official guide recommends SCRAM authentication when password protection is
       required.
-category: data
-package-manager:
-  brew-cask: postgres-app
-package-manager-url: https://formulae.brew.sh/cask/postgres-app
 tags:
   - database
   - local-development
@@ -86,12 +81,38 @@ tags:
   - postgis
   - postgresql
   - server-manager
-description: App wrapper for Postgres
-applications:
-  - Postgres.app
 provenance:
-  cask: postgres-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - postgres-unofficial
+  category-sources:
+    - >
+      https://postgresapp.com/ and its official repository describe a native macOS
+      PostgreSQL distribution and server manager.
+    - source_facts.description identifies an application wrapper for Postgres.
+  display-name-sources:
+    - https://github.com/PostgresApp/PostgresApp
+    - https://postgresapp.com/
+  docs-sources:
+    - >
+      The dedicated official documentation covers installation, upgrades, migration,
+      command-line tools, client permissions, and troubleshooting.
+  history-sources:
+    - https://github.com/PostgresApp/PostgresApp
+    - https://postgresapp.com/
+    - https://postgresapp.com/documentation/
+    - https://postgresapp.com/documentation/install.html
+  repo-sources:
+    - >
+      source_facts.repo is already populated, so repository enrichment was intentionally
+      omitted as required.
+  tags-sources:
+    - https://github.com/PostgresApp/PostgresApp
+    - https://postgresapp.com/documentation/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - data
+  - databases
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
