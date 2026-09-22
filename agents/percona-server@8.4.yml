@@ -1,6 +1,5 @@
 id: brew:percona-server@8.4
 display-name: Percona Server for MySQL 8.4
-homepage: https://www.percona.com
 repo: https://github.com/percona/percona-server
 docs:
   - https://docs.percona.com/percona-server/8.4/index-contents.html
@@ -22,8 +21,10 @@ config-file-location:
     - '%BASEDIR%\my.cnf'
     - '%DATADIR%\mysqld-auto.cnf'
 credentials-file-location:
-  unix: ~/.mylogin.cnf
-  windows: '%APPDATA%\MySQL\.mylogin.cnf'
+  unix:
+    - ~/.mylogin.cnf
+  windows:
+    - '%APPDATA%\MySQL\.mylogin.cnf'
 history:
   adoption-history:
     - >
@@ -109,21 +110,6 @@ history:
       high-availability tooling. Major-version upgrades require checking removed
       variables, authentication changes, plugin-to-component migrations, and matching
       backup-tool versions.
-category: data
-package-manager:
-  apk: ldb
-  brew: percona-server@8.4
-  chocolatey: mysql
-  debian: libmysql++-dev
-  dnf: mysql
-  nix: ldb
-  pacman: ldb
-  scoop: main/mysql
-  ubuntu: libmysql++-dev
-  winget: Oracle.MySQL
-  zypper: mariadb
-package-manager-url: https://formulae.brew.sh/formula/percona-server@8.4
-license: BSD-3-Clause
 tags:
   - cli
   - database-server
@@ -135,51 +121,39 @@ tags:
   - relational-database
   - replication
   - sql
-description: Drop-in MySQL replacement
-executables:
-  - comp_err
-  - create_id_token
-  - ibd2sdi
-  - innochecksum
-  - ldb
-  - my_print_defaults
-  - myisam_ftdump
-  - myisamchk
-  - myisamlog
-  - myisampack
-  - mysql
-  - mysql.server
-  - mysql_client_test
-  - mysql_config
-  - mysql_config_editor
-  - mysql_keyring_encryption_test
-  - mysql_migrate_keyring
-  - mysql_secure_installation
-  - mysql_test_event_tracking
-  - mysql_tzinfo_to_sql
-  - mysqladmin
-  - mysqlbinlog
-  - mysqlcheck
-  - mysqld
-  - mysqld_multi
-  - mysqld_safe
-  - mysqldump
-  - mysqldumpslow
-  - mysqlimport
-  - mysqlrouter
-  - mysqlrouter_keyring
-  - mysqlrouter_passwd
-  - mysqlrouter_plugin_info
-  - mysqlshow
-  - mysqlslap
-  - mysqltest
-  - mysqltest_safe_process
-  - mysqlxtest
-  - perror
-  - ps-admin
-  - ps_mysqld_helper
-  - sst_dump
 provenance:
-  formula: percona-server@8.4
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      Official documentation describes Percona Server for MySQL as an enhanced,
+      compatible, open-source MySQL database server:
+      https://docs.percona.com/percona-server/8.4/index.html
+  display-name-sources:
+    - 'Official 8.4 documentation title: https://docs.percona.com/percona-server/8.4/index.html'
+  docs-sources:
+    - Dedicated official documentation for the 8.4 series.
+    - Official topic index provides the complete documentation surface.
+  history-sources:
+    - https://dev.mysql.com/doc/refman/8.4/en/option-files.html
+    - >
+      https://docs.percona.com/legacy-documentation/percona-server-for-mysql/Percona-Server-for-MySQL-5.1.pdf
+    - https://docs.percona.com/percona-server/8.4/index.html
+    - https://formulae.brew.sh/formula/percona-server@8.4
+    - https://github.com/percona/percona-server
+    - https://www.percona.com/release-lifecycle-overview/
+  repo-sources:
+    - >
+      Official Percona repository identifies itself as the source for Percona Server for
+      MySQL: https://github.com/percona/percona-server
+  tags-sources:
+    - >
+      Official Percona documentation and repository describe MySQL compatibility,
+      performance, scalability, availability, backups, and instrumentation.
+category-confidence: high
+category-path:
+  - data
+  - databases
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

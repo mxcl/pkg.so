@@ -1,14 +1,15 @@
 id: brew:go-arch-lint
 display-name: go-arch-lint
-homepage: https://github.com/fe3dback/go-arch-lint
-repo: https://github.com/fe3dback/go-arch-lint
+repo: null
 docs:
   - https://github.com/fe3dback/go-arch-lint/blob/master/docs/graph/README.md
   - https://github.com/fe3dback/go-arch-lint/blob/master/docs/syntax/README.md
   - https://github.com/fe3dback/go-arch-lint/blob/master/README.md
 config-file-location:
-  unix: <project-root>/.go-arch-lint.yml
-  windows: <project-root>/.go-arch-lint.yml
+  unix:
+    - <project-root>/.go-arch-lint.yml
+  windows:
+    - <project-root>/.go-arch-lint.yml
 credentials-file-location: null
 history:
   adoption-history:
@@ -68,11 +69,6 @@ history:
     - >
       Run `go-arch-lint graph` to generate an SVG dependency view, optionally focusing
       on a component or including vendor dependencies.
-category: developer-tools
-package-manager:
-  brew: go-arch-lint
-package-manager-url: https://formulae.brew.sh/formula/go-arch-lint
-license: MIT
 tags:
   - ci
   - clean-architecture
@@ -82,10 +78,33 @@ tags:
   - linter
   - software-architecture
   - static-analysis
-description: Architecture linter for Go projects
-executables:
-  - go-arch-lint
 provenance:
-  formula: go-arch-lint
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      Official README describes a linter that validates the top-level architecture and
+      dependency layers of Go projects:
+      https://github.com/fe3dback/go-arch-lint/blob/master/README.md
+  display-name-sources:
+    - Official repository name and executable name.
+  docs-sources:
+    - Official README provides installation and command usage.
+    - Official graph reference documents dependency visualization.
+    - Official syntax reference documents the architecture-file schema.
+  history-sources:
+    - https://github.com/fe3dback/go-arch-lint/blob/master/README.md
+    - https://github.com/fe3dback/go-arch-lint/blob/master/docs/graph/README.md
+    - https://github.com/fe3dback/go-arch-lint/blob/master/docs/syntax/README.md
+    - source_facts.package-manager
+  repo-sources:
+    - source_facts.repo is already populated; repository output must therefore be null.
+  tags-sources:
+    - Official README and configuration reference.
+category-confidence: high
+category-path:
+  - developer-tools
+  - static-analysis
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
