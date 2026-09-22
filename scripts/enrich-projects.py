@@ -340,6 +340,17 @@ def invoke_codex_cli_for_pending_batches(args: argparse.Namespace, manifest: dic
             write_batch_status(batch_dir, {"batch": batch["batch"], "status": "checkpointed"})
             print(f"SKIP batch {batch['batch']}; valid checkpoint exists")
             continue
+        # A previous process may have exited after writing raw output but before
+        # normalizing it. Recover valid work without paying for research again.
+        raw_path = ROOT / str(batch["codex_output_path"])
+        if raw_path.exists() and not args.force:
+            try:
+                validate_and_write_batch(raw_path, normalized_path, expected_ids)
+            except json.JSONDecodeError:
+                pass  # An interrupted JSON write must be researched again.
+            if load_valid_checkpoint(normalized_path, expected_ids) is not None:
+                write_batch_status(batch_dir, {"batch": batch["batch"], "status": "checkpointed"})
+                continue
         completed = invoke_codex(
             ROOT / str(batch["prompt_path"]),
             ROOT / str(batch["codex_output_path"]),
@@ -349,6 +360,11 @@ def invoke_codex_cli_for_pending_batches(args: argparse.Namespace, manifest: dic
             write_batch_status(batch_dir, {"batch": batch["batch"], "status": "timed-out"})
             print(f"TIMEOUT batch {batch['batch']}; continuing with remaining batches", file=sys.stderr)
             continue
+        if raw_path.exists():
+            try:
+                validate_and_write_batch(raw_path, normalized_path, expected_ids)
+            except json.JSONDecodeError:
+                pass  # Preserve the raw evidence; apply reports the malformed output.
         write_batch_status(batch_dir, {"batch": batch["batch"], "status": "codex-cli-completed"})
         print(f"CODEX-CLI batch {batch['batch']} completed")
 
@@ -527,7 +543,10 @@ def main() -> int:
     projects, selected = selected_projects_for_args(args, state, today)
 
     if args.phase in {"prepare", "run"}:
-        manifest = prepare_run(args, selected, run_dir)
+        if args.run_id and run_manifest_path(run_dir).exists() and not args.force:
+            manifest = load_run_manifest(run_dir)
+        else:
+            manifest = prepare_run(args, selected, run_dir)
         write_json(state_path, state)
     else:
         manifest = load_run_manifest(run_dir)

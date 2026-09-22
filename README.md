@@ -125,3 +125,81 @@ atomic-write files after 24 hours and retain the three newest applied
 enrichment runs for diagnostics. Set `AVDB_ENRICHMENT_COMPLETED_RUNS_TO_KEEP`
 to change that retention count. Automation logs are capped at 5 MiB; override
 that limit with `AVDB_AUTOMATION_MAX_LOG_BYTES`.
+
+## Supervised nightly maintenance
+
+The timer invokes `scripts/maintenance-supervisor.py`, which starts GPT-5.6 Sol
+at medium reasoning with `scripts/maintenance-master.md`. The supervisor may
+repair scoped pipeline problems, test and commit fixes, and retry the failed
+stage. It must preserve unrelated working-tree changes and cannot bypass checks.
+
+The model repeatedly calls `python3 scripts/maintenance-step.py step`. Each call
+runs one stage and returns JSON (`running`, `needs_agent`, `failed`, `complete`).
+A `needs_agent` response names the research prompt; the supervisor writes the
+requested response and calls the script again. Successful stages persist under
+`cache/maintenance/current.json`; interrupted runs resume, including across days.
+Enrichment uses a stable run ID and reuses validated research. Logs are bounded
+to 2 MiB each. Runtime state and logs are ignored, not published YAML.
+
+The worker locks out overlapping stages. The outer launcher locks out duplicate
+supervisors, retries failed Codex processes up to three times (60/120 seconds),
+and limits total agent runtime to ten hours. systemd has an independent eleven
+hour limit and kills the whole service process tree. GPT-5.6 Sol remains explicit;
+there is no automatic model substitution. Overrides for troubleshooting are
+`PKG_MAINTENANCE_ATTEMPTS`, `PKG_MAINTENANCE_TIMEOUT` (seconds), and
+`PKG_MAINTENANCE_STAGE_TIMEOUT` (seconds; default six hours).
+
+A successful model exit alone is insufficient. The launcher independently runs
+`maintenance-step.py verify`: both live data files must match this run's hashes,
+SQLite must pass integrity checking, all repository feed files must match their
+published copies, the origin must answer health checks, and tracked changes must
+be committed. Publication records candidate hashes before replacing either file,
+so an interruption between the two atomic renames can resume safely. The two
+files are not a single transactional swap.
+
+Inspect the current run with:
+
+```sh
+python3 scripts/maintenance-step.py status
+journalctl -u pkgdb-maintenance.service -n 100
+```
+
+### Human notification
+
+Configure `/etc/pkgdb-maintenance-notify.json` outside the repository, owned by
+root and readable by the maintenance user:
+
+```json
+{
+  "region": "us-east-2",
+  "sender": "VERIFIED_SENDER@example.com",
+  "recipient": "OPERATOR@example.com"
+}
+```
+
+The sender must be verified in that SES region; if the account is in the SES
+sandbox, the recipient must also be verified. The instance role needs
+`ses:SendEmail` on the sender's SES identity ARN. Restrict that grant with
+`ses:FromAddress` and `ses:Recipients` conditions matching the configuration.
+Do not place AWS access keys in this file; use the instance role.
+
+`maintenance-notify.py` is a narrow fixed-recipient interface: the model supplies
+only a kind and concise message, not an address. It sends one failure email per
+open incident, retries undelivered notifications on subsequent calls, and sends
+one recovery message after verified success. It never attaches logs. Check the
+local outbox at `cache/maintenance/notification.json` for SES acceptance or errors.
+SES acceptance is not proof of inbox delivery. Replies are not ingested; respond
+through the Codex task. Routine successful runs do not send email.
+
+After configuring SES, verify with an actual message:
+
+```sh
+python3 scripts/maintenance-notify.py test --message 'pkg.so maintenance alert delivery test'
+```
+
+The launcher can notify even if Codex cannot start. `ExecStopPost` supplies an
+independent alert path for service timeout/crash. Missing config or denied SES
+permissions produce `NOTIFICATION_UNDELIVERED` and a persisted local outbox;
+they are never reported as successful delivery. This cannot alert through SES
+when the instance itself, networking, or SES is unavailable; external host
+monitoring remains separate.

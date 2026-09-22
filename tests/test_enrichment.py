@@ -899,6 +899,48 @@ class EnrichmentTests(unittest.TestCase):
             self.assertEqual(manifest["batches"][0]["status"], "checkpointed")
             invoke_codex.assert_not_called()
 
+    def test_saved_raw_research_is_reused_after_interruption(self):
+        module = load_enrich_projects_module()
+        args = sample_enrich_project_args()
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_root = Path(tmp)
+            run_dir = tmp_root / "cache/enrichment/runs/unit-run"
+            with mock.patch.object(module, "ROOT", tmp_root):
+                manifest = module.prepare_run(args, [sample_record()], run_dir)
+                raw = tmp_root / manifest["batches"][0]["codex_output_path"]
+                raw.write_text(json.dumps({"results": [sample_result()]}))
+                with mock.patch.object(module, "invoke_codex") as invoke:
+                    module.invoke_codex_cli_for_pending_batches(args, manifest)
+                invoke.assert_not_called()
+                normalized = tmp_root / manifest["batches"][0]["normalized_output_path"]
+                self.assertIsNotNone(module.load_valid_checkpoint(normalized, {sample_record()["id"]}))
+
+    def test_resume_keeps_original_manifest_selection(self):
+        module = load_enrich_projects_module()
+        args = sample_enrich_project_args()
+        args.run_id = "unit-run"
+        args.phase = "run"
+        args.backend = "codex-cli"
+        args.dry_run = False
+        manifest = {"batches": [], "selected_count": 0}
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp)
+            path = cache / "enrichment/runs/unit-run/controller-manifest.json"
+            path.parent.mkdir(parents=True)
+            path.write_text(json.dumps(manifest))
+            with (
+                mock.patch.object(module, "CACHE_DIR", cache),
+                mock.patch.object(module, "parse_args", return_value=args),
+                mock.patch.object(module, "ensure_root"),
+                mock.patch.object(module, "selected_projects_for_args", return_value=([], [])),
+                mock.patch.object(module, "prepare_run") as prepare,
+                mock.patch.object(module, "invoke_codex_cli_for_pending_batches") as invoke,
+                mock.patch.object(module, "apply_prepared_batches", return_value=0),
+            ):
+                self.assertEqual(module.main(), 0)
+            prepare.assert_not_called()
+            self.assertEqual(invoke.call_args.args[1], manifest)
+
     def test_codex_timeout_isolated_to_one_batch(self):
         module = load_enrich_projects_module()
         args = sample_enrich_project_args()

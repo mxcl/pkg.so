@@ -12,6 +12,10 @@ WorkingDirectory=/apps/pkg.so
 Environment=PATH=/home/ec2-user/.local/bin:/usr/local/bin:/usr/bin
 Environment=AVDB_ENRICH_LIMIT=250
 Environment=AVDB_ENRICH_BATCH_SIZE=5
-ExecStart=/apps/pkg.so/scripts/atlas-maintenance.sh
+ExecStart=/usr/bin/env uv run --python 3.10 /apps/pkg.so/scripts/maintenance-supervisor.py
+ExecStopPost=/usr/bin/env python3 /apps/pkg.so/scripts/maintenance-notify.py service-stop
+TimeoutStartSec=11h
+TimeoutStopSec=45s
+KillMode=control-group
 Nice=10
 IOSchedulingClass=idle

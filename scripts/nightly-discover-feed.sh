@@ -21,12 +21,16 @@ run_generator() {
   cat "${output_path}"
 }
 
-for ((pass = 1; pass <= max_agent_passes; pass++)); do
+for ((pass = 1; pass <= max_agent_passes + 1; pass++)); do
   output_path="$(mktemp)"
   trap 'rm -f -- "${output_path}"' EXIT
   run_generator "${output_path}"
 
   if grep -q '^PMM_FEED_STATUS=NEEDS_AGENT$' "${output_path}"; then
+    if ((pass > max_agent_passes)); then
+      echo "error: Discover feed still needs research after ${max_agent_passes} Codex pass(es)" >&2
+      exit 1
+    fi
     echo "Discover feed requires Codex research (pass ${pass}/${max_agent_passes})"
     codex --model gpt-5.6-sol --config 'model_reasoning_effort="medium"' \
       --search --ask-for-approval never exec \
