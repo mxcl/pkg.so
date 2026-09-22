@@ -3,9 +3,56 @@ display-name: willgit
 repo: null
 docs:
   - https://github.com/DanielVartanov/willgit
-config-file-location: null
+config-file-location:
+  unix:
+    - .git-wtfrc in the current directory
+    - nearest ancestor directory
 credentials-file-location: null
-history: null
+history:
+  adoption-history:
+    - >
+      The package has remained a small collection of Git workflow helpers rather than
+      developing into a larger Git client. Its continued Homebrew packaging preserves
+      these scripts for command-line users.
+  package-nerd-significance:
+    - >
+      willgit reflects an early Git ecosystem pattern: focused scripts named with the
+      `git-` prefix automatically become Git subcommands. It is useful as a compact
+      record of branch-management conventions and lightweight Unix-style tooling around
+      Git.
+  project-history:
+    - >
+      willgit collects miscellaneous Git tools written by William Morgan. The surviving
+      GitHub repository is identified as Daniel Vartanov's mirror of Morgan's former
+      Gitorious mainline, preserving the project after its original hosting disappeared.
+    - >
+      The collection includes tools for publishing branches, ranking contributors,
+      showing merge relationships, creating worktrees, and summarizing how local,
+      remote, feature, and release branches relate. `git-wtf` supports a repository-tree
+      configuration file named `.git-wtfrc`.
+  related-projects:
+    - >
+      The commands extend Git through its external-subcommand convention and complement
+      Git's native branch, log, merge, push, and worktree commands.
+  sources:
+    - https://github.com/DanielVartanov/willgit
+    - https://github.com/DanielVartanov/willgit/blob/master/bin/git-wtf
+    - source_facts.executables
+    - source_facts.package-manager
+  summary:
+    - >
+      willgit is William Morgan's collection of small command-line utilities that extend
+      Git with additional branch, merge, worktree, and contributor-reporting workflows.
+  timeline:
+    - "2008: The `git-wtf` source identifies William Morgan's original copyright."
+    - >
+      2015: The preserved repository's license records William Morgan's copyright and
+      the project is mirrored from its former Gitorious mainline.
+  usage:
+    - >
+      Users invoke the installed scripts as Git subcommands, such as `git wtf`, `git
+      publish-branch`, and `git rank-contributors`. `git-wtf` summarizes branch
+      relationships and can generate a starter `.git-wtfrc` with `--dump-config`.
 tags:
   - cli
   - git
@@ -33,7 +80,10 @@ provenance:
       https://github.com/DanielVartanov/willgit — official mirror and best available
       upstream documentation surface; its wiki is empty
   history-sources:
-    - Official repository material is too thin for a reliable substantive history
+    - https://github.com/DanielVartanov/willgit
+    - https://github.com/DanielVartanov/willgit/blob/master/bin/git-wtf
+    - source_facts.executables
+    - source_facts.package-manager
   repo-sources:
     - source_facts.repo is already populated; repo is intentionally null under the batch rule
   tags-sources:
@@ -47,6 +97,6 @@ category-path:
   - version-control
 display-name-confidence: high
 docs-confidence: medium
-history-confidence: low
+history-confidence: medium
 repo-confidence: high
 tags-confidence: high
