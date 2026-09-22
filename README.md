@@ -131,7 +131,11 @@ that limit with `AVDB_AUTOMATION_MAX_LOG_BYTES`.
 The timer invokes `scripts/maintenance-supervisor.py`, which starts GPT-5.6 Sol
 at medium reasoning with `scripts/maintenance-master.md`. The supervisor may
 repair scoped pipeline problems, test and commit fixes, and retry the failed
-stage. It must preserve unrelated working-tree changes and cannot bypass checks.
+stage. It independently reconciles generated `deterministic/` and `combined/`
+changes against authoritative inputs after saving recovery copies, then validates
+and commits the result. Unknown authorship of generated output alone does not
+require escalation. It preserves hand-authored curation and unrelated code edits,
+and cannot bypass checks.
 
 The model repeatedly calls `python3 scripts/maintenance-step.py step`. Each call
 runs one stage and returns JSON (`running`, `needs_agent`, `failed`, `complete`).

@@ -23,11 +23,25 @@ Follow the script's JSON instruction:
 
 Self-healing scope:
 - Inspect `git status`, `git diff`, and `git diff --cached` before changing files.
-  If a failed generator left changes, identify their provenance using logs and
-  authoritative cached inputs. Save a patch under cache/maintenance/recovery/
-  before recovery. Validate/rebuild and commit known generated output. Never
-  discard, stage, or commit unrelated human edits. Unexpected changes require
-  human escalation. Do not run blanket reset/clean/stash commands.
+  Decide routine, reversible maintenance issues yourself using available evidence.
+  Unknown authorship alone is NOT a reason to escalate a change in generated
+  `deterministic/` or `combined/` output. These directories can be reconstructed
+  from authoritative inputs and the preserved curation layers.
+  Before recovery, save both staged and unstaged binary diffs, plus copies of any
+  affected untracked files, under cache/maintenance/recovery/. Inspect the relevant
+  generator, cached source records, and curation layers. Regenerate affected
+  output, run its validators, inspect the resulting diff, and commit the verified
+  generated changes. If regeneration retains a deletion, commit it; if it restores
+  the record, commit any resulting changes and continue. You do not need proof of
+  who made the original change. Record your reasoning and recovery-copy location.
+  For example, a staged deletion of deterministic/onyx@beta.yml is a generated-data
+  reconciliation task, not a question for the human. Resolve it using the renderer
+  and its authoritative cached inputs; do not simply assume the deletion is right
+  or restore HEAD as authority.
+  Preserve hand-authored curation in `agents/`, `human-override/`, and source data.
+  Preserve unrelated code edits. Escalate only when regeneration/validation cannot
+  resolve the issue, or when evidence shows conflicting human intent or meaningful
+  risk beyond routine maintenance. Do not run blanket reset/clean/stash commands.
 - You may make targeted pipeline/script fixes when the failure is understood.
   Run relevant regression tests, inspect the diff, and commit those files before
   retrying the failed stage. Do not broaden the task or change hosting, IAM,
@@ -39,8 +53,10 @@ Self-healing scope:
   whole successful batches or start a new full refresh to fix one failed batch.
 - Make at most three substantive repair attempts for one failure in a run.
   Stop and escalate if that does not resolve it, or if data loss, credentials,
-  unrelated edits, missing permissions, or an ambiguous decision block progress.
-  A retry of a previously escalated issue needs new evidence or human guidance.
+  conflicting human edits, missing permissions, or a consequential decision beyond
+  maintenance authority blocks progress. Ordinary uncertainty about regenerable
+  output does not meet that threshold. This policy authorizes reconsidering earlier
+  escalations caused only by unknown authorship of generated changes.
 
 Communicate with the human using ONLY this fixed-recipient capability:
 `python3 scripts/maintenance-notify.py failure --message '...summary...'`
