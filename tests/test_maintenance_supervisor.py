@@ -124,6 +124,14 @@ class NotificationTests(unittest.TestCase):
                 self.assertFalse(json.loads((root / "notification.json").read_text())["open"])
                 self.assertEqual(send.call_count, 3)
 
+    def test_fallback_does_not_overwrite_actionable_undelivered_diagnosis(self):
+        module = load("maintenance-notify")
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(module, "STATE_DIR", Path(tmp)), mock.patch.object(module, "CONFIG", Path(tmp) / "missing"):
+            module.notify("failure", "Checkout blocked: decide whether the staged deletion is intentional.")
+            module.notify("failure", "Service failed", fallback=True)
+            state = json.loads((Path(tmp) / "notification.json").read_text())
+            self.assertIn("staged deletion", state["message"])
+
     def test_no_config_is_a_visible_delivery_failure(self):
         module = load("maintenance-notify")
         with tempfile.TemporaryDirectory() as tmp, mock.patch.object(module, "STATE_DIR", Path(tmp)), mock.patch.object(module, "CONFIG", Path(tmp) / "missing"):

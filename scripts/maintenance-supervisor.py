@@ -14,7 +14,7 @@ from maintenance_runtime import ROOT, STATE_DIR, read_json, run_logged
 
 def notify(kind, message):
     return subprocess.run([sys.executable, str(ROOT / "scripts/maintenance-notify.py"),
-                           kind, "--message", message], timeout=45).returncode
+                           kind, "--fallback", "--message", message], timeout=45).returncode
 
 
 def supervise():

@@ -16,7 +16,7 @@ from maintenance_runtime import STATE_DIR, read_json, save_json
 CONFIG = Path("/etc/pkgdb-maintenance-notify.json")
 
 
-def notify(kind: str, message: str) -> bool:
+def notify(kind: str, message: str, *, fallback: bool = False) -> bool:
     STATE_DIR.mkdir(parents=True, exist_ok=True)
     with (STATE_DIR / "notification.lock").open("w") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
@@ -27,6 +27,8 @@ def notify(kind: str, message: str) -> bool:
         if kind == "failure" and state.get("open") and state.get("delivered"):
             print("Existing incident already reported")
             return True
+        if fallback and state.get("open") and state.get("message"):
+            message = state["message"]  # Keep the agent's actionable diagnosis.
         # Persist an outbox before attempting SES. Never claim delivery on failure.
         pending = {"open": True, "delivered": False, "pending_kind": kind,
                    "message": message[:4000], "previous": state.get("message", "")[:4000]}
@@ -71,14 +73,16 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("kind", choices=["failure", "recovery", "test", "service-stop"])
     parser.add_argument("--message", default="")
+    parser.add_argument("--fallback", action="store_true")
     args = parser.parse_args()
     if args.kind == "service-stop":
         result = os.environ.get("SERVICE_RESULT", "success")
         if result == "success":
             return 0
         args.kind = "failure"
+        args.fallback = True
         args.message = f"Maintenance service stopped with result {result}. Inspect the local journal and persisted stage state."
-    return 0 if notify(args.kind, args.message or "Maintenance notification delivery test.") else 1
+    return 0 if notify(args.kind, args.message or "Maintenance notification delivery test.", fallback=args.fallback) else 1
 
 
 if __name__ == "__main__":
