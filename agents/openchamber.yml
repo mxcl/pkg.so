@@ -1,14 +1,14 @@
 id: cask:openchamber
 display-name: OpenChamber
-homepage: https://openchamber.dev/
-repo: https://github.com/openchamber/openchamber
+repo: null
 docs:
   - https://docs.openchamber.dev/
   - https://docs.openchamber.dev/environment
   - https://docs.openchamber.dev/providers
   - https://docs.openchamber.dev/quickstart
 config-file-location:
-  unix: ~/.config/openchamber
+  unix:
+    - ~/.config/openchamber
 credentials-file-location: null
 history:
   adoption-history:
@@ -62,10 +62,6 @@ history:
       manage coding sessions from the visual workspace. Common workflows include
       creating isolated worktree sessions, reviewing diffs, managing terminals, choosing
       agents and models, and opening remote access through a protected server or tunnel.
-category: developer-tools
-package-manager:
-  brew-cask: openchamber
-package-manager-url: https://formulae.brew.sh/cask/openchamber
 tags:
   - ai
   - coding-agent
@@ -75,10 +71,39 @@ tags:
   - opencode
   - terminal
   - worktrees
-description: Desktop and web interface for OpenCode AI agent
-applications:
-  - OpenChamber.app
 provenance:
-  cask: openchamber
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes OpenChamber as a visual workspace around the
+      OpenCode coding agent: https://docs.openchamber.dev/
+  display-name-sources:
+    - 'Official documentation title: https://docs.openchamber.dev/'
+    - 'source_facts.applications: OpenChamber.app'
+  docs-sources:
+    - >
+      Dedicated official documentation domain, including quickstart, environment, and
+      provider configuration pages.
+  history-sources:
+    - https://docs.openchamber.dev/
+    - https://docs.openchamber.dev/environment/
+    - https://docs.openchamber.dev/opencode-server/
+    - https://docs.openchamber.dev/providers/
+    - https://docs.openchamber.dev/quickstart/
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the enrichment rule, the repository
+      was not redetermined.
+  tags-sources:
+    - 'Official overview: https://docs.openchamber.dev/'
+    - 'Official provider guide: https://docs.openchamber.dev/providers/'
+    - 'Official quickstart: https://docs.openchamber.dev/quickstart/'
+category-confidence: high
+category-path:
+  - developer-tools
+  - ai-coding-agents
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

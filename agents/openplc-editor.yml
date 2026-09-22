@@ -1,7 +1,6 @@
 id: cask:openplc-editor
 display-name: OpenPLC Editor
-homepage: https://github.com/Autonomy-Logic/openplc-editor
-repo: https://github.com/Autonomy-Logic/openplc-editor
+repo: null
 docs:
   - https://edge.autonomylogic.com/docs/openplc-editor/overview
   - https://github.com/Autonomy-Logic/openplc-editor/wiki
@@ -73,10 +72,6 @@ history:
       For Runtime v4, the editor converts the project through its compilation pipeline,
       packages the generated sources, uploads them over the runtime API, and provides
       deployment and debugging controls.
-category: developer-tools
-package-manager:
-  brew-cask: openplc-editor
-package-manager-url: https://formulae.brew.sh/cask/openplc-editor
 tags:
   - ide
   - iec-61131-3
@@ -86,10 +81,42 @@ tags:
   - plc
   - simulation
   - structured-text
-description: IDE for creating programs for the OpenPLC Runtime
-applications:
-  - OpenPLC Editor.app
 provenance:
-  cask: openplc-editor
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official download page calls it an open-source PLC programming environment for
+      industrial automation: https://autonomylogic.com/download
+    - >
+      The official repository describes an IDE for programs targeting OpenPLC Runtime:
+      https://github.com/Autonomy-Logic/openplc-editor
+  display-name-sources:
+    - Official repository and download page consistently use “OpenPLC Editor”.
+    - 'source_facts.applications: OpenPLC Editor.app'
+  docs-sources:
+    - >
+      The repository README directs readers to the official GitHub wiki; Autonomy Logic
+      also publishes an official editor overview for the related browser-based edition.
+  history-sources:
+    - https://autonomylogic.com/download
+    - https://edge.autonomylogic.com/docs/openplc-editor/overview/
+    - https://github.com/Autonomy-Logic/openplc-editor
+    - https://github.com/Autonomy-Logic/openplc-editor/wiki
+    - https://github.com/Autonomy-Logic/openplc-runtime/blob/main/docs/EDITOR_INTEGRATION.md
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the enrichment rule, the repository
+      was not redetermined.
+  tags-sources:
+    - 'Official download page: https://autonomylogic.com/download'
+    - 'Official editor overview: https://edge.autonomylogic.com/docs/openplc-editor/overview/'
+    - 'Official repository: https://github.com/Autonomy-Logic/openplc-editor'
+category-confidence: high
+category-path:
+  - developer-tools
+  - industrial-automation
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
