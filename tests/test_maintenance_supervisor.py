@@ -34,6 +34,11 @@ class WorkerTests(unittest.TestCase):
             self.addCleanup(patcher.stop)
         self.worker.LIVE.mkdir()
 
+    def test_status_does_not_create_state_or_locks(self):
+        with mock.patch.object(sys, "argv", ["maintenance-step.py", "status"]):
+            self.assertEqual(self.worker.main(), 0)
+        self.assertFalse(self.worker.STATE_DIR.exists())
+
     def test_failed_stage_resumes_without_repeating_completed_work(self):
         state = self.worker.load_state()
         sequence = [("first", ["first"]), ("second", ["second"])]

@@ -207,6 +207,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("action", choices=["begin", "step", "status", "verify"])
     args = parser.parse_args()
+    if args.action == "status":
+        print(json.dumps(read_json(STATE, {"status": "not_started"})))
+        return 0
     STATE_DIR.mkdir(parents=True, exist_ok=True)
     with (STATE_DIR / "worker.lock").open("w") as lock:
         try:
@@ -216,9 +219,6 @@ def main():
             return 1
         if args.action == "begin":
             print(json.dumps(load_state()))
-            return 0
-        if args.action == "status":
-            print(json.dumps(read_json(STATE, {"status": "not_started"})))
             return 0
         if args.action == "verify":
             state = read_json(STATE, {})
