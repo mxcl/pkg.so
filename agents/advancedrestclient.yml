@@ -1,7 +1,6 @@
 id: cask:advancedrestclient
 display-name: Advanced REST Client
-homepage: https://github.com/advanced-rest-client/arc-electron
-repo: https://github.com/advanced-rest-client/arc-electron
+repo: null
 docs:
   - https://docs.advancedrestclient.com/
 config-file-location: null
@@ -67,10 +66,6 @@ history:
       ARC can persist request history and authorization-related request data internally,
       but the official documentation reviewed does not identify a stable
       credentials-file or user configuration-file location.
-category: developer-tools
-package-manager:
-  brew-cask: advancedrestclient
-package-manager-url: https://formulae.brew.sh/cask/advancedrestclient
 tags:
   - api-client
   - api-testing
@@ -80,10 +75,34 @@ tags:
   - open-source
   - request-debugging
   - rest
-description: API testing tool
-applications:
-  - AdvancedRestClient.app
 provenance:
-  cask: advancedrestclient
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official repository describes Advanced REST Client as an open API tool and desktop
+      application: https://github.com/advanced-rest-client/arc-electron
+    - source_facts.description
+  display-name-sources:
+    - Official repository heading and README.
+    - current_curation.display-name
+  docs-sources:
+    - Dedicated documentation domain explicitly linked by the official repository README.
+  history-sources:
+    - Input field source_facts.package-manager
+    - https://docs.advancedrestclient.com/
+    - https://github.com/advanced-rest-client/arc-electron
+    - >
+      https://github.com/advanced-rest-client/arc-electron/blob/master/docs/request-architecture.md
+    - https://github.com/advanced-rest-client/arc-electron/releases
+  repo-sources:
+    - source_facts.repo is already populated; repository lookup was skipped as required.
+  tags-sources:
+    - Official ARC repository README and request-architecture documentation.
+category-confidence: high
+category-path:
+  - developer-tools
+  - api-development
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

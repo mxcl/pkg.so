@@ -1,7 +1,6 @@
 id: cask:activitywatch
 display-name: ActivityWatch
-homepage: https://activitywatch.net/
-repo: https://github.com/ActivityWatch/activitywatch
+repo: null
 docs:
   - https://docs.activitywatch.net/en/latest
   - https://docs.activitywatch.net/en/latest/directories.html
@@ -10,8 +9,10 @@ config-file-location:
   linux:
     - ~/.config/activitywatch/<component>
     - $XDG_CONFIG_HOME/activitywatch/<component>
-  macos: ~/Library/Application Support/activitywatch/<component>
-  windows: C:\Users\<USER>\AppData\Local\activitywatch\<component>
+  macos:
+    - ~/Library/Application Support/activitywatch/<component>
+  windows:
+    - C:\Users\<USER>\AppData\Local\activitywatch\<component>
 credentials-file-location: null
 history:
   adoption-history:
@@ -80,10 +81,6 @@ history:
       under the documented platform configuration root, such as aw-server-rust,
       aw-watcher-afk, or aw-watcher-window. Activity data remains locally controlled by
       default.
-category: productivity
-package-manager:
-  brew-cask: activitywatch
-package-manager-url: https://formulae.brew.sh/cask/activitywatch
 tags:
   - automatic-tracking
   - cross-platform
@@ -93,10 +90,36 @@ tags:
   - productivity
   - quantified-self
   - time-tracking
-description: Time tracker
-applications:
-  - ActivityWatch.app
 provenance:
-  cask: activitywatch
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes ActivityWatch as software that tracks computer
+      activity: https://docs.activitywatch.net/en/latest/introduction.html
+    - source_facts.description
+  display-name-sources:
+    - Official website, documentation, and repository consistently use ActivityWatch.
+    - current_curation.display-name
+  docs-sources:
+    - >
+      Official dedicated documentation domain, including getting-started and directory
+      references.
+  history-sources:
+    - Input field source_facts.package-manager
+    - https://activitywatch.net/timeline/
+    - https://docs.activitywatch.net/en/latest/directories.html
+    - https://docs.activitywatch.net/en/latest/history.html
+    - https://docs.activitywatch.net/en/latest/introduction.html
+    - https://github.com/ActivityWatch/activitywatch
+  repo-sources:
+    - source_facts.repo is already populated; repository lookup was skipped as required.
+  tags-sources:
+    - Official ActivityWatch documentation, website, and repository topics.
+category-confidence: high
+category-path:
+  - productivity
+  - time-tracking
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
