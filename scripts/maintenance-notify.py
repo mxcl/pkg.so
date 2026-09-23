@@ -27,7 +27,8 @@ def notify(kind: str, message: str, *, fallback: bool = False) -> bool:
         if kind == "failure" and state.get("open") and state.get("delivered"):
             print("Existing incident already reported")
             return True
-        if fallback and state.get("open") and state.get("message"):
+        if (fallback and kind == "failure" and state.get("pending_kind") == "failure"
+                and state.get("open") and state.get("message")):
             message = state["message"]  # Keep the agent's actionable diagnosis.
         # Persist an outbox before attempting SES. Never claim delivery on failure.
         pending = {"open": True, "delivered": False, "pending_kind": kind,

@@ -132,6 +132,31 @@ class NotificationTests(unittest.TestCase):
             state = json.loads((Path(tmp) / "notification.json").read_text())
             self.assertIn("staged deletion", state["message"])
 
+    def test_recovery_fallback_sends_current_message_not_old_failure(self):
+        module = load("maintenance-notify")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            config = root / "config.json"
+            save_json(config, {"sender": "ops@example.com", "recipient": "owner@example.com", "region": "us-east-2"})
+            save_json(root / "notification.json", {
+                "open": True, "delivered": False, "pending_kind": "failure",
+                "message": "Obsolete checkout failure",
+            })
+            payloads = []
+            def send(command, **kwargs):
+                payload_path = command[command.index("--cli-input-json") + 1][len("file://"):]
+                payloads.append(json.loads(Path(payload_path).read_text()))
+                return subprocess.CompletedProcess(command, 0, '{"MessageId":"recovered"}', '')
+            with mock.patch.object(module, "STATE_DIR", root), mock.patch.object(module, "CONFIG", config), mock.patch.object(module.subprocess, "run", side_effect=send):
+                self.assertTrue(module.notify("recovery", "Fresh publication verified", fallback=True))
+            message = payloads[0]["Content"]["Simple"]
+            self.assertEqual(message["Subject"]["Data"], "pkg.so maintenance: recovery")
+            self.assertIn("Fresh publication verified", message["Body"]["Text"]["Data"])
+            self.assertNotIn("Obsolete checkout failure", message["Body"]["Text"]["Data"])
+            state = json.loads((root / "notification.json").read_text())
+            self.assertFalse(state["open"])
+            self.assertEqual(state["message"], "Fresh publication verified")
+
     def test_no_config_is_a_visible_delivery_failure(self):
         module = load("maintenance-notify")
         with tempfile.TemporaryDirectory() as tmp, mock.patch.object(module, "STATE_DIR", Path(tmp)), mock.patch.object(module, "CONFIG", Path(tmp) / "missing"):
