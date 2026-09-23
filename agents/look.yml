@@ -1,7 +1,6 @@
 id: cask:look
 display-name: Look
-homepage: https://github.com/kunkka19xx/look
-repo: https://github.com/kunkka19xx/look
+repo: null
 docs:
   - https://github.com/kunkka19xx/look/blob/main/docs/user-guide.md
   - https://github.com/kunkka19xx/look
@@ -56,10 +55,6 @@ history:
       The main configuration is stored in ~/.look/config. User-defined super actions are
       stored in ~/.look/super-actions.toml and can be reloaded without rebuilding the
       application.
-category: productivity
-package-manager:
-  brew-cask: look
-package-manager-url: https://formulae.brew.sh/cask/look
 tags:
   - application-search
   - cross-platform
@@ -68,10 +63,36 @@ tags:
   - launcher
   - open-source
   - productivity
-description: Keyboard-first local launcher
-applications:
-  - Look.app
 provenance:
-  cask: look
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official repository README describes Look as an open-source, cross-platform
+      launcher and a lightweight alternative to Spotlight and Raycast:
+      https://github.com/kunkka19xx/look
+    - 'source_facts.description: Keyboard-first local launcher'
+  display-name-sources:
+    - 'Official repository title and README use “Look”: https://github.com/kunkka19xx/look'
+    - source_facts.applications contains Look.app
+  docs-sources:
+    - Official README is the installation and quick-reference surface.
+    - Official repository provides a dedicated user guide under docs/user-guide.md.
+  history-sources:
+    - 'Input package identity: source_facts.package-manager.brew-cask'
+    - 'Official repository and README: https://github.com/kunkka19xx/look'
+    - 'Official user guide: https://github.com/kunkka19xx/look/blob/main/docs/user-guide.md'
+  repo-sources:
+    - >
+      Repository determination was intentionally skipped because source_facts.repo is
+      already populated, as required by the task instructions.
+  tags-sources:
+    - 'Official repository README and user guide: https://github.com/kunkka19xx/look'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - application-launchers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

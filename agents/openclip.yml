@@ -1,12 +1,12 @@
 id: cask:openclip
 display-name: OpenClip
-homepage: https://www.getopenclip.app/
-repo: https://github.com/ganeshmshetty/openclip
+repo: null
 docs:
   - https://www.getopenclip.app/docs/getting-started
   - https://www.getopenclip.app/docs/manifest-spec
 config-file-location:
-  macos: ~/.openclip/extensions/<extension-directory>/openclip.json
+  macos:
+    - ~/.openclip/extensions/<extension-directory>/openclip.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -68,10 +68,6 @@ history:
       OpenClip requires macOS Accessibility permission to detect and read the current
       selection. Cloud AI providers are optional; the base text actions do not require
       credentials.
-category: productivity
-package-manager:
-  brew-cask: openclip
-package-manager-url: https://formulae.brew.sh/cask/openclip
 tags:
   - applescript
   - automation
@@ -82,10 +78,40 @@ tags:
   - macos
   - open-source
   - text-selection
-description: Instant actions for selected text
-applications:
-  - OpenClip.app
 provenance:
-  cask: openclip
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes OpenClip as a floating action bar for
+      manipulating selected text: https://www.getopenclip.app/docs/getting-started
+    - >
+      Official homepage describes copy, calculation, transformation, AI writing, and
+      custom-script workflows: https://www.getopenclip.app/
+  display-name-sources:
+    - Official homepage and documentation use “OpenClip”.
+    - source_facts.applications contains OpenClip.app
+  docs-sources:
+    - >
+      Dedicated official documentation covers installation, preferences, extension
+      authoring, runtimes, and internals.
+    - Official manifest specification documents the extension configuration path and schema.
+  history-sources:
+    - 'Official documentation: https://www.getopenclip.app/docs/getting-started'
+    - 'Official homepage: https://www.getopenclip.app/'
+    - 'Official manifest specification: https://www.getopenclip.app/docs/manifest-spec'
+    - 'Official repository README: https://github.com/ganeshmshetty/openclip'
+  repo-sources:
+    - >
+      Repository determination was intentionally skipped because source_facts.repo is
+      already populated, as required by the task instructions.
+  tags-sources:
+    - 'Official homepage: https://www.getopenclip.app/'
+    - 'Official manifest specification: https://www.getopenclip.app/docs/manifest-spec'
+category-confidence: high
+category-path:
+  - productivity
+  - text-utilities
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
