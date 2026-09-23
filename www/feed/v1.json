@@ -69,9 +69,6 @@
     },
     {
       "candidatePackageIDs": [
-        "brew:pup",
-        "brew:rattler-build",
-        "brew:b4n",
         "brew:qwen-code",
         "brew:alive2",
         "brew:cask:monet",
@@ -92,9 +89,15 @@
         "brew:dbmate",
         "brew:ccmux",
         "brew:cask:tapmap",
-        "brew:cask:zentty"
+        "brew:cask:zentty",
+        "brew:cask:look",
+        "brew:cask:opendisk",
+        "brew:cask:highball"
       ],
       "fallbackPackageIDs": [
+        "brew:cask:opendisk",
+        "brew:cask:look",
+        "brew:cask:highball",
         "brew:workmux",
         "brew:ccmux",
         "brew:cask:zentty",
@@ -115,10 +118,7 @@
         "brew:termaid",
         "brew:cask:monet",
         "brew:qwen-code",
-        "brew:alive2",
-        "brew:rattler-build",
-        "brew:pup",
-        "brew:b4n"
+        "brew:alive2"
       ],
       "id": "for-you",
       "title": "For You",
@@ -127,6 +127,9 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:look",
+        "brew:cask:opendisk",
+        "brew:cask:highball",
         "brew:cask:tapmap",
         "brew:ccmux",
         "brew:ratex",
@@ -135,10 +138,7 @@
         "brew:cask:recordly",
         "brew:cask:telari",
         "brew:cask:muse",
-        "brew:termaid",
-        "brew:cask:homebrew-app",
-        "brew:hister",
-        "brew:cask:omniwm"
+        "brew:termaid"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -146,6 +146,9 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:look",
+        "brew:cask:opendisk",
+        "brew:cask:highball",
         "brew:cask:tapmap",
         "brew:cask:zentty",
         "brew:ccmux",
@@ -154,10 +157,7 @@
         "brew:bashka",
         "brew:cask:recordly",
         "brew:cask:telari",
-        "brew:metview",
-        "brew:dbmate",
-        "brew:cask:muse",
-        "brew:sftpgo"
+        "brew:metview"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -797,7 +797,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-22T16:42:02Z",
+  "generatedAt": "2026-09-23T12:18:07Z",
   "packages": {
     "brew:alive2": {
       "agentSummary": "Alive2 checks whether LLVM IR transformations preserve behavior, offering standalone and compiler-integrated translation validation while explicitly bounding unsupported interprocedural cases and solver limits.",
@@ -862,65 +862,6 @@
         }
       ],
       "upstreamSummary": "Automatic verification of LLVM optimizations",
-      "version": null
-    },
-    "brew:b4n": {
-      "agentSummary": "b4n is a Rust terminal interface for inspecting and changing Kubernetes resources, with logs, shells, port forwarding, file transfer, filtering, and configurable plugins.",
-      "assessment": {
-        "alternatives": [
-          "k9s for a more established Kubernetes terminal interface",
-          "kubectl for direct command-line control",
-          "Headlamp or Lens-style graphical Kubernetes interfaces"
-        ],
-        "audiences": [
-          "Kubernetes users who prefer terminal interfaces",
-          "Operators looking for a compact alternative to graphical cluster dashboards",
-          "Rust users interested in a practical kube-rs and Ratatui project"
-        ],
-        "caveats": [
-          "The maintainer describes it primarily as a Rust learning project",
-          "Create, edit, delete, shell, and ephemeral-container actions can materially change clusters",
-          "Some file-transfer behavior depends on utilities available inside the target container"
-        ],
-        "complements": [
-          "kubectl for scripted and documented cluster operations",
-          "Read-only Kubernetes roles for exploratory access",
-          "Cluster audit logging and change review"
-        ],
-        "prerequisites": [
-          "A working Kubernetes configuration and appropriate cluster permissions",
-          "A terminal font containing Nerd Font symbols for correct rendering",
-          "Container-side tar for file transfers"
-        ],
-        "useCases": [
-          "Browsing and filtering Kubernetes resources",
-          "Reading logs and opening container shells",
-          "Editing resources and managing port forwards from a terminal"
-        ]
-      },
-      "category": "cloud-infrastructure",
-      "displayName": "b4n",
-      "docs": "https://github.com/fioletoven/b4n#readme",
-      "homepage": "https://github.com/fioletoven/b4n",
-      "id": "brew:b4n",
-      "installURL": "pkgmgrmgr://install?package=brew%3Ab4n",
-      "lastUpdatedAt": "2026-08-17T23:25:01Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/fioletoven/b4n",
-      "researchedAt": "2026-08-18T06:37:16Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "b4n project repository and documentation",
-          "url": "https://github.com/fioletoven/b4n"
-        },
-        {
-          "kind": "primary",
-          "title": "b4n release history",
-          "url": "https://github.com/fioletoven/b4n/releases"
-        }
-      ],
-      "upstreamSummary": "Terminal user interface (TUI) for Kubernetes API written in Rust",
       "version": null
     },
     "brew:bashka": {
@@ -1226,53 +1167,130 @@
       "upstreamSummary": "Tool discovery and execution layer for AI agents",
       "version": "1.6.10"
     },
-    "brew:cask:homebrew-app": {
-      "agentSummary": "BrewUI provides Homebrew’s official native Mac interface for discovering and managing packages, with visible command output and an evolving feature set built around existing brew operations.",
+    "brew:cask:highball": {
+      "agentSummary": "Highball configures Wine-based Windows gaming on Apple Silicon, selecting renderers from an open compatibility database while exposing engines, recipes, and command-line controls.",
       "assessment": {
         "alternatives": [
-          "Use brew directly or another Homebrew GUI."
+          "CrossOver",
+          "Whisky",
+          "A Windows gaming PC or cloud-gaming service"
         ],
         "audiences": [
-          "Mac users who prefer graphical package management."
+          "Apple Silicon Mac owners who want to test Windows games",
+          "Technical users who value open recipes and compatibility evidence"
         ],
         "caveats": [
-          "The project remains young and its interface is evolving.",
-          "It manages Homebrew operations rather than isolating applications from their system effects."
+          "Highball is beta software and game compatibility varies by title, renderer, hardware, and macOS version",
+          "Kernel-level anti-cheat can make some games impossible to run through Wine",
+          "Initial engine and launcher setup downloads substantial data and can take many minutes",
+          "D3DMetal requires separately accepting Apple's Game Porting Toolkit license"
         ],
         "complements": [
-          "The brew command line and Homebrew package catalog."
+          "Steam or Epic game libraries",
+          "Highball's open compatibility database",
+          "CrossOver when commercial support and broader compatibility are needed"
         ],
         "prerequisites": [
-          "A supported macOS system and Homebrew."
+          "An Apple Silicon Mac running macOS 14 or later",
+          "Rosetta 2 when prompted",
+          "Legitimate access to the Windows games and launchers being used"
         ],
         "useCases": [
-          "Browse packages and manage installed software with a native interface."
+          "Creating Wine environments for Steam, Epic, or standalone Windows programs",
+          "Choosing a renderer using per-game compatibility reports",
+          "Managing engines and game environments through either the native app or CLI"
         ]
       },
-      "category": "system",
-      "displayName": "Homebrew",
-      "docs": "https://github.com/Homebrew/BrewUI#readme",
-      "homepage": "https://github.com/Homebrew/BrewUI",
-      "id": "brew:cask:homebrew-app",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahomebrew-app",
-      "lastUpdatedAt": "2026-09-10T16:01:49Z",
+      "category": "games",
+      "displayName": "Highball",
+      "docs": "https://github.com/gauthierpiarrette/highball#readme",
+      "homepage": "https://github.com/gauthierpiarrette/highball",
+      "id": "brew:cask:highball",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahighball",
+      "lastUpdatedAt": "2026-09-22T19:06:46Z",
       "manager": "homebrew",
-      "repository": "https://github.com/Homebrew/BrewUI",
-      "researchedAt": "2026-09-11T10:01:00Z",
+      "repository": "https://github.com/gauthierpiarrette/highball",
+      "researchedAt": "2026-09-23T12:18:07Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "BrewUI upstream repository",
-          "url": "https://github.com/Homebrew/BrewUI"
+          "title": "Highball upstream repository and compatibility guidance",
+          "url": "https://github.com/gauthierpiarrette/highball"
         },
         {
           "kind": "primary",
-          "title": "BrewUI initial release",
-          "url": "https://github.com/Homebrew/BrewUI/releases/tag/v0.1.0"
+          "title": "Highball v0.1.0 initial prerelease",
+          "url": "https://github.com/gauthierpiarrette/highball/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew cask listing for Highball",
+          "url": "https://formulae.brew.sh/cask/highball"
         }
       ],
-      "upstreamSummary": "Homebrew's official GUI",
-      "version": "0.4.0"
+      "upstreamSummary": "Tool to run Windows games",
+      "version": "0.9.35"
+    },
+    "brew:cask:look": {
+      "agentSummary": "Look is a free, open-source keyboard launcher for macOS, Windows, and Linux, combining application search, clipboard history, commands, and configurable local workflows.",
+      "assessment": {
+        "alternatives": [
+          "Spotlight",
+          "Raycast",
+          "Alfred"
+        ],
+        "audiences": [
+          "Keyboard-oriented users who want a free, open-source launcher",
+          "People who prefer local workflows without an account"
+        ],
+        "caveats": [
+          "Look does not provide an extension store, so integrations rely on its shipped commands and configurable sources",
+          "Replacing Command-Space requires changing Spotlight's keyboard shortcut",
+          "The project is young and its interface and configuration may evolve quickly"
+        ],
+        "complements": [
+          "A preferred terminal and code editor configured in Look",
+          "Custom local sources for projects, SSH hosts, or other frequently used items"
+        ],
+        "prerequisites": [
+          "A supported macOS installation for this cask",
+          "A free global shortcut, commonly reassigned from Spotlight"
+        ],
+        "useCases": [
+          "Launching applications and finding files from a global shortcut",
+          "Searching clipboard history and running built-in commands",
+          "Opening selected locations in a configured editor, terminal, or file manager"
+        ]
+      },
+      "category": "productivity",
+      "displayName": "Look",
+      "docs": "https://github.com/kunkka19xx/look",
+      "homepage": "https://github.com/kunkka19xx/look",
+      "id": "brew:cask:look",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Alook",
+      "lastUpdatedAt": "2026-09-23T05:49:38Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/kunkka19xx/look",
+      "researchedAt": "2026-09-23T12:18:07Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Look upstream repository and user guide",
+          "url": "https://github.com/kunkka19xx/look"
+        },
+        {
+          "kind": "primary",
+          "title": "Look v0.1.0 initial release",
+          "url": "https://github.com/kunkka19xx/look/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew cask listing for Look",
+          "url": "https://formulae.brew.sh/cask/look"
+        }
+      ],
+      "upstreamSummary": "Keyboard-first local launcher",
+      "version": "0.7.1"
     },
     "brew:cask:monet": {
       "agentSummary": "Monet provides a native macOS control room for browsing, searching, launching, and supervising concurrent Claude Code and Codex sessions across projects.",
@@ -1573,6 +1591,67 @@
       ],
       "upstreamSummary": "AI coding agent desktop client",
       "version": "1.18.18"
+    },
+    "brew:cask:opendisk": {
+      "agentSummary": "OpenDisk visualizes macOS storage as an interactive sunburst, streams scan results, supports incremental rescans, and helps review large files before deliberate cleanup.",
+      "assessment": {
+        "alternatives": [
+          "DaisyDisk",
+          "GrandPerspective",
+          "Disk Inventory X"
+        ],
+        "audiences": [
+          "Mac users investigating disk-space pressure",
+          "Users seeking an open-source visual storage analyzer"
+        ],
+        "caveats": [
+          "Without Full Disk Access, macOS hides locations and reported totals will be incomplete",
+          "Deletion remains consequential even when the visualization is accurate; review collected files first",
+          "Published performance comparisons are maintainer-run benchmarks and may not generalize to every disk"
+        ],
+        "complements": [
+          "Time Machine or another backup before deleting important data",
+          "Finder for inspecting candidate files in context"
+        ],
+        "prerequisites": [
+          "A supported macOS installation",
+          "Full Disk Access for complete system-wide scan results"
+        ],
+        "useCases": [
+          "Exploring folder sizes through an interactive sunburst and sortable list",
+          "Searching a scanned volume for large files",
+          "Reviewing purgeable space and collecting selected items for deletion"
+        ]
+      },
+      "category": "system",
+      "displayName": "OpenDisk",
+      "docs": "https://github.com/137137137/OpenDisk#readme",
+      "homepage": "https://opendisk.app/",
+      "id": "brew:cask:opendisk",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopendisk",
+      "lastUpdatedAt": "2026-09-22T22:29:53Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/137137137/OpenDisk",
+      "researchedAt": "2026-09-23T12:18:07Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "OpenDisk upstream repository and technical documentation",
+          "url": "https://github.com/137137137/OpenDisk"
+        },
+        {
+          "kind": "primary",
+          "title": "OpenDisk v1.0.0 initial release",
+          "url": "https://github.com/137137137/OpenDisk/releases/tag/v1.0.0"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew cask listing for OpenDisk",
+          "url": "https://formulae.brew.sh/cask/opendisk"
+        }
+      ],
+      "upstreamSummary": "Disk space analyser",
+      "version": "1.2.1"
     },
     "brew:cask:recordly": {
       "agentSummary": "Recordly is an open-source cross-platform screen recorder and editor for demos, offering automatic zooms, cursor polish, timeline editing, webcam overlays, and extensible presentation effects.",
@@ -2456,54 +2535,6 @@
       "upstreamSummary": "Git LFS plugin that uploads and downloads using the Xet protocol",
       "version": "0.2.1"
     },
-    "brew:hister": {
-      "agentSummary": "Hister builds a self-hosted search index of visited pages and imported documents, helping researchers recover useful material while taking responsibility for capture rules and storage.",
-      "assessment": {
-        "alternatives": [
-          "Built-in browser history or a dedicated bookmark archive."
-        ],
-        "audiences": [
-          "Researchers and readers who repeatedly revisit online material."
-        ],
-        "caveats": [
-          "Captured pages can contain private information; configure indexing exclusions and access controls.",
-          "Self-hosting requires storage, backups, and maintenance."
-        ],
-        "complements": [
-          "Browser bookmarks and document collections."
-        ],
-        "prerequisites": [
-          "A running Hister server and browser extension for live capture."
-        ],
-        "useCases": [
-          "Search captured browsing content and imported documents."
-        ]
-      },
-      "category": "productivity",
-      "displayName": "hister",
-      "docs": "https://hister.org/docs",
-      "homepage": "https://hister.org/",
-      "id": "brew:hister",
-      "installURL": "pkgmgrmgr://install?package=brew%3Ahister",
-      "lastUpdatedAt": "2026-09-10T09:19:41Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/asciimoo/hister",
-      "researchedAt": "2026-09-11T10:01:00Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Hister upstream repository",
-          "url": "https://github.com/asciimoo/hister"
-        },
-        {
-          "kind": "primary",
-          "title": "Hister documentation",
-          "url": "https://hister.org/docs"
-        }
-      ],
-      "upstreamSummary": "Self-hosted search engine for your browsing history",
-      "version": "0.19.0"
-    },
     "brew:httpx2": {
       "agentSummary": "HTTPX2 is Pydantic’s next-generation Python HTTP client, aiming to provide an ergonomic asynchronous and synchronous request interface for applications that need modern transport behavior.",
       "assessment": {
@@ -3143,62 +3174,6 @@
       "upstreamSummary": "Fast Git hook manager written in Rust, drop-in alternative to pre-commit",
       "version": "0.4.14"
     },
-    "brew:pup": {
-      "agentSummary": "Pup exposes Datadog APIs through an agent-friendly Rust CLI, combining broad product coverage, structured output, multiple authentication methods, and multi-organization session support.",
-      "assessment": {
-        "alternatives": [
-          "Datadog web application for interactive administration",
-          "Official Datadog API clients for custom applications",
-          "Direct Datadog API requests in narrowly scoped scripts"
-        ],
-        "audiences": [
-          "Datadog operators who prefer terminal workflows",
-          "Developers building agent-assisted observability automation"
-        ],
-        "caveats": [
-          "Its command surface is tied specifically to Datadog products and permissions",
-          "File-based credential fallback stores sensitive values locally and needs careful host security",
-          "Automation can make operational changes, so least-privilege credentials and review remain important"
-        ],
-        "complements": [
-          "Datadog web application",
-          "Secret storage or an operating-system keychain",
-          "Reviewed runbooks for consequential changes"
-        ],
-        "prerequisites": [
-          "Access to a Datadog organization",
-          "OAuth authorization or suitable Datadog API and application credentials"
-        ],
-        "useCases": [
-          "Querying monitors, logs, metrics, and other Datadog products",
-          "Automating repeatable Datadog administration across organizations"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "pup",
-      "docs": "https://github.com/DataDog/pup#readme",
-      "homepage": "https://www.datadoghq.com",
-      "id": "brew:pup",
-      "installURL": "pkgmgrmgr://install?package=brew%3Apup",
-      "lastUpdatedAt": "2026-08-18T06:09:19Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/DataDog/pup",
-      "researchedAt": "2026-08-18T06:37:16Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Pup project repository and command overview",
-          "url": "https://github.com/DataDog/pup"
-        },
-        {
-          "kind": "primary",
-          "title": "Pup 1.0.0 release",
-          "url": "https://github.com/DataDog/pup/releases/tag/v1.0.0"
-        }
-      ],
-      "upstreamSummary": "CLI companion with 200+ commands across 33+ Datadog products",
-      "version": null
-    },
     "brew:qwen-code": {
       "agentSummary": "Qwen Code is an open-source terminal coding agent with interactive and headless workflows, multiple model-provider protocols, extensible tools, and optional sandboxed execution.",
       "assessment": {
@@ -3378,65 +3353,6 @@
       ],
       "upstreamSummary": "Fast TeX engine written in Rust",
       "version": "0.4.3"
-    },
-    "brew:rattler-build": {
-      "agentSummary": "Rattler-build creates and tests conda packages across Linux, macOS, and Windows, pairing a Rust implementation with recipes, variants, publishing, and reproducibility tooling.",
-      "assessment": {
-        "alternatives": [
-          "conda-build for established recipes and workflows",
-          "boa for a Mamba-based conda build workflow",
-          "Language-specific packaging systems when conda distribution is unnecessary"
-        ],
-        "audiences": [
-          "Conda package maintainers",
-          "Teams building scientific or cross-platform binary distributions",
-          "Conda-forge contributors evaluating newer recipe tooling"
-        ],
-        "caveats": [
-          "The project remains on a pre-1.0 release line, so interfaces may still evolve",
-          "Cross-platform native packages still require platform-specific toolchains and testing",
-          "Experimental recipe and package-format features should be evaluated before production adoption"
-        ],
-        "complements": [
-          "Pixi or another conda environment manager",
-          "Continuous-integration runners for target platforms",
-          "Conda channels such as conda-forge or prefix.dev"
-        ],
-        "prerequisites": [
-          "A conda-compatible package recipe",
-          "Build dependencies and compilers required by the packaged project",
-          "Credentials when publishing to a remote channel"
-        ],
-        "useCases": [
-          "Building and testing conda packages from recipes",
-          "Producing variant matrices for several platforms",
-          "Publishing packages with provenance attestations"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "rattler-build",
-      "docs": "https://rattler-build.prefix.dev/latest",
-      "homepage": "https://rattler.build",
-      "id": "brew:rattler-build",
-      "installURL": "pkgmgrmgr://install?package=brew%3Arattler-build",
-      "lastUpdatedAt": "2026-08-18T06:20:50Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/prefix-dev/rattler-build",
-      "researchedAt": "2026-08-18T06:37:16Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Rattler-build documentation",
-          "url": "https://rattler-build.prefix.dev/latest/"
-        },
-        {
-          "kind": "primary",
-          "title": "Rattler-build project repository",
-          "url": "https://github.com/prefix-dev/rattler-build"
-        }
-      ],
-      "upstreamSummary": "Universal conda package builder",
-      "version": null
     },
     "brew:resterm": {
       "agentSummary": "Resterm is a keyboard-driven terminal client for HTTP, GraphQL, gRPC, WebSocket, and SSE workflows, keeping reviewable requests in local text files without cloud synchronization.",
@@ -3981,7 +3897,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-22T16:40:44Z",
+    "generatedAt": "2026-09-23T12:16:45Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
