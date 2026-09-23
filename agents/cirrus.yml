@@ -5,7 +5,64 @@ docs:
   - https://eclecticlight.co/cirrus-bailiff
 config-file-location: null
 credentials-file-location: null
-history: null
+history:
+  adoption-history:
+    - >
+      Cirrus occupies a specialist role in the macOS utility ecosystem because macOS
+      offers few user-facing tools for diagnosing iCloud Drive synchronization. The
+      author distributes it as freeware alongside related Mac diagnostic utilities.
+    - >
+      Successive releases adapted its browser and log tools to changes in macOS and
+      iCloud Drive, including Catalina path changes, Apple Silicon, Sonoma logging, and
+      Tahoe interface conventions.
+  package-nerd-significance:
+    - >
+      Cirrus exposes iCloud Drive state that is otherwise difficult to inspect,
+      combining file download and eviction controls, a custom browser, a repeatable
+      synchronization test, and filtered unified-log access.
+    - >
+      For administrators and advanced Mac users, it provides a graphical complement to
+      Finder and the sparsely documented brctl command.
+  project-history:
+    - >
+      Howard Oakley introduced a test build of Cirrus in March 2018 to extract and
+      present iCloud-related unified-log entries and perform a controlled upload test.
+      Version 1.0 followed in May 2018 with browsing, eviction, status inspection, and
+      detailed reporting.
+    - >
+      Development continued as Apple changed iCloud Drive internals and macOS. Later
+      releases restored compatibility after path changes, added broader diagnostic
+      capabilities, became universal applications, and refreshed the interface for newer
+      macOS releases.
+  related-projects:
+    - Bailiff provides lightweight menu-bar control for downloading and evicting iCloud files.
+    - Mints incorporates an iCloud test related to Cirrus's diagnostic workflow.
+    - brctl is Apple's command-line CloudDocs management utility.
+  sources:
+    - https://eclecticlight.co/2018/03/29/test-and-check-icloud-with-cirrus/
+    - >
+      https://eclecticlight.co/2018/05/19/cirrus-version-1-0-release-the-icloud-tool-is-ready-for-general-use/
+    - https://eclecticlight.co/2020/01/21/testing-icloud-using-cirrus/
+    - https://eclecticlight.co/cirrus-bailiff/
+  summary:
+    - >
+      Cirrus is a macOS utility for inspecting and managing iCloud Drive files, testing
+      synchronization, and examining iCloud-related unified logs.
+  timeline:
+    - '2018-03-29: First public test build announced'
+    - '2018-05-19: Cirrus 1.0 released for general use'
+    - '2019-09-11: Version 1.8 restored full browser functionality with Catalina path changes'
+    - '2020-01-21: The developer documented its standardized iCloud upload test'
+    - '2025-06-27: Version 1.16 introduced an overhauled interface for macOS Tahoe'
+  usage:
+    - >
+      Users can inspect detailed iCloud file and folder state, download or evict local
+      copies, perform a controlled test upload, and review filtered iCloud-related log
+      activity.
+    - >
+      The log browser requires an administrator account. Cirrus's test creates a
+      temporary one-megabyte file in local preferences and iCloud Drive and provides a
+      cleanup command afterward.
 tags:
   - cloud-storage
   - file-inspector
@@ -24,14 +81,16 @@ provenance:
       Official Cirrus and Bailiff product, download, and usage page:
       https://eclecticlight.co/cirrus-bailiff/
   history-sources:
+    - https://eclecticlight.co/2018/03/29/test-and-check-icloud-with-cirrus/
     - >
-      The official product page documents releases and capabilities, but provides too
-      little reliable adoption history for a substantive package-history narrative:
-      https://eclecticlight.co/cirrus-bailiff/
+      https://eclecticlight.co/2018/05/19/cirrus-version-1-0-release-the-icloud-tool-is-ready-for-general-use/
+    - https://eclecticlight.co/2020/01/21/testing-icloud-using-cirrus/
+    - https://eclecticlight.co/cirrus-bailiff/
   repo-sources:
     - >
-      source_facts.repo is empty; the official product page identifies no official
-      public source-control repository: https://eclecticlight.co/cirrus-bailiff/
+      The developer's official product and release pages distribute application archives
+      but identify no official source-control repository:
+      https://eclecticlight.co/cirrus-bailiff/
   tags-sources:
     - 'Official product page: https://eclecticlight.co/cirrus-bailiff/'
     - source_facts.applications
@@ -43,6 +102,6 @@ category-path:
   - cloud-storage
 display-name-confidence: high
 docs-confidence: high
-history-confidence: low
-repo-confidence: high
+history-confidence: high
+repo-confidence: medium
 tags-confidence: high
