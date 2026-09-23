@@ -1,13 +1,13 @@
 id: cask:amethyst-nostr
 display-name: Amethyst
-homepage: https://github.com/vitorpamplona/amethyst
-repo: https://github.com/vitorpamplona/amethyst
+repo: null
 docs:
   - https://github.com/vitorpamplona/amethyst#readme
   - https://github.com/vitorpamplona/amethyst/blob/main/BUILDING.md
   - https://github.com/vitorpamplona/amethyst/blob/main/PRIVACY.md
 config-file-location:
-  linux: ~/.config/amethyst
+  linux:
+    - ~/.config/amethyst
   macos:
     - ~/Library/Preferences/com.apple.java.util.prefs.plist
     - ~/Library/Application Support/Amethyst
@@ -15,7 +15,8 @@ config-file-location:
     - '%APPDATA%\Amethyst'
     - '%LOCALAPPDATA%\Amethyst'
 credentials-file-location:
-  macos: ~/.amethyst
+  macos:
+    - ~/.amethyst
 history:
   adoption-history:
     - >
@@ -65,10 +66,6 @@ history:
       publish signed events such as notes, messages, reactions, media, and Lightning
       zaps. Users should treat public Nostr activity as potentially permanent and
       understand that relays can observe connection metadata.
-category: networking
-package-manager:
-  brew-cask: amethyst-nostr
-package-manager-url: https://formulae.brew.sh/cask/amethyst-nostr
 tags:
   - decentralized
   - kotlin
@@ -77,10 +74,31 @@ tags:
   - privacy
   - relay-client
   - social-network
-description: Nostr client
-applications:
-  - Amethyst.app
 provenance:
-  cask: amethyst-nostr
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README describes Amethyst as a Nostr client and documents its
+      relay-oriented protocol support.
+  display-name-sources:
+    - Official README heading and source_facts.applications.
+  docs-sources:
+    - Official repository README, build guide, and privacy documentation.
+  history-sources:
+    - 'Official README: https://github.com/vitorpamplona/amethyst#readme'
+    - 'Official build guide: https://github.com/vitorpamplona/amethyst/blob/main/BUILDING.md'
+    - 'Official desktop roadmap: https://github.com/vitorpamplona/amethyst/issues/1629'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped as required.
+  tags-sources:
+    - Official README supported-features list, architecture overview, and privacy section.
+category-confidence: high
+category-path:
+  - networking
+  - decentralized-social
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
