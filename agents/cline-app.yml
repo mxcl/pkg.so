@@ -1,7 +1,6 @@
 id: cask:cline-app
 display-name: Cline
-homepage: https://cline.bot/
-repo: https://github.com/cline/cline
+repo: null
 docs:
   - https://docs.cline.bot/cli-reference
   - https://docs.cline.bot/cline-overview
@@ -11,7 +10,8 @@ config-file-location:
     - <project>/.cline/mcp.json
     - <project>/.cline/agents.yaml
 credentials-file-location:
-  unix: ~/.cline/data/secrets.json
+  unix:
+    - ~/.cline/data/secrets.json
 history:
   adoption-history:
     - >
@@ -71,10 +71,6 @@ history:
       Cline can use hosted-provider API keys, Cline-hosted access, or local model
       servers. Its CLI also supports noninteractive JSON output for scripts and CI
       workflows.
-category: developer-tools
-package-manager:
-  brew-cask: cline-app
-package-manager-url: https://formulae.brew.sh/cask/cline-app
 tags:
   - ai-coding-agent
   - automation
@@ -84,10 +80,37 @@ tags:
   - developer-agent
   - llm
   - mcp
-description: AI coding agent
-applications:
-  - Cline.app
 provenance:
-  cask: cline-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official overview: https://docs.cline.bot/cline-overview'
+    - source_facts.description identifies Cline as an AI coding agent.
+  display-name-sources:
+    - Official documentation and repository use the name Cline.
+    - source_facts.applications lists Cline.app.
+  docs-sources:
+    - Cline's dedicated official documentation domain.
+    - >
+      The official CLI reference documents configuration, storage, commands, and
+      environment variables.
+  history-sources:
+    - https://docs.cline.bot/cline-overview
+    - https://github.com/cline/cline
+    - https://github.com/cline/cline/blob/main/.clinerules/storage.md
+    - https://github.com/cline/cline/blob/main/README.md
+    - https://github.com/cline/cline/blob/main/docs/cli/cli-reference.mdx
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/cline/cline; per the task
+      rule, repo is intentionally returned as null without re-evaluation.
+  tags-sources:
+    - Official Cline overview and repository README.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - ai-coding-agents
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

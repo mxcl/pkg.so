@@ -1,11 +1,11 @@
 id: cask:highball
 display-name: Highball
-homepage: https://github.com/gauthierpiarrette/highball
-repo: https://github.com/gauthierpiarrette/highball
+repo: null
 docs:
   - https://github.com/gauthierpiarrette/highball#readme
 config-file-location:
-  macos: ~/Library/Application Support/Highball/
+  macos:
+    - ~/Library/Application Support/Highball/
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,10 +63,6 @@ history:
     - >
       The application stores its engines, environments, settings, and other runtime data
       under `~/Library/Application Support/Highball/`.
-category: games
-package-manager:
-  brew-cask: highball
-package-manager-url: https://formulae.brew.sh/cask/highball
 tags:
   - apple-silicon
   - d3dmetal
@@ -77,10 +73,34 @@ tags:
   - steam
   - windows-games
   - wine
-description: Tool to run Windows games
-applications:
-  - Highball.app
 provenance:
-  cask: highball
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official repository README: https://github.com/gauthierpiarrette/highball'
+    - source_facts.description identifies it as a tool for running Windows games.
+  display-name-sources:
+    - Official repository title.
+    - source_facts.applications lists Highball.app.
+  docs-sources:
+    - >
+      The official repository README is Highball's primary installation, operation,
+      architecture, security, and troubleshooting surface.
+  history-sources:
+    - https://github.com/gauthierpiarrette/highball
+    - https://github.com/gauthierpiarrette/highball/blob/main/CONTRIBUTING.md
+    - https://github.com/gauthierpiarrette/highball/security
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/gauthierpiarrette/highball;
+      per the task rule, repo is intentionally returned as null without re-evaluation.
+  tags-sources:
+    - Official Highball repository README and repository topics.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - windows-compatibility
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

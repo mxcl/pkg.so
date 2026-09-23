@@ -1,13 +1,13 @@
 id: cask:hol-guard
 display-name: HOL Guard
-homepage: https://hol.org/guard
 repo: https://github.com/hashgraph-online/hol-guard
 docs:
   - https://github.com/hashgraph-online/hol-guard/blob/main/docs/guard/get-started.md
   - https://hol.org/guard/harnesses
   - https://hol.org/guard/install
 config-file-location:
-  unix: <project>/.hol-guard.toml
+  unix:
+    - <project>/.hol-guard.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,10 +71,6 @@ history:
     - >
       Project-specific policy overrides can be placed in `<project>/.hol-guard.toml`.
       Local policy decisions and evidence remain effective without a cloud connection.
-category: security
-package-manager:
-  brew-cask: hol-guard
-package-manager-url: https://formulae.brew.sh/cask/hol-guard
 tags:
   - ai-agent-security
   - developer-security
@@ -84,10 +80,39 @@ tags:
   - runtime-firewall
   - secret-protection
   - supply-chain-security
-description: Local-first runtime firewall for AI coding agents
-applications:
-  - HOL Guard.app
 provenance:
-  cask: hol-guard
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official product page: https://hol.org/guard'
+    - source_facts.description identifies it as a runtime firewall for AI coding agents.
+  display-name-sources:
+    - Official product page and repository use HOL Guard.
+    - source_facts.applications lists HOL Guard.app.
+  docs-sources:
+    - >
+      Official installation and harness-compatibility pages cover desktop setup and
+      supported coding agents.
+    - >
+      The official repository's Guard Get Started guide is the primary detailed
+      operating and policy reference.
+  history-sources:
+    - https://github.com/hashgraph-online/hol-guard
+    - https://github.com/hashgraph-online/hol-guard/blob/main/docs/guard/get-started.md
+    - https://hol.org/guard
+    - https://hol.org/guard/releases
+  repo-sources:
+    - >
+      The official HOL Guard product page links directly to the Hashgraph Online
+      hol-guard repository as its source.
+    - source_facts.repo is empty.
+  tags-sources:
+    - Official HOL Guard product page and repository README.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - security
+  - ai-agent-security
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,15 +1,17 @@
 id: cask:deviceshelf
 display-name: DeviceShelf
-homepage: https://deviceshelf.app/
 repo: null
 docs:
   - https://deviceshelf.app/en/server
   - https://deviceshelf.app/guide
   - https://deviceshelf.app/linux
 config-file-location:
-  linux: ~/.config/DeviceShelf
-  macos: ~/Library/Application Support/DeviceShelf
-  windows: '%AppData%\DeviceShelf'
+  linux:
+    - ~/.config/DeviceShelf
+  macos:
+    - ~/Library/Application Support/DeviceShelf
+  windows:
+    - '%AppData%\DeviceShelf'
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,10 +72,6 @@ history:
       For continuous operation, the server edition can run through Docker or native
       service packages and provide a dashboard, reports, integrations, and automation
       APIs.
-category: networking
-package-manager:
-  brew-cask: deviceshelf
-package-manager-url: https://formulae.brew.sh/cask/deviceshelf
 tags:
   - device-discovery
   - home-network
@@ -83,10 +81,39 @@ tags:
   - network-scanner
   - port-scanner
   - security-audit
-description: Scanner for devices, open ports and security risks on the local network
-applications:
-  - DeviceShelf.app
 provenance:
-  cask: deviceshelf
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official site: https://deviceshelf.app/en/'
+    - >
+      source_facts.description identifies it as a local-network device, port, and
+      security scanner.
+  display-name-sources:
+    - Official site consistently uses DeviceShelf.
+    - source_facts.applications lists DeviceShelf.app.
+  docs-sources:
+    - DeviceShelf's official installation and setup guide.
+    - >
+      Official server-edition and Linux guides cover the product's additional deployment
+      modes.
+  history-sources:
+    - https://deviceshelf.app/blog/category/release-history/
+    - https://deviceshelf.app/en/
+    - https://deviceshelf.app/en/server
+    - https://deviceshelf.app/guide
+  repo-sources:
+    - >
+      The official DeviceShelf product, guide, and release pages do not identify an
+      official public source-code repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - Official DeviceShelf product and setup pages.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - network-monitoring
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
