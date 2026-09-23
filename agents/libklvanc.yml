@@ -1,7 +1,6 @@
 id: brew:libklvanc
 display-name: libklvanc
-homepage: https://github.com/stoth68000/libklvanc
-repo: https://github.com/stoth68000/libklvanc
+repo: null
 docs:
   - https://github.com/stoth68000/libklvanc#readme
 config-file-location: null
@@ -50,11 +49,6 @@ history:
       correctly framed VANC for SDI output, including checksums and format-specific edge
       cases. The repository includes sample tools and tests; API documentation is
       generated locally with Doxygen.
-category: media
-package-manager:
-  brew: libklvanc
-package-manager-url: https://formulae.brew.sh/formula/libklvanc
-license: LGPL-2.1-only
 tags:
   - broadcast-video
   - c-library
@@ -64,20 +58,38 @@ tags:
   - sdi
   - smpte
   - vanc
-description: VANC Processing Framework
-executables:
-  - klvanc_afd
-  - klvanc_eia708
-  - klvanc_genscte104
-  - klvanc_gensmpte2038
-  - klvanc_parse
-  - klvanc_scte104
-  - klvanc_sdp
-  - klvanc_smpte12_2
-  - klvanc_smpte2038
-  - klvanc_test_api
-  - klvanc_util
 provenance:
-  formula: libklvanc
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - 'Official README: https://github.com/stoth68000/libklvanc'
+    - source_facts.description
+  display-name-sources:
+    - 'Official repository name: https://github.com/stoth68000/libklvanc'
+    - source_facts.name
+  docs-sources:
+    - >
+      The official README is the primary published documentation and explains how to
+      generate local Doxygen API documentation.
+  history-sources:
+    - 'Input package metadata: source_facts.package-manager'
+    - >
+      Official FFmpeg source:
+      https://github.com/FFmpeg/FFmpeg/blob/master/libavdevice/decklink_enc.cpp
+    - 'Official project README: https://github.com/stoth68000/libklvanc#readme'
+    - 'Official related project: https://github.com/stoth68000/klvanc-tools'
+  repo-sources:
+    - >
+      source_facts.repo is already populated, so repository determination was
+      intentionally skipped as required.
+  tags-sources:
+    - 'Official project README: https://github.com/stoth68000/libklvanc#readme'
+    - source_facts.executables
+category-confidence: high
+category-path:
+  - media
+  - broadcast-video
+  - ancillary-data
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
