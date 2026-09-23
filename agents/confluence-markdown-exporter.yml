@@ -1,23 +1,28 @@
 id: brew:confluence-markdown-exporter
 display-name: Confluence Markdown Exporter
-homepage: https://github.com/Spenhouet/confluence-markdown-exporter
 repo: https://github.com/Spenhouet/confluence-markdown-exporter
 docs:
   - https://spenhouet.com/confluence-markdown-exporter
 config-file-location:
-  linux: >
-    $CME_CONFIG_PATH (when set; otherwise use `cme config path` to print the
-    platform-specific path)
-  macos: >
-    $CME_CONFIG_PATH (when set; otherwise use `cme config path` to print the
-    platform-specific path)
-  windows: >
-    %CME_CONFIG_PATH% (when set; otherwise use `cme config path` to print the
-    platform-specific path)
+  linux:
+    - >
+      $CME_CONFIG_PATH (when set; otherwise use `cme config path` to print the
+      platform-specific path)
+  macos:
+    - >
+      $CME_CONFIG_PATH (when set; otherwise use `cme config path` to print the
+      platform-specific path)
+  windows:
+    - >
+      %CME_CONFIG_PATH% (when set; otherwise use `cme config path` to print the
+      platform-specific path)
 credentials-file-location:
-  linux: $CME_CONFIG_PATH (when set; otherwise the path printed by `cme config path`)
-  macos: $CME_CONFIG_PATH (when set; otherwise the path printed by `cme config path`)
-  windows: '%CME_CONFIG_PATH% (when set; otherwise the path printed by `cme config path`)'
+  linux:
+    - $CME_CONFIG_PATH (when set; otherwise the path printed by `cme config path`)
+  macos:
+    - $CME_CONFIG_PATH (when set; otherwise the path printed by `cme config path`)
+  windows:
+    - '%CME_CONFIG_PATH% (when set; otherwise the path printed by `cme config path`)'
 history:
   adoption-history:
     - >
@@ -80,11 +85,6 @@ history:
     - >
       Exports default to the configured output directory and can preserve page
       hierarchy, attachments, links, and target-specific conventions.
-category: productivity
-package-manager:
-  brew: confluence-markdown-exporter
-package-manager-url: https://formulae.brew.sh/formula/confluence-markdown-exporter
-license: MIT
 tags:
   - backup
   - cli
@@ -94,11 +94,39 @@ tags:
   - export
   - markdown
   - migration
-description: Export Atlassian Confluence pages as Markdown files
-executables:
-  - cme
-  - confluence-markdown-exporter
 provenance:
-  formula: confluence-markdown-exporter
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - 'Official documentation: https://spenhouet.com/confluence-markdown-exporter/'
+    - source_facts.description identifies Confluence-to-Markdown export.
+  display-name-sources:
+    - 'Official documentation title: https://spenhouet.com/confluence-markdown-exporter/'
+    - source_facts.name
+  docs-sources:
+    - >
+      Dedicated official documentation site linked from the repository:
+      https://spenhouet.com/confluence-markdown-exporter/
+  history-sources:
+    - >
+      Official configuration documentation:
+      https://spenhouet.com/confluence-markdown-exporter/configuration/
+    - 'Official documentation: https://spenhouet.com/confluence-markdown-exporter/'
+    - 'Official repository: https://github.com/Spenhouet/confluence-markdown-exporter'
+  repo-sources:
+    - >
+      The dedicated official documentation links to
+      https://github.com/Spenhouet/confluence-markdown-exporter.
+    - source_facts.homepage points to the official GitHub project.
+    - source_facts.repo is empty.
+  tags-sources:
+    - 'Official documentation overview: https://spenhouet.com/confluence-markdown-exporter/'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - documentation
+  - content-export
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

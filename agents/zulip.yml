@@ -1,14 +1,15 @@
 id: cask:zulip
 display-name: Zulip
-homepage: https://zulip.com/
-repo: https://github.com/zulip/zulip-desktop
+repo: null
 docs:
   - https://docs.zulip.com/
   - https://github.com/zulip/zulip-desktop#readme
   - https://zulip.com/help
 config-file-location:
-  unix: /etc/zulip-desktop-config/global_config.json
-  windows: C:\Program Files\Zulip-Desktop-Config\global_config.json
+  unix:
+    - /etc/zulip-desktop-config/global_config.json
+  windows:
+    - C:\Program Files\Zulip-Desktop-Config\global_config.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -83,10 +84,6 @@ history:
       The official desktop documentation does not identify a separate user-managed
       credentials file; authentication sessions are managed internally by the
       application.
-category: productivity
-package-manager:
-  brew-cask: zulip
-package-manager-url: https://formulae.brew.sh/cask/zulip
 tags:
   - collaboration
   - desktop-app
@@ -96,10 +93,36 @@ tags:
   - self-hosted
   - team-chat
   - topic-threading
-description: Desktop client for the Zulip team chat platform
-applications:
-  - Zulip.app
 provenance:
-  cask: zulip
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official Zulip documentation: https://docs.zulip.com/'
+    - source_facts.description identifies Zulip as a team-chat platform.
+  display-name-sources:
+    - 'Official Zulip site: https://zulip.com/'
+    - current_curation.display-name
+  docs-sources:
+    - 'Official desktop-client repository: https://github.com/zulip/zulip-desktop'
+    - 'Official project documentation: https://docs.zulip.com/'
+    - 'Official user help center: https://zulip.com/help/'
+  history-sources:
+    - 'Official desktop-client repository: https://github.com/zulip/zulip-desktop'
+    - 'Official open-source overview: https://docs.zulip.com/for/open-source/'
+    - 'Official project history: https://docs.zulip.com/history/'
+  repo-sources:
+    - >
+      source_facts.repo already contains an official repository URL, so repo is null as
+      required.
+  tags-sources:
+    - 'Official desktop-client README: https://github.com/zulip/zulip-desktop#readme'
+    - 'Official open-source overview: https://docs.zulip.com/for/open-source/'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - communication
+  - team-chat
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

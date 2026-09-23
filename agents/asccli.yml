@@ -1,12 +1,12 @@
 id: brew:asccli
 display-name: asc-cli
-homepage: https://github.com/tddworks/asc-cli
-repo: https://github.com/tddworks/asc-cli
+repo: null
 docs:
   - https://github.com/tddworks/asc-cli/tree/main/docs
   - https://github.com/tddworks/asc-cli#readme
 config-file-location:
-  unix: <project>/.asc/project.json
+  unix:
+    - <project>/.asc/project.json
 credentials-file-location:
   unix:
     - ~/.asc/credentials.json
@@ -65,12 +65,6 @@ history:
       .asc/project.json. Persistent App Store Connect credentials are stored in
       ~/.asc/credentials.json; optional iris authentication stores a session under
       ~/.asc/iris/.
-category: developer-tools
-package-manager:
-  brew: asccli
-  nix: asccli
-package-manager-url: https://formulae.brew.sh/formula/asccli
-license: MIT
 tags:
   - app-store-connect
   - apple
@@ -80,10 +74,37 @@ tags:
   - release-automation
   - swift
   - testflight
-description: App Store Connect CLI to manage apps, versions, and screenshots
-executables:
-  - asccli
 provenance:
-  formula: asccli
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - 'Official repository README: https://github.com/tddworks/asc-cli'
+    - source_facts.description identifies an App Store Connect management CLI.
+  display-name-sources:
+    - 'Official repository title: https://github.com/tddworks/asc-cli'
+    - source_facts.name
+  docs-sources:
+    - >
+      Official repository README and documentation directory:
+      https://github.com/tddworks/asc-cli
+  history-sources:
+    - >
+      Official authentication documentation:
+      https://github.com/tddworks/asc-cli/blob/main/docs/features/asc-auth.md
+    - 'Official changelog: https://github.com/tddworks/asc-cli/blob/main/CHANGELOG.md'
+    - 'Official repository and README: https://github.com/tddworks/asc-cli'
+  repo-sources:
+    - >
+      source_facts.repo already contains an official repository URL, so repo is null as
+      required.
+  tags-sources:
+    - 'Official repository README: https://github.com/tddworks/asc-cli'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - mobile-development
+  - app-store-connect
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
