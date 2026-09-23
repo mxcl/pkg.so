@@ -4,8 +4,15 @@ repo: null
 docs:
   - https://antigravity.google/docs/ide-overview?app=antigravity
   - https://antigravity.google/docs?app=antigravity
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.gemini/config/mcp_config.json
+    - .agents/mcp_config.json
+    - ~/.gemini/config/hooks.json
+    - .agents/hooks.json
+credentials-file-location:
+  unix:
+    - ~/.gemini/antigravity/mcp_oauth_tokens.json
 history:
   adoption-history:
     - >
@@ -80,9 +87,10 @@ provenance:
     - https://antigravity.google/product/antigravity-ide
   repo-sources:
     - >
-      https://antigravity.google/product/antigravity-ide and official documentation
-      expose the product and downloads but no official public source-control repository
-      for the IDE.
+      Google's official IDE product, documentation, download, and changelog surfaces do
+      not disclose an official source-control repository for the proprietary
+      application.
+    - source_facts.repo is empty.
   tags-sources:
     - >
       https://antigravity.google/docs/ide-overview?app=antigravity — documents editor,
@@ -98,5 +106,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: medium
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high
