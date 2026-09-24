@@ -5,7 +5,60 @@ docs:
   - https://fsmonitor.com/
 config-file-location: null
 credentials-file-location: null
-history: null
+history:
+  adoption-history:
+    - >
+      FSMonitor is distributed as a native macOS application and through the Homebrew
+      Cask recorded in source_facts.package-manager. Its audience includes developers,
+      administrators, QA engineers, support teams, security-minded users, and power
+      users investigating filesystem activity.
+  package-nerd-significance:
+    - >
+      FSMonitor helps explain the otherwise hidden files, caches, databases, and helper
+      components created by applications and installers. Version 2 also added the fsmon
+      command-line tool, making captured filesystem events useful in shell pipelines,
+      logs, and automated investigations.
+  project-history:
+    - >
+      FSMonitor was established as a graphical macOS utility for recording filesystem
+      creations, deletions, content changes, renames, and metadata changes.
+    - >
+      Version 1.1 in 2019 adopted a new event-gathering mechanism with process
+      attribution, saved recording documents, reusable filters, and formal
+      documentation. Version 2.0 in 2026 modernized the interface and architecture,
+      added native Apple silicon support, introduced pruning of transient events, and
+      added a command-line client.
+  related-projects:
+    - macOS filesystem event facilities
+    - fsmon command-line tool
+  sources:
+    - 'Official changelog: https://fsmonitor.com/releasenotes.html'
+    - 'Official documentation: https://fsmonitor.com/Documentation/v2/'
+    - 'Official product site: https://fsmonitor.com/'
+    - source_facts.package-manager
+  summary:
+    - >
+      FSMonitor is a commercial macOS diagnostic utility that records and inspects
+      filesystem changes in real time.
+  timeline:
+    - '2017: The official changelog records the 1.0.7 maintenance release.'
+    - >
+      2019: Version 1.1 added process attribution, saved recording documents, reusable
+      filters, and official documentation.
+    - '2020: Version 1.2 improved long-running filtered capture and event exports.'
+    - >
+      2026: Version 2.0 added a command-line tool, native Apple silicon support,
+      pruning, and improved large-recording performance.
+  usage:
+    - >
+      Users start a recording, reproduce the activity under investigation, and inspect
+      changed paths in tree, list, or text views. Events can be filtered by path,
+      category, process identifier, process name, or executable path, then saved or
+      exported as JSON or plain text.
+    - >
+      The fsmon command-line tool streams events for automation and logging. FSMonitor
+      installs a privileged helper after an administrator-authorized prompt; the
+      official documentation does not describe a user-managed credentials file.
 tags:
   - diagnostics
   - file-events
@@ -28,14 +81,14 @@ provenance:
       The official homepage is the best identified official documentation surface:
       https://fsmonitor.com/
   history-sources:
-    - >
-      The official homepage and supplied metadata establish the product's purpose, but
-      reliable official historical and adoption material is too thin for a package
-      history.
+    - 'Official changelog: https://fsmonitor.com/releasenotes.html'
+    - 'Official documentation: https://fsmonitor.com/Documentation/v2/'
+    - 'Official product site: https://fsmonitor.com/'
+    - source_facts.package-manager
   repo-sources:
     - >
-      No official public source-code repository is identified by the official homepage;
-      source_facts.repo is empty.
+      The official product, documentation, download, and release-note surfaces do not
+      identify an official public source-control repository.
   tags-sources:
     - 'Official product homepage: https://fsmonitor.com/'
     - source_facts.description
@@ -46,6 +99,6 @@ category-path:
   - monitoring
 display-name-confidence: high
 docs-confidence: medium
-history-confidence: low
-repo-confidence: high
+history-confidence: high
+repo-confidence: medium
 tags-confidence: high
