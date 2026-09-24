@@ -4946,6 +4946,7 @@ def html_doc(
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{stylesheet_href}">
 {GOOGLE_TAG}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5218328608281545" crossorigin="anonymous"></script>
 {extra_head}
   <script type="application/ld+json">
 {schema_json}

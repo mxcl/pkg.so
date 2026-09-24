@@ -155,6 +155,7 @@ class PackagePageRenderingTests(unittest.TestCase):
     def test_rendered_html_contains_top_summary_support_and_agent_risk(self):
         html = pkg_pages.render_package_page(sshfs_page(), {"generated_at": "2026-06-12T00:00:00Z"})
 
+        self.assertEqual(html.split("</head>")[0].count("adsbygoogle.js?client=ca-pub-5218328608281545"), 1)
         self.assertIn('class="summary-card"', html)
         self.assertIn('id="support-title"', html)
         self.assertIn("Agent Risk Assessment", html)

@@ -486,6 +486,7 @@ fn etag_for_bytes(content: &[u8]) -> String {
 fn static_asset_response(path: &str) -> Option<StoredResponse> {
     let (_locale, canonical_path) = canonical_pkg_route(path);
     let (content_type, content) = match canonical_path.as_str() {
+        "/pkg/ads.txt" => ("text/plain; charset=utf-8", "google.com, pub-5218328608281545, DIRECT, f08c47fec0942fa0\n"),
         "/pkg/styles.css" => ("text/css; charset=utf-8", PKG_CSS),
         "/pkg/search.js" => ("application/javascript; charset=utf-8", SEARCH_JS),
         _ => return None,
@@ -1882,6 +1883,7 @@ fn html_doc(
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{stylesheet}">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5218328608281545" crossorigin="anonymous"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CMPY7XG4QH"></script>
   <script>
@@ -7046,6 +7048,20 @@ mod tests {
                 .expect("utf-8 markdown")
                 .contains("## Install")
         );
+    }
+
+    #[test]
+    fn adsense_covers_page_types_and_authorizes_publisher() {
+        let db = test_database();
+        for path in ["/", "/de/", "/brew/awscli/", "/fr/brew/awscli/", "/cloud/", "/feed/"] {
+            let response = dynamic_response_for_path(db.path(), path).unwrap().unwrap();
+            let html = String::from_utf8(response.body).unwrap();
+            let head = html.split("</head>").next().unwrap();
+            assert_eq!(head.matches("adsbygoogle.js?client=ca-pub-5218328608281545").count(), 1, "{path}");
+        }
+        let ads = static_asset_response("/ads.txt").unwrap();
+        assert_eq!(ads.content_type, "text/plain; charset=utf-8");
+        assert_eq!(String::from_utf8(ads.body).unwrap(), "google.com, pub-5218328608281545, DIRECT, f08c47fec0942fa0\n");
     }
 
     #[test]
