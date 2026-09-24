@@ -4880,6 +4880,7 @@ def footer(root: str, locale: dict[str, Any] | None = None) -> str:
     <a href="https://mxcl.dev">a mxcl project</a>
     <a href="{root}sitemap.xml">Sitemap</a>
     <a href="{root}robots.txt">Robots</a>
+    <a href="/privacy/">Privacy</a>
     <a href="https://github.com/mxcl/pkg.so">Source</a>
   </div>
 </footer>

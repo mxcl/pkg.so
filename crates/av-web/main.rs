@@ -692,6 +692,16 @@ struct HubRow {
 }
 
 fn dynamic_response_for_path(db_path: &Path, path: &str) -> Result<Option<StoredResponse>, String> {
+    if path == "/privacy/" {
+        let connection = open_database(db_path)?;
+        let locale = &LOCALES[0];
+        let body = format!("{}{}{}", site_nav(locale), include_str!("privacy.html"), site_footer(locale));
+        return Ok(Some(dynamic_stored_response(
+            &connection, path, "text/html; charset=utf-8",
+            html_doc(locale, "Privacy | pkg.so", "How pkg.so uses analytics, advertising, and cookies.",
+                "https://pkg.so/privacy/", "index,follow", "", "{}", &body, ""),
+        )?));
+    }
     if path == "/robots.txt" {
         let connection = open_database(db_path)?;
         return Ok(Some(dynamic_stored_response(
@@ -1911,7 +1921,7 @@ fn html_doc(
         robots = html_escape(robots),
         canonical = html_escape(canonical),
         site_name = SITE_NAME,
-        hreflang = html_hreflang_links(canonical),
+        hreflang = if canonical == "https://pkg.so/privacy/" { String::new() } else { html_hreflang_links(canonical) },
         stylesheet = html_escape(&format!(
             "{}?v={}",
             locale_path("/pkg/styles.css", locale),
@@ -1938,7 +1948,7 @@ fn site_nav(locale: &Locale) -> String {
 
 fn site_footer(locale: &Locale) -> String {
     format!(
-        r#"<footer class="site-footer"><p>{}</p><div class="footer-links"><a href="https://mxcl.dev">a mxcl project</a><a href="/sitemap.xml">Sitemap</a><a href="/robots.txt">Robots</a><a href="https://github.com/mxcl/pkg.so">Source</a></div></footer>"#,
+        r#"<footer class="site-footer"><p>{}</p><div class="footer-links"><a href="https://mxcl.dev">a mxcl project</a><a href="/sitemap.xml">Sitemap</a><a href="/robots.txt">Robots</a><a href="/privacy/">Privacy</a><a href="https://github.com/mxcl/pkg.so">Source</a></div></footer>"#,
         html_escape(&tx(
             locale,
             "footer",
@@ -7053,7 +7063,7 @@ mod tests {
     #[test]
     fn adsense_covers_page_types_and_authorizes_publisher() {
         let db = test_database();
-        for path in ["/", "/de/", "/brew/awscli/", "/fr/brew/awscli/", "/cloud/", "/feed/"] {
+        for path in ["/", "/de/", "/brew/awscli/", "/fr/brew/awscli/", "/cloud/", "/feed/", "/privacy/"] {
             let response = dynamic_response_for_path(db.path(), path).unwrap().unwrap();
             let html = String::from_utf8(response.body).unwrap();
             let head = html.split("</head>").next().unwrap();
