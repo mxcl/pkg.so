@@ -69,9 +69,6 @@
     },
     {
       "candidatePackageIDs": [
-        "brew:qwen-code",
-        "brew:alive2",
-        "brew:cask:monet",
         "brew:workmux",
         "brew:bashka",
         "brew:termaid",
@@ -92,9 +89,15 @@
         "brew:cask:zentty",
         "brew:cask:look",
         "brew:cask:opendisk",
-        "brew:cask:highball"
+        "brew:cask:highball",
+        "brew:ratex",
+        "brew:cask:hol-guard",
+        "brew:sofka"
       ],
       "fallbackPackageIDs": [
+        "brew:sofka",
+        "brew:ratex",
+        "brew:cask:hol-guard",
         "brew:cask:opendisk",
         "brew:cask:look",
         "brew:cask:highball",
@@ -115,10 +118,7 @@
         "brew:rumdl",
         "brew:ketch",
         "brew:cask:openchrom",
-        "brew:termaid",
-        "brew:cask:monet",
-        "brew:qwen-code",
-        "brew:alive2"
+        "brew:termaid"
       ],
       "id": "for-you",
       "title": "For You",
@@ -127,18 +127,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:ratex",
+        "brew:cask:hol-guard",
+        "brew:sofka",
         "brew:cask:look",
         "brew:cask:opendisk",
         "brew:cask:highball",
         "brew:cask:tapmap",
         "brew:ccmux",
-        "brew:ratex",
         "brew:workmux",
         "brew:bashka",
         "brew:cask:recordly",
-        "brew:cask:telari",
-        "brew:cask:muse",
-        "brew:termaid"
+        "brew:cask:telari"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -146,18 +146,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:ratex",
+        "brew:cask:hol-guard",
+        "brew:sofka",
         "brew:cask:look",
         "brew:cask:opendisk",
         "brew:cask:highball",
         "brew:cask:tapmap",
         "brew:cask:zentty",
         "brew:ccmux",
-        "brew:ratex",
         "brew:workmux",
         "brew:bashka",
-        "brew:cask:recordly",
-        "brew:cask:telari",
-        "brew:metview"
+        "brew:cask:recordly"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -797,73 +797,8 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-23T12:18:07Z",
+  "generatedAt": "2026-09-24T10:23:50Z",
   "packages": {
-    "brew:alive2": {
-      "agentSummary": "Alive2 checks whether LLVM IR transformations preserve behavior, offering standalone and compiler-integrated translation validation while explicitly bounding unsupported interprocedural cases and solver limits.",
-      "assessment": {
-        "alternatives": [
-          "Alive for specifying and verifying peephole optimizations in its dedicated language",
-          "LLVM differential and regression testing for broader behavioral checks",
-          "Interactive theorem provers when a fully machine-checked proof is required"
-        ],
-        "audiences": [
-          "LLVM optimization authors and reviewers",
-          "Compiler researchers studying semantics, undefined behavior, or translation validation",
-          "Toolchain teams investigating suspected optimizer miscompilations"
-        ],
-        "caveats": [
-          "Interprocedural transformations are unsupported and can yield spurious counterexamples",
-          "Unsupported LLVM features, including some address-space cases, can hide unsound transformations",
-          "SMT solving may time out or become expensive on difficult transformations",
-          "Translation-validation integrations track current LLVM closely and require a specialized LLVM build"
-        ],
-        "complements": [
-          "LLVM lit regression tests",
-          "Clang and opt transformation pipelines",
-          "Compiler Explorer for quickly experimenting with small IR examples"
-        ],
-        "prerequisites": [
-          "Familiarity with LLVM IR and compiler optimization semantics",
-          "Recent CMake, a C++ compiler, re2c, and the Z3 SMT solver",
-          "A compatible LLVM build with RTTI and exceptions for translation-validation integrations"
-        ],
-        "useCases": [
-          "Proving refinement between source and optimized LLVM IR fragments",
-          "Checking LLVM transformation tests for unsound results",
-          "Validating IR-level transformations during Clang or opt runs"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "alive2",
-      "docs": "https://alive2.llvm.org/ce",
-      "homepage": "https://github.com/AliveToolkit/alive2",
-      "id": "brew:alive2",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aalive2",
-      "lastUpdatedAt": "2026-08-18T03:16:47Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/AliveToolkit/alive2",
-      "researchedAt": "2026-08-18T06:39:33Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Alive2 repository and usage documentation",
-          "url": "https://github.com/AliveToolkit/alive2"
-        },
-        {
-          "kind": "independent",
-          "title": "LLVM Project Blog: Byte Type verification with Alive2",
-          "url": "https://blog.llvm.org/posts/2025-08-29-gsoc-byte-type/"
-        },
-        {
-          "kind": "independent",
-          "title": "Cornell CS 6120: Provably Correct Peephole Optimizations with Alive",
-          "url": "https://www.cs.cornell.edu/courses/cs6120/2023fa/blog/automatic-verification/"
-        }
-      ],
-      "upstreamSummary": "Automatic verification of LLVM optimizations",
-      "version": null
-    },
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
       "assessment": {
@@ -1231,6 +1166,59 @@
       "upstreamSummary": "Tool to run Windows games",
       "version": "0.9.35"
     },
+    "brew:cask:hol-guard": {
+      "agentSummary": "HOL Guard adds local runtime policy and scanning around AI coding agents, intercepting risky tools, secrets, plugins, skills, and MCP activity before execution.",
+      "assessment": {
+        "alternatives": [
+          "Agent-native approval controls and manual allowlists",
+          "Container or virtual-machine isolation around agent sessions"
+        ],
+        "audiences": [
+          "Security-conscious users of AI coding agents",
+          "Platform and security teams defining agent guardrails"
+        ],
+        "caveats": [
+          "Coverage and failure behavior vary with the events exposed by each agent integration",
+          "Policy checks can produce false positives or miss risks and do not replace isolation or human review"
+        ],
+        "complements": [
+          "Secret scanners and dependency auditing",
+          "Sandboxing, least-privilege credentials, and code review"
+        ],
+        "prerequisites": [
+          "Python 3.10 or newer and pipx",
+          "A supported agent integration with compatible enforcement hooks"
+        ],
+        "useCases": [
+          "Review risky shell, file, package, and MCP actions before execution",
+          "Inventory and scan agent plugins, skills, and configuration"
+        ]
+      },
+      "category": "security",
+      "displayName": "HOL Guard",
+      "docs": "https://github.com/hashgraph-online/hol-guard/blob/main/docs/guard/get-started.md",
+      "homepage": "https://hol.org/guard",
+      "id": "brew:cask:hol-guard",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahol-guard",
+      "lastUpdatedAt": "2026-09-24T07:27:14Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/hashgraph-online/hol-guard",
+      "researchedAt": "2026-09-24T10:23:50Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "HOL Guard upstream repository and README",
+          "url": "https://github.com/hashgraph-online/hol-guard"
+        },
+        {
+          "kind": "primary",
+          "title": "HOL Guard getting-started guide",
+          "url": "https://github.com/hashgraph-online/hol-guard/blob/main/docs/guard/get-started.md"
+        }
+      ],
+      "upstreamSummary": "Local-first runtime firewall for AI coding agents",
+      "version": "3.0.98"
+    },
     "brew:cask:look": {
       "agentSummary": "Look is a free, open-source keyboard launcher for macOS, Windows, and Linux, combining application search, clipboard history, commands, and configurable local workflows.",
       "assessment": {
@@ -1350,65 +1338,6 @@
       ],
       "upstreamSummary": "Multi-engine mission control for coding agents",
       "version": "2.1.16"
-    },
-    "brew:cask:muse": {
-      "agentSummary": "Muse is Meta’s personal AI agent for delegating multistep tasks through connected services, with approval gates and a dedicated cloud VM, but substantial access implications.",
-      "assessment": {
-        "alternatives": [
-          "A conventional assistant that drafts steps without acting on external services",
-          "Manual task management and service-specific automation"
-        ],
-        "audiences": [
-          "US consumers willing to delegate online errands to an AI agent",
-          "People managing recurring tasks, projects, travel, shopping, or scheduling"
-        ],
-        "caveats": [
-          "Useful automation requires granting a cloud-hosted agent access to sensitive accounts and context",
-          "Meta says users retain approval controls, but independent testing still describes discomfort with the breadth of access",
-          "Availability is initially limited, and service behavior and pricing may evolve quickly"
-        ],
-        "complements": [
-          "A password manager and strong multifactor authentication",
-          "Human review of messages, purchases, bookings, and other consequential actions"
-        ],
-        "prerequisites": [
-          "A supported US account and access to the Muse rollout",
-          "Explicit authorization for every external account or service Muse needs"
-        ],
-        "useCases": [
-          "Handling multistep browser tasks and connected-app workflows",
-          "Turning longer-term goals into plans and continuing work in the background"
-        ]
-      },
-      "category": "productivity",
-      "displayName": "Muse",
-      "docs": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent",
-      "homepage": "https://muse.ai/",
-      "id": "brew:cask:muse",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amuse",
-      "lastUpdatedAt": "2026-09-19T01:45:49Z",
-      "manager": "homebrew",
-      "repository": null,
-      "researchedAt": "2026-09-19T06:48:56Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Meta launch announcement for Muse",
-          "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
-        },
-        {
-          "kind": "independent",
-          "title": "TechRadar hands-on review of Muse",
-          "url": "https://www.techradar.com/ai-platforms-assistants/i-tried-metas-new-muse-ai-agent-its-incredibly-useful-but-handing-it-my-digital-life-felt-deeply-uncomfortable"
-        },
-        {
-          "kind": "independent",
-          "title": "TechCrunch report on the Muse launch",
-          "url": "https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/"
-        }
-      ],
-      "upstreamSummary": "AI assistant for managing tasks, projects, and long-term goals",
-      "version": "1.0"
     },
     "brew:cask:omniwm": {
       "agentSummary": "Mac window manager brings scrolling columns and dwindle tiling to configurable workspaces, with multi-monitor routing and scriptable controls for users comfortable tuning desktop behavior.",
@@ -3174,70 +3103,6 @@
       "upstreamSummary": "Fast Git hook manager written in Rust, drop-in alternative to pre-commit",
       "version": "0.4.14"
     },
-    "brew:qwen-code": {
-      "agentSummary": "Qwen Code is an open-source terminal coding agent with interactive and headless workflows, multiple model-provider protocols, extensible tools, and optional sandboxed execution.",
-      "assessment": {
-        "alternatives": [
-          "Claude Code for a hosted Anthropic-centered terminal agent",
-          "Gemini CLI for the upstream project from which Qwen Code originally evolved",
-          "OpenAI Codex for agentic repository work with OpenAI models"
-        ],
-        "audiences": [
-          "Developers who want an inspectable, open-source coding agent in the terminal",
-          "Teams evaluating coding agents across hosted, third-party, or locally served models"
-        ],
-        "caveats": [
-          "Model quality, latency, privacy, and cost depend on the selected provider",
-          "Sandboxing is disabled by default and automatic approval does not enable it",
-          "The former Qwen OAuth route was discontinued, so users now need another authentication option",
-          "Agent-generated edits and commands still require human review and independent verification"
-        ],
-        "complements": [
-          "Git for reviewing and reverting agent-generated changes",
-          "Project tests, linters, and type checkers for independently validating output",
-          "A sandbox when prompts may trigger untrusted shell commands or file edits"
-        ],
-        "prerequisites": [
-          "An API key, Coding Plan subscription, or compatible local or third-party model endpoint",
-          "Node.js 22 or newer when using the npm-distributed CLI",
-          "Careful review of tool permissions before granting write or shell access"
-        ],
-        "useCases": [
-          "Interactive repository exploration, implementation, debugging, and code review",
-          "Headless scripting, CI tasks, and repeatable batch prompts",
-          "Connecting coding workflows to MCP servers, IDEs, SDKs, or messaging channels"
-        ]
-      },
-      "category": "ai",
-      "displayName": "qwen-code",
-      "docs": "https://github.com/QwenLM/qwen-code#readme",
-      "homepage": "https://github.com/QwenLM/qwen-code",
-      "id": "brew:qwen-code",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aqwen-code",
-      "lastUpdatedAt": "2026-08-18T04:23:52Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/QwenLM/qwen-code",
-      "researchedAt": "2026-08-18T06:39:33Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Qwen Code repository and documentation",
-          "url": "https://github.com/QwenLM/qwen-code"
-        },
-        {
-          "kind": "primary",
-          "title": "Qwen Code configuration and sandbox settings",
-          "url": "https://github.com/QwenLM/qwen-code/blob/main/docs/users/configuration/settings.md"
-        },
-        {
-          "kind": "independent",
-          "title": "InfoQ: Qwen Team Releases Qwen3-Coder with Open Tooling",
-          "url": "https://www.infoq.com/news/2025/07/qwen3-coder/"
-        }
-      ],
-      "upstreamSummary": "AI-powered command-line workflow tool for developers",
-      "version": null
-    },
     "brew:rainfrog": {
       "agentSummary": "A keyboard-friendly database TUI for PostgreSQL, MySQL, SQLite, and other engines, combining query editing, schema browsing, history, filtering, and favorites in one terminal.",
       "assessment": {
@@ -3298,56 +3163,52 @@
       "version": null
     },
     "brew:ratex": {
-      "agentSummary": "Ratex is a young self-contained Rust TeX toolchain with incremental builds, embedded resources, integrated bibliography handling, SyncTeX, diagnostics, and native PDF compilation.",
+      "agentSummary": "ratex is an experimental Rust TeX engine emphasizing fast compilation and a compact command-line workflow, best suited to curious TeX users testing an emerging implementation.",
       "assessment": {
         "alternatives": [
-          "TeX Live",
-          "MiKTeX",
-          "Tectonic"
+          "Tectonic",
+          "pdfTeX, XeTeX, or LuaTeX"
         ],
         "audiences": [
-          "TeX authors seeking a compact native toolchain",
-          "Editor and build-system developers experimenting with incremental compilation"
+          "TeX users evaluating alternative engines",
+          "Rust developers interested in typesetting systems"
         ],
         "caveats": [
-          "Very young project with limited compatibility history",
-          "Performance claims should be reproduced on representative documents",
-          "Complex packages may expose gaps versus mature TeX distributions"
+          "The upstream repository is days old, so independent compatibility and stability evidence is limited",
+          "Validate complex documents and output fidelity before relying on it in publishing workflows"
         ],
         "complements": [
-          "TeX-aware editors",
-          "Version-controlled document sources",
-          "PDF regression testing"
+          "TeX editors and PDF viewers",
+          "Version control for comparing generated artifacts"
         ],
         "prerequisites": [
-          "Documents compatible with Ratex's supported TeX surface",
-          "Careful output comparison before replacing an established toolchain"
+          "Existing TeX documents and enough familiarity to verify their rendering",
+          "Tolerance for a very young project and changing behavior"
         ],
         "useCases": [
-          "Compiling TeX documents without a large distribution",
-          "Producing editor diagnostics and SyncTeX data",
-          "Running repeat builds with incremental caching"
+          "Experiment with self-contained TeX compilation from the terminal",
+          "Compare document compatibility against established TeX engines"
         ]
       },
-      "category": null,
+      "category": "developer-tools",
       "displayName": "ratex",
-      "docs": null,
+      "docs": "https://github.com/leoliu0/ratex#readme",
       "homepage": "https://github.com/leoliu0/ratex",
       "id": "brew:ratex",
       "installURL": "pkgmgrmgr://install?package=brew%3Aratex",
-      "lastUpdatedAt": "2026-09-21T12:15:10Z",
+      "lastUpdatedAt": "2026-09-24T09:38:21Z",
       "manager": "homebrew",
       "repository": "https://github.com/leoliu0/ratex",
-      "researchedAt": "2026-09-22T16:42:02Z",
+      "researchedAt": "2026-09-24T10:23:50Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Ratex repository",
+          "title": "ratex upstream repository and README",
           "url": "https://github.com/leoliu0/ratex"
         },
         {
-          "kind": "independent",
-          "title": "Ratex performance methodology",
+          "kind": "primary",
+          "title": "ratex performance and compatibility methodology",
           "url": "https://github.com/leoliu0/ratex/blob/main/PERFORMANCE.md"
         }
       ],
@@ -3599,6 +3460,59 @@
       ],
       "upstreamSummary": "Fully featured SFTP server with optional HTTP/S, FTP/S and WebDAV support",
       "version": "2.7.5"
+    },
+    "brew:sofka": {
+      "agentSummary": "Sofka is a Rust Kubernetes terminal interface with resource browsing, Helm inspection, plugins, debugging views, and safety controls for operators who prefer keyboard-driven workflows.",
+      "assessment": {
+        "alternatives": [
+          "k9s",
+          "Lens or OpenLens"
+        ],
+        "audiences": [
+          "Kubernetes operators and administrators",
+          "SRE and platform engineering teams"
+        ],
+        "caveats": [
+          "macOS release binaries are not currently signed or notarized",
+          "Read-only mode and Kubernetes RBAC should be configured carefully before using production contexts"
+        ],
+        "complements": [
+          "kubectl and Helm",
+          "GitOps controllers such as Flux or Argo CD"
+        ],
+        "prerequisites": [
+          "A working kubeconfig and appropriate cluster permissions",
+          "Comfort with keyboard-driven terminal interfaces"
+        ],
+        "useCases": [
+          "Browse built-in and custom resources from a terminal interface",
+          "Investigate cluster incidents and inspect Helm, Flux, or Argo CD state"
+        ]
+      },
+      "category": "cloud-infrastructure",
+      "displayName": "sofka",
+      "docs": "https://github.com/nklmilojevic/sofka#readme",
+      "homepage": "https://github.com/nklmilojevic/sofka",
+      "id": "brew:sofka",
+      "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
+      "lastUpdatedAt": "2026-09-24T05:05:54Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/nklmilojevic/sofka",
+      "researchedAt": "2026-09-24T10:23:50Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Sofka upstream repository and README",
+          "url": "https://github.com/nklmilojevic/sofka"
+        },
+        {
+          "kind": "primary",
+          "title": "Sofka feature documentation",
+          "url": "https://github.com/nklmilojevic/sofka/blob/main/docs/features.md"
+        }
+      ],
+      "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
+      "version": "0.28.6"
     },
     "brew:tailcat": {
       "agentSummary": "Tailcat creates encrypted, netcat-like peer connections through Tailscale's userspace WireGuard, NAT traversal, and DERP components, without accounts, routes, or a control plane.",
@@ -3897,7 +3811,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-23T12:16:45Z",
+    "generatedAt": "2026-09-24T10:22:30Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
