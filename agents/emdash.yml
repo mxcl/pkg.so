@@ -1,13 +1,15 @@
 id: cask:emdash
 display-name: Emdash
-homepage: https://www.emdash.sh/
-repo: https://github.com/generalaction/emdash
+repo: null
 docs:
   - https://emdash.com/docs
 config-file-location:
-  linux: <project-root>/.emdash.json
-  macos: <project-root>/.emdash.json
-  windows: <project-root>/.emdash.json
+  linux:
+    - <project-root>/.emdash.json
+  macos:
+    - <project-root>/.emdash.json
+  windows:
+    - <project-root>/.emdash.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -78,10 +80,6 @@ history:
       GitHub and SSH credentials are handled through connected accounts, encrypted
       application storage, user-supplied SSH key paths, or an SSH agent; the official
       documentation does not identify a standalone Emdash credentials file.
-category: developer-tools
-package-manager:
-  brew-cask: emdash
-package-manager-url: https://formulae.brew.sh/cask/emdash
 tags:
   - ai
   - coding-agents
@@ -90,10 +88,35 @@ tags:
   - local-first
   - orchestration
   - ssh
-description: UI for running multiple coding agents in parallel
-applications:
-  - Emdash.app
 provenance:
-  cask: emdash
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://emdash.com/docs
+    - source_facts.description
+  display-name-sources:
+    - https://emdash.com/docs
+    - source_facts.name
+  docs-sources:
+    - Official Emdash documentation linked from the project homepage and repository
+  history-sources:
+    - https://emdash.com/changelog
+    - https://emdash.com/docs
+    - https://emdash.com/docs/project-config
+    - https://github.com/generalaction/emdash
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository discovery was intentionally
+      skipped as instructed
+  tags-sources:
+    - https://emdash.com/docs
+    - https://github.com/generalaction/emdash
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - ai-development
+  - agent-orchestration
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
