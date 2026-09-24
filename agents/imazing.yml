@@ -1,6 +1,5 @@
 id: cask:imazing
 display-name: iMazing
-homepage: https://imazing.com/
 repo: null
 docs:
   - https://imazing.com/guides/getting-started-with-imazing
@@ -8,10 +7,13 @@ docs:
   - https://imazing.com/guides/preferences-in-imazing
   - https://imazing.com/support
 config-file-location:
-  macos: /Users/{username}/Library/Application Support/iMazing
-  windows: C:\Users\{username}\AppData\Roaming\iMazing
+  macos:
+    - /Users/{username}/Library/Application Support/iMazing
+  windows:
+    - C:\Users\{username}\AppData\Roaming\iMazing
 credentials-file-location:
-  macos: macOS Keychain
+  macos:
+    - macOS Keychain
   windows:
     - Windows Credential Manager
     - Windows Certificate Store
@@ -86,10 +88,6 @@ history:
       for repeatable device provisioning and data workflows. Sensitive passwords and
       keys are kept in the operating system's credential facilities rather than ordinary
       files.
-category: system
-package-manager:
-  brew-cask: imazing
-package-manager-url: https://formulae.brew.sh/cask/imazing
 tags:
   - apple-devices
   - backup
@@ -99,10 +97,40 @@ tags:
   - ipad
   - iphone
   - macos
-description: iPhone management application
-applications:
-  - iMazing.app
 provenance:
-  cask: imazing
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official support center and company overview describe iMazing as a local iPhone
+      and iPad backup, transfer, configuration, and device-management application:
+      https://imazing.com/support and https://imazing.com/about.
+  display-name-sources:
+    - 'Official product and company site: https://imazing.com/'
+    - current_curation.display-name
+  docs-sources:
+    - >
+      The official Support Center supplies product guides and troubleshooting
+      documentation, including dedicated preference and backup-management guides.
+  history-sources:
+    - https://imazing.com/about
+    - https://imazing.com/blog/imazing-1-0-released
+    - >
+      https://imazing.com/documentation/iMazing-in-Enterprise-and-Institutional-Environments.pdf
+    - https://imazing.com/media
+    - https://imazing.com/support
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      The official product and support surfaces present iMazing as proprietary DigiDNA
+      software and do not publish an application source repository.
+  tags-sources:
+    - 'Official Support Center feature index: https://imazing.com/support'
+    - 'Official company overview: https://imazing.com/about'
+category-confidence: high
+category-path:
+  - system
+  - mobile-device-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
