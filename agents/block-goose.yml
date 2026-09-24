@@ -1,17 +1,20 @@
 id: cask:block-goose
 display-name: goose
-homepage: https://block.github.io/goose/
-repo: https://github.com/block/goose
+repo: null
 docs:
   - https://goose-docs.ai/docs/getting-started/providers
   - https://goose-docs.ai/docs/guides/config-files
   - https://goose-docs.ai/docs/quickstart
 config-file-location:
-  unix: ~/.config/goose/config.yaml
-  windows: '%APPDATA%\Block\goose\config\config.yaml'
+  unix:
+    - ~/.config/goose/config.yaml
+  windows:
+    - '%APPDATA%\Block\goose\config\config.yaml'
 credentials-file-location:
-  unix: ~/.config/goose/secrets.yaml
-  windows: '%APPDATA%\Block\goose\config\secrets.yaml'
+  unix:
+    - ~/.config/goose/secrets.yaml
+  windows:
+    - '%APPDATA%\Block\goose\config\secrets.yaml'
 history:
   adoption-history:
     - >
@@ -77,10 +80,6 @@ history:
       The primary settings file is config.yaml. Provider secrets normally use the
       operating-system keyring; secrets.yaml is used only when file-based secret storage
       is selected or the keyring is unavailable.
-category: ai
-package-manager:
-  brew-cask: block-goose
-package-manager-url: https://formulae.brew.sh/cask/block-goose
 tags:
   - ai-agent
   - automation
@@ -90,10 +89,38 @@ tags:
   - mcp
   - open-source
   - rust
-description: Open source, extensible AI agent that goes beyond code suggestions
-applications:
-  - Goose.app
 provenance:
-  cask: block-goose
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official goose documentation describes it as a general-purpose, local AI agent
+      with desktop, CLI, API, MCP extensions, recipes, and subagents:
+      https://goose-docs.ai/
+    - source_facts.description
+  display-name-sources:
+    - 'Official project branding uses the lowercase name “goose”: https://goose-docs.ai/'
+  docs-sources:
+    - >
+      Official dedicated documentation site and its quickstart, configuration, and
+      provider guides.
+  history-sources:
+    - https://goose-docs.ai/
+    - https://goose-docs.ai/blog/2025/04/21/mcp-in-enterprise/
+    - https://goose-docs.ai/blog/2026/04/07/goose-moves-to-aaif/
+    - https://goose-docs.ai/blog/2026/04/08/goose-acp-and-new-tui/
+    - >
+      https://investors.block.xyz/files/doc_financials/2024/q4/Shareholder-Letter_Block-4Q24pdf.pdf
+  repo-sources:
+    - source_facts.repo is already populated; repo is intentionally null as required.
+  tags-sources:
+    - >
+      Official goose homepage, quickstart, configuration guide, and project history
+      describe these interfaces and capabilities.
+category-confidence: high
+category-path:
+  - ai
+  - agents
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
