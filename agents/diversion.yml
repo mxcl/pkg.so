@@ -4,7 +4,13 @@ repo: null
 docs:
   - https://docs.diversion.dev/
   - https://docs.diversion.dev/cmd-ref
-config-file-location: null
+config-file-location:
+  unix:
+    - <repository-root>/.dvignore
+    - <nested-directory>/.dvignore
+  windows:
+    - <repository-root>\.dvignore
+    - <nested-directory>\.dvignore
 credentials-file-location: null
 history:
   adoption-history:
@@ -101,8 +107,9 @@ provenance:
     - https://www.diversion.dev/blog
   repo-sources:
     - >
-      source_facts.repo is empty; the official homepage and documentation do not
-      identify a public HTTP(S) source-code repository for the proprietary client.
+      The official product and documentation sites do not identify an official HTTP(S)
+      source-code repository for the Diversion CLI or agent; they distribute proprietary
+      service clients.
   tags-sources:
     - https://docs.diversion.dev/cmd-ref
     - https://www.diversion.dev/about
