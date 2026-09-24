@@ -40,22 +40,23 @@ av-web listening on 127.0.0.1:3004
 
 ## Atlas
 
-Deploy code and systemd units directly from the Atlas checkout. The script
-builds the current working tree; it does not SSH, fetch, or require a commit:
+Build and test binaries locally. Atlas does not have enough resources for
+compilation. Cross-compile the origin on the development machine:
 
 ```sh
-$ cd /apps/pkg.so
-$ scripts/deploy-atlas.sh
+$ cargo test --workspace
+$ cargo zigbuild --release --target aarch64-unknown-linux-gnu -p av-web
 ```
 
-Set `PKGDB_REBUILD_SQLITE=true` when renderer, stylesheet, crawler, or source
-inputs changed. The deploy generates and validates a new artifact on Atlas and
-coordinates its atomic swap with the matching origin binary. The flag form is
-preferred; the environment variable remains supported for compatibility:
+Copy `target/aarch64-unknown-linux-gnu/release/av-web` to a new release directory
+under `/apps/automic-vault-web/releases/` on Atlas. Retain the previous release,
+switch `/apps/automic-vault-web/current`, restart `automic-vault-web`, and check
+`http://127.0.0.1:3004/healthz`. Restore the previous symlink and restart if the
+health check fails. Verify the public site after deployment.
 
-```sh
-$ scripts/deploy-atlas.sh --rebuild-sqlite
-```
+Do not run the legacy `scripts/deploy-atlas.sh`: it compiles on Atlas. Scheduled
+metadata refresh and SQLite generation on Atlas remain separate from binary
+compilation.
 
 `pkgdb-maintenance.timer` refreshes metadata nightly, runs bounded Codex
 enrichment, generates and validates `pkg.sqlite.next`, generates `db.json` as
