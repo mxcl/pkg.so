@@ -1,14 +1,14 @@
 id: cask:ausweisapp
 display-name: AusweisApp
-homepage: https://www.ausweisapp.bund.de/
-repo: https://github.com/Governikus/AusweisApp
+repo: null
 docs:
   - https://www.ausweisapp.bund.de/en/download
   - https://www.ausweisapp.bund.de/en/help-and-support
   - https://www.ausweisapp.bund.de/en/software-development
   - https://www.ausweisapp.bund.de/sdk
 config-file-location:
-  macos: /Library/Preferences/com.governikus.AusweisApp2.plist
+  macos:
+    - /Library/Preferences/com.governikus.AusweisApp2.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -83,10 +83,6 @@ history:
       presents a supported identity document to an NFC device or card reader, and enters
       the card PIN. The application then handles the encrypted exchange between the
       document and service.
-category: security
-package-manager:
-  brew-cask: ausweisapp
-package-manager-url: https://formulae.brew.sh/cask/ausweisapp
 tags:
   - authentication
   - digital-identity
@@ -95,10 +91,44 @@ tags:
   - nfc
   - privacy
   - smart-card
-description: Official eID-Client of the Federal Government of Germany
-applications:
-  - AusweisApp.app
 provenance:
-  cask: ausweisapp
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official federal site identifies AusweisApp as Germany’s official eID client
+      for encrypted digital identification: https://www.ausweisapp.bund.de/en/download
+    - 'source_facts.description: Official eID-Client of the Federal Government of Germany'
+  display-name-sources:
+    - The current official website, repository, and application branding use “AusweisApp”.
+  docs-sources:
+    - >
+      The official download page links release notes and administrator/developer
+      documentation.
+    - >
+      The official federal website provides user help, installation information,
+      developer guidance, and dedicated SDK documentation.
+  history-sources:
+    - 'Official SDK documentation: https://www.ausweisapp.bund.de/sdk/'
+    - 'Official download and product description: https://www.ausweisapp.bund.de/en/download'
+    - 'Official open-source page: https://www.ausweisapp.bund.de/en/open-source'
+    - >
+      Official release notes archive:
+      https://www.ausweisapp.bund.de/fileadmin/user_upload/Software/AusweisApp-2.4.0-ReleaseNotes.pdf
+    - 'Official repository: https://github.com/Governikus/AusweisApp'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the enrichment rule, repo is
+      intentionally returned as null without reassessment.
+  tags-sources:
+    - >
+      Official federal documentation describes online identification, supported identity
+      documents, NFC and card-reader use, encrypted data exchange, and government
+      operation.
+category-confidence: high
+category-path:
+  - security
+  - digital-identity
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

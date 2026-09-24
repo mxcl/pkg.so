@@ -1,7 +1,6 @@
 id: cask:arduino-ide
 display-name: Arduino IDE
-homepage: https://www.arduino.cc/en/software
-repo: https://github.com/arduino/arduino-ide
+repo: null
 docs:
   - >
     https://support.arduino.cc/hc/en-us/articles/4415103213714-Find-sketches-libraries-board-cores-and-other-files-on-your-computer
@@ -79,10 +78,6 @@ history:
       Users create or open Arduino sketches, select a board and port, install board
       platforms and libraries, verify or compile code, upload it to hardware, and
       inspect device communication through the Serial Monitor or Serial Plotter.
-category: developer-tools
-package-manager:
-  brew-cask: arduino-ide
-package-manager-url: https://formulae.brew.sh/cask/arduino-ide
 tags:
   - arduino
   - electronics
@@ -91,10 +86,44 @@ tags:
   - microcontrollers
   - serial-monitor
   - sketches
-description: Electronics prototyping platform
-applications:
-  - Arduino IDE.app
 provenance:
-  cask: arduino-ide
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Arduino documentation presents Arduino IDE 2 as the desktop development
+      environment for writing, compiling, and uploading Arduino sketches:
+      https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing/
+    - 'source_facts.description: Electronics prototyping platform'
+  display-name-sources:
+    - >
+      Official repository and Arduino documentation consistently use “Arduino IDE” and
+      “Arduino IDE 2”: https://github.com/arduino/arduino-ide#readme
+  docs-sources:
+    - Arduino’s dedicated documentation tutorial covers IDE 2 installation and initial use.
+    - >
+      The official Help Center maintains IDE 2 support material and explicitly documents
+      the .arduinoIDE configuration directory and files.
+  history-sources:
+    - >
+      Official configuration-location article:
+      https://support.arduino.cc/hc/en-us/articles/4415103213714-Find-sketches-libraries-board-cores-and-other-files-on-your-computer
+    - 'Official repository README: https://github.com/arduino/arduino-ide#readme'
+    - >
+      Official stable-release announcement:
+      https://blog.arduino.cc/2022/09/14/its-here-please-welcome-arduino-ide-2-0/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the enrichment rule, repo is
+      intentionally returned as null without reassessment.
+  tags-sources:
+    - >
+      Official Arduino documentation and repository describe sketch editing, board
+      programming, libraries, compilation, uploading, and serial tools.
+category-confidence: high
+category-path:
+  - developer-tools
+  - embedded-development
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
