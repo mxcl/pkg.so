@@ -1,12 +1,21 @@
 id: cask:grok-build
 display-name: Grok Build
 homepage: https://x.ai/build
-repo: null
+repo: https://github.com/xai-org/grok-build
 docs:
   - https://docs.x.ai/build/overview
   - https://x.ai/news/grok-build-cli
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.grok/config.toml
+    - $GROK_HOME/config.toml
+    - .grok/config.toml
+    - ~/.grok/managed_config.toml
+    - /etc/grok/managed_config.toml
+    - ~/.grok/requirements.toml
+    - /etc/grok/requirements.toml
+credentials-file-location:
+  unix: ~/.grok/mcp_credentials.json
 history:
   adoption-history:
     - >

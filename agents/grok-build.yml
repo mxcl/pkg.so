@@ -1,11 +1,21 @@
 id: cask:grok-build
 display-name: Grok Build
-repo: null
+repo: https://github.com/xai-org/grok-build
 docs:
   - https://docs.x.ai/build/overview
   - https://x.ai/news/grok-build-cli
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.grok/config.toml
+    - $GROK_HOME/config.toml
+    - .grok/config.toml
+    - ~/.grok/managed_config.toml
+    - /etc/grok/managed_config.toml
+    - ~/.grok/requirements.toml
+    - /etc/grok/requirements.toml
+credentials-file-location:
+  unix:
+    - ~/.grok/mcp_credentials.json
 history:
   adoption-history:
     - >
@@ -87,8 +97,9 @@ provenance:
     - https://x.ai/news/grok-build-cli
   repo-sources:
     - >
-      No official public source-control repository is identified by xAI's official
-      product pages or documentation
+      Official open-source announcement links the repository:
+      https://x.ai/news/grok-build-open-source
+    - 'Official xAI GitHub organization: https://github.com/xai-org/grok-build'
   tags-sources:
     - current_curation.tags
     - https://docs.x.ai/build/features/skills-plugins-marketplaces
