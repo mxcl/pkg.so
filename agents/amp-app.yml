@@ -1,6 +1,5 @@
 id: cask:amp-app
 display-name: Amp
-homepage: https://ampcode.com/app
 repo: null
 docs:
   - https://ampcode.com/docs
@@ -15,8 +14,10 @@ config-file-location:
     - '%USERPROFILE%\.config\amp\settings.json'
     - '%USERPROFILE%\.config\amp\settings.jsonc'
 credentials-file-location:
-  unix: ~/.local/share/amp/secrets.json
-  windows: '%USERPROFILE%\.local\share\amp\secrets.json'
+  unix:
+    - ~/.local/share/amp/secrets.json
+  windows:
+    - '%USERPROFILE%\.local\share\amp\secrets.json'
 history:
   adoption-history:
     - >
@@ -90,10 +91,6 @@ history:
       Amp can inspect and edit code, run development commands, review changes, and
       continue work on local machines, connected runners, or hosted orbs. Threads can be
       monitored and steered from Amp's other interfaces.
-category: developer-tools
-package-manager:
-  brew-cask: amp-app
-package-manager-url: https://formulae.brew.sh/cask/amp-app
 tags:
   - ai
   - cli
@@ -103,10 +100,44 @@ tags:
   - desktop-app
   - developer-environment
   - remote-agents
-description: Coding agent and development environment
-applications:
-  - Amp.app
 provenance:
-  cask: amp-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official CLI documentation describes Amp as an agent that operates locally, in
+      orbs, or on connected runners: https://ampcode.com/docs/cli
+    - 'source_facts.description: Coding agent and development environment'
+  display-name-sources:
+    - 'Official documentation branding: https://ampcode.com/docs/cli'
+    - current_curation.display-name
+  docs-sources:
+    - 'Official Amp documentation: https://ampcode.com/docs'
+    - 'Official CLI guide: https://ampcode.com/docs/cli'
+    - 'Official configuration reference: https://ampcode.com/docs/cli/settings'
+    - 'Official security reference documents credential storage: https://ampcode.com/security'
+  history-sources:
+    - https://ampcode.com/docs/cli
+    - https://ampcode.com/news/agents-everywhere
+    - https://ampcode.com/news/amp-is-now-available
+    - https://ampcode.com/news/neo
+    - https://ampcode.com/news/the-coding-agent-is-dead
+    - https://ampcode.com/news/towards-a-new-cli
+  repo-sources:
+    - >
+      The official GitHub organization at https://github.com/ampcode publishes
+      integrations, examples, and a Homebrew tap, but does not identify an official
+      public source repository for the core Amp application.
+    - source_facts.repo is empty.
+  tags-sources:
+    - 'Official CLI documentation: https://ampcode.com/docs/cli'
+    - >
+      Official product-history announcements: https://ampcode.com/news/neo and
+      https://ampcode.com/news/agents-everywhere
+category-confidence: high
+category-path:
+  - developer-tools
+  - ai-coding-agents
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
