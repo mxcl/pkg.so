@@ -1,12 +1,12 @@
 id: cask:lulu
 display-name: LuLu
-homepage: https://objective-see.org/products/lulu.html
-repo: https://github.com/objective-see/LuLu
+repo: null
 docs:
   - https://github.com/objective-see/LuLu
   - https://objective-see.org/products/lulu.html
 config-file-location:
-  macos: /Library/Objective-See/LuLu/rules.plist
+  macos:
+    - /Library/Objective-See/LuLu/rules.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,10 +63,6 @@ history:
       Users can create process-wide or remote-endpoint rules, make decisions temporary,
       import or export rules, configure allow and block lists, and select passive or
       block modes. LuLu does not replace an inbound firewall.
-category: security
-package-manager:
-  brew-cask: lulu
-package-manager-url: https://formulae.brew.sh/cask/lulu
 tags:
   - firewall
   - macos
@@ -75,10 +71,38 @@ tags:
   - open-source
   - outbound-firewall
   - privacy
-description: Open-source firewall to block unknown outgoing connections
-applications:
-  - LuLu.app
 provenance:
-  cask: lulu
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://objective-see.org/products/lulu.html describes an outgoing-connection
+      firewall for macOS.
+    - source_facts.description identifies LuLu as a firewall.
+  display-name-sources:
+    - https://objective-see.org/products/lulu.html uses LuLu as the official name.
+    - 'source_facts.applications: LuLu.app'
+  docs-sources:
+    - >
+      The official Objective-See product page contains installation, alert, rule,
+      settings, profile, and FAQ documentation.
+    - The official repository provides source, release, and issue documentation.
+  history-sources:
+    - https://github.com/objective-see/LuLu
+    - https://objective-see.org/blog/blog_0x20.html
+    - https://objective-see.org/products/lulu.html
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/objective-see/LuLu; per the
+      task rule, repo is returned as null without re-determination.
+  tags-sources:
+    - >
+      https://objective-see.org/products/lulu.html describes outbound filtering, privacy
+      protection, malware use cases, and open-source status.
+category-confidence: high
+category-path:
+  - security
+  - firewalls
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
