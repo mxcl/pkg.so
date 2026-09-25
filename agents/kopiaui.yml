@@ -1,16 +1,18 @@
 id: cask:kopiaui
 display-name: KopiaUI
-homepage: https://kopia.io/
-repo: https://github.com/kopia/kopia
+repo: null
 docs:
   - https://kopia.io/docs
   - https://kopia.io/docs/faqs
   - https://kopia.io/docs/getting-started
   - https://kopia.io/docs/reference/command-line
 config-file-location:
-  linux: ~/.config/kopia/repository.config
-  macos: ~/Library/Application Support/kopia/repository.config
-  windows: '%APPDATA%\kopia\repository.config'
+  linux:
+    - ~/.config/kopia/repository.config
+  macos:
+    - ~/Library/Application Support/kopia/repository.config
+  windows:
+    - '%APPDATA%\kopia\repository.config'
 credentials-file-location: null
 history:
   adoption-history:
@@ -62,10 +64,6 @@ history:
       retention and scheduling policies, and restore files through KopiaUI. Repository
       connection settings reside in repository.config, while repository passwords are
       kept in the platform credential store rather than a documented credentials file.
-category: system
-package-manager:
-  brew-cask: kopiaui
-package-manager-url: https://formulae.brew.sh/cask/kopiaui
 tags:
   - backup
   - compression
@@ -76,10 +74,38 @@ tags:
   - restore
   - snapshots
   - storage
-description: Backup/restore tool
-applications:
-  - KopiaUI.app
 provenance:
-  cask: kopiaui
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation defines Kopia as an encrypted backup and restore tool:
+      https://kopia.io/docs/
+  display-name-sources:
+    - >
+      Official installation documentation consistently names the graphical application
+      KopiaUI: https://kopia.io/docs/installation/
+    - source_facts.applications
+  docs-sources:
+    - Dedicated official Kopia documentation domain.
+    - >
+      Official command-line reference documents the configuration paths and
+      operating-system credential stores.
+  history-sources:
+    - https://github.com/kopia/kopia/releases
+    - https://kopia.io/docs/
+    - https://kopia.io/docs/advanced/compatibility/
+    - https://kopia.io/docs/installation/
+  repo-sources:
+    - >
+      source_facts.repo already supplies the repository; per enrichment policy it is not
+      re-emitted.
+  tags-sources:
+    - 'Official overview and feature documentation: https://kopia.io/docs/'
+category-confidence: high
+category-path:
+  - system
+  - backup
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
