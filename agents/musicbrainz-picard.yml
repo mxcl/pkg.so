@@ -1,11 +1,74 @@
 id: cask:musicbrainz-picard
 display-name: MURAL
-repo: null
+repo: https://github.com/metabrainz/picard
 docs:
   - https://support.mural.co/s
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.config/MusicBrainz/Picard.ini
+  windows:
+    - '%APPDATA%\MusicBrainz\Picard.ini'
 credentials-file-location: null
-history: null
+history:
+  adoption-history:
+    - >
+      Picard became the official MusicBrainz tagger in 2006 as MusicBrainz adopted PUID
+      acoustic fingerprints. It remains the project's supported cross-platform desktop
+      tagger for Linux, macOS, and Windows.
+    - >
+      Its combination of MusicBrainz metadata, AcoustID fingerprinting, CD lookup,
+      scripting, cover art, and plugins has made it a common tool for cleaning and
+      normalizing large personal music libraries.
+  package-nerd-significance:
+    - >
+      Picard is a long-lived, GPL-licensed desktop application with releases across
+      major operating systems and packaging ecosystems. Package maintainers must account
+      for its Python and Qt stack, audio-format support, optional fingerprinting tools,
+      plugins, and platform-specific integration.
+    - >
+      For metadata enthusiasts, Picard is important because it writes stable MusicBrainz
+      identifiers and applies an album-oriented matching model rather than merely
+      editing individual tag fields.
+  project-history:
+    - >
+      MusicBrainz states that Picard's predecessor dates to 2003 and development of its
+      current form began in 2007. An earlier Picard generation had already become the
+      official MusicBrainz tagger in 2006.
+    - >
+      The project developed into a cross-platform Python application backed by the
+      community-maintained MusicBrainz database. Its source is maintained publicly under
+      GPL-2.0-or-later, now in the MetaBrainz GitHub organization.
+  related-projects:
+    - MusicBrainz supplies the community-maintained music metadata used by Picard.
+    - AcoustID provides the acoustic-fingerprint matching used to identify recordings.
+    - Chromaprint's fpcalc utility is used to calculate compatible fingerprints.
+    - >
+      Official and third-party Picard plugins extend tagging, scripting, and metadata
+      workflows.
+  sources:
+    - https://github.com/metabrainz/picard
+    - https://musicbrainz.org/doc/Development/Introduction
+    - https://musicbrainz.org/history
+    - https://picard-docs.musicbrainz.org/en/latest/
+  summary:
+    - >
+      MusicBrainz Picard is the official cross-platform MusicBrainz audio tagger. It
+      identifies recordings and releases, retrieves structured metadata and cover art,
+      and writes tags using an album-oriented workflow.
+  timeline:
+    - "2003: Picard's predecessor was in use."
+    - '2006: Picard became the official MusicBrainz tagger with PUID support.'
+    - '2007: Development of Picard in its current form began.'
+    - '2012: Picard 1.0 was published.'
+    - '2026: The 3.0 documentation generation was published.'
+  usage:
+    - >
+      Users load audio files, cluster them into albums, look up or scan recordings,
+      compare proposed MusicBrainz metadata, and save approved tags back to the files.
+      AcoustID fingerprints can identify files with missing or unreliable metadata.
+    - >
+      Advanced users customize filename and tag output with scripts, install plugins,
+      retrieve cover art, look up CDs, and submit disc IDs to MusicBrainz.
 tags:
   - brainstorming
   - desktop-app
@@ -23,14 +86,14 @@ provenance:
   docs-sources:
     - 'Official MURAL Help Center: https://support.mural.co/s/'
   history-sources:
-    - >
-      Official sources establish the product and help surface but provide insufficient
-      package-oriented history.
+    - https://github.com/metabrainz/picard
+    - https://musicbrainz.org/doc/Development/Introduction
+    - https://musicbrainz.org/history
+    - https://picard-docs.musicbrainz.org/en/latest/
   repo-sources:
     - >
-      No official public source-code repository is linked from the official product or
-      help surfaces.
-    - source_facts.repo is empty.
+      Official MusicBrainz development documentation identifies the source repository;
+      the former musicbrainz/picard URL redirects to the MetaBrainz repository.
   tags-sources:
     - 'Official MURAL homepage: https://mural.co/'
     - source_facts.description
@@ -41,6 +104,6 @@ category-path:
   - visual-workspace
 display-name-confidence: high
 docs-confidence: high
-history-confidence: low
-repo-confidence: medium
+history-confidence: high
+repo-confidence: high
 tags-confidence: high
