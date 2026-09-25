@@ -4,7 +4,9 @@ repo: null
 docs:
   - https://docs.mend.io/legacy-sca/latest/mend-cli-release-notes
   - https://docs.mend.io/platform/latest/authenticate-your-login-for-the-mend-cli
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.mend
 credentials-file-location: null
 history:
   adoption-history:
@@ -72,9 +74,10 @@ provenance:
     - https://docs.mend.io/wsk/migrating-to-the-mend-cli-from-the-unified-agent
   repo-sources:
     - >
-      No official public source-control project URL is identified by Mend's official CLI
-      documentation; the cask installs a vendor binary.
-    - source_facts.repo is empty.
+      source_facts.repo is empty; Mend's official documentation distributes
+      platform-specific binaries directly and identifies no official public source
+      repository for Mend CLI:
+      https://docs.mend.io/platform/latest/download-the-mend-cli
   tags-sources:
     - Official Mend CLI authentication and migration documentation.
     - source_facts.description
