@@ -1,12 +1,12 @@
 id: cask:colamd
 display-name: ColaMD
-homepage: https://colamd.com/
-repo: https://github.com/marswaveai/ColaMD
+repo: null
 docs:
   - https://colamd.com/
   - https://github.com/marswaveai/ColaMD#readme
 config-file-location:
-  unix: ~/.colamd/themes/
+  unix:
+    - ~/.colamd/themes/
 credentials-file-location: null
 history:
   adoption-history:
@@ -55,20 +55,44 @@ history:
       Users open local Markdown files or a folder-adjacent set of Markdown files and
       edit them in a WYSIWYG view or source mode. External changes are reloaded live,
       and documents can be exported to Word, PDF, self-contained HTML, or images.
-category: productivity
-package-manager:
-  brew-cask: colamd
-package-manager-url: https://formulae.brew.sh/cask/colamd
 tags:
   - agent-sync
   - cross-platform
   - local-files
   - markdown-editor
   - wysiwyg
-description: Markdown editor
-applications:
-  - ColaMD.app
 provenance:
-  cask: colamd
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official ColaMD homepage: https://colamd.com/'
+    - source_facts.description
+  display-name-sources:
+    - 'Official ColaMD homepage: https://colamd.com/'
+    - current_curation.display-name
+  docs-sources:
+    - 'Official repository README: https://github.com/marswaveai/ColaMD#readme'
+    - >
+      The official homepage is the primary user-facing feature and usage surface:
+      https://colamd.com/
+  history-sources:
+    - 'Official ColaMD homepage: https://colamd.com/'
+    - 'Official ColaMD releases: https://github.com/marswaveai/ColaMD/releases'
+    - 'Official ColaMD repository README: https://github.com/marswaveai/ColaMD'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the requested rule, repo is returned
+      as null without re-evaluation.
+  tags-sources:
+    - >
+      Official ColaMD homepage and repository README: https://colamd.com/ and
+      https://github.com/marswaveai/ColaMD
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - writing
+  - markdown-editors
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
