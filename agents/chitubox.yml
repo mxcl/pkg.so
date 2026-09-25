@@ -1,13 +1,14 @@
 id: cask:chitubox
 display-name: CHITUBOX
-homepage: https://www.chitubox.com/
 repo: null
 docs:
   - https://docs.chitubox.com/en-US
   - https://docs.chitubox.com/en-US/chitubox/latest/quick-start
 config-file-location:
-  linux: ~/.local/share/chitubox2_0/Conf
-  windows: C:\Users\{user-name}\AppData\Local\chitubox2_0\Conf
+  linux:
+    - ~/.local/share/chitubox2_0/Conf
+  windows:
+    - C:\Users\{user-name}\AppData\Local\chitubox2_0\Conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -54,10 +55,6 @@ history:
       A typical workflow adds a printer profile, imports an STL, OBJ, or 3MF model,
       orients it, generates or edits supports, slices it, previews the result, and
       exports the printer-compatible file, often to removable media.
-category: media
-package-manager:
-  brew-cask: chitubox
-package-manager-url: https://formulae.brew.sh/cask/chitubox
 tags:
   - 3d-printing
   - dlp
@@ -67,10 +64,39 @@ tags:
   - sla
   - slicer
   - supports
-description: 3D printing slicer software
-applications:
-  - CHITUBOX.app
 provenance:
-  cask: chitubox
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official CHITUBOX introduction:
+      https://docs.chitubox.com/en-US/chitubox/latest/introduction describes software
+      that slices 3D meshes into resin-printer files.
+  display-name-sources:
+    - 'Official product site: https://www.chitubox.com/'
+    - current_curation.display-name
+  docs-sources:
+    - Official dedicated documentation site and its CHITUBOX quick-start guide.
+  history-sources:
+    - 'Official introduction: https://docs.chitubox.com/en-US/chitubox/latest/introduction'
+    - >
+      Official menu and configuration-path reference:
+      https://docs.chitubox.com/en-US/chitubox-basic/latest/ui-and-features/menu
+    - 'Official quick start: https://docs.chitubox.com/en-US/chitubox/latest/quick-start'
+  repo-sources:
+    - >
+      source_facts.repo is empty. The official product and documentation sites do not
+      identify an official public source-control project; unrelated community
+      repositories were rejected.
+  tags-sources:
+    - >
+      Official introduction, supported-printer table, and quick-start workflow:
+      https://docs.chitubox.com/en-US/chitubox/latest/introduction
+category-confidence: high
+category-path:
+  - media
+  - 3d-printing
+  - resin-slicing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: medium
+tags-confidence: high
