@@ -1,6 +1,5 @@
 id: cask:netviews
 display-name: NetViews
-homepage: https://www.netviews.app/
 repo: null
 docs:
   - https://www.netviews.app/help
@@ -51,10 +50,6 @@ history:
       ARP/DHCP/DNS/LLDP/CDP and Wi-Fi events, and the wireless tools for access-point
       analysis. Location Services and BPF access are needed for portions of the Wi-Fi
       and packet-monitoring functionality.
-category: networking
-package-manager:
-  brew-cask: netviews
-package-manager-url: https://formulae.brew.sh/cask/netviews
 tags:
   - macos
   - network-monitoring
@@ -64,10 +59,43 @@ tags:
   - port-scanner
   - subnet-calculator
   - wifi-diagnostics
-description: Network and Wi-Fi diagnostic tool
-applications:
-  - NetViews.app
 provenance:
-  cask: netviews
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://www.netviews.app/help/ describes network monitoring, scanning,
+      packet-derived logs, and wireless analysis.
+    - source_facts.description identifies a network and Wi-Fi diagnostic tool.
+  display-name-sources:
+    - https://www.netviews.app/about/ uses the NetViews product name.
+    - source_facts.applications lists NetViews.app.
+  docs-sources:
+    - >
+      Official NetViews documentation with installation, interface, feature, settings,
+      privacy, and licensing sections.
+  history-sources:
+    - https://www.netviews.app/about/
+    - https://www.netviews.app/changelog/
+    - https://www.netviews.app/download/
+    - https://www.netviews.app/help/
+  repo-sources:
+    - >
+      Official NetViews pages describe a proprietary licensed application and identify
+      no official HTTP(S) source-control repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - >
+      https://www.netviews.app/about/ describes its audience and host-discovery,
+      port-scanning, monitoring, and DNS/vendor capabilities.
+    - >
+      https://www.netviews.app/help/ lists Ping Monitor, Network Scan, Network Logs,
+      Wi-Fi Capture, Subnet Calculator, Speed Test, MAC lookup, and routing-table
+      features.
+category-confidence: high
+category-path:
+  - networking
+  - network-monitoring
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
