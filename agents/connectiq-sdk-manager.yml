@@ -1,6 +1,5 @@
 id: cask:connectiq-sdk-manager
 display-name: Connect IQ SDK Manager
-homepage: https://developer.garmin.com/connect-iq/sdk/
 repo: null
 docs:
   - https://developer.garmin.com/connect-iq/reference-guides
@@ -85,10 +84,6 @@ history:
       Garmin's Visual Studio Code extension can open SDK Manager directly. Projects are
       then built in Monkey C for selected device definitions and tested with the Connect
       IQ simulator or compatible hardware.
-category: developer-tools
-package-manager:
-  brew-cask: connectiq-sdk-manager
-package-manager-url: https://formulae.brew.sh/cask/connectiq-sdk-manager
 tags:
   - connect-iq
   - development
@@ -98,10 +93,50 @@ tags:
   - sdk-manager
   - simulator
   - wearables
-description: Manage SDKs and download device definitions for Garmin Connect IQ development
-applications:
-  - SdkManager.app
 provenance:
-  cask: connectiq-sdk-manager
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://developer.garmin.com/connect-iq/sdk/ — official installation instructions
+      describe managing Connect IQ SDKs and device definitions.
+    - >
+      source_facts.description: "Manage SDKs and download device definitions for Garmin
+      Connect IQ development"
+  display-name-sources:
+    - current_curation.display-name
+    - >
+      https://developer.garmin.com/connect-iq/sdk/ — Garmin's official instructions call
+      the application the SDK Manager.
+  docs-sources:
+    - >
+      https://developer.garmin.com/connect-iq/reference-guides/ — official tool
+      reference index.
+    - >
+      https://developer.garmin.com/connect-iq/reference-guides/visual-studio-code-extension/
+      — documents opening SDK Manager from Garmin's Monkey C extension.
+    - https://developer.garmin.com/connect-iq/sdk/ — official download and setup instructions.
+  history-sources:
+    - https://developer.garmin.com/connect-iq/reference-guides/visual-studio-code-extension/
+    - https://developer.garmin.com/connect-iq/sdk/
+    - >
+      https://forums.garmin.com/developer/connect-iq/b/news-announcements/posts/welcome-to-system-7
+    - >
+      https://www.garmin.com/en-US/newsroom/press-release/outdoor/2014-introducing-connect-iq-the-first-ever-open-platform-for-garmin-wearables/
+  repo-sources:
+    - >
+      https://developer.garmin.com/connect-iq/sdk/ — Garmin distributes SDK Manager as
+      proprietary platform downloads and does not identify an official public source
+      repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://developer.garmin.com/connect-iq/reference-guides/visual-studio-code-extension/
+    - https://developer.garmin.com/connect-iq/sdk/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - wearable-development
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

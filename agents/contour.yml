@@ -1,14 +1,15 @@
 id: cask:contour
 display-name: Contour
-homepage: https://github.com/contour-terminal/contour/
-repo: https://github.com/contour-terminal/contour
+repo: null
 docs:
   - https://contour-terminal.org/
   - https://contour-terminal.org/configuration
   - https://contour-terminal.org/persistent-sessions
 config-file-location:
-  unix: ${XDG_CONFIG_HOME:-~/.config}/contour/contour.yml
-  windows: '%LocalAppData%\contour\contour.yml'
+  unix:
+    - ${XDG_CONFIG_HOME:-~/.config}/contour/contour.yml
+  windows:
+    - '%LocalAppData%\contour\contour.yml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,10 +72,6 @@ history:
     - >
       Power users can use Vi-like selection, inline graphics, hyperlinks, customizable
       key bindings, tabs, panes, layouts, and experimental daemon sessions.
-category: developer-tools
-package-manager:
-  brew-cask: contour
-package-manager-url: https://formulae.brew.sh/cask/contour
 tags:
   - cross-platform
   - gpu-accelerated
@@ -84,10 +81,43 @@ tags:
   - terminal-emulator
   - unicode
   - yaml-configuration
-description: Terminal emulator
-applications:
-  - contour.app
 provenance:
-  cask: contour
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://contour-terminal.org/ — official documentation describes Contour as a
+      modern terminal emulator.
+    - 'source_facts.description: "Terminal emulator"'
+  display-name-sources:
+    - current_curation.display-name
+    - https://contour-terminal.org/
+    - https://github.com/contour-terminal/contour
+  docs-sources:
+    - https://contour-terminal.org/ — dedicated official documentation site.
+    - https://contour-terminal.org/configuration/ — official configuration reference.
+    - >
+      https://contour-terminal.org/persistent-sessions/ — official daemon and
+      persistent-session guide.
+  history-sources:
+    - https://contour-terminal.org/
+    - https://contour-terminal.org/configuration/
+    - https://contour-terminal.org/persistent-sessions/
+    - https://github.com/contour-terminal/contour
+    - https://github.com/contour-terminal/contour/blob/master/metainfo.xml
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/contour-terminal/contour; repository enrichment is therefore
+      intentionally omitted.
+  tags-sources:
+    - https://contour-terminal.org/
+    - https://github.com/contour-terminal/contour
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminal-emulators
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

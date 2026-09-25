@@ -1,6 +1,5 @@
 id: cask:connectmenow
 display-name: ConnectMeNow
-homepage: https://www.tweaking4all.com/os-tips-and-tricks/macosx-tips-and-tricks/connectmenow-v4/
 repo: null
 docs:
   - https://www.tweaking4all.com/software/macosx-software/connectmenow-v4
@@ -10,7 +9,8 @@ config-file-location:
     - ~/Library/Preferences/com.Tweaking4All.ConnectMeNow4.ini.bak
     - ~/Library/Preferences/com.Tweaking4All.ConnectMeNow4.plist
 credentials-file-location:
-  macos: ~/Library/Preferences/com.Tweaking4All.ConnectMeNow4.ini
+  macos:
+    - ~/Library/Preferences/com.Tweaking4All.ConnectMeNow4.ini
 history:
   adoption-history:
     - >
@@ -77,10 +77,6 @@ history:
       availability. SSH and SSHFS entries can use passwords or SSH keys; the developer
       notes that usernames and passwords stored in the INI configuration are encrypted
       automatically.
-category: networking
-package-manager:
-  brew-cask: connectmenow
-package-manager-url: https://formulae.brew.sh/cask/connectmenow
 tags:
   - macos
   - menu-bar
@@ -90,10 +86,40 @@ tags:
   - ssh
   - sshfs
   - webdav
-description: Mount network shares quick and easy
-applications:
-  - ConnectMeNow4.app
 provenance:
-  cask: connectmenow
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://www.tweaking4all.com/software/macosx-software/connectmenow-v4/ — official
+      page documents SMB, CIFS, AFP, NFS, FTP, WebDAV, SSH, and SSHFS connections.
+    - 'source_facts.description: "Mount network shares quick and easy"'
+  display-name-sources:
+    - current_curation.display-name
+    - >
+      https://www.tweaking4all.com/software/macosx-software/connectmenow-v4/ — official
+      product documentation uses ConnectMeNow.
+  docs-sources:
+    - >
+      https://www.tweaking4all.com/software/macosx-software/connectmenow-v4/ —
+      developer-maintained product page, manual, installation guide, and change log.
+  history-sources:
+    - >
+      https://www.tweaking4all.com/os-tips-and-tricks/macosx-tips-and-tricks/connect-network-shares-mac/
+    - https://www.tweaking4all.com/software/macosx-software/connectmenow-v4/
+  repo-sources:
+    - >
+      https://www.tweaking4all.com/software/macosx-software/connectmenow-v4/ — official
+      distribution and documentation page provides binary downloads but identifies no
+      official source-control repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://www.tweaking4all.com/software/macosx-software/connectmenow-v4/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - network-filesystems
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
