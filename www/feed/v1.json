@@ -96,8 +96,8 @@
       ],
       "fallbackPackageIDs": [
         "brew:sofka",
-        "brew:ratex",
         "brew:cask:hol-guard",
+        "brew:ratex",
         "brew:cask:opendisk",
         "brew:cask:look",
         "brew:cask:highball",
@@ -127,18 +127,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
-        "brew:ratex",
-        "brew:cask:hol-guard",
+        "brew:cask:mindroom",
+        "brew:cask:gloomberb",
         "brew:sofka",
+        "brew:cask:hol-guard",
+        "brew:ratex",
         "brew:cask:look",
         "brew:cask:opendisk",
         "brew:cask:highball",
         "brew:cask:tapmap",
         "brew:ccmux",
         "brew:workmux",
-        "brew:bashka",
-        "brew:cask:recordly",
-        "brew:cask:telari"
+        "brew:bashka"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -146,18 +146,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
-        "brew:ratex",
-        "brew:cask:hol-guard",
+        "brew:cask:mindroom",
+        "brew:cask:gloomberb",
         "brew:sofka",
+        "brew:cask:hol-guard",
+        "brew:ratex",
         "brew:cask:look",
         "brew:cask:opendisk",
         "brew:cask:highball",
         "brew:cask:tapmap",
         "brew:cask:zentty",
         "brew:ccmux",
-        "brew:workmux",
-        "brew:bashka",
-        "brew:cask:recordly"
+        "brew:workmux"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -797,7 +797,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-24T10:23:50Z",
+  "generatedAt": "2026-09-25T11:08:58Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1102,6 +1102,59 @@
       "upstreamSummary": "Tool discovery and execution layer for AI agents",
       "version": "1.6.10"
     },
+    "brew:cask:gloomberb": {
+      "agentSummary": "Gloomberb combines a keyboard-driven finance terminal, desktop interface, market data, portfolios, plugins, and automation-friendly output, but provider coverage and credentials vary.",
+      "assessment": {
+        "alternatives": [
+          "OpenBB for a broader Python-centered investment research platform",
+          "Dedicated broker terminals for supported trading workflows"
+        ],
+        "audiences": [
+          "Terminal-oriented investors and market researchers",
+          "Developers building scriptable finance workflows"
+        ],
+        "caveats": [
+          "Data freshness, limits, and feature availability vary by provider and account tier",
+          "Some desktop, browser, and terminal capabilities differ across platforms"
+        ],
+        "complements": [
+          "Kitty-compatible terminals for richer graphics",
+          "Broker and market-data provider accounts"
+        ],
+        "prerequisites": [
+          "A supported macOS, Linux, or Windows environment",
+          "Provider accounts or API credentials for data sources that require them"
+        ],
+        "useCases": [
+          "Inspect quotes, filings, news, portfolios, watchlists, and economic data",
+          "Export structured finance data or extend the terminal with plugins"
+        ]
+      },
+      "category": "data",
+      "displayName": "Gloomberb",
+      "docs": "https://gloom.sh/docs",
+      "homepage": "https://gloom.sh/",
+      "id": "brew:cask:gloomberb",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agloomberb",
+      "lastUpdatedAt": "2026-09-25T01:40:45Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/gloom-sh/gloomberb",
+      "researchedAt": "2026-09-25T11:08:58Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Gloomberb v0.1.0 release",
+          "url": "https://github.com/gloom-sh/gloomberb/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Gloomberb documentation",
+          "url": "https://gloom.sh/docs"
+        }
+      ],
+      "upstreamSummary": "Finance terminal",
+      "version": "0.15.2"
+    },
     "brew:cask:highball": {
       "agentSummary": "Highball configures Wine-based Windows gaming on Apple Silicon, selecting renderers from an open compatibility database while exposing engines, recipes, and command-line controls.",
       "assessment": {
@@ -1167,31 +1220,31 @@
       "version": "0.9.35"
     },
     "brew:cask:hol-guard": {
-      "agentSummary": "HOL Guard adds local runtime policy and scanning around AI coding agents, intercepting risky tools, secrets, plugins, skills, and MCP activity before execution.",
+      "agentSummary": "HOL Guard inspects supported AI-agent actions, package installs, plugins, and MCP traffic locally, applying policy gates while preserving approvals and decision receipts.",
       "assessment": {
         "alternatives": [
-          "Agent-native approval controls and manual allowlists",
-          "Container or virtual-machine isolation around agent sessions"
+          "Native agent approval and sandbox controls",
+          "General endpoint detection and dependency scanning tools"
         ],
         "audiences": [
-          "Security-conscious users of AI coding agents",
-          "Platform and security teams defining agent guardrails"
+          "Developers granting coding agents access to local tools and files",
+          "Teams evaluating agent, plugin, MCP, and package supply-chain risk"
         ],
         "caveats": [
-          "Coverage and failure behavior vary with the events exposed by each agent integration",
-          "Policy checks can produce false positives or miss risks and do not replace isolation or human review"
+          "Coverage and enforcement depend on the events exposed by each agent integration",
+          "Policy gates reduce risk but do not replace host isolation or ordinary security controls"
         ],
         "complements": [
-          "Secret scanners and dependency auditing",
-          "Sandboxing, least-privilege credentials, and code review"
+          "Codex, Claude Code, Cursor, Gemini CLI, and other supported harnesses",
+          "Existing endpoint, secret-scanning, and dependency-security controls"
         ],
         "prerequisites": [
           "Python 3.10 or newer and pipx",
-          "A supported agent integration with compatible enforcement hooks"
+          "A supported AI-agent harness for enforcement integration"
         ],
         "useCases": [
-          "Review risky shell, file, package, and MCP actions before execution",
-          "Inventory and scan agent plugins, skills, and configuration"
+          "Gate supported shell, file, package, plugin, and MCP actions",
+          "Record local approvals and decision evidence for later review"
         ]
       },
       "category": "security",
@@ -1200,14 +1253,14 @@
       "homepage": "https://hol.org/guard",
       "id": "brew:cask:hol-guard",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahol-guard",
-      "lastUpdatedAt": "2026-09-24T07:27:14Z",
+      "lastUpdatedAt": "2026-09-24T19:15:01Z",
       "manager": "homebrew",
       "repository": "https://github.com/hashgraph-online/hol-guard",
-      "researchedAt": "2026-09-24T10:23:50Z",
+      "researchedAt": "2026-09-25T11:08:58Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "HOL Guard upstream repository and README",
+          "title": "HOL Guard repository and product overview",
           "url": "https://github.com/hashgraph-online/hol-guard"
         },
         {
@@ -1217,7 +1270,7 @@
         }
       ],
       "upstreamSummary": "Local-first runtime firewall for AI coding agents",
-      "version": "3.0.98"
+      "version": "3.0.108"
     },
     "brew:cask:look": {
       "agentSummary": "Look is a free, open-source keyboard launcher for macOS, Windows, and Linux, combining application search, clipboard history, commands, and configurable local workflows.",
@@ -1279,6 +1332,59 @@
       ],
       "upstreamSummary": "Keyboard-first local launcher",
       "version": "0.7.1"
+    },
+    "brew:cask:mindroom": {
+      "agentSummary": "MindRoom connects self-hosted AI agents to Matrix rooms, enabling multi-user orchestration with configurable models and tools while retaining operational control over deployment.",
+      "assessment": {
+        "alternatives": [
+          "OpenClaw for a more personal-assistant-oriented workflow",
+          "Hermes Agent for another self-hosted assistant stack"
+        ],
+        "audiences": [
+          "Teams and households coordinating multiple AI agents through Matrix",
+          "Operators who prefer self-hosted or hybrid AI infrastructure"
+        ],
+        "caveats": [
+          "Self-hosting adds Matrix, model, tool, credential, and sandbox administration",
+          "Bridge reliability and privacy depend on each connected messaging platform"
+        ],
+        "complements": [
+          "Matrix clients and bridges",
+          "Ollama or supported hosted model providers"
+        ],
+        "prerequisites": [
+          "A Matrix deployment or a hosted Matrix account",
+          "Model-provider credentials or a configured local model runtime"
+        ],
+        "useCases": [
+          "Route different rooms or agents to local and cloud models",
+          "Expose tool-using agents through Matrix clients and bridges"
+        ]
+      },
+      "category": "ai",
+      "displayName": "MindRoom",
+      "docs": "https://docs.mindroom.chat/",
+      "homepage": "https://github.com/mindroom-ai/mindroom",
+      "id": "brew:cask:mindroom",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amindroom",
+      "lastUpdatedAt": "2026-09-25T04:13:35Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/mindroom-ai/mindroom",
+      "researchedAt": "2026-09-25T11:08:58Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "MindRoom repository and overview",
+          "url": "https://github.com/mindroom-ai/mindroom"
+        },
+        {
+          "kind": "primary",
+          "title": "MindRoom documentation",
+          "url": "https://docs.mindroom.chat/"
+        }
+      ],
+      "upstreamSummary": "Self-hostable AI stack for multi-user, multi-agent workflows on Matrix",
+      "version": "2026.9.300"
     },
     "brew:cask:monet": {
       "agentSummary": "Monet provides a native macOS control room for browsing, searching, launching, and supervising concurrent Claude Code and Codex sessions across projects.",
@@ -1582,63 +1688,6 @@
       "upstreamSummary": "Disk space analyser",
       "version": "1.2.1"
     },
-    "brew:cask:recordly": {
-      "agentSummary": "Recordly is an open-source cross-platform screen recorder and editor for demos, offering automatic zooms, cursor polish, timeline editing, webcam overlays, and extensible presentation effects.",
-      "assessment": {
-        "alternatives": [
-          "OBS Studio",
-          "Screen Studio",
-          "Kdenlive or another general-purpose editor"
-        ],
-        "audiences": [
-          "Developers recording product demos and tutorials",
-          "Creators wanting an open-source cross-platform editor"
-        ],
-        "caveats": [
-          "Platform capture behavior differs",
-          "Linux does not currently support every cursor feature",
-          "A young editor may not cover advanced workflows from mature video suites"
-        ],
-        "complements": [
-          "A scripted demo environment",
-          "External audio cleanup",
-          "Video encoding and publishing workflows"
-        ],
-        "prerequisites": [
-          "Screen and microphone permissions as required",
-          "Enough local storage and graphics capacity for video editing"
-        ],
-        "useCases": [
-          "Recording and polishing application walkthroughs",
-          "Adding automatic zoom and cursor effects",
-          "Editing screen, webcam, and presentation elements on a timeline"
-        ]
-      },
-      "category": null,
-      "displayName": "Recordly",
-      "docs": null,
-      "homepage": "https://github.com/webadderallorg/Recordly",
-      "id": "brew:cask:recordly",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Arecordly",
-      "lastUpdatedAt": "2026-09-20T23:48:43Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/webadderallorg/Recordly",
-      "researchedAt": "2026-09-22T16:42:02Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Recordly repository",
-          "url": "https://github.com/webadderallorg/Recordly"
-        },
-        {
-          "kind": "independent",
-          "title": "Recordly product site",
-          "url": "https://www.recordly.dev"
-        }
-      ],
-      "upstreamSummary": "Creator-focused screen recorder with auto-zoom, cursor effects, and more",
-      "version": "1.4.0"
-    },
     "brew:cask:tapmap": {
       "agentSummary": "TapMap visualizes local network connections on a world map, builds activity history, and highlights unfamiliar destinations while remaining an awareness tool rather than a firewall.",
       "assessment": {
@@ -1754,65 +1803,6 @@
       ],
       "upstreamSummary": "Windows-style taskbar as a Dock replacement",
       "version": "1.6.3,2026,09"
-    },
-    "brew:cask:telari": {
-      "agentSummary": "Telari is a native macOS reader for Markdown and plain text, emphasizing Knuth–Plass justification, mixed CJK–Latin typography, mathematical typesetting, and local document handling.",
-      "assessment": {
-        "alternatives": [
-          "A Markdown editor with a built-in preview",
-          "Pandoc or a static-site workflow for reproducible rendered output"
-        ],
-        "audiences": [
-          "macOS users who read long Markdown or plain-text documents",
-          "Writers and researchers working with mixed CJK and Latin typography"
-        ],
-        "caveats": [
-          "Telari is a reader rather than a full Markdown editor",
-          "The project is still in public beta and has limited independent usage evidence",
-          "Anonymous usage statistics are enabled by default but can be disabled"
-        ],
-        "complements": [
-          "A separate Markdown editor for changing source files",
-          "Version control or backups for the documents being read"
-        ],
-        "prerequisites": [
-          "macOS 13 or newer",
-          "Acceptance of a young public-beta application whose eventual release will be paid"
-        ],
-        "useCases": [
-          "Reading Markdown with book-like justification and configurable fonts",
-          "Rendering mathematical notation and exporting documents to PDF or PNG"
-        ]
-      },
-      "category": "productivity",
-      "displayName": "Telari",
-      "docs": "https://telari.app/en",
-      "homepage": "https://telari.app/",
-      "id": "brew:cask:telari",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atelari",
-      "lastUpdatedAt": "2026-09-19T04:40:44Z",
-      "manager": "homebrew",
-      "repository": null,
-      "researchedAt": "2026-09-19T06:48:56Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Telari product and feature overview",
-          "url": "https://telari.app/en/"
-        },
-        {
-          "kind": "primary",
-          "title": "Telari changelog",
-          "url": "https://telari.app/en/changelog/"
-        },
-        {
-          "kind": "primary",
-          "title": "Telari privacy policy",
-          "url": "https://telari.app/en/privacy/"
-        }
-      ],
-      "upstreamSummary": "Markdown reader built for typography",
-      "version": "0.5.7"
     },
     "brew:cask:zentty": {
       "agentSummary": "Zentty is a native macOS terminal for agent-heavy development, combining scrolling worklanes, persistent panes, status-aware sidebars, task discovery, and a scriptable embedded CLI.",
@@ -3462,31 +3452,31 @@
       "version": "2.7.5"
     },
     "brew:sofka": {
-      "agentSummary": "Sofka is a Rust Kubernetes terminal interface with resource browsing, Helm inspection, plugins, debugging views, and safety controls for operators who prefer keyboard-driven workflows.",
+      "agentSummary": "Sofka is a Rust Kubernetes terminal interface with resource navigation, plugins, diagnostics, authorization checks, and guardrails for operators managing clusters interactively.",
       "assessment": {
         "alternatives": [
-          "k9s",
-          "Lens or OpenLens"
+          "k9s for a mature Kubernetes terminal UI",
+          "Headlamp or Lens for graphical cluster management"
         ],
         "audiences": [
-          "Kubernetes operators and administrators",
-          "SRE and platform engineering teams"
+          "Kubernetes operators who prefer terminal interfaces",
+          "Platform teams seeking explicit mutation guardrails"
         ],
         "caveats": [
-          "macOS release binaries are not currently signed or notarized",
-          "Read-only mode and Kubernetes RBAC should be configured carefully before using production contexts"
+          "The project is young and its plugin and advanced-provider surfaces are still evolving",
+          "macOS release binaries may require manual Gatekeeper approval because they are not notarized"
         ],
         "complements": [
-          "kubectl and Helm",
-          "GitOps controllers such as Flux or Argo CD"
+          "kubectl and existing kubeconfig contexts",
+          "Flux, Argo CD, and supported observability providers"
         ],
         "prerequisites": [
-          "A working kubeconfig and appropriate cluster permissions",
-          "Comfort with keyboard-driven terminal interfaces"
+          "A reachable Kubernetes cluster and working kubeconfig",
+          "Appropriate Kubernetes authorization for requested operations"
         ],
         "useCases": [
-          "Browse built-in and custom resources from a terminal interface",
-          "Investigate cluster incidents and inspect Helm, Flux, or Argo CD state"
+          "Navigate resources, logs, relationships, and cluster diagnostics",
+          "Operate in read-only mode or apply reviewed interactive actions"
         ]
       },
       "category": "cloud-infrastructure",
@@ -3495,24 +3485,24 @@
       "homepage": "https://github.com/nklmilojevic/sofka",
       "id": "brew:sofka",
       "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
-      "lastUpdatedAt": "2026-09-24T05:05:54Z",
+      "lastUpdatedAt": "2026-09-25T00:30:42Z",
       "manager": "homebrew",
       "repository": "https://github.com/nklmilojevic/sofka",
-      "researchedAt": "2026-09-24T10:23:50Z",
+      "researchedAt": "2026-09-25T11:08:58Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Sofka upstream repository and README",
-          "url": "https://github.com/nklmilojevic/sofka"
+          "title": "Sofka v0.1.0 release",
+          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.0"
         },
         {
           "kind": "primary",
-          "title": "Sofka feature documentation",
-          "url": "https://github.com/nklmilojevic/sofka/blob/main/docs/features.md"
+          "title": "Sofka repository documentation",
+          "url": "https://github.com/nklmilojevic/sofka#readme"
         }
       ],
       "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
-      "version": "0.28.6"
+      "version": "0.29.2"
     },
     "brew:tailcat": {
       "agentSummary": "Tailcat creates encrypted, netcat-like peer connections through Tailscale's userspace WireGuard, NAT traversal, and DERP components, without accounts, routes, or a control plane.",
@@ -3811,7 +3801,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-24T10:22:30Z",
+    "generatedAt": "2026-09-25T11:07:19Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
