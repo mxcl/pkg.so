@@ -1,14 +1,86 @@
 id: cask:kirocrew
 display-name: Kiro Crew
 homepage: https://kiro.dev/docs/crew/
-repo: null
+repo: https://github.com/kirodotdev/KiroCrew
 docs:
   - https://kiro.dev/docs/cli/quick-start
   - https://kiro.dev/docs/crew
   - https://kiro.dev/docs/custom-agents
-config-file-location: null
-credentials-file-location: null
-history: null
+config-file-location:
+  unix:
+    - ~/.kiro/crew/config.json
+    - ~/.kiro/crew/config.local.json
+  windows:
+    - '%USERPROFILE%\.kiro\crew\config.json'
+    - '%USERPROFILE%\.kiro\crew\config.local.json'
+credentials-file-location:
+  unix: ~/.kiro/crew/.env
+  windows: '%USERPROFILE%\.kiro\crew\.env'
+history:
+  adoption-history:
+    - >
+      Kiro's official product page says Crew grew from an internal side project to more
+      than 39,000 builders in under six months, with nearly 500 contributors.
+    - >
+      The project is distributed as a desktop application, command-line tool, Python
+      package, and self-hosted web dashboard. Messaging integrations extend the same
+      persistent runtime to services including Slack, Discord, Telegram, Teams, and
+      Webex.
+  package-nerd-significance:
+    - >
+      Kiro Crew packages a persistent agent runtime rather than a single chat client:
+      sessions, memory, schedules, checkpoints, skills, and task queues survive restarts
+      and can run without an interactive terminal.
+    - >
+      Its Apache-2.0 repository, cross-platform packages, editable local state, Agent
+      Client Protocol backend, MCP integration, and repository-local development model
+      make it especially inspectable and extensible for package and automation
+      enthusiasts.
+  project-history:
+    - >
+      Kiro Crew began as an internal side project and was publicly introduced as open
+      source in August 2026. It runs on the Kiro CLI through the Agent Client Protocol
+      and adds persistent memory, scheduling, multi-session orchestration, background
+      subagents, and unattended task execution.
+    - >
+      Development occurs publicly in the `kirodotdev/KiroCrew` repository under the
+      Apache License 2.0, with public issues, pull requests, maintainers, and project
+      discussions.
+  related-projects:
+    - Kiro
+    - Kiro CLI
+    - Agent Client Protocol
+    - Model Context Protocol
+    - Kiro Crew Apps
+  sources:
+    - https://github.com/kirodotdev/KiroCrew
+    - https://kiro.dev/changelog/crew/0-1/
+    - https://kiro.dev/crew/
+    - https://kiro.dev/docs/crew/
+  summary:
+    - >
+      Kiro Crew is an open-source, self-hosted AI development workspace that provides
+      persistent sessions, memory, scheduling, autonomous task execution, and
+      multi-agent coordination through desktop, web, CLI, and messaging interfaces.
+  timeline:
+    - '2026-08-04: Kiro announced Kiro Crew as an open-source project.'
+    - >
+      2026: The project reported more than 39,000 builders and nearly 500 contributors
+      within its first six months.
+    - >
+      2026-09: Official documentation described desktop packages, a web dashboard, CLI
+      workflows, scheduling, subagents, and multiple messaging channels.
+  usage:
+    - >
+      Users run the bundled desktop application or start the gateway and open its local
+      dashboard. Independent sessions can read and write files, run commands, browse the
+      web, and invoke configured MCP tools.
+    - >
+      Crew can execute long-running task specifications, schedule recurring jobs, create
+      parallel subagents, retain corrections as lessons, and monitor systems through
+      heartbeats. Configuration lives in the Crew data home, normally `~/.kiro/crew`;
+      channel credentials may be stored in its owner-only `.env` file or encrypted
+      secrets vault.
 category: developer-tools
 package-manager:
   brew-cask: kirocrew
