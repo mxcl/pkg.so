@@ -1,12 +1,12 @@
 id: cask:qt-design-studio
 display-name: Qt Design Studio
-homepage: https://www.qt.io/product/ui-design-tools
 repo: https://code.qt.io/cgit/qt-creator/qt-creator.git
 docs:
   - https://doc.qt.io/qtdesignstudio
   - https://wiki.qt.io/QtDesignStudio
 config-file-location:
-  unix: ~/.config/QtProject/QtDesignStudio.ini
+  unix:
+    - ~/.config/QtProject/QtDesignStudio.ini
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,10 +71,6 @@ history:
     - >
       Qt Account login can be required by Qt's installer or licensed distributions, but
       no separate Qt Design Studio credentials-file location is officially documented.
-category: developer-tools
-package-manager:
-  brew-cask: qt-design-studio
-package-manager-url: https://formulae.brew.sh/cask/qt-design-studio
 tags:
   - embedded
   - ide
@@ -83,10 +79,53 @@ tags:
   - qt
   - qt-quick
   - ui-design
-description: UI design and development tool
-applications:
-  - Qt Design Studio.app
 provenance:
-  cask: qt-design-studio
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes Qt Design Studio as a functional UI design,
+      prototyping, and development environment: https://doc.qt.io/qtdesignstudio/
+    - source_facts.description identifies a UI design and development tool.
+  display-name-sources:
+    - 'Official product documentation: https://doc.qt.io/qtdesignstudio/'
+    - source_facts.applications
+  docs-sources:
+    - 'Official Qt Design Studio manual: https://doc.qt.io/qtdesignstudio/'
+    - 'Official Qt project wiki: https://wiki.qt.io/QtDesignStudio'
+    - >
+      Qt's installation guide says Qt Account authentication is used by the online
+      installer, but it does not document a Qt Design Studio credentials file:
+      https://doc.qt.io/qtdesignstudio/studio-installation.html
+    - >
+      The official settings FAQ documents the shared Linux/macOS settings path:
+      https://wiki.qt.io/QtDesignStudio/Settings_FAQ
+  history-sources:
+    - 'Official Qt Creator repository: https://code.qt.io/cgit/qt-creator/qt-creator.git/'
+    - >
+      Official Qt Design Studio 1.0 announcement:
+      https://www.qt.io/ja-jp/blog/2018/10/28/qt-design-studio-1-0-released
+    - 'Official Qt Design Studio documentation: https://doc.qt.io/qtdesignstudio/'
+    - 'Official Qt Design Studio wiki: https://wiki.qt.io/QtDesignStudio'
+    - >
+      Official designer-developer workflow documentation:
+      https://doc.qt.io/qtdesignstudio/studio-designer-developer-workflow.html
+  repo-sources:
+    - >
+      The official Qt Creator repository exposes dedicated qds branches and tags:
+      https://code.qt.io/cgit/qt-creator/qt-creator.git/
+    - >
+      The official Qt Design Studio wiki states that the product is based on Qt Creator
+      and can be built from its sources: https://wiki.qt.io/QtDesignStudio
+  tags-sources:
+    - 'Official Qt Design Studio documentation: https://doc.qt.io/qtdesignstudio/'
+    - 'Official Qt Design Studio wiki: https://wiki.qt.io/QtDesignStudio'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - ui-design
+  - prototyping
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
