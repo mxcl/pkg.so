@@ -1,21 +1,24 @@
 id: cask:prismlauncher
 display-name: Prism Launcher
-homepage: https://prismlauncher.org/
-repo: https://github.com/PrismLauncher/PrismLauncher
+repo: null
 docs:
   - https://prismlauncher.org/wiki
 config-file-location:
   linux:
     - ~/.local/share/PrismLauncher/prismlauncher.cfg
     - ~/.var/app/org.prismlauncher.PrismLauncher/data/PrismLauncher/prismlauncher.cfg
-  macos: ~/Library/Application Support/PrismLauncher/prismlauncher.cfg
-  windows: '%APPDATA%\PrismLauncher\prismlauncher.cfg'
+  macos:
+    - ~/Library/Application Support/PrismLauncher/prismlauncher.cfg
+  windows:
+    - '%APPDATA%\PrismLauncher\prismlauncher.cfg'
 credentials-file-location:
   linux:
     - ~/.local/share/PrismLauncher/accounts.json
     - ~/.var/app/org.prismlauncher.PrismLauncher/data/PrismLauncher/accounts.json
-  macos: ~/Library/Application Support/PrismLauncher/accounts.json
-  windows: '%APPDATA%\PrismLauncher\accounts.json'
+  macos:
+    - ~/Library/Application Support/PrismLauncher/accounts.json
+  windows:
+    - '%APPDATA%\PrismLauncher\accounts.json'
 history:
   adoption-history:
     - >
@@ -66,10 +69,6 @@ history:
       manage Java and memory settings, authenticate game accounts, and install mods or
       modpacks from supported services. Isolated instances prevent configurations and
       content from interfering with one another.
-category: games
-package-manager:
-  brew-cask: prismlauncher
-package-manager-url: https://formulae.brew.sh/cask/prismlauncher
 tags:
   - game-launcher
   - instance-manager
@@ -78,10 +77,30 @@ tags:
   - modpacks
   - open-source
   - qt
-description: Minecraft launcher
-applications:
-  - Prism Launcher.app
 provenance:
-  cask: prismlauncher
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://prismlauncher.org/about/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://prismlauncher.org/about/
+  docs-sources:
+    - https://prismlauncher.org/wiki/
+  history-sources:
+    - https://prismlauncher.org/about/
+    - https://prismlauncher.org/wiki/getting-started/data-location/
+    - https://prismlauncher.org/wiki/overview/faq/
+  repo-sources:
+    - source_facts.repo already supplies the repository; returned null as required.
+  tags-sources:
+    - https://prismlauncher.org/about/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - game-launchers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

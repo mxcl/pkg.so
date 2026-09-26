@@ -1,7 +1,6 @@
 id: cask:prisma-studio
 display-name: Prisma Studio
-homepage: https://www.prisma.io/studio
-repo: https://github.com/prisma/studio
+repo: null
 docs:
   - https://docs.prisma.io/docs/cli/studio
   - https://docs.prisma.io/docs/studio
@@ -13,8 +12,10 @@ config-file-location:
     - <project-root>/prisma.config.ts
     - <project-root>/.config/prisma.ts
 credentials-file-location:
-  unix: <project-root>/.env
-  windows: <project-root>/.env
+  unix:
+    - <project-root>/.env
+  windows:
+    - <project-root>/.env
 history:
   adoption-history:
     - >
@@ -59,10 +60,6 @@ history:
       Developers launch Studio from the Prisma CLI inside an ORM project or pass a
       database URL for standalone use. Studio provides table browsing, filtering, record
       editing, and, for supported Prisma 8 databases, migration-history inspection.
-category: developer-tools
-package-manager:
-  brew-cask: prisma-studio
-package-manager-url: https://formulae.brew.sh/cask/prisma-studio
 tags:
   - data-editor
   - database
@@ -70,10 +67,31 @@ tags:
   - developer-tool
   - orm
   - prisma
-description: Visual database editor for Prisma projects
-applications:
-  - Prisma Studio.app
 provenance:
-  cask: prisma-studio
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://docs.prisma.io/docs/studio/getting-started
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://docs.prisma.io/docs/studio/getting-started
+  docs-sources:
+    - https://docs.prisma.io/docs/cli/studio
+    - https://docs.prisma.io/docs/studio/getting-started
+  history-sources:
+    - https://docs.prisma.io/docs/studio/getting-started
+    - https://www.prisma.io/blog/prisma-studio-migrations-view
+    - https://www.prisma.io/blog/we-made-prisma-studio-even-better
+  repo-sources:
+    - source_facts.repo already supplies the repository; returned null as required.
+  tags-sources:
+    - https://docs.prisma.io/docs/studio/getting-started
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - database-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
