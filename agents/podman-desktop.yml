@@ -1,16 +1,18 @@
 id: cask:podman-desktop
 display-name: Podman Desktop
-homepage: https://podman-desktop.io/
-repo: https://github.com/containers/podman-desktop
+repo: null
 docs:
   - https://podman-desktop.io/docs
   - https://podman-desktop.io/docs/configuration/settings-reference
   - https://podman-desktop.io/docs/containers/registries
 config-file-location:
-  unix: ~/.local/share/containers/podman-desktop/configuration/settings.json
-  windows: '%USERPROFILE%\.local\share\containers\podman-desktop\configuration\settings.json'
+  unix:
+    - ~/.local/share/containers/podman-desktop/configuration/settings.json
+  windows:
+    - '%USERPROFILE%\.local\share\containers\podman-desktop\configuration\settings.json'
 credentials-file-location:
-  unix: ~/.config/containers/auth.json
+  unix:
+    - ~/.config/containers/auth.json
 history:
   adoption-history:
     - >
@@ -69,10 +71,6 @@ history:
       images, authenticate to registries, operate Podman machines, run Compose workloads
       and deploy to local or remote Kubernetes contexts. Extensions add support for
       adjacent engines and developer workflows.
-category: developer-tools
-package-manager:
-  brew-cask: podman-desktop
-package-manager-url: https://formulae.brew.sh/cask/podman-desktop
 tags:
   - compose
   - container-images
@@ -82,10 +80,39 @@ tags:
   - developer-tools
   - kubernetes
   - podman
-description: Browse, manage, inspect containers and images
-applications:
-  - Podman Desktop.app
 provenance:
-  cask: podman-desktop
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official introduction describes a graphical environment for working with
+      containers, images, pods and Kubernetes: https://podman-desktop.io/docs/intro
+  display-name-sources:
+    - 'Official documentation: https://podman-desktop.io/docs/intro'
+    - source_facts.applications
+  docs-sources:
+    - Official Podman Desktop documentation portal, settings reference and registry guide.
+  history-sources:
+    - 'Official 1.0 announcement: https://podman-desktop.io/blog/podman-desktop-release-1.0'
+    - >
+      Official CNCF announcement:
+      https://podman-desktop.io/blog/2024/11/14/podman-desktop-cncf
+    - >
+      Official adoption retrospective:
+      https://podman-desktop.io/blog/5-million-lessons-learned
+    - 'Official documentation: https://podman-desktop.io/docs/intro'
+    - 'Official release archive: https://podman-desktop.io/blog/archive'
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/containers/podman-desktop;
+      per the task rule, repo is returned as null without re-evaluation.
+  tags-sources:
+    - 'Official documentation navigation and introduction: https://podman-desktop.io/docs/intro'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - containers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
