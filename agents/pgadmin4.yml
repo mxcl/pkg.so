@@ -1,6 +1,5 @@
 id: cask:pgadmin4
 display-name: pgAdmin 4
-homepage: https://www.pgadmin.org/
 repo: https://github.com/pgadmin-org/pgadmin4
 docs:
   - https://www.pgadmin.org/docs
@@ -9,7 +8,8 @@ config-file-location:
     - ~/Library/Preferences/pgadmin/runtime_config.json
     - /Library/Preferences/pgadmin/config_system.py
 credentials-file-location:
-  macos: ~/.pgadmin4/pgadmin4.db
+  macos:
+    - ~/.pgadmin4/pgadmin4.db
 history:
   adoption-history:
     - >
@@ -68,10 +68,6 @@ history:
       Desktop installations run a local application server behind the graphical runtime.
       Administrators may instead deploy pgAdmin behind a production web server for
       multiple users.
-category: developer-tools
-package-manager:
-  brew-cask: pgadmin4
-package-manager-url: https://formulae.brew.sh/cask/pgadmin4
 tags:
   - database-administration
   - database-client
@@ -81,10 +77,38 @@ tags:
   - query-tool
   - sql
   - web-app
-description: Administration and development platform for PostgreSQL
-applications:
-  - pgAdmin 4.app
 provenance:
-  cask: pgadmin4
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://www.pgadmin.org/docs/pgadmin4/9.18/index.html describes pgAdmin as a
+      graphical PostgreSQL management tool.
+    - >
+      source_facts.description identifies it as an administration and development
+      platform for PostgreSQL.
+  display-name-sources:
+    - https://www.pgadmin.org/
+    - https://www.pgadmin.org/docs/
+  docs-sources:
+    - Official pgAdmin documentation portal.
+  history-sources:
+    - https://www.pgadmin.org/docs/
+    - https://www.pgadmin.org/docs/pgadmin4/9.16/release_notes_1_0.html
+    - https://www.pgadmin.org/docs/pgadmin4/9.18/desktop_deployment.html
+    - https://www.pgadmin.org/download/
+  repo-sources:
+    - >
+      https://www.pgadmin.org/docs/pgadmin4/9.16/submitting_pull_requests.html
+      explicitly identifies the official repository.
+  tags-sources:
+    - https://www.pgadmin.org/docs/pgadmin4/9.18/index.html
+    - https://www.pgadmin.org/download/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - database-administration
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
