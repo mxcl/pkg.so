@@ -1,6 +1,5 @@
 id: cask:pecunia
 display-name: Pecunia
-homepage: https://pecuniabanking.de/
 repo: https://github.com/pecuniabanking/pecunia-client
 docs:
   - https://github.com/pecuniabanking/pecunia-client/wiki
@@ -10,7 +9,8 @@ docs:
   - https://pecuniabanking.de/index.php/hilfe
 config-file-location: null
 credentials-file-location:
-  macos: macOS Keychain (optional storage for banking PINs)
+  macos:
+    - macOS Keychain (optional storage for banking PINs)
 history:
   adoption-history:
     - >
@@ -75,10 +75,6 @@ history:
       Keychain, and local financial data can be encrypted in the application's security
       settings. The developer recommends backing up
       `~/Library/Containers/de.pecuniabanking.pecunia`.
-category: productivity
-package-manager:
-  brew-cask: pecunia
-package-manager-url: https://formulae.brew.sh/cask/pecunia
 tags:
   - fints
   - hbci
@@ -89,10 +85,40 @@ tags:
   - reporting
   - sepa
   - transactions
-description: Online banking app with support for HBCI
-applications:
-  - Pecunia.app
 provenance:
-  cask: pecunia
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official overview and feature pages:
+      https://pecuniabanking.de/index.php/beschreibung/ueberblick and
+      https://pecuniabanking.de/index.php/beschreibung/features
+    - source_facts.description
+  display-name-sources:
+    - 'Official project website: https://pecuniabanking.de/'
+    - source_facts.applications
+  docs-sources:
+    - >
+      The official website provides overview, features, security, and help pages and
+      links the project's official GitHub wiki.
+  history-sources:
+    - https://github.com/pecuniabanking/pecunia-client
+    - https://pecuniabanking.de/
+    - https://pecuniabanking.de/index.php/beschreibung/features
+    - https://pecuniabanking.de/index.php/beschreibung/sicherheit
+    - https://pecuniabanking.de/index.php/beschreibung/ueberblick
+    - https://pecuniabanking.de/index.php/downloads
+  repo-sources:
+    - >
+      The official Pecunia website links the pecuniabanking GitHub project for bugs and
+      its wiki; the repository README identifies itself as the Pecunia macOS client.
+  tags-sources:
+    - Official overview, features page, security page, and repository README.
+category-confidence: high
+category-path:
+  - productivity
+  - personal-finance
+  - online-banking
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
