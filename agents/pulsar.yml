@@ -1,12 +1,13 @@
 id: cask:pulsar
 display-name: Pulsar
-homepage: https://pulsar-edit.dev/
-repo: https://github.com/pulsar-edit/pulsar
+repo: null
 docs:
   - https://docs.pulsar-edit.dev/
 config-file-location:
-  unix: ~/.pulsar/config.cson
-  windows: '%USERPROFILE%\.pulsar\config.cson'
+  unix:
+    - ~/.pulsar/config.cson
+  windows:
+    - '%USERPROFILE%\.pulsar\config.cson'
 credentials-file-location: null
 history:
   adoption-history:
@@ -57,10 +58,6 @@ history:
       through community packages, themes, keymaps, snippets, language support, and
       language-server integrations. Global settings are stored in config.cson inside the
       Pulsar home directory.
-category: developer-tools
-package-manager:
-  brew-cask: pulsar
-package-manager-url: https://formulae.brew.sh/cask/pulsar
 tags:
   - atom-fork
   - code-editor
@@ -69,10 +66,39 @@ tags:
   - extensible
   - package-manager
   - text-editor
-description: Text editor
-applications:
-  - Pulsar.app
 provenance:
-  cask: pulsar
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official documentation: https://docs.pulsar-edit.dev/'
+    - >
+      Official homepage: https://pulsar-edit.dev/ calls Pulsar a community-led,
+      hyper-hackable text editor.
+  display-name-sources:
+    - 'Official documentation: https://docs.pulsar-edit.dev/'
+    - 'Official homepage: https://pulsar-edit.dev/'
+  docs-sources:
+    - >
+      Dedicated official documentation covering installation, editing, customization,
+      packages, APIs, troubleshooting, and contributing.
+  history-sources:
+    - >
+      Official configuration documentation:
+      https://docs.pulsar-edit.dev/customizing-pulsar/global-configuration-settings/
+    - 'Official history: https://docs.pulsar-edit.dev/getting-started/what-is-pulsar/'
+    - 'Official homepage: https://pulsar-edit.dev/'
+    - source_facts.package-manager.brew-cask
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repository discovery
+      was not repeated.
+  tags-sources:
+    - 'Official history: https://docs.pulsar-edit.dev/getting-started/what-is-pulsar/'
+    - 'Official homepage: https://pulsar-edit.dev/'
+category-confidence: high
+category-path:
+  - developer-tools
+  - text-editors
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

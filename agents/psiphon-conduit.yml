@@ -1,7 +1,6 @@
 id: cask:psiphon-conduit
 display-name: Psiphon Conduit
-homepage: https://conduit.psiphon.ca/
-repo: https://github.com/Psiphon-Inc/conduit
+repo: null
 docs:
   - https://conduit.psiphon.ca/
   - https://github.com/Psiphon-Inc/conduit#readme
@@ -49,10 +48,6 @@ history:
       choosing suitable capacity limits for the host and connection. Desktop users can
       use the graphical application, while operators can run the CLI or official
       container image for longer-lived nodes.
-category: networking
-package-manager:
-  brew-cask: psiphon-conduit
-package-manager-url: https://formulae.brew.sh/cask/psiphon-conduit
 tags:
   - censorship-circumvention
   - inproxy
@@ -60,10 +55,40 @@ tags:
   - proxy
   - psiphon
   - volunteer-node
-description: Psiphon network proxy tool
-applications:
-  - Conduit.app
 provenance:
-  cask: psiphon-conduit
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official repository README: https://github.com/Psiphon-Inc/conduit#readme
+      describes Conduit as running Psiphon's inproxy.
+    - 'source_facts.description: Psiphon network proxy tool.'
+  display-name-sources:
+    - 'Official project site: https://conduit.psiphon.ca/'
+    - current_curation.display-name
+  docs-sources:
+    - >
+      The official README documents supported applications, releases, development, and
+      CLI material.
+    - >
+      The official repository README directs users to https://conduit.psiphon.ca/ for
+      project information.
+  history-sources:
+    - 'Official project repository and README: https://github.com/Psiphon-Inc/conduit'
+    - 'Official releases: https://github.com/Psiphon-Inc/conduit/releases'
+    - source_facts.package-manager.brew-cask
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repository discovery
+      was not repeated.
+  tags-sources:
+    - Official releases describe Conduit as a volunteer-run proxy node.
+    - 'Official repository README: https://github.com/Psiphon-Inc/conduit#readme'
+category-confidence: high
+category-path:
+  - networking
+  - proxy
+  - censorship-circumvention
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
