@@ -1,15 +1,17 @@
 id: cask:oscar
 display-name: OSCAR
-homepage: https://www.sleepfiles.com/OSCAR/
 repo: https://gitlab.com/CrimsonNape/OSCAR-SQL
 docs:
   - https://www.apneaboard.com/wiki/index.php/OSCAR_Installation
   - https://www.apneaboard.com/wiki/index.php?title=OSCAR_Help
   - https://www.sleepfiles.com/OSCAR
 config-file-location:
-  linux: ~/Documents/OSCAR20_Data
-  macos: ~/Documents/OSCAR20_Data
-  windows: '%USERPROFILE%\Documents\OSCAR20_Data'
+  linux:
+    - ~/Documents/OSCAR20_Data
+  macos:
+    - ~/Documents/OSCAR20_Data
+  windows:
+    - '%USERPROFILE%\Documents\OSCAR20_Data'
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,10 +72,6 @@ history:
       The official installation guide names the recommended folder `OSCAR20_Data`; this
       directory contains profiles, settings, and imported medical data. OSCAR 2.0
       removed the profile-password feature, so no credentials file applies.
-category: science
-package-manager:
-  brew-cask: oscar
-package-manager-url: https://formulae.brew.sh/cask/oscar
 tags:
   - cpap
   - data-visualization
@@ -81,10 +79,39 @@ tags:
   - open-source
   - sleep-apnea
   - sleep-therapy
-description: CPAP Analysis Reporter
-applications:
-  - OSCAR20.app
 provenance:
-  cask: oscar
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official download page and help wiki describe OSCAR as software for reviewing
+      data from CPAP and related sleep-therapy machines:
+      https://www.sleepfiles.com/OSCAR/
+  display-name-sources:
+    - >
+      The official project expands OSCAR as “Open Source CPAP Analysis Reporter”:
+      https://www.sleepfiles.com/OSCAR/
+  docs-sources:
+    - >
+      The Apnea Board pages identify themselves as part of the official OSCAR software
+      project; SleepFiles is the official download site.
+  history-sources:
+    - https://gitlab.com/CPAPreporter/oscar-code
+    - https://gitlab.com/CrimsonNape/OSCAR-SQL
+    - https://www.apneaboard.com/wiki/index.php/OSCAR_Installation
+    - https://www.apneaboard.com/wiki/index.php?title=OSCAR_Help
+    - https://www.sleepfiles.com/OSCAR/
+  repo-sources:
+    - >
+      The current official OSCAR download page links
+      https://gitlab.com/CrimsonNape/OSCAR-SQL as the source code for the OSCAR 2.x
+      line.
+  tags-sources:
+    - Official OSCAR download page and official Apnea Board help wiki.
+category-confidence: high
+category-path:
+  - science
+  - health-informatics
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

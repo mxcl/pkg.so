@@ -1,7 +1,6 @@
 id: cask:orka-desktop
 display-name: Orka Desktop
-homepage: https://github.com/macstadium/orka-desktop
-repo: https://github.com/macstadium/orka-desktop
+repo: null
 docs:
   - https://github.com/macstadium/orka-desktop#readme
   - https://support.macstadium.com/hc/en-us/sections/29841535305371-Orka-Desktop
@@ -50,10 +49,6 @@ history:
       collaboration or deployment to Orka cloud environments. Registry credentials are
       entered in the application, but the official guide does not document a credentials
       file path.
-category: cloud-infrastructure
-package-manager:
-  brew-cask: orka-desktop
-package-manager-url: https://formulae.brew.sh/cask/orka-desktop
 tags:
   - apple-silicon
   - devops
@@ -62,10 +57,37 @@ tags:
   - orka
   - virtual-machines
   - virtualization
-description: Run macOS virtual machines locally and build images for use with Orka
-applications:
-  - Orka Desktop.app
 provenance:
-  cask: orka-desktop
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      MacStadium describes Orka Desktop as a local macOS virtualization tool that builds
+      and shares OCI-based VM images:
+      https://support.macstadium.com/hc/en-us/articles/28396626048667-Welcome-to-Orka-Desktop-3-0
+  display-name-sources:
+    - >
+      Official MacStadium repository and support guide use “Orka Desktop”:
+      https://github.com/macstadium/orka-desktop
+  docs-sources:
+    - >
+      Official MacStadium support section is the comprehensive guide linked by the
+      project's official repository README.
+  history-sources:
+    - https://github.com/macstadium/orka-desktop
+    - >
+      https://support.macstadium.com/hc/en-us/articles/28396626048667-Welcome-to-Orka-Desktop-3-0
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/macstadium/orka-desktop; per
+      the task instruction, repo is intentionally returned as null and not
+      re-determined.
+  tags-sources:
+    - Official repository README and MacStadium's Orka Desktop 3.0 guide.
+category-confidence: high
+category-path:
+  - cloud-infrastructure
+  - virtualization
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
