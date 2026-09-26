@@ -1,17 +1,19 @@
 id: cask:pieces-os
 display-name: PiecesOS
-homepage: https://pieces.app/
 repo: null
 docs:
   - https://docs.pieces.app/products/core-dependencies/on-device-storage
   - https://docs.pieces.app/products/core-dependencies/pieces-os
   - https://docs.pieces.app/products/core-dependencies/pieces-os/manual-installation
 config-file-location:
-  linux: ~/.local/share/com.pieces.os/
-  macos: ~/Library/com.pieces.os/
-  windows: >
-    C:\Users\<username>\AppData\Local\Mesh Intelligent Technologies, Inc\Pieces
-    OS\com.pieces.os\
+  linux:
+    - ~/.local/share/com.pieces.os/
+  macos:
+    - ~/Library/com.pieces.os/
+  windows:
+    - >
+      C:\Users\<username>\AppData\Local\Mesh Intelligent Technologies, Inc\Pieces
+      OS\com.pieces.os\
 credentials-file-location: null
 history:
   adoption-history:
@@ -81,10 +83,6 @@ history:
       independently for MCP and other integrations. Its `com.pieces.os` directory
       contains settings, the production database, long-term-memory context, and
       diagnostic logs.
-category: ai
-package-manager:
-  brew-cask: pieces-os
-package-manager-url: https://formulae.brew.sh/cask/pieces-os
 tags:
   - ai-runtime
   - background-service
@@ -92,10 +90,35 @@ tags:
   - machine-learning
   - mcp
   - workflow-memory
-description: Local datastore, server, and ML engine powering the Pieces for Developers Suite
-applications:
-  - Pieces OS.app
 provenance:
-  cask: pieces-os
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://docs.pieces.app/products/core-dependencies/pieces-os
+    - source_facts.description
+  display-name-sources:
+    - https://docs.pieces.app/products/core-dependencies/pieces-os
+  docs-sources:
+    - Official PiecesOS overview, installation, and storage documentation.
+  history-sources:
+    - https://docs.pieces.app/products/core-dependencies/on-device-storage
+    - https://docs.pieces.app/products/core-dependencies/pieces-os
+    - https://docs.pieces.app/products/core-dependencies/pieces-os/manual-installation
+    - https://pieces.app/changelog/pieces-for-developers-22-biggest-achievements-of-2022
+    - https://pieces.app/updates
+  repo-sources:
+    - >
+      source_facts.repo is empty; the verified Pieces GitHub organization provides
+      PiecesOS client SDKs and related components but identifies no public source
+      repository for the PiecesOS service itself.
+  tags-sources:
+    - https://docs.pieces.app/products/core-dependencies/pieces-os
+    - source_facts.description
+category-confidence: high
+category-path:
+  - ai
+  - local-services
+  - workflow-memory
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
