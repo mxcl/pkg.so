@@ -1,11 +1,11 @@
 id: cask:notesollama
 display-name: NotesOllama
-homepage: https://smallest.app/notesollama/
 repo: https://github.com/andersrex/notesollama
 docs:
   - https://github.com/andersrex/notesollama#readme
 config-file-location:
-  macos: NotesOllama.app/Contents/Resources/commands.json
+  macos:
+    - NotesOllama.app/Contents/Resources/commands.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -52,10 +52,6 @@ history:
       Custom prompts are stored in `commands.json` inside the NotesOllama application
       bundle. Because Ollama runs locally and no cloud credential is required by
       NotesOllama, no credentials file is documented.
-category: ai
-package-manager:
-  brew-cask: notesollama
-package-manager-url: https://formulae.brew.sh/cask/notesollama
 tags:
   - accessibility
   - apple-notes
@@ -65,10 +61,40 @@ tags:
   - ollama
   - open-source
   - swiftui
-description: LLM support for Apple Notes through Ollama
-applications:
-  - NotesOllama.app
 provenance:
-  cask: notesollama
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://github.com/andersrex/notesollama: Official repository describes local-LLM
+      integration with Apple Notes.
+    - 'source_facts.description: Identifies LLM support for Apple Notes through Ollama.'
+  display-name-sources:
+    - current_curation.display-name
+    - 'https://github.com/andersrex/notesollama: Official repository title and README.'
+  docs-sources:
+    - >
+      https://github.com/andersrex/notesollama#readme: Official README documents
+      requirements, usage, endpoint configuration, and custom prompts.
+  history-sources:
+    - https://github.com/andersrex/notesollama
+    - source_facts.homepage
+  repo-sources:
+    - >
+      https://github.com/andersrex/notesollama: Official repository links back to the
+      supplied project homepage.
+    - >
+      source_facts.homepage: https://smallest.app/notesollama redirects to the official
+      GitHub repository.
+  tags-sources:
+    - >
+      https://github.com/andersrex/notesollama: Official README documents Ollama, Apple
+      Notes, SwiftUI, AXSwift, and local-model usage.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - ai
+  - desktop-integrations
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
