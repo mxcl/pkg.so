@@ -1,14 +1,16 @@
 id: cask:dcp-o-matic-player
 display-name: DCP-o-matic Player
-homepage: https://dcpomatic.com/
 repo: https://git.carlh.net/cgit/dcpomatic
 docs:
   - https://dcpomatic.com/manual/html
   - https://dcpomatic.com/manual/html/ch18.html
 config-file-location:
-  linux: ~/.config/dcpomatic2/config.xml
-  macos: ~/Library/Preferences/com.dcpomatic/2/config.xml
-  windows: '%LOCALAPPDATA%\dcpomatic\config.xml'
+  linux:
+    - ~/.config/dcpomatic2/config.xml
+  macos:
+    - ~/Library/Preferences/com.dcpomatic/2/config.xml
+  windows:
+    - '%LOCALAPPDATA%\dcpomatic\config.xml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -48,10 +50,6 @@ history:
       Users open a DCP from the File menu for checking playback. An advanced mode
       supports playlists and separate controls, with playlists authored in the companion
       Playlist Editor.
-category: media
-package-manager:
-  brew-cask: dcp-o-matic-player
-package-manager-url: https://formulae.brew.sh/cask/dcp-o-matic-player
 tags:
   - cinema
   - dcp
@@ -59,10 +57,33 @@ tags:
   - media-player
   - playback
   - verification
-description: Play Digital Cinema Packages
-applications:
-  - DCP-o-matic 2 Player.app
 provenance:
-  cask: dcp-o-matic-player
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://dcpomatic.com/manual/html/ — official manual describes Player as a Digital
+      Cinema Package playback and verification tool.
+  display-name-sources:
+    - current_curation.display-name
+    - https://dcpomatic.com/manual/html/ — official component name.
+  docs-sources:
+    - Official DCP-o-matic users’ manual and its Playing DCPs chapter.
+  history-sources:
+    - https://dcpomatic.com/development
+    - https://dcpomatic.com/download
+    - https://dcpomatic.com/manual/html/
+  repo-sources:
+    - https://dcpomatic.com/development — identifies git.carlh.net as the primary repository.
+    - https://git.carlh.net/cgit/dcpomatic/ — official HTTP repository interface.
+  tags-sources:
+    - >
+      https://dcpomatic.com/manual/html/ — documents DCP playback, verification, and
+      cinema-style playlist use.
+category-confidence: high
+category-path:
+  - media
+  - digital-cinema
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

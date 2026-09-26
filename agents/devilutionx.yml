@@ -1,16 +1,18 @@
 id: cask:devilutionx
 display-name: DevilutionX
-homepage: https://github.com/diasurgical/devilutionX/
-repo: https://github.com/diasurgical/devilutionX
+repo: null
 docs:
   - https://github.com/diasurgical/DevilutionX/blob/master/docs/installing.md
   - https://github.com/diasurgical/DevilutionX/wiki
   - >
     https://github.com/diasurgical/DevilutionX/wiki/DevilutionX-diablo.ini-configuration-guide
 config-file-location:
-  linux: ~/.local/share/diasurgical/devilution/diablo.ini
-  macos: ~/Library/Application Support/diasurgical/devilution/diablo.ini
-  windows: '%APPDATA%\diasurgical\devilution\diablo.ini'
+  linux:
+    - ~/.local/share/diasurgical/devilution/diablo.ini
+  macos:
+    - ~/Library/Application Support/diasurgical/devilution/diablo.ini
+  windows:
+    - '%APPDATA%\diasurgical\devilution\diablo.ini'
 credentials-file-location: null
 history:
   adoption-history:
@@ -54,10 +56,6 @@ history:
       Users install DevilutionX and provide required MPQ data from a legitimate Diablo
       or Hellfire installation. The port supports the original campaign, Hellfire when
       its data is supplied, multiplayer, and shareware content through spawn.mpq.
-category: games
-package-manager:
-  brew-cask: devilutionx
-package-manager-url: https://formulae.brew.sh/cask/devilutionx
 tags:
   - cross-platform
   - diablo
@@ -65,10 +63,35 @@ tags:
   - hellfire
   - retro-gaming
   - source-port
-description: Diablo build for modern operating systems
-applications:
-  - devilutionX.app
 provenance:
-  cask: devilutionx
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://github.com/diasurgical/DevilutionX — describes DevilutionX as a port of
+      Diablo and Hellfire for modern operating systems.
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/diasurgical/DevilutionX — official project name.
+  docs-sources:
+    - >
+      Official repository installation guide and project-maintained GitHub wiki and
+      configuration guide.
+  history-sources:
+    - https://github.com/diasurgical/DevilutionX
+    - https://github.com/diasurgical/DevilutionX/blob/master/docs/CHANGELOG.md
+    - https://github.com/diasurgical/DevilutionX/blob/master/docs/installing.md
+  repo-sources:
+    - >
+      source_facts.repo is already populated; the task explicitly requires returning
+      null without re-determining it.
+  tags-sources:
+    - https://github.com/diasurgical/DevilutionX
+    - https://github.com/diasurgical/DevilutionX/blob/master/docs/installing.md
+category-confidence: high
+category-path:
+  - games
+  - game-engine
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
