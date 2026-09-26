@@ -1,7 +1,6 @@
 id: cask:pibar
 display-name: PiBar
-homepage: https://github.com/amiantos/pibar
-repo: https://github.com/amiantos/pibar
+repo: null
 docs:
   - https://github.com/amiantos/pibar#readme
 config-file-location: null
@@ -44,10 +43,6 @@ history:
       version 6 password. It can show DNS statistics, warn about unavailable servers,
       manage multiple instances, and toggle blocking from the menu bar or a keyboard
       shortcut.
-category: networking
-package-manager:
-  brew-cask: pibar
-package-manager-url: https://formulae.brew.sh/cask/pibar
 tags:
   - dns
   - homelab
@@ -56,10 +51,30 @@ tags:
   - network-monitoring
   - pi-hole
   - swift
-description: Pi-hole(s) management in the menu bar
-applications:
-  - PiBar.app
 provenance:
-  cask: pibar
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official PiBar README: https://github.com/amiantos/pibar#readme'
+    - source_facts.description
+  display-name-sources:
+    - Official repository README.
+    - current_curation.display-name
+  docs-sources:
+    - The official README is the project's primary usage and support documentation.
+  history-sources:
+    - https://github.com/amiantos/pibar
+  repo-sources:
+    - >
+      source_facts.repo already contains an official repository; per the task rule it
+      was not re-evaluated and repo is returned as null.
+  tags-sources:
+    - Official PiBar README and repository topics.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - dns-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

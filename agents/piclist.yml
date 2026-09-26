@@ -1,7 +1,6 @@
 id: cask:piclist
 display-name: PicList
-homepage: https://piclist.cn/
-repo: https://github.com/Kuingsmile/PicList
+repo: null
 docs:
   - https://piclist.cn/en
   - https://piclist.cn/en/configure
@@ -9,14 +8,18 @@ config-file-location:
   linux:
     - $XDG_CONFIG_HOME/piclist/data.json
     - ~/.config/piclist/data.json
-  macos: ~/Library/Application Support/piclist/data.json
-  windows: '%APPDATA%\piclist\data.json'
+  macos:
+    - ~/Library/Application Support/piclist/data.json
+  windows:
+    - '%APPDATA%\piclist\data.json'
 credentials-file-location:
   linux:
     - $XDG_CONFIG_HOME/piclist/data.json
     - ~/.config/piclist/data.json
-  macos: ~/Library/Application Support/piclist/data.json
-  windows: '%APPDATA%\piclist\data.json'
+  macos:
+    - ~/Library/Application Support/piclist/data.json
+  windows:
+    - '%APPDATA%\piclist\data.json'
 history:
   adoption-history:
     - >
@@ -79,10 +82,6 @@ history:
       The documented data.json file stores general configuration, including image-host
       and synchronization credentials such as tokens and WebDAV usernames and passwords;
       it should therefore be treated as sensitive.
-category: media
-package-manager:
-  brew-cask: piclist
-package-manager-url: https://formulae.brew.sh/cask/piclist
 tags:
   - cloud-storage
   - electron
@@ -91,10 +90,33 @@ tags:
   - markdown
   - object-storage
   - picgo
-description: Cloud storage manager tool
-applications:
-  - PicList.app
 provenance:
-  cask: piclist
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official PicList documentation: https://piclist.cn/en/'
+    - 'Official repository README: https://github.com/Kuingsmile/PicList#readme'
+    - source_facts.description
+  display-name-sources:
+    - Official PicList site and repository.
+    - current_curation.display-name
+  docs-sources:
+    - Dedicated official PicList documentation site and its configuration manual.
+  history-sources:
+    - https://github.com/Kuingsmile/PicList
+    - https://piclist.cn/en/
+    - https://piclist.cn/en/configure
+  repo-sources:
+    - >
+      source_facts.repo already contains an official repository; per the task rule it
+      was not re-evaluated and repo is returned as null.
+  tags-sources:
+    - Official PicList documentation and repository README.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - image-hosting
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
