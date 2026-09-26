@@ -1,17 +1,22 @@
 id: cask:onionshare
 display-name: OnionShare
-homepage: https://onionshare.org/
 repo: https://github.com/onionshare/onionshare
 docs:
   - https://docs.onionshare.org/
 config-file-location:
-  linux: ~/.config/onionshare/onionshare.json
-  macos: ~/Library/Application Support/OnionShare/onionshare.json
-  windows: '%APPDATA%\OnionShare\onionshare.json'
+  linux:
+    - ~/.config/onionshare/onionshare.json
+  macos:
+    - ~/Library/Application Support/OnionShare/onionshare.json
+  windows:
+    - '%APPDATA%\OnionShare\onionshare.json'
 credentials-file-location:
-  linux: ~/.config/onionshare/persistent/*.json
-  macos: ~/Library/Application Support/OnionShare/persistent/*.json
-  windows: '%APPDATA%\OnionShare\persistent\*.json'
+  linux:
+    - ~/.config/onionshare/persistent/*.json
+  macos:
+    - ~/Library/Application Support/OnionShare/persistent/*.json
+  windows:
+    - '%APPDATA%\OnionShare\persistent\*.json'
 history:
   adoption-history:
     - >
@@ -78,10 +83,6 @@ history:
       Saved tabs can retain an onion identity between sessions. Their JSON files contain
       the onion-service private key and client-authentication material, so the
       documented persistent-data directory must be protected and migrated carefully.
-category: security
-package-manager:
-  brew-cask: onionshare
-package-manager-url: https://formulae.brew.sh/cask/onionshare
 tags:
   - anonymous-chat
   - censorship-circumvention
@@ -89,10 +90,40 @@ tags:
   - onion-services
   - privacy
   - tor
-description: Securely and anonymously share files, host websites, and chat with friends
-applications:
-  - OnionShare.app
 provenance:
-  cask: onionshare
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://docs.onionshare.org/
+    - https://onionshare.org/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/onionshare/onionshare
+    - https://onionshare.org/
+  docs-sources:
+    - 'Official documentation: https://docs.onionshare.org/'
+    - >
+      The official repository directs users to the dedicated documentation site:
+      https://github.com/onionshare/onionshare
+  history-sources:
+    - https://docs.onionshare.org/
+    - https://docs.onionshare.org/2.6.3/en/advanced.html
+    - https://github.com/onionshare/onionshare
+    - https://github.com/onionshare/onionshare/blob/main/CHANGELOG.md
+    - https://onionshare.org/
+  repo-sources:
+    - >
+      source_facts.repo is empty; the official website and documentation link to the
+      project-owned repository: https://github.com/onionshare/onionshare
+  tags-sources:
+    - https://docs.onionshare.org/
+    - https://github.com/onionshare/onionshare
+    - source_facts.description
+category-confidence: high
+category-path:
+  - security
+  - privacy
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
