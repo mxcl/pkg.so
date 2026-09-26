@@ -1,6 +1,5 @@
 id: cask:quickbooks
 display-name: QuickBooks Desktop for Mac
-homepage: https://quickbooks.intuit.com/desktop/
 repo: null
 docs:
   - >
@@ -10,7 +9,8 @@ docs:
   - >
     https://quickbooks.intuit.com/learn-support/en-us/help-article/feature-preferences/checks-preferences-quickbooks-desktop-mac/L4XYPIkx8_US_en_US
 config-file-location:
-  macos: ~/Library/Preferences/com.intuit.QuickBooks20XX.plist
+  macos:
+    - ~/Library/Preferences/com.intuit.QuickBooks20XX.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -85,10 +85,6 @@ history:
       named like com.intuit.QuickBooks20XX under the user's Library/Preferences
       directory. Company-file passwords may be stored as a “QuickBooks User Password”
       item in macOS Keychain, so there is no documented standalone credentials file.
-category: productivity
-package-manager:
-  brew-cask: quickbooks
-package-manager-url: https://formulae.brew.sh/cask/quickbooks
 tags:
   - accounting
   - bookkeeping
@@ -98,10 +94,42 @@ tags:
   - macos
   - proprietary
   - small-business
-description: Accounting software
-applications:
-  - QuickBooks 2023.app
 provenance:
-  cask: quickbooks
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Intuit's official desktop product page describes QuickBooks as business accounting
+      and inventory software: https://quickbooks.intuit.com/desktop/
+    - source_facts.description
+  display-name-sources:
+    - >
+      Official Intuit support consistently uses “QuickBooks Desktop for Mac”:
+      https://quickbooks.intuit.com/learn-support/en-us/help-article/feature-preferences/checks-preferences-quickbooks-desktop-mac/L4XYPIkx8_US_en_US
+    - source_facts.applications identifies the packaged application as QuickBooks 2023.app.
+  docs-sources:
+    - Official Intuit help articles covering Mac preferences, file types, and backups.
+  history-sources:
+    - >
+      https://investors.intuit.com/sec-filings/all-sec-filings/content/0000891618-96-002383/0000891618-96-002383.pdf
+    - >
+      https://investors.intuit.com/sec-filings/all-sec-filings/content/9999999997-03-037480/9999999997-03-037480.pdf
+    - https://quickbooks.intuit.com/desktop/
+    - >
+      https://quickbooks.intuit.com/learn-support/en-us/help-article/banking/file-types-extensions-used-quickbooks-desktop/L3vuO2X4c_US_en_US
+  repo-sources:
+    - >
+      Intuit presents QuickBooks as proprietary commercial software and provides no
+      official public source-control repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - Official Intuit desktop product and Mac help pages.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - business
+  - accounting
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
