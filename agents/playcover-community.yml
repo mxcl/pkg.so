@@ -1,7 +1,6 @@
 id: cask:playcover-community
 display-name: PlayCover
-homepage: https://github.com/PlayCover/PlayCover
-repo: https://github.com/PlayCover/PlayCover
+repo: null
 docs:
   - https://docs.playcover.io/
 config-file-location:
@@ -10,7 +9,8 @@ config-file-location:
     - ~/Library/Containers/io.playcover.PlayCover/App Settings/<com.bundle.id>.plist
     - ~/Library/Containers/io.playcover.PlayCover/Entitlements/<com.bundle.id>.plist
 credentials-file-location:
-  macos: ~/Library/Containers/io.playcover.PlayCover/PlayChain/<bundle-id>
+  macos:
+    - ~/Library/Containers/io.playcover.PlayCover/PlayChain/<bundle-id>
 history:
   adoption-history:
     - >
@@ -81,10 +81,6 @@ history:
     - >
       PlayChain can be enabled per application to persist login tokens and device
       identifiers in PlayCover's Keychain-like store.
-category: games
-package-manager:
-  brew-cask: playcover-community
-package-manager-url: https://formulae.brew.sh/cask/playcover-community
 tags:
   - apple-silicon
   - controller-support
@@ -93,10 +89,41 @@ tags:
   - macos
   - sideloading
   - touch-emulation
-description: Sideload iOS apps and games
-applications:
-  - PlayCover.app
 provenance:
-  cask: playcover-community
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://docs.playcover.io/ — Official documentation describes running iOS
+      applications and games on Apple Silicon Macs with desktop input support.
+    - >
+      https://github.com/PlayCover/PlayCover#readme — Official README describes the iPad
+      wrapper and keymapping features.
+  display-name-sources:
+    - https://docs.playcover.io/ — Official documentation title.
+    - source_facts.applications
+  docs-sources:
+    - >
+      https://docs.playcover.io/ — Dedicated official PlayBook documentation covering
+      installation, keymapping, settings, PlayChain, and source builds.
+  history-sources:
+    - https://docs.playcover.io/
+    - https://docs.playcover.io/getting_started/download_playcover
+    - https://docs.playcover.io/miscellaneous/playchain.html
+    - https://docs.playcover.io/other_features/playcover_settings.html
+    - https://github.com/PlayCover/PlayCover#readme
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per task instructions the repository was
+      not re-determined and repo is returned as null.
+  tags-sources:
+    - https://docs.playcover.io/
+    - https://github.com/PlayCover/PlayCover#readme
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - compatibility-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
