@@ -21,33 +21,65 @@ credentials-file-location:
     - P4PASSWD in the Windows registry when set with p4 set
     - P4V
 history:
-  - >
-    Perforce began in 1995 in Alameda, California, when Christopher Seiwald founded the
-    company around a centralized version-control system built for large software
-    projects. Its first product was also named Perforce, and the system evolved into
-    Helix Core and then the P4 branding used for the server, clients, APIs, and
-    integrations.
-  - >
-    P4's role has remained different from Git-native package histories: it is a
-    centralized, client/server VCS with a database-backed depot model, changelists,
-    workspaces, file locking, streams, and prebuilt clients for major operating systems.
-    Perforce also added bridges for Git users, including Git-repository access where Git
-    commits and P4 changelists can be visible across client types.
-  - >
-    The `p4` package is the command-line client for that ecosystem. Perforce documents
-    it as the CLI for running commands against P4 Server, versioning digital assets,
-    administering server behavior, and accessing options beyond GUI tools such as P4V
-    and P4 Admin. In practice it is the scripting and automation surface for syncing
-    workspaces, opening files, submitting changelists, inspecting history, managing
-    streams, and wiring build systems or CI to a P4 depot.
-  - >
-    Adoption is strongest where monorepos, binaries, and asset locking matter: Perforce
-    markets P4 as a version-control platform for source code, 3D assets, IP, and other
-    digital content, and calls it an industry-standard foundation for game-development
-    workflows. That explains why the CLI is packaged separately from the GUI clients:
-    many teams install `p4` on developer machines, build agents, and pipeline hosts even
-    when artists or less technical contributors use P4V, P4 Sync, or engine
-    integrations.
+  adoption-history:
+    - >
+      P4 became associated with centralized version-control deployments that must handle
+      large repositories and binary assets. Perforce presents the wider P4 platform as
+      serving demanding game, semiconductor, media, and enterprise engineering
+      workflows.
+  package-nerd-significance:
+    - >
+      The p4 executable is the canonical automation interface to P4 Server. It matters
+      to package users because a small command-line client unlocks workspace
+      synchronization, changelists, shelving, branching, merging, administration, and
+      scripted CI access to an otherwise server-centered commercial ecosystem.
+    - >
+      Its P4CONFIG search behavior is especially useful in developer environments:
+      repository-local or parent-directory settings can automatically select the correct
+      server, user, and workspace as the shell moves between projects.
+  project-history:
+    - >
+      Christopher Seiwald started Perforce in 1995 around a version-control system
+      originally called Perforce and commonly abbreviated P4. The product was renamed
+      Helix Core in 2016 as Perforce expanded into a broader software portfolio.
+    - >
+      In 2025, Perforce announced that Helix Core would again use the P4 name.
+      Long-established command names such as p4 sync and p4 submit made the change a
+      return to terminology already familiar to users.
+  related-projects:
+    - P4 Server is the service operated by the client.
+    - P4V provides a graphical client for the same server and workspace model.
+    - >
+      P4Merge, P4 Admin, and P4 Code Review cover comparison, administration, and review
+      workflows around P4.
+  sources:
+    - https://help.perforce.com/helix-core/
+    - >
+      https://help.perforce.com/helix-core/server-apps/cmdref/current/Content/P4Guide/configuration.process.configfiles.html
+    - >
+      https://help.perforce.com/helix-core/server-apps/cmdref/current/content/CmdRef/p4_tickets.html
+    - https://www.perforce.com/blog/vcs/introducing-the-p4-platform
+  summary:
+    - >
+      P4 CLI is the command-line client for Perforce P4, the centralized version-control
+      platform formerly branded Helix Core. It connects local workspaces to P4 Server
+      and exposes both everyday versioning operations and lower-level administrative
+      capabilities.
+  timeline:
+    - >
+      1995: Christopher Seiwald founded Perforce around the version-control system
+      commonly called P4.
+    - '2016: The original Perforce version-control product was renamed Helix Core.'
+    - '2025: Perforce announced the return from the Helix Core product name to P4.'
+  usage:
+    - >
+      Users configure a server address, identity, and client workspace, then run
+      commands such as p4 sync, p4 edit, p4 submit, and p4 reconcile. Authentication
+      tickets obtained through p4 login are kept in the P4TICKETS file.
+    - >
+      Teams with several workspaces commonly set P4CONFIG to a filename such as
+      .p4config. P4 searches the working directory and its parents for that file,
+      allowing settings to follow each workspace.
 category: developer-tools
 package-manager:
   brew-cask: p4

@@ -1,16 +1,17 @@
 id: cask:p4v
 display-name: P4 Visual Client (P4V)
-homepage: https://www.perforce.com/products/helix-core-apps/helix-visual-client-p4v
 repo: null
 docs:
   - https://help.perforce.com/helix-core/server-apps/p4v/current/Content/P4V/Home-p4v.html
   - https://www.perforce.com/products/helix-core-apps/helix-visual-client-p4v
 config-file-location: null
 credentials-file-location:
-  unix: ~/.p4tickets when the standard P4 ticket store is used (overridable with P4TICKETS)
-  windows: >
-    %USERPROFILE%\p4tickets.txt when the standard P4 ticket store is used (overridable
-    with P4TICKETS)
+  unix:
+    - ~/.p4tickets when the standard P4 ticket store is used (overridable with P4TICKETS)
+  windows:
+    - >
+      %USERPROFILE%\p4tickets.txt when the standard P4 ticket store is used (overridable
+      with P4TICKETS)
 history:
   adoption-history:
     - >
@@ -74,10 +75,6 @@ history:
       Revision Graph and Time-lapse View are commonly used to investigate branch
       integrations and file evolution. P4V can also launch custom tools with the active
       connection's P4PORT, P4USER, P4CLIENT, and related settings.
-category: developer-tools
-package-manager:
-  brew-cask: p4v
-package-manager-url: https://formulae.brew.sh/cask/p4v
 tags:
   - branch-visualization
   - changelists
@@ -86,12 +83,51 @@ tags:
   - perforce
   - scm
   - version-control
-description: Visual client for Helix Core
-applications:
-  - p4admin.app
-  - p4merge.app
-  - p4v.app
 provenance:
-  cask: p4v
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://help.perforce.com/helix-core/server-apps/p4v/current/Content/P4V/introduction.about.html
+      — P4V is the graphical client for managing files in P4 Server.
+    - source_facts.description
+  display-name-sources:
+    - >
+      https://help.perforce.com/helix-core/server-apps/p4v/current/Content/P4V/Home-p4v.html
+      — Official documentation title.
+    - >
+      https://www.perforce.com/products/helix-core-apps/helix-visual-client-p4v —
+      Official product page.
+  docs-sources:
+    - >
+      https://help.perforce.com/helix-core/server-apps/p4v/current/Content/P4V/Home-p4v.html
+      — Dedicated official P4V documentation.
+    - >
+      https://www.perforce.com/products/helix-core-apps/helix-visual-client-p4v —
+      Official feature overview.
+  history-sources:
+    - https://help.perforce.com/helix-core/server-apps/p4v/2026.1/Content/P4V/install-p4v.html
+    - >
+      https://help.perforce.com/helix-core/server-apps/p4v/current/Content/P4V/introduction.about.html
+    - https://www.perforce.com/blog/vcs/introducing-the-p4-platform
+    - https://www.perforce.com/products/helix-core-apps/helix-visual-client-p4v
+  repo-sources:
+    - >
+      https://www.perforce.com/products/helix-core-apps/helix-visual-client-p4v —
+      Official proprietary product page; no official public source repository is
+      identified.
+    - source_facts.repo is empty, so repository research was permitted.
+  tags-sources:
+    - >
+      https://help.perforce.com/helix-core/server-apps/p4v/current/Content/P4V/Home-p4v.html
+      — Official workflow documentation.
+    - >
+      https://www.perforce.com/products/helix-core-apps/helix-visual-client-p4v —
+      Official visualization and branching features.
+category-confidence: high
+category-path:
+  - developer-tools
+  - version-control
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
