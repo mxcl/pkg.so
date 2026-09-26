@@ -2,69 +2,82 @@
   "content": [
     {
       "artwork": {
-        "alt": "A developer supervises four small robot work bays connected by glowing cyan paths, with one amber attention signal in a moonlit command room.",
+        "alt": "A private night workspace where abstract activity streams become linked note cards stored in a softly illuminated local vault.",
         "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
         "boxColors": {
-          "backgroundEnd": "#123B49",
-          "backgroundStart": "#081D2C",
-          "foreground": "#F6F1E6"
+          "backgroundEnd": "#17384B",
+          "backgroundStart": "#0B2130",
+          "foreground": "#F8E8C8"
         },
         "license": "AI-generated artwork; no third-party source artwork used.",
-        "path": "feed/assets/ccmux-attention-router.png"
+        "path": "feed/assets/activitywatch-local-ledger.png"
       },
-      "body": "## Parallelism creates an attention problem\n\nOpening another coding-agent session is easy. Remembering which of four sessions is compiling, waiting for approval, asking a question, or ready for review is harder. **ccmux treats that as a routing problem for human attention.** It runs alongside tmux, observes supported agent sessions, and presents their state in a single terminal interface. Instead of cycling through panes to rediscover what each agent is doing, the operator can start with the session that is blocked.\n\nThat boundary matters. ccmux does not replace the coding agents, Git, or tmux. Its documentation describes support for several agent CLIs and a daemon that watches existing sessions. The dashboard can group work by repository, show working or waiting state, surface diffs and pull-request checks, and send notifications. Worktree creation and spawning help start another task, while handoff features can pass context from one agent to another. The value is coordination around tools developers may already use.\n\n## A new project with a concrete workflow\n\nThe first tagged ccmux release, **v1.0.0, appeared on July 6, 2026**. That makes it genuinely new rather than an old project newly packaged by Homebrew. Its young age should shape expectations: agent output formats change, integrations can lag, and a status classifier that works well in the author's setup may meet unfamiliar prompts or terminal layouts elsewhere. A trial should use disposable branches before the dashboard becomes the team's control surface.\n\nThere is useful evidence beyond the feature list, though not yet evidence of broad adoption. An independent write-up describes coordinating three or four agents across multiple machines, checking sessions from a phone, and returning directly to those needing intervention. That is one practitioner's account, not a survey, but it identifies the real friction: parallel agents save elapsed time only when their questions do not sit unnoticed.\n\nThe model also makes failure visible. A green-looking overview cannot guarantee that an agent's changes are correct, and a waiting indicator cannot explain whether a permission request is reasonable. The dashboard shortens discovery; it does not transfer judgment.\n\n## Three layers for organizing the terminal\n\nccmux, workmux, and Zentty approach the same crowded workspace from different layers:\n\n- **ccmux** observes agent work already living in tmux and prioritizes sessions that need attention. It is the smallest change for an established tmux setup.\n- **workmux** owns more of the task lifecycle. It pairs branches and Git worktrees with terminal windows, applies setup hooks, and helps merge and clean up completed work.\n- **Zentty** is a native macOS terminal with persistent worklanes, a status-aware sidebar, task discovery, and an embedded CLI. It changes the terminal environment itself.\n\nThe tools can overlap, but they should not be stacked automatically. A developer satisfied with manual worktree creation may want only ccmux's overview. Someone repeatedly rebuilding the same task panes may gain more from workmux's opinionated automation. A Mac user who wants visual lanes without maintaining tmux configuration may prefer Zentty. The right layer is the one that removes a recurring coordination cost without hiding ownership of branches, processes, and credentials.\n\n## Isolation is not the same as supervision\n\nNeither a tmux pane nor a Git worktree is a security boundary. Concurrent agents can still share environment variables, cloud credentials, package caches, databases, and network services. They may edit separate directories while targeting the same external resource. ccmux can show where an agent is waiting, but it cannot determine whether the command awaiting approval is safe. workmux can create isolated checkouts and optionally connect sandbox workflows, but safe containment still depends on their configuration. Zentty organizes panes; it does not constrain what runs inside them.\n\nA cautious evaluation should therefore begin with a small routine:\n\n- create two disposable tasks with clearly different branches;\n- confirm that waiting, working, and completed states match what is actually on screen;\n- review notification destinations and every worktree or lifecycle command;\n- inspect diffs and test results outside the agent's summary;\n- verify what secrets and local services remain shared.\n\nThese checks test both the software and the operating habits around it. The goal is not a theatrical wall of autonomous workers. It is a legible queue in which a human can understand what changed and intervene at the right moment.\n\n## The dashboard should reduce uncertainty\n\nccmux is most compelling when developers already trust tmux but have outgrown serial navigation. Its attention-first view acknowledges that agent concurrency shifts the bottleneck: starting work becomes cheap, while review, clarification, and risk decisions remain scarce. workmux is stronger when workspace creation and cleanup are the repetitive burden. Zentty offers the broader native environment for users willing to move.\n\nWhichever layer wins, measure it by uncertainty removed. After glancing at the workspace, can the operator identify the blocked task, the branch it owns, the outstanding decision, and the path to review? If ccmux makes those answers immediate while leaving the underlying sessions inspectable, it earns its place as an attention router rather than merely another dashboard.",
-      "deck": "When several agents work in parallel, the scarce resource is no longer terminal space—it is knowing which session needs a human next.",
-      "id": "editorial:2026-09-22:ccmux-the-attention-router-for-coding-agents",
-      "primaryPackageID": "brew:ccmux",
-      "publishedAt": "2026-09-22T16:42:02Z",
+      "body": "## Measurement is not memory\n\nMost workdays leave two imperfect records: what we remember doing and what the computer happened to observe. ActivityWatch makes the second record inspectable. Its watchers capture events such as active windows and away periods, its local server stores them in buckets, and its interface combines those events into a timeline. The project's [privacy policy](https://docs.activitywatch.net/en/latest/privacy.html) says the standard application stores activity data locally and does not transmit it to the developers or third-party analytics services.\n\nThat architecture matters because activity logs can be unusually revealing. A window title may contain a client name, a medical subject, or the draft title of an unannounced project. Local storage removes one routine disclosure path; it does not make the data harmless. ActivityWatch's own [security notes](https://docs.activitywatch.net/en/latest/security.html) warn that the local API lacks strong authentication and that malware or another user on the same host may reach the database. Treat the timeline as sensitive source material, not a cheerful productivity score.\n\n## A decade-old quantified-self experiment\n\nActivityWatch is underexposed partly because its story is longer and stranger than a typical timer. The project's [history](https://docs.activitywatch.net/en/latest/history.html) traces its motivation to quantified-self experiments in 2013, a prototype begun in December 2014, and a 2016 rewrite that introduced the client-server model behind the current system. That lineage explains the modular design: a watcher produces observations, the server stores events, and clients query them.\n\nThe useful unit is not necessarily a raw event. ActivityWatch's [data guide](https://docs.activitywatch.net/en/latest/examples/working-with-data.html) recommends canonical events that combine window tracking with away detection, categorization, and multi-device handling. It also supplies examples for working-hours analysis, category suggestions, redaction, and bucket merging. Users can export JSON or query the REST API, but the project's [export guidance](https://docs.activitywatch.net/en/latest/features/exporting-data.html) recommends aggregating and redacting locally before any data goes to an AI assistant or another service.\n\n## What actual use can establish\n\nThe strongest evidence for automatic tracking is not that it makes everyone more productive. It is that recollection and observation diverge. ActivityWatch documents a Research Edition used in academic studies; its [research overview](https://docs.activitywatch.net/en/latest/research/index.html) cites a validity study where self-report agreed with software registration for only 18 percent of participants. That result supports careful measurement, not a claim that recorded screen time equals meaningful work.\n\nOutside research, workflows vary. In one recent [community discussion](https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/), users described reviewing reports or feeding locally processed summaries into task workflows. Such accounts are anecdotal rather than adoption statistics, but they show the practical fork: some people inspect dashboards, while others use exports as input to their own systems. A useful weekly review might ask:\n\n- Which project consumed more time than expected?\n- Which interruptions recur at the same point in the day?\n- Which categories are wrong because the rules need adjustment?\n- What decision should survive after the raw timeline is forgotten?\n\n## Give conclusions a durable home\n\nThat last question is where Trilium Notes becomes a useful companion. Trilium is not an ActivityWatch integration; pairing them is an editorial workflow. Its [project overview](https://triliumnotes.org/) describes a local, offline-capable personal knowledge base with optional synchronization through a self-hosted server. Notes can be nested without a separate folder type, placed in multiple parts of the tree through cloning, and connected with labels and relations. The [note model](https://docs.triliumnotes.org/user-guide/concepts/notes) suits a project journal that needs both chronology and structure.\n\nThe tradeoff is explicit. Trilium stores its knowledge base in SQLite rather than exposing a directory of Markdown files. Its [FAQ](https://docs.triliumnotes.org/user-guide/faq) argues that transactions, note clones, ordering, attributes, and fast relations justify the database, while acknowledging that filesystem interoperability would be simpler. Synchronizing multiple devices requires its server. Users who prioritize ordinary files and Git should choose another notes system.\n\nCommunity experiments also show why context needs care. In a [Trilium discussion](https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/), users described dedicated note trees, context maps, incremental indexing, and the difficulty of preserving relationships when notes are copied into vector stores. Those are individual reports, not endorsements or benchmarks, but the failure mode is instructive: automation can retrieve text while flattening the structure that made it intelligible.\n\n## Keep observation, interpretation, and retention separate\n\nA restrained workflow uses three layers. ActivityWatch records locally. A human reviews aggregates and checks whether categories reflect reality. Trilium keeps only the conclusions worth retaining: a project note, a decision, a recurring distraction, or a change to next week's plan. Raw events need not become permanent notes, and neither tool needs access to the other's database.\n\nThat separation limits damage and makes the process easier to audit. Back up both stores, redact before exporting, and periodically delete detail that no longer serves a purpose. Most importantly, resist turning a timeline into a verdict. ActivityWatch can tell you which application was foregrounded; only reflection can explain why it mattered.",
+      "deck": "A local activity timeline can improve retrospectives, but only when observation remains separate from judgment and durable notes preserve the conclusions.",
+      "id": "editorial:2026-09-26:activitywatch-a-private-ledger-for-reflection",
+      "primaryPackageID": "brew:cask:activitywatch",
+      "publishedAt": "2026-09-26T10:55:05Z",
       "relatedPackageIDs": [
-        "brew:ccmux",
-        "brew:workmux",
-        "brew:cask:zentty"
+        "brew:cask:activitywatch",
+        "brew:cask:trilium-notes"
       ],
       "selection": {
-        "firstStableReleaseAt": "2026-07-06T18:52:23Z",
-        "firstStableReleaseSourceURL": "https://github.com/epilande/ccmux/releases/tag/v1.0.0",
-        "rationale": "newer"
+        "rationale": "underexposed",
+        "underexposedReason": "ActivityWatch has no popularity rank in the current catalog candidate and is absent from the recent editorial history, despite a documented history since 2014, extensible local-first architecture, and concrete use in academic research."
       },
       "sources": [
         {
           "kind": "primary",
-          "title": "ccmux repository and documentation",
-          "url": "https://github.com/epilande/ccmux"
+          "title": "ActivityWatch history",
+          "url": "https://docs.activitywatch.net/en/latest/history.html"
         },
         {
           "kind": "primary",
-          "title": "ccmux v1.0.0 release",
-          "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
+          "title": "ActivityWatch privacy policy",
+          "url": "https://docs.activitywatch.net/en/latest/privacy.html"
         },
         {
           "kind": "primary",
-          "title": "ccmux agent handoff documentation",
-          "url": "https://github.com/epilande/ccmux/blob/main/docs/handoff.md"
+          "title": "ActivityWatch security considerations",
+          "url": "https://docs.activitywatch.net/en/latest/security.html"
+        },
+        {
+          "kind": "primary",
+          "title": "Working with ActivityWatch data",
+          "url": "https://docs.activitywatch.net/en/latest/examples/working-with-data.html"
+        },
+        {
+          "kind": "primary",
+          "title": "ActivityWatch in research",
+          "url": "https://docs.activitywatch.net/en/latest/research/index.html"
         },
         {
           "kind": "independent",
-          "title": "Hands-on ccmux workflow review",
-          "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
+          "title": "Community discussion of reviewing ActivityWatch data",
+          "url": "https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/"
         },
         {
           "kind": "primary",
-          "title": "workmux documentation",
-          "url": "https://workmux.raine.dev/"
+          "title": "Trilium Notes overview",
+          "url": "https://triliumnotes.org/"
+        },
+        {
+          "kind": "primary",
+          "title": "Trilium note concepts",
+          "url": "https://docs.triliumnotes.org/user-guide/concepts/notes"
+        },
+        {
+          "kind": "primary",
+          "title": "Trilium FAQ",
+          "url": "https://docs.triliumnotes.org/user-guide/faq"
         },
         {
           "kind": "independent",
-          "title": "Using worktrees and tmux as an IDE",
-          "url": "https://joe.sh/tmux-ide"
-        },
-        {
-          "kind": "primary",
-          "title": "Zentty documentation",
-          "url": "https://zentty.org/docs/"
+          "title": "Community examples of Trilium automation",
+          "url": "https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/"
         }
       ],
-      "title": "ccmux: The Attention Router for Coding Agents",
+      "title": "ActivityWatch: a private ledger for reflection",
       "type": "editorial"
     },
     {
@@ -146,6 +159,8 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:activitywatch",
+        "brew:cask:trilium-notes",
         "brew:cask:mindroom",
         "brew:cask:gloomberb",
         "brew:sofka",
@@ -155,12 +170,77 @@
         "brew:cask:opendisk",
         "brew:cask:highball",
         "brew:cask:tapmap",
-        "brew:cask:zentty",
-        "brew:ccmux",
-        "brew:workmux"
+        "brew:cask:zentty"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "A developer supervises four small robot work bays connected by glowing cyan paths, with one amber attention signal in a moonlit command room.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#123B49",
+          "backgroundStart": "#081D2C",
+          "foreground": "#F6F1E6"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/ccmux-attention-router.png"
+      },
+      "body": "## Parallelism creates an attention problem\n\nOpening another coding-agent session is easy. Remembering which of four sessions is compiling, waiting for approval, asking a question, or ready for review is harder. **ccmux treats that as a routing problem for human attention.** It runs alongside tmux, observes supported agent sessions, and presents their state in a single terminal interface. Instead of cycling through panes to rediscover what each agent is doing, the operator can start with the session that is blocked.\n\nThat boundary matters. ccmux does not replace the coding agents, Git, or tmux. Its documentation describes support for several agent CLIs and a daemon that watches existing sessions. The dashboard can group work by repository, show working or waiting state, surface diffs and pull-request checks, and send notifications. Worktree creation and spawning help start another task, while handoff features can pass context from one agent to another. The value is coordination around tools developers may already use.\n\n## A new project with a concrete workflow\n\nThe first tagged ccmux release, **v1.0.0, appeared on July 6, 2026**. That makes it genuinely new rather than an old project newly packaged by Homebrew. Its young age should shape expectations: agent output formats change, integrations can lag, and a status classifier that works well in the author's setup may meet unfamiliar prompts or terminal layouts elsewhere. A trial should use disposable branches before the dashboard becomes the team's control surface.\n\nThere is useful evidence beyond the feature list, though not yet evidence of broad adoption. An independent write-up describes coordinating three or four agents across multiple machines, checking sessions from a phone, and returning directly to those needing intervention. That is one practitioner's account, not a survey, but it identifies the real friction: parallel agents save elapsed time only when their questions do not sit unnoticed.\n\nThe model also makes failure visible. A green-looking overview cannot guarantee that an agent's changes are correct, and a waiting indicator cannot explain whether a permission request is reasonable. The dashboard shortens discovery; it does not transfer judgment.\n\n## Three layers for organizing the terminal\n\nccmux, workmux, and Zentty approach the same crowded workspace from different layers:\n\n- **ccmux** observes agent work already living in tmux and prioritizes sessions that need attention. It is the smallest change for an established tmux setup.\n- **workmux** owns more of the task lifecycle. It pairs branches and Git worktrees with terminal windows, applies setup hooks, and helps merge and clean up completed work.\n- **Zentty** is a native macOS terminal with persistent worklanes, a status-aware sidebar, task discovery, and an embedded CLI. It changes the terminal environment itself.\n\nThe tools can overlap, but they should not be stacked automatically. A developer satisfied with manual worktree creation may want only ccmux's overview. Someone repeatedly rebuilding the same task panes may gain more from workmux's opinionated automation. A Mac user who wants visual lanes without maintaining tmux configuration may prefer Zentty. The right layer is the one that removes a recurring coordination cost without hiding ownership of branches, processes, and credentials.\n\n## Isolation is not the same as supervision\n\nNeither a tmux pane nor a Git worktree is a security boundary. Concurrent agents can still share environment variables, cloud credentials, package caches, databases, and network services. They may edit separate directories while targeting the same external resource. ccmux can show where an agent is waiting, but it cannot determine whether the command awaiting approval is safe. workmux can create isolated checkouts and optionally connect sandbox workflows, but safe containment still depends on their configuration. Zentty organizes panes; it does not constrain what runs inside them.\n\nA cautious evaluation should therefore begin with a small routine:\n\n- create two disposable tasks with clearly different branches;\n- confirm that waiting, working, and completed states match what is actually on screen;\n- review notification destinations and every worktree or lifecycle command;\n- inspect diffs and test results outside the agent's summary;\n- verify what secrets and local services remain shared.\n\nThese checks test both the software and the operating habits around it. The goal is not a theatrical wall of autonomous workers. It is a legible queue in which a human can understand what changed and intervene at the right moment.\n\n## The dashboard should reduce uncertainty\n\nccmux is most compelling when developers already trust tmux but have outgrown serial navigation. Its attention-first view acknowledges that agent concurrency shifts the bottleneck: starting work becomes cheap, while review, clarification, and risk decisions remain scarce. workmux is stronger when workspace creation and cleanup are the repetitive burden. Zentty offers the broader native environment for users willing to move.\n\nWhichever layer wins, measure it by uncertainty removed. After glancing at the workspace, can the operator identify the blocked task, the branch it owns, the outstanding decision, and the path to review? If ccmux makes those answers immediate while leaving the underlying sessions inspectable, it earns its place as an attention router rather than merely another dashboard.",
+      "deck": "When several agents work in parallel, the scarce resource is no longer terminal space—it is knowing which session needs a human next.",
+      "id": "editorial:2026-09-22:ccmux-the-attention-router-for-coding-agents",
+      "primaryPackageID": "brew:ccmux",
+      "publishedAt": "2026-09-22T16:42:02Z",
+      "relatedPackageIDs": [
+        "brew:ccmux",
+        "brew:workmux",
+        "brew:cask:zentty"
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-06T18:52:23Z",
+        "firstStableReleaseSourceURL": "https://github.com/epilande/ccmux/releases/tag/v1.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "ccmux repository and documentation",
+          "url": "https://github.com/epilande/ccmux"
+        },
+        {
+          "kind": "primary",
+          "title": "ccmux v1.0.0 release",
+          "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
+        },
+        {
+          "kind": "primary",
+          "title": "ccmux agent handoff documentation",
+          "url": "https://github.com/epilande/ccmux/blob/main/docs/handoff.md"
+        },
+        {
+          "kind": "independent",
+          "title": "Hands-on ccmux workflow review",
+          "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
+        },
+        {
+          "kind": "primary",
+          "title": "workmux documentation",
+          "url": "https://workmux.raine.dev/"
+        },
+        {
+          "kind": "independent",
+          "title": "Using worktrees and tmux as an IDE",
+          "url": "https://joe.sh/tmux-ide"
+        },
+        {
+          "kind": "primary",
+          "title": "Zentty documentation",
+          "url": "https://zentty.org/docs/"
+        }
+      ],
+      "title": "ccmux: The Attention Router for Coding Agents",
+      "type": "editorial"
     },
     {
       "artwork": {
@@ -733,71 +813,9 @@
       ],
       "title": "vi-sql and the Return of Keyboard-First Database Work",
       "type": "editorial"
-    },
-    {
-      "artwork": {
-        "alt": "An abstract dark-blue globe linked by cyan resolver arcs, suggesting DNS propagation across a global network.",
-        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#31206A",
-          "backgroundStart": "#07162F",
-          "foreground": "#FFFFFF"
-        },
-        "license": "OpenAI generated asset; use with this feed.",
-        "path": "feed/assets/dnsglobe-global-propagation-2026-08-08.png"
-      },
-      "body": "DNS changes have an awkward failure mode: the authoritative configuration can be correct while the internet still appears inconsistent. A resolver may hold an earlier answer until its cache expires; a geographically distributed service may legitimately reply differently; and a deployment team can waste time treating those states as the same incident. **dnsglobe** is a terminal tool built to make that comparison visible instead of relying on a succession of one-off lookups.\n\n## A short, purpose-built release trail\n\nThe project’s public GitHub release history begins in 2026, with tagged releases progressing through 0.5.0 in August. Its README describes a Rust terminal UI that queries 34 public resolvers in parallel, then groups matching answers rather than calling every differing IP a failure. That is a useful framing for domains behind round-robin or geographically aware DNS: agreement is about the record set and the resolver’s point of view, not a promise that every client receives one address.\n\nThe interface is deliberately operational. It presents response state, latency, TTL, and a propagation gauge; on wide terminals it adds a map or globe. A non-interactive `--once` mode prints results and exits, which makes the tool more suitable for a scripted check than an interactive dashboard alone. It also documents EDNS Client Subnet support for comparing how a GeoDNS zone answers for specified client networks.\n\n## What the comparison actually tells you\n\nThe strongest use is after a controlled change: update a record, preserve the change time and intended answer, then compare a spread of public resolvers. A majority result can show that a change is moving through caches; a clustered minority can point to a resolver family or region worth checking. The tool also records failures and stale answers rather than silently collapsing them into a single verdict.\n\nThat visibility has limits. Public resolvers are samples, and anycast means the answering point can vary with the network path. A clean display does not validate an authoritative zone, prove client behavior inside a corporate network, or replace monitoring from the locations that matter to an application. Keep authoritative-provider tools, application probes, and ordinary DNS utilities in the workflow.\n\n## A disciplined rollout check\n\nUse the output as a checkpoint rather than a green light. Before changing DNS, note the expected record values and TTL. After publishing, query the authoritative nameservers directly, then use a resolver comparison to observe cache turnover. If a result is surprising, repeat it after the relevant TTL and test from a real application region. This sequence separates three questions that are often mixed together: whether the zone is correct, whether recursive caches have updated, and whether a user can reach the service. dnsglobe helps most with the middle question. Its world-oriented display adds context, but the response table and a saved `--once` result are the more durable evidence for a change record or incident note.\n\n## A compact field kit, not a platform\n\ndnsglobe pairs naturally with `dig` for a precise authoritative query and with deployment records that explain when a change should have taken effect. Its documented configuration can add or replace resolvers, helpful when an organization needs to include internal infrastructure. It should be treated as an investigation instrument: run it against a known domain, capture the result, and make the next decision from the evidence rather than the visualization alone.\n\nTwo nearby tools illustrate the distinction between focused utilities and broader adoption decisions. **usbtree** is likewise a local diagnostic TUI, but for USB topology and, on Linux, activity metrics. **HTTPX2** is a young Pydantic HTTP-client project intended for application code; its documentation and source are worth following, but a team should verify its API and maintenance posture before replacing an established production client.\n\nFor operators who already use terminal tooling during a DNS rollout, dnsglobe offers a clear new option: compare several resolver views in one place, use `--once` when an artifact is more valuable than a UI, and retain independent checks for the authoritative and client-side parts of the story.",
-      "deck": "A focused new terminal tool for comparing DNS answers across public resolvers while investigating a rollout.",
-      "id": "editorial:2026-08-08:dnsglobe-global-dns-propagation-in-the-terminal",
-      "primaryPackageID": "brew:dnsglobe",
-      "publishedAt": "2026-08-08T13:01:59Z",
-      "relatedPackageIDs": [
-        "brew:dnsglobe",
-        "brew:usbtree",
-        "brew:httpx2"
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2026-06-18T14:13:17Z",
-        "firstStableReleaseSourceURL": "https://github.com/514-labs/dnsglobe/releases",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "dnsglobe README",
-          "url": "https://github.com/514-labs/dnsglobe"
-        },
-        {
-          "kind": "primary",
-          "title": "dnsglobe releases",
-          "url": "https://github.com/514-labs/dnsglobe/releases"
-        },
-        {
-          "kind": "primary",
-          "title": "HTTPX2 documentation",
-          "url": "https://httpx2.pydantic.dev/"
-        },
-        {
-          "kind": "primary",
-          "title": "HTTPX2 source repository",
-          "url": "https://github.com/pydantic/httpx2"
-        },
-        {
-          "kind": "primary",
-          "title": "usbtree README",
-          "url": "https://github.com/gnomeria/usbtree"
-        },
-        {
-          "kind": "primary",
-          "title": "usbtree releases",
-          "url": "https://github.com/gnomeria/usbtree/releases"
-        }
-      ],
-      "title": "dnsglobe: Watching DNS Propagation from the Terminal",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-25T11:08:58Z",
+  "generatedAt": "2026-09-26T10:55:05Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -917,6 +935,71 @@
       ],
       "upstreamSummary": "Music library manager and tagger",
       "version": "2.14.1"
+    },
+    "brew:cask:activitywatch": {
+      "agentSummary": "ActivityWatch records computer activity into a local, extensible timeline, giving users evidence for reflection while keeping sensitive event data under their control.",
+      "assessment": {
+        "alternatives": [
+          "Manual time logs for lower-detail, intentional tracking.",
+          "Hosted time trackers when team reporting matters more than local data control."
+        ],
+        "audiences": [
+          "People who want an evidence-based view of their computer time without sending activity logs to a hosted tracker.",
+          "Researchers who need an auditable, participant-controlled instrument for measuring computer use."
+        ],
+        "caveats": [
+          "Window titles, application names, and browsing data can reveal sensitive work even when stored locally.",
+          "The local REST API does not provide strong authentication; the project warns that same-host users or malware may access data.",
+          "Collected time is evidence of activity, not a reliable measure of value, focus, or productivity."
+        ],
+        "complements": [
+          "Trilium Notes for converting reviewed activity into linked project notes.",
+          "A local analysis script that aggregates or redacts events before sharing them."
+        ],
+        "prerequisites": [
+          "Permission to observe active applications on the operating system.",
+          "A deliberate retention and backup policy for sensitive local activity data."
+        ],
+        "useCases": [
+          "Reviewing time by application, category, project, or active period.",
+          "Exporting or querying locally collected events for personal analysis.",
+          "Building custom watchers and privacy-aware activity workflows."
+        ]
+      },
+      "category": "productivity",
+      "displayName": "ActivityWatch",
+      "docs": "https://docs.activitywatch.net/en/latest",
+      "homepage": "https://activitywatch.net/",
+      "id": "brew:cask:activitywatch",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aactivitywatch",
+      "lastUpdatedAt": "2026-09-26T02:08:06Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/ActivityWatch/activitywatch",
+      "researchedAt": "2026-09-26T10:55:05Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "ActivityWatch privacy policy",
+          "url": "https://docs.activitywatch.net/en/latest/privacy.html"
+        },
+        {
+          "kind": "primary",
+          "title": "Working with ActivityWatch data",
+          "url": "https://docs.activitywatch.net/en/latest/examples/working-with-data.html"
+        },
+        {
+          "kind": "primary",
+          "title": "ActivityWatch in research",
+          "url": "https://docs.activitywatch.net/en/latest/research/index.html"
+        },
+        {
+          "kind": "independent",
+          "title": "Community discussion of reviewing ActivityWatch data",
+          "url": "https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/"
+        }
+      ],
+      "upstreamSummary": "Time tracker",
+      "version": "0.13.2"
     },
     "brew:cask:dbx": {
       "agentSummary": "DBX is a cross-platform graphical database client covering SQL, document, search, and key-value systems, with schema tools, data transfer, AI assistance, and MCP access.",
@@ -1804,6 +1887,71 @@
       "upstreamSummary": "Windows-style taskbar as a Dock replacement",
       "version": "1.6.3,2026,09"
     },
+    "brew:cask:trilium-notes": {
+      "agentSummary": "Trilium Notes organizes a local personal knowledge base as linked, hierarchical notes, with self-hosted synchronization, scripting, relations, and structured attributes for deeper workflows.",
+      "assessment": {
+        "alternatives": [
+          "Joplin for offline-first Markdown notes with several configurable synchronization targets.",
+          "A plain-file notes system when Git interoperability and direct file access are priorities."
+        ],
+        "audiences": [
+          "People maintaining a large, structured personal knowledge base.",
+          "Self-hosters who prefer a database-backed notes system with optional server synchronization."
+        ],
+        "caveats": [
+          "Trilium intentionally stores notes in SQLite, so external file-oriented tools cannot treat the knowledge base as ordinary Markdown folders.",
+          "Supported network synchronization requires a Trilium sync or web server.",
+          "Automation or AI integrations can lose hierarchy and context unless the workflow preserves note relationships explicitly."
+        ],
+        "complements": [
+          "ActivityWatch as a local source of activity evidence for deliberate review.",
+          "Regular database backups and exports for recovery and portability."
+        ],
+        "prerequisites": [
+          "Comfort with a database-backed knowledge base rather than a directory of plain Markdown files.",
+          "A self-hosted Trilium server when synchronization across devices is required."
+        ],
+        "useCases": [
+          "Maintaining nested project journals with links, relations, labels, and reusable note clones.",
+          "Turning activity reviews into durable decisions, context, and follow-up notes.",
+          "Automating specialized knowledge workflows with scripts and the project APIs."
+        ]
+      },
+      "category": "productivity",
+      "displayName": "Trilium Notes",
+      "docs": "https://docs.triliumnotes.org",
+      "homepage": "https://triliumnext.github.io/Docs/",
+      "id": "brew:cask:trilium-notes",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atrilium-notes",
+      "lastUpdatedAt": "2026-09-25T19:44:11Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/TriliumNext/Trilium",
+      "researchedAt": "2026-09-26T10:55:05Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Trilium Notes project overview",
+          "url": "https://triliumnotes.org/"
+        },
+        {
+          "kind": "primary",
+          "title": "Trilium note concepts",
+          "url": "https://docs.triliumnotes.org/user-guide/concepts/notes"
+        },
+        {
+          "kind": "primary",
+          "title": "Trilium FAQ on database storage and synchronization",
+          "url": "https://docs.triliumnotes.org/user-guide/faq"
+        },
+        {
+          "kind": "independent",
+          "title": "Community examples of Trilium as an automated second brain",
+          "url": "https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/"
+        }
+      ],
+      "upstreamSummary": "Hierarchical note taking application",
+      "version": "0.106.0"
+    },
     "brew:cask:zentty": {
       "agentSummary": "Zentty is a native macOS terminal for agent-heavy development, combining scrolling worklanes, persistent panes, status-aware sidebars, task discovery, and a scriptable embedded CLI.",
       "assessment": {
@@ -2165,53 +2313,6 @@
       "upstreamSummary": "Local searchable memory over the session histories of coding agents",
       "version": "0.19.1"
     },
-    "brew:dnsglobe": {
-      "agentSummary": "dnsglobe checks DNS records through public resolvers worldwide, grouping responses and showing propagation, latency, TTL, and disagreement in a terminal dashboard for deployment troubleshooting.",
-      "assessment": {
-        "alternatives": [
-          "dnschecker.org, whatsmydns.net, and direct dig queries"
-        ],
-        "audiences": [
-          "DNS operators, platform engineers, and developers shipping domain changes"
-        ],
-        "caveats": [
-          "Public resolver results are vantage-point samples, not proof of every client’s DNS experience"
-        ],
-        "complements": [
-          "Authoritative DNS provider dashboards, dig, and change-management records"
-        ],
-        "prerequisites": [
-          "Network access to public DNS resolvers and a supported terminal"
-        ],
-        "useCases": [
-          "Checking propagation after record changes and comparing resolver-specific answers"
-        ]
-      },
-      "category": null,
-      "displayName": "dnsglobe",
-      "docs": null,
-      "homepage": "https://github.com/514-labs/dnsglobe",
-      "id": "brew:dnsglobe",
-      "installURL": "pkgmgrmgr://install?package=brew%3Adnsglobe",
-      "lastUpdatedAt": "2026-08-08T03:56:20Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/514-labs/dnsglobe",
-      "researchedAt": "2026-08-08T13:01:59Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "dnsglobe README",
-          "url": "https://github.com/514-labs/dnsglobe"
-        },
-        {
-          "kind": "primary",
-          "title": "dnsglobe releases",
-          "url": "https://github.com/514-labs/dnsglobe/releases"
-        }
-      ],
-      "upstreamSummary": "Global DNS propagation checker TUI",
-      "version": null
-    },
     "brew:edgevpn": {
       "agentSummary": "EdgeVPN builds decentralized private networks, reverse proxies, and file transfers on libp2p, using shared configuration tokens and an embedded distributed coordination layer.",
       "assessment": {
@@ -2453,53 +2554,6 @@
       ],
       "upstreamSummary": "Git LFS plugin that uploads and downloads using the Xet protocol",
       "version": "0.2.1"
-    },
-    "brew:httpx2": {
-      "agentSummary": "HTTPX2 is Pydantic’s next-generation Python HTTP client, aiming to provide an ergonomic asynchronous and synchronous request interface for applications that need modern transport behavior.",
-      "assessment": {
-        "alternatives": [
-          "httpx, requests, aiohttp, and urllib3"
-        ],
-        "audiences": [
-          "Python application developers evaluating newer HTTP client APIs"
-        ],
-        "caveats": [
-          "It is young software, so API stability and production readiness require deliberate review"
-        ],
-        "complements": [
-          "Pydantic models, retry policies, observability, and tests"
-        ],
-        "prerequisites": [
-          "A compatible Python environment and careful dependency evaluation"
-        ],
-        "useCases": [
-          "Making synchronous or asynchronous application HTTP requests"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "httpx2",
-      "docs": "https://httpx2.pydantic.dev/",
-      "homepage": "https://httpx2.pydantic.dev",
-      "id": "brew:httpx2",
-      "installURL": "pkgmgrmgr://install?package=brew%3Ahttpx2",
-      "lastUpdatedAt": "2026-08-07T09:26:59Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/pydantic/httpx2",
-      "researchedAt": "2026-08-08T13:01:59Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "HTTPX2 documentation",
-          "url": "https://httpx2.pydantic.dev/"
-        },
-        {
-          "kind": "primary",
-          "title": "HTTPX2 source repository",
-          "url": "https://github.com/pydantic/httpx2"
-        }
-      ],
-      "upstreamSummary": "HTTP client library for Python",
-      "version": null
     },
     "brew:jupytext": {
       "agentSummary": "Jupytext represents notebook inputs as scripts or Markdown, making code review and editor workflows easier while paired notebooks retain outputs in a separate notebook file.",
@@ -3627,53 +3681,6 @@
       "upstreamSummary": "Render Mermaid diagrams in the terminal",
       "version": "0.9.0"
     },
-    "brew:usbtree": {
-      "agentSummary": "usbtree presents a live USB device tree in a Rust terminal interface, exposing topology and Linux activity metrics without requiring root access or libusb.",
-      "assessment": {
-        "alternatives": [
-          "lsusb, System Information, and Device Manager"
-        ],
-        "audiences": [
-          "Desktop support engineers, hardware developers, and Linux operators"
-        ],
-        "caveats": [
-          "Activity metrics vary by platform; macOS and Windows focus on topology rather than Linux-level metrics"
-        ],
-        "complements": [
-          "System logs, lsusb, and hardware vendor documentation"
-        ],
-        "prerequisites": [
-          "A supported operating system and access to local USB device information"
-        ],
-        "useCases": [
-          "Inspecting attached USB topology and investigating device activity"
-        ]
-      },
-      "category": "system",
-      "displayName": "usbtree",
-      "docs": "https://github.com/gnomeria/usbtree#readme",
-      "homepage": "https://gnomeria.github.io/usbtree/",
-      "id": "brew:usbtree",
-      "installURL": "pkgmgrmgr://install?package=brew%3Ausbtree",
-      "lastUpdatedAt": "2026-08-07T07:32:08Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/gnomeria/usbtree",
-      "researchedAt": "2026-08-08T13:01:59Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "usbtree README",
-          "url": "https://github.com/gnomeria/usbtree"
-        },
-        {
-          "kind": "primary",
-          "title": "usbtree releases",
-          "url": "https://github.com/gnomeria/usbtree/releases"
-        }
-      ],
-      "upstreamSummary": "Live USB device tree in your terminal",
-      "version": null
-    },
     "brew:vi-sql": {
       "agentSummary": "vi-sql is a customizable terminal database client with Vim-style navigation, multiple SQL backends, schema browsing, query plans, encrypted credentials, exports, and an MCP server.",
       "assessment": {
@@ -3801,7 +3808,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-25T11:07:19Z",
+    "generatedAt": "2026-09-26T10:53:31Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
