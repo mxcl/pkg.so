@@ -1,7 +1,6 @@
 id: cask:pallotron-yubiswitch
 display-name: YubiSwitch
-homepage: https://github.com/pallotron/yubiswitch
-repo: https://github.com/pallotron/yubiswitch
+repo: null
 docs:
   - https://github.com/pallotron/yubiswitch#readme
 config-file-location: null
@@ -49,10 +48,6 @@ history:
       to enable or disable the key. First launch requests the user's password to install
       a privileged helper. On macOS Catalina and later, the app may also require
       Accessibility and Input Monitoring permission.
-category: security
-package-manager:
-  brew-cask: pallotron-yubiswitch
-package-manager-url: https://formulae.brew.sh/cask/pallotron-yubiswitch
 tags:
   - hardware-token
   - macos
@@ -61,10 +56,34 @@ tags:
   - two-factor-authentication
   - usb-hid
   - yubikey
-description: Status bar application to enable/disable Yubikey Nano
-applications:
-  - yubiswitch.app
 provenance:
-  cask: pallotron-yubiswitch
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README describes a utility for enabling and disabling YubiKey Nano and
+      Neo authentication devices: https://github.com/pallotron/yubiswitch#readme
+  display-name-sources:
+    - >
+      The official project uses both lowercase `yubiswitch` and the capitalized product
+      form “YubiSwitch”: https://github.com/pallotron/yubiswitch#readme
+  docs-sources:
+    - >
+      The official README is the primary documentation and covers privileges,
+      permissions, preferences, AppleScript integration, device IDs, known issues, and
+      removal.
+  history-sources:
+    - https://github.com/pallotron/yubiswitch#readme
+    - https://github.com/pallotron/yubiswitch/releases/
+  repo-sources:
+    - Repository already supplied by `source_facts.repo`; returned null as required.
+  tags-sources:
+    - Official README's documented operation and integration features.
+    - 'Official repository overview and topics: https://github.com/pallotron/yubiswitch'
+category-confidence: high
+category-path:
+  - security
+  - hardware-authentication
+display-name-confidence: medium
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
