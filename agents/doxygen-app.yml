@@ -1,6 +1,5 @@
 id: cask:doxygen-app
 display-name: Doxygen
-homepage: https://www.doxygen.nl/
 repo: https://github.com/doxygen/doxygen
 docs:
   - https://www.doxygen.nl/manual/config.html
@@ -8,8 +7,10 @@ docs:
   - https://www.doxygen.nl/manual/index.html
   - https://www.doxygen.nl/manual/starting.html
 config-file-location:
-  unix: ./Doxyfile
-  windows: .\Doxyfile
+  unix:
+    - ./Doxyfile
+  windows:
+    - .\Doxyfile
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,10 +64,6 @@ history:
       A typical workflow runs `doxygen -g` to create a Doxyfile, edits that file to
       select input and output options, and then runs `doxygen` with the configuration
       file. Doxywizard can create and edit the same configuration through a GUI.
-category: developer-tools
-package-manager:
-  brew-cask: doxygen-app
-package-manager-url: https://formulae.brew.sh/cask/doxygen-app
 tags:
   - api-docs
   - c-plus-plus
@@ -74,12 +71,36 @@ tags:
   - doxyfile
   - doxywizard
   - source-code
-description: Generate documentation from source code
-applications:
-  - Doxygen.app
 provenance:
-  cask: doxygen-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - doxygen
+  category-sources:
+    - >
+      Official manual and repository describe Doxygen as a source-code documentation
+      generator: https://www.doxygen.nl/manual/index.html
+    - 'Official repository README: https://github.com/doxygen/doxygen#readme'
+  display-name-sources:
+    - 'Official Doxygen manual: https://www.doxygen.nl/manual/index.html'
+    - source_facts.description
+  docs-sources:
+    - Official Doxygen manual overview, getting-started, configuration, and usage pages.
+  history-sources:
+    - 'Official manual overview: https://www.doxygen.nl/manual/index.html'
+    - >
+      Official release chronology:
+      https://github.com/doxygen/doxygen/blob/master/doc_internal/releases.md
+    - 'Official repository README: https://github.com/doxygen/doxygen#readme'
+  repo-sources:
+    - >
+      The repository identifies itself as the official Doxygen Git repository, and the
+      official manual links to it: https://github.com/doxygen/doxygen
+  tags-sources:
+    - 'Official manual: https://www.doxygen.nl/manual/index.html'
+    - 'Official repository README: https://github.com/doxygen/doxygen#readme'
+category-confidence: high
+category-path:
+  - developer-tools
+  - documentation-generation
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
