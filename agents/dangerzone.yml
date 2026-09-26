@@ -1,7 +1,6 @@
 id: cask:dangerzone
 display-name: Dangerzone
-homepage: https://dangerzone.rocks/
-repo: https://github.com/freedomofpress/dangerzone
+repo: null
 docs:
   - https://dangerzone.rocks/about
   - https://github.com/freedomofpress/dangerzone#readme
@@ -74,10 +73,6 @@ history:
       The output should be treated like a virtual print-and-rescan: active content,
       formulas, and macros are not preserved, and the tool does not remove threats
       encoded purely in visible content, such as printer tracking dots or steganography.
-category: security
-package-manager:
-  brew-cask: dangerzone
-package-manager-url: https://formulae.brew.sh/cask/dangerzone
 tags:
   - document-security
   - gvisor
@@ -87,10 +82,46 @@ tags:
   - podman
   - privacy
   - sandbox
-description: Convert potentially dangerous PDFs or Office documents into safe PDFs
-applications:
-  - Dangerzone.app
 provenance:
-  cask: dangerzone
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official journalists page frames the tool as protection against malware, trackers,
+      and metadata: https://dangerzone.rocks/journalists/
+    - >
+      Official site describes sandboxed conversion of untrusted documents into safe
+      PDFs: https://dangerzone.rocks/
+  display-name-sources:
+    - >
+      Official site and repository use “Dangerzone”: https://dangerzone.rocks/ and
+      https://github.com/freedomofpress/dangerzone
+  docs-sources:
+    - >
+      Official project explanation, official installation guide, and official repository
+      README: https://dangerzone.rocks/about/,
+      https://github.com/freedomofpress/dangerzone/blob/main/INSTALL.md, and
+      https://github.com/freedomofpress/dangerzone
+  history-sources:
+    - https://dangerzone.rocks/about/
+    - https://dangerzone.rocks/journalists/
+    - https://dangerzone.rocks/news/2024-09-23-gvisor/
+    - https://dangerzone.rocks/news/2025-12-02-0.10.0/
+    - https://github.com/freedomofpress/dangerzone/blob/main/CHANGELOG.md
+  repo-sources:
+    - >
+      source_facts.repo already supplies https://github.com/freedomofpress/dangerzone;
+      per task rules, repo is therefore returned as null.
+  tags-sources:
+    - >
+      Official site, journalists guide, and repository explain document sanitization,
+      sandbox isolation, metadata removal, gVisor, and Podman:
+      https://dangerzone.rocks/, https://dangerzone.rocks/journalists/, and
+      https://github.com/freedomofpress/dangerzone
+category-confidence: high
+category-path:
+  - security
+  - document-sanitization
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
