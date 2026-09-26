@@ -1,12 +1,12 @@
 id: cask:opensuperwhisper
 display-name: OpenSuperWhisper
-homepage: https://github.com/starmel/OpenSuperWhisper
-repo: https://github.com/starmel/OpenSuperWhisper
+repo: null
 docs:
   - https://github.com/Starmel/OpenSuperWhisper#readme
   - https://github.com/Starmel/OpenSuperWhisper/releases
 config-file-location:
-  macos: ~/Library/Application Support/ru.starmel.OpenSuperWhisper/
+  macos:
+    - ~/Library/Application Support/ru.starmel.OpenSuperWhisper/
 credentials-file-location: null
 history:
   adoption-history:
@@ -53,10 +53,6 @@ history:
       Users select or download a speech model, choose a microphone and language, and
       trigger recording with a global keyboard or mouse shortcut. Audio files can also
       be dragged into the application for queued transcription.
-category: ai
-package-manager:
-  brew-cask: opensuperwhisper
-package-manager-url: https://formulae.brew.sh/cask/opensuperwhisper
 tags:
   - apple-silicon
   - dictation
@@ -66,10 +62,38 @@ tags:
   - speech-recognition
   - transcription
   - whisper
-description: Whisper dictation/transcription app
-applications:
-  - OpenSuperWhisper.app
 provenance:
-  cask: opensuperwhisper
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README describes real-time, on-device audio transcription using Whisper
+      and Parakeet.
+    - source_facts.description identifies a Whisper dictation/transcription app.
+  display-name-sources:
+    - Official GitHub repository README.
+    - current_curation.display-name
+  docs-sources:
+    - Official GitHub releases provide installation requirements and release notes.
+    - >
+      The official repository README is the primary usage, installation, build, and
+      support documentation.
+  history-sources:
+    - https://github.com/Starmel/OpenSuperWhisper#readme
+    - https://github.com/Starmel/OpenSuperWhisper/releases
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; returned null as required without
+      second-guessing it.
+  tags-sources:
+    - Official repository README feature and requirements sections.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - ai
+  - speech
+  - transcription
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
