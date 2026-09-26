@@ -1,7 +1,6 @@
 id: cask:rancher
 display-name: Rancher Desktop
-homepage: https://rancherdesktop.io/
-repo: https://github.com/rancher-sandbox/rancher-desktop
+repo: null
 docs:
   - https://docs.rancherdesktop.io/
 config-file-location:
@@ -82,10 +81,6 @@ history:
       containers, switch between containerd and Moby workflows, and work with bundled
       tools such as kubectl, Helm, nerdctl, Docker Compose, and `rdctl`. Deployment
       profiles support managed defaults and locked settings.
-category: developer-tools
-package-manager:
-  brew-cask: rancher
-package-manager-url: https://formulae.brew.sh/cask/rancher
 tags:
   - containerd
   - containers
@@ -95,10 +90,35 @@ tags:
   - local-development
   - nerdctl
   - virtualization
-description: Kubernetes and container management on the desktop
-applications:
-  - Rancher Desktop.app
 provenance:
-  cask: rancher
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes local Kubernetes and container management:
+      https://docs.rancherdesktop.io/
+  display-name-sources:
+    - 'Official homepage and documentation use Rancher Desktop: https://rancherdesktop.io/'
+    - current_curation.display-name
+  docs-sources:
+    - Dedicated official Rancher Desktop documentation domain.
+  history-sources:
+    - https://docs.rancherdesktop.io/blog/history-of-rancher-desktop/
+    - https://docs.rancherdesktop.io/getting-started/installation/
+    - https://docs.rancherdesktop.io/how-to-guides/generating-deployment-profiles/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository discovery was intentionally
+      skipped as required.
+  tags-sources:
+    - >
+      Official documentation describes k3s, Kubernetes, containerd, nerdctl, Moby,
+      Docker Compose, virtualization, and local development workflows.
+category-confidence: high
+category-path:
+  - developer-tools
+  - containers
+  - kubernetes
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
