@@ -1,6 +1,5 @@
 id: cask:nosql-workbench
 display-name: NoSQL Workbench for Amazon DynamoDB
-homepage: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html
 repo: null
 docs:
   - >
@@ -85,10 +84,6 @@ history:
       such as an access-key ID and secret access key; temporary session tokens and IAM
       role ARNs are optional. The official connection guide does not document a fixed
       credentials-file path.
-category: data
-package-manager:
-  brew-cask: nosql-workbench
-package-manager-url: https://formulae.brew.sh/cask/nosql-workbench
 tags:
   - aws
   - data-modeling
@@ -98,10 +93,44 @@ tags:
   - gui
   - nosql
   - query-builder
-description: Client-side GUI application for modern database development and operations
-applications:
-  - NoSQL Workbench.app
 provenance:
-  cask: nosql-workbench
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      AWS describes NoSQL Workbench as a client-side GUI for DynamoDB database
+      development and operations:
+      https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html
+  display-name-sources:
+    - >
+      Official AWS developer guide uses the name “NoSQL Workbench for Amazon DynamoDB”:
+      https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html
+  docs-sources:
+    - >
+      Official AWS DynamoDB Developer Guide overview, connection instructions, and
+      release history.
+  history-sources:
+    - >
+      https://aws.amazon.com/blogs/aws/nosql-workbench-for-amazon-dynamodb-available-in-preview/
+    - >
+      https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkbenchDocumentHistory.html
+    - https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html
+    - >
+      https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.querybuilder.connect.html
+  repo-sources:
+    - >
+      source_facts.repo is empty; the official AWS product guide, downloads, and release
+      history do not identify a public source-control repository for NoSQL Workbench:
+      https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html
+  tags-sources:
+    - >
+      Official AWS overview documents data modeling, access-pattern validation, sample
+      data, operation building, code generation, and DynamoDB Local:
+      https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html
+category-confidence: high
+category-path:
+  - data
+  - database-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
