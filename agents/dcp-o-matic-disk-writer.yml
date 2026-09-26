@@ -1,18 +1,23 @@
 id: cask:dcp-o-matic-disk-writer
 display-name: DCP-o-matic Disk Writer
-homepage: https://dcpomatic.com/
 repo: https://github.com/cth103/dcpomatic
 docs:
   - https://dcpomatic.com/manual/html
   - https://dcpomatic.com/manual/html/ch20.html
 config-file-location:
-  linux: ~/.config/dcpomatic2/config.xml
-  macos: /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
-  windows: C:\Users\<user>\AppData\Local\dcpomatic\config.xml
+  linux:
+    - ~/.config/dcpomatic2/config.xml
+  macos:
+    - /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
+  windows:
+    - C:\Users\<user>\AppData\Local\dcpomatic\config.xml
 credentials-file-location:
-  linux: ~/.config/dcpomatic2/config.xml
-  macos: /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
-  windows: C:\Users\<user>\AppData\Local\dcpomatic\config.xml
+  linux:
+    - ~/.config/dcpomatic2/config.xml
+  macos:
+    - /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
+  windows:
+    - C:\Users\<user>\AppData\Local\dcpomatic\config.xml
 history:
   adoption-history:
     - >
@@ -56,10 +61,6 @@ history:
       Select an external drive and a DCP, then use the utility to format the drive
       appropriately and copy the package. The official manual cautions that formatting
       destroys existing data on the selected drive.
-category: media
-package-manager:
-  brew-cask: dcp-o-matic-disk-writer
-package-manager-url: https://formulae.brew.sh/cask/dcp-o-matic-disk-writer
 tags:
   - cinema-delivery
   - dcp
@@ -67,10 +68,33 @@ tags:
   - disk-writer
   - ext2
   - film
-description: Convert video, audio and subtitles into DCP (Digital Cinema Package)
-applications:
-  - DCP-o-matic 2 Disk Writer.app
 provenance:
-  cask: dcp-o-matic-disk-writer
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://dcpomatic.com/manual/html/ch01s02.html
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://dcpomatic.com/manual/html/ch01s02.html
+  docs-sources:
+    - Official DCP-o-matic user manual and its chapter on writing DCPs to disks.
+  history-sources:
+    - https://dcpomatic.com/development
+    - https://dcpomatic.com/manual/html/ch01s02.html
+    - https://dcpomatic.com/manual/html/ch20.html
+    - https://www.dcpomatic.com/
+  repo-sources:
+    - >
+      https://dcpomatic.com/development identifies the maintainer's Git repository and
+      links this GitHub repository as its mirror.
+  tags-sources:
+    - https://dcpomatic.com/manual/html/ch01s02.html
+    - https://dcpomatic.com/manual/html/ch20.html
+category-confidence: high
+category-path:
+  - media
+  - digital-cinema
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

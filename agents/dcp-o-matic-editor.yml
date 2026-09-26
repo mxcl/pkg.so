@@ -1,18 +1,23 @@
 id: cask:dcp-o-matic-editor
 display-name: DCP-o-matic Editor
-homepage: https://dcpomatic.com/
 repo: https://github.com/cth103/dcpomatic
 docs:
   - https://dcpomatic.com/manual/html
   - https://dcpomatic.com/manual/html/ch22.html
 config-file-location:
-  linux: ~/.config/dcpomatic2/config.xml
-  macos: /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
-  windows: C:\Users\<user>\AppData\Local\dcpomatic\config.xml
+  linux:
+    - ~/.config/dcpomatic2/config.xml
+  macos:
+    - /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
+  windows:
+    - C:\Users\<user>\AppData\Local\dcpomatic\config.xml
 credentials-file-location:
-  linux: ~/.config/dcpomatic2/config.xml
-  macos: /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
-  windows: C:\Users\<user>\AppData\Local\dcpomatic\config.xml
+  linux:
+    - ~/.config/dcpomatic2/config.xml
+  macos:
+    - /Users/<user>/Library/Preferences/com.dcpomatic/2/config.xml
+  windows:
+    - C:\Users\<user>\AppData\Local\dcpomatic\config.xml
 history:
   adoption-history:
     - >
@@ -55,20 +60,39 @@ history:
     - >
       Open an existing DCP, adjust supported Composition Playlist metadata, and write
       the changes without re-encoding the package's essence assets.
-category: media
-package-manager:
-  brew-cask: dcp-o-matic-editor
-package-manager-url: https://formulae.brew.sh/cask/dcp-o-matic-editor
 tags:
   - cinema-mastering
   - dcp
   - digital-cinema
   - film
   - metadata-editor
-description: Convert video, audio and subtitles into DCP (Digital Cinema Package)
-applications:
-  - DCP-o-matic 2 Editor.app
 provenance:
-  cask: dcp-o-matic-editor
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://dcpomatic.com/manual/html/ch01s02.html
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://dcpomatic.com/manual/html/ch01s02.html
+  docs-sources:
+    - Official DCP-o-matic user manual and its DCP-metadata editing chapter.
+  history-sources:
+    - https://dcpomatic.com/development
+    - https://dcpomatic.com/manual/html/ch01s02.html
+    - https://dcpomatic.com/manual/html/ch22.html
+    - https://www.dcpomatic.com/
+  repo-sources:
+    - >
+      https://dcpomatic.com/development identifies the maintainer's Git repository and
+      links this GitHub repository as its mirror.
+  tags-sources:
+    - https://dcpomatic.com/manual/html/ch01s02.html
+    - https://dcpomatic.com/manual/html/ch22.html
+category-confidence: high
+category-path:
+  - media
+  - digital-cinema
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
