@@ -1,12 +1,12 @@
 id: cask:prusaslicer
 display-name: PrusaSlicer
-homepage: https://www.prusa3d.com/slic3r-prusa-edition/
-repo: https://github.com/prusa3d/PrusaSlicer
+repo: null
 docs:
   - https://help.prusa3d.com/article/prusaslicer-general-information_1910
   - https://help.prusa3d.com/product/prusaslicer/about-prusaslicer_205
 config-file-location:
-  macos: ~/Library/Application Support/PrusaSlicer/
+  macos:
+    - ~/Library/Application Support/PrusaSlicer/
 credentials-file-location: null
 history:
   adoption-history:
@@ -54,10 +54,6 @@ history:
       arrange and modify objects, preview toolpaths, and export G-code or resin-print
       data. Custom profiles can be exported as configuration bundles and transferred
       between installations.
-category: developer-tools
-package-manager:
-  brew-cask: prusaslicer
-package-manager-url: https://formulae.brew.sh/cask/prusaslicer
 tags:
   - 3d-printing
   - fdm
@@ -65,10 +61,34 @@ tags:
   - msla
   - rep-rap
   - slicer
-description: G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
-applications:
-  - PrusaSlicer.app
 provenance:
-  cask: prusaslicer
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      source_facts.description; official repository README:
+      https://github.com/prusa3d/PrusaSlicer
+  display-name-sources:
+    - Official repository and Prusa Knowledge Base naming.
+  docs-sources:
+    - Official Prusa Knowledge Base product manual and general-information article.
+  history-sources:
+    - https://blog.prusa3d.com/celebrating-slic3rs-10th-anniversary_54724/
+    - https://blog.prusa3d.com/prusaslicer-2-release_30008/
+    - https://github.com/prusa3d/PrusaSlicer
+    - https://help.prusa3d.com/product/prusaslicer/about-prusaslicer_205
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per task instructions, repo is returned as
+      null without re-evaluation.
+  tags-sources:
+    - >
+      source_facts.description and official repository README describe G-code
+      generation, FDM, mSLA, and the Slic3r/RepRap lineage.
+category-confidence: high
+category-path:
+  - developer-tools
+  - 3d-printing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

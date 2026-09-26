@@ -1,14 +1,15 @@
 id: cask:proxifier
 display-name: Proxifier
-homepage: https://www.proxifier.com/
 repo: null
 docs:
   - https://www.proxifier.com/docs/mac-v2/profiles.htm
   - https://www.proxifier.com/docs/mac-v3
 config-file-location:
-  macos: /Library/Application Support/Proxifier/Profiles/Default.ppx
+  macos:
+    - /Library/Application Support/Proxifier/Profiles/Default.ppx
 credentials-file-location:
-  macos: /Library/Application Support/Proxifier/Profiles/Default.ppx
+  macos:
+    - /Library/Application Support/Proxifier/Profiles/Default.ppx
 history:
   adoption-history:
     - >
@@ -48,10 +49,6 @@ history:
       applications and destinations, and optionally route DNS resolution through a
       proxy. Profiles can be saved, imported, exported, shared across platforms, and
       encrypted when they contain proxy credentials.
-category: networking
-package-manager:
-  brew-cask: proxifier
-package-manager-url: https://formulae.brew.sh/cask/proxifier
 tags:
   - dns
   - https-proxy
@@ -59,10 +56,37 @@ tags:
   - proxy
   - socks
   - traffic-routing
-description: Proxy client
-applications:
-  - Proxifier.app
 provenance:
-  cask: proxifier
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      source_facts.description; official Proxifier for Mac documentation:
+      https://www.proxifier.com/docs/mac-v3/
+  display-name-sources:
+    - 'Official product naming: https://www.proxifier.com/'
+  docs-sources:
+    - >
+      Official Proxifier for Mac v3 documentation delegates detailed profile management
+      to the official v2 documentation; the latter documents the system-wide Default.ppx
+      path and profile encryption.
+  history-sources:
+    - https://www.proxifier.com/changelog/mac.html
+    - https://www.proxifier.com/changelog/mac2.html
+    - https://www.proxifier.com/docs/mac-v2/profiles.htm
+    - https://www.proxifier.com/docs/mac-v3/
+  repo-sources:
+    - >
+      source_facts.repo is empty; the official product, documentation, and download
+      surfaces provide no official public source-control repository.
+  tags-sources:
+    - >
+      Official Mac v3 documentation lists supported proxy protocols, routing, DNS,
+      rules, and proxy chains.
+category-confidence: high
+category-path:
+  - networking
+  - proxy-client
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
