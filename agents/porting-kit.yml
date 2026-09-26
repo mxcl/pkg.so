@@ -1,7 +1,6 @@
 id: cask:porting-kit
 display-name: Porting Kit
-homepage: https://portingkit.com/
-repo: https://github.com/vitor251093/porting-kit-releases
+repo: null
 docs:
   - https://www.portingkit.com/app/download.html
   - https://www.portingkit.com/pub/portingkit/changelog.html
@@ -56,10 +55,6 @@ history:
       Users select a supported title or create a custom port, then let Porting Kit
       obtain and configure the required compatibility engine and wrapper. The official
       tutorial is recommended before installing game ports.
-category: games
-package-manager:
-  brew-cask: porting-kit
-package-manager-url: https://formulae.brew.sh/cask/porting-kit
 tags:
   - apple-silicon
   - compatibility-layer
@@ -68,10 +63,40 @@ tags:
   - windows-games
   - wine
   - wineskin
-description: Install games and apps compiled for Microsoft Windows
-applications:
-  - Porting Kit.app
 provenance:
-  cask: porting-kit
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official download/tutorial page: https://www.portingkit.com/app/download.html'
+    - 'Official site: https://www.portingkit.com/'
+    - source_facts.description
+  display-name-sources:
+    - 'Official site: https://www.portingkit.com/'
+    - source_facts.applications
+  docs-sources:
+    - The official changelog documents releases and operational changes.
+    - The official download page includes the installation tutorial and platform requirements.
+  history-sources:
+    - 'Official changelog: https://www.portingkit.com/pub/portingkit/changelog.html'
+    - >
+      Official release repository supplied by source_facts.repo:
+      https://github.com/vitor251093/porting-kit-releases
+    - 'Official site: https://www.portingkit.com/'
+    - 'Official tutorial and download page: https://www.portingkit.com/app/download.html'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the enrichment rule, repo is returned
+      as null without re-evaluating it.
+  tags-sources:
+    - >
+      Official download page documents game ports, current macOS support, and Apple
+      Silicon support.
+    - Official site links its Wineskin and CrossOver context.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - windows-compatibility
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
