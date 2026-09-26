@@ -1,13 +1,13 @@
 id: cask:openclaw
 display-name: OpenClaw
-homepage: https://openclaw.ai/
-repo: https://github.com/openclaw/openclaw
+repo: null
 docs:
   - https://docs.openclaw.ai/
   - https://docs.openclaw.ai/gateway/configuration
   - https://docs.openclaw.ai/start/lore
 config-file-location:
-  unix: ~/.openclaw/openclaw.json
+  unix:
+    - ~/.openclaw/openclaw.json
 credentials-file-location:
   unix:
     - ~/.openclaw/state/openclaw.sqlite
@@ -74,10 +74,6 @@ history:
       Configuration defaults to ~/.openclaw/openclaw.json, while current shared and
       per-agent credentials are stored in SQLite; the credentials directory also holds
       channel/provider state and legacy OAuth-import material.
-category: ai
-package-manager:
-  brew-cask: openclaw
-package-manager-url: https://formulae.brew.sh/cask/openclaw
 tags:
   - ai-agents
   - ai-assistant
@@ -86,12 +82,42 @@ tags:
   - local-first
   - plugins
   - self-hosted
-description: Personal AI assistant
-applications:
-  - OpenClaw.app
 provenance:
-  cask: openclaw
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - clawdbot
+  category-sources:
+    - >
+      Official product announcement describes OpenClaw as a locally hosted open-agent
+      platform that works through chat applications:
+      https://openclaw.ai/blog/introducing-openclaw
+    - 'source_facts.description: Personal AI assistant'
+  display-name-sources:
+    - 'Official documentation: https://docs.openclaw.ai/'
+    - current_curation.display-name
+  docs-sources:
+    - >
+      Configuration documentation identifies ~/.openclaw/openclaw.json as the default
+      config file.
+    - Official OpenClaw documentation domain.
+    - Official lore page documents the project's origins and renames.
+  history-sources:
+    - https://docs.openclaw.ai/concepts/oauth
+    - https://docs.openclaw.ai/gateway/configuration
+    - https://docs.openclaw.ai/start/lore
+    - https://github.com/openclaw/openclaw/releases
+    - https://openclaw.ai/blog/introducing-openclaw
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/openclaw/openclaw;
+      per task rules, repo is returned as null without re-evaluation.
+  tags-sources:
+    - 'Official documentation: https://docs.openclaw.ai/'
+    - 'Official product announcement: https://openclaw.ai/blog/introducing-openclaw'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - ai
+  - personal-assistants
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

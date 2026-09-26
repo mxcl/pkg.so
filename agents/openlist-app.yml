@@ -1,7 +1,6 @@
 id: cask:openlist-app
 display-name: OpenList Desktop
-homepage: https://github.com/OpenListTeam/OpenList-Desktop
-repo: https://github.com/OpenListTeam/OpenList-Desktop
+repo: null
 docs:
   - https://github.com/OpenListTeam/OpenList-Desktop/blob/main/README_en.md
 config-file-location: null
@@ -58,10 +57,6 @@ history:
       A mount definition contains a remote name, WebDAV endpoint, username and password,
       and local mount point. Advanced users can pass additional Rclone flags for
       caching, buffering, and transfer concurrency.
-category: productivity
-package-manager:
-  brew-cask: openlist-app
-package-manager-url: https://formulae.brew.sh/cask/openlist-app
 tags:
   - cloud-storage
   - cross-platform
@@ -70,10 +65,39 @@ tags:
   - rclone
   - system-tray
   - webdav
-description: Desktop application for OpenList
-applications:
-  - OpenList-Desktop.app
 provenance:
-  cask: openlist-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README describes a desktop application for managing OpenList and mounting
+      cloud storage through Rclone and WebDAV:
+      https://github.com/OpenListTeam/OpenList-Desktop/blob/main/README_en.md
+    - 'source_facts.description: Desktop application for OpenList'
+  display-name-sources:
+    - >
+      Official README heading:
+      https://github.com/OpenListTeam/OpenList-Desktop/blob/main/README_en.md
+    - current_curation.display-name
+  docs-sources:
+    - >
+      The official repository README is the project's primary user-facing installation
+      and usage documentation.
+  history-sources:
+    - https://github.com/OpenListTeam/OpenList-Desktop/blob/main/README_en.md
+    - https://github.com/OpenListTeam/OpenList-Desktop/blob/main/release_notes.md
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/OpenListTeam/OpenList-Desktop; per task rules, repo is returned
+      as null without re-evaluation.
+  tags-sources:
+    - 'Official README: https://github.com/OpenListTeam/OpenList-Desktop/blob/main/README_en.md'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - cloud-storage-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
