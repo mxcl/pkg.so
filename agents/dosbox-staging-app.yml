@@ -1,14 +1,16 @@
 id: cask:dosbox-staging-app
 display-name: DOSBox Staging
-homepage: https://github.com/dosbox-staging/dosbox-staging/
-repo: https://github.com/dosbox-staging/dosbox-staging
+repo: null
 docs:
   - https://www.dosbox-staging.org/manual
   - https://www.dosbox-staging.org/getting-started
 config-file-location:
-  linux: ~/.config/dosbox/dosbox-staging.conf
-  macos: ~/Library/Preferences/DOSBox/dosbox-staging.conf
-  windows: '%LOCALAPPDATA%\DOSBox\dosbox-staging.conf'
+  linux:
+    - ~/.config/dosbox/dosbox-staging.conf
+  macos:
+    - ~/Library/Preferences/DOSBox/dosbox-staging.conf
+  windows:
+    - '%LOCALAPPDATA%\DOSBox\dosbox-staging.conf'
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,10 +73,6 @@ history:
       virtual drive, and run the game's executable. Most software works with the stock
       defaults, while per-game configuration can tune CPU, graphics, shaders, audio,
       MIDI, networking, and input.
-category: games
-package-manager:
-  brew-cask: dosbox-staging-app
-package-manager-url: https://formulae.brew.sh/cask/dosbox-staging-app
 tags:
   - dos
   - dosbox-fork
@@ -82,12 +80,34 @@ tags:
   - game-preservation
   - retro-gaming
   - x86
-description: DOS game emulator
-applications:
-  - DOSBox Staging.app
 provenance:
-  cask: dosbox-staging-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - dosbox-staging
+  category-sources:
+    - https://www.dosbox-staging.org/about/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.dosbox-staging.org/
+  docs-sources:
+    - Official getting-started guide
+    - Official user manual
+  history-sources:
+    - https://www.dosbox-staging.org/0.83/manual/introduction/what-is-dosbox-staging/
+    - https://www.dosbox-staging.org/about/
+    - https://www.dosbox-staging.org/getting-started/
+    - https://www.dosbox-staging.org/releases/release-notes/0.75.0/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository lookup was intentionally not
+      repeated.
+  tags-sources:
+    - https://www.dosbox-staging.org/about/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - emulation
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,12 +1,12 @@
 id: cask:doomsday-engine
 display-name: Doomsday Engine
-homepage: https://dengine.net/
 repo: https://github.com/skyjake/Doomsday-Engine
 docs:
   - https://manual.dengine.net/
   - https://manual.dengine.net/guide/configuration
 config-file-location:
-  macos: ~/Library/Application Support/Doomsday Engine/runtime/persist.pack
+  macos:
+    - ~/Library/Application Support/Doomsday Engine/runtime/persist.pack
   unix:
     - ~/.doomsday/paths
     - ~/.doomsday/defaults
@@ -71,10 +71,6 @@ history:
       profile, and launch it through Doomsday's frontend. Configuration covers controls,
       rendering, audio, data-file paths, packages, and persistent interface state;
       command-line response files support repeatable launch profiles.
-category: games
-package-manager:
-  brew-cask: doomsday-engine
-package-manager-url: https://formulae.brew.sh/cask/doomsday-engine
 tags:
   - doom
   - game-engine
@@ -82,11 +78,33 @@ tags:
   - hexen
   - modding
   - source-port
-description: Enhanced source port of Doom, Heretic, and Hexen
-applications:
-  - Doomsday Shell.app
-  - Doomsday.app
 provenance:
-  cask: doomsday-engine
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://manual.dengine.net/doomsday_engine
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://dengine.net/
+  docs-sources:
+    - Official Doomsday Manual
+    - Official configuration guide
+  history-sources:
+    - https://dengine.net/source
+    - https://manual.dengine.net/doomsday_engine
+    - https://manual.dengine.net/guide/configuration
+    - https://manual.dengine.net/version
+  repo-sources:
+    - https://dengine.net/source
+    - https://manual.dengine.net/devel/compiling_and_running_2.0
+  tags-sources:
+    - https://manual.dengine.net/doomsday_engine
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - source-ports
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

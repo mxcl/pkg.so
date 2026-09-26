@@ -1,14 +1,16 @@
 id: cask:dosbox
 display-name: DOSBox
-homepage: https://www.dosbox.com/
 repo: https://sourceforge.net/p/dosbox/code-0/HEAD/tree
 docs:
   - https://www.dosbox.com/DOSBoxManual.html
   - https://www.dosbox.com/wiki
 config-file-location:
-  linux: ~/.dosbox/dosbox-{version}.conf
-  macos: ~/Library/Preferences/DOSBox {version} Preferences
-  windows: '%LOCALAPPDATA%\DOSBox\dosbox-{version}.conf'
+  linux:
+    - ~/.dosbox/dosbox-{version}.conf
+  macos:
+    - ~/Library/Preferences/DOSBox {version} Preferences
+  windows:
+    - '%LOCALAPPDATA%\DOSBox\dosbox-{version}.conf'
 credentials-file-location: null
 history:
   adoption-history:
@@ -66,10 +68,6 @@ history:
       drive, and start an executable. The configuration file controls emulated machine
       type, CPU speed, memory, graphics, sound, input, networking, drive mounts, and
       startup commands.
-category: games
-package-manager:
-  brew-cask: dosbox
-package-manager-url: https://formulae.brew.sh/cask/dosbox
 tags:
   - cross-platform
   - dos
@@ -77,10 +75,33 @@ tags:
   - game-preservation
   - retro-gaming
   - x86
-description: Emulator for x86 with DOS
-applications:
-  - dosbox.app
 provenance:
-  cask: dosbox
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://www.dosbox.com/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.dosbox.com/
+  docs-sources:
+    - Official DOSBox manual
+    - Official DOSBox wiki
+  history-sources:
+    - https://www.dosbox-staging.org/0.83/manual/introduction/what-is-dosbox-staging/
+    - https://www.dosbox.com/
+    - https://www.dosbox.com/DOSBoxManual.html
+    - https://www.dosbox.com/wiki/Releases%3AAll
+  repo-sources:
+    - Official SourceForge SVN tree maintained by the DOSBox project.
+    - https://sourceforge.net/p/dosbox/code-0/HEAD/tree/
+  tags-sources:
+    - https://www.dosbox.com/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - emulation
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
