@@ -1,6 +1,5 @@
 id: cask:appzapper
 display-name: AppZapper 3000
-homepage: https://appzapper.com/
 repo: null
 docs:
   - https://appzapper.com/
@@ -53,19 +52,41 @@ history:
     - >
       The current product also provides a Zap All action for removing all selected
       targets and offers a limited trial before purchase.
-category: system
-package-manager:
-  brew-cask: appzapper
-package-manager-url: https://formulae.brew.sh/cask/appzapper
 tags:
   - app-cleaner
   - macos
   - system-utility
   - uninstaller
-description: Tool to uninstall unwanted applications and their support files
-applications:
-  - AppZapper 3000.app
 provenance:
-  cask: appzapper
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official AppZapper site describes finding and deleting applications, caches,
+      preferences, and support files: https://appzapper.com/
+    - source_facts.description
+  display-name-sources:
+    - Official product name on https://appzapper.com/
+    - source_facts.applications
+  docs-sources:
+    - >
+      No separate public documentation surface was identified; the official homepage is
+      the best available product and usage guide.
+  history-sources:
+    - https://appzapper.com/
+    - source_facts.description
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      The official product site identifies a commercial application and support channel
+      but does not publish an official source-control repository: https://appzapper.com/
+    - source_facts.repo is empty.
+  tags-sources:
+    - Official homepage product description and source_facts.description.
+category-confidence: high
+category-path:
+  - system
+  - uninstallers
+display-name-confidence: high
+docs-confidence: medium
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

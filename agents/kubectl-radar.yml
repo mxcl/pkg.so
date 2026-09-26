@@ -1,13 +1,13 @@
 id: brew:kubectl-radar
 display-name: Radar
-homepage: https://radarhq.io
-repo: https://github.com/skyhook-io/radar
+repo: null
 docs:
   - https://radarhq.io/docs
   - https://radarhq.io/product/mcp
 config-file-location: null
 credentials-file-location:
-  unix: ~/.kube/config
+  unix:
+    - ~/.kube/config
 history:
   adoption-history:
     - >
@@ -74,11 +74,6 @@ history:
       Its localhost MCP endpoint can be registered with supported AI clients so agents
       can query correlated cluster state. The server respects the kubeconfig identity's
       Kubernetes RBAC permissions.
-category: cloud-infrastructure
-package-manager:
-  brew: kubectl-radar
-package-manager-url: https://formulae.brew.sh/formula/kubectl-radar
-license: Apache-2.0
 tags:
   - cli
   - cluster-management
@@ -87,10 +82,41 @@ tags:
   - kubernetes
   - mcp-server
   - observability
-description: Missing open-source Kubernetes UI with a built-in MCP server for AI agents
-executables:
-  - kubectl-radar
 provenance:
-  formula: kubectl-radar
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      Official Radar documentation describes a Kubernetes UI for topology, resources,
+      events, Helm, GitOps, audits, and AI-agent access: https://radarhq.io/docs
+    - source_facts.description
+  display-name-sources:
+    - >
+      Official project README names the product Radar:
+      https://github.com/skyhook-io/radar#readme
+  docs-sources:
+    - >
+      The official MCP product page documents setup, supported clients, tools, and
+      security behavior.
+    - The project README links to the dedicated official documentation site.
+  history-sources:
+    - https://github.com/skyhook-io/radar#readme
+    - https://radarhq.io/blog/introducing-radar-modern-kubernetes-visibility
+    - https://radarhq.io/changelog
+    - https://radarhq.io/product/mcp
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped as required.
+  tags-sources:
+    - >
+      Official Radar README and documentation describe Kubernetes topology, resource
+      inspection, troubleshooting, GitOps, Helm, and MCP functionality.
+category-confidence: high
+category-path:
+  - cloud-infrastructure
+  - kubernetes
+  - observability
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

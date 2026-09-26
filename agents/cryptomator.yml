@@ -1,15 +1,17 @@
 id: cask:cryptomator
 display-name: Cryptomator
-homepage: https://cryptomator.org/
-repo: https://github.com/cryptomator/cryptomator
+repo: null
 docs:
   - https://docs.cryptomator.org/desktop
   - https://docs.cryptomator.org/desktop/admin-config
   - https://docs.cryptomator.org/security/architecture
 config-file-location:
-  linux: /etc/cryptomator/config.properties
-  macos: /Library/Application Support/Cryptomator/config.properties
-  windows: C:\ProgramData\Cryptomator\config.properties
+  linux:
+    - /etc/cryptomator/config.properties
+  macos:
+    - /Library/Application Support/Cryptomator/config.properties
+  windows:
+    - C:\ProgramData\Cryptomator\config.properties
 credentials-file-location: null
 history:
   adoption-history:
@@ -96,10 +98,6 @@ history:
     - >
       Vault passwords are not stored on disk by default. Users can optionally save them
       through a supported operating-system keychain.
-category: security
-package-manager:
-  brew-cask: cryptomator
-package-manager-url: https://formulae.brew.sh/cask/cryptomator
 tags:
   - client-side-encryption
   - cloud-storage
@@ -107,10 +105,38 @@ tags:
   - encrypted-vaults
   - encryption
   - privacy
-description: Multi-platform client-side cloud file encryption tool
-applications:
-  - Cryptomator.app
 provenance:
-  cask: cryptomator
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official desktop documentation describes cross-platform encrypted vaults and
+      client-side protection for cloud-stored files:
+      https://docs.cryptomator.org/desktop/
+    - source_facts.description
+  display-name-sources:
+    - Official website, documentation, repository, and source_facts.applications.
+  docs-sources:
+    - >
+      Dedicated official documentation covers desktop operation, encryption
+      architecture, and system-level configuration.
+  history-sources:
+    - https://cryptomator.org/blog/2026/03/09/10-years-cryptomator/
+    - https://docs.cryptomator.org/desktop/
+    - https://docs.cryptomator.org/security/architecture/
+    - https://github.com/cryptomator/cryptomator#readme
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped as required.
+  tags-sources:
+    - >
+      Official Cryptomator documentation, security architecture, project history, and
+      source_facts.description.
+category-confidence: high
+category-path:
+  - security
+  - file-encryption
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
