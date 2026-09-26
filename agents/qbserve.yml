@@ -1,13 +1,13 @@
 id: cask:qbserve
 display-name: Qbserve
-homepage: https://qotoqot.com/qbserve/
 repo: null
 docs:
   - https://qotoqot.com/qbserve/articles/tracking-productivity
   - https://qotoqot.com/qbserve/articles/tracking-work-hours
   - https://qotoqot.com/qbserve/support
 config-file-location:
-  macos: ~/Library/Preferences/com.QotoQot.Qbserve.plist
+  macos:
+    - ~/Library/Preferences/com.QotoQot.Qbserve.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -62,10 +62,6 @@ history:
       Support/Qbserve/UserDatabase.sqlite. Preferences can be migrated separately using
       ~/Library/Preferences/com.QotoQot.Qbserve.plist, and the backup destination can be
       changed in the application.
-category: productivity
-package-manager:
-  brew-cask: qbserve
-package-manager-url: https://formulae.brew.sh/cask/qbserve
 tags:
   - automatic-time-tracking
   - invoicing
@@ -74,10 +70,35 @@ tags:
   - productivity
   - project-tracking
   - timesheets
-description: Automatic time tracker
-applications:
-  - Qbserve.app
 provenance:
-  cask: qbserve
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Qbserve support page describes automatic project-hour tracking,
+      timesheets, invoicing, and productivity feedback.
+    - source_facts.description
+  display-name-sources:
+    - Official Qbserve website and support page.
+    - current_curation.display-name
+  docs-sources:
+    - Official Qbserve support page and first-party usage articles.
+  history-sources:
+    - https://qotoqot.com/about/
+    - https://qotoqot.com/qbserve/articles/tracking-work-hours/
+    - https://qotoqot.com/qbserve/support/
+    - source_facts.package-manager.brew-cask
+  repo-sources:
+    - >
+      The official Qbserve site describes a proprietary native application and does not
+      publish an official source-control repository.
+  tags-sources:
+    - Official Qbserve support and tracking-work-hours documentation.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - time-tracking
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
