@@ -1,15 +1,18 @@
 id: cask:owocr
 display-name: OwOCR
-homepage: https://github.com/AuroraWright/owocr/
-repo: https://github.com/AuroraWright/owocr
+repo: null
 docs:
   - https://github.com/AuroraWright/owocr#readme
 config-file-location:
-  unix: ~/.config/owocr_config.ini
-  windows: C:\Users\yourusername\.config\owocr_config.ini
+  unix:
+    - ~/.config/owocr_config.ini
+  windows:
+    - C:\Users\yourusername\.config\owocr_config.ini
 credentials-file-location:
-  unix: ~/.config/google_vision.json
-  windows: C:\Users\yourusername\.config\google_vision.json
+  unix:
+    - ~/.config/google_vision.json
+  windows:
+    - C:\Users\yourusername\.config\google_vision.json
 history:
   adoption-history:
     - >
@@ -57,10 +60,6 @@ history:
       the clipboard. Users can instead capture screens or windows, watch folders,
       connect through sockets or WebSockets, feed images from OBS, write text or JSON
       files, and switch engines from the tray icon, terminal, or global hotkeys.
-category: productivity
-package-manager:
-  brew-cask: owocr
-package-manager-url: https://formulae.brew.sh/cask/owocr
 tags:
   - automation
   - clipboard
@@ -70,10 +69,34 @@ tags:
   - ocr
   - screen-capture
   - text-recognition
-description: Optical character recognition for Japanese text
-applications:
-  - OwOCR.app
 provenance:
-  cask: owocr
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official repository README: https://github.com/AuroraWright/owocr#readme'
+    - source_facts.description.
+  display-name-sources:
+    - Official repository README heading.
+    - source_facts.applications.
+  docs-sources:
+    - >
+      The official README provides installation, usage, configuration paths, platform
+      notes, engine setup, and integration details.
+  history-sources:
+    - https://github.com/AuroraWright/owocr
+    - https://github.com/AuroraWright/owocr/releases
+    - source_facts.repo
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/AuroraWright/owocr;
+      per the task rule, repo is therefore returned as null without redetermination.
+  tags-sources:
+    - Official repository README feature and engine lists.
+    - source_facts.description.
+category-confidence: high
+category-path:
+  - productivity
+  - text-recognition
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
