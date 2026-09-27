@@ -1,13 +1,14 @@
 id: cask:redis-insight
 display-name: Redis Insight
-homepage: https://redis.io/insight/
 repo: https://github.com/redis/RedisInsight
 docs:
   - https://redis.io/docs/latest/operate/redisinsight
   - https://redis.io/docs/latest/operate/redisinsight/configuration
 config-file-location:
-  unix: $RI_PRE_SETUP_DATABASES_PATH
-  windows: '%RI_PRE_SETUP_DATABASES_PATH%'
+  unix:
+    - $RI_PRE_SETUP_DATABASES_PATH
+  windows:
+    - '%RI_PRE_SETUP_DATABASES_PATH%'
 credentials-file-location: null
 history:
   adoption-history:
@@ -56,22 +57,39 @@ history:
       work with capabilities such as JSON, search, time series, streams, and vector
       data. Connections can be preconfigured through environment variables or a JSON
       file selected with RI_PRE_SETUP_DATABASES_PATH.
-category: data
-package-manager:
-  brew-cask: redis-insight
-package-manager-url: https://formulae.brew.sh/cask/redis-insight
 tags:
   - data-browser
   - database-gui
   - developer-tool
   - redis
   - redis-client
-description: GUI for streamlined Redis application development
-applications:
-  - Redis Insight.app
 provenance:
-  cask: redis-insight
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - redisinsight
+  category-sources:
+    - >
+      Official Redis client-tools documentation identifies Redis Insight as a GUI for
+      interacting with Redis deployments: https://redis.io/docs/latest/develop/tools/
+  display-name-sources:
+    - Official Redis documentation and repository consistently use “Redis Insight”.
+  docs-sources:
+    - Dedicated official Redis Insight documentation and configuration reference on redis.io.
+  history-sources:
+    - https://github.com/redis/RedisInsight
+    - https://redis.io/blog/introducing-redisinsight-2/
+    - https://redis.io/blog/rdbtools/
+    - >
+      https://redis.io/press/redis-labs-delivers-new-innovations-to-radically-simplify-complete-redis-lifecycle-from-development-to-operations/
+  repo-sources:
+    - >
+      Official Redis-owned repository states that it contains the Redis Insight source:
+      https://github.com/redis/RedisInsight
+  tags-sources:
+    - Official Redis Insight documentation and repository feature overview.
+category-confidence: high
+category-path:
+  - data
+  - database-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
