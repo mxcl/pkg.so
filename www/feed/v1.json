@@ -140,9 +140,10 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:sofka",
+        "brew:cask:deviceshelf",
         "brew:cask:mindroom",
         "brew:cask:gloomberb",
-        "brew:sofka",
         "brew:cask:hol-guard",
         "brew:ratex",
         "brew:cask:look",
@@ -150,8 +151,7 @@
         "brew:cask:highball",
         "brew:cask:tapmap",
         "brew:ccmux",
-        "brew:workmux",
-        "brew:bashka"
+        "brew:workmux"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -159,18 +159,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:sofka",
+        "brew:cask:deviceshelf",
         "brew:cask:activitywatch",
         "brew:cask:trilium-notes",
         "brew:cask:mindroom",
         "brew:cask:gloomberb",
-        "brew:sofka",
         "brew:cask:hol-guard",
         "brew:ratex",
         "brew:cask:look",
         "brew:cask:opendisk",
         "brew:cask:highball",
-        "brew:cask:tapmap",
-        "brew:cask:zentty"
+        "brew:cask:tapmap"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -815,7 +815,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-26T10:55:05Z",
+  "generatedAt": "2026-09-27T08:26:25Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1057,6 +1057,61 @@
       ],
       "upstreamSummary": "Database management tool",
       "version": "0.5.82"
+    },
+    "brew:cask:deviceshelf": {
+      "agentSummary": "DeviceShelf is a local-first network scanner for discovering devices, open ports, services, and security risks, with optional monitoring across desktop, mobile, and server editions.",
+      "assessment": {
+        "alternatives": [
+          "Fing for graphical network discovery",
+          "Nmap for scriptable host and service scanning"
+        ],
+        "audiences": [
+          "Home and small-network operators inventorying connected devices",
+          "Administrators who want local-first availability and service monitoring"
+        ],
+        "caveats": [
+          "Open-port and CVE hints are triage signals and still require administrator verification",
+          "Continuous monitoring and server features add host, storage, alerting, and backup responsibilities",
+          "Containerized LAN discovery may require host networking and narrowly scoped low-port or raw-socket capabilities"
+        ],
+        "complements": [
+          "Prometheus and Grafana through the server edition's metrics endpoint",
+          "Home Assistant through the documented MQTT integration"
+        ],
+        "prerequisites": [
+          "Permission to scan the target network and access to its local segment",
+          "For server discovery, a suitable host or container network configuration"
+        ],
+        "useCases": [
+          "Discover devices, vendors, services, and open ports on a LAN",
+          "Review prioritized risk signals and export network inventories",
+          "Run an optional headless collector for uptime, alerts, and infrastructure checks"
+        ]
+      },
+      "category": "networking",
+      "displayName": "DeviceShelf",
+      "docs": "https://deviceshelf.app/en/server",
+      "homepage": "https://deviceshelf.app/",
+      "id": "brew:cask:deviceshelf",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adeviceshelf",
+      "lastUpdatedAt": "2026-09-26T12:52:50Z",
+      "manager": "homebrew",
+      "repository": null,
+      "researchedAt": "2026-09-27T08:26:25Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "DeviceShelf official product page",
+          "url": "https://deviceshelf.app/"
+        },
+        {
+          "kind": "primary",
+          "title": "DeviceShelf self-hosted server documentation",
+          "url": "https://deviceshelf.app/en/server"
+        }
+      ],
+      "upstreamSummary": "Scanner for devices, open ports and security risks on the local network",
+      "version": "1.9.62"
     },
     "brew:cask:dockdoor-pro": {
       "agentSummary": "Commercial Dock replacement layers window previews, per-display profiles, app groups, widgets, file staging, media controls, gestures, and extensive customization onto macOS.",
@@ -3506,31 +3561,33 @@
       "version": "2.7.5"
     },
     "brew:sofka": {
-      "agentSummary": "Sofka is a Rust Kubernetes terminal interface with resource navigation, plugins, diagnostics, authorization checks, and guardrails for operators managing clusters interactively.",
+      "agentSummary": "Sofka is an async Rust Kubernetes TUI with resource browsing, GitOps controls, incident explanations, bulk actions, port forwarding, and configurable production guardrails.",
       "assessment": {
         "alternatives": [
-          "k9s for a mature Kubernetes terminal UI",
-          "Headlamp or Lens for graphical cluster management"
+          "k9s",
+          "kubectl with separate observability tools"
         ],
         "audiences": [
-          "Kubernetes operators who prefer terminal interfaces",
-          "Platform teams seeking explicit mutation guardrails"
+          "Kubernetes operators who prefer a terminal interface",
+          "Platform teams using Flux CD or Argo CD"
         ],
         "caveats": [
-          "The project is young and its plugin and advanced-provider surfaces are still evolving",
-          "macOS release binaries may require manual Gatekeeper approval because they are not notarized"
+          "Write mode can mutate or delete cluster resources; use read-only mode and production guardrails deliberately",
+          "The project is young and its interface and configuration may continue changing quickly",
+          "Upstream notes that downloaded macOS binaries are not yet signed or notarized"
         ],
         "complements": [
-          "kubectl and existing kubeconfig contexts",
-          "Flux, Argo CD, and supported observability providers"
+          "kubectl for scripts and commands outside the TUI",
+          "Flux CD or Argo CD installations for the integrated GitOps views"
         ],
         "prerequisites": [
-          "A reachable Kubernetes cluster and working kubeconfig",
-          "Appropriate Kubernetes authorization for requested operations"
+          "A reachable Kubernetes cluster and valid kubeconfig credentials",
+          "A terminal suitable for an interactive TUI"
         ],
         "useCases": [
-          "Navigate resources, logs, relationships, and cluster diagnostics",
-          "Operate in read-only mode or apply reviewed interactive actions"
+          "Browse built-in and custom Kubernetes resources",
+          "Inspect incidents, events, logs, and state changes",
+          "Manage GitOps resources, port forwards, and guarded bulk actions"
         ]
       },
       "category": "cloud-infrastructure",
@@ -3539,24 +3596,24 @@
       "homepage": "https://github.com/nklmilojevic/sofka",
       "id": "brew:sofka",
       "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
-      "lastUpdatedAt": "2026-09-25T00:30:42Z",
+      "lastUpdatedAt": "2026-09-26T16:17:04Z",
       "manager": "homebrew",
       "repository": "https://github.com/nklmilojevic/sofka",
-      "researchedAt": "2026-09-25T11:08:58Z",
+      "researchedAt": "2026-09-27T08:26:25Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Sofka v0.1.0 release",
-          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.0"
+          "title": "Sofka upstream repository and documentation",
+          "url": "https://github.com/nklmilojevic/sofka"
         },
         {
           "kind": "primary",
-          "title": "Sofka repository documentation",
-          "url": "https://github.com/nklmilojevic/sofka#readme"
+          "title": "Sofka earliest public release",
+          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.2"
         }
       ],
       "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
-      "version": "0.29.2"
+      "version": "0.29.3"
     },
     "brew:tailcat": {
       "agentSummary": "Tailcat creates encrypted, netcat-like peer connections through Tailscale's userspace WireGuard, NAT traversal, and DERP components, without accounts, routes, or a control plane.",
@@ -3808,7 +3865,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-26T10:53:31Z",
+    "generatedAt": "2026-09-27T08:24:58Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
