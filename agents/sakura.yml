@@ -1,6 +1,5 @@
 id: cask:sakura
 display-name: SakuraFrp Launcher
-homepage: https://www.natfrp.com/tunnel/download
 repo: https://github.com/natfrp/launcher-macos
 docs:
   - https://doc.natfrp.com/launcher/manual
@@ -10,19 +9,23 @@ config-file-location:
     - $XDG_CONFIG_HOME/.config/natfrp-service/config.json
     - ~/.config/natfrp-service/config.json
     - /etc/natfrp/config.json
-  macos: >
-    ~/Library/Containers/com.natfrp.launcher/Data/Library/Application
-    Support/natfrp-service/config.json
-  windows: '%PROGRAMDATA%\SakuraFrpService\config.json'
+  macos:
+    - >
+      ~/Library/Containers/com.natfrp.launcher/Data/Library/Application
+      Support/natfrp-service/config.json
+  windows:
+    - '%PROGRAMDATA%\SakuraFrpService\config.json'
 credentials-file-location:
   linux:
     - $XDG_CONFIG_HOME/.config/natfrp-service/config.json
     - ~/.config/natfrp-service/config.json
     - /etc/natfrp/config.json
-  macos: >
-    ~/Library/Containers/com.natfrp.launcher/Data/Library/Application
-    Support/natfrp-service/config.json
-  windows: '%PROGRAMDATA%\SakuraFrpService\config.json'
+  macos:
+    - >
+      ~/Library/Containers/com.natfrp.launcher/Data/Library/Application
+      Support/natfrp-service/config.json
+  windows:
+    - '%PROGRAMDATA%\SakuraFrpService\config.json'
 history:
   adoption-history:
     - >
@@ -74,10 +77,6 @@ history:
       management panel, and run them through the launcher. Advanced deployments can edit
       config.json, run the core as a daemon, configure automatic tunnel startup, or
       administer it through the remote-management or local web interface.
-category: networking
-package-manager:
-  brew-cask: sakura
-package-manager-url: https://formulae.brew.sh/cask/sakura
 tags:
   - frp
   - nat-traversal
@@ -87,10 +86,39 @@ tags:
   - reverse-proxy
   - self-hosted-services
   - tunneling
-description: Launcher of SakuraFrp
-applications:
-  - SakuraLauncher.app
 provenance:
-  cask: sakura
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official launcher guide documents tunnel creation and management:
+      https://doc.natfrp.com/launcher/usage.html
+    - >
+      The official site describes SakuraFrp as an intranet-penetration and port-mapping
+      service: https://www.natfrp.com/
+  display-name-sources:
+    - >
+      Official documentation consistently uses the name SakuraFrp Launcher:
+      https://doc.natfrp.com/launcher/usage.html
+    - source_facts.description identifies it as the SakuraFrp launcher.
+  docs-sources:
+    - Dedicated official launcher installation guide and advanced user manual.
+  history-sources:
+    - https://doc.natfrp.com/launcher/manual
+    - https://doc.natfrp.com/launcher/usage.html
+    - https://github.com/natfrp/launcher-macos
+    - https://github.com/natfrp/launcher-windows
+  repo-sources:
+    - 'Official repository: https://github.com/natfrp/launcher-macos'
+    - >
+      The verified natfrp GitHub organization identifies natfrp/launcher-macos as the
+      SakuraFrp macOS launcher repository: https://github.com/natfrp
+  tags-sources:
+    - Official product site, launcher documentation, and official repository topics.
+category-confidence: high
+category-path:
+  - networking
+  - tunneling
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

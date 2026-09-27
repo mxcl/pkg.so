@@ -1,6 +1,5 @@
 id: cask:rustrover
 display-name: RustRover
-homepage: https://www.jetbrains.com/rust/
 repo: null
 docs:
   - https://www.jetbrains.com/help/rust
@@ -8,9 +7,12 @@ docs:
   - >
     https://www.jetbrains.com/help/rust/directories-used-by-the-ide-to-store-settings-caches-plugins-and-logs.html
 config-file-location:
-  linux: ~/.config/JetBrains/RustRover<version>
-  macos: ~/Library/Application Support/JetBrains/RustRover<version>
-  windows: '%APPDATA%\JetBrains\RustRover<version>'
+  linux:
+    - ~/.config/JetBrains/RustRover<version>
+  macos:
+    - ~/Library/Application Support/JetBrains/RustRover<version>
+  windows:
+    - '%APPDATA%\JetBrains\RustRover<version>'
 credentials-file-location: null
 history:
   adoption-history:
@@ -59,10 +61,6 @@ history:
       Developers use RustRover to open or create Cargo projects, edit and analyze Rust
       code, run tests, debug programs, manage version control, and work with the
       surrounding Rust toolchain.
-category: developer-tools
-package-manager:
-  brew-cask: rustrover
-package-manager-url: https://formulae.brew.sh/cask/rustrover
 tags:
   - cargo
   - code-editor
@@ -71,10 +69,37 @@ tags:
   - jetbrains
   - rust
   - software-development
-description: Rust IDE
-applications:
-  - RustRover.app
 provenance:
-  cask: rustrover
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      JetBrains identifies RustRover as its standalone IDE for Rust:
+      https://www.jetbrains.com/help/rust/
+    - >
+      https://blog.jetbrains.com/rust/2023/09/13/introducing-rustrover-a-standalone-rust-ide-by-jetbrains/
+  display-name-sources:
+    - 'Official product documentation: https://www.jetbrains.com/help/rust/'
+    - current_curation.display-name
+  docs-sources:
+    - Dedicated official JetBrains RustRover documentation and directory reference.
+  history-sources:
+    - >
+      https://blog.jetbrains.com/rust/2023/09/13/introducing-rustrover-a-standalone-rust-ide-by-jetbrains/
+    - >
+      https://blog.jetbrains.com/rust/2024/05/21/rustrover-is-released-and-includes-a-free-non-commercial-option/
+    - https://www.jetbrains.com/help/rust/
+  repo-sources:
+    - >
+      JetBrains' official announcement states that RustRover is closed source; no
+      official source-control repository exists for the product itself:
+      https://blog.jetbrains.com/rust/2023/09/13/introducing-rustrover-a-standalone-rust-ide-by-jetbrains/
+  tags-sources:
+    - Official JetBrains product documentation and launch announcements.
+category-confidence: high
+category-path:
+  - developer-tools
+  - ide
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
