@@ -1,7 +1,6 @@
 id: cask:sonic-visualiser
 display-name: Sonic Visualiser
-homepage: https://www.sonicvisualiser.org/
-repo: https://github.com/sonic-visualiser/sonic-visualiser
+repo: null
 docs:
   - https://www.sonicvisualiser.org/documentation.html
   - https://www.sonicvisualiser.org/doc/reference/5.0.1/en
@@ -69,10 +68,6 @@ history:
       and spectrograms, add time-aligned annotations, and run Vamp plugins to derive
       features such as beats or pitches. Sessions preserve the analysis layout, while
       annotations and selected audio regions can be exported.
-category: media
-package-manager:
-  brew-cask: sonic-visualiser
-package-manager-url: https://formulae.brew.sh/cask/sonic-visualiser
 tags:
   - annotation
   - audio-analysis
@@ -82,10 +77,42 @@ tags:
   - signal-processing
   - spectrogram
   - vamp-plugins
-description: Visualisation, analysis, and annotation of music audio recordings
-applications:
-  - Sonic Visualiser.app
 provenance:
-  cask: sonic-visualiser
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://www.sonicvisualiser.org/ describes the project's audio-analysis audience
+      and purpose.
+    - >
+      source_facts.description identifies visualization, analysis, and annotation of
+      music recordings.
+  display-name-sources:
+    - https://www.sonicvisualiser.org/ uses Sonic Visualiser as the official name.
+    - source_facts.applications lists Sonic Visualiser.app.
+  docs-sources:
+    - >
+      The official documentation index links the project's reference manuals, tutorials,
+      videos, and developer material.
+    - The second URL is the official 5.0.1 reference manual.
+  history-sources:
+    - https://github.com/sonic-visualiser/sonic-visualiser
+    - https://www.sonicvisualiser.org/
+    - https://www.sonicvisualiser.org/documentation.html
+    - https://www.sonicvisualiser.org/sv2010.pdf
+  repo-sources:
+    - >
+      source_facts.repo already contains
+      https://github.com/sonic-visualiser/sonic-visualiser; per the input rule, repo is
+      therefore returned as null without re-evaluation.
+  tags-sources:
+    - https://www.sonicvisualiser.org/
+    - https://www.sonicvisualiser.org/features.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - audio-analysis
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

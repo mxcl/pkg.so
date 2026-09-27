@@ -1,12 +1,13 @@
 id: cask:sonic-pi
 display-name: Sonic Pi
-homepage: https://sonic-pi.net/
 repo: https://github.com/sonic-pi-net/sonic-pi
 docs:
   - https://github.com/sonic-pi-net/sonic-pi/blob/dev/FAQ.md
 config-file-location:
-  unix: ~/.sonic-pi/config
-  windows: C:\Users\<username>\.sonic-pi\config
+  unix:
+    - ~/.sonic-pi/config
+  windows:
+    - C:\Users\<username>\.sonic-pi\config
 credentials-file-location: null
 history:
   adoption-history:
@@ -76,10 +77,6 @@ history:
       timing instructions, then alter the code while it plays. The environment is used
       for self-guided learning, computing and music lessons, algorithmic composition,
       and synchronized stage performance.
-category: media
-package-manager:
-  brew-cask: sonic-pi
-package-manager-url: https://formulae.brew.sh/cask/sonic-pi
 tags:
   - audio
   - education
@@ -90,10 +87,39 @@ tags:
   - raspberry-pi
   - ruby
   - synthesizer
-description: Code-based music creation and performance tool
-applications:
-  - Sonic Pi.app
 provenance:
-  cask: sonic-pi
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://sonic-pi.net/ describes Sonic Pi as a live-coding musical instrument and
+      educational environment.
+    - source_facts.description identifies a code-based music creation and performance tool.
+  display-name-sources:
+    - https://sonic-pi.net/ uses Sonic Pi as the official project name.
+    - source_facts.applications lists Sonic Pi.app.
+  docs-sources:
+    - The official Sonic Pi site publishes the interactive tutorial.
+    - The official repository maintains the project FAQ.
+  history-sources:
+    - https://github.com/sonic-pi-net/sonic-pi
+    - >
+      https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/doc/tutorial/01-Welcome-to-Sonic-Pi.md
+    - https://sonic-pi.net/
+    - https://sonic-pi.net/tutorial-a.html
+  repo-sources:
+    - >
+      The official Sonic Pi site links this repository, whose README identifies
+      sonic-pi.net as the project site.
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://github.com/sonic-pi-net/sonic-pi
+    - https://sonic-pi.net/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - music-creation
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
