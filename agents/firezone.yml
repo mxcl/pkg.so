@@ -1,14 +1,14 @@
 id: cask:firezone
 display-name: Firezone
-homepage: https://www.firezone.dev/
-repo: https://github.com/firezone/firezone
+repo: null
 docs:
   - https://www.firezone.dev/kb
   - https://www.firezone.dev/kb/install/macos
   - https://www.firezone.dev/kb/reference/cli/macos
 config-file-location: null
 credentials-file-location:
-  macos: macOS Keychain
+  macos:
+    - macOS Keychain
 history:
   adoption-history:
     - >
@@ -71,10 +71,6 @@ history:
       bundled `firezone` CLI can control the same tunnel; its official reference says
       tokens are stored in the macOS Keychain by default and warns against placing
       long-lived tokens directly on the command line.
-category: security
-package-manager:
-  brew-cask: firezone
-package-manager-url: https://formulae.brew.sh/cask/firezone
 tags:
   - identity-aware-access
   - macos-client
@@ -83,10 +79,36 @@ tags:
   - vpn
   - wireguard
   - zero-trust
-description: Zero-trust access platform built on WireGuard
-applications:
-  - Firezone.app
 provenance:
-  cask: firezone
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official overview: https://github.com/firezone/firezone'
+    - 'source_facts.description: "Zero-trust access platform built on WireGuard".'
+  display-name-sources:
+    - 'Official website: https://www.firezone.dev/'
+    - source_facts.applications
+  docs-sources:
+    - >
+      Firezone maintains a dedicated official knowledge base with macOS installation,
+      usage, and CLI references.
+  history-sources:
+    - 'Official company history: https://www.firezone.dev/about'
+    - 'Official macOS CLI reference: https://www.firezone.dev/kb/reference/cli/macos'
+    - 'Official macOS client guide: https://www.firezone.dev/kb/install/macos'
+    - 'Official repository overview: https://github.com/firezone/firezone'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository discovery was intentionally
+      skipped as instructed.
+  tags-sources:
+    - https://github.com/firezone/firezone
+    - https://www.firezone.dev/kb/install/macos
+    - source_facts.description
+category-confidence: high
+category-path:
+  - security
+  - zero-trust-network-access
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
