@@ -1,13 +1,13 @@
 id: cask:smartreporter-free
 display-name: SMARTReporter Free
-homepage: https://www.corecode.io/smartreporter/
 repo: null
 docs:
   - https://www.corecode.io/smartreporter/faq.html
   - https://www.corecode.io/smartreporter/history.html
   - https://www.corecode.io/smartreporter/readme.html
 config-file-location:
-  macos: ~/Library/Preferences/com.corecode.SMARTReporter.plist
+  macos:
+    - ~/Library/Preferences/com.corecode.SMARTReporter.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -66,10 +66,6 @@ history:
       scheduled S.M.A.R.T. self-tests, and attribute-history collection. The vendor
       stresses that alerts are indicators, not guarantees, and that regular backups
       remain essential.
-category: system
-package-manager:
-  brew-cask: smartreporter-free
-package-manager-url: https://formulae.brew.sh/cask/smartreporter-free
 tags:
   - disk-health
   - disk-space
@@ -79,10 +75,39 @@ tags:
   - raid-monitoring
   - smart
   - storage-monitoring
-description: Drive failure monitoring tool
-applications:
-  - SMARTReporter Free.app
 provenance:
-  cask: smartreporter-free
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official CoreCode documentation describes disk S.M.A.R.T., I/O-error, software
+      RAID, and free-space monitoring
+      (https://www.corecode.io/smartreporter/readme.html).
+  display-name-sources:
+    - >
+      source_facts.applications identifies the installed application as SMARTReporter
+      Free.app; CoreCode's official documentation brands the product as SMARTReporter
+      and states that it is free of charge.
+  docs-sources:
+    - >
+      CoreCode publishes an official readme and usage guide, FAQ, and detailed release
+      history.
+  history-sources:
+    - 'Official CoreCode news archive: https://www.corecode.io/news.html'
+    - 'Official FAQ: https://www.corecode.io/smartreporter/faq.html'
+    - 'Official readme and usage guide: https://www.corecode.io/smartreporter/readme.html'
+    - 'Official release history: https://www.corecode.io/smartreporter/history.html'
+  repo-sources:
+    - >
+      CoreCode's official SMARTReporter pages do not identify a public repository for
+      the current application; the separately named legacy SMARTReporter Lite line
+      should not be treated as its repository.
+  tags-sources:
+    - Official SMARTReporter readme and usage guide.
+category-confidence: high
+category-path:
+  - system
+  - storage-monitoring
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
