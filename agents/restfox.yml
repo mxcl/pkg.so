@@ -1,7 +1,6 @@
 id: cask:restfox
 display-name: Restfox
-homepage: https://restfox.dev/
-repo: https://github.com/flawiddsouza/Restfox
+repo: null
 docs:
   - https://docs.restfox.dev/
 config-file-location: null
@@ -53,10 +52,6 @@ history:
     - >
       Desktop users can install it through native package managers, while teams wanting
       a browser-accessible local instance can run the standalone build with Docker.
-category: developer-tools
-package-manager:
-  brew-cask: restfox
-package-manager-url: https://formulae.brew.sh/cask/restfox
 tags:
   - api-testing
   - desktop-app
@@ -66,10 +61,39 @@ tags:
   - offline-first
   - rest-api
   - websocket
-description: Offline-first web HTTP client
-applications:
-  - Restfox.app
 provenance:
-  cask: restfox
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation calls Restfox a minimalistic HTTP client:
+      https://docs.restfox.dev/
+    - >
+      Official repository topics include api-client, api-testing, GraphQL, REST,
+      WebSocket, and developer-tools: https://github.com/flawiddsouza/Restfox
+    - source_facts.description
+  display-name-sources:
+    - 'Official documentation title: https://docs.restfox.dev/'
+    - source_facts.applications
+  docs-sources:
+    - >
+      The official repository explicitly links docs.restfox.dev as its documentation
+      site: https://github.com/flawiddsouza/Restfox
+  history-sources:
+    - https://docs.restfox.dev/
+    - https://github.com/flawiddsouza/Restfox
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per instructions, repository enrichment is
+      therefore returned as null.
+  tags-sources:
+    - 'Official documentation: https://docs.restfox.dev/'
+    - 'Official repository description and topics: https://github.com/flawiddsouza/Restfox'
+category-confidence: high
+category-path:
+  - developer-tools
+  - api-clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
