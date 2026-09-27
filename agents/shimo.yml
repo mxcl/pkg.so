@@ -1,6 +1,5 @@
 id: cask:shimo
 display-name: Shimo
-homepage: https://www.shimovpn.com/
 repo: null
 docs:
   - https://jaeger.freshdesk.com/support/solutions/205000079074
@@ -8,7 +7,8 @@ docs:
   - https://www.shimovpn.com/specs
 config-file-location: null
 credentials-file-location:
-  macos: macOS Keychain
+  macos:
+    - macOS Keychain
 history:
   adoption-history:
     - >
@@ -57,10 +57,6 @@ history:
       The official site states that passwords, PINs, certificates, and other account
       information are stored in the macOS Keychain. Administrators can export
       connections with supporting files and settings as deployment packages.
-category: networking
-package-manager:
-  brew-cask: shimo
-package-manager-url: https://formulae.brew.sh/cask/shimo
 tags:
   - ipsec
   - macos
@@ -70,10 +66,48 @@ tags:
   - ssh
   - vpn
   - wireguard
-description: VPN client for secure internet access and private browsing
-applications:
-  - Shimo.app
 provenance:
-  cask: shimo
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://www.shimovpn.com/ — Official site identifies Shimo as a multi-protocol VPN
+      client for Mac.
+    - source_facts.description
+  display-name-sources:
+    - https://www.shimovpn.com/ — Official product heading.
+    - source_facts.name
+  docs-sources:
+    - >
+      https://jaeger.freshdesk.com/support/solutions/205000079074 — Official linked
+      knowledge base with setup, administration, automation, provider, and
+      troubleshooting guides.
+    - >
+      https://www.shimovpn.com/en/download/ — Official installation and first-connection
+      guide.
+    - https://www.shimovpn.com/specs/ — Official technical specifications.
+  history-sources:
+    - https://jaeger.freshdesk.com/support/solutions/205000079074
+    - https://www.shimovpn.com/
+    - https://www.shimovpn.com/specs/
+    - https://www.shimovpn.com/terms/
+    - source_facts.package-manager.brew-cask
+  repo-sources:
+    - >
+      https://jaeger.freshdesk.com/support/solutions/205000079074 — Official support
+      center provides no source repository.
+    - >
+      https://www.shimovpn.com/ — Official commercial product site provides downloads
+      and support but no public source repository.
+  tags-sources:
+    - https://www.shimovpn.com/ — Official protocol and feature list.
+    - https://www.shimovpn.com/specs/ — Official technical specifications.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - vpn
+  - client
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
