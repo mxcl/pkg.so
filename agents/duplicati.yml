@@ -1,6 +1,5 @@
 id: cask:duplicati
 display-name: Duplicati
-homepage: https://duplicati.com/
 repo: https://github.com/duplicati/duplicati
 docs:
   - https://docs.duplicati.com/
@@ -8,7 +7,8 @@ config-file-location:
   linux:
     - ~/.config/Duplicati/Duplicati-server.sqlite
     - /var/lib/Duplicati/Duplicati-server.sqlite (service installations where applicable)
-  macos: ~/Library/Application Support/Duplicati/Duplicati-server.sqlite
+  macos:
+    - ~/Library/Application Support/Duplicati/Duplicati-server.sqlite
   windows:
     - '%LOCALAPPDATA%\Duplicati\Duplicati-server.sqlite'
     - >
@@ -18,7 +18,8 @@ credentials-file-location:
   linux:
     - ~/.config/Duplicati/Duplicati-server.sqlite
     - /var/lib/Duplicati/Duplicati-server.sqlite (service installations where applicable)
-  macos: ~/Library/Application Support/Duplicati/Duplicati-server.sqlite
+  macos:
+    - ~/Library/Application Support/Duplicati/Duplicati-server.sqlite
   windows:
     - '%LOCALAPPDATA%\Duplicati\Duplicati-server.sqlite'
     - >
@@ -93,10 +94,6 @@ history:
       credentials and encryption passphrases. Its location can be overridden with
       `--server-datafolder` or `DUPLICATI_HOME`, and current documentation recommends
       protecting it with a settings-encryption key.
-category: system
-package-manager:
-  brew-cask: duplicati
-package-manager-url: https://formulae.brew.sh/cask/duplicati
 tags:
   - backup
   - cloud-backup
@@ -106,10 +103,36 @@ tags:
   - incremental-backup
   - scheduler
   - self-hosted
-description: Store securely encrypted backups in the cloud
-applications:
-  - Duplicati.app
 provenance:
-  cask: duplicati
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://github.com/duplicati/duplicati
+    - source_facts.description
+  display-name-sources:
+    - https://duplicati.com/
+    - https://github.com/duplicati/duplicati
+    - source_facts.applications
+  docs-sources:
+    - Dedicated official Duplicati documentation site.
+  history-sources:
+    - https://docs.duplicati.com/
+    - https://docs.duplicati.com/community-docs/community-docs-introduction
+    - https://docs.duplicati.com/database-and-storage/the-server-database
+    - https://github.com/duplicati/duplicati
+  repo-sources:
+    - >
+      Official Duplicati website and documentation link to the `duplicati/duplicati`
+      organization repository.
+    - The repository identifies itself as Duplicati's source and links back to duplicati.com.
+  tags-sources:
+    - https://docs.duplicati.com/
+    - https://github.com/duplicati/duplicati
+    - source_facts.description
+category-confidence: high
+category-path:
+  - system
+  - backup
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

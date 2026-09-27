@@ -1,11 +1,11 @@
 id: cask:duplicacy-web-edition
 display-name: Duplicacy Web Edition
-homepage: https://duplicacy.com/
 repo: null
 docs:
   - https://duplicacy.com/guide.html
 config-file-location:
-  unix: ~/.duplicacy-web/duplicacy.json
+  unix:
+    - ~/.duplicacy-web/duplicacy.json
   windows:
     - '%USERPROFILE%\.duplicacy-web\duplicacy.json'
     - >
@@ -78,10 +78,6 @@ history:
     - >
       The web service listens on localhost port 3875 by default and can be configured
       for remote access and HTTPS.
-category: system
-package-manager:
-  brew-cask: duplicacy-web-edition
-package-manager-url: https://formulae.brew.sh/cask/duplicacy-web-edition
 tags:
   - backup
   - cloud-backup
@@ -90,10 +86,37 @@ tags:
   - encryption
   - scheduler
   - web-ui
-description: Cloud backup tool
-applications:
-  - Duplicacy Web Edition.app
 provenance:
-  cask: duplicacy-web-edition
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://duplicacy.com/
+    - source_facts.description
+  display-name-sources:
+    - https://duplicacy.com/guide.html
+    - source_facts.applications
+  docs-sources:
+    - Official Duplicacy Web Edition user guide.
+  history-sources:
+    - https://duplicacy.com/
+    - https://duplicacy.com/download.html
+    - https://duplicacy.com/guide.html
+    - https://forum.duplicacy.com/t/duplicacy-web-edition-1-0-0-is-now-available/3605
+    - https://github.com/gilbertchen/duplicacy
+  repo-sources:
+    - >
+      The official site states that the command-line engine's source is on GitHub but
+      does not publish a source-control repository for the Web Edition frontend itself.
+    - https://duplicacy.com/
+    - https://github.com/gilbertchen/duplicacy
+  tags-sources:
+    - https://duplicacy.com/
+    - https://duplicacy.com/download.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - system
+  - backup
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
