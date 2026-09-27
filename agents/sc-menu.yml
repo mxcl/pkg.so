@@ -1,7 +1,6 @@
 id: cask:sc-menu
 display-name: SC Menu
-homepage: https://github.com/boberito/sc_menu
-repo: https://github.com/boberito/sc_menu
+repo: null
 docs:
   - https://github.com/boberito/sc_menu#readme
 config-file-location: null
@@ -61,10 +60,6 @@ history:
       under the `com.ttinc.sc-menu` configuration-profile domain. Supported policy
       controls cover updates, notifications, certificate-expiration warnings, and
       scripts executed when cards are inserted or removed.
-category: security
-package-manager:
-  brew-cask: sc-menu
-package-manager-url: https://formulae.brew.sh/cask/sc-menu
 tags:
   - certificates
   - cryptotokenkit
@@ -73,10 +68,36 @@ tags:
   - menu-bar
   - piv
   - smart-card
-description: Simple smartcard menu item
-applications:
-  - SC Menu.app
 provenance:
-  cask: sc-menu
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official README describes SC Menu as a menu application for viewing PIV
+      smartcards and their certificates: https://github.com/boberito/sc_menu#readme
+  display-name-sources:
+    - The official README heading and application commands use “SC Menu”.
+    - source_facts.applications
+  docs-sources:
+    - >
+      The official repository README documents status indicators, certificate viewing,
+      login registration, command-line switches, and MDM configuration-profile keys.
+  history-sources:
+    - https://github.com/boberito/sc_menu
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/boberito/sc_menu; per task
+      instructions, the returned repo is null and the supplied value is not
+      second-guessed.
+  tags-sources:
+    - >
+      Official README and official repository topics identify PIV, smartcards,
+      CryptoTokenKit, macOS, and Mac administration.
+category-confidence: high
+category-path:
+  - security
+  - smart-cards
+  - piv
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
