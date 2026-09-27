@@ -1,17 +1,20 @@
 id: cask:specter
 display-name: Specter Desktop
-homepage: https://specter.solutions/
-repo: https://github.com/cryptoadvance/specter-desktop
+repo: null
 docs:
   - https://docs.specter.solutions/desktop
   - https://docs.specter.solutions/desktop/faq
   - https://docs.specter.solutions/desktop/multisig-guide
 config-file-location:
-  unix: ~/.specter/config.json
-  windows: '%USERPROFILE%\.specter\config.json'
+  unix:
+    - ~/.specter/config.json
+  windows:
+    - '%USERPROFILE%\.specter\config.json'
 credentials-file-location:
-  unix: ~/.specter/config.json
-  windows: '%USERPROFILE%\.specter\config.json'
+  unix:
+    - ~/.specter/config.json
+  windows:
+    - '%USERPROFILE%\.specter\config.json'
 history:
   adoption-history:
     - >
@@ -86,10 +89,6 @@ history:
       from `bitcoin.conf`; remote unencrypted RPC connections can expose those
       credentials, so the official documentation recommends appropriate secure
       transport.
-category: security
-package-manager:
-  brew-cask: specter
-package-manager-url: https://formulae.brew.sh/cask/specter
 tags:
   - bitcoin
   - bitcoin-core
@@ -98,10 +97,42 @@ tags:
   - multisig
   - psbt
   - self-hosted
-description: Desktop GUI for Bitcoin Core optimised to work with hardware wallets
-applications:
-  - Specter.app
 provenance:
-  cask: specter
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Specter Desktop documentation describes a watch-only Bitcoin wallet
+      interface for Bitcoin Core or Electrum with hardware-wallet and multisignature
+      support.
+    - source_facts.description
+  display-name-sources:
+    - https://docs.specter.solutions/desktop/
+    - source_facts.description
+  docs-sources:
+    - >
+      The dedicated official documentation covers installation, node connections, device
+      setup, wallets, and operation.
+    - >
+      The official FAQ and multisignature guide cover architecture, security
+      assumptions, recovery, and common workflows.
+  history-sources:
+    - https://docs.specter.solutions/desktop/
+    - https://docs.specter.solutions/desktop/faq/
+    - https://docs.specter.solutions/diy/
+    - https://github.com/cryptoadvance/specter-desktop
+  repo-sources:
+    - >
+      source_facts.repo is already populated, so the repository was intentionally not
+      re-determined as required.
+  tags-sources:
+    - https://docs.specter.solutions/desktop/
+    - https://docs.specter.solutions/desktop/faq/
+    - https://docs.specter.solutions/desktop/multisig-guide/
+category-confidence: high
+category-path:
+  - security
+  - cryptocurrency-wallets
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

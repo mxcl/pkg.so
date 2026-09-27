@@ -1,12 +1,12 @@
 id: cask:spamsieve
 display-name: SpamSieve
-homepage: https://c-command.com/spamsieve/
 repo: null
 docs:
   - https://c-command.com/spamsieve/manual
   - https://c-command.com/spamsieve/help/version-history
 config-file-location:
-  macos: ~/Library/Preferences/com.c-command.SpamSieve.plist
+  macos:
+    - ~/Library/Preferences/com.c-command.SpamSieve.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -68,10 +68,6 @@ history:
       The official manual recommends backing up both `~/Library/Application
       Support/SpamSieve/` and `~/Library/Preferences/com.c-command.SpamSieve.plist` when
       migrating training data and preferences to another Mac.
-category: security
-package-manager:
-  brew-cask: spamsieve
-package-manager-url: https://formulae.brew.sh/cask/spamsieve
 tags:
   - bayesian-filtering
   - email
@@ -79,10 +75,37 @@ tags:
   - mail-client
   - privacy
   - spam-filter
-description: Spam filtering extension for e-mail clients
-applications:
-  - SpamSieve.app
 provenance:
-  cask: spamsieve
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      SpamSieve's official product page and manual describe a privacy-preserving
+      Bayesian spam filter for Mac mail clients.
+  display-name-sources:
+    - https://c-command.com/spamsieve/
+    - source_facts.name
+  docs-sources:
+    - >
+      The official SpamSieve manual provides setup, client-integration, settings,
+      backup, and troubleshooting documentation.
+    - The official version history documents the product's development since 2002.
+  history-sources:
+    - https://c-command.com/spamsieve/
+    - https://c-command.com/spamsieve/help/version-history
+    - https://c-command.com/spamsieve/manual
+    - https://c-command.com/spamsieve/why
+  repo-sources:
+    - >
+      The official manual explicitly states that C-Command does not offer SpamSieve
+      downloads on GitHub; no official public source-control repository is published.
+  tags-sources:
+    - https://c-command.com/spamsieve/
+    - https://c-command.com/spamsieve/manual
+category-confidence: high
+category-path:
+  - security
+  - anti-spam
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
