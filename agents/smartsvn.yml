@@ -1,6 +1,5 @@
 id: cask:smartsvn
 display-name: SmartSVN
-homepage: https://www.smartsvn.com/
 repo: null
 docs:
   - https://docs.syntevo.com/SmartSVN
@@ -10,7 +9,8 @@ config-file-location:
     - ~/Library/Preferences/SmartSVN/<major-version>/smartsvn.properties
     - ~/Library/Preferences/SmartSVN/smartsvn.vmoptions
 credentials-file-location:
-  macos: ~/Library/Preferences/SmartSVN/<major-version>/passwords
+  macos:
+    - ~/Library/Preferences/SmartSVN/<major-version>/passwords
 history:
   adoption-history:
     - >
@@ -54,10 +54,6 @@ history:
       Developers use SmartSVN to check out repositories, inspect and commit working-copy
       changes, update or merge branches, resolve conflicts, browse revision history, and
       administer common SVN properties through a standalone graphical interface.
-category: developer-tools
-package-manager:
-  brew-cask: smartsvn
-package-manager-url: https://formulae.brew.sh/cask/smartsvn
 tags:
   - conflict-resolution
   - cross-platform
@@ -67,10 +63,36 @@ tags:
   - subversion
   - svn
   - version-control
-description: Subversion client
-applications:
-  - SmartSVN.app
 provenance:
-  cask: smartsvn
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://www.smartsvn.com/ describes SmartSVN as a graphical Subversion client.
+    - 'source_facts.description: Subversion client.'
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.smartsvn.com/
+  docs-sources:
+    - Dedicated official SmartSVN documentation site.
+  history-sources:
+    - https://blog.syntevo.com/smartgit/2025/11/10/20-years-syntevo.html
+    - https://blog.syntevo.com/tag/smartsvn.html
+    - https://docs.syntevo.com/SmartSVN/
+    - https://www.smartsvn.com/
+  repo-sources:
+    - >
+      The official product and documentation sites expose product documentation but do
+      not identify an official source-code repository for SmartSVN; Syntevo's GitHub
+      repository contains documentation rather than the product source.
+    - source_facts.repo is empty.
+  tags-sources:
+    - Official SmartSVN product and feature pages.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - version-control
+  - subversion-clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

@@ -1,7 +1,6 @@
 id: cask:smcfancontrol
 display-name: smcFanControl
-homepage: https://github.com/hholtmann/smcFanControl
-repo: https://github.com/hholtmann/smcFanControl
+repo: null
 docs:
   - https://github.com/hholtmann/smcFanControl#readme
 config-file-location: null
@@ -48,10 +47,6 @@ history:
       application. The utility does not permit minimum speeds below Apple's defaults,
       and macOS can still raise fan speed beyond the selected minimum when cooling
       demands it.
-category: system
-package-manager:
-  brew-cask: smcfancontrol
-package-manager-url: https://formulae.brew.sh/cask/smcfancontrol
 tags:
   - cooling
   - fan-control
@@ -61,10 +56,37 @@ tags:
   - menu-bar
   - open-source
   - smc
-description: Sets a minimum speed for built-in fans
-applications:
-  - smcFanControl.app
 provenance:
-  cask: smcfancontrol
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official repository README says smcFanControl raises the minimum speed of
+      built-in Mac fans.
+    - 'source_facts.description: Sets a minimum speed for built-in fans.'
+  display-name-sources:
+    - Official repository README.
+    - current_curation.display-name
+  docs-sources:
+    - >
+      The official repository README is the project's primary public documentation and
+      points to the bundled FAQ for additional information.
+  history-sources:
+    - https://github.com/hholtmann/smcFanControl
+    - https://github.com/hholtmann/smcFanControl/blob/master/main.m
+    - https://github.com/hholtmann/smcFanControl/releases
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/hholtmann/smcFanControl; per
+      the task rule, repo is returned as null without reassessment.
+  tags-sources:
+    - Official repository README and release notes.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - system
+  - hardware-control
+  - fan-control
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
