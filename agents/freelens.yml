@@ -1,16 +1,19 @@
 id: cask:freelens
 display-name: Freelens
-homepage: https://freelens.app/
-repo: https://github.com/freelensapp/freelens
+repo: null
 docs:
   - https://freelensapp.github.io/docs
   - https://github.com/freelensapp/freelens/blob/main/README.md
 config-file-location:
-  linux: ~/.config/Freelens
-  macos: ~/Library/Application Support/Freelens
-  windows: '%APPDATA%\Freelens'
+  linux:
+    - ~/.config/Freelens
+  macos:
+    - ~/Library/Application Support/Freelens
+  windows:
+    - '%APPDATA%\Freelens'
 credentials-file-location:
-  unix: ~/.kube/config
+  unix:
+    - ~/.kube/config
 history:
   adoption-history:
     - >
@@ -75,10 +78,6 @@ history:
       Freelens uses ~/.kube/config by default on Unix-like systems and can use bundled
       or user-selected kubectl and Helm executables. Extensions add pages, resource
       actions, preferences, catalog integrations, and other functionality.
-category: cloud-infrastructure
-package-manager:
-  brew-cask: freelens
-package-manager-url: https://formulae.brew.sh/cask/freelens
 tags:
   - cloud-native
   - cluster-management
@@ -89,10 +88,38 @@ tags:
   - kubectl
   - kubernetes
   - open-source
-description: Kubernetes IDE
-applications:
-  - Freelens.app
 provenance:
-  cask: freelens
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README describes Freelens as a user interface for managing Kubernetes
+      clusters (https://github.com/freelensapp/freelens/blob/main/README.md).
+    - 'source_facts.description: Kubernetes IDE.'
+  display-name-sources:
+    - Official homepage and README use the name Freelens (https://freelens.app/).
+    - 'source_facts.applications: Freelens.app.'
+  docs-sources:
+    - >
+      The official GitHub Pages documentation covers Freelens extension development; the
+      official README is the primary installation and end-user overview.
+  history-sources:
+    - https://freelensapp.github.io/docs/
+    - https://github.com/freelensapp/freelens/blob/main/README.md
+    - https://github.com/freelensapp/freelens/issues/2447
+    - https://github.com/freelensapp/freelens/releases
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, no repository
+      replacement is returned.
+  tags-sources:
+    - >
+      Official README and project documentation describe Kubernetes cluster management,
+      bundled kubectl and Helm, kubeconfig use, terminals, and extensions.
+category-confidence: high
+category-path:
+  - cloud-infrastructure
+  - kubernetes
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
