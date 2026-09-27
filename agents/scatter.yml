@@ -1,7 +1,6 @@
 id: cask:scatter
 display-name: Scatter Desktop
-homepage: https://get-scatter.com/
-repo: https://github.com/GetScatter/ScatterDesktop
+repo: null
 docs:
   - https://github.com/GetScatter/ScatterDesktop#readme
 config-file-location: null
@@ -51,10 +50,6 @@ history:
       through a locally running desktop wallet. Developers can run the Electron client
       with ScatterEmbed and point development builds at an embed instance through the
       source tree's .env file.
-category: security
-package-manager:
-  brew-cask: scatter
-package-manager-url: https://formulae.brew.sh/cask/scatter
 tags:
   - authentication
   - blockchain
@@ -64,10 +59,39 @@ tags:
   - eos
   - ethereum
   - tron
-description: Desktop wallet for EOS
-applications:
-  - Scatter.app
 provenance:
-  cask: scatter
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official repository describes Scatter Desktop as a blockchain wallet and
+      local-machine authentication provider:
+      https://github.com/GetScatter/ScatterDesktop#readme
+  display-name-sources:
+    - >
+      Official repository title and README:
+      https://github.com/GetScatter/ScatterDesktop#readme
+  docs-sources:
+    - >
+      The official repository README is the surviving first-party installation,
+      development, and product documentation.
+  history-sources:
+    - 'Homebrew Cask provenance: source_facts.package-manager and source_facts.provenance'
+    - 'Official ScatterJS repository: https://github.com/GetScatter/scatter-js'
+    - 'Official desktop repository and README: https://github.com/GetScatter/ScatterDesktop'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repo is returned as
+      null without re-evaluating it.
+  tags-sources:
+    - >
+      Official repository description, README, and GitHub topics:
+      https://github.com/GetScatter/ScatterDesktop
+    - source_facts.description
+category-confidence: high
+category-path:
+  - security
+  - cryptocurrency-wallet
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
