@@ -1,7 +1,6 @@
 id: cask:replicator
 display-name: Replicator
-homepage: https://github.com/jamf/Replicator
-repo: https://github.com/jamf/Replicator
+repo: null
 docs:
   - https://github.com/jamf/Replicator#readme
 config-file-location: null
@@ -59,10 +58,6 @@ history:
       Replicator copies package metadata but not package binaries. Administrators must
       also account for API omissions, object dependencies, site ordering, credentials
       that cannot be extracted, and other limitations documented by the project.
-category: system
-package-manager:
-  brew-cask: replicator
-package-manager-url: https://formulae.brew.sh/cask/replicator
 tags:
   - api-client
   - device-management
@@ -72,12 +67,34 @@ tags:
   - migration
   - synchronization
   - xml-export
-description: Tool to migrate data granularly between Jamf Pro servers
-applications:
-  - Replicator.app
 provenance:
-  cask: replicator
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - jamf-migrator
+  category-sources:
+    - >
+      Official README describes migration, synchronization, export, import, and deletion
+      of objects between Jamf Pro servers: https://github.com/jamf/Replicator#readme
+  display-name-sources:
+    - 'Official repository and README title: https://github.com/jamf/Replicator'
+    - source_facts.applications
+  docs-sources:
+    - The official Jamf repository README is the primary user and command-line guide.
+  history-sources:
+    - https://github.com/jamf/Replicator#readme
+    - https://github.com/jamf/Replicator/blob/main/ChangeLog.md
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped as required.
+  tags-sources:
+    - >
+      Official README feature and limitation descriptions:
+      https://github.com/jamf/Replicator#readme
+category-confidence: high
+category-path:
+  - system
+  - device-management
+  - jamf-pro
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

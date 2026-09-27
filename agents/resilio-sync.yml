@@ -1,6 +1,5 @@
 id: cask:resilio-sync
 display-name: Resilio Sync
-homepage: https://www.resilio.com/
 repo: null
 docs:
   - https://help.resilio.com/hc/en-us
@@ -8,7 +7,8 @@ docs:
     https://help.resilio.com/hc/en-us/articles/204754939-Comprehensive-guide-to-syncing-Desktop-Desktop
   - https://help.resilio.com/hc/en-us/articles/206178884-Running-Sync-in-configuration-mode
 config-file-location:
-  macos: ~/Library/Application Support/Resilio Sync/sync.conf
+  macos:
+    - ~/Library/Application Support/Resilio Sync/sync.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -85,10 +85,6 @@ history:
     - >
       Advanced and headless deployments can launch Sync with a JSON-format sync.conf,
       specifying storage, network, proxy, Web UI, and shared-folder behavior.
-category: productivity
-package-manager:
-  brew-cask: resilio-sync
-package-manager-url: https://formulae.brew.sh/cask/resilio-sync
 tags:
   - backup
   - decentralized
@@ -98,10 +94,49 @@ tags:
   - macos
   - peer-to-peer
   - selective-sync
-description: File sync and share software
-applications:
-  - Resilio Sync.app
 provenance:
-  cask: resilio-sync
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Help Center describes Resilio Sync as a peer-to-peer file synchronization
+      and sharing product: https://help.resilio.com/hc/en-us
+    - >
+      Official desktop guide covers device linking and folder sharing:
+      https://help.resilio.com/hc/en-us/articles/204754939-Comprehensive-guide-to-syncing-Desktop-Desktop
+  display-name-sources:
+    - 'Official Help Center title: https://help.resilio.com/hc/en-us'
+    - source_facts.applications
+  docs-sources:
+    - >
+      Official guides document desktop synchronization and optional configuration-file
+      operation.
+    - Resilio's official Help Center is the dedicated product-documentation surface.
+  history-sources:
+    - >
+      https://help.resilio.com/hc/en-us/articles/204754939-Comprehensive-guide-to-syncing-Desktop-Desktop
+    - >
+      https://help.resilio.com/hc/en-us/articles/205451105-Can-Resilio-team-see-and-block-remove-any-Sync-folders
+    - https://help.resilio.com/hc/en-us/articles/206178884-Running-Sync-in-configuration-mode
+    - https://help.resilio.com/hc/en-us/articles/206664690-Sync-Storage-folder
+    - https://www.resilio.com/about/
+  repo-sources:
+    - 'Official documentation surface: https://help.resilio.com/hc/en-us'
+    - >
+      The official product and Help Center provide no official public source-control
+      repository for Resilio Sync: https://www.resilio.com/
+  tags-sources:
+    - >
+      Official peer-to-peer architecture explanation:
+      https://help.resilio.com/hc/en-us/articles/205451105-Can-Resilio-team-see-and-block-remove-any-Sync-folders
+    - >
+      Official synchronization guide:
+      https://help.resilio.com/hc/en-us/articles/204754939-Comprehensive-guide-to-syncing-Desktop-Desktop
+category-confidence: high
+category-path:
+  - productivity
+  - file-sync
+  - peer-to-peer
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
