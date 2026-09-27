@@ -1,7 +1,6 @@
 id: cask:rsyncui
 display-name: RsyncUI
-homepage: https://github.com/rsyncOSX/RsyncUI
-repo: https://github.com/rsyncOSX/RsyncUI
+repo: null
 docs:
   - https://rsyncui.netlify.app/docs
   - https://rsyncui.netlify.app/blog
@@ -75,10 +74,6 @@ history:
     - >
       Remote jobs use passwordless SSH keys. The documented default identity is
       `~/.ssh/id_rsa`; custom identities and ports can be set globally or per task.
-category: system
-package-manager:
-  brew-cask: rsyncui
-package-manager-url: https://formulae.brew.sh/cask/rsyncui
 tags:
   - backup
   - file-synchronization
@@ -86,10 +81,44 @@ tags:
   - rsync
   - ssh
   - swiftui
-description: GUI for rsync
-applications:
-  - RsyncUI.app
 provenance:
-  cask: rsyncui
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://rsyncui.netlify.app/docs/ describes a macOS synchronization application
+      built over the rsync command-line tool.
+    - source_facts.description identifies RsyncUI as a GUI for rsync.
+  display-name-sources:
+    - >
+      https://github.com/rsyncOSX/RsyncUI and the official documentation use RsyncUI as
+      the project name.
+    - source_facts.applications lists RsyncUI.app.
+  docs-sources:
+    - https://rsyncui.netlify.app/blog/ contains official release notes and technical updates.
+    - >
+      https://rsyncui.netlify.app/docs/ is linked as User documentation by the official
+      repository.
+  history-sources:
+    - https://github.com/rsyncOSX/RsyncUI
+    - https://rsyncui.netlify.app/about/
+    - https://rsyncui.netlify.app/docs/
+    - https://rsyncui.netlify.app/docs/reference/config-files/
+    - https://rsyncui.netlify.app/docs/ssh-setup/ssh-keys/
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/rsyncOSX/RsyncUI,
+      so the repository was intentionally not re-determined.
+  tags-sources:
+    - >
+      https://github.com/rsyncOSX/RsyncUI supplies the official project description and
+      topics.
+    - https://rsyncui.netlify.app/docs/ describes the macOS SwiftUI front end for rsync.
+    - https://rsyncui.netlify.app/docs/ssh-setup/ documents SSH-based remote synchronization.
+category-confidence: high
+category-path:
+  - system
+  - backup-and-sync
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

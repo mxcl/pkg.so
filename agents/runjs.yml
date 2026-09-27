@@ -1,14 +1,16 @@
 id: cask:runjs
 display-name: RunJS
-homepage: https://runjs.app/
-repo: https://github.com/lukehaas/RunJS
+repo: null
 docs:
   - https://runjs.app/docs
   - https://runjs.app/faq
 config-file-location:
-  linux: ~/.config/runjs
-  macos: ~/Library/Application Support/runjs
-  windows: '%APPDATA%\runjs'
+  linux:
+    - ~/.config/runjs
+  macos:
+    - ~/Library/Application Support/runjs
+  windows:
+    - '%APPDATA%\runjs'
 credentials-file-location: null
 history:
   adoption-history:
@@ -74,10 +76,6 @@ history:
       Code can run in combined Browser and Node.js, Node.js-only, or Browser-only
       environments. Tabs support JavaScript, TypeScript, JSX, and TSX, while a working
       directory can provide access to local modules and files.
-category: developer-tools
-package-manager:
-  brew-cask: runjs
-package-manager-url: https://formulae.brew.sh/cask/runjs
 tags:
   - code-runner
   - developer-tool
@@ -85,10 +83,39 @@ tags:
   - nodejs
   - playground
   - typescript
-description: JavaScript playground that auto-evaluates as code is typed
-applications:
-  - RunJS.app
 provenance:
-  cask: runjs
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://runjs.app/docs describes a desktop environment for rapidly prototyping
+      JavaScript and TypeScript.
+    - source_facts.description calls RunJS a JavaScript playground with automatic evaluation.
+  display-name-sources:
+    - https://runjs.app/docs and the official repository use RunJS as the product name.
+    - source_facts.applications lists RunJS.app.
+  docs-sources:
+    - https://runjs.app/docs is the dedicated official documentation site.
+    - https://runjs.app/faq is the official licensing and general FAQ.
+  history-sources:
+    - https://github.com/lukehaas/RunJS
+    - https://runjs.app/blog/introducing-ai-chat-in-runjs-v3
+    - https://runjs.app/blog/whats-new-in-runjs-v4
+    - https://runjs.app/docs
+    - https://runjs.app/open-source
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/lukehaas/RunJS, so
+      the repository was intentionally not re-determined.
+  tags-sources:
+    - >
+      https://runjs.app/docs documents JavaScript, TypeScript, JSX, TSX, Node.js,
+      browser runtimes, and rapid prototyping.
+    - https://runjs.app/docs/features/npm-packages documents integrated npm package use.
+category-confidence: high
+category-path:
+  - developer-tools
+  - javascript-playground
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
