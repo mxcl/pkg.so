@@ -1,17 +1,22 @@
 id: cask:feather
 display-name: Feather Wallet
-homepage: https://featherwallet.org/
-repo: https://github.com/feather-wallet/feather
+repo: null
 docs:
   - https://docs.featherwallet.org/
 config-file-location:
-  linux: ~/.config/feather/settings.json
-  macos: ~/Library/Preferences/settings.json
-  windows: C:/Users/<USER>/AppData/Local/FeatherWallet/settings.json
+  linux:
+    - ~/.config/feather/settings.json
+  macos:
+    - ~/Library/Preferences/settings.json
+  windows:
+    - C:/Users/<USER>/AppData/Local/FeatherWallet/settings.json
 credentials-file-location:
-  linux: ~/Monero/wallets/
-  macos: ~/Monero/wallets/
-  windows: C:/Users/<USER>/Documents/Monero/wallets/
+  linux:
+    - ~/Monero/wallets/
+  macos:
+    - ~/Monero/wallets/
+  windows:
+    - C:/Users/<USER>/Documents/Monero/wallets/
 history:
   adoption-history:
     - >
@@ -78,10 +83,6 @@ history:
       from the program's settings. The documented paths can be changed, and portable
       mode places both settings and wallet files in a `feather_data` directory beside
       the program.
-category: security
-package-manager:
-  brew-cask: feather
-package-manager-url: https://formulae.brew.sh/cask/feather
 tags:
   - cryptocurrency
   - hardware-wallet
@@ -91,10 +92,37 @@ tags:
   - reproducible-builds
   - tor
   - wallet
-description: Monero desktop wallet
-applications:
-  - Feather.app
 provenance:
-  cask: feather
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://docs.featherwallet.org/guides/about
+    - https://featherwallet.org/
+    - source_facts.description
+  display-name-sources:
+    - https://docs.featherwallet.org/guides/about
+    - https://featherwallet.org/
+  docs-sources:
+    - https://docs.featherwallet.org/
+  history-sources:
+    - https://docs.featherwallet.org/guides/about
+    - https://docs.featherwallet.org/guides/features
+    - https://docs.featherwallet.org/guides/paths
+    - https://featherwallet.org/changelog/
+  repo-sources:
+    - >
+      The input already supplies an official repository, so it was not re-determined as
+      required.
+    - source_facts.repo
+  tags-sources:
+    - https://docs.featherwallet.org/guides/about
+    - https://docs.featherwallet.org/guides/features
+    - source_facts.description
+category-confidence: high
+category-path:
+  - security
+  - cryptocurrency
+  - wallet
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
