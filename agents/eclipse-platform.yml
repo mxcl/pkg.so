@@ -1,6 +1,5 @@
 id: cask:eclipse-platform
 display-name: Eclipse SDK
-homepage: https://eclipse.org/
 repo: https://github.com/eclipse-platform/eclipse.platform
 docs:
   - https://eclipse.dev/eclipse
@@ -11,7 +10,8 @@ config-file-location:
     - /Applications/Eclipse.app/Contents/Eclipse/eclipse.ini
     - /Applications/Eclipse.app/Contents/Eclipse/configuration/config.ini
 credentials-file-location:
-  unix: ~/.eclipse/org.eclipse.equinox.security/secure_storage
+  unix:
+    - ~/.eclipse/org.eclipse.equinox.security/secure_storage
 history:
   adoption-history:
     - >
@@ -81,10 +81,6 @@ history:
       extensions, and rich-client applications. Runtime behavior can be controlled
       through launcher options, `eclipse.ini`, `configuration/config.ini`, workspaces,
       and p2-managed plug-ins.
-category: developer-tools
-package-manager:
-  brew-cask: eclipse-platform
-package-manager-url: https://formulae.brew.sh/cask/eclipse-platform
 tags:
   - eclipse
   - equinox
@@ -95,10 +91,41 @@ tags:
   - rcp
   - sdk
   - swt
-description: SDK for the Eclipse IDE
-applications:
-  - Eclipse.app
 provenance:
-  cask: eclipse-platform
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official Eclipse Platform project describes itself as a component model, Rich
+      Client Platform, and comprehensive tool-integration platform:
+      https://projects.eclipse.org/projects/eclipse.platform
+  display-name-sources:
+    - >
+      Official Eclipse Platform documentation describes the SDK as the platform's
+      development distribution: https://eclipse.dev/eclipse/
+    - current_curation.display-name
+    - source_facts.description
+  docs-sources:
+    - Official Eclipse Help, Eclipse Project website, and Eclipse Foundation project record.
+  history-sources:
+    - https://projects.eclipse.org/projects/eclipse.platform
+    - https://www.eclipse.org/about/
+    - >
+      https://www.eclipse.org/articles/Whitepaper-Platform-3.1/eclipse-platform-whitepaper.html
+    - https://www.eclipse.org/org/press-release/20061107eclipsebirthday5.php
+  repo-sources:
+    - >
+      The official Eclipse Platform project record links its GitHub source repository:
+      https://projects.eclipse.org/projects/eclipse.platform
+  tags-sources:
+    - >
+      Official Eclipse Platform project description and technical overview:
+      https://projects.eclipse.org/projects/eclipse.platform and
+      https://www.eclipse.org/articles/Whitepaper-Platform-3.1/eclipse-platform-whitepaper.html
+category-confidence: high
+category-path:
+  - developer-tools
+  - application-platforms
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

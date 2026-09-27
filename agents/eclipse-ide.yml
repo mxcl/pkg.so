@@ -1,6 +1,5 @@
 id: cask:eclipse-ide
 display-name: Eclipse IDE for Eclipse Committers
-homepage: https://eclipse.org/
 repo: https://github.com/eclipse-packaging/packages
 docs:
   - https://help.eclipse.org/latest/index.jsp
@@ -12,7 +11,8 @@ config-file-location:
     - /Applications/Eclipse.app/Contents/Eclipse/eclipse.ini
     - /Applications/Eclipse.app/Contents/Eclipse/configuration/config.ini
 credentials-file-location:
-  unix: ~/.eclipse/org.eclipse.equinox.security/secure_storage
+  unix:
+    - ~/.eclipse/org.eclipse.equinox.security/secure_storage
 history:
   adoption-history:
     - >
@@ -61,10 +61,6 @@ history:
       It is used for contributing to Eclipse itself, developing and debugging plug-ins,
       browsing platform sources, and working with Git-hosted Eclipse projects. Its
       broader toolset also makes it suitable for advanced RCP and Java development.
-category: developer-tools
-package-manager:
-  brew-cask: eclipse-ide
-package-manager-url: https://formulae.brew.sh/cask/eclipse-ide
 tags:
   - eclipse
   - eclipse-development
@@ -74,10 +70,38 @@ tags:
   - maven
   - pde
   - plugin-development
-description: Eclipse integrated development environment
-applications:
-  - Eclipse.app
 provenance:
-  cask: eclipse-ide
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Eclipse Packages catalog describes this package as an IDE for developing
+      Eclipse itself: https://www.eclipse.org/downloads/packages/
+  display-name-sources:
+    - 'Official Eclipse package page: https://www.eclipse.org/downloads/packages/'
+    - current_curation.display-name
+  docs-sources:
+    - >
+      Eclipse Help is the official IDE documentation; the official package catalog and
+      problem-reporting guide describe the Committers distribution.
+  history-sources:
+    - https://github.com/eclipse-packaging/packages
+    - https://projects.eclipse.org/projects/technology.packaging
+    - https://www.eclipse.org/about/
+    - https://www.eclipse.org/downloads/packages/
+  repo-sources:
+    - >
+      The official Eclipse Packaging repository identifies `epp.package.committers` as a
+      built profile: https://github.com/eclipse-packaging/packages
+  tags-sources:
+    - >
+      Official package description and EPP profile documentation:
+      https://www.eclipse.org/downloads/packages/ and
+      https://github.com/eclipse-packaging/packages
+category-confidence: high
+category-path:
+  - developer-tools
+  - integrated-development-environments
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

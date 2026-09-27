@@ -1,6 +1,5 @@
 id: cask:eclipse-dsl
 display-name: Eclipse IDE for Java and DSL Developers
-homepage: https://eclipse.org/
 repo: https://github.com/eclipse-packaging/packages
 docs:
   - https://help.eclipse.org/latest/index.jsp
@@ -10,7 +9,8 @@ config-file-location:
     - /Applications/Eclipse.app/Contents/Eclipse/eclipse.ini
     - /Applications/Eclipse.app/Contents/Eclipse/configuration/config.ini
 credentials-file-location:
-  unix: ~/.eclipse/org.eclipse.equinox.security/secure_storage
+  unix:
+    - ~/.eclipse/org.eclipse.equinox.security/secure_storage
 history:
   adoption-history:
     - >
@@ -60,10 +60,6 @@ history:
       Xtext and Xtend. The distribution also includes source-control, XML, and Maven
       integration, while Eclipse's plug-in system permits further language and build
       tooling to be installed.
-category: developer-tools
-package-manager:
-  brew-cask: eclipse-dsl
-package-manager-url: https://formulae.brew.sh/cask/eclipse-dsl
 tags:
   - dsl
   - eclipse
@@ -73,10 +69,38 @@ tags:
   - maven
   - xtend
   - xtext
-description: Eclipse IDE for Java and DSL developers
-applications:
-  - Eclipse.app
 provenance:
-  cask: eclipse-dsl
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Eclipse Packages catalog describes this as an IDE package for Java and
+      DSL developers: https://www.eclipse.org/downloads/packages/
+  display-name-sources:
+    - 'Official Eclipse Packages catalog: https://www.eclipse.org/downloads/packages/'
+    - source_facts.description
+  docs-sources:
+    - >
+      Eclipse Help is the official product documentation; the official Eclipse Packages
+      catalog documents the DSL distribution and its included tooling.
+  history-sources:
+    - https://github.com/eclipse-packaging/packages
+    - https://projects.eclipse.org/projects/technology.packaging
+    - https://www.eclipse.org/about/
+    - https://www.eclipse.org/downloads/packages/
+  repo-sources:
+    - >
+      The official Eclipse Packaging repository lists `epp.package.dsl` among the
+      profiles it builds: https://github.com/eclipse-packaging/packages
+  tags-sources:
+    - >
+      Official Eclipse Packages catalog and official EPP profile list:
+      https://www.eclipse.org/downloads/packages/ and
+      https://github.com/eclipse-packaging/packages
+category-confidence: high
+category-path:
+  - developer-tools
+  - integrated-development-environments
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

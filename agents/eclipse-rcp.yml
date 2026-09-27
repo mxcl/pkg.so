@@ -1,6 +1,5 @@
 id: cask:eclipse-rcp
 display-name: Eclipse IDE for RCP and RAP Developers
-homepage: https://eclipse.org/
 repo: https://github.com/eclipse-packaging/packages
 docs:
   - https://eclipse.dev/eclipse
@@ -11,7 +10,8 @@ config-file-location:
     - /Applications/Eclipse.app/Contents/Eclipse/eclipse.ini
     - /Applications/Eclipse.app/Contents/Eclipse/configuration/config.ini
 credentials-file-location:
-  unix: ~/.eclipse/org.eclipse.equinox.security/secure_storage
+  unix:
+    - ~/.eclipse/org.eclipse.equinox.security/secure_storage
 history:
   adoption-history:
     - >
@@ -73,10 +73,6 @@ history:
       and products, manage target platforms, launch runtime workbenches, and package RCP
       or RAP applications. Maven and Gradle tooling and an XML editor support typical
       product-build workflows.
-category: developer-tools
-package-manager:
-  brew-cask: eclipse-rcp
-package-manager-url: https://formulae.brew.sh/cask/eclipse-rcp
 tags:
   - eclipse
   - ide
@@ -86,10 +82,38 @@ tags:
   - plugin-development
   - rap
   - rcp
-description: Eclipse IDE for RCP and RAP developers
-applications:
-  - Eclipse.app
 provenance:
-  cask: eclipse-rcp
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Eclipse Packages catalog describes this edition as tooling for plug-ins,
+      Rich Client Applications, and Remote Application Platform development:
+      https://www.eclipse.org/downloads/packages/
+  display-name-sources:
+    - 'Official Eclipse Packages catalog: https://www.eclipse.org/downloads/packages/'
+    - source_facts.description
+  docs-sources:
+    - Official Eclipse Help, Eclipse Packages catalog, and Eclipse Project documentation.
+  history-sources:
+    - https://github.com/eclipse-packaging/packages
+    - https://projects.eclipse.org/projects/eclipse.platform
+    - https://projects.eclipse.org/projects/technology.packaging
+    - https://www.eclipse.org/about/
+    - https://www.eclipse.org/downloads/packages/
+  repo-sources:
+    - >
+      The official Eclipse Packaging repository lists `epp.package.rcp` among its
+      product profiles: https://github.com/eclipse-packaging/packages
+  tags-sources:
+    - >
+      Official Eclipse package description and EPP profile list:
+      https://www.eclipse.org/downloads/packages/ and
+      https://github.com/eclipse-packaging/packages
+category-confidence: high
+category-path:
+  - developer-tools
+  - application-platforms
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
