@@ -4,25 +4,59 @@ homepage: https://docs.hashicorp.com/sentinel
 repo: null
 docs:
   - https://docs.hashicorp.com/sentinel
-config-file-location: null
+config-file-location:
+  unix:
+    - ./sentinel.hcl
+    - ./sentinel.json
 credentials-file-location: null
 history:
-  - >
-    HashiCorp announced Sentinel at HashiConf on September 19, 2017 as an embedded
-    policy-as-code framework for its Enterprise products. The goal was to move
-    infrastructure governance from manual review and broad ACLs into version-controlled
-    policies evaluated inside the automation workflow.
-  - >
-    Sentinel is both a policy language and an execution framework. HashiCorp
-    documentation places it in Consul, Nomad, Terraform, and Vault Enterprise, where
-    policies can make fine-grained, logic-based decisions using request, plan, state, or
-    external data and enforce advisory, soft mandatory, or hard mandatory outcomes.
-  - >
-    The Homebrew cask packages the Sentinel command-line tool for policy authors rather
-    than an application runtime. Practitioners use it to write and test policies
-    locally, then attach policy sets to Terraform or other HashiCorp product workflows
-    so organizational, security, and compliance rules are checked before privileged
-    infrastructure actions proceed.
+  adoption-history:
+    - >
+      Sentinel became the policy-enforcement layer across HashiCorp's enterprise product
+      suite, including Terraform, Vault, Nomad, and Consul. Its adoption is tied
+      especially closely to infrastructure-as-code governance and automated compliance
+      workflows.
+  package-nerd-significance:
+    - >
+      Sentinel is notable for bringing a purpose-built, embeddable policy language into
+      the HashiCorp ecosystem. The standalone simulator lets policy authors format,
+      test, and apply policies locally before enforcing them in a hosted or enterprise
+      workflow.
+  project-history:
+    - >
+      HashiCorp announced and released Sentinel at HashiConf in September 2017 as its
+      policy-as-code framework. The initial design combined a policy-oriented language,
+      an embedded runtime, a development simulator, and a plugin SDK.
+    - >
+      Later Terraform Enterprise work added policy sets and expanded integrations,
+      making Sentinel a reusable governance mechanism rather than a collection of
+      workspace-specific checks.
+  related-projects:
+    - HashiCorp Terraform
+    - HashiCorp Vault
+    - HashiCorp Nomad
+    - HashiCorp Consul
+    - Open Policy Agent
+  sources:
+    - https://developer.hashicorp.com/sentinel/docs/configuration
+    - https://developer.hashicorp.com/sentinel/docs/intro
+    - https://www.hashicorp.com/en/blog/announcing-policy-sets-in-terraform-enterprise
+    - https://www.hashicorp.com/en/blog/hashicorp-announcements-hashiconf-2017
+  summary:
+    - >
+      Sentinel is HashiCorp's embeddable policy-as-code language and framework. It is
+      used to express and test logic-based guardrails that HashiCorp products can
+      enforce during infrastructure and security workflows.
+  timeline:
+    - '2017: HashiCorp announced and released Sentinel at HashiConf.'
+    - '2017: Vault Enterprise and Terraform Enterprise introduced Sentinel integrations.'
+    - '2018: Terraform Enterprise added reusable Sentinel policy sets.'
+  usage:
+    - >
+      Authors write policies in Sentinel's language, organize them with HCL or JSON
+      configuration, and use the CLI simulator to apply and test them. In integrated
+      products, policies commonly approve, warn about, or block infrastructure
+      operations according to security, compliance, cost, or operational rules.
 category: security
 package-manager:
   brew-cask: sentinel

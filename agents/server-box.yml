@@ -1,7 +1,6 @@
 id: cask:server-box
 display-name: Server Box
-homepage: https://github.com/lollipopkit/flutter_server_box
-repo: https://github.com/lollipopkit/flutter_server_box
+repo: null
 docs:
   - https://serverbox.lolli.tech/docs
 config-file-location: null
@@ -59,10 +58,6 @@ history:
       and services. The macOS cask provides the desktop application, while compatible
       mobile clients add biometric authentication, widgets, notifications, and watch
       integration.
-category: cloud-infrastructure
-package-manager:
-  brew-cask: server-box
-package-manager-url: https://formulae.brew.sh/cask/server-box
 tags:
   - cross-platform
   - docker
@@ -72,10 +67,31 @@ tags:
   - sftp
   - ssh
   - system-administration
-description: App for monitoring server status with SSH terminal, SFTP, Container management
-applications:
-  - Server Box.app
 provenance:
-  cask: server-box
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official documentation describes Server Box as an application for managing
+      Linux servers, with monitoring, SSH, SFTP, and container-management features.
+  display-name-sources:
+    - Official documentation title and source_facts.applications.
+  docs-sources:
+    - Dedicated documentation site linked from the official repository README.
+  history-sources:
+    - https://github.com/lollipopkit/flutter_server_box
+    - https://github.com/lollipopkit/flutter_server_box/blob/main/monitor/README.md
+    - https://serverbox.lolli.tech/docs/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the input rule, the repository was not
+      redetermined.
+  tags-sources:
+    - Official Server Box documentation and repository README.
+category-confidence: high
+category-path:
+  - cloud-infrastructure
+  - server-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
