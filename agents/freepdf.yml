@@ -1,15 +1,18 @@
 id: cask:freepdf
 display-name: FreePDF
-homepage: https://github.com/zstar1003/FreePDF
-repo: https://github.com/zstar1003/FreePDF
+repo: null
 docs:
   - https://github.com/zstar1003/FreePDF/blob/main/README.md
 config-file-location:
-  macos: pdf2zh_config.json
-  windows: pdf2zh_config.json
+  macos:
+    - pdf2zh_config.json
+  windows:
+    - pdf2zh_config.json
 credentials-file-location:
-  macos: pdf2zh_config.json
-  windows: pdf2zh_config.json
+  macos:
+    - pdf2zh_config.json
+  windows:
+    - pdf2zh_config.json
 history:
   adoption-history:
     - >
@@ -50,20 +53,39 @@ history:
       require no extra parameters, while SiliconFlow, Ollama, and custom services are
       configured in `pdf2zh_config.json`. Scanned image-only PDFs and tables have
       documented limitations.
-category: productivity
-package-manager:
-  brew-cask: freepdf
-package-manager-url: https://formulae.brew.sh/cask/freepdf
 tags:
   - desktop
   - document-qa
   - llm
   - pdf-reader
   - pdf-translation
-description: Reader that supports translating PDF documents
-applications:
-  - FreePDF.app
 provenance:
-  cask: freepdf
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official README: https://github.com/zstar1003/FreePDF/blob/main/README.md'
+    - source_facts.description
+  display-name-sources:
+    - 'Official repository: https://github.com/zstar1003/FreePDF'
+    - current_curation.display-name
+  docs-sources:
+    - >
+      The official repository README is the project's primary documentation and covers
+      installation, operation, configuration, supported translation engines, and
+      troubleshooting.
+  history-sources:
+    - 'Official FreePDF README: https://github.com/zstar1003/FreePDF/blob/main/README.md'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the input rule, repo is returned as
+      null without re-evaluation.
+  tags-sources:
+    - 'Official README: https://github.com/zstar1003/FreePDF/blob/main/README.md'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - document-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

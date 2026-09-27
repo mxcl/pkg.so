@@ -1,14 +1,15 @@
 id: cask:freeplane
 display-name: Freeplane
-homepage: https://docs.freeplane.org/
 repo: https://github.com/freeplane/freeplane
 docs:
   - https://docs.freeplane.org/
   - https://docs.freeplane.org/getting-started/Command-line_options_and_configuration.html
   - https://docs.freeplane.org/user-documentation/working-w-mindmap-files.html
 config-file-location:
-  unix: ~/.freeplane/<version>/auto.properties
-  windows: '%APPDATA%/Freeplane/<version>/auto.properties'
+  unix:
+    - ~/.freeplane/<version>/auto.properties
+  windows:
+    - '%APPDATA%/Freeplane/<version>/auto.properties'
 credentials-file-location: null
 history:
   adoption-history:
@@ -67,10 +68,6 @@ history:
       links, images, formulas, tasks, and reminders. Maps can be filtered, folded,
       styled, scripted, password-protected, and exported to formats including HTML, PDF,
       SVG, Markdown, OPML, office formats, and LaTeX-related outputs.
-category: productivity
-package-manager:
-  brew-cask: freeplane
-package-manager-url: https://formulae.brew.sh/cask/freeplane
 tags:
   - cross-platform
   - java
@@ -78,10 +75,39 @@ tags:
   - mind-mapping
   - note-taking
   - scripting
-description: Mind mapping and knowledge management software
-applications:
-  - Freeplane.app
 provenance:
-  cask: freeplane
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official documentation: https://docs.freeplane.org/'
+    - source_facts.description
+  display-name-sources:
+    - 'Official documentation: https://docs.freeplane.org/'
+    - current_curation.display-name
+  docs-sources:
+    - >
+      Freeplane maintains a dedicated official documentation site containing its user
+      guide, configuration reference, and file-management instructions.
+  history-sources:
+    - >
+      Official contributor history:
+      https://docs.freeplane.org/attic/old-mediawiki-content/Contributors.html
+    - 'Official documentation home: https://docs.freeplane.org/'
+    - >
+      Official relationship history:
+      https://docs.freeplane.org/user-documentation/Relationship_to_FreeMind.html
+  repo-sources:
+    - 'Official Git instructions: https://docs.freeplane.org/coding/Git_howto.html'
+    - >
+      Official development documentation identifies this as the master repository:
+      https://docs.freeplane.org/attic/old-mediawiki-content/Get_the_code.html
+  tags-sources:
+    - 'Official documentation: https://docs.freeplane.org/'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - mind-mapping
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
