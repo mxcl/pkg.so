@@ -1,7 +1,6 @@
 id: cask:simple-web-server
 display-name: Simple Web Server
-homepage: https://simplewebserver.org/
-repo: https://github.com/terreng/simple-web-server
+repo: null
 docs:
   - https://simplewebserver.org/docs/config%20file
   - https://simplewebserver.org/docs/options
@@ -12,7 +11,8 @@ config-file-location:
     - >
       /Users/[USERNAME]/Library/Containers/org.simplewebserver.simplewebserver/Data/Library/Application
       Support/Simple Web Server/config.json
-  windows: C:\Users\[USERNAME]\AppData\Roaming\Simple Web Server\config.json
+  windows:
+    - C:\Users\[USERNAME]\AppData\Roaming\Simple Web Server\config.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -61,10 +61,6 @@ history:
       Options cover directory listings, SPA fallback routing, LAN access, CORS, file
       uploads, custom error pages, HTTPS, HTTP Basic authentication, compression, and
       per-directory .swshtaccess rules.
-category: developer-tools
-package-manager:
-  brew-cask: simple-web-server
-package-manager-url: https://formulae.brew.sh/cask/simple-web-server
 tags:
   - cors
   - cross-platform
@@ -76,10 +72,39 @@ tags:
   - spa
   - static-files
   - web-development
-description: Create local web servers
-applications:
-  - Simple Web Server.app
 provenance:
-  cask: simple-web-server
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official site and repository describe an Electron application for running
+      configurable local web servers.
+    - source_facts.description identifies it as a local web-server creator.
+  display-name-sources:
+    - 'Official site heading: https://simplewebserver.org/'
+    - current_curation.display-name
+  docs-sources:
+    - >
+      The dedicated official documentation covers server options, application settings,
+      configuration-file locations, HTTPS, logging, plugins, and advanced request
+      handling.
+  history-sources:
+    - https://github.com/terreng/simple-web-server
+    - https://simplewebserver.org/
+    - https://simplewebserver.org/docs/build
+    - https://simplewebserver.org/docs/wsc
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/terreng/simple-web-server;
+      per the input rule, repo is therefore returned as null without re-determination.
+  tags-sources:
+    - 'Official documentation: https://simplewebserver.org/docs/options'
+    - 'Official repository README: https://github.com/terreng/simple-web-server'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - local-development
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
