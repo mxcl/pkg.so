@@ -1,13 +1,13 @@
 id: cask:local-studio
 display-name: Local Studio
-homepage: https://localstudio.ai/
-repo: https://github.com/sybil-solutions/local-studio
+repo: null
 docs:
   - https://localstudio.ai/docs
   - https://localstudio.ai/
   - https://localstudio.ai/agents
 config-file-location:
-  unix: <installation>/.env.local
+  unix:
+    - <installation>/.env.local
 credentials-file-location: null
 history:
   adoption-history:
@@ -57,10 +57,6 @@ history:
       Apple Silicon installations normally use MLX, NVIDIA Linux systems can use vLLM or
       SGLang, and CPU or GGUF-oriented installations can use llama.cpp. Remote
       controllers and upstream OpenAI-compatible providers can also be registered.
-category: ai
-package-manager:
-  brew-cask: local-studio
-package-manager-url: https://formulae.brew.sh/cask/local-studio
 tags:
   - agents
   - ai-workstation
@@ -74,10 +70,39 @@ tags:
   - self-hosted
   - sglang
   - vllm
-description: Local workstation for running and managing language models
-applications:
-  - Local Studio.app
 provenance:
-  cask: local-studio
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official product page calls Local Studio a local AI workspace, and official docs
+      describe self-hosted LLM backends: https://localstudio.ai/
+    - source_facts.description
+  display-name-sources:
+    - 'Official product branding: https://localstudio.ai/'
+    - source_facts.applications
+  docs-sources:
+    - Official agents guide documents controllers, providers, runtimes, and agent operation.
+    - Official homepage is the product overview.
+    - >
+      Official setup guide documents the controller, frontend, desktop shell, runtime
+      backends, environment configuration, and validation.
+  history-sources:
+    - https://localstudio.ai/
+    - https://localstudio.ai/agents
+    - https://localstudio.ai/docs
+    - source_facts.repo
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the input rule, repo is returned as
+      null without reassessment.
+  tags-sources:
+    - Official Local Studio homepage, setup guide, and agents guide.
+category-confidence: high
+category-path:
+  - ai
+  - local-ai
+  - model-serving
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

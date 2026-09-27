@@ -6,7 +6,17 @@ docs:
   - https://docs.cursor.com/en/get-started/quickstart
   - https://cursor.com/docs
   - https://cursor.com/changelog
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.cursor/cli-config.json
+    - <project>/.cursor/cli.json
+    - ~/.cursor/mcp.json
+    - <project>/.cursor/mcp.json
+  windows:
+    - $env:USERPROFILE\.cursor\cli-config.json
+    - <project>\.cursor\cli.json
+    - $env:USERPROFILE\.cursor\mcp.json
+    - <project>\.cursor\mcp.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -90,8 +100,8 @@ provenance:
     - source_facts.description
   repo-sources:
     - >
-      No official HTTP(S) source-control repository for the proprietary Cursor editor is
-      identified by the supplied homepage or official documentation.
+      Cursor's official product and documentation surfaces do not publish an official
+      source repository for the proprietary desktop editor.
   tags-sources:
     - >
       Official Cursor documentation covers AI agents, chat, code completion, editing,
@@ -104,5 +114,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: medium
-repo-confidence: medium
+repo-confidence: high
 tags-confidence: high
