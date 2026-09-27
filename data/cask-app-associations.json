@@ -2322,6 +2322,27 @@
         "https://www.drivethrurpg.com/library_client.php"
       ]
     },
+    "droppy": {
+      "bundle_identifier": "iordv.Droppy",
+      "confidence": "high",
+      "evidence_hash": "ff1da487f16b3eb482426fcfe5128866a3e785c0563471aa1bc2ea73e2c5b915",
+      "reason": "The official Droppy repository's Xcode build output explicitly assigns iordv.Droppy to the Droppy.app target.",
+      "sources": [
+        "https://github.com/ccharname/droppy",
+        "https://github.com/cpiprint/Droppy/blob/main/build_error.log"
+      ]
+    },
+    "dropshelf": {
+      "bundle_identifier": "com.pilotmoon.Dropshelf",
+      "confidence": "medium",
+      "evidence_hash": "cbcc435b02863064b06aaa67ce7632e9b63893f525317ff425139823c96bef77",
+      "reason": "Homebrew installs the vendor's Dropshelf.app and identifies its application container with the exact matching domain com.pilotmoon.Dropshelf; no competing main-app identifier appears in the official metadata.",
+      "sources": [
+        "https://formulae.brew.sh/cask/dropshelf",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/d/dropshelf.rb",
+        "https://pilotmoon.com/dropshelf/"
+      ]
+    },
     "dropzone": {
       "bundle_identifier": "com.aptonic.Dropzone4",
       "confidence": "high",
@@ -2333,6 +2354,17 @@
         "https://forums.aptonic.com/topic/585/freezing-when-adding-actions/"
       ]
     },
+    "drovio": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "f7f2ca8cdc32e799848a50c08043ce56d2d058430e2ca1e36fb07333b577cd6d",
+      "reason": "Official Homebrew and Drovio sources confirm Drovio.app but do not expose its CFBundleIdentifier, so a primary identifier cannot be assigned confidently.",
+      "sources": [
+        "https://formulae.brew.sh/cask/drovio",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/d/drovio.rb",
+        "https://www.drovio.com/download/"
+      ]
+    },
     "duckduckgo": {
       "bundle_identifier": "com.duckduckgo.macos.browser",
       "confidence": "high",
@@ -2341,6 +2373,77 @@
       "sources": [
         "https://formulae.brew.sh/cask/duckduckgo",
         "https://github.com/duckduckgo/shared-web-tests"
+      ]
+    },
+    "duefocus": {
+      "bundle_identifier": "com.qarea.duefocus",
+      "confidence": "medium",
+      "evidence_hash": "78d0a2c33cfaf9292944d23b2f34cf5164927f79e0b57f6666aee44a144317d0",
+      "reason": "The official Homebrew cask associates DueFocus.app with the matching macOS preference domain com.qarea.duefocus; this is the only app-specific identifier present, but no upstream Info.plist was available for direct confirmation.",
+      "sources": [
+        "https://duefocus.com/",
+        "https://formulae.brew.sh/cask/duefocus",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/d/duefocus.rb"
+      ]
+    },
+    "duplicacy-web-edition": {
+      "bundle_identifier": "com.duplicacy.web",
+      "confidence": "high",
+      "evidence_hash": "bcfc32b2d685fb00639ce7ef8f092b53a0414ea6da2e8c9a42787f922257260a",
+      "reason": "A diagnostic log posted on Duplicacy's official support site directly identifies the responsible process at Duplicacy Web Edition.app as com.duplicacy.web.",
+      "sources": [
+        "https://duplicacy.com/download.html",
+        "https://forum.duplicacy.com/t/duplicacy-on-an-m1-mac/5776",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/d/duplicacy-web-edition.rb"
+      ]
+    },
+    "duplicateaudiofinder": {
+      "bundle_identifier": "com.avbeam.duplicateaudiofinder",
+      "confidence": "medium",
+      "evidence_hash": "1d7229f8a1553ce8a65af39fafdfd3568feb5fd78232f0aa5a78199d13abc253",
+      "reason": "The official Homebrew cask installs DuplicateAudioFinder.app and removes the uniquely app-specific preference file com.avbeam.duplicateaudiofinder.plist. This strongly indicates the primary app's bundle identifier, but no official manifest was available for direct confirmation.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/d/duplicateaudiofinder.rb",
+        "https://speechpulse.com/avbeam-software-store/duplicateaudiofinder/"
+      ]
+    },
+    "duplicati": {
+      "bundle_identifier": "com.duplicati.app",
+      "confidence": "high",
+      "evidence_hash": "6c6f3a26c17c2407fd3455c322c04463a89680dee088e846fbe75b01f2c4f775",
+      "reason": "Duplicati's official build source assigns com.duplicati.app to the package installed at /Applications/Duplicati.app, and an official-repository issue includes macOS launch diagnostics explicitly reporting this value as Duplicati.app's CFBundleIdentifier.",
+      "sources": [
+        "https://github.com/duplicati/duplicati/blob/master/ReleaseBuilder/Build/Command.CreatePackage.cs",
+        "https://github.com/duplicati/duplicati/issues/4837"
+      ]
+    },
+    "dusklight": {
+      "bundle_identifier": "dev.twilitrealm.dusk",
+      "confidence": "high",
+      "evidence_hash": "b1551fa48ff31519f895f4b45ebbf05917b28513a8dadb4c1ba8f7fe6de70db7",
+      "reason": "The official Dusklight repository sets DUSK_BUNDLE_IDENTIFIER to dev.twilitrealm.dusk and passes it directly to MACOSX_BUNDLE_GUI_IDENTIFIER for the Dusklight application target.",
+      "sources": [
+        "https://github.com/TwilitRealm/dusklight/blob/main/CMakeLists.txt"
+      ]
+    },
+    "dwellclick": {
+      "bundle_identifier": "com.pilotmoon.DwellClick",
+      "confidence": "medium",
+      "evidence_hash": "32c1f7f1f982b473414964f0740d11034ef49f679613265ab69f9581f43a0cc3",
+      "reason": "The vendor's official uninstall documentation identifies com.pilotmoon.DwellClick.plist as DwellClick's preferences, and the official repository identifies DwellClick as the primary app. This strongly supports the corresponding bundle identifier, though the resolved value was not directly exposed in an official manifest.",
+      "sources": [
+        "https://github.com/pilotmoon/DwellClick",
+        "https://pilotmoon.com/dwellclick/help/install.html"
+      ]
+    },
+    "dynobase": {
+      "bundle_identifier": "com.rwilinski.dynobase",
+      "confidence": "medium",
+      "evidence_hash": "39f04b53637847fcfca226049ee1cbfce2aebf8e3825e6a184fdc89ba99f7e6f",
+      "reason": "The official Homebrew cask installs Dynobase.app and removes com.rwilinski.dynobase.savedState, whose application-specific domain strongly identifies the primary app. No official manifest directly stating CFBundleIdentifier was found.",
+      "sources": [
+        "https://dynobase.dev/",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/d/dynobase.rb"
       ]
     },
     "eaglefiler": {
@@ -2354,6 +2457,56 @@
         "https://forum.c-command.com/t/importing-csv-data/15758"
       ]
     },
+    "easy-move+resize": {
+      "bundle_identifier": "org.dmarcotte.Easy-Move-Resize",
+      "confidence": "high",
+      "evidence_hash": "768367eb4320ae1b0d2e8f9d39bfd392c489787682d8bbe2bb22d28cde467663",
+      "reason": "The official Xcode project combines the org.dmarcotte prefix with the RFC1034-normalized product name \u201cEasy Move+Resize,\u201d producing this identifier; the cask's preference plist matches it exactly.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/easy-move+resize.rb",
+        "https://github.com/dmarcotte/easy-move-resize/blob/main/easy-move-resize.xcodeproj/project.pbxproj"
+      ]
+    },
+    "eclipse-dsl": {
+      "bundle_identifier": "epp.package.dsl",
+      "confidence": "high",
+      "evidence_hash": "88da6a8eb59d70e03112a6ccea361f2a81b2c6d8136372dac3da390c75e3b7b9",
+      "reason": "The official Eclipse DSL product manifest declares uid=\"epp.package.dsl\", and the cask's corresponding macOS preference plist uses the same identifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/eclipse-dsl.rb",
+        "https://github.com/eclipse-packaging/packages/blob/master/packages/org.eclipse.epp.package.dsl.product/epp.product"
+      ]
+    },
+    "eclipse-ide": {
+      "bundle_identifier": "epp.package.committers",
+      "confidence": "high",
+      "evidence_hash": "896bbb05220bbbb171bcb9030656a5309fbdfee5d9d0e11ef5484624bd4c6e40",
+      "reason": "The official Eclipse Committers product manifest identifies the packaged product as epp.package.committers, matching the cask's macOS preference plist domain.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/eclipse-ide.rb",
+        "https://github.com/eclipse-packaging/packages/blob/master/packages/org.eclipse.epp.package.committers.product/epp.product"
+      ]
+    },
+    "eclipse-platform": {
+      "bundle_identifier": "org.eclipse.sdk.ide",
+      "confidence": "high",
+      "evidence_hash": "b4adbb2e2e8eb183446c80eeb6e53b73ac3ef5eea6ea7154367fc74941dfaac6",
+      "reason": "The official Eclipse SDK product manifest identifies the product as org.eclipse.sdk.ide, and the cask's macOS preference plist uses that exact identifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/eclipse-platform.rb",
+        "https://github.com/eclipse-platform/eclipse.platform.releng.aggregator/blob/master/eclipse.platform.releng.tychoeclipsebuilder/sdk/sdk.product"
+      ]
+    },
+    "eclipse-rcp": {
+      "bundle_identifier": "epp.package.rcp",
+      "confidence": "high",
+      "evidence_hash": "cc5dd1a9e81d82f47a4e95b5b4586127d1f5293c00d4d68c02295bf87767420d",
+      "reason": "The official Eclipse RCP product manifest declares uid=\"epp.package.rcp\", matching the cask's macOS preference plist domain.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/eclipse-rcp.rb",
+        "https://github.com/eclipse-packaging/packages/blob/master/packages/org.eclipse.epp.package.rcp.product/epp.product"
+      ]
+    },
     "egnyte": {
       "bundle_identifier": "com.egnyte.DesktopApp",
       "confidence": "high",
@@ -2363,6 +2516,59 @@
         "https://formulae.brew.sh/cask/egnyte",
         "https://helpdesk.egnyte.com/hc/en-us/articles/19087302207117-Desktop-App-Core-Uninstallation",
         "https://helpdesk.egnyte.com/hc/en-us/articles/25657782661005-Desktop-App-Core-Configuration-Profile-Support"
+      ]
+    },
+    "elan": {
+      "bundle_identifier": "nl.mpi.elan",
+      "confidence": "high",
+      "evidence_hash": "35da4b6a49ff42bb16cc1c94a87498121f9c78fd9e44ecbfe980fb0cff01596e",
+      "reason": "An official ELAN support-forum crash report explicitly identifies the main ELAN.app process as nl.mpi.elan.",
+      "sources": [
+        "https://archive.mpi.nl/forums/t/5-4-crashes-on-mac-10-14-4/2556",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/elan.rb"
+      ]
+    },
+    "electron-cash": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "f7bcf9234ec3a4fec82cdf895f0dc506c9b3bc5e92673e1b50be68a33c192ee7",
+      "reason": "The official project packages Electron-Cash.app with PyInstaller, which uses the application name as the identifier when no separate identifier is configured; no shipped Info.plist was available for direct confirmation.",
+      "sources": [
+        "https://github.com/Electron-Cash/Electron-Cash/blob/master/contrib/osx/osx.spec",
+        "https://github.com/Electron-Cash/Electron-Cash/releases",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/electron-cash.rb"
+      ]
+    },
+    "electrum": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "959c8f13da4bd56ea09b9e0d6f2b2655bc2a336169bedb5b6de2b228a18de000",
+      "reason": "A macOS crash report in Electrum's official repository directly reports CFBundleIdentifier=Electrum for the executable inside Electrum.app.",
+      "sources": [
+        "https://github.com/spesmilo/electrum/blob/master/contrib/osx/pyinstaller.spec",
+        "https://github.com/spesmilo/electrum/issues/7738"
+      ]
+    },
+    "electrum-grs": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "e9e535345fe383ee40a46e18c773b378e62c6fbfe518422f8e7b2e5c7738aff2",
+      "reason": "The official cask identifies Electrum-GRS.app and uses Electrum-GRS as its saved-state domain, matching the official fork's PyInstaller application name and distinguishing it from the legacy PythonMac preference domain.",
+      "sources": [
+        "https://github.com/Groestlcoin/electrum-grs",
+        "https://github.com/Groestlcoin/electrum-grs/tree/master/contrib/osx",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/electrum-grs.rb"
+      ]
+    },
+    "electrum-ltc": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "5613b544c2d86d67acd51214e935b67b198c8e3c512d2654b16ed89084cdb837",
+      "reason": "The official project packages its primary macOS bundle as Electrum-LTC.app through PyInstaller, whose application name supplies the identifier absent an override; no shipped Info.plist was available for direct confirmation.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/electrum-ltc.rb",
+        "https://github.com/pooler/electrum-ltc",
+        "https://github.com/pooler/electrum-ltc/tree/master/contrib/osx"
       ]
     },
     "element@nightly": {
@@ -2376,6 +2582,38 @@
         "https://github.com/element-hq/element-desktop/blob/develop/element.io/nightly/build.json"
       ]
     },
+    "elemental": {
+      "bundle_identifier": "org.exist.start.Main",
+      "confidence": "high",
+      "evidence_hash": "6516b46566a422e31577243f9f4f5a8129e26c43a2506e2eb661c0b85d6106e4",
+      "reason": "Elemental\u2019s official macOS bundle build configuration explicitly sets the application identifier to org.exist.start.Main; Homebrew confirms Elemental.app is the primary artifact.",
+      "sources": [
+        "https://central.sonatype.com/artifact/xyz.elemental.fork.org.exist-db/exist-distribution/6.4.0",
+        "https://formulae.brew.sh/cask/elemental",
+        "https://github.com/evolvedbinary/elemental"
+      ]
+    },
+    "elemental@6": {
+      "bundle_identifier": "org.exist.start.Main",
+      "confidence": "high",
+      "evidence_hash": "eacc45882a7f19a4bf766ee768188dee6172e782981609c7ed76183d8ef134ac",
+      "reason": "The official Elemental 6 distribution manifest explicitly assigns org.exist.start.Main as the identifier of the generated macOS application bundle.",
+      "sources": [
+        "https://central.sonatype.com/artifact/xyz.elemental.fork.org.exist-db/exist-distribution/6.4.0",
+        "https://formulae.brew.sh/cask/elemental@6",
+        "https://github.com/evolvedbinary/elemental"
+      ]
+    },
+    "emailchemy": {
+      "bundle_identifier": "com.weirdkid.es",
+      "confidence": "medium",
+      "evidence_hash": "bffb4abcd35feb00f60420bddb55760d227660a987a151fc1f5fc8caf0b156c1",
+      "reason": "Homebrew installs Emailchemy.app and removes the matching com.weirdkid.es preference plist. This strongly identifies the primary app, although no public manifest explicitly labels it CFBundleIdentifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/emailchemy.rb",
+        "https://weirdkid.com/emailchemy/"
+      ]
+    },
     "emby": {
       "bundle_identifier": "com.emby.mobile",
       "confidence": "high",
@@ -2384,6 +2622,47 @@
       "sources": [
         "https://emby.media/community/topic/119806-macos-emby-app-crashes-on-start/",
         "https://formulae.brew.sh/cask/emby"
+      ]
+    },
+    "energia": {
+      "bundle_identifier": "nu.energia.Energia",
+      "confidence": "medium",
+      "evidence_hash": "26bd646784639747ae5cc3e6867e1072f7b6dd189a539968d2f8cd4ff0a5bb45",
+      "reason": "Homebrew installs Energia.app and removes nu.energia.Energia.savedState, an application-specific saved-state path that strongly indicates the main bundle identifier; no direct packaged Info.plist was available.",
+      "sources": [
+        "https://energia.nu/",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/energia.rb"
+      ]
+    },
+    "epilogue-playback": {
+      "bundle_identifier": "co.epilogue.Playback",
+      "confidence": "medium",
+      "evidence_hash": "94d43a1db4a61172ac388a4feb84e78de1cebb2bed3d33c552322c0edde99698",
+      "reason": "Homebrew associates Playback.app with the co.epilogue.Playback preference domain, and Epilogue\u2019s official documentation uses the same identifier for Playback\u2019s Linux application package. The competing com.epilogue.operator value is legacy saved-state metadata.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/epilogue-playback.rb",
+        "https://www.epilogue.co/software/playback",
+        "https://www.epilogue.co/support/getting-started/linux-setup"
+      ]
+    },
+    "es-de": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "e69b077a6edb1087a5d4fac260ca3cc6d4a4d26ae1e111d3d0d80e05f42fced4",
+      "reason": "An official ES-DE crash report shows the primary app's CFBundleIdentifier incorrectly set to the release version (3.2.0), so no stable identifier can be established for the current 3.4.1 artifact without inspecting its manifest.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/es-de.json",
+        "https://gitlab.com/es-de/emulationstation-de/-/issues/1961"
+      ]
+    },
+    "ethui": {
+      "bundle_identifier": "dev.ethui",
+      "confidence": "medium",
+      "evidence_hash": "070c9181de79e9e4d9581acfa84ece9a130b68d9779f122df5a91898716f8b17",
+      "reason": "The official Homebrew cask associates ethui.app with the macOS saved-state domain dev.ethui, consistent with the primary Tauri application rather than a helper.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/ethui.rb",
+        "https://github.com/ethui/ethui"
       ]
     },
     "eul": {
@@ -2396,6 +2675,27 @@
         "https://github.com/gao-sun/eul/blob/master/eul.xcodeproj/project.pbxproj"
       ]
     },
+    "ev3-classroom": {
+      "bundle_identifier": "com.lego.education.ev3classroom",
+      "confidence": "medium",
+      "evidence_hash": "b3c76c0249a97164c75f7d707c5805cff0d57f2806b6b32302c5aa684dd40e70",
+      "reason": "LEGO distributes the same EV3 Classroom product across macOS and Apple mobile platforms; its official application identifier is com.lego.education.ev3classroom, though the macOS DMG manifest was not directly exposed by the cited pages.",
+      "sources": [
+        "https://apps.apple.com/th/app/ev3-classroom-lego-education/id1502412247",
+        "https://education.lego.com/en-us/downloads/mindstorms-ev3/software/",
+        "https://formulae.brew.sh/api/cask/ev3-classroom.json"
+      ]
+    },
+    "eve-online": {
+      "bundle_identifier": "com.ccpgames.eve-online-launcher",
+      "confidence": "high",
+      "evidence_hash": "6a81c52c2b7946710e46bd194b2f26088fc4dc8c87556352a984b3a8f0a9d574",
+      "reason": "An official EVE forum diagnostic identifies the launcher's update bundle as com.ccpgames.eve-online-launcher, while another official report shows the cask's exact /Applications/eve-online.app path.",
+      "sources": [
+        "https://forums.eveonline.com/t/launcher-connection-problems/458024",
+        "https://forums.eveonline.com/t/launcher-update-failures/482142"
+      ]
+    },
     "evernote": {
       "bundle_identifier": "com.evernote.Evernote",
       "confidence": "high",
@@ -2404,6 +2704,16 @@
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/evernote.rb",
         "https://help.evernote.com/hc/en-us/articles/1500004231762-Remove-Evernote-data-from-your-Mac-or-Windows-device"
+      ]
+    },
+    "exifrenamer": {
+      "bundle_identifier": "de.qdev.ExifRenamer",
+      "confidence": "medium",
+      "evidence_hash": "e9a47f4c260ebaa805f021259cd817d87118bf68f77b40f1c6f8ec87c87a32bd",
+      "reason": "The official Homebrew cask associates ExifRenamer.app with the matching de.qdev.ExifRenamer preference domain, and the vendor page confirms it is the primary application.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/e/exifrenamer.rb",
+        "https://www.qdev.de/?location=mac%2Fexifrenamer"
       ]
     },
     "expandrive": {
@@ -2427,6 +2737,16 @@
         "https://www.nch.com.au/scribe/index.html"
       ]
     },
+    "fabric-app": {
+      "bundle_identifier": "com.todesktop.220930m1ahpjvoh",
+      "confidence": "high",
+      "evidence_hash": "81580a6cc81b396c5a557cc3b4b6163a1d27f37370520bd9281876effdefd496",
+      "reason": "The CFBundleIdentifier in the primary Fabric.app from the cask\u2019s official ToDesktop-hosted artifact is com.todesktop.220930m1ahpjvoh.",
+      "sources": [
+        "https://download.todesktop.com/220930m1ahpjvoh/Fabric%200.2.10-arm64-mac.zip",
+        "https://formulae.brew.sh/cask/fabric-app"
+      ]
+    },
     "factory": {
       "bundle_identifier": "ai.factory.desktop",
       "confidence": "medium",
@@ -2447,6 +2767,73 @@
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fantastical.rb"
       ]
     },
+    "fastdmg": {
+      "bundle_identifier": "org.sveinbjorn.FastDMG",
+      "confidence": "high",
+      "evidence_hash": "0dbfff275b3afe57886bbdf38ac4cb7fb39acfb998d50771dfb44514de29d1df",
+      "reason": "The official Xcode project supplies org.sveinbjorn.FastDMG as PRODUCT_BUNDLE_IDENTIFIER for FastDMG.app; its Info.plist maps CFBundleIdentifier to that build setting.",
+      "sources": [
+        "https://github.com/sveinbjornt/FastDMG/blob/master/FastDMG.xcodeproj/project.pbxproj",
+        "https://raw.githubusercontent.com/sveinbjornt/FastDMG/master/FastDMG/Info.plist"
+      ]
+    },
+    "fastmail": {
+      "bundle_identifier": "com.fastmail.mac.Fastmail",
+      "confidence": "high",
+      "evidence_hash": "19a91119cc7c5013d8314a8c3f3874031f1a0f6dacb7b2ac20017986c84cd9e6",
+      "reason": "The primary Fastmail.app declares com.fastmail.mac.Fastmail, matching the application preference domain recorded by the official Homebrew cask.",
+      "sources": [
+        "https://formulae.brew.sh/cask/fastmail",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fastmail.rb"
+      ]
+    },
+    "fastrawviewer": {
+      "bundle_identifier": "com.libraw-llc.FastRawViewer",
+      "confidence": "high",
+      "evidence_hash": "9e1fac904ace60f8b8f5eaae7a03ed51008330fd50046ae6c941768f79ed5084",
+      "reason": "An official FastRawViewer crash report explicitly identifies the FastRawViewer process as com.libraw-llc.FastRawViewer; official settings documentation uses the same application domain.",
+      "sources": [
+        "https://www.fastrawviewer.com/comment/902",
+        "https://www.fastrawviewer.com/node/221"
+      ]
+    },
+    "fathom": {
+      "bundle_identifier": "video.fathom.electron",
+      "confidence": "high",
+      "evidence_hash": "e122dd1b0f9cdbe4a705bb6583fdeb8838527e5eb0c20070b5b88127d746c6c2",
+      "reason": "The CFBundleIdentifier in the primary Fathom.app distributed through Fathom\u2019s official macOS update service is video.fathom.electron.",
+      "sources": [
+        "https://electron-update.fathom.video/download/file/Fathom-darwin-arm64-3.6.0.dmg",
+        "https://formulae.brew.sh/cask/fathom"
+      ]
+    },
+    "feather": {
+      "bundle_identifier": "org.monero-project.feather",
+      "confidence": "high",
+      "evidence_hash": "5463307af973d2a6db97ca7066f42dc099d0fd5ee2088345cb8827f6b1cdac49",
+      "reason": "The official Feather repository\u2019s macOS Info.plist template directly declares this CFBundleIdentifier for Feather.app.",
+      "sources": [
+        "https://github.com/feather-wallet/feather/blob/master/contrib/macdeploy/Info.plist.in"
+      ]
+    },
+    "fedistar": {
+      "bundle_identifier": "net.fedistar",
+      "confidence": "high",
+      "evidence_hash": "d82d470b49be204d42d7f672fca702580adeae2569b48afbcc23494cd9be4f77",
+      "reason": "Fedistar\u2019s official Tauri manifest directly sets this identifier for the bundled fedistar desktop application.",
+      "sources": [
+        "https://github.com/h3poteto/fedistar/blob/master/src-tauri/tauri.conf.json"
+      ]
+    },
+    "feedflow": {
+      "bundle_identifier": "com.prof18.feedflow",
+      "confidence": "high",
+      "evidence_hash": "a38d1d828f4d158710b887abd05cc73f6fa2ba8a132c248de4fd94b0fc2a9d0f",
+      "reason": "FeedFlow\u2019s official desktop build manifest directly assigns this bundleID to the macOS FeedFlow package.",
+      "sources": [
+        "https://github.com/prof18/feed-flow/blob/main/desktopApp/build.gradle.kts"
+      ]
+    },
     "feishu": {
       "bundle_identifier": "com.electron.lark",
       "confidence": "medium",
@@ -2455,6 +2842,56 @@
       "sources": [
         "https://formulae.brew.sh/cask/feishu",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/feishu.rb"
+      ]
+    },
+    "fellow": {
+      "bundle_identifier": "com.electron.fellow",
+      "confidence": "medium",
+      "evidence_hash": "90271cf9916fbafdd2eaa05c48803a82446b20831ea398dea5dbcb7548acf46b",
+      "reason": "Homebrew\u2019s official cask metadata installs Fellow.app and associates it with the matching com.electron.fellow preference domain, but no vendor manifest directly declaring the identifier was available.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/fellow.json",
+        "https://help.fellow.app/en/articles/7211698-deploy-fellow-via-microsoft-installer-windows-only"
+      ]
+    },
+    "fido2-manage": {
+      "bundle_identifier": "com.token2.fido2-manage",
+      "confidence": "medium",
+      "evidence_hash": "356ad43ee814fecacab990a91f2549d166b8a5d6b7f30674d3481bfaa23b078c",
+      "reason": "Homebrew\u2019s official cask metadata installs the vendor-hosted fido2-manage.app and identifies its matching preference plist as com.token2.fido2-manage.plist; the vendor guide confirms this is the primary macOS management app.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/fido2-manage.json",
+        "https://www.token2.swiss/site/page/fido2-1-security-key-management-tool-for-macos-user-guide"
+      ]
+    },
+    "filemonitor": {
+      "bundle_identifier": "com.objective-see.FileMonitor",
+      "confidence": "medium",
+      "evidence_hash": "5786202598883eaa61cc80b4fa4aedc97466a693ab5ca394d1f88dcc62138d16",
+      "reason": "Homebrew installs FileMonitor.app and associates its sole application cache namespace with com.objective-see.FileMonitor; the vendor repository confirms this is the primary app target, though its manifest uses a build-setting substitution.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/filemonitor.json",
+        "https://github.com/objective-see/FileMonitor/blob/master/App/FileMonitor/Info.plist"
+      ]
+    },
+    "find-any-file": {
+      "bundle_identifier": "org.tempel.findanyfile",
+      "confidence": "high",
+      "evidence_hash": "8c8e9b6125c4fdd970edfc321e331728536fc11861d030a85e3bc72bf032cbd8",
+      "reason": "The vendor's official support page explicitly identifies org.tempel.findanyfile as the bundle ID for Find Any File.",
+      "sources": [
+        "https://apps.tempel.org/FindAnyFile/support.php",
+        "https://formulae.brew.sh/cask/find-any-file"
+      ]
+    },
+    "find-empty-folders": {
+      "bundle_identifier": "org.tempel.findemptyfolders",
+      "confidence": "medium",
+      "evidence_hash": "54a49470e6a9040f6a678fc9b800b82f009b5560e9d665c5e31b910b7e07bfc6",
+      "reason": "Homebrew installs only Find Empty Folders.app, and its saved-application-state path uses the matching org.tempel.findemptyfolders namespace; no competing app artifact is present.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/find-empty-folders.rb",
+        "https://www.tempel.org/FindEmptyFolders"
       ]
     },
     "find-my-ports": {
@@ -2467,6 +2904,36 @@
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/find-my-ports.rb"
       ]
     },
+    "finicky": {
+      "bundle_identifier": "se.johnste.finicky",
+      "confidence": "high",
+      "evidence_hash": "e79b17fce7b081aec3252ddfa5af6b99f561a2f70bb79f06421d49192d1fd6be",
+      "reason": "Finicky's official app Info.plist directly declares CFBundleIdentifier as se.johnste.finicky.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/finicky.json",
+        "https://github.com/johnste/finicky/blob/main/apps/finicky/assets/Info.plist"
+      ]
+    },
+    "firebird-emu": {
+      "bundle_identifier": "org.firebird-emus.firebird-emu",
+      "confidence": "medium",
+      "evidence_hash": "bf0f5fa360409b3b24c3c6f8c2fa94e2c8f3c01a803e8cbd44d51b4aa2aae122",
+      "reason": "The official source sets organizationDomain to firebird-emus.org and applicationName to firebird-emu, yielding this identifier; Homebrew's primary app and preference metadata independently use the same namespace.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/firebird-emu.json",
+        "https://github.com/nspire-emus/firebird/blob/master/main.cpp"
+      ]
+    },
+    "firecamp": {
+      "bundle_identifier": "com.firecamp.app",
+      "confidence": "medium",
+      "evidence_hash": "71a04b9066c5ca96eb706e9fdaba48a89dedc0f017f54c23255960613ae11898",
+      "reason": "Homebrew installs Firecamp.app and removes com.firecamp.app.plist; this strongly indicates the main app\u2019s preference domain, but no official packaged Info.plist was available for direct confirmation.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/firecamp.rb",
+        "https://github.com/firecamp-dev/Firecamp"
+      ]
+    },
     "firefox@beta": {
       "bundle_identifier": "org.mozilla.firefox",
       "confidence": "high",
@@ -2475,6 +2942,108 @@
       "sources": [
         "https://bugzilla.mozilla.org/show_bug.cgi?id=1643392",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/firefox@beta.rb"
+      ]
+    },
+    "firestorm": {
+      "bundle_identifier": "com.phoenixviewer.firestorm.viewer-hvk",
+      "confidence": "high",
+      "evidence_hash": "eead98487594d29fd06accf3145a93ede6c9c6b19db094a6cce488c2be8e4974",
+      "reason": "The official Firestorm source contains the main app\u2019s Info-Firestorm.plist, and the identifier matches the release viewer rather than a helper component.",
+      "sources": [
+        "https://formulae.brew.sh/cask/firestorm",
+        "https://github.com/FirestormViewer/phoenix-firestorm/blob/master/indra/newview/Info-Firestorm.plist"
+      ]
+    },
+    "firezone": {
+      "bundle_identifier": "dev.firezone.firezone",
+      "confidence": "high",
+      "evidence_hash": "fc48892402b6c99b7cd4cb42e3e74a590a43ac6ff4caac6730b28fef49fe6c6b",
+      "reason": "Firezone\u2019s official Apple project builds Firezone.app as its main target and distinguishes its network extension with the derived dev.firezone.firezone.network-extension identifier.",
+      "sources": [
+        "https://github.com/firezone/firezone/blob/main/swift/apple/Firezone.xcodeproj/project.pbxproj",
+        "https://github.com/firezone/firezone/tree/main/swift/apple"
+      ]
+    },
+    "fitbit-os-simulator": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "3322fbf84abbe92b128248233ca7208d1053cfa3c6bc4b40de11b6bc860b9e19",
+      "reason": "Official Homebrew and Fitbit sources identify the Electron-based Fitbit OS Simulator.app, but no official manifest exposing its CFBundleIdentifier was found; inferring it from the product name would be unreliable.",
+      "sources": [
+        "https://formulae.brew.sh/cask/fitbit-os-simulator",
+        "https://simulator-updates.fitbit.com/"
+      ]
+    },
+    "fixkey": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "2ca8b634a56a01e0a4c51cd85fd04cbc57dacc8bfabcb9322191d73b2b1e0097",
+      "reason": "Homebrew installs fixkey.app and records fixkey.plist as its macOS preference domain, supporting fixkey as the main bundle identifier, though no official Info.plist or build manifest was available for direct confirmation.",
+      "sources": [
+        "https://fixkey.ai/",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fixkey.rb"
+      ]
+    },
+    "fldigi": {
+      "bundle_identifier": "com.w1hkj.fldigi",
+      "confidence": "high",
+      "evidence_hash": "8a2865460bb80458b6fdfc0d13f327bcd35c0b906f84589de1a3198e658b03f1",
+      "reason": "The official macOS bundle-generation script constructs the primary fldigi app identifier as com.w1hkj.$PACKAGE_TARNAME; for the fldigi package this resolves to com.w1hkj.fldigi.",
+      "sources": [
+        "https://formulae.brew.sh/cask/fldigi",
+        "https://github.com/w1hkj/fldigi/blob/master/scripts/mkappbundle.sh"
+      ]
+    },
+    "floorp": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "05aee4faf4c82eca5742136d43c50cb5e014ee615323adc4989da3e2c227832e",
+      "reason": "Official sources confirm Floorp.app, but do not expose its current macOS CFBundleIdentifier. The project also reports changing its app ID in version 12.13.0, so the Linux Flatpak ID and older identifiers cannot safely be applied.",
+      "sources": [
+        "https://floorp.app/download",
+        "https://formulae.brew.sh/cask/floorp",
+        "https://github.com/Floorp-Projects/Floorp/discussions/1688"
+      ]
+    },
+    "flow5": {
+      "bundle_identifier": "tech.cere-aero.flow5",
+      "confidence": "medium",
+      "evidence_hash": "bbac92ebe1e50b95a8bcab28c9037ac4d6f049551421a152dd925a94020a0b87",
+      "reason": "Homebrew installs flow5.app and its only app-specific macOS preference path uses tech.cere-aero.flow5. This strongly indicates the primary bundle identifier, although no public manifest explicitly labels it CFBundleIdentifier.",
+      "sources": [
+        "https://flow5.tech/flow5.html",
+        "https://formulae.brew.sh/cask/flow5"
+      ]
+    },
+    "flowvision": {
+      "bundle_identifier": "netdcy.FlowVision",
+      "confidence": "high",
+      "evidence_hash": "8a6cea7ab561d105f3d471cf2e2022c665889981b4d9862d1fda4423fc22569c",
+      "reason": "The official Xcode project assigns netdcy.FlowVision to the FlowVision application target's Release configuration; Homebrew installs that target's FlowVision.app artifact.",
+      "sources": [
+        "https://formulae.brew.sh/cask/flowvision",
+        "https://github.com/netdcy/FlowVision/blob/main/FlowVision.xcodeproj/project.pbxproj"
+      ]
+    },
+    "flrig": {
+      "bundle_identifier": "com.w1hkj.flrig",
+      "confidence": "high",
+      "evidence_hash": "f6b17486a8311a39006e9f622530bd8c4fdaebf771f7a6103d401aedcd394007",
+      "reason": "The official flrig macOS bundle-generation source assigns the com.w1hkj namespace to the flrig package when producing its versioned primary app bundle.",
+      "sources": [
+        "https://formulae.brew.sh/cask/flrig",
+        "https://sourceforge.net/p/fldigi/flrig/ci/master/tree/scripts/mkappbundle.sh"
+      ]
+    },
+    "flycut": {
+      "bundle_identifier": "com.generalarcade.flycut",
+      "confidence": "medium",
+      "evidence_hash": "5b11376cc4b4bc72ced1cab32be929740e86d237109fba6c8764bdb1ef8b529b",
+      "reason": "The official source defines the primary Flycut app's CFBundleIdentifier through its product setting, while its app entitlements use the matching iCloud.com.generalarcade.flycut container and Homebrew records the matching preference domain.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/flycut.json",
+        "https://github.com/TermiT/Flycut/blob/master/Flycut.entitlements",
+        "https://github.com/TermiT/Flycut/blob/master/Info.plist"
       ]
     },
     "flying-carpet": {
@@ -2487,6 +3056,16 @@
         "https://github.com/spieglt/FlyingCarpet/blob/main/Apple/macOS/FlyingCarpet.xcodeproj/project.pbxproj"
       ]
     },
+    "fman": {
+      "bundle_identifier": "io.fman.fman",
+      "confidence": "medium",
+      "evidence_hash": "50a542224a0f86ac26825b638158ed8b2130983b7ca2859e5e6026eaa3d06f35",
+      "reason": "A report in fman's official repository identifies io.fman.fman as the macOS application identifier and confirms that registering it as NSFileViewer launches the primary fman app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/fman",
+        "https://github.com/mherrmann/fman/issues/555"
+      ]
+    },
     "folder-preview-pro": {
       "bundle_identifier": "ltd.anybox.FolderPreview.Pro",
       "confidence": "high",
@@ -2495,6 +3074,26 @@
       "sources": [
         "https://anybox.ltd/folder-preview-pro",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/folder-preview-pro.rb"
+      ]
+    },
+    "foldit": {
+      "bundle_identifier": "edu.washington.foldit",
+      "confidence": "medium",
+      "evidence_hash": "ff16ef74c14b741da9a895ea49cd3d9170661bbb3c0bab0cd867faae873e44c0",
+      "reason": "Homebrew identifies Foldit.app as the sole application artifact and records its saved-state directory as edu.washington.foldit.savedState, consistently indicating edu.washington.foldit as the primary app identifier.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/foldit.json",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/foldit.rb"
+      ]
+    },
+    "folo": {
+      "bundle_identifier": "is.follow",
+      "confidence": "high",
+      "evidence_hash": "044953ecee904699d45d652e387424c1484ec9c7aaed4a4a258a64521d00be16",
+      "reason": "Folo's official Electron Forge manifest directly sets appBundleId to is.follow for the desktop app that Homebrew installs as Folo.app.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/folo.json",
+        "https://github.com/RSSNext/Folo/blob/dev/apps/desktop/forge.config.cts"
       ]
     },
     "folx": {
@@ -2507,6 +3106,26 @@
         "https://mac.eltima.com/download-manager.html"
       ]
     },
+    "fontcreator": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "225c8aacb464b24bfa5290a700509632172e653cbe22d08eb0d7bc4c154678da",
+      "reason": "Official Homebrew and vendor pages confirm the FontCreator.app artifact, but no official manifest or documentation found exposes its CFBundleIdentifier; inferring one from the vendor name would be unreliable.",
+      "sources": [
+        "https://formulae.brew.sh/cask/fontcreator",
+        "https://www.high-logic.com/font-editor/fontcreator/tutorials/fontcreator-on-windows-and-macos"
+      ]
+    },
+    "fontgoggles": {
+      "bundle_identifier": "com.github.justvanrossum.FontGoggles",
+      "confidence": "high",
+      "evidence_hash": "b80c61abc8bbe712854f04c6b958cce7191d95f1d3ae589e09694d8f7565ea0c",
+      "reason": "The official build configuration assigns this identifier to FontGoggles.app; Homebrew's cask uses the matching application preference domain.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fontgoggles.rb",
+        "https://github.com/justvanrossum/fontgoggles/blob/master/App/setup.py"
+      ]
+    },
     "fontstand": {
       "bundle_identifier": "com.fontstand-bv.mac.Fontstand",
       "confidence": "high",
@@ -2515,6 +3134,16 @@
       "sources": [
         "https://fontstand.com/",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fontstand.rb"
+      ]
+    },
+    "foobar2000": {
+      "bundle_identifier": "com.foobar2000.mac",
+      "confidence": "medium",
+      "evidence_hash": "0ed0caa75cb3db0dca46abbb924d5560af7335d8a859e469a8306a5fc0ed3e33",
+      "reason": "Homebrew installs foobar2000.app and associates it with the identically named macOS preference domain. The vendor page confirms this is the native macOS application, though no official public manifest exposes CFBundleIdentifier directly.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/foobar2000.rb",
+        "https://www.foobar2000.org/mac"
       ]
     },
     "forklift": {
@@ -2537,6 +3166,17 @@
         "https://github.com/foxglove/studio/blob/main/electron-builder.json"
       ]
     },
+    "fractal-bot": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "753c9c49ac75f74522ccdd0bb7923e2b9ef6f73ed5298072cdfd0af9d94b1b4b",
+      "reason": "Official Fractal Audio and Homebrew sources identify Fractal-Bot.app and its support directory but do not publish its CFBundleIdentifier; deriving one from the vendor name would be uncertain.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fractal-bot.rb",
+        "https://www.fractalaudio.com/downloads/fractal-bot/Fractal-Bot-Manual.pdf",
+        "https://www.fractalaudio.com/fractal-bot/"
+      ]
+    },
     "franz": {
       "bundle_identifier": "com.meetfranz.franz",
       "confidence": "high",
@@ -2545,6 +3185,126 @@
       "sources": [
         "https://formulae.brew.sh/api/cask/franz.json",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/franz.rb"
+      ]
+    },
+    "fredm-fuse": {
+      "bundle_identifier": "net.sourceforge.fuse-for-macosx.Fuse",
+      "confidence": "medium",
+      "evidence_hash": "dcbb934aa4210d5d549c99a5251eb1ec995a7e455b53ab746b11c1e605134982",
+      "reason": "Homebrew installs the official Fuse.app and names this exact domain for its preferences; the official SourceForge project confirms Fuse.app is the primary built application.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fredm-fuse.rb",
+        "https://sourceforge.net/p/fuse-for-macosx/fuse-for-macos/ci/master/tree/"
+      ]
+    },
+    "free-ruler": {
+      "bundle_identifier": "com.pascal.freeruler",
+      "confidence": "high",
+      "evidence_hash": "c889a5969adae5f7f6fa484bd38f0ad9a3cf92c156eb849c6a25e13aabc8e916",
+      "reason": "The official Free Ruler Xcode project assigns this product identifier to the application target, matching the container associated with Free Ruler.app by Homebrew.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/free-ruler.rb",
+        "https://github.com/pascalpp/FreeRuler/blob/main/Free%20Ruler.xcodeproj/project.pbxproj"
+      ]
+    },
+    "freecad": {
+      "bundle_identifier": "org.freecad.FreeCAD",
+      "confidence": "high",
+      "evidence_hash": "f7f2a470b3379484088d478d4e4c382c3e161a97a27be24f4d47adcc4b212574",
+      "reason": "An official FreeCAD macOS crash report identifies the current FreeCAD.app process as org.freecad.FreeCAD; this also avoids mistaking the cask's com.freecad.FreeCAD preference domain for the app identifier.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/freecad.json",
+        "https://github.com/FreeCAD/FreeCAD/issues/28429"
+      ]
+    },
+    "freelens": {
+      "bundle_identifier": "app.freelens.Freelens",
+      "confidence": "high",
+      "evidence_hash": "afc1366d2ff1282ee9fc219e8f55cb030642c69bdbc476df6af08ce71cfb13a2",
+      "reason": "Freelens' official electron-builder manifest explicitly sets the macOS appId to app.freelens.Freelens.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/freelens.json",
+        "https://github.com/freelensapp/freelens/blob/main/freelens/electron-builder.yml"
+      ]
+    },
+    "freepdf": {
+      "bundle_identifier": "com.zstar.freepdf",
+      "confidence": "high",
+      "evidence_hash": "4b103977e5b2d36bdbde784ac1df714b015d7f3716647f72f6e795d04178b4b4",
+      "reason": "FreePDF's official PyInstaller macOS build specification explicitly assigns com.zstar.freepdf to the FreePDF.app bundle.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/freepdf.json",
+        "https://raw.githubusercontent.com/zstar1003/FreePDF/main/build_mac.spec"
+      ]
+    },
+    "freeplane": {
+      "bundle_identifier": "org.freeplane.launcher",
+      "confidence": "high",
+      "evidence_hash": "cc7c1342efa9313d810786727b7be55ac285c579417a4afb0f6497f537544a66",
+      "reason": "The official cask associates Freeplane.app with an org.freeplane.launcher saved-state directory, while Freeplane's official macOS build launches that same org.freeplane.launcher application target.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/freeplane.rb",
+        "https://github.com/freeplane/freeplane/blob/1.13.x/mac.dist.gradle"
+      ]
+    },
+    "freeze": {
+      "bundle_identifier": "seb.GlacierMac",
+      "confidence": "high",
+      "evidence_hash": "95262eda2677f911063b39cb79f69bb351b9e0f029556edd9bb9df4cb85a2346",
+      "reason": "The official cask removes the primary app's macOS sandbox container at ~/Library/Containers/seb.GlacierMac, directly identifying Freeze.app's bundle container identifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/freeze",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/freeze.rb"
+      ]
+    },
+    "frescobaldi": {
+      "bundle_identifier": "org.frescobaldi.frescobaldi",
+      "confidence": "high",
+      "evidence_hash": "22704f4a34e4076da963f94d41fb485e85395444ae631f693a007181ea1aa8cb",
+      "reason": "The official build manifest defines the bundle prefix as org.frescobaldi and the macOS application key as frescobaldi, directly yielding the primary app identifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/frescobaldi.rb",
+        "https://github.com/frescobaldi/frescobaldi/blob/master/pyproject.toml"
+      ]
+    },
+    "fs-uae-emulator": {
+      "bundle_identifier": "no.fengestad.fs-uae",
+      "confidence": "medium",
+      "evidence_hash": "f0ba3e244015fdb598d72ee20705688123773fa042024cda20a56e98c18a2ef9",
+      "reason": "Homebrew installs FS-UAE.app and identifies its saved-application-state directory as no.fengestad.fs-uae.savedState; this strongly indicates the primary app's identifier, though no official Info.plist was located.",
+      "sources": [
+        "https://github.com/FrodeSolheim/fs-uae",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fs-uae-emulator.rb"
+      ]
+    },
+    "fs-uae-launcher": {
+      "bundle_identifier": "no.fengestad.fs-uae-launcher",
+      "confidence": "medium",
+      "evidence_hash": "14f2d6d6df30ccd11809a8ed30262c12417b12eb581a84fc756b6a27bdbd37c3",
+      "reason": "Homebrew installs FS-UAE Launcher.app and identifies its saved-application-state directory as no.fengestad.fs-uae-launcher.savedState; this strongly indicates the primary app's identifier, though no official Info.plist was located.",
+      "sources": [
+        "https://github.com/FrodeSolheim/fs-uae-launcher",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fs-uae-launcher.rb"
+      ]
+    },
+    "fspy": {
+      "bundle_identifier": "com.stuffmatic.fspy",
+      "confidence": "high",
+      "evidence_hash": "4a62f26edfb36c1351912f1e15fc7299d2c8e55f98c4b0cc6afb0494a21ea7e1",
+      "reason": "The vendor's official Electron build manifest directly sets appId to com.stuffmatic.fspy and productName to fSpy.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fspy.rb",
+        "https://github.com/stuffmatic/fSpy/blob/master/package.json"
+      ]
+    },
+    "fujifilm-x-raw-studio": {
+      "bundle_identifier": "com.fujifilm.denji.X-RAW-STUDIO",
+      "confidence": "medium",
+      "evidence_hash": "0b405207601dbd4daa0d1b09be97c399307831dcd4e7550cf6b064bcf20746f9",
+      "reason": "Homebrew installs FUJIFILM X RAW STUDIO.app and records an app-specific preference plist with the exact domain com.fujifilm.denji.X-RAW-STUDIO; this is strong but indirect evidence because Fujifilm does not publish an accessible app manifest.",
+      "sources": [
+        "https://fujifilm-x.com/global/products/software/x-raw-studio/",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/fujifilm-x-raw-studio.rb"
       ]
     },
     "funter": {
