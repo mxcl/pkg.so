@@ -1,12 +1,12 @@
 id: cask:taskexplorer
 display-name: TaskExplorer
-homepage: https://objective-see.org/products/taskexplorer.html
-repo: https://github.com/objective-see/TaskExplorer
+repo: null
 docs:
   - https://objective-see.org/products/taskexplorer.html
 config-file-location: null
 credentials-file-location:
-  macos: macOS Keychain
+  macos:
+    - macOS Keychain
 history:
   adoption-history:
     - >
@@ -66,10 +66,6 @@ history:
       TaskExplorer supports text and token filters, JSON export, and a command-line
       interface inside the application bundle. VirusTotal, Anthropic, and OpenAI keys
       are optional and are stored securely in the macOS Keychain.
-category: system
-package-manager:
-  brew-cask: taskexplorer
-package-manager-url: https://formulae.brew.sh/cask/taskexplorer
 tags:
   - code-signing
   - endpoint-security
@@ -78,10 +74,37 @@ tags:
   - network-connections
   - process-monitor
   - system-extension
-description: Tool to explore all the running tasks (processes)
-applications:
-  - TaskExplorer.app
 provenance:
-  cask: taskexplorer
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official documentation describes live inspection of processes, loaded
+      libraries, files, network connections, signatures, and security results.
+    - https://objective-see.org/products/taskexplorer.html
+  display-name-sources:
+    - https://objective-see.org/products/taskexplorer.html
+    - 'source_facts.applications: TaskExplorer.app'
+  docs-sources:
+    - >
+      The official Objective-See product page contains installation, permissions, usage,
+      filtering, settings, command-line, uninstall, and FAQ documentation.
+  history-sources:
+    - https://github.com/objective-see/TaskExplorer
+    - https://github.com/objective-see/TaskExplorer/releases
+    - https://objective-see.org/products/taskexplorer.html
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/objective-see/TaskExplorer; repository determination was
+      intentionally skipped as required.
+  tags-sources:
+    - https://github.com/objective-see/TaskExplorer
+    - https://objective-see.org/products/taskexplorer.html
+category-confidence: high
+category-path:
+  - system
+  - process-monitoring
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
