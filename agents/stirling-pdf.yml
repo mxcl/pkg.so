@@ -1,15 +1,17 @@
 id: cask:stirling-pdf
 display-name: Stirling PDF
-homepage: https://stirling.com/
-repo: https://github.com/Stirling-Tools/Stirling-PDF
+repo: null
 docs:
   - https://docs.stirlingpdf.com/
   - https://docs.stirlingpdf.com/Configuration
   - https://docs.stirlingpdf.com/Installation/Path%20Structure
 config-file-location:
-  linux: ~/.config/Stirling-PDF/configs/settings.yml
-  macos: ~/Library/Application Support/Stirling-PDF/configs/settings.yml
-  windows: '%APPDATA%\Stirling-PDF\configs\settings.yml'
+  linux:
+    - ~/.config/Stirling-PDF/configs/settings.yml
+  macos:
+    - ~/Library/Application Support/Stirling-PDF/configs/settings.yml
+  windows:
+    - '%APPDATA%\Stirling-PDF\configs\settings.yml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -52,10 +54,6 @@ history:
       the graphical interface. Operators commonly deploy the server in a container,
       persist its configs directory, and configure settings through the UI, environment
       variables, or settings.yml.
-category: productivity
-package-manager:
-  brew-cask: stirling-pdf
-package-manager-url: https://formulae.brew.sh/cask/stirling-pdf
 tags:
   - automation
   - desktop
@@ -64,10 +62,34 @@ tags:
   - pdf
   - pdf-editor
   - self-hosted
-description: PDF utility
-applications:
-  - Stirling PDF.app
 provenance:
-  cask: stirling-pdf
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://github.com/Stirling-Tools/Stirling-PDF#readme
+    - source_facts.description
+  display-name-sources:
+    - https://github.com/Stirling-Tools/Stirling-PDF#readme
+    - https://www.stirling.com/
+  docs-sources:
+    - Official documentation domain linked by the project repository and website.
+  history-sources:
+    - https://docs.stirlingpdf.com/Configuration/
+    - https://github.com/Stirling-Tools/Stirling-PDF#readme
+    - https://www.stirling.com/about
+    - https://www.stirling.com/download
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped.
+  tags-sources:
+    - https://github.com/Stirling-Tools/Stirling-PDF#readme
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - document-management
+  - pdf-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

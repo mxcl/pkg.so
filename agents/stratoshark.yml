@@ -1,6 +1,5 @@
 id: cask:stratoshark
 display-name: Stratoshark
-homepage: https://stratoshark.org/
 repo: https://gitlab.com/wireshark/wireshark
 docs:
   - https://stratoshark.org/docs/relnotes
@@ -10,7 +9,8 @@ config-file-location:
   unix:
     - $XDG_CONFIG_HOME/stratoshark/preferences
     - ~/.config/stratoshark/preferences
-  windows: '%APPDATA%\Stratoshark\preferences'
+  windows:
+    - '%APPDATA%\Stratoshark\preferences'
 credentials-file-location: null
 history:
   adoption-history:
@@ -60,10 +60,6 @@ history:
       data, then inspect events, apply display filters, follow file-descriptor streams,
       graph activity, and enrich findings using compatible Falco plugins. The graphical
       interface is intentionally familiar to Wireshark users.
-category: developer-tools
-package-manager:
-  brew-cask: stratoshark
-package-manager-url: https://formulae.brew.sh/cask/stratoshark
 tags:
   - desktop
   - falco
@@ -73,10 +69,41 @@ tags:
   - system-calls
   - troubleshooting
   - wireshark
-description: System calls and log messages analyzer
-applications:
-  - Stratoshark.app
 provenance:
-  cask: stratoshark
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://stratoshark.org/
+    - https://stratoshark.org/docs/relnotes/stratoshark-0.9.1/
+    - source_facts.description
+  display-name-sources:
+    - https://stratoshark.org/
+    - source_facts.applications
+  docs-sources:
+    - >
+      The official Stratoshark site links the quick-start guide, Wireshark wiki page,
+      and release notes.
+  history-sources:
+    - https://gitlab.com/wireshark/wireshark
+    - https://stratoshark.org/
+    - https://stratoshark.org/docs/relnotes/stratoshark-0.10.0/
+    - https://stratoshark.org/docs/relnotes/stratoshark-0.9.0/
+  repo-sources:
+    - >
+      https://gitlab.com/wireshark/wireshark identifies itself as Wireshark's official
+      code repository and contains Stratoshark source.
+    - >
+      https://stratoshark.org/ links its source code to the Wireshark Foundation's
+      official Wireshark repository.
+  tags-sources:
+    - https://stratoshark.org/
+    - https://stratoshark.org/docs/relnotes/stratoshark-0.10.0/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - observability
+  - system-analysis
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
