@@ -1,7 +1,6 @@
 id: cask:submariner
 display-name: Submariner
-homepage: https://submarinerapp.com/
-repo: https://github.com/NattyNarwhal/Submariner
+repo: null
 docs:
   - https://github.com/SubmarinerApp/Submariner/wiki
   - https://github.com/SubmarinerApp/Submariner
@@ -61,10 +60,6 @@ history:
       music library, play and cache tracks, manage playlists and favorites, and
       optionally import local audio. Server passwords are stored through macOS Keychain
       rather than a documented credentials file.
-category: media
-package-manager:
-  brew-cask: submariner
-package-manager-url: https://formulae.brew.sh/cask/submariner
 tags:
   - audio
   - macos
@@ -74,10 +69,37 @@ tags:
   - self-hosted
   - streaming
   - subsonic
-description: Subsonic client
-applications:
-  - Submariner.app
 provenance:
-  cask: submariner
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official site describes access to self-hosted music and podcasts:
+      https://submarinerapp.com/
+    - source_facts.description identifies a Subsonic client.
+  display-name-sources:
+    - 'Official project site: https://submarinerapp.com/'
+    - source_facts.applications
+  docs-sources:
+    - The official repository README contains usage and release information.
+    - The official site links the project's repository, wiki, issue tracker, and forum.
+  history-sources:
+    - https://github.com/SubmarinerApp/Submariner
+    - https://github.com/SubmarinerApp/Submariner/releases
+    - https://submarinerapp.com/
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the enrichment rule, no repository
+      replacement is returned.
+  tags-sources:
+    - 'Official project site: https://submarinerapp.com/'
+    - 'Official repository: https://github.com/SubmarinerApp/Submariner'
+category-confidence: high
+category-path:
+  - media
+  - audio
+  - music-player
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

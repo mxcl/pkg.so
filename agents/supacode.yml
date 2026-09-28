@@ -1,6 +1,5 @@
 id: cask:supacode
 display-name: Supacode
-homepage: https://supacode.sh/
 repo: https://github.com/supabitapp/supacode
 docs:
   - https://docs.supacode.sh/
@@ -8,7 +7,8 @@ docs:
   - https://docs.supacode.sh/getting-started/installation
   - https://docs.supacode.sh/reference/faq
 config-file-location:
-  macos: ~/.supacode/settings.json
+  macos:
+    - ~/.supacode/settings.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -57,10 +57,6 @@ history:
       terminal tabs and splits. Managed worktrees live below `~/.supacode/repos/`.
       GitHub features use the separately authenticated `gh` CLI, while repository setup
       scripts can automatically start an agent in newly created worktrees.
-category: developer-tools
-package-manager:
-  brew-cask: supacode
-package-manager-url: https://formulae.brew.sh/cask/supacode
 tags:
   - ai-agents
   - coding-agents
@@ -71,10 +67,39 @@ tags:
   - macos
   - terminal
   - worktrees
-description: Native terminal coding agents command center
-applications:
-  - supacode.app
 provenance:
-  cask: supacode
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes a worktree command center for terminal-based
+      coding workflows: https://docs.supacode.sh/
+    - source_facts.description
+  display-name-sources:
+    - 'Official website and documentation use the name Supacode: https://supacode.sh/'
+    - source_facts.applications uses lowercase styling for the application bundle only.
+  docs-sources:
+    - Dedicated official Supacode documentation domain.
+  history-sources:
+    - https://docs.supacode.sh/
+    - https://docs.supacode.sh/configuration/settings-and-storage
+    - https://docs.supacode.sh/getting-started/installation
+    - https://docs.supacode.sh/reference/faq
+    - https://supacode.sh/
+    - source_facts.package-manager
+  repo-sources:
+    - Official FAQ directs issue reports to https://github.com/supabitapp/supacode/issues.
+    - >
+      Official website labels the product open source and links to GitHub:
+      https://supacode.sh/
+  tags-sources:
+    - 'Official documentation and FAQ: https://docs.supacode.sh/'
+    - 'Official product site: https://supacode.sh/'
+category-confidence: high
+category-path:
+  - developer-tools
+  - ai-coding
+  - worktree-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
