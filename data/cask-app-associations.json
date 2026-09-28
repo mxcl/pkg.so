@@ -760,11 +760,12 @@
     },
     "bezel": {
       "bundle_identifier": "com.nonstrict.Bezel-direct",
-      "confidence": "medium",
-      "evidence_hash": "aeb6886657400b5c5c7464d08645e9bdd0b94d746c6b94151ea648e4f4cd1adb",
-      "reason": "Homebrew associates Bezel.app with this identifier across caches, HTTP storage, and preferences; the other candidates identify helper services. Inferred without direct manifest verification.",
+      "confidence": "high",
+      "evidence_hash": "c3e0511f895d696b55d6ebe5fc85e372b523e6a2f5ded021d188aa7684415ac5",
+      "reason": "Homebrew\u2019s official cask identifies Bezel.app and consistently associates its preferences, caches, HTTP storage, application support, and recent-document records with com.nonstrict.Bezel-direct; the other identifiers are explicitly named Apple TV helper and DAL service components.",
       "sources": [
-        "https://formulae.brew.sh/api/cask/bezel.json"
+        "https://formulae.brew.sh/cask/bezel",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/b/bezel.rb"
       ]
     },
     "billy-frontier": {
@@ -3317,6 +3318,36 @@
         "https://nektony.com/help/funter/faq"
       ]
     },
+    "furtherance": {
+      "bundle_identifier": "io.unobserved.furtherance",
+      "confidence": "high",
+      "evidence_hash": "73ae356633ed537f8ab78994ed8af907d9fd4a10c9d0d039840a0a5d1142acde",
+      "reason": "The official Furtherance Cargo bundle manifest names Furtherance as the packaged application and directly declares identifier = io.unobserved.furtherance.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/furtherance.rb",
+        "https://github.com/unobserved-io/Furtherance/blob/main/Cargo.toml"
+      ]
+    },
+    "gama-jdk": {
+      "bundle_identifier": "GamaPlatform.Gama",
+      "confidence": "high",
+      "evidence_hash": "cc98caf026d6cdc0ec39636dd332fd28b826e19bee87516d7712cf630f1b911b",
+      "reason": "GAMA\u2019s official macOS Info.plist directly declares GamaPlatform.Gama as CFBundleIdentifier for the packaged Gama application.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/gama-jdk.rb",
+        "https://github.com/gama-platform/gama/blob/main/gama.product/extraresources/Info.plist"
+      ]
+    },
+    "gama-platform": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "f8aa1201f5536959d198b37fe9596c90912c997191da6b0816efdc56f4016dc3",
+      "reason": "Official GAMA and Homebrew sources identify Gama.app, but no official manifest or other direct evidence exposes its CFBundleIdentifier; the similarly named GamaPlatform.Gama is a Windows package ID and cannot safely be reused.",
+      "sources": [
+        "https://formulae.brew.sh/cask/gama-platform",
+        "https://github.com/gama-platform/gama/releases"
+      ]
+    },
     "gamehub": {
       "bundle_identifier": "com.gamemac.www",
       "confidence": "medium",
@@ -3325,6 +3356,118 @@
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/gamehub.rb",
         "https://www.gamemac.com/en"
+      ]
+    },
+    "gamma-control": {
+      "bundle_identifier": "ca.michelf.GammaControl",
+      "confidence": "medium",
+      "evidence_hash": "6e5e3695e94b738781bef23b251a13e15d3c6dc94aa850ed2351ad66e36872f2",
+      "reason": "Homebrew installs Gamma Control.app and its official cask metadata uses ca.michelf.GammaControl.* for the app's sandbox containers. This strongly supports the base identifier, but no accessible official app manifest states it directly.",
+      "sources": [
+        "https://formulae.brew.sh/cask/gamma-control",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/gamma-control.rb",
+        "https://michelf.ca/projects/gamma-control/"
+      ]
+    },
+    "ganttproject": {
+      "bundle_identifier": "com.bardsoftware.ganttproject",
+      "confidence": "high",
+      "evidence_hash": "15c3f167729b110028a57a692cf7f262282408642e4b7b11de94f094e4b9a901",
+      "reason": "A macOS crash report in GanttProject's official repository directly identifies the GanttProject.app process as com.bardsoftware.ganttproject.",
+      "sources": [
+        "https://formulae.brew.sh/cask/ganttproject",
+        "https://github.com/bardsoftware/ganttproject/issues/2060"
+      ]
+    },
+    "geany": {
+      "bundle_identifier": "org.geany.geany",
+      "confidence": "high",
+      "evidence_hash": "f1ebf37c88efba5bf1130a248c0160f52ea43ddd00a4edd4072ea9efa6dcf31e",
+      "reason": "Geany's official macOS packaging repository directly sets CFBundleName to Geany, package type to APPL, and CFBundleIdentifier to org.geany.geany in the app's Info.plist.",
+      "sources": [
+        "https://formulae.brew.sh/cask/geany",
+        "https://github.com/geany/geany-osx/blob/master/Info.plist"
+      ]
+    },
+    "geburtstagschecker": {
+      "bundle_identifier": "earthlingsoft.GeburtstagsChecker",
+      "confidence": "medium",
+      "evidence_hash": "225e3cf1d514d769a56a1fe074a9abb56eca2ab765dfebc614d198d18a63778a",
+      "reason": "Homebrew installs GeburtstagsChecker.app and its official cask metadata names both its preferences plist and cache directory earthlingsoft.GeburtstagsChecker. This strongly supports the identifier, though no accessible official app manifest states it directly.",
+      "sources": [
+        "https://earthlingsoft.net/GeburtstagsChecker/",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/geburtstagschecker.rb"
+      ]
+    },
+    "geektool": {
+      "bundle_identifier": "org.tynsoe.GeekTool",
+      "confidence": "medium",
+      "evidence_hash": "03b08e293752861c29e862b9f4cf4c7169e64d3e1805e008edeca87ae1d61790",
+      "reason": "Homebrew installs GeekTool.app, and the vendor\u2019s official update channel uses org.tynsoe.GeekTool as its application identifier; the cask also lists a matching preference domain.",
+      "sources": [
+        "https://formulae.brew.sh/cask/geektool",
+        "https://s3-us-west-2.amazonaws.com/updateinfo.devmate.com/org.tynsoe.GeekTool/331.014/releasenotes.html"
+      ]
+    },
+    "geneious-prime": {
+      "bundle_identifier": "com.biomatters.Geneious",
+      "confidence": "medium",
+      "evidence_hash": "a8dab471ffd87b4789cc0a8f2dd41e162936f900bd8b12713a3d355a8f827fa6",
+      "reason": "Homebrew identifies Geneious Prime.app as the sole app artifact, and its macOS saved-state path uses com.biomatters.Geneious, strongly associating that identifier with the primary app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/geneious-prime",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/geneious-prime.rb"
+      ]
+    },
+    "genymotion": {
+      "bundle_identifier": "com.genymobile.Genymotion",
+      "confidence": "medium",
+      "evidence_hash": "58621422e4e77d86a6a9095e8fd20ed709d1548b1c1c01214da8212d09c233cb",
+      "reason": "Homebrew identifies Genymotion.app as the main emulator and lists com.genymobile.Genymotion.plist among its preferences; the other identifiers may represent legacy components or related processes.",
+      "sources": [
+        "https://formulae.brew.sh/cask/genymotion",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/genymotion.rb"
+      ]
+    },
+    "geoda": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "c47273b25fab3a9ade7b8764c144695d221b839f9faf2217a5567060a02e0096",
+      "reason": "The official cask and GeoDa repository confirm GeoDa.app as the primary artifact but do not expose a sufficiently convincing CFBundleIdentifier or built application manifest.",
+      "sources": [
+        "https://formulae.brew.sh/cask/geoda",
+        "https://github.com/GeoDaCenter/geoda",
+        "https://github.com/GeoDaCenter/geoda/blob/master/BuildTools/macosx/readme.md"
+      ]
+    },
+    "geomap": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "b7ccd88f97cf6b52d414fcd39c80393b80e7da6719e870c9021f452d956597be",
+      "reason": "Official Homebrew and vendor pages confirm GeoMapApp.app as the primary artifact, but no official manifest or documentation found exposes its CFBundleIdentifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/geomap",
+        "https://www.geomapapp.org/MacInstall.html"
+      ]
+    },
+    "gephi": {
+      "bundle_identifier": "org.gephi",
+      "confidence": "high",
+      "evidence_hash": "51903d018474eae30256687b3d74b54ad0f3f8670cd929fac5b65b72b30b41ba",
+      "reason": "Gephi\u2019s official macOS build configuration uses org.gephi as the application signing identifier and packages Gephi.app with its generated Info.plist.",
+      "sources": [
+        "https://formulae.brew.sh/cask/gephi",
+        "https://github.com/gephi/gephi/blob/master/modules/application/pom.xml"
+      ]
+    },
+    "gitfit": {
+      "bundle_identifier": "com.chrisbongers.GitFit",
+      "confidence": "medium",
+      "evidence_hash": "5b0aba59a1c8dbeacaed9ba99619d317a5d929ec7ecc42b86ad9e362c77984b8",
+      "reason": "The official cask installs GitFit.app and identifies its macOS sandbox container as com.chrisbongers.GitFit; this strongly indicates the primary app ID, but an authoritative built Info.plist was unavailable.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/gitfit.rb",
+        "https://github.com/rebelchris/git-fit"
       ]
     },
     "gitfox": {
@@ -3368,6 +3511,36 @@
         "https://github.com/desktop/desktop/blob/development/app/package.json"
       ]
     },
+    "gitlight": {
+      "bundle_identifier": "app.gitlight",
+      "confidence": "high",
+      "evidence_hash": "8a28e2806a4bc63b26558626cbd81b8f5ec35a3b265fe83162f6902035408a41",
+      "reason": "GitLight\u2019s official Tauri manifest directly sets the packaged application identifier to app.gitlight.",
+      "sources": [
+        "https://formulae.brew.sh/cask/gitlight",
+        "https://github.com/colinlienard/gitlight/blob/main/src-tauri/tauri.conf.json"
+      ]
+    },
+    "glaze-app": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "c552d13f2be3156666f93cfd57e7136cf71863625b73fbeaac443825f9056137",
+      "reason": "The official cask and vendor site identify Glaze.app but expose no authoritative bundle identifier, so no reliable distinction from filenames or unrelated identifiers is possible.",
+      "sources": [
+        "https://formulae.brew.sh/cask/glaze-app",
+        "https://glaze.cs.uchicago.edu/index.html"
+      ]
+    },
+    "glide": {
+      "bundle_identifier": "org.glidewm.glide",
+      "confidence": "high",
+      "evidence_hash": "cbd766101fb179c3ffcecd006eeb9fa94d43c21b102f1f205dbcd927788ca57e",
+      "reason": "Glide\u2019s official Cargo Packager manifest directly sets the packaged Glide application identifier to org.glidewm.glide.",
+      "sources": [
+        "https://formulae.brew.sh/cask/glide",
+        "https://github.com/tmandry/glide/blob/main/Cargo.toml"
+      ]
+    },
     "glide-browser": {
       "bundle_identifier": "app.glide-browser.glide",
       "confidence": "medium",
@@ -3376,6 +3549,16 @@
       "sources": [
         "https://formulae.brew.sh/cask/glide-browser",
         "https://github.com/glide-browser/glide/releases"
+      ]
+    },
+    "glkvm": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "59bf277a2405492e599446510bc250f2ce242c87b8ae64ae03dc57a32b6b452a",
+      "reason": "Official GL.iNet and Homebrew sources identify GLKVM.app but expose no app manifest or bundle identifier; the support-directory name gl-kvm is insufficient evidence.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/glkvm.json",
+        "https://www.gl-inet.com/pages/app-rm"
       ]
     },
     "gnome": {
@@ -3388,6 +3571,26 @@
         "https://lexfriedman.com/gnome/"
       ]
     },
+    "gns3": {
+      "bundle_identifier": "net.gns3",
+      "confidence": "medium",
+      "evidence_hash": "25f64f461f494e1694c2a54e01df25357192d79362f6c4ad58ceedd6b378f818",
+      "reason": "Homebrew associates GNS3.app with net.gns3.savedState, whose basename conventionally matches the owning macOS application's bundle identifier, but no official Info.plist was available.",
+      "sources": [
+        "https://github.com/GNS3/gns3-gui",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/gns3.rb"
+      ]
+    },
+    "go2tv": {
+      "bundle_identifier": "app.go2tv.go2tv",
+      "confidence": "high",
+      "evidence_hash": "b2dc7ff5a8a36ca5ce951c5be6c08e5c25caafa9b583d0915ae7ba2ffdfb1088",
+      "reason": "The developer's official Fyne application manifest directly declares ID = app.go2tv.go2tv for the packaged Go2TV application.",
+      "sources": [
+        "https://github.com/alexballas/go2tv",
+        "https://github.com/alexballas/go2tv/blob/main/cmd/go2tv/FyneApp.toml"
+      ]
+    },
     "gologin": {
       "bundle_identifier": "com.gologin.desktop",
       "confidence": "medium",
@@ -3396,6 +3599,26 @@
       "sources": [
         "https://formulae.brew.sh/cask/gologin",
         "https://gologin.com/"
+      ]
+    },
+    "google-ads-editor": {
+      "bundle_identifier": "com.google.googleadseditor",
+      "confidence": "medium",
+      "evidence_hash": "250c6609eae14e621cef26179ebaec4d747b85a4d55dc6a5df46aca8e5266d3e",
+      "reason": "Homebrew's official cask maps Google Ads Editor.app to the macOS saved-state domain com.google.googleadseditor, strongly indicating the primary app's bundle identifier, though no official app manifest is published.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/google-ads-editor.json",
+        "https://support.google.com/google-ads/editor/answer/30515"
+      ]
+    },
+    "google-analytics-opt-out": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "435cb83f6f3bd9e2bb2612d6207f64f22573167a0c0146b876f943d4dd71a137",
+      "reason": "Google and Homebrew confirm the Google Analytics Opt Out.app artifact, but neither official source publishes its bundle identifier and no reliable identifier-specific metadata was found.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/google-analytics-opt-out.json",
+        "https://tools.google.com/dlpage/gaoptout"
       ]
     },
     "google-chrome": {
@@ -3438,6 +3661,56 @@
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/google-chrome@dev.rb"
       ]
     },
+    "gopanda": {
+      "bundle_identifier": "pandanet.gopanda",
+      "confidence": "medium",
+      "evidence_hash": "d0ecffb4562cb1cba820ae6d7e50841841bdf92dab1b9218ad10ee3f7dff9970",
+      "reason": "Homebrew identifies GoPanda2.app as the sole app artifact and its app-specific preference and saved-state paths consistently use pandanet.gopanda; no direct Info.plist manifest was available.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/gopanda.rb",
+        "https://pandanet-igs.com/communities/gopanda2"
+      ]
+    },
+    "gopher64": {
+      "bundle_identifier": "io.github.gopher64.gopher64",
+      "confidence": "high",
+      "evidence_hash": "2fc717b185746084e0168db06e69cdf220856720550748d03965fb294f0550fb",
+      "reason": "The official repository's macOS bundle configuration directly declares identifier = \"io.github.gopher64.gopher64\" for Gopher64.",
+      "sources": [
+        "https://github.com/gopher64/gopher64/blob/main/.github/workflows/build.yml",
+        "https://github.com/gopher64/gopher64/blob/main/Cargo.toml"
+      ]
+    },
+    "gotomeeting": {
+      "bundle_identifier": "com.logmein.GoToMeeting",
+      "confidence": "medium",
+      "evidence_hash": "5286decdd771cd3e44dcdab61e0c37c9201475a63a5d4825f6a2b11d0a44271b",
+      "reason": "Homebrew identifies GoToMeeting.app as the primary artifact, while its official-package support directories and launch-agent identifiers consistently use the com.logmein.GoToMeeting namespace; the main Info.plist was not directly available.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/gotomeeting.rb",
+        "https://support.goto.com/meeting/help/installation-tips-for-google-chrome-mac"
+      ]
+    },
+    "gplates": {
+      "bundle_identifier": "org.gplates.GPlates",
+      "confidence": "medium",
+      "evidence_hash": "59dec5721654ae82f96f2791751e8f0cae1d0e3179dd1d3da62ff1e47ea3d6d2",
+      "reason": "Homebrew identifies gplates.app as the sole app artifact and records the app-specific preference domain org.gplates.GPlates; no direct packaged Info.plist was available.",
+      "sources": [
+        "https://github.com/GPlates/GPlates",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/gplates.rb"
+      ]
+    },
+    "gram": {
+      "bundle_identifier": "se.ziran.Gram",
+      "confidence": "medium",
+      "evidence_hash": "2cbd6576d0183baa97f98af9bfd26a18dd66e121a389e777169846f55e566150",
+      "reason": "Homebrew identifies Gram.app as the primary artifact and records its app-specific preference file as se.ziran.Gram.plist; no directly accessible official app manifest confirmed the value.",
+      "sources": [
+        "https://codeberg.org/GramEditor/gram",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/gram.rb"
+      ]
+    },
     "grammarly-desktop": {
       "bundle_identifier": "com.grammarly.ProjectLlama",
       "confidence": "high",
@@ -3446,6 +3719,35 @@
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/grammarly-desktop.rb",
         "https://support.grammarly.com/hc/en-us/articles/8341875702413-How-to-deploy-Grammarly-for-Mac"
+      ]
+    },
+    "graphicconverter": {
+      "bundle_identifier": "com.lemkesoft.graphicconverter12",
+      "confidence": "high",
+      "evidence_hash": "2a4bffb50dd13bbc3336ba072578200830aaa158fa31c64196cdc5f0e0f6c5cd",
+      "reason": "The vendor\u2019s official forum identifies com.lemkesoft.graphicconverter12 as GraphicConverter 12\u2019s application-container identifier, consistent with the cask\u2019s com.lemkesoft.graphicconverter* metadata.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/graphicconverter.rb",
+        "https://www.lemkesoft.info/forum/viewtopic.php?t=7355"
+      ]
+    },
+    "grayjay": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "7f13a76f3535f9fd2f3647185bd315ce08b78df887eb33bec50a509e895ba699",
+      "reason": "The official cask and vendor repository identify Grayjay.app but do not provide sufficiently direct evidence for its macOS CFBundleIdentifier; the documented Linux application ID cannot safely be assumed to match.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/grayjay.rb",
+        "https://github.com/futo-org/Grayjay.Desktop"
+      ]
+    },
+    "greenfoot": {
+      "bundle_identifier": "org.greenfoot.Greenfoot",
+      "confidence": "high",
+      "evidence_hash": "eca3c761a9d146eaf9068f2c6956a9299a09285b5d54f9981207481d1c5da225",
+      "reason": "The Homebrew cask associates the sole primary artifact Greenfoot.app with the exact saved-application-state domain org.greenfoot.Greenfoot, which is derived from the app bundle identifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/greenfoot.rb"
       ]
     },
     "grid": {
@@ -3458,6 +3760,63 @@
         "https://macgrid.app/"
       ]
     },
+    "gyroflow": {
+      "bundle_identifier": "xyz.gyroflow",
+      "confidence": "high",
+      "evidence_hash": "bef7a80f5d76811779d092319e56affe8eb11dcf1639f028c08fe6690595395c",
+      "reason": "Gyroflow\u2019s official release workflow requests the macOS App Store provisioning profile with bundle-id xyz.gyroflow for Gyroflow.app.",
+      "sources": [
+        "https://github.com/gyroflow/gyroflow/blob/master/.github/workflows/release.yml"
+      ]
+    },
+    "gzdoom": {
+      "bundle_identifier": "org.drdteam.gzdoom",
+      "confidence": "high",
+      "evidence_hash": "8e5b1f0294cce05272baf432a6e251e68eac6f0da8cccd2e9896c180a52e40a9",
+      "reason": "The official GZDoom macOS Info.plist declares org.drdteam.gzdoom as the CFBundleIdentifier for the GZDoom application bundle.",
+      "sources": [
+        "https://github.com/ZDoom/gzdoom/blob/master/src/posix/osx/zdoom-info.plist"
+      ]
+    },
+    "halloy": {
+      "bundle_identifier": "org.squidowl.halloy",
+      "confidence": "medium",
+      "evidence_hash": "0265320abce7a4f55bd55a1936dc6326b49904819ccaf209d0507bd9380ec3f7",
+      "reason": "Homebrew associates Halloy.app with org.squidowl.halloy.savedState, strongly indicating the main app identifier, but no upstream macOS bundle manifest was available for direct confirmation.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/halloy.json",
+        "https://github.com/squidowl/halloy/blob/main/.github/workflows/release.yml"
+      ]
+    },
+    "hamrs-pro": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "237667a4d8bc7284ad2e61855623469e031e31c0a23a9f2f042aaf98a2b44ea3",
+      "reason": "Official Homebrew and vendor materials identify the HAMRS Pro app and distribution, but do not expose its macOS bundle identifier or app manifest.",
+      "sources": [
+        "https://formulae.brew.sh/cask/hamrs-pro",
+        "https://hamrs.app/announcements/2"
+      ]
+    },
+    "happ": {
+      "bundle_identifier": "com.happ",
+      "confidence": "medium",
+      "evidence_hash": "2dcd969be394da6e910a835ec0ce9944d32900d0b692b06d254db81728f6b22d",
+      "reason": "Homebrew associates Happ.app with com.happ.plist and separately identifies com.happ.happd as a launch daemon, supporting com.happ as the primary app identifier without direct manifest confirmation.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/happ.json",
+        "https://github.com/Happ-proxy/happ-desktop"
+      ]
+    },
+    "happymac": {
+      "bundle_identifier": "com.chrislaffra.osx.happymac",
+      "confidence": "high",
+      "evidence_hash": "750a6fe3fc9dec95b8fe830ae6c149d13e673ccea693a9128e25c50301da4965",
+      "reason": "The official build script assigns this exact identifier when creating and signing happymac.app.",
+      "sources": [
+        "https://github.com/laffra/happymac/blob/master/build.sh"
+      ]
+    },
     "harvest": {
       "bundle_identifier": "com.getharvest.harvestxapp",
       "confidence": "high",
@@ -3466,6 +3825,56 @@
       "sources": [
         "https://formulae.brew.sh/cask/harvest",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/h/harvest.rb"
+      ]
+    },
+    "hdfview": {
+      "bundle_identifier": "hdf.view",
+      "confidence": "medium",
+      "evidence_hash": "34585f1a83d69d815cd60af1a13f1e92d211a59dfc9b8e55641e55f7d3ca75b3",
+      "reason": "Homebrew associates HDFView.app with hdf.view.savedState, strongly indicating the main app identifier, but the upstream source does not directly publish the generated macOS Info.plist.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/hdfview.json",
+        "https://github.com/HDFGroup/hdfview"
+      ]
+    },
+    "heaven": {
+      "bundle_identifier": "com.Unigine.Heaven",
+      "confidence": "high",
+      "evidence_hash": "1004dc91ef4931cb7e348cd7ed69c1f5b979c8b782568f732b1b49baa057e17a",
+      "reason": "Homebrew identifies Heaven.app as the primary artifact and its cask metadata names com.Unigine.Heaven in the app\u2019s macOS saved-state path, which is derived from the application bundle identifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/heaven",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/h/heaven.rb"
+      ]
+    },
+    "helpwire-operator": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "5833575e67ad06a7d1438c860fc91b42fe1493b704991a2458fe5dfd6eb6a455",
+      "reason": "Official Homebrew and HelpWire sources confirm HelpWire Operator.app as the primary application but provide no convincing bundle-identifier evidence.",
+      "sources": [
+        "https://formulae.brew.sh/cask/helpwire-operator",
+        "https://kb.helpwire.app/operator-application/installation/"
+      ]
+    },
+    "hey-desktop": {
+      "bundle_identifier": "com.hey.app.desktop",
+      "confidence": "medium",
+      "evidence_hash": "5c5fae14b0b5d5799fdd1842c184cb4a726144a439cca0532d0bebe87b00f02f",
+      "reason": "Homebrew identifies HEY.app as the primary artifact and associates com.hey.app.desktop with its preferences; this strongly suggests the bundle identifier, but the official sources do not expose the app manifest directly.",
+      "sources": [
+        "https://formulae.brew.sh/cask/hey-desktop",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/h/hey-desktop.rb"
+      ]
+    },
+    "hides": {
+      "bundle_identifier": "com.sweetpproductions.Hides",
+      "confidence": "high",
+      "evidence_hash": "4e902b936d274f8326de0916ea8354b995ce7a0e85db69518c880878fa361fb4",
+      "reason": "Homebrew identifies Hides.app as the primary artifact, while the vendor\u2019s official support site identifies com.sweetpproductions.Hides as the app\u2019s sandbox container domain.",
+      "sources": [
+        "https://formulae.brew.sh/cask/hides",
+        "https://support.sweetpproductions.com/topic/858/hides-not-switching-between-apps-anymore"
       ]
     },
     "hidock": {
@@ -3488,6 +3897,16 @@
         "https://www.houdah.com/houdahSpot/"
       ]
     },
+    "hubstaff": {
+      "bundle_identifier": "com.netsoft.Hubstaff",
+      "confidence": "medium",
+      "evidence_hash": "ce32f0bec4b00a1051c8e7d9d9605c4e49929fd74721e864d201c76f70a1c18c",
+      "reason": "Homebrew identifies Hubstaff.app as the primary artifact and associates com.netsoft.Hubstaff with its preferences; this is strong but indirect evidence because no official app manifest was available.",
+      "sources": [
+        "https://formulae.brew.sh/cask/hubstaff",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/h/hubstaff.rb"
+      ]
+    },
     "hush": {
       "bundle_identifier": "se.oblador.Hush",
       "confidence": "high",
@@ -3496,6 +3915,56 @@
       "sources": [
         "https://formulae.brew.sh/cask/hush",
         "https://github.com/oblador/hush/blob/master/Hush.xcodeproj/project.pbxproj"
+      ]
+    },
+    "ibored": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "ed4b3a99b9246da931aff2a5789471c63bb9d5c11acceeeb8a3d53c10f4273aa",
+      "reason": "The official cask and vendor page identify iBored.app but provide no reliable bundle identifier; no official manifest was found.",
+      "sources": [
+        "https://apps.tempel.org/iBored/",
+        "https://formulae.brew.sh/cask/ibored"
+      ]
+    },
+    "icon-composer": {
+      "bundle_identifier": "com.apple.IconComposer",
+      "confidence": "high",
+      "evidence_hash": "fa826f6c9eacbaaefd84cab0c9e5a491845da9a66d3b4c6a9c500ff07c48cf45",
+      "reason": "The cask installs Apple\u2019s Icon Composer.app, and its primary Application Scripts container is com.apple.IconComposer; the other listed identifiers are explicitly extensions.",
+      "sources": [
+        "https://developer.apple.com/icon-composer/",
+        "https://formulae.brew.sh/api/cask/icon-composer.json"
+      ]
+    },
+    "iconjar": {
+      "bundle_identifier": "com.iconjar.iconjar",
+      "confidence": "medium",
+      "evidence_hash": "50bbfb5e3ef5f092ee0af67cdbf8533f891072728f889115c696f590e569cc19",
+      "reason": "IconJar\u2019s official support page uses com.iconjar.iconjar as the app\u2019s defaults domain, matching the cask\u2019s preference plist; no direct Info.plist declaration was available.",
+      "sources": [
+        "https://formulae.brew.sh/cask/iconjar",
+        "https://geticonjar.com/support/"
+      ]
+    },
+    "idevice-pair": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "8033ed700910a2e22d98257ccf2159bde912d4f45db8c298196aa94c33f3db97",
+      "reason": "The official build workflow writes this exact value to CFBundleIdentifier when constructing idevice_pair.app.",
+      "sources": [
+        "https://github.com/jkcoxson/idevice_pair",
+        "https://github.com/jkcoxson/idevice_pair/blob/master/.github/workflows/rust.yml"
+      ]
+    },
+    "igv-desktop": {
+      "bundle_identifier": "org.broad.igv",
+      "confidence": "medium",
+      "evidence_hash": "ac84902e010ea5454dd2e42371ff5fc26477a4e12d9572b39208727d58fb1645",
+      "reason": "The cask installs the official IGV macOS app and removes org.broad.igv.plist as its preference domain; this strongly indicates the identifier, though the accessible official packaging source did not expose a direct CFBundleIdentifier declaration.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/igv-desktop.json",
+        "https://github.com/igvteam/igv/tree/main/scripts"
       ]
     },
     "imazing": {
@@ -3847,6 +4316,16 @@
       "sources": [
         "https://formulae.brew.sh/api/cask/mailsteward.json",
         "https://formulae.brew.sh/cask/mailsteward"
+      ]
+    },
+    "mdhero": {
+      "bundle_identifier": "com.mdhero.app",
+      "confidence": "high",
+      "evidence_hash": "0560926dfb9d71bc06a1694f7517767fafa4945e574c6b984ad27070c05b5086",
+      "reason": "The official Tauri application manifest names the product MDHero and directly declares com.mdhero.app as its identifier; com.mdhero.app.quicklook belongs to the bundled Quick Look extension.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/mdhero.rb",
+        "https://github.com/vaibhav-kakde-in/mdhero/blob/main/src-tauri/tauri.conf.json"
       ]
     },
     "medibangpaintpro": {
@@ -4640,6 +5119,17 @@
       "sources": [
         "https://formulae.brew.sh/cask/stremio@beta",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/stremio@beta.rb"
+      ]
+    },
+    "surge": {
+      "bundle_identifier": "com.nssurge.surge-mac",
+      "confidence": "high",
+      "evidence_hash": "7e87fd38488f7d32a1d05f51ca887f22bf07abead10bd22ccedf0d8eb3a50768",
+      "reason": "Surge\u2019s official support material assigns the main Mac application\u2019s preferences, support data, and caches to com.nssurge.surge-mac; official-community crash metadata also reports that exact value as Surge.app\u2019s bundleID.",
+      "sources": [
+        "https://community.nssurge.com/d/3918-bug",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/surge.rb",
+        "https://kb.nssurge.com/surge-knowledge-base/faq/mac-reset"
       ]
     },
     "suspicious-package": {
