@@ -1,13 +1,13 @@
 id: cask:syncthing-app
 display-name: Syncthing for macOS
-homepage: https://syncthing.net/
-repo: https://github.com/syncthing/syncthing-macos
+repo: null
 docs:
   - https://docs.syncthing.net/
   - https://docs.syncthing.net/users/config.html
   - https://github.com/syncthing/syncthing-macos#readme
 config-file-location:
-  macos: ~/Library/Application Support/Syncthing/config.xml
+  macos:
+    - ~/Library/Application Support/Syncthing/config.xml
 credentials-file-location:
   macos:
     - ~/Library/Application Support/Syncthing/key.pem
@@ -74,10 +74,6 @@ history:
       The bundle automatically manages a local Syncthing instance. Advanced users can
       point the wrapper at another local instance, adjust process quality of service, or
       supply extra daemon arguments through macOS defaults.
-category: networking
-package-manager:
-  brew-cask: syncthing-app
-package-manager-url: https://formulae.brew.sh/cask/syncthing-app
 tags:
   - decentralized
   - file-sync
@@ -85,12 +81,44 @@ tags:
   - menu-bar
   - open-source
   - peer-to-peer
-description: Real time file synchronisation software
-applications:
-  - Syncthing.app
 provenance:
-  cask: syncthing-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - syncthing
+  category-sources:
+    - >
+      Official documentation describes continuous device-to-device file synchronization:
+      https://docs.syncthing.net/
+    - >
+      Official repository identifies the application as a native macOS bundle for
+      Syncthing: https://github.com/syncthing/syncthing-macos
+  display-name-sources:
+    - >
+      Official repository title and README use “Syncthing for macOS”:
+      https://github.com/syncthing/syncthing-macos
+    - source_facts.applications identifies the installed bundle as Syncthing.app.
+  docs-sources:
+    - Dedicated official Syncthing documentation covers the daemon and configuration.
+    - >
+      The official macOS repository README documents wrapper-specific installation,
+      preferences, and operation.
+  history-sources:
+    - https://docs.syncthing.net/
+    - https://docs.syncthing.net/users/config.html
+    - https://docs.syncthing.net/users/releases
+    - https://github.com/syncthing/syncthing-macos
+    - https://github.com/syncthing/syncthing-macos/releases
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo already contains a value; per enrichment rules it was not
+      re-determined.
+  tags-sources:
+    - 'Official Syncthing documentation: https://docs.syncthing.net/'
+    - 'Official macOS repository: https://github.com/syncthing/syncthing-macos'
+category-confidence: high
+category-path:
+  - networking
+  - file-synchronization
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
