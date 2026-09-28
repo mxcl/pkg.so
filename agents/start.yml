@@ -1,6 +1,5 @@
 id: cask:start
 display-name: START
-homepage: https://start.qq.com/
 repo: null
 docs:
   - https://start.qq.com/
@@ -54,10 +53,6 @@ history:
       Install the client, authenticate with a supported Tencent account, select an
       available title, and stream gameplay from Tencent's remote infrastructure. Service
       availability, game entitlements, and regional access are controlled by Tencent.
-category: games
-package-manager:
-  brew-cask: start
-package-manager-url: https://formulae.brew.sh/cask/start
 tags:
   - cloud-gaming
   - game-streaming
@@ -65,10 +60,42 @@ tags:
   - macos
   - remote-rendering
   - tencent
-description: Tencent cloud gaming platform
-applications:
-  - START.app
 provenance:
-  cask: start
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Tencent's official 2020 earnings presentation identifies START as a cloud-gaming
+      service that enables play on smart TVs:
+      https://www.tencent.com/attachments/toolkit/2020/4Q20_earnings_presentation.pdf
+    - source_facts.description identifies START as Tencent's cloud-gaming platform.
+  display-name-sources:
+    - >
+      The official product domain is https://start.qq.com/ and Tencent's official
+      presentation names the service START.
+    - current_curation.display-name
+  docs-sources:
+    - >
+      source_facts.homepage is the official Tencent/QQ product surface; no separate
+      end-user documentation site was identified.
+  history-sources:
+    - https://start.qq.com/
+    - https://www.tencent.com/attachments/toolkit/2020/4Q20_earnings_presentation.pdf
+    - https://www.tencent.com/en-us/articles/2200920.html
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      No official public repository for the START consumer client was identified.
+      Tencent's public cloud-gaming SDK repositories are related developer technology,
+      not the START application repository.
+  tags-sources:
+    - >
+      source_facts.description and Tencent's official earnings presentation identify
+      START as a Tencent cloud-gaming service.
+category-confidence: high
+category-path:
+  - games
+  - cloud-gaming
+display-name-confidence: high
+docs-confidence: medium
+history-confidence: medium
+repo-confidence: medium
+tags-confidence: high
