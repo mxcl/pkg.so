@@ -1,7 +1,6 @@
 id: cask:there
 display-name: There
-homepage: https://there.pm/
-repo: https://github.com/dena-sohrabi/There
+repo: null
 docs:
   - https://github.com/dena-sohrabi/There#readme
   - https://there.pm/
@@ -52,10 +51,6 @@ history:
     - >
       There runs in the menu bar, requires no account, and keeps its information on the
       user's device.
-category: productivity
-package-manager:
-  brew-cask: there
-package-manager-url: https://formulae.brew.sh/cask/there
 tags:
   - macos
   - menu-bar
@@ -64,10 +59,41 @@ tags:
   - swiftui
   - time-zones
   - world-clock
-description: Tool to display the local times of friends, teammates, cities or any time zone
-applications:
-  - There.app
 provenance:
-  cask: there
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official homepage calls There a time-zone menu-bar application: https://there.pm/'
+    - >
+      source_facts.description identifies a tool for displaying local times for people,
+      cities, and time zones.
+  display-name-sources:
+    - >
+      Official homepage and repository use “There”: https://there.pm/ and
+      https://github.com/dena-sohrabi/There
+  docs-sources:
+    - The official homepage is the primary user-facing documentation surface.
+    - >
+      The source_facts.repo repository contains the official README, installation
+      command, features, and roadmap.
+  history-sources:
+    - https://github.com/dena-sohrabi/There
+    - https://there.pm/
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/dena-sohrabi/There; under
+      the task rule, repo is returned as null without re-determination.
+  tags-sources:
+    - >
+      Official homepage documents time-zone lookup, local storage, menu-bar operation,
+      and remote-team use: https://there.pm/
+    - >
+      Official repository topics and README identify macOS, menu bar, remote work,
+      SwiftUI, and time zones: https://github.com/dena-sohrabi/There
+category-confidence: high
+category-path:
+  - productivity
+  - time-zone-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
