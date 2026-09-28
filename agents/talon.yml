@@ -1,6 +1,5 @@
 id: cask:talon
 display-name: Talon
-homepage: https://talonvoice.com/
 repo: null
 docs:
   - https://talonvoice.com/docs
@@ -8,8 +7,10 @@ docs:
   - https://talonvoice.com/docs/reference/official.html
   - https://talonvoice.com/dl/latest/changelog.html
 config-file-location:
-  unix: ~/.talon/user
-  windows: '%APPDATA%\Talon\user'
+  unix:
+    - ~/.talon/user
+  windows:
+    - '%APPDATA%\Talon\user'
 credentials-file-location: null
 history:
   adoption-history:
@@ -77,10 +78,6 @@ history:
       `.talon` and Python files. Speech, noises, or an eye tracker can be used
       independently or together to write, code, browse, play games, and control the
       pointer.
-category: productivity
-package-manager:
-  brew-cask: talon
-package-manager-url: https://formulae.brew.sh/cask/talon
 tags:
   - accessibility
   - automation
@@ -90,10 +87,37 @@ tags:
   - python
   - speech-recognition
   - voice-control
-description: Enables you to control your computer with voice, eye tracking, or noises
-applications:
-  - Talon.app
 provenance:
-  cask: talon
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Talon homepage and getting-started documentation describe hands-free
+      computer control through speech, noises, eye tracking, and custom commands.
+  display-name-sources:
+    - Input current_curation.display-name.
+    - Official homepage and documentation use the name “Talon”.
+  docs-sources:
+    - Talon maintains dedicated official documentation and a detailed official changelog.
+    - The official getting-started page documents Talon Home and user configuration paths.
+  history-sources:
+    - Input source_facts.package-manager.brew-cask.
+    - https://talonvoice.com/
+    - https://talonvoice.com/dl/latest/changelog.html
+    - https://talonvoice.com/docs/reference/guide.language.html
+    - https://talonvoice.com/docs/reference/official.html
+  repo-sources:
+    - Input source_facts.repo is empty.
+    - >
+      The official homepage and documentation do not identify a public source-control
+      repository containing the Talon application itself; linked TalonHub repositories
+      contain supporting command sets rather than the core product.
+  tags-sources:
+    - Official Talon homepage, getting-started guide, language guide, and changelog.
+category-confidence: high
+category-path:
+  - productivity
+  - accessibility
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

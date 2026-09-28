@@ -1,7 +1,6 @@
 id: cask:tad
 display-name: Tad
-homepage: https://www.tadviewer.com/
-repo: https://github.com/antonycourtney/tad
+repo: null
 docs:
   - https://github.com/antonycourtney/tad#readme
   - https://www.tadviewer.com/
@@ -50,10 +49,6 @@ history:
       Users open CSV, TSV, compressed CSV, Parquet, SQLite, or DuckDB data and
       interactively filter, sort, aggregate, pivot, format, and export it. Tad can also
       be launched from a shell with a data-file argument.
-category: data
-package-manager:
-  brew-cask: tad
-package-manager-url: https://formulae.brew.sh/cask/tad
 tags:
   - csv-viewer
   - data-analysis
@@ -63,10 +58,41 @@ tags:
   - pivot-tables
   - sqlite
   - tabular-data
-description: Desktop application for viewing and analyzing tabular data
-applications:
-  - Tad.app
 provenance:
-  cask: tad
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Tad homepage: describes Tad as a desktop application for viewing and
+      analyzing tabular data.
+    - >
+      Official repository README: documents CSV, Parquet, SQLite, DuckDB, pivoting,
+      filtering, aggregation, and sorting.
+  display-name-sources:
+    - Input current_curation.display-name.
+    - Official Tad homepage and repository use the name “Tad”.
+  docs-sources:
+    - >
+      The official homepage provides installation information, release notes, and a
+      product overview.
+    - >
+      The official repository README documents supported data sources, command-line use,
+      architecture, and source builds.
+  history-sources:
+    - Input source_facts.package-manager.brew-cask.
+    - https://github.com/antonycourtney/tad
+    - https://www.tadviewer.com/
+  repo-sources:
+    - >
+      Input source_facts.repo already specifies https://github.com/antonycourtney/tad;
+      per task rules, no replacement repository is returned.
+  tags-sources:
+    - Official Tad homepage.
+    - Official repository README and GitHub project topics.
+category-confidence: high
+category-path:
+  - data
+  - tabular-data-viewers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

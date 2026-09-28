@@ -1,14 +1,16 @@
 id: cask:tagspaces
 display-name: TagSpaces
-homepage: https://www.tagspaces.org/
-repo: https://github.com/tagspaces/tagspaces
+repo: null
 docs:
   - https://docs.tagspaces.org/
   - https://docs.tagspaces.org/installation
 config-file-location:
-  linux: ~/.config/TagSpaces
-  macos: ~/Library/Application Support/TagSpaces
-  windows: C:\Users\<username>\AppData\Roaming\TagSpaces
+  linux:
+    - ~/.config/TagSpaces
+  macos:
+    - ~/Library/Application Support/TagSpaces
+  windows:
+    - C:\Users\<username>\AppData\Roaming\TagSpaces
 credentials-file-location: null
 history:
   adoption-history:
@@ -74,10 +76,6 @@ history:
       The profile directory stores the tag library, location definitions, and
       application settings. Portable mode instead uses a `tsprofile` directory beside
       the application.
-category: productivity
-package-manager:
-  brew-cask: tagspaces
-package-manager-url: https://formulae.brew.sh/cask/tagspaces
 tags:
   - cross-platform
   - document-management
@@ -87,10 +85,35 @@ tags:
   - offline-first
   - open-source
   - tagging
-description: Offline, open-source, document manager with tagging support
-applications:
-  - TagSpaces.app
 provenance:
-  cask: tagspaces
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official TagSpaces documentation and repository describe an offline file manager,
+      document manager, note-taking tool, and tagging system.
+  display-name-sources:
+    - Input current_curation.display-name.
+    - Official website, documentation, and repository consistently use “TagSpaces”.
+  docs-sources:
+    - TagSpaces maintains a dedicated official documentation site.
+    - The official installation page documents profile locations on Windows, macOS, and Linux.
+  history-sources:
+    - Input source_facts.package-manager.brew-cask.
+    - https://docs.tagspaces.org/
+    - https://docs.tagspaces.org/installation/
+    - https://github.com/tagspaces/tagspaces
+    - https://www.tagspaces.org/about/
+  repo-sources:
+    - >
+      Input source_facts.repo already specifies https://github.com/tagspaces/tagspaces;
+      per task rules, no replacement repository is returned.
+  tags-sources:
+    - Official TagSpaces repository README, About page, and documentation.
+category-confidence: high
+category-path:
+  - productivity
+  - file-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
