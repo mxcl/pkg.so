@@ -1,6 +1,5 @@
 id: cask:usage-app
 display-name: Usage
-homepage: https://www.mediaatelier.com/Usage/
 repo: null
 docs:
   - https://www.mediaatelier.com/Usage
@@ -62,10 +61,6 @@ history:
       `~/Library/Application Support/com.mediaatelier.Usage`. This is an
       application-data directory, not a documented configuration file, so the
       config-file field remains null.
-category: productivity
-package-manager:
-  brew-cask: usage-app
-package-manager-url: https://formulae.brew.sh/cask/usage-app
 tags:
   - activity-tracking
   - application-usage
@@ -73,12 +68,44 @@ tags:
   - macos
   - productivity
   - time-tracking
-description: Tracks application usage
-applications:
-  - Usage.app
 provenance:
-  cask: usage-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - usage
+  category-sources:
+    - >
+      The official Media Atelier compatibility and migration pages identify Usage as a
+      discontinued macOS application.
+    - source_facts.description states that Usage tracks application usage.
+  display-name-sources:
+    - Official Media Atelier migration and compatibility pages use the name Usage.
+    - current_curation.display-name
+    - source_facts.applications contains Usage.app.
+  docs-sources:
+    - Media Atelier's compatibility archive documents the discontinued Usage 1.x line.
+    - Media Atelier's official migration page documents Usage data migration.
+    - The supplied official homepage is the best remaining product surface.
+  history-sources:
+    - https://www.mediaatelier.com/en-DE/Compatibility/
+    - https://www.mediaatelier.com/en/Migration/
+    - source_facts.description
+    - source_facts.homepage
+    - source_facts.package-manager.brew-cask
+  repo-sources:
+    - >
+      No qualifying official repository was found; unrelated Media Atelier repositories
+      were rejected.
+    - >
+      The official Media Atelier surfaces do not identify a public source-code
+      repository for Usage.
+  tags-sources:
+    - https://www.mediaatelier.com/en-DE/Compatibility/
+    - https://www.mediaatelier.com/en/Migration/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - time-tracking
+  - application-usage
+display-name-confidence: high
+docs-confidence: medium
+history-confidence: medium
+repo-confidence: medium
+tags-confidence: high
