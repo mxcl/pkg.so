@@ -1,12 +1,12 @@
 id: cask:stravu-crystal
 display-name: Crystal
-homepage: https://github.com/stravu/crystal
-repo: https://github.com/stravu/crystal
+repo: null
 docs:
   - https://github.com/stravu/crystal/tree/main/docs
   - https://github.com/stravu/crystal
 config-file-location:
-  unix: ~/.crystal/config.json
+  unix:
+    - ~/.crystal/config.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -58,10 +58,6 @@ history:
       Crystal expected the selected coding agent and Git to be installed separately. Its
       settings were persisted in `~/.crystal/config.json`; third-party deployment
       environment variables could be supplied through project settings.
-category: developer-tools
-package-manager:
-  brew-cask: stravu-crystal
-package-manager-url: https://formulae.brew.sh/cask/stravu-crystal
 tags:
   - ai-coding
   - claude-code
@@ -71,10 +67,31 @@ tags:
   - git-worktrees
   - openai-codex
   - parallel-development
-description: Run multiple Claude Code instances simultaneously using git worktrees
-applications:
-  - Crystal.app
 provenance:
-  cask: stravu-crystal
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official repository README: Crystal manages parallel Codex and Claude Code
+      sessions with Git-worktree isolation.
+  display-name-sources:
+    - Official repository README heading.
+    - current_curation.display-name
+  docs-sources:
+    - Official repository README and its maintained docs directory.
+  history-sources:
+    - https://github.com/stravu/crystal
+    - https://github.com/stravu/crystal/releases
+    - source_facts.package-manager
+  repo-sources:
+    - source_facts.repo is already populated, so repository enrichment is intentionally null.
+  tags-sources:
+    - Official repository README, topics, documentation, and release history.
+category-confidence: high
+category-path:
+  - developer-tools
+  - ai-development
+  - agent-orchestration
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
