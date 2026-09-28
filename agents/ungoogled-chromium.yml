@@ -1,13 +1,13 @@
 id: cask:ungoogled-chromium
 display-name: Ungoogled Chromium
-homepage: https://ungoogled-software.github.io/
-repo: https://github.com/ungoogled-software/ungoogled-chromium-macos
+repo: null
 docs:
   - https://github.com/ungoogled-software/ungoogled-chromium/blob/master/docs/flags.md
   - https://github.com/ungoogled-software/ungoogled-chromium-macos#readme
   - https://ungoogled-software.github.io/ungoogled-chromium-wiki
 config-file-location:
-  macos: ~/Library/Application Support/Chromium
+  macos:
+    - ~/Library/Application Support/Chromium
 credentials-file-location: null
 history:
   adoption-history:
@@ -77,10 +77,6 @@ history:
       On macOS, browser profile data and settings are kept under `~/Library/Application
       Support/Chromium`; the official wiki uses this location when documenting
       dictionary installation.
-category: networking
-package-manager:
-  brew-cask: ungoogled-chromium
-package-manager-url: https://formulae.brew.sh/cask/ungoogled-chromium
 tags:
   - chromium
   - cross-platform
@@ -88,12 +84,40 @@ tags:
   - open-source
   - privacy
   - web-browser
-description: Google Chromium, sans integration with Google
-applications:
-  - Chromium.app
 provenance:
-  cask: ungoogled-chromium
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - eloston-chromium
+  category-sources:
+    - https://github.com/ungoogled-software/ungoogled-chromium-macos
+    - https://ungoogled-software.github.io/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://ungoogled-software.github.io/
+    - source_facts.name
+  docs-sources:
+    - >
+      Official project wiki, official macOS packaging README, and upstream project
+      documentation.
+  history-sources:
+    - https://github.com/ungoogled-software/ungoogled-chromium
+    - https://github.com/ungoogled-software/ungoogled-chromium-macos
+    - https://ungoogled-software.github.io/
+    - source_facts.description
+    - source_facts.repo
+  repo-sources:
+    - >
+      source_facts.repo already contains
+      https://github.com/ungoogled-software/ungoogled-chromium-macos; repo is null as
+      required.
+  tags-sources:
+    - https://github.com/ungoogled-software/ungoogled-chromium
+    - https://ungoogled-software.github.io/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - web-browsers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

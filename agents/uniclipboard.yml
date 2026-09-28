@@ -1,15 +1,17 @@
 id: cask:uniclipboard
 display-name: UniClipboard
-homepage: https://www.uniclipboard.app/
-repo: https://github.com/UniClipboard/UniClipboard
+repo: null
 docs:
   - https://docs.uniclipboard.app/
   - https://docs.uniclipboard.app/getting-started/install
   - https://docs.uniclipboard.app/guides/settings
 config-file-location:
-  linux: ~/.local/share/app.uniclipboard.desktop/
-  macos: ~/Library/Application Support/app.uniclipboard.desktop/
-  windows: '%LOCALAPPDATA%\app.uniclipboard.desktop\'
+  linux:
+    - ~/.local/share/app.uniclipboard.desktop/
+  macos:
+    - ~/Library/Application Support/app.uniclipboard.desktop/
+  windows:
+    - '%LOCALAPPDATA%\app.uniclipboard.desktop\'
 credentials-file-location: null
 history:
   adoption-history:
@@ -80,10 +82,6 @@ history:
       Power users can use the `uniclip` CLI in terminals, scripts, SSH sessions, or
       headless installations. LAN-only mode disables public relay services, while the
       default transport can use direct connections and an encrypted relay fallback.
-category: productivity
-package-manager:
-  brew-cask: uniclipboard
-package-manager-url: https://formulae.brew.sh/cask/uniclipboard
 tags:
   - clipboard-manager
   - clipboard-sync
@@ -91,10 +89,36 @@ tags:
   - end-to-end-encryption
   - local-first
   - peer-to-peer
-description: Cross-device clipboard syncing tool
-applications:
-  - UniClipboard.app
 provenance:
-  cask: uniclipboard
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://docs.uniclipboard.app/
+    - https://www.uniclipboard.app/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.uniclipboard.app/
+  docs-sources:
+    - Dedicated official documentation domain linked by the official homepage.
+  history-sources:
+    - https://docs.uniclipboard.app/
+    - https://github.com/UniClipboard/UniClipboard
+    - https://www.uniclipboard.app/
+    - source_facts.description
+    - source_facts.repo
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/UniClipboard/UniClipboard;
+      repo is null as required.
+  tags-sources:
+    - https://github.com/UniClipboard/UniClipboard
+    - https://www.uniclipboard.app/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - clipboard
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
