@@ -1,7 +1,6 @@
 id: cask:ultimaker-cura
 display-name: UltiMaker Cura
-homepage: https://ultimaker.com/software/ultimaker-cura
-repo: https://github.com/Ultimaker/Cura
+repo: null
 docs:
   - https://github.com/Ultimaker/Cura/wiki
   - https://github.com/Ultimaker/Cura/wiki/Cura-Preferences-and-Settings-Locations
@@ -89,10 +88,6 @@ history:
     - >
       For troubleshooting, Cura exposes Help → Show Configuration Folder; project files
       preserve printer and slicing settings for reproducibility and support reports.
-category: developer-tools
-package-manager:
-  brew-cask: ultimaker-cura
-package-manager-url: https://formulae.brew.sh/cask/ultimaker-cura
 tags:
   - 3d-printing
   - cad-workflow
@@ -103,10 +98,40 @@ tags:
   - plugins
   - printer-profiles
   - slicer
-description: 3D printer and slicing GUI
-applications:
-  - UltiMaker Cura.app
 provenance:
-  cask: ultimaker-cura
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      source_facts.description identifies a 3D-printer slicing GUI; the official product
+      page describes preparing 3D models for printing with customizable slicing
+      settings.
+  display-name-sources:
+    - >
+      source_facts.applications lists UltiMaker Cura.app; the official source defines
+      DEFAULT_CURA_DISPLAY_NAME as UltiMaker Cura.
+  docs-sources:
+    - Official UltiMaker product documentation and the project-maintained GitHub wiki.
+    - The official wiki has a dedicated page for preferences and settings locations.
+  history-sources:
+    - https://github.com/Ultimaker/Cura
+    - https://github.com/Ultimaker/Cura/wiki/Project-Overview
+    - https://ultimaker.com/de/learn/evolution-of-3d-printing-applications/
+    - https://ultimaker.com/learn/ultimaker-cura-5-5-stable-release-notes/
+    - https://ultimaker.com/software/ultimaker-cura/
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/Ultimaker/Cura; per the
+      input rule, the repository is returned as null and is not re-determined.
+  tags-sources:
+    - >
+      Official product and repository pages describe Cura as an open-source 3D-printing
+      slicer with printer and material profiles, plugins, G-code generation, and
+      Windows, macOS, and Linux builds.
+category-confidence: high
+category-path:
+  - developer-tools
+  - 3d-printing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
