@@ -1,12 +1,12 @@
 id: cask:geany
 display-name: Geany
-homepage: https://www.geany.org/
 repo: https://github.com/geany/geany
 docs:
   - https://www.geany.org/manual/current
   - https://wiki.geany.org/howtos
 config-file-location:
-  unix: ~/.config/geany/geany.conf
+  unix:
+    - ~/.config/geany/geany.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -73,10 +73,6 @@ history:
       is useful for isolated or portable setups. User preferences normally live in
       `geany.conf`, with related snippets, templates, themes, tags, and filetype
       overrides under the same configuration directory.
-category: developer-tools
-package-manager:
-  brew-cask: geany
-package-manager-url: https://formulae.brew.sh/cask/geany
 tags:
   - code-editor
   - cross-platform
@@ -86,10 +82,33 @@ tags:
   - scintilla
   - syntax-highlighting
   - text-editor
-description: Small and lightweight IDE
-applications:
-  - Geany.app
 provenance:
-  cask: geany
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official manual and repository describe Geany as a fast, lightweight integrated
+      development environment.
+  display-name-sources:
+    - Official manual title and repository README.
+    - source_facts.applications
+  docs-sources:
+    - Official Geany manual and project wiki.
+  history-sources:
+    - https://github.com/geany/geany#readme
+    - https://github.com/geany/geany/blob/master/doc/geany.txt
+    - https://github.com/geany/geany/releases
+  repo-sources:
+    - Official Geany homepage directs contributors to https://github.com/geany/geany/.
+    - >
+      The repository is owned by the official Geany GitHub organization and identifies
+      itself as the Geany source project.
+  tags-sources:
+    - Official manual feature list, official repository description, and repository topics.
+category-confidence: high
+category-path:
+  - developer-tools
+  - ide
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
