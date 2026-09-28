@@ -1,12 +1,12 @@
 id: cask:twine-app
 display-name: Twine
-homepage: https://twinery.org/
-repo: https://github.com/klembot/twinejs
+repo: null
 docs:
   - https://twinery.org/cookbook
   - https://twinery.org/reference/en
 config-file-location:
-  macos: ~/Library/Application Support/Twine/prefs.json
+  macos:
+    - ~/Library/Application Support/Twine/prefs.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -67,10 +67,6 @@ history:
       `~/Library/Application Support/Twine`; the same directory is the default macOS
       story-library location. No service account or credentials file is required for
       local authoring.
-category: productivity
-package-manager:
-  brew-cask: twine-app
-package-manager-url: https://formulae.brew.sh/cask/twine-app
 tags:
   - html-export
   - interactive-fiction
@@ -78,12 +74,37 @@ tags:
   - open-source
   - story-editor
   - writing
-description: Tool for telling interactive, nonlinear stories
-applications:
-  - Twine.app
 provenance:
-  cask: twine-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - twine
+  category-sources:
+    - https://twinery.org/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://twinery.org/
+  docs-sources:
+    - >
+      The official Twine site identifies the Twine Reference as its user-interface guide
+      and the Twine Cookbook as its source of workflow examples.
+  history-sources:
+    - https://github.com/klembot/twinejs
+    - https://twinery.org/
+    - https://twinery.org/reference/en/
+    - https://twinery.org/reference/en/release-notes/2-3.html
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/klembot/twinejs; repository
+      determination was skipped as required.
+  tags-sources:
+    - https://twinery.org/
+    - https://twinery.org/reference/en/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - writing
+  - interactive-fiction
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
