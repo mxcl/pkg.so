@@ -1,13 +1,13 @@
 id: cask:uninstallpkg
 display-name: UninstallPKG
-homepage: https://www.corecode.io/uninstallpkg/
 repo: null
 docs:
   - https://www.corecode.io/uninstallpkg/faq.html
   - https://www.corecode.io/uninstallpkg/history.html
   - https://www.corecode.io/uninstallpkg/readme.html
 config-file-location:
-  macos: ~/Library/Preferences/com.corecode.UninstallPKG.plist
+  macos:
+    - ~/Library/Preferences/com.corecode.UninstallPKG.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -69,10 +69,6 @@ history:
     - >
       The official documentation warns users to remove only packages whose purpose they
       understand, since non-packaged software can depend on files recorded by a package.
-category: system
-package-manager:
-  brew-cask: uninstallpkg
-package-manager-url: https://formulae.brew.sh/cask/uninstallpkg
 tags:
   - macos
   - package-receipts
@@ -80,10 +76,34 @@ tags:
   - software-removal
   - system-cleanup
   - uninstaller
-description: PKG software package uninstall tool
-applications:
-  - UninstallPKG.app
 provenance:
-  cask: uninstallpkg
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official readme: https://www.corecode.io/uninstallpkg/readme.html describes
+      removing macOS PKG receipts and installed contents.
+  display-name-sources:
+    - 'Official product readme: https://www.corecode.io/uninstallpkg/readme.html'
+    - source_facts.applications
+  docs-sources:
+    - Official CoreCode readme, FAQ, and version-history pages linked from the product site.
+  history-sources:
+    - https://www.corecode.io/uninstallpkg/faq.html
+    - https://www.corecode.io/uninstallpkg/history.html
+    - https://www.corecode.io/uninstallpkg/readme.html
+  repo-sources:
+    - >
+      source_facts.repo is empty; the official CoreCode product and documentation pages
+      do not identify an official public source repository.
+  tags-sources:
+    - 'Official FAQ: https://www.corecode.io/uninstallpkg/faq.html'
+    - 'Official readme: https://www.corecode.io/uninstallpkg/readme.html'
+category-confidence: high
+category-path:
+  - system
+  - package-management
+  - uninstallers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
