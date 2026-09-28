@@ -1,12 +1,12 @@
 id: cask:spires
 display-name: spires.app
-homepage: https://member.ipmu.jp/yuji.tachikawa/spires/
 repo: https://github.com/yujitach/inspire
 docs:
   - https://member.ipmu.jp/yuji.tachikawa/spires
   - https://member.ipmu.jp/yuji.tachikawa/spires/Release%20Notes.html
 config-file-location:
-  macos: ~/Library/Application Support/spires/
+  macos:
+    - ~/Library/Application Support/spires/
 credentials-file-location: null
 history:
   adoption-history:
@@ -83,10 +83,6 @@ history:
       The PDF directory is chosen in Preferences; without a choice, the desktop is used.
       The local database is stored under `~/Library/Application Support/spires/`, which
       the official FAQ recommends including in backups.
-category: science
-package-manager:
-  brew-cask: spires
-package-manager-url: https://formulae.brew.sh/cask/spires
 tags:
   - arxiv
   - bibliography
@@ -96,10 +92,46 @@ tags:
   - paper-management
   - physics
   - research
-description: Frontend for inspire-hep and arxiv
-applications:
-  - spires.app
 provenance:
-  cask: spires
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://member.ipmu.jp/yuji.tachikawa/spires/ — official page describes an INSPIRE
+      HEP/arXiv research-paper and bibliography tool.
+    - source_facts.description
+  display-name-sources:
+    - https://member.ipmu.jp/yuji.tachikawa/spires/ — official heading and FAQ use spires.app.
+    - source_facts.applications
+  docs-sources:
+    - >
+      https://member.ipmu.jp/yuji.tachikawa/spires/ — official setup, usage, query
+      syntax, BibTeX watcher, FAQ, and privacy documentation.
+    - >
+      https://member.ipmu.jp/yuji.tachikawa/spires/Release%20Notes.html — official
+      release history.
+  history-sources:
+    - https://github.com/yujitach/inspire
+    - https://member.ipmu.jp/yuji.tachikawa/spires/
+    - https://member.ipmu.jp/yuji.tachikawa/spires/Release%20Notes.html
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      https://github.com/yujitach/inspire — official shared source repository for
+      spires.app and inspire.app.
+    - >
+      https://member.ipmu.jp/yuji.tachikawa/spires/ — official project page links its
+      source code on GitHub.
+  tags-sources:
+    - >
+      https://member.ipmu.jp/yuji.tachikawa/spires/ — official feature, query,
+      data-source, and BibTeX watcher documentation.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - science
+  - research-tools
+  - bibliography
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,13 +1,13 @@
 id: cask:splice
 display-name: Splice
-homepage: https://splice.com/
 repo: null
 docs:
   - https://support.splice.com/en/articles/8652657-how-do-i-install-the-splice-desktop-app
   - https://support.splice.com/en/articles/8652662-where-is-my-splice-folder
 config-file-location: null
 credentials-file-location:
-  macos: ~/Library/Application Support/com.splice.Splice/.certs
+  macos:
+    - ~/Library/Application Support/com.splice.Splice/.certs
 history:
   adoption-history:
     - >
@@ -95,10 +95,6 @@ history:
       macOS Application Support directory as certificate material recreated after
       account sign-in. No official stable path for a discrete configuration file was
       found.
-category: media
-package-manager:
-  brew-cask: splice
-package-manager-url: https://formulae.brew.sh/cask/splice
 tags:
   - audio
   - daw
@@ -107,10 +103,49 @@ tags:
   - presets
   - samples
   - sound-library
-description: Browse and preview sounds from Splice’s entire catalog
-applications:
-  - Splice.app
 provenance:
-  cask: splice
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://splice.com/ — official site describes a sample library, plugins, and
+      music-creation tools.
+    - >
+      https://support.splice.com/en/articles/8652657-how-do-i-install-the-splice-desktop-app
+      — official documentation describes DAW, sample, and plugin workflows.
+  display-name-sources:
+    - https://splice.com/ — official product and company site.
+    - source_facts.applications
+  docs-sources:
+    - https://splice.com/blog/get-started-with-splice/ — official end-to-end usage guide.
+    - >
+      https://support.splice.com/en/articles/8652657-how-do-i-install-the-splice-desktop-app
+      — official installation and feature guide.
+    - >
+      https://support.splice.com/en/articles/8652662-where-is-my-splice-folder —
+      official local-library documentation.
+  history-sources:
+    - https://splice.com/blog/desktop-update-june-2023/
+    - https://splice.com/blog/hello-world-this-is-splice/
+    - https://splice.com/blog/studio-shutdown/
+    - https://splice.com/blog/the-all-new-splice-desktop-app/
+    - https://support.splice.com/en/articles/8652657-how-do-i-install-the-splice-desktop-app
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      https://splice.com/ — official proprietary service site; no official public
+      repository for the desktop client is documented.
+  tags-sources:
+    - https://splice.com/ — official catalog and product descriptions.
+    - >
+      https://support.splice.com/en/articles/8652657-how-do-i-install-the-splice-desktop-app
+      — official desktop feature description.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - audio
+  - music-production
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
