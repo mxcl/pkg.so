@@ -1,21 +1,26 @@
 id: cask:terax
 display-name: Terax
-homepage: https://terax.app/
-repo: https://github.com/crynta/terax-ai
+repo: null
 docs:
   - https://terax.app/docs
   - https://terax.app/docs/ai/providers
   - https://terax.app/docs/reference/data
 config-file-location:
-  linux: ~/.local/share/app.crynta.terax/terax-settings.json
-  macos: ~/Library/Application Support/app.crynta.terax/terax-settings.json
-  windows: '%APPDATA%\app.crynta.terax\terax-settings.json'
+  linux:
+    - ~/.local/share/app.crynta.terax/terax-settings.json
+  macos:
+    - ~/Library/Application Support/app.crynta.terax/terax-settings.json
+  windows:
+    - '%APPDATA%\app.crynta.terax\terax-settings.json'
 credentials-file-location:
-  linux: >
-    Secret Service/libsecret where available; a file-based fallback may be used in
-    headless environments
-  macos: macOS Keychain service `terax-ai`
-  windows: Windows Credential Manager target `terax-ai`
+  linux:
+    - >
+      Secret Service/libsecret where available; a file-based fallback may be used in
+      headless environments
+  macos:
+    - macOS Keychain service `terax-ai`
+  windows:
+    - Windows Credential Manager target `terax-ai`
 history:
   adoption-history:
     - >
@@ -74,10 +79,6 @@ history:
       Git staging and commits, previewing local web applications, and AI-assisted work.
       Cloud AI uses user-supplied API keys stored in the operating-system credential
       store; local inference can use LM Studio, MLX, or Ollama.
-category: developer-tools
-package-manager:
-  brew-cask: terax
-package-manager-url: https://formulae.brew.sh/cask/terax
 tags:
   - ai
   - byok
@@ -90,10 +91,37 @@ tags:
   - source-control
   - tauri
   - terminal
-description: Terminal-first AI-native developer workspace
-applications:
-  - Terax.app
 provenance:
-  cask: terax
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://terax.app/docs describes its terminal, editor, source control, file
+      explorer, web preview, and AI tooling.
+    - source_facts.description calls Terax a terminal-first AI-native developer workspace.
+  display-name-sources:
+    - https://terax.app/docs and the official repository use the Terax name.
+    - source_facts.applications lists Terax.app.
+  docs-sources:
+    - The official data-locations and providers pages document configuration and key storage.
+    - The official repository links https://terax.app/docs as Docs.
+  history-sources:
+    - https://github.com/crynta/terax-ai
+    - https://terax.app/docs
+    - https://terax.app/docs/ai/providers
+    - https://terax.app/docs/reference/data
+  repo-sources:
+    - >
+      source_facts.repo already contains a repository URL; per the requested rule, repo
+      is returned as null without re-evaluating it.
+  tags-sources:
+    - https://github.com/crynta/terax-ai
+    - https://terax.app/docs
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - development-environment
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
