@@ -1,12 +1,12 @@
 id: cask:support
 display-name: Support App
-homepage: https://github.com/root3nl/SupportApp
-repo: https://github.com/root3nl/SupportApp
+repo: null
 docs:
   - https://github.com/root3nl/SupportApp/wiki
   - https://github.com/root3nl/SupportApp/wiki/Configuration
 config-file-location:
-  macos: /Library/Preferences/nl.root3.support.plist
+  macos:
+    - /Library/Preferences/nl.root3.support.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -65,10 +65,6 @@ history:
       /Library/Preferences/nl.root3.support.plist. No application credentials file is
       required or documented; external integrations may have their own independently
       managed credentials.
-category: system
-package-manager:
-  brew-cask: support
-package-manager-url: https://formulae.brew.sh/cask/support
 tags:
   - device-management
   - diagnostics
@@ -77,10 +73,40 @@ tags:
   - menu-bar
   - self-service
   - system-information
-description: Menu bar app for user and help desk support
-applications:
-  - Support.app
 provenance:
-  cask: support
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official wiki describes a macOS menu-bar application for organizational user
+      support, diagnostics, resources, and device-management deployment:
+      https://github.com/root3nl/SupportApp/wiki
+  display-name-sources:
+    - >
+      Official repository and wiki consistently use “Support App”:
+      https://github.com/root3nl/SupportApp
+    - source_facts.homepage
+  docs-sources:
+    - Official configuration reference in the repository wiki.
+    - Official repository wiki.
+  history-sources:
+    - https://github.com/root3nl/SupportApp/wiki
+    - https://github.com/root3nl/SupportApp/wiki/Configuration
+    - https://github.com/root3nl/SupportApp/wiki/Extensions
+    - source_facts.repo
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/root3nl/SupportApp; per the
+      input rule, repo is returned as null without re-determination.
+  tags-sources:
+    - >
+      Official configuration reference:
+      https://github.com/root3nl/SupportApp/wiki/Configuration
+    - 'Official feature and deployment descriptions: https://github.com/root3nl/SupportApp/wiki'
+category-confidence: high
+category-path:
+  - system
+  - device-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
