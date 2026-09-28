@@ -1,14 +1,16 @@
 id: cask:gephi
 display-name: Gephi
-homepage: https://gephi.org/
-repo: https://github.com/gephi/gephi
+repo: null
 docs:
   - https://docs.gephi.org/desktop
   - https://gephi.org/developers
 config-file-location:
-  linux: <Gephi installation directory>/etc/gephi.conf
-  macos: /Applications/Gephi.app/Contents/Resources/gephi/etc/gephi.conf
-  windows: C:\Program Files\Gephi\etc\gephi.conf
+  linux:
+    - <Gephi installation directory>/etc/gephi.conf
+  macos:
+    - /Applications/Gephi.app/Contents/Resources/gephi/etc/gephi.conf
+  windows:
+    - C:\Program Files\Gephi\etc\gephi.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -56,10 +58,6 @@ history:
       inspect data interactively, and export visualizations. Developers can extend the
       desktop application with plugins or use Gephi Toolkit to automate graph-processing
       tasks.
-category: data
-package-manager:
-  brew-cask: gephi
-package-manager-url: https://formulae.brew.sh/cask/gephi
 tags:
   - data-analysis
   - desktop
@@ -67,10 +65,38 @@ tags:
   - graphs
   - network-analysis
   - open-source
-description: Open-source platform for visualizing and manipulating large graphs
-applications:
-  - Gephi.app
 provenance:
-  cask: gephi
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://gephi.org/ — official site describes Gephi as a platform for visualizing
+      and manipulating large graphs.
+    - source_facts.description
+  display-name-sources:
+    - https://gephi.org/
+    - source_facts.applications
+  docs-sources:
+    - https://docs.gephi.org/ — official documentation portal.
+    - https://gephi.org/developers/ — official development and API documentation.
+  history-sources:
+    - https://docs.gephi.org/desktop/
+    - https://gephi.org/
+    - https://gephi.org/developers/
+    - https://github.com/gephi/gephi#readme
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per instructions, the repository was not
+      re-determined.
+  tags-sources:
+    - https://gephi.org/
+    - https://github.com/gephi/gephi#readme
+    - source_facts.description
+category-confidence: high
+category-path:
+  - data
+  - visualization
+  - graph-analysis
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
