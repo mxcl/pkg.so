@@ -1,7 +1,6 @@
 id: cask:timemachinestatus
 display-name: TimeMachineStatus
-homepage: https://github.com/lukepistrol/TimeMachineStatus
-repo: https://github.com/lukepistrol/TimeMachineStatus
+repo: null
 docs:
   - https://github.com/lukepistrol/TimeMachineStatus#readme
   - https://github.com/lukepistrol/TimeMachineStatus/releases
@@ -54,10 +53,6 @@ history:
       destinations, start a backup for a selected volume, and customize the status item.
       On supported releases, the user explicitly grants access to the Time Machine
       preferences file when prompted.
-category: system
-package-manager:
-  brew-cask: timemachinestatus
-package-manager-url: https://formulae.brew.sh/cask/timemachinestatus
 tags:
   - backup
   - macos
@@ -66,10 +61,39 @@ tags:
   - swift
   - swiftui
   - time-machine
-description: Menu bar app to show Time Machine information
-applications:
-  - TimeMachineStatus.app
 provenance:
-  cask: timemachinestatus
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - The official README calls it a status-bar application for Time Machine backups.
+    - >
+      `source_facts.description` says the application shows Time Machine information in
+      the menu bar.
+  display-name-sources:
+    - Official repository and application README consistently use “TimeMachineStatus.”
+    - `current_curation.display-name`
+  docs-sources:
+    - >
+      The official repository README is the primary usage and installation guide;
+      official releases document behavioral and permission changes.
+  history-sources:
+    - Input `source_facts.description` and `source_facts.package-manager`.
+    - https://github.com/lukepistrol/TimeMachineStatus
+    - https://github.com/lukepistrol/TimeMachineStatus/releases
+  repo-sources:
+    - >
+      `source_facts.repo` already contains
+      `https://github.com/lukepistrol/TimeMachineStatus`; repository discovery was
+      therefore skipped and `repo` is null as required.
+  tags-sources:
+    - >
+      Official repository README, feature list, and repository topics;
+      `source_facts.description`.
+category-confidence: high
+category-path:
+  - system
+  - backup
+  - monitoring
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

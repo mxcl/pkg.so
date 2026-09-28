@@ -1,7 +1,6 @@
 id: cask:timelane
 display-name: Timelane
-homepage: https://github.com/icanzilb/Timelane
-repo: https://github.com/icanzilb/Timelane
+repo: null
 docs:
   - https://github.com/icanzilb/Timelane#readme
   - https://timelane.tools/
@@ -51,10 +50,6 @@ history:
       Developers install Timelane.app, use it to install the Timelane Instrument, add
       the appropriate companion instrumentation to their code, and inspect asynchronous
       activity in Apple Instruments.
-category: developer-tools
-package-manager:
-  brew-cask: timelane
-package-manager-url: https://formulae.brew.sh/cask/timelane
 tags:
   - asynchronous
   - debugging
@@ -63,10 +58,38 @@ tags:
   - macos
   - profiling
   - swift
-description: Profiler for asynchronous code
-applications:
-  - Timelane.app
 provenance:
-  cask: timelane
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official README describes an Instruments-based workflow for profiling
+      asynchronous code.
+    - `source_facts.description` identifies Timelane as a profiler for asynchronous code.
+  display-name-sources:
+    - 'Official repository heading: “The Timelane App.”'
+    - `current_curation.display-name`
+  docs-sources:
+    - >
+      The official repository directs users to timelane.tools for profiling instructions
+      and provides installation instructions in its README.
+  history-sources:
+    - Input `source_facts.description` and `source_facts.package-manager`.
+    - https://github.com/icanzilb/Timelane
+    - https://github.com/icanzilb/Timelane/releases
+    - https://timelane.tools/
+  repo-sources:
+    - >
+      `source_facts.repo` already contains `https://github.com/icanzilb/Timelane`;
+      repository discovery was therefore skipped and `repo` is null as required.
+  tags-sources:
+    - Official Timelane README and repository contents.
+    - `source_facts.description`
+category-confidence: high
+category-path:
+  - developer-tools
+  - profiling
+  - asynchronous-code
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
