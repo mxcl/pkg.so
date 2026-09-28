@@ -1,6 +1,5 @@
 id: cask:trivial
 display-name: Trivial
-homepage: https://www.decisivetactics.com/products/trivial/
 repo: null
 docs:
   - https://www.decisivetactics.com/products/trivial
@@ -53,10 +52,6 @@ history:
       transfer protocols. Typical uses include serving firmware or configuration files,
       receiving uploads from network equipment, running a temporary local web server,
       and enabling continuous background service when required.
-category: networking
-package-manager:
-  brew-cask: trivial
-package-manager-url: https://formulae.brew.sh/cask/trivial
 tags:
   - file-server
   - file-transfer
@@ -66,10 +61,36 @@ tags:
   - https
   - macos
   - tftp
-description: Simple file transfer server supporting many protocols
-applications:
-  - Trivial.app
 provenance:
-  cask: trivial
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://www.decisivetactics.com/products/trivial/ documents TFTP, FTP, FTPS, HTTP,
+      and HTTPS server support.
+    - source_facts.description identifies a multiprotocol file-transfer server.
+  display-name-sources:
+    - https://www.decisivetactics.com/products/trivial/ uses the Trivial product name.
+    - source_facts.applications lists Trivial.app.
+  docs-sources:
+    - >
+      The official product page is the principal usage overview; official release notes
+      provide compatibility and maintenance history.
+  history-sources:
+    - https://www.decisivetactics.com/products/trivial/
+    - https://www.decisivetactics.com/products/trivial/release-notes
+  repo-sources:
+    - >
+      Decisive Tactics' official product and release-note pages do not identify a public
+      source-control repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://www.decisivetactics.com/products/trivial/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - file-transfer-servers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
