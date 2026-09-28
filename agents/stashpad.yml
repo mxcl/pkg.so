@@ -1,7 +1,6 @@
 id: cask:stashpad
 display-name: Stashpad
-homepage: https://www.stashpad.com/
-repo: https://github.com/stashpad/sp-desktop-release
+repo: null
 docs:
   - https://github.com/stashpad/sp-desktop-release#readme
   - https://www.stashpad.com/
@@ -41,20 +40,48 @@ history:
       Users install the desktop application to capture and collaborate on notes.
       Detailed current workflows are not documented in the sparse official release
       repository.
-category: productivity
-package-manager:
-  brew-cask: stashpad
-package-manager-url: https://formulae.brew.sh/cask/stashpad
 tags:
   - collaboration
   - desktop-app
   - note-taking
   - notes
   - productivity
-description: Notes app for collaborative work
-applications:
-  - Stashpad.app
 provenance:
-  cask: stashpad
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Stashpad organization repository describes its desktop repository as
+      public releases: https://github.com/stashpad/sp-desktop-release
+    - 'source_facts.description: Notes app for collaborative work'
+  display-name-sources:
+    - >
+      Official repository README heading: Stashpad:
+      https://github.com/stashpad/sp-desktop-release#readme
+    - 'source_facts.applications: Stashpad.app'
+  docs-sources:
+    - >
+      The official Stashpad GitHub organization hosts the desktop application's
+      public-release repository, but its README contains little usage documentation.
+    - source_facts.homepage identifies the official Stashpad site.
+  history-sources:
+    - 'Official desktop release repository: https://github.com/stashpad/sp-desktop-release'
+    - source_facts.description
+    - source_facts.homepage
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/stashpad/sp-desktop-release; repository enrichment was
+      intentionally skipped as required.
+  tags-sources:
+    - >
+      Official Stashpad desktop release repository:
+      https://github.com/stashpad/sp-desktop-release
+    - 'source_facts.description: Notes app for collaborative work'
+category-confidence: high
+category-path:
+  - productivity
+  - note-taking
+display-name-confidence: high
+docs-confidence: medium
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

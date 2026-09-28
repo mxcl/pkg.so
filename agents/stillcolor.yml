@@ -1,7 +1,6 @@
 id: cask:stillcolor
 display-name: Stillcolor
-homepage: https://github.com/aiaf/Stillcolor
-repo: https://github.com/aiaf/Stillcolor
+repo: null
 docs:
   - https://github.com/aiaf/Stillcolor#readme
   - https://github.com/aiaf/Stillcolor/releases
@@ -51,10 +50,6 @@ history:
       control. Because the system resets the setting at restart, the README recommends
       enabling launch at login. Users can verify the state with `ioreg -lw0 | grep -i
       enableDither` and re-enable dithering from the menu-bar control.
-category: system
-package-manager:
-  brew-cask: stillcolor
-package-manager-url: https://formulae.brew.sh/cask/stillcolor
 tags:
   - apple-silicon
   - display
@@ -64,10 +59,39 @@ tags:
   - menu-bar
   - open-source
   - temporal-dithering
-description: Tool to disable temporal dithering on Apple Silicon Macs
-applications:
-  - Stillcolor.app
 provenance:
-  cask: stillcolor
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README describes Stillcolor as a lightweight macOS menu-bar utility that
+      disables GPU/DCP-generated temporal dithering on Apple Silicon Macs:
+      https://github.com/aiaf/Stillcolor#readme
+    - 'source_facts.description: Tool to disable temporal dithering on Apple Silicon Macs'
+  display-name-sources:
+    - 'Official README heading: Stillcolor for macOS: https://github.com/aiaf/Stillcolor#readme'
+    - 'source_facts.applications: Stillcolor.app'
+  docs-sources:
+    - The official releases page provides release history and notes.
+    - >
+      The official repository README is the primary installation, usage, verification,
+      requirements, caveats, and roadmap document.
+  history-sources:
+    - 'Official releases: https://github.com/aiaf/Stillcolor/releases'
+    - 'Official repository and README: https://github.com/aiaf/Stillcolor'
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/aiaf/Stillcolor;
+      repository enrichment was intentionally skipped as required.
+  tags-sources:
+    - >
+      Official README and repository topics identify Apple Silicon, macOS, displays,
+      dithering, and the menu-bar utility workflow:
+      https://github.com/aiaf/Stillcolor#readme
+category-confidence: high
+category-path:
+  - system
+  - display-utilities
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
