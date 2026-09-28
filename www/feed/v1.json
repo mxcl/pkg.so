@@ -108,12 +108,12 @@
         "brew:sofka"
       ],
       "fallbackPackageIDs": [
+        "brew:cask:highball",
         "brew:sofka",
         "brew:cask:hol-guard",
         "brew:ratex",
         "brew:cask:opendisk",
         "brew:cask:look",
-        "brew:cask:highball",
         "brew:workmux",
         "brew:ccmux",
         "brew:cask:zentty",
@@ -140,18 +140,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:mindroom",
+        "brew:cask:highball",
+        "brew:cask:mdhero",
+        "brew:kubectl-radar",
+        "brew:vortix",
         "brew:sofka",
         "brew:cask:deviceshelf",
-        "brew:cask:mindroom",
         "brew:cask:gloomberb",
         "brew:cask:hol-guard",
         "brew:ratex",
         "brew:cask:look",
-        "brew:cask:opendisk",
-        "brew:cask:highball",
-        "brew:cask:tapmap",
-        "brew:ccmux",
-        "brew:workmux"
+        "brew:cask:opendisk"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -159,18 +159,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:mindroom",
+        "brew:cask:highball",
+        "brew:cask:mdhero",
+        "brew:kubectl-radar",
+        "brew:vortix",
         "brew:sofka",
         "brew:cask:deviceshelf",
         "brew:cask:activitywatch",
         "brew:cask:trilium-notes",
-        "brew:cask:mindroom",
         "brew:cask:gloomberb",
         "brew:cask:hol-guard",
-        "brew:ratex",
-        "brew:cask:look",
-        "brew:cask:opendisk",
-        "brew:cask:highball",
-        "brew:cask:tapmap"
+        "brew:ratex"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -815,7 +815,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-27T08:26:25Z",
+  "generatedAt": "2026-09-28T07:35:24Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1294,37 +1294,36 @@
       "version": "0.15.2"
     },
     "brew:cask:highball": {
-      "agentSummary": "Highball configures Wine-based Windows gaming on Apple Silicon, selecting renderers from an open compatibility database while exposing engines, recipes, and command-line controls.",
+      "agentSummary": "Highball runs Windows games on Apple Silicon through managed Wine-based engines, pairing launcher automation with an open compatibility database and per-game renderer guidance.",
       "assessment": {
         "alternatives": [
-          "CrossOver",
-          "Whisky",
-          "A Windows gaming PC or cloud-gaming service"
+          "CrossOver for a paid, supported Wine-based product",
+          "Game-specific native Mac ports",
+          "A Windows PC or game-streaming service"
         ],
         "audiences": [
-          "Apple Silicon Mac owners who want to test Windows games",
-          "Technical users who value open recipes and compatibility evidence"
+          "Apple Silicon Mac owners evaluating Windows games",
+          "Wine users who value inspectable engine builds and compatibility evidence"
         ],
         "caveats": [
-          "Highball is beta software and game compatibility varies by title, renderer, hardware, and macOS version",
-          "Kernel-level anti-cheat can make some games impossible to run through Wine",
-          "Initial engine and launcher setup downloads substantial data and can take many minutes",
-          "D3DMetal requires separately accepting Apple's Game Porting Toolkit license"
+          "The project labels itself beta and game compatibility varies by launcher, anti-cheat, renderer, hardware, and macOS version",
+          "Initial engine and launcher setup can download substantial data and take significant time",
+          "Compatibility predictions and community reports are useful evidence, not guarantees for a particular machine"
         ],
         "complements": [
-          "Steam or Epic game libraries",
           "Highball's open compatibility database",
-          "CrossOver when commercial support and broader compatibility are needed"
+          "Steam and Epic libraries",
+          "Upstream Wine, DXMT, DXVK, and MoltenVK projects"
         ],
         "prerequisites": [
-          "An Apple Silicon Mac running macOS 14 or later",
+          "Apple Silicon Mac running macOS 14 or later",
           "Rosetta 2 when prompted",
-          "Legitimate access to the Windows games and launchers being used"
+          "Licenses and accounts for the games and launchers being used"
         ],
         "useCases": [
-          "Creating Wine environments for Steam, Epic, or standalone Windows programs",
-          "Choosing a renderer using per-game compatibility reports",
-          "Managing engines and game environments through either the native app or CLI"
+          "Creating managed Windows gaming environments on macOS",
+          "Launching Steam, Epic, and supported Windows programs",
+          "Checking renderer and compatibility evidence before large downloads"
         ]
       },
       "category": "games",
@@ -1333,29 +1332,29 @@
       "homepage": "https://github.com/gauthierpiarrette/highball",
       "id": "brew:cask:highball",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahighball",
-      "lastUpdatedAt": "2026-09-22T19:06:46Z",
+      "lastUpdatedAt": "2026-09-27T21:54:55Z",
       "manager": "homebrew",
       "repository": "https://github.com/gauthierpiarrette/highball",
-      "researchedAt": "2026-09-23T12:18:07Z",
+      "researchedAt": "2026-09-28T07:35:24Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Highball upstream repository and compatibility guidance",
+          "title": "Highball upstream documentation",
           "url": "https://github.com/gauthierpiarrette/highball"
         },
         {
           "kind": "primary",
-          "title": "Highball v0.1.0 initial prerelease",
-          "url": "https://github.com/gauthierpiarrette/highball/releases/tag/v0.1.0"
+          "title": "Highball open compatibility database",
+          "url": "https://gethighball.com/database/"
         },
         {
-          "kind": "independent",
-          "title": "Homebrew cask listing for Highball",
-          "url": "https://formulae.brew.sh/cask/highball"
+          "kind": "primary",
+          "title": "Highball v0.1.0 first build",
+          "url": "https://github.com/gauthierpiarrette/highball/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Tool to run Windows games",
-      "version": "0.9.35"
+      "version": "0.9.39"
     },
     "brew:cask:hol-guard": {
       "agentSummary": "HOL Guard inspects supported AI-agent actions, package installs, plugins, and MCP traffic locally, applying policy gates while preserving approvals and decision receipts.",
@@ -1471,32 +1470,99 @@
       "upstreamSummary": "Keyboard-first local launcher",
       "version": "0.7.1"
     },
-    "brew:cask:mindroom": {
-      "agentSummary": "MindRoom connects self-hosted AI agents to Matrix rooms, enabling multi-user orchestration with configurable models and tools while retaining operational control over deployment.",
+    "brew:cask:mdhero": {
+      "agentSummary": "MDHero is a compact cross-platform Markdown reader and editor with tabs, live file reload, diagrams, math, syntax highlighting, navigation, and offline local-file workflows.",
       "assessment": {
         "alternatives": [
-          "OpenClaw for a more personal-assistant-oriented workflow",
-          "Hermes Agent for another self-hosted assistant stack"
+          "A code editor with Markdown preview",
+          "MarkText or Typora",
+          "Repository-hosted rendering such as GitHub's Markdown view"
         ],
         "audiences": [
-          "Teams and households coordinating multiple AI agents through Matrix",
-          "Operators who prefer self-hosted or hybrid AI infrastructure"
+          "Developers, writers, and researchers who regularly read local Markdown",
+          "Users wanting a rendered document view without uploading files to a web service"
         ],
         "caveats": [
-          "Self-hosting adds Matrix, model, tool, credential, and sandbox administration",
-          "Bridge reliability and privacy depend on each connected messaging platform"
+          "It is a lightweight editor rather than a complete documentation IDE or publishing system",
+          "Opening remote URLs necessarily retrieves content from the network",
+          "Mermaid and rich rendering should not replace review of untrusted document content"
+        ],
+        "complements": [
+          "A full code editor for larger documentation changes",
+          "Git for versioning Markdown sources",
+          "Native print-to-PDF workflows"
+        ],
+        "prerequisites": [
+          "A supported macOS, Windows, or Linux system",
+          "Network access only when opening a public URL rather than a local file"
+        ],
+        "useCases": [
+          "Reading and lightly editing local Markdown files",
+          "Rendering pasted model output, Mermaid diagrams, math, and highlighted code",
+          "Following externally edited documents through live reload"
+        ]
+      },
+      "category": "productivity",
+      "displayName": "MDHero",
+      "docs": "https://github.com/vaibhav-kakde-in/mdhero#readme",
+      "homepage": "https://mdhero.app/",
+      "id": "brew:cask:mdhero",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amdhero",
+      "lastUpdatedAt": "2026-09-27T19:36:11Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/vaibhav-kakde-in/mdhero",
+      "researchedAt": "2026-09-28T07:35:24Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "MDHero upstream feature and privacy documentation",
+          "url": "https://github.com/vaibhav-kakde-in/mdhero"
+        },
+        {
+          "kind": "primary",
+          "title": "MDHero project website",
+          "url": "https://mdhero.app/"
+        },
+        {
+          "kind": "primary",
+          "title": "MDHero v0.1.0 initial release",
+          "url": "https://github.com/vaibhav-kakde-in/mdhero/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "Markdown viewer and editor",
+      "version": "0.2.10"
+    },
+    "brew:cask:mindroom": {
+      "agentSummary": "MindRoom hosts persistent multi-agent teams on Matrix, combining configurable models, memory, tools, scheduling, knowledge bases, and bridged chat access in a self-hostable runtime.",
+      "assessment": {
+        "alternatives": [
+          "OpenClaw for a personal-first chat assistant",
+          "Hermes Agent for another self-hosted assistant architecture",
+          "Single-agent provider applications when multi-user orchestration is unnecessary"
+        ],
+        "audiences": [
+          "Teams and individuals who want multiple AI agents available through shared chat rooms",
+          "Self-hosters willing to operate Matrix-connected services and model credentials"
+        ],
+        "caveats": [
+          "Cloud models and external tools can receive conversation context or data according to their own policies",
+          "Self-hosting Matrix, credentials, bridges, and execution workers adds meaningful operational responsibility",
+          "Powerful tool integrations require careful approval, secret-isolation, and room-access policies"
         ],
         "complements": [
           "Matrix clients and bridges",
-          "Ollama or supported hosted model providers"
+          "Ollama or llama.cpp for local model routing",
+          "Container workers for isolated code execution"
         ],
         "prerequisites": [
-          "A Matrix deployment or a hosted Matrix account",
-          "Model-provider credentials or a configured local model runtime"
+          "A supported model provider or local model endpoint",
+          "Hosted or self-managed Matrix access",
+          "Python 3.12 and uv for source-based deployments"
         ],
         "useCases": [
-          "Route different rooms or agents to local and cloud models",
-          "Expose tool-using agents through Matrix clients and bridges"
+          "Coordinating specialist agents in threaded Matrix conversations",
+          "Connecting governed tools, scheduled tasks, and local knowledge bases to chat agents",
+          "Keeping one agent identity and memory across Matrix bridges"
         ]
       },
       "category": "ai",
@@ -1505,24 +1571,29 @@
       "homepage": "https://github.com/mindroom-ai/mindroom",
       "id": "brew:cask:mindroom",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amindroom",
-      "lastUpdatedAt": "2026-09-25T04:13:35Z",
+      "lastUpdatedAt": "2026-09-28T04:18:50Z",
       "manager": "homebrew",
       "repository": "https://github.com/mindroom-ai/mindroom",
-      "researchedAt": "2026-09-25T11:08:58Z",
+      "researchedAt": "2026-09-28T07:35:24Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "MindRoom repository and overview",
+          "title": "MindRoom upstream repository and architecture overview",
           "url": "https://github.com/mindroom-ai/mindroom"
         },
         {
           "kind": "primary",
-          "title": "MindRoom documentation",
-          "url": "https://docs.mindroom.chat/"
+          "title": "MindRoom getting-started guide",
+          "url": "https://docs.mindroom.chat/getting-started/"
+        },
+        {
+          "kind": "primary",
+          "title": "MindRoom initial public GitHub release",
+          "url": "https://github.com/mindroom-ai/mindroom/releases/tag/v2026.9.250"
         }
       ],
       "upstreamSummary": "Self-hostable AI stack for multi-user, multi-agent workflows on Matrix",
-      "version": "2026.9.300"
+      "version": "2026.9.330"
     },
     "brew:cask:monet": {
       "agentSummary": "Monet provides a native macOS control room for browsing, searching, launching, and supervising concurrent Claude Code and Codex sessions across projects.",
@@ -2713,6 +2784,69 @@
       "upstreamSummary": "Web search and scraping for agents",
       "version": "0.17.0"
     },
+    "brew:kubectl-radar": {
+      "agentSummary": "Radar provides a local Kubernetes web interface for topology, resources, events, Helm, GitOps, traffic, audits, upgrades, and RBAC-aware MCP access from one binary.",
+      "assessment": {
+        "alternatives": [
+          "Headlamp or Kubernetes Dashboard",
+          "k9s for a terminal interface",
+          "kubectl plus purpose-built observability tools"
+        ],
+        "audiences": [
+          "Kubernetes operators who want a broad local diagnostic interface",
+          "Teams connecting AI clients to cluster context through constrained MCP tools"
+        ],
+        "caveats": [
+          "Its MCP server includes optional write operations, so client confirmation and Kubernetes RBAC remain critical safeguards",
+          "A local dashboard does not replace production monitoring, alerting, backups, or change controls",
+          "Shared in-cluster deployment expands the authentication and network-exposure surface compared with local use"
+        ],
+        "complements": [
+          "kubectl and existing kubeconfig contexts",
+          "Helm and GitOps controllers",
+          "MCP-compatible assistants for guided investigation"
+        ],
+        "prerequisites": [
+          "A reachable conformant Kubernetes cluster and kubeconfig",
+          "Kubernetes RBAC permissions appropriate to the intended views and actions",
+          "Explicit authentication and exposure planning for shared in-cluster deployments"
+        ],
+        "useCases": [
+          "Exploring topology, health, events, logs, traffic, Helm, and GitOps state",
+          "Auditing cluster configuration and checking upgrade impact",
+          "Providing token-reduced, RBAC-aware Kubernetes context to MCP clients"
+        ]
+      },
+      "category": "cloud-infrastructure",
+      "displayName": "kubectl-radar",
+      "docs": "https://radarhq.io/docs",
+      "homepage": "https://radarhq.io",
+      "id": "brew:kubectl-radar",
+      "installURL": "pkgmgrmgr://install?package=brew%3Akubectl-radar",
+      "lastUpdatedAt": "2026-09-27T19:26:44Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/skyhook-io/radar",
+      "researchedAt": "2026-09-28T07:35:24Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Radar upstream repository and operating model",
+          "url": "https://github.com/skyhook-io/radar"
+        },
+        {
+          "kind": "primary",
+          "title": "Radar MCP security and integration guide",
+          "url": "https://radarhq.io/docs/mcp"
+        },
+        {
+          "kind": "primary",
+          "title": "Radar v0.9.5 initial public release",
+          "url": "https://github.com/skyhook-io/radar/releases/tag/v0.9.5"
+        }
+      ],
+      "upstreamSummary": "Missing open-source Kubernetes UI with a built-in MCP server for AI agents",
+      "version": "1.15.0"
+    },
     "brew:linecast": {
       "agentSummary": "Turns public weather, tide, solar, lunar, radar, and mapping data into interactive terminal views, with static and machine-readable output and no required account.",
       "assessment": {
@@ -3799,6 +3933,69 @@
       "upstreamSummary": "Terminal UI for SQL databases",
       "version": null
     },
+    "brew:vortix": {
+      "agentSummary": "Vortix gives WireGuard and OpenVPN users one terminal interface for multiple tunnels, live telemetry, exposure checks, kill-switch control, diagnostics, and automation-friendly output.",
+      "assessment": {
+        "alternatives": [
+          "wg-quick and openvpn directly",
+          "A VPN provider's desktop client",
+          "NetworkManager or another system-integrated connection manager"
+        ],
+        "audiences": [
+          "WireGuard and OpenVPN users who prefer keyboard-driven network control",
+          "Administrators troubleshooting tunnels locally or over SSH"
+        ],
+        "caveats": [
+          "Vortix orchestrates system VPN tools and does not implement either VPN protocol itself",
+          "Privileged route, DNS, and firewall changes deserve careful review, especially on remote systems",
+          "Telemetry and exposure checks cannot guarantee that every application follows the intended route"
+        ],
+        "complements": [
+          "Existing WireGuard and OpenVPN configurations",
+          "SSH-based server administration",
+          "Shell monitoring built around JSON or NDJSON output"
+        ],
+        "prerequisites": [
+          "WireGuard tools and OpenVPN installed on macOS or Linux",
+          "Root privileges for tunnel, route, DNS, firewall, and kill-switch changes",
+          "Valid VPN profiles and credentials from the relevant network provider"
+        ],
+        "useCases": [
+          "Importing and controlling several VPN profiles",
+          "Monitoring latency, loss, throughput, DNS policy, and public network identity",
+          "Automating tunnel checks through versioned JSON and stable exit codes"
+        ]
+      },
+      "category": "networking",
+      "displayName": "vortix",
+      "docs": "https://github.com/Harry-kp/vortix/blob/main/docs/configuration.md",
+      "homepage": "https://github.com/Harry-kp/vortix",
+      "id": "brew:vortix",
+      "installURL": "pkgmgrmgr://install?package=brew%3Avortix",
+      "lastUpdatedAt": "2026-09-27T13:40:21Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/Harry-kp/vortix",
+      "researchedAt": "2026-09-28T07:35:24Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Vortix upstream documentation and security model",
+          "url": "https://github.com/Harry-kp/vortix"
+        },
+        {
+          "kind": "primary",
+          "title": "Vortix configuration guide",
+          "url": "https://github.com/Harry-kp/vortix/blob/main/docs/configuration.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Vortix v0.1.0 initial release",
+          "url": "https://github.com/Harry-kp/vortix/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "Terminal UI for WireGuard and OpenVPN with live telemetry and leak guarding",
+      "version": "0.5.2"
+    },
     "brew:workmux": {
       "agentSummary": "workmux pairs Git worktrees with terminal windows, automating isolated task setup, agent status, review, merging, and cleanup while preserving familiar multiplexer workflows.",
       "assessment": {
@@ -3865,7 +4062,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-27T08:24:58Z",
+    "generatedAt": "2026-09-28T07:33:56Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
