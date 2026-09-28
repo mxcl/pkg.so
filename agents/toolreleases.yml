@@ -1,7 +1,6 @@
 id: cask:toolreleases
 display-name: ToolReleases
-homepage: https://github.com/DeveloperMaris/ToolReleases
-repo: https://github.com/DeveloperMaris/ToolReleases
+repo: null
 docs:
   - https://github.com/DeveloperMaris/ToolReleases#readme
 config-file-location: null
@@ -42,10 +41,6 @@ history:
       The application refreshes Apple's public feed in the background, lists recent
       releases in the macOS status bar, provides keyword search, and raises local
       notifications or a status-icon badge when releases appear.
-category: developer-tools
-package-manager:
-  brew-cask: toolreleases
-package-manager-url: https://formulae.brew.sh/cask/toolreleases
 tags:
   - apple-developer-tools
   - macos
@@ -53,10 +48,31 @@ tags:
   - notifications
   - release-monitoring
   - swift
-description: Utility to notify about the latest Apple tool releases (including Beta releases)
-applications:
-  - ToolReleases.app
 provenance:
-  cask: toolreleases
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      source_facts.description and the official repository describe notifications for
+      Apple tool releases, including beta releases.
+  display-name-sources:
+    - current_curation.display-name; official repository README.
+  docs-sources:
+    - The official repository README is the project's principal documentation surface.
+  history-sources:
+    - 'Official releases: https://github.com/DeveloperMaris/ToolReleases/releases'
+    - 'Official repository and README: https://github.com/DeveloperMaris/ToolReleases'
+    - source_facts.description; source_facts.repo; source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/DeveloperMaris/ToolReleases,
+      so repo is returned as null without re-evaluation, as required.
+  tags-sources:
+    - source_facts.description; official repository README.
+category-confidence: high
+category-path:
+  - developer-tools
+  - release-monitoring
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

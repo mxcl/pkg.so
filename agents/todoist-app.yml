@@ -1,6 +1,5 @@
 id: cask:todoist-app
 display-name: Todoist
-homepage: https://todoist.com/home
 repo: null
 docs:
   - https://www.todoist.com/help
@@ -47,10 +46,6 @@ history:
     - >
       People use Todoist to capture tasks, organize them into projects, assign dates and
       priorities, and collaborate across synchronized web, desktop, and mobile clients.
-category: productivity
-package-manager:
-  brew-cask: todoist-app
-package-manager-url: https://formulae.brew.sh/cask/todoist-app
 tags:
   - collaboration
   - macos
@@ -58,12 +53,34 @@ tags:
   - project-management
   - tasks
   - todo-list
-description: To-do list
-applications:
-  - Todoist.app
 provenance:
-  cask: todoist-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - todoist
+  category-sources:
+    - >
+      source_facts.description says "To-do list"; Todoist's official site describes a
+      task-management tool.
+  display-name-sources:
+    - current_curation.display-name; official Todoist site and Help Center.
+  docs-sources:
+    - Official Todoist Help Center.
+  history-sources:
+    - 'Official About page: https://www.todoist.com/about-us'
+    - 'Official Help Center: https://www.todoist.com/help'
+    - >
+      Official macOS uninstall article:
+      https://www.todoist.com/help/todoist/troubleshooting/uninstall-todoist-for-macos-lbRQFrz5Y
+    - source_facts.description; source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is empty; Todoist's official product and help surfaces do not
+      identify an official public repository for the macOS client.
+  tags-sources:
+    - source_facts.description; official Todoist site and Help Center.
+category-confidence: high
+category-path:
+  - productivity
+  - task-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
