@@ -1,7 +1,6 @@
 id: cask:twake
 display-name: Twake Desktop
-homepage: https://twake.app/
-repo: https://github.com/cozy-labs/cozy-desktop
+repo: null
 docs:
   - https://docs.cozy.io/en/cozy-desktop/usage/limitations
   - https://github.com/cozy-labs/cozy-desktop#readme
@@ -58,10 +57,6 @@ history:
       folder, and optionally exclude server folders through selective synchronization.
       The client then propagates file changes between the local folder, other
       synchronized devices, and Twake Drive.
-category: productivity
-package-manager:
-  brew-cask: twake
-package-manager-url: https://formulae.brew.sh/cask/twake
 tags:
   - cloud-storage
   - desktop-client
@@ -69,12 +64,41 @@ tags:
   - offline-files
   - open-source
   - twake-drive
-description: File synchronisation for Twake Workplace
-applications:
-  - Twake Desktop.app
 provenance:
-  cask: twake
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - cozy-drive
+  category-sources:
+    - 'Official repository README: https://github.com/cozy-labs/cozy-desktop'
+    - >
+      source_facts.description identifies this cask as the file-synchronization client
+      for Twake Workplace.
+  display-name-sources:
+    - 'Official repository README: https://github.com/cozy-labs/cozy-desktop'
+    - current_curation.display-name
+    - source_facts.applications
+  docs-sources:
+    - >
+      Official Twake help articles cover installation and selective synchronization; the
+      project-owned developer documentation covers client limitations, and the official
+      repository README describes the application.
+  history-sources:
+    - https://docs.cozy.io/en/cozy-desktop/usage/limitations/
+    - https://github.com/cozy-labs/cozy-desktop
+    - https://support.twake.app/533-how-to-use-the-selective-sync/
+    - https://support.twake.app/synchronize-your-computer-and-or-smartphone-with-your-cozy/
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/cozy-labs/cozy-desktop; per
+      the task rule, the repository was not re-determined and repo is returned as null.
+  tags-sources:
+    - >
+      Official repository README and Twake support documentation:
+      https://github.com/cozy-labs/cozy-desktop and https://support.twake.app/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - file-synchronization
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
