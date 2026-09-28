@@ -1,15 +1,16 @@
 id: cask:transmit
 display-name: Transmit
-homepage: https://panic.com/transmit/
 repo: null
 docs:
   - https://help.panic.com/transmit/transmit5
   - https://help.panic.com/transmit/transmit5/preferences
   - https://help.panic.com/transmit/transmit5/servers
 config-file-location:
-  macos: ~/.ssh/config
+  macos:
+    - ~/.ssh/config
 credentials-file-location:
-  macos: ~/.ssh/
+  macos:
+    - ~/.ssh/
 history:
   adoption-history:
     - >
@@ -72,10 +73,6 @@ history:
       For SFTP, Transmit can automatically use keys in `~/.ssh/` and settings from
       `~/.ssh/config`. The official settings documentation also exposes key management
       and protocol-specific transfer controls.
-category: networking
-package-manager:
-  brew-cask: transmit
-package-manager-url: https://formulae.brew.sh/cask/transmit
 tags:
   - cloud-storage
   - file-sync
@@ -86,10 +83,37 @@ tags:
   - sftp
   - ssh
   - webdav
-description: File transfer application
-applications:
-  - Transmit.app
 provenance:
-  cask: transmit
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Panic describes Transmit as a macOS application for uploading, downloading,
+      synchronizing, and managing files across servers and cloud services:
+      https://panic.com/transmit/
+  display-name-sources:
+    - 'Official Panic product and help pages use the name Transmit: https://panic.com/transmit/'
+  docs-sources:
+    - Dedicated official Panic help center for Transmit 5.
+  history-sources:
+    - Homebrew cask identity supplied by `source_facts.package-manager`.
+    - 'Official 2014 Panic account of the transfer engine: https://panic.com/blog/page/11/'
+    - 'Official 2017 Panic report: https://blog.panic.com/the-2017-panic-report/'
+    - 'Official help center: https://help.panic.com/transmit/transmit5/'
+    - 'Official product page: https://panic.com/transmit/'
+  repo-sources:
+    - >
+      `source_facts.repo` is empty. Transmit is a proprietary Panic product, and its
+      official product and help pages do not publish a source repository:
+      https://panic.com/transmit/
+  tags-sources:
+    - 'Official Transmit product capabilities: https://panic.com/transmit/'
+    - 'Official settings documentation: https://help.panic.com/transmit/transmit5/preferences/'
+category-confidence: high
+category-path:
+  - networking
+  - file-transfer
+  - clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
