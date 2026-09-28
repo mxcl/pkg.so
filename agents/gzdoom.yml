@@ -1,11 +1,11 @@
 id: cask:gzdoom
 display-name: GZDoom
-homepage: https://github.com/ZDoom/gzdoom
-repo: https://github.com/ZDoom/gzdoom
+repo: null
 docs:
   - https://zdoom.org/wiki/GZDoom
 config-file-location:
-  macos: ~/Library/Preferences/gzdoom.ini
+  macos:
+    - ~/Library/Preferences/gzdoom.ini
 credentials-file-location: null
 history:
   adoption-history:
@@ -68,10 +68,6 @@ history:
     - >
       Mod authors use ZScript, ACS, DECORATE-compatible content, custom assets, models,
       dynamic lights, and other engine extensions documented by the ZDoom Wiki.
-category: games
-package-manager:
-  brew-cask: gzdoom
-package-manager-url: https://formulae.brew.sh/cask/gzdoom
 tags:
   - doom
   - game-engine
@@ -81,10 +77,40 @@ tags:
   - source-port
   - zdoom
   - zscript
-description: Adds an OpenGL renderer to the ZDoom source port
-applications:
-  - GZDoom.app
 provenance:
-  cask: gzdoom
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official ZDoom Wiki identifies GZDoom as a 3D-accelerated Doom source port
+      based on ZDoom: https://zdoom.org/wiki/GZDoom
+    - source_facts.description
+  display-name-sources:
+    - >
+      Official project wiki and repository: https://zdoom.org/wiki/GZDoom and
+      https://github.com/ZDoom/gzdoom
+    - current_curation.display-name
+  docs-sources:
+    - >
+      Official ZDoom Wiki project page, which links into engine, modding, ZScript, ACS,
+      and feature documentation.
+  history-sources:
+    - https://github.com/ZDoom/gzdoom
+    - >
+      https://github.com/ZDoom/gzdoom/blob/master/src/common/platform/posix/osx/i_specialpaths.mm
+    - https://zdoom.org/wiki/GZDoom
+    - source_facts.package-manager.brew-cask
+  repo-sources:
+    - >
+      source_facts.repo already supplies the official repository; per instructions it
+      was not re-determined.
+  tags-sources:
+    - 'Official GZDoom wiki feature and history page: https://zdoom.org/wiki/GZDoom'
+category-confidence: high
+category-path:
+  - games
+  - game-engine
+  - source-port
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

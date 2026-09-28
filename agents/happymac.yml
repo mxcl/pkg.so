@@ -1,7 +1,6 @@
 id: cask:happymac
 display-name: HappyMac
-homepage: https://github.com/laffra/happymac
-repo: https://github.com/laffra/happymac
+repo: null
 docs:
   - https://github.com/laffra/happymac#readme
 config-file-location: null
@@ -55,10 +54,6 @@ history:
       Users can manually suspend or resume processes. HappyMac also remembers suspension
       choices and resumes a process family when its application becomes active;
       suspending another user's process may require administrator authorization.
-category: system
-package-manager:
-  brew-cask: happymac
-package-manager-url: https://formulae.brew.sh/cask/happymac
 tags:
   - background-processes
   - battery-life
@@ -67,10 +62,34 @@ tags:
   - menu-bar
   - process-manager
   - python
-description: Watches, suspends and resumes background processes that slow down your system
-applications:
-  - happymac.app
 provenance:
-  cask: happymac
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official README describes HappyMac as a macOS status-bar application that
+      monitors, suspends, and resumes background processes:
+      https://github.com/laffra/happymac#readme
+    - source_facts.description
+  display-name-sources:
+    - 'Official repository README: https://github.com/laffra/happymac#readme'
+    - current_curation.display-name
+  docs-sources:
+    - The official repository README is the project's primary documentation surface.
+  history-sources:
+    - https://github.com/laffra/happymac
+    - source_facts.package-manager.brew-cask
+    - source_facts.repo
+  repo-sources:
+    - >
+      source_facts.repo already supplies the official repository; per instructions it
+      was not re-determined.
+  tags-sources:
+    - 'Official repository README: https://github.com/laffra/happymac#readme'
+category-confidence: high
+category-path:
+  - system
+  - process-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
