@@ -1,7 +1,6 @@
 id: cask:ipfs-desktop
 display-name: IPFS Desktop
-homepage: https://github.com/ipfs/ipfs-desktop
-repo: https://github.com/ipfs/ipfs-desktop
+repo: null
 docs:
   - https://docs.ipfs.tech/install/ipfs-desktop
   - https://github.com/ipfs/ipfs-desktop#readme
@@ -73,10 +72,6 @@ history:
       Existing Kubo users can use the application as a control panel for a selected
       repository. The application checks IPFS_PATH first and otherwise uses the
       conventional ~/.ipfs repository on Unix-like systems.
-category: networking
-package-manager:
-  brew-cask: ipfs-desktop
-package-manager-url: https://formulae.brew.sh/cask/ipfs-desktop
 tags:
   - content-addressing
   - desktop-app
@@ -86,12 +81,41 @@ tags:
   - ipfs
   - kubo
   - peer-to-peer
-description: Menu bar application for the IPFS peer-to-peer network
-applications:
-  - IPFS Desktop.app
 provenance:
-  cask: ipfs-desktop
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - ipfs
+  category-sources:
+    - >
+      The official README describes a desktop application containing a complete IPFS
+      node, peer map, content explorer, and IPFS file manager:
+      https://github.com/ipfs/ipfs-desktop#readme
+  display-name-sources:
+    - >
+      Official IPFS documentation and the official repository consistently use “IPFS
+      Desktop”: https://docs.ipfs.tech/install/ipfs-desktop/
+  docs-sources:
+    - >
+      The dedicated IPFS documentation domain provides the official installation guide;
+      the official README contains feature, configuration, and troubleshooting
+      documentation.
+  history-sources:
+    - 'Official 0.9 announcement: https://blog.ipfs.tech/2019-09-19-ipfs-desktop-0-9/'
+    - 'Official README: https://github.com/ipfs/ipfs-desktop#readme'
+    - 'Official installation guide: https://docs.ipfs.tech/install/ipfs-desktop/'
+    - 'Official releases: https://github.com/ipfs/ipfs-desktop/releases'
+  repo-sources:
+    - >
+      Repository determination intentionally skipped because source_facts.repo is
+      already populated with https://github.com/ipfs/ipfs-desktop.
+  tags-sources:
+    - >
+      The official README identifies IPFS Desktop as an Electron desktop bundle
+      containing Kubo and IPFS Web UI, with content, file, peer, and protocol-management
+      features.
+category-confidence: high
+category-path:
+  - networking
+  - peer-to-peer
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

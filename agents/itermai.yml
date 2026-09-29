@@ -1,13 +1,13 @@
 id: cask:itermai
 display-name: iTerm2 AI Plugin
-homepage: https://iterm2.com/ai-plugin.html
 repo: https://github.com/gnachman/iTerm2
 docs:
   - https://iterm2.com/documentation-ai-chat.html
   - https://iterm2.com/ai-plugin.html
 config-file-location: null
 credentials-file-location:
-  macos: macOS Keychain
+  macos:
+    - macOS Keychain
 history:
   adoption-history:
     - >
@@ -66,10 +66,6 @@ history:
       orchestration. Permissions separately govern reading terminal state and contents,
       running commands, controlling sessions, and writing to the clipboard or
       filesystem.
-category: ai
-package-manager:
-  brew-cask: itermai
-package-manager-url: https://formulae.brew.sh/cask/itermai
 tags:
   - ai-chat
   - developer-tools
@@ -79,10 +75,38 @@ tags:
   - macos
   - plugin
   - terminal
-description: Enable generative AI features in iTerm2
-applications:
-  - iTermAI.app
 provenance:
-  cask: itermai
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official plug-in page says the component enables generative-AI features in
+      iTerm2, while the AI Chat documentation describes terminal-aware chat and
+      controlled actions: https://iterm2.com/ai-plugin.html and
+      https://iterm2.com/documentation-ai-chat.html
+  display-name-sources:
+    - 'Official download page heading: https://iterm2.com/ai-plugin.html'
+  docs-sources:
+    - >
+      The official AI Chat manual is the feature documentation; the official plug-in
+      page documents the component's security purpose and installation.
+  history-sources:
+    - 'Official AI Chat documentation: https://iterm2.com/documentation-ai-chat.html'
+    - 'Official iTerm2 release notes: https://iterm2.com/downloads.html'
+    - 'Official plug-in page: https://iterm2.com/ai-plugin.html'
+    - 'Official source directory: https://github.com/gnachman/iTerm2/tree/master/iTermAI'
+  repo-sources:
+    - >
+      The official iTerm2 repository contains the iTermAI source directory:
+      https://github.com/gnachman/iTerm2/tree/master/iTermAI
+  tags-sources:
+    - >
+      Official plug-in and AI Chat documentation describe an iTerm2 macOS plug-in for
+      generative AI, language-model chat, and terminal-aware developer workflows.
+category-confidence: high
+category-path:
+  - ai
+  - terminal-assistants
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
