@@ -108,8 +108,8 @@
         "brew:sofka"
       ],
       "fallbackPackageIDs": [
-        "brew:cask:highball",
         "brew:sofka",
+        "brew:cask:highball",
         "brew:cask:hol-guard",
         "brew:ratex",
         "brew:cask:opendisk",
@@ -140,12 +140,12 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:sofka",
         "brew:cask:mindroom",
         "brew:cask:highball",
         "brew:cask:mdhero",
         "brew:kubectl-radar",
         "brew:vortix",
-        "brew:sofka",
         "brew:cask:deviceshelf",
         "brew:cask:gloomberb",
         "brew:cask:hol-guard",
@@ -159,12 +159,12 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:sofka",
         "brew:cask:mindroom",
         "brew:cask:highball",
         "brew:cask:mdhero",
         "brew:kubectl-radar",
         "brew:vortix",
-        "brew:sofka",
         "brew:cask:deviceshelf",
         "brew:cask:activitywatch",
         "brew:cask:trilium-notes",
@@ -815,7 +815,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-28T07:35:24Z",
+  "generatedAt": "2026-09-29T07:55:31Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -3695,33 +3695,31 @@
       "version": "2.7.5"
     },
     "brew:sofka": {
-      "agentSummary": "Sofka is an async Rust Kubernetes TUI with resource browsing, GitOps controls, incident explanations, bulk actions, port forwarding, and configurable production guardrails.",
+      "agentSummary": "sofka is an async Rust Kubernetes TUI with custom-resource browsing, GitOps actions, diagnostic views, guardrails, port-forward management, and configurable cluster-aware workflows.",
       "assessment": {
         "alternatives": [
           "k9s",
-          "kubectl with separate observability tools"
+          "kubectl with dashboard and log-viewing tools"
         ],
         "audiences": [
-          "Kubernetes operators who prefer a terminal interface",
-          "Platform teams using Flux CD or Argo CD"
+          "Kubernetes cluster operators",
+          "Platform engineers managing GitOps workloads"
         ],
         "caveats": [
-          "Write mode can mutate or delete cluster resources; use read-only mode and production guardrails deliberately",
-          "The project is young and its interface and configuration may continue changing quickly",
-          "Upstream notes that downloaded macOS binaries are not yet signed or notarized"
+          "The project is young and its interface and workflows may change rapidly",
+          "Upstream notes that release binaries are not yet signed or notarized on macOS"
         ],
         "complements": [
-          "kubectl for scripts and commands outside the TUI",
-          "Flux CD or Argo CD installations for the integrated GitOps views"
+          "kubectl for scripting and exact API operations",
+          "Flux CD, Argo CD, and Helm-managed clusters"
         ],
         "prerequisites": [
-          "A reachable Kubernetes cluster and valid kubeconfig credentials",
-          "A terminal suitable for an interactive TUI"
+          "A working kubeconfig and appropriate cluster RBAC permissions",
+          "A terminal environment on macOS or Linux"
         ],
         "useCases": [
-          "Browse built-in and custom Kubernetes resources",
-          "Inspect incidents, events, logs, and state changes",
-          "Manage GitOps resources, port forwards, and guarded bulk actions"
+          "Browsing built-in and custom Kubernetes resources from a terminal",
+          "Diagnosing unhealthy workloads and operating Flux or Argo CD resources"
         ]
       },
       "category": "cloud-infrastructure",
@@ -3730,24 +3728,24 @@
       "homepage": "https://github.com/nklmilojevic/sofka",
       "id": "brew:sofka",
       "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
-      "lastUpdatedAt": "2026-09-26T16:17:04Z",
+      "lastUpdatedAt": "2026-09-29T02:06:21Z",
       "manager": "homebrew",
       "repository": "https://github.com/nklmilojevic/sofka",
-      "researchedAt": "2026-09-27T08:26:25Z",
+      "researchedAt": "2026-09-29T07:55:31Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Sofka upstream repository and documentation",
+          "title": "sofka project repository and documentation",
           "url": "https://github.com/nklmilojevic/sofka"
         },
         {
           "kind": "primary",
-          "title": "Sofka earliest public release",
-          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.2"
+          "title": "sofka v0.1.3 first release",
+          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.3"
         }
       ],
       "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
-      "version": "0.29.3"
+      "version": "0.29.4"
     },
     "brew:tailcat": {
       "agentSummary": "Tailcat creates encrypted, netcat-like peer connections through Tailscale's userspace WireGuard, NAT traversal, and DERP components, without accounts, routes, or a control plane.",
@@ -4062,7 +4060,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-28T07:33:56Z",
+    "generatedAt": "2026-09-29T07:53:58Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
