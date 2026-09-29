@@ -1,15 +1,17 @@
 id: cask:zoo-design-studio
 display-name: Zoo Design Studio
-homepage: https://zoo.dev/design-studio
 repo: https://github.com/KittyCAD/modeling-app
 docs:
   - https://docs.zoo.dev/docs/zoo-design-studio
   - https://docs.zoo.dev/docs/zoo-design-studio/features/workspace/settings
   - https://docs.zoo.dev/docs/zoo-design-studio/getting-started
 config-file-location:
-  linux: <project-directory>/project.toml
-  macos: <project-directory>/project.toml
-  windows: <project-directory>\project.toml
+  linux:
+    - <project-directory>/project.toml
+  macos:
+    - <project-directory>/project.toml
+  windows:
+    - <project-directory>\project.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -78,10 +80,6 @@ history:
       Project-scoped preferences are stored in project.toml; the settings documentation
       also identifies a separate user.toml for account-wide preferences but does not
       document its filesystem path.
-category: developer-tools
-package-manager:
-  brew-cask: zoo-design-studio
-package-manager-url: https://formulae.brew.sh/cask/zoo-design-studio
 tags:
   - 3d-modeling
   - ai
@@ -91,10 +89,39 @@ tags:
   - kcl
   - parametric-modeling
   - text-to-cad
-description: Professional CAD platform enhanced with ML through Text-to-CAD
-applications:
-  - Zoo Design Studio.app
 provenance:
-  cask: zoo-design-studio
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official product documentation describes a unified CAD suite for creating and
+      editing 3D parts and assemblies: https://docs.zoo.dev/docs/zoo-design-studio
+    - source_facts.description identifies a CAD platform with Text-to-CAD capabilities.
+  display-name-sources:
+    - 'Official product documentation: https://docs.zoo.dev/docs/zoo-design-studio'
+    - current_curation.display-name
+  docs-sources:
+    - Official Zoo Design Studio documentation and settings reference on docs.zoo.dev.
+  history-sources:
+    - https://docs.zoo.dev/blog/announcing-zookeeper
+    - https://docs.zoo.dev/docs/zoo-design-studio
+    - https://github.com/KittyCAD/modeling-app
+    - https://zoo.dev/blog/introducing-zoo
+    - https://zoo.dev/blog/why-modeling-app
+    - https://zoo.dev/blog/zoo-design-studio-v1
+  repo-sources:
+    - >
+      Official Zoo organization and product documentation identify KittyCAD/modeling-app
+      as the open-source application repository:
+      https://github.com/KittyCAD/modeling-app
+  tags-sources:
+    - Official Zoo Design Studio documentation and repository README.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - cad
+  - 3d-modeling
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

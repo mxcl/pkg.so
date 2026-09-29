@@ -1,7 +1,6 @@
 id: cask:zui
 display-name: Zui
-homepage: https://zui.brimdata.io/docs
-repo: https://github.com/brimdata/zui
+repo: null
 docs:
   - https://zed.brimdata.io/docs
   - https://zui.brimdata.io/docs
@@ -79,10 +78,6 @@ history:
       Zui automatically starts a local Zed lake service. Security-oriented workflows use
       the bundled Brimcap component to ingest packet captures and generate Zeek and
       Suricata data.
-category: data
-package-manager:
-  brew-cask: zui
-package-manager-url: https://formulae.brew.sh/cask/zui
 tags:
   - data-analytics
   - data-exploration
@@ -94,10 +89,42 @@ tags:
   - suricata
   - zed
   - zeek
-description: Graphical user interface for exploring data in Zed lakes
-applications:
-  - Zui.app
 provenance:
-  cask: zui
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Zui documentation describes it as a graphical interface for querying,
+      analyzing, and managing Zed lake data: https://zui.brimdata.io/docs
+    - source_facts.description identifies Zui as a GUI for exploring data in Zed lakes.
+  display-name-sources:
+    - 'Official Zui documentation: https://zui.brimdata.io/docs'
+    - current_curation.display-name
+    - source_facts.name
+  docs-sources:
+    - >
+      Official Zed documentation covers the language, storage system, formats, and
+      command-line tools used with Zui.
+    - Official dedicated Zui documentation site.
+  history-sources:
+    - https://github.com/brimdata/zui
+    - https://github.com/brimdata/zui/releases
+    - https://www.brimdata.io/blog/brim-app-will-be-zui/
+    - https://www.brimdata.io/blog/july-2024-release/
+    - https://zui.brimdata.io/docs
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/brimdata/zui; per task
+      instructions, the repository is therefore returned as null without
+      re-determination.
+  tags-sources:
+    - Official Zui documentation and official brimdata/zui repository README.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - data
+  - data-exploration
+  - analytics
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
