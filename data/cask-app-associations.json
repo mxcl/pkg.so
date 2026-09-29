@@ -3978,6 +3978,58 @@
         "https://imazing.com/guides/install-uninstall-imazing-mac"
       ]
     },
+    "impactor": {
+      "bundle_identifier": "dev.khcrysalis.PlumeImpactor",
+      "confidence": "high",
+      "evidence_hash": "7606d6b55667476ec9dfdc38db0990214160efe7b3a759587713f87f1e4bed83",
+      "reason": "The official project Makefile defines this application ID and builds the macOS Impactor.app bundle with it; Homebrew confirms that bundle is the cask\u2019s primary artifact.",
+      "sources": [
+        "https://formulae.brew.sh/cask/impactor",
+        "https://github.com/claration/impactor/blob/main/Makefile"
+      ]
+    },
+    "incident-io": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "bb3e39ea56389f1fbf48696a55f7e67ceff9fd5e9273ed20db46b5817ff54188",
+      "reason": "Official sources identify incident.io.app as the primary artifact but do not expose its CFBundleIdentifier; its Application Support directory name is insufficient evidence.",
+      "sources": [
+        "https://formulae.brew.sh/cask/incident-io",
+        "https://incident.io/changelog/incident-io-for-mac"
+      ]
+    },
+    "infinidesk": {
+      "bundle_identifier": "app.infinidesk.InfiniDesk",
+      "confidence": "medium",
+      "evidence_hash": "71e6ed68cbb2970aca152a11aafabd7deb1b8d68db3a0c395ae912eb6cdd41e6",
+      "reason": "Homebrew identifies InfiniDesk.app as the primary artifact and records a matching preferences plist domain, but no official app manifest was available for direct confirmation.",
+      "sources": [
+        "https://formulae.brew.sh/cask/infinidesk",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/i/infinidesk.rb",
+        "https://infinidesk.app/"
+      ]
+    },
+    "input0": {
+      "bundle_identifier": "com.input0",
+      "confidence": "high",
+      "evidence_hash": "aff63ae0e5a6b404d7e17f9f2dc77d2ae710fbbf700f4e4c4e4ed1610afbb2b7",
+      "reason": "The official Tauri manifest directly declares identifier com.input0 for the Input0 product that Homebrew installs as Input0.app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/input0",
+        "https://raw.githubusercontent.com/10xChengTu/input0/master/src-tauri/tauri.conf.json"
+      ]
+    },
+    "install-disk-creator": {
+      "bundle_identifier": "io.macdaddy.Install-Disk-Creator",
+      "confidence": "medium",
+      "evidence_hash": "ecd4e4fb328ff3c15ffa551735976872accd816d08649156bf37e21571500692",
+      "reason": "Homebrew identifies Install Disk Creator.app as the primary artifact and records a saved-application-state domain matching this identifier, but the official downloadable manifest was not directly inspectable.",
+      "sources": [
+        "https://formulae.brew.sh/cask/install-disk-creator",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/i/install-disk-creator.rb",
+        "https://macdaddy.io/install-disk-creator/"
+      ]
+    },
     "insync": {
       "bundle_identifier": "com.insynchq.insync",
       "confidence": "high",
@@ -3988,6 +4040,16 @@
         "https://forums.insynchq.com/t/insyc-quit-unexpectedly/16861"
       ]
     },
+    "intellidock": {
+      "bundle_identifier": "app.mightymac.IntelliDock",
+      "confidence": "medium",
+      "evidence_hash": "6a10c30cf83503fc2bef6c578b2e88a4b70d5ad0a0ae614d57e96688b699c961",
+      "reason": "Homebrew associates IntelliDock.app with the app-specific preference file app.mightymac.IntelliDock.plist, and the vendor supplies IntelliDock as the sole application artifact; no official manifest explicitly exposes CFBundleIdentifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/i/intellidock.rb",
+        "https://mightymac.app/intellidock/"
+      ]
+    },
     "intellij-idea@eap": {
       "bundle_identifier": "com.jetbrains.intellij-EAP",
       "confidence": "high",
@@ -3996,6 +4058,64 @@
       "sources": [
         "https://formulae.brew.sh/cask/intellij-idea@eap",
         "https://youtrack.jetbrains.com/projects/JBR/issues/JBR-8045/IDE-crashes-by-SIGTRAP-at-JavasunlwawtmacosxLWCToolkitdoAWTRunLoopImpl"
+      ]
+    },
+    "internxt-drive": {
+      "bundle_identifier": "internxt.InternxtDesktop",
+      "confidence": "high",
+      "evidence_hash": "ef25bb1088c333997a14d63cd45bd80652aad6475177d4f7591bad5a06aea40c",
+      "reason": "Internxt's official Xcode project maps the InternxtDesktop application target to Internxt Drive.app and assigns that target PRODUCT_BUNDLE_IDENTIFIER internxt.InternxtDesktop.",
+      "sources": [
+        "https://raw.githubusercontent.com/internxt/drive-desktop-macos/main/InternxtDesktop.xcodeproj/project.pbxproj"
+      ]
+    },
+    "ioquake3": {
+      "bundle_identifier": "org.ioquake.ioquake3",
+      "confidence": "high",
+      "evidence_hash": "800748c816d890685cc4ec0b71de209431e76579badcb07d55ba02167bdc6884",
+      "reason": "The official build identity sets CLIENT_NAME to ioquake3 and MACOS_BUNDLE_ID to org.ioquake.${CLIENT_NAME}; the macOS build configuration writes that value into the app bundle identifier.",
+      "sources": [
+        "https://raw.githubusercontent.com/ioquake/ioq3/main/cmake/identity.cmake",
+        "https://raw.githubusercontent.com/ioquake/ioq3/main/cmake/platforms/macos.cmake"
+      ]
+    },
+    "ipaverse": {
+      "bundle_identifier": "com.ipaverse",
+      "confidence": "high",
+      "evidence_hash": "dd9db1332352b33acff97f1ee5f9a70085f90c9c69b743ae5bab00c76456ba20",
+      "reason": "The official Xcode project identifies ipaverse.app as the application product and sets PRODUCT_BUNDLE_IDENTIFIER to com.ipaverse for both Debug and Release configurations.",
+      "sources": [
+        "https://github.com/bahattinkoc/ipaverse/blob/main/ipaverse/ipaverse.xcodeproj/project.pbxproj"
+      ]
+    },
+    "ipfs-desktop": {
+      "bundle_identifier": "io.ipfs.desktop",
+      "confidence": "high",
+      "evidence_hash": "1325b4ae046eb52c4a60a1aa07e47ad9fd8f45d156065943d82f836099fc608a",
+      "reason": "The official IPFS Desktop electron-builder manifest directly sets the packaged application's appId to io.ipfs.desktop.",
+      "sources": [
+        "https://github.com/ipfs/ipfs-desktop/blob/main/electron-builder.yml"
+      ]
+    },
+    "ipremoteutility": {
+      "bundle_identifier": "com.flandersscientific.IPRemoteUtility",
+      "confidence": "medium",
+      "evidence_hash": "0b27c032802a29431f39a61c77c7bb774c8387a65e0da5767dea7d6729c42bca",
+      "reason": "The Homebrew cask installs IPRemoteUtility.app and removes its matching com.flandersscientific.IPRemoteUtility preference plist. This strongly indicates the main app\u2019s identifier, but no vendor manifest directly exposes it.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/i/ipremoteutility.rb",
+        "https://www.flandersscientific.com/ip-remote/"
+      ]
+    },
+    "islide": {
+      "bundle_identifier": "com.islide.app",
+      "confidence": "high",
+      "evidence_hash": "c3fd5dee435206d43d051a336ac3659ebba721276808e40ccc6af9208c98b76c",
+      "reason": "Apple\u2019s official App Store manifest for the vendor\u2019s iSlide application identifies the bundle as com.islide.app, matching the iSlide.app artifact installed by the cask.",
+      "sources": [
+        "https://apps.apple.com/cn/app/id1568400299?platform=mac",
+        "https://formulae.brew.sh/cask/islide",
+        "https://itunes.apple.com/lookup?id=1568400299"
       ]
     },
     "istat-menus": {
@@ -4029,6 +4149,263 @@
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/i/istat-menus@6.rb"
       ]
     },
+    "isubtitle": {
+      "bundle_identifier": "se.bitfield.iSubtitle-3.sw",
+      "confidence": "medium",
+      "evidence_hash": "7437ec19c472e0b6d1b121cbe54a7b7e15ad908dc271b8cc90d1a3f95730cf1c",
+      "reason": "The vendor identifies the product as iSubtitle 3, while the cask\u2019s cleanup paths use the se.bitfield.iSubtitle-*.sw namespace for the directly distributed build. Substituting the product generation yields se.bitfield.iSubtitle-3.sw; the App Store build omits the .sw suffix.",
+      "sources": [
+        "https://apps.apple.com/us/app/isubtitle-3/id1166951701?mt=12",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/i/isubtitle.rb",
+        "https://www.bitfield.se/isubtitle/"
+      ]
+    },
+    "itermai": {
+      "bundle_identifier": "com.googlecode.iterm2.iTermAI",
+      "confidence": "high",
+      "evidence_hash": "3e599359d7189fcb5baf83b3be2f41a7fc4fff1ff6cba7f06d36d286fea3f31f",
+      "reason": "The official iTerm2 release documentation explicitly names com.googlecode.iterm2.iTermAI as the bundle ID administrators can block for the separately installed AI plugin.",
+      "sources": [
+        "https://formulae.brew.sh/cask/itermai",
+        "https://iterm2.com/ai-plugin.html",
+        "https://iterm2.com/downloads.html"
+      ]
+    },
+    "itermbrowserplugin": {
+      "bundle_identifier": "com.googlecode.iterm2.iTermBrowserPlugin",
+      "confidence": "high",
+      "evidence_hash": "59b3899ae47305018cbf17beaa0b4b54d371e9b3194b23da7ed76631608ff360",
+      "reason": "Official iTerm2 browser documentation explicitly identifies com.googlecode.iterm2.iTermBrowserPlugin as the browser plugin\u2019s bundle ID.",
+      "sources": [
+        "https://formulae.brew.sh/cask/itermbrowserplugin",
+        "https://iterm2.com/browser-plugin.html",
+        "https://iterm2.com/documentation-web.html"
+      ]
+    },
+    "itermcompanion": {
+      "bundle_identifier": "com.googlecode.iterm2.iTermCompanion",
+      "confidence": "high",
+      "evidence_hash": "eb745d17d25534a819566c98dbad356411619f6d47b84c14bf97215b90817c82",
+      "reason": "The vendor\u2019s official companion-app documentation explicitly identifies the macOS plugin\u2019s bundle ID, and Homebrew installs it as iTermCompanion.app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/itermcompanion",
+        "https://iterm2.com/companion-app.html"
+      ]
+    },
+    "itk-snap": {
+      "bundle_identifier": "org.itksnap",
+      "confidence": "medium",
+      "evidence_hash": "554d30acf6c3ef973ab616b2fc92858f7d10429bec8feae6520dde2d6e7d7ba4",
+      "reason": "Homebrew installs ITK-SNAP.app and its cask associates both the app\u2019s preferences and saved application state with org.itksnap. This strongly indicates the primary bundle ID, though no explicit CFBundleIdentifier manifest was found.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/i/itk-snap.rb",
+        "https://github.com/pyushkevich/itksnap"
+      ]
+    },
+    "itsypad": {
+      "bundle_identifier": "com.nickustinov.itsypad",
+      "confidence": "high",
+      "evidence_hash": "4f0d587aacb0fadfd444090d205aefa8a725f093381e75d7ba8fb315a86f17a9",
+      "reason": "The official repository\u2019s project.yml assigns PRODUCT_BUNDLE_IDENTIFIER com.nickustinov.itsypad to the application target that produces Itsypad.app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/itsypad",
+        "https://github.com/nickustinov/itsypad-macos/blob/main/project.yml"
+      ]
+    },
+    "itsytv": {
+      "bundle_identifier": "com.itsytv.app",
+      "confidence": "high",
+      "evidence_hash": "cf1f8e6f97029066250059b44b4609696b3506bbbaf2b46c981b187c08273450",
+      "reason": "The official repository\u2019s project.yml assigns PRODUCT_BUNDLE_IDENTIFIER com.itsytv.app to the application target that produces Itsytv.app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/itsytv",
+        "https://github.com/nickustinov/itsytv-macos/blob/main/project.yml"
+      ]
+    },
+    "ivideonserver": {
+      "bundle_identifier": "com.ivideon.IvideonServer",
+      "confidence": "medium",
+      "evidence_hash": "02669814aeae50d40dbefdf38e941ef416a23b72ef74ed19a29174324fd7ed46",
+      "reason": "Homebrew installs IvideonServer.app and its cask names com.ivideon.IvideonServer in the corresponding saved-application-state path. This strongly indicates the primary bundle ID, though no vendor manifest explicitly exposing CFBundleIdentifier was found.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/i/ivideonserver.rb",
+        "https://www.ivideon.com/downloads/"
+      ]
+    },
+    "jaikoz": {
+      "bundle_identifier": "com.jthink.jaikoz",
+      "confidence": "high",
+      "evidence_hash": "ed497a766a4641dfd91d90536ae8bbd5df65acf6f3a8e8264cc669fdaddbd9e0",
+      "reason": "A vendor-hosted macOS crash report identifies the executable inside Jaikoz.app as com.jthink.jaikoz; Homebrew's saved-state path agrees.",
+      "sources": [
+        "https://community.jthink.net/t/jaikoz-11-5-not-runing-on-macos-el-capitan-10-11/10794",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jaikoz.rb"
+      ]
+    },
+    "jalview": {
+      "bundle_identifier": "org.jalview.jalview-desktop",
+      "confidence": "high",
+      "evidence_hash": "ac15e42e1c2c9a41c692494ca6b1fb643fc5e7a4825b295607e98bcccc21b0e5",
+      "reason": "Jalview's official build configuration assigns org.jalview.jalview-desktop as the install4j bundle ID, matching Homebrew's saved-state path for Jalview.app.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jalview.rb",
+        "https://gitlab.jalview.org/jalview/jalview/-/blob/develop/gradle.properties"
+      ]
+    },
+    "jami": {
+      "bundle_identifier": "cx.ring",
+      "confidence": "medium",
+      "evidence_hash": "803a83ad8f129db5acbf17be1d8e85fc0368034ea2532e1ddfbd00c8e5a460cb",
+      "reason": "A recent report on Jami's official forum identifies the shipped Jami.app bundle as cx.ring, but the directly observed build is one release newer than the current Homebrew artifact.",
+      "sources": [
+        "https://docs.jami.net/user/bug-report-guide.html",
+        "https://formulae.brew.sh/cask/jami",
+        "https://forum.jami.net/t/jami-notifications-on-macos-client/5801"
+      ]
+    },
+    "jamkazam": {
+      "bundle_identifier": "com.jamkazam.osx.client",
+      "confidence": "high",
+      "evidence_hash": "4534b247cd07ebfdd70d8223acf561c65af2b1c95ee25c241d45af51bf8d3467",
+      "reason": "A vendor-hosted crash report directly identifies /Applications/JamKazam.app and its executable as com.jamkazam.osx.client.",
+      "sources": [
+        "https://formulae.brew.sh/cask/jamkazam",
+        "https://forum.jamkazam.com/showthread.php?tid=1947"
+      ]
+    },
+    "jasp": {
+      "bundle_identifier": "org.jasp-stats.jasp",
+      "confidence": "high",
+      "evidence_hash": "e7eed8aba832dcb86a81f0919e1e6a1b1bec28d93ed0395f9ed5ef186d6978cc",
+      "reason": "A crash report in JASP's official issue repository directly identifies JASP.app as org.jasp-stats.jasp; Homebrew's saved-state path independently matches it.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jasp.rb",
+        "https://github.com/jasp-stats/jasp-issues/issues/2521"
+      ]
+    },
+    "jasper-app": {
+      "bundle_identifier": "io.jasperapp",
+      "confidence": "medium",
+      "evidence_hash": "30348c999dfc7f32ad09907540a439ddb976e6f363163075328ce7c9f4c127a1",
+      "reason": "Homebrew installs Jasper.app and identifies its macOS sandbox container as io.jasperapp; the vendor repository confirms this is the Jasper desktop app, but no explicit packaged Info.plist was available.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jasper-app.rb",
+        "https://github.com/jasperapp/jasper"
+      ]
+    },
+    "jbrowse": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "9afeb8d9696523ceafef3a1a93efe4d70f1814d73bbe3601f8eb06763bf9ff10",
+      "reason": "The official sources confirm JBrowse 2.app and only an org.jbrowse-prefixed preference pattern; they do not expose the exact primary bundle identifier convincingly.",
+      "sources": [
+        "https://github.com/GMOD/jbrowse-components/blob/main/products/jbrowse-desktop/package.json",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jbrowse.rb"
+      ]
+    },
+    "jclasslib-bytecode-viewer": {
+      "bundle_identifier": "com.install4j.8931-3388-4457-4383",
+      "confidence": "medium",
+      "evidence_hash": "73913421802e0abd80bea34da0bc8c9653621fd4fc53cd163e59ada3f093c90e",
+      "reason": "Homebrew associates the installed jclasslib app with this macOS saved-application-state identifier; org.jclasslib.browser is instead its Java preference domain.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jclasslib-bytecode-viewer.rb",
+        "https://github.com/ingokegel/jclasslib"
+      ]
+    },
+    "jdk-mission-control": {
+      "bundle_identifier": "org.openjdk.jmc",
+      "confidence": "high",
+      "evidence_hash": "919bc409ccef21e793d76895a31b8201f52bda8fc087e0fd4b49ff4cb6ec7714",
+      "reason": "The official OpenJDK product is built and packaged under the org.openjdk.jmc product identity, matching the exact macOS preference domain recorded by Homebrew.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jdk-mission-control.rb",
+        "https://github.com/openjdk/jmc"
+      ]
+    },
+    "jellyfin": {
+      "bundle_identifier": "Jellyfin.Server",
+      "confidence": "high",
+      "evidence_hash": "e6a1b456b593a32b51461f3474df91b7495e387e5f1215686a5dff73eff59d37",
+      "reason": "Jellyfin's official Xcode project directly sets PRODUCT_BUNDLE_IDENTIFIER to Jellyfin.Server for the application target.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jellyfin.rb",
+        "https://raw.githubusercontent.com/jellyfin/jellyfin-server-macos/master/Jellyfin%20Server.xcodeproj/project.pbxproj"
+      ]
+    },
+    "jellyfin-media-player": {
+      "bundle_identifier": "tv.jellyfin.player",
+      "confidence": "medium",
+      "evidence_hash": "38450b4fd068622553008dad9a1f2cbb03070650c08afeb017b4ba0f7a1ebb23",
+      "reason": "The Homebrew cask installs Jellyfin Media Player.app and names tv.jellyfin.player as its saved-application-state domain. That domain normally derives from the main bundle identifier, but no current official app manifest was available for direct confirmation.",
+      "sources": [
+        "https://formulae.brew.sh/cask/jellyfin-media-player",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jellyfin-media-player.rb",
+        "https://github.com/jellyfin/jellyfin-desktop"
+      ]
+    },
+    "jet-pilot": {
+      "bundle_identifier": "com.unxsist.jetpilot",
+      "confidence": "high",
+      "evidence_hash": "af7c51b2c7767d893c058cb06d6758e15520dca6130508dbdc05616bfe1513b7",
+      "reason": "The vendor's official Tauri manifest directly assigns com.unxsist.jetpilot as the identifier for the JET Pilot application bundle.",
+      "sources": [
+        "https://formulae.brew.sh/cask/jet-pilot",
+        "https://github.com/unxsist/jet-pilot/blob/main/src-tauri/tauri.conf.json"
+      ]
+    },
+    "jetbrains-air": {
+      "bundle_identifier": "com.jetbrains.air",
+      "confidence": "high",
+      "evidence_hash": "901b6e389352490a26fa28b1c3d80276436c1ae256cd112acdbd496b1e76120c",
+      "reason": "An official JetBrains issue includes a macOS process sample for /Applications/Air.app that directly reports Identifier: com.jetbrains.air.",
+      "sources": [
+        "https://formulae.brew.sh/cask/jetbrains-air",
+        "https://youtrack.jetbrains.com/issue/AIR-3933"
+      ]
+    },
+    "jiggler": {
+      "bundle_identifier": "com.stick.app.jiggler",
+      "confidence": "high",
+      "evidence_hash": "7f32afed3c907730df9b1b70c5d6e46262c0c4b4a49f81a28e189e6a8df77ee5",
+      "reason": "The vendor's official Xcode project directly sets PRODUCT_BUNDLE_IDENTIFIER to com.stick.app.jiggler for the Jiggler target in both release and debug configurations.",
+      "sources": [
+        "https://formulae.brew.sh/cask/jiggler",
+        "https://github.com/bhaller/Jiggler/blob/master/Info.plist",
+        "https://github.com/bhaller/Jiggler/blob/master/Jiggler.xcodeproj/project.pbxproj"
+      ]
+    },
+    "jitsi": {
+      "bundle_identifier": "org.jitsi.jitsi",
+      "confidence": "medium",
+      "evidence_hash": "ab83c8a174f3af8819f87979ef2afcf8398723230dad6c071ccd64d13ef5b494",
+      "reason": "The Homebrew cask installs the legacy Jitsi.app and associates its preferences with org.jitsi.jitsi. This strongly identifies the main application, though the available official metadata is not a direct bundle manifest.",
+      "sources": [
+        "https://desktop.jitsi.org/",
+        "https://formulae.brew.sh/cask/jitsi",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jitsi.rb"
+      ]
+    },
+    "jitsi-meet": {
+      "bundle_identifier": "org.jitsi.jitsi-meet",
+      "confidence": "high",
+      "evidence_hash": "5bc5e57faea98648939a717f74237f47fc28549c88d313561289d71a978f0958",
+      "reason": "The official Electron build manifest sets appId to org.jitsi.jitsi-meet for Jitsi Meet, directly determining the macOS bundle identifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/jitsi-meet",
+        "https://raw.githubusercontent.com/jitsi/jitsi-meet-electron/master/package.json"
+      ]
+    },
+    "josm": {
+      "bundle_identifier": "de.openstreetmap.josm",
+      "confidence": "high",
+      "evidence_hash": "8538f879ec0fa9dacaf728832092e42379ae25dca810133f48a87935dcb2eba0",
+      "reason": "An official JOSM issue includes codesign output for JOSM.app explicitly showing Identifier=de.openstreetmap.josm.",
+      "sources": [
+        "https://formulae.brew.sh/cask/josm",
+        "https://josm.openstreetmap.de/ticket/21325"
+      ]
+    },
     "jottacloud": {
       "bundle_identifier": "no.jotta.Jottacloud",
       "confidence": "medium",
@@ -4036,6 +4413,26 @@
       "reason": "The official cask associates Jottacloud.app\u2019s caches, HTTP storage, and preferences with no.jotta.Jottacloud; the other candidate is explicitly the Finder extension.",
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/j/jottacloud.rb"
+      ]
+    },
+    "jprofiler": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "38ba033fdbb9799b6247bc56a260bb05a3d82229f4c73d46fa05496640718a71",
+      "reason": "Official sources confirm JProfiler.app but do not expose its CFBundleIdentifier; the preference domains are insufficient to identify it reliably.",
+      "sources": [
+        "https://formulae.brew.sh/cask/jprofiler",
+        "https://www.ej-technologies.com/resources/jprofiler/help/doc/JProfiler.pdf"
+      ]
+    },
+    "jslegendre-themeengine": {
+      "bundle_identifier": "com.alexzielenski.ThemeEngine",
+      "confidence": "medium",
+      "evidence_hash": "162d7e169775d4e259909584845e6fb0d9730279937e311d295cd46cc3340c92",
+      "reason": "The official project issue and Homebrew cask associate ThemeEngine with the com.alexzielenski.ThemeEngine domain, but no directly readable app manifest was available.",
+      "sources": [
+        "https://formulae.brew.sh/cask/jslegendre-themeengine",
+        "https://github.com/alexzielenski/ThemeEngine/issues/42"
       ]
     },
     "json-viewer": {
@@ -4046,6 +4443,56 @@
       "sources": [
         "https://formulae.brew.sh/api/cask/json-viewer.json",
         "https://jsonviewer.app/"
+      ]
+    },
+    "jubler": {
+      "bundle_identifier": "com.panayotis.jubler",
+      "confidence": "medium",
+      "evidence_hash": "df95e879447f5430c026a7901441729e918383d7bbe2b85d16822d3ce8b153a8",
+      "reason": "Homebrew associates Jubler.app with com.panayotis.jubler.plist, while the official repository uses com.panayotis.jubler as its application group; this is convincing but not a direct CFBundleIdentifier manifest.",
+      "sources": [
+        "https://formulae.brew.sh/cask/jubler",
+        "https://github.com/teras/Jubler/blob/master/build.gradle.kts"
+      ]
+    },
+    "juice": {
+      "bundle_identifier": "com.bsm.macos.Juice",
+      "confidence": "high",
+      "evidence_hash": "4ab3b2661d1a58738a9ce4145fd89e810b4d89814ad903c416ae55af5620eb34",
+      "reason": "The official Juice repository documents the primary app\u2019s sandbox container at com.bsm.macos.Juice and separately identifies JuiceHelper, distinguishing the main app from its helper.",
+      "sources": [
+        "https://formulae.brew.sh/cask/juice",
+        "https://github.com/brianmichel/Juice"
+      ]
+    },
+    "julia-app@lts": {
+      "bundle_identifier": "org.julialang.launcherapp",
+      "confidence": "high",
+      "evidence_hash": "3584eb1539567205132e3cd2e438e9c98788954e880955d7d9311b3b93de0a12",
+      "reason": "Julia\u2019s official macOS packaging Makefile assigns this identifier to the generated Julia.app launcher; the LTS cask installs that upstream application bundle.",
+      "sources": [
+        "https://formulae.brew.sh/cask/julia-app@lts",
+        "https://github.com/JuliaLang/julia/blob/master/contrib/mac/app/Makefile"
+      ]
+    },
+    "julia-app@nightly": {
+      "bundle_identifier": "org.julialang.launcherapp",
+      "confidence": "high",
+      "evidence_hash": "9e25573aacb3fc0f039de0fe7cb548e3a72dfee78274bb07c904b992a8da4df8",
+      "reason": "The nightly artifact uses Julia\u2019s official macOS app packaging, whose generated launcher app has this identifier; Homebrew only installs it under the Julia Nightly.app name.",
+      "sources": [
+        "https://formulae.brew.sh/cask/julia-app@nightly",
+        "https://github.com/JuliaLang/julia/blob/master/contrib/mac/app/Makefile"
+      ]
+    },
+    "jumpcut": {
+      "bundle_identifier": "net.sf.Jumpcut",
+      "confidence": "high",
+      "evidence_hash": "dcaf88c5b2e2725d1fb6d10f883347bebb79e43e972169e902f9b17d42264630",
+      "reason": "The official Xcode project assigns net.sf.Jumpcut to the Jumpcut application target in both release and debug configurations, while helper and test targets use distinct suffixed identifiers.",
+      "sources": [
+        "https://formulae.brew.sh/cask/jumpcut",
+        "https://raw.githubusercontent.com/snark/jumpcut/master/Jumpcut/Jumpcut.xcodeproj/project.pbxproj"
       ]
     },
     "jupyterlab-app": {
@@ -4078,6 +4525,36 @@
         "https://github.com/kactus-io/kactus/blob/main/app/package.json"
       ]
     },
+    "kameleo": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "4f8b80d6214b05cf72805f526353593c22579d4883fa7a84496efdfa01e58d99",
+      "reason": "Official Homebrew and Kameleo sources confirm the Kameleo.app artifact but do not publish its CFBundleIdentifier, so no identifier can be assigned confidently.",
+      "sources": [
+        "https://developer.kameleo.io/getting-started/installation/",
+        "https://formulae.brew.sh/cask/kameleo"
+      ]
+    },
+    "kdenlive": {
+      "bundle_identifier": "org.kde.Kdenlive",
+      "confidence": "high",
+      "evidence_hash": "093d9d2d78ca5369897eed0f4150b43d7cf816554aa462607f7e300f3aa791f6",
+      "reason": "KDE\u2019s macOS build configuration directly sets MACOSX_BUNDLE_GUI_IDENTIFIER to org.kde.Kdenlive for the kdenlive target.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kdenlive.rb",
+        "https://github.com/KDE/kdenlive/blob/master/src/CMakeLists.txt"
+      ]
+    },
+    "keep-it": {
+      "bundle_identifier": "com.reinvented.Keep-It",
+      "confidence": "medium",
+      "evidence_hash": "021682e14745573207fbcd04768d3052b9094f8159d1c3dd48b86245229de915",
+      "reason": "The cask installs Keep It.app; its official sandbox-container metadata uses the com.reinvented namespace and Keep-It naming for bundled components. The primary identifier is inferred because the cask does not expose the app\u2019s Info.plist directly.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/keep-it.rb",
+        "https://reinventedsoftware.com/keepit/"
+      ]
+    },
     "keka": {
       "bundle_identifier": "com.aone.keka",
       "confidence": "medium",
@@ -4086,6 +4563,46 @@
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/keka.rb",
         "https://github.com/aonez/Keka"
+      ]
+    },
+    "kekaexternalhelper": {
+      "bundle_identifier": "com.aone.KekaExternalHelper",
+      "confidence": "medium",
+      "evidence_hash": "59fbadf24a28c0946ecfbd240040820a6e464b8f226fde35249db0792bb88cbd",
+      "reason": "The official cask installs KekaExternalHelper.app from Keka\u2019s release and records a saved-state domain matching com.aone.KekaExternalHelper; this distinguishes it from Keka and its Finder extension.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kekaexternalhelper.rb",
+        "https://github.com/aonez/Keka/wiki/Default-application"
+      ]
+    },
+    "kextviewr": {
+      "bundle_identifier": "com.objective-see.KextViewr",
+      "confidence": "medium",
+      "evidence_hash": "dee4f01aa886b201b110cb8fc813864c7e67ea2125415f183767d2fe56bdf6ab",
+      "reason": "The official cask\u2019s cache domain matches KextViewr\u2019s vendor namespace and primary app name, and the vendor repository identifies KextViewr as the application target.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kextviewr.rb",
+        "https://github.com/objective-see/KextViewr"
+      ]
+    },
+    "keybase": {
+      "bundle_identifier": "keybase.Electron",
+      "confidence": "medium",
+      "evidence_hash": "fccf6edb551b7dd1c68c047cf393d27aef624dc6fe7fe5806253e08df73621cc",
+      "reason": "Keybase\u2019s official repository identifies the shipped desktop client as its Electron application; keybase.Electron is the main GUI app identifier, distinct from Keybase services, launch agents, and filesystem components.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/keybase.rb",
+        "https://github.com/keybase/client/tree/master/shared/desktop"
+      ]
+    },
+    "keyboard-cleaner": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "57b42344753aaac56b4711a9da8c65798615c2618c45612d9ef7d17c68fe86ab",
+      "reason": "Official vendor and Homebrew sources identify the primary artifact as Keyboard Cleaner.app but do not expose its CFBundleIdentifier; no sufficiently reliable official evidence was found.",
+      "sources": [
+        "https://formulae.brew.sh/cask/keyboard-cleaner",
+        "https://jan.prima.de/~jan/plok/archives/48-Keyboard-Cleaner.html"
       ]
     },
     "keyboard-maestro": {
@@ -4098,6 +4615,86 @@
         "https://wiki.keyboardmaestro.com/Scripting_the_Keyboard_Maestro_editor"
       ]
     },
+    "keyboardcleantool": {
+      "bundle_identifier": "com.hegenberg.KeyboardCleanTool",
+      "confidence": "high",
+      "evidence_hash": "e3370a1b71e6ed1f81286e5876941c4cbab8469c1bb15da277d30043d7c1ab76",
+      "reason": "The official vendor archive's primary KeyboardCleanTool.app manifest identifies this bundle ID, and Homebrew confirms that app as the cask's primary artifact.",
+      "sources": [
+        "https://folivora.ai/releases/KeyboardCleanTool-8.3.zip",
+        "https://formulae.brew.sh/cask/keyboardcleantool"
+      ]
+    },
+    "keycue": {
+      "bundle_identifier": "com.macility.keycue",
+      "confidence": "medium",
+      "evidence_hash": "501c50993c1bf575acd47efdbd67f47584d83bdbbf941a4ccc83cf62bd1321f4",
+      "reason": "Homebrew identifies KeyCue.app as the primary artifact and records com.macility.keycue as its application preference domain; this matches KeyCue rather than a helper, though no official manifest is published separately.",
+      "sources": [
+        "https://ergonis.com/en/keycue",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/keycue.rb"
+      ]
+    },
+    "keyguard": {
+      "bundle_identifier": "com.artemchep.keyguard",
+      "confidence": "high",
+      "evidence_hash": "7656e3005ccf0913d14ad538c9bcf43ca1b4400ab75fa9e262752321723237a3",
+      "reason": "The vendor's official desktop build configuration directly assigns com.artemchep.keyguard as the macOS bundle ID for the Keyguard package.",
+      "sources": [
+        "https://formulae.brew.sh/cask/keyguard",
+        "https://github.com/AChep/keyguard-app/blob/master/desktopApp/build.gradle.kts"
+      ]
+    },
+    "keymanager": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "721277e7fcb3fc0058b4941a75d8234da5340497d4bc19bf16ac94ff3f5f886c",
+      "reason": "Homebrew identifies KeyManager.app as the primary artifact, while its official cask metadata consistently uses keymanager for both the preference domain and saved-application-state domain; this strongly indicates the unusually non-reverse-DNS bundle ID, but no official app manifest is published.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/keymanager.rb",
+        "https://keymanager.org/"
+      ]
+    },
+    "keypad-layout": {
+      "bundle_identifier": "com.jan-gerd.keypad-layout",
+      "confidence": "high",
+      "evidence_hash": "45402b305c1f3f3f8ba18dce14b11f86db1f4345b3d8f60df95a865b2853767e",
+      "reason": "The official Xcode project identifies the Keypad Layout app with this bundle identifier, matching Homebrew's app artifact and preference metadata.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/keypad-layout.rb",
+        "https://github.com/janten/keypad-layout/blob/master/keypad-layout.xcodeproj/project.pbxproj"
+      ]
+    },
+    "keystore-explorer": {
+      "bundle_identifier": "org.kse.keystore-explorer",
+      "confidence": "high",
+      "evidence_hash": "0fd53419b62b7d0ac3b367af50bd7bc1ecb00d94d0641d4899271753bc73fd0d",
+      "reason": "The vendor's macOS app build explicitly constructs this identifier, and the maintainer confirmed adopting it as the stable bundle identifier.",
+      "sources": [
+        "https://github.com/kaikramer/keystore-explorer/blob/main/kse/build.gradle",
+        "https://github.com/kaikramer/keystore-explorer/issues/141"
+      ]
+    },
+    "kid3": {
+      "bundle_identifier": "com.kid3.Kid3",
+      "confidence": "medium",
+      "evidence_hash": "3f666402f875c7b611c50c5a0d219fad3a09ac433b3f428c04be163411a4f6ed",
+      "reason": "Homebrew associates this preference domain with the primary kid3.app artifact, but no directly accessible vendor manifest was found to independently confirm CFBundleIdentifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kid3.rb",
+        "https://invent.kde.org/multimedia/kid3"
+      ]
+    },
+    "kilohearts-installer": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "e2396605d83a5fc60686824233cdde8fce19beb091c12151446df003430beb63",
+      "reason": "Official Kilohearts and Homebrew sources identify the primary app as Kilohearts Installer.app but expose no convincing bundle-identifier metadata.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kilohearts-installer.rb",
+        "https://kilohearts.com/download/"
+      ]
+    },
     "kindavim": {
       "bundle_identifier": "mo.com.sleeplessmind.kindaVim",
       "confidence": "high",
@@ -4106,6 +4703,16 @@
       "sources": [
         "https://docs.kindavim.app/install",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kindavim.rb"
+      ]
+    },
+    "kindle-comic-converter": {
+      "bundle_identifier": "com.kindlecomicconverter.KindleComicConverter",
+      "confidence": "high",
+      "evidence_hash": "7262d71f0d26bf71109a7f26516fe929691dfeb823d4471b72ff6fe70acf7fde",
+      "reason": "A macOS crash report in the official repository directly identifies Kindle Comic Converter.app with this identifier, and Homebrew's current zap metadata independently matches it.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kindle-comic-converter.rb",
+        "https://github.com/ciromattia/kcc/issues/162"
       ]
     },
     "kiro-cli": {
@@ -4128,6 +4735,147 @@
         "https://www.kiwiforgmail.com/download"
       ]
     },
+    "kiwix": {
+      "bundle_identifier": "self.Kiwix",
+      "confidence": "high",
+      "evidence_hash": "d4cc824d2b20180f54e62f0326860b7594672bc1c01c0d4174e5614d8a1584b3",
+      "reason": "The official Kiwix Apple project manifest assigns PRODUCT_BUNDLE_IDENTIFIER self.Kiwix to the Kiwix application target; test targets use distinct suffixed identifiers.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kiwix.rb",
+        "https://github.com/kiwix/kiwix-apple/blob/main/project.yml"
+      ]
+    },
+    "klogg": {
+      "bundle_identifier": "com.github.variar.klogg",
+      "confidence": "high",
+      "evidence_hash": "9fce993ff471c168d801cf26afe0b3b08f680ca5e7e96795e4c51b96f2c6b254",
+      "reason": "The official klogg build configuration defines its application identifier as com.github.variar.klogg, matching the app's saved-state metadata.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/klogg.rb",
+        "https://github.com/variar/klogg/blob/master/CMakeLists.txt"
+      ]
+    },
+    "kobo": {
+      "bundle_identifier": "com.kobo.desktop.Kobo",
+      "confidence": "medium",
+      "evidence_hash": "72090bd09f31b832ee3a83f94ec19b4d2e343c8d3de88d04d4d1430f72283e56",
+      "reason": "Homebrew identifies Kobo.app as the sole application artifact, and its saved-application-state path corresponds to com.kobo.desktop.Kobo; the other Kobo plist domains are preferences rather than the primary app identity.",
+      "sources": [
+        "https://formulae.brew.sh/cask/kobo",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kobo.rb"
+      ]
+    },
+    "koharu": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "9cc94f058c15eb6208b1381581048701b1330449f5721fd74c63abd71362632e",
+      "reason": "The official Koharu Tauri application manifest directly sets the packaged application's identifier to Koharu.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/koharu.rb",
+        "https://github.com/koharu-rs/koharu/blob/main/crates/koharu/tauri.conf.json"
+      ]
+    },
+    "kontur-talk": {
+      "bundle_identifier": "kontur.talk",
+      "confidence": "medium",
+      "evidence_hash": "e13c253ef1d547a81bb68741dffbc4d5c098d15ec908d80bd74fa9039d686c8b",
+      "reason": "Homebrew identifies \u0422\u043e\u043b\u043a.app as the sole application artifact, and the cask's associated preference plist uses kontur.talk; no competing application identifier appears in the official cask metadata.",
+      "sources": [
+        "https://formulae.brew.sh/cask/kontur-talk",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kontur-talk.rb"
+      ]
+    },
+    "kreya": {
+      "bundle_identifier": "app.kreya",
+      "confidence": "medium",
+      "evidence_hash": "b34b884512f135bb9a29777cc639cda592bdb94348e87b99f2578376d2012a41",
+      "reason": "Homebrew installs Kreya.app and associates it with the app.kreya cache domain; Kreya\u2019s official Linux application ID, app.kreya.Kreya, supports the same vendor namespace. No official macOS manifest directly exposing CFBundleIdentifier was found.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kreya.rb",
+        "https://kreya.app/downloads/"
+      ]
+    },
+    "krita": {
+      "bundle_identifier": "org.krita",
+      "confidence": "medium",
+      "evidence_hash": "7261006b44e10df3dc62590b9128855bb21ba0831780e8fbde941cad95f2d758",
+      "reason": "Homebrew installs the official krita.app and associates its saved application state and sandbox paths with org.krita. This strongly identifies the primary macOS app, although the accessible official sources do not directly label it CFBundleIdentifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/krita.rb",
+        "https://github.com/KDE/krita"
+      ]
+    },
+    "ksnip": {
+      "bundle_identifier": "org.ksnip.ksnip",
+      "confidence": "high",
+      "evidence_hash": "a4bbb613fe96dbbc8a22b5e8d82e7d002a9ca36fdfcdf7bf54861dbbb2d256b0",
+      "reason": "The official ksnip build configuration directly sets MACOSX_BUNDLE_GUI_IDENTIFIER to org.ksnip.ksnip for the macOS application target; Homebrew installs that project\u2019s ksnip.app release.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/ksnip.rb",
+        "https://raw.githubusercontent.com/ksnip/ksnip/master/src/CMakeLists.txt"
+      ]
+    },
+    "kstars": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "11e21dd1437b02c6eb3e36efd7b76b7a59314cf0c6b3b7d42e203ed661a99b09",
+      "reason": "Official sources confirm kstars.app, but do not establish a current bundle identifier. KDE\u2019s recorded macOS manifest for an older release had an empty CFBundleIdentifier, so the org.kde.kstars desktop/DBus ID cannot safely be assigned to the current app bundle.",
+      "sources": [
+        "https://bugs.kde.org/show_bug.cgi?id=398726",
+        "https://github.com/Homebrew/homebrew-cask/blob/main/Casks/k/kstars.rb",
+        "https://kstars.kde.org/download/macos/"
+      ]
+    },
+    "kubernetic": {
+      "bundle_identifier": "com.kubernetic.desktop",
+      "confidence": "medium",
+      "evidence_hash": "50a4bb770a8ff91abe8cee1e4717425a2eb29fbd57869c01ed13a2e5ebde4ba9",
+      "reason": "Homebrew installs Kubernetic.app and associates both its preference files and saved application state with the com.kubernetic.desktop namespace. This strongly indicates the primary app identifier, but no official manifest directly exposing CFBundleIdentifier was found.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/k/kubernetic.rb",
+        "https://www.kubernetic.com/"
+      ]
+    },
+    "kubeterm": {
+      "bundle_identifier": "com.kubeterm",
+      "confidence": "medium",
+      "evidence_hash": "a1d7ca0aa2da3af44eb1dbe492f2b69ea4223a6b1f7df95e74bed769f2a90b67",
+      "reason": "The cask installs Kubeterm.app and consistently uses com.kubeterm for its macOS preferences, saved state, caches, logs, and application support. This is convincing but not a direct bundle manifest.",
+      "sources": [
+        "https://formulae.brew.sh/cask/kubeterm",
+        "https://www.kubeterm.com/"
+      ]
+    },
+    "labplot": {
+      "bundle_identifier": "org.kde.labplot",
+      "confidence": "high",
+      "evidence_hash": "1fb533a6a7650da5685966492c867e0d04cde48d0ee9bb936d2107bf0b624a4a",
+      "reason": "LabPlot's official upstream CMake configuration directly sets MACOSX_BUNDLE_GUI_IDENTIFIER to org.kde.labplot for the Apple app bundle.",
+      "sources": [
+        "https://formulae.brew.sh/cask/labplot",
+        "https://invent.kde.org/education/labplot/-/blob/master/src/CMakeLists.txt"
+      ]
+    },
+    "labymod": {
+      "bundle_identifier": "net.labymod.launcher",
+      "confidence": "medium",
+      "evidence_hash": "fdddf8ffff809cd6340e4534678e94c81ae324c5f5a4a9e564395b7388fb30d5",
+      "reason": "The cask installs Laby Launcher.app and its application-specific macOS cache and updater paths use net.labymod.launcher. No public upstream bundle manifest was found.",
+      "sources": [
+        "https://formulae.brew.sh/cask/labymod",
+        "https://www.labymod.net/"
+      ]
+    },
+    "langflow": {
+      "bundle_identifier": "com.LangflowDesktop",
+      "confidence": "medium",
+      "evidence_hash": "153ff91604b03f3725272810bc378ab0530f493f44d47791cf732387e4ea1f44",
+      "reason": "Current official Langflow documentation identifies com.LangflowDesktop consistently across the macOS Application Support, Caches, Logs, Preferences, and WebKit paths for Langflow.app. This supersedes the older com.Langflow paths still present in the cask zap metadata, but no direct Info.plist was available.",
+      "sources": [
+        "https://docs.langflow.org/troubleshoot",
+        "https://formulae.brew.sh/cask/langflow"
+      ]
+    },
     "lark": {
       "bundle_identifier": "com.electron.lark",
       "confidence": "high",
@@ -4136,6 +4884,16 @@
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/lark.rb",
         "https://www.larksuite.com/"
+      ]
+    },
+    "laserpecker-design-space": {
+      "bundle_identifier": "com.laserpecker.pc",
+      "confidence": "medium",
+      "evidence_hash": "1cdde0622134a93ac33451eab9364e8e1ed5d7547944e0d4f1e30b3db8a69564",
+      "reason": "The cask installs LaserPecker Design Space.app and names its macOS preference plist com.laserpecker.pc.plist; the identifier also corresponds specifically to the vendor's Design Space product, though no desktop bundle manifest was available.",
+      "sources": [
+        "https://formulae.brew.sh/cask/laserpecker-design-space",
+        "https://laserpecker.net/"
       ]
     },
     "lastpass": {
