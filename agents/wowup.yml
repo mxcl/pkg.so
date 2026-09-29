@@ -1,7 +1,6 @@
 id: cask:wowup
 display-name: WowUp
-homepage: https://wowup.io/
-repo: https://github.com/WowUp/WowUp
+repo: null
 docs:
   - https://wowup.io/guide/my-addons/addon-import
   - https://wowup.io/guide/my-addons/addon-settings
@@ -68,20 +67,46 @@ history:
       matches them to supported providers, and installs or updates selected release
       channels. Users can enable automatic updates, export addon lists, and back up the
       game’s addon-settings directory.
-category: games
-package-manager:
-  brew-cask: wowup
-package-manager-url: https://formulae.brew.sh/cask/wowup
 tags:
   - addon-manager
   - game-tools
   - mod-manager
   - world-of-warcraft
   - wow
-description: World of Warcraft addon manager
-applications:
-  - WowUp.app
 provenance:
-  cask: wowup
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official homepage and repository identify WowUp as a World of Warcraft addon
+      updater and manager: https://wowup.io/
+  display-name-sources:
+    - Official WowUp homepage and guide.
+    - source_facts.applications
+  docs-sources:
+    - >
+      Dedicated official WowUp guide covering setup, addon management, import/export,
+      backups, and application options.
+  history-sources:
+    - https://github.com/WowUp/WowUp
+    - https://wowup.io/
+    - https://wowup.io/guide/my-addons/addon-import
+    - https://wowup.io/guide/my-addons/addon-settings
+    - https://wowup.io/guide/my-addons/addons
+    - https://wowup.io/guide/wowup/overview
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      `source_facts.repo` is already populated; repository enrichment is intentionally
+      suppressed as required.
+  tags-sources:
+    - >
+      Official homepage, guide, and repository describe addon discovery, installation,
+      updates, backups, and multi-client support.
+category-confidence: high
+category-path:
+  - games
+  - addon-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
