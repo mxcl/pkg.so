@@ -1,13 +1,15 @@
 id: cask:xemu
 display-name: xemu
-homepage: https://xemu.app/
-repo: https://github.com/xemu-project/xemu
+repo: null
 docs:
   - https://xemu.app/docs
 config-file-location:
-  linux: <directory-containing-xemu>/xemu.toml
-  macos: <xemu.app>/Contents/Resources/xemu.toml
-  windows: <directory-containing-xemu.exe>\xemu.toml
+  linux:
+    - <directory-containing-xemu>/xemu.toml
+  macos:
+    - <xemu.app>/Contents/Resources/xemu.toml
+  windows:
+    - <directory-containing-xemu.exe>\xemu.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -57,10 +59,6 @@ history:
       Snapshots preserve the emulated machine state inside the selected hard-disk image.
       The official documentation cautions that restoring an old snapshot can also roll
       back the apparent state of in-game saves.
-category: games
-package-manager:
-  brew-cask: xemu
-package-manager-url: https://formulae.brew.sh/cask/xemu
 tags:
   - cross-platform
   - emulator
@@ -70,10 +68,35 @@ tags:
   - original-xbox
   - qemu
   - save-states
-description: Original Xbox Emulator
-applications:
-  - Xemu.app
 provenance:
-  cask: xemu
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official About page identifies xemu as an original Xbox emulator:
+      https://xemu.app/docs/about/
+  display-name-sources:
+    - 'Official site and documentation consistently style the name as “xemu”: https://xemu.app/'
+  docs-sources:
+    - Dedicated official documentation root.
+  history-sources:
+    - 'Official About and History page: https://xemu.app/docs/about/'
+    - 'Official FAQ: https://xemu.app/docs/faq/'
+    - 'Official snapshots documentation: https://xemu.app/docs/snapshots/'
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo already contains a value; per enrichment rules it is not
+      re-determined.
+  tags-sources:
+    - >
+      Official About page documents original Xbox emulation, QEMU ancestry, supported
+      desktop platforms, homebrew compatibility, and open-source licensing.
+    - Official snapshots documentation describes save-state support.
+category-confidence: high
+category-path:
+  - games
+  - emulators
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
