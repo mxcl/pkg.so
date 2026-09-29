@@ -1,13 +1,15 @@
 id: cask:webstorm
 display-name: WebStorm
-homepage: https://www.jetbrains.com/webstorm/
 repo: null
 docs:
   - https://www.jetbrains.com/help/webstorm
 config-file-location:
-  linux: ~/.config/JetBrains/WebStorm<version>
-  macos: ~/Library/Application Support/JetBrains/WebStorm<version>
-  windows: '%APPDATA%\JetBrains\WebStorm<version>'
+  linux:
+    - ~/.config/JetBrains/WebStorm<version>
+  macos:
+    - ~/Library/Application Support/JetBrains/WebStorm<version>
+  windows:
+    - '%APPDATA%\JetBrains\WebStorm<version>'
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,20 +65,47 @@ history:
       toolchains. User settings reside in a versioned operating-system-specific
       configuration directory; project-specific IDE metadata is commonly kept in each
       project's .idea directory.
-category: developer-tools
-package-manager:
-  brew-cask: webstorm
-package-manager-url: https://formulae.brew.sh/cask/webstorm
 tags:
   - ide
   - javascript
   - jetbrains
   - typescript
   - web-development
-description: JavaScript IDE
-applications:
-  - WebStorm.app
 provenance:
-  cask: webstorm
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://www.jetbrains.com/webstorm/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.jetbrains.com/webstorm/
+  docs-sources:
+    - 'Official WebStorm documentation: https://www.jetbrains.com/help/webstorm/'
+  history-sources:
+    - 'Official 1.0 announcement: https://blog.jetbrains.com/blog/2010/05/27/pr_270510/'
+    - >
+      Official directory documentation:
+      https://www.jetbrains.com/help/webstorm/directories-used-by-the-ide-to-store-settings-caches-plugins-and-logs.html
+    - >
+      Official non-commercial licensing announcement:
+      https://blog.jetbrains.com/blog/2024/10/24/webstorm-and-rider-are-now-free-for-non-commercial-use/
+    - 'Official product page: https://www.jetbrains.com/webstorm/'
+  repo-sources:
+    - >
+      JetBrains' official product and documentation pages identify WebStorm as a
+      JetBrains product but provide no official public source-control repository for the
+      IDE itself: https://www.jetbrains.com/webstorm/
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://www.jetbrains.com/webstorm/
+    - https://www.jetbrains.com/webstorm/features/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - ide
+  - web-development
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
