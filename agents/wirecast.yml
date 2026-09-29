@@ -1,12 +1,12 @@
 id: cask:wirecast
 display-name: Wirecast
-homepage: https://www.telestream.net/wirecast/
 repo: null
 docs:
   - https://www.telestream.net/telestream-support/wire-cast/documentation.htm
   - https://www.telestream.net/telestream-support/wire-cast/activation.htm
 config-file-location:
-  macos: ~/Library/Preferences/Wirecast/net.telestream.wirecast.xml
+  macos:
+    - ~/Library/Preferences/Wirecast/net.telestream.wirecast.xml
 credentials-file-location: null
 history:
   adoption-history:
@@ -73,10 +73,6 @@ history:
     - >
       Wirecast can record a production locally and broadcast it to supported streaming
       platforms or configured streaming destinations.
-category: media
-package-manager:
-  brew-cask: wirecast
-package-manager-url: https://formulae.brew.sh/cask/wirecast
 tags:
   - broadcasting
   - live-streaming
@@ -85,10 +81,38 @@ tags:
   - screen-capture
   - video-production
   - webcasting
-description: Live video streaming production tool
-applications:
-  - Wirecast.app
 provenance:
-  cask: wirecast
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Wirecast documentation describes creating and broadcasting live
+      presentations:
+      https://www.telestream.net/telestream-support/wire-cast/documentation.htm
+    - 'source_facts.description: "Live video streaming production tool".'
+  display-name-sources:
+    - >
+      current_curation.display-name and official Telestream product branding:
+      https://www.telestream.net/wirecast
+  docs-sources:
+    - Official Telestream Wirecast documentation index and activation guide.
+  history-sources:
+    - https://www.telestream.net/company/press/pdfs/prs-2009-02-10.pdf
+    - >
+      https://www.telestream.net/company/press/pdfs/prs_Telestream_Vara_Software_Acquisition.pdf
+    - https://www.telestream.net/telestream-support/wire-cast/documentation.htm
+  repo-sources:
+    - >
+      source_facts.repo is empty. Telestream publishes product documentation and
+      downloads but no official public source-control repository for the proprietary
+      Wirecast application.
+  tags-sources:
+    - Official Telestream Wirecast announcements, user guides, and documentation index.
+category-confidence: high
+category-path:
+  - media
+  - video
+  - live-streaming
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
