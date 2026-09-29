@@ -263,7 +263,7 @@ jq -n --arg name "${headers_policy_name}" '{
     ReferrerPolicy: {Override: true, ReferrerPolicy: "strict-origin-when-cross-origin"},
     ContentSecurityPolicy: {
       Override: true,
-      ContentSecurityPolicy: "default-src '\''self'\''; script-src '\''self'\'' '\''unsafe-inline'\'' https://www.googletagmanager.com; style-src '\''self'\'' '\''unsafe-inline'\'' https://fonts.googleapis.com; font-src '\''self'\'' https://fonts.gstatic.com; img-src '\''self'\'' data:; connect-src '\''self'\'' https://www.google-analytics.com https://www.google.com; frame-ancestors '\''none'\''; base-uri '\''self'\''; form-action '\''none'\''"
+      ContentSecurityPolicy: "default-src '\''self'\''; script-src '\''self'\'' '\''unsafe-inline'\'' https://www.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.gstatic.com https://*.googletagservices.com; style-src '\''self'\'' '\''unsafe-inline'\'' https://fonts.googleapis.com; font-src '\''self'\'' https://fonts.gstatic.com; img-src '\''self'\'' data: https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.gstatic.com https://*.googleadservices.com; connect-src '\''self'\'' https://www.google-analytics.com https://*.google.com https://*.googlesyndication.com https://*.doubleclick.net https://*.googleadservices.com; frame-src https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com; frame-ancestors '\''none'\''; base-uri '\''self'\''; form-action '\''none'\''"
     },
     ContentTypeOptions: {Override: true},
     StrictTransportSecurity: {
