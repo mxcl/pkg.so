@@ -1,6 +1,10 @@
 import importlib.util
+import os
+import signal
+import subprocess
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from scripts.bootstrap.lib.casks import cask_app_evidence_hash, cask_app_identity_evidence
 
@@ -15,6 +19,30 @@ def load_module():
 
 
 class CaskAppAssociationAgentTests(unittest.TestCase):
+    def test_codex_timeout_terminates_the_process_group(self):
+        module = load_module()
+        process = mock.Mock(pid=1234)
+        process.wait.side_effect = [
+            subprocess.TimeoutExpired("codex", 42),
+            subprocess.TimeoutExpired("codex", 10),
+            0,
+        ]
+
+        with (
+            mock.patch.object(module.subprocess, "Popen", return_value=process) as popen,
+            mock.patch.object(module.os, "killpg") as killpg,
+            mock.patch.dict(os.environ, {"AVDB_CODEX_TIMEOUT_SECONDS": "42"}),
+            self.assertRaises(subprocess.TimeoutExpired),
+        ):
+            module.invoke_codex(Path("input.json"), Path("output.json"), Path("schema.json"))
+
+        self.assertTrue(popen.call_args.kwargs["start_new_session"])
+        self.assertEqual(
+            killpg.call_args_list,
+            [mock.call(1234, signal.SIGTERM), mock.call(1234, signal.SIGKILL)],
+        )
+        self.assertEqual(process.wait.call_args_list[-1], mock.call())
+
     def test_applies_validated_result_with_local_evidence_hash(self):
         module = load_module()
         cask = {

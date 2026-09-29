@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import signal
 import subprocess
 import sys
 import tempfile
@@ -100,7 +101,24 @@ def invoke_codex(input_path: Path, output_path: Path, schema_path: Path) -> None
     ]
     timeout_raw = os.environ.get("AVDB_CODEX_TIMEOUT_SECONDS", "1800").strip()
     timeout = float(timeout_raw) if timeout_raw else None
-    subprocess.run(command, cwd=ROOT, check=True, timeout=timeout, stdin=subprocess.DEVNULL)
+    process = subprocess.Popen(
+        command,
+        cwd=ROOT,
+        stdin=subprocess.DEVNULL,
+        start_new_session=True,
+    )
+    try:
+        returncode = process.wait(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        os.killpg(process.pid, signal.SIGTERM)
+        try:
+            process.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            os.killpg(process.pid, signal.SIGKILL)
+            process.wait()
+        raise
+    if returncode:
+        raise subprocess.CalledProcessError(returncode, command)
 
 
 def validated_results(payload: Any, expected_tokens: set[str]) -> list[dict[str, Any]]:
