@@ -1,7 +1,6 @@
 id: cask:vibetunnel
 display-name: VibeTunnel
-homepage: https://vibetunnel.sh/
-repo: https://github.com/amantus-ai/vibetunnel
+repo: null
 docs:
   - https://docs.vibetunnel.sh/
 config-file-location: null
@@ -78,10 +77,6 @@ history:
       `~/.vibetunnel/jwt-secret`. SSH-key authentication reads `~/.ssh/authorized_keys`;
       some macOS integration secrets are instead held in Keychain and therefore have no
       filesystem credential path.
-category: developer-tools
-package-manager:
-  brew-cask: vibetunnel
-package-manager-url: https://formulae.brew.sh/cask/vibetunnel
 tags:
   - ai-agents
   - browser-terminal
@@ -91,10 +86,40 @@ tags:
   - macos
   - remote-access
   - terminal
-description: Turn any browser into your terminal
-applications:
-  - VibeTunnel.app
 provenance:
-  cask: vibetunnel
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes VibeTunnel as a terminal-sharing application
+      providing browser access to terminal sessions on macOS and Linux:
+      https://docs.vibetunnel.sh/docs/introduction
+  display-name-sources:
+    - >
+      Official homepage and documentation consistently use VibeTunnel:
+      https://vibetunnel.sh/ and https://docs.vibetunnel.sh/docs/introduction
+  docs-sources:
+    - >
+      VibeTunnel has a dedicated official documentation site covering installation,
+      authentication, architecture, security, deployment, and integrations.
+  history-sources:
+    - 'Official documentation: https://docs.vibetunnel.sh/docs/introduction'
+    - 'Official homepage: https://vibetunnel.sh/'
+    - 'Official repository README: https://github.com/amantus-ai/vibetunnel#readme'
+  repo-sources:
+    - >
+      Repository lookup intentionally omitted because `source_facts.repo` already
+      supplies `https://github.com/amantus-ai/vibetunnel`; per task rules the returned
+      repo must therefore be null.
+  tags-sources:
+    - >
+      Official documentation describes browser terminal access, native macOS and
+      Linux/headless support, mobile access, and remote networking integrations:
+      https://docs.vibetunnel.sh/docs/introduction
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminal-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
