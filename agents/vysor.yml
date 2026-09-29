@@ -1,7 +1,6 @@
 id: cask:vysor
 display-name: Vysor
-homepage: https://www.vysor.io/
-repo: https://github.com/koush/vysor.io
+repo: null
 docs:
   - https://github.com/koush/vysor.io/wiki
   - https://github.com/koush/vysor.io/blob/master/README.md
@@ -59,10 +58,6 @@ history:
       through the desktop or WebUSB application with keyboard and mouse input. Vysor
       also supports wireless operation, screenshots, recording, file transfer, and
       remote device sharing, with some capabilities reserved for paid tiers.
-category: developer-tools
-package-manager:
-  brew-cask: vysor
-package-manager-url: https://formulae.brew.sh/cask/vysor
 tags:
   - adb
   - android
@@ -71,10 +66,38 @@ tags:
   - remote-device
   - screen-mirroring
   - webusb
-description: Mirror and control your phone
-applications:
-  - Vysor.app
 provenance:
-  cask: vysor
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Vysor’s official site explicitly targets developers who want to use a physical
+      device instead of an emulator: https://www.vysor.io/
+    - source_facts.description says it mirrors and controls a phone.
+  display-name-sources:
+    - 'Official site: https://www.vysor.io/'
+    - source_facts.name and current_curation.display-name.
+  docs-sources:
+    - >
+      The official repository README supplies downloads, platform notes, and a versioned
+      change log.
+    - The project’s official GitHub wiki labels itself the Vysor Manual.
+  history-sources:
+    - https://app.vysor.io/
+    - https://github.com/koush/vysor.io
+    - https://github.com/koush/vysor.io/blob/master/README.md
+    - https://github.com/koush/vysor.io/wiki
+    - https://www.vysor.io/
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/koush/vysor.io; per
+      the task rule, repo is returned as null without reassessment.
+  tags-sources:
+    - Official Vysor homepage, web application, README, and manual.
+category-confidence: high
+category-path:
+  - developer-tools
+  - mobile-device-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
