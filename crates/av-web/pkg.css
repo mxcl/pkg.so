@@ -1352,11 +1352,14 @@ a:focus-visible { outline: 2px solid var(--hot); outline-offset: 4px; }
 h1 {
   max-width: 12ch;
   margin-top: 18px;
-  font-size: clamp(3.4rem, 7.4vw, 7.25rem);
+  font-size: clamp(3.4rem, 7.4vw, var(--headline-max, 7.25rem));
   font-weight: 600;
   letter-spacing: -.07em;
   line-height: .88;
   text-transform: none;
+}
+.pkg-hero:not(.pkg-hero-index) {
+  --headline-max: 3.774rem;
 }
 .lede {
   max-width: 700px;
@@ -1470,7 +1473,7 @@ h1 {
   .pkg-hero, .split-section, .security-section, .support-section, .pkg-search-section, .install-section, .signal-grid, .related-columns, .platform-install-grid, .freshness-metrics, .file-location-board { grid-template-columns: 1fr; }
   .pkg-hero { gap: 48px; padding-top: 64px; }
   .pkg-hero::before { display: none; }
-  h1 { font-size: clamp(3rem,15vw,5rem); }
+  h1 { font-size: clamp(3rem,15vw,var(--headline-max,5rem)); }
   .hub-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 @media (max-width: 540px) {
