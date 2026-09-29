@@ -1,6 +1,5 @@
 id: cask:ioquake3
 display-name: ioquake3
-homepage: https://ioquake3.org/
 repo: https://github.com/ioquake/ioq3
 docs:
   - https://ioquake3.org/help/players-guide
@@ -9,8 +8,10 @@ config-file-location:
   linux:
     - /home/<username>/.config/Quake3/baseq3/q3config.cfg
     - /home/<username>/.q3a/baseq3/q3config.cfg
-  macos: /Users/<username>/Library/Application Support/Quake3/baseq3/q3config.cfg
-  windows: C:\Users\<username>\AppData\Roaming\Quake3\baseq3\q3config.cfg
+  macos:
+    - /Users/<username>/Library/Application Support/Quake3/baseq3/q3config.cfg
+  windows:
+    - C:\Users\<username>\AppData\Roaming\Quake3\baseq3\q3config.cfg
 credentials-file-location: null
 history:
   adoption-history:
@@ -78,10 +79,6 @@ history:
       not. Users can play Arena, Team Arena, and compatible mods, while administrators
       can run dedicated servers using the official Sys Admin Guide. Developers can fork
       the engine to create ports or standalone games.
-category: games
-package-manager:
-  brew-cask: ioquake3
-package-manager-url: https://formulae.brew.sh/cask/ioquake3
 tags:
   - cross-platform
   - dedicated-server
@@ -91,10 +88,44 @@ tags:
   - open-source
   - quake-3
   - source-port
-description: First person shooter engine
-applications:
-  - ioquake3.app
 provenance:
-  cask: ioquake3
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official site identifies ioquake3 as a free and open-source first-person-shooter
+      engine based on Quake III Arena and Team Arena: https://ioquake3.org/
+  display-name-sources:
+    - >
+      Official site and About page consistently style the name as ioquake3 and
+      explicitly request a lowercase q: https://ioquake3.org/about/
+  docs-sources:
+    - The official site directly designates these as its Player's Guide and Sys Admin Guide.
+  history-sources:
+    - >
+      Official 2013 GitHub migration announcement:
+      https://ioquake3.org/ioquake3/happy-new-year-ioquake3-and-github/
+    - 'Official About page: https://ioquake3.org/about/'
+    - "Official Player's Guide: https://ioquake3.org/help/players-guide/"
+    - 'Official repository README: https://github.com/ioquake/ioq3/blob/main/README.md'
+    - >
+      Official twentieth-anniversary history:
+      https://ioquake3.org/ioquake3/20-years-of-ioquake3/
+  repo-sources:
+    - >
+      The official ioquake3 homepage links directly to the ioquake/ioq3 GitHub
+      repository as its source code: https://ioquake3.org/
+  tags-sources:
+    - >
+      Official homepage, About page, Player's Guide, and Sys Admin Guide:
+      https://ioquake3.org/, https://ioquake3.org/about/,
+      https://ioquake3.org/help/players-guide/, and
+      https://ioquake3.org/help/sys-admin-guide/
+category-confidence: high
+category-path:
+  - games
+  - game-engines
+  - first-person-shooter
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
