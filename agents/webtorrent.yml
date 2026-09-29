@@ -1,7 +1,6 @@
 id: cask:webtorrent
 display-name: WebTorrent Desktop
-homepage: https://webtorrent.io/desktop/
-repo: https://github.com/webtorrent/webtorrent-desktop
+repo: null
 docs:
   - https://github.com/webtorrent/webtorrent-desktop#readme
   - https://webtorrent.io/desktop
@@ -64,10 +63,6 @@ history:
       The desktop client can communicate with traditional BitTorrent peers as well as
       WebTorrent-compatible WebRTC peers, and supports playback or casting through
       integrations such as VLC, AirPlay, Chromecast, and DLNA.
-category: networking
-package-manager:
-  brew-cask: webtorrent
-package-manager-url: https://formulae.brew.sh/cask/webtorrent
 tags:
   - bittorrent
   - cross-platform
@@ -77,10 +72,38 @@ tags:
   - streaming
   - torrent-client
   - webrtc
-description: Torrent streaming application
-applications:
-  - WebTorrent.app
 provenance:
-  cask: webtorrent
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://github.com/webtorrent/webtorrent-desktop describes a streaming torrent app
+      for macOS, Windows, and Linux.
+    - source_facts.description identifies it as a torrent-streaming application.
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/webtorrent/webtorrent-desktop
+  docs-sources:
+    - The official repository README provides installation and usage documentation.
+    - source_facts.homepage is the official desktop product page.
+  history-sources:
+    - https://github.com/webtorrent/webtorrent
+    - https://github.com/webtorrent/webtorrent-desktop
+    - https://github.com/webtorrent/webtorrent-desktop/blob/master/CHANGELOG.md
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; the task requires returning repo as null
+      without re-determining it.
+  tags-sources:
+    - https://github.com/webtorrent/webtorrent
+    - https://github.com/webtorrent/webtorrent-desktop
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - file-sharing
+  - bittorrent
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
