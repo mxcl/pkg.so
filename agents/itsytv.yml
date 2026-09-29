@@ -1,7 +1,6 @@
 id: cask:itsytv
 display-name: Itsytv
-homepage: https://itsytv.app/
-repo: https://github.com/nickustinov/itsytv-macos
+repo: null
 docs:
   - https://github.com/nickustinov/itsytv-macos#readme
 config-file-location: null
@@ -58,10 +57,6 @@ history:
       The app supports multiple Apple TVs, per-device panel placement, global hotkeys,
       AppleScript commands, and a Shortcuts action. Pairing credentials are stored in
       macOS Keychain rather than a documented user-managed credentials file.
-category: media
-package-manager:
-  brew-cask: itsytv
-package-manager-url: https://formulae.brew.sh/cask/itsytv
 tags:
   - apple-tv
   - applescript
@@ -70,10 +65,35 @@ tags:
   - menu-bar
   - remote-control
   - shortcuts
-description: Menu bar app for controlling your Apple TV
-applications:
-  - Itsytv.app
 provenance:
-  cask: itsytv
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official repository identifies Itsytv as a native macOS menu-bar remote for
+      Apple TV.
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/nickustinov/itsytv-macos
+  docs-sources:
+    - >
+      The official README provides installation, operation, automation, compatibility,
+      and troubleshooting guidance.
+  history-sources:
+    - https://github.com/nickustinov/itsytv-macos
+    - https://github.com/nickustinov/itsytv-macos/releases
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      Repository determination was intentionally skipped because source_facts.repo
+      already contains `https://github.com/nickustinov/itsytv-macos`.
+  tags-sources:
+    - https://github.com/nickustinov/itsytv-macos
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - remote-control
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

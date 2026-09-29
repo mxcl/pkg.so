@@ -1,12 +1,13 @@
 id: cask:jalview
 display-name: Jalview
-homepage: https://www.jalview.org/
 repo: https://gitlab.jalview.org/jalview/jalview
 docs:
   - https://www.jalview.org/help/html
 config-file-location:
-  unix: ~/.jalview_properties
-  windows: '%HOMEPATH%\.jalview_properties'
+  unix:
+    - ~/.jalview_properties
+  windows:
+    - '%HOMEPATH%\.jalview_properties'
 credentials-file-location: null
 history:
   adoption-history:
@@ -76,10 +77,6 @@ history:
       Desktop preferences are normally stored in `.jalview_properties` in the user's
       home directory. Command-line users can select an alternative preferences file with
       `--props` for controlled or reproducible workflows.
-category: science
-package-manager:
-  brew-cask: jalview
-package-manager-url: https://formulae.brew.sh/cask/jalview
 tags:
   - bioinformatics
   - java
@@ -88,10 +85,36 @@ tags:
   - research
   - sequence-analysis
   - visualization
-description: Multiple sequence alignment editor, visualiser, analysis and figure generator
-applications:
-  - Jalview.app
 provenance:
-  cask: jalview
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official documentation describes Jalview as a multiple-sequence-alignment
+      editor, visualizer, and analysis workbench.
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.jalview.org/
+  docs-sources:
+    - Official built-in and online Jalview documentation.
+  history-sources:
+    - https://www.jalview.org/about/archive/
+    - https://www.jalview.org/development/
+    - https://www.jalview.org/development/archive/
+    - https://www.jalview.org/help/html/
+    - https://www.jalview.org/tutorial/TheJalviewTutorial.pdf
+  repo-sources:
+    - >
+      The official Jalview development page links this GitLab project and identifies it
+      as the source-code checkout location.
+  tags-sources:
+    - https://www.jalview.org/development/
+    - https://www.jalview.org/help/html/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - science
+  - bioinformatics
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

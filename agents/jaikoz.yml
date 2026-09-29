@@ -1,17 +1,22 @@
 id: cask:jaikoz
 display-name: Jaikoz
-homepage: https://www.jthink.net/jaikoz/
 repo: null
 docs:
   - https://www.jthink.net/jaikoz/jsp/help/osx/help.html
 config-file-location:
-  linux: ~/.jaikoz/setting.properties
-  macos: ~/Library/Preferences/Jaikoz/setting.properties
-  windows: C:\Users\<username>\Jaikoz\setting.properties
+  linux:
+    - ~/.jaikoz/setting.properties
+  macos:
+    - ~/Library/Preferences/Jaikoz/setting.properties
+  windows:
+    - C:\Users\<username>\Jaikoz\setting.properties
 credentials-file-location:
-  linux: ~/.jaikoz/license.jai
-  macos: ~/Library/Preferences/Jaikoz/license.jai
-  windows: C:\Users\<username>\Jaikoz\license.jai
+  linux:
+    - ~/.jaikoz/license.jai
+  macos:
+    - ~/Library/Preferences/Jaikoz/license.jai
+  windows:
+    - C:\Users\<username>\Jaikoz\license.jai
 history:
   adoption-history:
     - >
@@ -69,10 +74,6 @@ history:
       Common workflows include retrieving artwork, finding duplicates, correcting genres
       and classical metadata, renaming files and directories from tags, and processing
       large mixed-format libraries.
-category: media
-package-manager:
-  brew-cask: jaikoz
-package-manager-url: https://formulae.brew.sh/cask/jaikoz
 tags:
   - acoustid
   - album-art
@@ -82,10 +83,35 @@ tags:
   - metadata
   - musicbrainz
   - tag-editor
-description: Audio tag editor
-applications:
-  - Jaikoz.app
 provenance:
-  cask: jaikoz
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official Jaikoz site and manual describe it as an audio tagger for correcting
+      and editing music metadata.
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.jthink.net/jaikoz/
+  docs-sources:
+    - Official JThink Jaikoz manual for macOS, appropriate to the cask package.
+  history-sources:
+    - https://community.jthink.net/t/where-are-settings-stored/13970
+    - https://www.jthink.net/jaikoz/
+    - https://www.jthink.net/jaikoz/jsp/help/osx/help.html
+    - https://www.jthink.net/songkong/details2.jsp
+  repo-sources:
+    - >
+      The official Jaikoz site and manual provide downloads and documentation but do not
+      identify an official public source-control repository.
+  tags-sources:
+    - https://www.jthink.net/jaikoz/
+    - https://www.jthink.net/jaikoz/jsp/help/osx/help.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - audio-metadata
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: medium
+tags-confidence: high
