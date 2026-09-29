@@ -1,6 +1,5 @@
 id: cask:uu-booster
 display-name: NetEase UU Booster
-homepage: https://uu.163.com/download/
 repo: null
 docs:
   - https://uu.163.com/
@@ -62,10 +61,6 @@ history:
       start an acceleration route before playing. The client uses NetEase-operated
       network paths and routing technology to improve stability and latency, including
       for players connecting between overseas locations and Chinese game services.
-category: networking
-package-manager:
-  brew-cask: uu-booster
-package-manager-url: https://formulae.brew.sh/cask/uu-booster
 tags:
   - game-acceleration
   - gaming
@@ -75,10 +70,49 @@ tags:
   - online-games
   - packet-loss
   - routing
-description: Network accelerator
-applications:
-  - UUBooster.app
 provenance:
-  cask: uu-booster
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://gad.netease.com/gad/access?code_type=1&project_id=4785538 describes
+      latency, packet-loss, and connection acceleration for games.
+    - >
+      https://uu.163.com/download is the official NetEase UU download surface for its
+      game-network accelerator.
+    - source_facts.description
+  display-name-sources:
+    - >
+      The official product uses the Chinese name 网易UU加速器; “NetEase UU Booster” is a
+      concise English rendering of that official brand.
+    - source_facts.applications names UUBooster.app.
+  docs-sources:
+    - >
+      The official NetEase UU download and product pages are the best vendor-controlled
+      documentation surfaces found; no separate stable English documentation center was
+      identified.
+  history-sources:
+    - https://cmm-custom.prnasia.com/cms-prod/attachment/20211124/whitepaper5_CN.pdf
+    - https://gad.netease.com/gad/access?code_type=1&project_id=4785538
+    - https://uu.163.com/
+    - https://uu.163.com/download
+    - source_facts.description
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      The official NetEase product and download pages distribute a proprietary client
+      and do not identify an official source-code repository; similarly named
+      third-party GitHub repositories are not official and were rejected.
+  tags-sources:
+    - >
+      Official NetEase UU material describes game acceleration, latency reduction,
+      packet-loss protection, routing, and macOS support.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - network-acceleration
+  - gaming
+display-name-confidence: medium
+docs-confidence: medium
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
