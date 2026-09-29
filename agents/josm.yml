@@ -1,7 +1,6 @@
 id: cask:josm
 display-name: JOSM
-homepage: https://josm.openstreetmap.de/
-repo: https://github.com/JOSM/josm
+repo: null
 docs:
   - https://josm.openstreetmap.de/wiki/Help
   - https://josm.openstreetmap.de/wiki/Help/Preferences
@@ -12,16 +11,20 @@ config-file-location:
     - ~/.config/JOSM/preferences.xml
     - ~/.josm/preferences.xml
     - ~/.var/app/org.openstreetmap.josm/config/preferences.xml
-  macos: /Users/<username>/Library/Preferences/JOSM/preferences.xml
-  windows: '%APPDATA%\JOSM\preferences.xml'
+  macos:
+    - /Users/<username>/Library/Preferences/JOSM/preferences.xml
+  windows:
+    - '%APPDATA%\JOSM\preferences.xml'
 credentials-file-location:
   linux:
     - $XDG_CONFIG_HOME/JOSM/preferences.xml
     - ~/.config/JOSM/preferences.xml
     - ~/.josm/preferences.xml
     - ~/.var/app/org.openstreetmap.josm/config/preferences.xml
-  macos: /Users/<username>/Library/Preferences/JOSM/preferences.xml
-  windows: '%APPDATA%\JOSM\preferences.xml'
+  macos:
+    - /Users/<username>/Library/Preferences/JOSM/preferences.xml
+  windows:
+    - '%APPDATA%\JOSM\preferences.xml'
 history:
   adoption-history:
     - >
@@ -78,10 +81,6 @@ history:
     - >
       Plugins, presets, map styles, imagery definitions, and validator rules adapt JOSM
       to specialized mapping workflows.
-category: science
-package-manager:
-  brew-cask: josm
-package-manager-url: https://formulae.brew.sh/cask/josm
 tags:
   - data-validation
   - geospatial
@@ -93,10 +92,44 @@ tags:
   - mapping
   - openstreetmap
   - plugins
-description: Extensible editor for OpenStreetMap
-applications:
-  - JOSM_25_arm64.app
 provenance:
-  cask: josm
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://josm.openstreetmap.de/ describes JOSM as an extensible Java editor for
+      OpenStreetMap.
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://josm.openstreetmap.de/ uses JOSM as the official project name.
+  docs-sources:
+    - The JOSM project operates an integrated official wiki and contextual help system.
+    - >
+      The official introduction covers the editing workflow, and the preferences guide
+      documents configuration directories.
+  history-sources:
+    - https://josm.openstreetmap.de/
+    - https://josm.openstreetmap.de/wiki/Help
+    - https://josm.openstreetmap.de/wiki/Introduction
+    - https://josm.openstreetmap.de/wiki/Plugins
+    - https://josm.openstreetmap.de/wiki/VersionHistory
+  repo-sources:
+    - >
+      source_facts.repo already supplies https://github.com/JOSM/josm; per the
+      enrichment rule, repo is returned as null without re-determination.
+  tags-sources:
+    - >
+      https://josm.openstreetmap.de/ lists OSM editing, GPX, imagery, Java, plugins,
+      presets, styles, and validation.
+    - >
+      https://josm.openstreetmap.de/wiki/Introduction documents the offline mapping and
+      upload workflow.
+category-confidence: high
+category-path:
+  - science
+  - geospatial
+  - openstreetmap
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

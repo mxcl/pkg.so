@@ -1,7 +1,6 @@
 id: cask:jitsi-meet
 display-name: Jitsi Meet
-homepage: https://github.com/jitsi/jitsi-meet-electron/
-repo: https://github.com/jitsi/jitsi-meet-electron
+repo: null
 docs:
   - https://jitsi.github.io/handbook/docs/user-guide/user-guide-start-a-jitsi-meeting
   - https://github.com/jitsi/jitsi-meet-electron#readme
@@ -54,10 +53,6 @@ history:
       Users join meetings on meet.jit.si or another Jitsi Meet deployment, share their
       screen, use deep links, and access desktop-oriented features such as remote
       control and an always-on-top meeting window.
-category: productivity
-package-manager:
-  brew-cask: jitsi-meet
-package-manager-url: https://formulae.brew.sh/cask/jitsi-meet
 tags:
   - cross-platform
   - electron
@@ -67,10 +62,43 @@ tags:
   - screen-sharing
   - video-conferencing
   - webrtc
-description: Secure video conferencing app
-applications:
-  - Jitsi Meet.app
 provenance:
-  cask: jitsi-meet
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://github.com/jitsi/jitsi-meet-electron describes the project as the Jitsi
+      Meet desktop application.
+    - source_facts.description describes a secure video-conferencing app.
+  display-name-sources:
+    - >
+      The official repository describes the packaged program as the Jitsi Meet desktop
+      application.
+    - current_curation.display-name
+  docs-sources:
+    - The Jitsi Handbook is the project's official user-documentation site.
+    - >
+      The official desktop repository README documents desktop-specific features,
+      installation, deep links, and development.
+  history-sources:
+    - https://github.com/jitsi/jitsi-meet-electron
+    - https://jitsi.github.io/handbook/
+    - >
+      https://jitsi.org/blog/remote-desktop-control-and-always-on-top-view-with-the-new-jitsi-meet-desktop-app/
+  repo-sources:
+    - >
+      source_facts.repo already supplies https://github.com/jitsi/jitsi-meet-electron;
+      per the enrichment rule, repo is returned as null without re-determination.
+  tags-sources:
+    - >
+      https://github.com/jitsi/jitsi-meet-electron lists Electron, conferencing, screen
+      sharing, remote control, deep links, and beta end-to-end encryption.
+    - https://jitsi.github.io/handbook/ documents the Jitsi Meet user workflow.
+category-confidence: high
+category-path:
+  - productivity
+  - communication
+  - video-conferencing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

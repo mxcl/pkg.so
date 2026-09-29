@@ -1,11 +1,11 @@
 id: cask:juice
 display-name: Juice
-homepage: https://github.com/brianmichel/Juice
-repo: https://github.com/brianmichel/Juice
+repo: null
 docs:
   - https://github.com/brianmichel/Juice#readme
 config-file-location:
-  macos: ~/Library/Containers/com.bsm.macos.Juice/Data/Library/Application Support/Juice/*.plist
+  macos:
+    - ~/Library/Containers/com.bsm.macos.Juice/Data/Library/Application Support/Juice/*.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -46,10 +46,6 @@ history:
       Users select a supplied battery scale or create a plist defining a default value,
       ten charge-range detents, and a title. Custom plist files can be added through the
       preferences interface or placed in Juice's application-support directory.
-category: system
-package-manager:
-  brew-cask: juice
-package-manager-url: https://formulae.brew.sh/cask/juice
 tags:
   - battery
   - battery-monitor
@@ -59,10 +55,36 @@ tags:
   - menu-bar
   - open-source
   - plist
-description: Make your battery information a bit more interesting
-applications:
-  - Juice.app
 provenance:
-  cask: juice
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://github.com/brianmichel/Juice describes a customizable macOS battery indicator.
+    - source_facts.description identifies Juice as a battery-information utility.
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/brianmichel/Juice uses Juice as the application name.
+  docs-sources:
+    - >
+      The official repository README is the project's primary documentation and includes
+      installation, custom-scale instructions, the plist format, and the scale
+      directory.
+  history-sources:
+    - https://github.com/brianmichel/Juice
+    - https://github.com/brianmichel/Juice/releases
+  repo-sources:
+    - >
+      source_facts.repo already supplies https://github.com/brianmichel/Juice; per the
+      enrichment rule, repo is returned as null without re-determination.
+  tags-sources:
+    - >
+      https://github.com/brianmichel/Juice documents its battery-information, menu-bar,
+      IOKit, plist, and custom-scale functionality.
+category-confidence: high
+category-path:
+  - system
+  - power-management
+  - battery-monitoring
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
