@@ -1,7 +1,6 @@
 id: cask:losslesscut
 display-name: LosslessCut
-homepage: https://github.com/mifi/lossless-cut
-repo: https://github.com/mifi/lossless-cut
+repo: null
 docs:
   - https://github.com/mifi/lossless-cut/blob/master/docs/index.md
   - https://github.com/mifi/lossless-cut/blob/master/docs/installation.md
@@ -10,8 +9,10 @@ config-file-location:
   linux:
     - $XDG_CONFIG_HOME/LosslessCut/config.json
     - ~/.config/LosslessCut/config.json
-  macos: ~/Library/Application Support/LosslessCut/config.json
-  windows: '%APPDATA%\LosslessCut\config.json'
+  macos:
+    - ~/Library/Application Support/LosslessCut/config.json
+  windows:
+    - '%APPDATA%\LosslessCut\config.json'
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,10 +71,6 @@ history:
     - >
       The application also supports project files, batch-oriented operations, a basic
       command-line interface, and an experimental local HTTP API.
-category: media
-package-manager:
-  brew-cask: losslesscut
-package-manager-url: https://formulae.brew.sh/cask/losslesscut
 tags:
   - audio
   - cross-platform
@@ -82,10 +79,44 @@ tags:
   - media-conversion
   - open-source
   - video
-description: Trims video and audio files losslessly
-applications:
-  - LosslessCut.app
 provenance:
-  cask: losslesscut
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official project metadata:
+      https://github.com/mifi/lossless-cut/blob/master/no.mifi.losslesscut.appdata.xml
+    - 'source_facts.description: Trims video and audio files losslessly'
+  display-name-sources:
+    - 'Official repository: https://github.com/mifi/lossless-cut'
+    - current_curation.display-name
+  docs-sources:
+    - Official installation and file-location documentation
+    - Official repository README
+    - Official usage documentation
+  history-sources:
+    - >
+      Official application metadata:
+      https://github.com/mifi/lossless-cut/blob/master/no.mifi.losslesscut.appdata.xml
+    - 'Official documentation: https://github.com/mifi/lossless-cut/blob/master/docs/index.md'
+    - >
+      Official installation documentation:
+      https://github.com/mifi/lossless-cut/blob/master/docs/installation.md
+    - 'Official repository and README: https://github.com/mifi/lossless-cut'
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/mifi/lossless-cut; returned
+      null as instructed
+  tags-sources:
+    - 'Official README: https://github.com/mifi/lossless-cut/blob/master/README.md'
+    - >
+      Official application metadata:
+      https://github.com/mifi/lossless-cut/blob/master/no.mifi.losslesscut.appdata.xml
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - video-editing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
