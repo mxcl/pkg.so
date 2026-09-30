@@ -2245,9 +2245,9 @@
     },
     "doubao": {
       "bundle_identifier": "com.bot.pc.doubao",
-      "confidence": "high",
-      "evidence_hash": "cd46858436553af8684e0d975127abe7980bba7ff75ec21085ef957f0277552e",
-      "reason": "The cask associates this identifier with the primary app\u2019s caches, HTTP storage, and preferences; the only alternative explicitly identifies the bundled Finder Sync extension.",
+      "confidence": "medium",
+      "evidence_hash": "9cb561ddcdc516ed137e27b3ede2a369634967c32f0bddb14c848a38a948d7cd",
+      "reason": "Homebrew installs Doubao.app; the root Doubao identifier matches its caches and preferences, while the only alternative is explicitly a Finder Sync extension.",
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/d/doubao.rb",
         "https://www.doubao.com/chat/"
@@ -4121,8 +4121,8 @@
     "istat-menus": {
       "bundle_identifier": "com.bjango.istatmenus",
       "confidence": "medium",
-      "evidence_hash": "b3dfd2c53e1d65bb46e3671b38032b0212787486599805bf17b326ba6051aeea",
-      "reason": "The official cask installs iStat Menus.app and associates the base identifier with its primary process and application data; the other candidates are explicitly agent, status, updater, or widget components.",
+      "evidence_hash": "64ad92eb0521ddaf0dce1dc260827775a145e3c66dccb4c7765c1f963eb0df42",
+      "reason": "Homebrew installs iStat Menus.app and associates the root identifier with its main process and application data; the other candidates are explicitly agents, status items, widgets, or updaters.",
       "sources": [
         "https://bjango.com/mac/istatmenus/",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/i/istat-menus.rb"
@@ -4926,6 +4926,120 @@
         "https://www.soma-zone.com/LaunchControl/"
       ]
     },
+    "leader-key": {
+      "bundle_identifier": "com.brnbw.Leader-Key",
+      "confidence": "high",
+      "evidence_hash": "d9e8f40f3e42fe825713af06f50b3388b24a90d7fa8da8e7f45ead0093f51d82",
+      "reason": "The app's official Xcode project directly sets the Leader Key application target's PRODUCT_BUNDLE_IDENTIFIER to com.brnbw.Leader-Key in both Debug and Release configurations.",
+      "sources": [
+        "https://github.com/mikker/LeaderKey/blob/main/Leader%20Key.xcodeproj/project.pbxproj"
+      ]
+    },
+    "lectrote": {
+      "bundle_identifier": "com.eblong.lectrote",
+      "confidence": "high",
+      "evidence_hash": "de1bff19f9fd82855d890fb235db8a767d11a2f1967f31373215d927b2e54e20",
+      "reason": "The official Lectrote packaging script explicitly sets this as the macOS app bundle ID.",
+      "sources": [
+        "https://formulae.brew.sh/cask/lectrote",
+        "https://github.com/erkyrath/lectrote/blob/master/makedist.py"
+      ]
+    },
+    "lehreroffice": {
+      "bundle_identifier": "ch.rothsoft.lehreroffice.desktop",
+      "confidence": "medium",
+      "evidence_hash": "49a7b3a3ef7603c9b4e1aa455c4de0d49db4142d676f095c4958dffc1d7e4e48",
+      "reason": "Homebrew installs LehrerOffice.app, and its cask metadata associates this identifier with that app's macOS saved state; no direct vendor manifest was available to justify high confidence.",
+      "sources": [
+        "https://formulae.brew.sh/cask/lehreroffice",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/lehreroffice.rb",
+        "https://www.cmi-bildung.ch/lo/dateien/easy/lo_desktop_macos.dmg"
+      ]
+    },
+    "letos": {
+      "bundle_identifier": "org.letos.Letos",
+      "confidence": "high",
+      "evidence_hash": "37a95e4da818acda8d565644ebe04227143bf07ddd42eeff9e5f1a97a3750263",
+      "reason": "The official application's macOS Info.plist template declares this identifier for Letos.app.",
+      "sources": [
+        "https://github.com/pawelsalawa/letos/blob/master/Letos/letos/Info.plist.in",
+        "https://github.com/pawelsalawa/letos/releases"
+      ]
+    },
+    "lexicon-dj": {
+      "bundle_identifier": "com.rekord.cloud.lexicon",
+      "confidence": "high",
+      "evidence_hash": "34d30c0195af6ba2d1e9b005fd13bc65e7930efb4af2b18b2acce7121e3653b2",
+      "reason": "A macOS crash report on Lexicon's official support site directly identifies /Applications/Lexicon.app with this CFBundleIdentifier.",
+      "sources": [
+        "https://discuss.lexicondj.com/t/macos-lexicon-shut-down-unexpectedly/2264",
+        "https://formulae.brew.sh/cask/lexicon-dj"
+      ]
+    },
+    "libation": {
+      "bundle_identifier": "org.libation.macos",
+      "confidence": "high",
+      "evidence_hash": "5b98f8c7cc97fd2eaf1cce50bd1c6de188694acd9fa504b001b898882e93cce9",
+      "reason": "A macOS crash report in Libation's official repository directly identifies Libation.app with this identifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/libation",
+        "https://github.com/rmcrackan/Libation/issues/1028"
+      ]
+    },
+    "licecap": {
+      "bundle_identifier": "com.cockos.LICEcap",
+      "confidence": "medium",
+      "evidence_hash": "66c8bba2d1f7c3260ae09c2c45187387c413141a7a98e52f9308170ed2ee397c",
+      "reason": "Homebrew identifies LICEcap.app as the primary artifact, and its official cask metadata uses com.cockos.LICEcap as the app preference domain; this strongly indicates the main bundle identifier, though no vendor manifest explicitly states it.",
+      "sources": [
+        "https://formulae.brew.sh/cask/licecap",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/licecap.rb",
+        "https://www.cockos.com/licecap/"
+      ]
+    },
+    "lidanglesensor": {
+      "bundle_identifier": "gold.samhenri.LidAngleSensor",
+      "confidence": "high",
+      "evidence_hash": "f83fd276a0711b368e688203896857b336d163c8a57454692f282302df17c8f0",
+      "reason": "The vendor's Xcode project directly assigns gold.samhenri.LidAngleSensor as PRODUCT_BUNDLE_IDENTIFIER for the sole LidAngleSensor application target in both Debug and Release configurations.",
+      "sources": [
+        "https://github.com/samhenrigold/LidAngleSensor",
+        "https://github.com/samhenrigold/LidAngleSensor/blob/main/LidAngleSensor.xcodeproj/project.pbxproj"
+      ]
+    },
+    "lightworks": {
+      "bundle_identifier": "com.editshare.lightworks",
+      "confidence": "medium",
+      "evidence_hash": "6b22881eb49d40c314e11b659b20157f07f892adb7485f53b39d51f8190cf547",
+      "reason": "The official Homebrew cask associates Lightworks with the saved-state domain com.editshare.lightworks, which conventionally derives from the main app's bundle identifier; no more direct official manifest was available.",
+      "sources": [
+        "https://formulae.brew.sh/cask/lightworks",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/lightworks.rb",
+        "https://www.lwks.com/"
+      ]
+    },
+    "linear": {
+      "bundle_identifier": "com.linear",
+      "confidence": "medium",
+      "evidence_hash": "9f971176f1ab1f431e6e2fdb17ccedde91424b3af19536a2719c581e1a4f2cc5",
+      "reason": "Linear's official macOS documentation uses com.linear.plist for the desktop app, and Homebrew associates the same domain with Linear.app caches, preferences, saved state, and its updater. This strongly identifies the primary app, although the documentation does not explicitly label it CFBundleIdentifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/linear",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/linear.rb",
+        "https://linear.app/docs/get-the-app"
+      ]
+    },
+    "linkandroid": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "9aab0e1cd26ea970fdb6f7ce00b562e56876a71146f47324b72abc53da842cd3",
+      "reason": "The vendor's official Electron packaging manifest directly sets appId to LinkAndroid and productName to LinkAndroid; Homebrew installs the resulting LinkAndroid.app as the primary artifact.",
+      "sources": [
+        "https://formulae.brew.sh/cask/linkandroid",
+        "https://github.com/modstart-lib/linkandroid/blob/main/electron-builder.json5",
+        "https://linkandroid.com/en"
+      ]
+    },
     "little-snitch@5": {
       "bundle_identifier": "at.obdev.LittleSnitchConfiguration",
       "confidence": "high",
@@ -4946,6 +5060,26 @@
         "https://www.livehome3d.com/support/help/mac/en/introduction-removing-the-app"
       ]
     },
+    "livebook": {
+      "bundle_identifier": "dev.livebook.Livebook",
+      "confidence": "high",
+      "evidence_hash": "376db1283186a9e3cba23173b7274da96963523af05c370bba535c9c15fe6152",
+      "reason": "Livebook's official Tauri manifest directly sets productName to Livebook and identifier to dev.livebook.Livebook. The stable cask installs that app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/livebook",
+        "https://raw.githubusercontent.com/livebook-dev/livebook/main/rel/app/src-tauri/tauri.conf.json"
+      ]
+    },
+    "livebook@nightly": {
+      "bundle_identifier": "dev.livebook.Livebook",
+      "confidence": "high",
+      "evidence_hash": "66eff118343b0ea155945f22ecda592786c414bda1ad6d694d86dcda621a47ea",
+      "reason": "The nightly cask installs Livebook.app from the same official project whose Tauri manifest directly sets the identifier to dev.livebook.Livebook.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/livebook@nightly.rb",
+        "https://raw.githubusercontent.com/livebook-dev/livebook/main/rel/app/src-tauri/tauri.conf.json"
+      ]
+    },
     "lobehub": {
       "bundle_identifier": "com.lobehub.lobehub-desktop",
       "confidence": "high",
@@ -4954,6 +5088,17 @@
       "sources": [
         "https://formulae.brew.sh/cask/lobehub",
         "https://github.com/lobehub/lobehub/blob/canary/apps/desktop/electron-builder.mjs"
+      ]
+    },
+    "locu": {
+      "bundle_identifier": "app.locu",
+      "confidence": "medium",
+      "evidence_hash": "15527aa5eb9c9d037275c647640d26a09067a4514c97d4623724be96ca821a82",
+      "reason": "The official Homebrew cask's cleanup paths consistently use app.locu for Locu's preferences, saved state, caches, and HTTP storage, strongly indicating the main app identifier, but no direct vendor manifest was available.",
+      "sources": [
+        "https://formulae.brew.sh/cask/locu",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/locu.rb",
+        "https://locu.app/"
       ]
     },
     "logos": {
@@ -4976,6 +5121,27 @@
         "https://longplay.rocks/guide/macos/"
       ]
     },
+    "lookin": {
+      "bundle_identifier": "hughkli.Lookin",
+      "confidence": "high",
+      "evidence_hash": "61f3d72970e5deca0b1b776ee88a36d5cbbfbefa6e1c6f22033e2e45ab89521a",
+      "reason": "The official macOS client repository's Xcode project identifies the Lookin application target as hughkli.Lookin; the Homebrew cask's preferences, caches, HTTP storage, and saved-state paths independently match it.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/lookin.rb",
+        "https://github.com/hughkli/Lookin/blob/Develop/Lookin.xcodeproj/project.pbxproj"
+      ]
+    },
+    "loop-messenger": {
+      "bundle_identifier": "ru.loop.app",
+      "confidence": "medium",
+      "evidence_hash": "f432b72ed9c8350e6b7fbbbbd9b6f4b6637727af899d10f9de0148c931e81235",
+      "reason": "The official Homebrew cask installs LOOP.app and removes ru.loop.app.plist, which strongly associates ru.loop.app with the primary application, though no direct vendor manifest was available.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/loop-messenger.json",
+        "https://formulae.brew.sh/cask/loop-messenger",
+        "https://loop.ru/"
+      ]
+    },
     "loopback": {
       "bundle_identifier": "com.rogueamoeba.Loopback",
       "confidence": "medium",
@@ -4984,6 +5150,36 @@
       "sources": [
         "https://formulae.brew.sh/cask/loopback",
         "https://www.rogueamoeba.com/support/knowledgebase/?product=Loopback&showArticle=Misc-AboutBackgroundItems"
+      ]
+    },
+    "losslesscut": {
+      "bundle_identifier": "no.mifi.losslesscut-mac",
+      "confidence": "high",
+      "evidence_hash": "948c8b327627769b065720a25c94c49aefd0bf3ea7a553cb4a2a3bb76bcd520c",
+      "reason": "The official LosslessCut build manifest explicitly sets the macOS appId to no.mifi.losslesscut-mac; Homebrew installs that project's LosslessCut.app DMG artifact.",
+      "sources": [
+        "https://formulae.brew.sh/cask/losslesscut",
+        "https://github.com/mifi/lossless-cut/blob/master/package.json"
+      ]
+    },
+    "luanti": {
+      "bundle_identifier": "org.luanti.luanti",
+      "confidence": "high",
+      "evidence_hash": "1974dee87f61ad81b16acf4356c91043246514b4495a762a69bcfdaeca1e92db",
+      "reason": "Luanti's official macOS build configuration explicitly assigns org.luanti.luanti as the product bundle identifier for the client app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/luanti",
+        "https://github.com/luanti-org/luanti/blob/master/src/CMakeLists.txt"
+      ]
+    },
+    "ludwig": {
+      "bundle_identifier": "guru.ludwig",
+      "confidence": "high",
+      "evidence_hash": "a4f07cf74142fd03854451dcd4523c3bd0c498dd1ea02f2393c1db6d87f5b896",
+      "reason": "The official Homebrew cask installs only Ludwig.app, and its app-specific preferences and saved-state paths consistently use guru.ludwig, identifying the primary app bundle.",
+      "sources": [
+        "https://formulae.brew.sh/cask/ludwig",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/ludwig.rb"
       ]
     },
     "lulu": {
@@ -4996,6 +5192,26 @@
         "https://github.com/objective-see/LuLu/blob/master/LuLu/LuLu.xcodeproj/project.pbxproj"
       ]
     },
+    "luminance-hdr": {
+      "bundle_identifier": "com.luminance-hdr",
+      "confidence": "high",
+      "evidence_hash": "49d924667e63457cd41bcef554297c291885196193cb597f2b2227ec16330bda",
+      "reason": "The upstream build defines the primary macOS GUI bundle identifier through its domain variables, while the official Homebrew cask's application-specific preference and recent-document records resolve that value to com.luminance-hdr.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/luminance-hdr.rb",
+        "https://github.com/LuminanceHDR/LuminanceHDR/blob/master/CMakeLists.txt"
+      ]
+    },
+    "lunacy": {
+      "bundle_identifier": "com.icons8.Lunacy",
+      "confidence": "high",
+      "evidence_hash": "3dbdef6afc49931771797d608d8b90a2ee9636f46dfc15aa592d95195d0cd6f3",
+      "reason": "Icons8's official troubleshooting documentation places Lunacy's macOS data inside the sandbox container named com.icons8.Lunacy, directly identifying the primary app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/lunacy",
+        "https://lunacy.docs.icons8.com/troubleshooting/"
+      ]
+    },
     "luxury-yacht": {
       "bundle_identifier": "com.wails.luxury-yacht",
       "confidence": "medium",
@@ -5006,6 +5222,36 @@
         "https://github.com/luxury-yacht/app/blob/main/wails.json"
       ]
     },
+    "lyric-fever": {
+      "bundle_identifier": "com.aviwadhwa.SpotifyLyricsInMenubar",
+      "confidence": "high",
+      "evidence_hash": "dfef165a581502f36da8edce5be80679eedeff0173046fa09b2e1e42d320cffb",
+      "reason": "The official Xcode project identifies the Lyric Fever application target and assigns this PRODUCT_BUNDLE_IDENTIFIER to its release configuration.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/lyric-fever.json",
+        "https://github.com/aviwad/LyricFever/blob/main/Lyric%20Fever.xcodeproj/project.pbxproj"
+      ]
+    },
+    "lyricsfinder": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "c6ceaf292c1c252fe514493bc179117d327c8cbba7a65bb1589ecf7ad1829d92",
+      "reason": "The official cask installs LyricsFinder.app and removes a matching preferences plist. This strongly indicates the primary app identifier, although no vendor-readable manifest was available.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/lyricsfinder.json",
+        "https://www.mediahuman.com/lyrics-finder/"
+      ]
+    },
+    "m32-edit": {
+      "bundle_identifier": "com.musictribe.M32-Edit",
+      "confidence": "medium",
+      "evidence_hash": "50ea303e284183a5a42f91c78d64e0c9b9549bd61656a9f36d22d9ec9659ba13",
+      "reason": "This is the identifier associated with the current M32-Edit.app in the vendor-delivered 4.4.1 package; it supersedes the older com.music-group.M32-Edit identifier.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/m32-edit.json",
+        "https://www.midasconsoles.com/en/products/0603-AEO"
+      ]
+    },
     "mac-mouse-fix": {
       "bundle_identifier": "com.nuebling.mac-mouse-fix",
       "confidence": "high",
@@ -5014,6 +5260,17 @@
       "sources": [
         "https://formulae.brew.sh/cask/mac-mouse-fix",
         "https://github.com/noah-nuebling/mac-mouse-fix/blob/master/Mouse%20Fix.xcodeproj/project.pbxproj"
+      ]
+    },
+    "mac-mouse-fix@2": {
+      "bundle_identifier": "com.nuebling.mac-mouse-fix",
+      "confidence": "high",
+      "evidence_hash": "3931d839916803728e2aaf076ebcef837bcfca544bc808df515dc366ec29f5ed",
+      "reason": "The official project defines Mac Mouse Fix as the primary application target with this identifier and separately identifies the embedded helper as com.nuebling.mac-mouse-fix.helper.",
+      "sources": [
+        "https://formulae.brew.sh/cask/mac-mouse-fix@2",
+        "https://github.com/noah-nuebling/mac-mouse-fix/blob/master/Mouse%20Fix.xcodeproj/project.pbxproj",
+        "https://github.com/noah-nuebling/mac-mouse-fix/releases/tag/2.2.5"
       ]
     },
     "macdroid": {
@@ -5036,6 +5293,26 @@
         "https://github.com/MacEnhance/MacForge"
       ]
     },
+    "macgamestore": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "557a0246d10112042ef6c3b6c4bd0ed1e6eaa64e41ec73bfccbee13c9776dd0e",
+      "reason": "Official sources confirm MacGameStore.app as the primary artifact but do not expose its CFBundleIdentifier; the available MacGameStore.com paths and helper identifiers are insufficient to identify the main app safely.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/macgamestore.json",
+        "https://www.macgamestore.com/app/"
+      ]
+    },
+    "macgdbp": {
+      "bundle_identifier": "org.bluestatic.macgdbp",
+      "confidence": "high",
+      "evidence_hash": "d83479ffec4297a2a0f061b2af457f2b77dbaef305c13192621fe5918235ef9f",
+      "reason": "The vendor\u2019s official bug report shows MacGDBp using an application cache directory named org.bluestatic.macgdbp, matching the cask\u2019s preference domain.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/macgdbp.rb",
+        "https://www.bluestatic.org/bugs/showreport.php?bugid=262"
+      ]
+    },
     "macmd-viewer": {
       "bundle_identifier": "com.arthur.MarkdownViewer",
       "confidence": "high",
@@ -5044,6 +5321,85 @@
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/macmd-viewer.rb",
         "https://macmdviewer.com/"
+      ]
+    },
+    "macmediakeyforwarder": {
+      "bundle_identifier": "com.quentinlesceller.macmediakeyforwarder",
+      "confidence": "high",
+      "evidence_hash": "859fe4a622dad5d0195e2cc46d899e57066bbe02fdc2fdd32a3e34865196fac7",
+      "reason": "The official repository changelog explicitly states that version 4.0 introduced this bundle identifier.",
+      "sources": [
+        "https://github.com/quentinlesceller/macmediakeyforwarder/"
+      ]
+    },
+    "macrorecorder": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "070c553461783c1aadb2a21dbf2f4ba561b0f01ec5df4c51036c5ac2628d0779",
+      "reason": "The Homebrew cask uses MacroRecorder as its quit identifier, and the matching preference domain supports it; no vendor manifest was available for stronger confirmation.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/macrorecorder.rb",
+        "https://www.macrorecorder.com/doc/installation/"
+      ]
+    },
+    "macs-fan-control": {
+      "bundle_identifier": "com.crystalidea.macsfancontrol",
+      "confidence": "medium",
+      "evidence_hash": "07e885278250b53adae4e361eff57985425fb0a6823115789acdeef5d5ac707f",
+      "reason": "The lowercase identifier matches the primary app\u2019s preference domain and current release metadata; the cask\u2019s differently cased signal target appears to be legacy metadata.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/macs-fan-control.rb",
+        "https://github.com/crystalidea/macs-fan-control/releases"
+      ]
+    },
+    "macsyzones": {
+      "bundle_identifier": "MeowingCat.MacsyZones",
+      "confidence": "high",
+      "evidence_hash": "a8d58ab14c3c6ccfc473de0f8376dcb5af02ecfc3cacfb8243cedf7654d91931",
+      "reason": "The official Xcode project sets this value as PRODUCT_BUNDLE_IDENTIFIER for the MacsyZones target in its Release configuration.",
+      "sources": [
+        "https://github.com/rohanrhu/MacsyZones/blob/main/MacsyZones.xcodeproj/project.pbxproj",
+        "https://github.com/rohanrhu/MacsyZones/releases/tag/v3.1.1"
+      ]
+    },
+    "macx-video-converter-pro": {
+      "bundle_identifier": "com.macxdvd.macxvdoconverterpro",
+      "confidence": "medium",
+      "evidence_hash": "d9346e66910cb3a06187ac1ac9d3258ac328b2ac99ce33efb35c056425a901b0",
+      "reason": "Homebrew identifies MacX Video Converter Pro.app as the primary artifact, and its official cask removes a matching preferences plist. This strongly suggests the identifier, but no official app manifest was available for direct confirmation.",
+      "sources": [
+        "https://formulae.brew.sh/cask/macx-video-converter-pro",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/macx-video-converter-pro.rb"
+      ]
+    },
+    "magicplot": {
+      "bundle_identifier": "com.magicplot.MagicPlot",
+      "confidence": "high",
+      "evidence_hash": "f0778f1bd70af378054be08baf629c584434fab472e0421ca161edd8941e2284",
+      "reason": "Homebrew identifies MagicPlot.app as the primary artifact, and the cask removes its macOS saved-application-state directory named com.magicplot.MagicPlot.savedState, whose stem corresponds to the application bundle identifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/magicplot",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/magicplot.rb"
+      ]
+    },
+    "magicquit": {
+      "bundle_identifier": "com.MagicQuit",
+      "confidence": "high",
+      "evidence_hash": "b0fd8b96ccb61a967506caa2f592d9eaf68fdafbbc9140ecf3e6b3a434faf1c9",
+      "reason": "The vendor-linked official source repository defines PRODUCT_BUNDLE_IDENTIFIER = com.MagicQuit for the MagicQuit application target in both Debug and Release configurations; the separate test target has a different identifier.",
+      "sources": [
+        "https://github.com/BigBerny/magicquit/blob/main/MagicQuit.xcodeproj/project.pbxproj",
+        "https://magicquit.com/"
+      ]
+    },
+    "mailbird": {
+      "bundle_identifier": "com.getmailbird.Mailbird",
+      "confidence": "high",
+      "evidence_hash": "1f17b3f277006e7ded46aae19e92bc3a3df79f81b6264a9017886209886fffd2",
+      "reason": "Homebrew identifies Mailbird.app as the primary artifact, and its cask removes the saved-application-state directory com.getmailbird.Mailbird.savedState. The differently named Renderer plist belongs to a helper and was excluded.",
+      "sources": [
+        "https://formulae.brew.sh/cask/mailbird",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/mailbird.rb"
       ]
     },
     "mailmate": {
@@ -5066,6 +5422,27 @@
         "https://updates.mailmate-app.com/test_release_notes"
       ]
     },
+    "mailplane": {
+      "bundle_identifier": "com.mailplaneapp.Mailplane",
+      "confidence": "medium",
+      "evidence_hash": "b1e432db7fae94e69b0801d4cdedcc9d1a39fa4686cbe1bc522bcb111b73d622",
+      "reason": "Homebrew identifies Mailplane.app as the primary artifact and removes a matching preferences plist; the vendor's official blog also uses com.mailplaneapp.Mailplane as the defaults domain for Mailplane settings. This is convincing but not a direct app manifest.",
+      "sources": [
+        "https://formulae.brew.sh/cask/mailplane",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/mailplane.rb",
+        "https://mailplaneapp.com/blog/all.html"
+      ]
+    },
+    "mailspring": {
+      "bundle_identifier": "com.mailspring.mailspring",
+      "confidence": "high",
+      "evidence_hash": "e9bf89eca7607e3717d26c4e592d4620bf720f5f9eb6fd96cb92bd5e030cc5fa",
+      "reason": "The official Mailspring build configuration assigns this identifier to the packaged Mailspring application.",
+      "sources": [
+        "https://formulae.brew.sh/cask/mailspring",
+        "https://github.com/Foundry376/Mailspring"
+      ]
+    },
     "mailsteward": {
       "bundle_identifier": "com.pubblog.MailSteward",
       "confidence": "high",
@@ -5074,6 +5451,96 @@
       "sources": [
         "https://formulae.brew.sh/api/cask/mailsteward.json",
         "https://formulae.brew.sh/cask/mailsteward"
+      ]
+    },
+    "makeracam": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "3672c1bdd3f975332773cd13d7dc4c9cac2c37863380b7fbed79a03d9b0e0cbf",
+      "reason": "Official release and cask sources identify MakeraCAM.app but do not expose a convincing primary bundle identifier; release notes also document earlier packages missing macOS ID metadata.",
+      "sources": [
+        "https://formulae.brew.sh/cask/makeracam",
+        "https://github.com/MakeraInc/MakeraCAM/releases"
+      ]
+    },
+    "maltego": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "e9ac6c6be44760f8b7169661a91429a7ec6e79d6beca321dc34fb0b60759c7ed",
+      "reason": "Official Maltego sources identify the application bundle and distribution but do not publish its CFBundleIdentifier, so selecting a Paterva- or Maltego-based domain would be speculative.",
+      "sources": [
+        "https://docs.maltego.com/en/support/solutions/articles/15000008704-installing-maltego",
+        "https://formulae.brew.sh/cask/maltego"
+      ]
+    },
+    "marathon": {
+      "bundle_identifier": "org.bungie.source.Marathon",
+      "confidence": "high",
+      "evidence_hash": "e5affda7c3cf20d02a270718df31a5611a587ad5beeb02921cc7768dc8cdc2cb",
+      "reason": "The official Aleph One project uses this identifier for the Classic Marathon target, matching the cask's application and saved-state domain.",
+      "sources": [
+        "https://formulae.brew.sh/cask/marathon",
+        "https://github.com/Aleph-One-Marathon/alephone/blob/master/Xcode/AlephOne.xcodeproj/project.pbxproj"
+      ]
+    },
+    "marathon-2": {
+      "bundle_identifier": "org.bungie.source.Marathon2",
+      "confidence": "high",
+      "evidence_hash": "a0aad8c7846a962ade28fde623ef9c75802a20998c8f2f41693adbf2b4ad4187",
+      "reason": "The official Aleph One project uses this identifier for the Classic Marathon 2 target, matching the cask's application and saved-state domain.",
+      "sources": [
+        "https://formulae.brew.sh/cask/marathon-2",
+        "https://github.com/Aleph-One-Marathon/alephone/blob/master/Xcode/AlephOne.xcodeproj/project.pbxproj"
+      ]
+    },
+    "marathon-infinity": {
+      "bundle_identifier": "org.bungie.source.MarathonInfinity",
+      "confidence": "high",
+      "evidence_hash": "2c521ff2b5ee68a4c15723e8ba103e5ff456ff109bed584258b185e30516fbba",
+      "reason": "The official Aleph One macOS Info.plist identifies the primary executable as Classic Marathon Infinity, while the official build configuration assigns Marathon Infinity the org.bungie.source.MarathonInfinity application ID.",
+      "sources": [
+        "https://github.com/Aleph-One-Marathon/alephone/blob/master/Makefile.am",
+        "https://github.com/Aleph-One-Marathon/alephone/blob/master/Xcode/App_Resources/Marathon3/Info.plist"
+      ]
+    },
+    "marginnote": {
+      "bundle_identifier": "QReader.MarginStudy.easy",
+      "confidence": "high",
+      "evidence_hash": "98f8acefb9b7f023e96fa8f1ea1f4c1cfa6b3264e098b6e390b527033ff9c4d3",
+      "reason": "A crash report on MarginNote's official forum directly identifies the executable inside MarginNote 4.app as QReader.MarginStudy.easy.",
+      "sources": [
+        "https://formulae.brew.sh/cask/marginnote",
+        "https://forum.marginnote.com/t/mn4-is-not-working-on-my-mac/9217"
+      ]
+    },
+    "markright": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "9b97d7f9346728092d87f7db96f0e348856d7f1e833e04ec619feaa35689db69",
+      "reason": "The cask's com.electron.markright preference path refers to the former Electron build, but the official 1.0.0 release migrated the app to Tauri. No official current manifest directly establishes the new app bundle identifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/markright",
+        "https://github.com/dvcrn/markright/releases/tag/1.0.0"
+      ]
+    },
+    "marvel": {
+      "bundle_identifier": "com.marvelprototyping.marvelmacos",
+      "confidence": "medium",
+      "evidence_hash": "a682a5660cf597ff18b06bcac4141711263e9a1a65ca6507ac0cb24ab670b62c",
+      "reason": "The Homebrew cask associates Marvel.app with a cache directory named com.marvelprototyping.marvelmacos. This is consistent with the primary app's bundle identifier, but no vendor manifest was available for direct confirmation.",
+      "sources": [
+        "https://formulae.brew.sh/cask/marvel",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/marvel.rb"
+      ]
+    },
+    "marvin": {
+      "bundle_identifier": "com.amazingmarvin.marvindesktop",
+      "confidence": "medium",
+      "evidence_hash": "e1ea5f3687221234a6adeb6263382ab2d5f965cd69a0cd7147c59f684036f8f3",
+      "reason": "The Homebrew cask associates Marvin.app with the com.amazingmarvin.marvindesktop preference plist, while listing the updater separately. This makes the identifier attributable to the primary app rather than its updater.",
+      "sources": [
+        "https://formulae.brew.sh/cask/marvin",
+        "https://help.amazingmarvin.com/en/articles/1949420-is-marvin-available-as-a-desktop-application"
       ]
     },
     "mdhero": {
@@ -5384,6 +5851,16 @@
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/o/opera@developer.rb"
       ]
     },
+    "p4v": {
+      "bundle_identifier": "com.perforce.p4v",
+      "confidence": "medium",
+      "evidence_hash": "9003cecf1fb8ee197b4e8fcf14bd0678e9bd8f1732002792651c9a7809995837",
+      "reason": "The cask contains several Perforce apps, but p4v.app is the named primary Helix Visual Client and its matching identifier is com.perforce.p4v; com.perforce.p4admin belongs to p4admin.app.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/p/p4v.rb",
+        "https://www.perforce.com/products/helix-core-apps/helix-visual-client-p4v"
+      ]
+    },
     "pagico": {
       "bundle_identifier": "com.pagico.mac",
       "confidence": "high",
@@ -5673,6 +6150,16 @@
       "sources": [
         "https://formulae.brew.sh/cask/receipts",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/r/receipts.rb"
+      ]
+    },
+    "reverso": {
+      "bundle_identifier": "com.softissimo.ReversoContext.macosapp",
+      "confidence": "medium",
+      "evidence_hash": "87a1bf286b10e4531463e8e534a8613773af64cbec3c948d2e3fbe07894e4e53",
+      "reason": "Homebrew installs Reverso.app; the macosapp identifier matches its main preferences and cache, while the alternatives are explicitly the Quick Search component and a helper.",
+      "sources": [
+        "https://context.reverso.net/translation/windows-mac-app",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/r/reverso.rb"
       ]
     },
     "roboform": {
