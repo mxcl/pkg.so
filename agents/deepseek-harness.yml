@@ -1,15 +1,16 @@
 id: cask:deepseek-harness
 display-name: DeepSeek Harness
-homepage: https://www.deepseek.com/harness/
 repo: https://github.com/deepseek-ai/deepseek-harness
 docs:
   - https://deepseek-harness.github.io/deepseek-harness
   - https://deepseek-harness.github.io/deepseek-harness/en/guide/providers
   - https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart
 config-file-location:
-  macos: $DSH_HOME/profiles/web/cordis.patch.yml
+  macos:
+    - $DSH_HOME/profiles/web/cordis.patch.yml
 credentials-file-location:
-  macos: $DSH_HOME/.credentials.yaml
+  macos:
+    - $DSH_HOME/.credentials.yaml
 history:
   adoption-history:
     - >
@@ -60,10 +61,6 @@ history:
     - >
       Model settings are written to the active profile's cordis.patch.yml, while API
       keys are stored separately in $DSH_HOME/.credentials.yaml.
-category: ai
-package-manager:
-  brew-cask: deepseek-harness
-package-manager-url: https://formulae.brew.sh/cask/deepseek-harness
 tags:
   - agent-runtime
   - ai-agent
@@ -72,10 +69,45 @@ tags:
   - developer-preview
   - local-first
   - plugin-system
-description: Plugin-based AI agent desktop application
-applications:
-  - DeepSeek Harness.app
 provenance:
-  cask: deepseek-harness
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official product page calls it an agent harness for real-world environments:
+      https://deepseek.com/harness/en/
+    - >
+      Official repository describes an open-source, plugin-based agent harness:
+      https://github.com/deepseek-ai/deepseek-harness
+  display-name-sources:
+    - 'Official product page heading: https://deepseek.com/harness/en/'
+    - 'Official repository README: https://github.com/deepseek-ai/deepseek-harness'
+  docs-sources:
+    - Official quick-start and model-configuration guides.
+    - >
+      The official product page and repository both link the dedicated developer
+      documentation site.
+  history-sources:
+    - https://deepseek-harness.github.io/deepseek-harness/en/guide/providers
+    - https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart
+    - https://deepseek.com/harness/en/
+    - https://github.com/deepseek-ai/deepseek-harness
+  repo-sources:
+    - >
+      Official product page directly links and prints the clone URL for
+      https://github.com/deepseek-ai/deepseek-harness.
+    - Official repository identifies DeepSeek AI as the developer.
+  tags-sources:
+    - >
+      Official data-processing statement describes the product as local-first:
+      https://www.deepseek.com/harness/data-processing/
+    - 'Official launch page capabilities: https://deepseek.com/harness/en/'
+    - 'Official repository topics and README: https://github.com/deepseek-ai/deepseek-harness'
+category-confidence: high
+category-path:
+  - ai
+  - agents
+  - developer-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
