@@ -1,0 +1,1923 @@
+{
+  "schema": 1,
+  "enabled": true,
+  "frozen_on": "2026-09-30",
+  "candidate_snapshot_on": "2026-09-30",
+  "cohort_limit": 25,
+  "selection_policy": "Approved by Max: take the first 25 underlying open-source projects WITH existing cited history, ordered by existing discovery source popularityRank ascending, then discovery package ID ascending (brew:NAME, brew:cask:NAME, npm:NAME). Deduplicate evidenced repository identities and ecosystem/version representations. No statistical normalization, no generated history, no filtering solely on unsupported repository/license fields.",
+  "snapshot": {
+    "package_index_generated_at": "2026-09-30T07:02:58.028229+00:00",
+    "cross_ecosystem_generated_at": "2026-09-30T08:46:57+00:00",
+    "sha256": {
+      "package-index": "f74d42f1cd6c376ac1eb84fec4ebef1ff7b0868251a215628ee63ff56f4d6358",
+      "pkg-cross-ecosystem": "346f869fafa6e1e227ca987890bee3a84045f3574a77cffabb36ddfe18d26ae4",
+      "pkg-page-enrichment": "ff64532d14894114ccc4a18a27c55d5e24fcd3f317b5b2d80d3c5395cdcae12f",
+      "pkg-version-freshness": "63556012df993869207c9f7290c8435a4a504993f7757a84f7bf4c5209081abb"
+    }
+  },
+  "exclusions": [
+    {
+      "package_key": "cask:claude-code",
+      "rank": 1,
+      "reason": "Proprietary vendor-distributed tool; excluded from open-source experiment."
+    },
+    {
+      "package_key": "cask:1password-cli",
+      "rank": 10,
+      "reason": "Proprietary vendor-distributed tool; excluded from open-source experiment."
+    },
+    {
+      "package_key": "cask:copilot-cli",
+      "rank": 17,
+      "reason": "Proprietary vendor-distributed tool; excluded from open-source experiment."
+    }
+  ],
+  "identity_evidence": "Combined YAML repositories; npm primary registry repository/license facts for ranked identities retained in the manifest and artifact npm-public-project-evidence.json. Missing structured-data fields are omitted.",
+  "projects": [
+    {
+      "position": 1,
+      "slug": "openssl",
+      "name": "OpenSSL",
+      "path": "/openssl/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "OpenSSL history: From SSLeay to OpenSSL | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:openssl@3",
+      "ranking_key": "brew:openssl@3",
+      "rank": 1,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/openssl/openssl",
+      "repository_aliases": [
+        "https://github.com/openssl/openssl"
+      ],
+      "license": "Apache-2.0",
+      "package_keys": [
+        "brew:openssl@3",
+        "brew:openssl@3.0",
+        "brew:openssl@3.5",
+        "brew:openssl@4"
+      ],
+      "package_paths": [
+        "/brew/openssl-3-0/",
+        "/brew/openssl-3-5/",
+        "/brew/openssl-3/",
+        "/brew/openssl-4/"
+      ],
+      "source_file": "combined/openssl@3.yml",
+      "citation_source_file": "combined/openssl@3.yml",
+      "citations": [
+        "https://docs.openssl.org/3.0/man7/migration_guide/",
+        "https://formulae.brew.sh/formula/openssl@3",
+        "https://github.com/openssl/openssl",
+        "https://openssl-library.org/news/openssl-3.0-notes/",
+        "https://openssl-library.org/news/openssl-3.5-notes/",
+        "https://openssl-library.org/news/timeline/",
+        "https://openssl-library.org/post/2018-12-20-20years/index.html",
+        "https://openssl.foundation/about/history"
+      ],
+      "history_sha256": "da8e68c1fd972463f0412802108282e0913d177eec40abfe39efe9bd1cbd723a",
+      "history_snapshot": {
+        "adoption-history": [
+          "`openssl@3` is the broad Homebrew adoption path for OpenSSL 3. The cited formula page lists it as also known as `openssl` and `openssl@3.6`, bottled across macOS and Linux, with yearly installs in the millions.",
+          "Homebrew's page also shows the package-manager policy dimension: `openssl@3` can move between OpenSSL 3 minor branches, while `openssl@3.5` and `openssl@3.0` exist for consumers that need a pinned branch. That split lets Homebrew balance default freshness against downstream reproducibility."
+        ],
+        "package-nerd-significance": [
+          "`openssl@3` is one of the packages that makes a package manager feel like infrastructure. A minor OpenSSL branch change can affect build flags, test suites, compliance assumptions, certificate lookup, and runtime behavior for a large dependency graph.",
+          "It is also a clean example of why versioned formula names matter. The package name encodes a compatibility promise at the major-version level, while sibling formulae encode stricter branch promises for software that cannot simply follow the default."
+        ],
+        "project-history": [
+          "OpenSSL was founded in 1998 as an open-source successor to SSLeay, the SSL library by Eric A. Young and Tim J. Hudson. The first OpenSSL release, 0.9.1c, shipped on December 23, 1998 after the initial project team chose the OpenSSL name to signal continuity for users of SSL-era tooling.",
+          "The library became a default dependency for secure internet software, from Apache modules and mail servers to package managers, language runtimes, and appliance firmware. Heartbleed in 2014 revealed both the scale of OpenSSL deployment and the fragility of its funding and maintenance model, prompting foundation and governance changes.",
+          "The OpenSSL 3 generation began with 3.0.0 on September 7, 2021. Its provider architecture, Apache-2.0 licensing, FIPS provider support, and deprecation of low-level APIs reshaped how applications link, configure, and certify OpenSSL-based cryptography."
+        ],
+        "related-projects": [
+          "OpenSSL's ecosystem includes LibreSSL, BoringSSL, AWS-LC, GnuTLS, NSS, wolfSSL, and platform TLS stacks. Downstream packages such as OpenSSH, curl, web servers, database clients, and programming-language runtimes make OpenSSL branch choices visible far beyond cryptography specialists."
+        ],
+        "sources": [
+          "https://docs.openssl.org/3.0/man7/migration_guide/",
+          "https://formulae.brew.sh/formula/openssl@3",
+          "https://github.com/openssl/openssl",
+          "https://openssl-library.org/news/openssl-3.0-notes/",
+          "https://openssl-library.org/news/openssl-3.5-notes/",
+          "https://openssl-library.org/news/timeline/",
+          "https://openssl-library.org/post/2018-12-20-20years/index.html",
+          "https://openssl.foundation/about/history"
+        ],
+        "summary": [
+          "Homebrew's `openssl@3` is the main OpenSSL 3 formula, providing the OpenSSL command-line tool plus libssl and libcrypto for TLS, SSL, certificate, and general cryptography workloads. The formula follows the default OpenSSL 3 branch while separate formulae such as `openssl@3.0` and `openssl@3.5` preserve branch-specific targets."
+        ],
+        "timeline": [
+          "December 23, 1998: OpenSSL 0.9.1c is released.",
+          "2014: Heartbleed becomes a watershed event for OpenSSL maintenance and funding.",
+          "September 7, 2021: OpenSSL 3.0.0 launches the OpenSSL 3 line.",
+          "April 8, 2025: OpenSSL 3.5.0 is released in the OpenSSL 3 family.",
+          "October 1, 2025: OpenSSL 3.6.0 appears in the OpenSSL release timeline.",
+          "2026: Homebrew lists `openssl@3` stable at 3.6.3 and notes a planned downgrade to 3.5 LTS before the 3.6 support window ends."
+        ],
+        "usage": [
+          "Users invoke the `openssl` CLI to inspect and generate certificates, create CSRs, test TLS endpoints, hash and sign data, convert PEM/DER/PKCS formats, and manage CA directories. Build systems link against libssl and libcrypto when compiling software that needs TLS, X.509, ASN.1, message digests, public-key cryptography, or provider-backed algorithms.",
+          "On Homebrew systems, dependent formulae use `openssl@3` as the normal OpenSSL 3 dependency, while users may need the formula's prefix, include path, library path, and certificate directory when compiling software outside Homebrew."
+        ]
+      },
+      "homepage": "https://openssl-library.org"
+    },
+    {
+      "position": 2,
+      "slug": "semver",
+      "name": "semver",
+      "path": "/semver/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "semver history: The semantic version parser used by npm | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:semver",
+      "ranking_key": "npm:semver",
+      "rank": 1,
+      "rank_metric": "npm downloads_per_30_days",
+      "repository": "https://github.com/npm/node-semver",
+      "repository_aliases": [
+        "https://github.com/npm/node-semver"
+      ],
+      "license": "ISC",
+      "package_keys": [
+        "brew:semver",
+        "npm:semver"
+      ],
+      "package_paths": [
+        "/brew/semver/"
+      ],
+      "source_file": "combined/semver.yml",
+      "citation_source_file": "combined/semver.yml",
+      "citations": [
+        "https://github.com/npm/node-semver#readme",
+        "https://github.com/npm/node-semver/blob/main/package.json"
+      ],
+      "history_sha256": "d82c08ce39ad6d19bbe220eac173a71e5aa281dc2a21e7df78a54f08a3d810e7",
+      "history_snapshot": {
+        "adoption-history": [
+          "The package became foundational Node.js infrastructure through its use by npm. It is also distributed by multiple system package managers, including Homebrew, Fedora-family repositories, Nix, and Arch Linux."
+        ],
+        "package-nerd-significance": [
+          "node-semver is a reference implementation in everyday package-management practice: it turns Semantic Versioning rules into the range matching, precedence sorting, coercion, and increment operations used by npm workflows."
+        ],
+        "project-history": [
+          "Created by Isaac Z. Schlueter as the semantic-version parser for npm, node-semver implements the Semantic Versioning specification for JavaScript and exposes both a library and the semver command-line program."
+        ],
+        "related-projects": [
+          "npm, Node.js, and the Semantic Versioning specification are directly related: npm uses the library, Node.js runs it, and semver.org defines the version grammar it implements."
+        ],
+        "sources": [
+          "https://github.com/npm/node-semver#readme",
+          "https://github.com/npm/node-semver/blob/main/package.json",
+          "source_facts.package-manager"
+        ],
+        "summary": [
+          "semver, commonly called node-semver when distinguishing the repository, is npm's JavaScript parser and range engine for Semantic Versioning. It can be used as a Node.js module or as a command-line utility."
+        ],
+        "timeline": [
+          "Early npm era: Isaac Z. Schlueter created the implementation for npm.",
+          "Current project: Maintained under the npm GitHub organization and released as the semver npm package."
+        ],
+        "usage": [
+          "Developers use the library to validate and normalize versions, test versions against dependency ranges, compare and sort releases, calculate minimum or maximum satisfying versions, and increment release identifiers. The CLI performs filtering, sorting, coercion, and version increments from shell scripts."
+        ]
+      },
+      "homepage": "https://semver.npmjs.com/"
+    },
+    {
+      "position": 3,
+      "slug": "codex",
+      "name": "Codex",
+      "path": "/codex/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "Codex history: The open-source coding agent in the terminal | pkg.so",
+      "history_mode": "sections",
+      "source_key": "cask:codex",
+      "ranking_key": "cask:codex",
+      "rank": 2,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/openai/codex",
+      "repository_aliases": [
+        "https://github.com/openai/codex"
+      ],
+      "license": null,
+      "package_keys": [
+        "cask:codex"
+      ],
+      "package_paths": [
+        "/cask/codex/"
+      ],
+      "source_file": "combined/codex.yml",
+      "citation_source_file": "combined/codex.yml",
+      "citations": [
+        "https://github.com/openai/codex#readme",
+        "https://developers.openai.com/codex"
+      ],
+      "history_sha256": "1bb03fdbc84aa3668daeadf73976a9e42bb2da70acbde83e36d8c54ec46c255b",
+      "history_snapshot": {
+        "adoption-history": [
+          "Codex is packaged for several install paths in its official README: shell install scripts for Mac, Linux, and Windows, npm as @openai/codex, Homebrew cask as codex, and downloadable release binaries. The supplied cask facts identify the Homebrew package as cask:codex."
+        ],
+        "package-nerd-significance": [
+          "For package nerds, Codex is notable because it ships an AI coding agent as a conventional local CLI while also spanning product surfaces: terminal, IDE, desktop app, and cloud. The Homebrew cask packages a fast-moving OpenAI developer tool as a single codex command rather than a traditional library."
+        ],
+        "project-history": [
+          "The official README frames Codex CLI as the local-computer member of the Codex product family, distinct from the editor integrations, desktop app experience, and cloud-based Codex Web. The repository also links to OpenAI's Codex documentation, install/build notes, contributing information, and an open-source fund."
+        ],
+        "related-projects": [
+          "The README distinguishes Codex CLI from OpenAI's IDE install path, Codex App, and Codex Web, while codex-acp packages Codex for ACP-compatible clients."
+        ],
+        "sources": [
+          "https://github.com/openai/codex#readme",
+          "https://developers.openai.com/codex"
+        ],
+        "summary": [
+          "Codex CLI is OpenAI's local coding agent, packaged as a terminal command and distributed through installation scripts, npm, GitHub releases, and Homebrew cask."
+        ],
+        "timeline": [
+          "README: Codex CLI is documented as a local coding agent from OpenAI.",
+          "README: Installation paths include shell scripts, npm, Homebrew cask, and GitHub release binaries."
+        ],
+        "usage": [
+          "The package-facing workflow is simple: install the executable, run codex, and authenticate with a ChatGPT plan or API key. Configuration lives under ~/.codex/config.toml, and local authentication state is stored under ~/.codex/auth.json according to the existing curation."
+        ]
+      },
+      "homepage": "https://github.com/openai/codex"
+    },
+    {
+      "position": 4,
+      "slug": "sqlite",
+      "name": "SQLite",
+      "path": "/sqlite/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "SQLite history: A database in a single file since 2000 | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:sqlite",
+      "ranking_key": "brew:sqlite",
+      "rank": 3,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://www.sqlite.org/src",
+      "repository_aliases": [
+        "https://www.sqlite.org/src"
+      ],
+      "license": "blessing",
+      "package_keys": [
+        "brew:lemon",
+        "brew:sqldiff",
+        "brew:sqlite",
+        "brew:sqlite-analyzer",
+        "brew:sqlite-rsync"
+      ],
+      "package_paths": [
+        "/brew/lemon/",
+        "/brew/sqldiff/",
+        "/brew/sqlite-analyzer/",
+        "/brew/sqlite-rsync/",
+        "/brew/sqlite/"
+      ],
+      "source_file": "combined/sqlite.yml",
+      "citation_source_file": "combined/sqlite.yml",
+      "citations": [
+        "https://www.sqlite.org/about.html",
+        "https://www.sqlite.org/cli.html",
+        "https://www.sqlite.org/index.html",
+        "https://www.sqlite.org/mostdeployed.html",
+        "https://www.sqlite.org/whentouse.html"
+      ],
+      "history_sha256": "71da2478ee816c31ebd61cee905b49d2c073529abe7773c1fdeecc63aa5505b2",
+      "history_snapshot": {
+        "adoption-history": [
+          "SQLite's official site calls it the most used database engine in the world and says it is built into all mobile phones and most computers. The most-deployed page lists Android, iOS devices, Macs, Windows 10/11 installations, major browsers, Python, PHP, and many applications as places SQLite appears.",
+          "The input shows SQLite packaged across Homebrew, Chocolatey, MacPorts, Nix, Scoop, winget, apk, pacman, and other distribution ecosystems. That breadth matches SQLite's role as a default local database layer and a basic CLI tool developers expect to be available."
+        ],
+        "package-nerd-significance": [
+          "Package nerds care about SQLite because it is the rare package that is simultaneously a library, a database engine, a file format, and a CLI. Installing `sqlite` gives immediate access to `sqlite3`, a portable database file format, and a common dependency shared by many higher-level tools.",
+          "SQLite's public-domain status, single-file databases, cross-platform file format, and zero-admin deployment make it especially attractive in package ecosystems: it works as a dependency, debugging tool, fixture format, and data interchange tool without needing a service manager or credentials."
+        ],
+        "project-history": [
+          "The SQLite project states that it began on 2000-05-09. Its design centers on a self-contained, zero-configuration, transactional SQL database engine stored in ordinary disk files, with public-domain source code and long-term support goals.",
+          "The SQLite command-line program, `sqlite3`, is the officially supported interactive interface to SQLite database files. The CLI is distinct from the SQLite library: it accepts user input and passes SQL to the library, while also providing dot-commands for import, export, schema inspection, archives, recovery, parameters, extensions, and scripting."
+        ],
+        "related-projects": [
+          "sqlite3_analyzer and sqlite3_rsync are official SQLite companion utilities.",
+          "sqlite-utils and sqlite3-to-mysql are third-party tools that build workflows around SQLite files.",
+          "SQLite's own docs compare its problem space to local file I/O rather than to client/server database engines."
+        ],
+        "sources": [
+          "https://www.sqlite.org/about.html - official SQLite overview and project start date.",
+          "https://www.sqlite.org/cli.html - official command-line shell documentation.",
+          "https://www.sqlite.org/index.html - official homepage, source-code link, and current release note.",
+          "https://www.sqlite.org/mostdeployed.html - official deployment/adoption discussion.",
+          "https://www.sqlite.org/whentouse.html - official usage guidance."
+        ],
+        "summary": [
+          "SQLite is an embedded, serverless SQL database engine and one of the most widely deployed software components in everyday computing. In package-manager culture, the `sqlite` package is both a runtime dependency and a tiny command-line database workbench."
+        ],
+        "timeline": [
+          "2000: SQLite project started on 2000-05-09.",
+          "2021: SQLite 3.37.0 added CLI support for multiple open database connections.",
+          "2025: SQLite documentation states an intent to support the project through 2050.",
+          "2026: SQLite homepage lists 3.53.3 as the latest release on 2026-06-26."
+        ],
+        "usage": [
+          "Developers use the `sqlite3` CLI to open database files, run SQL interactively, script SQL from shell pipelines, import and export CSV or TSV, inspect schemas, dump databases, recover data, load extensions, and experiment with SQL locally.",
+          "SQLite is commonly used as an application file format, local cache, data-transfer container, embedded-device database, website database for modest traffic, and quick analysis database for CSV or JSON data."
+        ]
+      },
+      "homepage": "https://sqlite.org/index.html"
+    },
+    {
+      "position": 5,
+      "slug": "xz",
+      "name": "XZ Utils",
+      "path": "/xz/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "XZ Utils history: From LZMA Utils to .xz and liblzma | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:xz",
+      "ranking_key": "brew:xz",
+      "rank": 4,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/tukaani-project/xz",
+      "repository_aliases": [
+        "https://github.com/tukaani-project/xz"
+      ],
+      "license": "0BSD AND GPL-2.0-or-later",
+      "package_keys": [
+        "brew:xz"
+      ],
+      "package_paths": [
+        "/brew/xz/"
+      ],
+      "source_file": "combined/xz.yml",
+      "citation_source_file": "combined/xz.yml",
+      "citations": [
+        "https://github.com/tukaani-project/xz/blob/master/NEWS",
+        "https://tukaani.org/xz-backdoor/",
+        "https://tukaani.org/xz/",
+        "https://www.openwall.com/lists/oss-security/2024/03/29/4"
+      ],
+      "history_sha256": "70edbc3f97325d7be17b6e5ecb37718d4cb0646211801e23b355f68c782d8ebc",
+      "history_snapshot": {
+        "adoption-history": [
+          "XZ adoption followed its compression ratio and Unix-friendly tooling. The familiar xz, unxz, xzcat, xzgrep, xzless, and compatibility aliases made it a drop-in neighbor to gzip and bzip2, while liblzma let package managers and applications decode .xz streams without shelling out.",
+          "Distribution adoption became especially visible through .tar.xz source releases and compressed package artifacts. Many upstream projects now publish release tarballs as .tar.xz, and free operating systems commonly install xz or liblzma because so much source distribution and packaging machinery expects them.",
+          "After CVE-2024-3094, adoption history also includes a trust reset: project infrastructure moved back under Tukaani-controlled URLs, GitHub repositories were restored, and clean XZ Utils releases were made on 2024-05-29, according to the official backdoor page."
+        ],
+        "package-nerd-significance": [
+          "XZ Utils is package-manager bedrock: small enough to be invisible most days, but important enough that a bad release can shake the whole distribution world. It sits in build roots, source tarball handling, package extraction, and language runtime bindings.",
+          "The backdoor incident made xz historically significant beyond compression. It showed how a low-glamour maintainer package can become a high-value target precisely because it is everywhere, and why tarball provenance, release signing, maintainer access, and distro staging matter."
+        ],
+        "project-history": [
+          "XZ Utils comes from the Tukaani Project and the earlier LZMA Utils lineage maintained by Lasse Collin. The project generalized Igor Pavlov's LZMA-family compression ideas into the .xz format and liblzma API used by Unix-like systems.",
+          "The 5.0.0 release on 2010-10-23 was a major packaging milestone because the NEWS file marks liblzma API and ABI as stable and bumps the shared-library soname to 5.0.0. From a distro perspective, that turned xz from a promising compressor into a dependable system library.",
+          "The project continued to evolve around multithreading, build-system support, portability, translated documentation, and platform coverage. The official site lists support across GNU/Linux, BSDs, macOS/Darwin, Solaris, AIX, Windows, DOS, and several more specialized systems, which explains why package managers treat it as base infrastructure.",
+          "The 2024 CVE-2024-3094 backdoor is now part of XZ Utils history. Official Tukaani pages state that XZ Utils 5.6.0 and 5.6.1 release tarballs contained a backdoor inserted by a malicious co-maintainer and discovered by Andres Freund before broad stable distribution. The incident made xz one of the central examples in open-source supply-chain security discussions."
+        ],
+        "related-projects": [
+          "LZMA Utils is the predecessor lineage and source of compatibility command aliases such as lzma, unlzma, and lzcat.",
+          "7-Zip and Igor Pavlov's LZMA work are related through the compression algorithms and ecosystem that influenced .xz/LZMA2 tooling.",
+          "gzip and bzip2 are neighboring Unix compression utilities that xz often replaces when higher compression ratio matters.",
+          "libarchive, tar, dpkg, rpm, pacman, and many build systems are downstream consumers of .xz support."
+        ],
+        "sources": [
+          "https://github.com/tukaani-project/xz/blob/master/NEWS",
+          "https://tukaani.org/xz-backdoor/",
+          "https://tukaani.org/xz/",
+          "https://www.openwall.com/lists/oss-security/2024/03/29/4"
+        ],
+        "summary": [
+          "XZ Utils is the standard free-software implementation of the .xz container format, the LZMA2 compression method, and liblzma. It matters to package ecosystems because .tar.xz release archives, source packages, initramfs images, distribution payloads, and build systems rely on xz and liblzma for high-ratio lossless compression."
+        ],
+        "timeline": [
+          "2000s: Lasse Collin's Tukaani Project develops LZMA Utils and then XZ Utils around the .xz format, LZMA2, and liblzma.",
+          "2010-10-23: XZ Utils 5.0.0 marks liblzma API and ABI stable with soname 5.0.0.",
+          "2014-12-21: XZ Utils 5.2.0 continues the stable series and documents later multithreading-related caveats in NEWS.",
+          "2022-04-07: A public patch fixes the xzgrep filename-handling issue tracked as CVE-2022-1271.",
+          "2024-02-24 and 2024-03-09: XZ Utils 5.6.0 and 5.6.1 tarballs are released and later identified as backdoored.",
+          "2024-03-29: Andres Freund's discovery of CVE-2024-3094 becomes public.",
+          "2024-05-29: Official notes state that new clean XZ Utils releases were made after the backdoor response.",
+          "2025-03-25: XZ Utils 5.8.0 continues the post-incident stable release line."
+        ],
+        "usage": [
+          "Command-line users compress and decompress files with xz, unxz, and xzcat, inspect streams with xz --list, and use xzgrep/xzless style helpers for text workflows inside compressed files. It is common in source-release workflows as tar -cJf or tar.xz packaging.",
+          "Developers use liblzma directly or via bindings in languages such as Python, Perl, Haskell, Delphi, and Free Pascal. Package builders care about xz because archive format support, reproducible source distributions, and decompression availability can affect bootstrap chains."
+        ]
+      },
+      "homepage": "https://tukaani.org/xz/"
+    },
+    {
+      "position": 6,
+      "slug": "python",
+      "name": "Python",
+      "path": "/python/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "Python history: From Guido van Rossum’s language to CPython runtimes | pkg.so",
+      "history_mode": "legacy",
+      "source_key": "brew:python@3.14",
+      "ranking_key": "brew:python@3.14",
+      "rank": 5,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/python/cpython",
+      "repository_aliases": [
+        "https://github.com/python/cpython"
+      ],
+      "license": "Python-2.0",
+      "package_keys": [
+        "brew:python-freethreading",
+        "brew:python@3.10",
+        "brew:python@3.11",
+        "brew:python@3.12",
+        "brew:python@3.13",
+        "brew:python@3.14",
+        "brew:python@3.9"
+      ],
+      "package_paths": [
+        "/brew/python-3-10/",
+        "/brew/python-3-11/",
+        "/brew/python-3-12/",
+        "/brew/python-3-13/",
+        "/brew/python-3-14/",
+        "/brew/python-3-9/",
+        "/brew/python-freethreading/"
+      ],
+      "source_file": "combined/python@3.14.yml",
+      "citation_source_file": "agents/python@3.14.yml",
+      "citations": [
+        "https://computerhistory.org/profile/guido-van-rossum/",
+        "https://peps.python.org/pep-0602/",
+        "https://peps.python.org/pep-0745/",
+        "https://docs.python.org/3.14/whatsnew/3.14.html",
+        "https://docs.python.org/3.14/",
+        "https://formulae.brew.sh/formula/python@3.14",
+        "https://github.com/python/cpython",
+        "https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/"
+      ],
+      "history_sha256": "c30bf11eae5fcb84d18922bcaba2a7f7c51078ef17ebc925012339b43926df2b",
+      "history_snapshot": [
+        "CPython is the reference implementation of Python, a language created by Guido van Rossum and first released in 1991. Its role grew from a readable scripting language into the common runtime behind command-line tools, web services, data workflows, build systems, test suites, and application glue code. The project is distributed by the Python Software Foundation, developed in the public CPython repository, documented at python.org, and mirrored into operating-system and language-package ecosystems so developers can choose either a platform interpreter or a version-pinned toolchain.",
+        "Python 3.14 followed the PEP 745 schedule, with development beginning in May 2024 and the 3.14.0 final release scheduled for October 7, 2025. Its documentation describes changes such as deferred evaluation of annotations, multiple-interpreter support improvements, compression and debugging updates, and continued work around experimental free-threaded Python. In ecosystem terms, 3.14 is the track package maintainers use to prove compatibility with the next CPython ABI and language behavior after 3.13.",
+        "Homebrew treats python@3.14 as the main python3-style formula in this batch: the input lists unversioned commands such as python3, pip3, wheel3, pydoc3, and idle3 alongside versioned 3.14 commands. That packaging role matters because many shell scripts, build tools, and virtual-environment workflows call python3 rather than a fully pinned python3.14. The input also maps the branch across apk, Debian, DNF, MacPorts, Nix, pacman, Scoop, Ubuntu, Winget, and zypper, reflecting the interpreter's role as both a developer tool and a dependency for other packages."
+      ],
+      "homepage": "https://www.python.org/"
+    },
+    {
+      "position": 7,
+      "slug": "esbuild",
+      "name": "esbuild",
+      "path": "/esbuild/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "esbuild history: A fast JavaScript and CSS bundler | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:esbuild",
+      "ranking_key": "npm:esbuild",
+      "rank": 5,
+      "rank_metric": "npm downloads_per_30_days",
+      "repository": "https://github.com/evanw/esbuild",
+      "repository_aliases": [
+        "https://github.com/evanw/esbuild"
+      ],
+      "license": "MIT",
+      "package_keys": [
+        "brew:esbuild",
+        "npm:esbuild"
+      ],
+      "package_paths": [
+        "/brew/esbuild/"
+      ],
+      "source_file": "combined/esbuild.yml",
+      "citation_source_file": "combined/esbuild.yml",
+      "citations": [
+        "https://github.com/evanw/esbuild",
+        "https://esbuild.github.io/",
+        "https://esbuild.github.io/api/",
+        "https://esbuild.github.io/getting-started/",
+        "https://github.com/evanw/esbuild/blob/main/CHANGELOG.md",
+        "https://www.npmjs.com/package/esbuild",
+        "https://formulae.brew.sh/formula/esbuild"
+      ],
+      "history_sha256": "66d43ef3a0f84415c958b444ea97906ae41349e9cbf0fd022f8d09152d64ac96",
+      "history_snapshot": {
+        "adoption-history": [
+          "The package became important in JavaScript tooling because it offered a fast native binary through ordinary package-manager workflows. The npm package is the primary JavaScript distribution, while Homebrew and multiple Unix package managers carry command-line builds for system-level installation.",
+          "Its adoption pattern differs from older bundlers such as webpack and Rollup: many projects use esbuild directly for fast bundling or minification, while others use it as an embedded transform/minify engine behind higher-level developer tools."
+        ],
+        "package-nerd-significance": [
+          "esbuild changed expectations for JavaScript package tooling latency. Package nerds care because it made native, single-purpose build executables feel normal in frontend toolchains, and because its versioned binary distribution model sits at the intersection of npm packages, system packages, and reproducible builds.",
+          "It is also a useful comparison point for later tools: when a new bundler, transpiler, or dev server advertises speed, esbuild is one of the baseline projects people instinctively measure against."
+        ],
+        "project-history": [
+          "The project is developed in the evanw/esbuild repository and is documented on esbuild.github.io. Its public npm release history shows 0.1.0 published in April 2020, followed by rapid 0.x releases as the tool accumulated bundling, minification, TypeScript, JSX, CSS, source-map, watch, serve, and plugin capabilities.",
+          "esbuild's design is deliberately different from traditional JavaScript build tools: it ships as native code, exposes CLI, JavaScript, and Go APIs, and emphasizes doing parsing, printing, bundling, and minification without a cache. The upstream README frames this as a response to existing web build tools being much slower than necessary."
+        ],
+        "related-projects": [
+          "Related tools in the same package-manager conversation include webpack, Rollup, SWC, Babel, Terser, and Vite. esbuild overlaps with several of them but is commonly valued for fast transform, bundle, and minify paths rather than as an all-purpose application framework."
+        ],
+        "sources": [
+          "https://github.com/evanw/esbuild",
+          "https://esbuild.github.io/",
+          "https://esbuild.github.io/api/",
+          "https://esbuild.github.io/getting-started/",
+          "https://github.com/evanw/esbuild/blob/main/CHANGELOG.md",
+          "https://www.npmjs.com/package/esbuild",
+          "https://formulae.brew.sh/formula/esbuild"
+        ],
+        "summary": [
+          "esbuild is a JavaScript and CSS bundler and minifier whose package identity is built around speed: its upstream README describes the project goal as making web build tools far faster while still providing a modern, easy-to-use bundler."
+        ],
+        "timeline": [
+          "2020: esbuild 0.1.0 published to npm.",
+          "2020: 0.8.0-era releases show the project already moving quickly through bundler and transform features.",
+          "2021: 0.14.x releases continue the long-running pre-1.0 cadence.",
+          "2026: 0.28.x releases still ship active fixes and platform/package integrity work."
+        ],
+        "usage": [
+          "Common use is direct CLI invocation for bundling, minifying, transforming, or serving web assets, or calling the JavaScript API from build scripts. The official docs also document a Go API, loaders for JavaScript, TypeScript, JSX, CSS, JSON, text, and binary assets, and a plugin system for custom resolution and loading.",
+          "For package-manager users, esbuild is notable because installation has to land the correct platform-specific executable. The official getting-started documentation discusses npm installation details and additional npm flags, while Homebrew exposes a single `esbuild` command for local use."
+        ]
+      },
+      "homepage": "https://esbuild.github.io/"
+    },
+    {
+      "position": 8,
+      "slug": "android-platform-tools",
+      "name": "Android SDK Platform-Tools",
+      "path": "/android-platform-tools/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "Android SDK Platform-Tools history: ADB, fastboot and the Android toolchain | pkg.so",
+      "history_mode": "sections",
+      "source_key": "cask:android-platform-tools",
+      "ranking_key": "cask:android-platform-tools",
+      "rank": 6,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://android.googlesource.com/platform/packages/modules/adb",
+      "repository_aliases": [
+        "https://android.googlesource.com/platform/packages/modules/adb"
+      ],
+      "license": null,
+      "package_keys": [
+        "cask:android-platform-tools"
+      ],
+      "package_paths": [
+        "/cask/android-platform-tools/"
+      ],
+      "source_file": "combined/android-platform-tools.yml",
+      "citation_source_file": "combined/android-platform-tools.yml",
+      "citations": [
+        "https://android.googlesource.com/platform/packages/modules/adb",
+        "https://developer.android.com/tools/adb",
+        "https://developer.android.com/tools/releases/platform-tools",
+        "https://developer.android.com/tools/variables"
+      ],
+      "history_sha256": "fb3d6f95e226e29e1cd7d7dcca97f02a52d6573db0bb1998c4be56ba16cdc01d",
+      "history_snapshot": {
+        "adoption-history": [
+          "The toolset is installed by Android Studio and the Android SDK Manager, but package managers also carry it because many users need only adb and fastboot. Homebrew distributes it as a cask, making macOS command-line Android workflows possible without installing the full Android Studio application.",
+          "Its adoption spread beyond app developers into CI pipelines, hardware labs, custom ROM communities, recovery workflows, and test automation. That mixed audience explains why platform-tools is treated like a core system utility package even though it is officially an SDK component."
+        ],
+        "package-nerd-significance": [
+          "This is a classic package-manager split: a large vendor SDK is reduced to the few host binaries people actually put in PATH. It is especially valuable on macOS and CI runners where installing Android Studio would be slow, stateful, and unnecessary.",
+          "The source lives in Android's public Gitiles infrastructure rather than a conventional GitHub project, which is a useful reminder that official source-control URLs are not always the same shape as community package metadata expects."
+        ],
+        "project-history": [
+          "The Android Debug Bridge is documented by Android as a command-line tool for communicating with a device, installing and debugging apps, and running shell commands. The platform-tools package became the distribution vehicle for adb and fastboot as Android separated SDK components into independently updated downloads.",
+          "Google's Platform-Tools release notes show the package as a continuously updated SDK component rather than a standalone application. Its history is therefore tied to Android device protocols and host tooling: adb for development and debugging, fastboot for bootloader-level flashing, and small filesystem/image helpers used by the Android build and device ecosystem."
+        ],
+        "related-projects": [
+          "Android Studio and the Android SDK Command-line Tools provide the broader SDK management surface around platform-tools.",
+          "AOSP hosts adb source under the Android source tree; fastboot and filesystem helpers are related host utilities in the Android platform toolchain."
+        ],
+        "sources": [
+          "https://android.googlesource.com/platform/packages/modules/adb",
+          "https://developer.android.com/tools/adb",
+          "https://developer.android.com/tools/releases/platform-tools",
+          "https://developer.android.com/tools/variables",
+          "source_facts.package-manager"
+        ],
+        "summary": [
+          "Android SDK Platform-Tools is the Android SDK component that ships adb, fastboot, and related host-side utilities. In package-manager practice it is the small install that developers, ROM maintainers, CI images, and device tinkerers reach for when they need Android device access without a full IDE."
+        ],
+        "timeline": [
+          "2008: Android SDK tooling ships with early public Android development releases.",
+          "2010s: adb and fastboot become the common host-side tools for app debugging, device automation, and bootloader workflows.",
+          "2020: Android Platform-Tools 30.x release notes document ongoing package-specific releases.",
+          "2026: Homebrew cask metadata lists Platform-Tools 37.0.0 for macOS."
+        ],
+        "usage": [
+          "Common use centers on `adb devices`, `adb install`, `adb shell`, log capture, port forwarding, file transfer, and fastboot flashing or boot commands. The Android documentation also records `ANDROID_USER_HOME` as the parent for Android tool configuration, with the default user directory under `.android`.",
+          "Package users care about version freshness because adb and fastboot need to track Android platform behavior, USB/device protocol changes, and security fixes. Installing platform-tools from a package manager gives scripts a stable executable path while still following Google's SDK releases."
+        ]
+      },
+      "homepage": "https://developer.android.com/tools/releases/platform-tools"
+    },
+    {
+      "position": 9,
+      "slug": "node",
+      "name": "Node.js",
+      "path": "/node/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "Node.js history: JavaScript beyond the browser | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:node",
+      "ranking_key": "brew:node",
+      "rank": 6,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/nodejs/node",
+      "repository_aliases": [
+        "https://github.com/nodejs/node"
+      ],
+      "license": "MIT",
+      "package_keys": [
+        "brew:node",
+        "brew:node@20",
+        "brew:node@22",
+        "brew:node@24"
+      ],
+      "package_paths": [
+        "/brew/node/"
+      ],
+      "source_file": "combined/node.yml",
+      "citation_source_file": "combined/node.yml",
+      "citations": [
+        "https://formulae.brew.sh/formula/node",
+        "https://nodejs.org/en/about",
+        "https://nodejs.org/en/about/previous-releases",
+        "https://nodejs.org/en/blog/announcements/foundation-v4-announce",
+        "https://www.linuxfoundation.org/press/press-release/node-js-foundation-and-js-foundation-merge-to-form-openjs-foundation",
+        "https://www.wired.com/2015/02/nodejs-foundation"
+      ],
+      "history_sha256": "5e73bff7a9f76de33ceda5cbf0fb52464fae2a0fce032bc1fb92d70461dff335",
+      "history_snapshot": {
+        "adoption-history": [
+          "Node.js adoption grew because it solved several developer and operational needs at once: fast startup for scripts, non-blocking network servers, JSON-native APIs, a giant npm ecosystem, and one language for browser and server teams. The 2015 foundation announcement said Node.js was used by tens of thousands of organizations in more than 200 countries and had more than 2 million downloads per month.",
+          "Homebrew's `node` formula is the rolling mainstream macOS/Linux package for the latest Node major. The Formulae page lists aliases including `node.js`, `node@26`, `nodejs`, and `npm`, and reports 3,116,013 installs over 365 days with 2,515,719 installs on request. Within Homebrew, that makes it the high-volume default path for developers who want Node, npm, and npx without a separate version manager."
+        ],
+        "package-nerd-significance": [
+          "For package-manager data, `brew:node` is the anchor package. It is both a runtime and a build input for huge parts of the JavaScript, frontend, Electron, language-server, and CLI-tooling worlds. Its adoption stats often reflect not only developers explicitly wanting Node, but also downstream packages whose builds or runtime scripts need Node available."
+        ],
+        "project-history": [
+          "Ryan Dahl created Node.js around 2009 to run JavaScript outside the browser for network servers and other I/O-heavy programs. The runtime combined Google's V8 JavaScript engine with an event loop and low-level I/O APIs, giving web developers a single language across browser code, servers, tooling, and package scripts.",
+          "The early project was stewarded by Joyent, then hit a governance crisis in 2014 when prominent contributors forked it as io.js. The Node.js Foundation announced on 14 September 2015 that Node.js v4.0.0 combined the Node.js and io.js codebases under the foundation, added a long-term support plan, and moved the project to regular semver-based release lines.",
+          "The Node.js Foundation and JS Foundation announced their merger into the OpenJS Foundation on 12 March 2019. That put Node.js under the broader vendor-neutral JavaScript foundation that also houses projects such as Node-RED."
+        ],
+        "related-projects": [
+          "npm",
+          "npx",
+          "Corepack",
+          "V8",
+          "libuv",
+          "OpenJS Foundation",
+          "io.js"
+        ],
+        "sources": [
+          "https://formulae.brew.sh/formula/node",
+          "https://nodejs.org/en/about",
+          "https://nodejs.org/en/about/previous-releases",
+          "https://nodejs.org/en/blog/announcements/foundation-v4-announce",
+          "https://www.linuxfoundation.org/press/press-release/node-js-foundation-and-js-foundation-merge-to-form-openjs-foundation",
+          "https://www.wired.com/2015/02/nodejs-foundation"
+        ],
+        "summary": [
+          "Node.js is the JavaScript runtime that made server-side and command-line JavaScript mainstream. The official Node.js about page describes it as an asynchronous event-driven runtime designed for scalable network applications, with HTTP as a first-class feature and an event loop hidden behind ordinary JavaScript program execution."
+        ],
+        "timeline": [
+          "2009: Ryan Dahl creates Node.js and presents the early runtime publicly.",
+          "2014: io.js fork forms during the Node.js governance dispute.",
+          "2015-09-14: Node.js v4.0.0 reunifies Node.js and io.js under the Node.js Foundation and introduces the modern LTS direction.",
+          "2019-03-12: Node.js Foundation and JS Foundation announce the OpenJS Foundation merger.",
+          "2026: Homebrew's rolling `node` formula tracks Node 26.x and lists node@24, node@22, node@20, and node@18 as adjacent versioned formulas."
+        ],
+        "usage": [
+          "Homebrew users install the rolling formula with `brew install node`, then get `node`, `npm`, and `npx`. The formula is convenient for system-level CLI tools, local development, and build dependencies, while teams that need exact per-project versions often layer nvm, fnm, asdf, volta, nodenv, or Homebrew's versioned `node@` formulas on top of that ecosystem.",
+          "Package nerds care about Node's release train because C++ addons, ESM/CommonJS behavior, OpenSSL, V8, npm, Corepack, test runner behavior, and web-platform APIs can all change across majors. The official release page explains that major versions historically enter Current for six months, even-numbered releases become LTS, and production applications should use Active LTS or Maintenance LTS releases."
+        ]
+      },
+      "homepage": "https://nodejs.org/"
+    },
+    {
+      "position": 10,
+      "slug": "typescript",
+      "name": "TypeScript",
+      "path": "/typescript/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "TypeScript history: JavaScript tooling with static types | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:typescript",
+      "ranking_key": "npm:typescript",
+      "rank": 6,
+      "rank_metric": "npm downloads_per_30_days",
+      "repository": "https://github.com/microsoft/typescript",
+      "repository_aliases": [
+        "https://github.com/microsoft/typescript"
+      ],
+      "license": "Apache-2.0",
+      "package_keys": [
+        "brew:typescript",
+        "npm:typescript"
+      ],
+      "package_paths": [
+        "/brew/typescript/"
+      ],
+      "source_file": "combined/typescript.yml",
+      "citation_source_file": "combined/typescript.yml",
+      "citations": [
+        "https://devblogs.microsoft.com/typescript/a-10x-faster-typescript/",
+        "https://devblogs.microsoft.com/typescript/announcing-typescript-1-0/",
+        "https://devblogs.microsoft.com/typescript/announcing-typescript-2-0/",
+        "https://github.com/microsoft/TypeScript#readme",
+        "https://github.com/microsoft/TypeScript/releases",
+        "https://www.typescriptlang.org/docs"
+      ],
+      "history_sha256": "84268d51717253d365c322d28f4658c04c6c5d54fd1f835acba861f12af1e9d0",
+      "history_snapshot": {
+        "adoption-history": [
+          "TypeScript adoption grew through the combination of npm packaging, Visual Studio and VS Code integration, declaration files for JavaScript libraries, and framework adoption. The TypeScript 2.0 announcement said npm downloads had grown from 275,000 in one month to more than 2 million in the comparable month the following year, and described DefinitelyTyped as a central community asset with thousands of libraries and contributors.",
+          "Angular 2 adoption was an important early framework milestone because it validated TypeScript for a major JavaScript application framework. Over time, TypeScript became a default choice for application-scale JavaScript, library authoring, frontend frameworks, backend Node.js services, and editor-powered JavaScript development."
+        ],
+        "package-nerd-significance": [
+          "TypeScript is one of the defining package-manager-era developer tools. It made a compiler and language service a normal dev dependency, pushed type declarations into the npm package graph, and helped make editor feedback, CI type checks, and generated JavaScript build artifacts routine parts of JavaScript packages.",
+          "For Homebrew and distro users, the formula is also a convenient way to install the global `tsc` and `tsserver` binaries outside a single npm project, useful for editors, scripts, and system-level developer environments."
+        ],
+        "project-history": [
+          "Microsoft introduced TypeScript publicly with TypeScript 0.8 in October 2012 and released TypeScript 1.0 on April 2, 2014. The 1.0 announcement described a year and a half of community growth around large-scale JavaScript applications, declaration files, Visual Studio tooling, npm distribution, and source availability.",
+          "The 1.0 release also marked an opening toward external contributions: Microsoft announced that the compiler and language service would begin accepting pull requests. Later official release writing noted that the repository moved to GitHub around the 1.1 era to encourage community engagement and collaboration.",
+          "By TypeScript 2.0 in September 2016, Microsoft described the project as a broader language, tooling, and community ecosystem. The 2.0 announcement highlighted ECMAScript alignment, JavaScript library support, the language service, Angular 2 adoption, strict null checking, and the move from separate declaration-file package managers toward the scoped `@types` npm workflow.",
+          "In the 5.x and 6.x era, TypeScript remained both a compiler package and the core of editor tooling. Microsoft release posts continue to emphasize type-checking, editor services such as completion, navigation, and refactors, and npm as the standard distribution path. The 2025 native TypeScript announcement opened a new performance-focused chapter by previewing a native-code port of the compiler and toolset."
+        ],
+        "related-projects": [
+          "Related projects include JavaScript, ECMAScript, Node.js, npm, DefinitelyTyped, VS Code, Visual Studio, `tsserver`, TypeScript Language Server, Angular, Babel, esbuild, swc, and the native TypeScript Go implementation."
+        ],
+        "sources": [
+          "https://devblogs.microsoft.com/typescript/a-10x-faster-typescript/",
+          "https://devblogs.microsoft.com/typescript/announcing-typescript-1-0/",
+          "https://devblogs.microsoft.com/typescript/announcing-typescript-2-0/",
+          "https://github.com/microsoft/TypeScript#readme",
+          "https://github.com/microsoft/TypeScript/releases",
+          "https://www.typescriptlang.org/docs",
+          "source_facts.package-manager"
+        ],
+        "summary": [
+          "TypeScript is Microsoft's typed superset of JavaScript. It adds type syntax and tooling on top of JavaScript, then emits plain JavaScript for execution, making it both a programming language and a compiler/language-service package."
+        ],
+        "timeline": [
+          "2012: TypeScript 0.8 introduced the language publicly.",
+          "2014: TypeScript 1.0 shipped with Visual Studio, npm, and source distribution.",
+          "2014: The compiler and language service began opening to pull requests, and the project moved toward GitHub collaboration.",
+          "2016: TypeScript 2.0 shipped with strict null checking, ECMAScript alignment, language-service improvements, and the `@types` npm workflow.",
+          "2025: Microsoft announced native TypeScript work aimed at large performance gains for the compiler and toolset.",
+          "2026: TypeScript 6.0 release artifacts continued the npm-centered release model."
+        ],
+        "usage": [
+          "Package users install TypeScript primarily for the `tsc` compiler and `tsserver` language service. `tsc` type-checks projects and emits JavaScript, while `tsserver` powers editor intelligence such as completions, navigation, quick fixes, rename, refactors, and inlay information.",
+          "In package-manager culture, TypeScript is almost always paired with `tsconfig.json`, npm scripts, editor plugins, declaration packages under `@types/*`, and build tools that either call `tsc` directly or use TypeScript syntax through bundlers and transpilers."
+        ]
+      },
+      "homepage": "https://www.typescriptlang.org/"
+    },
+    {
+      "position": 11,
+      "slug": "gh",
+      "name": "GitHub CLI",
+      "path": "/gh/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "GitHub CLI history: From the 2020 beta to GitHub in the terminal | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:gh",
+      "ranking_key": "brew:gh",
+      "rank": 7,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/cli/cli",
+      "repository_aliases": [
+        "https://github.com/cli/cli"
+      ],
+      "license": "MIT",
+      "package_keys": [
+        "brew:gh"
+      ],
+      "package_paths": [
+        "/brew/gh/"
+      ],
+      "source_file": "combined/gh.yml",
+      "citation_source_file": "combined/gh.yml",
+      "citations": [
+        "https://api.github.com/repos/cli/cli",
+        "https://api.github.com/repos/cli/cli/releases",
+        "https://cli.github.com/manual/gh",
+        "https://docs.github.com/en/github-cli/github-cli/about-github-cli",
+        "https://formulae.brew.sh/formula/gh",
+        "https://github.blog/2020-02-12-supercharge-your-command-line-experience-github-cli-is-now-in-beta/",
+        "https://github.blog/2020-09-17-github-cli-1-0-is-now-available/",
+        "https://github.com/cli/cli",
+        "https://raw.githubusercontent.com/cli/cli/trunk/README.md"
+      ],
+      "history_sha256": "2b33f6516562e5ed02ac016c65fb156a90f43715b8ad63538e6f33e495673c8c",
+      "history_snapshot": {
+        "adoption-history": [
+          "GitHub CLI has broad adoption because it is distributed through GitHub's own package repositories and release binaries, package managers such as Homebrew and WinGet, and GitHub-hosted Actions runner images. Its first-party status made it a standard automation interface for GitHub workflows in shells and CI jobs."
+        ],
+        "package-nerd-significance": [
+          "For package and automation ecosystems, `gh` is important because it gives GitHub an official, versioned executable surface. Package maintainers can depend on consistent commands across macOS, Linux, and Windows, while CI authors can use a preinstalled or easily installed binary instead of hand-rolling API calls."
+        ],
+        "project-history": [
+          "GitHub created the cli/cli repository in October 2019 and opened the project as a new official CLI distinct from the older community `hub` tool. GitHub announced the beta in February 2020 and released GitHub CLI 1.0 in September 2020.",
+          "The README frames `gh` as a standalone tool that brings GitHub concepts next to `git` and source code work. The project grew into a cross-platform Go CLI with first-party manuals, release binaries, package repositories, GitHub Enterprise support, extension support, API helpers, and later supply-chain features such as build provenance attestations for release artifacts."
+        ],
+        "related-projects": [
+          "The README compares GitHub CLI with `hub`, noting that `hub` behaves as a proxy to `git` while `gh` is a standalone tool for GitHub workflows."
+        ],
+        "sources": [
+          "https://api.github.com/repos/cli/cli",
+          "https://api.github.com/repos/cli/cli/releases",
+          "https://cli.github.com/manual/gh",
+          "https://docs.github.com/en/github-cli/github-cli/about-github-cli",
+          "https://formulae.brew.sh/formula/gh",
+          "https://github.blog/2020-02-12-supercharge-your-command-line-experience-github-cli-is-now-in-beta/",
+          "https://github.blog/2020-09-17-github-cli-1-0-is-now-available/",
+          "https://github.com/cli/cli",
+          "https://raw.githubusercontent.com/cli/cli/trunk/README.md"
+        ],
+        "summary": [
+          "GitHub CLI, invoked as `gh`, is GitHub's official command-line tool for working with pull requests, issues, repositories, releases, Actions, authentication, and GitHub API data from a terminal."
+        ],
+        "timeline": [
+          "2019: The cli/cli repository was created.",
+          "2020: GitHub announced GitHub CLI beta.",
+          "2020: GitHub CLI 1.0.0 was published.",
+          "2024: The README records release build provenance attestations beginning with version 2.50.0."
+        ],
+        "usage": [
+          "Practitioners use `gh` to create and review pull requests, triage issues, clone and browse repositories, trigger or inspect Actions workflows, manage releases and gists, authenticate to GitHub hosts, call the GitHub API, and script repository operations without leaving the command line."
+        ]
+      },
+      "homepage": "https://cli.github.com/"
+    },
+    {
+      "position": 12,
+      "slug": "zstd",
+      "name": "Zstandard",
+      "path": "/zstd/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "Zstandard history: Facebook’s 2016 compression release | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:zstd",
+      "ranking_key": "brew:zstd",
+      "rank": 8,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/facebook/zstd",
+      "repository_aliases": [
+        "https://github.com/facebook/zstd"
+      ],
+      "license": "(BSD-3-Clause OR GPL-2.0-only) AND BSD-2-Clause AND MIT",
+      "package_keys": [
+        "brew:zstd"
+      ],
+      "package_paths": [
+        "/brew/zstd/"
+      ],
+      "source_file": "combined/zstd.yml",
+      "citation_source_file": "combined/zstd.yml",
+      "citations": [
+        "https://btrfs.readthedocs.io/en/latest/Compression.html",
+        "https://engineering.fb.com/2016/08/31/core-infra/smaller-and-faster-data-compression-with-zstandard/",
+        "https://engineering.fb.com/2018/12/19/core-infra/zstandard/",
+        "https://facebook.github.io/zstd/",
+        "https://github.com/facebook/zstd",
+        "https://raw.githubusercontent.com/facebook/zstd/dev/CHANGELOG",
+        "https://raw.githubusercontent.com/facebook/zstd/dev/README.md",
+        "https://www.rfc-editor.org/info/rfc8878/"
+      ],
+      "history_sha256": "98e12bc41bc7ac65034cecc936dbd3def1440d1a37da26949acb080bae373662",
+      "history_snapshot": {
+        "adoption-history": [
+          "zstd spread because it hit a package-maintainer sweet spot: faster decompression than gzip-class tools, better ratio than many fast compressors, a stable file format, and a normal Unix CLI. That combination made it attractive for source archives, package payloads, container layers, log compression, backup streams, and embedded compression inside larger systems.",
+          "Filesystem adoption gave zstd particular visibility among system users. Btrfs documentation records ZSTD support since Linux 4.14 alongside ZLIB and LZO, and Meta engineering later wrote about transparent zstd compression in Btrfs as a way to improve storage efficiency without a noticeable performance drop in its environment.",
+          "The project stayed active rather than freezing at the format layer. The changelog shows continuing work through the 1.5.x series and a 1.6.0 entry in Dec 2025, including CLI, API, build-system, portability, and performance improvements."
+        ],
+        "package-nerd-significance": [
+          "zstd is one of the rare compression packages that matters at every packaging layer: as a user-facing CLI, a shared library dependency, an archive format, a filesystem compressor, and a performance knob inside build and distribution infrastructure.",
+          "For package nerds it is also a case study in successful infrastructure standardization: a vendor-originated tool became a stable RFC-described format with independent implementations, many bindings, and broad distribution support while retaining the boring Unix ergonomics expected from gzip-era tools."
+        ],
+        "project-history": [
+          "Zstandard was developed at Facebook by Yann Collet and collaborators as a modern successor in the design space occupied by Deflate, gzip, zlib, lz4, and xz. Meta announced Zstandard 1.0 on 2016-08-31, describing it as a compression algorithm and implementation designed for modern CPUs, high decompression speed, and a broad range of lossless-compression scenarios.",
+          "The reference implementation lives in the facebook/zstd repository as a C library and CLI. The README describes a stable format, the libzstd API, the zstd command-line utility, support for producing and decoding .zst plus compatibility with .gz, .xz, and .lz4 files, and a list of ports and bindings for other languages.",
+          "The format moved from a popular open-source implementation into a documented Internet format. RFC 8878 describes Zstandard compression and registers the application/zstd media type, content encoding, and structured syntax suffix for transporting zstd-compressed content."
+        ],
+        "related-projects": [
+          "Related projects include zlib, gzip, Deflate, lz4, xz, Brotli, Finite State Entropy, Huff0, Btrfs, SquashFS, libarchive-style tooling, and language bindings listed from the Zstandard homepage."
+        ],
+        "sources": [
+          "https://btrfs.readthedocs.io/en/latest/Compression.html",
+          "https://engineering.fb.com/2016/08/31/core-infra/smaller-and-faster-data-compression-with-zstandard/",
+          "https://engineering.fb.com/2018/12/19/core-infra/zstandard/",
+          "https://facebook.github.io/zstd/",
+          "https://github.com/facebook/zstd",
+          "https://raw.githubusercontent.com/facebook/zstd/dev/CHANGELOG",
+          "https://raw.githubusercontent.com/facebook/zstd/dev/README.md",
+          "https://www.rfc-editor.org/info/rfc8878/"
+        ],
+        "summary": [
+          "Zstandard, usually packaged as zstd, is Meta's fast general-purpose lossless compression format, C library, and command-line tool. It targets zlib-class compression ratios with much faster compression and decompression, plus tunable levels and dictionary training."
+        ],
+        "timeline": [
+          "2016-08-31: Facebook announced Zstandard 1.0.",
+          "2017: ZSTD support entered Btrfs documentation as available since Linux 4.14.",
+          "2018-12-19: Meta engineering published notes on large-scale storage improvements with Zstandard.",
+          "2021: RFC 8878 documented the Zstandard format and application/zstd media type.",
+          "2025-02: zstd 1.5.7 changelog entry records CLI, API, performance, and portability work.",
+          "2025-12: zstd 1.6.0 changelog entry records legacy-format support disabled by default."
+        ],
+        "usage": [
+          "The package gives users commands such as zstd, unzstd, zstdcat, zstdgrep, zstdless, pzstd, and zstdmt. Common shell usage mirrors gzip-style workflows: compress a file or stream to .zst, decompress with unzstd or zstd -d, pipe through zstdcat, and tune level or --fast modes for speed/ratio trade-offs.",
+          "For developers, libzstd exposes one-shot compression/decompression, reusable contexts, streaming APIs, dictionaries, frame inspection, and advanced experimental APIs. The README also documents dictionary training with zstd --train for small repeated records, a major reason zstd appears in data stores and network protocols rather than only in file archivers."
+        ]
+      },
+      "homepage": "https://facebook.github.io/zstd/"
+    },
+    {
+      "position": 13,
+      "slug": "glib",
+      "name": "GLib",
+      "path": "/glib/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "GLib history: The utility layer beneath GTK and GNOME | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:glib",
+      "ranking_key": "brew:glib",
+      "rank": 10,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://gitlab.gnome.org/gnome/glib",
+      "repository_aliases": [
+        "https://gitlab.gnome.org/gnome/glib"
+      ],
+      "license": "LGPL-2.1-or-later",
+      "package_keys": [
+        "brew:glib"
+      ],
+      "package_paths": [
+        "/brew/glib/"
+      ],
+      "source_file": "combined/glib.yml",
+      "citation_source_file": "combined/glib.yml",
+      "citations": [
+        "https://docs.gtk.org/glib/",
+        "https://download.gnome.org/sources/glib/",
+        "https://gitlab.gnome.org/GNOME/glib",
+        "https://www.gtk.org/docs/architecture/glib"
+      ],
+      "history_sha256": "df317bd8528e6efce602b156a5408f1fc94706a2a97f9bad6034a8098c663b7d",
+      "history_snapshot": {
+        "adoption-history": [
+          "GLib's adoption followed GTK and GNOME but spread beyond graphical applications because it offered portable C building blocks without requiring a GUI. Projects use it for event loops, data containers, structured error handling, Unicode and string helpers, command-line option parsing, tests, and cross-platform runtime glue.",
+          "The library is a dependency root in Linux desktop stacks: installing GTK, GNOME services, GStreamer components, and many C libraries often brings GLib along. Its ABI stability and regular release train make it one of the packages that distribution maintainers track carefully during desktop, toolchain, and security updates."
+        ],
+        "package-nerd-significance": [
+          "GLib is package-manager infrastructure by gravity: it is small enough to be a library dependency but central enough that ABI, introspection data, and helper binaries affect large parts of a desktop stack. Packagers care about its Meson build, gir data, schema/resource tools, and tight relationship with GTK release cycles.",
+          "Because GLib abstracts platform details while staying in C, it also acts as a compatibility layer between Unix-like systems, Windows ports, language bindings, and higher-level GNOME libraries."
+        ],
+        "project-history": [
+          "GLib emerged as the shared utility layer beneath GTK-era C applications, and GNOME's release archive shows stable 1.2 releases in 1999 before the 2.0 line began in 2002. The 2.x API family established the long-lived GLib, GObject, GModule, and GIO split documented by GTK and GNOME.",
+          "Over time, GLib expanded from basic C convenience routines into a broad application substrate. GObject supplied an object and type system for C, GModule abstracted dynamic loading, and GIO added higher-level APIs for streaming I/O, files, D-Bus, networking, resources, settings, and application integration.",
+          "The project moved its source and issue workflow to GNOME's GitLab, while release archives remained available from GNOME download infrastructure. Its documentation moved to gi-docgen-generated API pages under docs.gtk.org, reflecting GLib's role as an introspection-friendly base library for language bindings."
+        ],
+        "related-projects": [
+          "GLib underpins GTK and GNOME, and is closely related to GObject, GModule, GIO, GdkPixbuf, Pango, GStreamer, D-Bus, Meson, and GObject Introspection."
+        ],
+        "sources": [
+          "https://docs.gtk.org/glib/",
+          "https://download.gnome.org/sources/glib/",
+          "https://gitlab.gnome.org/GNOME/glib",
+          "https://www.gtk.org/docs/architecture/glib"
+        ],
+        "summary": [
+          "GLib is the low-level C foundation used by GTK and GNOME, providing portable data structures, strings, file utilities, process helpers, main-loop primitives, dynamic modules, object typing, I/O, IPC, networking, settings, and system integration APIs."
+        ],
+        "timeline": [
+          "1999: GLib 1.2.0 release archive published by GNOME.",
+          "2002: GLib 2.0.0 release archive published by GNOME.",
+          "2010s: GIO, D-Bus, settings, resources, and introspection workflows made GLib a broader application framework base.",
+          "2020s: gi-docgen API references and GitLab-hosted development became the normal documentation and contribution path."
+        ],
+        "usage": [
+          "Practitioners use GLib through headers such as `glib.h` and pkg-config modules such as `glib-2.0`. Application code commonly uses `GList`, `GHashTable`, `GError`, `GMainLoop`, `GOptionContext`, `GKeyFile`, and automatic cleanup helpers to write portable C with fewer platform-specific branches.",
+          "The Homebrew package also exposes developer utilities such as `glib-compile-resources`, `glib-compile-schemas`, `gdbus`, `gio`, `gsettings`, `glib-genmarshal`, and `glib-mkenums`. These tools generate resources, schemas, marshalling code, enum metadata, and D-Bus helpers used by GTK and GNOME-style applications."
+        ]
+      },
+      "homepage": "https://docs.gtk.org/glib/"
+    },
+    {
+      "position": 14,
+      "slug": "json5",
+      "name": "JSON5",
+      "path": "/json5/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "JSON5 history: JSON syntax for humans | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:json5",
+      "ranking_key": "npm:json5",
+      "rank": 10,
+      "rank_metric": "npm downloads_per_30_days",
+      "repository": "https://github.com/json5/json5",
+      "repository_aliases": [
+        "https://github.com/json5/json5"
+      ],
+      "license": "MIT",
+      "package_keys": [
+        "brew:json5",
+        "npm:json5"
+      ],
+      "package_paths": [
+        "/brew/json5/"
+      ],
+      "source_file": "combined/json5.yml",
+      "citation_source_file": "combined/json5.yml",
+      "citations": [
+        "https://formulae.brew.sh/formula/json5",
+        "https://github.com/json5/json5",
+        "https://json5.org/",
+        "https://registry.npmjs.org/json5",
+        "https://spec.json5.org/",
+        "https://www.npmjs.com/package/json5"
+      ],
+      "history_sha256": "d8280315182131bd954b45719483b65770f92579f2f4ebb88e1d4f945e517347",
+      "history_snapshot": {
+        "adoption-history": [
+          "The official site reported in 2022 that JSON5 received more than 65 million npm downloads per week, ranked in the top 0.1 percent of depended-upon npm packages, and had been adopted by projects including Chromium, Next.js, Babel, Retool, WebStorm, and Apple platforms.",
+          "Its wide adoption came less from command-line use than from dependency graphs: parsers, build tools, configuration loaders, and editors pulled JSON5 in as a friendlier format for files people edit by hand."
+        ],
+        "package-nerd-significance": [
+          "JSON5 is package-nerd significant because it became one of the few JSON-adjacent formats that escaped niche status. It is a reminder that tiny syntax conveniences in configuration files can create enormous dependency footprints once build systems and editors standardize around them."
+        ],
+        "project-history": [
+          "The JSON5 GitHub repository and npm package both date to May 2012. The official site describes JSON5 as `JSON for Humans`, positioning it for configuration and other hand-authored files rather than machine-to-machine interchange.",
+          "In March 2018, the JSON5 specification was published as Standard JSON5 1.0.0. The spec frames JSON5 as a superset of JSON that expands syntax with selected ECMAScript 5.1 productions while keeping JSON's data model."
+        ],
+        "related-projects": [
+          "JSON5 sits beside JSON, YAML, TOML, HJSON, and JSONC as a configuration-oriented data format. Its reference implementation is also related to non-JavaScript ports listed by the JSON5 organization."
+        ],
+        "sources": [
+          "https://formulae.brew.sh/formula/json5",
+          "https://github.com/json5/json5",
+          "https://json5.org/",
+          "https://registry.npmjs.org/json5",
+          "https://spec.json5.org/",
+          "https://www.npmjs.com/package/json5"
+        ],
+        "summary": [
+          "JSON5 is both a data-format proposal and a JavaScript reference implementation for a more hand-editable superset of JSON. The format adds familiar ECMAScript 5.1 syntax such as comments, trailing commas, single-quoted strings, unquoted object keys, and additional number forms."
+        ],
+        "timeline": [
+          "2012-05-27: The GitHub repository was created and npm recorded version 0.0.0.",
+          "2018-03: Standard JSON5 1.0.0 was published.",
+          "2021-02-01: GitHub recorded release v2.2.0.",
+          "2022: The official site reported more than 65 million npm downloads per week and major-project adoption.",
+          "2022-12-31: GitHub recorded release v2.2.3."
+        ],
+        "usage": [
+          "The JavaScript package exposes an API compatible with the standard JSON API, including `JSON5.parse()` and `JSON5.stringify()`, and the Homebrew formula provides the `json5` CLI. Typical usage is parsing configuration-like input that wants comments and trailing commas while preserving JSON-like data structures."
+        ]
+      },
+      "homepage": "https://json5.org/"
+    },
+    {
+      "position": 15,
+      "slug": "pcre2",
+      "name": "PCRE2",
+      "path": "/pcre2/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "PCRE2 history: The revised regular expression API introduced in 2015 | pkg.so",
+      "history_mode": "legacy",
+      "source_key": "brew:pcre2",
+      "ranking_key": "brew:pcre2",
+      "rank": 11,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/pcre2project/pcre2",
+      "repository_aliases": [
+        "https://github.com/PCRE2Project/pcre2",
+        "https://github.com/pcre2project/pcre2"
+      ],
+      "license": "BSD-3-Clause",
+      "package_keys": [
+        "brew:pcre2"
+      ],
+      "package_paths": [
+        "/brew/pcre2/"
+      ],
+      "source_file": "combined/pcre2.yml",
+      "citation_source_file": "agents/pcre2.yml",
+      "citations": [
+        "https://www.pcre.org/",
+        "https://github.com/PCRE2Project/pcre2",
+        "https://raw.githubusercontent.com/PCRE2Project/pcre2/master/README.md",
+        "https://raw.githubusercontent.com/PCRE2Project/pcre2/master/doc/pcre2.txt",
+        "https://lists.exim.org/lurker/message/20150105.162835.0666407a.en.html"
+      ],
+      "history_sha256": "d76fc0d5b105a8f46e661e3ed5f83454dd69aabf7871c264092930fe22c81176",
+      "history_snapshot": [
+        "PCRE2 is the successor line to Philip Hazel's PCRE library, released in January 2015 as PCRE with a revised API rather than as a drop-in replacement. Hazel's release announcement explicitly said PCRE2 did not replace PCRE 8.36 because the API was incompatible, that development work would concentrate on PCRE2, and that new projects should use PCRE2 where possible.",
+        "The redesign addressed limits that had built up after nearly two decades of the original API. The PCRE2 manual describes a more extensible API, automatic optimization instead of a separate study step, renamed calls such as pcre2_match, size_t-based offsets, redesigned error handling, explicit pcre2_jit_compile, pcre2_substitute, and support for binary zeros in patterns, subjects, and replacement strings.",
+        "PCRE2 kept PCRE's ecosystem role as an embeddable C regex engine with Perl-compatible syntax, while making the library easier to integrate in modern codebases. The upstream README describes it as self-contained, portable, BSD-licensed, suitable for proprietary software, Unicode-capable, available in 8-, 16-, and 32-bit code-unit libraries, optionally accelerated by JIT, and consumed by open-source and commercial products including Apache, Git, PHP, R, Excel, and Safari.",
+        "Practitioners use PCRE2 either indirectly through applications and language runtimes or directly through libpcre2-8, libpcre2-16, or libpcre2-32. The package also ships pcre2grep for Perl-compatible file searching, pcre2test for exploring and debugging pattern behavior, and pcre2-config for build integration. For new C/C++ software, PCRE2 is the maintained branch; the original PCRE remains a legacy ABI for older dependents."
+      ],
+      "homepage": "https://www.pcre.org/"
+    },
+    {
+      "position": 16,
+      "slug": "awscli",
+      "name": "AWS CLI",
+      "path": "/awscli/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "AWS CLI history: From Python commands to the v2 toolchain | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:awscli",
+      "ranking_key": "brew:awscli",
+      "rank": 12,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/aws/aws-cli",
+      "repository_aliases": [
+        "https://github.com/aws/aws-cli"
+      ],
+      "license": "Apache-2.0",
+      "package_keys": [
+        "brew:awscli",
+        "brew:awscli@1"
+      ],
+      "package_paths": [
+        "/brew/awscli-1/",
+        "/brew/awscli/"
+      ],
+      "source_file": "combined/awscli.yml",
+      "citation_source_file": "combined/awscli.yml",
+      "citations": [
+        "https://api.github.com/repos/aws/aws-cli",
+        "https://api.github.com/repos/aws/aws-cli/git/tags/b824720aa0c766c39ee2c6039f25e9425ddf4498",
+        "https://api.github.com/repos/aws/aws-cli/git/tags/ec5534a7194f2def0b80dcf9291ab1d78fcf11d7",
+        "https://api.github.com/repos/aws/aws-cli/git/tags/ed249f078fc585d3ed4878bb2535697622091b4a",
+        "https://aws.amazon.com/blogs/developer/cli-v1-maintenance-mode-announcement/",
+        "https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html",
+        "https://github.com/aws/aws-cli"
+      ],
+      "history_sha256": "6dd38b64fa3d824df9556ff43e6035341dd055ce4a859fe223b0fb7682b89ea8",
+      "history_snapshot": {
+        "adoption-history": [
+          "The AWS CLI became infrastructure plumbing because it is the AWS-native denominator shared by developers, CI jobs, shell scripts, and operational runbooks. Its adoption tracks both AWS service growth and package-manager culture: Homebrew, Linux distro packages, Chocolatey, Scoop, Nix, and vendor installers all expose an `aws` command that users expect to be available on fresh machines.",
+          "AWS announced a v1 maintenance transition in 2024: v1 enters maintenance mode on February 1, 2026, reaches end-of-support on July 31, 2027, and users are directed toward v2 for ongoing feature work. That split is why package collections commonly carry both `awscli` and an explicit v1 package."
+        ],
+        "package-nerd-significance": [
+          "AWS CLI is a packaging stress test: it has high release velocity, a large generated command surface, platform-specific installers, shell completion, and a v1/v2 compatibility split. Package maintainers care about it because many downstream tools assume the `aws` executable exists, while users care about whether their package manager delivers v2, legacy v1, or both.",
+          "It is also one of the clearest examples of cloud vendors turning APIs into package-manager-distributed command-line infrastructure. Installing `awscli` is often the first step in bootstrapping an AWS workstation or CI image."
+        ],
+        "project-history": [
+          "The public `aws/aws-cli` repository was created in November 2012 and the 1.0.0 tag was cut in September 2013. Version 1 established the familiar Python-based command structure, shared AWS config and credentials files, profiles, output formats, and generated service commands that made AWS automation feel like a regular Unix tool.",
+          "AWS CLI v2 was previewed publicly with the `2.0.0dev0` tag in November 2018 and tagged 2.0.0 in February 2020. The v2 package became the preferred install target for the main AWS CLI docs and Homebrew formula, while v1 continued as a compatibility line for workflows pinned to the Python package ecosystem or older behavior."
+        ],
+        "related-projects": [
+          "AWS CLI v1 is the legacy major line packaged by Homebrew as `awscli@1`.",
+          "AWS SDK for Python (Boto3/Botocore) supplies the Python AWS client and model ecosystem that underpins much of the v1-era command generation.",
+          "awscurl, awslogs, and AWSume are companion command-line tools that reuse AWS credentials, profiles, or service semantics."
+        ],
+        "sources": [
+          "https://api.github.com/repos/aws/aws-cli",
+          "https://api.github.com/repos/aws/aws-cli/git/tags/b824720aa0c766c39ee2c6039f25e9425ddf4498",
+          "https://api.github.com/repos/aws/aws-cli/git/tags/ec5534a7194f2def0b80dcf9291ab1d78fcf11d7",
+          "https://api.github.com/repos/aws/aws-cli/git/tags/ed249f078fc585d3ed4878bb2535697622091b4a",
+          "https://aws.amazon.com/blogs/developer/cli-v1-maintenance-mode-announcement/",
+          "https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html",
+          "https://github.com/aws/aws-cli"
+        ],
+        "summary": [
+          "AWS CLI is Amazon Web Services' official command-line interface, packaging AWS service APIs behind a single `aws` executable for shell use, automation, and repeatable cloud operations. For package-manager users, the modern `awscli` formula tracks AWS CLI v2, while the legacy v1 line is packaged separately as `awscli@1`."
+        ],
+        "timeline": [
+          "2012: Public GitHub repository `aws/aws-cli` created.",
+          "2013: AWS CLI 1.0.0 tag cut.",
+          "2018: AWS CLI v2 developer preview tag `2.0.0dev0` published.",
+          "2020: AWS CLI v2 2.0.0 tag cut.",
+          "2026: AWS CLI v1 scheduled to enter maintenance mode on February 1.",
+          "2027: AWS CLI v1 scheduled to reach end-of-support on July 31."
+        ],
+        "usage": [
+          "Common usage is interactive and scripted: configure credentials with `aws configure`, select profiles with `--profile` or `AWS_PROFILE`, call service subcommands such as `aws s3`, `aws ec2`, and `aws sts`, and pipe JSON output through tools like `jq`. The shared config file normally lives at `~/.aws/config`, while long-lived credentials and session material normally live at `~/.aws/credentials`.",
+          "The CLI also serves as an authentication substrate for other tools in this batch. awscurl, awslogs, and AWSume all either read the same shared files or help produce/export credentials used by the AWS CLI and SDK credential chain."
+        ]
+      },
+      "homepage": "https://aws.amazon.com/cli/"
+    },
+    {
+      "position": 17,
+      "slug": "icu",
+      "name": "ICU",
+      "path": "/icu/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "ICU history: Unicode infrastructure across platforms | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:icu4c@78",
+      "ranking_key": "brew:icu4c@78",
+      "rank": 13,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/unicode-org/icu",
+      "repository_aliases": [
+        "https://github.com/unicode-org/icu"
+      ],
+      "license": "Unicode-3.0",
+      "package_keys": [
+        "brew:icu4c@77",
+        "brew:icu4c@78"
+      ],
+      "package_paths": [],
+      "source_file": "combined/icu4c@78.yml",
+      "citation_source_file": "combined/icu4c@78.yml",
+      "citations": [
+        "https://github.com/unicode-org/icu/releases/tag/release-78.3",
+        "https://unicode-org.github.io/icu/devsetup/source/",
+        "https://unicode-org.github.io/icu/download/78.html",
+        "https://unicode-org.github.io/icu/userguide/icu/"
+      ],
+      "history_sha256": "6e973e8f98d54ff1e290011eb7aa9e4aa6674f195b94ddaa4857275b6a481ad1",
+      "history_snapshot": {
+        "adoption-history": [
+          "ICU became a standard dependency for software that needs Unicode text processing, locale data, collation, normalization, message formatting, calendar behavior, and character conversion across platforms. The project documentation describes ICU services as reusable internationalization components that hide locale-specific complexity for applications.",
+          "For package ecosystems, ICU is notable less as an end-user program and more as a shared native dependency. A Homebrew versioned formula such as icu4c@78 gives downstream packages a stable ICU major line while the unversioned formula can move to another ABI."
+        ],
+        "package-nerd-significance": [
+          "ICU is a classic rebuild trigger: small-looking version bumps can affect many reverse dependencies because the library ABI and bundled locale data travel together. Versioned formulae let package managers keep older dependents building while newer ICU lines roll forward.",
+          "The package also exposes the quiet infrastructure behind internationalized software. If sorting, casing, IDNA, segmentation, calendars, or locale-specific formatting works outside ASCII-centric cases, ICU or a sibling data project is often somewhere in the dependency graph."
+        ],
+        "project-history": [
+          "ICU traces back to internationalization classes developed at Taligent. The Taligent team later became IBM's Unicode group in Cupertino; Java classes from that work went into JDK 1.1, and the functionality was then ported to C++ and C. ICU4J and ICU4C kept shared goals: track Java internationalization APIs, implement released Unicode standards, and keep a portable source base.",
+          "The project was open sourced in 1999 with CVS and Jitterbug, moved to Subversion and Trac on 2006-11-30, and moved again in July 2018 to GitHub and Atlassian Cloud Jira. That migration path is part of why package metadata often has old ICU4C, ICU4J, SVN, GitHub, and Unicode project URLs mixed together."
+        ],
+        "related-projects": [
+          "ICU4J is the Java sibling maintained in the same repository. CLDR supplies the locale data that ICU packages into runtime form. Unicode standards and data releases drive much of ICU's release cadence.",
+          "Package-manager dependents commonly include language runtimes, databases, browsers, text processing libraries, and desktop software that need stable Unicode behavior across operating systems."
+        ],
+        "sources": [
+          "https://github.com/unicode-org/icu/releases/tag/release-78.3",
+          "https://unicode-org.github.io/icu/devsetup/source/",
+          "https://unicode-org.github.io/icu/download/78.html",
+          "https://unicode-org.github.io/icu/userguide/icu/"
+        ],
+        "summary": [
+          "ICU4C is the C and C++ side of International Components for Unicode, the Unicode project's portable globalization library family. The 78 series matters to package maintainers because it pairs ABI-sensitive native libraries and command-line data tools with Unicode 17 and CLDR 48 data, so runtime consumers often need coordinated rebuilds when the formula changes."
+        ],
+        "timeline": [
+          "1999: ICU was first open sourced using CVS and Jitterbug.",
+          "2006-11-30: ICU moved from CVS/Jitterbug to Subversion and Trac.",
+          "2016-05-18: ICU moved from IBM stewardship into the Unicode project governance structure.",
+          "2018-07: ICU source moved from Subversion to Git on GitHub, and issue tracking moved from Trac to Atlassian Cloud Jira.",
+          "2025-10-30: ICU 78.1 was released with Unicode 17 and CLDR 48 data.",
+          "2026-01-08: ICU 78.2 updated to CLDR 48.1 and timezone data 2025c.",
+          "2026-03-17: ICU 78.3 updated to CLDR 48.2 and timezone data 2026a."
+        ],
+        "usage": [
+          "The package includes libraries plus developer and data utilities such as uconv, genrb, icupkg, pkgdata, makeconv, and icuinfo. Consumers use the libraries for Unicode-aware C and C++ applications, while maintainers and builders use the tools to build, package, inspect, and convert ICU data.",
+          "ICU 78.1 was released on 2025-10-30. The 78 line updated to Unicode 17 and CLDR 48, added ICU4C APIs for UTF-8/16/32 code point iteration, and later maintenance releases updated CLDR and timezone data."
+        ]
+      },
+      "homepage": "https://icu.unicode.org/home"
+    },
+    {
+      "position": 18,
+      "slug": "lz4",
+      "name": "LZ4",
+      "path": "/lz4/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "LZ4 history: A small C library and a fast compression CLI | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:lz4",
+      "ranking_key": "brew:lz4",
+      "rank": 14,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/lz4/lz4",
+      "repository_aliases": [
+        "https://github.com/lz4/lz4"
+      ],
+      "license": "BSD-2-Clause",
+      "package_keys": [
+        "brew:lz4"
+      ],
+      "package_paths": [
+        "/brew/lz4/"
+      ],
+      "source_file": "combined/lz4.yml",
+      "citation_source_file": "combined/lz4.yml",
+      "citations": [
+        "https://github.com/lz4/lz4",
+        "https://github.com/lz4/lz4/blob/dev/lib/LICENSE",
+        "https://github.com/lz4/lz4/releases",
+        "https://lz4.github.io/lz4/"
+      ],
+      "history_sha256": "6fd72c3bfa851a8bcb5bb558f2332304c1da1e693c0e6e7a2af1ffef66ff48bf",
+      "history_snapshot": {
+        "adoption-history": [
+          "LZ4 became a default packaging candidate because it fills a practical niche that gzip, bzip2, and xz do not: fast enough for hot paths, simple enough to vendor, and portable enough for every Unix-like distribution. The input package facts show it packaged across Homebrew, Debian/Ubuntu, Fedora, Arch, Alpine, MacPorts, Nix, Scoop, and openSUSE-style ecosystems.",
+          "In package-manager culture, LZ4 is often installed less as an end-user archiver and more as infrastructure: a build dependency, a runtime shared library, or a fast compressor used by other tools. That makes ABI stability, CLI compatibility, and the distinction between raw blocks and framed .lz4 files recurring concerns for maintainers."
+        ],
+        "package-nerd-significance": [
+          "LZ4 is a package nerd staple because it is a small C project with huge transitive reach. It shows up as both a leaf CLI and a dependency of larger systems, so distributions care about symbol versions, shared-library packaging, test vectors, frame-format compatibility, and whether downstreams accidentally mix raw LZ4 blocks with framed files.",
+          "It also marks a generational shift in compression packaging: instead of treating compression as a storage-only tradeoff, LZ4 made compression cheap enough to appear in latency-sensitive runtime paths."
+        ],
+        "project-history": [
+          "The reference implementation is associated with Yann Collet and dates to the early 2010s; the official library license carries a 2011 copyright line. The project settled into the familiar Unix package shape of a small C library plus CLI programs such as lz4, unlz4, lz4cat, and legacy-compatible lz4c.",
+          "LZ4's upstream history is unusually important for package maintainers because the format became embedded below the application layer: libraries, storage systems, language bindings, kernels, databases, and transport protocols all wanted a very fast, low-latency compressor. Later releases kept that core identity while expanding the production surface, including official frame-format support, dictionary APIs, and, in the v1.10.0 release, multithreaded compression work aimed at modern multi-core and high-throughput storage systems."
+        ],
+        "related-projects": [
+          "LZ4_HC is the high-compression variant shipped with the same upstream project.",
+          "lz4-java, python-lz4, and similar bindings expose the format to language ecosystems.",
+          "Zstandard is another Yann Collet compression project, optimized for a different speed/ratio point."
+        ],
+        "sources": [
+          "https://github.com/lz4/lz4",
+          "https://github.com/lz4/lz4/blob/dev/lib/LICENSE",
+          "https://github.com/lz4/lz4/releases",
+          "https://lz4.github.io/lz4/",
+          "source_facts.package-manager"
+        ],
+        "summary": [
+          "LZ4 is a lossless compression format, C library, and command-line tool centered on very high compression and decompression throughput. The official project describes it as an algorithm with compression above 500 MB/s per core and a decoder that can run in the multiple-GB/s-per-core range, with LZ4_HC available when users want a slower but denser high-compression mode."
+        ],
+        "timeline": [
+          "2011: liblz4 copyright era begins in the official source tree.",
+          "2010s: LZ4 spreads from a standalone compressor into Unix package repositories and system libraries.",
+          "2024: v1.10.0 adds major multithreading work and promotes dictionary compression support."
+        ],
+        "usage": [
+          "The lz4 command compresses and decompresses files, while unlz4 and lz4cat provide decompression-oriented entry points. Users pick it when speed is more important than maximum compression ratio, especially for logs, caches, temporary artifacts, backup pipelines, and data streams.",
+          "Developers usually consume liblz4 directly for in-memory buffers or the LZ4 frame API when data needs a self-describing stream format. High-compression mode is useful for precompressed assets, but the package's everyday reputation comes from the fast path."
+        ]
+      },
+      "homepage": "https://lz4.github.io/lz4/"
+    },
+    {
+      "position": 19,
+      "slug": "vite",
+      "name": "Vite",
+      "path": "/vite/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "Vite history: The development server and build-tool ecosystem | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:vite",
+      "ranking_key": "npm:vite",
+      "rank": 14,
+      "rank_metric": "npm downloads_per_30_days",
+      "repository": "https://github.com/vitejs/vite",
+      "repository_aliases": [
+        "https://github.com/vitejs/vite"
+      ],
+      "license": "MIT",
+      "package_keys": [
+        "brew:vite",
+        "npm:vite"
+      ],
+      "package_paths": [
+        "/brew/vite/"
+      ],
+      "source_file": "combined/vite.yml",
+      "citation_source_file": "combined/vite.yml",
+      "citations": [
+        "https://vite.dev/blog/announcing-vite3",
+        "https://vite.dev/blog/announcing-vite4",
+        "https://vite.dev/blog/announcing-vite5",
+        "https://vite.dev/blog/announcing-vite8",
+        "https://vite.dev/blog/cloudflare-supports-vite",
+        "https://vite.dev/guide/rolldown",
+        "https://vite.dev/guide/why"
+      ],
+      "history_sha256": "3e173b173cc211e97e7723eaa38e374d2bbd2198cc21504a8b4f07e1891f1a45",
+      "history_snapshot": {
+        "adoption-history": [
+          "Vite adoption accelerated quickly after Vite 2. The Vite 3 announcement said the project had passed one million npm downloads per week and named Nuxt 3, SvelteKit, Astro, Hydrogen, and SolidStart as frameworks built with or defaulting to Vite.",
+          "The Vite 4 announcement reported growth from one million to 2.5 million npm downloads per week, and the Vite 5 announcement reported a further jump to 7.5 million weekly downloads. These official release notes also positioned Vite as shared infrastructure for an expanding framework ecosystem rather than a single-framework companion.",
+          "In 2026 the Vite project described a new stage after VoidZero joined Cloudflare, while stating that Vite remained open source, vendor-agnostic, and stewarded by the Vite team with members from multiple organizations and independent contributors."
+        ],
+        "package-nerd-significance": [
+          "Vite matters to package nerds because it is both a visible CLI and a hidden ecosystem substrate. Installing a modern frontend starter often means installing Vite or a framework layer that delegates development and build behavior to Vite.",
+          "It also marks a generational shift away from older dev-server assumptions: native ESM during development, aggressive dependency pre-bundling, and framework-shared tooling replaced many bespoke Webpack-era setups."
+        ],
+        "project-history": [
+          "Vite emerged in 2020 as a response to the long startup and rebuild times of bundle-first JavaScript tooling. The official documentation frames its origins around the moment when browsers had gained broad ES module support, allowing development servers to let the browser load modules directly instead of constructing an entire bundle before first page load.",
+          "Vite 2, released by Evan You in February 2021, was the point where the project became a broader framework-agnostic tool rather than only a Vue-oriented experiment. Later major releases focused on ecosystem stability, plugin compatibility, performance, and keeping the development and production pipelines aligned.",
+          "By the mid-2020s, Vite's roadmap had shifted toward unifying more of the toolchain. Official Vite documentation describes the migration toward Rolldown so that dependency pre-bundling and production bundling can eventually share a high-performance Rollup-compatible foundation."
+        ],
+        "related-projects": [
+          "Vite is closely related to Rollup, esbuild, and Rolldown because those tools shape its plugin compatibility, dependency optimization, and production bundling story.",
+          "Frameworks and meta-frameworks named in official Vite release notes include Nuxt, SvelteKit, Astro, Hydrogen, SolidStart, Laravel, Rails integrations through Vite Ruby, and later Qwik City and other ecosystem entrants."
+        ],
+        "sources": [
+          "batch input current_curation.repo, current_curation.docs, current_curation.tags, and current_curation.config-file-location",
+          "https://vite.dev/blog/announcing-vite3",
+          "https://vite.dev/blog/announcing-vite4",
+          "https://vite.dev/blog/announcing-vite5",
+          "https://vite.dev/blog/announcing-vite8",
+          "https://vite.dev/blog/cloudflare-supports-vite",
+          "https://vite.dev/guide/rolldown",
+          "https://vite.dev/guide/why"
+        ],
+        "summary": [
+          "Vite is a frontend development server and build tool created by Evan You for the browser-native ES module era. Its central idea is to avoid rebuilding a whole application during development: source modules are served on demand, dependencies are pre-bundled, and hot updates travel through native ESM boundaries.",
+          "In package-manager culture, Vite became the default small executable behind many JavaScript framework starters. The `vite` command is used both as an interactive development server and as the entry point for production builds, making it a common tool even for developers who encounter it indirectly through framework CLIs."
+        ],
+        "timeline": [
+          "2020: Vite was created in the period when native browser ES modules were broadly usable for development tooling.",
+          "2021: Evan You released Vite 2, broadening Vite into a general-purpose frontend build tool.",
+          "2022: Vite 3 reported more than one million npm downloads per week and a rapidly growing framework ecosystem.",
+          "2022: Vite 4 reported growth to 2.5 million npm downloads per week.",
+          "2023: Vite 5 reported growth to 7.5 million npm downloads per week and continued framework adoption.",
+          "2025-2026: The official roadmap centered on Rolldown integration and a more unified JavaScript toolchain.",
+          "2026: Vite announced that VoidZero was joining Cloudflare while keeping Vite open source and vendor-agnostic."
+        ],
+        "usage": [
+          "A typical Vite workflow starts a local development server, serves source files as native ESM, applies fast transforms, and sends HMR updates without forcing a full page reload. For production, Vite builds optimized assets through its bundling pipeline.",
+          "Vite is also used as a plugin platform. Its Rollup-inspired plugin API, framework integrations, and configuration files make the `vite` package a common dependency in frontend apps, component libraries, documentation sites, and server-rendered web frameworks."
+        ]
+      },
+      "homepage": "https://vitejs.dev/"
+    },
+    {
+      "position": 20,
+      "slug": "harfbuzz",
+      "name": "HarfBuzz",
+      "path": "/harfbuzz/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "HarfBuzz history: From FreeType code to OpenType shaping | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:harfbuzz",
+      "ranking_key": "brew:harfbuzz",
+      "rank": 15,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/harfbuzz/harfbuzz",
+      "repository_aliases": [
+        "https://github.com/harfbuzz/harfbuzz"
+      ],
+      "license": "MIT",
+      "package_keys": [
+        "brew:harfbuzz"
+      ],
+      "package_paths": [
+        "/brew/harfbuzz/"
+      ],
+      "source_file": "combined/harfbuzz.yml",
+      "citation_source_file": "combined/harfbuzz.yml",
+      "citations": [
+        "https://behdad.org/text/",
+        "https://github.com/harfbuzz/harfbuzz",
+        "https://github.com/harfbuzz/harfbuzz-old",
+        "https://harfbuzz.github.io/why-is-it-called-harfbuzz.html",
+        "https://raw.githubusercontent.com/harfbuzz/harfbuzz/main/NEWS"
+      ],
+      "history_sha256": "5aab310180a8beae4ed0e4785ddfbf2bd2d9619981812d4390e3f260e5a72567",
+      "history_snapshot": {
+        "adoption-history": [
+          "HarfBuzz adoption followed the need for shared, correct complex-script shaping across open source desktops, browsers, toolkits, and document stacks. The README states that HarfBuzz shapes the majority of text on modern screens, which reflects its position below many user-facing applications.",
+          "Because shaping quality depends on Unicode, OpenType, AAT, Graphite, script-specific rules, and font quirks, HarfBuzz became a shared place for correctness and robustness work that individual applications would struggle to maintain independently.",
+          "Its wide package-manager presence in the supplied input facts reflects this dependency role: HarfBuzz is not just a command-line tool package, it is a library package that other packages build against."
+        ],
+        "package-nerd-significance": [
+          "HarfBuzz is package-nerd significant because it sits in the dependency graph of text rendering. A version bump can change glyph placement, script behavior, subset output, sanitizer strictness, ABI exposure, or optional backend integration.",
+          "It is also a classic example of a small-looking package with enormous blast radius. Packaging choices around FreeType, Graphite2, GLib, CoreText, DirectWrite, ICU-like Unicode data, build flags, and command-line utilities affect everything from web browsers to PDF producers.",
+          "The project's release history shows why maintainers track it closely: HarfBuzz 1.0 implemented the Universal Shaping Engine, 2.0 added AAT shaping support, 3.0 stabilized the subset API and ABI, and 8.0 introduced an experimental WebAssembly shaper."
+        ],
+        "project-history": [
+          "The HarfBuzz manual says the project began as text-shaping code inside FreeType and was extracted into its own project. Behdad Esfahbod's text-rendering history explains that FreeType's OpenType Layout code was removed from FreeType's rasterization scope, then carried separately by Pango and Qt developers.",
+          "Around 2006, Pango and Qt developers cooperated to reunify the layout engine as a freedesktop.org project named HarfBuzz. The same history notes that HarfBuzz was relicensed to the old MIT license and that the plan became a unified shaping engine rather than only a merged copy of existing code.",
+          "The project's own README says HarfBuzz started as a text shaping engine and grew into a broader font platform supporting OpenType and Apple Advanced Typography. Its component map includes core shaping, subsetting, font-function integrations with FreeType/CoreText/Uniscribe/DirectWrite/GDI/GLib/Graphite2, and CLI tools such as `hb-shape`, `hb-view`, and `hb-subset`."
+        ],
+        "related-projects": [
+          "Closely related projects include FreeType, Pango, Qt, Cairo, Skia, Graphite2, CoreText, Uniscribe, DirectWrite, fontconfig, and the OpenType and Unicode specifications.",
+          "HarfBuzz also relates to browser engines, PDF and office suites, TeX engines, font subsetting pipelines, and font engineering tools that need reproducible shaping."
+        ],
+        "sources": [
+          "https://behdad.org/text/",
+          "https://github.com/harfbuzz/harfbuzz",
+          "https://github.com/harfbuzz/harfbuzz-old",
+          "https://harfbuzz.github.io/why-is-it-called-harfbuzz.html",
+          "https://raw.githubusercontent.com/harfbuzz/harfbuzz/main/NEWS"
+        ],
+        "summary": [
+          "HarfBuzz is an open source text shaping engine and font platform. It converts Unicode text plus font data into positioned glyphs, which makes it a quiet but critical dependency for readable Arabic, Indic, Southeast Asian, and many other complex-script layouts.",
+          "For package users, HarfBuzz is the kind of library that disappears when it works and becomes instantly visible when it regresses: browsers, GUI toolkits, document editors, terminals, and font tools depend on consistent shaping behavior."
+        ],
+        "timeline": [
+          "Pre-2006: OpenType layout code originates in FreeType and is carried by Pango and Qt after extraction from FreeType's rasterizer scope.",
+          "2006: Pango and Qt developers cooperate to reunify the layout engine as HarfBuzz under freedesktop.org.",
+          "2008: Behdad Esfahbod describes rewrite work aimed at robustness and efficient mmap-based font use.",
+          "2015-07-26: HarfBuzz 1.0.0 release notes list Universal Shaping Engine implementation.",
+          "2018-10-18: HarfBuzz 2.0.0 release notes list AAT shaping support.",
+          "2021-09-17: HarfBuzz 3.0.0 release notes declare the subset API and harfbuzz-subset ABI stable.",
+          "2023-07-09: HarfBuzz 8.0.0 release notes introduce an experimental WebAssembly shaper."
+        ],
+        "usage": [
+          "Most users consume HarfBuzz indirectly through libraries and applications. Direct users call its C API or C++ implementation to feed buffers, fonts, features, scripts, languages, and directions, then receive glyph IDs and positions for rendering.",
+          "The package also ships command-line utilities useful to font engineers and package maintainers. Tools such as `hb-shape`, `hb-view`, `hb-info`, and `hb-subset` help reproduce shaping behavior, inspect font support, render examples, and create smaller font subsets."
+        ]
+      },
+      "homepage": "https://github.com/harfbuzz/harfbuzz"
+    },
+    {
+      "position": 21,
+      "slug": "ffmpeg",
+      "name": "FFmpeg",
+      "path": "/ffmpeg/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "FFmpeg history: Codecs, filters and the multimedia toolchain | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:ffmpeg",
+      "ranking_key": "brew:ffmpeg",
+      "rank": 16,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://git.ffmpeg.org/ffmpeg",
+      "repository_aliases": [
+        "https://git.ffmpeg.org/ffmpeg",
+        "https://github.com/FFmpeg/FFmpeg"
+      ],
+      "license": "GPL-3.0-or-later",
+      "package_keys": [
+        "brew:ffmpeg",
+        "brew:ffmpeg-full",
+        "brew:ffmpeg@2.8",
+        "brew:ffmpeg@4",
+        "brew:ffmpeg@5",
+        "brew:ffmpeg@6",
+        "brew:ffmpeg@7",
+        "brew:ffmpeg@8"
+      ],
+      "package_paths": [
+        "/brew/ffmpeg-full/",
+        "/brew/ffmpeg/"
+      ],
+      "source_file": "combined/ffmpeg.yml",
+      "citation_source_file": "combined/ffmpeg.yml",
+      "citations": [
+        "https://ffmpeg.org/about.html",
+        "https://ffmpeg.org/download.html",
+        "https://ffmpeg.org/documentation.html",
+        "https://ffmpeg.org/ffmpeg.html",
+        "https://formulae.brew.sh/api/formula/ffmpeg.json"
+      ],
+      "history_sha256": "d8f4fe02b9b90fcc911eb1ecd12b27a5a2febd3e0cd272c9c825a38e82a81d7d",
+      "history_snapshot": {
+        "adoption-history": [
+          "FFmpeg's adoption is visible in its official packaging guidance: the project links to Debian, Ubuntu, Fedora/RHEL, Windows, and macOS build sources rather than shipping one blessed binary for every platform. That mirrors how FFmpeg became a package-manager staple rather than only an application downloaded from upstream.",
+          "The release process is oriented toward distributors and system integrators. Upstream documents roughly six-month major releases with point releases for important fixes, release signatures, git tags, and branch-specific release notes."
+        ],
+        "package-nerd-significance": [
+          "FFmpeg is a package-manager stress test: it touches codec licensing, optional dependencies, hardware acceleration, network protocols, security updates for untrusted media parsing, and ABI-sensitive libraries consumed by other applications.",
+          "Its combination of command-line tools and shared libraries means it is both an end-user utility and infrastructure for other media software. That dual identity is why package maintainers track branch support, dependency choices, and security backports closely."
+        ],
+        "project-history": [
+          "The official project describes FFmpeg as a multimedia framework that can decode, encode, transcode, mux, demux, stream, filter, and play media across formats from old obscure inputs to cutting-edge codecs. Its architecture combines user-facing tools with libraries such as libavcodec, libavformat, libavfilter, libavdevice, libswscale, and libswresample.",
+          "FFmpeg's upstream culture is explicitly developer-driven and source-first. The download page says FFmpeg provides source code and points users to distributions and build providers for compiled packages. It also notes that development branch snapshots are often used because the project changes constantly and release branches cherry-pick selected fixes."
+        ],
+        "related-projects": [
+          "ffmpeg-full is a Homebrew formula variant with a broader optional dependency set.",
+          "ffmpeg2theora is an older converter that used FFmpeg decoding to produce Ogg Theora/Vorbis outputs.",
+          "FFmate is a newer automation layer that runs FFmpeg behind a server/API workflow."
+        ],
+        "sources": [
+          "https://ffmpeg.org/about.html",
+          "https://ffmpeg.org/download.html",
+          "https://ffmpeg.org/documentation.html",
+          "https://ffmpeg.org/ffmpeg.html",
+          "https://formulae.brew.sh/api/formula/ffmpeg.json"
+        ],
+        "summary": [
+          "FFmpeg is one of the canonical command-line multimedia packages: a source-first upstream project, a set of reusable codec/container/filter libraries, and the `ffmpeg`, `ffplay`, and `ffprobe` tools used everywhere from one-line conversions to production media pipelines."
+        ],
+        "timeline": [
+          "2011: FFmpeg release signing key date documented by upstream release verification instructions.",
+          "2015: FFmpeg 2.8 branch cut from master on 2015-09-05, later maintained through 2.8.22.",
+          "2024-2026: Upstream release pages show active major/minor release branches and point releases for distributors and integrators.",
+          "2026: FFmpeg 8.1.2 listed as a stable source release on the official download page."
+        ],
+        "usage": [
+          "The core command-line pattern is `ffmpeg -i input output`: read one or more inputs, select streams, optionally filter or transcode them, and write one or more outputs. `ffprobe` is used to inspect streams and metadata, while `ffplay` provides a simple player based on FFmpeg libraries.",
+          "Package users care about the exact build because enabled libraries determine available encoders, decoders, filters, devices, and protocols. A stock distro build, Homebrew build, static Windows build, and custom source build can all behave differently while sharing the same upstream name."
+        ]
+      },
+      "homepage": "https://ffmpeg.org/"
+    },
+    {
+      "position": 22,
+      "slug": "uv",
+      "name": "uv",
+      "path": "/uv/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "uv history: Astral’s 2024 entry into Python packaging | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:uv",
+      "ranking_key": "brew:uv",
+      "rank": 17,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/astral-sh/uv",
+      "repository_aliases": [
+        "https://github.com/astral-sh/uv"
+      ],
+      "license": "Apache-2.0 OR MIT",
+      "package_keys": [
+        "brew:uv"
+      ],
+      "package_paths": [
+        "/brew/uv/"
+      ],
+      "source_file": "combined/uv.yml",
+      "citation_source_file": "combined/uv.yml",
+      "citations": [
+        "https://astral.sh/blog/uv",
+        "https://astral.sh/blog/uv-unified-python-packaging",
+        "https://docs.astral.sh/uv/",
+        "https://docs.astral.sh/uv/getting-started/installation/",
+        "https://docs.astral.sh/uv/pip/"
+      ],
+      "history_sha256": "ef2e581010603d33e9eba9fc1e6f6138e19986609a295b1111c82f4d14d62b47",
+      "history_snapshot": {
+        "adoption-history": [
+          "uv's adoption path was shaped by compatibility and speed rather than by a new packaging format alone. Astral emphasized that the first release was production-ready for existing pip and pip-tools workflows and required little configuration for those users.",
+          "Package-manager adoption followed the same low-friction pattern. The official installation documentation lists standalone installers, PyPI installation, Homebrew, MacPorts, WinGet, Scoop, Docker images, and other distribution routes, making uv easy to place in developer laptops, CI images, and reproducible build environments."
+        ],
+        "package-nerd-significance": [
+          "uv matters in package-manager culture because it compressed several long-standing Python packaging pain points into one fast executable: resolution, installation, environment creation, lockfile generation, tool execution, and Python runtime management. Its significance is not just that it is fast, but that it made speed available through familiar pip-shaped entry points before asking users to adopt its fuller project model.",
+          "It also accelerated the Rust-based rewrite trend in Python infrastructure. Like Ruff for linting and formatting, uv made performance a central product argument and forced comparisons with older Python-native tools such as pip-tools, Poetry, PDM, pipx, and virtualenv."
+        ],
+        "project-history": [
+          "Astral announced uv in February 2024 as the next tool in the same high-performance Python-tooling line as Ruff. The initial public framing was deliberately pragmatic: support common pip and pip-tools APIs under `uv pip`, provide a resolver, virtual environment creator, installer, sync command, and do so without requiring projects to rewrite their packaging workflow.",
+          "In August 2024 Astral announced a larger expansion of uv, describing it as moving beyond a pip alternative into an end-to-end solution for Python projects, command-line tools, single-file scripts, and Python itself. The official documentation later presented uv as a single tool replacing or overlapping pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv, and related pieces of the Python packaging stack."
+        ],
+        "related-projects": [
+          "Ruff is Astral's earlier Rust-written Python linter and formatter and is the closest sibling in toolchain philosophy.",
+          "pip, pip-tools, pipx, Poetry, PDM, pyenv, twine, and virtualenv are the tools uv explicitly overlaps with or replaces in common Python packaging workflows."
+        ],
+        "sources": [
+          "https://astral.sh/blog/uv - Astral's February 2024 uv announcement describes the initial pip and pip-tools replacement goal, Rust implementation, resolver/installer focus, and production-use framing.",
+          "https://astral.sh/blog/uv-unified-python-packaging - Astral's August 2024 announcement describes the expansion from pip alternative to unified Python packaging.",
+          "https://docs.astral.sh/uv/ - Official uv documentation summarizes the tool, supported platforms, cache, workspaces, and installation routes.",
+          "https://docs.astral.sh/uv/getting-started/installation/ - Official installation docs list package-manager and installer distribution routes.",
+          "https://docs.astral.sh/uv/pip/ - Official docs describe the `uv pip` interface as a drop-in surface for pip, pip-tools, and virtualenv workflows."
+        ],
+        "summary": [
+          "uv is Astral's Rust-written Python package and project manager. It began as a fast installer and resolver for pip and pip-tools workflows, then expanded into a unified interface for dependency resolution, virtual environments, project management, scripts, tools, and Python installation."
+        ],
+        "timeline": [
+          "2024-02: Astral announced uv as a fast Python package installer and resolver written in Rust.",
+          "2024-08: Astral announced uv's expansion into unified Python packaging, including projects, tools, scripts, and Python installation.",
+          "2024-2026: Official docs list uv across standalone installers, PyPI, Homebrew, MacPorts, WinGet, Scoop, Docker, and CI integrations."
+        ],
+        "usage": [
+          "For package-nerd workflows, uv is commonly used as a faster `pip install`, `pip compile`, `pip sync`, `venv`, and `pipx`-style tool runner. In project mode, it centers dependency state around `pyproject.toml` and `uv.lock`, while retaining a `uv pip` interface for requirements-file and environment-oriented workflows.",
+          "The official docs call out a global cache, Cargo-style workspaces, cross-platform installation, and integrations for Docker, GitHub Actions, GitLab CI/CD, pre-commit, PyTorch, FastAPI, Bazel, and several private package registries. Those are the surfaces that made uv especially interesting to people who care about resolver behavior, lockfiles, build reproducibility, and CI runtime."
+        ]
+      },
+      "homepage": "https://docs.astral.sh/uv/"
+    },
+    {
+      "position": 23,
+      "slug": "pkgconf",
+      "name": "pkgconf",
+      "path": "/pkgconf/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "pkgconf history: Beyond the pkg-config interface | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:pkgconf",
+      "ranking_key": "brew:pkgconf",
+      "rank": 19,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://github.com/pkgconf/pkgconf",
+      "repository_aliases": [
+        "https://github.com/pkgconf/pkgconf"
+      ],
+      "license": "ISC",
+      "package_keys": [
+        "brew:pkgconf"
+      ],
+      "package_paths": [
+        "/brew/pkgconf/"
+      ],
+      "source_file": "combined/pkgconf.yml",
+      "citation_source_file": "combined/pkgconf.yml",
+      "citations": [
+        "https://pkgconf.org/",
+        "https://github.com/pkgconf/pkgconf/blob/main/NEWS",
+        "https://github.com/pkgconf/pkgconf"
+      ],
+      "history_sha256": "b2cff63679686f1c7c434203df36aa9b9e555707337bff56ccdbdaeceec389e2",
+      "history_snapshot": {
+        "adoption-history": [
+          "pkgconf has been adopted across many operating-system package ecosystems and is frequently exposed through a pkg-config-compatible command name. The supplied package facts list Alpine, Homebrew, Debian, Fedora-family, MacPorts, Nix, Arch, Ubuntu, openSUSE, Scoop, and WinGet packages.",
+          "The upstream project deliberately leaves creation of the pkg-config symlink to operating-system vendors, making the compatibility command an explicit packaging-policy decision."
+        ],
+        "package-nerd-significance": [
+          "pkgconf sits on a critical seam between package metadata and native compilation. It resolves .pc module relationships and emits the include paths, compiler options, and linker flags consumed by build systems.",
+          "Compared with the original pkg-config implementation, pkgconf emphasizes graph-based dependency solving, large dependency graphs, virtual packages, Conflicts handling, and avoiding unnecessary overlinking. It also exposes libpkgconf for integration into compilers and IDEs and includes tools for generating SPDX software bills of materials."
+        ],
+        "project-history": [
+          "pkgconf emerged as an alternative implementation of the pkg-config interface and developed into a broader package compiler and linker metadata toolkit. Upstream describes it as a functional superset of freedesktop.org pkg-config while explicitly declining bug-for-bug compatibility.",
+          "The project expanded beyond its command-line frontend to provide libpkgconf and SBOM-oriented utilities. Its current build uses Meson, with a lightweight Makefile option for pkg-config-only bootstrap use and Muon support where Python is unavailable."
+        ],
+        "related-projects": [
+          "freedesktop.org pkg-config is the original implementation and compatibility reference.",
+          "libpkgconf exposes pkgconf functionality to other developer tools.",
+          "bomtool and spdxtool generate SPDX-family software bills of materials from pkg-config module graphs.",
+          "Meson is the recommended upstream build system; Muon is supported for bootstrap environments."
+        ],
+        "sources": [
+          "Official project site: https://pkgconf.org/",
+          "Official release history: https://github.com/pkgconf/pkgconf/blob/main/NEWS",
+          "Official repository and README: https://github.com/pkgconf/pkgconf",
+          "Package adoption evidence: source_facts.package-manager"
+        ],
+        "summary": [
+          "pkgconf is a cross-platform implementation and extension of the pkg-config model for discovering development libraries and calculating their compiler and linker flags."
+        ],
+        "timeline": [
+          "Project established as an alternative implementation of the pkg-config interface.",
+          "The project added libpkgconf for embedding metadata resolution in compilers, IDEs, and other tools.",
+          "Later development added bomtool and spdxtool for SPDX-oriented SBOM generation.",
+          "Current releases use Meson and retain lightweight bootstrap paths through Makefile.lite and Muon."
+        ],
+        "usage": [
+          "Build systems and developers query pkgconf with package names to obtain compiler and linker flags derived from installed .pc metadata. It can be invoked directly as pkgconf or, when the operating-system vendor provides a symlink, as pkg-config.",
+          "Users should depend on stable query interfaces rather than parsing --debug output. Correct dependency declarations in .pc files allow pkgconf to flatten dependency graphs and reduce overlinking."
+        ]
+      },
+      "homepage": "https://github.com/pkgconf/pkgconf"
+    },
+    {
+      "position": 24,
+      "slug": "eslint",
+      "name": "ESLint",
+      "path": "/eslint/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "ESLint history: JavaScript linting and the plugin ecosystem | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:eslint",
+      "ranking_key": "npm:eslint",
+      "rank": 19,
+      "rank_metric": "npm downloads_per_30_days",
+      "repository": "https://github.com/eslint/eslint",
+      "repository_aliases": [
+        "https://github.com/eslint/eslint"
+      ],
+      "license": "MIT",
+      "package_keys": [
+        "brew:eslint",
+        "npm:eslint"
+      ],
+      "package_paths": [
+        "/brew/eslint/"
+      ],
+      "source_file": "combined/eslint.yml",
+      "citation_source_file": "combined/eslint.yml",
+      "citations": [
+        "https://github.com/eslint/eslint",
+        "https://eslint.org/docs/latest",
+        "https://eslint.org/docs/latest/use/configure/configuration-files",
+        "https://eslint.org/blog/2015/07/eslint-1.0.0-released/",
+        "https://eslint.org/blog/2022/08/new-config-system-part-2/",
+        "https://eslint.org/blog/2024/04/eslint-v9.0.0-released/",
+        "https://www.npmjs.com/package/eslint",
+        "https://formulae.brew.sh/formula/eslint"
+      ],
+      "history_sha256": "6213f911353ab3c1bd73f9c1d820527aa0edd88a1266a71e58614a06f5ac079b",
+      "history_snapshot": {
+        "adoption-history": [
+          "ESLint became a default dependency in JavaScript projects because it solved both style and correctness checks through one package ecosystem. The README links npm version and download badges, Open Collective funding, official docs, rules, contribution paths, and scheduled releases, reflecting a mature tool maintained as public infrastructure.",
+          "The plugin and shareable-config model drove adoption beyond core JavaScript. React, TypeScript, framework, import-order, accessibility, security, and formatting-adjacent workflows all built on ESLint's rule API, which made `eslint` a central package in Node.js development even when a project used higher-level presets.",
+          "The official release process also shaped adoption: the project publishes scheduled releases every two weeks and documents semver policies for rule, CLI, formatter, and API changes, which matters because lint rule updates can change build outcomes."
+        ],
+        "package-nerd-significance": [
+          "For package nerds, ESLint is a canonical example of a package ecosystem forming around a stable extension API: parser packages, plugins, config packages, formatter packages, and editor tooling all orbit the core package.",
+          "It is also one of the clearest examples of why developer-tool packages need careful semver. A minor rule behavior change can create new warnings, a major config migration can affect nearly every JavaScript project, and the project's own semver policy documents those tradeoffs explicitly."
+        ],
+        "project-history": [
+          "ESLint appeared on npm in 2013 and reached 1.0.0 in July 2015. The official 1.0.0 announcement described that milestone as the first major release after more than two years of work and as the stable base for future growth.",
+          "The project differentiated itself from JSLint and JSHint by using Espree for parsing, evaluating code through an AST, and making every rule pluggable. That architecture made ESLint attractive both as an end-user CLI and as a library for editor integrations, shareable configs, and custom rule packages.",
+          "Configuration has been one of ESLint's major historical arcs. The original eslintrc system accumulated multiple file formats and lookup rules; in 2022 the project introduced flat config, centered on `eslint.config.js`, as a simpler model. ESLint v9.0.0 made flat config the default and officially deprecated eslintrc."
+        ],
+        "related-projects": [
+          "ESLint is historically compared with JSLint and JSHint, and its ecosystem intersects with Espree, typescript-eslint, Babel parser integrations, eslint-plugin-react, Prettier, editor integrations, and shareable config packages."
+        ],
+        "sources": [
+          "https://github.com/eslint/eslint",
+          "https://eslint.org/docs/latest",
+          "https://eslint.org/docs/latest/use/configure/configuration-files",
+          "https://eslint.org/blog/2015/07/eslint-1.0.0-released/",
+          "https://eslint.org/blog/2022/08/new-config-system-part-2/",
+          "https://eslint.org/blog/2024/04/eslint-v9.0.0-released/",
+          "https://www.npmjs.com/package/eslint",
+          "https://formulae.brew.sh/formula/eslint"
+        ],
+        "summary": [
+          "ESLint is the dominant pluggable linter for ECMAScript and JavaScript projects. Its own README defines it as a tool for identifying and reporting patterns in JavaScript code, built around AST analysis and a runtime-pluggable rule model."
+        ],
+        "timeline": [
+          "2013: ESLint first appears on npm.",
+          "2015: ESLint 1.0.0 released as the first major release.",
+          "2022: Flat config introduced publicly as a new configuration system.",
+          "2024: ESLint 9.0.0 makes flat config the default and deprecates eslintrc.",
+          "2026: ESLint 10.x releases continue the scheduled release cadence."
+        ],
+        "usage": [
+          "Typical package-manager usage starts with `npm init @eslint/config@latest` and then `npx eslint yourfile.js`, while Homebrew and OS packages provide an `eslint` executable for users who install developer tools outside a project-local npm workflow.",
+          "Current ESLint configuration lives in a project-root flat config file named `eslint.config.js`, `eslint.config.mjs`, `eslint.config.cjs`, or a TypeScript variant with additional setup. Those files export configuration objects that set rules, plugins, language options, ignores, processors, and related linting behavior.",
+          "ESLint is used directly in terminals and CI, indirectly through editor integrations, and as an API consumed by other tools. Its significance in package-manager culture comes from how often it appears in `devDependencies`, lockfiles, shareable configs, monorepo lint scripts, and pre-commit or CI quality gates."
+        ]
+      },
+      "homepage": "https://eslint.org"
+    },
+    {
+      "position": 25,
+      "slug": "gettext",
+      "name": "gettext",
+      "path": "/gettext/history/",
+      "status": "ready",
+      "blocked_reason": null,
+      "title": "gettext history: From 1994 experiments to translated software | pkg.so",
+      "history_mode": "sections",
+      "source_key": "brew:gettext",
+      "ranking_key": "brew:gettext",
+      "rank": 20,
+      "rank_metric": "Homebrew installs_per_365_days",
+      "repository": "https://git.savannah.gnu.org/cgit/gettext",
+      "repository_aliases": [
+        "https://git.savannah.gnu.org/cgit/gettext"
+      ],
+      "license": "GPL-3.0-or-later AND LGPL-2.1-or-later",
+      "package_keys": [
+        "brew:gettext"
+      ],
+      "package_paths": [
+        "/brew/gettext/"
+      ],
+      "source_file": "combined/gettext.yml",
+      "citation_source_file": "combined/gettext.yml",
+      "citations": [
+        "https://git.savannah.gnu.org/cgit/gettext.git",
+        "https://www.gnu.org/software/gettext/manual/gettext.html",
+        "https://www.gnu.org/software/gettext/manual/html_node/Files.html",
+        "https://www.gnu.org/software/gettext/manual/html_node/History.html",
+        "https://www.gnu.org/software/gettext/manual/html_node/Introduction.html",
+        "https://www.gnu.org/software/gettext/manual/html_node/Overview.html"
+      ],
+      "history_sha256": "02ae7c0574089b1a04f247ab048ece739c2831a5100b5a5ba188e9dc312ecedd",
+      "history_snapshot": {
+        "adoption-history": [
+          "gettext became central to GNU and Unix-like localization because it separates programming from translation: source strings are marked in code, `xgettext` extracts templates, translators edit PO files, `msgmerge` refreshes them across source changes, and `msgfmt` compiles machine-readable catalogs. Its workflow gave maintainers, translators, distributors, and users a shared file format and toolchain."
+        ],
+        "package-nerd-significance": [
+          "For package ecosystems, gettext is infrastructure rather than an optional convenience. Source distributions often carry POT and PO files, binary packages install compiled catalogs, and build recipes depend on tools such as `autopoint`, `gettextize`, `msgfmt`, and `xgettext` to keep translation workflows reproducible."
+        ],
+        "project-history": [
+          "GNU's own history traces the work to 1994 internationalization experiments around GNU fileutils and the `glocale` effort. Ulrich Drepper rewrote the approach in April 1995, and the package went through names such as `msgutils` and `nlsutils` before `gettext` was accepted as the GNU package name.",
+          "The first official GNU gettext release, numbered 0.7, appeared in July 1995 and included PO mode. In 1997, GNU libc 2.0 included the `gettext`, `textdomain`, and `bindtextdomain` functions; in 2000, plural-form handling via `ngettext` entered GNU libc, and Bruno Haible took over GNU gettext maintenance."
+        ],
+        "related-projects": [
+          "GNU gettext is tied to GNU libc, the GNU Translation Project, PO mode, Autotools workflows, and localization tools that consume or convert PO files."
+        ],
+        "sources": [
+          "https://git.savannah.gnu.org/cgit/gettext.git",
+          "https://www.gnu.org/software/gettext/manual/gettext.html",
+          "https://www.gnu.org/software/gettext/manual/html_node/Files.html",
+          "https://www.gnu.org/software/gettext/manual/html_node/History.html",
+          "https://www.gnu.org/software/gettext/manual/html_node/Introduction.html",
+          "https://www.gnu.org/software/gettext/manual/html_node/Overview.html"
+        ],
+        "summary": [
+          "GNU gettext is the GNU internationalization and localization toolkit for message catalogs. It supplies runtime APIs, command-line tools, PO and MO file workflows, and maintainer and translator conventions used by many Unix-like software projects."
+        ],
+        "timeline": [
+          "1994: GNU fileutils internationalization work led to broader GNU native-language-support experiments.",
+          "1995: Ulrich Drepper wrote GNU gettext and the first official release, 0.7, appeared in July.",
+          "1997: GNU libc 2.0 included gettext-related functions.",
+          "2000: `ngettext` plural-form handling entered GNU libc and Bruno Haible took over GNU gettext maintenance.",
+          "2001: GNU libc 2.2.x was released with full internationalization support according to the GNU gettext manual."
+        ],
+        "usage": [
+          "Practitioners use gettext by marking translatable strings in program sources, initializing a text domain, extracting POT templates, maintaining language-specific PO files, compiling MO files, and installing catalogs under locale directories. Shell users and build systems also use utilities such as `gettext`, `ngettext`, `xgettext`, `msginit`, `msgmerge`, `msgfmt`, `msgattrib`, `msgcat`, and `envsubst`."
+        ]
+      },
+      "homepage": "https://www.gnu.org/software/gettext/"
+    }
+  ],
+  "approval": "Max approved top25 ranked deduplicated projects that already have history on 2026-09-30."
+}

@@ -1,5 +1,7 @@
 #![cfg_attr(test, recursion_limit = "256")]
 
+mod project_history;
+
 use rusqlite::{Connection, OpenFlags, OptionalExtension, params};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
@@ -721,6 +723,14 @@ fn dynamic_response_for_path(db_path: &Path, path: &str) -> Result<Option<Stored
             body,
         )?));
     }
+    // Only explicit frozen English history routes exist; no ecosystem/localized fan-out.
+    if path.ends_with("/history/") || path == "/sitemap-history.xml" {
+        let connection = open_database(db_path)?;
+        if let Some((body, content_type)) = project_history::response(&connection, path)? {
+            return Ok(Some(dynamic_stored_response(&connection, path, content_type, body)?));
+        }
+        return Ok(None);
+    }
     if let Some(locale) = landing_locale(path) {
         let connection = open_database(db_path)?;
         return Ok(Some(dynamic_stored_response(
@@ -1415,7 +1425,9 @@ fn render_index_page(connection: &Connection, locale: &Locale) -> Result<String,
     for package in &top_packages {
         body.push_str(&index_package_row(package, locale));
     }
-    body.push_str("</div></section></main>");
+    body.push_str("</div></section>");
+    body.push_str(&project_history::index_links(connection)?);
+    body.push_str("</main>");
     body.push_str(&site_footer(locale));
     let schema = json!({
         "@context": "https://schema.org",
@@ -1696,12 +1708,13 @@ fn render_package_page(package: &PackageRow, locale: &Locale, generated_at: &str
         html_escape(&package.display_name)
     ));
     body.push_str(&format!(
-        r##"<section class="pkg-hero" aria-labelledby="pkg-title"><div class="hero-copy"><p class="eyebrow">{}</p><h1 id="pkg-title">{}</h1><p class="lede">{}</p><div class="hero-actions"><a class="button primary" href="#install">{}</a><a class="button secondary" href="#security">{}</a></div></div><aside class="hero-panel" aria-label="{}">{}</aside></section>"##,
+        r##"<section class="pkg-hero" aria-labelledby="pkg-title"><div class="hero-copy"><p class="eyebrow">{}</p><h1 id="pkg-title">{}</h1><p class="lede">{}</p><div class="hero-actions"><a class="button primary" href="#install">{}</a><a class="button secondary" href="#security">{}</a>{}</div></div><aside class="hero-panel" aria-label="{}">{}</aside></section>"##,
         html_escape(&label_for(package, locale)),
         html_escape(&install_heading),
         html_escape(&localized_hero_sentence(package, locale)),
         html_escape(&tx(locale, "installCommand", "Install command")),
         html_escape(&tx(locale, "securityNotes", "Security notes")),
+        project_history::package_link(package),
         html_escape(&tx(locale, "heroPanelAria", "Package facts")),
         package_facts(package, locale)
     ));
@@ -1984,6 +1997,9 @@ fn copy_script(locale: &Locale) -> String {
 }
 
 fn html_hreflang_links(canonical: &str) -> String {
+    if canonical.strip_prefix(SITE_ORIGIN).is_some_and(project_history::is_history_path) {
+        return String::new();
+    }
     let Some(path) = canonical.strip_prefix(SITE_ORIGIN) else {
         return String::new();
     };
@@ -5854,6 +5870,10 @@ fn render_sitemap_index(connection: &Connection) -> Result<String, String> {
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n",
     );
     sitemap_entry(&mut xml, "/pkg/sitemap-hubs.xml", &lastmod);
+    // History content has no evidenced modification timestamp.
+    if project_history::enabled() {
+        xml.push_str(&format!("  <sitemap><loc>{SITE_ORIGIN}/sitemap-history.xml</loc></sitemap>\n"));
+    }
     for provider in provider_rows {
         sitemap_entry(&mut xml, &format!("/pkg/sitemap-{provider}.xml"), &lastmod);
     }

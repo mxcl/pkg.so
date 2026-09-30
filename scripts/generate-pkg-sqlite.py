@@ -714,6 +714,8 @@ def build_sqlite(
 ) -> tuple[int, int, int, dict[str, Any]]:
     sources = page_module.load_sources()
     pages_by_key = page_module.package_pages_from_sources(sources)
+    from project_history import validate_history_cohort
+    validate_history_cohort(pages_by_key)
     if not pages_by_key:
         raise RuntimeError("no package metadata found")
     pages = sorted(pages_by_key.values(), key=lambda page: (page.provider, page.slug, page.name))
