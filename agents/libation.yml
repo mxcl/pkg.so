@@ -1,17 +1,22 @@
 id: cask:libation
 display-name: Libation
-homepage: https://getlibation.com/
-repo: https://github.com/rmcrackan/Libation
+repo: null
 docs:
   - https://getlibation.com/docs
 config-file-location:
-  linux: ~/.local/share/Libation/Settings.json
-  macos: ~/Library/Application Support/Libation/Settings.json
-  windows: '%USERPROFILE%\Libation\Settings.json'
+  linux:
+    - ~/.local/share/Libation/Settings.json
+  macos:
+    - ~/Library/Application Support/Libation/Settings.json
+  windows:
+    - '%USERPROFILE%\Libation\Settings.json'
 credentials-file-location:
-  linux: ~/.local/share/Libation/AccountsSettings.json
-  macos: ~/Library/Application Support/Libation/AccountsSettings.json
-  windows: '%USERPROFILE%\Libation\AccountsSettings.json'
+  linux:
+    - ~/.local/share/Libation/AccountsSettings.json
+  macos:
+    - ~/Library/Application Support/Libation/AccountsSettings.json
+  windows:
+    - '%USERPROFILE%\Libation\AccountsSettings.json'
 history:
   adoption-history:
     - >
@@ -73,10 +78,6 @@ history:
       selected or all titles into local M4B or MP3-oriented collections. Advanced users
       automate scans and downloads through LibationCli or Docker, customize output paths
       and filenames, and optionally upload completed books to Audiobookshelf.
-category: media
-package-manager:
-  brew-cask: libation
-package-manager-url: https://formulae.brew.sh/cask/libation
 tags:
   - audible
   - audiobooks
@@ -88,10 +89,31 @@ tags:
   - library-manager
   - m4b
   - mp3
-description: Audible audiobook manager and liberator
-applications:
-  - Libation.app
 provenance:
-  cask: libation
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - Official README describes Libation as an Audible audiobook downloader and manager.
+    - https://github.com/rmcrackan/Libation
+  display-name-sources:
+    - Official homepage, documentation, and repository consistently use “Libation”.
+  docs-sources:
+    - Dedicated official documentation site linked by the repository README.
+  history-sources:
+    - https://getlibation.com/docs/
+    - https://getlibation.com/docs/advanced/command-line-interface
+    - https://getlibation.com/docs/installation/docker
+    - https://github.com/rmcrackan/Libation
+    - https://github.com/rmcrackan/Libation/blob/master/Source/REFERENCE.txt
+  repo-sources:
+    - source_facts.repo is already populated; per instructions it was not re-determined.
+  tags-sources:
+    - Official repository README and feature documentation.
+category-confidence: high
+category-path:
+  - media
+  - audiobooks
+  - library-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
