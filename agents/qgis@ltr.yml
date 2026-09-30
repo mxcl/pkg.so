@@ -1,19 +1,24 @@
 id: cask:qgis@ltr
 display-name: QGIS LTR
-homepage: https://www.qgis.org/
 repo: https://github.com/qgis/QGIS
 docs:
   - https://docs.qgis.org/3.44/en/docs
   - https://docs.qgis.org/3.44/en/docs/training_manual
   - https://docs.qgis.org/3.44/en/docs/user_manual
 config-file-location:
-  linux: ~/.local/share/QGIS/QGIS3/profiles/<profile>/
-  macos: ~/Library/Application Support/QGIS/QGIS3/profiles/<profile>/
-  windows: '%APPDATA%\QGIS\QGIS3\profiles\<profile>\'
+  linux:
+    - ~/.local/share/QGIS/QGIS3/profiles/<profile>/
+  macos:
+    - ~/Library/Application Support/QGIS/QGIS3/profiles/<profile>/
+  windows:
+    - '%APPDATA%\QGIS\QGIS3\profiles\<profile>\'
 credentials-file-location:
-  linux: ~/.local/share/QGIS/QGIS3/profiles/<profile>/qgis-auth.db
-  macos: ~/Library/Application Support/QGIS/QGIS3/profiles/<profile>/qgis-auth.db
-  windows: '%APPDATA%\QGIS\QGIS3\profiles\<profile>\qgis-auth.db'
+  linux:
+    - ~/.local/share/QGIS/QGIS3/profiles/<profile>/qgis-auth.db
+  macos:
+    - ~/Library/Application Support/QGIS/QGIS3/profiles/<profile>/qgis-auth.db
+  windows:
+    - '%APPDATA%\QGIS\QGIS3\profiles\<profile>\qgis-auth.db'
 history:
   adoption-history:
     - >
@@ -68,10 +73,6 @@ history:
       QGIS is used for cartography, spatial-data editing and management, geospatial
       analysis, database and web-service access, print-layout production, and extensible
       workflows built with plugins, models, Python, or C++.
-category: science
-package-manager:
-  brew-cask: qgis@ltr
-package-manager-url: https://formulae.brew.sh/cask/qgis@ltr
 tags:
   - cartography
   - geospatial
@@ -81,10 +82,39 @@ tags:
   - open-source
   - remote-sensing
   - spatial-analysis
-description: Geographic Information System
-applications:
-  - QGIS-LTR.app
 provenance:
-  cask: qgis@ltr
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official repository describes QGIS as a full-featured cross-platform GIS:
+      https://github.com/qgis/QGIS
+    - source_facts.description identifies QGIS as a Geographic Information System.
+  display-name-sources:
+    - >
+      current_curation.display-name and the official QGIS documentation's Long Term
+      Release terminology.
+  docs-sources:
+    - Official versioned QGIS 3.44 LTR documentation on docs.qgis.org.
+  history-sources:
+    - https://docs.qgis.org/3.44/en/docs/user_manual/introduction/qgis_configuration.html
+    - https://github.com/qgis/QGIS
+    - https://issues.qgis.org/projects/qgis/wiki/VisualChangelog100
+    - https://www.qgis.org/download/
+  repo-sources:
+    - >
+      The official QGIS developer guide identifies https://github.com/qgis/QGIS as the
+      upstream repository: https://docs.qgis.org/4.2/en/docs/developers_guide/git.html
+    - The qgis GitHub organization is verified as controlling qgis.org.
+  tags-sources:
+    - >
+      Official QGIS repository features and release-cycle description:
+      https://github.com/qgis/QGIS
+category-confidence: high
+category-path:
+  - science
+  - geospatial
+  - gis
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
