@@ -2,82 +2,54 @@
   "content": [
     {
       "artwork": {
-        "alt": "A private night workspace where abstract activity streams become linked note cards stored in a softly illuminated local vault.",
-        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "alt": "An operator watches luminous workload clusters above guarded infrastructure nodes while abstract deployment sheets flow into the system.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
         "boxColors": {
-          "backgroundEnd": "#17384B",
-          "backgroundStart": "#0B2130",
-          "foreground": "#F8E8C8"
+          "backgroundEnd": "#152B46",
+          "backgroundStart": "#0B192D",
+          "foreground": "#F4F7FF"
         },
-        "license": "AI-generated artwork; no third-party source artwork used.",
-        "path": "feed/assets/activitywatch-local-ledger.png"
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/sofka-layered-kubernetes-operations-2026-09-30.png"
       },
-      "body": "## Measurement is not memory\n\nMost workdays leave two imperfect records: what we remember doing and what the computer happened to observe. ActivityWatch makes the second record inspectable. Its watchers capture events such as active windows and away periods, its local server stores them in buckets, and its interface combines those events into a timeline. The project's [privacy policy](https://docs.activitywatch.net/en/latest/privacy.html) says the standard application stores activity data locally and does not transmit it to the developers or third-party analytics services.\n\nThat architecture matters because activity logs can be unusually revealing. A window title may contain a client name, a medical subject, or the draft title of an unannounced project. Local storage removes one routine disclosure path; it does not make the data harmless. ActivityWatch's own [security notes](https://docs.activitywatch.net/en/latest/security.html) warn that the local API lacks strong authentication and that malware or another user on the same host may reach the database. Treat the timeline as sensitive source material, not a cheerful productivity score.\n\n## A decade-old quantified-self experiment\n\nActivityWatch is underexposed partly because its story is longer and stranger than a typical timer. The project's [history](https://docs.activitywatch.net/en/latest/history.html) traces its motivation to quantified-self experiments in 2013, a prototype begun in December 2014, and a 2016 rewrite that introduced the client-server model behind the current system. That lineage explains the modular design: a watcher produces observations, the server stores events, and clients query them.\n\nThe useful unit is not necessarily a raw event. ActivityWatch's [data guide](https://docs.activitywatch.net/en/latest/examples/working-with-data.html) recommends canonical events that combine window tracking with away detection, categorization, and multi-device handling. It also supplies examples for working-hours analysis, category suggestions, redaction, and bucket merging. Users can export JSON or query the REST API, but the project's [export guidance](https://docs.activitywatch.net/en/latest/features/exporting-data.html) recommends aggregating and redacting locally before any data goes to an AI assistant or another service.\n\n## What actual use can establish\n\nThe strongest evidence for automatic tracking is not that it makes everyone more productive. It is that recollection and observation diverge. ActivityWatch documents a Research Edition used in academic studies; its [research overview](https://docs.activitywatch.net/en/latest/research/index.html) cites a validity study where self-report agreed with software registration for only 18 percent of participants. That result supports careful measurement, not a claim that recorded screen time equals meaningful work.\n\nOutside research, workflows vary. In one recent [community discussion](https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/), users described reviewing reports or feeding locally processed summaries into task workflows. Such accounts are anecdotal rather than adoption statistics, but they show the practical fork: some people inspect dashboards, while others use exports as input to their own systems. A useful weekly review might ask:\n\n- Which project consumed more time than expected?\n- Which interruptions recur at the same point in the day?\n- Which categories are wrong because the rules need adjustment?\n- What decision should survive after the raw timeline is forgotten?\n\n## Give conclusions a durable home\n\nThat last question is where Trilium Notes becomes a useful companion. Trilium is not an ActivityWatch integration; pairing them is an editorial workflow. Its [project overview](https://triliumnotes.org/) describes a local, offline-capable personal knowledge base with optional synchronization through a self-hosted server. Notes can be nested without a separate folder type, placed in multiple parts of the tree through cloning, and connected with labels and relations. The [note model](https://docs.triliumnotes.org/user-guide/concepts/notes) suits a project journal that needs both chronology and structure.\n\nThe tradeoff is explicit. Trilium stores its knowledge base in SQLite rather than exposing a directory of Markdown files. Its [FAQ](https://docs.triliumnotes.org/user-guide/faq) argues that transactions, note clones, ordering, attributes, and fast relations justify the database, while acknowledging that filesystem interoperability would be simpler. Synchronizing multiple devices requires its server. Users who prioritize ordinary files and Git should choose another notes system.\n\nCommunity experiments also show why context needs care. In a [Trilium discussion](https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/), users described dedicated note trees, context maps, incremental indexing, and the difficulty of preserving relationships when notes are copied into vector stores. Those are individual reports, not endorsements or benchmarks, but the failure mode is instructive: automation can retrieve text while flattening the structure that made it intelligible.\n\n## Keep observation, interpretation, and retention separate\n\nA restrained workflow uses three layers. ActivityWatch records locally. A human reviews aggregates and checks whether categories reflect reality. Trilium keeps only the conclusions worth retaining: a project note, a decision, a recurring distraction, or a change to next week's plan. Raw events need not become permanent notes, and neither tool needs access to the other's database.\n\nThat separation limits damage and makes the process easier to audit. Back up both stores, redact before exporting, and periodically delete detail that no longer serves a purpose. Most importantly, resist turning a timeline into a verdict. ActivityWatch can tell you which application was foregrounded; only reflection can explain why it mattered.",
-      "deck": "A local activity timeline can improve retrospectives, but only when observation remains separate from judgment and durable notes preserve the conclusions.",
-      "id": "editorial:2026-09-26:activitywatch-a-private-ledger-for-reflection",
-      "primaryPackageID": "brew:cask:activitywatch",
-      "publishedAt": "2026-09-26T10:55:05Z",
+      "body": "## A new terminal window into the cluster\n\nKubernetes operators rarely lack commands. The harder problem is choosing the right control surface while an incident is unfolding. `kubectl` is exact and scriptable, dashboards are broad, and established terminal interfaces make resource navigation fast. Sofka enters that crowded space with a sharper premise: keep the interface asynchronous, make safety policy enforceable, and explain unhealthy state from cluster evidence rather than an external AI service.\n\nThe project is genuinely young. Its first non-prerelease GitHub release, v0.1.5, appeared in July 2026, and its documentation already describes a surprisingly wide operating surface. Sofka browses built-in resources and CRDs through one pipeline, follows logs, manages background port-forwards, edits resources, restarts rollouts, and exposes native actions for Flux and Argo CD objects. The `X` view assembles a deterministic incident explanation from observed state, while the timeline view emphasizes change over a static snapshot.\n\nThat breadth could sound like another attempt to put every Kubernetes task behind one screen. The more useful reading is different: sofka is strongest when treated as the **observation and interaction layer**, not the sole source of truth. Its read-only mode, per-context settings, production guardrails, action journal, and RBAC-aware checks all acknowledge that a convenient interface can also make dangerous actions convenient.\n\n## What actual use looks like\n\nA practical session begins with the same credential and context material used by other Kubernetes clients. An operator can open pods in the current namespace, start with `-A` for all namespaces, or use a context picker before connecting. During a rollout, the terminal can filter objects, follow logs, inspect live events, compare state changes, and keep port-forwards running without freezing the interface. For automation or a quick confidence check, `sofka --check` performs discovery and exits, while `--snapshot` renders a resource view to standard output without an interactive terminal.\n\nThe interesting day-two features are the ones that reduce context switching. Native Flux and Argo CD actions let an operator reconcile or suspend supported objects without invoking separate CLIs. A Helm inspector decodes release Secrets, custom-resource views honor printer columns, and workspaces can group related resources. None of that removes the need to understand the API beneath the screen. It does make the first five minutes of investigation more coherent.\n\nThere are real tradeoffs. Sofka is evolving quickly, its downloaded macOS binaries are not yet signed or notarized, and a young TUI cannot inherit years of operational familiarity overnight. Teams should begin in read-only mode, confirm how custom resources render, and keep exact commands in runbooks. A terminal that exposes bulk delete or force-delete deserves the same change discipline as any other privileged client.\n\n## Node lifecycle belongs to talosctl\n\nSofka sees Kubernetes resources after a cluster API is available. Talosctl operates a layer lower. It talks to the Talos API to configure machines, inspect services, bootstrap control planes, gather diagnostics, upgrade nodes, and perform lifecycle operations on Talos Linux. Those are machine-management responsibilities, not merely another resource view.\n\nThat boundary matters during failures. If the Kubernetes API is healthy but a workload is stuck, sofka can organize the evidence. If the node operating system, certificates, or Talos services are the problem, talosctl is the appropriate instrument. Sidero Labs also warns that the talosctl version should match the Talos Linux version on the host. Package upgrades therefore need coordination with cluster upgrades rather than an automatic assumption that newest is always best.\n\nThe credentials differ too. Sofka generally follows kubeconfig and Kubernetes RBAC; talosctl uses talosconfig and Talos API roles. Keeping those files separate, narrowly distributed, and auditable preserves the architectural boundary the tools themselves reflect.\n\n## Desired releases belong in Helmfile\n\nHelmfile occupies the third layer: declared deployment intent. Its state files collect Helm releases, repositories, environments, and values in version control. Teams can review a diff in CI, apply a selected environment, and periodically synchronize to reduce configuration skew. That is a different rhythm from an operator navigating a live cluster.\n\nThe separation creates a clean loop:\n\n- **Helmfile** records and reviews what releases should exist.\n- **sofka** shows what workloads are doing now and supports bounded intervention.\n- **talosctl** manages the machines and services beneath Kubernetes when node-level work is necessary.\n\nOverlap still exists. Sofka can inspect Helm data and trigger GitOps actions; Helmfile can surface changes through diff; talosctl exposes an interactive dashboard in the Talos ecosystem. The test is authority, not interface style. Durable application changes should return to version-controlled release state. Node lifecycle changes should use the node-management API. Live diagnosis should begin with the least-mutating view that answers the question.\n\n## A useful newcomer with an explicit boundary\n\nSofka is compelling because it does not merely redraw a table of pods. Its async architecture, deterministic explanations, custom-resource pipeline, and safety controls make a thoughtful case for a modern Kubernetes TUI. The project is still young enough that operators should validate it against their clusters and policies before depending on every feature.\n\nUsed with clear boundaries, however, it fits a mature workflow. Observe and investigate with sofka. Change declared releases through Helmfile and review. Reach for talosctl when the machine layer is actually at fault. The result is not one magical operations console, but something more reliable: three tools whose scopes explain where each change belongs.",
+      "deck": "A young Rust TUI makes a useful distinction visible: observing workloads, managing nodes, and declaring releases are related jobs, not one job.",
+      "id": "editorial:2026-09-30:sofka-three-layers-kubernetes-operations",
+      "primaryPackageID": "brew:sofka",
+      "publishedAt": "2026-09-30T09:03:25Z",
       "relatedPackageIDs": [
-        "brew:cask:activitywatch",
-        "brew:cask:trilium-notes"
+        "brew:sofka",
+        "brew:talosctl",
+        "brew:helmfile"
       ],
       "selection": {
-        "rationale": "underexposed",
-        "underexposedReason": "ActivityWatch has no popularity rank in the current catalog candidate and is absent from the recent editorial history, despite a documented history since 2014, extensible local-first architecture, and concrete use in academic research."
+        "firstStableReleaseAt": "2026-07-03T17:13:21Z",
+        "firstStableReleaseSourceURL": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5",
+        "rationale": "newer"
       },
       "sources": [
         {
           "kind": "primary",
-          "title": "ActivityWatch history",
-          "url": "https://docs.activitywatch.net/en/latest/history.html"
+          "title": "sofka project documentation and usage guide",
+          "url": "https://github.com/nklmilojevic/sofka"
         },
         {
           "kind": "primary",
-          "title": "ActivityWatch privacy policy",
-          "url": "https://docs.activitywatch.net/en/latest/privacy.html"
+          "title": "sofka v0.1.5 release",
+          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
         },
         {
           "kind": "primary",
-          "title": "ActivityWatch security considerations",
-          "url": "https://docs.activitywatch.net/en/latest/security.html"
+          "title": "Official talosctl getting-started guide",
+          "url": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl"
         },
         {
           "kind": "primary",
-          "title": "Working with ActivityWatch data",
-          "url": "https://docs.activitywatch.net/en/latest/examples/working-with-data.html"
-        },
-        {
-          "kind": "primary",
-          "title": "ActivityWatch in research",
-          "url": "https://docs.activitywatch.net/en/latest/research/index.html"
-        },
-        {
-          "kind": "independent",
-          "title": "Community discussion of reviewing ActivityWatch data",
-          "url": "https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/"
-        },
-        {
-          "kind": "primary",
-          "title": "Trilium Notes overview",
-          "url": "https://triliumnotes.org/"
-        },
-        {
-          "kind": "primary",
-          "title": "Trilium note concepts",
-          "url": "https://docs.triliumnotes.org/user-guide/concepts/notes"
-        },
-        {
-          "kind": "primary",
-          "title": "Trilium FAQ",
-          "url": "https://docs.triliumnotes.org/user-guide/faq"
-        },
-        {
-          "kind": "independent",
-          "title": "Community examples of Trilium automation",
-          "url": "https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/"
+          "title": "Official Helmfile documentation",
+          "url": "https://helmfile.readthedocs.io/en/stable/"
         }
       ],
-      "title": "ActivityWatch: a private ledger for reflection",
+      "title": "Sofka and the Three Layers of Kubernetes Operations",
       "type": "editorial"
     },
     {
@@ -159,6 +131,8 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:talosctl",
+        "brew:helmfile",
         "brew:sofka",
         "brew:cask:mindroom",
         "brew:cask:highball",
@@ -168,12 +142,90 @@
         "brew:cask:deviceshelf",
         "brew:cask:activitywatch",
         "brew:cask:trilium-notes",
-        "brew:cask:gloomberb",
-        "brew:cask:hol-guard",
-        "brew:ratex"
+        "brew:cask:gloomberb"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "A private night workspace where abstract activity streams become linked note cards stored in a softly illuminated local vault.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#17384B",
+          "backgroundStart": "#0B2130",
+          "foreground": "#F8E8C8"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/activitywatch-local-ledger.png"
+      },
+      "body": "## Measurement is not memory\n\nMost workdays leave two imperfect records: what we remember doing and what the computer happened to observe. ActivityWatch makes the second record inspectable. Its watchers capture events such as active windows and away periods, its local server stores them in buckets, and its interface combines those events into a timeline. The project's [privacy policy](https://docs.activitywatch.net/en/latest/privacy.html) says the standard application stores activity data locally and does not transmit it to the developers or third-party analytics services.\n\nThat architecture matters because activity logs can be unusually revealing. A window title may contain a client name, a medical subject, or the draft title of an unannounced project. Local storage removes one routine disclosure path; it does not make the data harmless. ActivityWatch's own [security notes](https://docs.activitywatch.net/en/latest/security.html) warn that the local API lacks strong authentication and that malware or another user on the same host may reach the database. Treat the timeline as sensitive source material, not a cheerful productivity score.\n\n## A decade-old quantified-self experiment\n\nActivityWatch is underexposed partly because its story is longer and stranger than a typical timer. The project's [history](https://docs.activitywatch.net/en/latest/history.html) traces its motivation to quantified-self experiments in 2013, a prototype begun in December 2014, and a 2016 rewrite that introduced the client-server model behind the current system. That lineage explains the modular design: a watcher produces observations, the server stores events, and clients query them.\n\nThe useful unit is not necessarily a raw event. ActivityWatch's [data guide](https://docs.activitywatch.net/en/latest/examples/working-with-data.html) recommends canonical events that combine window tracking with away detection, categorization, and multi-device handling. It also supplies examples for working-hours analysis, category suggestions, redaction, and bucket merging. Users can export JSON or query the REST API, but the project's [export guidance](https://docs.activitywatch.net/en/latest/features/exporting-data.html) recommends aggregating and redacting locally before any data goes to an AI assistant or another service.\n\n## What actual use can establish\n\nThe strongest evidence for automatic tracking is not that it makes everyone more productive. It is that recollection and observation diverge. ActivityWatch documents a Research Edition used in academic studies; its [research overview](https://docs.activitywatch.net/en/latest/research/index.html) cites a validity study where self-report agreed with software registration for only 18 percent of participants. That result supports careful measurement, not a claim that recorded screen time equals meaningful work.\n\nOutside research, workflows vary. In one recent [community discussion](https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/), users described reviewing reports or feeding locally processed summaries into task workflows. Such accounts are anecdotal rather than adoption statistics, but they show the practical fork: some people inspect dashboards, while others use exports as input to their own systems. A useful weekly review might ask:\n\n- Which project consumed more time than expected?\n- Which interruptions recur at the same point in the day?\n- Which categories are wrong because the rules need adjustment?\n- What decision should survive after the raw timeline is forgotten?\n\n## Give conclusions a durable home\n\nThat last question is where Trilium Notes becomes a useful companion. Trilium is not an ActivityWatch integration; pairing them is an editorial workflow. Its [project overview](https://triliumnotes.org/) describes a local, offline-capable personal knowledge base with optional synchronization through a self-hosted server. Notes can be nested without a separate folder type, placed in multiple parts of the tree through cloning, and connected with labels and relations. The [note model](https://docs.triliumnotes.org/user-guide/concepts/notes) suits a project journal that needs both chronology and structure.\n\nThe tradeoff is explicit. Trilium stores its knowledge base in SQLite rather than exposing a directory of Markdown files. Its [FAQ](https://docs.triliumnotes.org/user-guide/faq) argues that transactions, note clones, ordering, attributes, and fast relations justify the database, while acknowledging that filesystem interoperability would be simpler. Synchronizing multiple devices requires its server. Users who prioritize ordinary files and Git should choose another notes system.\n\nCommunity experiments also show why context needs care. In a [Trilium discussion](https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/), users described dedicated note trees, context maps, incremental indexing, and the difficulty of preserving relationships when notes are copied into vector stores. Those are individual reports, not endorsements or benchmarks, but the failure mode is instructive: automation can retrieve text while flattening the structure that made it intelligible.\n\n## Keep observation, interpretation, and retention separate\n\nA restrained workflow uses three layers. ActivityWatch records locally. A human reviews aggregates and checks whether categories reflect reality. Trilium keeps only the conclusions worth retaining: a project note, a decision, a recurring distraction, or a change to next week's plan. Raw events need not become permanent notes, and neither tool needs access to the other's database.\n\nThat separation limits damage and makes the process easier to audit. Back up both stores, redact before exporting, and periodically delete detail that no longer serves a purpose. Most importantly, resist turning a timeline into a verdict. ActivityWatch can tell you which application was foregrounded; only reflection can explain why it mattered.",
+      "deck": "A local activity timeline can improve retrospectives, but only when observation remains separate from judgment and durable notes preserve the conclusions.",
+      "id": "editorial:2026-09-26:activitywatch-a-private-ledger-for-reflection",
+      "primaryPackageID": "brew:cask:activitywatch",
+      "publishedAt": "2026-09-26T10:55:05Z",
+      "relatedPackageIDs": [
+        "brew:cask:activitywatch",
+        "brew:cask:trilium-notes"
+      ],
+      "selection": {
+        "rationale": "underexposed",
+        "underexposedReason": "ActivityWatch has no popularity rank in the current catalog candidate and is absent from the recent editorial history, despite a documented history since 2014, extensible local-first architecture, and concrete use in academic research."
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "ActivityWatch history",
+          "url": "https://docs.activitywatch.net/en/latest/history.html"
+        },
+        {
+          "kind": "primary",
+          "title": "ActivityWatch privacy policy",
+          "url": "https://docs.activitywatch.net/en/latest/privacy.html"
+        },
+        {
+          "kind": "primary",
+          "title": "ActivityWatch security considerations",
+          "url": "https://docs.activitywatch.net/en/latest/security.html"
+        },
+        {
+          "kind": "primary",
+          "title": "Working with ActivityWatch data",
+          "url": "https://docs.activitywatch.net/en/latest/examples/working-with-data.html"
+        },
+        {
+          "kind": "primary",
+          "title": "ActivityWatch in research",
+          "url": "https://docs.activitywatch.net/en/latest/research/index.html"
+        },
+        {
+          "kind": "independent",
+          "title": "Community discussion of reviewing ActivityWatch data",
+          "url": "https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/"
+        },
+        {
+          "kind": "primary",
+          "title": "Trilium Notes overview",
+          "url": "https://triliumnotes.org/"
+        },
+        {
+          "kind": "primary",
+          "title": "Trilium note concepts",
+          "url": "https://docs.triliumnotes.org/user-guide/concepts/notes"
+        },
+        {
+          "kind": "primary",
+          "title": "Trilium FAQ",
+          "url": "https://docs.triliumnotes.org/user-guide/faq"
+        },
+        {
+          "kind": "independent",
+          "title": "Community examples of Trilium automation",
+          "url": "https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/"
+        }
+      ],
+      "title": "ActivityWatch: a private ledger for reflection",
+      "type": "editorial"
     },
     {
       "artwork": {
@@ -761,61 +813,9 @@
       ],
       "title": "PostgreSQL 18 Makes the Boring Parts Better",
       "type": "editorial"
-    },
-    {
-      "artwork": {
-        "alt": "A glowing cursor path travels from an abstract keyboard through connected teal database tables across a dark layered landscape.",
-        "attribution": "Generated with OpenAI image generation",
-        "boxColors": {
-          "backgroundEnd": "#0B2940",
-          "backgroundStart": "#061326",
-          "foreground": "#FFFFFF"
-        },
-        "license": "OpenAI terms of use",
-        "path": "feed/assets/vi-sql-keyboard-database-2026-08-13.png"
-      },
-      "body": "## The database client is becoming a workspace\n\nA database terminal used to mean a prompt, a query, and a stream of rows. That model remains dependable, but it asks users to remember schema details, juggle output formatting, and reach for separate tools when a query plan or table relationship matters. Full graphical clients solve those problems with persistent panels and rich inspectors, yet they can feel detached from a terminal-centered development loop.\n\n**vi-sql** occupies the increasingly interesting space between those poles. It is a full-screen terminal interface with a schema browser, SQL editor, result tables, query-plan views, import and export tools, and connection profiles. Its defining choice is keyboard control: Vim and conventional profiles are included, bindings are remappable, and a command palette makes less-familiar actions discoverable. The result is not simply `psql` with color. It is an attempt to make database exploration feel like navigating an editor.\n\n## A genuinely young client\n\nThe upstream repository was created on February 27, 2026, and the project published stable release `v0.1.0` on June 2. That makes vi-sql a clear fit for a newer-tool slot, but the date should calibrate expectations as much as generate interest. Its release history is active, and the current documentation lists PostgreSQL, MySQL, MariaDB, SQLite, SQL Server, Oracle, DuckDB, CockroachDB, Turso, TiDB, and Redshift support. Breadth on a feature list is not the same as years of compatibility testing across each engine.\n\nThe public launch discussion provides unusually useful evidence of actual use. Readers asked about SQLite files, SSH tunneling, exports, and comparisons with Vim-oriented alternatives. One user traced a navigation problem to tmux intercepting `Ctrl-h`; another reported differences between vi-sql's word motion and Neovim's. The maintainer responded with fixes and described rewriting motion behavior. That exchange is more informative than a download badge: people tried real combinations, found boundaries, and fed them back into the project. It also shows why “Vim mode” is a demanding promise rather than a checkbox.\n\n## What it brings into one screen\n\nThe appealing workflow is compact:\n\n- browse schemas and inspect DDL without leaving the terminal;\n- compose SQL with highlighting and completion;\n- examine results, export them, or open an `EXPLAIN` view;\n- switch among saved connections through the same keyboard model.\n\nFor someone moving repeatedly between source code, logs, and a development database, reducing application switching can preserve context. Custom themes and bindings matter here less as decoration than as integration: the client can fit an existing terminal setup instead of demanding a second interaction language.\n\nThere are two boundaries worth keeping visible. First, a terminal multiplexer, shell, editor, and database client all compete for a limited set of keys. Remapping is necessary, but teams should document the resulting profile rather than assume defaults work everywhere. Second, connection convenience concentrates credentials. vi-sql documents encrypted storage through an operating-system keyring or an Argon2id-protected master password. That is preferable to plaintext, but it does not replace least-privilege accounts, short-lived credentials where available, or separate production and development identities.\n\n## MCP changes the risk calculation\n\nvi-sql also includes a Model Context Protocol server, allowing compatible assistants to inspect or query configured databases. This can shorten the route from “why did this request fail?” to examining relevant data, but it also changes who can initiate a query. A helpful agent can misunderstand scope as easily as a person can paste SQL into the wrong connection.\n\nStart with a disposable database or a read-only replica. Limit exposed connections, inspect the tool descriptions the agent receives, and keep destructive operations outside the first evaluation. Logs should make it possible to distinguish queries run by a person from those initiated through an agent. **Convenience is not a permission model.** The MCP feature deserves a separate security decision from adopting the interactive client itself.\n\n## Choosing the right level of interface\n\nvi-sql is not automatically a replacement for every database tool. **mycli** is a mature choice when the job is primarily interactive MySQL and completion at a traditional prompt. **DBX** moves in the other direction, offering a graphical surface across many SQL and non-SQL systems, plus schema comparison and data-transfer features. Native clients remain the conservative option for engine-specific scripting, recovery, and operational procedures.\n\nA sensible evaluation uses a sanitized database and a representative task: find a table, inspect its definition, write a join, review the plan, and export a small result. Note where completion helps, where keybindings collide, and whether output remains legible for wide or nested data. Then repeat with a read-only remote connection.\n\nvi-sql's strongest argument is not novelty alone. It makes a database feel close to the rest of a keyboard-driven workflow while retaining enough visual structure to explore unfamiliar schemas. Its youth, multi-engine ambition, and agent integration are also reasons to adopt it deliberately. If the interface reduces friction without weakening credential boundaries or query review, it can earn a place beside—not necessarily instead of—the native client.",
-      "deck": "A young terminal client makes database exploration fast and tactile, while reminding us that convenience, credentials, and query safety travel together.",
-      "id": "editorial:2026-08-13:vi-sql-keyboard-first-database-work",
-      "primaryPackageID": "brew:vi-sql",
-      "publishedAt": "2026-08-13T09:40:34Z",
-      "relatedPackageIDs": [
-        "brew:vi-sql",
-        "brew:mycli",
-        "brew:cask:dbx"
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2026-06-02T17:54:51Z",
-        "firstStableReleaseSourceURL": "https://github.com/kopecmaciej/vi-sql/releases/tag/v0.1.0",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "vi-sql project repository",
-          "url": "https://github.com/kopecmaciej/vi-sql"
-        },
-        {
-          "kind": "primary",
-          "title": "vi-sql v0.1.0 release",
-          "url": "https://github.com/kopecmaciej/vi-sql/releases/tag/v0.1.0"
-        },
-        {
-          "kind": "primary",
-          "title": "vi-sql product documentation",
-          "url": "https://vi-sql.com/"
-        },
-        {
-          "kind": "independent",
-          "title": "Neovim community launch discussion",
-          "url": "https://www.reddit.com/r/neovim/comments/1tuzdw7/visql_another_sql_terminal_app_with_vim_mode/"
-        }
-      ],
-      "title": "vi-sql and the Return of Keyboard-First Database Work",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-09-29T07:55:31Z",
+  "generatedAt": "2026-09-30T09:03:25Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1000,63 +1000,6 @@
       ],
       "upstreamSummary": "Time tracker",
       "version": "0.13.2"
-    },
-    "brew:cask:dbx": {
-      "agentSummary": "DBX is a cross-platform graphical database client covering SQL, document, search, and key-value systems, with schema tools, data transfer, AI assistance, and MCP access.",
-      "assessment": {
-        "alternatives": [
-          "DBeaver",
-          "DataGrip",
-          "vi-sql or native command-line clients"
-        ],
-        "audiences": [
-          "Developers managing several database technologies",
-          "Teams wanting a graphical cross-platform client"
-        ],
-        "caveats": [
-          "Its broad feature set creates a larger permission and configuration surface",
-          "AI-generated SQL requires review before execution",
-          "Engine-specific administration may still require native tooling"
-        ],
-        "complements": [
-          "Database-native backup tooling",
-          "Least-privilege service accounts",
-          "Query and audit logging"
-        ],
-        "prerequisites": [
-          "Credentials for each configured database",
-          "Review of optional AI provider and MCP permissions"
-        ],
-        "useCases": [
-          "Browsing and editing data across multiple engines",
-          "Comparing schemas and transferring data",
-          "Providing permission-scoped database access through MCP"
-        ]
-      },
-      "category": "data",
-      "displayName": "DBX",
-      "docs": "https://dbxio.com/docs",
-      "homepage": "https://dbxio.com/",
-      "id": "brew:cask:dbx",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adbx",
-      "lastUpdatedAt": "2026-08-13T07:08:03Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/t8y2/dbx",
-      "researchedAt": "2026-08-13T09:40:34Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "DBX repository",
-          "url": "https://github.com/t8y2/dbx"
-        },
-        {
-          "kind": "primary",
-          "title": "DBX documentation",
-          "url": "https://dbxio.com/docs"
-        }
-      ],
-      "upstreamSummary": "Database management tool",
-      "version": "0.5.82"
     },
     "brew:cask:deviceshelf": {
       "agentSummary": "DeviceShelf is a local-first network scanner for discovering devices, open ports, services, and security risks, with optional monitoring across desktop, mobile, and server editions.",
@@ -2681,6 +2624,64 @@
       "upstreamSummary": "Git LFS plugin that uploads and downloads using the Xet protocol",
       "version": "0.2.1"
     },
+    "brew:helmfile": {
+      "agentSummary": "A declarative layer over Helm that versions release definitions, coordinates environments and values, previews changes, and reconciles many charts consistently.",
+      "assessment": {
+        "alternatives": [
+          "Direct Helm commands",
+          "Flux HelmRelease resources",
+          "Argo CD Applications"
+        ],
+        "audiences": [
+          "Platform engineers managing multiple Helm releases",
+          "GitOps and CI/CD teams",
+          "Operators maintaining environment-specific chart values"
+        ],
+        "caveats": [
+          "Adds another templating and state layer above Helm",
+          "Repository and environment structure require team conventions",
+          "Synchronization can make broad changes, so diff and review discipline matter"
+        ],
+        "complements": [
+          "sofka for interactive observation after deployment",
+          "Git and CI systems for reviewable change delivery",
+          "Argo CD for GitOps reconciliation"
+        ],
+        "prerequisites": [
+          "Helm knowledge and access to target Kubernetes clusters",
+          "Version-controlled Helmfile state and values"
+        ],
+        "useCases": [
+          "Declare many Helm releases in version-controlled files",
+          "Preview release differences before synchronization",
+          "Apply consistent chart state across environments"
+        ]
+      },
+      "category": "cloud-infrastructure",
+      "displayName": "helmfile",
+      "docs": "https://helmfile.readthedocs.io/en/stable",
+      "homepage": "https://github.com/helmfile/helmfile",
+      "id": "brew:helmfile",
+      "installURL": "pkgmgrmgr://install?package=brew%3Ahelmfile",
+      "lastUpdatedAt": "2026-09-30T04:06:27Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/helmfile/helmfile",
+      "researchedAt": "2026-09-30T09:03:25Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Official Helmfile documentation",
+          "url": "https://helmfile.readthedocs.io/en/stable/"
+        },
+        {
+          "kind": "primary",
+          "title": "Helmfile source repository",
+          "url": "https://github.com/helmfile/helmfile"
+        }
+      ],
+      "upstreamSummary": "Deploy Kubernetes Helm Charts",
+      "version": "1.8.1"
+    },
     "brew:jupytext": {
       "agentSummary": "Jupytext represents notebook inputs as scripts or Markdown, making code review and editor workflows easier while paired notebooks retain outputs in a separate notebook file.",
       "assessment": {
@@ -3034,62 +3035,6 @@
       ],
       "upstreamSummary": "Meteorological workstation software",
       "version": "5.26.2"
-    },
-    "brew:mycli": {
-      "agentSummary": "mycli is a mature interactive MySQL-family shell with context-aware completion, syntax highlighting, multiline editing, favorite queries, table formatting, and optional database reconnection.",
-      "assessment": {
-        "alternatives": [
-          "The standard mysql client",
-          "vi-sql for a full-screen multi-database TUI",
-          "DBeaver or DBX for graphical administration"
-        ],
-        "audiences": [
-          "MySQL and MariaDB users",
-          "Developers wanting shell-like database interaction"
-        ],
-        "caveats": [
-          "It focuses on MySQL-family databases rather than one interface for many engines",
-          "Completion metadata can lag schema changes",
-          "Terminal clients still make destructive SQL easy to run"
-        ],
-        "complements": [
-          "Database migrations",
-          "Read-only development credentials",
-          "Server-side performance monitoring"
-        ],
-        "prerequisites": [
-          "A reachable MySQL-compatible database",
-          "Python-compatible runtime supplied through the package"
-        ],
-        "useCases": [
-          "Running ad hoc MySQL queries with completion",
-          "Saving and recalling frequently used statements"
-        ]
-      },
-      "category": "data",
-      "displayName": "mycli",
-      "docs": "https://www.mycli.net/docs",
-      "homepage": "https://www.mycli.net/",
-      "id": "brew:mycli",
-      "installURL": "pkgmgrmgr://install?package=brew%3Amycli",
-      "lastUpdatedAt": "2026-08-12T20:59:32Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/dbcli/mycli",
-      "researchedAt": "2026-08-13T09:40:34Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "mycli repository",
-          "url": "https://github.com/dbcli/mycli"
-        },
-        {
-          "kind": "primary",
-          "title": "mycli documentation",
-          "url": "https://www.mycli.net/docs"
-        }
-      ],
-      "upstreamSummary": "CLI for MySQL with auto-completion and syntax highlighting",
-      "version": null
     },
     "brew:obscura": {
       "agentSummary": "A Rust headless-browser engine for scraping and agent automation, exposing Chrome DevTools compatibility, JavaScript execution, parallel workers, and optional stealth-oriented features.",
@@ -3695,31 +3640,36 @@
       "version": "2.7.5"
     },
     "brew:sofka": {
-      "agentSummary": "sofka is an async Rust Kubernetes TUI with custom-resource browsing, GitOps actions, diagnostic views, guardrails, port-forward management, and configurable cluster-aware workflows.",
+      "agentSummary": "A fast Rust Kubernetes TUI that combines resource browsing, deterministic incident explanations, GitOps actions, background port-forwards, and enforceable production guardrails.",
       "assessment": {
         "alternatives": [
           "k9s",
-          "kubectl with dashboard and log-viewing tools"
+          "Headlamp",
+          "Lens"
         ],
         "audiences": [
-          "Kubernetes cluster operators",
-          "Platform engineers managing GitOps workloads"
+          "Kubernetes operators and platform engineers",
+          "SREs who prefer terminal-first incident response",
+          "Flux CD and Argo CD users"
         ],
         "caveats": [
-          "The project is young and its interface and workflows may change rapidly",
-          "Upstream notes that release binaries are not yet signed or notarized on macOS"
+          "The project is young and evolving quickly",
+          "Downloaded macOS release binaries are not yet signed or notarized",
+          "Mutating actions still depend on Kubernetes RBAC and operator judgment"
         ],
         "complements": [
-          "kubectl for scripting and exact API operations",
-          "Flux CD, Argo CD, and Helm-managed clusters"
+          "kubectl for scripts and exact API operations",
+          "Helmfile for declarative release state",
+          "talosctl for Talos Linux node lifecycle"
         ],
         "prerequisites": [
-          "A working kubeconfig and appropriate cluster RBAC permissions",
-          "A terminal environment on macOS or Linux"
+          "A reachable Kubernetes cluster and valid kubeconfig",
+          "RBAC permissions appropriate to the intended actions"
         ],
         "useCases": [
-          "Browsing built-in and custom Kubernetes resources from a terminal",
-          "Diagnosing unhealthy workloads and operating Flux or Argo CD resources"
+          "Browse built-in and custom Kubernetes resources",
+          "Inspect unhealthy workloads with deterministic evidence",
+          "Manage logs, port-forwards, rollouts, and selected GitOps actions"
         ]
       },
       "category": "cloud-infrastructure",
@@ -3728,24 +3678,24 @@
       "homepage": "https://github.com/nklmilojevic/sofka",
       "id": "brew:sofka",
       "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
-      "lastUpdatedAt": "2026-09-29T02:06:21Z",
+      "lastUpdatedAt": "2026-09-30T04:05:54Z",
       "manager": "homebrew",
       "repository": "https://github.com/nklmilojevic/sofka",
-      "researchedAt": "2026-09-29T07:55:31Z",
+      "researchedAt": "2026-09-30T09:03:25Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "sofka project repository and documentation",
+          "title": "sofka project documentation",
           "url": "https://github.com/nklmilojevic/sofka"
         },
         {
           "kind": "primary",
-          "title": "sofka v0.1.3 first release",
-          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.3"
+          "title": "sofka v0.1.5 first stable release",
+          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
         }
       ],
       "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
-      "version": "0.29.4"
+      "version": "0.29.6"
     },
     "brew:tailcat": {
       "agentSummary": "Tailcat creates encrypted, netcat-like peer connections through Tailscale's userspace WireGuard, NAT traversal, and DERP components, without accounts, routes, or a control plane.",
@@ -3811,6 +3761,62 @@
       "upstreamSummary": "Netcat-like tool over Tailscale's data plane, without its control plane",
       "version": "0.5.0"
     },
+    "brew:talosctl": {
+      "agentSummary": "The administrative CLI for Talos Linux, used to configure machines, query the Talos API, inspect services, and manage Kubernetes node lifecycles.",
+      "assessment": {
+        "alternatives": [
+          "Talos Linux API clients",
+          "Distribution-specific node administration tools"
+        ],
+        "audiences": [
+          "Talos Linux cluster administrators",
+          "Platform teams operating immutable Kubernetes nodes"
+        ],
+        "caveats": [
+          "It manages Talos machines rather than serving as a general Kubernetes resource browser",
+          "The CLI version should match the Talos Linux version on managed nodes",
+          "Credential-bearing talosconfig files require careful protection"
+        ],
+        "complements": [
+          "sofka or kubectl for Kubernetes workload inspection",
+          "Omni for managed Talos operations"
+        ],
+        "prerequisites": [
+          "Talos Linux nodes or a planned Talos deployment",
+          "A valid talosconfig with appropriate credentials",
+          "A talosctl version compatible with the cluster"
+        ],
+        "useCases": [
+          "Apply and inspect Talos machine configuration",
+          "Bootstrap, upgrade, reset, and troubleshoot Talos nodes",
+          "Query node services, logs, resources, and health through the Talos API"
+        ]
+      },
+      "category": "cloud-infrastructure",
+      "displayName": "talosctl",
+      "docs": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl",
+      "homepage": "https://www.talos.dev/",
+      "id": "brew:talosctl",
+      "installURL": "pkgmgrmgr://install?package=brew%3Atalosctl",
+      "lastUpdatedAt": "2026-09-30T04:06:27Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/siderolabs/talos",
+      "researchedAt": "2026-09-30T09:03:25Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Official talosctl getting-started guide",
+          "url": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl"
+        },
+        {
+          "kind": "primary",
+          "title": "Talos Linux source repository",
+          "url": "https://github.com/siderolabs/talos"
+        }
+      ],
+      "upstreamSummary": "CLI for out-of-band management of Kubernetes nodes created by Talos",
+      "version": "1.14.2"
+    },
     "brew:termaid": {
       "agentSummary": "termaid renders Mermaid syntax as terminal-friendly Unicode or ASCII diagrams and Python widgets, covering many diagram types without requiring a browser or remote rendering service.",
       "assessment": {
@@ -3869,67 +3875,6 @@
       ],
       "upstreamSummary": "Render Mermaid diagrams in the terminal",
       "version": "0.9.0"
-    },
-    "brew:vi-sql": {
-      "agentSummary": "vi-sql is a customizable terminal database client with Vim-style navigation, multiple SQL backends, schema browsing, query plans, encrypted credentials, exports, and an MCP server.",
-      "assessment": {
-        "alternatives": [
-          "mycli for a mature MySQL-focused interactive shell",
-          "DBX or DBeaver for graphical database administration",
-          "Database-native clients such as psql or sqlite3"
-        ],
-        "audiences": [
-          "Terminal-focused developers",
-          "Database users who prefer keyboard navigation"
-        ],
-        "caveats": [
-          "The project is young and its Vim emulation still has behavioral edge cases",
-          "Terminal multiplexers can intercept default control-key bindings",
-          "MCP access expands the credential and query-execution threat surface"
-        ],
-        "complements": [
-          "Database-native backup tools",
-          "A reviewed read-only database account",
-          "Neovim or another terminal editor"
-        ],
-        "prerequisites": [
-          "Access credentials for a supported database",
-          "Comfort with terminal interfaces and keyboard shortcuts"
-        ],
-        "useCases": [
-          "Browsing schemas and running SQL without leaving the terminal",
-          "Inspecting query plans and exporting result sets"
-        ]
-      },
-      "category": "data",
-      "displayName": "vi-sql",
-      "docs": "https://github.com/kopecmaciej/vi-sql#readme",
-      "homepage": "https://vi-sql.com",
-      "id": "brew:vi-sql",
-      "installURL": "pkgmgrmgr://install?package=brew%3Avi-sql",
-      "lastUpdatedAt": "2026-08-12T18:59:19Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/kopecmaciej/vi-sql",
-      "researchedAt": "2026-08-13T09:40:34Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "vi-sql project repository",
-          "url": "https://github.com/kopecmaciej/vi-sql"
-        },
-        {
-          "kind": "primary",
-          "title": "vi-sql product site",
-          "url": "https://vi-sql.com/"
-        },
-        {
-          "kind": "independent",
-          "title": "Neovim community launch discussion",
-          "url": "https://www.reddit.com/r/neovim/comments/1tuzdw7/visql_another_sql_terminal_app_with_vim_mode/"
-        }
-      ],
-      "upstreamSummary": "Terminal UI for SQL databases",
-      "version": null
     },
     "brew:vortix": {
       "agentSummary": "Vortix gives WireGuard and OpenVPN users one terminal interface for multiple tunnels, live telemetry, exposure checks, kill-switch control, diagnostics, and automation-friendly output.",
@@ -4060,7 +4005,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-09-29T07:53:58Z",
+    "generatedAt": "2026-09-30T09:01:35Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }

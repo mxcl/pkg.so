@@ -2,448 +2,6 @@
   "content": [
     {
       "artwork": {
-        "alt": "An operator watches luminous workload clusters above guarded infrastructure nodes while abstract deployment sheets flow into the system.",
-        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#152B46",
-          "backgroundStart": "#0B192D",
-          "foreground": "#F4F7FF"
-        },
-        "license": "OpenAI terms of use",
-        "path": "feed/assets/sofka-layered-kubernetes-operations-2026-09-30.png"
-      },
-      "batchID": "20260930T090325Z-0c689ed1",
-      "body": "## A new terminal window into the cluster\n\nKubernetes operators rarely lack commands. The harder problem is choosing the right control surface while an incident is unfolding. `kubectl` is exact and scriptable, dashboards are broad, and established terminal interfaces make resource navigation fast. Sofka enters that crowded space with a sharper premise: keep the interface asynchronous, make safety policy enforceable, and explain unhealthy state from cluster evidence rather than an external AI service.\n\nThe project is genuinely young. Its first non-prerelease GitHub release, v0.1.5, appeared in July 2026, and its documentation already describes a surprisingly wide operating surface. Sofka browses built-in resources and CRDs through one pipeline, follows logs, manages background port-forwards, edits resources, restarts rollouts, and exposes native actions for Flux and Argo CD objects. The `X` view assembles a deterministic incident explanation from observed state, while the timeline view emphasizes change over a static snapshot.\n\nThat breadth could sound like another attempt to put every Kubernetes task behind one screen. The more useful reading is different: sofka is strongest when treated as the **observation and interaction layer**, not the sole source of truth. Its read-only mode, per-context settings, production guardrails, action journal, and RBAC-aware checks all acknowledge that a convenient interface can also make dangerous actions convenient.\n\n## What actual use looks like\n\nA practical session begins with the same credential and context material used by other Kubernetes clients. An operator can open pods in the current namespace, start with `-A` for all namespaces, or use a context picker before connecting. During a rollout, the terminal can filter objects, follow logs, inspect live events, compare state changes, and keep port-forwards running without freezing the interface. For automation or a quick confidence check, `sofka --check` performs discovery and exits, while `--snapshot` renders a resource view to standard output without an interactive terminal.\n\nThe interesting day-two features are the ones that reduce context switching. Native Flux and Argo CD actions let an operator reconcile or suspend supported objects without invoking separate CLIs. A Helm inspector decodes release Secrets, custom-resource views honor printer columns, and workspaces can group related resources. None of that removes the need to understand the API beneath the screen. It does make the first five minutes of investigation more coherent.\n\nThere are real tradeoffs. Sofka is evolving quickly, its downloaded macOS binaries are not yet signed or notarized, and a young TUI cannot inherit years of operational familiarity overnight. Teams should begin in read-only mode, confirm how custom resources render, and keep exact commands in runbooks. A terminal that exposes bulk delete or force-delete deserves the same change discipline as any other privileged client.\n\n## Node lifecycle belongs to talosctl\n\nSofka sees Kubernetes resources after a cluster API is available. Talosctl operates a layer lower. It talks to the Talos API to configure machines, inspect services, bootstrap control planes, gather diagnostics, upgrade nodes, and perform lifecycle operations on Talos Linux. Those are machine-management responsibilities, not merely another resource view.\n\nThat boundary matters during failures. If the Kubernetes API is healthy but a workload is stuck, sofka can organize the evidence. If the node operating system, certificates, or Talos services are the problem, talosctl is the appropriate instrument. Sidero Labs also warns that the talosctl version should match the Talos Linux version on the host. Package upgrades therefore need coordination with cluster upgrades rather than an automatic assumption that newest is always best.\n\nThe credentials differ too. Sofka generally follows kubeconfig and Kubernetes RBAC; talosctl uses talosconfig and Talos API roles. Keeping those files separate, narrowly distributed, and auditable preserves the architectural boundary the tools themselves reflect.\n\n## Desired releases belong in Helmfile\n\nHelmfile occupies the third layer: declared deployment intent. Its state files collect Helm releases, repositories, environments, and values in version control. Teams can review a diff in CI, apply a selected environment, and periodically synchronize to reduce configuration skew. That is a different rhythm from an operator navigating a live cluster.\n\nThe separation creates a clean loop:\n\n- **Helmfile** records and reviews what releases should exist.\n- **sofka** shows what workloads are doing now and supports bounded intervention.\n- **talosctl** manages the machines and services beneath Kubernetes when node-level work is necessary.\n\nOverlap still exists. Sofka can inspect Helm data and trigger GitOps actions; Helmfile can surface changes through diff; talosctl exposes an interactive dashboard in the Talos ecosystem. The test is authority, not interface style. Durable application changes should return to version-controlled release state. Node lifecycle changes should use the node-management API. Live diagnosis should begin with the least-mutating view that answers the question.\n\n## A useful newcomer with an explicit boundary\n\nSofka is compelling because it does not merely redraw a table of pods. Its async architecture, deterministic explanations, custom-resource pipeline, and safety controls make a thoughtful case for a modern Kubernetes TUI. The project is still young enough that operators should validate it against their clusters and policies before depending on every feature.\n\nUsed with clear boundaries, however, it fits a mature workflow. Observe and investigate with sofka. Change declared releases through Helmfile and review. Reach for talosctl when the machine layer is actually at fault. The result is not one magical operations console, but something more reliable: three tools whose scopes explain where each change belongs.",
-      "deck": "A young Rust TUI makes a useful distinction visible: observing workloads, managing nodes, and declaring releases are related jobs, not one job.",
-      "id": "editorial:2026-09-30:sofka-three-layers-kubernetes-operations",
-      "package": {
-        "agentSummary": "A fast Rust Kubernetes TUI that combines resource browsing, deterministic incident explanations, GitOps actions, background port-forwards, and enforceable production guardrails.",
-        "assessment": {
-          "alternatives": [
-            "k9s",
-            "Headlamp",
-            "Lens"
-          ],
-          "audiences": [
-            "Kubernetes operators and platform engineers",
-            "SREs who prefer terminal-first incident response",
-            "Flux CD and Argo CD users"
-          ],
-          "caveats": [
-            "The project is young and evolving quickly",
-            "Downloaded macOS release binaries are not yet signed or notarized",
-            "Mutating actions still depend on Kubernetes RBAC and operator judgment"
-          ],
-          "complements": [
-            "kubectl for scripts and exact API operations",
-            "Helmfile for declarative release state",
-            "talosctl for Talos Linux node lifecycle"
-          ],
-          "prerequisites": [
-            "A reachable Kubernetes cluster and valid kubeconfig",
-            "RBAC permissions appropriate to the intended actions"
-          ],
-          "useCases": [
-            "Browse built-in and custom Kubernetes resources",
-            "Inspect unhealthy workloads with deterministic evidence",
-            "Manage logs, port-forwards, rollouts, and selected GitOps actions"
-          ]
-        },
-        "category": "cloud-infrastructure",
-        "displayName": "sofka",
-        "docs": "https://github.com/nklmilojevic/sofka#readme",
-        "homepage": "https://github.com/nklmilojevic/sofka",
-        "id": "brew:sofka",
-        "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
-        "lastUpdatedAt": "2026-09-30T04:05:54Z",
-        "manager": "homebrew",
-        "repository": "https://github.com/nklmilojevic/sofka",
-        "researchedAt": "2026-09-30T09:03:25Z",
-        "sources": [
-          {
-            "kind": "primary",
-            "title": "sofka project documentation",
-            "url": "https://github.com/nklmilojevic/sofka"
-          },
-          {
-            "kind": "primary",
-            "title": "sofka v0.1.5 first stable release",
-            "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
-          }
-        ],
-        "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
-        "version": "0.29.6"
-      },
-      "primaryPackageID": "brew:sofka",
-      "publishedAt": "2026-09-30T09:03:25Z",
-      "relatedPackages": [
-        {
-          "agentSummary": "A fast Rust Kubernetes TUI that combines resource browsing, deterministic incident explanations, GitOps actions, background port-forwards, and enforceable production guardrails.",
-          "assessment": {
-            "alternatives": [
-              "k9s",
-              "Headlamp",
-              "Lens"
-            ],
-            "audiences": [
-              "Kubernetes operators and platform engineers",
-              "SREs who prefer terminal-first incident response",
-              "Flux CD and Argo CD users"
-            ],
-            "caveats": [
-              "The project is young and evolving quickly",
-              "Downloaded macOS release binaries are not yet signed or notarized",
-              "Mutating actions still depend on Kubernetes RBAC and operator judgment"
-            ],
-            "complements": [
-              "kubectl for scripts and exact API operations",
-              "Helmfile for declarative release state",
-              "talosctl for Talos Linux node lifecycle"
-            ],
-            "prerequisites": [
-              "A reachable Kubernetes cluster and valid kubeconfig",
-              "RBAC permissions appropriate to the intended actions"
-            ],
-            "useCases": [
-              "Browse built-in and custom Kubernetes resources",
-              "Inspect unhealthy workloads with deterministic evidence",
-              "Manage logs, port-forwards, rollouts, and selected GitOps actions"
-            ]
-          },
-          "category": "cloud-infrastructure",
-          "displayName": "sofka",
-          "docs": "https://github.com/nklmilojevic/sofka#readme",
-          "homepage": "https://github.com/nklmilojevic/sofka",
-          "id": "brew:sofka",
-          "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
-          "lastUpdatedAt": "2026-09-30T04:05:54Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/nklmilojevic/sofka",
-          "researchedAt": "2026-09-30T09:03:25Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "sofka project documentation",
-              "url": "https://github.com/nklmilojevic/sofka"
-            },
-            {
-              "kind": "primary",
-              "title": "sofka v0.1.5 first stable release",
-              "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
-            }
-          ],
-          "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
-          "version": "0.29.6"
-        },
-        {
-          "agentSummary": "The administrative CLI for Talos Linux, used to configure machines, query the Talos API, inspect services, and manage Kubernetes node lifecycles.",
-          "assessment": {
-            "alternatives": [
-              "Talos Linux API clients",
-              "Distribution-specific node administration tools"
-            ],
-            "audiences": [
-              "Talos Linux cluster administrators",
-              "Platform teams operating immutable Kubernetes nodes"
-            ],
-            "caveats": [
-              "It manages Talos machines rather than serving as a general Kubernetes resource browser",
-              "The CLI version should match the Talos Linux version on managed nodes",
-              "Credential-bearing talosconfig files require careful protection"
-            ],
-            "complements": [
-              "sofka or kubectl for Kubernetes workload inspection",
-              "Omni for managed Talos operations"
-            ],
-            "prerequisites": [
-              "Talos Linux nodes or a planned Talos deployment",
-              "A valid talosconfig with appropriate credentials",
-              "A talosctl version compatible with the cluster"
-            ],
-            "useCases": [
-              "Apply and inspect Talos machine configuration",
-              "Bootstrap, upgrade, reset, and troubleshoot Talos nodes",
-              "Query node services, logs, resources, and health through the Talos API"
-            ]
-          },
-          "category": "cloud-infrastructure",
-          "displayName": "talosctl",
-          "docs": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl",
-          "homepage": "https://www.talos.dev/",
-          "id": "brew:talosctl",
-          "installURL": "pkgmgrmgr://install?package=brew%3Atalosctl",
-          "lastUpdatedAt": "2026-09-30T04:06:27Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/siderolabs/talos",
-          "researchedAt": "2026-09-30T09:03:25Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Official talosctl getting-started guide",
-              "url": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl"
-            },
-            {
-              "kind": "primary",
-              "title": "Talos Linux source repository",
-              "url": "https://github.com/siderolabs/talos"
-            }
-          ],
-          "upstreamSummary": "CLI for out-of-band management of Kubernetes nodes created by Talos",
-          "version": "1.14.2"
-        },
-        {
-          "agentSummary": "A declarative layer over Helm that versions release definitions, coordinates environments and values, previews changes, and reconciles many charts consistently.",
-          "assessment": {
-            "alternatives": [
-              "Direct Helm commands",
-              "Flux HelmRelease resources",
-              "Argo CD Applications"
-            ],
-            "audiences": [
-              "Platform engineers managing multiple Helm releases",
-              "GitOps and CI/CD teams",
-              "Operators maintaining environment-specific chart values"
-            ],
-            "caveats": [
-              "Adds another templating and state layer above Helm",
-              "Repository and environment structure require team conventions",
-              "Synchronization can make broad changes, so diff and review discipline matter"
-            ],
-            "complements": [
-              "sofka for interactive observation after deployment",
-              "Git and CI systems for reviewable change delivery",
-              "Argo CD for GitOps reconciliation"
-            ],
-            "prerequisites": [
-              "Helm knowledge and access to target Kubernetes clusters",
-              "Version-controlled Helmfile state and values"
-            ],
-            "useCases": [
-              "Declare many Helm releases in version-controlled files",
-              "Preview release differences before synchronization",
-              "Apply consistent chart state across environments"
-            ]
-          },
-          "category": "cloud-infrastructure",
-          "displayName": "helmfile",
-          "docs": "https://helmfile.readthedocs.io/en/stable",
-          "homepage": "https://github.com/helmfile/helmfile",
-          "id": "brew:helmfile",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ahelmfile",
-          "lastUpdatedAt": "2026-09-30T04:06:27Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/helmfile/helmfile",
-          "researchedAt": "2026-09-30T09:03:25Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Official Helmfile documentation",
-              "url": "https://helmfile.readthedocs.io/en/stable/"
-            },
-            {
-              "kind": "primary",
-              "title": "Helmfile source repository",
-              "url": "https://github.com/helmfile/helmfile"
-            }
-          ],
-          "upstreamSummary": "Deploy Kubernetes Helm Charts",
-          "version": "1.8.1"
-        }
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2026-07-03T17:13:21Z",
-        "firstStableReleaseSourceURL": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "sofka project documentation and usage guide",
-          "url": "https://github.com/nklmilojevic/sofka"
-        },
-        {
-          "kind": "primary",
-          "title": "sofka v0.1.5 release",
-          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
-        },
-        {
-          "kind": "primary",
-          "title": "Official talosctl getting-started guide",
-          "url": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl"
-        },
-        {
-          "kind": "primary",
-          "title": "Official Helmfile documentation",
-          "url": "https://helmfile.readthedocs.io/en/stable/"
-        }
-      ],
-      "title": "Sofka and the Three Layers of Kubernetes Operations",
-      "type": "editorial"
-    },
-    {
-      "batchID": "20260930T090325Z-86df3774",
-      "id": "for-you:media:20260930T090325Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "SVGO is a Node.js library and command-line application for optimizing vector images.",
-          "category": "media",
-          "displayName": "svgo",
-          "homepage": "https://svgo.dev",
-          "id": "npm:svgo",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asvgo",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "get dimensions of any image file",
-          "category": "media",
-          "displayName": "image-size",
-          "homepage": null,
-          "id": "npm:image-size",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aimage-size",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Fast math typesetting for the web.",
-          "category": "media",
-          "displayName": "katex",
-          "homepage": "https://katex.org",
-          "id": "npm:katex",
-          "installURL": "pkgmgrmgr://install?package=npm%3Akatex",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "QRCode / 2d Barcode api with both server side and client side support using canvas",
-          "category": "media",
-          "displayName": "qrcode",
-          "homepage": null,
-          "id": "npm:qrcode",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aqrcode",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "The smallest and fastest pixel-level image comparison library.",
-          "category": "media",
-          "displayName": "pixelmatch",
-          "homepage": "https://github.com/mapbox/pixelmatch#readme",
-          "id": "npm:pixelmatch",
-          "installURL": "pkgmgrmgr://install?package=npm%3Apixelmatch",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "For You in Media",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260930T090325Z-86df3774",
-      "id": "new-packages:developer-tools:20260930T090325Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Coding agent and development environment",
-          "category": "developer-tools",
-          "displayName": "Amp",
-          "homepage": "https://ampcode.com/app",
-          "id": "brew:cask:amp-app",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aamp-app",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Command-line tool to exercise USB HID devices via HIDAPI",
-          "category": "developer-tools",
-          "displayName": "hidapitester",
-          "homepage": "https://github.com/todbot/hidapitester",
-          "id": "brew:hidapitester",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ahidapitester",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "New Packages in Developer Tools",
-      "type": "newPackages"
-    },
-    {
-      "batchID": "20260930T090325Z-86df3774",
-      "id": "recently-updated:toys:20260930T090325Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Control your Nanoleaf lights",
-          "category": "toys",
-          "displayName": "Nanoleaf Desktop App",
-          "homepage": "https://nanoleaf.me/",
-          "id": "brew:cask:nanoleaf",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ananoleaf",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Desktop pet that reacts to AI coding agents",
-          "category": "toys",
-          "displayName": "Clawd on Desk",
-          "homepage": "https://github.com/rullerzhou-afk/clawd-on-desk",
-          "id": "brew:cask:clawd-on-desk",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclawd-on-desk",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Desktop pet that reflects coding agent activity",
-          "category": "toys",
-          "displayName": "Petdex",
-          "homepage": "https://petdex.dev/",
-          "id": "brew:cask:petdex",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apetdex",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Frontend application for the Buttplug sex toy control library",
-          "category": "toys",
-          "displayName": "Intiface Central",
-          "homepage": "https://github.com/intiface/intiface-central",
-          "id": "brew:cask:intiface-central",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aintiface-central",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Creates ASCII Art from text. A full implementation of the FIGfont spec.",
-          "category": "toys",
-          "displayName": "figlet",
-          "homepage": "https://github.com/patorjk/figlet.js#readme",
-          "id": "npm:figlet",
-          "installURL": "pkgmgrmgr://install?package=npm%3Afiglet",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "Recently Updated in Toys",
-      "type": "recentlyUpdated"
-    },
-    {
-      "batchID": "20260930T090325Z-86df3774",
-      "id": "new-packages:cloud-infrastructure:20260930T090325Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Kubernetes TUI, reimagined in Rust",
-          "category": "cloud-infrastructure",
-          "displayName": "sofka",
-          "homepage": "https://github.com/nklmilojevic/sofka",
-          "id": "brew:sofka",
-          "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Missing open-source Kubernetes UI with a built-in MCP server for AI agents",
-          "category": "cloud-infrastructure",
-          "displayName": "kubectl-radar",
-          "homepage": "https://radarhq.io",
-          "id": "brew:kubectl-radar",
-          "installURL": "pkgmgrmgr://install?package=brew%3Akubectl-radar",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "New Packages in Cloud Infrastructure",
-      "type": "newPackages"
-    },
-    {
-      "artwork": {
         "alt": "A private night workspace where abstract activity streams become linked note cards stored in a softly illuminated local vault.",
         "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
         "boxColors": {
@@ -718,57 +276,57 @@
     },
     {
       "batchID": "20260926T105505Z-a6e88a3d",
-      "id": "recently-updated:media:20260930T090325Z-f220bb45",
+      "id": "for-you:cloud-infrastructure:20260926T105505Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Screen recorder and video editor",
-          "category": "media",
-          "displayName": "Tight Studio",
-          "homepage": "https://tight.studio/",
-          "id": "brew:cask:tight-studio",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atight-studio",
-          "manager": "homebrew"
+          "agentSummary": "Command-line interface for all things Cloudflare Workers",
+          "category": "cloud-infrastructure",
+          "displayName": "wrangler",
+          "homepage": "https://github.com/cloudflare/workers-sdk#readme",
+          "id": "npm:wrangler",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awrangler",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Utility for converting camera RAW image files to ACES",
-          "category": "media",
-          "displayName": "rawtoaces",
-          "homepage": "https://github.com/AcademySoftwareFoundation/rawtoaces",
-          "id": "brew:rawtoaces",
-          "installURL": "pkgmgrmgr://install?package=brew%3Arawtoaces",
-          "manager": "homebrew"
+          "agentSummary": "AWS CDK Toolkit CLI, the command line tool for CDK apps",
+          "category": "cloud-infrastructure",
+          "displayName": "aws-cdk",
+          "homepage": "https://github.com/aws/aws-cdk",
+          "id": "npm:aws-cdk",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aaws-cdk",
+          "manager": "npm"
         },
         {
-          "agentSummary": "JPEG 2000 Library",
-          "category": "media",
-          "displayName": "grokj2k",
-          "homepage": "https://github.com/GrokImageCompression/grok",
-          "id": "brew:grokj2k",
-          "installURL": "pkgmgrmgr://install?package=brew%3Agrokj2k",
-          "manager": "homebrew"
+          "agentSummary": "The command-line interface for Vercel",
+          "category": "cloud-infrastructure",
+          "displayName": "vercel",
+          "homepage": "https://vercel.com",
+          "id": "npm:vercel",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avercel",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Offline AI subtitle generator",
-          "category": "media",
-          "displayName": "Subtitle Studio",
-          "homepage": "https://subtitlestudio.ai/",
-          "id": "brew:cask:subtitle-studio",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asubtitle-studio",
-          "manager": "homebrew"
+          "agentSummary": "Supabase CLI",
+          "category": "cloud-infrastructure",
+          "displayName": "supabase",
+          "homepage": "https://github.com/supabase/cli#readme",
+          "id": "npm:supabase",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asupabase",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Browser-based font editor",
-          "category": "media",
-          "displayName": "Fontra Pak",
-          "homepage": "https://fontra.xyz/",
-          "id": "brew:cask:fontra-pak",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Afontra-pak",
-          "manager": "homebrew"
+          "agentSummary": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
+          "category": "cloud-infrastructure",
+          "displayName": "expo-updates",
+          "homepage": "https://docs.expo.dev/versions/latest/sdk/updates/",
+          "id": "npm:expo-updates",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aexpo-updates",
+          "manager": "npm"
         }
       ],
       "publishedAt": "2026-09-26T10:55:05Z",
-      "title": "Recently Updated in Media",
-      "type": "recentlyUpdated"
+      "title": "For You in Cloud Infrastructure",
+      "type": "personalizedRecommendations"
     },
     {
       "artwork": {
@@ -1083,111 +641,111 @@
     },
     {
       "batchID": "20260922T164202Z-7725d80a",
-      "id": "for-you:networking:20260930T090325Z-f220bb45",
+      "id": "recently-updated:science:20260926T105505Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "ECMAScript parser",
-          "category": "networking",
-          "displayName": "acorn",
-          "homepage": "https://github.com/acornjs/acorn",
-          "id": "npm:acorn",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aacorn",
-          "manager": "npm"
+          "agentSummary": "Weather, tides, the sun, the moon, and maps, drawn for the terminal",
+          "category": "science",
+          "displayName": "linecast",
+          "homepage": "https://github.com/ashuttl/linecast",
+          "id": "brew:linecast",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alinecast",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset",
-          "category": "networking",
-          "displayName": "browserslist",
-          "homepage": "https://github.com/browserslist/browserslist#readme",
-          "id": "npm:browserslist",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abrowserslist",
-          "manager": "npm"
+          "agentSummary": "Toolkit for 3D computer graphics, image processing, and visualization",
+          "category": "science",
+          "displayName": "vtk",
+          "homepage": "https://www.vtk.org/",
+          "id": "brew:vtk",
+          "installURL": "pkgmgrmgr://install?package=brew%3Avtk",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "A library for obtaining browser versions with their maximum supported Baseline feature set and Widely Available status.",
-          "category": "networking",
-          "displayName": "baseline-browser-mapping",
-          "homepage": "https://github.com/web-platform-dx/baseline-browser-mapping#readme",
-          "id": "npm:baseline-browser-mapping",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abaseline-browser-mapping",
-          "manager": "npm"
+          "agentSummary": "Whole-genome association analysis toolset",
+          "category": "science",
+          "displayName": "plink1",
+          "homepage": "https://www.cog-genomics.org/plink/1.9/",
+          "id": "brew:plink1",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aplink1",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
-          "category": "networking",
-          "displayName": "autoprefixer",
-          "homepage": "https://github.com/postcss/autoprefixer#readme",
-          "id": "npm:autoprefixer",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aautoprefixer",
-          "manager": "npm"
+          "agentSummary": "Pairwise aligner for DNA sequences",
+          "category": "science",
+          "displayName": "lastz",
+          "homepage": "https://lastz.github.io/lastz/",
+          "id": "brew:lastz",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alastz",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Minimal H(TTP) framework built for high performance and portability.",
-          "category": "networking",
-          "displayName": "h3",
-          "homepage": "https://h3.dev",
-          "id": "npm:h3",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ah3",
-          "manager": "npm"
+          "agentSummary": "3D parametric modeller",
+          "category": "science",
+          "displayName": "FreeCAD",
+          "homepage": "https://www.freecad.org/",
+          "id": "brew:cask:freecad",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Afreecad",
+          "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-22T16:42:02Z",
-      "title": "For You in Networking",
-      "type": "personalizedRecommendations"
+      "title": "Recently Updated in Science",
+      "type": "recentlyUpdated"
     },
     {
       "batchID": "20260922T164202Z-7725d80a",
-      "id": "recently-updated:cloud-infrastructure:20260930T090325Z-f220bb45",
+      "id": "new-packages:productivity:20260926T105505Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Command-line interface for Vercel",
-          "category": "cloud-infrastructure",
-          "displayName": "vercel",
-          "homepage": "https://vercel.com/home",
-          "id": "brew:vercel",
-          "installURL": "pkgmgrmgr://install?package=brew%3Avercel",
+          "agentSummary": "Project management tool for tasks, sprints and docs",
+          "category": "productivity",
+          "displayName": "Plane",
+          "homepage": "https://plane.so/",
+          "id": "brew:cask:plane",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aplane",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "SQL interface for arbitrary resources with full CRUD support",
-          "category": "cloud-infrastructure",
-          "displayName": "stackql",
-          "homepage": "https://stackql.io/",
-          "id": "brew:stackql",
-          "installURL": "pkgmgrmgr://install?package=brew%3Astackql",
+          "agentSummary": "Markdown viewer and editor",
+          "category": "productivity",
+          "displayName": "MDHero",
+          "homepage": "https://mdhero.app/",
+          "id": "brew:cask:mdhero",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amdhero",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "CLI for PlanetScale Database",
-          "category": "cloud-infrastructure",
-          "displayName": "pscale",
-          "homepage": "https://www.planetscale.com/",
-          "id": "brew:pscale",
-          "installURL": "pkgmgrmgr://install?package=brew%3Apscale",
+          "agentSummary": "AI personal assistant you text",
+          "category": "productivity",
+          "displayName": "Pally Companion",
+          "homepage": "https://pally.com/",
+          "id": "brew:cask:pallycompanion",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apallycompanion",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "CLI for out-of-band management of Kubernetes nodes created by Talos",
-          "category": "cloud-infrastructure",
-          "displayName": "talosctl",
-          "homepage": "https://www.talos.dev/",
-          "id": "brew:talosctl",
-          "installURL": "pkgmgrmgr://install?package=brew%3Atalosctl",
+          "agentSummary": "Launchpad alternative",
+          "category": "productivity",
+          "displayName": "BuhoLaunchpad",
+          "homepage": "https://www.drbuho.com/buholaunchpad",
+          "id": "brew:cask:buholaunchpad",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Abuholaunchpad",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Deploy Kubernetes Helm Charts",
-          "category": "cloud-infrastructure",
-          "displayName": "helmfile",
-          "homepage": "https://github.com/helmfile/helmfile",
-          "id": "brew:helmfile",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ahelmfile",
+          "agentSummary": "Keyboard-first local launcher",
+          "category": "productivity",
+          "displayName": "Look",
+          "homepage": "https://github.com/kunkka19xx/look",
+          "id": "brew:cask:look",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Alook",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-22T16:42:02Z",
-      "title": "Recently Updated in Cloud Infrastructure",
-      "type": "recentlyUpdated"
+      "title": "New Packages in Productivity",
+      "type": "newPackages"
     },
     {
       "artwork": {
@@ -1428,75 +986,219 @@
     },
     {
       "batchID": "20260918T195137Z-767a8658",
-      "id": "for-you:developer-tools:20260930T090325Z-f220bb45",
+      "id": "recently-updated:ai:20260926T105505Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "The semantic version parser used by npm.",
-          "category": "developer-tools",
-          "displayName": "semver",
-          "homepage": "https://github.com/npm/node-semver#readme",
-          "id": "npm:semver",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asemver",
-          "manager": "npm"
+          "agentSummary": "Self-hostable AI stack for multi-user, multi-agent workflows on Matrix",
+          "category": "ai",
+          "displayName": "MindRoom",
+          "homepage": "https://github.com/mindroom-ai/mindroom",
+          "id": "brew:cask:mindroom",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amindroom",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "RFC9562 UUIDs",
-          "category": "developer-tools",
-          "displayName": "uuid",
-          "homepage": "https://github.com/uuidjs/uuid#readme",
-          "id": "npm:uuid",
-          "installURL": "pkgmgrmgr://install?package=npm%3Auuid",
-          "manager": "npm"
+          "agentSummary": "Extensible coding agent for the terminal",
+          "category": "ai",
+          "displayName": "Grok Build",
+          "homepage": "https://x.ai/build",
+          "id": "brew:cask:grok-build",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agrok-build",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "An extremely fast JavaScript and CSS bundler and minifier.",
-          "category": "developer-tools",
-          "displayName": "esbuild",
-          "homepage": "https://github.com/evanw/esbuild#readme",
-          "id": "npm:esbuild",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aesbuild",
-          "manager": "npm"
+          "agentSummary": "OpenAI's official ChatGPT desktop app",
+          "category": "ai",
+          "displayName": "ChatGPT",
+          "homepage": "https://chatgpt.com/",
+          "id": "brew:cask:chatgpt",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Achatgpt",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "resolve like require.resolve() on behalf of files asynchronously and synchronously",
-          "category": "developer-tools",
-          "displayName": "resolve",
-          "homepage": "https://github.com/browserify/resolve#readme",
-          "id": "npm:resolve",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aresolve",
-          "manager": "npm"
+          "agentSummary": "Terminal interface for Antigravity agents",
+          "category": "ai",
+          "displayName": "Antigravity CLI",
+          "homepage": "https://antigravity.google/product/antigravity-cli",
+          "id": "brew:cask:antigravity-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aantigravity-cli",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Native-ESM powered web dev build tool",
-          "category": "developer-tools",
-          "displayName": "vite",
-          "homepage": "https://vite.dev",
-          "id": "npm:vite",
-          "installURL": "pkgmgrmgr://install?package=npm%3Avite",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-18T19:51:37Z",
-      "title": "For You in Developer Tools",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260918T195137Z-767a8658",
-      "id": "new-packages:networking:20260930T090325Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Terminal UI for WireGuard and OpenVPN with live telemetry and leak guarding",
-          "category": "networking",
-          "displayName": "vortix",
-          "homepage": "https://github.com/Harry-kp/vortix",
-          "id": "brew:vortix",
-          "installURL": "pkgmgrmgr://install?package=brew%3Avortix",
+          "agentSummary": "Portable multi-agent harness for .agents-based skills and workflows",
+          "category": "ai",
+          "displayName": "oh-my-agent",
+          "homepage": "https://firstfluke.com/oh-my-agent/",
+          "id": "brew:oh-my-agent",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aoh-my-agent",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-18T19:51:37Z",
-      "title": "New Packages in Networking",
-      "type": "newPackages"
+      "title": "Recently Updated in Ai",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260918T195137Z-767a8658",
+      "id": "for-you:other:20260926T105505Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "opencontrol is available through npm for installation and management in Package Manager Manager.",
+          "category": "other",
+          "displayName": "opencontrol",
+          "homepage": null,
+          "id": "npm:opencontrol",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aopencontrol",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "conjure-lite is available through npm for installation and management in Package Manager Manager.",
+          "category": "other",
+          "displayName": "conjure-lite",
+          "homepage": null,
+          "id": "npm:conjure-lite",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aconjure-lite",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "dooboolab welcome console message.",
+          "category": "other",
+          "displayName": "dooboolab-welcome",
+          "homepage": null,
+          "id": "npm:dooboolab-welcome",
+          "installURL": "pkgmgrmgr://install?package=npm%3Adooboolab-welcome",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "bluefairy is available through npm for installation and management in Package Manager Manager.",
+          "category": "other",
+          "displayName": "bluefairy",
+          "homepage": null,
+          "id": "npm:bluefairy",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abluefairy",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Dash - Reinventing Cryptocurrency",
+          "category": "other",
+          "displayName": "Dash Core",
+          "homepage": "https://www.dash.org/",
+          "id": "brew:cask:dash-dash",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adash-dash",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-18T19:51:37Z",
+      "title": "For You in Other",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260918T195137Z-767a8658",
+      "id": "recently-updated:media:20260926T105505Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Bash script to download mp3s from the OverDrive audiobook service",
+          "category": "media",
+          "displayName": "overdrive",
+          "homepage": "https://github.com/chbrown/overdrive",
+          "id": "brew:overdrive",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aoverdrive",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Tool to organise photo libraries",
+          "category": "media",
+          "displayName": "PowerPhotos",
+          "homepage": "https://www.fatcatsoftware.com/powerphotos/",
+          "id": "brew:cask:powerphotos",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apowerphotos",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Fast and secure server for resizing and converting remote images",
+          "category": "media",
+          "displayName": "imgproxy",
+          "homepage": "https://imgproxy.net",
+          "id": "brew:imgproxy",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aimgproxy",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Display calibration software for Calibrite, ColorChecker and X-Rite devices",
+          "category": "media",
+          "displayName": "calibrite PROFILER",
+          "homepage": "https://calibrite.com/calibrite-profiler/",
+          "id": "brew:cask:calibrite-profiler",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acalibrite-profiler",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Comic reader",
+          "category": "media",
+          "displayName": "YACReader",
+          "homepage": "https://www.yacreader.com/",
+          "id": "brew:cask:yacreader",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ayacreader",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-18T19:51:37Z",
+      "title": "Recently Updated in Media",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260918T195137Z-767a8658",
+      "id": "for-you:networking:20260926T105505Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "ECMAScript parser",
+          "category": "networking",
+          "displayName": "acorn",
+          "homepage": "https://github.com/acornjs/acorn",
+          "id": "npm:acorn",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aacorn",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset",
+          "category": "networking",
+          "displayName": "browserslist",
+          "homepage": "https://github.com/browserslist/browserslist#readme",
+          "id": "npm:browserslist",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abrowserslist",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A library for obtaining browser versions with their maximum supported Baseline feature set and Widely Available status.",
+          "category": "networking",
+          "displayName": "baseline-browser-mapping",
+          "homepage": "https://github.com/web-platform-dx/baseline-browser-mapping#readme",
+          "id": "npm:baseline-browser-mapping",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abaseline-browser-mapping",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
+          "category": "networking",
+          "displayName": "autoprefixer",
+          "homepage": "https://github.com/postcss/autoprefixer#readme",
+          "id": "npm:autoprefixer",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aautoprefixer",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Minimal H(TTP) framework built for high performance and portability.",
+          "category": "networking",
+          "displayName": "h3",
+          "homepage": "https://h3.dev",
+          "id": "npm:h3",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ah3",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-18T19:51:37Z",
+      "title": "For You in Networking",
+      "type": "personalizedRecommendations"
     },
     {
       "artwork": {
@@ -1731,110 +1433,56 @@
     },
     {
       "batchID": "20260911T100100Z-195c076e",
-      "id": "for-you:language-runtime:20260930T090325Z-f220bb45",
+      "id": "recently-updated:other:20260926T105505Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Runtime typescript and ESM support for Node.js",
-          "category": "language-runtime",
-          "displayName": "jiti",
-          "homepage": "https://github.com/unjs/jiti#readme",
-          "id": "npm:jiti",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ajiti",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Vite as Node.js runtime",
-          "category": "language-runtime",
-          "displayName": "vite-node",
-          "homepage": "https://github.com/antfu-collective/vite-node#readme",
-          "id": "npm:vite-node",
-          "installURL": "pkgmgrmgr://install?package=npm%3Avite-node",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "👷 workerd, Cloudflare's JavaScript/Wasm Runtime",
-          "category": "language-runtime",
-          "displayName": "workerd",
-          "homepage": "https://github.com/cloudflare/workerd#readme",
-          "id": "npm:workerd",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aworkerd",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Run any Edge Function from CLI or Node.js module.",
-          "category": "language-runtime",
-          "displayName": "edge-runtime",
-          "homepage": "https://edge-runtime.vercel.app/packages/runtime",
-          "id": "npm:edge-runtime",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aedge-runtime",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "node",
-          "category": "language-runtime",
-          "displayName": "node",
-          "homepage": "https://github.com/aredridel/node-bin-gen#readme",
-          "id": "npm:node",
-          "installURL": "pkgmgrmgr://install?package=npm%3Anode",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-11T10:01:00Z",
-      "title": "For You in Language Runtime",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260911T100100Z-195c076e",
-      "id": "recently-updated:developer-tools:20260930T090325Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Monitor token usage, costs, and limits across AI coding tools",
-          "category": "developer-tools",
-          "displayName": "Token Monitor",
-          "homepage": "https://javis-ai.com/token-monitor/",
-          "id": "brew:cask:token-monitor",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atoken-monitor",
+          "agentSummary": "Generic library support script",
+          "category": "other",
+          "displayName": "libtool",
+          "homepage": "https://www.gnu.org/software/libtool/",
+          "id": "brew:libtool",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibtool",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Native GUI for Homebrew package management",
-          "category": "developer-tools",
-          "displayName": "Taphouse",
-          "homepage": "https://taphouse.multimodalsolutions.gr/",
-          "id": "brew:cask:taphouse",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ataphouse",
+          "agentSummary": "F1 Live Timing TUI for all F1 sessions with variable delay to sync to your TV",
+          "category": "other",
+          "displayName": "undercutf1",
+          "homepage": "https://amandhoot.com",
+          "id": "brew:undercutf1",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aundercutf1",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Native client for GitHub Copilot",
-          "category": "developer-tools",
-          "displayName": "GitHub Copilot app",
-          "homepage": "https://github.com/github/app",
-          "id": "brew:cask:github-copilot-app",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agithub-copilot-app",
+          "agentSummary": "C library for manipulating POSIX tar files",
+          "category": "other",
+          "displayName": "libtar",
+          "homepage": "https://repo.or.cz/libtar.git",
+          "id": "brew:libtar",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibtar",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "TOML formatter, linter and language server",
-          "category": "developer-tools",
-          "displayName": "tombi",
-          "homepage": "https://github.com/tombi-toml/tombi",
-          "id": "brew:tombi",
-          "installURL": "pkgmgrmgr://install?package=brew%3Atombi",
+          "agentSummary": "Text-based genealogy software",
+          "category": "other",
+          "displayName": "lifelines",
+          "homepage": "https://lifelines.github.io/lifelines/",
+          "id": "brew:lifelines",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alifelines",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "GitHub command-line tool",
-          "category": "developer-tools",
-          "displayName": "gh",
-          "homepage": "https://cli.github.com/",
-          "id": "brew:gh",
-          "installURL": "pkgmgrmgr://install?package=brew%3Agh",
+          "agentSummary": "Fork of SQLite that is both Open Source, and Open Contributions",
+          "category": "other",
+          "displayName": "libsql",
+          "homepage": "https://turso.tech/libsql",
+          "id": "brew:libsql",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibsql",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-11T10:01:00Z",
-      "title": "Recently Updated in Developer Tools",
+      "title": "Recently Updated in Other",
       "type": "recentlyUpdated"
     },
     {
@@ -2150,169 +1798,537 @@
     },
     {
       "batchID": "20260907T063155Z-f65b3609",
-      "id": "for-you:productivity:20260930T090325Z-f220bb45",
+      "id": "for-you:security:20260926T105505Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "A live preview of your emails right in your browser.",
-          "category": "productivity",
-          "displayName": "react-email",
-          "homepage": null,
-          "id": "npm:react-email",
-          "installURL": "pkgmgrmgr://install?package=npm%3Areact-email",
+          "agentSummary": "A tiny (118 bytes), secure URL-friendly unique string ID generator",
+          "category": "security",
+          "displayName": "nanoid",
+          "homepage": "https://github.com/ai/nanoid#readme",
+          "id": "npm:nanoid",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ananoid",
           "manager": "npm"
         },
         {
-          "agentSummary": "Read and modify Office Add-in manifest files.",
-          "category": "productivity",
-          "displayName": "office-addin-manifest",
-          "homepage": "https://github.com/OfficeDev/Office-Addin-Scripts#readme",
-          "id": "npm:office-addin-manifest",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aoffice-addin-manifest",
+          "agentSummary": "Streamable SHA hashes in pure javascript",
+          "category": "security",
+          "displayName": "sha.js",
+          "homepage": "https://github.com/crypto-browserify/sha.js",
+          "id": "npm:sha.js",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asha.js",
           "manager": "npm"
         },
         {
-          "agentSummary": "This package helps to transform resources to be used in a typesafe i18next project.",
-          "category": "productivity",
-          "displayName": "i18next-resources-for-ts",
-          "homepage": "https://github.com/i18next/i18next-resources-for-ts",
-          "id": "npm:i18next-resources-for-ts",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ai18next-resources-for-ts",
+          "agentSummary": "detect possibly catastrophic, exponential-time regular expressions",
+          "category": "security",
+          "displayName": "safe-regex2",
+          "homepage": "https://github.com/fastify/safe-regex2",
+          "id": "npm:safe-regex2",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asafe-regex2",
           "manager": "npm"
         },
         {
-          "agentSummary": "A unified, high-performance i18next CLI.",
-          "category": "productivity",
-          "displayName": "i18next-cli",
-          "homepage": "https://github.com/i18next/i18next-cli",
-          "id": "npm:i18next-cli",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ai18next-cli",
+          "agentSummary": "Optimized bcrypt in plain JavaScript with zero dependencies, with TypeScript support. Compatible to 'bcrypt'.",
+          "category": "security",
+          "displayName": "bcryptjs",
+          "homepage": "https://github.com/dcodeIO/bcrypt.js#readme",
+          "id": "npm:bcryptjs",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abcryptjs",
           "manager": "npm"
         },
         {
-          "agentSummary": "The Bump CLI is used to interact with your API documentation hosted on Bump.sh by using the APIs of developers.bump.sh",
-          "category": "productivity",
-          "displayName": "bump-cli",
-          "homepage": "https://bump.sh",
-          "id": "npm:bump-cli",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abump-cli",
+          "agentSummary": "Sanitize untrusted HTML (to prevent XSS) with a configuration specified by a Whitelist",
+          "category": "security",
+          "displayName": "xss",
+          "homepage": "https://github.com/leizongmin/js-xss",
+          "id": "npm:xss",
+          "installURL": "pkgmgrmgr://install?package=npm%3Axss",
           "manager": "npm"
         }
       ],
       "publishedAt": "2026-09-07T06:31:55Z",
-      "title": "For You in Productivity",
+      "title": "For You in Security",
       "type": "personalizedRecommendations"
     },
     {
       "batchID": "20260907T063155Z-f65b3609",
-      "id": "recently-updated:other:20260930T090325Z-f220bb45",
+      "id": "recently-updated:toys:20260926T105505Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Generic library support script",
-          "category": "other",
-          "displayName": "libtool",
-          "homepage": "https://www.gnu.org/software/libtool/",
-          "id": "brew:libtool",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibtool",
+          "agentSummary": "Desktop pet that reflects coding agent activity",
+          "category": "toys",
+          "displayName": "Petdex",
+          "homepage": "https://petdex.dev/",
+          "id": "brew:cask:petdex",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apetdex",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "F1 Live Timing TUI for all F1 sessions with variable delay to sync to your TV",
-          "category": "other",
-          "displayName": "undercutf1",
-          "homepage": "https://amandhoot.com",
-          "id": "brew:undercutf1",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aundercutf1",
+          "agentSummary": "Frontend application for the Buttplug sex toy control library",
+          "category": "toys",
+          "displayName": "Intiface Central",
+          "homepage": "https://github.com/intiface/intiface-central",
+          "id": "brew:cask:intiface-central",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aintiface-central",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "C library for manipulating POSIX tar files",
-          "category": "other",
-          "displayName": "libtar",
-          "homepage": "https://repo.or.cz/libtar.git",
-          "id": "brew:libtar",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibtar",
+          "agentSummary": "Tao of Unix Programming with Ruby-powered ANSI-colored fortunes",
+          "category": "toys",
+          "displayName": "taoup",
+          "homepage": "https://github.com/globalcitizen/taoup",
+          "id": "brew:taoup",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ataoup",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Text-based genealogy software",
-          "category": "other",
-          "displayName": "lifelines",
-          "homepage": "https://lifelines.github.io/lifelines/",
-          "id": "brew:lifelines",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alifelines",
+          "agentSummary": "Prints a steam locomotive if you type sl instead of ls",
+          "category": "toys",
+          "displayName": "sl",
+          "homepage": "https://github.com/mtoyoda/sl",
+          "id": "brew:sl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asl",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Fork of SQLite that is both Open Source, and Open Contributions",
-          "category": "other",
-          "displayName": "libsql",
-          "homepage": "https://turso.tech/libsql",
-          "id": "brew:libsql",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibsql",
+          "agentSummary": "Desktop pet that reacts to AI coding agents",
+          "category": "toys",
+          "displayName": "Clawd on Desk",
+          "homepage": "https://github.com/rullerzhou-afk/clawd-on-desk",
+          "id": "brew:cask:clawd-on-desk",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclawd-on-desk",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-07T06:31:55Z",
-      "title": "Recently Updated in Other",
+      "title": "Recently Updated in Toys",
       "type": "recentlyUpdated"
     },
     {
       "batchID": "20260907T063155Z-f65b3609",
-      "id": "new-packages:productivity:20260930T090325Z-f220bb45",
+      "id": "for-you:science:20260926T105505Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "AI personal assistant you text",
-          "category": "productivity",
-          "displayName": "Pally Companion",
-          "homepage": "https://pally.com/",
-          "id": "brew:cask:pallycompanion",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apallycompanion",
-          "manager": "homebrew"
+          "agentSummary": "Miller Rabin algorithm for primality test",
+          "category": "science",
+          "displayName": "miller-rabin",
+          "homepage": "https://github.com/indutny/miller-rabin",
+          "id": "npm:miller-rabin",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amiller-rabin",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Launchpad alternative",
-          "category": "productivity",
-          "displayName": "BuhoLaunchpad",
-          "homepage": "https://www.drbuho.com/buholaunchpad",
-          "id": "brew:cask:buholaunchpad",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Abuholaunchpad",
-          "manager": "homebrew"
+          "agentSummary": "Math.js is an extensive math library for JavaScript and Node.js. It features a flexible expression parser with support for symbolic computation, comes with a large set of built-in functions and constants, and offers an integrated solution to work with dif",
+          "category": "science",
+          "displayName": "mathjs",
+          "homepage": "https://mathjs.org",
+          "id": "npm:mathjs",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amathjs",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Markdown viewer and editor",
-          "category": "productivity",
-          "displayName": "Markpad",
-          "homepage": "https://markpad.dev/",
-          "id": "brew:cask:markpad",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amarkpad",
-          "manager": "homebrew"
+          "agentSummary": "Simple and Performant Language detection library (pure JS and zero dependencies)",
+          "category": "science",
+          "displayName": "tinyld",
+          "homepage": null,
+          "id": "npm:tinyld",
+          "installURL": "pkgmgrmgr://install?package=npm%3Atinyld",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Project management tool for tasks, sprints and docs",
-          "category": "productivity",
-          "displayName": "Plane",
-          "homepage": "https://plane.so/",
-          "id": "brew:cask:plane",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aplane",
-          "manager": "homebrew"
+          "agentSummary": "convert wkt to geojson",
+          "category": "science",
+          "displayName": "wellknown",
+          "homepage": "https://github.com/mapbox/wellknown#readme",
+          "id": "npm:wellknown",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awellknown",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Markdown viewer and editor",
-          "category": "productivity",
-          "displayName": "MDHero",
-          "homepage": "https://mdhero.app/",
-          "id": "brew:cask:mdhero",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amdhero",
-          "manager": "homebrew"
+          "agentSummary": "Porter Stemmer algorithm",
+          "category": "science",
+          "displayName": "stemmer",
+          "homepage": "https://words.github.io/stemmer/",
+          "id": "npm:stemmer",
+          "installURL": "pkgmgrmgr://install?package=npm%3Astemmer",
+          "manager": "npm"
         }
       ],
       "publishedAt": "2026-09-07T06:31:55Z",
-      "title": "New Packages in Productivity",
+      "title": "For You in Science",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "A glowing catlike packet follows a cyan network path between two distant workstations, passing relays and firewalls in a dark landscape.",
+        "attribution": "Generated with OpenAI image generation",
+        "boxColors": {
+          "backgroundEnd": "#073044",
+          "backgroundStart": "#031421",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/tailcat-ephemeral-network-path-2026-09-03.png"
+      },
+      "batchID": "20260903T095638Z-70a338a9",
+      "body": "## A network compressed into an address\n\nMost private-network tools begin by establishing an organization: create an account, enroll devices, name them, and define who may reach what. **Tailcat** starts somewhere smaller. One machine listens, produces a `tc...` address, and another uses that address to connect. The result resembles netcat's bidirectional byte pipe, but the traffic rides Tailscale's userspace WireGuard implementation, NAT traversal, and DERP relay system. It needs neither a Tailscale account nor root access because it does not add routes, configure DNS, or create a kernel tunnel interface.\n\nThat compact model is the interesting part. A Tailcat address contains public-key and relay-bootstrap information encoded in CBOR. The peers rendezvous through DERP, then Tailscale's transport attempts a direct UDP path; the relay remains a fallback when NAT or firewall conditions prevent direct contact. Instead of asking a control plane to introduce two named devices, users exchange one capability-like string through an existing trusted channel.\n\n## Old ingredients, newly separated\n\nTailcat is new as a public tool, but not as an idea or code sketch. Its upstream history says Brad Fitzpatrick first wrote `derpcat` inside a Tailscale fork during a flight in September 2023. It repeatedly fell behind internal changes. The revived version became a regular Go module and was open-sourced at TailscaleUp in August 2026. Its first tagged release, `v0.1.0`, arrived on August 30, followed by Tailscale's public launch on August 31.\n\nThis lineage explains both its confidence and its caution. Tailcat extracts field-tested networking components, yet the new composition has not accumulated the operating history of Tailscale itself. The repository explicitly offers **no stability promise** for command flags, Go APIs, output, or the wire format. Public Tailcat DERP relays are best-effort, rate-limited, and have no uptime or throughput target. Those are not footnotes for production adoption; they define the current product boundary.\n\n## What people can actually do with it\n\nThe CLI now reaches beyond a raw pipe. Documented workflows include:\n\n- forwarding a local port to a remote service;\n- running SSH, SCP, and SFTP through the connection;\n- copying and listing files with Tailcat-native commands;\n- creating a SOCKS proxy for an otherwise unaware program such as `curl`;\n- waiting until NAT traversal produces a direct path.\n\nThere is also a Go library and an experimental WebAssembly demo. The browser currently travels through DERP rather than forming direct connections, an important distinction from the native CLI.\n\nIndependent hands-on evidence is encouraging but appropriately messy. Compendia Labs built the tool, inspected its connection flow, and exercised a server. In that test environment, DERP connectivity succeeded while blocked UDP egress caused rendezvous to time out. That is useful actual-use evidence precisely because it is not a victory lap: software designed to cross network boundaries still depends on the network allowing the transports its rendezvous and path discovery expect. Community projects have already begun integrating Tailcat into proxy and graphical file-sharing experiments, but the ecosystem is days old, not mature.\n\n## Capability strings are a security decision\n\nRemoving accounts does not remove trust; it relocates trust into keys and connection material. A short address identifies the server. Optional client allowlists can narrow access, while reusable saved keys create stable endpoints. The choice between an ephemeral address and a persistent one should therefore be deliberate. Share addresses as secrets when they confer access, verify SSH host keys, and keep application authentication in place rather than treating transport encryption as authorization.\n\nRunning a private DERP server reduces dependence on Tailscale's free relays, but it also makes relay availability, patching, capacity, and logging your responsibility. Tailcat deliberately omits the policy, device inventory, identity lifecycle, audit controls, and administrative guardrails a managed tailnet supplies. For a temporary developer connection, that absence can be refreshing. For a team network, it can become missing infrastructure.\n\n## Tailcat or a whole virtual network?\n\nThe related **EdgeVPN** illustrates the next step up in scope. It uses libp2p and shared tokens to form a decentralized virtual network, assign virtual addresses, provide DNS, proxy services, and coordinate nodes through a distributed ledger. Kairos uses it for peer-to-peer Kubernetes coordination, concrete evidence that the design supports more than demos. Kairos also documents additional CPU cost from layered encryption, while EdgeVPN warns that exposing a token can hand over broad network control.\n\nChoose Tailcat when the desired object is one temporary path: a port, shell, file copy, or embedded Go connection. Choose EdgeVPN when several nodes need an ongoing network and discovery layer. Choose managed Tailscale when identity, ACLs, device administration, and dependable service matter more than eliminating the control plane.\n\nTailcat's achievement is conceptual economy. It shows that the difficult data-plane pieces can be packaged as a small, portable connection without pretending that coordination and governance were unnecessary all along. For experiments, incident access, and short-lived developer bridges, that may be exactly the amount of network required.",
+      "deck": "Tailscale's new experiment turns its data plane into a temporary encrypted pipe, trading accounts and policy machinery for portable connection material.",
+      "id": "editorial:2026-09-03:tailcat-networking-without-the-control-plane",
+      "package": {
+        "agentSummary": "Tailcat creates encrypted, netcat-like peer connections through Tailscale's userspace WireGuard, NAT traversal, and DERP components, without accounts, routes, or a control plane.",
+        "assessment": {
+          "alternatives": [
+            "Tailscale for managed identity, policy, and a persistent tailnet",
+            "WireGuard for explicitly configured durable tunnels",
+            "EdgeVPN for a broader decentralized virtual network"
+          ],
+          "audiences": [
+            "Developers needing temporary connectivity between machines",
+            "Network engineers exploring userspace peer-to-peer tunnels",
+            "Self-hosters prepared to manage connection tokens and relays"
+          ],
+          "caveats": [
+            "The project explicitly promises no CLI, Go API, or wire-format stability",
+            "Public relays are rate-limited and carry no uptime or throughput guarantee",
+            "Possession of connection material replaces centralized identity and authorization"
+          ],
+          "complements": [
+            "A self-hosted DERP relay for operational independence",
+            "SSH host-key verification and application-level authentication",
+            "Firewall and traffic-observation tools for troubleshooting"
+          ],
+          "prerequisites": [
+            "A secure out-of-band channel for exchanging tailcat addresses",
+            "Outbound network access to a DERP relay unless self-hosting one",
+            "Tolerance for a young command line and wire protocol"
+          ],
+          "useCases": [
+            "Copying files or forwarding a port across NAT boundaries",
+            "Opening temporary SSH, SFTP, or SOCKS connections",
+            "Embedding Tailscale data-plane connectivity in Go programs"
+          ]
+        },
+        "category": "networking",
+        "displayName": "tailcat",
+        "docs": "https://github.com/tailscale/tailcat#readme",
+        "homepage": "https://github.com/tailscale/tailcat",
+        "id": "brew:tailcat",
+        "installURL": "pkgmgrmgr://install?package=brew%3Atailcat",
+        "lastUpdatedAt": "2026-09-03T00:16:39Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/tailscale/tailcat",
+        "researchedAt": "2026-09-03T09:56:38Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Tailcat project repository and technical documentation",
+            "url": "https://github.com/tailscale/tailcat"
+          },
+          {
+            "kind": "primary",
+            "title": "Tailscale launch announcement for Tailcat",
+            "url": "https://tailscale.com/blog/tailcat"
+          },
+          {
+            "kind": "independent",
+            "title": "Compendia Labs hands-on Tailcat test",
+            "url": "https://blog.compendialabs.org/posts/2026-09-01-dk-tailcat"
+          }
+        ],
+        "upstreamSummary": "Netcat-like tool over Tailscale's data plane, without its control plane",
+        "version": "0.5.0"
+      },
+      "primaryPackageID": "brew:tailcat",
+      "publishedAt": "2026-09-03T09:56:38Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Tailcat creates encrypted, netcat-like peer connections through Tailscale's userspace WireGuard, NAT traversal, and DERP components, without accounts, routes, or a control plane.",
+          "assessment": {
+            "alternatives": [
+              "Tailscale for managed identity, policy, and a persistent tailnet",
+              "WireGuard for explicitly configured durable tunnels",
+              "EdgeVPN for a broader decentralized virtual network"
+            ],
+            "audiences": [
+              "Developers needing temporary connectivity between machines",
+              "Network engineers exploring userspace peer-to-peer tunnels",
+              "Self-hosters prepared to manage connection tokens and relays"
+            ],
+            "caveats": [
+              "The project explicitly promises no CLI, Go API, or wire-format stability",
+              "Public relays are rate-limited and carry no uptime or throughput guarantee",
+              "Possession of connection material replaces centralized identity and authorization"
+            ],
+            "complements": [
+              "A self-hosted DERP relay for operational independence",
+              "SSH host-key verification and application-level authentication",
+              "Firewall and traffic-observation tools for troubleshooting"
+            ],
+            "prerequisites": [
+              "A secure out-of-band channel for exchanging tailcat addresses",
+              "Outbound network access to a DERP relay unless self-hosting one",
+              "Tolerance for a young command line and wire protocol"
+            ],
+            "useCases": [
+              "Copying files or forwarding a port across NAT boundaries",
+              "Opening temporary SSH, SFTP, or SOCKS connections",
+              "Embedding Tailscale data-plane connectivity in Go programs"
+            ]
+          },
+          "category": "networking",
+          "displayName": "tailcat",
+          "docs": "https://github.com/tailscale/tailcat#readme",
+          "homepage": "https://github.com/tailscale/tailcat",
+          "id": "brew:tailcat",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atailcat",
+          "lastUpdatedAt": "2026-09-03T00:16:39Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/tailscale/tailcat",
+          "researchedAt": "2026-09-03T09:56:38Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Tailcat project repository and technical documentation",
+              "url": "https://github.com/tailscale/tailcat"
+            },
+            {
+              "kind": "primary",
+              "title": "Tailscale launch announcement for Tailcat",
+              "url": "https://tailscale.com/blog/tailcat"
+            },
+            {
+              "kind": "independent",
+              "title": "Compendia Labs hands-on Tailcat test",
+              "url": "https://blog.compendialabs.org/posts/2026-09-01-dk-tailcat"
+            }
+          ],
+          "upstreamSummary": "Netcat-like tool over Tailscale's data plane, without its control plane",
+          "version": "0.5.0"
+        },
+        {
+          "agentSummary": "EdgeVPN builds decentralized private networks, reverse proxies, and file transfers on libp2p, using shared configuration tokens and an embedded distributed coordination layer.",
+          "assessment": {
+            "alternatives": [
+              "Tailcat for narrow, temporary application connections",
+              "Tailscale or NetBird for managed identity and policy",
+              "WireGuard for manually configured point-to-point tunnels"
+            ],
+            "audiences": [
+              "Edge-computing and distributed-systems operators",
+              "Self-hosters wanting decentralized node discovery",
+              "Go developers building peer-to-peer networking features"
+            ],
+            "caveats": [
+              "A leaked token can grant broad network control unless trusted zones are configured",
+              "Peer establishment may take minutes according to upstream guidance",
+              "Kairos documents extra CPU cost from additional encryption layers"
+            ],
+            "complements": [
+              "Kairos for decentralized edge Kubernetes",
+              "Centralized secret management for network tokens",
+              "Monitoring for peer health, latency, and resource use"
+            ],
+            "prerequisites": [
+              "Administrative access when creating a system network interface",
+              "Secure distribution of the shared network token",
+              "Time for peer discovery and convergence"
+            ],
+            "useCases": [
+              "Joining remote nodes into a virtual private network",
+              "Exposing TCP services through a peer-to-peer reverse proxy",
+              "Coordinating decentralized Kubernetes nodes"
+            ]
+          },
+          "category": "networking",
+          "displayName": "edgevpn",
+          "docs": "https://mudler.github.io/edgevpn",
+          "homepage": "https://mudler.github.io/edgevpn",
+          "id": "brew:edgevpn",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aedgevpn",
+          "lastUpdatedAt": "2026-09-03T08:53:42Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/mudler/edgevpn",
+          "researchedAt": "2026-09-03T09:56:38Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "EdgeVPN project repository",
+              "url": "https://github.com/mudler/edgevpn"
+            },
+            {
+              "kind": "primary",
+              "title": "EdgeVPN documentation",
+              "url": "https://mudler.github.io/edgevpn/docs/"
+            },
+            {
+              "kind": "independent",
+              "title": "Kairos peer-to-peer network architecture",
+              "url": "https://kairos.io/docs/architecture/network/"
+            }
+          ],
+          "upstreamSummary": "Immutable, decentralized, statically built p2p VPN",
+          "version": "0.35.4"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-08-30T03:10:00Z",
+        "firstStableReleaseSourceURL": "https://github.com/tailscale/tailcat/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Tailcat project repository and technical documentation",
+          "url": "https://github.com/tailscale/tailcat"
+        },
+        {
+          "kind": "primary",
+          "title": "Tailcat v0.1.0 release",
+          "url": "https://github.com/tailscale/tailcat/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Tailscale launch announcement for Tailcat",
+          "url": "https://tailscale.com/blog/tailcat"
+        },
+        {
+          "kind": "independent",
+          "title": "Compendia Labs hands-on Tailcat test",
+          "url": "https://blog.compendialabs.org/posts/2026-09-01-dk-tailcat"
+        }
+      ],
+      "title": "Tailcat and the Smallest Useful Private Network",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260903T095638Z-a67d98ee",
+      "id": "new-packages:games:20260926T105505Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Tool to run Windows games",
+          "category": "games",
+          "displayName": "Highball",
+          "homepage": "https://github.com/gauthierpiarrette/highball",
+          "id": "brew:cask:highball",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahighball",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-03T09:56:38Z",
+      "title": "New Packages in Games",
       "type": "newPackages"
+    },
+    {
+      "batchID": "20260903T095638Z-a67d98ee",
+      "id": "for-you:system:20260926T105505Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Like which(1) unix command. Find the first instance of an executable in the PATH.",
+          "category": "system",
+          "displayName": "which",
+          "homepage": "https://github.com/npm/node-which#readme",
+          "id": "npm:which",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awhich",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A deep deletion module for node (like `rm -rf`)",
+          "category": "system",
+          "displayName": "rimraf",
+          "homepage": "https://github.com/isaacs/rimraf#readme",
+          "id": "npm:rimraf",
+          "installURL": "pkgmgrmgr://install?package=npm%3Arimraf",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Recursively mkdir, like `mkdir -p`",
+          "category": "system",
+          "displayName": "mkdirp",
+          "homepage": "https://github.com/isaacs/node-mkdirp#readme",
+          "id": "npm:mkdirp",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amkdirp",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a Docker container",
+          "category": "system",
+          "displayName": "is-docker",
+          "homepage": "https://github.com/sindresorhus/is-docker#readme",
+          "id": "npm:is-docker",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-docker",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a container (Docker/Podman)",
+          "category": "system",
+          "displayName": "is-inside-container",
+          "homepage": "https://github.com/sindresorhus/is-inside-container#readme",
+          "id": "npm:is-inside-container",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-inside-container",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-03T09:56:38Z",
+      "title": "For You in System",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260903T095638Z-a67d98ee",
+      "id": "recently-updated:data:20260926T105505Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Cross platform SQL editor and database management app",
+          "category": "data",
+          "displayName": "Beekeeper Studio",
+          "homepage": "https://www.beekeeperstudio.io/",
+          "id": "brew:cask:beekeeper-studio",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Abeekeeper-studio",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Python-based fake data generator",
+          "category": "data",
+          "displayName": "faker",
+          "homepage": "https://faker.readthedocs.io",
+          "id": "brew:faker",
+          "installURL": "pkgmgrmgr://install?package=brew%3Afaker",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "JSON parser and visualization tool",
+          "category": "data",
+          "displayName": "oj",
+          "homepage": "https://github.com/ohler55/ojg",
+          "id": "brew:oj",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aoj",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "CI-Friendly tool to document a database",
+          "category": "data",
+          "displayName": "tbls",
+          "homepage": "https://github.com/k1LoW/tbls",
+          "id": "brew:tbls",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atbls",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Enables developers to manage Confluent Cloud or Confluent Platform",
+          "category": "data",
+          "displayName": "Confluent CLI",
+          "homepage": "https://docs.confluent.io/confluent-cli/current/overview.html",
+          "id": "brew:cask:confluent-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aconfluent-cli",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-03T09:56:38Z",
+      "title": "Recently Updated in Data",
+      "type": "recentlyUpdated"
     }
   ],
-  "generatedAt": "2026-09-30T09:03:25Z",
-  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20260930T090325Z-db5d8bd3.json",
-  "pageID": "20260930T090325Z-ae2625db",
+  "generatedAt": "2026-09-29T07:55:31Z",
+  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20260929T075531Z-e6ebcc60.json",
+  "pageID": "20260929T075531Z-b8d4f860",
   "schemaVersion": 2
 }
