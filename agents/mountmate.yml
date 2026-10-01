@@ -1,7 +1,6 @@
 id: cask:mountmate
 display-name: MountMate
-homepage: https://homielab.com/en/page/mountmate
-repo: https://github.com/homielab/mountmate
+repo: null
 docs:
   - https://github.com/homielab/mountmate#readme
   - https://mountmate.homielab.com/
@@ -57,10 +56,6 @@ history:
     - >
       Network shares can be configured for login-time mounting and automatic
       reconnection after sleep, network changes, or dropped connections.
-category: system
-package-manager:
-  brew-cask: mountmate
-package-manager-url: https://formulae.brew.sh/cask/mountmate
 tags:
   - disk-management
   - external-drives
@@ -69,10 +64,35 @@ tags:
   - mount
   - network-shares
   - unmount
-description: Menubar app to easily manage external drives
-applications:
-  - MountMate.app
 provenance:
-  cask: mountmate
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://github.com/homielab/mountmate documents external-volume and network-share
+      management.
+    - source_facts.description identifies an external-drive management utility.
+  display-name-sources:
+    - current_curation.display-name
+    - https://mountmate.homielab.com/
+  docs-sources:
+    - The official product site summarizes the drive-management workflow.
+    - >
+      The official repository README is the most detailed official installation and
+      usage surface.
+  history-sources:
+    - https://github.com/homielab/mountmate
+    - https://mountmate.homielab.com/
+  repo-sources:
+    - source_facts.repo is already populated; repo is intentionally null as required.
+  tags-sources:
+    - https://github.com/homielab/mountmate
+    - https://mountmate.homielab.com/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - system
+  - storage
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

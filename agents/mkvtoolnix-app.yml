@@ -1,12 +1,12 @@
 id: cask:mkvtoolnix-app
 display-name: MKVToolNix
-homepage: https://mkvtoolnix.download/
 repo: https://codeberg.org/mbunkus/mkvtoolnix
 docs:
   - https://mkvtoolnix.download/docs.html
   - https://mkvtoolnix.download/doc/mkvtoolnix-gui.html
 config-file-location:
-  macos: ~/Library/Preferences/bunkus.org/mkvtoolnix-gui/mkvtoolnix-gui.ini
+  macos:
+    - ~/Library/Preferences/bunkus.org/mkvtoolnix-gui/mkvtoolnix-gui.ini
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,10 +63,6 @@ history:
     - >
       The GUI can save multiplexing configurations and reopen .mtxcfg files, while the
       companion command-line tools support repeatable shell and automation workflows.
-category: media
-package-manager:
-  brew-cask: mkvtoolnix-app
-package-manager-url: https://formulae.brew.sh/cask/mkvtoolnix-app
 tags:
   - gui
   - matroska
@@ -75,12 +71,38 @@ tags:
   - mkv
   - multiplexing
   - video
-description: GUI including a set of tools to create, alter and inspect Matroska files (MKV)
-applications:
-  - MKVToolNix.app
 provenance:
-  cask: mkvtoolnix-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - mkvtoolnix
+  category-sources:
+    - https://mkvtoolnix.download/ describes MKVToolNix as a tool set for Matroska files.
+    - >
+      source_facts.description identifies tools for creating, altering, and inspecting
+      Matroska video containers.
+  display-name-sources:
+    - current_curation.display-name
+    - https://mkvtoolnix.download/
+  docs-sources:
+    - >
+      The official MKVToolNix GUI manual documents invocation, multiplexing, inspection,
+      and editing modes.
+    - The official documentation index links the manuals for every included program.
+  history-sources:
+    - https://help.mkvtoolnix.download/t/mkvtoolnix-issue-tracker-wiki-moved-to-codeberg/1266
+    - https://mkvtoolnix.download/
+    - https://mkvtoolnix.download/docs.html
+    - https://mkvtoolnix.download/old_news.html
+    - https://mkvtoolnix.download/source.html
+  repo-sources:
+    - https://mkvtoolnix.download/source.html gives the official HTTPS Codeberg clone URL.
+  tags-sources:
+    - https://mkvtoolnix.download/doc/mkvtoolnix-gui.html
+    - https://mkvtoolnix.download/docs.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - video-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
