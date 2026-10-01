@@ -1,14 +1,16 @@
 id: cask:openhv
 display-name: OpenHV
-homepage: https://www.openhv.net/
-repo: https://github.com/OpenHV/OpenHV
+repo: null
 docs:
   - https://openhv.readthedocs.io/
   - https://github.com/OpenHV/OpenHV/wiki
 config-file-location:
-  linux: ~/.config/openra/settings.yaml
-  macos: ~/Library/Application Support/OpenRA/settings.yaml
-  windows: '%APPDATA%\OpenRA\settings.yaml'
+  linux:
+    - ~/.config/openra/settings.yaml
+  macos:
+    - ~/Library/Application Support/OpenRA/settings.yaml
+  windows:
+    - '%APPDATA%\OpenRA\settings.yaml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -56,10 +58,6 @@ history:
       spectators and replay sharing support community play. Modders edit MiniYAML rules
       and Lua scripts, and server operators can run the official dedicated-server mode
       or Docker image.
-category: games
-package-manager:
-  brew-cask: openhv
-package-manager-url: https://formulae.brew.sh/cask/openhv
 tags:
   - map-editor
   - multiplayer
@@ -67,10 +65,37 @@ tags:
   - pixel-art
   - real-time-strategy
   - science-fiction
-description: Pixel art science-fiction real-time strategy game
-applications:
-  - OpenHV.app
 provenance:
-  cask: openhv
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://github.com/OpenHV/OpenHV
+    - https://www.openhv.net/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.openhv.net/
+  docs-sources:
+    - >
+      The official website links the Read the Docs site and GitHub wiki; the repository
+      README links the wiki and API documentation.
+  history-sources:
+    - https://github.com/OpenHV/OpenHV
+    - https://github.com/OpenHV/OpenHV/releases
+    - https://github.com/OpenHV/OpenHV/wiki
+    - https://www.openhv.net/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped.
+  tags-sources:
+    - https://github.com/OpenHV/OpenHV
+    - https://www.openhv.net/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - real-time-strategy
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,11 +1,11 @@
 id: cask:opencomic
 display-name: OpenComic
-homepage: https://opencomic.app/
-repo: https://github.com/ollm/OpenComic
+repo: null
 docs:
   - https://opencomic.app/docs
 config-file-location:
-  windows: '%APPDATA%/OpenComic'
+  windows:
+    - '%APPDATA%/OpenComic'
 credentials-file-location: null
 history:
   adoption-history:
@@ -51,10 +51,6 @@ history:
       Users open local files, archives, or directories; maintain a library; and read
       using page, manga, webtoon, or scrolling layouts. It can also browse OPDS catalogs
       and connect to remote storage through protocols such as SMB, SFTP, S3, and WebDAV.
-category: media
-package-manager:
-  brew-cask: opencomic
-package-manager-url: https://formulae.brew.sh/cask/opencomic
 tags:
   - comic-reader
   - desktop
@@ -62,10 +58,33 @@ tags:
   - manga-reader
   - opds
   - webtoon-reader
-description: Comic and Manga reader
-applications:
-  - OpenComic.app
 provenance:
-  cask: opencomic
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://opencomic.app/docs/guides/features/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://opencomic.app/
+  docs-sources:
+    - Official documentation linked by the OpenComic project.
+  history-sources:
+    - https://github.com/ollm/OpenComic/blob/master/CHANGELOG.md
+    - https://opencomic.app/
+    - https://opencomic.app/docs/guides/features/
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped.
+  tags-sources:
+    - https://opencomic.app/docs/guides/features/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - comics
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
