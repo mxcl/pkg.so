@@ -1,14 +1,16 @@
 id: cask:open-webui
 display-name: Open WebUI
-homepage: https://openwebui.com/
-repo: https://github.com/open-webui/desktop
+repo: null
 docs:
   - https://docs.openwebui.com/
   - https://github.com/open-webui/desktop#readme
 config-file-location:
-  linux: ~/.config/open-webui/config.json
-  macos: ~/Library/Application Support/open-webui/config.json
-  windows: '%APPDATA%\open-webui\config.json'
+  linux:
+    - ~/.config/open-webui/config.json
+  macos:
+    - ~/Library/Application Support/open-webui/config.json
+  windows:
+    - '%APPDATA%\open-webui\config.json'
 credentials-file-location:
   linux:
     - ~/.config/open-webui/config.json
@@ -84,10 +86,6 @@ history:
       For offline inference, enable the bundled llama.cpp workflow and download a
       compatible model. The global Spotlight shortcut provides quick chat, screenshot,
       and voice workflows outside the main window.
-category: ai
-package-manager:
-  brew-cask: open-webui
-package-manager-url: https://formulae.brew.sh/cask/open-webui
 tags:
   - desktop-app
   - electron
@@ -98,10 +96,42 @@ tags:
   - offline-ai
   - open-webui
   - self-hosted
-description: Desktop application for Open WebUI
-applications:
-  - Open WebUI.app
 provenance:
-  cask: open-webui
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official desktop README describes a native interface for running Open WebUI
+      locally, connecting to remote servers, and optionally using built-in llama.cpp
+      inference: https://github.com/open-webui/desktop#readme
+  display-name-sources:
+    - >
+      Official desktop README title and Electron product name:
+      https://github.com/open-webui/desktop#readme
+    - current_curation.display-name
+  docs-sources:
+    - Dedicated official documentation domain linked from the desktop repository.
+    - >
+      The official desktop README documents desktop-specific setup, operating modes,
+      features, requirements, and privacy behavior.
+  history-sources:
+    - https://docs.openwebui.com/
+    - https://github.com/open-webui/desktop#readme
+    - https://github.com/open-webui/desktop/blob/main/CHANGELOG.md
+    - https://github.com/open-webui/desktop/blob/main/src/main/utils/index.ts
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per task rules the repository field is
+      returned as null without re-evaluation.
+  tags-sources:
+    - 'Official Open WebUI documentation: https://docs.openwebui.com/'
+    - >
+      Official desktop README feature and architecture descriptions:
+      https://github.com/open-webui/desktop#readme
+category-confidence: high
+category-path:
+  - ai
+  - llm-interfaces
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
