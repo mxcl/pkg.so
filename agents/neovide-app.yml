@@ -1,7 +1,6 @@
 id: cask:neovide-app
 display-name: Neovide
-homepage: https://github.com/neovide/neovide
-repo: https://github.com/neovide/neovide
+repo: null
 docs:
   - https://neovide.dev/
   - https://neovide.dev/command-line-reference
@@ -15,7 +14,8 @@ config-file-location:
     - $XDG_CONFIG_HOME/neovide/config.toml
     - ~/.config/neovide/config.toml
     - ~/Library/Application Support/neovide/config.toml
-  windows: '{FOLDERID_RoamingAppData}/neovide/config.toml'
+  windows:
+    - '{FOLDERID_RoamingAppData}/neovide/config.toml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,10 +70,6 @@ history:
       Neovim configuration, plugins, mappings, and commands. Neovide-specific behavior
       can be set through Neovim variables, command-line options, environment variables,
       or config.toml.
-category: developer-tools
-package-manager:
-  brew-cask: neovide-app
-package-manager-url: https://formulae.brew.sh/cask/neovide-app
 tags:
   - cross-platform
   - gpu-rendering
@@ -81,12 +77,39 @@ tags:
   - neovim
   - rust
   - text-editor
-description: Neovim Client
-applications:
-  - Neovide.app
 provenance:
-  cask: neovide-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - neovide
+  category-sources:
+    - >
+      The official project describes Neovide as a Neovim client written in Rust:
+      https://github.com/neovide/neovide#readme
+  display-name-sources:
+    - 'Official documentation title: https://neovide.dev/'
+    - source_facts.applications
+  docs-sources:
+    - 'Dedicated official documentation site: https://neovide.dev/'
+    - 'Official config-file locations and format: https://neovide.dev/config-file.html'
+    - 'Official configuration guide: https://neovide.dev/configuration.html'
+  history-sources:
+    - 'Official config-file guide: https://neovide.dev/config-file.html'
+    - 'Official configuration guide: https://neovide.dev/configuration.html'
+    - 'Official documentation: https://neovide.dev/'
+    - 'Official installation guide: https://neovide.dev/installation.html'
+    - 'Official project repository: https://github.com/neovide/neovide'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repository lookup was
+      skipped and repo is returned as null.
+  tags-sources:
+    - >
+      Official repository description and documentation:
+      https://github.com/neovide/neovide and https://neovide.dev/
+category-confidence: high
+category-path:
+  - developer-tools
+  - editors
+  - neovim-clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

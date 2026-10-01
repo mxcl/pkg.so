@@ -1,7 +1,6 @@
 id: cask:nextcloud-talk
 display-name: Nextcloud Talk Desktop
-homepage: https://nextcloud.com/talk/
-repo: https://github.com/nextcloud-releases/talk-desktop
+repo: null
 docs:
   - https://github.com/nextcloud/talk-desktop#readme
   - https://nextcloud.com/talk
@@ -9,8 +8,10 @@ config-file-location:
   linux:
     - $XDG_CONFIG_HOME/Nextcloud Talk/config.json
     - ~/.config/Nextcloud Talk/config.json
-  macos: ~/Library/Application Support/Nextcloud Talk/config.json
-  windows: '%APPDATA%\Nextcloud Talk\config.json'
+  macos:
+    - ~/Library/Application Support/Nextcloud Talk/config.json
+  windows:
+    - '%APPDATA%\Nextcloud Talk\config.json'
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,10 +64,6 @@ history:
       Talk app, and use it for conversations and calls. The client can start in the
       background, accepts a CLI command for prefilling account/server identifiers, and
       supports one active account while full multi-account support remains incomplete.
-category: productivity
-package-manager:
-  brew-cask: nextcloud-talk
-package-manager-url: https://formulae.brew.sh/cask/nextcloud-talk
 tags:
   - chat
   - collaboration
@@ -74,10 +71,47 @@ tags:
   - nextcloud
   - self-hosted
   - video-calls
-description: Official Nextcloud Talk Desktop client
-applications:
-  - Nextcloud Talk.app
 provenance:
-  cask: nextcloud-talk
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Nextcloud identifies the application as its official Talk desktop client, while
+      the product page describes chat, calls, and conferencing:
+      https://github.com/nextcloud/talk-desktop#readme and https://nextcloud.com/talk
+  display-name-sources:
+    - 'Official repository title: https://github.com/nextcloud/talk-desktop#readme'
+    - current_curation.display-name
+  docs-sources:
+    - 'Official Talk product page: https://nextcloud.com/talk'
+    - >
+      Official desktop-client README covers installation, requirements, multi-account
+      limitations, CLI configuration, and development:
+      https://github.com/nextcloud/talk-desktop#readme
+    - >
+      The official AppConfig source documents config.json locations on every supported
+      desktop platform:
+      https://github.com/nextcloud/talk-desktop/blob/main/src/app/AppConfig.ts
+  history-sources:
+    - >
+      Official application-config implementation:
+      https://github.com/nextcloud/talk-desktop/blob/main/src/app/AppConfig.ts
+    - 'Official desktop repository: https://github.com/nextcloud/talk-desktop'
+    - 'Official product page: https://nextcloud.com/talk'
+    - 'Official v1.0 roadmap: https://github.com/nextcloud/talk-desktop/issues/635'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repository lookup was
+      skipped and repo is returned as null.
+  tags-sources:
+    - >
+      Official product and repository descriptions: https://nextcloud.com/talk and
+      https://github.com/nextcloud/talk-desktop#readme
+category-confidence: high
+category-path:
+  - productivity
+  - communication
+  - team-collaboration
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,14 +1,14 @@
 id: cask:nheko
 display-name: Nheko
-homepage: https://nheko-reborn.github.io/
-repo: https://github.com/Nheko-Reborn/nheko
+repo: null
 docs:
   - https://github.com/Nheko-Reborn/nheko/wiki/Commands
   - https://github.com/Nheko-Reborn/nheko#readme
   - https://github.com/Nheko-Reborn/nheko/blob/master/man/nheko.1.adoc
   - https://nheko-reborn.github.io/
 config-file-location:
-  unix: ${XDG_CONFIG_HOME:-~/.config}/nheko/nheko.conf
+  unix:
+    - ${XDG_CONFIG_HOME:-~/.config}/nheko/nheko.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -67,10 +67,6 @@ history:
       room membership. The -p/--profile option creates isolated profiles for multiple
       accounts. On supported Unix desktops, encrypted operation relies on a secret
       service such as KDE Wallet or GNOME Keyring.
-category: productivity
-package-manager:
-  brew-cask: nheko
-package-manager-url: https://formulae.brew.sh/cask/nheko
 tags:
   - c-plus-plus
   - chat
@@ -78,10 +74,44 @@ tags:
   - end-to-end-encryption
   - matrix
   - qt
-description: Desktop client for the Matrix protocol
-applications:
-  - nheko.app
 provenance:
-  cask: nheko
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official project describes Nheko as a desktop client for Matrix using Qt and
+      C++20: https://github.com/Nheko-Reborn/nheko#readme
+  display-name-sources:
+    - 'Official project homepage title: https://nheko-reborn.github.io/'
+    - source_facts.applications
+  docs-sources:
+    - >
+      Official README provides features, installation, encryption cautions, and FAQ
+      material: https://github.com/Nheko-Reborn/nheko#readme
+    - >
+      Official manual documents command-line operation and the Unix configuration path:
+      https://github.com/Nheko-Reborn/nheko/blob/master/man/nheko.1.adoc
+    - 'Official project homepage: https://nheko-reborn.github.io/'
+  history-sources:
+    - >
+      Official manual page source:
+      https://github.com/Nheko-Reborn/nheko/blob/master/man/nheko.1.adoc
+    - 'Official project homepage: https://nheko-reborn.github.io/'
+    - 'Official release history: https://github.com/Nheko-Reborn/nheko/releases'
+    - 'Official repository README: https://github.com/Nheko-Reborn/nheko#readme'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repository lookup was
+      skipped and repo is returned as null.
+  tags-sources:
+    - >
+      Official README feature list and project description:
+      https://github.com/Nheko-Reborn/nheko#readme
+category-confidence: high
+category-path:
+  - productivity
+  - communication
+  - matrix-clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
