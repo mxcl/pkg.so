@@ -1,7 +1,6 @@
 id: cask:microsoft-azure-storage-explorer
 display-name: Microsoft Azure Storage Explorer
-homepage: https://azure.microsoft.com/en-us/features/storage-explorer/
-repo: https://github.com/microsoft/AzureStorageExplorer
+repo: null
 docs:
   - >
     https://learn.microsoft.com/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer
@@ -9,9 +8,12 @@ docs:
   - >
     https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/blobs/alerts/storage-explorer-troubleshooting
 config-file-location:
-  linux: ~/.config/StorageExplorer
-  macos: ~/Library/Application Support/StorageExplorer
-  windows: C:\Users\<username>\AppData\StorageExplorer
+  linux:
+    - ~/.config/StorageExplorer
+  macos:
+    - ~/Library/Application Support/StorageExplorer
+  windows:
+    - C:\Users\<username>\AppData\StorageExplorer
 credentials-file-location: null
 history:
   adoption-history:
@@ -72,10 +74,6 @@ history:
       Use the explorer interface to upload, download, copy, inspect, and manage blobs,
       file shares, queues, tables, disks, and Data Lake Storage resources. Microsoft
       recommends Entra authentication where possible.
-category: cloud-infrastructure
-package-manager:
-  brew-cask: microsoft-azure-storage-explorer
-package-manager-url: https://formulae.brew.sh/cask/microsoft-azure-storage-explorer
 tags:
   - azure
   - blobs
@@ -86,10 +84,39 @@ tags:
   - queues
   - storage-management
   - tables
-description: Explorer for Azure Storage
-applications:
-  - Microsoft Azure Storage Explorer.app
 provenance:
-  cask: microsoft-azure-storage-explorer
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Microsoft describes Storage Explorer as a cross-platform desktop application for
+      managing Azure blobs, files, queues, tables, disks, and Data Lake Storage:
+      https://learn.microsoft.com/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer
+  display-name-sources:
+    - Official Microsoft Learn product documentation
+    - current_curation.display-name
+  docs-sources:
+    - >
+      Microsoft Learn provides the official getting-started, authentication, and
+      troubleshooting documentation.
+  history-sources:
+    - https://azure.microsoft.com/en-us/blog/announcing-the-azure-sdk-2-8-for-net/
+    - https://azure.microsoft.com/en-us/blog/azure-source-volume-74/
+    - >
+      https://learn.microsoft.com/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer
+    - https://learn.microsoft.com/en-us/azure/storage/common/storage-explorer-sign-in
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped as instructed.
+  tags-sources:
+    - >
+      Official Microsoft Learn overview and the official repository description
+      enumerate the supported Azure Storage resource types and management operations.
+category-confidence: high
+category-path:
+  - cloud-infrastructure
+  - storage-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
