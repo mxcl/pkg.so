@@ -1,7 +1,6 @@
 id: cask:minmaxcal
 display-name: MinMaxCal
-homepage: https://github.com/MikeMcQuaid/MinMaxCal
-repo: https://github.com/MikeMcQuaid/MinMaxCal
+repo: null
 docs:
   - https://github.com/MikeMcQuaid/MinMaxCal#readme
 config-file-location: null
@@ -55,10 +54,6 @@ history:
       The application reads locally managed EventKit data and requires no separate
       MinMaxCal account. It can start at login and provides Join or Complete actions
       directly from its agenda and takeover view.
-category: productivity
-package-manager:
-  brew-cask: minmaxcal
-package-manager-url: https://formulae.brew.sh/cask/minmaxcal
 tags:
   - calendar
   - eventkit
@@ -68,10 +63,39 @@ tags:
   - menu-bar
   - notifications
   - reminders
-description: Minimal menu bar calendar, maximal full-screen notifications
-applications:
-  - MinMaxCal.app
 provenance:
-  cask: minmaxcal
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://github.com/MikeMcQuaid/MinMaxCal#readme describes its calendar and
+      reminder workflow.
+    - source_facts.description identifies a menu-bar calendar with full-screen notifications.
+  display-name-sources:
+    - The official repository README uses MinMaxCal as the application name.
+    - source_facts.applications lists MinMaxCal.app.
+  docs-sources:
+    - >
+      The official repository README is the project's primary documentation and covers
+      motivation, features, installation, configuration, and development.
+  history-sources:
+    - https://github.com/MikeMcQuaid/MinMaxCal#readme
+    - source_facts.package-manager
+    - source_facts.repo
+  repo-sources:
+    - >
+      source_facts.repo is already populated, so repository determination was
+      intentionally skipped as required.
+  tags-sources:
+    - >
+      https://github.com/MikeMcQuaid/MinMaxCal#readme documents macOS, menu-bar
+      operation, EventKit calendars and reminders, full-screen notifications, meeting
+      links, and Homebrew installation.
+category-confidence: high
+category-path:
+  - productivity
+  - calendar
+  - reminders
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
