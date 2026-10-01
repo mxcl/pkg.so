@@ -1,7 +1,6 @@
 id: cask:music-presence
 display-name: Music Presence
-homepage: https://musicpresence.app/
-repo: https://github.com/ungive/discord-music-presence
+repo: null
 docs:
   - https://docs.musicpresence.app/
   - >
@@ -9,13 +8,19 @@ docs:
   - >
     https://github.com/ungive/discord-music-presence/blob/master/documentation/troubleshooting.md
 config-file-location:
-  linux: ~/.local/share/Music Presence/settings.json
-  macos: ~/Library/Application Support/Music Presence/settings.json
-  windows: '%APPDATA%\Music Presence\settings.json'
+  linux:
+    - ~/.local/share/Music Presence/settings.json
+  macos:
+    - ~/Library/Application Support/Music Presence/settings.json
+  windows:
+    - '%APPDATA%\Music Presence\settings.json'
 credentials-file-location:
-  linux: ~/.local/share/Music Presence/stats.json
-  macos: ~/Library/Application Support/Music Presence/stats.json
-  windows: '%APPDATA%\Music Presence\stats.json'
+  linux:
+    - ~/.local/share/Music Presence/stats.json
+  macos:
+    - ~/Library/Application Support/Music Presence/stats.json
+  windows:
+    - '%APPDATA%\Music Presence\stats.json'
 history:
   adoption-history:
     - >
@@ -69,10 +74,6 @@ history:
       external music APIs. The official file-location guide warns that stats.json can
       contain Discord account identifiers and entered music-API credentials and should
       not be shared.
-category: media
-package-manager:
-  brew-cask: music-presence
-package-manager-url: https://formulae.brew.sh/cask/music-presence
 tags:
   - cross-platform
   - discord
@@ -80,10 +81,41 @@ tags:
   - music-status
   - rich-presence
   - tray-application
-description: Discord music status that works with any media player
-applications:
-  - Music Presence.app
 provenance:
-  cask: music-presence
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation and repository describe Music Presence as a Discord
+      music-status application for desktop media players:
+      https://docs.musicpresence.app/ and
+      https://github.com/ungive/discord-music-presence
+  display-name-sources:
+    - 'Official documentation site: https://docs.musicpresence.app/'
+  docs-sources:
+    - Dedicated official documentation domain.
+    - >
+      Official project documentation identifies settings, state, credential, and log
+      files on each supported operating system.
+  history-sources:
+    - https://docs.musicpresence.app/
+    - https://github.com/ungive/discord-music-presence
+    - https://github.com/ungive/discord-music-presence/blob/master/CHANGELOG.md
+    - >
+      https://github.com/ungive/discord-music-presence/blob/master/documentation/music-presence-files.md
+    - 'input: source_facts.package-manager.brew-cask'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository enrichment was intentionally
+      omitted as instructed.
+  tags-sources:
+    - >
+      Official documentation navigation, repository description, feature list, and
+      repository topics.
+category-confidence: high
+category-path:
+  - media
+  - discord-presence
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

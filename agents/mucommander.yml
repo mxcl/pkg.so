@@ -1,18 +1,23 @@
 id: cask:mucommander
 display-name: muCommander
-homepage: https://www.mucommander.com/
-repo: https://github.com/mucommander/mucommander
+repo: null
 docs:
   - https://github.com/mucommander/mucommander/wiki
   - https://github.com/mucommander/mucommander/wiki/Preference-Files
 config-file-location:
-  macos: ~/Library/Preferences/muCommander/preferences.xml
-  unix: ~/.mucommander/preferences.xml
-  windows: ~/.mucommander/preferences.xml
+  macos:
+    - ~/Library/Preferences/muCommander/preferences.xml
+  unix:
+    - ~/.mucommander/preferences.xml
+  windows:
+    - ~/.mucommander/preferences.xml
 credentials-file-location:
-  macos: ~/Library/Preferences/muCommander/credentials.xml
-  unix: ~/.mucommander/credentials.xml
-  windows: ~/.mucommander/credentials.xml
+  macos:
+    - ~/Library/Preferences/muCommander/credentials.xml
+  unix:
+    - ~/.mucommander/credentials.xml
+  windows:
+    - ~/.mucommander/credentials.xml
 history:
   adoption-history:
     - >
@@ -59,10 +64,6 @@ history:
       browsing archives, and working with remote filesystems. Advanced users can
       customize shortcuts, commands, toolbars, themes, bookmarks, associations, and
       saved connections through XML files in its preferences directory.
-category: system
-package-manager:
-  brew-cask: mucommander
-package-manager-url: https://formulae.brew.sh/cask/mucommander
 tags:
   - archive-manager
   - cross-platform
@@ -70,10 +71,35 @@ tags:
   - file-manager
   - java
   - remote-filesystems
-description: File manager with a dual-pane interface
-applications:
-  - muCommander.app
 provenance:
-  cask: mucommander
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official homepage describes muCommander as a cross-platform, dual-pane file
+      manager: https://www.mucommander.com/
+  display-name-sources:
+    - 'Official project homepage: https://www.mucommander.com/'
+  docs-sources:
+    - >
+      The official Preference Files page documents configuration and credential
+      filenames and locations.
+    - The official homepage links to the project wiki as its documentation.
+  history-sources:
+    - https://github.com/mucommander/mucommander
+    - https://github.com/mucommander/mucommander/wiki/Preference-Files
+    - https://www.mucommander.com/
+    - 'input: source_facts.package-manager.brew-cask'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository enrichment was intentionally
+      omitted as instructed.
+  tags-sources:
+    - Official homepage feature list and official repository README.
+category-confidence: high
+category-path:
+  - system
+  - file-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

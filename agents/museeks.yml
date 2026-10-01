@@ -1,15 +1,16 @@
 id: cask:museeks
 display-name: Museeks
-homepage: https://museeks.io/
-repo: https://github.com/martpie/museeks
+repo: null
 docs:
   - https://github.com/martpie/museeks#readme
 config-file-location:
   linux:
     - $XDG_CONFIG_HOME/museeks
     - ~/.config/museeks
-  macos: ~/Library/Application Support/museeks
-  windows: '%AppData%\museeks'
+  macos:
+    - ~/Library/Application Support/museeks
+  windows:
+    - '%AppData%\museeks'
 credentials-file-location: null
 history:
   adoption-history:
@@ -58,10 +59,6 @@ history:
       formats including MP3, AAC, FLAC, WAV, Ogg, and 3GPP. For troubleshooting, the
       application exposes its storage directory from Settings; removing that directory
       resets local state.
-category: media
-package-manager:
-  brew-cask: museeks
-package-manager-url: https://formulae.brew.sh/cask/museeks
 tags:
   - cross-platform
   - local-library
@@ -69,10 +66,35 @@ tags:
   - playlists
   - rust
   - tauri
-description: Music player
-applications:
-  - Museeks.app
 provenance:
-  cask: museeks
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official homepage and repository describe Museeks as a simple, clean,
+      cross-platform music player: https://museeks.io/ and
+      https://github.com/martpie/museeks
+  display-name-sources:
+    - 'Official homepage: https://museeks.io/'
+  docs-sources:
+    - >
+      The official README is the project's main usage, installation, troubleshooting,
+      and development documentation surface.
+  history-sources:
+    - https://github.com/martpie/museeks
+    - https://github.com/martpie/museeks/releases
+    - https://museeks.io/
+    - 'input: source_facts.package-manager.brew-cask'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository enrichment was intentionally
+      omitted as instructed.
+  tags-sources:
+    - Official repository README feature and development sections.
+category-confidence: high
+category-path:
+  - media
+  - music-player
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
