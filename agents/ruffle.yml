@@ -1,15 +1,17 @@
 id: cask:ruffle
 display-name: Ruffle
-homepage: https://ruffle.rs/
-repo: https://github.com/ruffle-rs/ruffle
+repo: null
 docs:
   - https://github.com/ruffle-rs/ruffle/wiki
   - https://github.com/ruffle-rs/ruffle/blob/master/README.md
   - https://ruffle.rs/downloads
 config-file-location:
-  linux: ${XDG_CONFIG_HOME:-~/.config}/ruffle/
-  macos: ~/Library/Application Support/ruffle/
-  windows: '%LOCALAPPDATA%\ruffle\'
+  linux:
+    - ${XDG_CONFIG_HOME:-~/.config}/ruffle/
+  macos:
+    - ~/Library/Application Support/ruffle/
+  windows:
+    - '%LOCALAPPDATA%\ruffle\'
 credentials-file-location: null
 history:
   adoption-history:
@@ -77,10 +79,6 @@ history:
       Website operators can embed the self-hosted WebAssembly build or use the browser
       extension. Compatibility is substantial but incomplete, so some ActionScript
       content may still behave differently from the original Flash Player.
-category: games
-package-manager:
-  brew-cask: ruffle
-package-manager-url: https://formulae.brew.sh/cask/ruffle
 tags:
   - browser-extension
   - cross-platform
@@ -91,10 +89,41 @@ tags:
   - rust
   - swf
   - webassembly
-description: Flash Player emulator
-applications:
-  - Ruffle.app
 provenance:
-  cask: ruffle
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official project describes Ruffle as an Adobe Flash Player emulator for
+      desktop and web: https://ruffle.rs/ and https://github.com/ruffle-rs/ruffle
+    - source_facts.description
+  display-name-sources:
+    - 'Official project branding: https://ruffle.rs/'
+    - 'Official repository title: https://github.com/ruffle-rs/ruffle'
+  docs-sources:
+    - 'Official project downloads page: https://ruffle.rs/downloads/'
+    - >
+      The official README directs users to the project wiki for detailed instructions:
+      https://github.com/ruffle-rs/ruffle/blob/master/README.md
+  history-sources:
+    - https://github.com/ruffle-rs/ruffle
+    - https://github.com/ruffle-rs/ruffle/blob/master/desktop/src/cli.rs
+    - https://github.com/ruffle-rs/ruffle/issues/575
+    - https://github.com/ruffle-rs/ruffle/issues/9
+    - https://ruffle.rs/
+  repo-sources:
+    - Repository already supplied in source_facts.repo; returned null as required.
+  tags-sources:
+    - 'Official project site: https://ruffle.rs/'
+    - >
+      Official repository description, structure and topics:
+      https://github.com/ruffle-rs/ruffle
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - emulation
+  - flash
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
