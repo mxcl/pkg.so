@@ -1,6 +1,5 @@
 id: cask:pangolin
 display-name: Pangolin
-homepage: https://pangolin.net/
 repo: https://github.com/fosrl/pangolin
 docs:
   - https://docs.pangolin.net/
@@ -67,10 +66,6 @@ history:
       Self-hosted server deployments use a mounted config/config.yml, but the reviewed
       Homebrew cask is the macOS client; official documentation does not establish a
       client-side configuration-file path.
-category: networking
-package-manager:
-  brew-cask: pangolin
-package-manager-url: https://formulae.brew.sh/cask/pangolin
 tags:
   - identity-aware-proxy
   - remote-access
@@ -80,10 +75,37 @@ tags:
   - vpn
   - wireguard
   - zero-trust
-description: Identity-aware VPN and proxy for remote access
-applications:
-  - Pangolin.app
 provenance:
-  cask: pangolin
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://github.com/fosrl/pangolin
+    - source_facts.description identifies Pangolin as an identity-aware VPN and proxy.
+  display-name-sources:
+    - https://pangolin.net/
+    - source_facts.applications
+  docs-sources:
+    - >
+      The official repository and official organization profile both designate
+      docs.pangolin.net as Pangolin's documentation site.
+  history-sources:
+    - https://docs.pangolin.net/manage/resources/understanding-resources
+    - https://github.com/fosrl/cli
+    - https://github.com/fosrl/pangolin
+    - https://pangolin.net/about
+  repo-sources:
+    - >
+      https://github.com/fosrl/pangolin links back to pangolin.net and the official
+      documentation.
+    - https://pangolin.net/ identifies the fosrl/pangolin project as official.
+  tags-sources:
+    - https://docs.pangolin.net/manage/resources/understanding-resources
+    - https://github.com/fosrl/pangolin
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - secure-remote-access
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

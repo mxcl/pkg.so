@@ -1,7 +1,6 @@
 id: cask:padloc
 display-name: Padloc
-homepage: https://padloc.app/
-repo: https://github.com/padloc/padloc
+repo: null
 docs:
   - https://docs.padloc.app/
   - https://docs.padloc.app/docs/security
@@ -69,10 +68,6 @@ history:
     - >
       The master password is not retained by the service and cannot be recovered, so
       users must preserve it securely.
-category: security
-package-manager:
-  brew-cask: padloc
-package-manager-url: https://formulae.brew.sh/cask/padloc
 tags:
   - credentials
   - cross-platform
@@ -82,10 +77,36 @@ tags:
   - secrets
   - self-hosted
   - team-sharing
-description: Modern password manager
-applications:
-  - Padloc.app
 provenance:
-  cask: padloc
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://docs.padloc.app/manual/
+    - source_facts.description identifies Padloc as a password manager.
+  display-name-sources:
+    - https://padloc.app/
+    - source_facts.applications
+  docs-sources:
+    - >
+      Padloc's official documentation domain provides its user manual, technical
+      resources, and security whitepaper.
+  history-sources:
+    - https://docs.padloc.app/docs/security/
+    - https://docs.padloc.app/guides/upgrade_v2/
+    - https://docs.padloc.app/manual/
+    - https://github.com/padloc/padloc
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/padloc/padloc; per
+      instructions, repo is therefore returned as null without re-evaluation.
+  tags-sources:
+    - https://docs.padloc.app/manual/vaults/
+    - https://github.com/padloc/padloc
+    - source_facts.description
+category-confidence: high
+category-path:
+  - security
+  - password-managers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
