@@ -515,6 +515,11 @@ class EnrichmentTests(unittest.TestCase):
         self.assertEqual(normalize_repo("git://github.com/sharkdp/bat.git"), "https://github.com/sharkdp/bat")
         self.assertEqual(normalize_repo("ssh://git@gitlab.com/example/tool.git"), "https://gitlab.com/example/tool")
         self.assertEqual(normalize_repo("git://aften.git.sourceforge.net/gitroot/aften/aften"), "https://aften.git.sourceforge.net/gitroot/aften/aften")
+        self.assertEqual(normalize_repo("https://github.com/sharkdp/bat/wiki"), "")
+        self.assertEqual(
+            normalize_repo("https://codeberg.org/maxlath/wikibase-cli"),
+            "https://codeberg.org/maxlath/wikibase-cli",
+        )
 
     def test_tag_canonicalization(self):
         self.assertEqual(normalize_tags(["cli-tool", "k8s", "awscli", "utility"]), ["aws", "cli", "kubernetes"])

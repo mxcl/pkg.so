@@ -214,7 +214,8 @@ def rejected_repo_url(url: str) -> bool:
     path = parsed.path.lower()
     if "formulae.brew.sh" in host:
         return True
-    if any(token in path for token in ("/blog/", "/posts/", "/tutorial", "/wiki")):
+    path_parts = {part for part in path.split("/") if part}
+    if any(token in path for token in ("/blog/", "/posts/", "/tutorial")) or "wiki" in path_parts:
         return True
     return False
 
