@@ -1,7 +1,6 @@
 id: cask:outerbase-studio
 display-name: Outerbase Studio Desktop
-homepage: https://github.com/outerbase/studio-desktop
-repo: https://github.com/outerbase/studio-desktop
+repo: null
 docs:
   - https://studio.outerbase.com/docs
   - https://github.com/outerbase/studio-desktop#readme
@@ -57,10 +56,6 @@ history:
       Users create database connections, browse schemas, edit table data, compose and
       save SQL queries, and modify database structure. The desktop wrapper is especially
       useful when native MySQL or PostgreSQL drivers are required.
-category: data
-package-manager:
-  brew-cask: outerbase-studio
-package-manager-url: https://formulae.brew.sh/cask/outerbase-studio
 tags:
   - data-editor
   - database
@@ -72,10 +67,41 @@ tags:
   - query-editor
   - sql
   - sqlite
-description: Database GUI
-applications:
-  - Outerbase Studio.app
 provenance:
-  cask: outerbase-studio
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Studio page identifies the product as a database GUI for SQLite, MySQL,
+      PostgreSQL, and related databases:
+      https://outerbase.com/developers/outerbase-studio/
+    - 'Official desktop repository README: https://github.com/outerbase/studio-desktop#readme'
+  display-name-sources:
+    - 'Official repository README title: https://github.com/outerbase/studio-desktop#readme'
+    - current_curation.display-name
+    - source_facts.applications
+  docs-sources:
+    - Official Studio documentation describes the browser-based database interface.
+    - Outerbase's official product page describes supported databases and principal workflows.
+    - >
+      The official desktop repository explains the Electron wrapper and its additional
+      database-driver support.
+  history-sources:
+    - https://github.com/outerbase/studio#readme
+    - https://github.com/outerbase/studio-desktop#readme
+    - https://outerbase.com/blog/outerbase-studio-open-source-database-management/
+    - https://outerbase.com/developers/outerbase-studio/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; the task requires returning null rather
+      than re-evaluating it.
+  tags-sources:
+    - Official Studio product page and repository README.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - data
+  - database-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

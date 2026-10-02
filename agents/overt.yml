@@ -1,7 +1,6 @@
 id: cask:overt
 display-name: Overt
-homepage: https://getovert.app/
-repo: https://github.com/GetOvert/Overt
+repo: null
 docs:
   - https://getovert.app/about
   - https://getovert.app/install
@@ -60,10 +59,6 @@ history:
       Users browse software supplied by default or external catalogs and perform
       one-click installation, update, and removal. On macOS, Overt delegates those
       operations to Homebrew and can expose both casks and formulae.
-category: system
-package-manager:
-  brew-cask: overt
-package-manager-url: https://formulae.brew.sh/cask/overt
 tags:
   - app-store
   - electron
@@ -74,10 +69,41 @@ tags:
   - open-source
   - package-manager
   - software-catalog
-description: Open app store
-applications:
-  - Overt.app
 provenance:
-  cask: overt
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official About page explicitly describes Overt as a package-manager GUI client:
+      https://getovert.app/about/
+    - source_facts.description
+  display-name-sources:
+    - Official website and repository title.
+    - source_facts.applications
+  docs-sources:
+    - >
+      Official About page explains Overt's architecture, goals, catalogs, and
+      relationship to package managers.
+    - Official Homebrew integration page documents setup and catalog types.
+    - Official installation page documents direct and Homebrew installation.
+    - Official repository README documents the project and development workflow.
+  history-sources:
+    - https://getovert.app/about/
+    - https://getovert.app/install/
+    - https://getovert.app/package-managers/homebrew/
+    - https://github.com/GetOvert/Overt#readme
+  repo-sources:
+    - >
+      source_facts.repo is already populated; the task requires returning null rather
+      than re-evaluating it.
+  tags-sources:
+    - Official About and Homebrew integration pages.
+    - Official repository README and topics.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - system
+  - package-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
