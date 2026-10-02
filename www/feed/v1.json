@@ -112,6 +112,8 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:hagimimonitordirect",
+        "brew:deja",
         "brew:cask:manus-cue",
         "brew:sofka",
         "brew:cask:mindroom",
@@ -121,9 +123,7 @@
         "brew:vortix",
         "brew:cask:deviceshelf",
         "brew:cask:gloomberb",
-        "brew:cask:hol-guard",
-        "brew:ratex",
-        "brew:cask:look"
+        "brew:cask:hol-guard"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -131,6 +131,8 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:hagimimonitordirect",
+        "brew:deja",
         "brew:cask:manus-cue",
         "brew:talosctl",
         "brew:helmfile",
@@ -140,9 +142,7 @@
         "brew:cask:mdhero",
         "brew:kubectl-radar",
         "brew:vortix",
-        "brew:cask:deviceshelf",
-        "brew:cask:activitywatch",
-        "brew:cask:trilium-notes"
+        "brew:cask:deviceshelf"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -815,7 +815,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-01T10:09:41Z",
+  "generatedAt": "2026-10-02T04:58:33Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1235,6 +1235,65 @@
       ],
       "upstreamSummary": "Finance terminal",
       "version": "0.15.2"
+    },
+    "brew:cask:hagimimonitordirect": {
+      "agentSummary": "A lightweight macOS menu-bar monitor showing CPU, GPU, memory, disk, network, temperatures, and battery metrics, with multiple display modes and extensive customization.",
+      "assessment": {
+        "alternatives": [
+          "Stats",
+          "iStat Menus",
+          "MenuMeters"
+        ],
+        "audiences": [
+          "Apple Silicon Mac users who want persistent system metrics",
+          "Developers diagnosing local resource pressure",
+          "Users who prefer a compact menu-bar dashboard"
+        ],
+        "caveats": [
+          "The project is young and its interface may continue changing quickly",
+          "The direct build has capabilities unavailable in the sandboxed App Store edition",
+          "Temperature, fan, and display controls depend on specific hardware access"
+        ],
+        "complements": [
+          "Activity Monitor for deeper process inspection",
+          "powermetrics for command-line power diagnostics",
+          "SMART utilities for dedicated drive-health analysis"
+        ],
+        "prerequisites": [
+          "macOS 15 or later",
+          "An Apple Silicon Mac",
+          "Hardware and connection support for optional DDC/CI controls"
+        ],
+        "useCases": [
+          "Monitor CPU, GPU, memory, storage, network, and battery activity",
+          "Inspect temperatures, fan speed, and per-process usage in the direct build",
+          "Control compatible external displays through DDC/CI"
+        ]
+      },
+      "category": "system",
+      "displayName": "HagimiMonitor Direct",
+      "docs": "https://acerola-1.github.io/hagimi-monitor",
+      "homepage": "https://acerola-1.github.io/hagimi-monitor/",
+      "id": "brew:cask:hagimimonitordirect",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahagimimonitordirect",
+      "lastUpdatedAt": "2026-10-01T22:00:31Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/Acerola-1/hagimi-monitor",
+      "researchedAt": "2026-10-02T04:58:33Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "HagimiMonitor official repository and documentation",
+          "url": "https://github.com/Acerola-1/hagimi-monitor"
+        },
+        {
+          "kind": "primary",
+          "title": "HagimiMonitor v0.1.0 release",
+          "url": "https://github.com/Acerola-1/hagimi-monitor/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "Menu bar monitor for system performance and hardware",
+      "version": "1.6.6"
     },
     "brew:cask:highball": {
       "agentSummary": "Highball runs Windows games on Apple Silicon through managed Wine-based engines, pairing launcher automation with an open compatibility database and per-game renderer guidance.",
@@ -2375,6 +2434,65 @@
       ],
       "upstreamSummary": "Extract article content and metadata from web pages",
       "version": "0.19.2"
+    },
+    "brew:deja": {
+      "agentSummary": "A zsh companion that predicts inline commands from local shell history through a Go daemon, offering configurable acceptance, privacy controls, and optional cloud-backed suggestions.",
+      "assessment": {
+        "alternatives": [
+          "zsh-autosuggestions",
+          "Atuin",
+          "Fish shell autosuggestions"
+        ],
+        "audiences": [
+          "Frequent zsh users",
+          "Developers who want context-aware shell suggestions",
+          "Users seeking a local-first alternative to simple prefix matching"
+        ],
+        "caveats": [
+          "It currently targets zsh rather than every interactive shell",
+          "Suggestions improve only after history is imported or accumulated",
+          "A background daemon and local SQLite database add moving parts beyond a pure shell plugin"
+        ],
+        "complements": [
+          "fzf for interactive history search",
+          "Starship for prompt customization",
+          "direnv for directory-specific environments"
+        ],
+        "prerequisites": [
+          "The zsh shell",
+          "Shell integration loaded from the user's zsh configuration",
+          "Imported or newly collected command history for useful predictions"
+        ],
+        "useCases": [
+          "Predict commands using fuzzy, directory-aware, and sequence-aware ranking",
+          "Reuse local shell history as inline ghost text",
+          "Cycle through ranked alternatives without leaving the command line"
+        ]
+      },
+      "category": "productivity",
+      "displayName": "deja",
+      "docs": "https://github.com/Giammarco-Ferranti/deja#readme",
+      "homepage": "https://github.com/Giammarco-Ferranti/deja",
+      "id": "brew:deja",
+      "installURL": "pkgmgrmgr://install?package=brew%3Adeja",
+      "lastUpdatedAt": "2026-10-01T13:49:40Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/Giammarco-Ferranti/deja",
+      "researchedAt": "2026-10-02T04:58:33Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "deja official repository and documentation",
+          "url": "https://github.com/Giammarco-Ferranti/deja"
+        },
+        {
+          "kind": "primary",
+          "title": "deja v0.1.0 release",
+          "url": "https://github.com/Giammarco-Ferranti/deja/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "Predictive ghost-text autosuggestions for zsh",
+      "version": "0.4.2"
     },
     "brew:deja-vu": {
       "agentSummary": "deja-vu locally indexes coding-agent session histories, recalls relevant prior work through search and MCP integrations, and redacts common credential patterns during ingestion.",
@@ -4054,7 +4172,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-01T10:08:01Z",
+    "generatedAt": "2026-10-02T04:57:08Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
