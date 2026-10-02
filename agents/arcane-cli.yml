@@ -1,15 +1,16 @@
 id: brew:arcane-cli
 display-name: Arcane CLI
-homepage: https://getarcane.app
-repo: https://github.com/getarcaneapp/arcane
+repo: null
 docs:
   - https://getarcane.app/docs/cli/commands
   - https://getarcane.app/docs/cli/config
   - https://getarcane.app/docs/cli/install
 config-file-location:
-  unix: ~/.config/arcanecli.yml
+  unix:
+    - ~/.config/arcanecli.yml
 credentials-file-location:
-  unix: ~/.config/arcanecli.yml
+  unix:
+    - ~/.config/arcanecli.yml
 history:
   adoption-history:
     - >
@@ -47,11 +48,6 @@ history:
       an API key, then manage containers, images, projects, environments, registries,
       backups, vulnerabilities, and system updates. JSON output and noninteractive flags
       support shell scripts and CI jobs.
-category: cloud-infrastructure
-package-manager:
-  brew: arcane-cli
-package-manager-url: https://formulae.brew.sh/formula/arcane-cli
-license: BSD-3-Clause
 tags:
   - automation
   - cli
@@ -59,10 +55,36 @@ tags:
   - devops
   - docker
   - self-hosting
-description: Command-line client for the Arcane Docker management platform
-executables:
-  - arcane-cli
 provenance:
-  formula: arcane-cli
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      https://getarcane.app/docs/cli/commands documents container, image, project,
+      environment, registry, backup, and updater management.
+    - 'source_facts.description: Command-line client for the Arcane Docker management platform.'
+  display-name-sources:
+    - >
+      https://getarcane.app/docs/cli/install calls the tool “Arcane CLI” and identifies
+      it as Arcane's official terminal client.
+  docs-sources:
+    - Dedicated CLI documentation on the official getarcane.app domain.
+  history-sources:
+    - https://getarcane.app/docs/cli/commands
+    - https://getarcane.app/docs/cli/config
+    - https://getarcane.app/docs/cli/install
+    - https://github.com/getarcaneapp/arcane/releases
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository lookup was intentionally
+      skipped as instructed.
+  tags-sources:
+    - https://getarcane.app/docs/cli/commands
+    - source_facts.description
+category-confidence: high
+category-path:
+  - cloud-infrastructure
+  - container-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

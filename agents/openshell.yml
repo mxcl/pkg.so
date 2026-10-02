@@ -1,7 +1,6 @@
 id: brew:openshell
 display-name: NVIDIA OpenShell
-homepage: https://docs.nvidia.com/openshell/latest/
-repo: https://github.com/NVIDIA/OpenShell
+repo: null
 docs:
   - https://docs.nvidia.com/openshell/latest
   - https://docs.nvidia.com/openshell/latest/about/how-it-works
@@ -9,8 +8,10 @@ docs:
   - https://docs.nvidia.com/openshell/latest/sandboxes/manage-providers
   - https://docs.nvidia.com/openshell/reference/gateway-config
 config-file-location:
-  unix: $XDG_CONFIG_HOME/openshell/gateway.toml
-  windows: Linux-side $XDG_CONFIG_HOME/openshell/gateway.toml when using WSL 2
+  unix:
+    - $XDG_CONFIG_HOME/openshell/gateway.toml
+  windows:
+    - Linux-side $XDG_CONFIG_HOME/openshell/gateway.toml when using WSL 2
 credentials-file-location: null
 history:
   adoption-history:
@@ -60,12 +61,6 @@ history:
       owns durable state and credential handling, while a supervisor enforces policy
       within each sandbox. Kubernetes installations provide a clustered deployment
       option.
-category: security
-package-manager:
-  brew: openshell
-  nix: openshell
-package-manager-url: https://formulae.brew.sh/formula/openshell
-license: Apache-2.0
 tags:
   - ai-agents
   - cli
@@ -75,12 +70,35 @@ tags:
   - policy-enforcement
   - runtime-security
   - sandbox
-description: Safe, private runtime for autonomous AI agents
-executables:
-  - openshell
-  - openshell-gateway
-  - openshell-prover
 provenance:
-  formula: openshell
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      https://docs.nvidia.com/openshell/latest/about/how-it-works describes sandbox
+      isolation, policy enforcement, credential boundaries, and inference routing.
+    - 'source_facts.description: Safe, private runtime for autonomous AI agents.'
+  display-name-sources:
+    - https://docs.nvidia.com/openshell/home titles the product “NVIDIA OpenShell”.
+  docs-sources:
+    - Dedicated official documentation hosted by NVIDIA.
+  history-sources:
+    - https://docs.nvidia.com/openshell/latest/about/how-it-works
+    - https://docs.nvidia.com/openshell/latest/about/installation
+    - https://github.com/NVIDIA/OpenShell#readme
+    - https://github.com/NVIDIA/OpenShell/milestones
+    - https://github.com/NVIDIA/OpenShell/releases
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository lookup was intentionally
+      skipped as instructed.
+  tags-sources:
+    - https://docs.nvidia.com/openshell/latest/about/how-it-works
+    - https://github.com/NVIDIA/OpenShell#readme
+category-confidence: high
+category-path:
+  - security
+  - ai-agent-sandboxing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

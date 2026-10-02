@@ -1,6 +1,5 @@
 id: brew:pg_activity
 display-name: pg_activity
-homepage: https://github.com/dalibo/pg_activity
 repo: https://github.com/dalibo/pg_activity
 docs:
   - https://github.com/dalibo/pg_activity/blob/master/docs/man/pg_activity.pod
@@ -12,8 +11,10 @@ config-file-location:
     - ${XDG_CONFIG_HOME:-~/.config}/pg_activity/<profile>.conf
     - /etc/pg_activity/<profile>.conf
 credentials-file-location:
-  unix: ~/.pgpass
-  windows: '%APPDATA%\postgresql\pgpass.conf'
+  unix:
+    - ~/.pgpass
+  windows:
+    - '%APPDATA%\postgresql\pgpass.conf'
 history:
   adoption-history:
     - >
@@ -56,11 +57,6 @@ history:
       and—with sufficient database privileges—cancel or terminate backends. Full host
       CPU, memory, and I/O data requires running on the database server with suitable
       operating-system access.
-category: data
-package-manager:
-  brew: pg_activity
-package-manager-url: https://formulae.brew.sh/formula/pg_activity
-license: PostgreSQL
 tags:
   - cli
   - database
@@ -70,10 +66,38 @@ tags:
   - observability
   - postgresql
   - terminal
-description: Top-like interactive monitoring tool for PostgreSQL server activity
-executables:
-  - pg_activity
 provenance:
-  formula: pg_activity
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      https://github.com/dalibo/pg_activity/blob/master/README.md describes PostgreSQL
+      server activity monitoring.
+    - >
+      source_facts.description: Top-like interactive monitoring tool for PostgreSQL
+      server activity.
+  display-name-sources:
+    - The official repository README and manual use the name “pg_activity”.
+  docs-sources:
+    - Official repository README and bundled manual.
+  history-sources:
+    - https://github.com/dalibo/pg_activity/blob/master/README.md
+    - https://github.com/dalibo/pg_activity/blob/master/docs/man/pg_activity.pod
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      The official README's source-install instructions clone
+      https://github.com/dalibo/pg_activity.git.
+    - source_facts.homepage points to the official Dalibo GitHub repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://github.com/dalibo/pg_activity/blob/master/README.md
+    - https://github.com/dalibo/pg_activity/blob/master/docs/man/pg_activity.pod
+    - source_facts.description
+category-confidence: high
+category-path:
+  - data
+  - database-monitoring
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
