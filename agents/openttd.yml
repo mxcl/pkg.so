@@ -1,6 +1,5 @@
 id: cask:openttd
 display-name: OpenTTD
-homepage: https://www.openttd.org/
 repo: https://github.com/OpenTTD/OpenTTD
 docs:
   - https://docs.openttd.org/source
@@ -10,14 +9,18 @@ config-file-location:
   linux:
     - ~/.config/openttd/openttd.cfg
     - ~/.openttd/openttd.cfg
-  macos: ~/Documents/OpenTTD/openttd.cfg
-  windows: '%USERPROFILE%\Documents\OpenTTD\openttd.cfg'
+  macos:
+    - ~/Documents/OpenTTD/openttd.cfg
+  windows:
+    - '%USERPROFILE%\Documents\OpenTTD\openttd.cfg'
 credentials-file-location:
   linux:
     - ~/.config/openttd/secrets.cfg
     - ~/.openttd/secrets.cfg
-  macos: ~/Documents/OpenTTD/secrets.cfg
-  windows: '%USERPROFILE%\Documents\OpenTTD\secrets.cfg'
+  macos:
+    - ~/Documents/OpenTTD/secrets.cfg
+  windows:
+    - '%USERPROFILE%\Documents\OpenTTD\secrets.cfg'
 history:
   adoption-history:
     - >
@@ -83,20 +86,47 @@ history:
       cargo while managing a transport company. It is also commonly run as a dedicated
       multiplayer server and extended with NewGRFs, scenarios, AIs, game scripts, and
       community asset sets.
-category: games
-package-manager:
-  brew-cask: openttd
-package-manager-url: https://formulae.brew.sh/cask/openttd
 tags:
   - dedicated-server
   - modding
   - multiplayer
   - strategy-game
   - transport-simulation
-description: Open-source transport simulation game
-applications:
-  - OpenTTD.app
 provenance:
-  cask: openttd
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official About page identifies OpenTTD as an open-source simulation game based on
+      Transport Tycoon Deluxe: https://www.openttd.org/about
+    - source_facts.description
+  display-name-sources:
+    - Official project branding at https://www.openttd.org/
+    - current_curation.display-name
+  docs-sources:
+    - Official OpenTTD manual and configuration reference.
+    - >
+      Official generated source documentation confirms openttd.cfg, private.cfg, and
+      secrets.cfg handling.
+  history-sources:
+    - 'Official About page: https://www.openttd.org/about'
+    - 'Official history: https://wiki.openttd.org/en/Archive/OpenTTD/OpenTTD%20History'
+    - 'Official repository: https://github.com/OpenTTD/OpenTTD'
+    - >
+      Official twentieth-anniversary account:
+      https://www.openttd.org/news/2024/03/06/happy-birthday
+  repo-sources:
+    - Official OpenTTD GitHub organization repository.
+    - The official project site and repository identify one another.
+  tags-sources:
+    - >
+      Official About page documents transport gameplay, multiplayer, dedicated servers,
+      and downloadable extensions.
+    - Official repository topics include game, isometric, sandbox, and simulation.
+category-confidence: high
+category-path:
+  - games
+  - simulation
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

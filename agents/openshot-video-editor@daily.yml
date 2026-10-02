@@ -1,12 +1,13 @@
 id: cask:openshot-video-editor@daily
 display-name: OpenShot Video Editor (Daily Build)
-homepage: https://openshot.org/
-repo: https://github.com/OpenShot/openshot-qt
+repo: null
 docs:
   - https://www.openshot.org/static/files/user-guide
 config-file-location:
-  unix: ~/.openshot_qt/openshot.settings
-  windows: C:\Users\USERNAME\.openshot_qt\openshot.settings
+  unix:
+    - ~/.openshot_qt/openshot.settings
+  windows:
+    - C:\Users\USERNAME\.openshot_qt\openshot.settings
 credentials-file-location: null
 history:
   adoption-history:
@@ -53,20 +54,45 @@ history:
       titles, effects, transitions, and animation, and export finished video. Daily
       builds are best suited to testing recent fixes and features and may be less stable
       than normal releases.
-category: media
-package-manager:
-  brew-cask: openshot-video-editor@daily
-package-manager-url: https://formulae.brew.sh/cask/openshot-video-editor@daily
 tags:
   - cross-platform
   - daily-build
   - nonlinear-editing
   - open-source
   - video-editor
-description: Cross-platform video editor
-applications:
-  - OpenShot Video Editor.app
 provenance:
-  cask: openshot-video-editor@daily
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official About page describes OpenShot as a free, open-source video editor:
+      https://www.openshot.org/about/
+    - source_facts.description identifies a cross-platform video editor.
+  display-name-sources:
+    - >
+      The cask token includes @daily, while the official product name is OpenShot Video
+      Editor.
+    - current_curation.display-name
+  docs-sources:
+    - >
+      Official OpenShot HTML user guide, including preferences, editing, effects,
+      export, and troubleshooting documentation.
+  history-sources:
+    - 'Official About page: https://www.openshot.org/about/'
+    - 'Official story: https://www.openshot.org/story/'
+    - 'Official user guide: https://www.openshot.org/static/files/user-guide/'
+    - source_facts.repo
+  repo-sources:
+    - >
+      source_facts.repo already supplies https://github.com/OpenShot/openshot-qt; repo
+      is intentionally null as required.
+  tags-sources:
+    - Official About page describes the product and supported platforms.
+    - The package identifier explicitly denotes a daily build.
+category-confidence: high
+category-path:
+  - media
+  - video-editing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
