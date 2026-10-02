@@ -1,7 +1,6 @@
 id: brew:wavemon
 display-name: wavemon
-homepage: https://github.com/uoaerg/wavemon
-repo: https://github.com/uoaerg/wavemon
+repo: null
 docs:
   - https://github.com/uoaerg/wavemon#readme
   - https://github.com/uoaerg/wavemon/blob/master/wavemon.1
@@ -69,11 +68,6 @@ history:
     - >
       Use the F7 Preferences screen or edit `wavemonrc`; privileged installation may be
       needed for restricted scanning operations on some Linux systems.
-category: networking
-package-manager:
-  brew: wavemon
-package-manager-url: https://formulae.brew.sh/formula/wavemon
-license: GPL-3.0-or-later AND ISC
 tags:
   - cli
   - linux
@@ -82,10 +76,37 @@ tags:
   - tui
   - wifi
   - wireless
-description: Ncurses-based monitoring application for wireless network devices on Linux
-executables:
-  - wavemon
 provenance:
-  formula: wavemon
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      https://github.com/uoaerg/wavemon/blob/master/wavemon.1 describes real-time
+      wireless levels and device information.
+    - source_facts.description describes an ncurses wireless-device monitor for Linux.
+  display-name-sources:
+    - The official repository and manual consistently use the lowercase name `wavemon`.
+  docs-sources:
+    - The official README points users to the bundled manual for operation and configuration.
+    - The official repository contains both the wavemon(1) and wavemonrc(5) manuals.
+  history-sources:
+    - https://github.com/uoaerg/wavemon
+    - https://github.com/uoaerg/wavemon/blob/master/wavemon.1
+    - https://github.com/uoaerg/wavemon/blob/master/wavemon.h
+    - https://github.com/uoaerg/wavemon/blob/master/wavemonrc.5
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, the repository was not
+      reevaluated.
+  tags-sources:
+    - https://github.com/uoaerg/wavemon#readme
+    - https://github.com/uoaerg/wavemon/blob/master/wavemon.1
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - wireless
+  - monitoring
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

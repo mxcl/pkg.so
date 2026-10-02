@@ -1,7 +1,6 @@
 id: brew:tfswitch
 display-name: Terraform Switcher
-homepage: https://tfswitch.warrensbox.com
-repo: https://github.com/warrensbox/terraform-switcher
+repo: null
 docs:
   - https://tfswitch.warrensbox.com/
   - https://tfswitch.warrensbox.com/usage/config-files
@@ -63,11 +62,6 @@ history:
     - >
       Use `$HOME/.tfswitch.toml` for user-level defaults such as the target binary,
       fallback version, product, log level, architecture, and installation directory.
-category: developer-tools
-package-manager:
-  brew: tfswitch
-package-manager-url: https://formulae.brew.sh/formula/tfswitch
-license: MIT
 tags:
   - cli
   - devops
@@ -75,10 +69,40 @@ tags:
   - opentofu
   - terraform
   - version-manager
-description: Command-line tool to switch between Terraform versions
-executables:
-  - tfswitch
 provenance:
-  formula: tfswitch
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      https://tfswitch.warrensbox.com/usage/config-files/ documents Terraform and
+      OpenTofu version selection.
+    - source_facts.description identifies it as a Terraform version-switching CLI.
+  display-name-sources:
+    - >
+      https://github.com/warrensbox/terraform-switcher#readme uses “Terraform Switcher”
+      as the project heading.
+  docs-sources:
+    - >
+      The official configuration guide documents version-file precedence and
+      configuration options.
+    - The official repository links to tfswitch.warrensbox.com as its extended documentation.
+  history-sources:
+    - https://github.com/warrensbox/terraform-switcher#readme
+    - https://tfswitch.warrensbox.com/usage/config-files/
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, the repository was not
+      reevaluated.
+  tags-sources:
+    - https://github.com/warrensbox/terraform-switcher#readme
+    - https://tfswitch.warrensbox.com/usage/config-files/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - infrastructure-as-code
+  - version-managers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
