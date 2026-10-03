@@ -1,7 +1,6 @@
 id: cask:pulse-sms
 display-name: Pulse SMS
-homepage: https://home.pulsesms.app/overview/
-repo: https://github.com/maplemedia/pulse-sms-desktop
+repo: null
 docs:
   - https://github.com/maplemedia/pulse-sms-desktop#readme
   - https://home.pulsesms.app/overview
@@ -63,10 +62,6 @@ history:
       The wider service supports SMS/MMS media, scheduled messages, archived
       conversations, muted or blocked contacts, and per-conversation appearance
       customization.
-category: productivity
-package-manager:
-  brew-cask: pulse-sms
-package-manager-url: https://formulae.brew.sh/cask/pulse-sms
 tags:
   - android-companion
   - cross-device
@@ -75,10 +70,42 @@ tags:
   - messaging
   - mms
   - sms
-description: Desktop client for Pulse SMS
-applications:
-  - Pulse SMS.app
 provenance:
-  cask: pulse-sms
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official overview describes cross-device SMS messaging:
+      https://home.pulsesms.app/overview/
+    - source_facts.description identifies this package as the desktop client for Pulse SMS.
+  display-name-sources:
+    - >
+      Official homepage and repository use “Pulse SMS”:
+      https://home.pulsesms.app/overview/ ;
+      https://github.com/maplemedia/pulse-sms-desktop
+    - current_curation.display-name
+  docs-sources:
+    - >
+      The official product overview is the principal user-facing information surface;
+      the official desktop repository README documents the desktop-client packaging and
+      source-repository split.
+  history-sources:
+    - https://github.com/maplemedia/pulse-sms-desktop
+    - https://home.pulsesms.app/overview/
+    - https://home.pulsesms.app/overview/platform-android.html
+  repo-sources:
+    - >
+      source_facts.repo already contains
+      https://github.com/maplemedia/pulse-sms-desktop; per the input rule, repo is
+      intentionally returned as null without re-evaluation.
+  tags-sources:
+    - >
+      Official overview and repository description: https://home.pulsesms.app/overview/
+      ; https://github.com/maplemedia/pulse-sms-desktop
+category-confidence: high
+category-path:
+  - productivity
+  - communication
+display-name-confidence: high
+docs-confidence: medium
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
