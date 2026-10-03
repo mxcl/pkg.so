@@ -112,6 +112,7 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:sdrmm-app",
         "brew:cask:hagimimonitordirect",
         "brew:deja",
         "brew:cask:manus-cue",
@@ -122,8 +123,7 @@
         "brew:kubectl-radar",
         "brew:vortix",
         "brew:cask:deviceshelf",
-        "brew:cask:gloomberb",
-        "brew:cask:hol-guard"
+        "brew:cask:gloomberb"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -131,6 +131,7 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:sdrmm-app",
         "brew:cask:hagimimonitordirect",
         "brew:deja",
         "brew:cask:manus-cue",
@@ -141,8 +142,7 @@
         "brew:cask:highball",
         "brew:cask:mdhero",
         "brew:kubectl-radar",
-        "brew:vortix",
-        "brew:cask:deviceshelf"
+        "brew:vortix"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -815,7 +815,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-02T04:58:33Z",
+  "generatedAt": "2026-10-03T08:36:16Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1237,7 +1237,7 @@
       "version": "0.15.2"
     },
     "brew:cask:hagimimonitordirect": {
-      "agentSummary": "A lightweight macOS menu-bar monitor showing CPU, GPU, memory, disk, network, temperatures, and battery metrics, with multiple display modes and extensive customization.",
+      "agentSummary": "HagimiMonitor places Apple Silicon performance, storage, network, battery, Bluetooth, display, temperature, and fan telemetry in a compact native macOS menu-bar interface.",
       "assessment": {
         "alternatives": [
           "Stats",
@@ -1245,29 +1245,29 @@
           "MenuMeters"
         ],
         "audiences": [
-          "Apple Silicon Mac users who want persistent system metrics",
-          "Developers diagnosing local resource pressure",
-          "Users who prefer a compact menu-bar dashboard"
+          "Apple Silicon Mac users who want persistent system telemetry",
+          "Operators troubleshooting performance, storage, network, or battery behavior",
+          "Users who prefer a native menu-bar monitor"
         ],
         "caveats": [
-          "The project is young and its interface may continue changing quickly",
-          "The direct build has capabilities unavailable in the sandboxed App Store edition",
-          "Temperature, fan, and display controls depend on specific hardware access"
+          "The direct build has broader hardware access than the sandboxed App Store build",
+          "Temperature, fan, and external-display controls depend on hardware and connection support",
+          "It requires macOS 15 or newer and Apple Silicon"
         ],
         "complements": [
-          "Activity Monitor for deeper process inspection",
-          "powermetrics for command-line power diagnostics",
-          "SMART utilities for dedicated drive-health analysis"
+          "Activity Monitor for process-level investigation",
+          "Console for system and application logs",
+          "A hardware diagnostics workflow for persistent thermal or storage warnings"
         ],
         "prerequisites": [
-          "macOS 15 or later",
-          "An Apple Silicon Mac",
-          "Hardware and connection support for optional DDC/CI controls"
+          "An Apple Silicon Mac running macOS 15 or newer",
+          "The direct distribution for features unavailable inside the App Store sandbox",
+          "Compatible hardware for SMC sensors or DDC/CI display controls"
         ],
         "useCases": [
-          "Monitor CPU, GPU, memory, storage, network, and battery activity",
-          "Inspect temperatures, fan speed, and per-process usage in the direct build",
-          "Control compatible external displays through DDC/CI"
+          "Watch CPU, GPU, memory, storage, network, battery, Bluetooth, and display status",
+          "Review historical reports, health scores, and detected system events",
+          "Control supported external displays and inspect temperature or fan data with the direct build"
         ]
       },
       "category": "system",
@@ -1276,24 +1276,29 @@
       "homepage": "https://acerola-1.github.io/hagimi-monitor/",
       "id": "brew:cask:hagimimonitordirect",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahagimimonitordirect",
-      "lastUpdatedAt": "2026-10-01T22:00:31Z",
+      "lastUpdatedAt": "2026-10-02T07:19:29Z",
       "manager": "homebrew",
       "repository": "https://github.com/Acerola-1/hagimi-monitor",
-      "researchedAt": "2026-10-02T04:58:33Z",
+      "researchedAt": "2026-10-03T08:36:16Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "HagimiMonitor official repository and documentation",
+          "title": "HagimiMonitor project documentation",
           "url": "https://github.com/Acerola-1/hagimi-monitor"
         },
         {
           "kind": "primary",
-          "title": "HagimiMonitor v0.1.0 release",
+          "title": "HagimiMonitor official product site",
+          "url": "https://acerola-1.github.io/hagimi-monitor/en/"
+        },
+        {
+          "kind": "primary",
+          "title": "HagimiMonitor v0.1.0 first release",
           "url": "https://github.com/Acerola-1/hagimi-monitor/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Menu bar monitor for system performance and hardware",
-      "version": "1.6.6"
+      "version": "1.7.0"
     },
     "brew:cask:highball": {
       "agentSummary": "Highball runs Windows games on Apple Silicon through managed Wine-based engines, pairing launcher automation with an open compatibility database and per-game renderer guidance.",
@@ -1947,6 +1952,70 @@
       ],
       "upstreamSummary": "Disk space analyser",
       "version": "1.2.1"
+    },
+    "brew:cask:sdrmm-app": {
+      "agentSummary": "SDR-- combines a modular node canvas with desktop and remote server modes for listening, decoding, visualizing, recording, and automating software-defined radio workflows.",
+      "assessment": {
+        "alternatives": [
+          "SDR++",
+          "Gqrx",
+          "GNU Radio Companion"
+        ],
+        "audiences": [
+          "Radio hobbyists using RTL-SDR, HackRF, Airspy, SDRplay, or compatible devices",
+          "Experimenters building visual signal-processing chains",
+          "Users who want a remote SDR server with a browser-accessible interface"
+        ],
+        "caveats": [
+          "The project is young and describes itself as under active development",
+          "Hardware support and decoder maturity vary by device and protocol",
+          "Remote operation requires deliberate authentication, TLS, and network exposure choices"
+        ],
+        "complements": [
+          "SigMF tools for exchanging recorded signal data",
+          "Antenna and RF filtering hardware suited to the target band",
+          "Radio-reference databases for identifying frequencies and protocols"
+        ],
+        "prerequisites": [
+          "Compatible software-defined radio hardware for live reception",
+          "An appropriate antenna and basic awareness of local radio regulations",
+          "Network authentication and HTTPS configuration before exposing remote access"
+        ],
+        "useCases": [
+          "Listen to and record analog or digital radio signals",
+          "Decode aircraft, ship, pager, sensor, image, and amateur-radio transmissions",
+          "Build reusable receiver graphs and automate them through REST, WebSocket, or MCP interfaces"
+        ]
+      },
+      "category": "media",
+      "displayName": "SDR--",
+      "docs": "https://github.com/Newspicel/sdrmm#readme",
+      "homepage": "https://github.com/Newspicel/sdrmm",
+      "id": "brew:cask:sdrmm-app",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asdrmm-app",
+      "lastUpdatedAt": "2026-10-02T08:43:10Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/Newspicel/sdrmm",
+      "researchedAt": "2026-10-03T08:36:16Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "SDR-- project documentation",
+          "url": "https://github.com/Newspicel/sdrmm"
+        },
+        {
+          "kind": "primary",
+          "title": "SDR-- v0.0.1 first release",
+          "url": "https://github.com/Newspicel/sdrmm/releases/tag/v0.0.1"
+        },
+        {
+          "kind": "independent",
+          "title": "Independent SDR-- overview",
+          "url": "https://hamradio.my/sdrmm-sdr-minus-minus-modular-node-based-sdr-receiver/"
+        }
+      ],
+      "upstreamSummary": "Modular, client-server software-defined radio",
+      "version": "2.0.0"
     },
     "brew:cask:tapmap": {
       "agentSummary": "TapMap visualizes local network connections on a world map, builds activity history, and highlights unfamiliar destinations while remaining an awareness tool rather than a firewall.",
@@ -4172,7 +4241,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-02T04:57:08Z",
+    "generatedAt": "2026-10-03T08:34:38Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
