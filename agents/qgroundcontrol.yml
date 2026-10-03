@@ -1,12 +1,12 @@
 id: cask:qgroundcontrol
 display-name: QGroundControl
-homepage: https://qgroundcontrol.com/
-repo: https://github.com/mavlink/qgroundcontrol
+repo: null
 docs:
   - https://docs.qgroundcontrol.com/master/en/qgc-dev-guide
   - https://docs.qgroundcontrol.com/master/en/qgc-user-guide
 config-file-location:
-  unix: ~/Documents/QGroundControl/Settings/*.settings
+  unix:
+    - ~/Documents/QGroundControl/Settings/*.settings
 credentials-file-location: null
 history:
   adoption-history:
@@ -58,10 +58,6 @@ history:
       and maps; and inspect logs and MAVLink traffic. Application settings are normally
       managed through its graphical Settings view. Optional `.settings` override files
       are loaded from the `Settings` directory beneath the application load/save path.
-category: science
-package-manager:
-  brew-cask: qgroundcontrol
-package-manager-url: https://formulae.brew.sh/cask/qgroundcontrol
 tags:
   - ardupilot
   - drones
@@ -71,10 +67,45 @@ tags:
   - px4
   - robotics
   - telemetry
-description: Ground control station for drones
-applications:
-  - QGroundControl.app
 provenance:
-  cask: qgroundcontrol
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official repository describes QGroundControl as a ground-control station for
+      MAVLink-enabled drones: https://github.com/mavlink/qgroundcontrol
+    - 'source_facts.description: Ground control station for drones'
+  display-name-sources:
+    - 'Official project repository: https://github.com/mavlink/qgroundcontrol'
+    - 'source_facts.applications: QGroundControl.app'
+  docs-sources:
+    - >
+      Official QGroundControl support file lists the user and developer guides:
+      https://github.com/mavlink/qgroundcontrol/blob/master/.github/SUPPORT.md
+    - >
+      Official repository identifies docs.qgroundcontrol.com as its user and developer
+      documentation site: https://github.com/mavlink/qgroundcontrol
+  history-sources:
+    - >
+      Official developer guide governance and design notes:
+      https://docs.qgroundcontrol.com/master/en/qgc-dev-guide/
+    - >
+      Official first-flight documentation:
+      https://docs.qgroundcontrol.com/master/en/qgc-user-guide/getting_started/quick_start.html
+    - 'Official project overview and feature list: https://github.com/mavlink/qgroundcontrol'
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/mavlink/qgroundcontrol; repo is intentionally null under the
+      supplied enrichment rule.
+  tags-sources:
+    - 'Official repository feature list: https://github.com/mavlink/qgroundcontrol'
+    - 'Official user guide: https://docs.qgroundcontrol.com/master/en/qgc-user-guide/'
+category-confidence: high
+category-path:
+  - science
+  - robotics
+  - drone-control
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

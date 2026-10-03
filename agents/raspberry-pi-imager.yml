@@ -1,7 +1,6 @@
 id: cask:raspberry-pi-imager
 display-name: Raspberry Pi Imager
-homepage: https://www.raspberrypi.com/software/
-repo: https://github.com/raspberrypi/rpi-imager
+repo: null
 docs:
   - https://www.raspberrypi.com/documentation/computers/getting-started.html
   - https://github.com/raspberrypi/rpi-imager/blob/main/doc/man/rpi-imager.1
@@ -81,10 +80,6 @@ history:
       credentials, Wi-Fi, SSH, and Raspberry Pi Connect before writing and verifying the
       image. It also accepts custom local images and offers a CLI for scripted writes
       with optional SHA-256 checking.
-category: system
-package-manager:
-  brew-cask: raspberry-pi-imager
-package-manager-url: https://formulae.brew.sh/cask/raspberry-pi-imager
 tags:
   - boot-media
   - cross-platform
@@ -94,10 +89,56 @@ tags:
   - microsd
   - operating-system-installer
   - raspberry-pi
-description: Imaging utility to install operating systems to a microSD card
-applications:
-  - Raspberry Pi Imager.app
 provenance:
-  cask: raspberry-pi-imager
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation defines Raspberry Pi Imager as a tool for downloading and
+      writing OS images to boot media:
+      https://www.raspberrypi.com/documentation/computers/getting-started.html
+    - 'source_facts.description: Imaging utility to install operating systems to a microSD card'
+  display-name-sources:
+    - 'Official software page: https://www.raspberrypi.com/software/'
+    - 'source_facts.applications: Raspberry Pi Imager.app'
+  docs-sources:
+    - >
+      Official Raspberry Pi documentation provides the Imager installation,
+      customisation, and writing workflow:
+      https://www.raspberrypi.com/documentation/computers/getting-started.html
+    - >
+      The official repository supplies the command-line manual:
+      https://github.com/raspberrypi/rpi-imager/blob/main/doc/man/rpi-imager.1
+  history-sources:
+    - >
+      Official 2020 launch announcement:
+      https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/
+    - >
+      Official Imager 2.0 announcement:
+      https://www.raspberrypi.com/news/a-new-raspberry-pi-imager/
+    - >
+      Official documentation:
+      https://www.raspberrypi.com/documentation/computers/getting-started.html
+    - 'Official v1.5 announcement: https://www.raspberrypi.com/news/raspberry-pi-imager-update/'
+    - >
+      Official v1.6 announcement:
+      https://www.raspberrypi.com/news/raspberry-pi-imager-update-to-v1-6/
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/raspberrypi/rpi-imager; repo is intentionally null under the
+      supplied enrichment rule.
+  tags-sources:
+    - >
+      Official documentation:
+      https://www.raspberrypi.com/documentation/computers/getting-started.html
+    - >
+      Official repository command-line manual:
+      https://github.com/raspberrypi/rpi-imager/blob/main/doc/man/rpi-imager.1
+category-confidence: high
+category-path:
+  - system
+  - disk-imaging
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
