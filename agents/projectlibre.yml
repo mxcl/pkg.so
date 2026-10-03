@@ -1,13 +1,14 @@
 id: cask:projectlibre
 display-name: ProjectLibre Desktop
-homepage: https://www.projectlibre.com/
 repo: https://sourceforge.net/p/projectlibre/code/ci/master/tree
 docs:
   - https://projectlibre.com/projectlibre-desktop
   - https://projectlibre.com/projectlibre-documentation
 config-file-location:
-  unix: ~/.projectlibre/projectlibre.conf
-  windows: '%USERPROFILE%\ProjectLibre\projectlibre.conf'
+  unix:
+    - ~/.projectlibre/projectlibre.conf
+  windows:
+    - '%USERPROFILE%\ProjectLibre\projectlibre.conf'
 credentials-file-location: null
 history:
   adoption-history:
@@ -73,10 +74,6 @@ history:
     - >
       The desktop application can open Microsoft Project files and stores individual
       project documents locally, making it suitable for offline, single-user planning.
-category: productivity
-package-manager:
-  brew-cask: projectlibre
-package-manager-url: https://formulae.brew.sh/cask/projectlibre
 tags:
   - critical-path
   - desktop
@@ -86,10 +83,38 @@ tags:
   - project-management
   - resource-management
   - scheduling
-description: Microsoft Project in your browser
-applications:
-  - ProjectLibre.app
 provenance:
-  cask: projectlibre
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official ProjectLibre site describes desktop scheduling, Gantt, WBS, resource,
+      cost, and critical-path features: https://projectlibre.com/projectlibre-desktop/
+    - source_facts.description
+  display-name-sources:
+    - >
+      Official product page uses the name ProjectLibre Desktop:
+      https://projectlibre.com/projectlibre-desktop/
+    - source_facts.applications
+  docs-sources:
+    - Official desktop product overview
+    - Official multilingual desktop documentation portal
+  history-sources:
+    - https://projectlibre.com/about-us/
+    - https://projectlibre.com/projectlibre-desktop/
+    - https://sourceforge.net/p/projectlibre/code/ci/master/tree/
+    - https://sourceforge.net/projects/projectlibre/
+  repo-sources:
+    - >
+      The official ProjectLibre SourceForge project links its Code tab to this HTTP(S)
+      source tree.
+  tags-sources:
+    - Official ProjectLibre desktop feature page
+    - Official SourceForge project metadata
+category-confidence: high
+category-path:
+  - productivity
+  - project-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
