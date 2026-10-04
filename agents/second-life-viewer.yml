@@ -1,15 +1,17 @@
 id: cask:second-life-viewer
 display-name: Second Life Viewer
-homepage: https://secondlife.com/
 repo: https://github.com/secondlife/viewer
 docs:
   - https://community.secondlife.com/knowledgebase/english
   - https://wiki.secondlife.com/wiki/Open_source
   - https://wiki.secondlife.com/wiki/Source_downloads
 config-file-location:
-  linux: ~/.secondlife/user_settings/settings.xml
-  macos: ~/Library/Application Support/SecondLife/user_settings/settings.xml
-  windows: '%APPDATA%\SecondLife\user_settings\settings.xml'
+  linux:
+    - ~/.secondlife/user_settings/settings.xml
+  macos:
+    - ~/Library/Application Support/SecondLife/user_settings/settings.xml
+  windows:
+    - '%APPDATA%\SecondLife\user_settings\settings.xml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -73,10 +75,6 @@ history:
       customize avatars, create and edit virtual objects, manage inventory, and take
       part in the platform's marketplace and virtual economy. Developers can compile the
       official viewer source or build compliant third-party viewers.
-category: games
-package-manager:
-  brew-cask: second-life-viewer
-package-manager-url: https://formulae.brew.sh/cask/second-life-viewer
 tags:
   - 3d
   - open-source
@@ -84,10 +82,47 @@ tags:
   - user-generated-content
   - viewer
   - virtual-world
-description: 3D browsing software for Second Life online virtual world
-applications:
-  - Second Life Viewer.app
 provenance:
-  cask: second-life-viewer
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Linden Lab describes Second Life as a pioneering 3D virtual world:
+      https://lindenlab.com/about
+    - 'source_facts.description: 3D browsing software for Second Life online virtual world'
+  display-name-sources:
+    - >
+      Official source and documentation consistently call the client the Second Life
+      Viewer: https://wiki.secondlife.com/wiki/Source_downloads
+    - current_curation.display-name identifies the same Linden Lab viewer.
+  docs-sources:
+    - >
+      Official Second Life Knowledge Base for users and official Second Life Wiki pages
+      for viewer developers.
+  history-sources:
+    - 'Official Linden Lab overview: https://lindenlab.com/about'
+    - 'Official Second Life history: https://wiki.secondlife.com/wiki/History'
+    - >
+      Official integration process:
+      https://wiki.secondlife.com/wiki/Viewer_Integration_and_Release_Processes
+    - >
+      Official twentieth-anniversary release:
+      https://lindenlab.com/press-release/original-metaverse-second-life-celebrates-20th-birthday
+    - 'Official viewer source instructions: https://wiki.secondlife.com/wiki/Source_downloads'
+  repo-sources:
+    - >
+      Official release-process documentation says the repository supplies released
+      viewers: https://wiki.secondlife.com/wiki/Viewer_Integration_and_Release_Processes
+    - >
+      Official source-download instructions identify GitHub and the secondlife/viewer
+      repository: https://wiki.secondlife.com/wiki/Source_downloads
+  tags-sources:
+    - 'Official Linden Lab overview and history: https://lindenlab.com/about'
+    - 'Official open-source portal: https://wiki.secondlife.com/wiki/Open_source'
+category-confidence: high
+category-path:
+  - games
+  - virtual-worlds
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

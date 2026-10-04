@@ -1,14 +1,15 @@
 id: cask:script-kit
 display-name: Script Kit
-homepage: https://www.scriptkit.com/
-repo: https://github.com/johnlindquist/kitapp
+repo: null
 docs:
   - https://github.com/johnlindquist/kit/blob/main/GUIDE.md
   - https://johnlindquist.github.io/kit
 config-file-location:
-  unix: ~/.kenv/.env
+  unix:
+    - ~/.kenv/.env
 credentials-file-location:
-  unix: ~/.kenv/.env
+  unix:
+    - ~/.kenv/.env
 history:
   adoption-history:
     - >
@@ -60,10 +61,6 @@ history:
       filesystem and network helpers, shell-command integration, widgets, and other
       automation APIs. The env helper reads variables from ~/.kenv/.env and can prompt
       to save missing values there.
-category: developer-tools
-package-manager:
-  brew-cask: script-kit
-package-manager-url: https://formulae.brew.sh/cask/script-kit
 tags:
   - automation
   - command-palette
@@ -71,12 +68,40 @@ tags:
   - javascript
   - scripting
   - typescript
-description: Create and run scripts
-applications:
-  - Script Kit.app
 provenance:
-  cask: script-kit
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - kit
+  category-sources:
+    - >
+      Official homepage calls Script Kit an open-source desktop app for creating and
+      running scripts: https://www.scriptkit.com/
+  display-name-sources:
+    - 'Official homepage heading and source_facts.name: https://www.scriptkit.com/'
+  docs-sources:
+    - The official homepage links to the dedicated API documentation.
+    - The official project repository contains the Script Kit Guide.
+  history-sources:
+    - >
+      Official Windows preview announcement:
+      https://github.com/johnlindquist/kit/discussions/654
+    - 'Official guide: https://github.com/johnlindquist/kit/blob/main/GUIDE.md'
+    - 'Official homepage: https://www.scriptkit.com/'
+    - 'Official launch announcement: https://github.com/johnlindquist/kit/discussions/655'
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/johnlindquist/kitapp; per instructions, repo is therefore
+      returned as null without re-evaluation.
+  tags-sources:
+    - >
+      Official guide examples and workflow:
+      https://github.com/johnlindquist/kit/blob/main/GUIDE.md
+    - 'Official homepage features and description: https://www.scriptkit.com/'
+category-confidence: high
+category-path:
+  - developer-tools
+  - automation
+  - scripting
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
