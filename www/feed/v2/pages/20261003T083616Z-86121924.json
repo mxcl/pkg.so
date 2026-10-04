@@ -2,347 +2,6 @@
   "content": [
     {
       "artwork": {
-        "alt": "A luminous violet language-intelligence core sends semantic data streams into three distinct abstract code editor panels.",
-        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#26134F",
-          "backgroundStart": "#090D2D",
-          "foreground": "#F7F4FF"
-        },
-        "license": "OpenAI terms of use",
-        "path": "feed/assets/kotlin-lsp-editor-boundary-2026-10-04.png"
-      },
-      "batchID": "20261004T080130Z-f09b4fea",
-      "body": "## An official server changes the starting point\n\nKotlin developers outside IntelliJ IDEA have long depended on editor-specific plugins, community servers, or a deliberately lighter editing experience. JetBrains' official Kotlin language server changes that baseline. The repository appeared in 2025, and its first published GitHub release in May shipped both a Visual Studio Code extension and a standalone archive for other Language Server Protocol clients. The project now describes itself as official Kotlin support for VS Code, built from IntelliJ IDEA and Kotlin plugin technology.\n\nThat provenance matters more than the badge. Language tooling is not only syntax coloring. Useful completion needs a project model; navigation must understand dependencies; rename needs semantic references; diagnostics must agree with the language and build. Kotlin LSP currently advertises IntelliJ-derived completion, diagnostics, quick fixes, formatting, call hierarchy, imports, hover information, and refactoring. It can import JVM projects using Gradle or Maven, with experimental Android Gradle Plugin support. In practical terms, the server moves a meaningful portion of JetBrains' Kotlin knowledge behind a standard editor protocol.\n\nIt does **not** turn every editor into IntelliJ IDEA. The project is explicitly alpha, Kotlin Multiplatform support is still planned, and the implementation includes proprietary components drawn from JetBrains products. The public repository is primarily a mirror, not a conventional community implementation accepting core contributions. Those constraints should shape expectations from the first installation.\n\n## The protocol is a boundary, not a guarantee\n\nLSP separates language intelligence from the interface that displays it. The server can answer requests for completion, definitions, symbols, edits, and diagnostics; the client decides how those answers fit into buffers, keybindings, panels, and workflows. That boundary creates portability, but it also creates two moving parts. When an action behaves strangely, users must ask whether the problem is in the project import, the server, the protocol exchange, the editor client, or another plugin.\n\nThe Kotlin project says releases are generally tested with Visual Studio Code. That makes VS Code the most direct path: install the Kotlin by JetBrains extension, open a Kotlin workspace, and let the extension activate the bundled server. Visual Studio Code Insiders is useful when extension developers or early adopters need to test upcoming editor behavior, but its frequent preview updates add another source of change. A reproducible report should record both editor and server versions.\n\nNeovim exposes the other side of the bargain. Its built-in LSP client can attach external servers to buffers and provide diagnostics, navigation, completion hooks, and workspace operations. Kotlin LSP publishes a standalone distribution and community-maintained scripts for editors beyond VS Code, so a Neovim setup is possible. It is also less packaged: users are responsible for the launch command, workspace root, capabilities, completion integration, and any plugin interactions. That control is the attraction and the maintenance cost.\n\n## What day-to-day use looks like\n\nA realistic evaluation begins with one ordinary JVM repository, not the most complicated multiplatform build in the company. Confirm that the server imports the Gradle or Maven model, resolves the intended JDK, and reaches a quiet diagnostic state. Then test a short workflow:\n\n- navigate from a call to source and back;\n- rename a symbol across more than one file;\n- apply a quick fix and inspect the resulting edit;\n- compare formatting with the team's committed style;\n- run the real build and test suite after semantic edits.\n\nThe last step is essential. An editor service accelerates feedback; it does not replace the compiler, build tool, or CI. Teams should also measure startup and indexing on representative repositories, because a language server derived from IDE infrastructure has a different resource profile from a minimal syntax plugin. Recent releases have worked on bundle size, caching, Gradle import, completion latency, Maven support, and memory leaks, evidence that the project is actively addressing exactly these operational edges.\n\n## Choose the client by responsibility\n\nFor the smoothest supported path, use the packaged VS Code extension and stay conscious that alpha releases can regress. Use Insiders when testing future editor integration is itself the job, not merely because it is newer. Choose Neovim when explicit configuration and terminal-native editing are worth owning more integration detail. Keep IntelliJ IDEA or Android Studio available when a project depends on mature Kotlin-specific inspections, Android tooling, or workflows the server has not reached.\n\nKotlin LSP is interesting because it is neither a complete IDE replacement nor a thin community bridge. It is a new official boundary around JetBrains' language intelligence. That makes more editor choices credible, while placing new importance on version pinning, reproducible configurations, and clear bug reports across both sides of the protocol.",
-      "deck": "JetBrains' alpha language server brings IntelliJ-derived Kotlin analysis to VS Code and other LSP clients, while making the editor-server boundary impossible to ignore.",
-      "id": "editorial:2026-10-04:kotlin-lsp-moves-language-intelligence-between-editors",
-      "package": {
-        "agentSummary": "JetBrains' official Kotlin language server brings IntelliJ-derived completion, diagnostics, navigation, refactoring, and Gradle or Maven project support to LSP-capable editors.",
-        "assessment": {
-          "alternatives": [
-            "IntelliJ IDEA or Android Studio for the most complete Kotlin IDE experience",
-            "Community Kotlin language servers for workflows the official alpha does not yet support"
-          ],
-          "audiences": [
-            "Kotlin developers who work outside IntelliJ IDEA",
-            "Editor integrators evaluating official Kotlin language intelligence",
-            "Teams using VS Code for JVM projects"
-          ],
-          "caveats": [
-            "The project is explicitly alpha and feature completeness is still evolving",
-            "Kotlin Multiplatform support is not yet available",
-            "Android Gradle Plugin support is experimental",
-            "The implementation includes proprietary JetBrains components and the repository is mainly a read-only mirror"
-          ],
-          "complements": [
-            "Gradle or Maven for project models and dependency resolution",
-            "A Kotlin compiler and project test suite",
-            "Editor-specific LSP configuration and diagnostics tooling"
-          ],
-          "prerequisites": [
-            "A supported macOS, Linux, or Windows system",
-            "An LSP-capable editor or the bundled Visual Studio Code extension",
-            "A compatible JDK and build-tool configuration for the project"
-          ],
-          "useCases": [
-            "Add completion, diagnostics, navigation, formatting, and refactoring to Kotlin workspaces",
-            "Import Gradle and Maven JVM projects into an LSP-based editor",
-            "Test Kotlin editor workflows against JetBrains' evolving language engine"
-          ]
-        },
-        "category": "developer-tools",
-        "displayName": "Kotlin LSP",
-        "docs": "https://github.com/Kotlin/kotlin-lsp#readme",
-        "homepage": "https://github.com/Kotlin/kotlin-lsp",
-        "id": "brew:cask:kotlin-lsp",
-        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akotlin-lsp",
-        "lastUpdatedAt": "2026-10-03T14:41:59Z",
-        "manager": "homebrew",
-        "repository": "https://github.com/Kotlin/kotlin-lsp",
-        "researchedAt": "2026-10-04T08:01:30Z",
-        "sources": [
-          {
-            "kind": "primary",
-            "title": "Official Kotlin language server repository and documentation",
-            "url": "https://github.com/Kotlin/kotlin-lsp"
-          },
-          {
-            "kind": "primary",
-            "title": "First published Kotlin LSP release",
-            "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
-          }
-        ],
-        "upstreamSummary": "Official Kotlin Language Server",
-        "version": "263.6379.0"
-      },
-      "primaryPackageID": "brew:cask:kotlin-lsp",
-      "publishedAt": "2026-10-04T08:01:30Z",
-      "relatedPackages": [
-        {
-          "agentSummary": "JetBrains' official Kotlin language server brings IntelliJ-derived completion, diagnostics, navigation, refactoring, and Gradle or Maven project support to LSP-capable editors.",
-          "assessment": {
-            "alternatives": [
-              "IntelliJ IDEA or Android Studio for the most complete Kotlin IDE experience",
-              "Community Kotlin language servers for workflows the official alpha does not yet support"
-            ],
-            "audiences": [
-              "Kotlin developers who work outside IntelliJ IDEA",
-              "Editor integrators evaluating official Kotlin language intelligence",
-              "Teams using VS Code for JVM projects"
-            ],
-            "caveats": [
-              "The project is explicitly alpha and feature completeness is still evolving",
-              "Kotlin Multiplatform support is not yet available",
-              "Android Gradle Plugin support is experimental",
-              "The implementation includes proprietary JetBrains components and the repository is mainly a read-only mirror"
-            ],
-            "complements": [
-              "Gradle or Maven for project models and dependency resolution",
-              "A Kotlin compiler and project test suite",
-              "Editor-specific LSP configuration and diagnostics tooling"
-            ],
-            "prerequisites": [
-              "A supported macOS, Linux, or Windows system",
-              "An LSP-capable editor or the bundled Visual Studio Code extension",
-              "A compatible JDK and build-tool configuration for the project"
-            ],
-            "useCases": [
-              "Add completion, diagnostics, navigation, formatting, and refactoring to Kotlin workspaces",
-              "Import Gradle and Maven JVM projects into an LSP-based editor",
-              "Test Kotlin editor workflows against JetBrains' evolving language engine"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "Kotlin LSP",
-          "docs": "https://github.com/Kotlin/kotlin-lsp#readme",
-          "homepage": "https://github.com/Kotlin/kotlin-lsp",
-          "id": "brew:cask:kotlin-lsp",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akotlin-lsp",
-          "lastUpdatedAt": "2026-10-03T14:41:59Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/Kotlin/kotlin-lsp",
-          "researchedAt": "2026-10-04T08:01:30Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Official Kotlin language server repository and documentation",
-              "url": "https://github.com/Kotlin/kotlin-lsp"
-            },
-            {
-              "kind": "primary",
-              "title": "First published Kotlin LSP release",
-              "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
-            }
-          ],
-          "upstreamSummary": "Official Kotlin Language Server",
-          "version": "263.6379.0"
-        },
-        {
-          "agentSummary": "Visual Studio Code Insiders delivers Microsoft's frequently updated preview editor, providing the primary tested client for JetBrains' official Kotlin language server extension.",
-          "assessment": {
-            "alternatives": [
-              "Stable Visual Studio Code for a slower release cadence",
-              "Neovim or another editor with an LSP client",
-              "IntelliJ IDEA for deeply integrated Kotlin tooling"
-            ],
-            "audiences": [
-              "Developers who want early access to Visual Studio Code changes",
-              "Extension authors testing against upcoming editor behavior",
-              "Kotlin developers evaluating JetBrains' official VS Code integration"
-            ],
-            "caveats": [
-              "Insiders builds change frequently and may include regressions",
-              "Preview behavior can differ from the stable channel",
-              "An editor update and a language-server update can introduce separate variables during troubleshooting"
-            ],
-            "complements": [
-              "The Kotlin by JetBrains extension",
-              "Extension development and integration test suites",
-              "Stable Visual Studio Code for daily production work"
-            ],
-            "prerequisites": [
-              "Tolerance for frequent preview updates",
-              "A separate plan for stable-editor workflows and settings synchronization"
-            ],
-            "useCases": [
-              "Evaluate preview editor and extension-host changes",
-              "Run the officially tested Kotlin LSP client experience",
-              "Reproduce extension issues against current Insiders builds"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "Visual Studio Code Insiders",
-          "docs": "https://code.visualstudio.com/docs",
-          "homepage": "https://code.visualstudio.com/insiders/",
-          "id": "brew:cask:visual-studio-code@insiders",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Avisual-studio-code%40insiders",
-          "lastUpdatedAt": "2026-10-03T23:15:15Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/microsoft/vscode",
-          "researchedAt": "2026-10-04T08:01:30Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Visual Studio Code Insiders",
-              "url": "https://code.visualstudio.com/insiders/"
-            },
-            {
-              "kind": "primary",
-              "title": "Visual Studio Code source repository",
-              "url": "https://github.com/microsoft/vscode"
-            }
-          ],
-          "upstreamSummary": "Open-source code editor",
-          "version": "1.141.0-insider,1791051985777,429a4ec703266abbd31f6886764e4127955bdc9d"
-        },
-        {
-          "agentSummary": "Neovim combines modal editing with a built-in LSP client, letting users connect Kotlin and other language servers through explicit, scriptable configuration.",
-          "assessment": {
-            "alternatives": [
-              "Visual Studio Code for a packaged extension workflow",
-              "Helix for another terminal editor with integrated language-server support",
-              "IntelliJ IDEA for the most complete Kotlin integration"
-            ],
-            "audiences": [
-              "Terminal-oriented developers who prefer modal editing",
-              "Users who want direct control over language-server configuration",
-              "Plugin authors building editor workflows around Neovim's APIs"
-            ],
-            "caveats": [
-              "The Kotlin project officially tests releases with Visual Studio Code rather than every LSP client",
-              "Users own more of the launch, root-detection, capability, and plugin configuration",
-              "Editor plugins can add compatibility variables beyond the language server itself"
-            ],
-            "complements": [
-              "Completion and snippet plugins",
-              "Treesitter parsers for syntax-aware editing",
-              "Project-specific formatter, linter, and test commands"
-            ],
-            "prerequisites": [
-              "A working Neovim configuration",
-              "A separately installed and configured language server",
-              "Project roots and launch commands appropriate to each server"
-            ],
-            "useCases": [
-              "Connect external language servers to buffers and workspaces",
-              "Build keyboard-driven diagnostics, navigation, completion, and refactoring workflows",
-              "Experiment with the standalone Kotlin LSP outside its primary VS Code client"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "neovim",
-          "docs": "https://neovim.io/doc",
-          "homepage": "https://neovim.io/",
-          "id": "brew:neovim",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aneovim",
-          "lastUpdatedAt": "2026-10-03T15:40:59Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/neovim/neovim",
-          "researchedAt": "2026-10-04T08:01:30Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Neovim LSP client documentation",
-              "url": "https://neovim.io/doc/user/lsp.html"
-            },
-            {
-              "kind": "primary",
-              "title": "Neovim source repository",
-              "url": "https://github.com/neovim/neovim"
-            }
-          ],
-          "upstreamSummary": "Ambitious Vim-fork focused on extensibility and agility",
-          "version": "0.12.5"
-        }
-      ],
-      "selection": {
-        "newerOverride": {
-          "reason": "JetBrains introduced its official Kotlin language server and VS Code integration as a new alpha product direction in 2025, with a standalone LSP distribution for other editors.",
-          "sourceURL": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
-        },
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Official Kotlin language server repository and documentation",
-          "url": "https://github.com/Kotlin/kotlin-lsp"
-        },
-        {
-          "kind": "primary",
-          "title": "First published Kotlin LSP release",
-          "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
-        },
-        {
-          "kind": "primary",
-          "title": "Visual Studio Code Insiders",
-          "url": "https://code.visualstudio.com/insiders/"
-        },
-        {
-          "kind": "primary",
-          "title": "Neovim LSP client documentation",
-          "url": "https://neovim.io/doc/user/lsp.html"
-        }
-      ],
-      "title": "Kotlin LSP Moves Language Intelligence Between Editors",
-      "type": "editorial"
-    },
-    {
-      "batchID": "20261004T080130Z-97631b37",
-      "id": "recently-updated:ai:20261004T080130Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Sync skills across AI CLI tools",
-          "category": "ai",
-          "displayName": "skillshare",
-          "homepage": "https://skillshare.runkids.cc",
-          "id": "brew:skillshare",
-          "installURL": "pkgmgrmgr://install?package=brew%3Askillshare",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Open-source framework for augmenting humans using AI",
-          "category": "ai",
-          "displayName": "fabric-ai",
-          "homepage": "https://github.com/danielmiessler/fabric",
-          "id": "brew:fabric-ai",
-          "installURL": "pkgmgrmgr://install?package=brew%3Afabric-ai",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Your own personal AI assistant",
-          "category": "ai",
-          "displayName": "openclaw-cli",
-          "homepage": "https://openclaw.ai/",
-          "id": "brew:openclaw-cli",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aopenclaw-cli",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Portable multi-agent harness for .agents-based skills and workflows",
-          "category": "ai",
-          "displayName": "oh-my-agent",
-          "homepage": "https://firstfluke.com/oh-my-agent/",
-          "id": "brew:oh-my-agent",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aoh-my-agent",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "AI agent",
-          "category": "ai",
-          "displayName": "FlowDown",
-          "homepage": "https://flowdown.ai/",
-          "id": "brew:cask:flowdown",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aflowdown",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-10-04T08:01:30Z",
-      "title": "Recently Updated in Ai",
-      "type": "recentlyUpdated"
-    },
-    {
-      "artwork": {
         "alt": "An operator watches luminous workload clusters above guarded infrastructure nodes while abstract deployment sheets flow into the system.",
         "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
         "boxColors": {
@@ -623,182 +282,83 @@
     },
     {
       "batchID": "20260930T090325Z-86df3774",
-      "id": "new-packages:data:20261004T080130Z-f220bb45",
+      "id": "new-packages:media:20260930T090325Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Top-like interactive monitoring tool for PostgreSQL server activity",
-          "category": "data",
-          "displayName": "pg_activity",
-          "homepage": "https://github.com/dalibo/pg_activity",
-          "id": "brew:pg_activity",
-          "installURL": "pkgmgrmgr://install?package=brew%3Apg_activity",
+          "agentSummary": "Modular, client-server software-defined radio",
+          "category": "media",
+          "displayName": "SDR--",
+          "homepage": "https://github.com/Newspicel/sdrmm",
+          "id": "brew:cask:sdrmm-app",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asdrmm-app",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Modular, client-server software-defined radio",
+          "category": "media",
+          "displayName": "sdrmm",
+          "homepage": "https://github.com/Newspicel/sdrminusminus",
+          "id": "brew:sdrmm",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asdrmm",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "New Packages in Data",
+      "title": "New Packages in Media",
       "type": "newPackages"
     },
     {
       "batchID": "20260930T090325Z-86df3774",
-      "id": "for-you:cloud-infrastructure:20261004T080130Z-f220bb45",
+      "id": "for-you:security:20260930T090325Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Command-line interface for all things Cloudflare Workers",
-          "category": "cloud-infrastructure",
-          "displayName": "wrangler",
-          "homepage": "https://github.com/cloudflare/workers-sdk#readme",
-          "id": "npm:wrangler",
-          "installURL": "pkgmgrmgr://install?package=npm%3Awrangler",
+          "agentSummary": "A tiny (118 bytes), secure URL-friendly unique string ID generator",
+          "category": "security",
+          "displayName": "nanoid",
+          "homepage": "https://github.com/ai/nanoid#readme",
+          "id": "npm:nanoid",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ananoid",
           "manager": "npm"
         },
         {
-          "agentSummary": "AWS CDK Toolkit CLI, the command line tool for CDK apps",
-          "category": "cloud-infrastructure",
-          "displayName": "aws-cdk",
-          "homepage": "https://github.com/aws/aws-cdk",
-          "id": "npm:aws-cdk",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aaws-cdk",
+          "agentSummary": "Streamable SHA hashes in pure javascript",
+          "category": "security",
+          "displayName": "sha.js",
+          "homepage": "https://github.com/crypto-browserify/sha.js",
+          "id": "npm:sha.js",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asha.js",
           "manager": "npm"
         },
         {
-          "agentSummary": "The command-line interface for Vercel",
-          "category": "cloud-infrastructure",
-          "displayName": "vercel",
-          "homepage": "https://vercel.com",
-          "id": "npm:vercel",
-          "installURL": "pkgmgrmgr://install?package=npm%3Avercel",
+          "agentSummary": "detect possibly catastrophic, exponential-time regular expressions",
+          "category": "security",
+          "displayName": "safe-regex2",
+          "homepage": "https://github.com/fastify/safe-regex2",
+          "id": "npm:safe-regex2",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asafe-regex2",
           "manager": "npm"
         },
         {
-          "agentSummary": "Supabase CLI",
-          "category": "cloud-infrastructure",
-          "displayName": "supabase",
-          "homepage": "https://github.com/supabase/cli#readme",
-          "id": "npm:supabase",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asupabase",
+          "agentSummary": "Optimized bcrypt in plain JavaScript with zero dependencies, with TypeScript support. Compatible to 'bcrypt'.",
+          "category": "security",
+          "displayName": "bcryptjs",
+          "homepage": "https://github.com/dcodeIO/bcrypt.js#readme",
+          "id": "npm:bcryptjs",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abcryptjs",
           "manager": "npm"
         },
         {
-          "agentSummary": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
-          "category": "cloud-infrastructure",
-          "displayName": "expo-updates",
-          "homepage": "https://docs.expo.dev/versions/latest/sdk/updates/",
-          "id": "npm:expo-updates",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aexpo-updates",
+          "agentSummary": "Sanitize untrusted HTML (to prevent XSS) with a configuration specified by a Whitelist",
+          "category": "security",
+          "displayName": "xss",
+          "homepage": "https://github.com/leizongmin/js-xss",
+          "id": "npm:xss",
+          "installURL": "pkgmgrmgr://install?package=npm%3Axss",
           "manager": "npm"
         }
       ],
       "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "For You in Cloud Infrastructure",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260930T090325Z-86df3774",
-      "id": "recently-updated:data:20261004T080130Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Command-line interface for interacting with the IoTeX blockchain",
-          "category": "data",
-          "displayName": "ioctl",
-          "homepage": "https://docs.iotex.io/",
-          "id": "brew:ioctl",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aioctl",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Command-line interface for DBX database connections, schema, and safe queries",
-          "category": "data",
-          "displayName": "dbx-cli",
-          "homepage": "https://dbxio.com",
-          "id": "brew:dbx-cli",
-          "installURL": "pkgmgrmgr://install?package=brew%3Adbx-cli",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Database management tool",
-          "category": "data",
-          "displayName": "DBX",
-          "homepage": "https://dbxio.com/",
-          "id": "brew:cask:dbx",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adbx",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Cube.js command-line interface",
-          "category": "data",
-          "displayName": "cubejs-cli",
-          "homepage": "https://cube.dev/",
-          "id": "brew:cubejs-cli",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acubejs-cli",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Discovery, extraction and processing for Web text",
-          "category": "data",
-          "displayName": "trafilatura",
-          "homepage": "https://trafilatura.readthedocs.io/en/latest/",
-          "id": "brew:trafilatura",
-          "installURL": "pkgmgrmgr://install?package=brew%3Atrafilatura",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "Recently Updated in Data",
-      "type": "recentlyUpdated"
-    },
-    {
-      "batchID": "20260930T090325Z-86df3774",
-      "id": "for-you:developer-tools:20261004T080130Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "The semantic version parser used by npm.",
-          "category": "developer-tools",
-          "displayName": "semver",
-          "homepage": "https://github.com/npm/node-semver#readme",
-          "id": "npm:semver",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asemver",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "RFC9562 UUIDs",
-          "category": "developer-tools",
-          "displayName": "uuid",
-          "homepage": "https://github.com/uuidjs/uuid#readme",
-          "id": "npm:uuid",
-          "installURL": "pkgmgrmgr://install?package=npm%3Auuid",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "An extremely fast JavaScript and CSS bundler and minifier.",
-          "category": "developer-tools",
-          "displayName": "esbuild",
-          "homepage": "https://github.com/evanw/esbuild#readme",
-          "id": "npm:esbuild",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aesbuild",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "resolve like require.resolve() on behalf of files asynchronously and synchronously",
-          "category": "developer-tools",
-          "displayName": "resolve",
-          "homepage": "https://github.com/browserify/resolve#readme",
-          "id": "npm:resolve",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aresolve",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Native-ESM powered web dev build tool",
-          "category": "developer-tools",
-          "displayName": "vite",
-          "homepage": "https://vite.dev",
-          "id": "npm:vite",
-          "installURL": "pkgmgrmgr://install?package=npm%3Avite",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "For You in Developer Tools",
+      "title": "For You in Security",
       "type": "personalizedRecommendations"
     },
     {
@@ -1077,164 +637,56 @@
     },
     {
       "batchID": "20260926T105505Z-a6e88a3d",
-      "id": "recently-updated:other:20261004T080130Z-f220bb45",
+      "id": "recently-updated:media:20260930T090325Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Generic library support script",
-          "category": "other",
-          "displayName": "libtool",
-          "homepage": "https://www.gnu.org/software/libtool/",
-          "id": "brew:libtool",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibtool",
+          "agentSummary": "High dynamic-range image file format",
+          "category": "media",
+          "displayName": "openexr",
+          "homepage": "https://www.openexr.com/",
+          "id": "brew:openexr",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aopenexr",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "F1 Live Timing TUI for all F1 sessions with variable delay to sync to your TV",
-          "category": "other",
-          "displayName": "undercutf1",
-          "homepage": "https://amandhoot.com",
-          "id": "brew:undercutf1",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aundercutf1",
+          "agentSummary": "Font editor",
+          "category": "media",
+          "displayName": "Glyphs",
+          "homepage": "https://glyphsapp.com/",
+          "id": "brew:cask:glyphs",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aglyphs",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "C library for manipulating POSIX tar files",
-          "category": "other",
-          "displayName": "libtar",
-          "homepage": "https://repo.or.cz/libtar.git",
-          "id": "brew:libtar",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibtar",
+          "agentSummary": "Library for reading, processing and writing images",
+          "category": "media",
+          "displayName": "openimageio",
+          "homepage": "https://openimageio.readthedocs.io/en/stable/",
+          "id": "brew:openimageio",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aopenimageio",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Text-based genealogy software",
-          "category": "other",
-          "displayName": "lifelines",
-          "homepage": "https://lifelines.github.io/lifelines/",
-          "id": "brew:lifelines",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alifelines",
+          "agentSummary": "SDL2 compatibility layer that uses SDL3 behind the scenes",
+          "category": "media",
+          "displayName": "sdl2-compat",
+          "homepage": "https://github.com/libsdl-org/sdl2-compat",
+          "id": "brew:sdl2-compat",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asdl2-compat",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Fork of SQLite that is both Open Source, and Open Contributions",
-          "category": "other",
-          "displayName": "libsql",
-          "homepage": "https://turso.tech/libsql",
-          "id": "brew:libsql",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibsql",
+          "agentSummary": "Command-line tool to customize Spotify client",
+          "category": "media",
+          "displayName": "spicetify-cli",
+          "homepage": "https://spicetify.app/",
+          "id": "brew:spicetify-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aspicetify-cli",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-26T10:55:05Z",
-      "title": "Recently Updated in Other",
-      "type": "recentlyUpdated"
-    },
-    {
-      "batchID": "20260926T105505Z-a6e88a3d",
-      "id": "for-you:media:20261004T080130Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "SVGO is a Node.js library and command-line application for optimizing vector images.",
-          "category": "media",
-          "displayName": "svgo",
-          "homepage": "https://svgo.dev",
-          "id": "npm:svgo",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asvgo",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "get dimensions of any image file",
-          "category": "media",
-          "displayName": "image-size",
-          "homepage": null,
-          "id": "npm:image-size",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aimage-size",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Fast math typesetting for the web.",
-          "category": "media",
-          "displayName": "katex",
-          "homepage": "https://katex.org",
-          "id": "npm:katex",
-          "installURL": "pkgmgrmgr://install?package=npm%3Akatex",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "QRCode / 2d Barcode api with both server side and client side support using canvas",
-          "category": "media",
-          "displayName": "qrcode",
-          "homepage": null,
-          "id": "npm:qrcode",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aqrcode",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "The smallest and fastest pixel-level image comparison library.",
-          "category": "media",
-          "displayName": "pixelmatch",
-          "homepage": "https://github.com/mapbox/pixelmatch#readme",
-          "id": "npm:pixelmatch",
-          "installURL": "pkgmgrmgr://install?package=npm%3Apixelmatch",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-26T10:55:05Z",
-      "title": "For You in Media",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260926T105505Z-a6e88a3d",
-      "id": "recently-updated:system:20261004T080130Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Hardware driver for all USRP devices",
-          "category": "system",
-          "displayName": "uhd",
-          "homepage": "https://files.ettus.com/manual/",
-          "id": "brew:uhd",
-          "installURL": "pkgmgrmgr://install?package=brew%3Auhd",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Window peeking utility app",
-          "category": "system",
-          "displayName": "DockDoor",
-          "homepage": "https://dockdoor.net/",
-          "id": "brew:cask:dockdoor",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adockdoor",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Cross-platform disk diagnostics TUI",
-          "category": "system",
-          "displayName": "diskwatch",
-          "homepage": "https://www.netwatchlabs.com/labs/diskwatch",
-          "id": "brew:diskwatch",
-          "installURL": "pkgmgrmgr://install?package=brew%3Adiskwatch",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Extract files and folders from package files, disk images, and archives",
-          "category": "system",
-          "displayName": "Pacifist",
-          "homepage": "https://www.charlessoft.com/",
-          "id": "brew:cask:pacifist",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apacifist",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Linux virtual machines",
-          "category": "system",
-          "displayName": "lima",
-          "homepage": "https://lima-vm.io/",
-          "id": "brew:lima",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alima",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-26T10:55:05Z",
-      "title": "Recently Updated in System",
+      "title": "Recently Updated in Media",
       "type": "recentlyUpdated"
     },
     {
@@ -1550,84 +1002,183 @@
     },
     {
       "batchID": "20260922T164202Z-7725d80a",
-      "id": "new-packages:networking:20261004T080130Z-f220bb45",
+      "id": "for-you:system:20260930T090325Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Terminal UI for WireGuard and OpenVPN with live telemetry and leak guarding",
-          "category": "networking",
-          "displayName": "vortix",
-          "homepage": "https://github.com/Harry-kp/vortix",
-          "id": "brew:vortix",
-          "installURL": "pkgmgrmgr://install?package=brew%3Avortix",
-          "manager": "homebrew"
+          "agentSummary": "Like which(1) unix command. Find the first instance of an executable in the PATH.",
+          "category": "system",
+          "displayName": "which",
+          "homepage": "https://github.com/npm/node-which#readme",
+          "id": "npm:which",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awhich",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Ncurses-based monitoring application for wireless network devices on Linux",
-          "category": "networking",
-          "displayName": "wavemon",
-          "homepage": "https://github.com/uoaerg/wavemon",
-          "id": "brew:wavemon",
-          "installURL": "pkgmgrmgr://install?package=brew%3Awavemon",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-22T16:42:02Z",
-      "title": "New Packages in Networking",
-      "type": "newPackages"
-    },
-    {
-      "batchID": "20260922T164202Z-7725d80a",
-      "id": "recently-updated:toys:20261004T080130Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Control your Nanoleaf lights",
-          "category": "toys",
-          "displayName": "Nanoleaf Desktop App",
-          "homepage": "https://nanoleaf.me/",
-          "id": "brew:cask:nanoleaf",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ananoleaf",
-          "manager": "homebrew"
+          "agentSummary": "A deep deletion module for node (like `rm -rf`)",
+          "category": "system",
+          "displayName": "rimraf",
+          "homepage": "https://github.com/isaacs/rimraf#readme",
+          "id": "npm:rimraf",
+          "installURL": "pkgmgrmgr://install?package=npm%3Arimraf",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Desktop pet that reacts to AI coding agents",
-          "category": "toys",
-          "displayName": "Clawd on Desk",
-          "homepage": "https://github.com/rullerzhou-afk/clawd-on-desk",
-          "id": "brew:cask:clawd-on-desk",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclawd-on-desk",
-          "manager": "homebrew"
+          "agentSummary": "Recursively mkdir, like `mkdir -p`",
+          "category": "system",
+          "displayName": "mkdirp",
+          "homepage": "https://github.com/isaacs/node-mkdirp#readme",
+          "id": "npm:mkdirp",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amkdirp",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Desktop pet that reflects coding agent activity",
-          "category": "toys",
-          "displayName": "Petdex",
-          "homepage": "https://petdex.dev/",
-          "id": "brew:cask:petdex",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apetdex",
-          "manager": "homebrew"
+          "agentSummary": "Check if the process is running inside a Docker container",
+          "category": "system",
+          "displayName": "is-docker",
+          "homepage": "https://github.com/sindresorhus/is-docker#readme",
+          "id": "npm:is-docker",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-docker",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Frontend application for the Buttplug sex toy control library",
-          "category": "toys",
-          "displayName": "Intiface Central",
-          "homepage": "https://github.com/intiface/intiface-central",
-          "id": "brew:cask:intiface-central",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aintiface-central",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Creates ASCII Art from text. A full implementation of the FIGfont spec.",
-          "category": "toys",
-          "displayName": "figlet",
-          "homepage": "https://github.com/patorjk/figlet.js#readme",
-          "id": "npm:figlet",
-          "installURL": "pkgmgrmgr://install?package=npm%3Afiglet",
+          "agentSummary": "Check if the process is running inside a container (Docker/Podman)",
+          "category": "system",
+          "displayName": "is-inside-container",
+          "homepage": "https://github.com/sindresorhus/is-inside-container#readme",
+          "id": "npm:is-inside-container",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-inside-container",
           "manager": "npm"
         }
       ],
       "publishedAt": "2026-09-22T16:42:02Z",
-      "title": "Recently Updated in Toys",
+      "title": "For You in System",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260922T164202Z-7725d80a",
+      "id": "recently-updated:security:20260930T090325Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "MongoDB's blazingly fast secret scanning and validation tool",
+          "category": "security",
+          "displayName": "kingfisher",
+          "homepage": "https://mongodb.github.io/kingfisher/",
+          "id": "brew:kingfisher",
+          "installURL": "pkgmgrmgr://install?package=brew%3Akingfisher",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Minisign reimplemented in Zig",
+          "category": "security",
+          "displayName": "minizign",
+          "homepage": "https://github.com/jedisct1/zig-minisign",
+          "id": "brew:minizign",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aminizign",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Security checklist app",
+          "category": "security",
+          "displayName": "Pareto Security",
+          "homepage": "https://paretosecurity.com/",
+          "id": "brew:cask:pareto-security",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apareto-security",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Secretlint CLI that scan secret/credential data.",
+          "category": "security",
+          "displayName": "secretlint",
+          "homepage": "https://github.com/secretlint/secretlint/tree/master/packages/secretlint/",
+          "id": "npm:secretlint",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asecretlint",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Identity and context-aware access proxy",
+          "category": "security",
+          "displayName": "pomerium",
+          "homepage": "https://www.pomerium.com",
+          "id": "brew:pomerium",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apomerium",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-22T16:42:02Z",
+      "title": "Recently Updated in Security",
       "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260922T164202Z-7725d80a",
+      "id": "for-you:media:20260930T090325Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "SVGO is a Node.js library and command-line application for optimizing vector images.",
+          "category": "media",
+          "displayName": "svgo",
+          "homepage": "https://svgo.dev",
+          "id": "npm:svgo",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asvgo",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "get dimensions of any image file",
+          "category": "media",
+          "displayName": "image-size",
+          "homepage": null,
+          "id": "npm:image-size",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aimage-size",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Fast math typesetting for the web.",
+          "category": "media",
+          "displayName": "katex",
+          "homepage": "https://katex.org",
+          "id": "npm:katex",
+          "installURL": "pkgmgrmgr://install?package=npm%3Akatex",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "QRCode / 2d Barcode api with both server side and client side support using canvas",
+          "category": "media",
+          "displayName": "qrcode",
+          "homepage": null,
+          "id": "npm:qrcode",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aqrcode",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The smallest and fastest pixel-level image comparison library.",
+          "category": "media",
+          "displayName": "pixelmatch",
+          "homepage": "https://github.com/mapbox/pixelmatch#readme",
+          "id": "npm:pixelmatch",
+          "installURL": "pkgmgrmgr://install?package=npm%3Apixelmatch",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-22T16:42:02Z",
+      "title": "For You in Media",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260922T164202Z-7725d80a",
+      "id": "new-packages:games:20260930T090325Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Flash Player emulator",
+          "category": "games",
+          "displayName": "Ruffle",
+          "homepage": "https://ruffle.rs/",
+          "id": "brew:cask:ruffle",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aruffle",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-22T16:42:02Z",
+      "title": "New Packages in Games",
+      "type": "newPackages"
     },
     {
       "artwork": {
@@ -1868,61 +1419,7 @@
     },
     {
       "batchID": "20260918T195137Z-767a8658",
-      "id": "new-packages:productivity:20261004T080130Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Markdown viewer and editor",
-          "category": "productivity",
-          "displayName": "Markpad",
-          "homepage": "https://markpad.dev/",
-          "id": "brew:cask:markpad",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amarkpad",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Accounting software for small businesses",
-          "category": "productivity",
-          "displayName": "Argo Books",
-          "homepage": "https://argorobots.com/",
-          "id": "brew:cask:argo-books",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aargo-books",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "AI partner for notes, voice, and to-dos",
-          "category": "productivity",
-          "displayName": "ideaShell",
-          "homepage": "https://ideashell.com/",
-          "id": "brew:cask:ideashell",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aideashell",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "AI partner for notes, voice, and to-dos (China edition)",
-          "category": "productivity",
-          "displayName": "ideaShell CN",
-          "homepage": "https://ideashell.cn/",
-          "id": "brew:cask:ideashell-cn",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aideashell-cn",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Predictive ghost-text autosuggestions for zsh",
-          "category": "productivity",
-          "displayName": "deja",
-          "homepage": "https://github.com/Giammarco-Ferranti/deja",
-          "id": "brew:deja",
-          "installURL": "pkgmgrmgr://install?package=brew%3Adeja",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-18T19:51:37Z",
-      "title": "New Packages in Productivity",
-      "type": "newPackages"
-    },
-    {
-      "batchID": "20260918T195137Z-767a8658",
-      "id": "for-you:networking:20261004T080130Z-f220bb45",
+      "id": "for-you:networking:20260930T090325Z-f220bb45",
       "packages": [
         {
           "agentSummary": "ECMAScript parser",
@@ -1976,39 +1473,111 @@
     },
     {
       "batchID": "20260918T195137Z-767a8658",
-      "id": "new-packages:ai:20261004T080130Z-f220bb45",
+      "id": "recently-updated:data:20260930T090325Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Background desktop automation driver for AI agents",
-          "category": "ai",
-          "displayName": "Cua Driver",
-          "homepage": "https://cua.ai/cua-driver",
-          "id": "brew:cask:cuadriver",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acuadriver",
+          "agentSummary": "Embeddable SQL OLAP Database Management System",
+          "category": "data",
+          "displayName": "duckdb",
+          "homepage": "https://www.duckdb.org",
+          "id": "brew:duckdb",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aduckdb",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Personal AI agents with their own identities",
-          "category": "ai",
-          "displayName": "Cue",
-          "homepage": "https://cue.im/",
-          "id": "brew:cask:manus-cue",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amanus-cue",
+          "agentSummary": "CLI for relational databases and common data file formats",
+          "category": "data",
+          "displayName": "rsql",
+          "homepage": "https://theseus-rs.github.io/rsql/rsql_cli/",
+          "id": "brew:rsql",
+          "installURL": "pkgmgrmgr://install?package=brew%3Arsql",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Plugin-based AI agent desktop application",
-          "category": "ai",
-          "displayName": "DeepSeek Harness",
-          "homepage": "https://www.deepseek.com/harness/",
-          "id": "brew:cask:deepseek-harness",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adeepseek-harness",
+          "agentSummary": "Analyze how space is allocated inside an SQLite file",
+          "category": "data",
+          "displayName": "sqlite-analyzer",
+          "homepage": "https://www.sqlite.org/",
+          "id": "brew:sqlite-analyzer",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asqlite-analyzer",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Ultra relevant, instant and typo-tolerant full-text search API",
+          "category": "data",
+          "displayName": "meilisearch",
+          "homepage": "https://docs.meilisearch.com/",
+          "id": "brew:meilisearch",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ameilisearch",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Git for Data",
+          "category": "data",
+          "displayName": "dolt",
+          "homepage": "https://www.dolthub.com",
+          "id": "brew:dolt",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adolt",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-18T19:51:37Z",
-      "title": "New Packages in Ai",
-      "type": "newPackages"
+      "title": "Recently Updated in Data",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260918T195137Z-767a8658",
+      "id": "for-you:developer-tools:20260930T090325Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "The semantic version parser used by npm.",
+          "category": "developer-tools",
+          "displayName": "semver",
+          "homepage": "https://github.com/npm/node-semver#readme",
+          "id": "npm:semver",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asemver",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "RFC9562 UUIDs",
+          "category": "developer-tools",
+          "displayName": "uuid",
+          "homepage": "https://github.com/uuidjs/uuid#readme",
+          "id": "npm:uuid",
+          "installURL": "pkgmgrmgr://install?package=npm%3Auuid",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "An extremely fast JavaScript and CSS bundler and minifier.",
+          "category": "developer-tools",
+          "displayName": "esbuild",
+          "homepage": "https://github.com/evanw/esbuild#readme",
+          "id": "npm:esbuild",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aesbuild",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "resolve like require.resolve() on behalf of files asynchronously and synchronously",
+          "category": "developer-tools",
+          "displayName": "resolve",
+          "homepage": "https://github.com/browserify/resolve#readme",
+          "id": "npm:resolve",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aresolve",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Native-ESM powered web dev build tool",
+          "category": "developer-tools",
+          "displayName": "vite",
+          "homepage": "https://vite.dev",
+          "id": "npm:vite",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avite",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-18T19:51:37Z",
+      "title": "For You in Developer Tools",
+      "type": "personalizedRecommendations"
     },
     {
       "artwork": {
@@ -2243,61 +1812,534 @@
     },
     {
       "batchID": "20260911T100100Z-195c076e",
-      "id": "recently-updated:networking:20261004T080130Z-f220bb45",
+      "id": "recently-updated:toys:20260930T090325Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Multi-column Mastodon, Pleroma, and Friendica client for desktop",
-          "category": "networking",
-          "displayName": "Fedistar",
-          "homepage": "https://fedistar.net/",
-          "id": "brew:cask:fedistar",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Afedistar",
+          "agentSummary": "Control your Nanoleaf lights",
+          "category": "toys",
+          "displayName": "Nanoleaf Desktop App",
+          "homepage": "https://nanoleaf.me/",
+          "id": "brew:cask:nanoleaf",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ananoleaf",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Intercept, modify, replay, save HTTP/S traffic",
-          "category": "networking",
-          "displayName": "mitmproxy",
-          "homepage": "https://mitmproxy.org/",
-          "id": "brew:cask:mitmproxy",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amitmproxy",
+          "agentSummary": "Desktop pet that reacts to AI coding agents",
+          "category": "toys",
+          "displayName": "Clawd on Desk",
+          "homepage": "https://github.com/rullerzhou-afk/clawd-on-desk",
+          "id": "brew:cask:clawd-on-desk",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclawd-on-desk",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Cross-platform realtime network diagnostics TUI",
-          "category": "networking",
-          "displayName": "netwatch",
-          "homepage": "https://www.netwatchlabs.com/labs/netwatch",
-          "id": "brew:netwatch",
-          "installURL": "pkgmgrmgr://install?package=brew%3Anetwatch",
+          "agentSummary": "Desktop pet that reflects coding agent activity",
+          "category": "toys",
+          "displayName": "Petdex",
+          "homepage": "https://petdex.dev/",
+          "id": "brew:cask:petdex",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apetdex",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Self host a DNS server for privacy & security",
-          "category": "networking",
-          "displayName": "technitium-dns",
-          "homepage": "https://technitium.com/dns/",
-          "id": "brew:technitium-dns",
-          "installURL": "pkgmgrmgr://install?package=brew%3Atechnitium-dns",
+          "agentSummary": "Frontend application for the Buttplug sex toy control library",
+          "category": "toys",
+          "displayName": "Intiface Central",
+          "homepage": "https://github.com/intiface/intiface-central",
+          "id": "brew:cask:intiface-central",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aintiface-central",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Scanner for devices, open ports and security risks on the local network",
-          "category": "networking",
-          "displayName": "DeviceShelf",
-          "homepage": "https://deviceshelf.app/",
-          "id": "brew:cask:deviceshelf",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adeviceshelf",
-          "manager": "homebrew"
+          "agentSummary": "Creates ASCII Art from text. A full implementation of the FIGfont spec.",
+          "category": "toys",
+          "displayName": "figlet",
+          "homepage": "https://github.com/patorjk/figlet.js#readme",
+          "id": "npm:figlet",
+          "installURL": "pkgmgrmgr://install?package=npm%3Afiglet",
+          "manager": "npm"
         }
       ],
       "publishedAt": "2026-09-11T10:01:00Z",
-      "title": "Recently Updated in Networking",
+      "title": "Recently Updated in Toys",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "Three luminous paths through a dark abstract desktop converge on tiled windows, a widget-rich dock, and a row of window tabs.",
+        "attribution": "Generated with OpenAI image generation",
+        "boxColors": {
+          "backgroundEnd": "#171746",
+          "backgroundStart": "#050B25",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/rethinking-mac-desktop-2026-09-07.png"
+      },
+      "batchID": "20260907T063155Z-00687363",
+      "body": "## The desktop is a navigation system\n\nWindow utilities are often sold as cures for dragging and resizing, but the deeper problem is **retrieval**: after opening a browser, editor, terminal, chat, and documentation, how do you return to the exact window you need? macOS offers overlapping windows, Mission Control, app-centric Command-Tab, and a Dock whose icons usually represent applications rather than individual windows. Three current tools challenge that model at different depths.\n\nOmniWM reorganizes the whole workspace. DockDoor Pro turns the Dock into a control surface. Taskbar makes each window a persistent target. They are not interchangeable skins. Each chooses what should remain visible, what should move automatically, and how much configuration the user should own.\n\n## OmniWM makes space flow\n\nOmniWM is the genuinely new entrant. Its first public tagged release appeared on December 25, 2025, and the project has evolved quickly since. The headline layout borrows from Niri: windows sit in columns on a horizontally scrolling strip, so opening another window extends the workspace instead of repeatedly subdividing one fixed screen. A Hyprland-inspired dwindle mode offers more conventional automatic splitting. Workspaces, trackpad gestures, application rules, a command palette, native tab handling, and `omniwmctl` IPC make the system unusually broad for a young Mac utility.\n\nActual use has moved beyond a quiet repository. A community demonstration of version 0.4.0 drew substantial discussion among Niri users, including reports from people trying its multi-monitor support. The feedback is mixed in the useful sense: some users welcome a Linux-like flow on macOS, while others report awkward behavior with multiple displays or unexpected window placement. The upstream discussion history shows the maintainer actively responding to these cases.\n\nThat friction is structural, not simply unfinished polish. macOS window managers generally steer other applications through Accessibility interfaces rather than replacing the operating system's compositor. Apps can expose unusual auxiliary windows, insist on minimum sizes, or react differently when moved. OmniWM also changes quickly: a recent release renamed configuration fields and advanced its IPC protocol, requiring scripts and clients to update together. The current build targets Apple Silicon and macOS 26 or later, even though earlier releases supported macOS 15. This is an ambitious environment for users willing to tune rules and follow releases, not an invisible utility.\n\n## DockDoor Pro concentrates control at the edge\n\nDockDoor Pro leaves windows overlapping but rebuilds the place used to find them. Hover previews expose individual windows; per-display profiles can show different app sets; app focus can switch profiles automatically. The same strip can hold folders, files, app groups, a file tray, media controls, audio-device switching, and widget stacks. A control drawer reaches sleep, restart, shortcuts, and other actions.\n\nThe attraction is consolidation. Instead of memorizing a tiler's directional grammar, a user can keep spatially familiar icons and add richer previews and controls. Independent walkthroughs document the replacement in use, and reviews praise the scope. Yet breadth is also its tax: the official feature inventory advertises more than 300 settings across 16 preference pages. The app can hide the native Dock, but macOS may still surface Apple's Dock in system-controlled places such as Mission Control. Users should expect to spend time deciding which profiles, widgets, gestures, and visual effects actually reduce work.\n\nDockDoor Pro is also a separate commercial product from DockDoor Free. The free app augments Apple's Dock with previews; Pro substitutes its own Dock environment. Running both is generally unnecessary. That distinction matters when evaluating permissions, purchasing, and how difficult it will be to return to stock behavior.\n\n## Taskbar favors one-click certainty\n\nTaskbar begins with a narrower observation: app icons are poor targets when one app owns several windows. Its developer describes trying Command-Tab, Mission Control, Dock menus, and another Windows-style replacement before building a persistent strip of individual window buttons. The benefit is mundane and powerful—targets remain visible and tend to stay in predictable positions, so reaching a particular document can become one click rather than an app switch followed by another selection.\n\nThe project is not new; its developer says it followed roughly eighteen months of development, and the product has continued through multi-monitor work and repeated manual regression testing. That history makes it the conservative comparison here. It does less than DockDoor Pro and imposes less of a worldview than OmniWM. It also remains commercial and closed source, and a permanent task strip consumes screen space.\n\n## Choose the object you want to navigate\n\nThe cleanest decision is to identify the object your attention follows:\n\n- Choose **OmniWM** when you think in workspaces, columns, and keyboard-directed layouts, and accept active configuration.\n- Choose **DockDoor Pro** when applications remain the anchor but the Dock should expose previews, profiles, files, and controls.\n- Choose **Taskbar** when individual windows should remain visible as stable, clickable destinations.\n\nAll three need privileged visibility into windows to deliver their central features, so review requested Accessibility and screen-recording permissions and test with the applications and monitors that define your real workload. A demo with tidy browser windows proves little about IDE dialogs, floating palettes, remote desktops, or apps with rigid dimensions.\n\nThe most interesting lesson is that desktop productivity is not synonymous with maximum automation. OmniWM reduces manual placement by imposing flow; DockDoor Pro reduces trips elsewhere by concentrating controls; Taskbar reduces ambiguity by exposing every destination. The right replacement is the one whose organizing unit matches how you remember your work.",
+      "deck": "OmniWM, DockDoor Pro, and Taskbar challenge different parts of macOS window navigation—and reveal why no single desktop model fits every multitasker.",
+      "id": "editorial:2026-09-07:three-ways-to-rebuild-the-mac-desktop",
+      "package": {
+        "agentSummary": "Young open-source macOS manager combines scrolling Niri-style columns, dwindle tiling, workspaces, gestures, a command palette, and scriptable IPC in one opinionated environment.",
+        "assessment": {
+          "alternatives": [
+            "AeroSpace",
+            "yabai",
+            "Amethyst",
+            "Rectangle"
+          ],
+          "audiences": [
+            "Keyboard-driven Mac users",
+            "Niri or Hyprland users moving to macOS",
+            "Developers who automate desktop workflows"
+          ],
+          "caveats": [
+            "Young project with rapid configuration and IPC changes",
+            "Automatic tiling can conflict with application minimum sizes or unusual windows",
+            "Current release no longer supports macOS 15"
+          ],
+          "complements": [
+            "Ghostty for terminal-heavy workflows",
+            "Raycast or shell scripts using omniwmctl"
+          ],
+          "prerequisites": [
+            "Apple Silicon Mac",
+            "macOS 26 or later for the current release",
+            "Accessibility and screen-recording permissions"
+          ],
+          "useCases": [
+            "Automatically arranging application windows",
+            "Navigating scrolling columns and workspaces",
+            "Controlling layouts through CLI and IPC"
+          ]
+        },
+        "category": "productivity",
+        "displayName": "OmniWM",
+        "docs": "https://omniwm.app/",
+        "homepage": "https://omniwm.app/",
+        "id": "brew:cask:omniwm",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aomniwm",
+        "lastUpdatedAt": "2026-09-07T04:15:08Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/BarutSRB/OmniWM",
+        "researchedAt": "2026-09-07T06:31:55Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "OmniWM official site and feature guide",
+            "url": "https://omniwm.app/"
+          },
+          {
+            "kind": "primary",
+            "title": "OmniWM v0.1.0 first release",
+            "url": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0"
+          },
+          {
+            "kind": "independent",
+            "title": "Community report on OmniWM v0.4.0",
+            "url": "https://www.reddit.com/r/niri/comments/1ruh6um/omni_macos_niri_v040/"
+          }
+        ],
+        "upstreamSummary": "Tiling window manager",
+        "version": "0.6.7"
+      },
+      "primaryPackageID": "brew:cask:omniwm",
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Young open-source macOS manager combines scrolling Niri-style columns, dwindle tiling, workspaces, gestures, a command palette, and scriptable IPC in one opinionated environment.",
+          "assessment": {
+            "alternatives": [
+              "AeroSpace",
+              "yabai",
+              "Amethyst",
+              "Rectangle"
+            ],
+            "audiences": [
+              "Keyboard-driven Mac users",
+              "Niri or Hyprland users moving to macOS",
+              "Developers who automate desktop workflows"
+            ],
+            "caveats": [
+              "Young project with rapid configuration and IPC changes",
+              "Automatic tiling can conflict with application minimum sizes or unusual windows",
+              "Current release no longer supports macOS 15"
+            ],
+            "complements": [
+              "Ghostty for terminal-heavy workflows",
+              "Raycast or shell scripts using omniwmctl"
+            ],
+            "prerequisites": [
+              "Apple Silicon Mac",
+              "macOS 26 or later for the current release",
+              "Accessibility and screen-recording permissions"
+            ],
+            "useCases": [
+              "Automatically arranging application windows",
+              "Navigating scrolling columns and workspaces",
+              "Controlling layouts through CLI and IPC"
+            ]
+          },
+          "category": "productivity",
+          "displayName": "OmniWM",
+          "docs": "https://omniwm.app/",
+          "homepage": "https://omniwm.app/",
+          "id": "brew:cask:omniwm",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aomniwm",
+          "lastUpdatedAt": "2026-09-07T04:15:08Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/BarutSRB/OmniWM",
+          "researchedAt": "2026-09-07T06:31:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "OmniWM official site and feature guide",
+              "url": "https://omniwm.app/"
+            },
+            {
+              "kind": "primary",
+              "title": "OmniWM v0.1.0 first release",
+              "url": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0"
+            },
+            {
+              "kind": "independent",
+              "title": "Community report on OmniWM v0.4.0",
+              "url": "https://www.reddit.com/r/niri/comments/1ruh6um/omni_macos_niri_v040/"
+            }
+          ],
+          "upstreamSummary": "Tiling window manager",
+          "version": "0.6.7"
+        },
+        {
+          "agentSummary": "Commercial Dock replacement layers window previews, per-display profiles, app groups, widgets, file staging, media controls, gestures, and extensive customization onto macOS.",
+          "assessment": {
+            "alternatives": [
+              "DockDoor Free",
+              "Taskbar",
+              "Sidebar",
+              "The built-in macOS Dock"
+            ],
+            "audiences": [
+              "Heavy Mac multitaskers",
+              "Users wanting a customizable Dock",
+              "Multi-display users with context-specific app sets"
+            ],
+            "caveats": [
+              "Replaces rather than merely augments normal Dock behavior",
+              "More than 300 settings increase tuning overhead",
+              "The native Dock can still appear in OS-controlled interfaces"
+            ],
+            "complements": [
+              "Apple Music or Spotify for media widgets",
+              "macOS Shortcuts for quick actions"
+            ],
+            "prerequisites": [
+              "Compatible macOS version",
+              "Accessibility and screen-recording permissions",
+              "Paid license after trial"
+            ],
+            "useCases": [
+              "Switching directly among application windows",
+              "Maintaining separate Dock profiles",
+              "Keeping controls and widgets at the screen edge"
+            ]
+          },
+          "category": "system",
+          "displayName": "DockDoor Pro",
+          "docs": "https://pro.dockdoor.net/",
+          "homepage": "https://pro.dockdoor.net/",
+          "id": "brew:cask:dockdoor-pro",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adockdoor-pro",
+          "lastUpdatedAt": "2026-09-07T03:48:57Z",
+          "manager": "homebrew",
+          "repository": null,
+          "researchedAt": "2026-09-07T06:31:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "DockDoor Pro official feature list",
+              "url": "https://pro.dockdoor.net/features/"
+            },
+            {
+              "kind": "independent",
+              "title": "ScreencastsOnline DockDoor walkthrough",
+              "url": "https://www.screencastsonline.com/tutorials/macos/dock-tips-dockdoor"
+            },
+            {
+              "kind": "independent",
+              "title": "AppAddict DockDoor Pro review",
+              "url": "https://appaddict.app/post/dockdoor-pro-the-dock-apple-wouldn-t-build"
+            }
+          ],
+          "upstreamSummary": "Dock replacement with widgets, profiles and window previews",
+          "version": "1.3.3"
+        },
+        {
+          "agentSummary": "Taskbar replaces app-centric Dock switching with persistent buttons for individual windows, emphasizing predictable one-click access, multi-monitor behavior, and a deliberately narrower feature set.",
+          "assessment": {
+            "alternatives": [
+              "DockDoor Pro",
+              "uBar",
+              "Sidebar",
+              "The built-in macOS Dock"
+            ],
+            "audiences": [
+              "Mac users accustomed to Windows taskbars",
+              "People juggling many windows per application",
+              "Users prioritizing stable pointer targets"
+            ],
+            "caveats": [
+              "Commercial closed-source application",
+              "Intentionally less expansive than widget-heavy Dock replacements",
+              "Changes a foundational navigation habit and needs an adjustment period"
+            ],
+            "complements": [
+              "A keyboard launcher",
+              "macOS Mission Control"
+            ],
+            "prerequisites": [
+              "macOS",
+              "Accessibility and screen-recording permissions",
+              "Paid license after trial"
+            ],
+            "useCases": [
+              "Switching to a specific window in one click",
+              "Showing window buttons on multiple monitors",
+              "Keeping frequently used windows spatially predictable"
+            ]
+          },
+          "category": null,
+          "displayName": "Taskbar",
+          "docs": null,
+          "homepage": "https://lawand.io/taskbar/",
+          "id": "brew:cask:taskbar",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ataskbar",
+          "lastUpdatedAt": "2026-09-06T16:27:51Z",
+          "manager": "homebrew",
+          "repository": null,
+          "researchedAt": "2026-09-07T06:31:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Taskbar developer introduction",
+              "url": "https://lawand.io/taskbar/intro/"
+            },
+            {
+              "kind": "primary",
+              "title": "Taskbar official product page",
+              "url": "https://lawand.io/taskbar/"
+            }
+          ],
+          "upstreamSummary": "Windows-style taskbar as a Dock replacement",
+          "version": "1.6.3,2026,09"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2025-12-25T21:17:10Z",
+        "firstStableReleaseSourceURL": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "OmniWM official site and documentation",
+          "url": "https://omniwm.app/"
+        },
+        {
+          "kind": "primary",
+          "title": "OmniWM v0.1.0 first public release",
+          "url": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "primary",
+          "title": "DockDoor Pro complete feature list",
+          "url": "https://pro.dockdoor.net/features/"
+        },
+        {
+          "kind": "primary",
+          "title": "Taskbar developer introduction and history",
+          "url": "https://lawand.io/taskbar/intro/"
+        },
+        {
+          "kind": "independent",
+          "title": "Niri community discussion of OmniWM v0.4.0",
+          "url": "https://www.reddit.com/r/niri/comments/1ruh6um/omni_macos_niri_v040/"
+        },
+        {
+          "kind": "independent",
+          "title": "ScreencastsOnline DockDoor walkthrough",
+          "url": "https://www.screencastsonline.com/tutorials/macos/dock-tips-dockdoor"
+        }
+      ],
+      "title": "Three Ways to Rebuild the Mac Desktop",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260907T063155Z-f65b3609",
+      "id": "for-you:science:20260930T090325Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Miller Rabin algorithm for primality test",
+          "category": "science",
+          "displayName": "miller-rabin",
+          "homepage": "https://github.com/indutny/miller-rabin",
+          "id": "npm:miller-rabin",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amiller-rabin",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Math.js is an extensive math library for JavaScript and Node.js. It features a flexible expression parser with support for symbolic computation, comes with a large set of built-in functions and constants, and offers an integrated solution to work with dif",
+          "category": "science",
+          "displayName": "mathjs",
+          "homepage": "https://mathjs.org",
+          "id": "npm:mathjs",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amathjs",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Simple and Performant Language detection library (pure JS and zero dependencies)",
+          "category": "science",
+          "displayName": "tinyld",
+          "homepage": null,
+          "id": "npm:tinyld",
+          "installURL": "pkgmgrmgr://install?package=npm%3Atinyld",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "convert wkt to geojson",
+          "category": "science",
+          "displayName": "wellknown",
+          "homepage": "https://github.com/mapbox/wellknown#readme",
+          "id": "npm:wellknown",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awellknown",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Porter Stemmer algorithm",
+          "category": "science",
+          "displayName": "stemmer",
+          "homepage": "https://words.github.io/stemmer/",
+          "id": "npm:stemmer",
+          "installURL": "pkgmgrmgr://install?package=npm%3Astemmer",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "title": "For You in Science",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260907T063155Z-f65b3609",
+      "id": "new-packages:productivity:20260930T090325Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Markdown viewer and editor",
+          "category": "productivity",
+          "displayName": "Markpad",
+          "homepage": "https://markpad.dev/",
+          "id": "brew:cask:markpad",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amarkpad",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Accounting software for small businesses",
+          "category": "productivity",
+          "displayName": "Argo Books",
+          "homepage": "https://argorobots.com/",
+          "id": "brew:cask:argo-books",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aargo-books",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "AI partner for notes, voice, and to-dos",
+          "category": "productivity",
+          "displayName": "ideaShell",
+          "homepage": "https://ideashell.com/",
+          "id": "brew:cask:ideashell",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aideashell",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "AI partner for notes, voice, and to-dos (China edition)",
+          "category": "productivity",
+          "displayName": "ideaShell CN",
+          "homepage": "https://ideashell.cn/",
+          "id": "brew:cask:ideashell-cn",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aideashell-cn",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Predictive ghost-text autosuggestions for zsh",
+          "category": "productivity",
+          "displayName": "deja",
+          "homepage": "https://github.com/Giammarco-Ferranti/deja",
+          "id": "brew:deja",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adeja",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "title": "New Packages in Productivity",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20260907T063155Z-f65b3609",
+      "id": "recently-updated:ai:20260930T090325Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "On-device speech toolkit for Apple Silicon: ASR, TTS, VAD, diarization",
+          "category": "ai",
+          "displayName": "speech",
+          "homepage": "https://soniqo.audio",
+          "id": "brew:speech",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aspeech",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Native desktop AI assistant from Google",
+          "category": "ai",
+          "displayName": "Gemini",
+          "homepage": "https://gemini.google/",
+          "id": "brew:cask:google-gemini",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agoogle-gemini",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Data VCS for structured and unstructured machine learning datasets",
+          "category": "ai",
+          "displayName": "oxen",
+          "homepage": "https://www.oxen.ai/",
+          "id": "brew:oxen",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aoxen",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "CLI Semantic Coding Agent",
+          "category": "ai",
+          "displayName": "vtcode",
+          "homepage": "https://vinhnx.github.io",
+          "id": "brew:vtcode",
+          "installURL": "pkgmgrmgr://install?package=brew%3Avtcode",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Node-based image, video and audio generator",
+          "category": "ai",
+          "displayName": "Comfy Desktop",
+          "homepage": "https://comfy.org/",
+          "id": "brew:cask:comfy",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acomfy",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "title": "Recently Updated in Ai",
       "type": "recentlyUpdated"
     }
   ],
-  "generatedAt": "2026-10-04T08:01:30Z",
-  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261004T080130Z-0d4520d4.json",
-  "pageID": "20261004T080130Z-130abe8f",
+  "generatedAt": "2026-10-03T08:36:16Z",
+  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261003T083616Z-ee8fe43b.json",
+  "pageID": "20261003T083616Z-86121924",
   "schemaVersion": 2
 }

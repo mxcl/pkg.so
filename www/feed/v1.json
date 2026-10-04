@@ -2,54 +2,56 @@
   "content": [
     {
       "artwork": {
-        "alt": "An operator watches luminous workload clusters above guarded infrastructure nodes while abstract deployment sheets flow into the system.",
+        "alt": "A luminous violet language-intelligence core sends semantic data streams into three distinct abstract code editor panels.",
         "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
         "boxColors": {
-          "backgroundEnd": "#152B46",
-          "backgroundStart": "#0B192D",
-          "foreground": "#F4F7FF"
+          "backgroundEnd": "#26134F",
+          "backgroundStart": "#090D2D",
+          "foreground": "#F7F4FF"
         },
         "license": "OpenAI terms of use",
-        "path": "feed/assets/sofka-layered-kubernetes-operations-2026-09-30.png"
+        "path": "feed/assets/kotlin-lsp-editor-boundary-2026-10-04.png"
       },
-      "body": "## A new terminal window into the cluster\n\nKubernetes operators rarely lack commands. The harder problem is choosing the right control surface while an incident is unfolding. `kubectl` is exact and scriptable, dashboards are broad, and established terminal interfaces make resource navigation fast. Sofka enters that crowded space with a sharper premise: keep the interface asynchronous, make safety policy enforceable, and explain unhealthy state from cluster evidence rather than an external AI service.\n\nThe project is genuinely young. Its first non-prerelease GitHub release, v0.1.5, appeared in July 2026, and its documentation already describes a surprisingly wide operating surface. Sofka browses built-in resources and CRDs through one pipeline, follows logs, manages background port-forwards, edits resources, restarts rollouts, and exposes native actions for Flux and Argo CD objects. The `X` view assembles a deterministic incident explanation from observed state, while the timeline view emphasizes change over a static snapshot.\n\nThat breadth could sound like another attempt to put every Kubernetes task behind one screen. The more useful reading is different: sofka is strongest when treated as the **observation and interaction layer**, not the sole source of truth. Its read-only mode, per-context settings, production guardrails, action journal, and RBAC-aware checks all acknowledge that a convenient interface can also make dangerous actions convenient.\n\n## What actual use looks like\n\nA practical session begins with the same credential and context material used by other Kubernetes clients. An operator can open pods in the current namespace, start with `-A` for all namespaces, or use a context picker before connecting. During a rollout, the terminal can filter objects, follow logs, inspect live events, compare state changes, and keep port-forwards running without freezing the interface. For automation or a quick confidence check, `sofka --check` performs discovery and exits, while `--snapshot` renders a resource view to standard output without an interactive terminal.\n\nThe interesting day-two features are the ones that reduce context switching. Native Flux and Argo CD actions let an operator reconcile or suspend supported objects without invoking separate CLIs. A Helm inspector decodes release Secrets, custom-resource views honor printer columns, and workspaces can group related resources. None of that removes the need to understand the API beneath the screen. It does make the first five minutes of investigation more coherent.\n\nThere are real tradeoffs. Sofka is evolving quickly, its downloaded macOS binaries are not yet signed or notarized, and a young TUI cannot inherit years of operational familiarity overnight. Teams should begin in read-only mode, confirm how custom resources render, and keep exact commands in runbooks. A terminal that exposes bulk delete or force-delete deserves the same change discipline as any other privileged client.\n\n## Node lifecycle belongs to talosctl\n\nSofka sees Kubernetes resources after a cluster API is available. Talosctl operates a layer lower. It talks to the Talos API to configure machines, inspect services, bootstrap control planes, gather diagnostics, upgrade nodes, and perform lifecycle operations on Talos Linux. Those are machine-management responsibilities, not merely another resource view.\n\nThat boundary matters during failures. If the Kubernetes API is healthy but a workload is stuck, sofka can organize the evidence. If the node operating system, certificates, or Talos services are the problem, talosctl is the appropriate instrument. Sidero Labs also warns that the talosctl version should match the Talos Linux version on the host. Package upgrades therefore need coordination with cluster upgrades rather than an automatic assumption that newest is always best.\n\nThe credentials differ too. Sofka generally follows kubeconfig and Kubernetes RBAC; talosctl uses talosconfig and Talos API roles. Keeping those files separate, narrowly distributed, and auditable preserves the architectural boundary the tools themselves reflect.\n\n## Desired releases belong in Helmfile\n\nHelmfile occupies the third layer: declared deployment intent. Its state files collect Helm releases, repositories, environments, and values in version control. Teams can review a diff in CI, apply a selected environment, and periodically synchronize to reduce configuration skew. That is a different rhythm from an operator navigating a live cluster.\n\nThe separation creates a clean loop:\n\n- **Helmfile** records and reviews what releases should exist.\n- **sofka** shows what workloads are doing now and supports bounded intervention.\n- **talosctl** manages the machines and services beneath Kubernetes when node-level work is necessary.\n\nOverlap still exists. Sofka can inspect Helm data and trigger GitOps actions; Helmfile can surface changes through diff; talosctl exposes an interactive dashboard in the Talos ecosystem. The test is authority, not interface style. Durable application changes should return to version-controlled release state. Node lifecycle changes should use the node-management API. Live diagnosis should begin with the least-mutating view that answers the question.\n\n## A useful newcomer with an explicit boundary\n\nSofka is compelling because it does not merely redraw a table of pods. Its async architecture, deterministic explanations, custom-resource pipeline, and safety controls make a thoughtful case for a modern Kubernetes TUI. The project is still young enough that operators should validate it against their clusters and policies before depending on every feature.\n\nUsed with clear boundaries, however, it fits a mature workflow. Observe and investigate with sofka. Change declared releases through Helmfile and review. Reach for talosctl when the machine layer is actually at fault. The result is not one magical operations console, but something more reliable: three tools whose scopes explain where each change belongs.",
-      "deck": "A young Rust TUI makes a useful distinction visible: observing workloads, managing nodes, and declaring releases are related jobs, not one job.",
-      "id": "editorial:2026-09-30:sofka-three-layers-kubernetes-operations",
-      "primaryPackageID": "brew:sofka",
-      "publishedAt": "2026-09-30T09:03:25Z",
+      "body": "## An official server changes the starting point\n\nKotlin developers outside IntelliJ IDEA have long depended on editor-specific plugins, community servers, or a deliberately lighter editing experience. JetBrains' official Kotlin language server changes that baseline. The repository appeared in 2025, and its first published GitHub release in May shipped both a Visual Studio Code extension and a standalone archive for other Language Server Protocol clients. The project now describes itself as official Kotlin support for VS Code, built from IntelliJ IDEA and Kotlin plugin technology.\n\nThat provenance matters more than the badge. Language tooling is not only syntax coloring. Useful completion needs a project model; navigation must understand dependencies; rename needs semantic references; diagnostics must agree with the language and build. Kotlin LSP currently advertises IntelliJ-derived completion, diagnostics, quick fixes, formatting, call hierarchy, imports, hover information, and refactoring. It can import JVM projects using Gradle or Maven, with experimental Android Gradle Plugin support. In practical terms, the server moves a meaningful portion of JetBrains' Kotlin knowledge behind a standard editor protocol.\n\nIt does **not** turn every editor into IntelliJ IDEA. The project is explicitly alpha, Kotlin Multiplatform support is still planned, and the implementation includes proprietary components drawn from JetBrains products. The public repository is primarily a mirror, not a conventional community implementation accepting core contributions. Those constraints should shape expectations from the first installation.\n\n## The protocol is a boundary, not a guarantee\n\nLSP separates language intelligence from the interface that displays it. The server can answer requests for completion, definitions, symbols, edits, and diagnostics; the client decides how those answers fit into buffers, keybindings, panels, and workflows. That boundary creates portability, but it also creates two moving parts. When an action behaves strangely, users must ask whether the problem is in the project import, the server, the protocol exchange, the editor client, or another plugin.\n\nThe Kotlin project says releases are generally tested with Visual Studio Code. That makes VS Code the most direct path: install the Kotlin by JetBrains extension, open a Kotlin workspace, and let the extension activate the bundled server. Visual Studio Code Insiders is useful when extension developers or early adopters need to test upcoming editor behavior, but its frequent preview updates add another source of change. A reproducible report should record both editor and server versions.\n\nNeovim exposes the other side of the bargain. Its built-in LSP client can attach external servers to buffers and provide diagnostics, navigation, completion hooks, and workspace operations. Kotlin LSP publishes a standalone distribution and community-maintained scripts for editors beyond VS Code, so a Neovim setup is possible. It is also less packaged: users are responsible for the launch command, workspace root, capabilities, completion integration, and any plugin interactions. That control is the attraction and the maintenance cost.\n\n## What day-to-day use looks like\n\nA realistic evaluation begins with one ordinary JVM repository, not the most complicated multiplatform build in the company. Confirm that the server imports the Gradle or Maven model, resolves the intended JDK, and reaches a quiet diagnostic state. Then test a short workflow:\n\n- navigate from a call to source and back;\n- rename a symbol across more than one file;\n- apply a quick fix and inspect the resulting edit;\n- compare formatting with the team's committed style;\n- run the real build and test suite after semantic edits.\n\nThe last step is essential. An editor service accelerates feedback; it does not replace the compiler, build tool, or CI. Teams should also measure startup and indexing on representative repositories, because a language server derived from IDE infrastructure has a different resource profile from a minimal syntax plugin. Recent releases have worked on bundle size, caching, Gradle import, completion latency, Maven support, and memory leaks, evidence that the project is actively addressing exactly these operational edges.\n\n## Choose the client by responsibility\n\nFor the smoothest supported path, use the packaged VS Code extension and stay conscious that alpha releases can regress. Use Insiders when testing future editor integration is itself the job, not merely because it is newer. Choose Neovim when explicit configuration and terminal-native editing are worth owning more integration detail. Keep IntelliJ IDEA or Android Studio available when a project depends on mature Kotlin-specific inspections, Android tooling, or workflows the server has not reached.\n\nKotlin LSP is interesting because it is neither a complete IDE replacement nor a thin community bridge. It is a new official boundary around JetBrains' language intelligence. That makes more editor choices credible, while placing new importance on version pinning, reproducible configurations, and clear bug reports across both sides of the protocol.",
+      "deck": "JetBrains' alpha language server brings IntelliJ-derived Kotlin analysis to VS Code and other LSP clients, while making the editor-server boundary impossible to ignore.",
+      "id": "editorial:2026-10-04:kotlin-lsp-moves-language-intelligence-between-editors",
+      "primaryPackageID": "brew:cask:kotlin-lsp",
+      "publishedAt": "2026-10-04T08:01:30Z",
       "relatedPackageIDs": [
-        "brew:sofka",
-        "brew:talosctl",
-        "brew:helmfile"
+        "brew:cask:kotlin-lsp",
+        "brew:cask:visual-studio-code@insiders",
+        "brew:neovim"
       ],
       "selection": {
-        "firstStableReleaseAt": "2026-07-03T17:13:21Z",
-        "firstStableReleaseSourceURL": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5",
+        "newerOverride": {
+          "reason": "JetBrains introduced its official Kotlin language server and VS Code integration as a new alpha product direction in 2025, with a standalone LSP distribution for other editors.",
+          "sourceURL": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
+        },
         "rationale": "newer"
       },
       "sources": [
         {
           "kind": "primary",
-          "title": "sofka project documentation and usage guide",
-          "url": "https://github.com/nklmilojevic/sofka"
+          "title": "Official Kotlin language server repository and documentation",
+          "url": "https://github.com/Kotlin/kotlin-lsp"
         },
         {
           "kind": "primary",
-          "title": "sofka v0.1.5 release",
-          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
+          "title": "First published Kotlin LSP release",
+          "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
         },
         {
           "kind": "primary",
-          "title": "Official talosctl getting-started guide",
-          "url": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl"
+          "title": "Visual Studio Code Insiders",
+          "url": "https://code.visualstudio.com/insiders/"
         },
         {
           "kind": "primary",
-          "title": "Official Helmfile documentation",
-          "url": "https://helmfile.readthedocs.io/en/stable/"
+          "title": "Neovim LSP client documentation",
+          "url": "https://neovim.io/doc/user/lsp.html"
         }
       ],
-      "title": "Sofka and the Three Layers of Kubernetes Operations",
+      "title": "Kotlin LSP Moves Language Intelligence Between Editors",
       "type": "editorial"
     },
     {
@@ -131,6 +133,9 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:visual-studio-code@insiders",
+        "brew:neovim",
+        "brew:cask:kotlin-lsp",
         "brew:cask:sdrmm-app",
         "brew:cask:hagimimonitordirect",
         "brew:deja",
@@ -139,13 +144,62 @@
         "brew:helmfile",
         "brew:sofka",
         "brew:cask:mindroom",
-        "brew:cask:highball",
-        "brew:cask:mdhero",
-        "brew:kubectl-radar",
-        "brew:vortix"
+        "brew:cask:highball"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "An operator watches luminous workload clusters above guarded infrastructure nodes while abstract deployment sheets flow into the system.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#152B46",
+          "backgroundStart": "#0B192D",
+          "foreground": "#F4F7FF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/sofka-layered-kubernetes-operations-2026-09-30.png"
+      },
+      "body": "## A new terminal window into the cluster\n\nKubernetes operators rarely lack commands. The harder problem is choosing the right control surface while an incident is unfolding. `kubectl` is exact and scriptable, dashboards are broad, and established terminal interfaces make resource navigation fast. Sofka enters that crowded space with a sharper premise: keep the interface asynchronous, make safety policy enforceable, and explain unhealthy state from cluster evidence rather than an external AI service.\n\nThe project is genuinely young. Its first non-prerelease GitHub release, v0.1.5, appeared in July 2026, and its documentation already describes a surprisingly wide operating surface. Sofka browses built-in resources and CRDs through one pipeline, follows logs, manages background port-forwards, edits resources, restarts rollouts, and exposes native actions for Flux and Argo CD objects. The `X` view assembles a deterministic incident explanation from observed state, while the timeline view emphasizes change over a static snapshot.\n\nThat breadth could sound like another attempt to put every Kubernetes task behind one screen. The more useful reading is different: sofka is strongest when treated as the **observation and interaction layer**, not the sole source of truth. Its read-only mode, per-context settings, production guardrails, action journal, and RBAC-aware checks all acknowledge that a convenient interface can also make dangerous actions convenient.\n\n## What actual use looks like\n\nA practical session begins with the same credential and context material used by other Kubernetes clients. An operator can open pods in the current namespace, start with `-A` for all namespaces, or use a context picker before connecting. During a rollout, the terminal can filter objects, follow logs, inspect live events, compare state changes, and keep port-forwards running without freezing the interface. For automation or a quick confidence check, `sofka --check` performs discovery and exits, while `--snapshot` renders a resource view to standard output without an interactive terminal.\n\nThe interesting day-two features are the ones that reduce context switching. Native Flux and Argo CD actions let an operator reconcile or suspend supported objects without invoking separate CLIs. A Helm inspector decodes release Secrets, custom-resource views honor printer columns, and workspaces can group related resources. None of that removes the need to understand the API beneath the screen. It does make the first five minutes of investigation more coherent.\n\nThere are real tradeoffs. Sofka is evolving quickly, its downloaded macOS binaries are not yet signed or notarized, and a young TUI cannot inherit years of operational familiarity overnight. Teams should begin in read-only mode, confirm how custom resources render, and keep exact commands in runbooks. A terminal that exposes bulk delete or force-delete deserves the same change discipline as any other privileged client.\n\n## Node lifecycle belongs to talosctl\n\nSofka sees Kubernetes resources after a cluster API is available. Talosctl operates a layer lower. It talks to the Talos API to configure machines, inspect services, bootstrap control planes, gather diagnostics, upgrade nodes, and perform lifecycle operations on Talos Linux. Those are machine-management responsibilities, not merely another resource view.\n\nThat boundary matters during failures. If the Kubernetes API is healthy but a workload is stuck, sofka can organize the evidence. If the node operating system, certificates, or Talos services are the problem, talosctl is the appropriate instrument. Sidero Labs also warns that the talosctl version should match the Talos Linux version on the host. Package upgrades therefore need coordination with cluster upgrades rather than an automatic assumption that newest is always best.\n\nThe credentials differ too. Sofka generally follows kubeconfig and Kubernetes RBAC; talosctl uses talosconfig and Talos API roles. Keeping those files separate, narrowly distributed, and auditable preserves the architectural boundary the tools themselves reflect.\n\n## Desired releases belong in Helmfile\n\nHelmfile occupies the third layer: declared deployment intent. Its state files collect Helm releases, repositories, environments, and values in version control. Teams can review a diff in CI, apply a selected environment, and periodically synchronize to reduce configuration skew. That is a different rhythm from an operator navigating a live cluster.\n\nThe separation creates a clean loop:\n\n- **Helmfile** records and reviews what releases should exist.\n- **sofka** shows what workloads are doing now and supports bounded intervention.\n- **talosctl** manages the machines and services beneath Kubernetes when node-level work is necessary.\n\nOverlap still exists. Sofka can inspect Helm data and trigger GitOps actions; Helmfile can surface changes through diff; talosctl exposes an interactive dashboard in the Talos ecosystem. The test is authority, not interface style. Durable application changes should return to version-controlled release state. Node lifecycle changes should use the node-management API. Live diagnosis should begin with the least-mutating view that answers the question.\n\n## A useful newcomer with an explicit boundary\n\nSofka is compelling because it does not merely redraw a table of pods. Its async architecture, deterministic explanations, custom-resource pipeline, and safety controls make a thoughtful case for a modern Kubernetes TUI. The project is still young enough that operators should validate it against their clusters and policies before depending on every feature.\n\nUsed with clear boundaries, however, it fits a mature workflow. Observe and investigate with sofka. Change declared releases through Helmfile and review. Reach for talosctl when the machine layer is actually at fault. The result is not one magical operations console, but something more reliable: three tools whose scopes explain where each change belongs.",
+      "deck": "A young Rust TUI makes a useful distinction visible: observing workloads, managing nodes, and declaring releases are related jobs, not one job.",
+      "id": "editorial:2026-09-30:sofka-three-layers-kubernetes-operations",
+      "primaryPackageID": "brew:sofka",
+      "publishedAt": "2026-09-30T09:03:25Z",
+      "relatedPackageIDs": [
+        "brew:sofka",
+        "brew:talosctl",
+        "brew:helmfile"
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-03T17:13:21Z",
+        "firstStableReleaseSourceURL": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "sofka project documentation and usage guide",
+          "url": "https://github.com/nklmilojevic/sofka"
+        },
+        {
+          "kind": "primary",
+          "title": "sofka v0.1.5 release",
+          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
+        },
+        {
+          "kind": "primary",
+          "title": "Official talosctl getting-started guide",
+          "url": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl"
+        },
+        {
+          "kind": "primary",
+          "title": "Official Helmfile documentation",
+          "url": "https://helmfile.readthedocs.io/en/stable/"
+        }
+      ],
+      "title": "Sofka and the Three Layers of Kubernetes Operations",
+      "type": "editorial"
     },
     {
       "artwork": {
@@ -761,61 +815,9 @@
       ],
       "title": "When coding agents multiply, supervision becomes the product",
       "type": "editorial"
-    },
-    {
-      "artwork": {
-        "alt": "Abstract glass database cylinder routing luminous data streams into orderly schema blocks and an unlabeled inspection panel.",
-        "attribution": "Generated by OpenAI for Package Manager Manager",
-        "boxColors": {
-          "backgroundEnd": "#0A315B",
-          "backgroundStart": "#061A3A",
-          "foreground": "#FFFFFF"
-        },
-        "license": "CC BY 4.0",
-        "path": "feed/assets/postgresql-18-data-flow-2026-08-17.png"
-      },
-      "body": "## A mature database changes the floor beneath it\n\nPostgreSQL 18 is not a reinvention of Postgres. That is precisely why it is interesting. Released on September 25, 2025, the major version concentrates on work that sits below application features: moving pages from storage, choosing indexes, preserving planner knowledge during upgrades, and making common identifiers cooperate better with B-trees. For a database with decades of accumulated behavior, these changes can matter more than a flashy new query surface.\n\nThe headline is a new asynchronous I/O subsystem. PostgreSQL can now issue and combine some read work more effectively for operations including sequential scans, bitmap heap scans, and vacuum. The project reported substantial gains in its own testing, but operators should read that as a reason to benchmark, not as a universal multiplier. Storage, kernel support, cache state, query shape, and concurrency still decide what an application will observe.\n\nPostgreSQL 18 also adds skip scans for multicolumn B-tree indexes. An index whose leading column is not constrained may now help in cases where older planning choices were less attractive. Again, this is an expanded option for the planner, not permission to stop designing indexes deliberately.\n\n## The upgrade story is operational, not ceremonial\n\nMajor database upgrades are rarely difficult because one command is obscure. They are difficult because extensions, drivers, replicas, backup procedures, query plans, and maintenance windows all meet at once. PostgreSQL 18 improves one important part of that sequence: `pg_upgrade` transfers most optimizer statistics unless told not to. Earlier upgrades could open successfully and then perform unevenly while fresh statistics accumulated. Preserving more of that knowledge should shorten the uncomfortable period after cutover.\n\nThere are boundaries. Explicit extended statistics, extension-defined statistics, and some cumulative statistics are not all transferred. The documentation still directs administrators to regenerate missing and cumulative information after the upgrade. A sensible rehearsal therefore includes:\n\n- checking every extension against version 18;\n- comparing representative plans before and after migration;\n- timing the statistics refresh on production-shaped data;\n- testing backup restoration and rollback, not merely taking a backup.\n\nThat list is intentionally unglamorous. PostgreSQL 18 reduces migration friction; it does not turn a stateful system into an ordinary application binary.\n\n## Small features meet real application habits\n\nThe built-in `uuidv7()` function addresses a familiar compromise. Random UUIDs are convenient across distributed application processes, but their insertion order is unfriendly to B-tree locality. UUIDv7 retains UUID semantics while incorporating time ordering, which can improve index behavior for newly generated identifiers. Teams still need to decide whether exposing approximate creation order is acceptable and whether every writer will generate the same UUID version.\n\nVirtual generated columns are now the default form of generated column, computing values when read rather than storing them. PostgreSQL 18 also brings OAuth 2.0 authentication and allows `OLD` and `NEW` values in `RETURNING` for data-changing statements. None is a universal reason to migrate alone. Together they show a release tuned to patterns already present in production systems: federated identity, fewer application round trips, and schemas that carry more intent.\n\nActual use is not speculative. The 2025 Stack Overflow Developer Survey recorded PostgreSQL among the database environments used extensively by a large developer sample. That breadth is why conservative release engineering matters: a planner improvement or migration refinement reaches far more kinds of workload than any single benchmark represents.\n\n## Follow the change, then inspect it\n\nA database version is only one part of the working system. **pgstream** focuses on what happens after rows and schemas begin moving. It consumes PostgreSQL logical replication and can send snapshots and continuous changes to PostgreSQL, Kafka, OpenSearch, Elasticsearch, or webhooks. Its 1.0 direction made schema replication stateless: DDL events are emitted into WAL rather than reconstructed through a maintained schema-log table. That is compelling when downstream systems must follow schema evolution, but it also creates an operational obligation to monitor replication slots, WAL retention, lag, and target compatibility.\n\nFor a more immediate view, **rainfrog** offers a terminal interface for browsing schemas, editing queries, filtering results, and saving history or favorites across several database engines. Its lightweight interface is useful over SSH or for developers who live in a terminal. The honest tradeoff is maturity: rainfrog still calls itself beta, grades database support in tiers, and documents clipboard and geometry-type limitations.\n\nThe practical story of PostgreSQL 18 is therefore not “upgrade and become faster.” It is: benchmark the new I/O path, rehearse the migration, observe the change stream, and keep a close inspection tool nearby. Mature infrastructure earns trust by improving those loops without pretending they disappear.",
-      "deck": "A mature database release puts its energy into I/O, upgrades, identifiers, and the everyday tools that keep changing data understandable.",
-      "id": "editorial:2026-08-17:postgresql-18-moving-data-with-less-friction",
-      "primaryPackageID": "brew:postgresql@18",
-      "publishedAt": "2026-08-17T06:25:37Z",
-      "relatedPackageIDs": [
-        "brew:postgresql@18",
-        "brew:pgstream",
-        "brew:rainfrog"
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2025-09-25T00:00:00Z",
-        "firstStableReleaseSourceURL": "https://www.postgresql.org/about/news/postgresql-18-released-3142/",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "PostgreSQL 18 released",
-          "url": "https://www.postgresql.org/about/news/postgresql-18-released-3142/"
-        },
-        {
-          "kind": "primary",
-          "title": "PostgreSQL 18 release notes",
-          "url": "https://www.postgresql.org/docs/18/release-18.html"
-        },
-        {
-          "kind": "independent",
-          "title": "2025 Stack Overflow Developer Survey: Technology",
-          "url": "https://survey.stackoverflow.co/2025/technology/"
-        },
-        {
-          "kind": "independent",
-          "title": "PostgreSQL Europe talk: anonymizing data with pgstream",
-          "url": "https://www.postgresql.eu/events/pgconfeu2025/sessions/session/7067/slides/749/Slides%20Anonymizing%20Data%20in%20Postgres%20Without%20Losing%20Your%20Mind%20%28or%20Your%20Schema%29.pdf"
-        }
-      ],
-      "title": "PostgreSQL 18 Makes the Boring Parts Better",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-03T08:36:16Z",
+  "generatedAt": "2026-10-04T08:01:30Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1415,6 +1417,65 @@
       ],
       "upstreamSummary": "Local-first runtime firewall for AI coding agents",
       "version": "3.0.108"
+    },
+    "brew:cask:kotlin-lsp": {
+      "agentSummary": "JetBrains' official Kotlin language server brings IntelliJ-derived completion, diagnostics, navigation, refactoring, and Gradle or Maven project support to LSP-capable editors.",
+      "assessment": {
+        "alternatives": [
+          "IntelliJ IDEA or Android Studio for the most complete Kotlin IDE experience",
+          "Community Kotlin language servers for workflows the official alpha does not yet support"
+        ],
+        "audiences": [
+          "Kotlin developers who work outside IntelliJ IDEA",
+          "Editor integrators evaluating official Kotlin language intelligence",
+          "Teams using VS Code for JVM projects"
+        ],
+        "caveats": [
+          "The project is explicitly alpha and feature completeness is still evolving",
+          "Kotlin Multiplatform support is not yet available",
+          "Android Gradle Plugin support is experimental",
+          "The implementation includes proprietary JetBrains components and the repository is mainly a read-only mirror"
+        ],
+        "complements": [
+          "Gradle or Maven for project models and dependency resolution",
+          "A Kotlin compiler and project test suite",
+          "Editor-specific LSP configuration and diagnostics tooling"
+        ],
+        "prerequisites": [
+          "A supported macOS, Linux, or Windows system",
+          "An LSP-capable editor or the bundled Visual Studio Code extension",
+          "A compatible JDK and build-tool configuration for the project"
+        ],
+        "useCases": [
+          "Add completion, diagnostics, navigation, formatting, and refactoring to Kotlin workspaces",
+          "Import Gradle and Maven JVM projects into an LSP-based editor",
+          "Test Kotlin editor workflows against JetBrains' evolving language engine"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "Kotlin LSP",
+      "docs": "https://github.com/Kotlin/kotlin-lsp#readme",
+      "homepage": "https://github.com/Kotlin/kotlin-lsp",
+      "id": "brew:cask:kotlin-lsp",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akotlin-lsp",
+      "lastUpdatedAt": "2026-10-03T14:41:59Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/Kotlin/kotlin-lsp",
+      "researchedAt": "2026-10-04T08:01:30Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Official Kotlin language server repository and documentation",
+          "url": "https://github.com/Kotlin/kotlin-lsp"
+        },
+        {
+          "kind": "primary",
+          "title": "First published Kotlin LSP release",
+          "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
+        }
+      ],
+      "upstreamSummary": "Official Kotlin Language Server",
+      "version": "263.6379.0"
     },
     "brew:cask:look": {
       "agentSummary": "Look is a free, open-source keyboard launcher for macOS, Windows, and Linux, combining application search, clipboard history, commands, and configurable local workflows.",
@@ -2197,6 +2258,64 @@
       ],
       "upstreamSummary": "Hierarchical note taking application",
       "version": "0.106.0"
+    },
+    "brew:cask:visual-studio-code@insiders": {
+      "agentSummary": "Visual Studio Code Insiders delivers Microsoft's frequently updated preview editor, providing the primary tested client for JetBrains' official Kotlin language server extension.",
+      "assessment": {
+        "alternatives": [
+          "Stable Visual Studio Code for a slower release cadence",
+          "Neovim or another editor with an LSP client",
+          "IntelliJ IDEA for deeply integrated Kotlin tooling"
+        ],
+        "audiences": [
+          "Developers who want early access to Visual Studio Code changes",
+          "Extension authors testing against upcoming editor behavior",
+          "Kotlin developers evaluating JetBrains' official VS Code integration"
+        ],
+        "caveats": [
+          "Insiders builds change frequently and may include regressions",
+          "Preview behavior can differ from the stable channel",
+          "An editor update and a language-server update can introduce separate variables during troubleshooting"
+        ],
+        "complements": [
+          "The Kotlin by JetBrains extension",
+          "Extension development and integration test suites",
+          "Stable Visual Studio Code for daily production work"
+        ],
+        "prerequisites": [
+          "Tolerance for frequent preview updates",
+          "A separate plan for stable-editor workflows and settings synchronization"
+        ],
+        "useCases": [
+          "Evaluate preview editor and extension-host changes",
+          "Run the officially tested Kotlin LSP client experience",
+          "Reproduce extension issues against current Insiders builds"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "Visual Studio Code Insiders",
+      "docs": "https://code.visualstudio.com/docs",
+      "homepage": "https://code.visualstudio.com/insiders/",
+      "id": "brew:cask:visual-studio-code@insiders",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Avisual-studio-code%40insiders",
+      "lastUpdatedAt": "2026-10-03T23:15:15Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/microsoft/vscode",
+      "researchedAt": "2026-10-04T08:01:30Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Visual Studio Code Insiders",
+          "url": "https://code.visualstudio.com/insiders/"
+        },
+        {
+          "kind": "primary",
+          "title": "Visual Studio Code source repository",
+          "url": "https://github.com/microsoft/vscode"
+        }
+      ],
+      "upstreamSummary": "Open-source code editor",
+      "version": "1.141.0-insider,1791051985777,429a4ec703266abbd31f6886764e4127955bdc9d"
     },
     "brew:cask:zentty": {
       "agentSummary": "Zentty is a native macOS terminal for agent-heavy development, combining scrolling worklanes, persistent panes, status-aware sidebars, task discovery, and a scriptable embedded CLI.",
@@ -3272,6 +3391,65 @@
       "upstreamSummary": "Meteorological workstation software",
       "version": "5.26.2"
     },
+    "brew:neovim": {
+      "agentSummary": "Neovim combines modal editing with a built-in LSP client, letting users connect Kotlin and other language servers through explicit, scriptable configuration.",
+      "assessment": {
+        "alternatives": [
+          "Visual Studio Code for a packaged extension workflow",
+          "Helix for another terminal editor with integrated language-server support",
+          "IntelliJ IDEA for the most complete Kotlin integration"
+        ],
+        "audiences": [
+          "Terminal-oriented developers who prefer modal editing",
+          "Users who want direct control over language-server configuration",
+          "Plugin authors building editor workflows around Neovim's APIs"
+        ],
+        "caveats": [
+          "The Kotlin project officially tests releases with Visual Studio Code rather than every LSP client",
+          "Users own more of the launch, root-detection, capability, and plugin configuration",
+          "Editor plugins can add compatibility variables beyond the language server itself"
+        ],
+        "complements": [
+          "Completion and snippet plugins",
+          "Treesitter parsers for syntax-aware editing",
+          "Project-specific formatter, linter, and test commands"
+        ],
+        "prerequisites": [
+          "A working Neovim configuration",
+          "A separately installed and configured language server",
+          "Project roots and launch commands appropriate to each server"
+        ],
+        "useCases": [
+          "Connect external language servers to buffers and workspaces",
+          "Build keyboard-driven diagnostics, navigation, completion, and refactoring workflows",
+          "Experiment with the standalone Kotlin LSP outside its primary VS Code client"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "neovim",
+      "docs": "https://neovim.io/doc",
+      "homepage": "https://neovim.io/",
+      "id": "brew:neovim",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aneovim",
+      "lastUpdatedAt": "2026-10-03T15:40:59Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/neovim/neovim",
+      "researchedAt": "2026-10-04T08:01:30Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Neovim LSP client documentation",
+          "url": "https://neovim.io/doc/user/lsp.html"
+        },
+        {
+          "kind": "primary",
+          "title": "Neovim source repository",
+          "url": "https://github.com/neovim/neovim"
+        }
+      ],
+      "upstreamSummary": "Ambitious Vim-fork focused on extensibility and agility",
+      "version": "0.12.5"
+    },
     "brew:obscura": {
       "agentSummary": "A Rust headless-browser engine for scraping and agent automation, exposing Chrome DevTools compatibility, JavaScript execution, parallel workers, and optional stealth-oriented features.",
       "assessment": {
@@ -3333,124 +3511,6 @@
       ],
       "upstreamSummary": "Headless browser for AI agents and web scraping",
       "version": "0.2.1"
-    },
-    "brew:pgstream": {
-      "agentSummary": "A PostgreSQL change-data-capture tool and Go library that streams snapshots, row changes, and DDL to Postgres, Kafka, search indexes, or webhooks.",
-      "assessment": {
-        "alternatives": [
-          "Debezium",
-          "pglogical",
-          "Airbyte"
-        ],
-        "audiences": [
-          "Data engineers",
-          "PostgreSQL operators",
-          "Search and event-pipeline teams"
-        ],
-        "caveats": [
-          "Logical replication adds operational state and monitoring needs",
-          "DDL replay must be tested against downstream behavior",
-          "Large snapshots require throughput and retention planning"
-        ],
-        "complements": [
-          "PostgreSQL 18",
-          "Kafka",
-          "OpenSearch"
-        ],
-        "prerequisites": [
-          "PostgreSQL logical replication configuration",
-          "Capacity planning for snapshots and WAL retention",
-          "A configured downstream target"
-        ],
-        "useCases": [
-          "Replicate PostgreSQL changes",
-          "Keep downstream schemas aligned",
-          "Anonymize selected columns in transit"
-        ]
-      },
-      "category": "data",
-      "displayName": "pgstream",
-      "docs": "https://github.com/xataio/pgstream#readme",
-      "homepage": "https://github.com/xataio/pgstream",
-      "id": "brew:pgstream",
-      "installURL": "pkgmgrmgr://install?package=brew%3Apgstream",
-      "lastUpdatedAt": "2026-08-16T10:20:06Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/xataio/pgstream",
-      "researchedAt": "2026-08-17T06:25:37Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "pgstream project repository",
-          "url": "https://github.com/xataio/pgstream"
-        },
-        {
-          "kind": "primary",
-          "title": "pgstream 1.0 stateless schema replication",
-          "url": "https://xata.io/blog/pgstream-v100-stateless-schema-change-replication"
-        }
-      ],
-      "upstreamSummary": "PostgreSQL replication with DDL changes",
-      "version": null
-    },
-    "brew:postgresql@18": {
-      "agentSummary": "PostgreSQL 18 advances the established relational database with asynchronous I/O, skip scans, UUIDv7, OAuth authentication, richer EXPLAIN output, and smoother major upgrades.",
-      "assessment": {
-        "alternatives": [
-          "PostgreSQL 17",
-          "MySQL",
-          "SQLite"
-        ],
-        "audiences": [
-          "Application developers",
-          "Database administrators",
-          "Platform teams"
-        ],
-        "caveats": [
-          "Major upgrades still require rehearsal and extension review",
-          "Asynchronous I/O gains vary by workload and platform",
-          "Transferred optimizer statistics are not exhaustive"
-        ],
-        "complements": [
-          "pgstream",
-          "rainfrog",
-          "pg_upgrade"
-        ],
-        "prerequisites": [
-          "A planned major-version migration",
-          "Extension and driver compatibility checks",
-          "Tested backups and rollback procedures"
-        ],
-        "useCases": [
-          "Run transactional relational workloads",
-          "Upgrade clusters with less post-upgrade recovery work",
-          "Use timestamp-ordered UUIDs and OAuth authentication"
-        ]
-      },
-      "category": "data",
-      "displayName": "postgresql@18",
-      "docs": "https://www.postgresql.org/docs/18/index.html",
-      "homepage": "https://www.postgresql.org/",
-      "id": "brew:postgresql@18",
-      "installURL": "pkgmgrmgr://install?package=brew%3Apostgresql%4018",
-      "lastUpdatedAt": "2026-08-16T10:20:06Z",
-      "manager": "homebrew",
-      "repository": "https://git.postgresql.org/gitweb?p=postgresql.git",
-      "researchedAt": "2026-08-17T06:25:37Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "PostgreSQL 18 release notes",
-          "url": "https://www.postgresql.org/docs/18/release-18.html"
-        },
-        {
-          "kind": "independent",
-          "title": "2025 Stack Overflow Developer Survey: Technology",
-          "url": "https://survey.stackoverflow.co/2025/technology/"
-        }
-      ],
-      "upstreamSummary": "Object-relational database system",
-      "version": null
     },
     "brew:prek": {
       "agentSummary": "Rust-based Git hook manager compatible with established pre-commit configurations, adding parallel execution, monorepo support, built-in hooks, and a single-binary operational model.",
@@ -3516,65 +3576,6 @@
       ],
       "upstreamSummary": "Fast Git hook manager written in Rust, drop-in alternative to pre-commit",
       "version": "0.4.14"
-    },
-    "brew:rainfrog": {
-      "agentSummary": "A keyboard-friendly database TUI for PostgreSQL, MySQL, SQLite, and other engines, combining query editing, schema browsing, history, filtering, and favorites in one terminal.",
-      "assessment": {
-        "alternatives": [
-          "Harlequin",
-          "mycli",
-          "DBeaver"
-        ],
-        "audiences": [
-          "Terminal-oriented developers",
-          "Database engineers",
-          "Operators working over SSH"
-        ],
-        "caveats": [
-          "The project still labels itself beta",
-          "Database support is tiered and experimental drivers may change",
-          "Some clipboard behavior is limited under X11 and Wayland"
-        ],
-        "complements": [
-          "PostgreSQL",
-          "MySQL",
-          "SQLite"
-        ],
-        "prerequisites": [
-          "A reachable supported database",
-          "A terminal with suitable color support",
-          "A Nerd Font for the intended icon rendering"
-        ],
-        "useCases": [
-          "Browse schemas and table metadata",
-          "Run and revisit SQL queries",
-          "Inspect databases without a desktop client"
-        ]
-      },
-      "category": "data",
-      "displayName": "rainfrog",
-      "docs": "https://github.com/achristmascarl/rainfrog#readme",
-      "homepage": "https://github.com/achristmascarl/rainfrog",
-      "id": "brew:rainfrog",
-      "installURL": "pkgmgrmgr://install?package=brew%3Arainfrog",
-      "lastUpdatedAt": "2026-08-17T03:54:25Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/achristmascarl/rainfrog",
-      "researchedAt": "2026-08-17T06:25:37Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "rainfrog project repository",
-          "url": "https://github.com/achristmascarl/rainfrog"
-        },
-        {
-          "kind": "independent",
-          "title": "rainfrog package page in Arch Linux",
-          "url": "https://archlinux.org/packages/extra/x86_64/rainfrog/"
-        }
-      ],
-      "upstreamSummary": "Database management TUI for PostgreSQL/MySQL/SQLite",
-      "version": null
     },
     "brew:ratex": {
       "agentSummary": "ratex is an experimental Rust TeX engine emphasizing fast compilation and a compact command-line workflow, best suited to curious TeX users testing an emerging implementation.",
@@ -4241,7 +4242,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-03T08:34:38Z",
+    "generatedAt": "2026-10-04T07:59:55Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
