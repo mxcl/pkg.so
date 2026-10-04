@@ -1,13 +1,13 @@
 id: cask:shotcut
 display-name: Shotcut
-homepage: https://www.shotcut.org/
-repo: https://github.com/mltframework/shotcut
+repo: null
 docs:
   - https://www.shotcut.org/FAQ
   - https://www.shotcut.org/howtos
   - https://www.shotcut.org/notes/configuration
 config-file-location:
-  macos: ~/Library/Preferences/com.meltytech.Shotcut.plist
+  macos:
+    - ~/Library/Preferences/com.meltytech.Shotcut.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -49,10 +49,6 @@ history:
       Users import media directly, arrange and trim clips on a multitrack timeline,
       apply audio and video filters or keyframes, and export rendered media. Proxy
       editing and preview scaling support work on demanding footage.
-category: media
-package-manager:
-  brew-cask: shotcut
-package-manager-url: https://formulae.brew.sh/cask/shotcut
 tags:
   - cross-platform
   - ffmpeg
@@ -61,10 +57,41 @@ tags:
   - nonlinear-editing
   - open-source
   - video-editor
-description: Video editor
-applications:
-  - Shotcut.app
 provenance:
-  cask: shotcut
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://www.shotcut.org/features/ describes Shotcut's multitrack editing,
+      filtering, proxy-editing, and export features.
+    - 'source_facts.description: Video editor'
+  display-name-sources:
+    - https://www.shotcut.org/
+    - 'source_facts.applications: Shotcut.app'
+  docs-sources:
+    - >
+      The official How To index links the user guide, FAQ, keyboard reference,
+      tutorials, and technical articles.
+    - >
+      The official configuration reference documents platform-specific settings
+      locations and keys.
+  history-sources:
+    - https://www.shotcut.org/
+    - https://www.shotcut.org/FAQ/
+    - https://www.shotcut.org/features/
+    - https://www.shotcut.org/tutorials/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per task instructions the repository was
+      not re-determined.
+  tags-sources:
+    - https://www.shotcut.org/features/
+    - https://www.shotcut.org/tutorials/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - media
+  - video-editors
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

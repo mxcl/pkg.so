@@ -1,15 +1,16 @@
 id: cask:slippi-dolphin
 display-name: Slippi Dolphin
-homepage: https://slippi.gg/
-repo: https://github.com/project-slippi/Ishiiruka
+repo: null
 docs:
   - https://github.com/project-slippi/Ishiiruka#readme
   - https://github.com/project-slippi/slippi-launcher/blob/main/FAQ.md
   - https://github.com/project-slippi/slippi-wiki
   - https://www.slippi.gg/about
 config-file-location:
-  linux: ~/.dolphin-emu/Config/
-  macos: ~/Library/Application Support/Dolphin/Config/
+  linux:
+    - ~/.dolphin-emu/Config/
+  macos:
+    - ~/Library/Application Support/Dolphin/Config/
 credentials-file-location: null
 history:
   adoption-history:
@@ -64,10 +65,6 @@ history:
       through Slippi Launcher, to play online and record matches. The launcher updates
       Dolphin, starts netplay, browses and analyzes `.slp` replays, and launches replay
       playback.
-category: games
-package-manager:
-  brew-cask: slippi-dolphin
-package-manager-url: https://formulae.brew.sh/cask/slippi-dolphin
 tags:
   - emulator
   - gamecube
@@ -77,10 +74,45 @@ tags:
   - rollback-netcode
   - super-smash-bros-melee
   - wii
-description: Fork of the Dolphin GameCube and Wii emulator with netplay support via Slippi
-applications:
-  - Slippi Dolphin.app
 provenance:
-  cask: slippi-dolphin
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://www.slippi.gg/about describes Slippi's replay, statistics, streaming,
+      netcode, and matchmaking features for Super Smash Bros. Melee.
+    - >
+      source_facts.description: Fork of the Dolphin GameCube and Wii emulator with
+      netplay support via Slippi
+  display-name-sources:
+    - >
+      https://github.com/project-slippi/Ishiiruka documents the Slippi-specific Dolphin
+      builds.
+    - 'source_facts.applications: Slippi Dolphin.app'
+  docs-sources:
+    - The official Slippi About page explains the project's purpose and ecosystem.
+    - >
+      The official Slippi wiki and Ishiiruka README document replay formats, component
+      architecture, builds, and user directories.
+    - The official launcher FAQ covers player setup and operational questions.
+  history-sources:
+    - https://github.com/project-slippi/project-slippi
+    - https://github.com/project-slippi/slippi-launcher
+    - https://github.com/project-slippi/slippi-wiki/blob/master/GETTING_STARTED.md
+    - https://github.com/project-slippi/slippi-wiki/blob/master/SPEC.md
+    - https://www.slippi.gg/about
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per task instructions the repository was
+      not re-determined.
+  tags-sources:
+    - https://github.com/project-slippi/slippi-wiki/blob/master/GETTING_STARTED.md
+    - https://www.slippi.gg/about
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - emulation
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
