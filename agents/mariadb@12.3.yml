@@ -1,6 +1,5 @@
 id: brew:mariadb@12.3
 display-name: MariaDB 12.3
-homepage: https://mariadb.org/
 repo: https://github.com/MariaDB/server
 docs:
   - https://mariadb.com/docs/server
@@ -29,7 +28,8 @@ config-file-location:
     - '%MYSQL_HOME%\my.ini'
     - '%MYSQL_HOME%\my.cnf'
 credentials-file-location:
-  unix: ~/.my.cnf
+  unix:
+    - ~/.my.cnf
 history:
   adoption-history:
     - >
@@ -91,22 +91,6 @@ history:
       file, although prompting for a password or using an external secret store avoids
       keeping a plaintext password in a broadly readable file. MariaDB does not support
       MySQL's `.mylogin.cnf` credential format.
-category: data
-package-manager:
-  apk: mariadb
-  brew: mariadb@12.3
-  chocolatey: mariadb
-  debian: libmariadb-dev
-  dnf: mariadb
-  macports: mariadb
-  nix: mariadb
-  pacman: mariadb
-  scoop: main/mariadb
-  ubuntu: libmariadb-dev
-  winget: MariaDB.Server
-  zypper: libmariadbd-devel
-package-manager-url: https://formulae.brew.sh/formula/mariadb@12.3
-license: GPL-2.0-only
 tags:
   - cli
   - client-server
@@ -116,100 +100,42 @@ tags:
   - open-source
   - relational-database
   - sql
-description: Drop-in replacement for MySQL
-executables:
-  - aria_chk
-  - aria_dump_log
-  - aria_ftdump
-  - aria_pack
-  - aria_read_log
-  - galera_new_cluster
-  - innochecksum
-  - mariabackup
-  - mariadb
-  - mariadb-access
-  - mariadb-admin
-  - mariadb-backup
-  - mariadb-binlog
-  - mariadb-check
-  - mariadb-client-test
-  - mariadb-config
-  - mariadb-conv
-  - mariadb-convert-table-format
-  - mariadb-dump
-  - mariadb-dumpslow
-  - mariadb-find-rows
-  - mariadb-fix-extensions
-  - mariadb-hotcopy
-  - mariadb-import
-  - mariadb-install-db
-  - mariadb-ldb
-  - mariadb-migrate-config-file
-  - mariadb-plugin
-  - mariadb-secure-installation
-  - mariadb-setpermission
-  - mariadb-show
-  - mariadb-slap
-  - mariadb-test
-  - mariadb-tzinfo-to-sql
-  - mariadb-upgrade
-  - mariadb-waitpid
-  - mariadb_config
-  - mariadbd
-  - mariadbd-multi
-  - mariadbd-safe
-  - mariadbd-safe-helper
-  - mbstream
-  - msql2mysql
-  - my_print_defaults
-  - myisam_ftdump
-  - myisamchk
-  - myisamlog
-  - myisampack
-  - myrocks_hotbackup
-  - mysql
-  - mysql.server
-  - mysql_client_test
-  - mysql_config
-  - mysql_convert_table_format
-  - mysql_find_rows
-  - mysql_fix_extensions
-  - mysql_install_db
-  - mysql_ldb
-  - mysql_plugin
-  - mysql_secure_installation
-  - mysql_setpermission
-  - mysql_tzinfo_to_sql
-  - mysql_upgrade
-  - mysql_waitpid
-  - mysqlaccess
-  - mysqladmin
-  - mysqlbinlog
-  - mysqlcheck
-  - mysqld
-  - mysqld_multi
-  - mysqld_safe
-  - mysqld_safe_helper
-  - mysqldump
-  - mysqldumpslow
-  - mysqlhotcopy
-  - mysqlimport
-  - mysqlshow
-  - mysqlslap
-  - mysqltest
-  - mytop
-  - perror
-  - rcmysql
-  - replace
-  - resolve_stack_dump
-  - resolveip
-  - sst_dump
-  - wsrep_sst_backup
-  - wsrep_sst_mariabackup
-  - wsrep_sst_mysqldump
-  - wsrep_sst_rsync
-  - wsrep_sst_rsync_wan
 provenance:
-  formula: mariadb@12.3
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      MariaDB Foundation describes MariaDB Server as a general-purpose open-source
+      relational database management system: https://mariadb.org/en/
+  display-name-sources:
+    - >
+      Official project branding is MariaDB Server; the versioned Homebrew package name
+      is supplied by source_facts.name as `mariadb@12.3`.
+  docs-sources:
+    - >
+      MariaDB's official Server documentation is the authoritative documentation
+      surface; its option-file guide documents default Unix-like and Windows search
+      paths.
+  history-sources:
+    - https://github.com/MariaDB/server
+    - https://mariadb.com/docs/server/
+    - https://mariadb.org/en/
+    - https://mariadb.org/mariadb-foundation-to-safeguard-leading-open-source-database/
+  repo-sources:
+    - >
+      The official MariaDB organization hosts the MariaDB Server source repository at
+      https://github.com/MariaDB/server; repository determination was required because
+      source_facts.repo is empty.
+  tags-sources:
+    - >
+      MariaDB Foundation and official Server documentation describe MariaDB as an
+      open-source relational database server compatible with established MySQL
+      workflows: https://mariadb.org/en/
+category-confidence: high
+category-path:
+  - data
+  - databases
+  - relational-databases
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,7 +1,6 @@
 id: brew:chisel-ubuntu
 display-name: Chisel
-homepage: https://github.com/canonical/chisel
-repo: https://github.com/canonical/chisel
+repo: null
 docs:
   - https://documentation.ubuntu.com/chisel/latest
 config-file-location: null
@@ -51,14 +50,6 @@ history:
       package-slice names. By default Chisel consults the official chisel-releases
       repository; a local or custom release definition may be supplied when maintaining
       private slice sets.
-category: developer-tools
-package-manager:
-  brew: chisel-ubuntu
-  nix: chisel
-  scoop: main/chisel
-  winget: Snesnopic.Chisel
-package-manager-url: https://formulae.brew.sh/formula/chisel-ubuntu
-license: AGPL-3.0-only
 tags:
   - cli
   - containers
@@ -67,10 +58,39 @@ tags:
   - package-slices
   - supply-chain
   - ubuntu
-description: Carve and cut Debian packages into slices
-executables:
-  - chisel
 provenance:
-  formula: chisel-ubuntu
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      Official Chisel documentation defines it as a developer tool for constructing
+      compact Ubuntu root filesystems from package slices:
+      https://documentation.ubuntu.com/chisel/latest/
+  display-name-sources:
+    - >
+      Official Canonical documentation uses the project name “Chisel”:
+      https://documentation.ubuntu.com/chisel/latest/
+  docs-sources:
+    - >
+      Canonical's dedicated Chisel documentation is the authoritative tutorial, how-to,
+      reference, and explanation site: https://documentation.ubuntu.com/chisel/latest/
+  history-sources:
+    - https://documentation.ubuntu.com/chisel/latest/
+    - https://documentation.ubuntu.com/chisel/latest/reference/chisel-releases/
+    - https://documentation.ubuntu.com/core/uc26/
+    - https://github.com/canonical/chisel/releases
+  repo-sources:
+    - Repository lookup intentionally skipped because source_facts.repo is already populated.
+  tags-sources:
+    - >
+      Official documentation describes Ubuntu package slices, minimal root filesystems,
+      reduced storage footprint, and reduced attack surface:
+      https://documentation.ubuntu.com/chisel/latest/
+category-confidence: high
+category-path:
+  - developer-tools
+  - containers
+  - minimal-filesystems
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
