@@ -1,17 +1,22 @@
 id: cask:sabnzbd
 display-name: SABnzbd
-homepage: https://sabnzbd.org/
-repo: https://github.com/sabnzbd/sabnzbd
+repo: null
 docs:
   - https://sabnzbd.org/wiki
 config-file-location:
-  linux: ~/.sabnzbd/sabnzbd.ini
-  macos: ~/Library/Application Support/SABnzbd/sabnzbd.ini
-  windows: '%USERPROFILE%\AppData\Local\sabnzbd\sabnzbd.ini'
+  linux:
+    - ~/.sabnzbd/sabnzbd.ini
+  macos:
+    - ~/Library/Application Support/SABnzbd/sabnzbd.ini
+  windows:
+    - '%USERPROFILE%\AppData\Local\sabnzbd\sabnzbd.ini'
 credentials-file-location:
-  linux: ~/.sabnzbd/sabnzbd.ini
-  macos: ~/Library/Application Support/SABnzbd/sabnzbd.ini
-  windows: '%USERPROFILE%\AppData\Local\sabnzbd\sabnzbd.ini'
+  linux:
+    - ~/.sabnzbd/sabnzbd.ini
+  macos:
+    - ~/Library/Application Support/SABnzbd/sabnzbd.ini
+  windows:
+    - '%USERPROFILE%\AppData\Local\sabnzbd\sabnzbd.ini'
 history:
   adoption-history:
     - >
@@ -69,10 +74,6 @@ history:
       All configuration data—including configured server and interface credentials—is
       stored in `sabnzbd.ini`; the official folder-setup documentation gives
       platform-specific default locations.
-category: networking
-package-manager:
-  brew-cask: sabnzbd
-package-manager-url: https://formulae.brew.sh/cask/sabnzbd
 tags:
   - binary-newsreader
   - download-automation
@@ -80,10 +81,35 @@ tags:
   - post-processing
   - usenet
   - web-interface
-description: Binary newsreader
-applications:
-  - SABnzbd.app
 provenance:
-  cask: sabnzbd
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      [Official SABnzbd repository](https://github.com/sabnzbd/sabnzbd) describes it as
+      an automated Usenet download tool and open-source binary newsreader.
+    - source_facts.description identifies SABnzbd as a binary newsreader.
+  display-name-sources:
+    - '[Official SABnzbd website](https://sabnzbd.org/)'
+    - current_curation.display-name
+    - source_facts.applications
+  docs-sources:
+    - '[Official SABnzbd user manual](https://sabnzbd.org/wiki/)'
+  history-sources:
+    - '[Official SABnzbd repository](https://github.com/sabnzbd/sabnzbd)'
+    - '[Official SABnzbd user manual](https://sabnzbd.org/wiki/)'
+    - '[Official folder-setup documentation](https://sabnzbd.org/wiki/advanced/directory-setup)'
+    - source_facts.package-manager
+  repo-sources:
+    - source_facts.repo is already populated; repo is intentionally null as instructed.
+  tags-sources:
+    - '[Official SABnzbd repository](https://github.com/sabnzbd/sabnzbd)'
+    - '[Official SABnzbd user manual](https://sabnzbd.org/wiki/)'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - usenet
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,7 +1,6 @@
 id: cask:satdump
 display-name: SatDump
-homepage: https://www.satdump.org/
-repo: https://github.com/SatDump/SatDump
+repo: null
 docs:
   - https://docs.satdump.org/
 config-file-location:
@@ -69,10 +68,6 @@ history:
     - >
       System-wide defaults live in `satdump_cfg.json`; documented per-user overrides are
       stored in `settings.json` and take precedence.
-category: science
-package-manager:
-  brew-cask: satdump
-package-manager-url: https://formulae.brew.sh/cask/satdump
 tags:
   - demodulation
   - image-processing
@@ -80,10 +75,38 @@ tags:
   - satellite
   - signal-processing
   - software-defined-radio
-description: Generic satellite data processing software
-applications:
-  - SatDump.app
 provenance:
-  cask: satdump
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      [Official SatDump documentation](https://docs.satdump.org/) covers
+      satellite-signal recording, demodulation, decoding, and product generation.
+    - source_facts.description identifies SatDump as satellite-data-processing software.
+  display-name-sources:
+    - '[Official SatDump documentation](https://docs.satdump.org/)'
+    - current_curation.display-name
+    - source_facts.applications
+  docs-sources:
+    - >
+      The dedicated SatDump documentation domain is the project's official documentation
+      surface.
+  history-sources:
+    - '[Official SatDump documentation](https://docs.satdump.org/)'
+    - '[Official SatDump organization](https://github.com/SatDump)'
+    - '[Official SatDump releases](https://github.com/SatDump/SatDump/releases)'
+    - '[Official SatDump repository](https://github.com/SatDump/SatDump)'
+    - source_facts.package-manager
+  repo-sources:
+    - source_facts.repo is already populated; repo is intentionally null as instructed.
+  tags-sources:
+    - '[Official SatDump documentation](https://docs.satdump.org/)'
+    - '[Official SatDump repository](https://github.com/SatDump/SatDump)'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - science
+  - satellite-data-processing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

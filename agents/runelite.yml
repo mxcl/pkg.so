@@ -1,12 +1,13 @@
 id: cask:runelite
 display-name: RuneLite
-homepage: https://runelite.net/
-repo: https://github.com/runelite/launcher
+repo: null
 docs:
   - https://github.com/runelite/runelite/wiki
 config-file-location:
-  unix: ~/.runelite/
-  windows: '%USERPROFILE%\.runelite\'
+  unix:
+    - ~/.runelite/
+  windows:
+    - '%USERPROFILE%\.runelite\'
 credentials-file-location: null
 history:
   adoption-history:
@@ -62,20 +63,44 @@ history:
     - >
       Configuration, profiles, logs, screenshots, and related client state are kept
       beneath the `.runelite` directory in the user's home directory.
-category: games
-package-manager:
-  brew-cask: runelite
-package-manager-url: https://formulae.brew.sh/cask/runelite
 tags:
   - cross-platform
   - game-client
   - old-school-runescape
   - overlays
   - plugins
-description: Client for Old School RuneScape
-applications:
-  - RuneLite.app
 provenance:
-  cask: runelite
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      [Official RuneLite repository](https://github.com/runelite/runelite) describes the
+      project as an open-source Old School RuneScape client.
+    - source_facts.description identifies RuneLite as an Old School RuneScape client.
+  display-name-sources:
+    - '[Official RuneLite website](https://runelite.net/)'
+    - current_curation.display-name
+    - source_facts.applications
+  docs-sources:
+    - >
+      The client’s official properties file identifies the GitHub wiki as its
+      documentation surface.
+    - '[Official RuneLite wiki](https://github.com/runelite/runelite/wiki)'
+  history-sources:
+    - '[Official RuneLite FAQ](https://github.com/runelite/runelite/wiki/FAQ)'
+    - '[Official RuneLite blog archive](https://runelite.net/blog/)'
+    - '[Official RuneLite repository](https://github.com/runelite/runelite)'
+    - source_facts.package-manager
+  repo-sources:
+    - source_facts.repo is already populated; repo is intentionally null as instructed.
+  tags-sources:
+    - '[Official RuneLite repository](https://github.com/runelite/runelite)'
+    - '[Official RuneLite wiki](https://github.com/runelite/runelite/wiki)'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - games
+  - game-clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
