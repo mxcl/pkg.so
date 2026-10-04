@@ -1468,14 +1468,13 @@
       ]
     },
     "cockatrice": {
-      "bundle_identifier": "com.cockatrice.Cockatrice",
+      "bundle_identifier": "com.cockatrice.cockatrice",
       "confidence": "high",
-      "evidence_hash": "29f8a47e20d57f9f9d7b29e17696c497d7662f0597744e6f65b0d4189abca892",
-      "reason": "The official build configuration defines Cockatrice as the client and constructs its macOS bundle identifier as com.cockatrice.${PROJECT_NAME}; Oracle and Servatrice are separate companion apps.",
+      "evidence_hash": "14b20579df890920a7c8427e4167baec910b2261482ca942bb8959a7f050cde1",
+      "reason": "Cockatrice is the suite's primary client; the official build defines its macOS GUI identifier separately from Oracle and Servatrice, matching the cask's client identifier.",
       "sources": [
         "https://formulae.brew.sh/cask/cockatrice",
-        "https://raw.githubusercontent.com/Cockatrice/Cockatrice/master/CMakeLists.txt",
-        "https://raw.githubusercontent.com/Cockatrice/Cockatrice/master/cockatrice/CMakeLists.txt"
+        "https://github.com/Cockatrice/Cockatrice/blob/master/cockatrice/CMakeLists.txt"
       ]
     },
     "cocoapacketanalyzer": {
@@ -8102,6 +8101,26 @@
         "https://github.com/roslynpad/roslynpad/blob/main/src/RoslynPad/RoslynPad.csproj"
       ]
     },
+    "rouvy": {
+      "bundle_identifier": "eu.virtualtraining.rouvy.mac",
+      "confidence": "medium",
+      "evidence_hash": "c9d79ac15c1371b79d9d8b08ae8364b9bc92b399910f2097fccc96fb1b490d43",
+      "reason": "ROUVY's official support documentation identifies this reverse-DNS namespace as the macOS app's Application Support location, corroborating the cask's zap path, but no official Info.plist was available.",
+      "sources": [
+        "https://formulae.brew.sh/cask/rouvy",
+        "https://support.rouvy.com/hc/en-us/articles/14608494577169-Download-Route-Videos-for-a-Smoother-Ride"
+      ]
+    },
+    "rowboat": {
+      "bundle_identifier": "com.rowboat.app",
+      "confidence": "high",
+      "evidence_hash": "915fefe34baa19a0883e1148beb8ccb7a15cf04d192bd4553c0ed3f03bf27889",
+      "reason": "Rowboat's official Electron Forge configuration directly sets appBundleId to com.rowboat.app for the packaged desktop application.",
+      "sources": [
+        "https://formulae.brew.sh/cask/rowboat",
+        "https://github.com/rowboatlabs/rowboat/blob/main/apps/x/apps/main/forge.config.cjs"
+      ]
+    },
     "rowmote-helper": {
       "bundle_identifier": "com.regularrateandrhythm.rowmotehelper",
       "confidence": "high",
@@ -8122,6 +8141,56 @@
         "https://github.com/ruffle-rs/ruffle/blob/master/desktop/packages/macOS/Contents/Info.plist"
       ]
     },
+    "runelite": {
+      "bundle_identifier": "net.runelite.launcher",
+      "confidence": "high",
+      "evidence_hash": "e8aeb8a1cca06bfdf5a73057327551c4e7cb69f654218fb5f18ff74bd3c36641",
+      "reason": "RuneLite's official Info.plist constructs CFBundleIdentifier from the Gradle project group and name; the official build files set these to net.runelite and launcher.",
+      "sources": [
+        "https://formulae.brew.sh/cask/runelite",
+        "https://github.com/runelite/launcher/blob/master/build.gradle.kts",
+        "https://github.com/runelite/launcher/blob/master/osx/Info.plist",
+        "https://github.com/runelite/launcher/blob/master/settings.gradle.kts"
+      ]
+    },
+    "runescape": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "ebdbf0e022a3a81da668862df427e459f91be47618bbd31f7d08702e654bf016",
+      "reason": "Official Homebrew and Jagex sources confirm the RuneScape.app artifact, but no official manifest or documentation found exposes its CFBundleIdentifier; similar-looking Jagex identifiers cannot be safely inferred.",
+      "sources": [
+        "https://formulae.brew.sh/cask/runescape",
+        "https://support.runescape.com/hc/en-gb/articles/360001313349-Recommended-specifications"
+      ]
+    },
+    "rustcast": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "ae37572b4f446f567795975a4a9a9cafab6d05b6c7c77eb2de2a2eb3518ba53b",
+      "reason": "The official cask identifies Rustcast.app, but the accessible official repository metadata does not directly establish its CFBundleIdentifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/rustcast",
+        "https://github.com/MystikoLab/rustcast"
+      ]
+    },
+    "ruswitcher": {
+      "bundle_identifier": "com.ruswitcher.app",
+      "confidence": "high",
+      "evidence_hash": "05b3cad916f2a656a14b59633b1427171a8b713a73dd193c3aed284b26d0220b",
+      "reason": "The official application's Info.plist directly declares this CFBundleIdentifier.",
+      "sources": [
+        "https://github.com/rashn/RuSwitcher/blob/main/macos/Info.plist"
+      ]
+    },
+    "sabnzbd": {
+      "bundle_identifier": "org.sabnzbd.sabnzbd",
+      "confidence": "high",
+      "evidence_hash": "40f6ab1f6534965585cfb70f2cbec4017affe9ba9b9d44ce150eacb43eaa0ab5",
+      "reason": "The official PyInstaller specification assigns this identifier to SABnzbd.app in both its Info.plist data and BUNDLE configuration.",
+      "sources": [
+        "https://github.com/sabnzbd/sabnzbd/blob/develop/builder/SABnzbd.spec"
+      ]
+    },
     "sage": {
       "bundle_identifier": "org.computop.SageMath",
       "confidence": "medium",
@@ -8130,6 +8199,25 @@
       "sources": [
         "https://github.com/3-manifolds/Sage_macOS",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/sage.rb"
+      ]
+    },
+    "satdump": {
+      "bundle_identifier": "com.altillimity.satdump",
+      "confidence": "high",
+      "evidence_hash": "22ba65d57a1088ee12045a0b6b58e76d03a9936586a6cdfd209db772dcbbb95e",
+      "reason": "The official macOS Info.plist directly declares this CFBundleIdentifier for SatDump.",
+      "sources": [
+        "https://raw.githubusercontent.com/SatDump/SatDump/master/macOS/Info.plist"
+      ]
+    },
+    "sauerbraten": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "f4eb35bfa45b7e7b5a279421cf69f76b7b0b06e62dc22e84bf52bb624147b163",
+      "reason": "The official source tree confirms the primary Sauerbraten app bundle, but no accessible official manifest directly establishes its CFBundleIdentifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/sauerbraten",
+        "https://sourceforge.net/p/sauerbraten/code/HEAD/tree/"
       ]
     },
     "scapple": {
@@ -8142,6 +8230,87 @@
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/scapple.rb"
       ]
     },
+    "scene-maestro": {
+      "bundle_identifier": "ca.sceni.SceneMaestro",
+      "confidence": "medium",
+      "evidence_hash": "aeb00228c9a416e9d48cdcffdff204c3795e923b4197f579bb28fb167b761dc3",
+      "reason": "The cask installs Scene Maestro.app, and its official zap metadata uses ca.sceni.SceneMaestro for both standard and ByHost preferences. This strongly indicates the primary app ID, but no official Info.plist manifest was available for direct confirmation.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/scene-maestro.rb",
+        "https://sceni.ca/en/scene-maestro/"
+      ]
+    },
+    "scenebuilder": {
+      "bundle_identifier": "com.gluonhq.scenebuilder",
+      "confidence": "medium",
+      "evidence_hash": "8e167b02ca891ad78c6881471947a2ef6a8dd96100087af9aa1363d17d4bb6c4",
+      "reason": "The cask installs SceneBuilder.app and associates its saved application state with com.gluonhq.scenebuilder; Gluon's official repository also uses that namespace. No released-app Info.plist was available for direct confirmation.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/scenebuilder.rb",
+        "https://github.com/gluonhq/scenebuilder"
+      ]
+    },
+    "scenica-player": {
+      "bundle_identifier": "ca.sceni.Player",
+      "confidence": "medium",
+      "evidence_hash": "a45c0f859785e819916b33ba563bbad7d6ed1df91c5bb642febc45febbca30f2",
+      "reason": "The cask installs Scenica Player.app and its official zap metadata identifies the app's ByHost preference domain as ca.sceni.Player. This is persuasive but not direct manifest evidence.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/scenica-player.rb",
+        "https://sceni.ca/en/player/"
+      ]
+    },
+    "scidavis": {
+      "bundle_identifier": "net.sourceforge.scidavis",
+      "confidence": "medium",
+      "evidence_hash": "c81b14364fd17cbde78ab9722f465e5be969372168be47842a66634eb5c4d862",
+      "reason": "The cask installs scidavis.app and associates its macOS saved application state with net.sourceforge.scidavis; the same application identifier is also used by the project's official repository. The macOS Info.plist was not directly available.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/scidavis.rb",
+        "https://github.com/SciDAVis/scidavis"
+      ]
+    },
+    "scilab": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "bada20aa8edd69c049c8b4caa2dc7ce44ae1471d49a9f35bf510f5520887db0d",
+      "reason": "The official cask and Scilab sources identify the versioned .app artifact but expose no reliable application bundle identifier. Inferring one from the filename or Scilab's Java package namespaces would be unsafe.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/scilab.rb",
+        "https://gitlab.com/scilab/scilab",
+        "https://www.scilab.org/"
+      ]
+    },
+    "scratch": {
+      "bundle_identifier": "edu.mit.scratch.scratch-desktop",
+      "confidence": "high",
+      "evidence_hash": "a8147a16af2e0ecc6b9ab4a24bbe9ccefb905d78e757f6c373e18fbd3a960ff2",
+      "reason": "Scratch's official Electron Builder manifest directly assigns this appId to the \u201cScratch 3\u201d macOS application.",
+      "sources": [
+        "https://formulae.brew.sh/cask/scratch",
+        "https://github.com/scratchfoundation/scratch-desktop/blob/develop/electron-builder.yaml"
+      ]
+    },
+    "screaming-frog-log-file-analyser": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "454a2321e7ca46c465464454da92a4df4178d3adc684c395c5e94e945a89dde4",
+      "reason": "Official sources confirm the primary app artifact but do not expose its CFBundleIdentifier. The cask's uk.co.screamingfrog.ui.b support path is not sufficient evidence of a bundle identifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/screaming-frog-log-file-analyser",
+        "https://www.screamingfrog.co.uk/log-file-analyser/faq/"
+      ]
+    },
+    "screaming-frog-seo-spider": {
+      "bundle_identifier": "com.screamingfrog.ScreamingFrogSEOSpider",
+      "confidence": "high",
+      "evidence_hash": "13952464796e08389f57af1f38d8482bf5c6a7761dcaf4cf014586d00440e3ad",
+      "reason": "The official vendor DMG's primary \u201cScreaming Frog SEO Spider.app\u201d metadata identifies this bundle, matching the app artifact named by Homebrew.",
+      "sources": [
+        "https://download.screamingfrog.co.uk/products/seo-spider/ScreamingFrogSEOSpider-24.3-aarch64.dmg",
+        "https://formulae.brew.sh/cask/screaming-frog-seo-spider"
+      ]
+    },
     "screenkite": {
       "bundle_identifier": "com.screenkite.mac",
       "confidence": "high",
@@ -8150,6 +8319,26 @@
       "sources": [
         "https://formulae.brew.sh/cask/screenkite",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/screenkite.rb"
+      ]
+    },
+    "scribus@devel": {
+      "bundle_identifier": "net.scribus",
+      "confidence": "high",
+      "evidence_hash": "deaabbf5bcf5f111c70ea0156867f9a581ae50518d7d8679bf5638d4ffad922b",
+      "reason": "The Scribus macOS application manifest identifies the APPL bundle as net.scribus; Homebrew installs the corresponding Scribus 1.7.3 app artifact.",
+      "sources": [
+        "https://github.com/scribusproject/scribus/blob/master/Scribus.app/Contents/Info.plist",
+        "https://sourceforge.net/projects/scribus/files/scribus-devel/1.7.3/"
+      ]
+    },
+    "script-kit": {
+      "bundle_identifier": "app.scriptkit",
+      "confidence": "high",
+      "evidence_hash": "825e6e8fb398d160c5006d06d383bcd6cb07124910b189140110a5d41607af7a",
+      "reason": "Script Kit's official build configuration directly sets appId to app.scriptkit and productName to \u201cScript Kit.\u201d",
+      "sources": [
+        "https://formulae.brew.sh/cask/script-kit",
+        "https://github.com/script-kit/app/blob/main/build.ts"
       ]
     },
     "scrolla": {
@@ -8162,6 +8351,57 @@
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/scrolla.rb"
       ]
     },
+    "second-life-viewer": {
+      "bundle_identifier": "com.secondlife.indra.viewer",
+      "confidence": "high",
+      "evidence_hash": "4e1d860750368e502e35f4fdb79d1b8b4bcc5c37b6898e27be09567d83227cd9",
+      "reason": "The official Second Life viewer repository\u2019s macOS Info-SecondLife.plist assigns this value to CFBundleIdentifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/second-life-viewer",
+        "https://github.com/secondlife/viewer/blob/develop/indra/newview/Info-SecondLife.plist"
+      ]
+    },
+    "securityspy": {
+      "bundle_identifier": "com.bensoftware.SecuritySpy",
+      "confidence": "high",
+      "evidence_hash": "e9afbe8a63fda1d2912994e8160985668f1b1504c8f24d481fda8e4c6b06d66f",
+      "reason": "A crash report on the vendor\u2019s official forum identifies /Applications/SecuritySpy.app with this identifier.",
+      "sources": [
+        "https://bensoftware.com/forum/discussion/3957/web-server-stopped-responding",
+        "https://formulae.brew.sh/cask/securityspy"
+      ]
+    },
+    "seekfast": {
+      "bundle_identifier": "org.seekfast.SeekFast",
+      "confidence": "medium",
+      "evidence_hash": "962e312ab3eca6c341bec70c2054baa0c67d1f70d0d8ce02199dc87c8fc969b9",
+      "reason": "The official Homebrew cask associates SeekFast.app with a Velopack cache rooted at this identifier; this strongly indicates the primary app identity, though no explicit CFBundleIdentifier manifest was available.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/seekfast.rb",
+        "https://seekfast.org/download-seekfast"
+      ]
+    },
+    "selfcontrol": {
+      "bundle_identifier": "org.eyebeam.SelfControl",
+      "confidence": "high",
+      "evidence_hash": "c9375f98c764ef5db83f76c8265f15e62e26c57265cff541bb9f6450cd9f84c2",
+      "reason": "The official project sets SelfControl\u2019s CFBundleIdentifier from PRODUCT_BUNDLE_IDENTIFIER, and its release target resolves that setting to org.eyebeam.SelfControl.",
+      "sources": [
+        "https://formulae.brew.sh/cask/selfcontrol",
+        "https://github.com/SelfControlApp/selfcontrol/blob/master/Info.plist",
+        "https://github.com/SelfControlApp/selfcontrol/blob/master/SelfControl.xcodeproj/project.pbxproj"
+      ]
+    },
+    "send-anywhere": {
+      "bundle_identifier": "com.estmob.osx.sendanywhere",
+      "confidence": "medium",
+      "evidence_hash": "ed8cc02fcc541a5f09099251559f9145fc4e4b9eb00bcc2518270cd5febf6348",
+      "reason": "The official Homebrew cask installs Send Anywhere.app and names its app-specific preferences plist with this domain; it is a strong match but not an explicit application manifest.",
+      "sources": [
+        "https://formulae.brew.sh/cask/send-anywhere",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/send-anywhere.rb"
+      ]
+    },
     "sensei": {
       "bundle_identifier": "org.cindori.Sensei",
       "confidence": "high",
@@ -8170,6 +8410,36 @@
       "sources": [
         "https://cindori.com/news/sensei-1.6",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/sensei.rb"
+      ]
+    },
+    "sensiblesidebuttons": {
+      "bundle_identifier": "net.archagon.sensible-side-buttons",
+      "confidence": "medium",
+      "evidence_hash": "fa5e2d2404563cd552a42bde2d5234ed2c9054ec68088d5754c8f666f2de4faf",
+      "reason": "The cask\u2019s sole app is SensibleSideButtons.app, and its preference domain matches this identifier; no helper or extension identifiers are present.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/main/Casks/s/sensiblesidebuttons.rb",
+        "https://github.com/archagon/sensible-side-buttons"
+      ]
+    },
+    "serial-studio": {
+      "bundle_identifier": "org.alexspataru.serial-studio",
+      "confidence": "medium",
+      "evidence_hash": "2460c036464169b04ac8fad20a196ba2dd1084af273a6c82de4cbfbc99544b76",
+      "reason": "The macOS Saved Application State directory identifies the application bundle; the io.github value is the separate Qt preferences domain.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/main/Casks/s/serial-studio.rb",
+        "https://github.com/Serial-Studio/Serial-Studio/blob/v4.0.1/app/deploy/macOS/info-pro.plist"
+      ]
+    },
+    "sessionrestore": {
+      "bundle_identifier": "com.sweetpproductions.SessionRestore",
+      "confidence": "high",
+      "evidence_hash": "ff82cc3a3ac9d31003aa65d1c1602ae3795cc6eb4ee47eece703a2f9dede5d9f",
+      "reason": "The vendor\u2019s support material identifies the main SessionRestore process and its application container with this identifier, separately from the Safari extension and group container.",
+      "sources": [
+        "https://support.sweetpproductions.com/topic/521/extension-does-not-work",
+        "https://support.sweetpproductions.com/topic/924/session-restores-not-working-in-v2-7-5"
       ]
     },
     "sessionwatcher": {
@@ -8194,6 +8464,84 @@
         "https://setapp.com/"
       ]
     },
+    "shadow": {
+      "bundle_identifier": "com.electron.shadow",
+      "confidence": "medium",
+      "evidence_hash": "e13c01c47d15f275b905c2d731a0fcc410ec24b080e0bc8cc2a49b5cbd758744",
+      "reason": "The cask associates Shadow PC.app with this preference domain and lists the distinct com.electron.shadow.helper domain separately, identifying the former as the primary app.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/main/Casks/s/shadow.rb",
+        "https://shadow.tech/en-ca/shadowpc/play-on-mac/mac-cloud-gaming/"
+      ]
+    },
+    "shadow@beta": {
+      "bundle_identifier": "com.electron.shadow-beta",
+      "confidence": "medium",
+      "evidence_hash": "527177b81c6ef4e480878bf0ac1db613014cf83c9859e83a7e76def0ae261bd1",
+      "reason": "The beta cask installs Shadow PC Beta.app and its channel-specific preference domain is com.electron.shadow-beta, consistent with the vendor\u2019s separate Beta application.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/main/Casks/s/shadow@beta.rb",
+        "https://support.shadow.tech/hc/en-us/articles/32731845700881-Understanding-Shadow-Official-Beta-and-Alpha-Applications"
+      ]
+    },
+    "shadowsocksx": {
+      "bundle_identifier": "clowwindy.ShadowsocksX",
+      "confidence": "high",
+      "evidence_hash": "f45f6bf234dd34b93174c9c339987be7885e4d4ccfabb10ae5edc946a914139d",
+      "reason": "The application target in the source revision used for the official 2.6.3 release assigns clowwindy.ShadowsocksX to ShadowsocksX.app.",
+      "sources": [
+        "https://github.com/shadowsocks/shadowsocks-iOS/blob/3b7b4635887c3a75ca2f14dbc73be74413102707/shadowsocks.xcodeproj/project.pbxproj",
+        "https://github.com/shadowsocks/shadowsocks-iOS/releases/tag/2.6.3"
+      ]
+    },
+    "shichizip": {
+      "bundle_identifier": "ee.dawn.ShichiZip",
+      "confidence": "high",
+      "evidence_hash": "61c40d8938e36a5d2f88d9c11b4bc4527bc3817d13874a7c5571e246fe0aeda4",
+      "reason": "The vendor's XcodeGen manifest defines the ShichiZip macOS application target with PRODUCT_BUNDLE_IDENTIFIER ee.dawn.ShichiZip.",
+      "sources": [
+        "https://github.com/idawnlight/ShichiZip/blob/main/project/specs/apps.yml"
+      ]
+    },
+    "shichizip-zs": {
+      "bundle_identifier": "ee.dawn.ShichiZipZS",
+      "confidence": "high",
+      "evidence_hash": "51d717c1dbf0ef1180a40d8656d6c14a42ae9a4145104c27ae64517e858767fd",
+      "reason": "The vendor's XcodeGen manifest defines the ShichiZipZS macOS application target, whose product is ShichiZip ZS.app, with PRODUCT_BUNDLE_IDENTIFIER ee.dawn.ShichiZipZS.",
+      "sources": [
+        "https://github.com/idawnlight/ShichiZip/blob/main/project/specs/apps.yml"
+      ]
+    },
+    "shield": {
+      "bundle_identifier": "com.csaba.fitzl.shield",
+      "confidence": "high",
+      "evidence_hash": "db21af3c6b342adc3755d933151f8c27acde43f11f458e759ffd57e724401f3a",
+      "reason": "The vendor's official documentation identifies com.csaba.fitzl.shield as the main application associated with the separate com.csaba.fitzl.shield.ShieldHelper login item.",
+      "sources": [
+        "https://github.com/theevilbit/Shield",
+        "https://theevilbit.github.io/beyond/beyond_0003/"
+      ]
+    },
+    "shortcutor": {
+      "bundle_identifier": "com.shortcutor.shortcutor",
+      "confidence": "medium",
+      "evidence_hash": "6e7947719b4f18124bab7e337168c7c76887c314fc926ded9819d20270b96026",
+      "reason": "Homebrew installs the vendor's Shortcutor.app and records its matching macOS preference domain as com.shortcutor.shortcutor; no official build manifest was available for stronger direct confirmation.",
+      "sources": [
+        "https://formulae.brew.sh/cask/shortcutor",
+        "https://shortcutor.com/getfile.html"
+      ]
+    },
+    "shotcut": {
+      "bundle_identifier": "com.Meltytech.Shotcut",
+      "confidence": "high",
+      "evidence_hash": "d010695f256b288d7ee319313fb1b48679e7874353f5e7ef5e7cf793b1b0c599",
+      "reason": "Shotcut\u2019s official macOS Info.plist template directly assigns this identifier to the APPL bundle whose executable is Shotcut.",
+      "sources": [
+        "https://formulae.brew.sh/cask/shotcut",
+        "https://github.com/mltframework/shotcut/blob/master/packaging/macos/Info.plist.in"
+      ]
+    },
     "shottr": {
       "bundle_identifier": "cc.ffitch.shottr",
       "confidence": "high",
@@ -8212,6 +8560,79 @@
       "sources": [
         "https://eclecticlight.co/lockrattler-systhist/",
         "https://formulae.brew.sh/cask/silentknight"
+      ]
+    },
+    "silhouette-studio": {
+      "bundle_identifier": "com.silhouettesoftware.Silhouette-Studio",
+      "confidence": "medium",
+      "evidence_hash": "9530792a46fa35562ed34574cead2a417190b895b02aeb06be96931db71c7739",
+      "reason": "The cask installs Silhouette Studio.app and its zap metadata uses this namespace for the app\u2019s macOS saved state. Vendor cleanup documentation distinguishes the older Aspex preference and support-data domains.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/silhouette-studio.rb",
+        "https://silhouetteamerica.freshdesk.com/support/solutions/articles/35000273458-clean-installation-instructions",
+        "https://www.silhouetteamerica.com/silhouette-studio"
+      ]
+    },
+    "simple-comic": {
+      "bundle_identifier": "com.ToWatchList.SimpleComic",
+      "confidence": "high",
+      "evidence_hash": "821c43b691e40c57c7b70cde58b3aa6a574ec506c8de697e912da926e6673903",
+      "reason": "The official project config supplies this product bundle identifier to the primary Info.plist; that manifest identifies the bundle as the APPL executable Simple Comic.",
+      "sources": [
+        "https://formulae.brew.sh/cask/simple-comic",
+        "https://github.com/MaddTheSane/Simple-Comic/blob/arc/Info.plist",
+        "https://github.com/MaddTheSane/Simple-Comic/blob/arc/SimpleComic.xcodeproj/project.pbxproj"
+      ]
+    },
+    "simpledemviewer": {
+      "bundle_identifier": "jp.jizoh.SDVr8",
+      "confidence": "medium",
+      "evidence_hash": "adb4aec4fcaad40c9a0329e01774469c259f2eff85900159cd99a4fb2fee7bd2",
+      "reason": "The cask\u2019s quit target establishes the jp.jizoh.SDVr bundle family, while its exact version-8 preference domain is jp.jizoh.SDVr8; the vendor page confirms the installed primary application is SimpleDEMViewer version 8.",
+      "sources": [
+        "https://formulae.brew.sh/cask/simpledemviewer",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/simpledemviewer.rb",
+        "https://jizoh.jp/english.html"
+      ]
+    },
+    "simplex": {
+      "bundle_identifier": "chat.simplex.app",
+      "confidence": "high",
+      "evidence_hash": "5deca9b8de03a5f98c2379c2f77b5557478c05d6e425c9825ba91c2611ec794a",
+      "reason": "The official desktop build manifest names the macOS package SimpleX and directly sets its bundleID to chat.simplex.app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/simplex",
+        "https://github.com/simplex-chat/simplex-chat/blob/stable/apps/multiplatform/desktop/build.gradle.kts"
+      ]
+    },
+    "sirimote": {
+      "bundle_identifier": "at.EternalStorms.SiriMote-nonappstore",
+      "confidence": "medium",
+      "evidence_hash": "26766d12c858c0f530be40be358d98fb8e33e9680dafb06ed2f0189138a4f90d",
+      "reason": "Homebrew associates SiriMote.app with a preferences plist whose domain is at.EternalStorms.SiriMote-nonappstore; no official manifest was available to independently confirm it.",
+      "sources": [
+        "https://eternalstorms.at/sirimote",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/sirimote.rb"
+      ]
+    },
+    "sizeup": {
+      "bundle_identifier": "com.irradiatedsoftware.SizeUp",
+      "confidence": "medium",
+      "evidence_hash": "1b0d133dfdc753c8a05e5718bef6bc05f945c692a5a02a5727f1701abc395eb7",
+      "reason": "Homebrew associates SizeUp.app with the matching com.irradiatedsoftware.SizeUp preferences domain, consistent with the vendor and app name, but the vendor does not publish a manifest.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/sizeup.rb",
+        "https://www.irradiatedsoftware.com/sizeup/"
+      ]
+    },
+    "sjmcl": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "7c9c4a229f49526a3f5e4fc24326ad041d0989d5f8bdbd09da2b7a205e04103c",
+      "reason": "The official Tauri application manifest directly sets the primary SJMCL app identifier to SJMCL.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/sjmcl.rb",
+        "https://github.com/UNIkeEN/SJMCL/blob/main/src-tauri/tauri.conf.json"
       ]
     },
     "skim": {
@@ -8234,6 +8655,56 @@
         "https://formulae.brew.sh/cask/skint"
       ]
     },
+    "sky": {
+      "bundle_identifier": "jcsalterego.Sky",
+      "confidence": "medium",
+      "evidence_hash": "abfd33b847c95825da3d04cc6dde82da69edf8bb1d892090e0f201ff8b36cac5",
+      "reason": "Homebrew removes the jcsalterego.Sky sandbox container for Sky.app, strongly identifying the primary app rather than a helper, though the accessible official project material did not expose the compiled Info.plist directly.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/sky.rb",
+        "https://github.com/jcsalterego/Sky.app"
+      ]
+    },
+    "slashy": {
+      "bundle_identifier": "com.slashy.email",
+      "confidence": "medium",
+      "evidence_hash": "4636431ea618e2f7d4d0826ba3dfdeae6dc87fbbdfd233690a81e120db3c8fdd",
+      "reason": "Homebrew associates Slashy.app with the matching com.slashy.email preferences domain; no official application manifest was publicly available for direct confirmation.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/slashy.rb",
+        "https://www.slashy.com/"
+      ]
+    },
+    "slideshower": {
+      "bundle_identifier": "trybulski.slideshower",
+      "confidence": "high",
+      "evidence_hash": "9bef7e346ecd30a47a3494310d97ce0ad2d30737740e215b761ff2196c216717",
+      "reason": "The cask installs Slideshower for macOS.app and identifies its sandbox container as trybulski.slideshower, which is keyed to the primary app bundle identifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/slideshower.rb",
+        "https://slideshower.com/"
+      ]
+    },
+    "slippi-dolphin": {
+      "bundle_identifier": "com.project-slippi.dolphin",
+      "confidence": "high",
+      "evidence_hash": "32cd55496692c69ac157127c757f2a27dff2693a00b80bf90a658045f1b9142b",
+      "reason": "Slippi's official macOS app manifest identifies the Dolphin application bundle as com.project-slippi.dolphin; the cask's matching preferences path corroborates it.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/slippi-dolphin.rb",
+        "https://github.com/project-slippi/Ishiiruka/blob/slippi/Source/Core/DolphinWX/Info.plist.in"
+      ]
+    },
+    "smcfancontrol@beta": {
+      "bundle_identifier": "com.eidac.smcFanControl2",
+      "confidence": "high",
+      "evidence_hash": "65973dc0c5c8cd738f50f13b714efcfe7c4a9a48e667ce58b6492fc66ac36419",
+      "reason": "The official Xcode project supplies com.eidac.smcFanControl2 as the product bundle identifier for smcFanControl.app, corroborated by the cask's app-specific cache and recent-items paths.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/smcfancontrol@beta.rb",
+        "https://github.com/hholtmann/smcFanControl/blob/master/smcFanControl.xcodeproj/project.pbxproj"
+      ]
+    },
     "smultron": {
       "bundle_identifier": "com.peterborgapps.Smultron14",
       "confidence": "high",
@@ -8242,6 +8713,16 @@
       "sources": [
         "https://www.peterborgapps.com/smultron/",
         "https://www.peterborgapps.com/support/"
+      ]
+    },
+    "socialstream": {
+      "bundle_identifier": "socialstream.electron",
+      "confidence": "high",
+      "evidence_hash": "efc1791c53c3f0e3d6055d709c0655baac606ccec7d75053c9e7bf5295e49015",
+      "reason": "The vendor's official Electron build manifest explicitly sets appId to socialstream.electron and productName to socialstream, matching the cask's primary app artifact.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/socialstream.rb",
+        "https://github.com/steveseguin/ssn_app/blob/main/package.json"
       ]
     },
     "sofa-server": {
@@ -8253,6 +8734,16 @@
         "https://flavio.tordini.org/sofa/",
         "https://formulae.brew.sh/cask/sofa-server",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/sofa-server.rb"
+      ]
+    },
+    "solvespace": {
+      "bundle_identifier": "com.solvespace",
+      "confidence": "high",
+      "evidence_hash": "4af273a33280c747022dd00b19c77d75bf41fb7873a01a47402422e82a8e1c72",
+      "reason": "SolveSpace's official macOS build configuration identifies the SolveSpace.app bundle as com.solvespace; the cask's matching preferences and saved-state domains corroborate it.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/solvespace.rb",
+        "https://github.com/solvespace/solvespace/blob/master/CMakeLists.txt"
       ]
     },
     "soulver": {
