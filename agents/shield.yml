@@ -1,12 +1,12 @@
 id: cask:shield
 display-name: Shield
-homepage: https://theevilbit.github.io/shield/
-repo: https://github.com/theevilbit/Shield
+repo: null
 docs:
   - https://github.com/theevilbit/Shield#readme
   - https://theevilbit.github.io/shield
 config-file-location:
-  macos: /Library/Application Support/Shield/com.csaba.fitzl.shield.preferences.plist
+  macos:
+    - /Library/Application Support/Shield/com.csaba.fitzl.shield.preferences.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,10 +70,6 @@ history:
     - >
       Uninstalling the agent removes the system extension but requires a reboot to
       complete. The application itself must be removed separately.
-category: security
-package-manager:
-  brew-cask: shield
-package-manager-url: https://formulae.brew.sh/cask/shield
 tags:
   - allowlist
   - dylib-injection
@@ -84,10 +80,40 @@ tags:
   - menu-bar
   - process-injection
   - system-extension
-description: App to protect against process injection
-applications:
-  - Shield.app
 provenance:
-  cask: shield
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official project article describes blocking or alerting on process injection and
+      suspicious file-link creation through Apple's Endpoint Security framework:
+      https://theevilbit.github.io/shield/
+  display-name-sources:
+    - >
+      Official project article title and application name:
+      https://theevilbit.github.io/shield/
+    - current_curation.display-name
+  docs-sources:
+    - >
+      The author's official project article is the primary usage, configuration,
+      architecture, and history guide.
+    - The official repository README is the source-tree documentation surface.
+  history-sources:
+    - 'Official project and usage article: https://theevilbit.github.io/shield/'
+    - 'Official repository: https://github.com/theevilbit/Shield'
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/theevilbit/Shield; per
+      instruction, the repository was not re-determined and repo is returned as null.
+  tags-sources:
+    - >
+      Official project article documents the Endpoint Security system extension,
+      injection protections, link monitoring, allow lists, and menu-bar operation.
+category-confidence: high
+category-path:
+  - security
+  - endpoint-security
+  - process-protection
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
