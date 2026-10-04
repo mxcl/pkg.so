@@ -1,7 +1,6 @@
 id: brew:morphe
 display-name: Morphe Desktop
-homepage: https://github.com/MorpheApp/morphe-desktop
-repo: https://github.com/MorpheApp/morphe-desktop
+repo: null
 docs:
   - https://github.com/MorpheApp/morphe-desktop/blob/main/docs/documentation.md
 config-file-location:
@@ -51,11 +50,6 @@ history:
       Users provide an APK or app bundle and a Morphe patch bundle, select or configure
       patches, then produce a patched application. The CLI supports repeatable
       automation through commands, flags, and JSON patch-option files.
-category: developer-tools
-package-manager:
-  brew: morphe
-package-manager-url: https://formulae.brew.sh/formula/morphe
-license: GPL-3.0-only
 tags:
   - adb
   - android
@@ -65,10 +59,33 @@ tags:
   - cli
   - desktop-gui
   - java
-description: Desktop app and CLI for patching Android apps with Morphe
-executables:
-  - morphe
 provenance:
-  formula: morphe
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      Official repository README describes Morphe Desktop as a CLI and GUI application
+      that patches Android apps.
+    - source_facts.description identifies a desktop and CLI tool for patching Android apps.
+  display-name-sources:
+    - 'Official repository README title: Morphe Desktop.'
+  docs-sources:
+    - Official repository README links to docs/documentation.md as the complete documentation.
+  history-sources:
+    - https://github.com/MorpheApp/morphe-desktop
+    - https://github.com/MorpheApp/morphe-desktop/blob/main/docs/documentation.md
+    - source_facts.package-manager.brew
+  repo-sources:
+    - source_facts.repo is already populated; returned null as required.
+  tags-sources:
+    - >
+      Official repository README and documentation describe APK/APKM/APKS patching, CLI
+      and GUI modes, optional ADB installation, and the Java runtime requirement.
+category-confidence: high
+category-path:
+  - developer-tools
+  - mobile-development
+  - android-app-patching
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

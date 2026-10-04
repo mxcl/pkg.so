@@ -1,7 +1,6 @@
 id: brew:vulkan-profiles
 display-name: Vulkan Profiles Toolset
-homepage: https://github.com/KhronosGroup/Vulkan-Profiles
-repo: https://github.com/KhronosGroup/Vulkan-Profiles
+repo: null
 docs:
   - https://github.com/KhronosGroup/Vulkan-Profiles/blob/main/OVERVIEW.md
   - https://vulkan.lunarg.com/doc/sdk/latest/linux/profiles_overview.html
@@ -60,12 +59,6 @@ history:
       artifacts from profile JSON. Applications can use the Profiles API library to test
       device support and enable required features, while the Profiles layer can clamp
       reported capabilities for development testing.
-category: developer-tools
-package-manager:
-  brew: vulkan-profiles
-  pacman: vulkan-profiles
-package-manager-url: https://formulae.brew.sh/formula/vulkan-profiles
-license: Apache-2.0
 tags:
   - capability-testing
   - cli
@@ -75,10 +68,37 @@ tags:
   - profiles
   - sdk
   - vulkan
-description: Tools for Vulkan profiles
-executables:
-  - vkprofiles
 provenance:
-  formula: vulkan-profiles
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      Official Khronos overview describes tools for building portable Vulkan
+      applications with explicit capability profiles.
+    - source_facts.description identifies tools for Vulkan profiles.
+  display-name-sources:
+    - 'Official repository README heading: Vulkan Profiles Toolset.'
+  docs-sources:
+    - >
+      The Khronos repository links to LunarG's Profiles overview and contains official
+      toolset and layer documentation.
+  history-sources:
+    - https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/vulkan_profiles.adoc
+    - https://github.com/KhronosGroup/Vulkan-Profiles
+    - https://github.com/KhronosGroup/Vulkan-Profiles/blob/main/CHANGELOG.md
+    - https://github.com/KhronosGroup/Vulkan-Profiles/blob/main/OVERVIEW.md
+    - source_facts.package-manager
+  repo-sources:
+    - source_facts.repo is already populated; returned null as required.
+  tags-sources:
+    - >
+      Official overview documents the `vkprofiles` CLI, Vulkan Profiles schema, API
+      library, simulation layer, and SDK distribution.
+category-confidence: high
+category-path:
+  - developer-tools
+  - graphics
+  - vulkan
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

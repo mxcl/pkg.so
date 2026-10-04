@@ -1,6 +1,5 @@
 id: brew:pypy3.12
 display-name: PyPy 3.12
-homepage: https://pypy.org/
 repo: https://github.com/pypy/pypy
 docs:
   - https://doc.pypy.org/
@@ -52,18 +51,6 @@ history:
       PyPy is used as a Python interpreter for workloads that benefit from its JIT,
       subject to compatibility and warm-up considerations. Users invoke `pypy3` and its
       associated pip entry points much as they would another Python installation.
-category: language-runtime
-package-manager:
-  apk: pypy3
-  brew: pypy3.12
-  debian: pypy3
-  dnf: pypy3.11
-  nix: pypy3
-  pacman: pypy3
-  scoop: main/pypy3
-  ubuntu: pypy3
-package-manager-url: https://formulae.brew.sh/formula/pypy3.12
-license: MIT
 tags:
   - cli
   - garbage-collection
@@ -73,13 +60,39 @@ tags:
   - rpython
   - runtime
   - virtual-machine
-description: Implementation of Python 3 in Python
-executables:
-  - pip_pypy3
-  - pip_pypy3.12
-  - pypy3
-  - pypy3.12
 provenance:
-  formula: pypy3.12
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      Official PyPy documentation describes it as a fast, compliant alternative Python
+      implementation.
+    - source_facts.description calls PyPy an implementation of Python 3 in Python.
+  display-name-sources:
+    - source_facts.name is `pypy3.12`; the official project consistently uses the name PyPy.
+  docs-sources:
+    - >
+      Official PyPy documentation root, project-documentation index, and configuration
+      reference.
+  history-sources:
+    - https://doc.pypy.org/
+    - https://doc.pypy.org/dev_method.html
+    - https://doc.pypy.org/eventhistory.html
+    - https://pypy.org/posts/2018/09/the-first-15-years-of-pypy-3412615975376972020.html
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      Official PyPy documentation links to https://github.com/pypy/pypy as the project
+      repository.
+  tags-sources:
+    - >
+      Official PyPy documentation covers the alternative interpreter, RPython toolchain,
+      JIT-related architecture, garbage collectors, and command-line use.
+category-confidence: high
+category-path:
+  - language-runtime
+  - python
+  - alternative-implementation
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
