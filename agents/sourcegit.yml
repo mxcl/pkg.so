@@ -1,13 +1,15 @@
 id: cask:sourcegit
 display-name: SourceGit
-homepage: https://github.com/sourcegit-scm/sourcegit
-repo: https://github.com/sourcegit-scm/sourcegit
+repo: null
 docs:
   - https://github.com/sourcegit-scm/sourcegit#readme
 config-file-location:
-  linux: ${XDG_CONFIG_HOME:-~/.config}/SourceGit/preference.json
-  macos: ~/Library/Application Support/SourceGit/preference.json
-  windows: '%APPDATA%\SourceGit\preference.json'
+  linux:
+    - ${XDG_CONFIG_HOME:-~/.config}/SourceGit/preference.json
+  macos:
+    - ~/Library/Application Support/SourceGit/preference.json
+  windows:
+    - '%APPDATA%\SourceGit\preference.json'
 credentials-file-location: null
 history:
   adoption-history:
@@ -45,20 +47,39 @@ history:
       Users open or clone Git repositories and use the GUI for commits, branches,
       remotes, tags, stashes, worktrees, submodules, history, blame, diffs, rebasing,
       merging, and other Git operations. Git 2.25.1 or newer is required.
-category: developer-tools
-package-manager:
-  brew-cask: sourcegit
-package-manager-url: https://formulae.brew.sh/cask/sourcegit
 tags:
   - cross-platform
   - desktop
   - git
   - gui
   - version-control
-description: Git GUI client
-applications:
-  - SourceGit.app
 provenance:
-  cask: sourcegit
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README describes SourceGit as an open-source Git GUI client:
+      https://github.com/sourcegit-scm/sourcegit#readme
+  display-name-sources:
+    - 'Official README: https://github.com/sourcegit-scm/sourcegit#readme'
+    - current_curation.display-name
+  docs-sources:
+    - The official README is upstream's principal user and installation guide.
+  history-sources:
+    - https://github.com/sourcegit-scm/sourcegit#readme
+    - https://github.com/sourcegit-scm/sourcegit/releases
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped as instructed.
+  tags-sources:
+    - 'Official feature list: https://github.com/sourcegit-scm/sourcegit#readme'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - version-control
+  - git-clients
+display-name-confidence: high
+docs-confidence: medium
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

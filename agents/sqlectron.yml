@@ -1,7 +1,6 @@
 id: cask:sqlectron
 display-name: Sqlectron
-homepage: https://sqlectron.github.io/
-repo: https://github.com/sqlectron/sqlectron-gui
+repo: null
 docs:
   - https://github.com/sqlectron/sqlectron/blob/main/docs/app/configuration-file.md
   - https://github.com/sqlectron/sqlectron/tree/main/docs/app
@@ -9,7 +8,8 @@ config-file-location:
   linux:
     - $XDG_CONFIG_HOME/Sqlectron
     - ~/.config/Sqlectron
-  macos: ~/Library/Preferences/Sqlectron
+  macos:
+    - ~/Library/Preferences/Sqlectron
   windows:
     - '%LOCALAPPDATA%\Sqlectron\Config'
     - '%USERPROFILE%\AppData\Local\Sqlectron\Config'
@@ -17,7 +17,8 @@ credentials-file-location:
   linux:
     - $XDG_CONFIG_HOME/Sqlectron
     - ~/.config/Sqlectron
-  macos: ~/Library/Preferences/Sqlectron
+  macos:
+    - ~/Library/Preferences/Sqlectron
   windows:
     - '%LOCALAPPDATA%\Sqlectron\Config'
     - '%USERPROFILE%\AppData\Local\Sqlectron\Config'
@@ -62,10 +63,6 @@ history:
       private keys, browse database structures, and execute SQL through the desktop
       application. Supported back ends documented by the project include PostgreSQL,
       Redshift, MySQL, MariaDB, SQL Server, Cassandra, and SQLite.
-category: data
-package-manager:
-  brew-cask: sqlectron
-package-manager-url: https://formulae.brew.sh/cask/sqlectron
 tags:
   - cross-platform
   - database
@@ -73,10 +70,35 @@ tags:
   - electron
   - sql
   - ssh-tunneling
-description: SQL client
-applications:
-  - sqlectron.app
 provenance:
-  cask: sqlectron
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README describes a cross-database SQL client:
+      https://github.com/sqlectron/sqlectron#readme
+    - source_facts.description
+  display-name-sources:
+    - 'Official project site: https://sqlectron.github.io/'
+    - current_curation.display-name
+  docs-sources:
+    - The official repository links its application documentation and configuration reference.
+  history-sources:
+    - https://github.com/sqlectron/sqlectron#readme
+    - https://github.com/sqlectron/sqlectron-core
+    - https://github.com/sqlectron/sqlectron/blob/main/docs/app/configuration-file.md
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped as instructed.
+  tags-sources:
+    - 'Official README and topics: https://github.com/sqlectron/sqlectron#readme'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - data
+  - databases
+  - database-clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

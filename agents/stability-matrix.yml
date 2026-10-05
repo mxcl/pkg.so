@@ -1,7 +1,6 @@
 id: cask:stability-matrix
 display-name: Stability Matrix
-homepage: https://github.com/LykosAI/StabilityMatrix
-repo: https://github.com/LykosAI/StabilityMatrix
+repo: null
 docs:
   - https://docs.lykos.ai/stability-matrix
   - https://docs.lykos.ai/stability-matrix/getting-started/data-directory.html
@@ -20,9 +19,12 @@ config-file-location:
     - <chosen data directory>\settings.json
     - <application directory>\Data\settings.json (portable mode)
 credentials-file-location:
-  linux: ~/.config/StabilityMatrix/user-secrets.data
-  macos: ~/Library/Application Support/StabilityMatrix/user-secrets.data
-  windows: '%APPDATA%\StabilityMatrix\user-secrets.data'
+  linux:
+    - ~/.config/StabilityMatrix/user-secrets.data
+  macos:
+    - ~/Library/Application Support/StabilityMatrix/user-secrets.data
+  windows:
+    - '%APPDATA%\StabilityMatrix\user-secrets.data'
 history:
   adoption-history:
     - >
@@ -77,10 +79,6 @@ history:
       as isolated packages, share models between them, manage launch arguments and
       environments, and launch those interfaces. The built-in inference page can also
       generate images through an installed ComfyUI backend.
-category: ai
-package-manager:
-  brew-cask: stability-matrix
-package-manager-url: https://formulae.brew.sh/cask/stability-matrix
 tags:
   - cross-platform
   - desktop
@@ -89,10 +87,42 @@ tags:
   - model-management
   - package-manager
   - stable-diffusion
-description: Package manager and inference UI for Stable Diffusion
-applications:
-  - Stability Matrix.app
 provenance:
-  cask: stability-matrix
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation describes a package manager for Stable Diffusion and
+      related AI image and video tools: https://docs.lykos.ai/stability-matrix/
+    - source_facts.description
+  display-name-sources:
+    - 'Official documentation: https://docs.lykos.ai/stability-matrix/'
+    - current_curation.display-name
+  docs-sources:
+    - >
+      The official dedicated documentation site provides package-management, inference,
+      storage, settings, and troubleshooting guides.
+  history-sources:
+    - https://docs.lykos.ai/stability-matrix/
+    - https://docs.lykos.ai/stability-matrix/getting-started/data-directory.html
+    - https://docs.lykos.ai/stability-matrix/package-manager/overview.html
+    - https://docs.lykos.ai/stability-matrix/settings/settings.html
+    - https://github.com/LykosAI/StabilityMatrix#readme
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was intentionally
+      skipped as instructed.
+  tags-sources:
+    - 'Official documentation overview: https://docs.lykos.ai/stability-matrix/'
+    - >
+      Official package-manager guide:
+      https://docs.lykos.ai/stability-matrix/package-manager/overview.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - ai
+  - generative-ai
+  - image-generation
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
