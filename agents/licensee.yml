@@ -1,7 +1,6 @@
 id: brew:licensee
 display-name: Licensee
-homepage: https://licensee.github.io/licensee/
-repo: https://github.com/licensee/licensee
+repo: null
 docs:
   - https://licensee.github.io/licensee
   - https://licensee.github.io/licensee/command-line-usage
@@ -60,12 +59,6 @@ history:
       An `OCTOKIT_ACCESS_TOKEN` environment variable can be supplied when scanning
       private GitHub repositories or avoiding API rate limits; the official
       documentation does not identify a credentials file.
-category: developer-tools
-package-manager:
-  brew: licensee
-  nix: licensee
-package-manager-url: https://formulae.brew.sh/formula/licensee
-license: MIT
 tags:
   - automation
   - cli
@@ -73,10 +66,37 @@ tags:
   - license-detection
   - open-source-licensing
   - ruby
-description: Detect under what license a project is distributed
-executables:
-  - licensee
 provenance:
-  formula: licensee
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      Official documentation describes Licensee as a Ruby gem that detects a project's
+      license by examining and matching license files:
+      https://licensee.github.io/licensee/
+    - source_facts.description
+  display-name-sources:
+    - 'Official project heading: https://licensee.github.io/licensee/'
+  docs-sources:
+    - Dedicated official documentation site linked by the official repository.
+  history-sources:
+    - https://github.com/licensee/licensee
+    - https://licensee.github.io/licensee/
+    - https://licensee.github.io/licensee/command-line-usage/
+    - https://licensee.github.io/licensee/what-we-look-at/
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/licensee/licensee;
+      per the task rule, repo is intentionally returned as null.
+  tags-sources:
+    - 'Official documentation: https://licensee.github.io/licensee/'
+    - 'Official repository topics and README: https://github.com/licensee/licensee'
+category-confidence: high
+category-path:
+  - developer-tools
+  - code-analysis
+  - license-detection
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

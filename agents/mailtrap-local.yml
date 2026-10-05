@@ -1,7 +1,6 @@
 id: brew:mailtrap-local
 display-name: mailtrap-local
-homepage: https://github.com/mailtrap/mailtrap-local
-repo: https://github.com/mailtrap/mailtrap-local
+repo: null
 docs:
   - https://github.com/mailtrap/mailtrap-local/blob/main/docs/api/openapi.yaml
   - https://github.com/mailtrap/mailtrap-local
@@ -69,11 +68,6 @@ history:
       retention, cloud mirroring, outbound relay, and webhooks; cloud and relay
       credentials may be placed in the same config file or managed through the
       application's SQLite-backed UI.
-category: developer-tools
-package-manager:
-  brew: mailtrap-local
-package-manager-url: https://formulae.brew.sh/formula/mailtrap-local
-license: MIT
 tags:
   - cli
   - email-testing
@@ -83,11 +77,36 @@ tags:
   - smtp
   - sqlite
   - web-ui
-description: Local email sandbox with SMTP server, web UI, and JSON API
-executables:
-  - mailtrap-local
-  - mailtrap-sendmail
 provenance:
-  formula: mailtrap-local
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - >
+      The official README describes a local email sandbox and catcher with an SMTP
+      server, web interface, and JSON API:
+      https://github.com/mailtrap/mailtrap-local#readme
+  display-name-sources:
+    - 'Official repository and README heading: https://github.com/mailtrap/mailtrap-local'
+  docs-sources:
+    - The official repository README is the primary product and configuration guide.
+    - The official repository contains its OpenAPI 3.1 specification.
+  history-sources:
+    - https://github.com/mailtrap/mailtrap-local#configuration
+    - https://github.com/mailtrap/mailtrap-local#readme
+    - https://github.com/orgs/mailtrap/packages
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/mailtrap/mailtrap-local; per the task rule, repo is
+      intentionally returned as null.
+  tags-sources:
+    - 'Official project README: https://github.com/mailtrap/mailtrap-local#readme'
+category-confidence: high
+category-path:
+  - developer-tools
+  - testing
+  - email-testing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
