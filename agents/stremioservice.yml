@@ -1,7 +1,6 @@
 id: cask:stremioservice
 display-name: Stremio Service
-homepage: https://web.strem.io/
-repo: https://github.com/Stremio/stremio-service
+repo: null
 docs:
   - https://github.com/Stremio/stremio-service#readme
   - https://www.stremio.com/download-service
@@ -72,10 +71,6 @@ history:
       The official desktop-service README does not document a stable per-platform
       configuration filename or a distinct credentials file, so neither location is
       asserted here.
-category: media
-package-manager:
-  brew-cask: stremioservice
-package-manager-url: https://formulae.brew.sh/cask/stremioservice
 tags:
   - cross-platform
   - ffmpeg
@@ -84,10 +79,41 @@ tags:
   - streaming
   - stremio
   - web-companion
-description: Companion app for Stremio Web
-applications:
-  - StremioService.app
 provenance:
-  cask: stremioservice
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://www.stremio.com/download-service describes it as the Stremio Web companion app.
+    - >
+      source_facts.description identifies Stremio Service as a companion application for
+      Stremio Web.
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/Stremio/stremio-service
+    - https://www.stremio.com/download-service
+  docs-sources:
+    - The official download page explains the service's role and supported packages.
+    - >
+      The official repository README documents installation, development, packaging, and
+      release procedures; no dedicated end-user service manual was identified.
+  history-sources:
+    - https://github.com/Stremio/server-docker
+    - https://github.com/Stremio/stremio-service
+    - https://github.com/Stremio/stremio-service/releases
+    - https://www.stremio.com/
+    - https://www.stremio.com/download-service
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository lookup and second-guessing were
+      intentionally omitted as instructed.
+  tags-sources:
+    - https://github.com/Stremio/server-docker
+    - https://github.com/Stremio/stremio-service
+    - https://www.stremio.com/download-service
+category-confidence: high
+category-path:
+  - media
+  - streaming
+display-name-confidence: high
+docs-confidence: medium
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

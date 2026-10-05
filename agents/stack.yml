@@ -1,14 +1,16 @@
 id: cask:stack
 display-name: STACK
-homepage: https://www.transip.nl/stack/
 repo: null
 docs:
   - https://www.transip.nl/knowledgebase/stack
   - https://www.transip.nl/knowledgebase/stack/5558-changelog-van-de-desktopapplicatie
 config-file-location:
-  linux: ~/.config/STACK/stack.cfg
-  macos: ~/Library/Preferences/STACK/stack.cfg
-  windows: '%APPDATA%\STACK\stack.cfg'
+  linux:
+    - ~/.config/STACK/stack.cfg
+  macos:
+    - ~/Library/Preferences/STACK/stack.cfg
+  windows:
+    - '%APPDATA%\STACK\stack.cfg'
 credentials-file-location: null
 history:
   adoption-history:
@@ -74,10 +76,6 @@ history:
       applications, mount STACK through WebDAV, or transfer files through SFTP. Accounts
       protected by two-factor authentication use generated tokens where a protocol
       cannot accept the interactive second factor.
-category: productivity
-package-manager:
-  brew-cask: stack
-package-manager-url: https://formulae.brew.sh/cask/stack
 tags:
   - backup
   - cloud-storage
@@ -86,10 +84,42 @@ tags:
   - owncloud
   - sftp
   - webdav
-description: Personal online hard drive to store, view and share files
-applications:
-  - stack.app
 provenance:
-  cask: stack
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://www.transip.nl/stack/ describes STACK as TransIP's cloud-storage service.
+    - >
+      source_facts.description describes personal online storage for storing, viewing,
+      and sharing files.
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.transip.nl/stack/
+  docs-sources:
+    - >
+      TransIP's official STACK knowledge-base index covers desktop, mobile, web, WebDAV,
+      and SFTP use.
+    - TransIP's official desktop changelog documents the client lineage and releases.
+  history-sources:
+    - >
+      https://www.transip.nl/knowledgebase/stack-algemeen/3619-je-synchronisaties-met-stack-resetten
+    - https://www.transip.nl/knowledgebase/stack/5558-changelog-van-de-desktopapplicatie
+    - https://www.transip.nl/nieuws/transip-introduceert-stack/
+    - https://www.transip.nl/stack/
+    - https://www.transip.nl/stack/einde-gratis-stack/
+    - https://www.transip.nl/stack/faq/
+  repo-sources:
+    - >
+      TransIP's official product pages and knowledge base identify the desktop client's
+      upstream bases but do not publish an official STACK source-control project URL.
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://www.transip.nl/knowledgebase/stack/5558-changelog-van-de-desktopapplicatie
+    - https://www.transip.nl/stack/
+category-confidence: high
+category-path:
+  - productivity
+  - cloud-storage
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
