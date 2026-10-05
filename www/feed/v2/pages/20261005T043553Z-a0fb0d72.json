@@ -1,0 +1,2187 @@
+{
+  "content": [
+    {
+      "batchID": "20260918T195137Z-767a8658",
+      "id": "for-you:science:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Miller Rabin algorithm for primality test",
+          "category": "science",
+          "displayName": "miller-rabin",
+          "homepage": "https://github.com/indutny/miller-rabin",
+          "id": "npm:miller-rabin",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amiller-rabin",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Math.js is an extensive math library for JavaScript and Node.js. It features a flexible expression parser with support for symbolic computation, comes with a large set of built-in functions and constants, and offers an integrated solution to work with dif",
+          "category": "science",
+          "displayName": "mathjs",
+          "homepage": "https://mathjs.org",
+          "id": "npm:mathjs",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amathjs",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Simple and Performant Language detection library (pure JS and zero dependencies)",
+          "category": "science",
+          "displayName": "tinyld",
+          "homepage": null,
+          "id": "npm:tinyld",
+          "installURL": "pkgmgrmgr://install?package=npm%3Atinyld",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "convert wkt to geojson",
+          "category": "science",
+          "displayName": "wellknown",
+          "homepage": "https://github.com/mapbox/wellknown#readme",
+          "id": "npm:wellknown",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awellknown",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Porter Stemmer algorithm",
+          "category": "science",
+          "displayName": "stemmer",
+          "homepage": "https://words.github.io/stemmer/",
+          "id": "npm:stemmer",
+          "installURL": "pkgmgrmgr://install?package=npm%3Astemmer",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-18T19:51:37Z",
+      "title": "For You in Science",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260918T195137Z-767a8658",
+      "id": "new-packages:cloud-infrastructure:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Command-line client for the Arcane Docker management platform",
+          "category": "cloud-infrastructure",
+          "displayName": "arcane-cli",
+          "homepage": "https://getarcane.app",
+          "id": "brew:arcane-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aarcane-cli",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-18T19:51:37Z",
+      "title": "New Packages in Cloud Infrastructure",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
+        "alt": "Changed coral and amber chunks cross a bridge between layered data blocks while a research notebook unfolds into paper strips.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#101F2A",
+          "backgroundStart": "#173D50",
+          "foreground": "#F5F0E6"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/git-xet-changed-chunks.png"
+      },
+      "batchID": "20260911T100100Z-8b9b8e78",
+      "body": "## When a small revision moves a large file\n\nA research repository can contain a short training notebook beside gigabytes of model weights. A collaborator needs to understand the changed experiment and retrieve its artifacts, but those are different jobs. Git-Xet addresses the transfer side: it is a Git LFS custom transfer agent for uploading and downloading through Hugging Face’s Xet protocol. The familiar Git workflow remains visible while the large-file transport changes underneath it. [The upstream guide](https://github.com/huggingface/xet-core/blob/main/git_xet/README.md) describes that boundary explicitly.\n\nThe useful distinction is **file identity versus shared content**. Two checkpoint files can have different identities while retaining some identical bytes. Xet divides content into chunks and identifies reusable pieces, so a revision need not resend everything that already exists remotely. Its protocol also specifies how stored pieces are assembled into complete files. That makes repeated, related artifacts an interesting workload; entirely different data offers less opportunity for reuse. [The protocol specification](https://huggingface.co/docs/xet/index) explains the mechanism without requiring a universal speed claim.\n\n## A familiar name takes a new direction\n\nXet’s history predates its arrival on the Hub. Hugging Face acquired XetHub in August 2024, and its history documentation describes the move from whole-file deduplication toward reuse below the file level. The current client repository explicitly acknowledges its earlier codebase and a different backend implementation. This is a substantial change in deployment and audience, rather than evidence that the underlying project was invented recently. [Xet history](https://huggingface.co/docs/hub/xet/overview) and the [client repository](https://github.com/huggingface/xet-core) establish that lineage.\n\nThe operational turning point came in 2025. In its July migration account, Hugging Face reported that 500,000 repositories holding 20 petabytes had moved onto Xet during six months. It also described the compatibility bridge that let older clients continue working. Those are the operator’s figures, and they describe the storage platform rather than adoption of the Git-Xet executable specifically. [The migration report](https://huggingface.co/blog/migrating-the-hub-to-xet) provides both scale and an unusually useful account of failures encountered along the way.\n\n## Where the executable is actually used\n\nA concrete example is Hugging Face’s cross-region copying application. Its repository-copying worker fetches Git branches and tags, transfers large objects, and enables Git-Xet locally for the push phase. The implementation preserves repository content and history, while explicitly leaving settings such as privacy, hardware, and secrets for separate handling. This is evidence of an implemented operational workflow, although it does not establish how many people run it. [The application README](https://huggingface.co/spaces/huggingface-projects/hf-cross-region-copy/raw/main/README.md) documents those choices.\n\nThat distinction matters when planning a migration. Moving bytes and commits does not reproduce the surrounding service configuration. A successful copy still needs a review of access settings and other repository behavior. For a team publishing related model revisions, Git-Xet is most relevant when Git is already the interface they want to retain. It adds little conceptual value to a workflow that never uses Git directly.\n\n## Make the notebook readable, too\n\nJupytext addresses the other half of the research repository. It stores notebook inputs as scripts or Markdown and can pair that representation with an ordinary notebook holding outputs. Reviewers can inspect a compact text diff while researchers retain an interactive notebook locally. Text-only storage omits results, so teams must decide which outputs deserve preservation. [Jupytext’s repository](https://github.com/jupytext/jupytext) explains the formats and pairing behavior.\n\nThis is an established companion: its changelog reaches back to the initial converter in June 2018. [The release history](https://github.com/jupytext/jupytext/blob/main/CHANGELOG.md) shows years of development around notebook conversion. Pairing it with Git-Xet is an editorial workflow suggestion, not a claimed integration between the projects. One improves the representation people review; the other improves how large artifacts travel.\n\n## Evaluate the whole round trip\n\nGit-Xet requires configured Git and Git LFS. Python users may already reach the same storage through `huggingface_hub`, so they should check their existing path before adding another tool. [Hugging Face’s usage guide](https://huggingface.co/docs/hub/xet/using-xet-storage) distinguishes those entry points.\n\nA useful evaluation would compare a first upload, a representative revision, and retrieval on another machine. Record transfer time, local resource demands, and whether the resulting repository contains the expected files. Separately, review a notebook change and confirm its retained outputs still make sense. These are suggested checks, not benchmarks performed for this article. The practical goal is a repository that collaborators can both understand and retrieve, with clear boundaries around what each tool preserves.",
+      "deck": "Chunk-based transfers and readable notebooks tackle two different obstacles to sharing research repositories.",
+      "id": "editorial:2026-09-11:git-xet-moving-the-changed-pieces",
+      "package": {
+        "agentSummary": "Git-Xet connects familiar Git workflows to Hugging Face’s chunk-based storage, reducing redundant large-file transfers while retaining Git LFS as a required integration layer.",
+        "assessment": {
+          "alternatives": [
+            "Use huggingface_hub directly or retain compatible Git LFS transfers."
+          ],
+          "audiences": [
+            "Model publishers and dataset maintainers using Hugging Face Hub."
+          ],
+          "caveats": [
+            "This integration targets Hugging Face storage, not arbitrary Git remotes.",
+            "Deduplication savings depend on shared content; it does not guarantee a fixed speedup."
+          ],
+          "complements": [
+            "Jupytext for readable notebook inputs; huggingface_hub for Python workflows."
+          ],
+          "prerequisites": [
+            "Configured Git, Git LFS, and appropriate Hub access."
+          ],
+          "useCases": [
+            "Transfer revisions of large binary files through Git."
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "git-xet",
+        "docs": "https://github.com/xetdata/xet-core#readme",
+        "homepage": "https://github.com/huggingface/xet-core",
+        "id": "brew:git-xet",
+        "installURL": "pkgmgrmgr://install?package=brew%3Agit-xet",
+        "lastUpdatedAt": "2026-09-11T08:37:00Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/huggingface/xet-core",
+        "researchedAt": "2026-09-11T10:01:00Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Git-Xet transfer agent documentation",
+            "url": "https://github.com/huggingface/xet-core/blob/main/git_xet/README.md"
+          },
+          {
+            "kind": "primary",
+            "title": "Xet client repository and project lineage",
+            "url": "https://github.com/huggingface/xet-core"
+          },
+          {
+            "kind": "primary",
+            "title": "Using Xet Storage",
+            "url": "https://huggingface.co/docs/hub/xet/using-xet-storage"
+          }
+        ],
+        "upstreamSummary": "Git LFS plugin that uploads and downloads using the Xet protocol",
+        "version": "0.2.1"
+      },
+      "primaryPackageID": "brew:git-xet",
+      "publishedAt": "2026-09-11T10:01:00Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Git-Xet connects familiar Git workflows to Hugging Face’s chunk-based storage, reducing redundant large-file transfers while retaining Git LFS as a required integration layer.",
+          "assessment": {
+            "alternatives": [
+              "Use huggingface_hub directly or retain compatible Git LFS transfers."
+            ],
+            "audiences": [
+              "Model publishers and dataset maintainers using Hugging Face Hub."
+            ],
+            "caveats": [
+              "This integration targets Hugging Face storage, not arbitrary Git remotes.",
+              "Deduplication savings depend on shared content; it does not guarantee a fixed speedup."
+            ],
+            "complements": [
+              "Jupytext for readable notebook inputs; huggingface_hub for Python workflows."
+            ],
+            "prerequisites": [
+              "Configured Git, Git LFS, and appropriate Hub access."
+            ],
+            "useCases": [
+              "Transfer revisions of large binary files through Git."
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "git-xet",
+          "docs": "https://github.com/xetdata/xet-core#readme",
+          "homepage": "https://github.com/huggingface/xet-core",
+          "id": "brew:git-xet",
+          "installURL": "pkgmgrmgr://install?package=brew%3Agit-xet",
+          "lastUpdatedAt": "2026-09-11T08:37:00Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/huggingface/xet-core",
+          "researchedAt": "2026-09-11T10:01:00Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Git-Xet transfer agent documentation",
+              "url": "https://github.com/huggingface/xet-core/blob/main/git_xet/README.md"
+            },
+            {
+              "kind": "primary",
+              "title": "Xet client repository and project lineage",
+              "url": "https://github.com/huggingface/xet-core"
+            },
+            {
+              "kind": "primary",
+              "title": "Using Xet Storage",
+              "url": "https://huggingface.co/docs/hub/xet/using-xet-storage"
+            }
+          ],
+          "upstreamSummary": "Git LFS plugin that uploads and downloads using the Xet protocol",
+          "version": "0.2.1"
+        },
+        {
+          "agentSummary": "Jupytext represents notebook inputs as scripts or Markdown, making code review and editor workflows easier while paired notebooks retain outputs in a separate notebook file.",
+          "assessment": {
+            "alternatives": [
+              "Keep native notebooks and use notebook-aware diff tools."
+            ],
+            "audiences": [
+              "Researchers reviewing notebook code in Git."
+            ],
+            "caveats": [
+              "Text representations omit outputs.",
+              "Concurrent edits to paired files require careful synchronization."
+            ],
+            "complements": [
+              "Git-Xet for large model artifacts; JupyterLab for interactive work."
+            ],
+            "prerequisites": [
+              "Python; Jupyter integration belongs in the environment running the server."
+            ],
+            "useCases": [
+              "Review notebook inputs as text and edit them in an IDE."
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "jupytext",
+          "docs": "https://jupytext.readthedocs.io/en/latest",
+          "homepage": "https://jupytext.readthedocs.io/en/latest/",
+          "id": "brew:jupytext",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ajupytext",
+          "lastUpdatedAt": "2026-09-11T09:05:58Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/mwouts/jupytext",
+          "researchedAt": "2026-09-11T10:01:00Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Jupytext notebook formats and collaboration",
+              "url": "https://github.com/jupytext/jupytext"
+            },
+            {
+              "kind": "primary",
+              "title": "Jupytext release history",
+              "url": "https://github.com/jupytext/jupytext/blob/main/CHANGELOG.md"
+            }
+          ],
+          "upstreamSummary": "Jupyter notebooks as Markdown documents, Julia, Python or R scripts",
+          "version": "1.19.5"
+        }
+      ],
+      "selection": {
+        "newerOverride": {
+          "reason": "The documented 2025 move to Hugging Face Hub storage is a major new deployment direction for Xet; the current Git-Xet transfer agent brings that chunk-based backend into Git LFS workflows. This selection does not claim the older Xet project or the CLI has a newly established first stable release.",
+          "sourceURL": "https://huggingface.co/blog/migrating-the-hub-to-xet"
+        },
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Git-Xet transfer agent documentation",
+          "url": "https://github.com/huggingface/xet-core/blob/main/git_xet/README.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Xet Protocol Specification",
+          "url": "https://huggingface.co/docs/xet/index"
+        },
+        {
+          "kind": "primary",
+          "title": "Xet History and Overview",
+          "url": "https://huggingface.co/docs/hub/xet/overview"
+        },
+        {
+          "kind": "primary",
+          "title": "Xet client repository and project lineage",
+          "url": "https://github.com/huggingface/xet-core"
+        },
+        {
+          "kind": "primary",
+          "title": "Migrating the Hub from Git LFS to Xet",
+          "url": "https://huggingface.co/blog/migrating-the-hub-to-xet"
+        },
+        {
+          "kind": "primary",
+          "title": "Hugging Face cross-region copy implementation",
+          "url": "https://huggingface.co/spaces/huggingface-projects/hf-cross-region-copy/raw/main/README.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Jupytext notebook formats and collaboration",
+          "url": "https://github.com/jupytext/jupytext"
+        },
+        {
+          "kind": "primary",
+          "title": "Jupytext release history",
+          "url": "https://github.com/jupytext/jupytext/blob/main/CHANGELOG.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Using Xet Storage",
+          "url": "https://huggingface.co/docs/hub/xet/using-xet-storage"
+        }
+      ],
+      "title": "Git-Xet: moving the changed pieces",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260911T100100Z-195c076e",
+      "id": "recently-updated:productivity:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Command-line interface for Readwise and Reader",
+          "category": "productivity",
+          "displayName": "readwise-cli",
+          "homepage": "https://readwise.io/cli",
+          "id": "brew:readwise-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Areadwise-cli",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "CLI tool for saving complete web pages as a single HTML file",
+          "category": "productivity",
+          "displayName": "monolith",
+          "homepage": "https://github.com/Y2Z/monolith",
+          "id": "brew:monolith",
+          "installURL": "pkgmgrmgr://install?package=brew%3Amonolith",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Dictation tool including LLM reformatting",
+          "category": "productivity",
+          "displayName": "Superwhisper",
+          "homepage": "https://superwhisper.com/",
+          "id": "brew:cask:superwhisper",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asuperwhisper",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Grammar checker",
+          "category": "productivity",
+          "displayName": "Refine",
+          "homepage": "https://refine.sh/",
+          "id": "brew:cask:refine",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Arefine",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "View and edit HWP documents",
+          "category": "productivity",
+          "displayName": "HOP",
+          "homepage": "https://golbin.github.io/hop/",
+          "id": "brew:cask:hop",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahop",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-11T10:01:00Z",
+      "title": "Recently Updated in Productivity",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260911T100100Z-195c076e",
+      "id": "for-you:networking:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "ECMAScript parser",
+          "category": "networking",
+          "displayName": "acorn",
+          "homepage": "https://github.com/acornjs/acorn",
+          "id": "npm:acorn",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aacorn",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset",
+          "category": "networking",
+          "displayName": "browserslist",
+          "homepage": "https://github.com/browserslist/browserslist#readme",
+          "id": "npm:browserslist",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abrowserslist",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A library for obtaining browser versions with their maximum supported Baseline feature set and Widely Available status.",
+          "category": "networking",
+          "displayName": "baseline-browser-mapping",
+          "homepage": "https://github.com/web-platform-dx/baseline-browser-mapping#readme",
+          "id": "npm:baseline-browser-mapping",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abaseline-browser-mapping",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
+          "category": "networking",
+          "displayName": "autoprefixer",
+          "homepage": "https://github.com/postcss/autoprefixer#readme",
+          "id": "npm:autoprefixer",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aautoprefixer",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Minimal H(TTP) framework built for high performance and portability.",
+          "category": "networking",
+          "displayName": "h3",
+          "homepage": "https://h3.dev",
+          "id": "npm:h3",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ah3",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-11T10:01:00Z",
+      "title": "For You in Networking",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260911T100100Z-195c076e",
+      "id": "recently-updated:developer-tools:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Task runner and repo management tool for the web ecosystem, written in Rust",
+          "category": "developer-tools",
+          "displayName": "moon",
+          "homepage": "https://moonrepo.dev/moon",
+          "id": "brew:moon",
+          "installURL": "pkgmgrmgr://install?package=brew%3Amoon",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Modified browser that helps in responsive web development",
+          "category": "developer-tools",
+          "displayName": "Responsively App",
+          "homepage": "https://responsively.app/",
+          "id": "brew:cask:responsively",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aresponsively",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Execute binaries from Python packages in isolated environments",
+          "category": "developer-tools",
+          "displayName": "pipx",
+          "homepage": "https://pipx.pypa.io",
+          "id": "brew:pipx",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apipx",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Header-only PEG (Parsing Expression Grammars) library for C++",
+          "category": "developer-tools",
+          "displayName": "cpp-peglib",
+          "homepage": "https://yhirose.github.io/cpp-peglib/",
+          "id": "brew:cpp-peglib",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acpp-peglib",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Intercept and modify HTTP requests",
+          "category": "developer-tools",
+          "displayName": "Requestly",
+          "homepage": "https://requestly.com/",
+          "id": "brew:cask:requestly",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Arequestly",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-11T10:01:00Z",
+      "title": "Recently Updated in Developer Tools",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "Three luminous paths through a dark abstract desktop converge on tiled windows, a widget-rich dock, and a row of window tabs.",
+        "attribution": "Generated with OpenAI image generation",
+        "boxColors": {
+          "backgroundEnd": "#171746",
+          "backgroundStart": "#050B25",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/rethinking-mac-desktop-2026-09-07.png"
+      },
+      "batchID": "20260907T063155Z-00687363",
+      "body": "## The desktop is a navigation system\n\nWindow utilities are often sold as cures for dragging and resizing, but the deeper problem is **retrieval**: after opening a browser, editor, terminal, chat, and documentation, how do you return to the exact window you need? macOS offers overlapping windows, Mission Control, app-centric Command-Tab, and a Dock whose icons usually represent applications rather than individual windows. Three current tools challenge that model at different depths.\n\nOmniWM reorganizes the whole workspace. DockDoor Pro turns the Dock into a control surface. Taskbar makes each window a persistent target. They are not interchangeable skins. Each chooses what should remain visible, what should move automatically, and how much configuration the user should own.\n\n## OmniWM makes space flow\n\nOmniWM is the genuinely new entrant. Its first public tagged release appeared on December 25, 2025, and the project has evolved quickly since. The headline layout borrows from Niri: windows sit in columns on a horizontally scrolling strip, so opening another window extends the workspace instead of repeatedly subdividing one fixed screen. A Hyprland-inspired dwindle mode offers more conventional automatic splitting. Workspaces, trackpad gestures, application rules, a command palette, native tab handling, and `omniwmctl` IPC make the system unusually broad for a young Mac utility.\n\nActual use has moved beyond a quiet repository. A community demonstration of version 0.4.0 drew substantial discussion among Niri users, including reports from people trying its multi-monitor support. The feedback is mixed in the useful sense: some users welcome a Linux-like flow on macOS, while others report awkward behavior with multiple displays or unexpected window placement. The upstream discussion history shows the maintainer actively responding to these cases.\n\nThat friction is structural, not simply unfinished polish. macOS window managers generally steer other applications through Accessibility interfaces rather than replacing the operating system's compositor. Apps can expose unusual auxiliary windows, insist on minimum sizes, or react differently when moved. OmniWM also changes quickly: a recent release renamed configuration fields and advanced its IPC protocol, requiring scripts and clients to update together. The current build targets Apple Silicon and macOS 26 or later, even though earlier releases supported macOS 15. This is an ambitious environment for users willing to tune rules and follow releases, not an invisible utility.\n\n## DockDoor Pro concentrates control at the edge\n\nDockDoor Pro leaves windows overlapping but rebuilds the place used to find them. Hover previews expose individual windows; per-display profiles can show different app sets; app focus can switch profiles automatically. The same strip can hold folders, files, app groups, a file tray, media controls, audio-device switching, and widget stacks. A control drawer reaches sleep, restart, shortcuts, and other actions.\n\nThe attraction is consolidation. Instead of memorizing a tiler's directional grammar, a user can keep spatially familiar icons and add richer previews and controls. Independent walkthroughs document the replacement in use, and reviews praise the scope. Yet breadth is also its tax: the official feature inventory advertises more than 300 settings across 16 preference pages. The app can hide the native Dock, but macOS may still surface Apple's Dock in system-controlled places such as Mission Control. Users should expect to spend time deciding which profiles, widgets, gestures, and visual effects actually reduce work.\n\nDockDoor Pro is also a separate commercial product from DockDoor Free. The free app augments Apple's Dock with previews; Pro substitutes its own Dock environment. Running both is generally unnecessary. That distinction matters when evaluating permissions, purchasing, and how difficult it will be to return to stock behavior.\n\n## Taskbar favors one-click certainty\n\nTaskbar begins with a narrower observation: app icons are poor targets when one app owns several windows. Its developer describes trying Command-Tab, Mission Control, Dock menus, and another Windows-style replacement before building a persistent strip of individual window buttons. The benefit is mundane and powerful—targets remain visible and tend to stay in predictable positions, so reaching a particular document can become one click rather than an app switch followed by another selection.\n\nThe project is not new; its developer says it followed roughly eighteen months of development, and the product has continued through multi-monitor work and repeated manual regression testing. That history makes it the conservative comparison here. It does less than DockDoor Pro and imposes less of a worldview than OmniWM. It also remains commercial and closed source, and a permanent task strip consumes screen space.\n\n## Choose the object you want to navigate\n\nThe cleanest decision is to identify the object your attention follows:\n\n- Choose **OmniWM** when you think in workspaces, columns, and keyboard-directed layouts, and accept active configuration.\n- Choose **DockDoor Pro** when applications remain the anchor but the Dock should expose previews, profiles, files, and controls.\n- Choose **Taskbar** when individual windows should remain visible as stable, clickable destinations.\n\nAll three need privileged visibility into windows to deliver their central features, so review requested Accessibility and screen-recording permissions and test with the applications and monitors that define your real workload. A demo with tidy browser windows proves little about IDE dialogs, floating palettes, remote desktops, or apps with rigid dimensions.\n\nThe most interesting lesson is that desktop productivity is not synonymous with maximum automation. OmniWM reduces manual placement by imposing flow; DockDoor Pro reduces trips elsewhere by concentrating controls; Taskbar reduces ambiguity by exposing every destination. The right replacement is the one whose organizing unit matches how you remember your work.",
+      "deck": "OmniWM, DockDoor Pro, and Taskbar challenge different parts of macOS window navigation—and reveal why no single desktop model fits every multitasker.",
+      "id": "editorial:2026-09-07:three-ways-to-rebuild-the-mac-desktop",
+      "package": {
+        "agentSummary": "Young open-source macOS manager combines scrolling Niri-style columns, dwindle tiling, workspaces, gestures, a command palette, and scriptable IPC in one opinionated environment.",
+        "assessment": {
+          "alternatives": [
+            "AeroSpace",
+            "yabai",
+            "Amethyst",
+            "Rectangle"
+          ],
+          "audiences": [
+            "Keyboard-driven Mac users",
+            "Niri or Hyprland users moving to macOS",
+            "Developers who automate desktop workflows"
+          ],
+          "caveats": [
+            "Young project with rapid configuration and IPC changes",
+            "Automatic tiling can conflict with application minimum sizes or unusual windows",
+            "Current release no longer supports macOS 15"
+          ],
+          "complements": [
+            "Ghostty for terminal-heavy workflows",
+            "Raycast or shell scripts using omniwmctl"
+          ],
+          "prerequisites": [
+            "Apple Silicon Mac",
+            "macOS 26 or later for the current release",
+            "Accessibility and screen-recording permissions"
+          ],
+          "useCases": [
+            "Automatically arranging application windows",
+            "Navigating scrolling columns and workspaces",
+            "Controlling layouts through CLI and IPC"
+          ]
+        },
+        "category": "productivity",
+        "displayName": "OmniWM",
+        "docs": "https://omniwm.app/",
+        "homepage": "https://omniwm.app/",
+        "id": "brew:cask:omniwm",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aomniwm",
+        "lastUpdatedAt": "2026-09-07T04:15:08Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/BarutSRB/OmniWM",
+        "researchedAt": "2026-09-07T06:31:55Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "OmniWM official site and feature guide",
+            "url": "https://omniwm.app/"
+          },
+          {
+            "kind": "primary",
+            "title": "OmniWM v0.1.0 first release",
+            "url": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0"
+          },
+          {
+            "kind": "independent",
+            "title": "Community report on OmniWM v0.4.0",
+            "url": "https://www.reddit.com/r/niri/comments/1ruh6um/omni_macos_niri_v040/"
+          }
+        ],
+        "upstreamSummary": "Tiling window manager",
+        "version": "0.6.7"
+      },
+      "primaryPackageID": "brew:cask:omniwm",
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Young open-source macOS manager combines scrolling Niri-style columns, dwindle tiling, workspaces, gestures, a command palette, and scriptable IPC in one opinionated environment.",
+          "assessment": {
+            "alternatives": [
+              "AeroSpace",
+              "yabai",
+              "Amethyst",
+              "Rectangle"
+            ],
+            "audiences": [
+              "Keyboard-driven Mac users",
+              "Niri or Hyprland users moving to macOS",
+              "Developers who automate desktop workflows"
+            ],
+            "caveats": [
+              "Young project with rapid configuration and IPC changes",
+              "Automatic tiling can conflict with application minimum sizes or unusual windows",
+              "Current release no longer supports macOS 15"
+            ],
+            "complements": [
+              "Ghostty for terminal-heavy workflows",
+              "Raycast or shell scripts using omniwmctl"
+            ],
+            "prerequisites": [
+              "Apple Silicon Mac",
+              "macOS 26 or later for the current release",
+              "Accessibility and screen-recording permissions"
+            ],
+            "useCases": [
+              "Automatically arranging application windows",
+              "Navigating scrolling columns and workspaces",
+              "Controlling layouts through CLI and IPC"
+            ]
+          },
+          "category": "productivity",
+          "displayName": "OmniWM",
+          "docs": "https://omniwm.app/",
+          "homepage": "https://omniwm.app/",
+          "id": "brew:cask:omniwm",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aomniwm",
+          "lastUpdatedAt": "2026-09-07T04:15:08Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/BarutSRB/OmniWM",
+          "researchedAt": "2026-09-07T06:31:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "OmniWM official site and feature guide",
+              "url": "https://omniwm.app/"
+            },
+            {
+              "kind": "primary",
+              "title": "OmniWM v0.1.0 first release",
+              "url": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0"
+            },
+            {
+              "kind": "independent",
+              "title": "Community report on OmniWM v0.4.0",
+              "url": "https://www.reddit.com/r/niri/comments/1ruh6um/omni_macos_niri_v040/"
+            }
+          ],
+          "upstreamSummary": "Tiling window manager",
+          "version": "0.6.7"
+        },
+        {
+          "agentSummary": "Commercial Dock replacement layers window previews, per-display profiles, app groups, widgets, file staging, media controls, gestures, and extensive customization onto macOS.",
+          "assessment": {
+            "alternatives": [
+              "DockDoor Free",
+              "Taskbar",
+              "Sidebar",
+              "The built-in macOS Dock"
+            ],
+            "audiences": [
+              "Heavy Mac multitaskers",
+              "Users wanting a customizable Dock",
+              "Multi-display users with context-specific app sets"
+            ],
+            "caveats": [
+              "Replaces rather than merely augments normal Dock behavior",
+              "More than 300 settings increase tuning overhead",
+              "The native Dock can still appear in OS-controlled interfaces"
+            ],
+            "complements": [
+              "Apple Music or Spotify for media widgets",
+              "macOS Shortcuts for quick actions"
+            ],
+            "prerequisites": [
+              "Compatible macOS version",
+              "Accessibility and screen-recording permissions",
+              "Paid license after trial"
+            ],
+            "useCases": [
+              "Switching directly among application windows",
+              "Maintaining separate Dock profiles",
+              "Keeping controls and widgets at the screen edge"
+            ]
+          },
+          "category": "system",
+          "displayName": "DockDoor Pro",
+          "docs": "https://pro.dockdoor.net/",
+          "homepage": "https://pro.dockdoor.net/",
+          "id": "brew:cask:dockdoor-pro",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adockdoor-pro",
+          "lastUpdatedAt": "2026-09-07T03:48:57Z",
+          "manager": "homebrew",
+          "repository": null,
+          "researchedAt": "2026-09-07T06:31:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "DockDoor Pro official feature list",
+              "url": "https://pro.dockdoor.net/features/"
+            },
+            {
+              "kind": "independent",
+              "title": "ScreencastsOnline DockDoor walkthrough",
+              "url": "https://www.screencastsonline.com/tutorials/macos/dock-tips-dockdoor"
+            },
+            {
+              "kind": "independent",
+              "title": "AppAddict DockDoor Pro review",
+              "url": "https://appaddict.app/post/dockdoor-pro-the-dock-apple-wouldn-t-build"
+            }
+          ],
+          "upstreamSummary": "Dock replacement with widgets, profiles and window previews",
+          "version": "1.3.3"
+        },
+        {
+          "agentSummary": "Taskbar replaces app-centric Dock switching with persistent buttons for individual windows, emphasizing predictable one-click access, multi-monitor behavior, and a deliberately narrower feature set.",
+          "assessment": {
+            "alternatives": [
+              "DockDoor Pro",
+              "uBar",
+              "Sidebar",
+              "The built-in macOS Dock"
+            ],
+            "audiences": [
+              "Mac users accustomed to Windows taskbars",
+              "People juggling many windows per application",
+              "Users prioritizing stable pointer targets"
+            ],
+            "caveats": [
+              "Commercial closed-source application",
+              "Intentionally less expansive than widget-heavy Dock replacements",
+              "Changes a foundational navigation habit and needs an adjustment period"
+            ],
+            "complements": [
+              "A keyboard launcher",
+              "macOS Mission Control"
+            ],
+            "prerequisites": [
+              "macOS",
+              "Accessibility and screen-recording permissions",
+              "Paid license after trial"
+            ],
+            "useCases": [
+              "Switching to a specific window in one click",
+              "Showing window buttons on multiple monitors",
+              "Keeping frequently used windows spatially predictable"
+            ]
+          },
+          "category": null,
+          "displayName": "Taskbar",
+          "docs": null,
+          "homepage": "https://lawand.io/taskbar/",
+          "id": "brew:cask:taskbar",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ataskbar",
+          "lastUpdatedAt": "2026-09-06T16:27:51Z",
+          "manager": "homebrew",
+          "repository": null,
+          "researchedAt": "2026-09-07T06:31:55Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Taskbar developer introduction",
+              "url": "https://lawand.io/taskbar/intro/"
+            },
+            {
+              "kind": "primary",
+              "title": "Taskbar official product page",
+              "url": "https://lawand.io/taskbar/"
+            }
+          ],
+          "upstreamSummary": "Windows-style taskbar as a Dock replacement",
+          "version": "1.6.3,2026,09"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2025-12-25T21:17:10Z",
+        "firstStableReleaseSourceURL": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "OmniWM official site and documentation",
+          "url": "https://omniwm.app/"
+        },
+        {
+          "kind": "primary",
+          "title": "OmniWM v0.1.0 first public release",
+          "url": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "primary",
+          "title": "DockDoor Pro complete feature list",
+          "url": "https://pro.dockdoor.net/features/"
+        },
+        {
+          "kind": "primary",
+          "title": "Taskbar developer introduction and history",
+          "url": "https://lawand.io/taskbar/intro/"
+        },
+        {
+          "kind": "independent",
+          "title": "Niri community discussion of OmniWM v0.4.0",
+          "url": "https://www.reddit.com/r/niri/comments/1ruh6um/omni_macos_niri_v040/"
+        },
+        {
+          "kind": "independent",
+          "title": "ScreencastsOnline DockDoor walkthrough",
+          "url": "https://www.screencastsonline.com/tutorials/macos/dock-tips-dockdoor"
+        }
+      ],
+      "title": "Three Ways to Rebuild the Mac Desktop",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260907T063155Z-f65b3609",
+      "id": "for-you:system:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Like which(1) unix command. Find the first instance of an executable in the PATH.",
+          "category": "system",
+          "displayName": "which",
+          "homepage": "https://github.com/npm/node-which#readme",
+          "id": "npm:which",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awhich",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A deep deletion module for node (like `rm -rf`)",
+          "category": "system",
+          "displayName": "rimraf",
+          "homepage": "https://github.com/isaacs/rimraf#readme",
+          "id": "npm:rimraf",
+          "installURL": "pkgmgrmgr://install?package=npm%3Arimraf",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Recursively mkdir, like `mkdir -p`",
+          "category": "system",
+          "displayName": "mkdirp",
+          "homepage": "https://github.com/isaacs/node-mkdirp#readme",
+          "id": "npm:mkdirp",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amkdirp",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a Docker container",
+          "category": "system",
+          "displayName": "is-docker",
+          "homepage": "https://github.com/sindresorhus/is-docker#readme",
+          "id": "npm:is-docker",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-docker",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a container (Docker/Podman)",
+          "category": "system",
+          "displayName": "is-inside-container",
+          "homepage": "https://github.com/sindresorhus/is-inside-container#readme",
+          "id": "npm:is-inside-container",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-inside-container",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "title": "For You in System",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260907T063155Z-f65b3609",
+      "id": "new-packages:language-runtime:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Implementation of Python 3 in Python",
+          "category": "language-runtime",
+          "displayName": "pypy3.12",
+          "homepage": "https://pypy.org/",
+          "id": "brew:pypy3.12",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apypy3.12",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "title": "New Packages in Language Runtime",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20260907T063155Z-f65b3609",
+      "id": "for-you:security:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "A tiny (118 bytes), secure URL-friendly unique string ID generator",
+          "category": "security",
+          "displayName": "nanoid",
+          "homepage": "https://github.com/ai/nanoid#readme",
+          "id": "npm:nanoid",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ananoid",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Streamable SHA hashes in pure javascript",
+          "category": "security",
+          "displayName": "sha.js",
+          "homepage": "https://github.com/crypto-browserify/sha.js",
+          "id": "npm:sha.js",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asha.js",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "detect possibly catastrophic, exponential-time regular expressions",
+          "category": "security",
+          "displayName": "safe-regex2",
+          "homepage": "https://github.com/fastify/safe-regex2",
+          "id": "npm:safe-regex2",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asafe-regex2",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Optimized bcrypt in plain JavaScript with zero dependencies, with TypeScript support. Compatible to 'bcrypt'.",
+          "category": "security",
+          "displayName": "bcryptjs",
+          "homepage": "https://github.com/dcodeIO/bcrypt.js#readme",
+          "id": "npm:bcryptjs",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abcryptjs",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Sanitize untrusted HTML (to prevent XSS) with a configuration specified by a Whitelist",
+          "category": "security",
+          "displayName": "xss",
+          "homepage": "https://github.com/leizongmin/js-xss",
+          "id": "npm:xss",
+          "installURL": "pkgmgrmgr://install?package=npm%3Axss",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-07T06:31:55Z",
+      "title": "For You in Security",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "A glowing catlike packet follows a cyan network path between two distant workstations, passing relays and firewalls in a dark landscape.",
+        "attribution": "Generated with OpenAI image generation",
+        "boxColors": {
+          "backgroundEnd": "#073044",
+          "backgroundStart": "#031421",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/tailcat-ephemeral-network-path-2026-09-03.png"
+      },
+      "batchID": "20260903T095638Z-70a338a9",
+      "body": "## A network compressed into an address\n\nMost private-network tools begin by establishing an organization: create an account, enroll devices, name them, and define who may reach what. **Tailcat** starts somewhere smaller. One machine listens, produces a `tc...` address, and another uses that address to connect. The result resembles netcat's bidirectional byte pipe, but the traffic rides Tailscale's userspace WireGuard implementation, NAT traversal, and DERP relay system. It needs neither a Tailscale account nor root access because it does not add routes, configure DNS, or create a kernel tunnel interface.\n\nThat compact model is the interesting part. A Tailcat address contains public-key and relay-bootstrap information encoded in CBOR. The peers rendezvous through DERP, then Tailscale's transport attempts a direct UDP path; the relay remains a fallback when NAT or firewall conditions prevent direct contact. Instead of asking a control plane to introduce two named devices, users exchange one capability-like string through an existing trusted channel.\n\n## Old ingredients, newly separated\n\nTailcat is new as a public tool, but not as an idea or code sketch. Its upstream history says Brad Fitzpatrick first wrote `derpcat` inside a Tailscale fork during a flight in September 2023. It repeatedly fell behind internal changes. The revived version became a regular Go module and was open-sourced at TailscaleUp in August 2026. Its first tagged release, `v0.1.0`, arrived on August 30, followed by Tailscale's public launch on August 31.\n\nThis lineage explains both its confidence and its caution. Tailcat extracts field-tested networking components, yet the new composition has not accumulated the operating history of Tailscale itself. The repository explicitly offers **no stability promise** for command flags, Go APIs, output, or the wire format. Public Tailcat DERP relays are best-effort, rate-limited, and have no uptime or throughput target. Those are not footnotes for production adoption; they define the current product boundary.\n\n## What people can actually do with it\n\nThe CLI now reaches beyond a raw pipe. Documented workflows include:\n\n- forwarding a local port to a remote service;\n- running SSH, SCP, and SFTP through the connection;\n- copying and listing files with Tailcat-native commands;\n- creating a SOCKS proxy for an otherwise unaware program such as `curl`;\n- waiting until NAT traversal produces a direct path.\n\nThere is also a Go library and an experimental WebAssembly demo. The browser currently travels through DERP rather than forming direct connections, an important distinction from the native CLI.\n\nIndependent hands-on evidence is encouraging but appropriately messy. Compendia Labs built the tool, inspected its connection flow, and exercised a server. In that test environment, DERP connectivity succeeded while blocked UDP egress caused rendezvous to time out. That is useful actual-use evidence precisely because it is not a victory lap: software designed to cross network boundaries still depends on the network allowing the transports its rendezvous and path discovery expect. Community projects have already begun integrating Tailcat into proxy and graphical file-sharing experiments, but the ecosystem is days old, not mature.\n\n## Capability strings are a security decision\n\nRemoving accounts does not remove trust; it relocates trust into keys and connection material. A short address identifies the server. Optional client allowlists can narrow access, while reusable saved keys create stable endpoints. The choice between an ephemeral address and a persistent one should therefore be deliberate. Share addresses as secrets when they confer access, verify SSH host keys, and keep application authentication in place rather than treating transport encryption as authorization.\n\nRunning a private DERP server reduces dependence on Tailscale's free relays, but it also makes relay availability, patching, capacity, and logging your responsibility. Tailcat deliberately omits the policy, device inventory, identity lifecycle, audit controls, and administrative guardrails a managed tailnet supplies. For a temporary developer connection, that absence can be refreshing. For a team network, it can become missing infrastructure.\n\n## Tailcat or a whole virtual network?\n\nThe related **EdgeVPN** illustrates the next step up in scope. It uses libp2p and shared tokens to form a decentralized virtual network, assign virtual addresses, provide DNS, proxy services, and coordinate nodes through a distributed ledger. Kairos uses it for peer-to-peer Kubernetes coordination, concrete evidence that the design supports more than demos. Kairos also documents additional CPU cost from layered encryption, while EdgeVPN warns that exposing a token can hand over broad network control.\n\nChoose Tailcat when the desired object is one temporary path: a port, shell, file copy, or embedded Go connection. Choose EdgeVPN when several nodes need an ongoing network and discovery layer. Choose managed Tailscale when identity, ACLs, device administration, and dependable service matter more than eliminating the control plane.\n\nTailcat's achievement is conceptual economy. It shows that the difficult data-plane pieces can be packaged as a small, portable connection without pretending that coordination and governance were unnecessary all along. For experiments, incident access, and short-lived developer bridges, that may be exactly the amount of network required.",
+      "deck": "Tailscale's new experiment turns its data plane into a temporary encrypted pipe, trading accounts and policy machinery for portable connection material.",
+      "id": "editorial:2026-09-03:tailcat-networking-without-the-control-plane",
+      "package": {
+        "agentSummary": "Tailcat creates encrypted, netcat-like peer connections through Tailscale's userspace WireGuard, NAT traversal, and DERP components, without accounts, routes, or a control plane.",
+        "assessment": {
+          "alternatives": [
+            "Tailscale for managed identity, policy, and a persistent tailnet",
+            "WireGuard for explicitly configured durable tunnels",
+            "EdgeVPN for a broader decentralized virtual network"
+          ],
+          "audiences": [
+            "Developers needing temporary connectivity between machines",
+            "Network engineers exploring userspace peer-to-peer tunnels",
+            "Self-hosters prepared to manage connection tokens and relays"
+          ],
+          "caveats": [
+            "The project explicitly promises no CLI, Go API, or wire-format stability",
+            "Public relays are rate-limited and carry no uptime or throughput guarantee",
+            "Possession of connection material replaces centralized identity and authorization"
+          ],
+          "complements": [
+            "A self-hosted DERP relay for operational independence",
+            "SSH host-key verification and application-level authentication",
+            "Firewall and traffic-observation tools for troubleshooting"
+          ],
+          "prerequisites": [
+            "A secure out-of-band channel for exchanging tailcat addresses",
+            "Outbound network access to a DERP relay unless self-hosting one",
+            "Tolerance for a young command line and wire protocol"
+          ],
+          "useCases": [
+            "Copying files or forwarding a port across NAT boundaries",
+            "Opening temporary SSH, SFTP, or SOCKS connections",
+            "Embedding Tailscale data-plane connectivity in Go programs"
+          ]
+        },
+        "category": "networking",
+        "displayName": "tailcat",
+        "docs": "https://github.com/tailscale/tailcat#readme",
+        "homepage": "https://github.com/tailscale/tailcat",
+        "id": "brew:tailcat",
+        "installURL": "pkgmgrmgr://install?package=brew%3Atailcat",
+        "lastUpdatedAt": "2026-09-03T00:16:39Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/tailscale/tailcat",
+        "researchedAt": "2026-09-03T09:56:38Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Tailcat project repository and technical documentation",
+            "url": "https://github.com/tailscale/tailcat"
+          },
+          {
+            "kind": "primary",
+            "title": "Tailscale launch announcement for Tailcat",
+            "url": "https://tailscale.com/blog/tailcat"
+          },
+          {
+            "kind": "independent",
+            "title": "Compendia Labs hands-on Tailcat test",
+            "url": "https://blog.compendialabs.org/posts/2026-09-01-dk-tailcat"
+          }
+        ],
+        "upstreamSummary": "Netcat-like tool over Tailscale's data plane, without its control plane",
+        "version": "0.5.0"
+      },
+      "primaryPackageID": "brew:tailcat",
+      "publishedAt": "2026-09-03T09:56:38Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Tailcat creates encrypted, netcat-like peer connections through Tailscale's userspace WireGuard, NAT traversal, and DERP components, without accounts, routes, or a control plane.",
+          "assessment": {
+            "alternatives": [
+              "Tailscale for managed identity, policy, and a persistent tailnet",
+              "WireGuard for explicitly configured durable tunnels",
+              "EdgeVPN for a broader decentralized virtual network"
+            ],
+            "audiences": [
+              "Developers needing temporary connectivity between machines",
+              "Network engineers exploring userspace peer-to-peer tunnels",
+              "Self-hosters prepared to manage connection tokens and relays"
+            ],
+            "caveats": [
+              "The project explicitly promises no CLI, Go API, or wire-format stability",
+              "Public relays are rate-limited and carry no uptime or throughput guarantee",
+              "Possession of connection material replaces centralized identity and authorization"
+            ],
+            "complements": [
+              "A self-hosted DERP relay for operational independence",
+              "SSH host-key verification and application-level authentication",
+              "Firewall and traffic-observation tools for troubleshooting"
+            ],
+            "prerequisites": [
+              "A secure out-of-band channel for exchanging tailcat addresses",
+              "Outbound network access to a DERP relay unless self-hosting one",
+              "Tolerance for a young command line and wire protocol"
+            ],
+            "useCases": [
+              "Copying files or forwarding a port across NAT boundaries",
+              "Opening temporary SSH, SFTP, or SOCKS connections",
+              "Embedding Tailscale data-plane connectivity in Go programs"
+            ]
+          },
+          "category": "networking",
+          "displayName": "tailcat",
+          "docs": "https://github.com/tailscale/tailcat#readme",
+          "homepage": "https://github.com/tailscale/tailcat",
+          "id": "brew:tailcat",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atailcat",
+          "lastUpdatedAt": "2026-09-03T00:16:39Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/tailscale/tailcat",
+          "researchedAt": "2026-09-03T09:56:38Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Tailcat project repository and technical documentation",
+              "url": "https://github.com/tailscale/tailcat"
+            },
+            {
+              "kind": "primary",
+              "title": "Tailscale launch announcement for Tailcat",
+              "url": "https://tailscale.com/blog/tailcat"
+            },
+            {
+              "kind": "independent",
+              "title": "Compendia Labs hands-on Tailcat test",
+              "url": "https://blog.compendialabs.org/posts/2026-09-01-dk-tailcat"
+            }
+          ],
+          "upstreamSummary": "Netcat-like tool over Tailscale's data plane, without its control plane",
+          "version": "0.5.0"
+        },
+        {
+          "agentSummary": "EdgeVPN builds decentralized private networks, reverse proxies, and file transfers on libp2p, using shared configuration tokens and an embedded distributed coordination layer.",
+          "assessment": {
+            "alternatives": [
+              "Tailcat for narrow, temporary application connections",
+              "Tailscale or NetBird for managed identity and policy",
+              "WireGuard for manually configured point-to-point tunnels"
+            ],
+            "audiences": [
+              "Edge-computing and distributed-systems operators",
+              "Self-hosters wanting decentralized node discovery",
+              "Go developers building peer-to-peer networking features"
+            ],
+            "caveats": [
+              "A leaked token can grant broad network control unless trusted zones are configured",
+              "Peer establishment may take minutes according to upstream guidance",
+              "Kairos documents extra CPU cost from additional encryption layers"
+            ],
+            "complements": [
+              "Kairos for decentralized edge Kubernetes",
+              "Centralized secret management for network tokens",
+              "Monitoring for peer health, latency, and resource use"
+            ],
+            "prerequisites": [
+              "Administrative access when creating a system network interface",
+              "Secure distribution of the shared network token",
+              "Time for peer discovery and convergence"
+            ],
+            "useCases": [
+              "Joining remote nodes into a virtual private network",
+              "Exposing TCP services through a peer-to-peer reverse proxy",
+              "Coordinating decentralized Kubernetes nodes"
+            ]
+          },
+          "category": "networking",
+          "displayName": "edgevpn",
+          "docs": "https://mudler.github.io/edgevpn",
+          "homepage": "https://mudler.github.io/edgevpn",
+          "id": "brew:edgevpn",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aedgevpn",
+          "lastUpdatedAt": "2026-09-03T08:53:42Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/mudler/edgevpn",
+          "researchedAt": "2026-09-03T09:56:38Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "EdgeVPN project repository",
+              "url": "https://github.com/mudler/edgevpn"
+            },
+            {
+              "kind": "primary",
+              "title": "EdgeVPN documentation",
+              "url": "https://mudler.github.io/edgevpn/docs/"
+            },
+            {
+              "kind": "independent",
+              "title": "Kairos peer-to-peer network architecture",
+              "url": "https://kairos.io/docs/architecture/network/"
+            }
+          ],
+          "upstreamSummary": "Immutable, decentralized, statically built p2p VPN",
+          "version": "0.35.4"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-08-30T03:10:00Z",
+        "firstStableReleaseSourceURL": "https://github.com/tailscale/tailcat/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Tailcat project repository and technical documentation",
+          "url": "https://github.com/tailscale/tailcat"
+        },
+        {
+          "kind": "primary",
+          "title": "Tailcat v0.1.0 release",
+          "url": "https://github.com/tailscale/tailcat/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Tailscale launch announcement for Tailcat",
+          "url": "https://tailscale.com/blog/tailcat"
+        },
+        {
+          "kind": "independent",
+          "title": "Compendia Labs hands-on Tailcat test",
+          "url": "https://blog.compendialabs.org/posts/2026-09-01-dk-tailcat"
+        }
+      ],
+      "title": "Tailcat and the Smallest Useful Private Network",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260903T095638Z-a67d98ee",
+      "id": "new-packages:toys:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Mechanical keyboard sounds for every keystroke",
+          "category": "toys",
+          "displayName": "KeyEcho",
+          "homepage": "https://keyecho.app/",
+          "id": "brew:cask:keyecho",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akeyecho",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-03T09:56:38Z",
+      "title": "New Packages in Toys",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20260903T095638Z-a67d98ee",
+      "id": "for-you:games:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Query for the status of any game server in Node.JS",
+          "category": "games",
+          "displayName": "gamedig",
+          "homepage": "https://github.com/gamedig/node-gamedig#readme",
+          "id": "npm:gamedig",
+          "installURL": "pkgmgrmgr://install?package=npm%3Agamedig",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The Stockfish chess engine in Web Assembly (WASM)",
+          "category": "games",
+          "displayName": "stockfish",
+          "homepage": "https://github.com/nmrugg/stockfish.js#readme",
+          "id": "npm:stockfish",
+          "installURL": "pkgmgrmgr://install?package=npm%3Astockfish",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Rom manager for AdvanceMAME/MESS",
+          "category": "games",
+          "displayName": "advancescan",
+          "homepage": "https://www.advancemame.it/scan-readme.html",
+          "id": "brew:advancescan",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aadvancescan",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Near-future Sci-Fi roguelike and tactical squad combat game",
+          "category": "games",
+          "displayName": "allureofthestars",
+          "homepage": "https://allureofthestars.com/",
+          "id": "brew:allureofthestars",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aallureofthestars",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Dungeon exploration game",
+          "category": "games",
+          "displayName": "angband",
+          "homepage": "https://rephial.org/",
+          "id": "brew:angband",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aangband",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-03T09:56:38Z",
+      "title": "For You in Games",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20260903T095638Z-a67d98ee",
+      "id": "new-packages:system:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Menu bar monitor for system performance and hardware",
+          "category": "system",
+          "displayName": "HagimiMonitor Direct",
+          "homepage": "https://acerola-1.github.io/hagimi-monitor/",
+          "id": "brew:cask:hagimimonitordirect",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahagimimonitordirect",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "GPU monitoring tool for NVIDIA/Jetson/Apple Silicon/Tenstorrent",
+          "category": "system",
+          "displayName": "all-smi",
+          "homepage": "https://github.com/lablup/all-smi",
+          "id": "brew:all-smi",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aall-smi",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Managing SanDisk external drives",
+          "category": "system",
+          "displayName": "SANDISK",
+          "homepage": "https://www.sandisk.com/topics/accessories/sandisk-app-for-backups",
+          "id": "brew:cask:sandisk",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asandisk",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Bring back the pre-Tahoe volume and brightness HUDs",
+          "category": "system",
+          "displayName": "volumeHUD",
+          "homepage": "https://github.com/dannystewart/volumeHUD",
+          "id": "brew:cask:volumehud",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Avolumehud",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-03T09:56:38Z",
+      "title": "New Packages in System",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
+        "alt": "A luminous terminal observatory unfolds into waves, terrain, clouds, moonlight, sunrise, and a globe.",
+        "attribution": "Original illustration generated with OpenAI image generation for Package Manager Manager",
+        "boxColors": {
+          "backgroundEnd": "#0B5660",
+          "backgroundStart": "#061A27",
+          "foreground": "#FFF5DF"
+        },
+        "license": "Copyright Package Manager Manager; generated editorial artwork",
+        "path": "feed/assets/terminal-environmental-instrument.png"
+      },
+      "batchID": "20260831T055156Z-4d26f8dd",
+      "body": "## Beyond the one-line forecast\n\nMost terminal weather tools answer a narrow question: what is the temperature now? **linecast** starts there, then treats the terminal as a small environmental instrument. Its six views cover weather, sunshine, the moon, tides, radar, and maps. The result is not merely a compact substitute for a website. It is an argument that a character grid can support continuous, exploratory information without becoming a pseudo-desktop.\n\nThat distinction matters. A static forecast is easy to print, but linecast also draws an hourly temperature curve, the Sun's daily arc, a shaded lunar disc, scrolling tide predictions, animated radar, vector streets, terrain, and an orthographic globe. Mouse and keyboard interaction coexist with Unix-shaped outputs: weather, sunshine, moon, and tides can emit JSON, while `--oneline` fits status bars and `--print` produces one stable frame. Piped output automatically becomes static.\n\n## A young project moving unusually fast\n\nThe project's public history is short and unusually legible. PyPI records version 1.0.0 on March 5, 2026, the same day GitHub records the repository's creation. By late August, upstream releases had reached 2.x. That pace explains both the breadth and the principal risk: this is a new tool whose interface and data integrations have been evolving quickly.\n\nThe implementation is pure Python and targets Python 3.10 or later. On macOS and Linux it advertises no runtime dependencies; Windows adds timezone and operating-system trust-store packages. More interesting than the packaging is the source strategy. linecast assembles free public services rather than requiring a user account or API key. Forecasts, alerts, tiles, routing, elevation, clouds, and tides therefore arrive from different providers, each with its own geography and failure modes. Convenience here is real, but it is built on a network of dependencies.\n\nTides make that tradeoff concrete. The project names dedicated sources for the United States, Canada, Queensland, and Hong Kong, then falls back to a global model elsewhere. That yields broad coverage, not uniform authority. Anyone making safety-critical decisions should still consult the relevant hydrographic or meteorological agency. linecast is excellent for orientation; it is not a promise that every coast has equivalent observations.\n\n## The terminal is part of the rendering stack\n\nDense terminal graphics depend on the emulator as much as the application. linecast uses Braille-pattern cells, color gradients, mouse events, and theme detection to squeeze more visual resolution from text. A modern GPU-backed emulator such as **Rio** is a natural companion: Rio uses a WebGPU rendering architecture and supports tabs, splits, themes, and configurable navigation. It gives linecast's animated and color-heavy views a capable canvas.\n\nThat pairing is optional, not a requirement. Existing terminals may work perfectly well, and switching emulators introduces another configuration surface plus platform-specific graphics behavior. Nerd Fonts are optional too; upstream documents an icon mode for them, while ordinary emoji remain available. The healthiest approach is incremental:\n\n- begin with `linecast weather` in the terminal already in use;\n- try `--print`, `--oneline`, or JSON before building automation;\n- evaluate radar and maps on the actual network and display where they will run;\n- only tune fonts or adopt another emulator when a visible limitation justifies it.\n\n## Where it earns a place\n\nThe project is most persuasive when a terminal is already the working context. A developer can check an alert without shifting into a browser, place a terse condition in a status bar, or inspect daylight while coordinating across time zones. The map view goes further: upstream documents place search, route directions, street and terrain modes, live daylight shading, clouds, and a globe. These are substantial interactions, not ornamental ANSI art.\n\nThere is early evidence of attention beyond the package-manager catalog: the public GitHub project has accumulated stars and forks, while PyPI provides an independent distribution record. Those signals show interest, not durable adoption, and the project's age argues against stronger claims. The fair conclusion is narrower: linecast has already demonstrated that terminal-native environmental software can be cohesive rather than gimmicky.\n\nIts best feature may be the boundary it preserves. It can be a live dashboard when a person is exploring, a single frame when output is redirected, or structured data when a script is listening. That respect for multiple modes makes the visual ambition useful. The terminal does not have to imitate a browser; it can become a compact observatory on its own terms.",
+      "deck": "linecast compresses weather, tides, daylight, the moon, radar, and maps into one surprisingly tactile command-line observatory.",
+      "id": "editorial:2026-08-31:terminal-as-environmental-instrument",
+      "package": {
+        "agentSummary": "Turns public weather, tide, solar, lunar, radar, and mapping data into unusually rich interactive terminal views without requiring an account or API key.",
+        "assessment": {
+          "alternatives": [
+            "Browser weather services",
+            "Dedicated desktop map applications",
+            "Small single-purpose weather CLIs"
+          ],
+          "audiences": [
+            "Terminal users",
+            "Weather and map enthusiasts",
+            "Developers building status bars or scripts"
+          ],
+          "caveats": [
+            "Live views depend on several third-party public data services",
+            "Tide sources and forecast precision vary by region",
+            "Windows support adds timezone and trust-store dependencies"
+          ],
+          "complements": [
+            "brew:rio-terminal",
+            "Shell status bars",
+            "Nerd Fonts for expanded icon rendering"
+          ],
+          "prerequisites": [
+            "Python 3.10 or newer",
+            "Internet access for live public data",
+            "A capable terminal for interactive views"
+          ],
+          "useCases": [
+            "Checking forecasts and official alerts",
+            "Exploring live radar, terrain, and street maps",
+            "Emitting concise or JSON data for automation"
+          ]
+        },
+        "category": "science",
+        "displayName": "linecast",
+        "docs": "https://github.com/ashuttl/linecast#readme",
+        "homepage": "https://github.com/ashuttl/linecast",
+        "id": "brew:linecast",
+        "installURL": "pkgmgrmgr://install?package=brew%3Alinecast",
+        "lastUpdatedAt": "2026-08-30T22:37:37Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/ashuttl/linecast",
+        "researchedAt": "2026-08-31T05:51:56Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "linecast repository and usage guide",
+            "url": "https://github.com/ashuttl/linecast"
+          },
+          {
+            "kind": "independent",
+            "title": "linecast 1.0.0 on PyPI",
+            "url": "https://pypi.org/project/linecast/1.0.0/"
+          },
+          {
+            "kind": "primary",
+            "title": "linecast releases",
+            "url": "https://github.com/ashuttl/linecast/releases"
+          }
+        ],
+        "upstreamSummary": "Weather, tides, the sun, the moon, and maps, drawn for the terminal",
+        "version": "2.1.0"
+      },
+      "primaryPackageID": "brew:linecast",
+      "publishedAt": "2026-08-31T05:51:56Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Turns public weather, tide, solar, lunar, radar, and mapping data into unusually rich interactive terminal views without requiring an account or API key.",
+          "assessment": {
+            "alternatives": [
+              "Browser weather services",
+              "Dedicated desktop map applications",
+              "Small single-purpose weather CLIs"
+            ],
+            "audiences": [
+              "Terminal users",
+              "Weather and map enthusiasts",
+              "Developers building status bars or scripts"
+            ],
+            "caveats": [
+              "Live views depend on several third-party public data services",
+              "Tide sources and forecast precision vary by region",
+              "Windows support adds timezone and trust-store dependencies"
+            ],
+            "complements": [
+              "brew:rio-terminal",
+              "Shell status bars",
+              "Nerd Fonts for expanded icon rendering"
+            ],
+            "prerequisites": [
+              "Python 3.10 or newer",
+              "Internet access for live public data",
+              "A capable terminal for interactive views"
+            ],
+            "useCases": [
+              "Checking forecasts and official alerts",
+              "Exploring live radar, terrain, and street maps",
+              "Emitting concise or JSON data for automation"
+            ]
+          },
+          "category": "science",
+          "displayName": "linecast",
+          "docs": "https://github.com/ashuttl/linecast#readme",
+          "homepage": "https://github.com/ashuttl/linecast",
+          "id": "brew:linecast",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alinecast",
+          "lastUpdatedAt": "2026-08-30T22:37:37Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/ashuttl/linecast",
+          "researchedAt": "2026-08-31T05:51:56Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "linecast repository and usage guide",
+              "url": "https://github.com/ashuttl/linecast"
+            },
+            {
+              "kind": "independent",
+              "title": "linecast 1.0.0 on PyPI",
+              "url": "https://pypi.org/project/linecast/1.0.0/"
+            },
+            {
+              "kind": "primary",
+              "title": "linecast releases",
+              "url": "https://github.com/ashuttl/linecast/releases"
+            }
+          ],
+          "upstreamSummary": "Weather, tides, the sun, the moon, and maps, drawn for the terminal",
+          "version": "2.1.0"
+        },
+        {
+          "agentSummary": "A cross-platform, GPU-accelerated terminal built in Rust around WebGPU, offering configurable navigation, panes, tabs, themes, and a deliberately modern rendering stack.",
+          "assessment": {
+            "alternatives": [
+              "WezTerm",
+              "Alacritty",
+              "Kitty"
+            ],
+            "audiences": [
+              "Developers wanting a modern terminal",
+              "Users running visually dense terminal applications",
+              "Cross-platform workstation users"
+            ],
+            "caveats": [
+              "GPU and WebGPU behavior can vary across platforms",
+              "Rapid development may change configuration details",
+              "It does not replace a multiplexer for durable remote sessions"
+            ],
+            "complements": [
+              "brew:linecast",
+              "A Nerd Font",
+              "A shell multiplexer for persistent remote sessions"
+            ],
+            "prerequisites": [
+              "A supported desktop operating system",
+              "Compatible graphics hardware and drivers",
+              "Configuration work for non-default workflows"
+            ],
+            "useCases": [
+              "Running interactive terminal dashboards",
+              "Organizing sessions with tabs and splits",
+              "Customizing fonts, colors, and navigation"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "rio-terminal",
+          "docs": "https://rioterm.com/docs",
+          "homepage": "https://rioterm.com/",
+          "id": "brew:rio-terminal",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ario-terminal",
+          "lastUpdatedAt": "2026-08-30T22:34:16Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/raphamorim/rio",
+          "researchedAt": "2026-08-31T05:51:56Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Rio terminal documentation",
+              "url": "https://rioterm.com/docs"
+            },
+            {
+              "kind": "primary",
+              "title": "Rio upstream repository",
+              "url": "https://github.com/raphamorim/rio"
+            },
+            {
+              "kind": "primary",
+              "title": "Rio release history",
+              "url": "https://github.com/raphamorim/rio/releases"
+            }
+          ],
+          "upstreamSummary": "Hardware-accelerated GPU terminal emulator powered by WebGPU",
+          "version": "0.5.27"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-03-05T19:25:45Z",
+        "firstStableReleaseSourceURL": "https://pypi.org/project/linecast/1.0.0/",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "linecast repository and usage guide",
+          "url": "https://github.com/ashuttl/linecast"
+        },
+        {
+          "kind": "primary",
+          "title": "linecast release history",
+          "url": "https://github.com/ashuttl/linecast/releases"
+        },
+        {
+          "kind": "independent",
+          "title": "linecast 1.0.0 on PyPI",
+          "url": "https://pypi.org/project/linecast/1.0.0/"
+        },
+        {
+          "kind": "primary",
+          "title": "Rio terminal documentation",
+          "url": "https://rioterm.com/docs"
+        },
+        {
+          "kind": "primary",
+          "title": "Rio upstream repository",
+          "url": "https://github.com/raphamorim/rio"
+        }
+      ],
+      "title": "When the terminal became an environmental instrument",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260831T055156Z-36eb312d",
+      "id": "for-you:language-runtime:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Runtime typescript and ESM support for Node.js",
+          "category": "language-runtime",
+          "displayName": "jiti",
+          "homepage": "https://github.com/unjs/jiti#readme",
+          "id": "npm:jiti",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajiti",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Vite as Node.js runtime",
+          "category": "language-runtime",
+          "displayName": "vite-node",
+          "homepage": "https://github.com/antfu-collective/vite-node#readme",
+          "id": "npm:vite-node",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avite-node",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "👷 workerd, Cloudflare's JavaScript/Wasm Runtime",
+          "category": "language-runtime",
+          "displayName": "workerd",
+          "homepage": "https://github.com/cloudflare/workerd#readme",
+          "id": "npm:workerd",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aworkerd",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Run any Edge Function from CLI or Node.js module.",
+          "category": "language-runtime",
+          "displayName": "edge-runtime",
+          "homepage": "https://edge-runtime.vercel.app/packages/runtime",
+          "id": "npm:edge-runtime",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aedge-runtime",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "node",
+          "category": "language-runtime",
+          "displayName": "node",
+          "homepage": "https://github.com/aredridel/node-bin-gen#readme",
+          "id": "npm:node",
+          "installURL": "pkgmgrmgr://install?package=npm%3Anode",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-08-31T05:51:56Z",
+      "title": "For You in Language Runtime",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "Glowing file tiles stream through three glass inspection gates and converge into an orderly archive on a dark geometric workbench.",
+        "attribution": "Generated by OpenAI image generation for Package Manager Manager",
+        "boxColors": {
+          "backgroundEnd": "#0B2D35",
+          "backgroundStart": "#071522",
+          "foreground": "#F4FFF9"
+        },
+        "license": "OpenAI-generated artwork; use permitted for this editorial",
+        "path": "feed/assets/prek-fast-quality-gates-2026-08-27.png"
+      },
+      "batchID": "20260827T094859Z-db700b42",
+      "body": "## The familiar gate gets a new engine\n\nGit hooks occupy an awkward place in developer tooling. They catch formatting drift, malformed configuration, generated-file mistakes, and accidental secrets before review, yet every added check lengthens the pause between `git commit` and getting on with the work. Teams then face a bad bargain: keep useful policy and tolerate the delay, or move checks exclusively to CI and discover simple failures later.\n\n**prek changes the runner rather than demanding a new policy format.** The project is written in Rust and presents itself as a drop-in alternative to pre-commit. It reads the familiar `.pre-commit-config.yaml`, manages hook environments, and runs independent work concurrently. Its first public GitHub release appeared on October 31, 2024, placing it inside the feed's newer-tool window, while its current documentation also describes monorepo discovery, built-in Rust implementations of common hooks, and an optional native TOML configuration.\n\nCompatibility is the important product decision. A repository can evaluate prek against an existing configuration instead of rewriting every hook on day one. That lowers the cost of a trial and keeps the configuration legible to contributors still using pre-commit. The native `prek.toml` path exists for teams that want newer features, but choosing it deliberately gives up that two-runner compatibility.\n\n## Production adoption is more useful than a stopwatch\n\nMaintainer benchmarks are helpful for forming a hypothesis, not for settling it. Hook performance depends on file counts, cache warmth, environment creation, network access, and the actual programs invoked. If a Python formatter consumes most of the wall clock, replacing only the orchestrator cannot turn it into a native Rust check.\n\nHome Assistant supplies stronger evidence of actual use. Its developer documentation announced a migration from pre-commit to prek in January 2026, citing the shared configuration and parallel execution, and its public core configuration contains instructions that invoke `prek`. That does not establish universal compatibility, but it shows the tool operating in a large, polyglot repository rather than only in a demonstration fixture.\n\nA fair trial should record more than the fastest run:\n\n- compare cold and warm runs on the same commit;\n- exercise commit, push, manual, and CI stages the repository relies on;\n- remove caches once to test environment reconstruction;\n- confirm that changed-file selection and exit codes match expectations; and\n- inspect any hooks whose correctness depends on execution order.\n\nParallelism is valuable precisely because hooks are often independent. It can also reveal accidental dependencies that a serial runner concealed. If one hook generates a file that another consumes, encode that relationship explicitly or keep those operations serial instead of trusting historical timing.\n\n## The runner is not the rule\n\nprek coordinates checks; it does not decide whether those checks are appropriate. Remote hook repositories still execute code on developer machines, language environments still need versions, and mutable tags still weaken reproducibility. Pin revisions, review updates, and keep hook scope narrow enough that developers understand what runs when they commit. A faster path should not become a quieter supply-chain path.\n\nThe project includes several built-in hooks, which can avoid environment startup for routine file hygiene. For domain work, focused tools remain useful. **rumdl**, for example, is a Rust Markdown linter and formatter with a dedicated pre-commit hook repository, editor support, CI annotations, and compatibility with existing markdownlint configuration. Pairing it with prek illustrates the clean boundary: prek selects files, stages, and scheduling; rumdl owns Markdown rules and fixes.\n\nThat separation also makes failures easier to diagnose. A hook that never starts points toward configuration or environment setup. A Markdown diagnostic belongs to rumdl and its rule configuration. A CI-only discrepancy suggests different stages, versions, caches, or file sets. Collapsing all of those concerns into a generic “the hook failed” message would squander the operational clarity a composable toolchain can provide.\n\n## Adoption should remain reversible\n\nThe safest migration begins with the existing YAML. Run prek explicitly in local development and CI, compare results with pre-commit on representative changes, then replace installed Git shims only after the team understands the differences. Keep the earlier path documented during the evaluation so contributors can distinguish a runner problem from a policy problem.\n\nSpeed is not merely cosmetic. Short feedback loops make it more likely that checks stay enabled and run before code reaches review. Still, the goal is not the smallest benchmark number. It is a gate developers trust enough to keep, backed by pinned inputs, observable failures, and CI verification. prek's most compelling idea is therefore conservative: preserve the accumulated hook ecosystem, modernize the machinery underneath it, and make the result easy to reverse if the promised compatibility does not hold.",
+      "deck": "A compatible Rust runner can remove friction from established Git-hook policy, but speed pays off only when teams preserve reproducibility, review, and clear scope.",
+      "id": "editorial:2026-08-27:prek-makes-the-commit-gate-disappear",
+      "package": {
+        "agentSummary": "Rust-based Git hook manager compatible with established pre-commit configurations, adding parallel execution, monorepo support, built-in hooks, and a single-binary operational model.",
+        "assessment": {
+          "alternatives": [
+            "pre-commit",
+            "lefthook",
+            "Husky",
+            "Custom Git hook scripts"
+          ],
+          "audiences": [
+            "Teams already using pre-commit configuration",
+            "Polyglot repositories seeking faster local validation",
+            "Monorepo maintainers coordinating many hooks"
+          ],
+          "caveats": [
+            "Drop-in compatibility still needs verification against unusual hook languages and stages",
+            "Parallel execution can expose hidden ordering assumptions",
+            "A faster runner does not make unpinned or untrusted hook repositories safe"
+          ],
+          "complements": [
+            "rumdl",
+            "Ruff",
+            "Continuous integration"
+          ],
+          "prerequisites": [
+            "A Git repository",
+            "A reviewed hook configuration",
+            "Language runtimes required by non-built-in hooks"
+          ],
+          "useCases": [
+            "Run checks before commits and pushes",
+            "Reuse existing .pre-commit-config.yaml files",
+            "Parallelize independent hooks in local development and CI"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "prek",
+        "docs": "https://prek.j178.dev/",
+        "homepage": "https://prek.j178.dev/",
+        "id": "brew:prek",
+        "installURL": "pkgmgrmgr://install?package=brew%3Aprek",
+        "lastUpdatedAt": "2026-08-27T09:26:21Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/j178/prek",
+        "researchedAt": "2026-08-27T09:48:59Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "prek documentation",
+            "url": "https://prek.j178.dev/"
+          },
+          {
+            "kind": "primary",
+            "title": "prek release history",
+            "url": "https://github.com/j178/prek/releases"
+          },
+          {
+            "kind": "independent",
+            "title": "Home Assistant migration to prek",
+            "url": "https://developers.home-assistant.io/blog/2026/01/13/replace-pre-commit-with-prek"
+          }
+        ],
+        "upstreamSummary": "Fast Git hook manager written in Rust, drop-in alternative to pre-commit",
+        "version": "0.4.14"
+      },
+      "primaryPackageID": "brew:prek",
+      "publishedAt": "2026-08-27T09:48:59Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Rust-based Git hook manager compatible with established pre-commit configurations, adding parallel execution, monorepo support, built-in hooks, and a single-binary operational model.",
+          "assessment": {
+            "alternatives": [
+              "pre-commit",
+              "lefthook",
+              "Husky",
+              "Custom Git hook scripts"
+            ],
+            "audiences": [
+              "Teams already using pre-commit configuration",
+              "Polyglot repositories seeking faster local validation",
+              "Monorepo maintainers coordinating many hooks"
+            ],
+            "caveats": [
+              "Drop-in compatibility still needs verification against unusual hook languages and stages",
+              "Parallel execution can expose hidden ordering assumptions",
+              "A faster runner does not make unpinned or untrusted hook repositories safe"
+            ],
+            "complements": [
+              "rumdl",
+              "Ruff",
+              "Continuous integration"
+            ],
+            "prerequisites": [
+              "A Git repository",
+              "A reviewed hook configuration",
+              "Language runtimes required by non-built-in hooks"
+            ],
+            "useCases": [
+              "Run checks before commits and pushes",
+              "Reuse existing .pre-commit-config.yaml files",
+              "Parallelize independent hooks in local development and CI"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "prek",
+          "docs": "https://prek.j178.dev/",
+          "homepage": "https://prek.j178.dev/",
+          "id": "brew:prek",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aprek",
+          "lastUpdatedAt": "2026-08-27T09:26:21Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/j178/prek",
+          "researchedAt": "2026-08-27T09:48:59Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "prek documentation",
+              "url": "https://prek.j178.dev/"
+            },
+            {
+              "kind": "primary",
+              "title": "prek release history",
+              "url": "https://github.com/j178/prek/releases"
+            },
+            {
+              "kind": "independent",
+              "title": "Home Assistant migration to prek",
+              "url": "https://developers.home-assistant.io/blog/2026/01/13/replace-pre-commit-with-prek"
+            }
+          ],
+          "upstreamSummary": "Fast Git hook manager written in Rust, drop-in alternative to pre-commit",
+          "version": "0.4.14"
+        },
+        {
+          "agentSummary": "Rust Markdown linter and formatter with configurable rules, automatic markdownlint configuration discovery, editor integration, CI reporting, and dedicated pre-commit-compatible hooks.",
+          "assessment": {
+            "alternatives": [
+              "markdownlint-cli2",
+              "Vale",
+              "mdformat"
+            ],
+            "audiences": [
+              "Documentation-heavy repositories",
+              "Teams standardizing Markdown in CI and editors"
+            ],
+            "caveats": [
+              "Default style rules may conflict with existing documentation conventions",
+              "Automatic fixes require diff review",
+              "Compatibility with markdownlint configuration does not guarantee identical output for every edge case"
+            ],
+            "complements": [
+              "prek",
+              "Documentation site generators",
+              "Editor LSP clients"
+            ],
+            "prerequisites": [
+              "Markdown files",
+              "A reviewed rule configuration matching project conventions"
+            ],
+            "useCases": [
+              "Lint Markdown for structural and style problems",
+              "Format documentation deterministically",
+              "Annotate Markdown violations in pull requests"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "rumdl",
+          "docs": "https://rumdl.dev/",
+          "homepage": "https://github.com/rvben/rumdl",
+          "id": "brew:rumdl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Arumdl",
+          "lastUpdatedAt": "2026-08-27T03:23:02Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/rvben/rumdl",
+          "researchedAt": "2026-08-27T09:48:59Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "rumdl repository and integration guide",
+              "url": "https://github.com/rvben/rumdl"
+            },
+            {
+              "kind": "primary",
+              "title": "rumdl release history",
+              "url": "https://github.com/rvben/rumdl/releases"
+            },
+            {
+              "kind": "independent",
+              "title": "MegaLinter rumdl descriptor",
+              "url": "https://megalinter.io/latest/descriptors/markdown_rumdl/"
+            }
+          ],
+          "upstreamSummary": "Markdown Linter and Formatter written in Rust",
+          "version": "0.2.61"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2024-10-31T07:00:36Z",
+        "firstStableReleaseSourceURL": "https://github.com/j178/prek/releases/tag/v0.0.1",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "prek documentation",
+          "url": "https://prek.j178.dev/"
+        },
+        {
+          "kind": "primary",
+          "title": "prek first public release",
+          "url": "https://github.com/j178/prek/releases/tag/v0.0.1"
+        },
+        {
+          "kind": "independent",
+          "title": "Home Assistant migration to prek",
+          "url": "https://developers.home-assistant.io/blog/2026/01/13/replace-pre-commit-with-prek"
+        },
+        {
+          "kind": "independent",
+          "title": "Home Assistant core hook configuration",
+          "url": "https://github.com/home-assistant/core/blob/dev/.pre-commit-config.yaml"
+        },
+        {
+          "kind": "primary",
+          "title": "rumdl repository and pre-commit integration",
+          "url": "https://github.com/rvben/rumdl"
+        }
+      ],
+      "title": "Prek makes the commit gate feel smaller",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260827T094859Z-d8857921",
+      "id": "new-packages:games:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Flash Player emulator",
+          "category": "games",
+          "displayName": "Ruffle",
+          "homepage": "https://ruffle.rs/",
+          "id": "brew:cask:ruffle",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aruffle",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-08-27T09:48:59Z",
+      "title": "New Packages in Games",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
+        "alt": "A geometric agent follows glowing paths through layered session panes, a browser window, a cleaned article, and a local archive.",
+        "attribution": "Generated by OpenAI image generation for Package Manager Manager",
+        "boxColors": {
+          "backgroundEnd": "#201A43",
+          "backgroundStart": "#090D25",
+          "foreground": "#FFFFFF"
+        },
+        "license": "OpenAI-generated artwork; use permitted for this editorial",
+        "path": "feed/assets/agent-memory-trails.png"
+      },
+      "batchID": "20260824T071230Z-a195479f",
+      "body": "## The missing layer is often already on disk\n\nCoding agents are very good at producing history and surprisingly bad at benefiting from it. A fix may have been reasoned through last Tuesday, complete with failed approaches and a decisive test, yet the next session starts from a thin summary or no context at all. The usual answer is to create a new memory store and begin recording. **deja-vu takes the opposite route:** it indexes the local session histories that supported agents have already written.\n\nThat distinction is practical, not semantic. The first public v0.1.0 release arrived on July 14, 2026, with local search across Claude Code, Codex CLI, and opencode histories, an incremental on-disk index, compact context output, and an MCP server. Subsequent releases rapidly widened harness support and added session-start recall, synchronization, redaction, restore tools, and action-time hints. It is an unusually compressed development history, and that velocity is both the attraction and the warning.\n\n## Recall without another model call\n\nThe project says its retrieval path uses neither an LLM nor embeddings. Instead, it builds a local index over transcripts and returns cited session evidence through its CLI, hooks, or MCP tools. That can make it a useful companion rather than another agent: the coding harness still plans and edits, while deja-vu supplies the earlier conversation most likely to matter.\n\nThe strongest use cases are mundane ones:\n\n- finding why a dependency or architecture choice was rejected;\n- recovering the exact test that exposed an intermittent bug;\n- reopening work in the original harness;\n- giving a compacted or newly started session a sourced digest.\n\nThe repository reported roughly 688 stars when reviewed, a modest but concrete signal of attention for a project only weeks old. Its changelog also documents contributions, fixes, and integrations across many harnesses. Those are signs of actual use, but not proof that its maintainer-published 84.9% hit-at-one benchmark will generalize to every codebase. Retrieval vocabulary, transcript quality, and the kind of work being repeated all matter.\n\nPrivacy needs equal weight. Local processing avoids sending the index to a hosted embedding service, and the project describes redaction at ingest. Still, agent transcripts routinely contain environment details, pasted logs, file paths, customer data, and occasional secrets. Anyone adopting transcript recall should inspect what their harness records, limit directory access, and treat synchronization exports as sensitive artifacts.\n\n## A retrieval pipeline needs eyes and a filter\n\nMemory becomes more useful when an agent can refresh old conclusions against the current web. Two related tools illustrate a small, composable path. **Obscura** is a new Rust headless-browser engine that runs JavaScript, exposes the Chrome DevTools Protocol, and targets Puppeteer, Playwright, and MCP workflows. Its repository had accumulated about 22,000 stars by review time, substantial attention for a project whose v0.1.0 shipped in April 2026.\n\nObscura's appeal is operational: it aims to provide browser automation without carrying a full Chrome installation. But compatibility claims deserve testing against real targets. A younger engine will inevitably encounter corners of the web platform, authentication flows, bot defenses, and client libraries that assume Chromium behavior. Its published speed and memory comparisons are useful hypotheses, not independent benchmarks. Scraping also remains governed by site terms, access controls, privacy rules, and law; stealth is not permission.\n\nOnce a browser retrieves a page, **Defuddle** can reduce it to main content and metadata in cleaner HTML or Markdown. The project predates the other two, with its first public releases in March 2025, and had around 9,100 GitHub stars at review time. It is deliberately narrower: it does not browse for the agent or maintain memory. It removes layout noise so downstream search, archival, or model context has less irrelevant material.\n\n## Compose carefully, keep the evidence\n\nTogether these tools suggest a sensible architecture: use deja-vu to recover the team's prior reasoning, a browser engine such as Obscura to check what has changed, and Defuddle to turn selected pages into compact evidence. Keep each boundary visible. Store source URLs and timestamps in the agent's working notes, preserve the original page when accuracy matters, and do not let a cleaned Markdown extraction masquerade as a complete document.\n\nThe larger lesson is that agent memory need not mean one monolithic platform. A local transcript index, a browser, and a content filter can remain replaceable parts. That makes failures easier to diagnose: was the earlier session never indexed, did the browser render incorrectly, or did the extractor discard the decisive table? Composability adds setup and evaluation work, but it also keeps provenance within reach—and provenance is what turns yesterday's output into evidence rather than folklore.",
+      "deck": "deja-vu treats the transcripts already on disk as working memory, while Obscura and Defuddle show how a lean retrieval pipeline can reach beyond the repository.",
+      "id": "editorial:2026-08-24:when-agents-can-find-yesterday",
+      "package": {
+        "agentSummary": "Indexes existing local coding-agent transcripts for fast cross-session recall, with MCP and hook integrations, redaction, and no required model or embedding service.",
+        "assessment": {
+          "alternatives": [
+            "Repository-maintained decision logs",
+            "Letta Code's agent-managed memory",
+            "Manual transcript search"
+          ],
+          "audiences": [
+            "Developers who regularly use multiple coding-agent harnesses",
+            "Teams investigating repeated fixes and decisions"
+          ],
+          "caveats": [
+            "Local transcripts can contain secrets or sensitive project details despite ingest-time redaction",
+            "A young, fast-moving project may change integrations and index formats",
+            "Retrieval quality claims come primarily from the maintainer's own benchmark"
+          ],
+          "complements": [
+            "Codex CLI",
+            "Claude Code",
+            "MCP-compatible agent clients"
+          ],
+          "prerequisites": [
+            "Existing local transcripts from a supported coding agent",
+            "Permission to index files in agent data directories"
+          ],
+          "useCases": [
+            "Search prior coding sessions across supported agents",
+            "Recall project context at session start",
+            "Resume or hand off earlier agent work"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "deja-vu",
+        "docs": "https://github.com/vshulcz/deja-vu/blob/main/README.md",
+        "homepage": "https://github.com/vshulcz/deja-vu",
+        "id": "brew:deja-vu",
+        "installURL": "pkgmgrmgr://install?package=brew%3Adeja-vu",
+        "lastUpdatedAt": "2026-08-23T13:48:40Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/vshulcz/deja-vu",
+        "researchedAt": "2026-08-24T07:12:30Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "deja-vu repository and usage guide",
+            "url": "https://github.com/vshulcz/deja-vu"
+          },
+          {
+            "kind": "primary",
+            "title": "deja-vu changelog",
+            "url": "https://github.com/vshulcz/deja-vu/blob/main/CHANGELOG.md"
+          },
+          {
+            "kind": "primary",
+            "title": "deja-vu architecture",
+            "url": "https://github.com/vshulcz/deja-vu/blob/main/docs/ARCHITECTURE.md"
+          }
+        ],
+        "upstreamSummary": "Local searchable memory over the session histories of coding agents",
+        "version": "0.18.0"
+      },
+      "primaryPackageID": "brew:deja-vu",
+      "publishedAt": "2026-08-24T07:12:30Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Indexes existing local coding-agent transcripts for fast cross-session recall, with MCP and hook integrations, redaction, and no required model or embedding service.",
+          "assessment": {
+            "alternatives": [
+              "Repository-maintained decision logs",
+              "Letta Code's agent-managed memory",
+              "Manual transcript search"
+            ],
+            "audiences": [
+              "Developers who regularly use multiple coding-agent harnesses",
+              "Teams investigating repeated fixes and decisions"
+            ],
+            "caveats": [
+              "Local transcripts can contain secrets or sensitive project details despite ingest-time redaction",
+              "A young, fast-moving project may change integrations and index formats",
+              "Retrieval quality claims come primarily from the maintainer's own benchmark"
+            ],
+            "complements": [
+              "Codex CLI",
+              "Claude Code",
+              "MCP-compatible agent clients"
+            ],
+            "prerequisites": [
+              "Existing local transcripts from a supported coding agent",
+              "Permission to index files in agent data directories"
+            ],
+            "useCases": [
+              "Search prior coding sessions across supported agents",
+              "Recall project context at session start",
+              "Resume or hand off earlier agent work"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "deja-vu",
+          "docs": "https://github.com/vshulcz/deja-vu/blob/main/README.md",
+          "homepage": "https://github.com/vshulcz/deja-vu",
+          "id": "brew:deja-vu",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adeja-vu",
+          "lastUpdatedAt": "2026-08-23T13:48:40Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/vshulcz/deja-vu",
+          "researchedAt": "2026-08-24T07:12:30Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "deja-vu repository and usage guide",
+              "url": "https://github.com/vshulcz/deja-vu"
+            },
+            {
+              "kind": "primary",
+              "title": "deja-vu changelog",
+              "url": "https://github.com/vshulcz/deja-vu/blob/main/CHANGELOG.md"
+            },
+            {
+              "kind": "primary",
+              "title": "deja-vu architecture",
+              "url": "https://github.com/vshulcz/deja-vu/blob/main/docs/ARCHITECTURE.md"
+            }
+          ],
+          "upstreamSummary": "Local searchable memory over the session histories of coding agents",
+          "version": "0.18.0"
+        },
+        {
+          "agentSummary": "A Rust headless-browser engine for scraping and agent automation, exposing Chrome DevTools compatibility, JavaScript execution, parallel workers, and optional stealth-oriented features.",
+          "assessment": {
+            "alternatives": [
+              "Chromium headless",
+              "Playwright-managed browsers",
+              "WebKit-based automation"
+            ],
+            "audiences": [
+              "Developers building browser-driven agents",
+              "Scraping teams seeking a compact browser runtime"
+            ],
+            "caveats": [
+              "It is not a complete Chromium implementation, so site and API compatibility must be tested",
+              "Performance comparisons in project materials are maintainer-produced",
+              "Stealth features do not guarantee reliable access or permission to scrape a site"
+            ],
+            "complements": [
+              "Puppeteer",
+              "Playwright",
+              "Agent MCP clients"
+            ],
+            "prerequisites": [
+              "Validation against the target sites and browser APIs",
+              "Rust toolchain plus native build dependencies when building from source"
+            ],
+            "useCases": [
+              "Drive pages through Chrome DevTools Protocol clients",
+              "Run JavaScript-heavy scraping jobs",
+              "Expose browser actions through MCP"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "obscura",
+          "docs": "https://github.com/h4ckf0r0day/obscura#readme",
+          "homepage": "https://obscura.sh",
+          "id": "brew:obscura",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aobscura",
+          "lastUpdatedAt": "2026-08-23T14:58:52Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/h4ckf0r0day/obscura",
+          "researchedAt": "2026-08-24T07:12:30Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Obscura repository and technical overview",
+              "url": "https://github.com/h4ckf0r0day/obscura"
+            },
+            {
+              "kind": "primary",
+              "title": "Obscura release history",
+              "url": "https://github.com/h4ckf0r0day/obscura/releases"
+            },
+            {
+              "kind": "primary",
+              "title": "Obscura project website",
+              "url": "https://obscura.sh/"
+            }
+          ],
+          "upstreamSummary": "Headless browser for AI agents and web scraping",
+          "version": "0.2.1"
+        },
+        {
+          "agentSummary": "Extracts a page's main content and metadata into cleaner HTML or Markdown, offering a focused preprocessing layer for readers, archives, and language-model workflows.",
+          "assessment": {
+            "alternatives": [
+              "Mozilla Readability",
+              "Trafilatura",
+              "Site-specific extraction rules"
+            ],
+            "audiences": [
+              "Developers preparing web content for language models",
+              "Teams building read-it-later and archival tools"
+            ],
+            "caveats": [
+              "Heuristic extraction can omit meaningful sidebars, captions, or interactive content",
+              "Rendered pages still need a separate browser layer",
+              "Output should be audited before preservation or model ingestion"
+            ],
+            "complements": [
+              "Obscura",
+              "Markdown pipelines",
+              "Retrieval and indexing systems"
+            ],
+            "prerequisites": [
+              "HTML from a browser or HTTP retrieval layer",
+              "Quality checks on representative target pages"
+            ],
+            "useCases": [
+              "Convert article pages into Markdown",
+              "Remove navigation and layout clutter",
+              "Extract page metadata alongside main content"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "defuddle",
+          "docs": "https://github.com/kepano/defuddle#readme",
+          "homepage": "https://defuddle.md",
+          "id": "brew:defuddle",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adefuddle",
+          "lastUpdatedAt": "2026-08-24T03:24:19Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/kepano/defuddle",
+          "researchedAt": "2026-08-24T07:12:30Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Defuddle repository and API overview",
+              "url": "https://github.com/kepano/defuddle"
+            },
+            {
+              "kind": "primary",
+              "title": "Defuddle documentation",
+              "url": "https://defuddle.md/"
+            },
+            {
+              "kind": "primary",
+              "title": "Defuddle release history",
+              "url": "https://github.com/kepano/defuddle/releases"
+            }
+          ],
+          "upstreamSummary": "Extract article content and metadata from web pages",
+          "version": "0.19.2"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-14T08:48:37Z",
+        "firstStableReleaseSourceURL": "https://github.com/vshulcz/deja-vu/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "deja-vu repository and usage guide",
+          "url": "https://github.com/vshulcz/deja-vu"
+        },
+        {
+          "kind": "primary",
+          "title": "deja-vu changelog",
+          "url": "https://github.com/vshulcz/deja-vu/blob/main/CHANGELOG.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Obscura repository and technical overview",
+          "url": "https://github.com/h4ckf0r0day/obscura"
+        },
+        {
+          "kind": "primary",
+          "title": "Defuddle repository and API overview",
+          "url": "https://github.com/kepano/defuddle"
+        }
+      ],
+      "title": "When coding agents can find yesterday",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260824T071230Z-fc42cbc0",
+      "id": "for-you:media:20261004T080130Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "SVGO is a Node.js library and command-line application for optimizing vector images.",
+          "category": "media",
+          "displayName": "svgo",
+          "homepage": "https://svgo.dev",
+          "id": "npm:svgo",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asvgo",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "get dimensions of any image file",
+          "category": "media",
+          "displayName": "image-size",
+          "homepage": null,
+          "id": "npm:image-size",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aimage-size",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Fast math typesetting for the web.",
+          "category": "media",
+          "displayName": "katex",
+          "homepage": "https://katex.org",
+          "id": "npm:katex",
+          "installURL": "pkgmgrmgr://install?package=npm%3Akatex",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "QRCode / 2d Barcode api with both server side and client side support using canvas",
+          "category": "media",
+          "displayName": "qrcode",
+          "homepage": null,
+          "id": "npm:qrcode",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aqrcode",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The smallest and fastest pixel-level image comparison library.",
+          "category": "media",
+          "displayName": "pixelmatch",
+          "homepage": "https://github.com/mapbox/pixelmatch#readme",
+          "id": "npm:pixelmatch",
+          "installURL": "pkgmgrmgr://install?package=npm%3Apixelmatch",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-08-24T07:12:30Z",
+      "title": "For You in Media",
+      "type": "personalizedRecommendations"
+    }
+  ],
+  "generatedAt": "2026-10-05T04:35:53Z",
+  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261005T043553Z-32d6518b.json",
+  "pageID": "20261005T043553Z-a0fb0d72",
+  "schemaVersion": 2
+}

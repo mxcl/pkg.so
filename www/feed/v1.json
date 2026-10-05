@@ -116,6 +116,7 @@
       "packageIDs": [
         "brew:cask:sdrmm-app",
         "brew:cask:hagimimonitordirect",
+        "brew:mailtrap-local",
         "brew:deja",
         "brew:cask:manus-cue",
         "brew:sofka",
@@ -124,8 +125,7 @@
         "brew:cask:mdhero",
         "brew:kubectl-radar",
         "brew:vortix",
-        "brew:cask:deviceshelf",
-        "brew:cask:gloomberb"
+        "brew:cask:deviceshelf"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -133,18 +133,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:sdrmm-app",
+        "brew:cask:hagimimonitordirect",
+        "brew:mailtrap-local",
         "brew:cask:visual-studio-code@insiders",
         "brew:neovim",
         "brew:cask:kotlin-lsp",
-        "brew:cask:sdrmm-app",
-        "brew:cask:hagimimonitordirect",
         "brew:deja",
         "brew:cask:manus-cue",
         "brew:talosctl",
         "brew:helmfile",
         "brew:sofka",
-        "brew:cask:mindroom",
-        "brew:cask:highball"
+        "brew:cask:mindroom"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -817,7 +817,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-04T08:01:30Z",
+  "generatedAt": "2026-10-05T04:35:53Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1185,91 +1185,30 @@
       "upstreamSummary": "Tool discovery and execution layer for AI agents",
       "version": "1.6.10"
     },
-    "brew:cask:gloomberb": {
-      "agentSummary": "Gloomberb combines a keyboard-driven finance terminal, desktop interface, market data, portfolios, plugins, and automation-friendly output, but provider coverage and credentials vary.",
-      "assessment": {
-        "alternatives": [
-          "OpenBB for a broader Python-centered investment research platform",
-          "Dedicated broker terminals for supported trading workflows"
-        ],
-        "audiences": [
-          "Terminal-oriented investors and market researchers",
-          "Developers building scriptable finance workflows"
-        ],
-        "caveats": [
-          "Data freshness, limits, and feature availability vary by provider and account tier",
-          "Some desktop, browser, and terminal capabilities differ across platforms"
-        ],
-        "complements": [
-          "Kitty-compatible terminals for richer graphics",
-          "Broker and market-data provider accounts"
-        ],
-        "prerequisites": [
-          "A supported macOS, Linux, or Windows environment",
-          "Provider accounts or API credentials for data sources that require them"
-        ],
-        "useCases": [
-          "Inspect quotes, filings, news, portfolios, watchlists, and economic data",
-          "Export structured finance data or extend the terminal with plugins"
-        ]
-      },
-      "category": "data",
-      "displayName": "Gloomberb",
-      "docs": "https://gloom.sh/docs",
-      "homepage": "https://gloom.sh/",
-      "id": "brew:cask:gloomberb",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agloomberb",
-      "lastUpdatedAt": "2026-09-25T01:40:45Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/gloom-sh/gloomberb",
-      "researchedAt": "2026-09-25T11:08:58Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Gloomberb v0.1.0 release",
-          "url": "https://github.com/gloom-sh/gloomberb/releases/tag/v0.1.0"
-        },
-        {
-          "kind": "primary",
-          "title": "Gloomberb documentation",
-          "url": "https://gloom.sh/docs"
-        }
-      ],
-      "upstreamSummary": "Finance terminal",
-      "version": "0.15.2"
-    },
     "brew:cask:hagimimonitordirect": {
-      "agentSummary": "HagimiMonitor places Apple Silicon performance, storage, network, battery, Bluetooth, display, temperature, and fan telemetry in a compact native macOS menu-bar interface.",
+      "agentSummary": "HagimiMonitor Direct places live Mac hardware and system metrics in the menu bar, adding historical reports, health scoring, controls, and direct-build-only sensors.",
       "assessment": {
         "alternatives": [
-          "Stats",
-          "iStat Menus",
-          "MenuMeters"
+          "macOS Activity Monitor, Stats, iStat Menus, or other menu-bar monitors offer different depth, licensing, and hardware coverage."
         ],
         "audiences": [
-          "Apple Silicon Mac users who want persistent system telemetry",
-          "Operators troubleshooting performance, storage, network, or battery behavior",
-          "Users who prefer a native menu-bar monitor"
+          "Apple Silicon Mac users who want dense system telemetry and quick controls in the menu bar."
         ],
         "caveats": [
-          "The direct build has broader hardware access than the sandboxed App Store build",
-          "Temperature, fan, and external-display controls depend on hardware and connection support",
-          "It requires macOS 15 or newer and Apple Silicon"
+          "Sensor and display-control availability varies by Mac, display, cable, and connection path.",
+          "The direct build has capabilities unavailable in the sandboxed App Store edition, so documentation must be read for the installed variant.",
+          "Health scores and event detection are summaries, not replacements for hardware diagnostics."
         ],
         "complements": [
-          "Activity Monitor for process-level investigation",
-          "Console for system and application logs",
-          "A hardware diagnostics workflow for persistent thermal or storage warnings"
+          "Activity Monitor and hardware-specific diagnostics when a menu-bar overview identifies behavior worth investigating."
         ],
         "prerequisites": [
-          "An Apple Silicon Mac running macOS 15 or newer",
-          "The direct distribution for features unavailable inside the App Store sandbox",
-          "Compatible hardware for SMC sensors or DDC/CI display controls"
+          "An Apple Silicon Mac running macOS 15 or later.",
+          "Compatible hardware and connections for optional SMC readings or DDC/CI display controls."
         ],
         "useCases": [
-          "Watch CPU, GPU, memory, storage, network, battery, Bluetooth, and display status",
-          "Review historical reports, health scores, and detected system events",
-          "Control supported external displays and inspect temperature or fan data with the direct build"
+          "Monitor CPU, GPU, memory, storage, network, battery, Bluetooth, and display status.",
+          "Review historical reports and health events or control supported external displays from the direct build."
         ]
       },
       "category": "system",
@@ -1278,29 +1217,29 @@
       "homepage": "https://acerola-1.github.io/hagimi-monitor/",
       "id": "brew:cask:hagimimonitordirect",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahagimimonitordirect",
-      "lastUpdatedAt": "2026-10-02T07:19:29Z",
+      "lastUpdatedAt": "2026-10-04T14:50:57Z",
       "manager": "homebrew",
       "repository": "https://github.com/Acerola-1/hagimi-monitor",
-      "researchedAt": "2026-10-03T08:36:16Z",
+      "researchedAt": "2026-10-05T04:35:53Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "HagimiMonitor project documentation",
-          "url": "https://github.com/Acerola-1/hagimi-monitor"
+          "title": "HagimiMonitor official English documentation",
+          "url": "https://github.com/Acerola-1/hagimi-monitor/blob/main/README.en.md"
         },
         {
           "kind": "primary",
-          "title": "HagimiMonitor official product site",
-          "url": "https://acerola-1.github.io/hagimi-monitor/en/"
+          "title": "HagimiMonitor official project site",
+          "url": "https://acerola-1.github.io/hagimi-monitor/"
         },
         {
           "kind": "primary",
-          "title": "HagimiMonitor v0.1.0 first release",
+          "title": "HagimiMonitor initial v0.1.0 release",
           "url": "https://github.com/Acerola-1/hagimi-monitor/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Menu bar monitor for system performance and hardware",
-      "version": "1.7.0"
+      "version": "1.7.1"
     },
     "brew:cask:highball": {
       "agentSummary": "Highball runs Windows games on Apple Silicon through managed Wine-based engines, pairing launcher automation with an open compatibility database and per-game renderer guidance.",
@@ -2015,37 +1954,28 @@
       "version": "1.2.1"
     },
     "brew:cask:sdrmm-app": {
-      "agentSummary": "SDR-- combines a modular node canvas with desktop and remote server modes for listening, decoding, visualizing, recording, and automating software-defined radio workflows.",
+      "agentSummary": "SDR-- combines a desktop radio interface with a remote browser-accessible server, supporting modular signal routing, decoding, recording, visualization, and hardware-backed experimentation.",
       "assessment": {
         "alternatives": [
-          "SDR++",
-          "Gqrx",
-          "GNU Radio Companion"
+          "SDR++, GNU Radio, or other receiver applications may better fit simpler tuning or custom signal-processing pipelines."
         ],
         "audiences": [
-          "Radio hobbyists using RTL-SDR, HackRF, Airspy, SDRplay, or compatible devices",
-          "Experimenters building visual signal-processing chains",
-          "Users who want a remote SDR server with a browser-accessible interface"
+          "Software-defined-radio listeners, radio amateurs, signal researchers, and experimenters who want a visual receiver workflow."
         ],
         "caveats": [
-          "The project is young and describes itself as under active development",
-          "Hardware support and decoder maturity vary by device and protocol",
-          "Remote operation requires deliberate authentication, TLS, and network exposure choices"
+          "The project is young, so hardware coverage and operational behavior may change quickly.",
+          "Remote access adds network-security responsibilities, and advanced decoding still depends on signal quality and compatible hardware."
         ],
         "complements": [
-          "SigMF tools for exchanging recorded signal data",
-          "Antenna and RF filtering hardware suited to the target band",
-          "Radio-reference databases for identifying frequencies and protocols"
+          "RTL-SDR and other supported receivers, suitable antennas, and SigMF recordings for replay or analysis."
         ],
         "prerequisites": [
-          "Compatible software-defined radio hardware for live reception",
-          "An appropriate antenna and basic awareness of local radio regulations",
-          "Network authentication and HTTPS configuration before exposing remote access"
+          "Compatible radio hardware and any required device access or drivers for live reception.",
+          "Authentication and HTTPS configuration when exposing the server beyond a trusted local network."
         ],
         "useCases": [
-          "Listen to and record analog or digital radio signals",
-          "Decode aircraft, ship, pager, sensor, image, and amateur-radio transmissions",
-          "Build reusable receiver graphs and automate them through REST, WebSocket, or MCP interfaces"
+          "Listen to, decode, visualize, scan, or record signals with a locally attached SDR.",
+          "Place the server near an antenna and operate the same receiver engine remotely through a browser."
         ]
       },
       "category": "media",
@@ -2054,29 +1984,29 @@
       "homepage": "https://github.com/Newspicel/sdrmm",
       "id": "brew:cask:sdrmm-app",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asdrmm-app",
-      "lastUpdatedAt": "2026-10-02T08:43:10Z",
+      "lastUpdatedAt": "2026-10-05T02:11:37Z",
       "manager": "homebrew",
       "repository": "https://github.com/Newspicel/sdrmm",
-      "researchedAt": "2026-10-03T08:36:16Z",
+      "researchedAt": "2026-10-05T04:35:53Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "SDR-- project documentation",
+          "title": "SDR-- official repository and feature overview",
           "url": "https://github.com/Newspicel/sdrmm"
         },
         {
           "kind": "primary",
-          "title": "SDR-- v0.0.1 first release",
-          "url": "https://github.com/Newspicel/sdrmm/releases/tag/v0.0.1"
+          "title": "SDR-- official documentation",
+          "url": "https://sdrmm.com/docs/"
         },
         {
-          "kind": "independent",
-          "title": "Independent SDR-- overview",
-          "url": "https://hamradio.my/sdrmm-sdr-minus-minus-modular-node-based-sdr-receiver/"
+          "kind": "primary",
+          "title": "SDR-- initial v0.0.1 release",
+          "url": "https://github.com/Newspicel/sdrmm/releases/tag/v0.0.1"
         }
       ],
       "upstreamSummary": "Modular, client-server software-defined radio",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     "brew:cask:tapmap": {
       "agentSummary": "TapMap visualizes local network connections on a world map, builds activity history, and highlights unfamiliar destinations while remaining an awareness tool rather than a firewall.",
@@ -3327,6 +3257,61 @@
       "upstreamSummary": "Scalable user load testing tool written in Python",
       "version": "2.46.6"
     },
+    "brew:mailtrap-local": {
+      "agentSummary": "mailtrap-local catches application email on localhost and provides an embedded web inbox, inspection tools, and JSON API in one developer-focused binary.",
+      "assessment": {
+        "alternatives": [
+          "Mailpit, MailHog, or a hosted email-testing sandbox provide overlapping capture and inspection workflows."
+        ],
+        "audiences": [
+          "Individual developers testing application-generated email on a workstation."
+        ],
+        "caveats": [
+          "The upstream explicitly scopes it to individual localhost use: it has no accounts, authentication, multi-tenancy, RBAC, or high-availability design.",
+          "The macOS binary is not notarized, and the project documents a one-time Gatekeeper bypass for downloaded builds."
+        ],
+        "complements": [
+          "Automated application tests, local web-development stacks, and Mailtrap's hosted services when team or cloud workflows are needed."
+        ],
+        "prerequisites": [
+          "An application whose SMTP host and port can be pointed at the local service.",
+          "Local storage for its SQLite-backed mailbox."
+        ],
+        "useCases": [
+          "Capture local SMTP traffic without delivering messages to real recipients.",
+          "Inspect HTML, text, headers, attachments, compatibility warnings, or messages through a local JSON API."
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "mailtrap-local",
+      "docs": "https://github.com/mailtrap/mailtrap-local",
+      "homepage": "https://github.com/mailtrap/mailtrap-local",
+      "id": "brew:mailtrap-local",
+      "installURL": "pkgmgrmgr://install?package=brew%3Amailtrap-local",
+      "lastUpdatedAt": "2026-10-04T14:00:34Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/mailtrap/mailtrap-local",
+      "researchedAt": "2026-10-05T04:35:53Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "mailtrap-local official repository and scope",
+          "url": "https://github.com/mailtrap/mailtrap-local"
+        },
+        {
+          "kind": "primary",
+          "title": "mailtrap-local initial v0.1.0 release",
+          "url": "https://github.com/mailtrap/mailtrap-local/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "primary",
+          "title": "mailtrap-local OpenAPI specification",
+          "url": "https://github.com/mailtrap/mailtrap-local/blob/main/docs/api/openapi.yaml"
+        }
+      ],
+      "upstreamSummary": "Local email sandbox with SMTP server, web UI, and JSON API",
+      "version": "0.4.1"
+    },
     "brew:metview": {
       "agentSummary": "Metview gives operational and research meteorologists one environment for accessing, processing, scripting, and visualizing ECMWF-oriented weather data through desktop and Python workflows.",
       "assessment": {
@@ -4242,7 +4227,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-04T07:59:55Z",
+    "generatedAt": "2026-10-05T04:34:23Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
