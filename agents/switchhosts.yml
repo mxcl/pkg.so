@@ -1,12 +1,13 @@
 id: cask:switchhosts
 display-name: SwitchHosts
-homepage: https://switchhosts.vercel.app/
-repo: https://github.com/oldj/SwitchHosts
+repo: null
 docs:
   - https://github.com/oldj/SwitchHosts#readme
 config-file-location:
-  unix: ~/.SwitchHosts/internal/config.json
-  windows: '%USERPROFILE%\.SwitchHosts\internal\config.json'
+  unix:
+    - ~/.SwitchHosts/internal/config.json
+  windows:
+    - '%USERPROFILE%\.SwitchHosts\internal\config.json'
 credentials-file-location: null
 history:
   adoption-history:
@@ -49,10 +50,6 @@ history:
       Users maintain local or remotely refreshed hosts sets, group entries, toggle them
       from the main window or system tray, and import or export hosts data. Version 5
       stores preferences separately from entry content and histories.
-category: networking
-package-manager:
-  brew-cask: switchhosts
-package-manager-url: https://formulae.brew.sh/cask/switchhosts
 tags:
   - dns-override
   - host-switching
@@ -60,10 +57,34 @@ tags:
   - network-development
   - remote-hosts
   - system-tray
-description: App to switch hosts
-applications:
-  - SwitchHosts.app
 provenance:
-  cask: switchhosts
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official README describes managing and switching local, remote, grouped, and
+      folder-based hosts entries.
+    - 'source_facts.description: "App to switch hosts"'
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/oldj/SwitchHosts#readme
+  docs-sources:
+    - >
+      The official repository README is the project's primary usage, feature, backup,
+      and build documentation.
+  history-sources:
+    - https://github.com/oldj/SwitchHosts#readme
+    - https://github.com/oldj/SwitchHosts/discussions/561
+    - https://github.com/oldj/SwitchHosts/releases
+  repo-sources:
+    - source_facts.repo is already populated; per the task rules it was not re-evaluated.
+  tags-sources:
+    - https://github.com/oldj/SwitchHosts#readme
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - host-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

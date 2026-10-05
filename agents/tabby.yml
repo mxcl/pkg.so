@@ -1,22 +1,27 @@
 id: cask:tabby
 display-name: Tabby
-homepage: https://eugeny.github.io/tabby/
-repo: https://github.com/Eugeny/tabby
+repo: null
 docs:
   - https://docs.tabby.sh/
   - https://github.com/Eugeny/tabby/wiki
   - https://github.com/Eugeny/tabby/wiki/Config-file
   - https://github.com/Eugeny/tabby/wiki/Vault-Encryption
 config-file-location:
-  linux: ~/.config/tabby/config.yaml
-  macos: ~/Library/Application Support/tabby/config.yaml
-  windows: '%APPDATA%\Tabby\config.yaml'
+  linux:
+    - ~/.config/tabby/config.yaml
+  macos:
+    - ~/Library/Application Support/tabby/config.yaml
+  windows:
+    - '%APPDATA%\Tabby\config.yaml'
 credentials-file-location:
-  linux: ~/.config/tabby/config.yaml (encrypted vault data under the vault attribute)
-  macos: >
-    ~/Library/Application Support/tabby/config.yaml (encrypted vault data under the
-    vault attribute)
-  windows: '%APPDATA%\Tabby\config.yaml (encrypted vault data under the vault attribute)'
+  linux:
+    - ~/.config/tabby/config.yaml (encrypted vault data under the vault attribute)
+  macos:
+    - >
+      ~/Library/Application Support/tabby/config.yaml (encrypted vault data under the
+      vault attribute)
+  windows:
+    - '%APPDATA%\Tabby\config.yaml (encrypted vault data under the vault attribute)'
 history:
   adoption-history:
     - >
@@ -65,10 +70,6 @@ history:
       sessions in tabs and split panes, customize shortcuts and themes, and install
       plug-ins. SSH passwords and private-key passphrases can be kept in an encrypted
       vault embedded in the YAML configuration.
-category: developer-tools
-package-manager:
-  brew-cask: tabby
-package-manager-url: https://formulae.brew.sh/cask/tabby
 tags:
   - cross-platform
   - plugins
@@ -77,10 +78,36 @@ tags:
   - ssh-client
   - telnet-client
   - terminal-emulator
-description: Terminal emulator, SSH and serial client
-applications:
-  - Tabby.app
 provenance:
-  cask: tabby
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official README describes Tabby as a configurable terminal emulator and
+      connection manager.
+    - 'source_facts.description: "Terminal emulator, SSH and serial client"'
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/Eugeny/tabby#readme
+  docs-sources:
+    - >
+      Official API documentation domain and official repository wiki pages for user
+      configuration and vault storage.
+  history-sources:
+    - https://github.com/Eugeny/tabby#readme
+    - https://github.com/Eugeny/tabby/discussions/4087
+    - https://github.com/Eugeny/tabby/releases
+    - https://github.com/Eugeny/tabby/wiki/Config-file
+    - https://github.com/Eugeny/tabby/wiki/Vault-Encryption
+  repo-sources:
+    - source_facts.repo is already populated; per the task rules it was not re-evaluated.
+  tags-sources:
+    - https://github.com/Eugeny/tabby#readme
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminal-emulators
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

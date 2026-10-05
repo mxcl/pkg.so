@@ -1,6 +1,5 @@
 id: cask:synologyassistant
 display-name: Synology Assistant
-homepage: https://www.synology.com/
 repo: null
 docs:
   - https://www.synology.com/en-global/support/download
@@ -51,10 +50,6 @@ history:
       Run the utility on a computer connected to the same local network as the storage
       system. It scans for Synology devices, shows their installation state, and can
       hand off to the DSM installation and setup workflow.
-category: networking
-package-manager:
-  brew-cask: synologyassistant
-package-manager-url: https://formulae.brew.sh/cask/synologyassistant
 tags:
   - device-management
   - dsm-installation
@@ -62,10 +57,41 @@ tags:
   - nas
   - network-utility
   - synology
-description: Tool to manage Synology NAS's across a LAN
-applications:
-  - SynologyAssistant.app
 provenance:
-  cask: synologyassistant
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Synology Knowledge Center articles describe locating Synology storage
+      systems on the local network and starting DSM installation.
+    - 'source_facts.description: "Tool to manage Synology NAS''s across a LAN"'
+  display-name-sources:
+    - current_curation.display-name
+    - https://kb.synology.com/DSM/tutorial/Unable_to_Locate_NAS
+  docs-sources:
+    - >
+      Official Synology Knowledge Center discovery and DSM installation articles, plus
+      the official Download Center.
+  history-sources:
+    - >
+      https://global.download.synology.com/download/Document/Hardware/HIG/DiskStation/13-year/DS213%2B/enu/Syno_QIG_2bay3_enu.pdf
+    - https://kb.synology.com/DSM/tutorial/How_to_install_DSM
+    - https://kb.synology.com/DSM/tutorial/Unable_to_Locate_NAS
+    - https://www.synology.com/en-global/support/download
+  repo-sources:
+    - >
+      Synology's official support and download surfaces document a vendor desktop
+      utility but do not identify an official public source-control repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://kb.synology.com/DSM/tutorial/How_to_install_DSM
+    - https://kb.synology.com/DSM/tutorial/Unable_to_Locate_NAS
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - network-management
+  - nas
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: medium
+tags-confidence: high

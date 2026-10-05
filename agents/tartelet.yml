@@ -1,7 +1,6 @@
 id: cask:tartelet
 display-name: Tartelet
-homepage: https://github.com/shapehq/tartelet
-repo: https://github.com/shapehq/tartelet
+repo: null
 docs:
   - https://github.com/framna-dk/tartelet/wiki
   - https://github.com/framna-dk/tartelet/wiki/Configuring-Tartelet
@@ -64,10 +63,6 @@ history:
       retained as a documented standalone credentials file. Other settings are
       configured through the application UI; the official user documentation does not
       specify a configuration-file path.
-category: developer-tools
-package-manager:
-  brew-cask: tartelet
-package-manager-url: https://formulae.brew.sh/cask/tartelet
 tags:
   - continuous-integration
   - ephemeral-vm
@@ -75,10 +70,37 @@ tags:
   - macos-virtualization
   - self-hosted-runner
   - tart
-description: Manage GitHub Actions runners in virtual machines
-applications:
-  - Tartelet.app
 provenance:
-  cask: tartelet
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      The official README describes ephemeral, isolated GitHub Actions runners hosted in
+      Tart virtual machines.
+    - 'source_facts.description: "Manage GitHub Actions runners in virtual machines"'
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/framna-dk/tartelet#readme
+  docs-sources:
+    - >
+      The official GitHub wiki provides installation, configuration, operation, and
+      advanced guides.
+  history-sources:
+    - https://github.com/framna-dk/tartelet#readme
+    - https://github.com/framna-dk/tartelet/releases
+    - https://github.com/framna-dk/tartelet/wiki
+    - https://github.com/framna-dk/tartelet/wiki/Configuring-Tartelet
+  repo-sources:
+    - source_facts.repo is already populated; per the task rules it was not re-evaluated.
+  tags-sources:
+    - https://github.com/framna-dk/tartelet#readme
+    - https://github.com/framna-dk/tartelet/wiki
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - ci-cd
+  - self-hosted-runners
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
