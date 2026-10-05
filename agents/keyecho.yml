@@ -1,12 +1,12 @@
 id: cask:keyecho
 display-name: KeyEcho
-homepage: https://keyecho.app/
-repo: https://github.com/ZacharyL2/KeyEcho
+repo: null
 docs:
   - https://github.com/ZacharyL2/KeyEcho/blob/main/docs/guides/custom-sounds.md
   - https://github.com/ZacharyL2/KeyEcho#readme
 config-file-location:
-  macos: ~/Library/Application Support/app.keyecho.keyecho/sounds/<sound-pack>/config.json
+  macos:
+    - ~/Library/Application Support/app.keyecho.keyecho/sounds/<sound-pack>/config.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -55,20 +55,45 @@ history:
       needed for global keyboard-event listening. Optional custom packs place an OGG
       sound file and a config.json mapping file under the documented application-support
       directory.
-category: toys
-package-manager:
-  brew-cask: keyecho
-package-manager-url: https://formulae.brew.sh/cask/keyecho
 tags:
   - custom-sound-packs
   - desktop-utility
   - keyboard-sounds
   - open-source
   - tauri
-description: Mechanical keyboard sounds for every keystroke
-applications:
-  - KeyEcho.app
 provenance:
-  cask: keyecho
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official README: KeyEcho is a desktop app that plays keyboard sounds while the
+      user types.
+  display-name-sources:
+    - Official repository README uses “KeyEcho” as the product name.
+  docs-sources:
+    - >
+      Official custom-sounds guide documents sound-pack creation, configuration, and the
+      macOS application-support path.
+    - Official repository README links its custom-sounds guide as documentation.
+  history-sources:
+    - https://github.com/ZacharyL2/KeyEcho — official README and project documentation.
+    - https://github.com/ZacharyL2/KeyEcho/releases — official release history.
+    - >
+      source_facts.package-manager and source_facts.package-manager-url — Homebrew Cask
+      distribution.
+  repo-sources:
+    - >
+      Per task rules, repo is null because source_facts.repo already contains
+      https://github.com/ZacharyL2/KeyEcho; the supplied repository was not
+      second-guessed.
+  tags-sources:
+    - >
+      Official README describes keyboard-event audio, custom sound packs, open-source
+      licensing, and Tauri implementation.
+category-confidence: high
+category-path:
+  - toys
+  - keyboard-audio
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
