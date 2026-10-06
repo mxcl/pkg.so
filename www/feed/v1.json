@@ -114,18 +114,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:cuadriver",
+        "brew:doltlite",
+        "brew:morphe",
+        "brew:maki",
+        "brew:packslip",
+        "brew:deja",
         "brew:cask:sdrmm-app",
         "brew:cask:hagimimonitordirect",
         "brew:mailtrap-local",
-        "brew:deja",
         "brew:cask:manus-cue",
         "brew:sofka",
-        "brew:cask:mindroom",
-        "brew:cask:highball",
-        "brew:cask:mdhero",
-        "brew:kubectl-radar",
-        "brew:vortix",
-        "brew:cask:deviceshelf"
+        "brew:cask:mindroom"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -133,18 +133,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:cuadriver",
+        "brew:doltlite",
+        "brew:morphe",
+        "brew:maki",
+        "brew:packslip",
+        "brew:deja",
         "brew:cask:sdrmm-app",
         "brew:cask:hagimimonitordirect",
         "brew:mailtrap-local",
         "brew:cask:visual-studio-code@insiders",
         "brew:neovim",
-        "brew:cask:kotlin-lsp",
-        "brew:deja",
-        "brew:cask:manus-cue",
-        "brew:talosctl",
-        "brew:helmfile",
-        "brew:sofka",
-        "brew:cask:mindroom"
+        "brew:cask:kotlin-lsp"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -817,7 +817,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-05T04:35:53Z",
+  "generatedAt": "2026-10-06T04:25:18Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1003,60 +1003,56 @@
       "upstreamSummary": "Time tracker",
       "version": "0.13.2"
     },
-    "brew:cask:deviceshelf": {
-      "agentSummary": "DeviceShelf is a local-first network scanner for discovering devices, open ports, services, and security risks, with optional monitoring across desktop, mobile, and server editions.",
+    "brew:cask:cuadriver": {
+      "agentSummary": "Cua Driver gives AI agents cross-platform desktop control through accessibility, screenshots, input automation, MCP, and SDK interfaces while documenting permission and platform constraints.",
       "assessment": {
         "alternatives": [
-          "Fing for graphical network discovery",
-          "Nmap for scriptable host and service scanning"
+          "Platform-specific accessibility automation or browser-only agent tooling."
         ],
         "audiences": [
-          "Home and small-network operators inventorying connected devices",
-          "Administrators who want local-first availability and service monitoring"
+          "Developers building agents that operate existing desktop applications.",
+          "Automation teams needing one interface across macOS, Windows, and Linux."
         ],
         "caveats": [
-          "Open-port and CVE hints are triage signals and still require administrator verification",
-          "Continuous monitoring and server features add host, storage, alerting, and backup responsibilities",
-          "Containerized LAN discovery may require host networking and narrowly scoped low-port or raw-socket capabilities"
+          "Desktop automation can affect real applications and data; verify resulting state after actions.",
+          "Capabilities and permission requirements vary by operating system, desktop environment, and target application."
         ],
         "complements": [
-          "Prometheus and Grafana through the server edition's metrics endpoint",
-          "Home Assistant through the documented MQTT integration"
+          "MCP-capable agent clients and Cua's sandbox products."
         ],
         "prerequisites": [
-          "Permission to scan the target network and access to its local segment",
-          "For server discovery, a suitable host or container network configuration"
+          "A supported interactive desktop session.",
+          "Operating-system accessibility and screen-capture permissions where required."
         ],
         "useCases": [
-          "Discover devices, vendors, services, and open ports on a LAN",
-          "Review prioritized risk signals and export network inventories",
-          "Run an optional headless collector for uptime, alerts, and infrastructure checks"
+          "Inspecting accessibility trees and screenshots before acting on desktop interfaces.",
+          "Connecting coding or general-purpose agents through MCP, CLI, Python, or TypeScript."
         ]
       },
-      "category": "networking",
-      "displayName": "DeviceShelf",
-      "docs": "https://deviceshelf.app/en/server",
-      "homepage": "https://deviceshelf.app/",
-      "id": "brew:cask:deviceshelf",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adeviceshelf",
-      "lastUpdatedAt": "2026-09-26T12:52:50Z",
+      "category": "ai",
+      "displayName": "Cua Driver",
+      "docs": "https://cua.ai/docs/cua-driver",
+      "homepage": "https://cua.ai/cua-driver",
+      "id": "brew:cask:cuadriver",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acuadriver",
+      "lastUpdatedAt": "2026-10-06T01:25:32Z",
       "manager": "homebrew",
-      "repository": null,
-      "researchedAt": "2026-09-27T08:26:25Z",
+      "repository": "https://github.com/trycua/cua",
+      "researchedAt": "2026-10-06T04:25:18Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "DeviceShelf official product page",
-          "url": "https://deviceshelf.app/"
+          "title": "Cua Driver initial release",
+          "url": "https://github.com/trycua/cua/releases/tag/cua-driver-v0.0.3"
         },
         {
           "kind": "primary",
-          "title": "DeviceShelf self-hosted server documentation",
-          "url": "https://deviceshelf.app/en/server"
+          "title": "Cua Driver quickstart",
+          "url": "https://cua.ai/docs/cua-driver/quickstart"
         }
       ],
-      "upstreamSummary": "Scanner for devices, open ports and security risks on the local network",
-      "version": "1.9.62"
+      "upstreamSummary": "Background desktop automation driver for AI agents",
+      "version": "0.34.0"
     },
     "brew:cask:dockdoor-pro": {
       "agentSummary": "Commercial Dock replacement layers window previews, per-display profiles, app groups, widgets, file staging, media controls, gestures, and extensive customization onto macOS.",
@@ -1525,68 +1521,6 @@
       ],
       "upstreamSummary": "Personal AI agents with their own identities",
       "version": "1.0.4"
-    },
-    "brew:cask:mdhero": {
-      "agentSummary": "MDHero is a compact cross-platform Markdown reader and editor with tabs, live file reload, diagrams, math, syntax highlighting, navigation, and offline local-file workflows.",
-      "assessment": {
-        "alternatives": [
-          "A code editor with Markdown preview",
-          "MarkText or Typora",
-          "Repository-hosted rendering such as GitHub's Markdown view"
-        ],
-        "audiences": [
-          "Developers, writers, and researchers who regularly read local Markdown",
-          "Users wanting a rendered document view without uploading files to a web service"
-        ],
-        "caveats": [
-          "It is a lightweight editor rather than a complete documentation IDE or publishing system",
-          "Opening remote URLs necessarily retrieves content from the network",
-          "Mermaid and rich rendering should not replace review of untrusted document content"
-        ],
-        "complements": [
-          "A full code editor for larger documentation changes",
-          "Git for versioning Markdown sources",
-          "Native print-to-PDF workflows"
-        ],
-        "prerequisites": [
-          "A supported macOS, Windows, or Linux system",
-          "Network access only when opening a public URL rather than a local file"
-        ],
-        "useCases": [
-          "Reading and lightly editing local Markdown files",
-          "Rendering pasted model output, Mermaid diagrams, math, and highlighted code",
-          "Following externally edited documents through live reload"
-        ]
-      },
-      "category": "productivity",
-      "displayName": "MDHero",
-      "docs": "https://github.com/vaibhav-kakde-in/mdhero#readme",
-      "homepage": "https://mdhero.app/",
-      "id": "brew:cask:mdhero",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amdhero",
-      "lastUpdatedAt": "2026-09-27T19:36:11Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/vaibhav-kakde-in/mdhero",
-      "researchedAt": "2026-09-28T07:35:24Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "MDHero upstream feature and privacy documentation",
-          "url": "https://github.com/vaibhav-kakde-in/mdhero"
-        },
-        {
-          "kind": "primary",
-          "title": "MDHero project website",
-          "url": "https://mdhero.app/"
-        },
-        {
-          "kind": "primary",
-          "title": "MDHero v0.1.0 initial release",
-          "url": "https://github.com/vaibhav-kakde-in/mdhero/releases/tag/v0.1.0"
-        }
-      ],
-      "upstreamSummary": "Markdown viewer and editor",
-      "version": "0.2.10"
     },
     "brew:cask:mindroom": {
       "agentSummary": "MindRoom hosts persistent multi-agent teams on Matrix, combining configurable models, memory, tools, scheduling, knowledge bases, and bridged chat access in a self-hostable runtime.",
@@ -2554,37 +2488,29 @@
       "version": "0.19.2"
     },
     "brew:deja": {
-      "agentSummary": "A zsh companion that predicts inline commands from local shell history through a Go daemon, offering configurable acceptance, privacy controls, and optional cloud-backed suggestions.",
+      "agentSummary": "deja adds predictive ghost-text suggestions to zsh using a local Go daemon and SQLite history, ranking commands by recency, frequency, directory, and sequence.",
       "assessment": {
         "alternatives": [
-          "zsh-autosuggestions",
-          "Atuin",
-          "Fish shell autosuggestions"
+          "zsh-autosuggestions or shell-native history search."
         ],
         "audiences": [
-          "Frequent zsh users",
-          "Developers who want context-aware shell suggestions",
-          "Users seeking a local-first alternative to simple prefix matching"
+          "zsh users who want richer local command prediction.",
+          "Terminal users comfortable modifying shell startup configuration."
         ],
         "caveats": [
-          "It currently targets zsh rather than every interactive shell",
-          "Suggestions improve only after history is imported or accumulated",
-          "A background daemon and local SQLite database add moving parts beyond a pure shell plugin"
+          "Command history can contain sensitive arguments; users should retain appropriate zsh exclusions and local file protections.",
+          "A resident daemon and database add moving parts beyond a shell-only suggestion plugin."
         ],
         "complements": [
-          "fzf for interactive history search",
-          "Starship for prompt customization",
-          "direnv for directory-specific environments"
+          "Oh My Zsh, zinit, and ordinary zsh history controls."
         ],
         "prerequisites": [
-          "The zsh shell",
-          "Shell integration loaded from the user's zsh configuration",
-          "Imported or newly collected command history for useful predictions"
+          "zsh with the generated integration loaded from .zshrc.",
+          "A writable local data directory for the daemon and SQLite history."
         ],
         "useCases": [
-          "Predict commands using fuzzy, directory-aware, and sequence-aware ranking",
-          "Reuse local shell history as inline ghost text",
-          "Cycle through ranked alternatives without leaving the command line"
+          "Predicting commands from local history and current-directory context.",
+          "Cycling and accepting inline suggestions during interactive shell work."
         ]
       },
       "category": "productivity",
@@ -2593,20 +2519,20 @@
       "homepage": "https://github.com/Giammarco-Ferranti/deja",
       "id": "brew:deja",
       "installURL": "pkgmgrmgr://install?package=brew%3Adeja",
-      "lastUpdatedAt": "2026-10-01T13:49:40Z",
+      "lastUpdatedAt": "2026-10-05T05:54:18Z",
       "manager": "homebrew",
       "repository": "https://github.com/Giammarco-Ferranti/deja",
-      "researchedAt": "2026-10-02T04:58:33Z",
+      "researchedAt": "2026-10-06T04:25:18Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "deja official repository and documentation",
-          "url": "https://github.com/Giammarco-Ferranti/deja"
+          "title": "deja initial release",
+          "url": "https://github.com/Giammarco-Ferranti/deja/releases/tag/v0.1.0"
         },
         {
           "kind": "primary",
-          "title": "deja v0.1.0 release",
-          "url": "https://github.com/Giammarco-Ferranti/deja/releases/tag/v0.1.0"
+          "title": "deja upstream documentation",
+          "url": "https://github.com/Giammarco-Ferranti/deja#readme"
         }
       ],
       "upstreamSummary": "Predictive ghost-text autosuggestions for zsh",
@@ -2666,6 +2592,57 @@
       ],
       "upstreamSummary": "Local searchable memory over the session histories of coding agents",
       "version": "0.19.1"
+    },
+    "brew:doltlite": {
+      "agentSummary": "DoltLite combines SQLite-compatible embedding with Git-like commits, branches, diffs, merges, and remotes, targeting local-first applications that need auditable, shareable structured-data history.",
+      "assessment": {
+        "alternatives": [
+          "SQLite with application-managed history, or Dolt for a server-oriented version-controlled database."
+        ],
+        "audiences": [
+          "Developers of embedded and local-first applications.",
+          "Teams needing versioned structured data without a separate database server."
+        ],
+        "caveats": [
+          "The project is beta and does not promise complete SQLite behavioral equivalence.",
+          "Version control adds storage, merge, and operational concepts absent from ordinary SQLite deployments."
+        ],
+        "complements": [
+          "SQLite APIs, Dolt concepts, and DoltHub-hosted remotes."
+        ],
+        "prerequisites": [
+          "A supported native platform or language binding.",
+          "Application-level planning for conflicts, schema changes, and remote access."
+        ],
+        "useCases": [
+          "Embedding a SQLite-style database with branch, merge, and history operations.",
+          "Synchronizing version-controlled databases through DoltHub remotes."
+        ]
+      },
+      "category": "data",
+      "displayName": "doltlite",
+      "docs": "https://github.com/dolthub/doltlite",
+      "homepage": "https://github.com/dolthub/doltlite",
+      "id": "brew:doltlite",
+      "installURL": "pkgmgrmgr://install?package=brew%3Adoltlite",
+      "lastUpdatedAt": "2026-10-05T17:37:58Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/dolthub/doltlite",
+      "researchedAt": "2026-10-06T04:25:18Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "DoltLite first upstream release",
+          "url": "https://github.com/dolthub/doltlite/releases/tag/v0.7.0"
+        },
+        {
+          "kind": "primary",
+          "title": "DoltHub DoltLite launch account",
+          "url": "https://www.dolthub.com/blog/2026-03-25-doltlite/"
+        }
+      ],
+      "upstreamSummary": "SQLite fork with Git-style version control via prolly trees",
+      "version": "0.50.15"
     },
     "brew:edgevpn": {
       "agentSummary": "EdgeVPN builds decentralized private networks, reverse proxies, and file transfers on libp2p, using shared configuration tokens and an embedded distributed coordination layer.",
@@ -3070,69 +3047,6 @@
       "upstreamSummary": "Web search and scraping for agents",
       "version": "0.17.0"
     },
-    "brew:kubectl-radar": {
-      "agentSummary": "Radar provides a local Kubernetes web interface for topology, resources, events, Helm, GitOps, traffic, audits, upgrades, and RBAC-aware MCP access from one binary.",
-      "assessment": {
-        "alternatives": [
-          "Headlamp or Kubernetes Dashboard",
-          "k9s for a terminal interface",
-          "kubectl plus purpose-built observability tools"
-        ],
-        "audiences": [
-          "Kubernetes operators who want a broad local diagnostic interface",
-          "Teams connecting AI clients to cluster context through constrained MCP tools"
-        ],
-        "caveats": [
-          "Its MCP server includes optional write operations, so client confirmation and Kubernetes RBAC remain critical safeguards",
-          "A local dashboard does not replace production monitoring, alerting, backups, or change controls",
-          "Shared in-cluster deployment expands the authentication and network-exposure surface compared with local use"
-        ],
-        "complements": [
-          "kubectl and existing kubeconfig contexts",
-          "Helm and GitOps controllers",
-          "MCP-compatible assistants for guided investigation"
-        ],
-        "prerequisites": [
-          "A reachable conformant Kubernetes cluster and kubeconfig",
-          "Kubernetes RBAC permissions appropriate to the intended views and actions",
-          "Explicit authentication and exposure planning for shared in-cluster deployments"
-        ],
-        "useCases": [
-          "Exploring topology, health, events, logs, traffic, Helm, and GitOps state",
-          "Auditing cluster configuration and checking upgrade impact",
-          "Providing token-reduced, RBAC-aware Kubernetes context to MCP clients"
-        ]
-      },
-      "category": "cloud-infrastructure",
-      "displayName": "kubectl-radar",
-      "docs": "https://radarhq.io/docs",
-      "homepage": "https://radarhq.io",
-      "id": "brew:kubectl-radar",
-      "installURL": "pkgmgrmgr://install?package=brew%3Akubectl-radar",
-      "lastUpdatedAt": "2026-09-27T19:26:44Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/skyhook-io/radar",
-      "researchedAt": "2026-09-28T07:35:24Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Radar upstream repository and operating model",
-          "url": "https://github.com/skyhook-io/radar"
-        },
-        {
-          "kind": "primary",
-          "title": "Radar MCP security and integration guide",
-          "url": "https://radarhq.io/docs/mcp"
-        },
-        {
-          "kind": "primary",
-          "title": "Radar v0.9.5 initial public release",
-          "url": "https://github.com/skyhook-io/radar/releases/tag/v0.9.5"
-        }
-      ],
-      "upstreamSummary": "Missing open-source Kubernetes UI with a built-in MCP server for AI agents",
-      "version": "1.15.0"
-    },
     "brew:linecast": {
       "agentSummary": "Turns public weather, tide, solar, lunar, radar, and mapping data into interactive terminal views, with static and machine-readable output and no required account.",
       "assessment": {
@@ -3312,6 +3226,57 @@
       "upstreamSummary": "Local email sandbox with SMTP server, web UI, and JSON API",
       "version": "0.4.1"
     },
+    "brew:maki": {
+      "agentSummary": "Maki is a Rust terminal coding agent emphasizing low token use, fast interaction, Lua extensibility, provider choice, MCP tools, and editor integration through ACP.",
+      "assessment": {
+        "alternatives": [
+          "Other terminal coding agents or editor-native AI assistants."
+        ],
+        "audiences": [
+          "Developers who prefer terminal-native, configurable coding agents.",
+          "Neovim-style plugin authors seeking a Lua extension surface."
+        ],
+        "caveats": [
+          "Agent commands and edits can alter repositories or execute untrusted project code.",
+          "Lua plugins, MCP servers, and provider credentials expand the security boundary."
+        ],
+        "complements": [
+          "MCP servers, reusable agent skills, project instruction files, and ACP-capable editors."
+        ],
+        "prerequisites": [
+          "An account or local endpoint for a supported model provider.",
+          "Explicit trust decisions before loading project-local configuration."
+        ],
+        "useCases": [
+          "Interactive repository exploration, editing, and command execution.",
+          "Headless scripting, CI assistance, or ACP-based editor integration."
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "maki",
+      "docs": "https://maki.sh/docs",
+      "homepage": "https://maki.sh",
+      "id": "brew:maki",
+      "installURL": "pkgmgrmgr://install?package=brew%3Amaki",
+      "lastUpdatedAt": "2026-10-05T15:41:58Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/tontinton/maki",
+      "researchedAt": "2026-10-06T04:25:18Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Maki initial release",
+          "url": "https://github.com/tontinton/maki/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Maki official documentation",
+          "url": "https://maki.sh/docs"
+        }
+      ],
+      "upstreamSummary": "Efficient AI coding agent extendable by neovim-like Lua plugins",
+      "version": "0.6.0"
+    },
     "brew:metview": {
       "agentSummary": "Metview gives operational and research meteorologists one environment for accessing, processing, scripting, and visualizing ECMWF-oriented weather data through desktop and Python workflows.",
       "assessment": {
@@ -3375,6 +3340,57 @@
       ],
       "upstreamSummary": "Meteorological workstation software",
       "version": "5.26.2"
+    },
+    "brew:morphe": {
+      "agentSummary": "Morphe Desktop offers GUI and CLI workflows for applying Morphe patches to Android packages, managing patch sources, signing outputs, and optionally installing through ADB.",
+      "assessment": {
+        "alternatives": [
+          "ReVanced-oriented patching workflows or manual Android build tooling."
+        ],
+        "audiences": [
+          "Android enthusiasts who understand APK patching and signing.",
+          "Developers automating repeatable patch workflows."
+        ],
+        "caveats": [
+          "Patching third-party applications can create security, compatibility, licensing, or account-policy risks.",
+          "The default signing key and downloaded patch sources require deliberate trust and backup decisions."
+        ],
+        "complements": [
+          "Morphe Patcher, Morphe Patches, Android platform tools, and a protected signing key."
+        ],
+        "prerequisites": [
+          "A compatible Java runtime and source Android package.",
+          "ADB and a connected device only when installing directly."
+        ],
+        "useCases": [
+          "Selecting patches interactively and producing a patched Android package.",
+          "Automating patch selection with CLI flags and exported options files."
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "morphe",
+      "docs": "https://github.com/MorpheApp/morphe-desktop/blob/main/docs/documentation.md",
+      "homepage": "https://github.com/MorpheApp/morphe-desktop",
+      "id": "brew:morphe",
+      "installURL": "pkgmgrmgr://install?package=brew%3Amorphe",
+      "lastUpdatedAt": "2026-10-05T16:18:34Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/MorpheApp/morphe-desktop",
+      "researchedAt": "2026-10-06T04:25:18Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Morphe Desktop earliest upstream release",
+          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.8.0-dev.11"
+        },
+        {
+          "kind": "primary",
+          "title": "Morphe Desktop documentation",
+          "url": "https://github.com/MorpheApp/morphe-desktop/blob/main/docs/documentation.md"
+        }
+      ],
+      "upstreamSummary": "Desktop app and CLI for patching Android apps with Morphe",
+      "version": "1.18.1"
     },
     "brew:neovim": {
       "agentSummary": "Neovim combines modal editing with a built-in LSP client, letting users connect Kotlin and other language servers through explicit, scriptable configuration.",
@@ -3496,6 +3512,57 @@
       ],
       "upstreamSummary": "Headless browser for AI agents and web scraping",
       "version": "0.2.1"
+    },
+    "brew:packslip": {
+      "agentSummary": "packslip defines signed release manifests that let publishers describe artifacts and consumers verify identity, digests, platform selection, archive layout, provenance, and host requirements.",
+      "assessment": {
+        "alternatives": [
+          "Package-manager-specific manifests or bespoke checksum and signature files."
+        ],
+        "audiences": [
+          "Software publishers distributing native binaries.",
+          "Package-manager and installer authors consuming vendor metadata."
+        ],
+        "caveats": [
+          "Consumers must enforce an explicit signer policy; a valid signature alone does not establish trust.",
+          "Manifest quality depends on publishers hashing final artifacts and describing platform constraints accurately."
+        ],
+        "complements": [
+          "Sigstore, in-toto statements, GitHub Actions, and mise."
+        ],
+        "prerequisites": [
+          "A release pipeline that produces final immutable artifacts.",
+          "A Sigstore CI identity or managed Ed25519 signing key."
+        ],
+        "useCases": [
+          "Signing reproducible descriptions of release artifacts in CI.",
+          "Selecting compatible downloads and verifying publisher identity and digests before installation."
+        ]
+      },
+      "category": "security",
+      "displayName": "packslip",
+      "docs": "https://packslip.dev/cli",
+      "homepage": "https://packslip.dev",
+      "id": "brew:packslip",
+      "installURL": "pkgmgrmgr://install?package=brew%3Apackslip",
+      "lastUpdatedAt": "2026-10-05T11:56:51Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/jdx/packslip",
+      "researchedAt": "2026-10-06T04:25:18Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "packslip initial release",
+          "url": "https://github.com/jdx/packslip/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "primary",
+          "title": "packslip version 1 specification",
+          "url": "https://packslip.dev/release/v1/"
+        }
+      ],
+      "upstreamSummary": "Signed release manifest for vendor binaries",
+      "version": "1.6.0"
     },
     "brew:prek": {
       "agentSummary": "Rust-based Git hook manager compatible with established pre-commit configurations, adding parallel execution, monorepo support, built-in hooks, and a single-binary operational model.",
@@ -4098,69 +4165,6 @@
       "upstreamSummary": "Render Mermaid diagrams in the terminal",
       "version": "0.9.0"
     },
-    "brew:vortix": {
-      "agentSummary": "Vortix gives WireGuard and OpenVPN users one terminal interface for multiple tunnels, live telemetry, exposure checks, kill-switch control, diagnostics, and automation-friendly output.",
-      "assessment": {
-        "alternatives": [
-          "wg-quick and openvpn directly",
-          "A VPN provider's desktop client",
-          "NetworkManager or another system-integrated connection manager"
-        ],
-        "audiences": [
-          "WireGuard and OpenVPN users who prefer keyboard-driven network control",
-          "Administrators troubleshooting tunnels locally or over SSH"
-        ],
-        "caveats": [
-          "Vortix orchestrates system VPN tools and does not implement either VPN protocol itself",
-          "Privileged route, DNS, and firewall changes deserve careful review, especially on remote systems",
-          "Telemetry and exposure checks cannot guarantee that every application follows the intended route"
-        ],
-        "complements": [
-          "Existing WireGuard and OpenVPN configurations",
-          "SSH-based server administration",
-          "Shell monitoring built around JSON or NDJSON output"
-        ],
-        "prerequisites": [
-          "WireGuard tools and OpenVPN installed on macOS or Linux",
-          "Root privileges for tunnel, route, DNS, firewall, and kill-switch changes",
-          "Valid VPN profiles and credentials from the relevant network provider"
-        ],
-        "useCases": [
-          "Importing and controlling several VPN profiles",
-          "Monitoring latency, loss, throughput, DNS policy, and public network identity",
-          "Automating tunnel checks through versioned JSON and stable exit codes"
-        ]
-      },
-      "category": "networking",
-      "displayName": "vortix",
-      "docs": "https://github.com/Harry-kp/vortix/blob/main/docs/configuration.md",
-      "homepage": "https://github.com/Harry-kp/vortix",
-      "id": "brew:vortix",
-      "installURL": "pkgmgrmgr://install?package=brew%3Avortix",
-      "lastUpdatedAt": "2026-09-27T13:40:21Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/Harry-kp/vortix",
-      "researchedAt": "2026-09-28T07:35:24Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Vortix upstream documentation and security model",
-          "url": "https://github.com/Harry-kp/vortix"
-        },
-        {
-          "kind": "primary",
-          "title": "Vortix configuration guide",
-          "url": "https://github.com/Harry-kp/vortix/blob/main/docs/configuration.md"
-        },
-        {
-          "kind": "primary",
-          "title": "Vortix v0.1.0 initial release",
-          "url": "https://github.com/Harry-kp/vortix/releases/tag/v0.1.0"
-        }
-      ],
-      "upstreamSummary": "Terminal UI for WireGuard and OpenVPN with live telemetry and leak guarding",
-      "version": "0.5.2"
-    },
     "brew:workmux": {
       "agentSummary": "workmux pairs Git worktrees with terminal windows, automating isolated task setup, agent status, review, merging, and cleanup while preserving familiar multiplexer workflows.",
       "assessment": {
@@ -4227,7 +4231,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-05T04:34:23Z",
+    "generatedAt": "2026-10-06T04:23:45Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
