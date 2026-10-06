@@ -1,14 +1,14 @@
 id: cask:time-sink
 display-name: Time Sink
-homepage: https://manytricks.com/timesink/
 repo: null
 docs:
   - https://manytricks.com/timesink/help
   - https://manytricks.com/timesink/help/reports.html
   - https://manytricks.com/timesink/help/settings.html
 config-file-location:
-  macos: >
-    ~/Library/Containers/com.manytricks.TimeSinkClient/Library/Preferences/com.manytricks.TimeSinkClient.plist
+  macos:
+    - >
+      ~/Library/Containers/com.manytricks.TimeSinkClient/Library/Preferences/com.manytricks.TimeSinkClient.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -57,10 +57,6 @@ history:
       application activity. Users can ignore items, group related apps or windows into
       Pools, categorize off-computer work with ad hoc timers, inspect date-based
       reports, and export delimited snapshots.
-category: productivity
-package-manager:
-  brew-cask: time-sink
-package-manager-url: https://formulae.brew.sh/cask/time-sink
 tags:
   - activity-tracking
   - macos
@@ -68,10 +64,33 @@ tags:
   - productivity
   - reports
   - time-tracking
-description: Tracks how you spend your time on your computer
-applications:
-  - Time Sink.app
 provenance:
-  cask: time-sink
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      source_facts.description and Many Tricks’ official product and help pages describe
+      automatic tracking of time spent in Mac applications and windows.
+  display-name-sources:
+    - current_curation.display-name; official Many Tricks product and help pages.
+  docs-sources:
+    - Official Time Sink web help, settings reference, and reporting guide from Many Tricks.
+  history-sources:
+    - https://manytricks.com/privacy/appstore/ — official storage and privacy details
+    - https://manytricks.com/timesink/help/ — official usage overview
+    - https://manytricks.com/timesink/help/settings.html — official settings and feature guide
+    - https://manytricks.com/timesink/releasenotes/ — official release chronology
+  repo-sources:
+    - >
+      source_facts.repo is empty. Many Tricks’ official Time Sink product, help,
+      release, and privacy pages do not identify an official public source-control
+      repository.
+  tags-sources:
+    - Official Many Tricks product overview, help, settings, and reporting pages.
+category-confidence: high
+category-path:
+  - productivity
+  - time-tracking
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

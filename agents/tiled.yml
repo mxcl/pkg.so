@@ -1,14 +1,15 @@
 id: cask:tiled
 display-name: Tiled
-homepage: https://www.mapeditor.org/
-repo: https://github.com/mapeditor/tiled
+repo: null
 docs:
   - https://doc.mapeditor.org/en/latest/manual/introduction
   - https://doc.mapeditor.org/en/latest/manual/preferences
   - https://doc.mapeditor.org/
 config-file-location:
-  linux: ~/.config/mapeditor.org/tiled.conf
-  macos: ~/Library/Preferences/org.mapeditor.Tiled.plist
+  linux:
+    - ~/.config/mapeditor.org/tiled.conf
+  macos:
+    - ~/Library/Preferences/org.mapeditor.Tiled.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -57,10 +58,6 @@ history:
       data for their engine, organize assets in projects, and export maps in native or
       engine-specific formats. Advanced workflows use terrain painting, Automapping
       rules, worlds, plugins, or JavaScript automation.
-category: games
-package-manager:
-  brew-cask: tiled
-package-manager-url: https://formulae.brew.sh/cask/tiled
 tags:
   - 2d-games
   - game-development
@@ -69,10 +66,34 @@ tags:
   - scripting
   - tilemap
   - tmx
-description: Flexible level editor
-applications:
-  - Tiled.app
 provenance:
-  cask: tiled
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      source_facts.description and official Tiled documentation identify a flexible 2D
+      tile-map and level editor for game content.
+  display-name-sources:
+    - current_curation.display-name; official Tiled website and documentation.
+  docs-sources:
+    - >
+      Dedicated official Tiled documentation domain, including the introduction and
+      preferences reference.
+  history-sources:
+    - https://doc.mapeditor.org/en/latest/manual/automapping/ — official automation workflow
+    - https://doc.mapeditor.org/en/latest/manual/introduction/ — official scope and features
+    - https://doc.mapeditor.org/en/latest/manual/worlds/ — official world workflow
+    - https://www.mapeditor.org/news.html — official release archive
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/mapeditor/tiled;
+      per instruction, repo is returned as null and not re-evaluated.
+  tags-sources:
+    - Official Tiled introduction, Automapping, worlds, and scripting documentation.
+category-confidence: high
+category-path:
+  - games
+  - level-editor
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

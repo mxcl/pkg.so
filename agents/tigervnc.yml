@@ -1,6 +1,5 @@
 id: cask:tigervnc
 display-name: TigerVNC
-homepage: https://tigervnc.org/
 repo: https://github.com/TigerVNC/tigervnc
 docs:
   - https://github.com/TigerVNC/tigervnc/wiki
@@ -64,10 +63,6 @@ history:
       connection profiles. On Unix-like hosts, Xvnc creates virtual desktops, while
       x0vncserver shares an existing display; vncpasswd creates the password file used
       for VNC authentication.
-category: networking
-package-manager:
-  brew-cask: tigervnc
-package-manager-url: https://formulae.brew.sh/cask/tigervnc
 tags:
   - cross-platform
   - remote-desktop
@@ -75,12 +70,32 @@ tags:
   - vnc
   - vnc-server
   - vnc-viewer
-description: Multi-platform VNC client and server
-applications:
-  - TigerVNC.app
 provenance:
-  cask: tigervnc
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - tigervnc-viewer
+  category-sources:
+    - >
+      source_facts.description and the official TigerVNC site identify a multi-platform
+      VNC client and server.
+  display-name-sources:
+    - current_curation.display-name; official project website and repository.
+  docs-sources:
+    - Official TigerVNC website man pages and official project wiki.
+  history-sources:
+    - https://github.com/TigerVNC/tigervnc — official repository history and architecture
+    - https://tigervnc.org/ — official documentation and distribution list
+    - https://tigervnc.org/doc/vncpasswd.html — official credential-file manual
+    - https://tigervnc.org/doc/vncviewer.html — official viewer manual
+  repo-sources:
+    - >
+      source_facts.repo is empty; the official tigervnc.org site and official TigerVNC
+      GitHub organization identify this as the project repository.
+  tags-sources:
+    - source_facts.description; official TigerVNC website, repository README, and man pages.
+category-confidence: high
+category-path:
+  - networking
+  - remote-desktop
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

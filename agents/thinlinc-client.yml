@@ -1,6 +1,5 @@
 id: cask:thinlinc-client
 display-name: ThinLinc Client
-homepage: https://www.cendio.com/thinlinc/what-is-thinlinc/
 repo: null
 docs:
   - https://www.cendio.com/resources/docs/tag
@@ -13,7 +12,8 @@ config-file-location:
   macos:
     - /Library/Application Support/ThinLinc Client/tlclient.conf
     - /Library/Application Support/ThinLinc Client/tlclient_mandatory.conf
-  unix: ~/.thinlinc/tlclient.conf
+  unix:
+    - ~/.thinlinc/tlclient.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -60,10 +60,6 @@ history:
       credentials, and open a remote Linux session. Administrators can control client
       defaults through system-wide configuration while users retain per-user settings
       unless mandatory parameters override them.
-category: networking
-package-manager:
-  brew-cask: thinlinc-client
-package-manager-url: https://formulae.brew.sh/cask/thinlinc-client
 tags:
   - cross-platform
   - linux-desktop
@@ -71,10 +67,39 @@ tags:
   - ssh
   - thin-client
   - vdi
-description: Linux remote desktop server
-applications:
-  - ThinLinc Client.app
 provenance:
-  cask: thinlinc-client
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official ThinLinc product and administrator documentation identify it as a Linux
+      remote-desktop system with native clients.
+  display-name-sources:
+    - >
+      source_facts.applications names ThinLinc Client.app; current_curation.display-name
+      is ThinLinc.
+  docs-sources:
+    - >
+      Cendio’s official Administrator’s Guide, configuration-storage page, and macOS
+      client page.
+  history-sources:
+    - https://www.cendio.com/ — official product overview and use cases
+    - https://www.cendio.com/about-us/ — official company and ThinLinc history
+    - >
+      https://www.cendio.com/blog/introducing-thinlinc-4-15-0/ — official
+      twentieth-anniversary account
+    - https://www.cendio.com/thinlinc/docs/relnotes/ — official release archive
+  repo-sources:
+    - >
+      source_facts.repo is empty. Cendio’s official product, download, documentation,
+      and legal pages do not identify an official public source-control repository for
+      ThinLinc.
+  tags-sources:
+    - source_facts.description; Cendio official product overview and Administrator’s Guide.
+category-confidence: high
+category-path:
+  - networking
+  - remote-desktop
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
