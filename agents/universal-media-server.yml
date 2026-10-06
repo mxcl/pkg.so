@@ -1,13 +1,14 @@
 id: cask:universal-media-server
 display-name: Universal Media Server
-homepage: https://www.universalmediaserver.com/
-repo: https://github.com/UniversalMediaServer/UniversalMediaServer
+repo: null
 docs:
   - https://support.universalmediaserver.com/
   - https://www.universalmediaserver.com/about
 config-file-location:
-  unix: <profile-directory>/UMS.conf
-  windows: <profile-directory>/UMS.conf
+  unix:
+    - <profile-directory>/UMS.conf
+  windows:
+    - <profile-directory>/UMS.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -76,10 +77,6 @@ history:
       application reports that directory near the top of its logs, which is the
       authoritative way to locate a particular installation's configuration and local
       database.
-category: media
-package-manager:
-  brew-cask: universal-media-server
-package-manager-url: https://formulae.brew.sh/cask/universal-media-server
 tags:
   - dlna
   - ffmpeg
@@ -88,10 +85,41 @@ tags:
   - streaming
   - transcoding
   - upnp
-description: Media server supporting DLNA, UPnP and HTTP(S)
-applications:
-  - Universal Media Server.app
 provenance:
-  cask: universal-media-server
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official project description: https://www.universalmediaserver.com/about/'
+    - source_facts.description
+  display-name-sources:
+    - 'Official website: https://www.universalmediaserver.com/'
+    - source_facts.applications
+  docs-sources:
+    - >
+      The official About page documents capabilities, supported platforms, origins, and
+      device support.
+    - >
+      The official Knowledge Base is the primary configuration, migration,
+      troubleshooting, and usage documentation.
+  history-sources:
+    - https://github.com/UniversalMediaServer/UniversalMediaServer#readme
+    - https://support.universalmediaserver.com/history/
+    - https://support.universalmediaserver.com/whats-new-in-v15/
+    - https://www.universalmediaserver.com/about/
+  repo-sources:
+    - >
+      source_facts.repo already contains
+      https://github.com/UniversalMediaServer/UniversalMediaServer; per input rules,
+      repo is returned as null without re-evaluation.
+  tags-sources:
+    - 'Official About page: https://www.universalmediaserver.com/about/'
+    - >
+      Official repository topics and README:
+      https://github.com/UniversalMediaServer/UniversalMediaServer
+category-confidence: high
+category-path:
+  - media
+  - media-servers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

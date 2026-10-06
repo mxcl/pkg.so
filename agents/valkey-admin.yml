@@ -1,12 +1,12 @@
 id: cask:valkey-admin
 display-name: Valkey Admin
-homepage: https://valkey-admin.valkey.io/
-repo: https://github.com/valkey-io/valkey-admin
+repo: null
 docs:
   - https://valkey-admin.valkey.io/
   - https://valkey-admin.valkey.io/configuration
 config-file-location:
-  unix: apps/metrics/config.yml (default; override with CONFIG_PATH)
+  unix:
+    - apps/metrics/config.yml (default; override with CONFIG_PATH)
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,10 +71,6 @@ history:
       CONFIG_PATH. Connection addresses, authentication, TLS, and AWS/IAM settings are
       supplied through VALKEY_* environment variables rather than stored in the YAML
       file.
-category: data
-package-manager:
-  brew-cask: valkey-admin
-package-manager-url: https://formulae.brew.sh/cask/valkey-admin
 tags:
   - cluster-management
   - database-administration
@@ -83,10 +79,38 @@ tags:
   - monitoring
   - observability
   - valkey
-description: Administration tool for Valkey clusters and standalone instances
-applications:
-  - Valkey Admin.app
 provenance:
-  cask: valkey-admin
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - 'Official project site: https://valkey-admin.valkey.io/'
+    - source_facts.description
+  display-name-sources:
+    - 'Official documentation site: https://valkey-admin.valkey.io/'
+    - 'Official repository title: https://github.com/valkey-io/valkey-admin'
+  docs-sources:
+    - Dedicated official documentation site.
+    - >
+      Official configuration reference documents the server, metrics, frontend, YAML,
+      and environment-variable settings.
+  history-sources:
+    - https://github.com/valkey-io/valkey-admin
+    - https://github.com/valkey-io/valkey-admin/releases
+    - https://valkey-admin.valkey.io/
+    - https://valkey-admin.valkey.io/configuration/
+  repo-sources:
+    - >
+      source_facts.repo already contains https://github.com/valkey-io/valkey-admin; per
+      input rules, repo is returned as null without re-evaluation.
+  tags-sources:
+    - 'Official documentation: https://valkey-admin.valkey.io/'
+    - >
+      Official project description and repository topics:
+      https://github.com/valkey-io/valkey-admin
+category-confidence: high
+category-path:
+  - data
+  - database-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
