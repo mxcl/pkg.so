@@ -1,6 +1,5 @@
 id: cask:theiaide
 display-name: Eclipse Theia IDE
-homepage: https://theia-ide.org/
 repo: https://github.com/eclipse-theia/theia-ide
 docs:
   - https://theia-ide.org/docs
@@ -16,8 +15,10 @@ config-file-location:
     - <workspace-root>\.theia\settings.json
     - <folder>\.theia\settings.json
 credentials-file-location:
-  unix: ~/.theia/settings.json
-  windows: '%USERPROFILE%\.theia\settings.json'
+  unix:
+    - ~/.theia/settings.json
+  windows:
+    - '%USERPROFILE%\.theia\settings.json'
 history:
   adoption-history:
     - >
@@ -79,10 +80,6 @@ history:
       Preferences can be applied globally, per workspace, or per folder. Current
       releases also expose configurable AI agents and providers, with API keys supplied
       through environment variables or preferences.
-category: developer-tools
-package-manager:
-  brew-cask: theiaide
-package-manager-url: https://formulae.brew.sh/cask/theiaide
 tags:
   - ai-coding
   - cloud-ide
@@ -91,10 +88,41 @@ tags:
   - extensible
   - ide
   - typescript
-description: IDE framework
-applications:
-  - TheiaIDE.app
 provenance:
-  cask: theiaide
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Theia documentation describes Theia IDE as a cloud and desktop IDE:
+      https://theia-ide.org/docs/
+    - source_facts.description identifies an IDE framework.
+  display-name-sources:
+    - >
+      Official product repository and documentation use “Eclipse Theia IDE”:
+      https://github.com/eclipse-theia/theia-ide
+  docs-sources:
+    - 'Dedicated official documentation domain: https://theia-ide.org/docs/'
+  history-sources:
+    - 'Official IDE repository: https://github.com/eclipse-theia/theia-ide'
+    - >
+      Official extending and adoption guide:
+      https://theia-ide.org/docs/blueprint_documentation/
+    - 'Official platform documentation: https://theia-ide.org/docs/'
+    - 'Official preferences documentation: https://theia-ide.org/docs/preferences/'
+  repo-sources:
+    - >
+      The official repository states that Eclipse Theia IDE is built and packaged by
+      this project: https://github.com/eclipse-theia/theia-ide
+    - >
+      The repository documents the Electron application and downloadable desktop product
+      corresponding to TheiaIDE.app.
+  tags-sources:
+    - 'Official IDE repository: https://github.com/eclipse-theia/theia-ide'
+    - 'Official documentation: https://theia-ide.org/docs/'
+category-confidence: high
+category-path:
+  - developer-tools
+  - ides
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

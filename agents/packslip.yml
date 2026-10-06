@@ -1,14 +1,15 @@
 id: brew:packslip
 display-name: packslip
-homepage: https://packslip.dev
-repo: https://github.com/jdx/packslip
+repo: null
 docs:
   - https://packslip.dev/docs
   - https://packslip.dev/cli
   - https://packslip.dev/release/v1
 config-file-location:
-  unix: <project>/release.toml
-  windows: <project>\release.toml
+  unix:
+    - <project>/release.toml
+  windows:
+    - <project>\release.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -65,11 +66,6 @@ history:
       Consumers verify the signer and signed metadata, select a compatible artifact,
       download it, and confirm its digest before installation. The optional release.toml
       manifest describes complex release layouts during the build.
-category: security
-package-manager:
-  brew: packslip
-package-manager-url: https://formulae.brew.sh/formula/packslip
-license: MIT
 tags:
   - artifact-verification
   - cli
@@ -78,10 +74,36 @@ tags:
   - release-manifest
   - sigstore
   - software-supply-chain
-description: Signed release manifest for vendor binaries
-executables:
-  - packslip
 provenance:
-  formula: packslip
-  provider: brew
-  source: https://formulae.brew.sh/api/formula.json
+  category-sources:
+    - 'Official overview: https://packslip.dev/'
+    - source_facts.description identifies a signed release-manifest tool.
+  display-name-sources:
+    - 'Official site and CLI use the lowercase name “packslip”: https://packslip.dev/'
+  docs-sources:
+    - >
+      Dedicated official documentation, CLI reference, and specification are published
+      on packslip.dev.
+  history-sources:
+    - 'Official contributing guide: https://github.com/jdx/packslip/blob/main/CONTRIBUTING.md'
+    - 'Official overview: https://packslip.dev/'
+    - 'Official version 1 specification: https://packslip.dev/release/v1/'
+    - 'Official workflow guide: https://packslip.dev/docs/release-workflow/'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repository discovery
+      was skipped and repo is intentionally null.
+  tags-sources:
+    - >
+      Official overview and specification: https://packslip.dev/ and
+      https://packslip.dev/release/v1/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - security
+  - software-supply-chain
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

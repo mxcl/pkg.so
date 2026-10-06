@@ -1,12 +1,13 @@
 id: cask:stellarium
 display-name: Stellarium
-homepage: https://stellarium.org/
-repo: https://github.com/Stellarium/stellarium
+repo: null
 docs:
   - https://stellarium.org/guide
 config-file-location:
-  linux: ~/.stellarium/config.ini
-  macos: ~/Library/Application Support/Stellarium/config.ini
+  linux:
+    - ~/.stellarium/config.ini
+  macos:
+    - ~/Library/Application Support/Stellarium/config.ini
   windows:
     - '%APPDATA%\Stellarium\config.ini'
     - '%USERPROFILE%\Stellarium\config.ini'
@@ -69,10 +70,6 @@ history:
     - >
       Advanced users can install landscapes and sky cultures, write scripts, enable
       plugins, customize rendering, and drive projection or outreach installations.
-category: science
-package-manager:
-  brew-cask: stellarium
-package-manager-url: https://formulae.brew.sh/cask/stellarium
 tags:
   - astronomy
   - education
@@ -81,10 +78,34 @@ tags:
   - planetarium
   - sky-simulation
   - telescope-control
-description: Tool to render realistic skies in real time on the screen
-applications:
-  - Stellarium.app
 provenance:
-  cask: stellarium
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official user guide describes Stellarium as virtual-planetarium and astronomy
+      software: https://stellarium.org/guide/
+    - source_facts.description
+  display-name-sources:
+    - 'Official website: https://stellarium.org/'
+    - source_facts.name
+  docs-sources:
+    - The official Stellarium site publishes and maintains the comprehensive user guide.
+  history-sources:
+    - 'Official project resources: https://stellarium.org/en/'
+    - 'Official project website: https://stellarium.org/'
+    - 'Official user guide: https://stellarium.org/guide/'
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repository discovery
+      was skipped and repo is intentionally null.
+  tags-sources:
+    - 'Official user guide: https://stellarium.org/guide/'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - science
+  - astronomy
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
