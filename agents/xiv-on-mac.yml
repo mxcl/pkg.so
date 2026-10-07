@@ -1,12 +1,12 @@
 id: cask:xiv-on-mac
 display-name: XIV on Mac
-homepage: https://www.xivmac.com/
 repo: https://github.com/marzent/XIV-on-Mac
 docs:
   - https://github.com/marzent/XIV-on-Mac#readme
   - https://www.xivmac.com/frequently-asked-questions
 config-file-location:
-  macos: XIV on Mac install folder/FFXIV Config (open with File > Open Install Folder)
+  macos:
+    - XIV on Mac install folder/FFXIV Config (open with File > Open Install Folder)
 credentials-file-location:
   macos:
     - macOS Passwords app
@@ -69,10 +69,6 @@ history:
       Folder reveals game data, FFXIV configuration, the Wine prefix, Dalamud data, and
       logs. Saved login and optional OTP data appear under secure.square-enix.com in
       macOS Passwords or Keychain Access.
-category: games
-package-manager:
-  brew-cask: xiv-on-mac
-package-manager-url: https://formulae.brew.sh/cask/xiv-on-mac
 tags:
   - apple-silicon
   - dalamud
@@ -84,10 +80,42 @@ tags:
   - macos-gaming
   - moltenvk
   - wine
-description: Wine wrapper, setup tool and launcher for FFXIV
-applications:
-  - XIV on Mac.app
 provenance:
-  cask: xiv-on-mac
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official website and repository describe a Wine wrapper, setup tool, and
+      alternative FFXIV launcher for macOS: https://www.xivmac.com/ and
+      https://github.com/marzent/XIV-on-Mac#readme
+  display-name-sources:
+    - 'Official project website: https://www.xivmac.com/'
+    - source_facts.homepage
+  docs-sources:
+    - >
+      The official FAQ provides setup, settings, storage, login, and troubleshooting
+      guidance; the linked official repository README documents architecture and
+      features.
+  history-sources:
+    - 'Official FAQ: https://www.xivmac.com/frequently-asked-questions'
+    - 'Official releases: https://github.com/marzent/XIV-on-Mac/releases'
+    - 'Official repository: https://github.com/marzent/XIV-on-Mac'
+    - 'Official website: https://www.xivmac.com/'
+  repo-sources:
+    - >
+      The official website points users to the project, while the repository README
+      links back to xivmac.com and identifies the same XIV on Mac team and product:
+      https://github.com/marzent/XIV-on-Mac#readme
+    - source_facts.repo is empty.
+  tags-sources:
+    - >
+      Official project features and repository topics:
+      https://github.com/marzent/XIV-on-Mac#readme and
+      https://www.xivmac.com/frequently-asked-questions
+category-confidence: high
+category-path:
+  - games
+  - game-launchers
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

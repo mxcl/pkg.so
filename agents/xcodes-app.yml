@@ -1,12 +1,12 @@
 id: cask:xcodes-app
 display-name: Xcodes
-homepage: https://github.com/XcodesOrg/XcodesApp
-repo: https://github.com/XcodesOrg/XcodesApp
+repo: null
 docs:
   - https://github.com/XcodesOrg/XcodesApp#readme
 config-file-location: null
 credentials-file-location:
-  macos: macOS Keychain service com.robotsandpencils.xcodes
+  macos:
+    - macOS Keychain service com.robotsandpencils.xcodes
 history:
   adoption-history:
     - >
@@ -66,10 +66,6 @@ history:
     - >
       Signed and notarized builds can be installed with Homebrew or downloaded from the
       official GitHub releases page.
-category: developer-tools
-package-manager:
-  brew-cask: xcodes-app
-package-manager-url: https://formulae.brew.sh/cask/xcodes-app
 tags:
   - apple-development
   - developer-environment
@@ -80,12 +76,37 @@ tags:
   - swiftui
   - version-manager
   - xcode
-description: Install and switch between multiple versions of Xcode
-applications:
-  - Xcodes.app
 provenance:
-  cask: xcodes-app
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
-aliases:
-  - xcodes
+  category-sources:
+    - >
+      Official README describes installing, selecting, and managing multiple Xcode
+      versions, platforms, and runtimes: https://github.com/XcodesOrg/XcodesApp#readme
+  display-name-sources:
+    - >
+      Official repository README identifies the application as Xcodes.app:
+      https://github.com/XcodesOrg/XcodesApp#readme
+    - current_curation.display-name
+  docs-sources:
+    - >
+      The official repository README is the project's primary installation, feature, and
+      usage documentation.
+  history-sources:
+    - 'Official XcodesApp README: https://github.com/XcodesOrg/XcodesApp#readme'
+    - 'Official XcodesApp releases: https://github.com/XcodesOrg/XcodesApp/releases'
+    - 'Official companion CLI repository: https://github.com/XcodesOrg/xcodes'
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/XcodesOrg/XcodesApp; per input instructions, repo is therefore
+      returned as null.
+  tags-sources:
+    - 'Official features and repository topics: https://github.com/XcodesOrg/XcodesApp#readme'
+category-confidence: high
+category-path:
+  - developer-tools
+  - xcode-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
