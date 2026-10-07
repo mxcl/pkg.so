@@ -7084,11 +7084,10 @@
     },
     "pcoipclient": {
       "bundle_identifier": "com.teradici.swiftclient",
-      "confidence": "medium",
-      "evidence_hash": "ccf51e9f10cda6e97e0ee82fcd63af8ea303744658b6492c99cb6e4cd430a89b",
-      "reason": "Official Homebrew metadata installs PCoIPClient.app and lists this identifier plus com.teradici.usb-mediator for quitting; HP\u2019s official documentation identifies usb-mediator as the app\u2019s USB component, leaving com.teradici.swiftclient as the primary app identifier.",
+      "confidence": "high",
+      "evidence_hash": "ccd2d1a60da3e0618cc7ac984a5448f3bb2b111e21141976388c59abaaf9b04d",
+      "reason": "Homebrew identifies this and com.teradici.usb-mediator as running components of PCoIPClient.app; HP's documentation identifies the USB mediator as a nested USB component, leaving com.teradici.swiftclient as the primary client application.",
       "sources": [
-        "https://anyware.hp.com/web-help/pcoip_client/mac/22.01/installation/installing_and_uninstalling_pcoip_software_clients/",
         "https://anyware.hp.com/web-help/pcoip_client/mac/22.01/troubleshooting/usb_issues/",
         "https://formulae.brew.sh/api/cask/pcoipclient.json"
       ]
@@ -10036,6 +10035,98 @@
         "https://www.virtualhere.com/node/3773"
       ]
     },
+    "visit": {
+      "bundle_identifier": "gov.llnl.visit.gui",
+      "confidence": "medium",
+      "evidence_hash": "72782c3c0bb96d4a9c34e124c02956a6f7779b6b3164ced7c6e57537603c4187",
+      "reason": "The official cask installs VisIt.app and removes a saved-application-state directory named gov.llnl.visit.gui.savedState, strongly indicating that gov.llnl.visit.gui is the main app's bundle identifier, though an official Info.plist was not available for direct confirmation.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/visit.json",
+        "https://github.com/visit-dav/visit/blob/develop/src/doc/getting_started/Installing_VisIt.rst"
+      ]
+    },
+    "visual-paradigm": {
+      "bundle_identifier": "com.install4j.1106-5897-7327-6550.5",
+      "confidence": "medium",
+      "evidence_hash": "dda0700a4598beeac89a75fa83c06e2be00a80d88b210b96421390f11f60d8db",
+      "reason": "The official cask installs Visual Paradigm.app and explicitly removes com.install4j.1106-5897-7327-6550.5.savedState, which strongly identifies this install4j identifier as the primary app bundle rather than a filename or helper.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/visual-paradigm.json",
+        "https://formulae.brew.sh/cask/visual-paradigm"
+      ]
+    },
+    "visual-paradigm-ce": {
+      "bundle_identifier": "com.install4j.1106-5897-7327-6550.5",
+      "confidence": "medium",
+      "evidence_hash": "33dbf070201e91859651a8d095b99079bbb850880657b60f5c53aa9dec7827d0",
+      "reason": "The Community Edition cask installs the same vendor-supplied Visual Paradigm.app artifact and only renames it to Visual Paradigm CE.app; its saved-state cleanup uses com.install4j.1106-5897-7327-6550.5, so the underlying primary bundle identifier remains unchanged.",
+      "sources": [
+        "https://formulae.brew.sh/cask/visual-paradigm-ce",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/v/visual-paradigm-ce.rb"
+      ]
+    },
+    "visualboyadvance-m": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "5379029c8eb24456ecd06ee4a48291e65fa522fae95d62ddbc6a0142ef3d861e",
+      "reason": "The official project builds visualboyadvance-m.app using its macOS wxplist.in manifest, while the official cask's preference cleanup uses visualboyadvance-m.plist; together these identify the primary app bundle as visualboyadvance-m.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/visualboyadvance-m.json",
+        "https://github.com/visualboyadvance-m/visualboyadvance-m/blob/master/src/wx/wxplist.in"
+      ]
+    },
+    "visualdiffer": {
+      "bundle_identifier": "com.visualdiffer",
+      "confidence": "high",
+      "evidence_hash": "2b432ead35f1cf3c7e5a81b90c60082177e2c4799eb92337b2ea207a6fe7cc85",
+      "reason": "The official Xcode configuration directly sets PRODUCT_BUNDLE_IDENTIFIER to com.visualdiffer for VisualDiffer.app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/visualdiffer",
+        "https://github.com/visualdiffer/visualdiffer/blob/main/AppConfig.xcconfig"
+      ]
+    },
+    "visualvm": {
+      "bundle_identifier": "io.visualvm.VisualVM",
+      "confidence": "high",
+      "evidence_hash": "9a28538fd250100f1568bbabd9f63dee35c8a2ada8dcd2f8b665d87d71ae2cab",
+      "reason": "The primary VisualVM.app in the official macOS DMG uses io.visualvm.VisualVM; this is distinct from historical JDK-bundled VisualVM identifiers.",
+      "sources": [
+        "https://formulae.brew.sh/cask/visualvm",
+        "https://github.com/oracle/visualvm/releases",
+        "https://visualvm.github.io/download"
+      ]
+    },
+    "voicenotes": {
+      "bundle_identifier": "com.voicenotes.app",
+      "confidence": "medium",
+      "evidence_hash": "7ca05d95f53819d1bca745f45e3f5bc02182da9fb6fb60e78d9243ce04908a39",
+      "reason": "The current cask installs Voicenotes.app and identifies com.voicenotes.app as its macOS preference domain; no contradictory identifier appears in official distribution metadata.",
+      "sources": [
+        "https://formulae.brew.sh/cask/voicenotes",
+        "https://help.voicenotes.com/en/articles/11161004-how-to-use-voicenotes-on-mac"
+      ]
+    },
+    "volanta": {
+      "bundle_identifier": "orbx.volanta",
+      "confidence": "medium",
+      "evidence_hash": "1f0c784b7c949de8da0c4fc2d01b61121448a0a0df1e0e9fe6e0c5add04422cf",
+      "reason": "Homebrew installs Volanta.app and consistently associates orbx.volanta with its preferences, saved state, and recent-document records, strongly indicating the primary app identifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/volanta",
+        "https://volanta.app/"
+      ]
+    },
+    "vorta": {
+      "bundle_identifier": "com.borgbase.client.macos",
+      "confidence": "high",
+      "evidence_hash": "9c4f80f1b678aaff51d60c625f76c13a1b2859a3b96514ec1b88d756147b42db",
+      "reason": "Vorta's official PyInstaller specification writes APP_ID_DARWIN into Vorta.app's CFBundleIdentifier, and the official configuration defines that value as com.borgbase.client.macos.",
+      "sources": [
+        "https://formulae.brew.sh/cask/vorta",
+        "https://github.com/borgbase/vorta/blob/master/package/vorta.spec",
+        "https://github.com/borgbase/vorta/blob/master/src/vorta/config.py"
+      ]
+    },
     "vox": {
       "bundle_identifier": "com.coppertino.Vox",
       "confidence": "high",
@@ -10044,6 +10135,85 @@
       "sources": [
         "https://formulae.brew.sh/api/cask/vox.json",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/v/vox.rb"
+      ]
+    },
+    "vpn-tracker-365": {
+      "bundle_identifier": "com.equinux.VPNTracker365",
+      "confidence": "medium",
+      "evidence_hash": "f79f41be87f0d5cc695e3403ab1417a2805c7a9573afa2728444c367f2177018",
+      "reason": "Homebrew installs VPN Tracker 365.app and associates it with the matching application preference domain com.equinux.VPNTracker365; official vendor material does not directly publish the main app's identifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/v/vpn-tracker-365.rb",
+        "https://www.vpntracker.com/en/faq/1176/How-can-I-uninstall-VPN-Tracker-365"
+      ]
+    },
+    "vscodium": {
+      "bundle_identifier": "com.vscodium",
+      "confidence": "high",
+      "evidence_hash": "7f021247f47dbdb06c089f5c8fb9cc9514a17c8faed494f68109ea617fdc3996",
+      "reason": "The official VSCodium build script directly sets the stable macOS darwinBundleIdentifier to com.vscodium.",
+      "sources": [
+        "https://github.com/VSCodium/vscodium/blob/master/prepare_vscode.sh"
+      ]
+    },
+    "vv": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "3f4a8ed1b11d08259e0292819a4816186ab6cd3a936bfaea3b960573433d1ee8",
+      "reason": "The official repository and Homebrew metadata identify VV.app but do not directly expose its primary bundle identifier; inferring an Electron-generated identifier would be uncertain.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/vv.json",
+        "https://github.com/vv-vim/vv"
+      ]
+    },
+    "wakatime": {
+      "bundle_identifier": "macos-wakatime.WakaTime",
+      "confidence": "high",
+      "evidence_hash": "f9eadf2415564f3a8b5c7def44a68d65f3b2848cb180083c28f51f80ad1db924",
+      "reason": "The official XcodeGen manifest defines bundleIdPrefix as macos-wakatime and the primary application target as WakaTime, directly yielding macos-wakatime.WakaTime; Homebrew's application data paths corroborate it.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/wakatime.rb",
+        "https://github.com/wakatime/macos-wakatime/blob/main/project.yml"
+      ]
+    },
+    "waltr": {
+      "bundle_identifier": "com.softorino.waltr2",
+      "confidence": "medium",
+      "evidence_hash": "c5f5c92f78d9789788cfb29938a370345758feb62cf03e98107938ff1c2bcf42",
+      "reason": "Homebrew installs Waltr 2.app and associates it with the application preference plist com.softorino.waltr2.plist; no more direct official manifest was available.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/waltr.rb",
+        "https://softorino.com/legacy/waltr"
+      ]
+    },
+    "warcraft-logs-uploader": {
+      "bundle_identifier": "com.warcraft.logs",
+      "confidence": "medium",
+      "evidence_hash": "168625f167b771986efd9bfaadcd4be896e5a8fd197b61d3b48cc945cac3886b",
+      "reason": "The official RPGLogs release matches the cask\u2019s primary app. The identifier is the established main-app identity, but the current official release page does not expose its Info.plist directly.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/warcraft-logs-uploader.json",
+        "https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/tag/v9.3.65"
+      ]
+    },
+    "wave": {
+      "bundle_identifier": "dev.commandline.waveterm",
+      "confidence": "high",
+      "evidence_hash": "5c9c8bdeb8e28a655c619371bcd9d3215f9e4cc5b940f60429d6ce0c4cb7be8f",
+      "reason": "Wave\u2019s official repository sets electron-builder appId to dev.commandline.waveterm for the Wave product.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/wave.json",
+        "https://github.com/wavetermdev/waveterm/blob/main/package.json"
+      ]
+    },
+    "waveforms": {
+      "bundle_identifier": "com.digilent.waveforms",
+      "confidence": "high",
+      "evidence_hash": "1216c5badc32efca88deda5420196fc408ae33e8096ebe965f1fd0ad83fb91e6",
+      "reason": "The cask installs WaveForms.app and its saved-application-state path directly uses com.digilent.waveforms.",
+      "sources": [
+        "https://digilent.com/reference/software/waveforms/waveforms-3/start",
+        "https://formulae.brew.sh/api/cask/waveforms.json"
       ]
     },
     "webex": {
@@ -10056,6 +10226,16 @@
         "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cloudCollaboration/WebexforGovernment/webex-for-government-admin-guide/chap_set-up-the-app-for-webex-for-government.html"
       ]
     },
+    "webkinz": {
+      "bundle_identifier": "Ganz.Webkinz",
+      "confidence": "high",
+      "evidence_hash": "a55d8bcccd9ef128159b348ff342da2a473376d72d7ae36cc6df8c5cc30fd2b7",
+      "reason": "The official cask metadata associates Webkinz.app with both Ganz.Webkinz.plist and Ganz.Webkinz.savedState, directly identifying the primary app bundle.",
+      "sources": [
+        "https://formulae.brew.sh/cask/webkinz",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/webkinz.rb"
+      ]
+    },
     "webtorrent": {
       "bundle_identifier": "io.webtorrent.webtorrent",
       "confidence": "high",
@@ -10064,6 +10244,25 @@
       "sources": [
         "https://formulae.brew.sh/api/cask/webtorrent.json",
         "https://github.com/webtorrent/webtorrent-desktop"
+      ]
+    },
+    "wezterm": {
+      "bundle_identifier": "com.github.wez.wezterm",
+      "confidence": "high",
+      "evidence_hash": "db69989916e0c95337f749751ea5dfd2224aca1b9bfdedb232168455114d30fc",
+      "reason": "A macOS crash report in WezTerm\u2019s official repository identifies /Applications/WezTerm.app/Contents/MacOS/wezterm-gui with CFBundleIdentifier com.github.wez.wezterm; the cask saved-state path agrees.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/wezterm.rb",
+        "https://github.com/wezterm/wezterm/issues/2378"
+      ]
+    },
+    "wezterm@nightly": {
+      "bundle_identifier": "com.github.wez.wezterm",
+      "confidence": "high",
+      "evidence_hash": "1f08ca20be64960a4682964207495fb7bf086ad2f82f5e8d9487a43026d3bd8e",
+      "reason": "The official WezTerm.app Info.plist directly declares this CFBundleIdentifier.",
+      "sources": [
+        "https://github.com/wezterm/wezterm/blob/main/assets/macos/WezTerm.app/Contents/Info.plist"
       ]
     },
     "whatcable": {
@@ -10086,6 +10285,47 @@
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/whatsapp@beta.rb"
       ]
     },
+    "wheelwizard": {
+      "bundle_identifier": "ga.gabema.WheelWizard",
+      "confidence": "high",
+      "evidence_hash": "d02f0cbe0c08e97dd7515a6e3df677159aee07acf91fd42f3933ac5f19a6b762",
+      "reason": "The official macOS build packages the repository's MacAppTemplate as WheelWizard.app, whose Info.plist declares this identifier; Homebrew's matching preference path corroborates it.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/wheelwizard.rb",
+        "https://github.com/TeamWheelWizard/WheelWizard/blob/main/macos/MacAppTemplate/Contents/Info.plist",
+        "https://github.com/TeamWheelWizard/WheelWizard/blob/main/macos/release-macos.sh"
+      ]
+    },
+    "widgettoggler": {
+      "bundle_identifier": "com.sieren.WidgetToggler",
+      "confidence": "high",
+      "evidence_hash": "3f5cefab36e284bbc5825914848621ab1ca43c1a60e18e7efa744c3236a862c5",
+      "reason": "The main application target in the official Xcode project declares this PRODUCT_BUNDLE_IDENTIFIER, matching Homebrew's preference artifact.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/widgettoggler.rb",
+        "https://github.com/sieren/WidgetToggler/blob/main/WidgetToggler/WidgetToggler.xcodeproj/project.pbxproj"
+      ]
+    },
+    "wifi-explorer": {
+      "bundle_identifier": "com.adriangranados.wifiexplorer",
+      "confidence": "medium",
+      "evidence_hash": "0072c7eee907f539cbe206453592c0b3e62112a4ab9c98adde1cad6997697fed",
+      "reason": "The vendor's official preferences documentation and Homebrew metadata consistently use this application preference domain; the similarly named team-prefixed group-container entry is not the app identifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/wifi-explorer.rb",
+        "https://www.intuitibits.com/2017/05/10/preferences-in-wifi-explorer/"
+      ]
+    },
+    "winbox": {
+      "bundle_identifier": "com.mikrotik.winbox",
+      "confidence": "high",
+      "evidence_hash": "5492118cb3ec9996f4c2386823a97f0b61a8eb38dcb5d42683a77e81b55820dc",
+      "reason": "Crash metadata for /Applications/WinBox.app published on MikroTik's official forum directly reports this identifier, and Homebrew's saved-state path matches it exactly.",
+      "sources": [
+        "https://forum.mikrotik.com/t/winbox-4-is-here/178358/2086",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/winbox.rb"
+      ]
+    },
     "wins": {
       "bundle_identifier": "cools.wins.main",
       "confidence": "high",
@@ -10095,6 +10335,46 @@
         "https://formulae.brew.sh/api/cask/wins.json",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/wins.rb",
         "https://wins.cool/"
+      ]
+    },
+    "witsy": {
+      "bundle_identifier": "com.nabocorp.witsy",
+      "confidence": "high",
+      "evidence_hash": "971958f091917170758adbfd7f59a076c39fbe9c52d078901ac67404ef29bc82",
+      "reason": "The official Witsy build manifest explicitly sets appBundleId to com.nabocorp.witsy for the packaged Witsy.app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/witsy",
+        "https://github.com/Kochava-Studios/witsy/blob/main/forge.config.ts"
+      ]
+    },
+    "wljs-notebook": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "09f807e76f211ee9cf1d32d296a938b753e9cce8f17e53a03ed4fb1d543baccf",
+      "reason": "The official Electron build manifest explicitly sets appId to wljs-notebook and productName to WLJS Notebook.",
+      "sources": [
+        "https://formulae.brew.sh/cask/wljs-notebook",
+        "https://github.com/WLJSTeam/wljs-notebook/blob/main/package.json"
+      ]
+    },
+    "wolai": {
+      "bundle_identifier": "com.wolai.app",
+      "confidence": "medium",
+      "evidence_hash": "fa385442305f16a1869f80e32871646c7ab8af7a8f2c5c1955522c7448ed61b5",
+      "reason": "Homebrew installs wolai.app and associates its saved application state with com.wolai.app; this strongly identifies the main app, though no official build manifest is published.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/wolai.json",
+        "https://www.wolai.com/"
+      ]
+    },
+    "wolfram-engine": {
+      "bundle_identifier": "com.wolfram.wolframengine",
+      "confidence": "medium",
+      "evidence_hash": "48b213a7654292c0fad550bba359e9e55cf511adf460a74a7d695adb1d41776c",
+      "reason": "The cask identifies Wolfram Engine.app as the primary artifact and separately exposes an embedded Wolfram Player.app; its metadata distinguishes com.wolfram.wolframengine from the embedded Player identifier.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/wolfram-engine.json",
+        "https://support.wolfram.com/46070"
       ]
     },
     "wondershare-filmora": {
@@ -10117,6 +10397,37 @@
         "https://videoconverter.wondershare.com/"
       ]
     },
+    "wordservice": {
+      "bundle_identifier": "org.grunenberg.WordService",
+      "confidence": "medium",
+      "evidence_hash": "ea0ca7c7486b4df93508f7095875b0adb4199e40418358b5010294c7226cdda7",
+      "reason": "Homebrew installs WordService.app and records org.grunenberg.WordService as its associated preference domain; the vendor and Apple listings confirm this is the WordService application, but no public build manifest is available.",
+      "sources": [
+        "https://apps.apple.com/sg/app/wordservice/id899972312?mt=12",
+        "https://formulae.brew.sh/api/cask/wordservice.json",
+        "https://www.devontechnologies.com/apps/freeware"
+      ]
+    },
+    "workbench": {
+      "bundle_identifier": "com.codebasesaga.macOS.Workbench",
+      "confidence": "high",
+      "evidence_hash": "f0ba65aaee313f85752122215dd72bd18044ab30faf745cee7c49799c63cab89",
+      "reason": "The official cask installs Workbench.app, and its curation metadata names the matching Workbench preference domain; the vendor\u2019s official repository confirms this is the primary app.",
+      "sources": [
+        "https://formulae.brew.sh/cask/workbench",
+        "https://github.com/mxcl/Workbench"
+      ]
+    },
+    "wox": {
+      "bundle_identifier": "com.github.wox",
+      "confidence": "high",
+      "evidence_hash": "5ed2431e353fe0c7971a43be84341f4786bc540b389dd3f581e4648f748b93b6",
+      "reason": "The official repository\u2019s macOS Info.plist directly declares com.github.wox as Wox.app\u2019s CFBundleIdentifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/wox",
+        "https://github.com/Wox-launcher/Wox/blob/master/assets/mac/Info.plist"
+      ]
+    },
     "wpsoffice-cn": {
       "bundle_identifier": "com.kingsoft.wpsoffice.mac",
       "confidence": "high",
@@ -10125,6 +10436,190 @@
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/w/wpsoffice-cn.rb",
         "https://mac.wps.cn/"
+      ]
+    },
+    "wrkspace": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "4ded7264271b225d6174f314fc55ef6d8c50eb05c2161972de50939f6270bd1e",
+      "reason": "The official cask and vendor site identify Wrkspace.app, but no official source located exposes its CFBundleIdentifier; filename-based inference would be unreliable.",
+      "sources": [
+        "https://formulae.brew.sh/cask/wrkspace",
+        "https://wrkspace.co/"
+      ]
+    },
+    "x-air-edit": {
+      "bundle_identifier": "com.musictribe.X-AIR-Edit",
+      "confidence": "medium",
+      "evidence_hash": "e9d68b1c4b96be3ad6049059b12b4c120d8dd977607c98d365157a4745473c77",
+      "reason": "The official cask installs the vendor-hosted X-AIR-Edit.app; current Music Tribe distribution evidence supports this identifier, but no directly readable official manifest was available for the exact cask build.",
+      "sources": [
+        "https://apps.apple.com/us/app/x-air-edit/id6754191950?mt=12",
+        "https://formulae.brew.sh/cask/x-air-edit",
+        "https://www.behringer.com/en/products/0605-AAD"
+      ]
+    },
+    "x32-edit": {
+      "bundle_identifier": "com.musictribe.X32-Edit",
+      "confidence": "medium",
+      "evidence_hash": "a77d3a6a5c3b734d1bd8df9eab593598708f07ef6283b8953286af653f92c25f",
+      "reason": "The official cask installs the vendor-hosted X32-Edit.app; current Music Tribe distribution evidence supports this identifier, but no directly readable official manifest was available for the exact cask build.",
+      "sources": [
+        "https://apps.apple.com/us/app/x32-edit/id6754563545?mt=12",
+        "https://formulae.brew.sh/cask/x32-edit",
+        "https://www.behringer.com/en/products/0603-ACE"
+      ]
+    },
+    "xca": {
+      "bundle_identifier": "de.hohnstaedt.xca",
+      "confidence": "high",
+      "evidence_hash": "7571ca5a0759e79175b0725cf0031f53cf9ca600fc896e580b4c95697f35412a",
+      "reason": "The official XCA macOS Info.plist template identifies the application as de.hohnstaedt.xca; Homebrew\u2019s saved-state path independently matches it.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/x/xca.rb",
+        "https://github.com/chris2511/xca/blob/main/misc/Info.plist.in"
+      ]
+    },
+    "xcodes-app": {
+      "bundle_identifier": "com.robotsandpencils.XcodesApp",
+      "confidence": "high",
+      "evidence_hash": "1cbcbe44f6ddd08fa35aaacd63f6992c287e0c7280e0fd0630c0f7322d307df0",
+      "reason": "A crash manifest in the official Xcodes repository directly identifies /Applications/Xcodes.app as com.robotsandpencils.XcodesApp; Homebrew uses the same domain for the app\u2019s support data.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/x/xcodes-app.rb",
+        "https://github.com/XcodesOrg/XcodesApp/issues/427"
+      ]
+    },
+    "xdeck": {
+      "bundle_identifier": "me.morishin.XDeck",
+      "confidence": "high",
+      "evidence_hash": "dad4dd2ce0f48049726fdb8c3ae651c1fc1c0f1da7d69da444e662974b71f0f0",
+      "reason": "The official Xcode project assigns me.morishin.XDeck to the XDeck application target in both Debug and Release configurations.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/x/xdeck.rb",
+        "https://github.com/morishin/XDeck/blob/main/XDeck.xcodeproj/project.pbxproj"
+      ]
+    },
+    "xiaomi-cloud": {
+      "bundle_identifier": "micloud.pc.xiaomi",
+      "confidence": "medium",
+      "evidence_hash": "c51d1c5d9451b37567816afba0b5d337e80d1b7cc9b081bbe431f4347955367b",
+      "reason": "Homebrew installs Xiaomi\u2019s official \u5c0f\u7c73\u4e91\u670d\u52a1.app and distinguishes the main micloud.pc.xiaomi preference domain from micloud.pc.xiaomi.helper. This strongly indicates the former is the primary app identifier, but no public official manifest was available for direct confirmation.",
+      "sources": [
+        "https://formulae.brew.sh/cask/xiaomi-cloud",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/x/xiaomi-cloud.rb",
+        "https://i.mi.com/"
+      ]
+    },
+    "xiv-on-mac": {
+      "bundle_identifier": "dezent.XIV-on-Mac",
+      "confidence": "high",
+      "evidence_hash": "98fcb92c5fd779fa5b9540b1e0123c917f0a750f9357a83d5b093e2d76adf985",
+      "reason": "The official Xcode project assigns dezent.XIV-on-Mac to the XIV on Mac application target in both Debug and Release configurations.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/x/xiv-on-mac.rb",
+        "https://github.com/marzent/XIV-on-Mac/blob/main/XIV%20on%20Mac.xcodeproj/project.pbxproj"
+      ]
+    },
+    "xliff-editor": {
+      "bundle_identifier": "com.sweetpproductions.Xliff-Editor",
+      "confidence": "high",
+      "evidence_hash": "ecb4e140a0936b74d1cbcd2d8235965ee034f49028d8ddab7341cd58b5e7d376",
+      "reason": "The vendor\u2019s official support page identifies this container as Xliff Editor\u2019s reset data, and the Homebrew cask installs Xliff Editor.app with the same container in its zap metadata.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/x/xliff-editor.rb",
+        "https://support.sweetpproductions.com/category/16/xliff-editor"
+      ]
+    },
+    "xmind": {
+      "bundle_identifier": "org.xmind.cathy.application",
+      "confidence": "high",
+      "evidence_hash": "daaa735c901a826fc6330dfa5bd086dacdb083c7abef0ade173702feabc05c82",
+      "reason": "The cask installs Xmind.app, and its saved-application-state directory is named org.xmind.cathy.application.savedState, directly identifying the primary app\u2019s bundle ID.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/x/xmind.rb",
+        "https://www.xmind.com/download"
+      ]
+    },
+    "xmind@beta": {
+      "bundle_identifier": "org.xmind.cathy.application",
+      "confidence": "high",
+      "evidence_hash": "02ddd614b07caaea5b687ea3426fef273cd17d8dbbbf7f91eae0ef8ccd3892ee",
+      "reason": "The beta cask installs the same Xmind.app artifact and names org.xmind.cathy.application.savedState as its application state, indicating the same primary bundle ID as stable Xmind.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/x/xmind@beta.rb",
+        "https://www.xmind.com/download"
+      ]
+    },
+    "xmlmind-editor": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "aeb870cd045cb01b92eeb507952812363192957f791129613db322ca64dab87a",
+      "reason": "Official Homebrew and vendor documentation confirm XMLmind.app as the primary application bundle, but neither exposes its CFBundleIdentifier; inferring one from the product name or Java package names would be unreliable.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/x/xmlmind-editor.rb",
+        "https://www.xmlmind.com/xmleditor/_distrib/doc/help/installing_xxe.html"
+      ]
+    },
+    "yandex-disk": {
+      "bundle_identifier": "ru.yandex.desktop.disk2",
+      "confidence": "high",
+      "evidence_hash": "ac44bd0ea4e35278729846c5a33adeae2e903d06bbc07b6993639ba42d000398",
+      "reason": "The cask installs Yandex.Disk.2.app and identifies ru.yandex.desktop.disk2.plist as its primary preference file; the separate screenshots domain is explicitly distinguished as ancillary.",
+      "sources": [
+        "https://disk.yandex.ru/",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/y/yandex-disk.rb"
+      ]
+    },
+    "yandex-music": {
+      "bundle_identifier": "ru.yandex.desktop.music",
+      "confidence": "high",
+      "evidence_hash": "122aebd5fcf76976fa2c15dba6f48d266e939fa2e8aed7cabbf342e958866741",
+      "reason": "The official Homebrew cask installs \u042f\u043d\u0434\u0435\u043a\u0441 \u041c\u0443\u0437\u044b\u043a\u0430.app and names ru.yandex.desktop.music.savedState; macOS saved-state directories are keyed by the owning application's bundle identifier.",
+      "sources": [
+        "https://formulae.brew.sh/cask/yandex-music",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/y/yandex-music.rb"
+      ]
+    },
+    "yandex-music-unofficial": {
+      "bundle_identifier": "dev.juvs.yandex-music",
+      "confidence": "high",
+      "evidence_hash": "868a9ee0de01fa3dd39991e39d431617f115c2f751a6102a4cd02ee7f6fa0880",
+      "reason": "The application's official repository sets productName to Yandex Music Unofficial and directly declares appId as dev.juvs.yandex-music in its electron-builder manifest.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/y/yandex-music-unofficial.rb",
+        "https://github.com/juvirez/yandex-music-app/blob/master/package.json"
+      ]
+    },
+    "yap-app": {
+      "bundle_identifier": "com.frigade.Yap",
+      "confidence": "high",
+      "evidence_hash": "19baca2ba6289a1f24fa987b355b0c81ba968c7b0544ccccd6c50e8f4483173e",
+      "reason": "The official Yap project manifest directly sets PRODUCT_BUNDLE_IDENTIFIER to com.frigade.Yap for the macOS application target; the separate YapTests identifier is only the test bundle.",
+      "sources": [
+        "https://github.com/FrigadeHQ/yap/blob/main/project.yml",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/y/yap-app.rb"
+      ]
+    },
+    "yate": {
+      "bundle_identifier": "com.2manyrobots.Yate",
+      "confidence": "medium",
+      "evidence_hash": "779ec7a55aaeeb1427e00f9362989c5117724b56a4285c7663b57622fc783891",
+      "reason": "The official Homebrew cask associates Yate.app with the matching com.2manyrobots.Yate preference domain. This strongly identifies the primary app, but the vendor does not publish a directly inspectable build manifest.",
+      "sources": [
+        "https://2manyrobots.com/yate/",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/y/yate.rb"
+      ]
+    },
+    "yealink-meeting": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "8a1a717ff06364d73847eca13987314ea2915f8b6a416aa5c733cd1ab5997d7a",
+      "reason": "Official Homebrew and vendor sources identify Yealink Meeting.app but expose no bundle identifier; the support paths are generic product/SDK directories and are insufficient to infer the primary app identifier safely.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/y/yealink-meeting.rb",
+        "https://helpcenter.ylyun.com/help-docs/pc-guide/registering-and-logging-into-the-client?lang=en",
+        "https://www.ylyun.com/portal/Download"
       ]
     },
     "yingfu-online": {
