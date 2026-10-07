@@ -1,17 +1,20 @@
 id: cask:wakatime
 display-name: WakaTime
-homepage: https://wakatime.com/mac
-repo: https://github.com/wakatime/macos-wakatime
+repo: null
 docs:
   - https://github.com/wakatime/macos-wakatime#readme
   - https://wakatime.com/faq
   - https://wakatime.com/mac
 config-file-location:
-  unix: ~/.wakatime.cfg
-  windows: '%USERPROFILE%\.wakatime.cfg'
+  unix:
+    - ~/.wakatime.cfg
+  windows:
+    - '%USERPROFILE%\.wakatime.cfg'
 credentials-file-location:
-  unix: ~/.wakatime.cfg
-  windows: '%USERPROFILE%\.wakatime.cfg'
+  unix:
+    - ~/.wakatime.cfg
+  windows:
+    - '%USERPROFILE%\.wakatime.cfg'
 history:
   adoption-history:
     - >
@@ -71,10 +74,6 @@ history:
       macOS permissions, and leave it running in the menu bar. It detects active
       applications and reports activity to the user's dashboard; specialized application
       support can assign categories, projects, or entity types.
-category: productivity
-package-manager:
-  brew-cask: wakatime
-package-manager-url: https://formulae.brew.sh/cask/wakatime
 tags:
   - activity-tracking
   - developer-analytics
@@ -83,10 +82,39 @@ tags:
   - productivity
   - time-tracking
   - xcode
-description: System tray app for automatic time tracking
-applications:
-  - WakaTime.app
 provenance:
-  cask: wakatime
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://wakatime.com/mac describes automatic activity tracking for macOS applications.
+    - 'source_facts.description: "System tray app for automatic time tracking".'
+  display-name-sources:
+    - https://github.com/wakatime/macos-wakatime
+    - https://wakatime.com/mac
+  docs-sources:
+    - >
+      The official repository README documents installation, use, supported
+      applications, and cleanup.
+    - https://wakatime.com/faq documents the shared configuration file and API key.
+    - https://wakatime.com/mac is the official installation page for the macOS application.
+  history-sources:
+    - https://github.com/wakatime/macos-wakatime
+    - https://github.com/wakatime/wakatime-cli
+    - https://github.com/wakatime/xcode-wakatime
+    - https://wakatime.com/help/creating-plugin
+    - https://wakatime.com/mac
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repo is returned as
+      null without re-evaluation.
+  tags-sources:
+    - https://github.com/wakatime/macos-wakatime
+    - https://wakatime.com/mac
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - time-tracking
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

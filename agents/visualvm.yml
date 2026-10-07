@@ -1,15 +1,17 @@
 id: cask:visualvm
 display-name: VisualVM
-homepage: https://visualvm.github.io/
-repo: https://github.com/oracle/visualvm
+repo: null
 docs:
   - https://visualvm.github.io/docs/command-line-options.html
   - https://visualvm.github.io/documentation.html
   - https://visualvm.github.io/gettingstarted.html
 config-file-location:
-  linux: ~/.visualvm/<version>/
-  macos: ~/Library/Application Support/VisualVM/<version>/
-  windows: '%APPDATA%\VisualVM\<version>\'
+  linux:
+    - ~/.visualvm/<version>/
+  macos:
+    - ~/Library/Application Support/VisualVM/<version>/
+  windows:
+    - '%APPDATA%\VisualVM\<version>\'
 credentials-file-location: null
 history:
   adoption-history:
@@ -66,10 +68,6 @@ history:
       behavior, take or open thread and heap dumps, connect through JMX, run sampling or
       profiling sessions, and examine Java Flight Recorder data. Plugins extend the base
       application.
-category: developer-tools
-package-manager:
-  brew-cask: visualvm
-package-manager-url: https://formulae.brew.sh/cask/visualvm
 tags:
   - heap-dump
   - java
@@ -79,10 +77,40 @@ tags:
   - profiler
   - thread-dump
   - troubleshooting
-description: All-in-One Java Troubleshooting Tool
-applications:
-  - VisualVM.app
 provenance:
-  cask: visualvm
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://visualvm.github.io/ describes VisualVM as a tool for monitoring and
+      troubleshooting Java applications.
+    - 'source_facts.description: "All-in-One Java Troubleshooting Tool".'
+  display-name-sources:
+    - current_curation.display-name
+    - https://visualvm.github.io/
+  docs-sources:
+    - >
+      https://visualvm.github.io/docs/command-line-options.html documents current
+      launcher options and user-directory locations.
+    - https://visualvm.github.io/documentation.html is the official documentation index.
+    - https://visualvm.github.io/gettingstarted.html is the official introductory guide.
+  history-sources:
+    - https://visualvm.github.io/docs/command-line-options.html
+    - https://visualvm.github.io/download
+    - https://visualvm.github.io/features.html
+    - https://visualvm.github.io/releases.html
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repo is returned as
+      null without re-evaluation.
+  tags-sources:
+    - https://visualvm.github.io/docs/command-line-options.html
+    - https://visualvm.github.io/features.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - profiling
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,7 +1,6 @@
 id: cask:vorta
 display-name: Vorta
-homepage: https://github.com/borgbase/vorta
-repo: https://github.com/borgbase/vorta
+repo: null
 docs:
   - https://vorta.borgbase.com/
   - https://vorta.borgbase.com/faq
@@ -10,7 +9,8 @@ config-file-location:
   linux:
     - ~/.local/share/Vorta/settings.db
     - ~/.var/app/com.borgbase.Vorta/data/Vorta/settings.db (Flatpak)
-  macos: ~/Library/Application Support/Vorta/settings.db
+  macos:
+    - ~/Library/Application Support/Vorta/settings.db
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,10 +63,6 @@ history:
       exclusions and retention rules, schedule backups, browse point-in-time archives,
       and restore selected files. Multiple profiles can separate destinations, source
       sets, and schedules.
-category: system
-package-manager:
-  brew-cask: vorta
-package-manager-url: https://formulae.brew.sh/cask/vorta
 tags:
   - backup
   - borgbackup
@@ -76,10 +72,36 @@ tags:
   - encryption
   - restore
   - scheduler
-description: Desktop Backup Client for Borg
-applications:
-  - Vorta.app
 provenance:
-  cask: vorta
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://vorta.borgbase.com/ identifies Vorta as a desktop client for BorgBackup.
+    - 'source_facts.description: "Desktop Backup Client for Borg".'
+  display-name-sources:
+    - current_curation.display-name
+    - https://vorta.borgbase.com/
+  docs-sources:
+    - https://vorta.borgbase.com/ is the official Vorta documentation site.
+    - https://vorta.borgbase.com/faq/ documents platform behavior and settings locations.
+    - https://vorta.borgbase.com/usage/ contains official workflow guides.
+  history-sources:
+    - https://github.com/borgbase/vorta
+    - https://vorta.borgbase.com/
+    - https://vorta.borgbase.com/faq/
+    - https://vorta.borgbase.com/install/linux/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repo is returned as
+      null without re-evaluation.
+  tags-sources:
+    - https://github.com/borgbase/vorta
+    - https://vorta.borgbase.com/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - system
+  - backup
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

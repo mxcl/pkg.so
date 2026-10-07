@@ -1,7 +1,6 @@
 id: cask:vscodium
 display-name: VSCodium
-homepage: https://github.com/VSCodium/vscodium
-repo: https://github.com/VSCodium/vscodium
+repo: null
 docs:
   - https://github.com/VSCodium/vscodium/blob/master/docs/migration.md
   - https://github.com/VSCodium/vscodium/blob/master/docs/troubleshooting.md
@@ -71,10 +70,6 @@ history:
       platform. Most VS Code workflows and settings carry over, but extensions come from
       Open VSX by default and some Microsoft-restricted extensions may be unavailable or
       incompatible.
-category: developer-tools
-package-manager:
-  brew-cask: vscodium
-package-manager-url: https://formulae.brew.sh/cask/vscodium
 tags:
   - code-editor
   - electron
@@ -83,10 +78,40 @@ tags:
   - open-vsx
   - telemetry-disabled
   - vscode
-description: Binary releases of VS Code without MS branding/telemetry/licensing
-applications:
-  - VSCodium.app
 provenance:
-  cask: vscodium
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://github.com/VSCodium/vscodium identifies VSCodium as freely licensed
+      binaries built from Microsoft's VS Code source.
+    - >
+      source_facts.description: "Binary releases of VS Code without MS
+      branding/telemetry/licensing".
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/VSCodium/vscodium
+  docs-sources:
+    - The official migration guide documents settings and extension locations.
+    - The official repository's docs directory is the maintained VSCodium documentation set.
+    - The official troubleshooting guide covers installation and runtime issues.
+  history-sources:
+    - https://github.com/VSCodium/vscodium
+    - https://github.com/VSCodium/vscodium/blob/master/LICENSE
+    - https://github.com/VSCodium/vscodium/blob/master/docs/migration.md
+    - https://github.com/VSCodium/vscodium/tree/master/docs
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the task rule, repo is returned as
+      null without re-evaluation.
+  tags-sources:
+    - https://github.com/VSCodium/vscodium
+    - https://github.com/VSCodium/vscodium/tree/master/docs
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - code-editors
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
