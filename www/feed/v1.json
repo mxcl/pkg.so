@@ -114,6 +114,8 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:texres",
+        "brew:arcane-cli",
         "brew:cask:cuadriver",
         "brew:doltlite",
         "brew:morphe",
@@ -123,9 +125,7 @@
         "brew:cask:sdrmm-app",
         "brew:cask:hagimimonitordirect",
         "brew:mailtrap-local",
-        "brew:cask:manus-cue",
-        "brew:sofka",
-        "brew:cask:mindroom"
+        "brew:cask:manus-cue"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -133,6 +133,8 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:texres",
+        "brew:arcane-cli",
         "brew:cask:cuadriver",
         "brew:doltlite",
         "brew:morphe",
@@ -142,9 +144,7 @@
         "brew:cask:sdrmm-app",
         "brew:cask:hagimimonitordirect",
         "brew:mailtrap-local",
-        "brew:cask:visual-studio-code@insiders",
-        "brew:neovim",
-        "brew:cask:kotlin-lsp"
+        "brew:cask:visual-studio-code@insiders"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -817,8 +817,73 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-06T04:25:18Z",
+  "generatedAt": "2026-10-07T05:30:04Z",
   "packages": {
+    "brew:arcane-cli": {
+      "agentSummary": "Arcane CLI manages containers, images, projects, environments, backups, and server settings from scripts or terminals, using Arcane API credentials and JSON-friendly output.",
+      "assessment": {
+        "alternatives": [
+          "Arcane web interface",
+          "Docker CLI and Docker Compose",
+          "Portainer",
+          "Dockge"
+        ],
+        "audiences": [
+          "Arcane administrators",
+          "Docker operators automating routine management",
+          "Teams integrating Arcane into scripts and CI"
+        ],
+        "caveats": [
+          "The CLI is officially described as being in early development",
+          "Device-code login cannot complete passkey MFA challenges, so those accounts need an API key",
+          "Most commands depend on an Arcane server and are not a general-purpose replacement for the Docker CLI"
+        ],
+        "complements": [
+          "Arcane Docker management server",
+          "jq for processing JSON output",
+          "Shell scripts or CI workflows"
+        ],
+        "prerequisites": [
+          "A reachable Arcane server",
+          "An API key or compatible device-code authentication setup",
+          "An explicitly selected environment for environment-scoped commands"
+        ],
+        "useCases": [
+          "Managing Arcane resources without opening the web interface",
+          "Producing JSON output for shell automation",
+          "Following activities, triggering updates, and managing backups"
+        ]
+      },
+      "category": "cloud-infrastructure",
+      "displayName": "arcane-cli",
+      "docs": "https://getarcane.app/docs/cli/commands",
+      "homepage": "https://getarcane.app",
+      "id": "brew:arcane-cli",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aarcane-cli",
+      "lastUpdatedAt": "2026-10-07T02:35:10Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/getarcaneapp/arcane",
+      "researchedAt": "2026-10-07T05:30:04Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Arcane CLI installation guide",
+          "url": "https://getarcane.app/docs/reference/cli/install"
+        },
+        {
+          "kind": "primary",
+          "title": "Arcane CLI command reference",
+          "url": "https://getarcane.app/docs/reference/cli/commands"
+        },
+        {
+          "kind": "primary",
+          "title": "Initial Arcane CLI release pull request",
+          "url": "https://github.com/getarcaneapp/arcane/pull/1150"
+        }
+      ],
+      "upstreamSummary": "Command-line client for the Arcane Docker management platform",
+      "version": "2.15.1"
+    },
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
       "assessment": {
@@ -1521,69 +1586,6 @@
       ],
       "upstreamSummary": "Personal AI agents with their own identities",
       "version": "1.0.4"
-    },
-    "brew:cask:mindroom": {
-      "agentSummary": "MindRoom hosts persistent multi-agent teams on Matrix, combining configurable models, memory, tools, scheduling, knowledge bases, and bridged chat access in a self-hostable runtime.",
-      "assessment": {
-        "alternatives": [
-          "OpenClaw for a personal-first chat assistant",
-          "Hermes Agent for another self-hosted assistant architecture",
-          "Single-agent provider applications when multi-user orchestration is unnecessary"
-        ],
-        "audiences": [
-          "Teams and individuals who want multiple AI agents available through shared chat rooms",
-          "Self-hosters willing to operate Matrix-connected services and model credentials"
-        ],
-        "caveats": [
-          "Cloud models and external tools can receive conversation context or data according to their own policies",
-          "Self-hosting Matrix, credentials, bridges, and execution workers adds meaningful operational responsibility",
-          "Powerful tool integrations require careful approval, secret-isolation, and room-access policies"
-        ],
-        "complements": [
-          "Matrix clients and bridges",
-          "Ollama or llama.cpp for local model routing",
-          "Container workers for isolated code execution"
-        ],
-        "prerequisites": [
-          "A supported model provider or local model endpoint",
-          "Hosted or self-managed Matrix access",
-          "Python 3.12 and uv for source-based deployments"
-        ],
-        "useCases": [
-          "Coordinating specialist agents in threaded Matrix conversations",
-          "Connecting governed tools, scheduled tasks, and local knowledge bases to chat agents",
-          "Keeping one agent identity and memory across Matrix bridges"
-        ]
-      },
-      "category": "ai",
-      "displayName": "MindRoom",
-      "docs": "https://docs.mindroom.chat/",
-      "homepage": "https://github.com/mindroom-ai/mindroom",
-      "id": "brew:cask:mindroom",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amindroom",
-      "lastUpdatedAt": "2026-09-28T04:18:50Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/mindroom-ai/mindroom",
-      "researchedAt": "2026-09-28T07:35:24Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "MindRoom upstream repository and architecture overview",
-          "url": "https://github.com/mindroom-ai/mindroom"
-        },
-        {
-          "kind": "primary",
-          "title": "MindRoom getting-started guide",
-          "url": "https://docs.mindroom.chat/getting-started/"
-        },
-        {
-          "kind": "primary",
-          "title": "MindRoom initial public GitHub release",
-          "url": "https://github.com/mindroom-ai/mindroom/releases/tag/v2026.9.250"
-        }
-      ],
-      "upstreamSummary": "Self-hostable AI stack for multi-user, multi-agent workflows on Matrix",
-      "version": "2026.9.330"
     },
     "brew:cask:monet": {
       "agentSummary": "Monet provides a native macOS control room for browsing, searching, launching, and supervising concurrent Claude Code and Codex sessions across projects.",
@@ -4165,6 +4167,66 @@
       "upstreamSummary": "Render Mermaid diagrams in the terminal",
       "version": "0.9.0"
     },
+    "brew:texres": {
+      "agentSummary": "TeXres packages pdfLaTeX-, XeLaTeX-, and LuaLaTeX-compatible workflows, bibliography tools, fonts, and packages into one Rust executable that builds documents without TeX Live.",
+      "assessment": {
+        "alternatives": [
+          "TeX Live",
+          "MiKTeX",
+          "Tectonic",
+          "Typst"
+        ],
+        "audiences": [
+          "LaTeX authors seeking a self-contained toolchain",
+          "Developers embedding TeX through C or WebAssembly",
+          "Teams building reproducible document pipelines"
+        ],
+        "caveats": [
+          "The young implementation should be tested against documents that depend on uncommon packages or engine behavior",
+          "System fonts are not searched automatically; additional fonts must be placed with the project",
+          "Alpine and other musl-based Linux distributions are not supported"
+        ],
+        "complements": [
+          "VS Code with LaTeX Workshop",
+          "TeXstudio",
+          "Git-based manuscript review workflows"
+        ],
+        "prerequisites": [
+          "A supported macOS, Windows, or glibc-based Linux system",
+          "Representative documents for compatibility testing before migration",
+          "Project-local font files when required fonts are not bundled"
+        ],
+        "useCases": [
+          "Compiling LaTeX documents without installing TeX Live",
+          "Rebuilding papers automatically in watch mode",
+          "Running bibliography and latexdiff workflows from one executable"
+        ]
+      },
+      "category": "productivity",
+      "displayName": "texres",
+      "docs": "https://github.com/leoliu0/texres#readme",
+      "homepage": "https://github.com/leoliu0/texres",
+      "id": "brew:texres",
+      "installURL": "pkgmgrmgr://install?package=brew%3Atexres",
+      "lastUpdatedAt": "2026-10-07T03:11:51Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/leoliu0/texres",
+      "researchedAt": "2026-10-07T05:30:04Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "TeXres official repository and usage guide",
+          "url": "https://github.com/leoliu0/texres"
+        },
+        {
+          "kind": "primary",
+          "title": "TeXres v0.1.0 first release",
+          "url": "https://github.com/leoliu0/texres/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "Fast TeX engine written in Rust",
+      "version": "0.7.2"
+    },
     "brew:workmux": {
       "agentSummary": "workmux pairs Git worktrees with terminal windows, automating isolated task setup, agent status, review, merging, and cleanup while preserving familiar multiplexer workflows.",
       "assessment": {
@@ -4231,7 +4293,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-06T04:23:45Z",
+    "generatedAt": "2026-10-07T05:28:35Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
