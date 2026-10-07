@@ -1,7 +1,6 @@
 id: cask:wezterm
 display-name: WezTerm
-homepage: https://wezterm.org/
-repo: https://github.com/wezterm/wezterm
+repo: null
 docs:
   - https://wezterm.org/
   - https://wezterm.org/cli/general.html
@@ -11,7 +10,8 @@ config-file-location:
     - ~/.wezterm.lua
     - $XDG_CONFIG_HOME/wezterm/wezterm.lua
     - ~/.config/wezterm/wezterm.lua
-  windows: '%USERPROFILE%\.wezterm.lua'
+  windows:
+    - '%USERPROFILE%\.wezterm.lua'
 credentials-file-location: null
 history:
   adoption-history:
@@ -77,10 +77,6 @@ history:
       Configuration is executable Lua and can define appearance, fonts, key bindings,
       launch menus, events, and platform-specific behavior; changes are normally
       reloaded automatically.
-category: developer-tools
-package-manager:
-  brew-cask: wezterm
-package-manager-url: https://formulae.brew.sh/cask/wezterm
 tags:
   - cross-platform
   - gpu-accelerated
@@ -90,10 +86,34 @@ tags:
   - ssh
   - terminal-emulator
   - terminal-multiplexer
-description: GPU-accelerated cross-platform terminal emulator and multiplexer
-applications:
-  - WezTerm.app
 provenance:
-  cask: wezterm
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - https://wezterm.org/ identifies WezTerm as a terminal emulator and multiplexer.
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://wezterm.org/ uses the name WezTerm.
+  docs-sources:
+    - The official configuration and CLI references document the primary user interfaces.
+    - wezterm.org is the dedicated official documentation site.
+  history-sources:
+    - https://github.com/wezterm/wezterm
+    - https://wezterm.org/
+    - https://wezterm.org/changelog.html
+    - https://wezterm.org/config/files.html
+    - source_facts.package-manager
+  repo-sources:
+    - source_facts.repo is already populated; repository lookup was not repeated as required.
+  tags-sources:
+    - https://wezterm.org/
+    - https://wezterm.org/config/files.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminals
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,12 +1,12 @@
 id: cask:wave
 display-name: Wave Terminal
-homepage: https://www.waveterm.dev/
 repo: https://github.com/wavetermdev/waveterm
 docs:
   - https://docs.waveterm.dev/
   - https://docs.waveterm.dev/config
 config-file-location:
-  unix: ~/.config/waveterm/settings.json
+  unix:
+    - ~/.config/waveterm/settings.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -60,10 +60,6 @@ history:
     - >
       The wsh helper exposes configuration editing and workspace-oriented terminal
       operations from the command line.
-category: developer-tools
-package-manager:
-  brew-cask: wave
-package-manager-url: https://formulae.brew.sh/cask/wave
 tags:
   - ai
   - cross-platform
@@ -72,10 +68,40 @@ tags:
   - ssh
   - terminal-emulator
   - workspace
-description: Terminal emulator
-applications:
-  - Wave.app
 provenance:
-  cask: wave
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://docs.waveterm.dev/ describes Wave as a terminal with integrated developer
+      workflows.
+    - source_facts.description identifies a terminal emulator.
+  display-name-sources:
+    - current_curation.display-name
+    - https://docs.waveterm.dev/ uses the product name Wave Terminal.
+  docs-sources:
+    - >
+      The official dedicated documentation site provides product and configuration
+      documentation.
+    - https://docs.waveterm.dev/config documents settings.json and its location.
+  history-sources:
+    - https://docs.waveterm.dev/
+    - https://docs.waveterm.dev/config
+    - https://docs.waveterm.dev/releasenotes
+    - https://github.com/wavetermdev/waveterm
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      The official GitHub organization is verified as controlling waveterm.dev, and the
+      official documentation links this repository.
+  tags-sources:
+    - https://docs.waveterm.dev/
+    - https://github.com/wavetermdev/waveterm
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminals
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
