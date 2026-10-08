@@ -1,17 +1,18 @@
 id: cask:mcplinker
 display-name: MCP Linker
-homepage: https://github.com/milisp/mcp-linker
-repo: https://github.com/milisp/mcp-linker
+repo: null
 docs:
   - https://github.com/milisp/mcp-linker/wiki
   - https://github.com/milisp/mcp-linker#readme
 config-file-location:
-  macos: ~/Library/Application Support/Claude/claude_desktop_config.json
+  macos:
+    - ~/Library/Application Support/Claude/claude_desktop_config.json
   unix:
     - ~/.cursor/mcp.json
     - .cursor/mcp.json
     - ~/.codeium/windsurf/mcp_config.json
-  windows: ~/AppData/Roaming/Claude/claude_desktop_config.json
+  windows:
+    - ~/AppData/Roaming/Claude/claude_desktop_config.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -72,10 +73,6 @@ history:
       and add it to one or more supported clients. MCP Linker writes the appropriate
       client configuration directly; the official wiki advises backing up existing
       configuration because some operations can overwrite it.
-category: developer-tools
-package-manager:
-  brew-cask: mcplinker
-package-manager-url: https://formulae.brew.sh/cask/mcplinker
 tags:
   - ai-clients
   - configuration-management
@@ -84,10 +81,45 @@ tags:
   - server-marketplace
   - sync
   - tauri
-description: Manage and sync MCP server configurations across AI clients
-applications:
-  - MCPLinker.app
 provenance:
-  cask: mcplinker
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      https://github.com/milisp/mcp-linker — official README describes a tool for adding
+      and synchronizing MCP server configurations across AI clients.
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/milisp/mcp-linker — official README title.
+  docs-sources:
+    - >
+      https://github.com/milisp/mcp-linker#readme — official installation, feature, and
+      usage guide.
+    - >
+      https://github.com/milisp/mcp-linker/wiki — official configuration-path and
+      troubleshooting documentation.
+  history-sources:
+    - >
+      https://github.com/milisp/mcp-linker#readme — official features, installation,
+      supported clients, and workflow.
+    - https://github.com/milisp/mcp-linker/releases — official release history.
+    - >
+      https://github.com/milisp/mcp-linker/wiki — official explanation of configuration
+      changes and client paths.
+    - source_facts.package-manager — records Homebrew cask distribution.
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the requested rule, repo is returned
+      as null without re-evaluation.
+  tags-sources:
+    - >
+      https://github.com/milisp/mcp-linker#readme — official features, supported
+      clients, marketplace, synchronization, and development stack.
+    - https://github.com/milisp/mcp-linker/wiki — official configuration-management behavior.
+category-confidence: high
+category-path:
+  - developer-tools
+  - ai-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
