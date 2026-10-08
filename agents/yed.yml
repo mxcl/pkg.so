@@ -1,14 +1,16 @@
 id: cask:yed
 display-name: yEd Graph Editor
-homepage: https://www.yworks.com/products/yed
 repo: null
 docs:
   - https://yed.yworks.com/support/manual
   - https://www.yworks.com/products/yed/release-notes
 config-file-location:
-  linux: ~/.yEd/settings.xml
-  macos: ~/Library/yWorks/yEd/settings.xml
-  windows: '%APPDATA%\yWorks\yEd\settings.xml'
+  linux:
+    - ~/.yEd/settings.xml
+  macos:
+    - ~/Library/yWorks/yEd/settings.xml
+  windows:
+    - '%APPDATA%\yWorks\yEd\settings.xml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -74,10 +76,6 @@ history:
       yEd imports formats including GraphML, GML, Excel spreadsheets, GEDCOM, and
       transformed XML, and exports diagrams to formats such as PDF, SVG, PNG, JPEG, and
       GraphML.
-category: productivity
-package-manager:
-  brew-cask: yed
-package-manager-url: https://formulae.brew.sh/cask/yed
 tags:
   - automatic-layout
   - data-visualization
@@ -86,10 +84,40 @@ tags:
   - graph-editor
   - graphml
   - uml
-description: Create diagrams manually, or import external data for analysis
-applications:
-  - yEd.app
 provenance:
-  cask: yed
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official manual describes graph editing, layouts, grouping, UML, swimlanes, and
+      export: https://yed.yworks.com/support/manual/
+    - 'Official yEd product page: https://www.yworks.com/products/yed'
+  display-name-sources:
+    - 'Official manual: https://yed.yworks.com/support/manual/'
+    - 'Official product and manual title: https://www.yworks.com/products/yed'
+  docs-sources:
+    - Official yEd Graph Editor manual.
+    - Official yWorks release notes.
+  history-sources:
+    - 'Input package identity: source_facts.package-manager.brew-cask'
+    - 'Official yEd manual: https://yed.yworks.com/support/manual/'
+    - 'Official yEd product page: https://www.yworks.com/products/yed'
+    - 'Official yEd release notes: https://www.yworks.com/products/yed/release-notes'
+    - 'Official yWorks FAQ: https://www.yworks.com/faq?id=30037'
+    - 'Official yWorks company history: https://www.yworks.com/company'
+  repo-sources:
+    - >
+      The official yWorks FAQ says yEd is not open source and directs source-code
+      inquiries to its sales team; no official public source-control repository is
+      published: https://www.yworks.com/faq?id=30037
+    - source_facts.repo is empty, so repository research was performed.
+  tags-sources:
+    - 'Official feature descriptions: https://www.yworks.com/products/yed'
+    - 'Official manual: https://yed.yworks.com/support/manual/'
+category-confidence: high
+category-path:
+  - productivity
+  - diagramming
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

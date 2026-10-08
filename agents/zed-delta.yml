@@ -1,6 +1,5 @@
 id: cask:zed-delta
 display-name: Delta
-homepage: https://delta.dev/
 repo: null
 docs:
   - https://delta.dev/docs/concepts/core-concepts
@@ -10,11 +9,15 @@ config-file-location:
   linux:
     - $XDG_CONFIG_HOME/delta/settings.json
     - ~/.config/delta/settings.json
-  macos: ~/Library/Application Support/delta/settings.json
-  windows: '%APPDATA%\delta\settings.json'
+  macos:
+    - ~/Library/Application Support/delta/settings.json
+  windows:
+    - '%APPDATA%\delta\settings.json'
 credentials-file-location:
-  unix: ~/.config/delta/.env
-  windows: '%USERPROFILE%\.config\delta\.env'
+  unix:
+    - ~/.config/delta/.env
+  windows:
+    - '%USERPROFILE%\.config\delta\.env'
 history:
   adoption-history:
     - >
@@ -78,10 +81,6 @@ history:
       Teams can share threads, review code in the context of the conversation that
       produced it, run agents on local or cloud machines, and use hosted models,
       subscription-backed providers, or configured API keys.
-category: developer-tools
-package-manager:
-  brew-cask: zed-delta
-package-manager-url: https://formulae.brew.sh/cask/zed-delta
 tags:
   - agentic-coding
   - ai-agents
@@ -90,10 +89,43 @@ tags:
   - git
   - version-control
   - worktrees
-description: Multiplayer environment for coding with agents
-applications:
-  - Delta.app
 provenance:
-  cask: zed-delta
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official Delta homepage describes a multiplayer environment for coding with
+      agents: https://delta.dev/
+    - >
+      Official getting-started documentation describes a collaborative agent workspace:
+      https://delta.dev/docs/getting-started
+  display-name-sources:
+    - 'Official homepage and documentation consistently use the name Delta: https://delta.dev/'
+    - current_curation.display-name
+  docs-sources:
+    - Dedicated official Delta documentation at delta.dev.
+    - Official getting-started, settings, and core-concepts guides.
+  history-sources:
+    - 'Input package identity: source_facts.package-manager.brew-cask'
+    - 'Official Delta and Git guide: https://delta.dev/docs/concepts/delta-and-git'
+    - 'Official Delta documentation: https://delta.dev/docs/getting-started'
+    - 'Official Delta homepage: https://delta.dev/'
+    - 'Official launch announcement: https://zed.dev/blog/introducing-delta'
+    - 'Official public-beta announcement: https://zed.dev/blog/delta-public-beta'
+  repo-sources:
+    - >
+      Official launch and public-beta materials mention Delta's own repository but do
+      not publish an official HTTP(S) source-control project URL:
+      https://zed.dev/blog/delta-public-beta
+    - source_facts.repo is empty, so repository research was performed.
+  tags-sources:
+    - 'Official Delta and Git guide: https://delta.dev/docs/concepts/delta-and-git'
+    - 'Official core concepts: https://delta.dev/docs/concepts/core-concepts'
+    - 'Official homepage: https://delta.dev/'
+category-confidence: high
+category-path:
+  - developer-tools
+  - ai-assisted-development
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high
