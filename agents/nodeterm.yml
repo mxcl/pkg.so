@@ -1,11 +1,11 @@
 id: cask:nodeterm
 display-name: nodeterm
-homepage: https://nodeterm.dev/
-repo: https://github.com/eneskirca/nodeterm
+repo: null
 docs:
   - https://nodeterm.dev/docs
 config-file-location:
-  unix: <project>/.nodeterm/project.json
+  unix:
+    - <project>/.nodeterm/project.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -53,10 +53,6 @@ history:
       Users open a folder as a project, arrange terminal or agent nodes on its canvas,
       and optionally enable tmux-backed persistent sessions. The project layout can be
       shared through the project’s `.nodeterm/project.json` file.
-category: developer-tools
-package-manager:
-  brew-cask: nodeterm
-package-manager-url: https://formulae.brew.sh/cask/nodeterm
 tags:
   - agent-orchestration
   - canvas
@@ -65,10 +61,40 @@ tags:
   - terminal-emulator
   - tmux
   - workspace-manager
-description: Node-based terminal manager for terminals and coding agents on a canvas
-applications:
-  - nodeterm.app
 provenance:
-  cask: nodeterm
-  provider: brew-cask
-  source: https://formulae.brew.sh/api/cask.json
+  category-sources:
+    - >
+      Official documentation: https://nodeterm.dev/docs/concepts/canvas-and-nodes/
+      documents its terminal-and-agent canvas.
+    - >
+      Official repository: https://github.com/eneskirca/nodeterm describes a node-based
+      terminal manager for AI coding agents.
+  display-name-sources:
+    - >
+      Official website and documentation consistently style the name as “nodeterm”:
+      https://nodeterm.dev/
+  docs-sources:
+    - >
+      Dedicated official documentation linked by the project website and repository:
+      https://nodeterm.dev/docs/
+  history-sources:
+    - 'Official FAQ: https://nodeterm.dev/docs/reference/faq'
+    - 'Official installation documentation: https://nodeterm.dev/docs/get-started/installation/'
+    - 'Official projects documentation: https://nodeterm.dev/docs/concepts/projects/'
+    - >
+      Official repository overview and distribution notes:
+      https://github.com/eneskirca/nodeterm
+  repo-sources:
+    - Repository already supplied in source_facts.repo; returned null as required.
+  tags-sources:
+    - 'Official canvas documentation: https://nodeterm.dev/docs/concepts/canvas-and-nodes/'
+    - 'Official repository topics and description: https://github.com/eneskirca/nodeterm'
+category-confidence: high
+category-path:
+  - developer-tools
+  - terminals
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
