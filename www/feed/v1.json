@@ -2,56 +2,74 @@
   "content": [
     {
       "artwork": {
-        "alt": "A luminous violet language-intelligence core sends semantic data streams into three distinct abstract code editor panels.",
+        "alt": "Layered image panels, marked-up document sheets, and geometric page components connect through glowing orange and cyan paths.",
         "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
         "boxColors": {
-          "backgroundEnd": "#26134F",
-          "backgroundStart": "#090D2D",
-          "foreground": "#F7F4FF"
+          "backgroundEnd": "#2B3442",
+          "backgroundStart": "#06182A",
+          "foreground": "#F7F2E8"
         },
         "license": "OpenAI terms of use",
-        "path": "feed/assets/kotlin-lsp-editor-boundary-2026-10-04.png"
+        "path": "feed/assets/rust-document-tools-2026-10-08.png"
       },
-      "body": "## An official server changes the starting point\n\nKotlin developers outside IntelliJ IDEA have long depended on editor-specific plugins, community servers, or a deliberately lighter editing experience. JetBrains' official Kotlin language server changes that baseline. The repository appeared in 2025, and its first published GitHub release in May shipped both a Visual Studio Code extension and a standalone archive for other Language Server Protocol clients. The project now describes itself as official Kotlin support for VS Code, built from IntelliJ IDEA and Kotlin plugin technology.\n\nThat provenance matters more than the badge. Language tooling is not only syntax coloring. Useful completion needs a project model; navigation must understand dependencies; rename needs semantic references; diagnostics must agree with the language and build. Kotlin LSP currently advertises IntelliJ-derived completion, diagnostics, quick fixes, formatting, call hierarchy, imports, hover information, and refactoring. It can import JVM projects using Gradle or Maven, with experimental Android Gradle Plugin support. In practical terms, the server moves a meaningful portion of JetBrains' Kotlin knowledge behind a standard editor protocol.\n\nIt does **not** turn every editor into IntelliJ IDEA. The project is explicitly alpha, Kotlin Multiplatform support is still planned, and the implementation includes proprietary components drawn from JetBrains products. The public repository is primarily a mirror, not a conventional community implementation accepting core contributions. Those constraints should shape expectations from the first installation.\n\n## The protocol is a boundary, not a guarantee\n\nLSP separates language intelligence from the interface that displays it. The server can answer requests for completion, definitions, symbols, edits, and diagnostics; the client decides how those answers fit into buffers, keybindings, panels, and workflows. That boundary creates portability, but it also creates two moving parts. When an action behaves strangely, users must ask whether the problem is in the project import, the server, the protocol exchange, the editor client, or another plugin.\n\nThe Kotlin project says releases are generally tested with Visual Studio Code. That makes VS Code the most direct path: install the Kotlin by JetBrains extension, open a Kotlin workspace, and let the extension activate the bundled server. Visual Studio Code Insiders is useful when extension developers or early adopters need to test upcoming editor behavior, but its frequent preview updates add another source of change. A reproducible report should record both editor and server versions.\n\nNeovim exposes the other side of the bargain. Its built-in LSP client can attach external servers to buffers and provide diagnostics, navigation, completion hooks, and workspace operations. Kotlin LSP publishes a standalone distribution and community-maintained scripts for editors beyond VS Code, so a Neovim setup is possible. It is also less packaged: users are responsible for the launch command, workspace root, capabilities, completion integration, and any plugin interactions. That control is the attraction and the maintenance cost.\n\n## What day-to-day use looks like\n\nA realistic evaluation begins with one ordinary JVM repository, not the most complicated multiplatform build in the company. Confirm that the server imports the Gradle or Maven model, resolves the intended JDK, and reaches a quiet diagnostic state. Then test a short workflow:\n\n- navigate from a call to source and back;\n- rename a symbol across more than one file;\n- apply a quick fix and inspect the resulting edit;\n- compare formatting with the team's committed style;\n- run the real build and test suite after semantic edits.\n\nThe last step is essential. An editor service accelerates feedback; it does not replace the compiler, build tool, or CI. Teams should also measure startup and indexing on representative repositories, because a language server derived from IDE infrastructure has a different resource profile from a minimal syntax plugin. Recent releases have worked on bundle size, caching, Gradle import, completion latency, Maven support, and memory leaks, evidence that the project is actively addressing exactly these operational edges.\n\n## Choose the client by responsibility\n\nFor the smoothest supported path, use the packaged VS Code extension and stay conscious that alpha releases can regress. Use Insiders when testing future editor integration is itself the job, not merely because it is newer. Choose Neovim when explicit configuration and terminal-native editing are worth owning more integration detail. Keep IntelliJ IDEA or Android Studio available when a project depends on mature Kotlin-specific inspections, Android tooling, or workflows the server has not reached.\n\nKotlin LSP is interesting because it is neither a complete IDE replacement nor a thin community bridge. It is a new official boundary around JetBrains' language intelligence. That makes more editor choices credible, while placing new importance on version pinning, reproducible configurations, and clear bug reports across both sides of the protocol.",
-      "deck": "JetBrains' alpha language server brings IntelliJ-derived Kotlin analysis to VS Code and other LSP clients, while making the editor-server boundary impossible to ignore.",
-      "id": "editorial:2026-10-04:kotlin-lsp-moves-language-intelligence-between-editors",
-      "primaryPackageID": "brew:cask:kotlin-lsp",
-      "publishedAt": "2026-10-04T08:01:30Z",
+      "body": "## Three projects, one recurring instinct\n\nPhotoCraft, typdiff, and TeXres are not a suite. They do not share a maintainer, file format, or promised integration. What connects them is a young-project instinct: take a workflow normally spread across a large application or distribution, rebuild a focused path in Rust, and expose enough structure that users can inspect the result. Each project published its first non-prerelease build in 2026. That makes them interesting experiments, not automatic replacements for mature tools.\n\nPhotoCraft is the broadest bet. Its first release appeared on October 2, two days after the public repository was created. The project describes a native editor with layers, masks, adjustments, type, vectors, brushes, local selection tools, GPU rendering, and layered PSD or PSB support. It targets desktop platforms and the browser, while its engine-first architecture also supports command-line and structured automation. The ambition is immediately legible: familiar image-editing concepts, local files, and a permissively licensed implementation rather than a web wrapper.\n\nThe project is equally direct about its state. Its repository labels the application **early alpha**. The roadmap warns that a feature-surface estimate can overstate user-facing readiness, and the issue tracker contains reports about brush behavior, transforms, large documents, and interface details. That public friction is useful evidence of actual testing, but it is also a reason to work on copies and keep an established editor nearby. Homebrew now distributes the application, which lowers the evaluation barrier without changing those maturity facts.\n\n## A diff that remains a document\n\ntypdiff makes a narrower intervention. Given old and new Typst sources, it emits another Typst document containing addition and deletion markup. It parses headings, paragraphs, and list structures, performs block and word comparisons, and uses character-level handling for Chinese, Japanese, and Korean text. The resulting source can be compiled into a visual PDF redline. That is different from merely coloring a raw text patch: the review artifact remains inside the document system.\n\nIts first v0.1.0 release arrived on February 18. An independent Typst feature discussion supplies an early usage signal: participants describe visual diffs as useful for manuscripts, peer-review responses, legal redlines, internal documentation, and CI artifacts, and later point to typdiff as a working parser-aware option. That discussion does not prove broad adoption, but it demonstrates a concrete need outside the project’s own README.\n\nThe boundaries matter. Raw blocks, equations, and function calls are atomic, so reviewers should not assume every semantic change receives a fine-grained explanation. typdiff produces Typst; a separate Typst compiler produces the PDF. For source review, ordinary Git diff remains simpler. The tool becomes valuable when a reader needs a document-shaped comparison rather than only changed lines.\n\n## A TeX distribution compressed into one executable\n\nTeXres tackles packaging rather than editing or comparison. Its first v0.1.0 release appeared on September 16. The project combines pdfLaTeX, XeLaTeX, LuaLaTeX, formats, a package archive, fonts, BibTeX, and Biber in a Rust-written distribution that says it downloads nothing during a build. The front-end reruns the necessary passes until references converge, supports watch mode, and offers C and WebAssembly interfaces for in-memory compilation. Its CI compares output with TeX Live 2026.\n\nThat design promises a smaller operational surface, not a simpler language. LaTeX documents can depend on obscure packages, engine behavior, fonts, and years of compatibility assumptions. TeXres uses a bundled font set rather than system fonts; additional fonts must travel with the project. ARM64 Linux requires a recent glibc, while musl systems are unsupported. A responsible trial starts with representative documents and compares PDFs, logs, bibliography output, links, and font substitution before changing a production pipeline.\n\n## Evaluate outcomes, not implementation language\n\nRust is part of all three stories, but it is not the user benefit by itself. The measurable questions sit at the workflow boundary:\n\n- Does PhotoCraft round-trip the layered files and color modes a team actually uses?\n- Does typdiff make review faster without hiding important source changes?\n- Does TeXres reproduce the documents, packages, fonts, and bibliography behavior a project depends on?\n\nThe projects’ youth makes those tests especially important. PhotoCraft already attracts active bug reports and package-manager distribution; typdiff has surfaced in a pre-existing community discussion about visual review; TeXres exposes hundreds of commits and explicit compatibility claims in public. Those are meaningful usage and development signals, but none is a guarantee of production fitness.\n\nThe compelling shared direction is control. Image operations stay local and scriptable. A diff becomes inspectable source rather than an opaque screenshot. A typesetting environment can travel as a bounded executable and archive. If those properties solve a real constraint, each tool now has enough public evidence for a careful pilot. The right next step is not wholesale migration; it is one representative file, one reproducible comparison, and a written record of what still fails.",
+      "deck": "PhotoCraft, typdiff, and TeXres take sharply different approaches to making creative and publishing workflows local, inspectable, and easier to package.",
+      "id": "editorial:2026-10-08:three-young-rust-tools-rework-document-pipelines",
+      "primaryPackageID": "brew:cask:photocraft",
+      "publishedAt": "2026-10-08T07:48:26Z",
       "relatedPackageIDs": [
-        "brew:cask:kotlin-lsp",
-        "brew:cask:visual-studio-code@insiders",
-        "brew:neovim"
+        "brew:cask:photocraft",
+        "brew:typdiff",
+        "brew:texres"
       ],
       "selection": {
-        "newerOverride": {
-          "reason": "JetBrains introduced its official Kotlin language server and VS Code integration as a new alpha product direction in 2025, with a standalone LSP distribution for other editors.",
-          "sourceURL": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
-        },
+        "firstStableReleaseAt": "2026-10-02T00:09:14Z",
+        "firstStableReleaseSourceURL": "https://github.com/storytold/photocraft/releases/tag/v0.1.0",
         "rationale": "newer"
       },
       "sources": [
         {
           "kind": "primary",
-          "title": "Official Kotlin language server repository and documentation",
-          "url": "https://github.com/Kotlin/kotlin-lsp"
+          "title": "PhotoCraft product overview",
+          "url": "https://getartcraft.com/apps/photocraft"
         },
         {
           "kind": "primary",
-          "title": "First published Kotlin LSP release",
-          "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
+          "title": "PhotoCraft source, status, and architecture",
+          "url": "https://github.com/storytold/photocraft"
         },
         {
           "kind": "primary",
-          "title": "Visual Studio Code Insiders",
-          "url": "https://code.visualstudio.com/insiders/"
+          "title": "PhotoCraft first v0.1.0 release",
+          "url": "https://github.com/storytold/photocraft/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "PhotoCraft availability in Homebrew",
+          "url": "https://formulae.brew.sh/cask/photocraft"
         },
         {
           "kind": "primary",
-          "title": "Neovim LSP client documentation",
-          "url": "https://neovim.io/doc/user/lsp.html"
+          "title": "typdiff documentation and implementation overview",
+          "url": "https://github.com/sou1118/typdiff"
+        },
+        {
+          "kind": "independent",
+          "title": "Typst community discussion of visual document diffs",
+          "url": "https://github.com/typst/typst/issues/3049"
+        },
+        {
+          "kind": "primary",
+          "title": "TeXres documentation and compatibility notes",
+          "url": "https://github.com/leoliu0/texres"
+        },
+        {
+          "kind": "primary",
+          "title": "TeXres first v0.1.0 release",
+          "url": "https://github.com/leoliu0/texres/releases/tag/v0.1.0"
         }
       ],
-      "title": "Kotlin LSP Moves Language Intelligence Between Editors",
+      "title": "Three Young Rust Tools Rework Document Pipelines",
       "type": "editorial"
     },
     {
@@ -114,7 +132,9 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:typdiff",
         "brew:texres",
+        "brew:cask:photocraft",
         "brew:arcane-cli",
         "brew:cask:cuadriver",
         "brew:doltlite",
@@ -123,9 +143,7 @@
         "brew:packslip",
         "brew:deja",
         "brew:cask:sdrmm-app",
-        "brew:cask:hagimimonitordirect",
-        "brew:mailtrap-local",
-        "brew:cask:manus-cue"
+        "brew:cask:hagimimonitordirect"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -133,7 +151,9 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:typdiff",
         "brew:texres",
+        "brew:cask:photocraft",
         "brew:arcane-cli",
         "brew:cask:cuadriver",
         "brew:doltlite",
@@ -142,12 +162,64 @@
         "brew:packslip",
         "brew:deja",
         "brew:cask:sdrmm-app",
-        "brew:cask:hagimimonitordirect",
-        "brew:mailtrap-local",
-        "brew:cask:visual-studio-code@insiders"
+        "brew:cask:hagimimonitordirect"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "A luminous violet language-intelligence core sends semantic data streams into three distinct abstract code editor panels.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#26134F",
+          "backgroundStart": "#090D2D",
+          "foreground": "#F7F4FF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/kotlin-lsp-editor-boundary-2026-10-04.png"
+      },
+      "body": "## An official server changes the starting point\n\nKotlin developers outside IntelliJ IDEA have long depended on editor-specific plugins, community servers, or a deliberately lighter editing experience. JetBrains' official Kotlin language server changes that baseline. The repository appeared in 2025, and its first published GitHub release in May shipped both a Visual Studio Code extension and a standalone archive for other Language Server Protocol clients. The project now describes itself as official Kotlin support for VS Code, built from IntelliJ IDEA and Kotlin plugin technology.\n\nThat provenance matters more than the badge. Language tooling is not only syntax coloring. Useful completion needs a project model; navigation must understand dependencies; rename needs semantic references; diagnostics must agree with the language and build. Kotlin LSP currently advertises IntelliJ-derived completion, diagnostics, quick fixes, formatting, call hierarchy, imports, hover information, and refactoring. It can import JVM projects using Gradle or Maven, with experimental Android Gradle Plugin support. In practical terms, the server moves a meaningful portion of JetBrains' Kotlin knowledge behind a standard editor protocol.\n\nIt does **not** turn every editor into IntelliJ IDEA. The project is explicitly alpha, Kotlin Multiplatform support is still planned, and the implementation includes proprietary components drawn from JetBrains products. The public repository is primarily a mirror, not a conventional community implementation accepting core contributions. Those constraints should shape expectations from the first installation.\n\n## The protocol is a boundary, not a guarantee\n\nLSP separates language intelligence from the interface that displays it. The server can answer requests for completion, definitions, symbols, edits, and diagnostics; the client decides how those answers fit into buffers, keybindings, panels, and workflows. That boundary creates portability, but it also creates two moving parts. When an action behaves strangely, users must ask whether the problem is in the project import, the server, the protocol exchange, the editor client, or another plugin.\n\nThe Kotlin project says releases are generally tested with Visual Studio Code. That makes VS Code the most direct path: install the Kotlin by JetBrains extension, open a Kotlin workspace, and let the extension activate the bundled server. Visual Studio Code Insiders is useful when extension developers or early adopters need to test upcoming editor behavior, but its frequent preview updates add another source of change. A reproducible report should record both editor and server versions.\n\nNeovim exposes the other side of the bargain. Its built-in LSP client can attach external servers to buffers and provide diagnostics, navigation, completion hooks, and workspace operations. Kotlin LSP publishes a standalone distribution and community-maintained scripts for editors beyond VS Code, so a Neovim setup is possible. It is also less packaged: users are responsible for the launch command, workspace root, capabilities, completion integration, and any plugin interactions. That control is the attraction and the maintenance cost.\n\n## What day-to-day use looks like\n\nA realistic evaluation begins with one ordinary JVM repository, not the most complicated multiplatform build in the company. Confirm that the server imports the Gradle or Maven model, resolves the intended JDK, and reaches a quiet diagnostic state. Then test a short workflow:\n\n- navigate from a call to source and back;\n- rename a symbol across more than one file;\n- apply a quick fix and inspect the resulting edit;\n- compare formatting with the team's committed style;\n- run the real build and test suite after semantic edits.\n\nThe last step is essential. An editor service accelerates feedback; it does not replace the compiler, build tool, or CI. Teams should also measure startup and indexing on representative repositories, because a language server derived from IDE infrastructure has a different resource profile from a minimal syntax plugin. Recent releases have worked on bundle size, caching, Gradle import, completion latency, Maven support, and memory leaks, evidence that the project is actively addressing exactly these operational edges.\n\n## Choose the client by responsibility\n\nFor the smoothest supported path, use the packaged VS Code extension and stay conscious that alpha releases can regress. Use Insiders when testing future editor integration is itself the job, not merely because it is newer. Choose Neovim when explicit configuration and terminal-native editing are worth owning more integration detail. Keep IntelliJ IDEA or Android Studio available when a project depends on mature Kotlin-specific inspections, Android tooling, or workflows the server has not reached.\n\nKotlin LSP is interesting because it is neither a complete IDE replacement nor a thin community bridge. It is a new official boundary around JetBrains' language intelligence. That makes more editor choices credible, while placing new importance on version pinning, reproducible configurations, and clear bug reports across both sides of the protocol.",
+      "deck": "JetBrains' alpha language server brings IntelliJ-derived Kotlin analysis to VS Code and other LSP clients, while making the editor-server boundary impossible to ignore.",
+      "id": "editorial:2026-10-04:kotlin-lsp-moves-language-intelligence-between-editors",
+      "primaryPackageID": "brew:cask:kotlin-lsp",
+      "publishedAt": "2026-10-04T08:01:30Z",
+      "relatedPackageIDs": [
+        "brew:cask:kotlin-lsp",
+        "brew:cask:visual-studio-code@insiders",
+        "brew:neovim"
+      ],
+      "selection": {
+        "newerOverride": {
+          "reason": "JetBrains introduced its official Kotlin language server and VS Code integration as a new alpha product direction in 2025, with a standalone LSP distribution for other editors.",
+          "sourceURL": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
+        },
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Official Kotlin language server repository and documentation",
+          "url": "https://github.com/Kotlin/kotlin-lsp"
+        },
+        {
+          "kind": "primary",
+          "title": "First published Kotlin LSP release",
+          "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
+        },
+        {
+          "kind": "primary",
+          "title": "Visual Studio Code Insiders",
+          "url": "https://code.visualstudio.com/insiders/"
+        },
+        {
+          "kind": "primary",
+          "title": "Neovim LSP client documentation",
+          "url": "https://neovim.io/doc/user/lsp.html"
+        }
+      ],
+      "title": "Kotlin LSP Moves Language Intelligence Between Editors",
+      "type": "editorial"
     },
     {
       "artwork": {
@@ -763,61 +835,9 @@
       ],
       "title": "When coding agents can find yesterday",
       "type": "editorial"
-    },
-    {
-      "artwork": {
-        "alt": "An operator supervises three glowing, isolated work lanes that converge through a review gate in a dark geometric studio.",
-        "attribution": "Generated by OpenAI for Package Manager Manager",
-        "boxColors": {
-          "backgroundEnd": "#1B1938",
-          "backgroundStart": "#0B0D20",
-          "foreground": "#F7F3E8"
-        },
-        "license": "CC BY 4.0",
-        "path": "feed/assets/agent-mission-control.png"
-      },
-      "body": "## The new bottleneck is attention\n\nRunning a second coding agent feels like free throughput. Running a fifth reveals the catch: parallel generation does not create parallel judgment. Sessions disappear behind terminal tabs, two tasks drift toward the same file, and several plausible diffs arrive together for one human to understand. The emerging category of agent supervisors is therefore less about making models smarter than making their work *legible*.\n\nMonet is a young, macOS-native entry in that category. Its repository describes a single workspace for Claude Code and Codex sessions: users can browse and search history, launch work, watch activity, and send input without finding the right terminal first. The project appeared in April 2026 and reached its first stable release on July 26. That youth matters. Monet is promising precisely because it treats agent coordination as a desktop information-design problem, but it has not accumulated years of hardening or a broad engine matrix.\n\n## A control room, not another coder\n\nThe useful distinction is between an **agent** and a **supervisor**. OpenCode is primarily the former: it reads and edits a repository, runs tools, supports configurable primary agents and subagents, and exposes terminal, desktop, and editor interfaces. Its official material also highlights parallel sessions and broad model-provider choice. Monet sits above existing Claude Code and Codex processes instead. It does not erase their behavior, model costs, permissions, or failure modes; it organizes the operator's view of them.\n\nThat makes Monet attractive when a developer already likes those engines but dislikes managing their windows. Searchable cross-project history can recover a decision buried in an old session. A unified activity view can show which worker is waiting. Direct input can shorten the loop between noticing drift and correcting it. The native interface may also be easier to scan than a dense collection of panes.\n\nThe tradeoff is dependency on the underlying tools. Current engine coverage is narrower than OpenCode's provider-flexible environment or claude-squad's configurable terminal commands. Monet also requires macOS 14 or later. If terminal portability, remote servers, or transparent shell primitives matter more than desktop polish, another approach will fit better.\n\n## Isolation is more than separate windows\n\nClaude-squad illustrates the terminal-first alternative. It uses tmux to preserve sessions and Git worktrees to give concurrent tasks separate checkouts. Its TUI supports creating, inspecting, pausing, resuming, and reviewing agent work. That design makes a strong operational point: a cleaner dashboard is useful, but file isolation is what prevents two workers from casually editing the same working tree.\n\nEven worktrees are only part of the boundary. Independent practitioners report that parallel agents can still collide through shared databases, ports, caches, generated files, or absolute paths. A safe setup commonly needs:\n\n- one narrowly scoped task, branch, and worktree per agent;\n- separate runtime resources when tasks start services or migrations;\n- automated tests and static checks inside each lane;\n- a human review gate before changes converge.\n\nMonet's mission-control metaphor should be read in that context. Visibility helps an operator catch problems; it does not create sandboxing by itself. Teams should verify what each underlying agent can execute and where it writes, especially before enabling broad permissions or unattended operation.\n\n## Throughput ends at the review queue\n\nReal-world interest in this workflow is visible well beyond product pages. Claude-squad's public repository has attracted thousands of stars, while independent reviews and practitioner discussions repeatedly describe worktrees as the practical unit for parallel sessions. OpenCode's much larger community and a hands-on four-month review substantiate demand for persistent, multi-session, provider-flexible coding. These signals demonstrate usage of the pattern, not that every team benefits from maximum concurrency.\n\nThe limiting resource is often review bandwidth. Three agents can produce three diffs faster than one engineer can build a trustworthy mental model of them. Smaller tasks, non-overlapping ownership, bounded permissions, and explicit acceptance criteria usually improve the equation more than adding another worker. A supervisor earns its place when it reduces that cognitive tax: showing status clearly, preserving context, and making the next review obvious.\n\nMonet is worth watching—and, for macOS users already committed to Claude Code or Codex, worth evaluating—because it focuses directly on that human control layer. Claude-squad remains compelling for operators who want worktree isolation expressed through familiar terminal machinery. OpenCode is the broader choice when the agent runtime, model routing, and multi-session interface should come as one system. The best choice is not the one that launches the most agents. It is the one that lets you stop, inspect, and confidently integrate their work.",
-      "deck": "Monet turns scattered Claude Code and Codex sessions into a native control room—but parallel work only pays when isolation and review keep pace.",
-      "id": "editorial:2026-08-20:mission-control-for-coding-agents",
-      "primaryPackageID": "brew:cask:monet",
-      "publishedAt": "2026-08-20T10:03:22Z",
-      "relatedPackageIDs": [
-        "brew:cask:monet",
-        "brew:claude-squad",
-        "brew:cask:opencode-desktop"
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2026-07-26T13:42:59Z",
-        "firstStableReleaseSourceURL": "https://github.com/zenolab124/monet/releases/tag/v1.0.0",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Monet repository and documentation",
-          "url": "https://github.com/zenolab124/monet"
-        },
-        {
-          "kind": "primary",
-          "title": "Monet 1.0.0 release",
-          "url": "https://github.com/zenolab124/monet/releases/tag/v1.0.0"
-        },
-        {
-          "kind": "independent",
-          "title": "Claude Squad review: terminal control and worktree tradeoffs",
-          "url": "https://vibecodinghub.org/blog/claude-squad-review"
-        },
-        {
-          "kind": "independent",
-          "title": "OpenCode hands-on review after four months of daily use",
-          "url": "https://postcursors.dev/en/tools/opencode/"
-        }
-      ],
-      "title": "When coding agents multiply, supervision becomes the product",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-07T05:30:04Z",
+  "generatedAt": "2026-10-08T07:48:26Z",
   "packages": {
     "brew:arcane-cli": {
       "agentSummary": "Arcane CLI manages containers, images, projects, environments, backups, and server settings from scripts or terminals, using Arcane API credentials and JSON-friendly output.",
@@ -1538,114 +1558,6 @@
       "upstreamSummary": "Keyboard-first local launcher",
       "version": "0.7.1"
     },
-    "brew:cask:manus-cue": {
-      "agentSummary": "Cue coordinates identity-bearing personal agents across desktop and mobile, supporting delegated tasks and agent teamwork while remaining an invite-limited early-access service.",
-      "assessment": {
-        "alternatives": [
-          "Use a conventional assistant or manually coordinate specialized automation tools"
-        ],
-        "audiences": [
-          "Early adopters exploring delegated personal-agent workflows"
-        ],
-        "caveats": [
-          "The product is in early access, so availability and behavior may change",
-          "Agents can use communication, payment, and computing identities; budgets, permissions, and outputs require careful human oversight"
-        ],
-        "complements": [
-          "Manus for broader project and creative workflows"
-        ],
-        "prerequisites": [
-          "A Cue invite code and access to the hosted service"
-        ],
-        "useCases": [
-          "Assigning tasks to agents with separate service identities",
-          "Coordinating multiple agents around a shared goal"
-        ]
-      },
-      "category": "ai",
-      "displayName": "Cue",
-      "docs": "https://cue.im/",
-      "homepage": "https://cue.im/",
-      "id": "brew:cask:manus-cue",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amanus-cue",
-      "lastUpdatedAt": "2026-09-30T22:09:36Z",
-      "manager": "homebrew",
-      "repository": null,
-      "researchedAt": "2026-10-01T10:09:41Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Introducing Manus 2.0 and Cue",
-          "url": "https://www.manus.im/blog/introducing-manus-2-0"
-        },
-        {
-          "kind": "primary",
-          "title": "Cue official product site",
-          "url": "https://cue.im/"
-        }
-      ],
-      "upstreamSummary": "Personal AI agents with their own identities",
-      "version": "1.0.4"
-    },
-    "brew:cask:monet": {
-      "agentSummary": "Monet provides a native macOS control room for browsing, searching, launching, and supervising concurrent Claude Code and Codex sessions across projects.",
-      "assessment": {
-        "alternatives": [
-          "claude-squad for a terminal-first supervisor",
-          "OpenCode for an agent with built-in multi-session interfaces",
-          "Separate terminal panes and manually managed worktrees"
-        ],
-        "audiences": [
-          "macOS developers already using Claude Code or Codex",
-          "Engineers supervising several repository tasks at once",
-          "Teams evaluating multi-agent workflows on local machines"
-        ],
-        "caveats": [
-          "The young project has a short operational track record",
-          "Current support centers on Claude Code and Codex",
-          "A dashboard does not isolate shared databases, ports, or caches"
-        ],
-        "complements": [
-          "Git branches or worktrees for task isolation",
-          "Repository tests and static analysis",
-          "A deliberate human review queue"
-        ],
-        "prerequisites": [
-          "macOS 14 or later",
-          "At least one supported coding-agent CLI configured separately",
-          "Comfort reviewing agent-generated changes before integration"
-        ],
-        "useCases": [
-          "Monitor concurrent agent sessions from one desktop window",
-          "Search session history across projects and engines",
-          "Inspect activity and redirect agents without juggling terminals"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "Monet",
-      "docs": "https://github.com/zenolab124/monet",
-      "homepage": "https://github.com/zenolab124/monet",
-      "id": "brew:cask:monet",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amonet",
-      "lastUpdatedAt": "2026-08-19T14:17:58Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/zenolab124/monet",
-      "researchedAt": "2026-08-20T10:03:22Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Monet repository and product documentation",
-          "url": "https://github.com/zenolab124/monet"
-        },
-        {
-          "kind": "primary",
-          "title": "Monet 1.0.0 release",
-          "url": "https://github.com/zenolab124/monet/releases/tag/v1.0.0"
-        }
-      ],
-      "upstreamSummary": "Multi-engine mission control for coding agents",
-      "version": "2.1.16"
-    },
     "brew:cask:omniwm": {
       "agentSummary": "Mac window manager brings scrolling columns and dwindle tiling to configurable workspaces, with multi-monitor routing and scriptable controls for users comfortable tuning desktop behavior.",
       "assessment": {
@@ -1769,65 +1681,6 @@
       "upstreamSummary": "Data analysis for analytical chemistry",
       "version": "1.6.33"
     },
-    "brew:cask:opencode-desktop": {
-      "agentSummary": "OpenCode is a model-flexible coding agent spanning terminal, desktop, and editor surfaces, with parallel sessions, configurable agents, permissions, and shareable work.",
-      "assessment": {
-        "alternatives": [
-          "Monet layered over existing Claude Code or Codex sessions",
-          "claude-squad for worktree-centered terminal supervision",
-          "A single-provider coding-agent CLI"
-        ],
-        "audiences": [
-          "Developers wanting provider choice",
-          "Teams needing terminal and desktop interfaces",
-          "Users designing specialized primary agents and subagents"
-        ],
-        "caveats": [
-          "Provider flexibility also increases configuration choices",
-          "Concurrent sessions can contend for the same project resources",
-          "Model usage costs remain separate from the open-source client"
-        ],
-        "complements": [
-          "Language servers for code diagnostics",
-          "MCP servers for approved external tools",
-          "Version control and automated test suites"
-        ],
-        "prerequisites": [
-          "Credentials or access for a chosen model provider",
-          "A repository with clear project instructions",
-          "Explicit permission and cost limits for autonomous work"
-        ],
-        "useCases": [
-          "Run several agent sessions on one project",
-          "Assign distinct prompts and permissions to specialized agents",
-          "Move between terminal, desktop, and editor workflows"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "OpenCode",
-      "docs": "https://opencode.ai/docs",
-      "homepage": "https://opencode.ai/",
-      "id": "brew:cask:opencode-desktop",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopencode-desktop",
-      "lastUpdatedAt": "2026-08-20T07:22:39Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/anomalyco/opencode",
-      "researchedAt": "2026-08-20T10:03:22Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "OpenCode official overview",
-          "url": "https://opencode.ai/"
-        },
-        {
-          "kind": "independent",
-          "title": "OpenCode hands-on review after four months of daily use",
-          "url": "https://postcursors.dev/en/tools/opencode/"
-        }
-      ],
-      "upstreamSummary": "AI coding agent desktop client",
-      "version": "1.18.18"
-    },
     "brew:cask:opendisk": {
       "agentSummary": "OpenDisk visualizes macOS storage as an interactive sunburst, streams scan results, supports incremental rescans, and helps review large files before deliberate cleanup.",
       "assessment": {
@@ -1888,6 +1741,69 @@
       ],
       "upstreamSummary": "Disk space analyser",
       "version": "1.2.1"
+    },
+    "brew:cask:photocraft": {
+      "agentSummary": "PhotoCraft is an early-alpha, native Rust image editor pursuing layered PSD compatibility, local processing, GPU rendering, and cross-platform builds while openly tracking substantial gaps.",
+      "assessment": {
+        "alternatives": [
+          "GIMP or Krita for established open-source raster editing",
+          "Adobe Photoshop or Affinity Photo for mature commercial workflows"
+        ],
+        "audiences": [
+          "Designers and photographers willing to test an early open-source image editor",
+          "Rust contributors interested in graphics, color, file formats, or desktop UI",
+          "Teams evaluating local, automation-friendly creative software"
+        ],
+        "caveats": [
+          "The project explicitly labels itself early alpha and asks users to expect rough edges",
+          "Roadmap parity percentages measure feature surface and can overstate user-facing readiness",
+          "Open issues document gaps in brushes, transforms, large-document performance, and interface behavior"
+        ],
+        "complements": [
+          "A mature image editor for unsupported or production-critical operations",
+          "Representative layered files for compatibility testing",
+          "Color-managed displays and documented export checks"
+        ],
+        "prerequisites": [
+          "A supported macOS, Windows, Linux, FreeBSD, or modern browser environment",
+          "Backups or duplicate files when evaluating early-alpha editing workflows",
+          "Tolerance for missing tools, rough edges, and rapid project change"
+        ],
+        "useCases": [
+          "Editing layered raster documents with masks, adjustments, type, vectors, and brushes",
+          "Testing PSD and PSB round trips against real project files",
+          "Driving image-editing operations through a CLI or structured control channel"
+        ]
+      },
+      "category": "media",
+      "displayName": "PhotoCraft",
+      "docs": "https://getartcraft.com/apps/photocraft",
+      "homepage": "https://getartcraft.com/apps/photocraft",
+      "id": "brew:cask:photocraft",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aphotocraft",
+      "lastUpdatedAt": "2026-10-07T11:50:50Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/storytold/photocraft",
+      "researchedAt": "2026-10-08T07:48:26Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "PhotoCraft product overview",
+          "url": "https://getartcraft.com/apps/photocraft"
+        },
+        {
+          "kind": "primary",
+          "title": "PhotoCraft source, architecture, and alpha status",
+          "url": "https://github.com/storytold/photocraft"
+        },
+        {
+          "kind": "independent",
+          "title": "PhotoCraft availability in Homebrew",
+          "url": "https://formulae.brew.sh/cask/photocraft"
+        }
+      ],
+      "upstreamSummary": "Image editor",
+      "version": "0.3.0"
     },
     "brew:cask:sdrmm-app": {
       "agentSummary": "SDR-- combines a desktop radio interface with a remote browser-accessible server, supporting modular signal routing, decoding, recording, visualization, and hardware-backed experimentation.",
@@ -2302,65 +2218,6 @@
       ],
       "upstreamSummary": "Run all your AI coding agents in tmux",
       "version": "1.4.2"
-    },
-    "brew:claude-squad": {
-      "agentSummary": "Claude Squad wraps terminal agents in a TUI, using tmux sessions and Git worktrees to isolate parallel tasks and simplify diff review.",
-      "assessment": {
-        "alternatives": [
-          "Monet for a native macOS overview",
-          "OpenCode multi-session workflows",
-          "Manual tmux panes plus Git worktrees"
-        ],
-        "audiences": [
-          "Terminal-oriented developers",
-          "Git users comfortable with branches and worktrees",
-          "Engineers mixing several supported coding-agent CLIs"
-        ],
-        "caveats": [
-          "Terminal dependencies create a steeper setup curve",
-          "Worktrees isolate files but not external runtime state",
-          "Parallel output can overwhelm human review capacity"
-        ],
-        "complements": [
-          "Automated tests in each worktree",
-          "Small, non-overlapping task definitions",
-          "Branch protection and pull-request review"
-        ],
-        "prerequisites": [
-          "Git and tmux",
-          "A supported coding-agent command",
-          "GitHub CLI for the documented pull-request workflow"
-        ],
-        "useCases": [
-          "Run independent coding tasks in parallel worktrees",
-          "Pause, resume, and inspect agent sessions from one TUI",
-          "Review a task diff before applying it to the main workspace"
-        ]
-      },
-      "category": "ai",
-      "displayName": "claude-squad",
-      "docs": "https://github.com/smtg-ai/claude-squad#readme",
-      "homepage": "https://smtg-ai.github.io/claude-squad/",
-      "id": "brew:claude-squad",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aclaude-squad",
-      "lastUpdatedAt": "2026-08-20T09:09:47Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/smtg-ai/claude-squad",
-      "researchedAt": "2026-08-20T10:03:22Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Claude Squad repository documentation",
-          "url": "https://github.com/smtg-ai/claude-squad"
-        },
-        {
-          "kind": "independent",
-          "title": "Claude Squad review: terminal control, worktrees, and tradeoffs",
-          "url": "https://vibecodinghub.org/blog/claude-squad-review"
-        }
-      ],
-      "upstreamSummary": "Manage multiple AI agents like Claude Code, Aider and Codex in your terminal",
-      "version": null
     },
     "brew:dbmate": {
       "agentSummary": "Dbmate keeps SQL migrations framework-neutral and reviewable, combining timestamped files, transactional execution, schema dumps, and one binary across several database engines.",
@@ -3172,61 +3029,6 @@
       ],
       "upstreamSummary": "Scalable user load testing tool written in Python",
       "version": "2.46.6"
-    },
-    "brew:mailtrap-local": {
-      "agentSummary": "mailtrap-local catches application email on localhost and provides an embedded web inbox, inspection tools, and JSON API in one developer-focused binary.",
-      "assessment": {
-        "alternatives": [
-          "Mailpit, MailHog, or a hosted email-testing sandbox provide overlapping capture and inspection workflows."
-        ],
-        "audiences": [
-          "Individual developers testing application-generated email on a workstation."
-        ],
-        "caveats": [
-          "The upstream explicitly scopes it to individual localhost use: it has no accounts, authentication, multi-tenancy, RBAC, or high-availability design.",
-          "The macOS binary is not notarized, and the project documents a one-time Gatekeeper bypass for downloaded builds."
-        ],
-        "complements": [
-          "Automated application tests, local web-development stacks, and Mailtrap's hosted services when team or cloud workflows are needed."
-        ],
-        "prerequisites": [
-          "An application whose SMTP host and port can be pointed at the local service.",
-          "Local storage for its SQLite-backed mailbox."
-        ],
-        "useCases": [
-          "Capture local SMTP traffic without delivering messages to real recipients.",
-          "Inspect HTML, text, headers, attachments, compatibility warnings, or messages through a local JSON API."
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "mailtrap-local",
-      "docs": "https://github.com/mailtrap/mailtrap-local",
-      "homepage": "https://github.com/mailtrap/mailtrap-local",
-      "id": "brew:mailtrap-local",
-      "installURL": "pkgmgrmgr://install?package=brew%3Amailtrap-local",
-      "lastUpdatedAt": "2026-10-04T14:00:34Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/mailtrap/mailtrap-local",
-      "researchedAt": "2026-10-05T04:35:53Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "mailtrap-local official repository and scope",
-          "url": "https://github.com/mailtrap/mailtrap-local"
-        },
-        {
-          "kind": "primary",
-          "title": "mailtrap-local initial v0.1.0 release",
-          "url": "https://github.com/mailtrap/mailtrap-local/releases/tag/v0.1.0"
-        },
-        {
-          "kind": "primary",
-          "title": "mailtrap-local OpenAPI specification",
-          "url": "https://github.com/mailtrap/mailtrap-local/blob/main/docs/api/openapi.yaml"
-        }
-      ],
-      "upstreamSummary": "Local email sandbox with SMTP server, web UI, and JSON API",
-      "version": "0.4.1"
     },
     "brew:maki": {
       "agentSummary": "Maki is a Rust terminal coding agent emphasizing low token use, fast interaction, Lua extensibility, provider choice, MCP tools, and editor integration through ACP.",
@@ -4168,38 +3970,37 @@
       "version": "0.9.0"
     },
     "brew:texres": {
-      "agentSummary": "TeXres packages pdfLaTeX-, XeLaTeX-, and LuaLaTeX-compatible workflows, bibliography tools, fonts, and packages into one Rust executable that builds documents without TeX Live.",
+      "agentSummary": "TeXres packages TeX engines, formats, fonts, bibliography tools, and an archive into one Rust executable, aiming for reproducible builds without runtime package downloads.",
       "assessment": {
         "alternatives": [
-          "TeX Live",
-          "MiKTeX",
-          "Tectonic",
-          "Typst"
+          "TeX Live for the broadest established package ecosystem",
+          "MiKTeX for on-demand package management",
+          "Tectonic for another self-contained TeX-oriented workflow"
         ],
         "audiences": [
-          "LaTeX authors seeking a self-contained toolchain",
-          "Developers embedding TeX through C or WebAssembly",
-          "Teams building reproducible document pipelines"
+          "LaTeX authors who want a compact, self-contained toolchain",
+          "Teams seeking repeatable document builds without runtime package fetching",
+          "Developers embedding TeX compilation through C or WebAssembly interfaces"
         ],
         "caveats": [
-          "The young implementation should be tested against documents that depend on uncommon packages or engine behavior",
-          "System fonts are not searched automatically; additional fonts must be placed with the project",
-          "Alpine and other musl-based Linux distributions are not supported"
+          "Its rapid pre-1.0 development warrants testing output on production documents",
+          "System fonts are not used; additional fonts must be placed with the project",
+          "ARM64 Linux builds require glibc 2.36 or newer and musl-based systems are unsupported"
         ],
         "complements": [
-          "VS Code with LaTeX Workshop",
-          "TeXstudio",
-          "Git-based manuscript review workflows"
+          "A source editor with SyncTeX-aware PDF navigation",
+          "typdiff or latexdiff for revision review",
+          "Continuous integration checks against representative documents"
         ],
         "prerequisites": [
           "A supported macOS, Windows, or glibc-based Linux system",
-          "Representative documents for compatibility testing before migration",
-          "Project-local font files when required fonts are not bundled"
+          "Project-local font files when the bundled font set is insufficient",
+          "Compatibility testing against the packages and macros used by each document"
         ],
         "useCases": [
-          "Compiling LaTeX documents without installing TeX Live",
-          "Rebuilding papers automatically in watch mode",
-          "Running bibliography and latexdiff workflows from one executable"
+          "Compile pdfLaTeX, XeLaTeX, or LuaLaTeX documents from one distribution",
+          "Run bibliography passes and repeated compilation until references converge",
+          "Watch project inputs and rebuild PDFs after meaningful file changes"
         ]
       },
       "category": "productivity",
@@ -4208,24 +4009,92 @@
       "homepage": "https://github.com/leoliu0/texres",
       "id": "brew:texres",
       "installURL": "pkgmgrmgr://install?package=brew%3Atexres",
-      "lastUpdatedAt": "2026-10-07T03:11:51Z",
+      "lastUpdatedAt": "2026-10-07T18:45:57Z",
       "manager": "homebrew",
       "repository": "https://github.com/leoliu0/texres",
-      "researchedAt": "2026-10-07T05:30:04Z",
+      "researchedAt": "2026-10-08T07:48:26Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "TeXres official repository and usage guide",
+          "title": "TeXres documentation and compatibility notes",
           "url": "https://github.com/leoliu0/texres"
         },
         {
           "kind": "primary",
-          "title": "TeXres v0.1.0 first release",
+          "title": "TeXres initial v0.1.0 release",
           "url": "https://github.com/leoliu0/texres/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "TeXres availability in Homebrew",
+          "url": "https://formulae.brew.sh/formula/texres"
         }
       ],
       "upstreamSummary": "Fast TeX engine written in Rust",
-      "version": "0.7.2"
+      "version": "0.7.3"
+    },
+    "brew:typdiff": {
+      "agentSummary": "typdiff compares two Typst sources and emits compilable Typst with structural and word-level change markup, including character-level handling for Chinese, Japanese, and Korean text.",
+      "assessment": {
+        "alternatives": [
+          "A raw Git text diff for source-level review",
+          "latexdiff for LaTeX documents",
+          "Manual tracked-change workflows in a word processor"
+        ],
+        "audiences": [
+          "Typst authors reviewing revisions to papers, reports, or documentation",
+          "Academic and technical writers who need a printable redline",
+          "Teams adding human-readable document comparison to review pipelines"
+        ],
+        "caveats": [
+          "Raw blocks, equations, and function calls are treated as atomic rather than diffed internally",
+          "The output adds markup but still depends on Typst for PDF rendering",
+          "A young parser-aware tool may encounter valid Typst constructs not covered by its current tests"
+        ],
+        "complements": [
+          "Git for selecting document revisions",
+          "Typst for compiling the generated comparison",
+          "Continuous integration artifacts for reviewable PDFs"
+        ],
+        "prerequisites": [
+          "Two Typst source files representing old and new revisions",
+          "A Typst compiler when a rendered PDF is required"
+        ],
+        "useCases": [
+          "Generate a visual Typst document showing additions and deletions",
+          "Compare headings, paragraphs, lists, and modified text within blocks",
+          "Produce a PDF redline by compiling the generated Typst source"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "typdiff",
+      "docs": "https://github.com/sou1118/typdiff#readme",
+      "homepage": "https://github.com/sou1118/typdiff",
+      "id": "brew:typdiff",
+      "installURL": "pkgmgrmgr://install?package=brew%3Atypdiff",
+      "lastUpdatedAt": "2026-10-08T00:44:54Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/sou1118/typdiff",
+      "researchedAt": "2026-10-08T07:48:26Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "typdiff documentation and implementation overview",
+          "url": "https://github.com/sou1118/typdiff"
+        },
+        {
+          "kind": "primary",
+          "title": "typdiff initial v0.1.0 release",
+          "url": "https://github.com/sou1118/typdiff/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "Typst community discussion of visual document diffs",
+          "url": "https://github.com/typst/typst/issues/3049"
+        }
+      ],
+      "upstreamSummary": "Diff tool that generates Typst documents highlighting differences between inputs",
+      "version": "0.1.3"
     },
     "brew:workmux": {
       "agentSummary": "workmux pairs Git worktrees with terminal windows, automating isolated task setup, agent status, review, merging, and cleanup while preserving familiar multiplexer workflows.",
@@ -4293,7 +4162,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-07T05:28:35Z",
+    "generatedAt": "2026-10-08T07:46:56Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
