@@ -1,0 +1,111 @@
+id: brew:dekit
+display-name: dekit
+repo: null
+docs:
+  - https://dekit.run/docs
+  - https://github.com/pvolok/dekit#readme
+config-file-location:
+  unix:
+    - ./dekit.yaml
+    - ~/.config/mprocs/mprocs.yaml
+  windows:
+    - .\dekit.yaml
+    - '%APPDATA%\mprocs\mprocs.yaml'
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The project has been distributed across Homebrew, Cargo, npm, PyPI, Scoop, WinGet,
+      Nix, and other package ecosystems. Some package managers still identify the legacy
+      mprocs name, reflecting the transition to dekit.
+  package-nerd-significance:
+    - >
+      dekit is notable as a cross-platform, single-binary alternative to script-oriented
+      multi-process runners. Its mprocs compatibility preserves existing project
+      configuration while the renamed tool adds daemonized operation, dependency
+      handling, readiness checks, scripting, and agent-friendly commands.
+  project-history:
+    - >
+      Pavel Volokitin released the Rust rewrite of mprocs as version 0.1.0 in April
+      2022. The project evolved from an interactive terminal process viewer into a
+      cross-platform development-process manager.
+    - >
+      In September 2026, version 0.10.0 introduced dekit as the successor name. It
+      retained the mprocs terminal interface and compatibility mode while adding a
+      persistent runner, task dependencies, readiness checks, a control CLI, and
+      embedded JavaScript.
+  related-projects:
+    - >
+      mprocs: dekit's former name and the still-supported legacy command and
+      configuration format.
+    - >
+      concurrently and Procfile-based runners: related tools and conventions for
+      launching several development processes.
+  sources:
+    - https://dekit.run/
+    - https://dekit.run/docs
+    - https://github.com/pvolok/dekit/blob/master/CHANGELOG.md
+    - https://github.com/pvolok/dekit/blob/master/README-mprocs.md
+    - source_facts.package-manager
+  summary:
+    - >
+      dekit is a cross-platform process manager for development and production tasks. It
+      runs servers, databases, workers, and other commands under a terminal interface
+      and command-line control plane.
+  timeline:
+    - '2022-04-05: The Rust rewrite of mprocs is released as version 0.1.0.'
+    - '2022-05-30: mprocs adopts mprocs.yaml as its default project configuration.'
+    - >
+      2026-03-19: Version 0.9.0 adds Procfile support, process logging, and substantial
+      terminal internals changes.
+    - '2026-09-28: Version 0.10.0 introduces dekit as the successor to mprocs.'
+  usage:
+    - >
+      Users define project tasks in dekit.yaml, then start, inspect, attach to, restart,
+      or stop them through the dekit CLI or terminal UI. Each working directory has its
+      own daemon.
+    - >
+      Existing mprocs users can continue running mprocs.yaml through dekit mprocs. The
+      legacy mode also supports a global mprocs configuration file and an explicitly
+      supplied configuration path.
+tags:
+  - cli
+  - development-workflow
+  - process-manager
+  - rust
+  - task-runner
+  - tui
+provenance:
+  category-sources:
+    - https://dekit.run/
+    - https://dekit.run/docs
+    - source_facts.description
+  display-name-sources:
+    - https://dekit.run/
+    - source_facts.name
+  docs-sources:
+    - https://dekit.run/docs
+    - https://github.com/pvolok/dekit#readme
+  history-sources:
+    - https://dekit.run/
+    - https://dekit.run/docs
+    - https://github.com/pvolok/dekit/blob/master/CHANGELOG.md
+    - https://github.com/pvolok/dekit/blob/master/README-mprocs.md
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository determination was skipped as
+      instructed
+  tags-sources:
+    - https://dekit.run/
+    - https://github.com/pvolok/dekit
+    - source_facts.description
+category-confidence: high
+category-path:
+  - developer-tools
+  - process-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
