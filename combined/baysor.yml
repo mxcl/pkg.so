@@ -1,11 +1,77 @@
 id: brew:baysor
-display-name: baysor
+display-name: Baysor
 homepage: https://github.com/kharchenkolab/Baysor
 repo: https://github.com/kharchenkolab/Baysor
+docs:
+  - https://kharchenkolab.github.io/Baysor
+  - https://kharchenkolab.github.io/Baysor/dev/installation
+  - https://kharchenkolab.github.io/Baysor/dev/segmentation
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The accompanying research evaluated Baysor across five imaging-based
+      spatial-transcriptomics protocols. Subsequent official documentation added
+      workflows for platforms such as Xenium, while release artifacts and Homebrew
+      packaging made the command-line program easier to install outside bespoke research
+      environments.
+  package-nerd-significance:
+    - >
+      Baysor is a specialist scientific CLI whose evolution from Julia to a native C++
+      implementation matters to packagers: it changes runtime dependencies, portability,
+      binary distribution, and performance characteristics while retaining the
+      established command-line workflow.
+  project-history:
+    - >
+      Baysor originated in the Kharchenko laboratory as a Bayesian method for deriving
+      two- or three-dimensional cell boundaries from detected transcript locations and
+      gene composition, optionally incorporating a prior segmentation. The method was
+      described in Nature Biotechnology in 2021.
+    - >
+      The project was initially implemented in Julia and later ported to C++. Its
+      official documentation retains an archived Julia manual and a migration guide
+      while presenting the native implementation as the current release line.
+  related-projects:
+    - >
+      Baysor is commonly used with imaging-based spatial-transcriptomics platforms and
+      protocols such as MERFISH, osmFISH, and Xenium. It can complement
+      morphology-derived segmentations from tools such as Cellpose by accepting prior
+      cell assignments.
+  sources:
+    - https://github.com/kharchenkolab/Baysor
+    - https://github.com/kharchenkolab/Baysor/releases
+    - https://kharchenkolab.github.io/Baysor/
+    - https://www.nature.com/articles/s41587-021-01044-w
+  summary:
+    - >
+      Baysor is a command-line cell-segmentation tool for imaging-based spatial
+      transcriptomics. It combines transcript coordinates and molecular composition to
+      identify cells, with or without a morphology-based prior segmentation.
+  timeline:
+    - '2021: The Baysor method was published in Nature Biotechnology.'
+    - >
+      Later release line: The project introduced a native C++ port and documented
+      migration from the earlier Julia implementation.
+  usage:
+    - >
+      Users supply a molecule table containing spatial coordinates and gene identities,
+      choose protocol-appropriate parameters such as approximate cell radius and minimum
+      molecules per cell, and run `baysor run`. An optional TOML file can provide run
+      parameters, but the official documentation does not define a standard config-file
+      location.
+category: science
 package-manager:
   brew: baysor
 package-manager-url: https://formulae.brew.sh/formula/baysor
 license: MIT
+tags:
+  - bayesian-segmentation
+  - bioinformatics
+  - cell-segmentation
+  - cli
+  - scientific-computing
+  - spatial-transcriptomics
 description: Bayesian segmentation of imaging-based spatial transcriptomics data
 executables:
   - baysor
