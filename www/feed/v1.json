@@ -132,18 +132,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:photocraft",
         "brew:cask:vectorcraft",
+        "brew:cask:pdfcraft",
+        "brew:cask:filmcraft",
+        "brew:maki",
+        "brew:cask:genoffice",
         "brew:doltlite",
         "brew:cask:soundcraft",
         "brew:cask:gridcraft",
         "brew:cask:nodeterm",
-        "brew:maki",
         "brew:texres",
-        "brew:cask:filmcraft",
-        "brew:cask:lightcraft",
-        "brew:cask:photocraft",
-        "brew:typdiff",
-        "brew:arcane-cli"
+        "brew:cask:lightcraft"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -151,18 +151,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:photocraft",
         "brew:cask:vectorcraft",
+        "brew:cask:pdfcraft",
+        "brew:cask:filmcraft",
+        "brew:maki",
+        "brew:cask:genoffice",
         "brew:doltlite",
         "brew:cask:soundcraft",
         "brew:cask:gridcraft",
         "brew:cask:nodeterm",
-        "brew:maki",
         "brew:texres",
-        "brew:cask:filmcraft",
-        "brew:cask:lightcraft",
-        "brew:cask:photocraft",
-        "brew:typdiff",
-        "brew:arcane-cli"
+        "brew:cask:lightcraft"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -837,73 +837,8 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-10T07:50:25Z",
+  "generatedAt": "2026-10-11T07:32:14Z",
   "packages": {
-    "brew:arcane-cli": {
-      "agentSummary": "Arcane CLI manages containers, images, projects, environments, backups, and server settings from scripts or terminals, using Arcane API credentials and JSON-friendly output.",
-      "assessment": {
-        "alternatives": [
-          "Arcane web interface",
-          "Docker CLI and Docker Compose",
-          "Portainer",
-          "Dockge"
-        ],
-        "audiences": [
-          "Arcane administrators",
-          "Docker operators automating routine management",
-          "Teams integrating Arcane into scripts and CI"
-        ],
-        "caveats": [
-          "The CLI is officially described as being in early development",
-          "Device-code login cannot complete passkey MFA challenges, so those accounts need an API key",
-          "Most commands depend on an Arcane server and are not a general-purpose replacement for the Docker CLI"
-        ],
-        "complements": [
-          "Arcane Docker management server",
-          "jq for processing JSON output",
-          "Shell scripts or CI workflows"
-        ],
-        "prerequisites": [
-          "A reachable Arcane server",
-          "An API key or compatible device-code authentication setup",
-          "An explicitly selected environment for environment-scoped commands"
-        ],
-        "useCases": [
-          "Managing Arcane resources without opening the web interface",
-          "Producing JSON output for shell automation",
-          "Following activities, triggering updates, and managing backups"
-        ]
-      },
-      "category": "cloud-infrastructure",
-      "displayName": "arcane-cli",
-      "docs": "https://getarcane.app/docs/cli/commands",
-      "homepage": "https://getarcane.app",
-      "id": "brew:arcane-cli",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aarcane-cli",
-      "lastUpdatedAt": "2026-10-07T02:35:10Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/getarcaneapp/arcane",
-      "researchedAt": "2026-10-07T05:30:04Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Arcane CLI installation guide",
-          "url": "https://getarcane.app/docs/reference/cli/install"
-        },
-        {
-          "kind": "primary",
-          "title": "Arcane CLI command reference",
-          "url": "https://getarcane.app/docs/reference/cli/commands"
-        },
-        {
-          "kind": "primary",
-          "title": "Initial Arcane CLI release pull request",
-          "url": "https://github.com/getarcaneapp/arcane/pull/1150"
-        }
-      ],
-      "upstreamSummary": "Command-line client for the Arcane Docker management platform",
-      "version": "2.15.1"
-    },
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
       "assessment": {
@@ -1216,25 +1151,35 @@
       "version": "1.6.10"
     },
     "brew:cask:filmcraft": {
-      "agentSummary": "FilmCraft is a young, open-source Rust video editor spanning desktop platforms, with editing, color, audio, titles, export, automation, and headless control.",
+      "agentSummary": "FilmCraft is a new Rust video editor offering native and web builds, structured project files, headless commands, and agent control while its production workflow matures.",
       "assessment": {
         "alternatives": [
-          "Kdenlive, Shotcut, DaVinci Resolve, Adobe Premiere Pro, or Final Cut Pro"
+          "Kdenlive",
+          "DaVinci Resolve",
+          "Adobe Premiere Pro"
         ],
         "audiences": [
-          "Video editors and developers interested in open, scriptable creative software"
+          "Early adopters of open-source video tools",
+          "Developers exploring programmable media workflows"
         ],
         "caveats": [
-          "The application is very new, and mature editors provide broader proven codec, effect, and workflow coverage"
+          "The public release history is only days old",
+          "Young media software may expose codec, performance, and project-compatibility gaps",
+          "Automated edits still require review of timing, quality, and export settings"
         ],
         "complements": [
-          "Media asset managers, subtitle tools, audio editors, and interchange-based production workflows"
+          "FFmpeg for independent media inspection and conversion",
+          "Versioned project and source-media storage",
+          "A mature editor for final delivery fallback"
         ],
         "prerequisites": [
-          "Modern desktop hardware and tolerance for a rapidly evolving early release"
+          "A supported desktop platform or browser build",
+          "Media backups and time to validate exports"
         ],
         "useCases": [
-          "Editing and exporting video through a desktop interface, CLI, JSON control channel, or MCP server"
+          "Timeline-based video editing",
+          "Testing cross-platform project workflows",
+          "Automating edits through CLI, MCP, or a control channel"
         ]
       },
       "category": "media",
@@ -1243,24 +1188,80 @@
       "homepage": "https://getartcraft.com/apps/filmcraft",
       "id": "brew:cask:filmcraft",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Afilmcraft",
-      "lastUpdatedAt": "2026-10-08T19:27:19Z",
+      "lastUpdatedAt": "2026-10-11T01:34:47Z",
       "manager": "homebrew",
       "repository": "https://github.com/storytold/filmcraft",
-      "researchedAt": "2026-10-09T07:33:06Z",
+      "researchedAt": "2026-10-11T07:32:14Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "FilmCraft official project page",
-          "url": "https://getartcraft.com/apps/filmcraft"
+          "title": "FilmCraft upstream documentation",
+          "url": "https://github.com/storytold/filmcraft/blob/main/README.md"
         },
         {
           "kind": "primary",
-          "title": "FilmCraft v0.1.0 release",
-          "url": "https://github.com/storytold/filmcraft/releases/tag/v0.1.0"
+          "title": "FilmCraft releases",
+          "url": "https://github.com/storytold/filmcraft/releases"
         }
       ],
       "upstreamSummary": "Video editor",
-      "version": "0.4.0"
+      "version": "0.6.0"
+    },
+    "brew:cask:genoffice": {
+      "agentSummary": "GenOffice combines document, spreadsheet, presentation, PDF, Markdown, and HTML editing with a built-in AI agent, local file workflows, and cross-platform desktop releases.",
+      "assessment": {
+        "alternatives": [
+          "LibreOffice",
+          "ONLYOFFICE",
+          "Microsoft 365 desktop applications"
+        ],
+        "audiences": [
+          "People seeking an open-source desktop office suite",
+          "Developers using coding agents to create Office-format documents"
+        ],
+        "caveats": [
+          "Office-format fidelity should be tested on important files",
+          "AI features may transmit document context to the configured provider",
+          "The project and its file-editing surface are developing rapidly"
+        ],
+        "complements": [
+          "Claude Code, Codex, or Cursor for agent-driven document workflows",
+          "Existing Office files kept under normal backup or versioning practices"
+        ],
+        "prerequisites": [
+          "A supported desktop operating system",
+          "A model-provider key for AI features"
+        ],
+        "useCases": [
+          "Editing DOCX, XLSX, PPTX, PDF, Markdown, and HTML files",
+          "Using a built-in agent with a chosen model provider",
+          "Automating document work through its CLI and agent skill"
+        ]
+      },
+      "category": "productivity",
+      "displayName": "GenOffice",
+      "docs": "https://genoffice.ai/",
+      "homepage": "https://genoffice.ai/",
+      "id": "brew:cask:genoffice",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agenoffice",
+      "lastUpdatedAt": "2026-10-10T08:06:48Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/genspark-ai/genoffice",
+      "researchedAt": "2026-10-11T07:32:14Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "GenOffice upstream repository",
+          "url": "https://github.com/genspark-ai/genoffice"
+        },
+        {
+          "kind": "primary",
+          "title": "GenOffice releases",
+          "url": "https://github.com/genspark-ai/genoffice/releases"
+        }
+      ],
+      "upstreamSummary": "Open-source AI office suite",
+      "version": "0.11.505"
     },
     "brew:cask:gridcraft": {
       "agentSummary": "GridCraft is an early Rust spreadsheet application offering formulas, tables, charts, pivots, XLSX workflows, browser support, and automation through CLI, control-channel, and MCP interfaces.",
@@ -1825,26 +1826,93 @@
       "upstreamSummary": "Disk space analyser",
       "version": "1.2.1"
     },
-    "brew:cask:photocraft": {
-      "agentSummary": "PhotoCraft is a new open-source image editor from the ArtCraft suite, built for desktop creative work with a Rust-based, cross-platform foundation.",
+    "brew:cask:pdfcraft": {
+      "agentSummary": "PdfCraft is a new Rust PDF editor spanning reading, forms, annotations, organization, conversion, and automation, with unusually detailed public tracking of robustness gaps.",
       "assessment": {
         "alternatives": [
-          "GIMP, Krita, Affinity Photo, or Adobe Photoshop"
+          "PDFgear",
+          "LibreOffice Draw",
+          "Adobe Acrobat"
         ],
         "audiences": [
-          "Artists, photographers, and developers evaluating young open-source image editors"
+          "Early adopters seeking an open-source PDF editor",
+          "Developers evaluating PDF automation and rendering"
         ],
         "caveats": [
-          "Its recent first release means workflows, compatibility, and advanced editing depth need hands-on evaluation"
+          "Upstream labels robustness as early beta",
+          "Its roadmap reports unresolved out-of-memory crashes or hangs from fuzzing",
+          "Acrobat-level visual and behavioral fidelity remains unmeasured"
         ],
         "complements": [
-          "LightCraft for photo-library development and VectorCraft for vector artwork"
+          "qpdf for structural checks",
+          "A PDF viewer with independent rendering",
+          "Versioned originals for comparison"
         ],
         "prerequisites": [
-          "A supported desktop and realistic expectations for an early-stage creative application"
+          "A supported desktop platform",
+          "Duplicate copies of important PDFs before editing"
         ],
         "useCases": [
-          "Editing raster images in a cross-platform desktop application"
+          "Reading and annotating PDFs",
+          "Editing forms and organizing pages",
+          "Driving repeatable PDF operations through CLI or agent interfaces"
+        ]
+      },
+      "category": "productivity",
+      "displayName": "PdfCraft",
+      "docs": "https://getartcraft.com/apps/pdfcraft",
+      "homepage": "https://getartcraft.com/apps/pdfcraft",
+      "id": "brew:cask:pdfcraft",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apdfcraft",
+      "lastUpdatedAt": "2026-10-11T02:07:46Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/storytold/pdfcraft",
+      "researchedAt": "2026-10-11T07:32:14Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "PdfCraft upstream repository",
+          "url": "https://github.com/storytold/pdfcraft"
+        },
+        {
+          "kind": "primary",
+          "title": "PdfCraft roadmap and honest assessment",
+          "url": "https://github.com/storytold/pdfcraft/blob/main/ROADMAP.md"
+        }
+      ],
+      "upstreamSummary": "PDF editor",
+      "version": "0.6.0"
+    },
+    "brew:cask:photocraft": {
+      "agentSummary": "PhotoCraft is an early-alpha Rust image editor pursuing layered PSD compatibility, native and web builds, local processing, automation, and measurable feature-parity goals.",
+      "assessment": {
+        "alternatives": [
+          "GIMP",
+          "Krita",
+          "Adobe Photoshop"
+        ],
+        "audiences": [
+          "Early adopters of open-source creative tools",
+          "Developers interested in Rust graphics and PSD interoperability"
+        ],
+        "caveats": [
+          "Upstream explicitly describes the editor as early alpha",
+          "Compatibility goals do not guarantee perfect PSD fidelity",
+          "Untrusted image and document inputs should be treated as potentially malicious"
+        ],
+        "complements": [
+          "ImageMagick for batch conversion",
+          "Versioned test assets and checksums",
+          "A mature editor for final-production fallback"
+        ],
+        "prerequisites": [
+          "A supported desktop platform or browser build",
+          "Backups of source artwork before testing round trips"
+        ],
+        "useCases": [
+          "Layered raster-image editing",
+          "Inspecting and round-tripping PSD or PSB files",
+          "Headless or MCP-driven image workflows"
         ]
       },
       "category": "media",
@@ -1853,15 +1921,15 @@
       "homepage": "https://getartcraft.com/apps/photocraft",
       "id": "brew:cask:photocraft",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aphotocraft",
-      "lastUpdatedAt": "2026-10-08T16:42:53Z",
+      "lastUpdatedAt": "2026-10-11T04:24:14Z",
       "manager": "homebrew",
       "repository": "https://github.com/storytold/photocraft",
-      "researchedAt": "2026-10-09T07:33:06Z",
+      "researchedAt": "2026-10-11T07:32:14Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "PhotoCraft official project page",
-          "url": "https://getartcraft.com/apps/photocraft"
+          "title": "PhotoCraft upstream repository and status",
+          "url": "https://github.com/storytold/photocraft"
         },
         {
           "kind": "primary",
@@ -1870,7 +1938,7 @@
         }
       ],
       "upstreamSummary": "Image editor",
-      "version": "0.5.0"
+      "version": "0.7.0"
     },
     "brew:cask:soundcraft": {
       "agentSummary": "SoundCraft is a pre-alpha Rust digital audio workstation for multitrack recording, MIDI, mixing, automation, and bouncing, with desktop, browser, command-line, and MCP control surfaces.",
@@ -2102,26 +2170,35 @@
       "version": "0.106.0"
     },
     "brew:cask:vectorcraft": {
-      "agentSummary": "VectorCraft is a young cross-platform Rust vector editor with Bézier, layer, blend, and perspective workflows, plus browser builds and agent-facing automation surfaces.",
+      "agentSummary": "VectorCraft is a young pure-Rust vector editor with SVG, PDF, print, desktop, web, CLI, and agent-control workflows, while openly tracking incomplete Illustrator parity.",
       "assessment": {
         "alternatives": [
-          "Consider Inkscape, Affinity Designer, or Adobe Illustrator when mature interoperability and established production support are required."
+          "Inkscape",
+          "Affinity Designer",
+          "Adobe Illustrator"
         ],
         "audiences": [
-          "Illustrators and designers interested in an open-source, cross-platform vector editor and early adopters evaluating new creative software."
+          "Vector artists willing to test a fast-moving open-source editor",
+          "Developers interested in scriptable graphics tooling"
         ],
         "caveats": [
-          "The project is very new and under active development, so complex-file compatibility and workflow completeness need hands-on validation.",
-          "Its clean-room goal and familiar workflow do not imply complete behavioral or file-format parity with proprietary applications."
+          "Upstream's parity percentages are self-assessed",
+          "Several advanced effects, scripting, and interaction details remain incomplete",
+          "Some platform and tablet combinations have documented limitations"
         ],
         "complements": [
-          "SVG-centered publishing workflows and other ArtCraft applications for adjacent image, layout, audio, or video tasks."
+          "SVG validation tools",
+          "PDF inspection tools",
+          "A mature vector editor for interoperability checks"
         ],
         "prerequisites": [
-          "A supported desktop system or modern browser, plus tolerance for a project explicitly under active development."
+          "A supported desktop platform or web build",
+          "A fallback workflow for unsupported production features"
         ],
         "useCases": [
-          "Create and edit layered vector artwork with paths, blends, clipping, effects, typography, and perspective tools."
+          "Drawing and editing vector artwork",
+          "Importing or exporting common vector formats",
+          "Automating documents through CLI, control-channel, or MCP interfaces"
         ]
       },
       "category": "media",
@@ -2130,24 +2207,24 @@
       "homepage": "https://getartcraft.com/apps/vectorcraft",
       "id": "brew:cask:vectorcraft",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Avectorcraft",
-      "lastUpdatedAt": "2026-10-10T04:39:59Z",
+      "lastUpdatedAt": "2026-10-11T02:56:39Z",
       "manager": "homebrew",
       "repository": "https://github.com/storytold/vectorcraft",
-      "researchedAt": "2026-10-10T07:50:25Z",
+      "researchedAt": "2026-10-11T07:32:14Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "VectorCraft upstream repository and README",
+          "title": "VectorCraft upstream repository and status",
           "url": "https://github.com/storytold/vectorcraft"
         },
         {
           "kind": "primary",
-          "title": "VectorCraft official application page",
-          "url": "https://getartcraft.com/apps/vectorcraft"
+          "title": "VectorCraft roadmap",
+          "url": "https://github.com/storytold/vectorcraft/blob/main/ROADMAP.md"
         }
       ],
       "upstreamSummary": "Vector editor",
-      "version": "0.8.0"
+      "version": "0.9.0"
     },
     "brew:cask:visual-studio-code@insiders": {
       "agentSummary": "Visual Studio Code Insiders delivers Microsoft's frequently updated preview editor, providing the primary tested client for JetBrains' official Kotlin language server extension.",
@@ -3090,26 +3167,35 @@
       "version": "2.46.6"
     },
     "brew:maki": {
-      "agentSummary": "Maki is a Rust terminal coding agent focused on context efficiency, observable subagents, multiple model providers, and extensibility through Neovim-style Lua plugins.",
+      "agentSummary": "Maki is a Rust terminal coding agent focused on context efficiency, with provider choice, permission controls, headless operation, and Neovim-style Lua extensibility.",
       "assessment": {
         "alternatives": [
-          "Use another terminal coding agent when ecosystem maturity, enterprise controls, or a specific provider integration matters more."
+          "Claude Code",
+          "OpenCode",
+          "Codex CLI"
         ],
         "audiences": [
-          "Terminal-oriented developers who want a configurable coding agent and are comfortable evaluating a young tool."
+          "Developers who want a terminal coding agent",
+          "Teams experimenting with scriptable agent workflows"
         ],
         "caveats": [
-          "Context-efficiency and benchmark claims are published by the project and should be tested against representative repositories and models.",
-          "Plugins and autonomous shell access expand the trust boundary; review configuration, permissions, and third-party Lua code."
+          "Model use can incur provider charges and send repository context off-device",
+          "Agent tool execution requires careful permission and folder-trust choices",
+          "The project remains young and its plugin surface may evolve"
         ],
         "complements": [
-          "MCP servers, project-specific skills, OpenTelemetry collectors, and optional output-filtering tools."
+          "Repository-scoped AGENTS.md guidance",
+          "ACP-compatible editors",
+          "MCP tool servers"
         ],
         "prerequisites": [
-          "Credentials or local endpoints for a supported model provider and explicit review of the agent's command permissions."
+          "An account and credentials for a supported model provider",
+          "A repository whose code and instructions can be shared with that provider"
         ],
         "useCases": [
-          "Run interactive or headless coding sessions, delegate subtasks, and extend agent behavior with Lua plugins."
+          "Interactive repository work",
+          "Headless agent tasks in scripts or CI",
+          "Adding custom commands and tools through Lua plugins"
         ]
       },
       "category": "developer-tools",
@@ -3118,24 +3204,24 @@
       "homepage": "https://maki.sh",
       "id": "brew:maki",
       "installURL": "pkgmgrmgr://install?package=brew%3Amaki",
-      "lastUpdatedAt": "2026-10-09T11:57:14Z",
+      "lastUpdatedAt": "2026-10-10T18:36:09Z",
       "manager": "homebrew",
       "repository": "https://github.com/tontinton/maki",
-      "researchedAt": "2026-10-10T07:50:25Z",
+      "researchedAt": "2026-10-11T07:32:14Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Maki upstream repository and README",
-          "url": "https://github.com/tontinton/maki"
+          "title": "Maki documentation",
+          "url": "https://maki.sh/docs/"
         },
         {
           "kind": "primary",
-          "title": "Maki official documentation",
-          "url": "https://maki.sh/docs"
+          "title": "Maki v0.1.0 release",
+          "url": "https://github.com/tontinton/maki/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Efficient AI coding agent extendable by neovim-like Lua plugins",
-      "version": "0.6.1"
+      "version": "0.6.2"
     },
     "brew:metview": {
       "agentSummary": "Metview gives operational and research meteorologists one environment for accessing, processing, scripting, and visualizing ECMWF-oriented weather data through desktop and Python workflows.",
@@ -4099,7 +4185,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-10T07:48:58Z",
+    "generatedAt": "2026-10-11T07:30:44Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
