@@ -4,9 +4,79 @@ homepage: https://secure-pipes.app/
 repo: null
 docs:
   - https://secure-pipes.app/
-config-file-location: null
+config-file-location:
+  macos:
+    - ~/Library/Application Support/Secure Pipes
+    - ~/Library/Preferences/net.edgeservices.sp-config.plist
+    - ~/Library/Preferences/net.edgeservices.connections.plist
 credentials-file-location: null
-history: null
+history:
+  adoption-history:
+    - >
+      Secure Pipes was distributed as a native macOS utility and later packaged as the
+      Homebrew Cask secure-pipes, giving command-line-oriented Mac users a
+      package-manager installation route. The Homebrew listing is now disabled.
+  package-nerd-significance:
+    - >
+      Secure Pipes is an example of a narrowly focused Mac utility that presents
+      established Unix networking primitives through a native menu-bar interface. It
+      relies on macOS's bundled SSH implementation rather than introducing a separate
+      tunneling protocol.
+    - >
+      Its Homebrew Cask presence is noteworthy because it made a graphical,
+      independently distributed Mac application manageable through the same declarative
+      installation workflow used for command-line packages.
+  project-history:
+    - >
+      Author Timothy Stonis wrote Secure Pipes after using SSH proxies to work around
+      network restrictions and after exploring ways to expose a locally hosted OS X
+      Server through a cloud SSH endpoint. The recurring problems were remembering SSH
+      options, restoring tunnels, and keeping connections alive.
+    - >
+      By June 2014, the author described the minimum intended functionality as complete
+      enough to share publicly. A November 2014 release added authenticated HTTP-proxy
+      support and script-derived SSH hostnames in response to user requests.
+  related-projects:
+    - OpenSSH, whose macOS-provided client binaries perform the underlying tunneling.
+    - Homebrew Cask, which packaged Secure Pipes for command-line installation on macOS.
+    - macOS Keychain, used for saved SSH, HTTP-proxy, and optional administrator passwords.
+  sources:
+    - 'Official Homebrew Cask record: https://formulae.brew.sh/cask/secure-pipes'
+    - 'Official Secure Pipes guide, OPOET: https://www.opoet.com/pyro/index.php/get-started'
+    - >
+      Official Secure Pipes history post, OPOET:
+      https://www.opoet.com/pyro/index.php/blog/tagged/great%20firewall
+    - >
+      Official Secure Pipes release and feature notes, OPOET:
+      https://www.opoet.com/pyro/index.php/blog/tagged/new%20features
+  summary:
+    - >
+      Secure Pipes is a macOS menu-bar application for creating and maintaining SSH
+      local forwards, remote forwards, and SOCKS proxies. It wraps the SSH binaries
+      supplied with macOS, adding persistent profiles, connection status, automatic
+      retry, sleep-and-wake reconnection, and optional startup behavior.
+  timeline:
+    - >
+      2014: The author published Secure Pipes' origin story and made its initial useful
+      functionality available to others.
+    - '2014: Version 0.85 added HTTP-proxy support and script-derived SSH hostnames.'
+    - >
+      2015: The author published an official tutorial explaining the three supported SSH
+      tunnel types.
+    - 'Later: Secure Pipes became available through the Homebrew Cask package manager.'
+  usage:
+    - >
+      Users define tunnel profiles in the Preferences window and start or stop them from
+      the macOS menu bar. Supported profiles cover SSH local forwarding, remote
+      forwarding, and dynamic forwarding through a SOCKS proxy.
+    - >
+      Profiles may use password authentication or a user-selected SSH identity file.
+      Options include compression, strict host-key checking, automatic startup,
+      automatic reconnection, and HTTP-proxy traversal.
+    - >
+      Secure Pipes stores its own application settings under the user's Library
+      directory. Saved passwords are placed in macOS Keychain rather than a
+      project-specific credentials file.
 category: networking
 package-manager:
   brew-cask: secure-pipes
