@@ -2,9 +2,90 @@ id: cask:claudoscope
 display-name: Claudoscope
 homepage: https://claudoscope.com/
 repo: https://github.com/cordwainersmith/Claudoscope
+docs:
+  - https://claudoscope.com/
+  - https://claudoscope.com/privacy
+  - https://github.com/cordwainersmith/Claudoscope#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Claudoscope is distributed as a signed macOS application and through Homebrew
+      Cask. Its adoption niche is the growing Claude Code ecosystem, particularly users
+      who want a persistent graphical view of sessions, estimated costs, configuration
+      health, and agent activity.
+  package-nerd-significance:
+    - >
+      Claudoscope represents a package-manager-friendly desktop companion for a
+      command-line coding agent. It is notable for consuming Claude Code's existing
+      on-disk artifacts rather than requiring a proxy, hosted service, or telemetry
+      account, and for combining observability with configuration linting and local
+      security checks.
+  project-history:
+    - >
+      The project began after its author discovered a database password in a Claude Code
+      session file and built a local macOS tool to inspect sessions and detect secrets.
+      It grew from a menu-bar cost readout into a broader session viewer, analytics
+      dashboard, configuration browser, and hardening tool.
+    - >
+      Version 1.0 established persistent session indexing, notifications, cost alerts,
+      file-diff browsing, and a read-only MCP interface. Later releases expanded the
+      product with Cowork visibility, security hardening, fleet monitoring, and richer
+      session tracing.
+  related-projects:
+    - >
+      Claude Code supplies the transcripts, configuration, hooks, skills, and MCP
+      metadata inspected by Claudoscope.
+    - >
+      ccusage reads similar local session records but focuses on command-line reporting
+      and automation rather than a native interactive dashboard.
+  sources:
+    - Homebrew adoption is supplied by source_facts.package-manager["brew-cask"].
+    - 'Official 1.0 history: https://claudoscope.com/blog/claudoscope-1-0'
+    - >
+      Official origin story:
+      https://claudoscope.com/blog/found-database-password-in-claude-code-session
+    - 'Official product page: https://claudoscope.com/'
+    - 'Official repository releases: https://github.com/cordwainersmith/Claudoscope/releases'
+  summary:
+    - >
+      Claudoscope is a free, open-source macOS application for viewing and replaying
+      Claude Code and Cowork sessions. It reads local session data to provide live
+      activity monitoring, searchable transcripts, cost analysis, configuration
+      inspection, secret detection, and optional security hardening.
+  timeline:
+    - >
+      2026: Development began after the author found a credential in a Claude Code
+      session file.
+    - >
+      2026-07-27: Version 1.0 marked the transition from a menu-bar readout to a
+      persistent session-analysis and notification tool.
+    - >
+      2026: Subsequent releases added Cowork support, security hardening, fleet
+      monitoring, and session tracing.
+  usage:
+    - >
+      Users leave Claudoscope running as a menu-bar application while working with
+      Claude Code. It watches local session files, presents active and historical
+      sessions, estimates token costs, surfaces blocked agents, and inspects Claude Code
+      configuration.
+    - >
+      The application operates locally without an account or telemetry. Optional
+      features can install reversible Claude Code hooks and hardening rules; the core
+      viewer reads existing session and configuration files in place.
+category: developer-tools
 package-manager:
   brew-cask: claudoscope
 package-manager-url: https://formulae.brew.sh/cask/claudoscope
+tags:
+  - claude-code
+  - cost-analytics
+  - developer-observability
+  - local-first
+  - macos
+  - security
+  - session-monitoring
 description: Menu bar dashboard for Claude Code sessions
 applications:
   - Claudoscope.app
