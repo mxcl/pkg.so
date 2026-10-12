@@ -7,3 +7,5 @@ The authoritative runtime tokens remain in `crates/av-web/pkg.css`: Space Grotes
 History pages reuse `html_doc`, `site_nav`, `site_footer`, `render_history`, breadcrumbs, `pkg-hero`, `hero-actions`, `button`, `pkg-section`, `split-section` and `package-list`. The page’s job is to explain a project’s origins and adoption with evidence, then link back to existing install pages. Prominent install-page history links remain ordinary anchors.
 
 Use one H1, native anchors, existing visible focus/hover styling and responsive breakpoints. No async widgets or new application workflow are introduced. Preserve document scrolling and existing reduced-motion behavior. The frozen history cohort is English only, with self-canonical routes and no false translated hreflang claims.
+
+The English Discover blog at `/blog/` also reuses the catalog shell, tokens, and navigation. Illustrated article previews lead to readable, single-column Markdown stories with permanent date/slug URLs. The feed owns editorial copy and artwork; the blog follows the published v2 archive without generating or translating content. Blog routes are self-canonical with no translated hreflang claims.

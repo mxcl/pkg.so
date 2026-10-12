@@ -100,6 +100,11 @@ managed separately in `../av.www`.
 
 ## Discover feed
 
+Discover editorials are published as the [pkg.so blog](https://pkg.so/blog/),
+with permanent article URLs and a blog sitemap linked from the main sitemap.
+The web origin reads the current feed release and its linked v2 archive, so the
+nightly feed publication also updates the blog without a rebuild.
+
 The canonical Discover feed is committed at `www/feed/` and served at
 `https://pkg.so/discover/feed/`. Run `scripts/update-discover-feed` to refresh
 it; the script validates the rolling v1 snapshot and append-only v2 archive,

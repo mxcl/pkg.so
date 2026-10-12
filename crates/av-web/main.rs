@@ -1,5 +1,6 @@
 #![cfg_attr(test, recursion_limit = "256")]
 
+mod blog;
 mod project_history;
 
 use rusqlite::{Connection, OpenFlags, OptionalExtension, params};
@@ -157,7 +158,12 @@ fn handle_connection(mut stream: TcpStream, state: &AppState) -> Result<(), Stri
         );
     }
 
-    if let Some(location) = legacy_pkg_redirect_location(&request.path, request.query.as_deref()) {
+    let redirect = if request.path == "/blog" {
+        Some("/blog/".to_string())
+    } else {
+        legacy_pkg_redirect_location(&request.path, request.query.as_deref())
+    };
+    if let Some(location) = redirect {
         let response = StoredResponse {
             content_type: "text/plain; charset=utf-8".to_string(),
             body: Vec::new(),
@@ -197,6 +203,10 @@ fn handle_connection(mut stream: TcpStream, state: &AppState) -> Result<(), Stri
             last_modified: FALLBACK_LAST_MODIFIED.to_string(),
             cache_control: HTML_CACHE_CONTROL.to_string(),
         };
+        return write_stored_response(&mut stream, &request, 200, "OK", response, Vec::new());
+    }
+
+    if let Some(response) = blog::response(&state.feed_root, &request.path)? {
         return write_stored_response(&mut stream, &request, 200, "OK", response, Vec::new());
     }
 
@@ -1949,7 +1959,7 @@ fn html_doc(
 
 fn site_nav(locale: &Locale) -> String {
     format!(
-        r#"<header class="masthead"><a class="brand" href="{}" aria-label="{}"><span class="brand-mark" aria-hidden="true">pkg</span><span class="brand-lockup"><span class="brand-type">pkg.so</span><span class="brand-tagline">open package index</span></span></a><nav class="nav" aria-label="{}"><a class="nav-primary" href="{}">{}</a><a href="{}">Feed</a><a href="https://github.com/mxcl/pkg.so">GitHub <span aria-hidden="true">↗</span></a></nav></header>"#,
+        r#"<header class="masthead"><a class="brand" href="{}" aria-label="{}"><span class="brand-mark" aria-hidden="true">pkg</span><span class="brand-lockup"><span class="brand-type">pkg.so</span><span class="brand-tagline">open package index</span></span></a><nav class="nav" aria-label="{}"><a class="nav-primary" href="{}">{}</a><a class="nav-blog" href="/blog/">Blog</a><a href="{}">Feed</a><a href="https://github.com/mxcl/pkg.so">GitHub <span aria-hidden="true">↗</span></a></nav></header>"#,
         html_escape(&locale_path("/", locale)),
         html_escape(&tx(locale, "brandHomeAria", "pkg.so package catalog")),
         html_escape(&tx(locale, "mainNavigation", "Main navigation")),
@@ -1997,7 +2007,7 @@ fn copy_script(locale: &Locale) -> String {
 }
 
 fn html_hreflang_links(canonical: &str) -> String {
-    if canonical.strip_prefix(SITE_ORIGIN).is_some_and(project_history::is_history_path) {
+    if canonical.strip_prefix(SITE_ORIGIN).is_some_and(|path| path.starts_with("/blog/") || project_history::is_history_path(path)) {
         return String::new();
     }
     let Some(path) = canonical.strip_prefix(SITE_ORIGIN) else {
@@ -5870,6 +5880,7 @@ fn render_sitemap_index(connection: &Connection) -> Result<String, String> {
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n",
     );
     sitemap_entry(&mut xml, "/pkg/sitemap-hubs.xml", &lastmod);
+    xml.push_str(&format!("  <sitemap><loc>{SITE_ORIGIN}/blog/sitemap.xml</loc></sitemap>\n"));
     // History content has no evidenced modification timestamp.
     if project_history::enabled() {
         xml.push_str(&format!("  <sitemap><loc>{SITE_ORIGIN}/sitemap-history.xml</loc></sitemap>\n"));
