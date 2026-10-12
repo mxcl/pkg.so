@@ -52,6 +52,15 @@ python3 scripts/enrich-projects.py --mode new --include-missing-curated-fields -
 
 The sub-agent must read the prompt and input, research official sources only, and write JSON matching `output_schema_path` to `codex_output_path`. It must not edit repo files.
 
+Each research batch also curates `related-packages`: up to six ranked alternatives or
+concrete workflow companions, with a useful reason and official evidence URLs for each.
+Resolve exact target IDs against `combined/*.yml`. Shared tags, similar names, and
+build dependencies are not sufficient evidence. Return `[]` when no recommendation
+is strong enough. The missing-fields run backfills this field; an explicit empty
+array counts as reviewed. Older prepared outputs remain applicable and leave the
+field missing for a later pass. Published pages use reviewed recommendations in
+place of automatic related-package suggestions and omit unavailable targets.
+
 4. Apply completed outputs.
 
 You can use the helper's emitted `apply_command`, or run the equivalent command manually.

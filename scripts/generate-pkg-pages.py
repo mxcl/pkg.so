@@ -763,6 +763,17 @@ def apply_combined_yaml_locations(pages: dict[str, PackagePage]) -> None:
         history = record.get("history")
         if isinstance(history, dict):
             page.history = history
+        if "related-packages" in record:
+            # A reviewed empty list suppresses weak automatic recommendations too.
+            page.extra["curatedRelatedPackages"] = [
+                {"provider": target.provider, "name": target.name,
+                 "label": target.display_name, "rel": item["rel"],
+                 "reason": item["reason"], "evidence": item.get("sources", [])}
+                for item in record["related-packages"] or []
+                if isinstance(item, dict) and item.get("rel") in ("alternative", "adjacent_workflow")
+                and item.get("reason") and item.get("id") != package_key
+                and (target := pages.get(item.get("id"))) is not None
+            ]
         if config_locations or credentials_locations:
             page.source_notes.append("curated configuration and credential file locations")
         if page.history:
@@ -949,6 +960,9 @@ def package_pages_from_sources(
         cross_ecosystem = read_json(PKG_CROSS_ECOSYSTEM_PATH, {})
     apply_package_cross_ecosystem(pages, cross_ecosystem or {})
     del cross_ecosystem
+    for page in pages.values():
+        if "curatedRelatedPackages" in page.extra:
+            page.related_packages = page.extra["curatedRelatedPackages"]
     prune_missing_relationship_targets(pages)
     verify_local_install_commands(pages)
     apply_agent_safety_answers(pages, sources.get("pkg_agent_safety_answers") or {})
@@ -4441,7 +4455,7 @@ def filtered_related_items(
 
 
 def inferred_related_items(page: PackagePage, limit: int) -> list[dict[str, Any]]:
-    if page.provider != "brew":
+    if page.provider != "brew" or "curatedRelatedPackages" in page.extra:
         return []
     return [
         {
@@ -4455,17 +4469,7 @@ def inferred_related_items(page: PackagePage, limit: int) -> list[dict[str, Any]
 
 
 def inferred_related_links(page: PackagePage, locale: dict[str, Any] | None = None) -> list[str]:
-    links: list[str] = []
-    if page.provider != "brew":
-        return links
-    for dependency in page.dependencies[:6]:
-        links.append(related_link({
-            "provider": page.provider,
-            "name": dependency,
-            "label": dependency,
-            "reason": f"{package_manager_label(page)} dependency.",
-        }, locale))
-    return links
+    return [related_link(item, locale) for item in inferred_related_items(page, limit=6)]
 
 
 def has_internal_package_navigation(page: PackagePage) -> bool:

@@ -13,6 +13,7 @@ KEY_ORDER = [
     "config-file-location",
     "credentials-file-location",
     "history",
+    "related-packages",
     "category",
     "package-manager",
     "package-manager-match",
@@ -48,6 +49,9 @@ def emit_mapping(lines: list[str], value: dict[str, Any], indent: int, *, ordere
         if child is None:
             if should_emit_null(key, parent_key):
                 lines.append(f"{prefix}{key}: null")
+            continue
+        if key == "related-packages" and child == []:
+            lines.append(f"{prefix}{key}: []")
             continue
         if child == [] or child == {} or child == "":
             continue

@@ -5000,6 +5000,7 @@ fn related_links(
         })
         .unwrap_or_default();
     if links.is_empty() && key == "relatedPackages" && !workflow_only && package.provider == "brew"
+        && full_value(package, "relatedPackagesReviewed").and_then(Value::as_bool) != Some(true)
     {
         links = full_string_array(package, "dependencies")
             .into_iter()
@@ -8080,6 +8081,12 @@ mod tests {
 
         assert!(hub_cluster_block("Empty", &[], &LOCALES[0]).is_empty());
         assert!(hub_related_block("Empty", &[]).is_empty());
+        let reviewed = serde_json_package(&sparse, serde_json::json!({
+            "relatedPackagesReviewed": true,
+            "relatedPackages": [],
+            "dependencies": ["build-tool"]
+        }));
+        assert!(related_links(&reviewed, &LOCALES[0], "relatedPackages", 8, false).is_empty());
         let related = render_related(&sparse, &LOCALES[0]);
         for retired_path in [
             "/secret-scanner-for-ai-agents/", "/ai-agent-approval-gates/",

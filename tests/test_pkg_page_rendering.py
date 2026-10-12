@@ -2,6 +2,7 @@ import importlib.util
 import json
 import sys
 import unittest
+from unittest import mock
 from pathlib import Path
 
 
@@ -91,6 +92,30 @@ def sshfs_page():
 
 
 class PackagePageRenderingTests(unittest.TestCase):
+    def test_curated_recommendations_override_graph_and_prune_missing_targets(self):
+        records = {"brew:reader": {"related-packages": [
+            {"id": "brew:viewer", "rel": "alternative", "reason": "Preview syntax-highlighted files."},
+            {"id": "brew:missing", "rel": "alternative", "reason": "Missing target."},
+            {"id": "brew:reader", "rel": "alternative", "reason": "Self target."},
+        ]}}
+        sources = {
+            "db": {"formulas": {"reader": {"dependencies": ["build-tool"], "binaries": ["reader"]}, "viewer": {"binaries": ["viewer"]}, "build-tool": {"binaries": ["build-tool"]}}},
+            "pkg_graph": {"packages": {"brew:reader": {"linkIntents": {"relatedPackages": [
+                {"provider": "brew", "name": "build-tool", "rel": "build_dependency"}
+            ]}}}},
+        }
+        for related in (records["brew:reader"]["related-packages"], []):
+            records["brew:reader"]["related-packages"] = related
+            with mock.patch.object(pkg_pages, "load_combined_yaml_records", return_value=records):
+                pages = pkg_pages.package_pages_from_sources(sources)
+            page = pages["brew:reader"]
+            self.assertEqual([item["name"] for item in page.related_packages], ["viewer"] if related else [])
+            html = pkg_pages.render_related(page)
+            self.assertNotIn("build-tool", html)
+            self.assertNotIn("Agent security guides", html)
+            if related:
+                self.assertIn("Preview syntax-highlighted files.", html)
+
     def test_catalog_is_canonical_at_the_site_root(self):
         html = pkg_pages.render_index(
             [sshfs_page()],

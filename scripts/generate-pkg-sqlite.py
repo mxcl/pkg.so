@@ -635,6 +635,7 @@ def full_package_data(page_module: Any, page: Any, route: PackageRoute | None = 
         "versionFreshness": getattr(page, "version_freshness", {}),
         "geiger": sanitized_geiger(page),
         "relatedPackages": getattr(page, "related_packages", []),
+        "relatedPackagesReviewed": "curatedRelatedPackages" in extra,
         "alsoAvailableVia": getattr(page, "also_available_via", []),
         "packageHubs": getattr(page, "package_hubs", []),
         "agentSafetyAnswer": getattr(page, "agent_safety_answer", None),

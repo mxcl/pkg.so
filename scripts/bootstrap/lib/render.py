@@ -202,6 +202,8 @@ def agent_record_from_json(result: dict[str, Any]) -> dict[str, Any]:
             "history-sources": history_sources,
         },
     }
+    if "related-packages" in result:
+        record["related-packages"] = result["related-packages"]
     geiger = geiger_summary_for_package_id(record["id"])
     if geiger:
         record["geiger"] = geiger
@@ -230,12 +232,12 @@ def merge_agent_layer(record: dict[str, Any], path: Path) -> None:
     agent = parse_simple_yaml(path.read_text(encoding="utf-8"))
     if record.get("repo") in (None, "", "null") and agent.get("repo") not in (None, "", "null", []):
         record["repo"] = agent["repo"]
-    for key in ("display-name", "docs", "tags", "history", "config-file-location", "credentials-file-location"):
+    for key in ("display-name", "docs", "tags", "history", "related-packages", "config-file-location", "credentials-file-location"):
         value = agent.get(key)
         if key in PATH_LOCATION_FIELDS and key in agent:
             record[key] = combined_path_locations(value)
             continue
-        if key == "history" and key in agent:
+        if key in ("history", "related-packages") and key in agent:
             record[key] = value
             continue
         if value not in (None, "", [], {}):
@@ -419,6 +421,13 @@ def parse_yaml_list(lines: list[tuple[int, str]], index: int, indent: int) -> tu
         if raw_value in {">", "|"}:
             value, index = parse_yaml_block_scalar(lines, index, line_indent)
             values.append(value)
+        elif re.match(r"^[a-zA-Z][\w-]*:(?: |$)", raw_value):
+            start = index
+            while index < len(lines) and lines[index][0] > indent:
+                index += 1
+            mapping_lines = [(indent + 2, raw_value), *lines[start:index]]
+            value, _ = parse_yaml_mapping(mapping_lines, 0, indent + 2)
+            values.append(value)
         else:
             values.append(unquote_scalar(raw_value))
     return values, index
@@ -451,6 +460,8 @@ def unquote_scalar(value: str) -> Any:
         return None
     if value == "{}":
         return {}
+    if value == "[]":
+        return []
     if value in {"true", "false"}:
         return value == "true"
     if len(value) >= 2 and value[0] == value[-1] and value[0] == "'":

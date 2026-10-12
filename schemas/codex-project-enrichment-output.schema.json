@@ -302,6 +302,45 @@
             },
             "minItems": 1,
             "type": "array"
+          },
+          "related-packages": {
+            "type": "array",
+            "maxItems": 6,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^(brew|cask|npm|pip|cargo):[^\\s:]+$"
+                },
+                "rel": {
+                  "type": "string",
+                  "enum": [
+                    "alternative",
+                    "adjacent_workflow"
+                  ]
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sources": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^https?://[^/\\s]+"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "rel",
+                "reason",
+                "sources"
+              ]
+            }
           }
         },
         "required": [
@@ -325,7 +364,8 @@
           "category_sources",
           "tags_sources",
           "display_name_sources",
-          "history_sources"
+          "history_sources",
+          "related-packages"
         ],
         "type": "object"
       },

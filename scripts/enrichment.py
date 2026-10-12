@@ -24,6 +24,7 @@ CURATED_FIELDS = (
     "config-file-location",
     "credentials-file-location",
     "history",
+    "related-packages",
 )
 PATH_LOCATION_FIELDS = ("config-file-location", "credentials-file-location")
 PATH_LOCATION_PLATFORMS = ("unix", "linux", "macos", "windows")
@@ -448,6 +449,7 @@ def curation_facts(record: dict[str, Any]) -> dict[str, Any]:
             record["credentials-file-location"] if "credentials-file-location" in record else {}
         ),
         "history": normalize_history(record.get("history")),
+        "related-packages": record.get("related-packages"),
         "category_path": path,
         "category": path[0] if path else "",
         "tags": normalize_tags(record.get("tags"), include_cli=not str(record.get("id") or "").startswith("cask:")),
@@ -474,11 +476,11 @@ def load_projects(provider: str = "brew", projects_dir: Path = DETERMINISTIC_DIR
         combined_path = COMBINED_DIR / path.name
         if combined_path.exists():
             combined = parse_project_yaml(combined_path)
-            for key in ("repo", "display-name", "docs", "category", "tags", "history", *PATH_LOCATION_FIELDS):
+            for key in ("repo", "display-name", "docs", "category", "tags", "history", "related-packages", *PATH_LOCATION_FIELDS):
                 if key in PATH_LOCATION_FIELDS and key in combined:
                     record[key] = combined[key]
                     continue
-                if key == "history" and key in combined:
+                if key in ("history", "related-packages") and key in combined:
                     record[key] = combined[key]
                     continue
                 if combined.get(key) not in (None, "", [], {}):
@@ -658,6 +660,12 @@ Do not emit placeholder fallback rows. For every result:
 - Cite concise official source notes.
 - For `history`, write neutral Wikipedia-style package history focused on package-manager culture: project origins, adoption history, common usage, and why package nerds care. Use more paragraphs for significant packages. Use `history: null` when reliable source-backed history is too thin.
 - `history` fields are arrays of paragraph strings: `summary`, `project-history`, `adoption-history`, `usage`, `package-nerd-significance`, `timeline`, `related-projects`, and `sources`. Use concise timeline strings like `2016: First public release`.
+- For `related-packages`, research up to six genuinely useful recommendations, strongest first. Return [] when no strong recommendation is supported; never fill a quota.
+- Each recommendation has `id` (the exact target package id), `rel` (`alternative` or `adjacent_workflow`), `reason` (one concrete user-facing sentence), and `sources` (official HTTP(S) evidence URLs).
+- Alternatives solve the same user task; explain a meaningful difference or when to choose them. Companion tools must have a specific documented integration or practical workflow; explain how they work together.
+- Read the relevant `combined/*.yml` records to resolve exact target ids and verify they are real catalog packages. Do not guess ids, recommend the source package itself, or repeat the same project under multiple package managers.
+- Shared tags, implementation language, popularity, build/runtime dependencies, and similar names alone are NOT recommendation evidence. Prefer official comparisons and integration docs; verify both projects' capabilities. Omit weak or uncertain matches.
+- Keep recommendation order deliberate. Avoid generic reasons such as "similar tool" or "shares tags". These are durable editorial relationships: do not include versions, download URLs, checksums, counts, or refresh timestamps.
 - If you rely on supplied input rather than web research, cite the specific input field, such as `source_facts.description`, `source_facts.homepage`, or `current_curation.category`.
 
 Only determine repo when source_facts.repo is empty, missing, or null. If source_facts.repo already has a value, return repo as null and do not second-guess it. Repositories must be official HTTP(S) source-control project URLs, not package-manager pages, mirrors, tutorials, blogs, wikis, or documentation pages. Never return `git://`, `ssh://`, or `git@host:` clone URLs; convert them to the corresponding official HTTP(S) repository URL or return null if no official HTTP(S) repo page exists.
@@ -803,6 +811,9 @@ def normalize_codex_result(item: dict[str, Any]) -> tuple[dict[str, Any], list[s
         "display_name_sources": normalize_sources(item.get("display_name_sources")),
         "history_sources": history_sources,
     }
+    # Accept outputs prepared before the recommendation field was introduced.
+    if "related-packages" in item:
+        result["related-packages"] = validate_related_packages(item["related-packages"], result["id"], errors)
     for field in ("docs_sources", "repo_sources", "category_sources", "tags_sources", "display_name_sources", "history_sources"):
         if has_placeholder_source(result[field]):
             errors.append(f"{field} must cite official sources, not placeholder provenance")
@@ -818,6 +829,38 @@ def normalize_codex_result(item: dict[str, Any]) -> tuple[dict[str, Any], list[s
         if required and not result[field]:
             errors.append(f"{field} must cite at least one source")
     return result, errors
+
+
+def validate_related_packages(value: Any, source_id: str, errors: list[str]) -> list[dict[str, Any]]:
+    if not isinstance(value, list) or len(value) > 6:
+        errors.append("related-packages must be an array of at most six recommendations")
+        return []
+    seen = {source_id}
+    result = []
+    for item in value:
+        if not isinstance(item, dict):
+            errors.append("related-packages entries must be objects")
+            continue
+        target = item.get("id")
+        reason = item.get("reason")
+        sources = item.get("sources")
+        if not isinstance(target, str) or not re.fullmatch(r"(?:brew|cask|npm|pip|cargo):[^\s:]+", target) or target in seen:
+            errors.append("related-packages targets must be distinct package ids, excluding self")
+            continue
+        seen.add(target)
+        if item.get("rel") not in ("alternative", "adjacent_workflow"):
+            errors.append("related-packages rel must be alternative or adjacent_workflow")
+            continue
+        if not isinstance(reason, str) or not reason.strip():
+            errors.append("related-packages reason must be a non-empty sentence")
+            continue
+        if not isinstance(sources, list) or not sources or any(
+            not isinstance(url, str) or not re.match(r"^https?://[^/\s]+", url) for url in sources
+        ):
+            errors.append("related-packages sources must contain official HTTP(S) evidence URLs")
+            continue
+        result.append({"id": target, "rel": item["rel"], "reason": reason.strip(), "sources": sources})
+    return result
 
 
 def has_placeholder_source(sources: list[str]) -> bool:
@@ -892,6 +935,8 @@ def apply_results(
             summary["skipped_low_confidence"] += skipped
         if not dry_run:
             output_result = result_for_agent_record(original, result) if preserve_existing_fields else result
+            if "related-packages" in record:
+                output_result = {**output_result, "related-packages": record["related-packages"]}
             write_agent_json_record(record, output_result)
             write_agent_record(record, output_result)
         if curation_facts(original) == curation_facts(record):
@@ -950,6 +995,8 @@ def merge_result(
         "tags": result["tags-confidence"],
         "history": result["history-confidence"],
     }
+    if "related-packages" in result:
+        field_values["related-packages"] = result["related-packages"]
     changed = False
     for field, new_value in field_values.items():
         current_value = curation_facts(record).get("category" if field == "category" else field)
@@ -984,6 +1031,8 @@ def merge_result(
 
 
 def missing_curated_value(field: str, value: Any) -> bool:
+    if field == "related-packages":
+        return value is None
     return value in ("", [], None) or (field == "tags" and value == ["cli"])
 
 
@@ -1000,9 +1049,12 @@ def result_for_agent_record(original: dict[str, Any], result: dict[str, Any]) ->
         ("config-file-location", "config-file-location"),
         ("credentials-file-location", "credentials-file-location"),
         ("history", "history"),
+        ("related-packages", "related-packages"),
         ("tags", "tags"),
     )
     for curated_field, result_field in field_pairs:
+        if result_field not in result:
+            continue
         if missing_curated_value(curated_field, facts.get(curated_field)):
             merged[result_field] = result[result_field]
             confidence_field = f"{curated_field}-confidence"
@@ -1037,6 +1089,7 @@ def json_result_from_agent_record(record: dict[str, Any], fallback: dict[str, An
         "config-file-location": record.get("config-file-location") if "config-file-location" in record else None,
         "credentials-file-location": record.get("credentials-file-location") if "credentials-file-location" in record else None,
         "history": record.get("history") if "history" in record else None,
+        **({"related-packages": record["related-packages"]} if "related-packages" in record else {}),
         "history-confidence": record.get("history-confidence") or fallback["history-confidence"],
         "tags": record.get("tags") or [],
         "tags-confidence": record.get("tags-confidence") or fallback["tags-confidence"],

@@ -34,6 +34,59 @@ from scripts.enrichment import (
 )
 
 
+class RelatedPackageTests(unittest.TestCase):
+    def recommendation(self):
+        return {"id": "brew:fd", "rel": "adjacent_workflow",
+                "reason": "Use fd to select files and bat to preview their contents.",
+                "sources": ["https://github.com/sharkdp/fd#integration-with-other-programs"]}
+
+    def test_recommendations_validate_and_round_trip_through_yaml(self):
+        for related in ([], [self.recommendation()]):
+            with self.subTest(related=related), tempfile.TemporaryDirectory() as tmp:
+                result = sample_result(**{"related-packages": related})
+                normalized, errors = validate_codex_payload({"results": [result]}, {"brew:bat"})
+                self.assertEqual(errors, [])
+                agent = agent_record_from_result(normalized[0])
+                path = Path(tmp) / "bat.yml"
+                path.write_text(yaml_text(agent))
+                record = sample_record()
+                merge_agent_layer(record, path)
+                self.assertEqual(record["related-packages"], related)
+                from scripts.enrichment import has_curated_field
+                self.assertTrue(has_curated_field(record, "related-packages"))
+                del record["related-packages"]
+                self.assertFalse(has_curated_field(record, "related-packages"))
+
+    def test_invalid_recommendations_are_rejected(self):
+        good = self.recommendation()
+        for related in ([{**good, "id": "brew:bat"}], [good, good],
+                        [{**good, "sources": ["javascript:alert(1)"]}],
+                        [{**good, "rel": "build_dependency"}],
+                        [{**good, "reason": ""}], [good] * 7):
+            with self.subTest(related=related):
+                normalized, errors = validate_codex_payload(
+                    {"results": [sample_result(**{"related-packages": related})]}, {"brew:bat"})
+                self.assertTrue(errors)
+                self.assertEqual(normalized, [])
+
+    def test_legacy_output_and_manual_recommendations_are_preserved(self):
+        from scripts.enrichment import merge_result
+        record = sample_record()
+        record["related-packages"] = [self.recommendation()]
+        state = {"field_ownership": {"related-packages": "manual"}}
+        for result in (sample_result(), sample_result(**{"related-packages": []})):
+            merge_result(record, state, result, "medium")
+            self.assertEqual(record["related-packages"], [self.recommendation()])
+
+    def test_reviewed_empty_recommendations_are_not_overwritten_in_backfill(self):
+        from scripts.enrichment import merge_result
+        record = sample_record()
+        record["related-packages"] = []
+        merge_result(record, {}, sample_result(**{"related-packages": [self.recommendation()]}),
+                     "medium", preserve_existing_fields=True)
+        self.assertEqual(record["related-packages"], [])
+
+
 class CategoryTests(unittest.TestCase):
     def test_ai_category_paths_are_valid(self):
         self.assertEqual(normalize_category_path(["ai", "agents"]), ["ai", "agents"])
@@ -236,6 +289,7 @@ class EnrichmentTests(unittest.TestCase):
         record["config-file-location"] = None
         record["credentials-file-location"] = None
         record["history"] = None
+        record["related-packages"] = []
         state = {"brew:bat": {"last_verified": date.today().isoformat(), "field_confidence": {"repo": "high"}}}
         selected = select_projects(
             [record],
@@ -837,6 +891,7 @@ class EnrichmentTests(unittest.TestCase):
         missing["credentials-file-location"] = None
         reviewed = dict(missing)
         reviewed["id"] = "brew:reviewed-history"
+        reviewed["related-packages"] = []
         reviewed["history"] = None
         state = {}
         with mock.patch.object(module, "load_projects", return_value=[missing, reviewed]):
