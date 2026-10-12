@@ -2042,8 +2042,7 @@ def internal_package_link_count(page: PackagePage) -> int:
     ]
     inferred = inferred_related_links(page)
     hubs = [item for item in page.package_hubs if isinstance(item, dict) and str(item.get("slug") or "").strip()]
-    guides = core_security_guide_links(page)
-    return len(package_links) + len(inferred) + len(hubs) + len(guides)
+    return len(package_links) + len(inferred) + len(hubs)
 
 
 def has_strong_internal_package_navigation(page: PackagePage) -> bool:
@@ -4382,12 +4381,10 @@ def render_related(page: PackagePage, locale: dict[str, Any] | None = None) -> s
     if not related_items and not workflow_items and not also_items:
         related_items = inferred_related_items(page, limit=8)
     hubs = [hub_link(item, locale) for item in page.package_hubs[:4] if isinstance(item, dict) and item.get("slug")]
-    guides = core_security_guide_links(page, locale)
     articles = [
         related_article(tx(locale, "topicalHubs", "Topical hubs"), hubs),
         related_article(tx(locale, "relatedTools", "Related tools"), [related_link(item, locale) for item in related_items]),
         related_article(tx(locale, "sameWorkflow", "Same workflow"), [related_link(item, locale) for item in [*workflow_items, *also_items][:6]]),
-        related_article(tx(locale, "agentSecurityGuides", "Agent security guides"), guides),
     ]
     article_html = "".join(article for article in articles if article)
     return f"""
@@ -4454,50 +4451,6 @@ def inferred_related_items(page: PackagePage, limit: int) -> list[dict[str, Any]
             "reason": f"{package_manager_label(page)} dependency.",
         }
         for dependency in page.dependencies[:limit]
-    ]
-
-
-def core_security_guide_links(page: PackagePage, locale: dict[str, Any] | None = None) -> list[str]:
-    links = [
-        (
-            locale_path("/", locale) + "#threats",
-            tx(locale, "aiAgentSecretScanner", "AI agent secret scanner"),
-            tx(locale, "aiAgentSecretScannerCopy", "Find plaintext credentials before an agent run starts."),
-        ),
-        (
-            locale_path("/", locale) + "#controls",
-            tx(locale, "aiAgentApprovalGates", "AI agent approval gates"),
-            tx(locale, "aiAgentApprovalGatesCopy", "Put approvals in front of risky package and tool actions."),
-        ),
-        (
-            "/docs/",
-            tx(locale, "secretInjectionDocs", "Secret injection docs"),
-            tx(locale, "secretInjectionDocsCopy", "Move supported secrets out of plaintext files and inject them into approved tools."),
-        ),
-    ]
-    provider = page.provider.lower()
-    haystack = " ".join([page.name, page.display_name, page.summary, " ".join(page.aliases), " ".join(page.keywords)]).lower()
-    if provider == "brew" or "homebrew" in haystack:
-        links.append((
-            "/Automic%20Vault.dmg",
-            tx(locale, "secureHomebrewTools", "Secure Homebrew tools"),
-            tx(locale, "secureHomebrewToolsCopy", "Install Vault and scan the tools your Mac already uses."),
-        ))
-    if "aws" in haystack or "cloud" in haystack:
-        links.append((
-            locale_path("/", locale),
-            tx(locale, "secureAwsCliCredentials", "Secure AWS CLI credentials"),
-            tx(locale, "secureAwsCliCredentialsCopy", "Keep cloud keys out of ambient config files."),
-        ))
-    if "github" in haystack or "gh" in page.aliases:
-        links.append((
-            locale_path("/", locale),
-            tx(locale, "githubCliTokenSecurity", "GitHub CLI token security"),
-            tx(locale, "githubCliTokenSecurityCopy", "Protect source and release tokens used by local tools."),
-        ))
-    return [
-        f'<li><a href="{attr(url)}">{html_escape(label)}</a><span>{html_escape(copy)}</span></li>'
-        for url, label, copy in links[:5]
     ]
 
 
@@ -6504,7 +6457,7 @@ def check_current(output_dir: Path, terminal: Terminal) -> int:
     weak_pages = [page.key for page in indexable_pages if internal_package_link_count(page) < 3]
     if weak_pages:
         failures.append(
-            f"{len(weak_pages):,} indexable package pages have fewer than 3 internal package/hub/guide links: {', '.join(weak_pages[:12])}"
+            f"{len(weak_pages):,} indexable package pages have fewer than 3 internal package/hub links: {', '.join(weak_pages[:12])}"
         )
     no_hub_pages = [page.key for page in indexable_pages if not page.package_hubs]
     if no_hub_pages:

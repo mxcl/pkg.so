@@ -3635,17 +3635,12 @@ fn render_related(package: &PackageRow, locale: &Locale) -> String {
     let related = related_links(package, locale, "relatedPackages", 8, false);
     let workflow = related_links(package, locale, "relatedPackages", 6, true);
     let also = related_links(package, locale, "alsoAvailableVia", 4, false);
-    let guides = core_security_guides(package, locale);
     let columns = [
         related_article(&tx(locale, "topicalHubs", "Topical hubs"), hubs),
         related_article(&tx(locale, "relatedTools", "Related tools"), related),
         related_article(
             &tx(locale, "sameWorkflow", "Same workflow"),
             [workflow, also].concat(),
-        ),
-        related_article(
-            &tx(locale, "agentSecurityGuides", "Agent security guides"),
-            guides,
         ),
     ]
     .into_iter()
@@ -5036,96 +5031,6 @@ fn related_article(title: &str, items: Vec<String>) -> String {
             html_escape(title)
         )
     }
-}
-
-fn core_security_guides(package: &PackageRow, locale: &Locale) -> Vec<String> {
-    let mut links = vec![
-        (
-            locale_path("/secret-scanner-for-ai-agents/", locale),
-            tx(locale, "guideSecretScannerTitle", "AI agent secret scanner"),
-            tx(
-                locale,
-                "guideSecretScannerCopy",
-                "Find plaintext credentials before an agent run starts.",
-            ),
-        ),
-        (
-            locale_path("/ai-agent-approval-gates/", locale),
-            tx(locale, "guideApprovalGatesTitle", "AI agent approval gates"),
-            tx(
-                locale,
-                "guideApprovalGatesCopy",
-                "Put approvals in front of risky package and tool actions.",
-            ),
-        ),
-        (
-            locale_path("/docs/#secrets", locale),
-            tx(locale, "guideSecretInjectionTitle", "Secret injection docs"),
-            tx(
-                locale,
-                "guideSecretInjectionCopy",
-                "Move supported secrets out of plaintext files and inject them into approved tools.",
-            ),
-        ),
-    ];
-    let haystack = format!(
-        "{} {} {} {} {}",
-        package.provider,
-        package.name,
-        package.display_name,
-        package.summary,
-        full_string_array(package, "aliases").join(" ")
-    )
-    .to_ascii_lowercase();
-    if package.provider == "brew" || haystack.contains("homebrew") {
-        links.push((
-            locale_path("/download/", locale),
-            tx(locale, "guideSecureHomebrewTitle", "Secure Homebrew tools"),
-            tx(
-                locale,
-                "guideSecureHomebrewCopy",
-                "Install Vault and scan the tools your Mac already uses.",
-            ),
-        ));
-    }
-    if haystack.contains("aws") || haystack.contains("cloud") {
-        links.push((
-            locale_path("/secure-aws-cli-credentials-ai-agents/", locale),
-            tx(locale, "guideAwsCliTitle", "Secure AWS CLI credentials"),
-            tx(
-                locale,
-                "guideAwsCliCopy",
-                "Keep cloud keys out of ambient config files.",
-            ),
-        ));
-    }
-    if haystack.contains("github")
-        || full_string_array(package, "aliases")
-            .iter()
-            .any(|alias| alias == "gh")
-    {
-        links.push((
-            locale_path("/github-cli-token-security-ai-agents/", locale),
-            tx(locale, "guideGithubCliTitle", "GitHub CLI token security"),
-            tx(
-                locale,
-                "guideGithubCliCopy",
-                "Protect source and release tokens used by local tools.",
-            ),
-        ));
-    }
-    links
-        .into_iter()
-        .take(5)
-        .map(|(url, label, copy)| {
-            format!(
-                r#"<li><a href="{}">{}</a><span>{}</span></li>"#,
-                html_escape(&url),
-                html_escape(&label),
-                html_escape(&copy)
-            )
-        })
-        .collect()
 }
 
 fn slugify(value: &str) -> String {
@@ -7320,7 +7225,7 @@ mod tests {
         assert!(package_html.contains("https://docs.aws.amazon.com/cli/latest/userguide/"));
         assert!(package_html.contains("aws-iam-authenticator"));
         assert!(package_html.contains("Upstream has a newer patch release."));
-        assert!(package_html.contains("Secure AWS CLI credentials"));
+        assert!(!package_html.contains("Agent security guides"));
         assert!(package_html.contains("Source database details"));
         assert!(package_html.contains("Homebrew formula API"));
         assert!(package_html.contains("Other package-manager records"));
@@ -7359,7 +7264,7 @@ mod tests {
         assert!(
             localized_package_html.contains("Autres enregistrements de gestionnaires de paquets")
         );
-        assert!(localized_package_html.contains("Sécuriser les identifiants AWS CLI"));
+        assert!(!localized_package_html.contains("/secure-aws-cli-credentials-ai-agents/"));
         assert!(!localized_package_html.contains(">Copy</button>"));
         assert!(!localized_package_html.contains("Install behavior"));
         assert!(
@@ -8175,14 +8080,14 @@ mod tests {
 
         assert!(hub_cluster_block("Empty", &[], &LOCALES[0]).is_empty());
         assert!(hub_related_block("Empty", &[]).is_empty());
-        assert!(
-            core_security_guides(
-                &serde_json_package(&sparse, serde_json::json!({"aliases": ["gh"]})),
-                &LOCALES[0]
-            )
-            .join("")
-            .contains("GitHub CLI token security")
-        );
+        let related = render_related(&sparse, &LOCALES[0]);
+        for retired_path in [
+            "/secret-scanner-for-ai-agents/", "/ai-agent-approval-gates/",
+            "/docs/", "/download/", "/secure-aws-cli-credentials-ai-agents/",
+            "/github-cli-token-security-ai-agents/",
+        ] {
+            assert!(!related.contains(retired_path));
+        }
         assert_eq!(
             SearchResult {
                 title: "Exact".to_string(),
