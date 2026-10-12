@@ -2,6 +2,473 @@
   "content": [
     {
       "artwork": {
+        "alt": "A dark control room where flowing code fragments pass through a luminous lens, usage gauges, and a protective checkpoint.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#123A46",
+          "backgroundStart": "#0B1C2B",
+          "foreground": "#F5F1E8"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/claudoscope-observe-govern.png"
+      },
+      "batchID": "20261012T035302Z-e305f29e",
+      "body": "## The transcript is becoming an operations surface\n\nCoding agents leave more behind than a patch. Their local records can contain prompts, tool calls, plans, model usage, file edits, and the moments when a person had to intervene. That material is useful for debugging both the software change and the way the agent was directed, but raw transcript files are awkward to inspect repeatedly.\n\n[Claudoscope](https://claudoscope.com/) turns that local trail into a native macOS dashboard. Its upstream documentation describes views for sessions, touched files, costs, configuration health, and project activity. The app reads Claude Code and Cowork records already stored on the machine; its [privacy statement](https://claudoscope.com/privacy) says transcript content, prompts, code, and detected secrets are processed locally rather than uploaded. That boundary matters because an observability tool can otherwise become a second destination for sensitive development data.\n\nClaudoscope is genuinely young. The repository and public releases began in March 2026, followed by a stable 1.0 release in July. The [1.0 notes](https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0) describe a persistent local session index, optional cost alerts, lifecycle notifications, per-session file history, and configuration linting. Those notes also report testing against a corpus of roughly 3,000 session files. That is useful evidence of the workload the author designed for, though it is not an independent performance benchmark.\n\n## Three questions, three different tools\n\nA viewer can answer **what happened in this session?** It cannot automatically answer every neighboring question. A practical local stack separates at least three jobs:\n\n- Claudoscope reconstructs and presents Claude Code or Cowork activity on a supported Mac.\n- [ccusage](https://ccusage.com/guide/all-reports) aggregates local usage into daily, weekly, monthly, session, and active-block reports across multiple supported coding agents.\n- [HOL Guard](https://hol.org/guard/features) evaluates supported actions against local policy, routes ambiguous cases for approval, and records receipts where its integrations expose an enforcement point.\n\nThe distinction is temporal as well as functional. Claudoscope and ccusage primarily help after records exist, even when they update live. Guard aims to intervene before supported actions execute. None of them replaces a provider invoice, source control review, operating-system isolation, or the agent's native permission model. Treating them as interchangeable would hide the most important design constraint: each observes a different slice of the workflow.\n\n## Usage evidence without pretending it proves everything\n\nThere are early signs that developers want this visibility. Homebrew's cask API recorded 20 Claudoscope installs in its available 30-day window when this article was researched. That is a modest, manager-specific count, not a census; direct downloads and updates are outside it. The upstream repository also showed public issue and contribution activity, but stars are interest signals rather than proof of sustained use.\n\nccusage has a broader observable footprint. The npm registry reported 776,090 downloads for the package from September 11 through October 10, 2026. Downloads can include automation, repeated installs, and mirrors, so they should not be converted into user counts. They do show that terminal-first usage reporting is not merely a hypothetical need. Its [JSON documentation](https://ccusage.com/guide/json-output) also makes the integration story concrete: every report type can be emitted as structured data, with an option to omit cost fields while retaining token, model, date, and projection information.\n\nHOL Guard is newer and should be evaluated by boundary rather than marketing breadth. Its [setup guide](https://hol.org/guard/docs/guard/get-started) documents different approval paths for different agents and explicitly preserves native controls. That variability is a caveat, but also a sign of an honest integration model: protection is only as strong as the events an agent exposes and the path that can actually block them.\n\n## A disciplined evaluation loop\n\nStart with a narrow question instead of installing an entire observability stack at once. For session review, compare Claudoscope's reconstruction with a known transcript and the resulting Git diff. Check whether cost estimates agree closely enough with the provider's billing view for your models, and confirm that opt-in configuration changes produce recoverable backups. Apple Silicon and macOS 14 are current prerequisites.\n\nFor reporting, run ccusage against a small date range and inspect both the table and JSON forms. Unknown pricing can produce incomplete cost figures, while differing agent formats can limit cross-tool symmetry. For runtime policy, use Guard's documented dry-run and status checks first, then test one harmless action that should be allowed and one controlled action that should require review. Keep native permissions enabled.\n\nThe valuable pattern is **observe, reconcile, then govern**. A session viewer makes agent behavior legible, a usage reporter makes trends comparable, and a runtime guard can add policy at supported decision points. Keeping those roles separate makes the resulting evidence easier to trust—and makes it clearer where human review is still doing the real work.",
+      "deck": "Session viewers, usage reports, and runtime guards expose different parts of an AI coding workflow; the useful stack begins by keeping those boundaries clear.",
+      "id": "editorial:2026-10-12:claudoscope-observing-agent-work",
+      "package": {
+        "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
+        "assessment": {
+          "alternatives": [
+            "Read Claude Code transcript files directly",
+            "Use ccusage when terminal reports are sufficient"
+          ],
+          "audiences": [
+            "Apple Silicon Mac users who run Claude Code or Cowork regularly",
+            "Developers who want a visual audit trail for local coding sessions"
+          ],
+          "caveats": [
+            "It is currently limited to Apple Silicon Macs",
+            "Cost figures are estimates and should be reconciled with provider billing",
+            "Some features can modify Claude Code configuration, but they are opt-in and create backups"
+          ],
+          "complements": [
+            "ccusage for scriptable and cross-agent usage reports",
+            "HOL Guard for supported pre-execution policy checks and approval receipts"
+          ],
+          "prerequisites": [
+            "macOS 14 or later on Apple Silicon",
+            "Claude Code or Cowork session data already present on the Mac"
+          ],
+          "useCases": [
+            "Inspect session history, touched files, plans, token use, and estimated cost",
+            "Watch active sessions and configure optional cost or lifecycle notifications",
+            "Review Claude Code configuration health and locally detected secrets"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "Claudoscope",
+        "docs": "https://claudoscope.com/",
+        "homepage": "https://claudoscope.com/",
+        "id": "brew:cask:claudoscope",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclaudoscope",
+        "lastUpdatedAt": "2026-10-11T17:47:59Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/cordwainersmith/Claudoscope",
+        "researchedAt": "2026-10-12T03:53:02Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Claudoscope upstream repository and requirements",
+            "url": "https://github.com/cordwainersmith/Claudoscope"
+          },
+          {
+            "kind": "primary",
+            "title": "Claudoscope privacy and local-data boundary",
+            "url": "https://claudoscope.com/privacy"
+          },
+          {
+            "kind": "primary",
+            "title": "Claudoscope 1.0 release notes",
+            "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+          }
+        ],
+        "upstreamSummary": "Menu bar dashboard for Claude Code sessions",
+        "version": "1.4.0"
+      },
+      "primaryPackageID": "brew:cask:claudoscope",
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
+          "assessment": {
+            "alternatives": [
+              "Read Claude Code transcript files directly",
+              "Use ccusage when terminal reports are sufficient"
+            ],
+            "audiences": [
+              "Apple Silicon Mac users who run Claude Code or Cowork regularly",
+              "Developers who want a visual audit trail for local coding sessions"
+            ],
+            "caveats": [
+              "It is currently limited to Apple Silicon Macs",
+              "Cost figures are estimates and should be reconciled with provider billing",
+              "Some features can modify Claude Code configuration, but they are opt-in and create backups"
+            ],
+            "complements": [
+              "ccusage for scriptable and cross-agent usage reports",
+              "HOL Guard for supported pre-execution policy checks and approval receipts"
+            ],
+            "prerequisites": [
+              "macOS 14 or later on Apple Silicon",
+              "Claude Code or Cowork session data already present on the Mac"
+            ],
+            "useCases": [
+              "Inspect session history, touched files, plans, token use, and estimated cost",
+              "Watch active sessions and configure optional cost or lifecycle notifications",
+              "Review Claude Code configuration health and locally detected secrets"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "Claudoscope",
+          "docs": "https://claudoscope.com/",
+          "homepage": "https://claudoscope.com/",
+          "id": "brew:cask:claudoscope",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclaudoscope",
+          "lastUpdatedAt": "2026-10-11T17:47:59Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/cordwainersmith/Claudoscope",
+          "researchedAt": "2026-10-12T03:53:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Claudoscope upstream repository and requirements",
+              "url": "https://github.com/cordwainersmith/Claudoscope"
+            },
+            {
+              "kind": "primary",
+              "title": "Claudoscope privacy and local-data boundary",
+              "url": "https://claudoscope.com/privacy"
+            },
+            {
+              "kind": "primary",
+              "title": "Claudoscope 1.0 release notes",
+              "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+            }
+          ],
+          "upstreamSummary": "Menu bar dashboard for Claude Code sessions",
+          "version": "1.4.0"
+        },
+        {
+          "agentSummary": "ccusage reads local coding-agent usage files and produces terminal or JSON reports across days, sessions, models, costs, and active usage blocks.",
+          "assessment": {
+            "alternatives": [
+              "Provider billing dashboards",
+              "Custom scripts that parse local session records"
+            ],
+            "audiences": [
+              "Developers who prefer terminal-native reporting",
+              "Teams building their own local usage dashboards or scripts"
+            ],
+            "caveats": [
+              "Reported costs depend on current pricing data and model recognition",
+              "Local logs measure recorded activity rather than the provider's final invoice",
+              "Feature depth varies by source because agent log formats differ"
+            ],
+            "complements": [
+              "Claudoscope for a native macOS session viewer",
+              "Shell tools or dashboards that consume its JSON output"
+            ],
+            "prerequisites": [
+              "Local usage files from a supported coding agent",
+              "A terminal environment capable of running the packaged CLI"
+            ],
+            "useCases": [
+              "Compare daily, weekly, monthly, session, and block-level usage",
+              "Export structured JSON for dashboards and automation",
+              "Review multiple supported coding-agent data sources in a unified view"
+            ]
+          },
+          "category": "ai",
+          "displayName": "ccusage",
+          "docs": "https://ccusage.com/guide",
+          "homepage": "https://github.com/ccusage/ccusage",
+          "id": "brew:ccusage",
+          "installURL": "pkgmgrmgr://install?package=brew%3Accusage",
+          "lastUpdatedAt": "2026-10-11T23:35:21Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/ccusage/ccusage",
+          "researchedAt": "2026-10-12T03:53:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "ccusage unified report documentation",
+              "url": "https://ccusage.com/guide/all-reports"
+            },
+            {
+              "kind": "primary",
+              "title": "ccusage JSON output documentation",
+              "url": "https://ccusage.com/guide/json-output"
+            },
+            {
+              "kind": "independent",
+              "title": "npm download statistics for ccusage",
+              "url": "https://api.npmjs.org/downloads/point/last-month/ccusage"
+            }
+          ],
+          "upstreamSummary": "CLI tool for analyzing Claude Code usage from local JSONL files",
+          "version": "20.0.30"
+        },
+        {
+          "agentSummary": "HOL Guard adds local policy checks, approvals, and receipts around supported coding-agent actions, while retaining each agent's native permission model and documented boundaries.",
+          "assessment": {
+            "alternatives": [
+              "Rely exclusively on each agent's native approvals",
+              "Use operating-system sandboxing and organization-specific policy tooling"
+            ],
+            "audiences": [
+              "Developers using coding agents with access to files, commands, packages, or MCP tools",
+              "Teams seeking a consistent local review trail across supported agents"
+            ],
+            "caveats": [
+              "Coverage depends on the events and enforcement points exposed by each integration",
+              "It supplements rather than replaces native permissions and sandboxing",
+              "Cloud synchronization and team features are separate from the local-first core"
+            ],
+            "complements": [
+              "Claudoscope for post-session visibility",
+              "Native agent sandboxes and permission prompts"
+            ],
+            "prerequisites": [
+              "A supported operating system and coding-agent integration",
+              "Initial setup and policy review for the selected harness"
+            ],
+            "useCases": [
+              "Review supported risky actions before execution",
+              "Record local approval receipts and inspect policy decisions",
+              "Apply package, secret, plugin, and agent-configuration checks"
+            ]
+          },
+          "category": "security",
+          "displayName": "HOL Guard",
+          "docs": "https://github.com/hashgraph-online/hol-guard/blob/main/docs/guard/get-started.md",
+          "homepage": "https://hol.org/guard",
+          "id": "brew:cask:hol-guard",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahol-guard",
+          "lastUpdatedAt": "2026-10-12T01:54:58Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/hashgraph-online/hol-guard",
+          "researchedAt": "2026-10-12T03:53:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "HOL Guard upstream repository and security boundaries",
+              "url": "https://github.com/hashgraph-online/hol-guard"
+            },
+            {
+              "kind": "primary",
+              "title": "HOL Guard local-first setup and approval flow",
+              "url": "https://hol.org/guard/docs/guard/get-started"
+            },
+            {
+              "kind": "primary",
+              "title": "HOL Guard feature and compatibility matrix",
+              "url": "https://hol.org/guard/features"
+            }
+          ],
+          "upstreamSummary": "Local-first runtime firewall for AI coding agents",
+          "version": "3.0.132"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-27T14:36:05Z",
+        "firstStableReleaseSourceURL": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Claudoscope upstream repository",
+          "url": "https://github.com/cordwainersmith/Claudoscope"
+        },
+        {
+          "kind": "primary",
+          "title": "Claudoscope 1.0 release notes",
+          "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Claudoscope privacy statement",
+          "url": "https://claudoscope.com/privacy"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew Claudoscope cask record and install analytics",
+          "url": "https://formulae.brew.sh/api/cask/claudoscope.json"
+        },
+        {
+          "kind": "primary",
+          "title": "ccusage unified report documentation",
+          "url": "https://ccusage.com/guide/all-reports"
+        },
+        {
+          "kind": "independent",
+          "title": "npm download statistics for ccusage",
+          "url": "https://api.npmjs.org/downloads/point/last-month/ccusage"
+        },
+        {
+          "kind": "primary",
+          "title": "HOL Guard local-first setup guide",
+          "url": "https://hol.org/guard/docs/guard/get-started"
+        }
+      ],
+      "title": "Claudoscope and the missing view of agent work",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261012T035302Z-6f4b50fe",
+      "id": "recently-updated:productivity:20261012T035302Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Perpetual Jewish calendar for the command-line",
+          "category": "productivity",
+          "displayName": "hebcal",
+          "homepage": "https://hebcal.github.io/",
+          "id": "brew:hebcal",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ahebcal",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Replay stored shell commands for live presentations",
+          "category": "productivity",
+          "displayName": "doitlive",
+          "homepage": "https://doitlive.readthedocs.io/en/latest/",
+          "id": "brew:doitlive",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adoitlive",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Server for file conversions with Libre Office",
+          "category": "productivity",
+          "displayName": "unoserver",
+          "homepage": "https://github.com/unoconv/unoserver",
+          "id": "brew:unoserver",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aunoserver",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "View/select the URLs in an email message or file",
+          "category": "productivity",
+          "displayName": "urlscan",
+          "homepage": "https://github.com/firecat53/urlscan",
+          "id": "brew:urlscan",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aurlscan",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Todo list application using the todo.txt format",
+          "category": "productivity",
+          "displayName": "topydo",
+          "homepage": "https://github.com/topydo/topydo",
+          "id": "brew:topydo",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atopydo",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "title": "Recently Updated in Productivity",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20261012T035302Z-6f4b50fe",
+      "id": "new-packages:developer-tools:20261012T035302Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Process manager for dev and prod",
+          "category": "developer-tools",
+          "displayName": "dekit",
+          "homepage": "https://dekit.run",
+          "id": "brew:dekit",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adekit",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Menu bar dashboard for Claude Code sessions",
+          "category": "developer-tools",
+          "displayName": "Claudoscope",
+          "homepage": "https://claudoscope.com/",
+          "id": "brew:cask:claudoscope",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclaudoscope",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Efficient AI coding agent extendable by neovim-like Lua plugins",
+          "category": "developer-tools",
+          "displayName": "maki",
+          "homepage": "https://maki.sh",
+          "id": "brew:maki",
+          "installURL": "pkgmgrmgr://install?package=brew%3Amaki",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Terminal REST client with file-based collections",
+          "category": "developer-tools",
+          "displayName": "noodle",
+          "homepage": "https://noodlerest.dev",
+          "id": "brew:noodle",
+          "installURL": "pkgmgrmgr://install?package=brew%3Anoodle",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "CLI for Bitbucket Cloud and Data Center",
+          "category": "developer-tools",
+          "displayName": "bitbucket-cli",
+          "homepage": "https://github.com/avivsinai/bitbucket-cli",
+          "id": "brew:bitbucket-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Abitbucket-cli",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "title": "New Packages in Developer Tools",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20261012T035302Z-6f4b50fe",
+      "id": "recently-updated:toys:20261012T035302Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Desktop pet that reacts to AI coding agents",
+          "category": "toys",
+          "displayName": "Clawd on Desk",
+          "homepage": "https://github.com/rullerzhou-afk/clawd-on-desk",
+          "id": "brew:cask:clawd-on-desk",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclawd-on-desk",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Frontend application for the Buttplug sex toy control library",
+          "category": "toys",
+          "displayName": "Intiface Central",
+          "homepage": "https://github.com/intiface/intiface-central",
+          "id": "brew:cask:intiface-central",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aintiface-central",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Control your Nanoleaf lights",
+          "category": "toys",
+          "displayName": "Nanoleaf Desktop App",
+          "homepage": "https://nanoleaf.me/",
+          "id": "brew:cask:nanoleaf",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ananoleaf",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Small, configurable CLI that displays Japanese quotes in the terminal",
+          "category": "toys",
+          "displayName": "kotofetch",
+          "homepage": "https://github.com/hxpe-dev/kotofetch",
+          "id": "brew:kotofetch",
+          "installURL": "pkgmgrmgr://install?package=brew%3Akotofetch",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Returns from a pool of 15m human-readable IDs",
+          "category": "toys",
+          "displayName": "human-id",
+          "homepage": "https://github.com/RienNeVaPlus/human-id#readme",
+          "id": "npm:human-id",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ahuman-id",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "title": "Recently Updated in Toys",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
         "alt": "Layered image panels, marked-up document sheets, and geometric page components connect through glowing orange and cyan paths.",
         "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
         "boxColors": {
@@ -325,129 +792,165 @@
     },
     {
       "batchID": "20261008T074826Z-3ab4a1be",
-      "id": "recently-updated:science:20261008T074826Z-f220bb45",
+      "id": "new-packages:productivity:20261012T035302Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Fast and correct perbase BAM/CRAM analysis",
-          "category": "science",
-          "displayName": "perbase",
-          "homepage": "https://github.com/sstadick/perbase",
-          "id": "brew:perbase",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aperbase",
+          "agentSummary": "Vietnamese input method",
+          "category": "productivity",
+          "displayName": "PHTV",
+          "homepage": "https://phamhungtien.com/PHTV/",
+          "id": "brew:cask:phtv",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aphtv",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Structure-from-Motion and Multi-View Stereo",
-          "category": "science",
-          "displayName": "colmap",
-          "homepage": "https://colmap.github.io/",
-          "id": "brew:colmap",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acolmap",
+          "agentSummary": "Block-based Markdown notebook for the terminal",
+          "category": "productivity",
+          "displayName": "tsuzuri",
+          "homepage": "https://github.com/jaisuriya-11/tsuzuri",
+          "id": "brew:tsuzuri",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atsuzuri",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Relatedness, QC and ancestry checks from BAM/CRAM/VCF",
-          "category": "science",
-          "displayName": "somalier",
-          "homepage": "https://github.com/brentp/somalier",
-          "id": "brew:somalier",
-          "installURL": "pkgmgrmgr://install?package=brew%3Asomalier",
+          "agentSummary": "Open-source AI office suite",
+          "category": "productivity",
+          "displayName": "GenOffice",
+          "homepage": "https://genoffice.ai/",
+          "id": "brew:cask:genoffice",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agenoffice",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Make electronics using Typescript, React, and AI tools. Just prompt your agent to \"use tscircuit\" and 10x its PCB capabilities!",
-          "category": "science",
-          "displayName": "tscircuit",
-          "homepage": "https://github.com/tscircuit/tscircuit#readme",
-          "id": "npm:tscircuit",
-          "installURL": "pkgmgrmgr://install?package=npm%3Atscircuit",
-          "manager": "npm"
+          "agentSummary": "Rule-based file automation",
+          "category": "productivity",
+          "displayName": "Forel",
+          "homepage": "https://forel-app.github.io/",
+          "id": "brew:cask:forel",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aforel",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Fast, robust ANI and aligned fraction for (metagenomic) genomes and contigs",
-          "category": "science",
-          "displayName": "skani",
-          "homepage": "https://github.com/bluenote-1577/skani",
-          "id": "brew:skani",
-          "installURL": "pkgmgrmgr://install?package=brew%3Askani",
+          "agentSummary": "PDF editor",
+          "category": "productivity",
+          "displayName": "PdfCraft",
+          "homepage": "https://getartcraft.com/apps/pdfcraft",
+          "id": "brew:cask:pdfcraft",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apdfcraft",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-10-08T07:48:26Z",
-      "title": "Recently Updated in Science",
+      "title": "New Packages in Productivity",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20261008T074826Z-3ab4a1be",
+      "id": "recently-updated:media:20261012T035302Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Video downloader that focus on China mainland video sites",
+          "category": "media",
+          "displayName": "ykdl",
+          "homepage": "https://github.com/LifeActor/ykdl",
+          "id": "brew:ykdl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aykdl",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Modular, client-server software-defined radio",
+          "category": "media",
+          "displayName": "SDR--",
+          "homepage": "https://github.com/Newspicel/sdrmm",
+          "id": "brew:cask:sdrmm-app",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asdrmm-app",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Traditional Chinese eBook service",
+          "category": "media",
+          "displayName": "Readmoo 看書",
+          "homepage": "https://readmoo.com/",
+          "id": "brew:cask:readmoreading",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Areadmoreading",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "SVG file scrubber",
+          "category": "media",
+          "displayName": "scour",
+          "homepage": "https://www.codedread.com/scour/",
+          "id": "brew:scour",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ascour",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Simple terminal image viewer written in Rust",
+          "category": "media",
+          "displayName": "viu",
+          "homepage": "https://github.com/atanunq/viu",
+          "id": "brew:viu",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aviu",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-08T07:48:26Z",
+      "title": "Recently Updated in Media",
       "type": "recentlyUpdated"
     },
     {
       "batchID": "20261008T074826Z-3ab4a1be",
-      "id": "for-you:media:20261008T074826Z-f220bb45",
+      "id": "for-you:security:20261012T035302Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "SVGO is a Node.js library and command-line application for optimizing vector images.",
-          "category": "media",
-          "displayName": "svgo",
-          "homepage": "https://svgo.dev",
-          "id": "npm:svgo",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asvgo",
+          "agentSummary": "A tiny (117 bytes), secure URL-friendly unique string ID generator",
+          "category": "security",
+          "displayName": "nanoid",
+          "homepage": "https://github.com/ai/nanoid#readme",
+          "id": "npm:nanoid",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ananoid",
           "manager": "npm"
         },
         {
-          "agentSummary": "get dimensions of any image file",
-          "category": "media",
-          "displayName": "image-size",
-          "homepage": null,
-          "id": "npm:image-size",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aimage-size",
+          "agentSummary": "Streamable SHA hashes in pure javascript",
+          "category": "security",
+          "displayName": "sha.js",
+          "homepage": "https://github.com/crypto-browserify/sha.js",
+          "id": "npm:sha.js",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asha.js",
           "manager": "npm"
         },
         {
-          "agentSummary": "Fast math typesetting for the web.",
-          "category": "media",
-          "displayName": "katex",
-          "homepage": "https://katex.org",
-          "id": "npm:katex",
-          "installURL": "pkgmgrmgr://install?package=npm%3Akatex",
+          "agentSummary": "detect possibly catastrophic, exponential-time regular expressions",
+          "category": "security",
+          "displayName": "safe-regex2",
+          "homepage": "https://github.com/fastify/safe-regex2",
+          "id": "npm:safe-regex2",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asafe-regex2",
           "manager": "npm"
         },
         {
-          "agentSummary": "QRCode / 2d Barcode api with both server side and client side support using canvas",
-          "category": "media",
-          "displayName": "qrcode",
-          "homepage": null,
-          "id": "npm:qrcode",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aqrcode",
+          "agentSummary": "Optimized bcrypt in plain JavaScript with zero dependencies, with TypeScript support. Compatible to 'bcrypt'.",
+          "category": "security",
+          "displayName": "bcryptjs",
+          "homepage": "https://github.com/dcodeIO/bcrypt.js#readme",
+          "id": "npm:bcryptjs",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abcryptjs",
           "manager": "npm"
         },
         {
-          "agentSummary": "The smallest and fastest pixel-level image comparison library.",
-          "category": "media",
-          "displayName": "pixelmatch",
-          "homepage": "https://github.com/mapbox/pixelmatch#readme",
-          "id": "npm:pixelmatch",
-          "installURL": "pkgmgrmgr://install?package=npm%3Apixelmatch",
+          "agentSummary": "Sanitize untrusted HTML (to prevent XSS) with a configuration specified by a Whitelist",
+          "category": "security",
+          "displayName": "xss",
+          "homepage": "https://github.com/leizongmin/js-xss",
+          "id": "npm:xss",
+          "installURL": "pkgmgrmgr://install?package=npm%3Axss",
           "manager": "npm"
         }
       ],
       "publishedAt": "2026-10-08T07:48:26Z",
-      "title": "For You in Media",
+      "title": "For You in Security",
       "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20261008T074826Z-3ab4a1be",
-      "id": "new-packages:language-runtime:20261008T074826Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Interpreted, interactive, object-oriented programming language",
-          "category": "language-runtime",
-          "displayName": "python@3.15",
-          "homepage": "https://www.python.org/",
-          "id": "brew:python@3.15",
-          "installURL": "pkgmgrmgr://install?package=brew%3Apython%403.15",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-10-08T07:48:26Z",
-      "title": "New Packages in Language Runtime",
-      "type": "newPackages"
     },
     {
       "artwork": {
@@ -738,75 +1241,219 @@
     },
     {
       "batchID": "20261004T080130Z-97631b37",
-      "id": "for-you:science:20261008T074826Z-f220bb45",
+      "id": "recently-updated:data:20261012T035302Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Miller Rabin algorithm for primality test",
-          "category": "science",
-          "displayName": "miller-rabin",
-          "homepage": "https://github.com/indutny/miller-rabin",
-          "id": "npm:miller-rabin",
-          "installURL": "pkgmgrmgr://install?package=npm%3Amiller-rabin",
-          "manager": "npm"
+          "agentSummary": "Command-line interface for DBX database connections, schema, and safe queries",
+          "category": "data",
+          "displayName": "dbx-cli",
+          "homepage": "https://dbxio.com",
+          "id": "brew:dbx-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adbx-cli",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Math.js is an extensive math library for JavaScript and Node.js. It features a flexible expression parser with support for symbolic computation, comes with a large set of built-in functions and constants, and offers an integrated solution to work with dif",
-          "category": "science",
-          "displayName": "mathjs",
-          "homepage": "https://mathjs.org",
-          "id": "npm:mathjs",
-          "installURL": "pkgmgrmgr://install?package=npm%3Amathjs",
-          "manager": "npm"
+          "agentSummary": "CLI utility for manipulating SQLite databases",
+          "category": "data",
+          "displayName": "sqlite-utils",
+          "homepage": "https://sqlite-utils.datasette.io/",
+          "id": "brew:sqlite-utils",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asqlite-utils",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Simple and Performant Language detection library (pure JS and zero dependencies)",
-          "category": "science",
-          "displayName": "tinyld",
-          "homepage": null,
-          "id": "npm:tinyld",
-          "installURL": "pkgmgrmgr://install?package=npm%3Atinyld",
-          "manager": "npm"
+          "agentSummary": "Command-line csv viewer",
+          "category": "data",
+          "displayName": "csvlens",
+          "homepage": "https://github.com/YS-L/csvlens",
+          "id": "brew:csvlens",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acsvlens",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "convert wkt to geojson",
-          "category": "science",
-          "displayName": "wellknown",
-          "homepage": "https://github.com/mapbox/wellknown#readme",
-          "id": "npm:wellknown",
-          "installURL": "pkgmgrmgr://install?package=npm%3Awellknown",
-          "manager": "npm"
+          "agentSummary": "Data interchange with algebraic data types",
+          "category": "data",
+          "displayName": "typical",
+          "homepage": "https://github.com/stepchowfun/typical",
+          "id": "brew:typical",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atypical",
+          "manager": "homebrew"
         },
         {
-          "agentSummary": "Porter Stemmer algorithm",
-          "category": "science",
-          "displayName": "stemmer",
-          "homepage": "https://words.github.io/stemmer/",
-          "id": "npm:stemmer",
-          "installURL": "pkgmgrmgr://install?package=npm%3Astemmer",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-10-04T08:01:30Z",
-      "title": "For You in Science",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20261004T080130Z-97631b37",
-      "id": "new-packages:toys:20261008T074826Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Mechanical keyboard sounds for every keystroke",
-          "category": "toys",
-          "displayName": "KeyEcho",
-          "homepage": "https://keyecho.app/",
-          "id": "brew:cask:keyecho",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akeyecho",
+          "agentSummary": "Command-line client for the PostgreSQL Extension Network",
+          "category": "data",
+          "displayName": "pgxnclient",
+          "homepage": "https://pgxn.github.io/pgxnclient/",
+          "id": "brew:pgxnclient",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apgxnclient",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-10-04T08:01:30Z",
-      "title": "New Packages in Toys",
-      "type": "newPackages"
+      "title": "Recently Updated in Data",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20261004T080130Z-97631b37",
+      "id": "for-you:cloud-infrastructure:20261012T035302Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Command-line interface for all things Cloudflare Workers",
+          "category": "cloud-infrastructure",
+          "displayName": "wrangler",
+          "homepage": "https://github.com/cloudflare/workers-sdk#readme",
+          "id": "npm:wrangler",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awrangler",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "AWS CDK Toolkit CLI, the command line tool for CDK apps",
+          "category": "cloud-infrastructure",
+          "displayName": "aws-cdk",
+          "homepage": "https://github.com/aws/aws-cdk",
+          "id": "npm:aws-cdk",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aaws-cdk",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The command-line interface for Vercel",
+          "category": "cloud-infrastructure",
+          "displayName": "vercel",
+          "homepage": "https://vercel.com",
+          "id": "npm:vercel",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avercel",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Supabase CLI",
+          "category": "cloud-infrastructure",
+          "displayName": "supabase",
+          "homepage": "https://github.com/supabase/cli#readme",
+          "id": "npm:supabase",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asupabase",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
+          "category": "cloud-infrastructure",
+          "displayName": "expo-updates",
+          "homepage": "https://docs.expo.dev/versions/latest/sdk/updates/",
+          "id": "npm:expo-updates",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aexpo-updates",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-04T08:01:30Z",
+      "title": "For You in Cloud Infrastructure",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261004T080130Z-97631b37",
+      "id": "recently-updated:security:20261012T035302Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Security health metrics for Open Source",
+          "category": "security",
+          "displayName": "scorecard",
+          "homepage": "https://scorecard.dev",
+          "id": "brew:scorecard",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ascorecard",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Vulnerability scanner which uses the OSV database",
+          "category": "security",
+          "displayName": "osv-scanner",
+          "homepage": "https://google.github.io/osv-scanner/",
+          "id": "brew:osv-scanner",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aosv-scanner",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "DNS reconnaissance tool for locating non-contiguous IP space",
+          "category": "security",
+          "displayName": "fierce",
+          "homepage": "https://github.com/mschwager/fierce",
+          "id": "brew:fierce",
+          "installURL": "pkgmgrmgr://install?package=brew%3Afierce",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Tool to get valuable information out of AWS CloudTrail",
+          "category": "security",
+          "displayName": "trailscraper",
+          "homepage": "https://github.com/flosell/trailscraper",
+          "id": "brew:trailscraper",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atrailscraper",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Prevent cloud misconfigurations during build-time for IaC tools",
+          "category": "security",
+          "displayName": "checkov",
+          "homepage": "https://www.checkov.io/",
+          "id": "brew:checkov",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acheckov",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-04T08:01:30Z",
+      "title": "Recently Updated in Security",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20261004T080130Z-97631b37",
+      "id": "for-you:data:20261012T035302Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "YAML 1.2 parser and serializer",
+          "category": "data",
+          "displayName": "js-yaml",
+          "homepage": "https://github.com/nodeca/js-yaml#readme",
+          "id": "npm:js-yaml",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajs-yaml",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "JSON for Humans",
+          "category": "data",
+          "displayName": "json5",
+          "homepage": null,
+          "id": "npm:json5",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajson5",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "JavaScript parser and stringifier for YAML",
+          "category": "data",
+          "displayName": "yaml",
+          "homepage": "https://eemeli.org/yaml/",
+          "id": "npm:yaml",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ayaml",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Given some data, jsesc returns the shortest possible stringified & ASCII-safe representation of that data.",
+          "category": "data",
+          "displayName": "jsesc",
+          "homepage": "https://mths.be/jsesc",
+          "id": "npm:jsesc",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajsesc",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A comprehensive library for mime-type mapping",
+          "category": "data",
+          "displayName": "mime",
+          "homepage": "https://github.com/broofa/mime#readme",
+          "id": "npm:mime",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amime",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-04T08:01:30Z",
+      "title": "For You in Data",
+      "type": "personalizedRecommendations"
     },
     {
       "artwork": {
@@ -1090,110 +1737,56 @@
     },
     {
       "batchID": "20260930T090325Z-86df3774",
-      "id": "for-you:language-runtime:20261008T074826Z-f220bb45",
+      "id": "recently-updated:cloud-infrastructure:20261012T035302Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Runtime typescript and ESM support for Node.js",
-          "category": "language-runtime",
-          "displayName": "jiti",
-          "homepage": "https://github.com/unjs/jiti#readme",
-          "id": "npm:jiti",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ajiti",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Vite as Node.js runtime",
-          "category": "language-runtime",
-          "displayName": "vite-node",
-          "homepage": "https://github.com/antfu-collective/vite-node#readme",
-          "id": "npm:vite-node",
-          "installURL": "pkgmgrmgr://install?package=npm%3Avite-node",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "👷 workerd, Cloudflare's JavaScript/Wasm Runtime",
-          "category": "language-runtime",
-          "displayName": "workerd",
-          "homepage": "https://github.com/cloudflare/workerd#readme",
-          "id": "npm:workerd",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aworkerd",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Run any Edge Function from CLI or Node.js module.",
-          "category": "language-runtime",
-          "displayName": "edge-runtime",
-          "homepage": "https://edge-runtime.vercel.app/packages/runtime",
-          "id": "npm:edge-runtime",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aedge-runtime",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "node",
-          "category": "language-runtime",
-          "displayName": "node",
-          "homepage": "https://github.com/aredridel/node-bin-gen#readme",
-          "id": "npm:node",
-          "installURL": "pkgmgrmgr://install?package=npm%3Anode",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "For You in Language Runtime",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260930T090325Z-86df3774",
-      "id": "recently-updated:other:20261008T074826Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "C++ implementation of STL for extra large data sets",
-          "category": "other",
-          "displayName": "libstxxl",
-          "homepage": "https://stxxl.sourceforge.net/",
-          "id": "brew:libstxxl",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibstxxl",
+          "agentSummary": "Build OCI images from APK packages directly without Dockerfile",
+          "category": "cloud-infrastructure",
+          "displayName": "apko",
+          "homepage": "https://github.com/chainguard-dev/apko",
+          "id": "brew:apko",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aapko",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Generic library support script",
-          "category": "other",
-          "displayName": "libtool",
-          "homepage": "https://www.gnu.org/software/libtool/",
-          "id": "brew:libtool",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibtool",
+          "agentSummary": "CLI wrapper to deploy your Terraform applications directly to LocalStack",
+          "category": "cloud-infrastructure",
+          "displayName": "terraform-local",
+          "homepage": "https://localstack.cloud/",
+          "id": "brew:terraform-local",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aterraform-local",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "F1 Live Timing TUI for all F1 sessions with variable delay to sync to your TV",
-          "category": "other",
-          "displayName": "undercutf1",
-          "homepage": "https://amandhoot.com",
-          "id": "brew:undercutf1",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aundercutf1",
+          "agentSummary": "Super S3 command-line tool",
+          "category": "cloud-infrastructure",
+          "displayName": "s4cmd",
+          "homepage": "https://github.com/bloomreach/s4cmd",
+          "id": "brew:s4cmd",
+          "installURL": "pkgmgrmgr://install?package=brew%3As4cmd",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "C library for manipulating POSIX tar files",
-          "category": "other",
-          "displayName": "libtar",
-          "homepage": "https://repo.or.cz/libtar.git",
-          "id": "brew:libtar",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alibtar",
+          "agentSummary": "Terminal dashboard for Docker monitoring across multiple hosts",
+          "category": "cloud-infrastructure",
+          "displayName": "dtop",
+          "homepage": "https://dtop.dev/",
+          "id": "brew:dtop",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adtop",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Text-based genealogy software",
-          "category": "other",
-          "displayName": "lifelines",
-          "homepage": "https://lifelines.github.io/lifelines/",
-          "id": "brew:lifelines",
-          "installURL": "pkgmgrmgr://install?package=brew%3Alifelines",
+          "agentSummary": "Command-line utility for Meshery, the cloud native management plane",
+          "category": "cloud-infrastructure",
+          "displayName": "mesheryctl",
+          "homepage": "https://meshery.io",
+          "id": "brew:mesheryctl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Amesheryctl",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "Recently Updated in Other",
+      "title": "Recently Updated in Cloud Infrastructure",
       "type": "recentlyUpdated"
     },
     {
@@ -1472,170 +2065,17 @@
     },
     {
       "batchID": "20260926T105505Z-a6e88a3d",
-      "id": "for-you:security:20261008T074826Z-f220bb45",
+      "id": "new-packages:media:20261012T035302Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "A tiny (117 bytes), secure URL-friendly unique string ID generator",
-          "category": "security",
-          "displayName": "nanoid",
-          "homepage": "https://github.com/ai/nanoid#readme",
-          "id": "npm:nanoid",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ananoid",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Streamable SHA hashes in pure javascript",
-          "category": "security",
-          "displayName": "sha.js",
-          "homepage": "https://github.com/crypto-browserify/sha.js",
-          "id": "npm:sha.js",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asha.js",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "detect possibly catastrophic, exponential-time regular expressions",
-          "category": "security",
-          "displayName": "safe-regex2",
-          "homepage": "https://github.com/fastify/safe-regex2",
-          "id": "npm:safe-regex2",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asafe-regex2",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Optimized bcrypt in plain JavaScript with zero dependencies, with TypeScript support. Compatible to 'bcrypt'.",
-          "category": "security",
-          "displayName": "bcryptjs",
-          "homepage": "https://github.com/dcodeIO/bcrypt.js#readme",
-          "id": "npm:bcryptjs",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abcryptjs",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Sanitize untrusted HTML (to prevent XSS) with a configuration specified by a Whitelist",
-          "category": "security",
-          "displayName": "xss",
-          "homepage": "https://github.com/leizongmin/js-xss",
-          "id": "npm:xss",
-          "installURL": "pkgmgrmgr://install?package=npm%3Axss",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-26T10:55:05Z",
-      "title": "For You in Security",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260926T105505Z-a6e88a3d",
-      "id": "recently-updated:productivity:20261008T074826Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Clock, timer, time manager and ASCII+ text-art viewer for the terminal",
-          "category": "productivity",
-          "displayName": "arttime",
-          "homepage": "https://github.com/poetaman/arttime",
-          "id": "brew:arttime",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aarttime",
+          "agentSummary": "Per-app volume, EQ and audio device control",
+          "category": "media",
+          "displayName": "BetterAudio",
+          "homepage": "https://betteraudio.pro/",
+          "id": "brew:cask:betteraudio",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Abetteraudio",
           "manager": "homebrew"
         },
-        {
-          "agentSummary": "Unofficial native application for Fastmail",
-          "category": "productivity",
-          "displayName": "FMail",
-          "homepage": "https://arievanboxel.fr/fmail/en/",
-          "id": "brew:cask:fmail",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Afmail",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Official desktop client for Rocket.Chat",
-          "category": "productivity",
-          "displayName": "Rocket.Chat",
-          "homepage": "https://rocket.chat/",
-          "id": "brew:cask:rocket-chat",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Arocket-chat",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Universal Pasteboard Across Devices",
-          "category": "productivity",
-          "displayName": "CrossPaste",
-          "homepage": "https://crosspaste.com/en/",
-          "id": "brew:cask:crosspaste",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acrosspaste",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Unified CLI Tool for Bookmark, Snippet, and Knowledge Management",
-          "category": "productivity",
-          "displayName": "bkmr",
-          "homepage": "https://github.com/sysid/bkmr",
-          "id": "brew:bkmr",
-          "installURL": "pkgmgrmgr://install?package=brew%3Abkmr",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-26T10:55:05Z",
-      "title": "Recently Updated in Productivity",
-      "type": "recentlyUpdated"
-    },
-    {
-      "batchID": "20260926T105505Z-a6e88a3d",
-      "id": "for-you:cloud-infrastructure:20261008T074826Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Command-line interface for all things Cloudflare Workers",
-          "category": "cloud-infrastructure",
-          "displayName": "wrangler",
-          "homepage": "https://github.com/cloudflare/workers-sdk#readme",
-          "id": "npm:wrangler",
-          "installURL": "pkgmgrmgr://install?package=npm%3Awrangler",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "AWS CDK Toolkit CLI, the command line tool for CDK apps",
-          "category": "cloud-infrastructure",
-          "displayName": "aws-cdk",
-          "homepage": "https://github.com/aws/aws-cdk",
-          "id": "npm:aws-cdk",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aaws-cdk",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "The command-line interface for Vercel",
-          "category": "cloud-infrastructure",
-          "displayName": "vercel",
-          "homepage": "https://vercel.com",
-          "id": "npm:vercel",
-          "installURL": "pkgmgrmgr://install?package=npm%3Avercel",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Supabase CLI",
-          "category": "cloud-infrastructure",
-          "displayName": "supabase",
-          "homepage": "https://github.com/supabase/cli#readme",
-          "id": "npm:supabase",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asupabase",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
-          "category": "cloud-infrastructure",
-          "displayName": "expo-updates",
-          "homepage": "https://docs.expo.dev/versions/latest/sdk/updates/",
-          "id": "npm:expo-updates",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aexpo-updates",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-26T10:55:05Z",
-      "title": "For You in Cloud Infrastructure",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260926T105505Z-a6e88a3d",
-      "id": "new-packages:media:20261008T074826Z-f220bb45",
-      "packages": [
         {
           "agentSummary": "Image editor",
           "category": "media",
@@ -1671,20 +2111,65 @@
           "id": "brew:cask:lightcraft",
           "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Alightcraft",
           "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Video editor",
-          "category": "media",
-          "displayName": "FilmCraft",
-          "homepage": "https://getartcraft.com/apps/filmcraft",
-          "id": "brew:cask:filmcraft",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Afilmcraft",
-          "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-09-26T10:55:05Z",
       "title": "New Packages in Media",
       "type": "newPackages"
+    },
+    {
+      "batchID": "20260926T105505Z-a6e88a3d",
+      "id": "recently-updated:games:20261012T035302Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Tool to run Windows games",
+          "category": "games",
+          "displayName": "Highball",
+          "homepage": "https://github.com/gauthierpiarrette/highball",
+          "id": "brew:cask:highball",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahighball",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Graphic adventure game interpreter",
+          "category": "games",
+          "displayName": "scummvm",
+          "homepage": "https://www.scummvm.org/",
+          "id": "brew:scummvm",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ascummvm",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Deck tracker and deck manager for Hearthstone",
+          "category": "games",
+          "displayName": "HSTracker",
+          "homepage": "https://hsdecktracker.net/",
+          "id": "brew:cask:hstracker",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahstracker",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Amiga emulator",
+          "category": "games",
+          "displayName": "Amiberry",
+          "homepage": "https://amiberry.com/",
+          "id": "brew:cask:amiberry",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aamiberry",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Run classic graphical adventure and role-playing games",
+          "category": "games",
+          "displayName": "ScummVM",
+          "homepage": "https://www.scummvm.org/",
+          "id": "brew:cask:scummvm-app",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ascummvm-app",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-26T10:55:05Z",
+      "title": "Recently Updated in Games",
+      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -1999,34 +2484,25 @@
     },
     {
       "batchID": "20260922T164202Z-7725d80a",
-      "id": "recently-updated:language-runtime:20261008T074826Z-f220bb45",
+      "id": "for-you:language-runtime:20261012T035302Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Powerful, clean, object-oriented scripting language",
+          "agentSummary": "Runtime typescript and ESM support for Node.js",
           "category": "language-runtime",
-          "displayName": "ruby@3.3",
-          "homepage": "https://www.ruby-lang.org/",
-          "id": "brew:ruby@3.3",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aruby%403.3",
-          "manager": "homebrew"
+          "displayName": "jiti",
+          "homepage": "https://github.com/unjs/jiti#readme",
+          "id": "npm:jiti",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajiti",
+          "manager": "npm"
         },
         {
-          "agentSummary": "Powerful, clean, object-oriented scripting language",
+          "agentSummary": "Vite as Node.js runtime",
           "category": "language-runtime",
-          "displayName": "ruby@3.4",
-          "homepage": "https://www.ruby-lang.org/",
-          "id": "brew:ruby@3.4",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aruby%403.4",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Rust toolchain installer",
-          "category": "language-runtime",
-          "displayName": "rustup",
-          "homepage": "https://rust-lang.github.io/rustup/",
-          "id": "brew:rustup",
-          "installURL": "pkgmgrmgr://install?package=brew%3Arustup",
-          "manager": "homebrew"
+          "displayName": "vite-node",
+          "homepage": "https://github.com/antfu-collective/vite-node#readme",
+          "id": "npm:vite-node",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avite-node",
+          "manager": "npm"
         },
         {
           "agentSummary": "👷 workerd, Cloudflare's JavaScript/Wasm Runtime",
@@ -2038,367 +2514,31 @@
           "manager": "npm"
         },
         {
-          "agentSummary": "Open source programming language to build simple/reliable/efficient software",
+          "agentSummary": "Run any Edge Function from CLI or Node.js module.",
           "category": "language-runtime",
-          "displayName": "go@1.24",
-          "homepage": "https://go.dev/",
-          "id": "brew:go@1.24",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ago%401.24",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-22T16:42:02Z",
-      "title": "Recently Updated in Language Runtime",
-      "type": "recentlyUpdated"
-    },
-    {
-      "batchID": "20260922T164202Z-7725d80a",
-      "id": "for-you:system:20261008T074826Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Like which(1) unix command. Find the first instance of an executable in the PATH.",
-          "category": "system",
-          "displayName": "which",
-          "homepage": "https://github.com/npm/node-which#readme",
-          "id": "npm:which",
-          "installURL": "pkgmgrmgr://install?package=npm%3Awhich",
+          "displayName": "edge-runtime",
+          "homepage": "https://edge-runtime.vercel.app/packages/runtime",
+          "id": "npm:edge-runtime",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aedge-runtime",
           "manager": "npm"
         },
         {
-          "agentSummary": "A deep deletion module for node (like `rm -rf`)",
-          "category": "system",
-          "displayName": "rimraf",
-          "homepage": "https://github.com/isaacs/rimraf#readme",
-          "id": "npm:rimraf",
-          "installURL": "pkgmgrmgr://install?package=npm%3Arimraf",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Recursively mkdir, like `mkdir -p`",
-          "category": "system",
-          "displayName": "mkdirp",
-          "homepage": "https://github.com/isaacs/node-mkdirp#readme",
-          "id": "npm:mkdirp",
-          "installURL": "pkgmgrmgr://install?package=npm%3Amkdirp",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Check if the process is running inside a Docker container",
-          "category": "system",
-          "displayName": "is-docker",
-          "homepage": "https://github.com/sindresorhus/is-docker#readme",
-          "id": "npm:is-docker",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ais-docker",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Check if the process is running inside a container (Docker/Podman)",
-          "category": "system",
-          "displayName": "is-inside-container",
-          "homepage": "https://github.com/sindresorhus/is-inside-container#readme",
-          "id": "npm:is-inside-container",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ais-inside-container",
+          "agentSummary": "node",
+          "category": "language-runtime",
+          "displayName": "node",
+          "homepage": "https://github.com/aredridel/node-bin-gen#readme",
+          "id": "npm:node",
+          "installURL": "pkgmgrmgr://install?package=npm%3Anode",
           "manager": "npm"
         }
       ],
       "publishedAt": "2026-09-22T16:42:02Z",
-      "title": "For You in System",
+      "title": "For You in Language Runtime",
       "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20260922T164202Z-7725d80a",
-      "id": "recently-updated:media:20261008T074826Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Convert video, audio and subtitles into DCP (Digital Cinema Package)",
-          "category": "media",
-          "displayName": "DCP-o-matic",
-          "homepage": "https://dcpomatic.com/",
-          "id": "brew:cask:dcp-o-matic",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adcp-o-matic",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "JPEG XL decoder",
-          "category": "media",
-          "displayName": "jxl-oxide",
-          "homepage": "https://github.com/tirr-c/jxl-oxide",
-          "id": "brew:jxl-oxide",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ajxl-oxide",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Cross-platform video editor",
-          "category": "media",
-          "displayName": "OpenShot Video Editor (Daily Build)",
-          "homepage": "https://openshot.org/",
-          "id": "brew:cask:openshot-video-editor@daily",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopenshot-video-editor%40daily",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Live wallpaper app",
-          "category": "media",
-          "displayName": "Backdrop",
-          "homepage": "https://cindori.com/backdrop",
-          "id": "brew:cask:backdrop",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Abackdrop",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Vendor and platform neutral SDR support library",
-          "category": "media",
-          "displayName": "soapysdr",
-          "homepage": "https://github.com/pothosware/SoapySDR/wiki",
-          "id": "brew:soapysdr",
-          "installURL": "pkgmgrmgr://install?package=brew%3Asoapysdr",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-22T16:42:02Z",
-      "title": "Recently Updated in Media",
-      "type": "recentlyUpdated"
-    },
-    {
-      "artwork": {
-        "alt": "A developer oversees four luminous terminal workspaces connected by branching teal paths and amber review shields in a dark studio.",
-        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#07141F",
-          "backgroundStart": "#0B2133",
-          "foreground": "#F7E8CC"
-        },
-        "license": "AI-generated artwork; no third-party source artwork used.",
-        "path": "feed/assets/workmux-parallel-worktrees.png"
-      },
-      "batchID": "20260918T195137Z-5bfc6798",
-      "body": "## The branch is only half the workspace\n\nA Git branch separates history, but it does not separate the rest of a developer's working state. A second task may need its own checked-out files, editor, test watcher, environment preparation, and coding-agent conversation. Git worktrees supply additional working directories, while terminal multiplexers preserve sessions. **workmux joins those two primitives into one lifecycle**: create a worktree, open a matching terminal workspace, arrange its panes, and later merge or remove the task. The [upstream documentation](https://github.com/raine/workmux) describes tmux as the original target and also documents Zellij, Kitty, and WezTerm backends.\n\nThat scope is narrower than a new IDE, and that is the point. The tool does not attempt to replace Git or the terminal. Its configuration can copy selected files, link dependencies, run post-creation commands, choose pane layouts, and expose agent state in a dashboard or sidebar. For a developer who already thinks in terminal windows, switching tasks becomes switching workspaces rather than stashing changes and rebuilding context. For someone who does not use a multiplexer, the prerequisites may outweigh the convenience.\n\n## A young tool shaped by agent concurrency\n\nworkmux's upstream changelog marks **v0.1.1 on 5 November 2025** as its initial release. Early entries focus on basic worktree creation, merging, cleanup, global configuration, and pane startup. Within weeks, releases added prompt handoff and multi-agent creation. Later history records dashboards, agent-status hooks, alternative multiplexer backends, sandbox support, pull-request checkout, session restoration, and dry-run previews. The [release history](https://github.com/raine/workmux/blob/main/CHANGELOG.md) makes the progression unusually legible: a small worktree helper expanded as concurrent agent sessions created new coordination problems.\n\nThe release cadence is also a warning. A fast-moving pre-1.0 tool can change configuration and behavior quickly. Users should read changes before updating and keep project configuration reviewable. A command that creates directories and windows is convenient; one that also copies secrets, links dependency trees, runs hooks, merges branches, and removes worktrees deserves the same scrutiny as any automation touching source control.\n\n## Evidence beyond the feature list\n\nThere is public evidence of real use, though it is anecdotal rather than a representative adoption survey. In November 2025, a Hacker News participant said they were already using workmux to combine tmux, worktrees, and command-line agents; another participant in the same thread reported setting it up. [The discussion](https://news.ycombinator.com/item?id=46029809) supports actual use but says nothing reliable about the size of the user base.\n\nUser-filed issues show more specific workflows. One request described creating temporary worktrees to review GitHub pull requests, then running automated and manual review inside them. Another issue came from a user calling workmux a daily driver and documenting a stale agent-status indicator after a permission prompt, including a locally tested hook change. Those reports are useful precisely because they include friction as well as enthusiasm. The [pull-request workflow request](https://github.com/raine/workmux/issues/2) and [status-hook bug report](https://github.com/raine/workmux/issues/33) show the tool being adapted to concrete review and agent-monitoring routines. They do not substitute for a controlled reliability assessment.\n\n## Isolation is a workflow property, not a security boundary\n\nA separate worktree prevents two tasks from editing the same checkout, but it does not automatically isolate processes, credentials, network access, or shared services. Two agents can still target the same database, reuse the same environment file, or race on resources outside their directories. workmux documents container and virtual-machine sandbox options, yet safe boundaries still depend on how a project configures them.\n\nBefore adopting it broadly, test a deliberately small loop:\n\n- create two disposable tasks and confirm their branches, directories, and terminal targets;\n- inspect every file-copy rule and lifecycle hook;\n- run the project's tests independently in both worktrees;\n- exercise merge and removal with uncommitted changes present;\n- verify that secrets and local services are not unintentionally shared.\n\nThis is where a companion such as [bashka](https://github.com/dmtrKovalenko/bashka) offers a useful contrast. bashka statically reviews fetched shell installers and follows additional script stages, but its own documentation states that Bash's dynamic behavior prevents a guarantee of safety. Static warnings can improve a decision; they cannot turn downloaded code into trusted code. Likewise, workmux can make concurrent state visible and repeatable without making every command inside a workspace safe.\n\n## The practical fit\n\nworkmux is most compelling for developers who already trust Git worktrees and multiplexers but find their connective tissue repetitive. It creates a consistent place for each task, keeps agent progress observable, and makes cleanup part of the routine. Manual `git worktree` and tmux commands remain a strong alternative when a team wants fewer abstractions or only occasional concurrency. Graphical agent workspaces may suit people who prefer an integrated review surface.\n\nThe honest evaluation is not how many agents fit on screen. It is whether each task remains understandable: which branch it owns, which commands ran, what changed, and what cleanup will do. workmux earns its layer when those answers become clearer without obscuring the underlying Git state.",
-      "deck": "An opinionated layer over worktrees and terminal multiplexers makes concurrent coding sessions easier to see, separate, and retire.",
-      "id": "editorial:2026-09-18:workmux-parallel-work-without-hiding-git",
-      "package": {
-        "agentSummary": "workmux pairs Git worktrees with terminal-multiplexer workspaces, automating setup, agent status, review, and cleanup while preserving familiar Git and terminal primitives.",
-        "assessment": {
-          "alternatives": [
-            "Manual git worktree and tmux commands",
-            "Graphical multi-agent workspaces such as Ghostex or Calyx"
-          ],
-          "audiences": [
-            "Terminal-oriented developers running concurrent coding tasks or agents",
-            "Teams already comfortable with Git worktrees and multiplexers"
-          ],
-          "caveats": [
-            "Its opinionated lifecycle and cleanup commands require understanding which branches, windows, and files they affect",
-            "Automated setup hooks execute project-configured commands and should be reviewed before use",
-            "Agent-status integrations can be limited by the events exposed by each agent tool"
-          ],
-          "complements": [
-            "A code-review workflow and project-specific test commands",
-            "Container or virtual-machine isolation for higher-risk agent tasks"
-          ],
-          "prerequisites": [
-            "Git and a supported multiplexer such as tmux, Zellij, Kitty, or WezTerm",
-            "Careful project configuration for setup hooks and copied or linked files"
-          ],
-          "useCases": [
-            "Creating an isolated branch, worktree, and terminal workspace together",
-            "Monitoring several agent sessions and cleaning up completed work"
-          ]
-        },
-        "category": "developer-tools",
-        "displayName": "workmux",
-        "docs": "https://github.com/raine/workmux#readme",
-        "homepage": "https://workmux.raine.dev",
-        "id": "brew:workmux",
-        "installURL": "pkgmgrmgr://install?package=brew%3Aworkmux",
-        "lastUpdatedAt": "2026-09-18T09:24:45Z",
-        "manager": "homebrew",
-        "repository": "https://github.com/raine/workmux",
-        "researchedAt": "2026-09-18T19:51:37Z",
-        "sources": [
-          {
-            "kind": "primary",
-            "title": "workmux documentation and repository",
-            "url": "https://github.com/raine/workmux"
-          },
-          {
-            "kind": "primary",
-            "title": "workmux release history",
-            "url": "https://github.com/raine/workmux/blob/main/CHANGELOG.md"
-          },
-          {
-            "kind": "independent",
-            "title": "Hacker News discussion from a workmux user",
-            "url": "https://news.ycombinator.com/item?id=46029809"
-          }
-        ],
-        "upstreamSummary": "Git worktrees + tmux windows for zero-friction parallel dev",
-        "version": "0.1.263"
-      },
-      "primaryPackageID": "brew:workmux",
-      "publishedAt": "2026-09-18T19:51:37Z",
-      "relatedPackages": [
-        {
-          "agentSummary": "workmux pairs Git worktrees with terminal-multiplexer workspaces, automating setup, agent status, review, and cleanup while preserving familiar Git and terminal primitives.",
-          "assessment": {
-            "alternatives": [
-              "Manual git worktree and tmux commands",
-              "Graphical multi-agent workspaces such as Ghostex or Calyx"
-            ],
-            "audiences": [
-              "Terminal-oriented developers running concurrent coding tasks or agents",
-              "Teams already comfortable with Git worktrees and multiplexers"
-            ],
-            "caveats": [
-              "Its opinionated lifecycle and cleanup commands require understanding which branches, windows, and files they affect",
-              "Automated setup hooks execute project-configured commands and should be reviewed before use",
-              "Agent-status integrations can be limited by the events exposed by each agent tool"
-            ],
-            "complements": [
-              "A code-review workflow and project-specific test commands",
-              "Container or virtual-machine isolation for higher-risk agent tasks"
-            ],
-            "prerequisites": [
-              "Git and a supported multiplexer such as tmux, Zellij, Kitty, or WezTerm",
-              "Careful project configuration for setup hooks and copied or linked files"
-            ],
-            "useCases": [
-              "Creating an isolated branch, worktree, and terminal workspace together",
-              "Monitoring several agent sessions and cleaning up completed work"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "workmux",
-          "docs": "https://github.com/raine/workmux#readme",
-          "homepage": "https://workmux.raine.dev",
-          "id": "brew:workmux",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aworkmux",
-          "lastUpdatedAt": "2026-09-18T09:24:45Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/raine/workmux",
-          "researchedAt": "2026-09-18T19:51:37Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "workmux documentation and repository",
-              "url": "https://github.com/raine/workmux"
-            },
-            {
-              "kind": "primary",
-              "title": "workmux release history",
-              "url": "https://github.com/raine/workmux/blob/main/CHANGELOG.md"
-            },
-            {
-              "kind": "independent",
-              "title": "Hacker News discussion from a workmux user",
-              "url": "https://news.ycombinator.com/item?id=46029809"
-            }
-          ],
-          "upstreamSummary": "Git worktrees + tmux windows for zero-friction parallel dev",
-          "version": "0.1.263"
-        },
-        {
-          "agentSummary": "bashka statically inspects piped shell installers, follows additional scripts, flags suspicious behavior, and records installed files, but cannot guarantee safety against dynamic shell behavior.",
-          "assessment": {
-            "alternatives": [
-              "Download and manually audit the complete script chain before running it",
-              "Prefer a signed system-package or reproducible source build"
-            ],
-            "audiences": [
-              "Developers evaluating convenience installers before execution",
-              "Security-conscious terminal users who still need shell-based installation paths"
-            ],
-            "caveats": [
-              "Static analysis cannot prove a Bash program safe or detect every obfuscation technique",
-              "Absolute shell paths and content that changes between analysis and execution can bypass parts of its model",
-              "The project is extremely new and its rules and interfaces may change rapidly"
-            ],
-            "complements": [
-              "Pinned checksums or signatures published by the software vendor",
-              "Sandboxing, least privilege, and package-manager receipts"
-            ],
-            "prerequisites": [
-              "A supported macOS or Linux environment",
-              "Human review of findings before approving any installer"
-            ],
-            "useCases": [
-              "Reviewing a fetched installer and its forwarded script stages",
-              "Flagging credential access, exfiltration patterns, unsafe deletion, or mutable downloads"
-            ]
-          },
-          "category": "security",
-          "displayName": "bashka",
-          "docs": "https://github.com/dmtrKovalenko/bashka#readme",
-          "homepage": "https://github.com/dmtrKovalenko/bashka",
-          "id": "brew:bashka",
-          "installURL": "pkgmgrmgr://install?package=brew%3Abashka",
-          "lastUpdatedAt": "2026-09-17T23:12:00Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/dmtrKovalenko/bashka",
-          "researchedAt": "2026-09-18T19:51:37Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "bashka documentation and limitations",
-              "url": "https://github.com/dmtrKovalenko/bashka"
-            },
-            {
-              "kind": "primary",
-              "title": "bashka initial release",
-              "url": "https://github.com/dmtrKovalenko/bashka/releases/tag/v0.1.0"
-            },
-            {
-              "kind": "independent",
-              "title": "bashka package record on crates.io",
-              "url": "https://crates.io/crates/bashka"
-            }
-          ],
-          "upstreamSummary": "Static verification of installation bash scripts",
-          "version": "0.11.0"
-        }
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2025-11-05T00:00:00Z",
-        "firstStableReleaseSourceURL": "https://github.com/raine/workmux/blob/main/CHANGELOG.md",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "workmux documentation and repository",
-          "url": "https://github.com/raine/workmux"
-        },
-        {
-          "kind": "primary",
-          "title": "workmux release history",
-          "url": "https://github.com/raine/workmux/blob/main/CHANGELOG.md"
-        },
-        {
-          "kind": "independent",
-          "title": "Hacker News discussion from workmux users",
-          "url": "https://news.ycombinator.com/item?id=46029809"
-        },
-        {
-          "kind": "independent",
-          "title": "Daily-driver status integration report",
-          "url": "https://github.com/raine/workmux/issues/33"
-        },
-        {
-          "kind": "primary",
-          "title": "Git worktree documentation",
-          "url": "https://git-scm.com/docs/git-worktree"
-        },
-        {
-          "kind": "primary",
-          "title": "bashka documentation and limitations",
-          "url": "https://github.com/dmtrKovalenko/bashka"
-        }
-      ],
-      "title": "workmux: Parallel Work Without Hiding Git",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-11T07:32:14Z",
-  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261011T073214Z-9a414234.json",
-  "pageID": "20261011T073214Z-3198f5de",
+  "generatedAt": "2026-10-12T03:53:02Z",
+  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261012T035302Z-14eb1982.json",
+  "pageID": "20261012T035302Z-8a6ab41c",
   "schemaVersion": 2
 }

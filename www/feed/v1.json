@@ -2,6 +2,168 @@
   "content": [
     {
       "artwork": {
+        "alt": "A dark control room where flowing code fragments pass through a luminous lens, usage gauges, and a protective checkpoint.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#123A46",
+          "backgroundStart": "#0B1C2B",
+          "foreground": "#F5F1E8"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/claudoscope-observe-govern.png"
+      },
+      "body": "## The transcript is becoming an operations surface\n\nCoding agents leave more behind than a patch. Their local records can contain prompts, tool calls, plans, model usage, file edits, and the moments when a person had to intervene. That material is useful for debugging both the software change and the way the agent was directed, but raw transcript files are awkward to inspect repeatedly.\n\n[Claudoscope](https://claudoscope.com/) turns that local trail into a native macOS dashboard. Its upstream documentation describes views for sessions, touched files, costs, configuration health, and project activity. The app reads Claude Code and Cowork records already stored on the machine; its [privacy statement](https://claudoscope.com/privacy) says transcript content, prompts, code, and detected secrets are processed locally rather than uploaded. That boundary matters because an observability tool can otherwise become a second destination for sensitive development data.\n\nClaudoscope is genuinely young. The repository and public releases began in March 2026, followed by a stable 1.0 release in July. The [1.0 notes](https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0) describe a persistent local session index, optional cost alerts, lifecycle notifications, per-session file history, and configuration linting. Those notes also report testing against a corpus of roughly 3,000 session files. That is useful evidence of the workload the author designed for, though it is not an independent performance benchmark.\n\n## Three questions, three different tools\n\nA viewer can answer **what happened in this session?** It cannot automatically answer every neighboring question. A practical local stack separates at least three jobs:\n\n- Claudoscope reconstructs and presents Claude Code or Cowork activity on a supported Mac.\n- [ccusage](https://ccusage.com/guide/all-reports) aggregates local usage into daily, weekly, monthly, session, and active-block reports across multiple supported coding agents.\n- [HOL Guard](https://hol.org/guard/features) evaluates supported actions against local policy, routes ambiguous cases for approval, and records receipts where its integrations expose an enforcement point.\n\nThe distinction is temporal as well as functional. Claudoscope and ccusage primarily help after records exist, even when they update live. Guard aims to intervene before supported actions execute. None of them replaces a provider invoice, source control review, operating-system isolation, or the agent's native permission model. Treating them as interchangeable would hide the most important design constraint: each observes a different slice of the workflow.\n\n## Usage evidence without pretending it proves everything\n\nThere are early signs that developers want this visibility. Homebrew's cask API recorded 20 Claudoscope installs in its available 30-day window when this article was researched. That is a modest, manager-specific count, not a census; direct downloads and updates are outside it. The upstream repository also showed public issue and contribution activity, but stars are interest signals rather than proof of sustained use.\n\nccusage has a broader observable footprint. The npm registry reported 776,090 downloads for the package from September 11 through October 10, 2026. Downloads can include automation, repeated installs, and mirrors, so they should not be converted into user counts. They do show that terminal-first usage reporting is not merely a hypothetical need. Its [JSON documentation](https://ccusage.com/guide/json-output) also makes the integration story concrete: every report type can be emitted as structured data, with an option to omit cost fields while retaining token, model, date, and projection information.\n\nHOL Guard is newer and should be evaluated by boundary rather than marketing breadth. Its [setup guide](https://hol.org/guard/docs/guard/get-started) documents different approval paths for different agents and explicitly preserves native controls. That variability is a caveat, but also a sign of an honest integration model: protection is only as strong as the events an agent exposes and the path that can actually block them.\n\n## A disciplined evaluation loop\n\nStart with a narrow question instead of installing an entire observability stack at once. For session review, compare Claudoscope's reconstruction with a known transcript and the resulting Git diff. Check whether cost estimates agree closely enough with the provider's billing view for your models, and confirm that opt-in configuration changes produce recoverable backups. Apple Silicon and macOS 14 are current prerequisites.\n\nFor reporting, run ccusage against a small date range and inspect both the table and JSON forms. Unknown pricing can produce incomplete cost figures, while differing agent formats can limit cross-tool symmetry. For runtime policy, use Guard's documented dry-run and status checks first, then test one harmless action that should be allowed and one controlled action that should require review. Keep native permissions enabled.\n\nThe valuable pattern is **observe, reconcile, then govern**. A session viewer makes agent behavior legible, a usage reporter makes trends comparable, and a runtime guard can add policy at supported decision points. Keeping those roles separate makes the resulting evidence easier to trust—and makes it clearer where human review is still doing the real work.",
+      "deck": "Session viewers, usage reports, and runtime guards expose different parts of an AI coding workflow; the useful stack begins by keeping those boundaries clear.",
+      "id": "editorial:2026-10-12:claudoscope-observing-agent-work",
+      "primaryPackageID": "brew:cask:claudoscope",
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "relatedPackageIDs": [
+        "brew:cask:claudoscope",
+        "brew:ccusage",
+        "brew:cask:hol-guard"
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-27T14:36:05Z",
+        "firstStableReleaseSourceURL": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Claudoscope upstream repository",
+          "url": "https://github.com/cordwainersmith/Claudoscope"
+        },
+        {
+          "kind": "primary",
+          "title": "Claudoscope 1.0 release notes",
+          "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Claudoscope privacy statement",
+          "url": "https://claudoscope.com/privacy"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew Claudoscope cask record and install analytics",
+          "url": "https://formulae.brew.sh/api/cask/claudoscope.json"
+        },
+        {
+          "kind": "primary",
+          "title": "ccusage unified report documentation",
+          "url": "https://ccusage.com/guide/all-reports"
+        },
+        {
+          "kind": "independent",
+          "title": "npm download statistics for ccusage",
+          "url": "https://api.npmjs.org/downloads/point/last-month/ccusage"
+        },
+        {
+          "kind": "primary",
+          "title": "HOL Guard local-first setup guide",
+          "url": "https://hol.org/guard/docs/guard/get-started"
+        }
+      ],
+      "title": "Claudoscope and the missing view of agent work",
+      "type": "editorial"
+    },
+    {
+      "candidatePackageIDs": [
+        "brew:workmux",
+        "brew:bashka",
+        "brew:termaid",
+        "brew:ketch",
+        "brew:rumdl",
+        "brew:cask:openchrom",
+        "brew:resterm",
+        "brew:beets",
+        "brew:locust",
+        "brew:fastmcp",
+        "brew:form",
+        "brew:sftpgo",
+        "brew:cask:executor",
+        "brew:metview",
+        "brew:dbmate",
+        "brew:ccmux",
+        "brew:cask:tapmap",
+        "brew:cask:zentty",
+        "brew:cask:look",
+        "brew:cask:opendisk",
+        "brew:cask:highball",
+        "brew:ratex",
+        "brew:cask:hol-guard",
+        "brew:sofka"
+      ],
+      "fallbackPackageIDs": [
+        "brew:cask:hol-guard",
+        "brew:sofka",
+        "brew:cask:highball",
+        "brew:ratex",
+        "brew:cask:opendisk",
+        "brew:cask:look",
+        "brew:workmux",
+        "brew:ccmux",
+        "brew:cask:zentty",
+        "brew:cask:tapmap",
+        "brew:bashka",
+        "brew:metview",
+        "brew:dbmate",
+        "brew:cask:executor",
+        "brew:sftpgo",
+        "brew:form",
+        "brew:fastmcp",
+        "brew:resterm",
+        "brew:locust",
+        "brew:beets",
+        "brew:rumdl",
+        "brew:ketch",
+        "brew:cask:openchrom",
+        "brew:termaid"
+      ],
+      "id": "for-you",
+      "title": "For You",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "id": "new-packages",
+      "packageIDs": [
+        "brew:cask:claudoscope",
+        "brew:cask:photocraft",
+        "brew:cask:vectorcraft",
+        "brew:cask:pdfcraft",
+        "brew:cask:filmcraft",
+        "brew:maki",
+        "brew:cask:genoffice",
+        "brew:doltlite",
+        "brew:cask:soundcraft",
+        "brew:cask:gridcraft",
+        "brew:cask:nodeterm",
+        "brew:texres"
+      ],
+      "title": "New Packages",
+      "type": "newPackages"
+    },
+    {
+      "id": "recently-updated",
+      "packageIDs": [
+        "brew:cask:hol-guard",
+        "brew:ccusage",
+        "brew:cask:claudoscope",
+        "brew:cask:photocraft",
+        "brew:cask:vectorcraft",
+        "brew:cask:pdfcraft",
+        "brew:cask:filmcraft",
+        "brew:maki",
+        "brew:cask:genoffice",
+        "brew:doltlite",
+        "brew:cask:soundcraft",
+        "brew:cask:gridcraft"
+      ],
+      "title": "Recently Updated",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
         "alt": "Layered image panels, marked-up document sheets, and geometric page components connect through glowing orange and cyan paths.",
         "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
         "boxColors": {
@@ -71,101 +233,6 @@
       ],
       "title": "Three Young Rust Tools Rework Document Pipelines",
       "type": "editorial"
-    },
-    {
-      "candidatePackageIDs": [
-        "brew:workmux",
-        "brew:bashka",
-        "brew:termaid",
-        "brew:ketch",
-        "brew:rumdl",
-        "brew:cask:openchrom",
-        "brew:resterm",
-        "brew:beets",
-        "brew:locust",
-        "brew:fastmcp",
-        "brew:form",
-        "brew:sftpgo",
-        "brew:cask:executor",
-        "brew:metview",
-        "brew:dbmate",
-        "brew:ccmux",
-        "brew:cask:tapmap",
-        "brew:cask:zentty",
-        "brew:cask:look",
-        "brew:cask:opendisk",
-        "brew:cask:highball",
-        "brew:ratex",
-        "brew:cask:hol-guard",
-        "brew:sofka"
-      ],
-      "fallbackPackageIDs": [
-        "brew:sofka",
-        "brew:cask:highball",
-        "brew:cask:hol-guard",
-        "brew:ratex",
-        "brew:cask:opendisk",
-        "brew:cask:look",
-        "brew:workmux",
-        "brew:ccmux",
-        "brew:cask:zentty",
-        "brew:cask:tapmap",
-        "brew:bashka",
-        "brew:metview",
-        "brew:dbmate",
-        "brew:cask:executor",
-        "brew:sftpgo",
-        "brew:form",
-        "brew:fastmcp",
-        "brew:resterm",
-        "brew:locust",
-        "brew:beets",
-        "brew:rumdl",
-        "brew:ketch",
-        "brew:cask:openchrom",
-        "brew:termaid"
-      ],
-      "id": "for-you",
-      "title": "For You",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "id": "new-packages",
-      "packageIDs": [
-        "brew:cask:photocraft",
-        "brew:cask:vectorcraft",
-        "brew:cask:pdfcraft",
-        "brew:cask:filmcraft",
-        "brew:maki",
-        "brew:cask:genoffice",
-        "brew:doltlite",
-        "brew:cask:soundcraft",
-        "brew:cask:gridcraft",
-        "brew:cask:nodeterm",
-        "brew:texres",
-        "brew:cask:lightcraft"
-      ],
-      "title": "New Packages",
-      "type": "newPackages"
-    },
-    {
-      "id": "recently-updated",
-      "packageIDs": [
-        "brew:cask:photocraft",
-        "brew:cask:vectorcraft",
-        "brew:cask:pdfcraft",
-        "brew:cask:filmcraft",
-        "brew:maki",
-        "brew:cask:genoffice",
-        "brew:doltlite",
-        "brew:cask:soundcraft",
-        "brew:cask:gridcraft",
-        "brew:cask:nodeterm",
-        "brew:texres",
-        "brew:cask:lightcraft"
-      ],
-      "title": "Recently Updated",
-      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -783,61 +850,9 @@
       ],
       "title": "Prek makes the commit gate feel smaller",
       "type": "editorial"
-    },
-    {
-      "artwork": {
-        "alt": "A geometric agent follows glowing paths through layered session panes, a browser window, a cleaned article, and a local archive.",
-        "attribution": "Generated by OpenAI image generation for Package Manager Manager",
-        "boxColors": {
-          "backgroundEnd": "#201A43",
-          "backgroundStart": "#090D25",
-          "foreground": "#FFFFFF"
-        },
-        "license": "OpenAI-generated artwork; use permitted for this editorial",
-        "path": "feed/assets/agent-memory-trails.png"
-      },
-      "body": "## The missing layer is often already on disk\n\nCoding agents are very good at producing history and surprisingly bad at benefiting from it. A fix may have been reasoned through last Tuesday, complete with failed approaches and a decisive test, yet the next session starts from a thin summary or no context at all. The usual answer is to create a new memory store and begin recording. **deja-vu takes the opposite route:** it indexes the local session histories that supported agents have already written.\n\nThat distinction is practical, not semantic. The first public v0.1.0 release arrived on July 14, 2026, with local search across Claude Code, Codex CLI, and opencode histories, an incremental on-disk index, compact context output, and an MCP server. Subsequent releases rapidly widened harness support and added session-start recall, synchronization, redaction, restore tools, and action-time hints. It is an unusually compressed development history, and that velocity is both the attraction and the warning.\n\n## Recall without another model call\n\nThe project says its retrieval path uses neither an LLM nor embeddings. Instead, it builds a local index over transcripts and returns cited session evidence through its CLI, hooks, or MCP tools. That can make it a useful companion rather than another agent: the coding harness still plans and edits, while deja-vu supplies the earlier conversation most likely to matter.\n\nThe strongest use cases are mundane ones:\n\n- finding why a dependency or architecture choice was rejected;\n- recovering the exact test that exposed an intermittent bug;\n- reopening work in the original harness;\n- giving a compacted or newly started session a sourced digest.\n\nThe repository reported roughly 688 stars when reviewed, a modest but concrete signal of attention for a project only weeks old. Its changelog also documents contributions, fixes, and integrations across many harnesses. Those are signs of actual use, but not proof that its maintainer-published 84.9% hit-at-one benchmark will generalize to every codebase. Retrieval vocabulary, transcript quality, and the kind of work being repeated all matter.\n\nPrivacy needs equal weight. Local processing avoids sending the index to a hosted embedding service, and the project describes redaction at ingest. Still, agent transcripts routinely contain environment details, pasted logs, file paths, customer data, and occasional secrets. Anyone adopting transcript recall should inspect what their harness records, limit directory access, and treat synchronization exports as sensitive artifacts.\n\n## A retrieval pipeline needs eyes and a filter\n\nMemory becomes more useful when an agent can refresh old conclusions against the current web. Two related tools illustrate a small, composable path. **Obscura** is a new Rust headless-browser engine that runs JavaScript, exposes the Chrome DevTools Protocol, and targets Puppeteer, Playwright, and MCP workflows. Its repository had accumulated about 22,000 stars by review time, substantial attention for a project whose v0.1.0 shipped in April 2026.\n\nObscura's appeal is operational: it aims to provide browser automation without carrying a full Chrome installation. But compatibility claims deserve testing against real targets. A younger engine will inevitably encounter corners of the web platform, authentication flows, bot defenses, and client libraries that assume Chromium behavior. Its published speed and memory comparisons are useful hypotheses, not independent benchmarks. Scraping also remains governed by site terms, access controls, privacy rules, and law; stealth is not permission.\n\nOnce a browser retrieves a page, **Defuddle** can reduce it to main content and metadata in cleaner HTML or Markdown. The project predates the other two, with its first public releases in March 2025, and had around 9,100 GitHub stars at review time. It is deliberately narrower: it does not browse for the agent or maintain memory. It removes layout noise so downstream search, archival, or model context has less irrelevant material.\n\n## Compose carefully, keep the evidence\n\nTogether these tools suggest a sensible architecture: use deja-vu to recover the team's prior reasoning, a browser engine such as Obscura to check what has changed, and Defuddle to turn selected pages into compact evidence. Keep each boundary visible. Store source URLs and timestamps in the agent's working notes, preserve the original page when accuracy matters, and do not let a cleaned Markdown extraction masquerade as a complete document.\n\nThe larger lesson is that agent memory need not mean one monolithic platform. A local transcript index, a browser, and a content filter can remain replaceable parts. That makes failures easier to diagnose: was the earlier session never indexed, did the browser render incorrectly, or did the extractor discard the decisive table? Composability adds setup and evaluation work, but it also keeps provenance within reach—and provenance is what turns yesterday's output into evidence rather than folklore.",
-      "deck": "deja-vu treats the transcripts already on disk as working memory, while Obscura and Defuddle show how a lean retrieval pipeline can reach beyond the repository.",
-      "id": "editorial:2026-08-24:when-agents-can-find-yesterday",
-      "primaryPackageID": "brew:deja-vu",
-      "publishedAt": "2026-08-24T07:12:30Z",
-      "relatedPackageIDs": [
-        "brew:deja-vu",
-        "brew:obscura",
-        "brew:defuddle"
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2026-07-14T08:48:37Z",
-        "firstStableReleaseSourceURL": "https://github.com/vshulcz/deja-vu/releases/tag/v0.1.0",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "deja-vu repository and usage guide",
-          "url": "https://github.com/vshulcz/deja-vu"
-        },
-        {
-          "kind": "primary",
-          "title": "deja-vu changelog",
-          "url": "https://github.com/vshulcz/deja-vu/blob/main/CHANGELOG.md"
-        },
-        {
-          "kind": "primary",
-          "title": "Obscura repository and technical overview",
-          "url": "https://github.com/h4ckf0r0day/obscura"
-        },
-        {
-          "kind": "primary",
-          "title": "Defuddle repository and API overview",
-          "url": "https://github.com/kepano/defuddle"
-        }
-      ],
-      "title": "When coding agents can find yesterday",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-11T07:32:14Z",
+  "generatedAt": "2026-10-12T03:53:02Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1022,6 +1037,66 @@
       ],
       "upstreamSummary": "Time tracker",
       "version": "0.13.2"
+    },
+    "brew:cask:claudoscope": {
+      "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
+      "assessment": {
+        "alternatives": [
+          "Read Claude Code transcript files directly",
+          "Use ccusage when terminal reports are sufficient"
+        ],
+        "audiences": [
+          "Apple Silicon Mac users who run Claude Code or Cowork regularly",
+          "Developers who want a visual audit trail for local coding sessions"
+        ],
+        "caveats": [
+          "It is currently limited to Apple Silicon Macs",
+          "Cost figures are estimates and should be reconciled with provider billing",
+          "Some features can modify Claude Code configuration, but they are opt-in and create backups"
+        ],
+        "complements": [
+          "ccusage for scriptable and cross-agent usage reports",
+          "HOL Guard for supported pre-execution policy checks and approval receipts"
+        ],
+        "prerequisites": [
+          "macOS 14 or later on Apple Silicon",
+          "Claude Code or Cowork session data already present on the Mac"
+        ],
+        "useCases": [
+          "Inspect session history, touched files, plans, token use, and estimated cost",
+          "Watch active sessions and configure optional cost or lifecycle notifications",
+          "Review Claude Code configuration health and locally detected secrets"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "Claudoscope",
+      "docs": "https://claudoscope.com/",
+      "homepage": "https://claudoscope.com/",
+      "id": "brew:cask:claudoscope",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclaudoscope",
+      "lastUpdatedAt": "2026-10-11T17:47:59Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/cordwainersmith/Claudoscope",
+      "researchedAt": "2026-10-12T03:53:02Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Claudoscope upstream repository and requirements",
+          "url": "https://github.com/cordwainersmith/Claudoscope"
+        },
+        {
+          "kind": "primary",
+          "title": "Claudoscope privacy and local-data boundary",
+          "url": "https://claudoscope.com/privacy"
+        },
+        {
+          "kind": "primary",
+          "title": "Claudoscope 1.0 release notes",
+          "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+        }
+      ],
+      "upstreamSummary": "Menu bar dashboard for Claude Code sessions",
+      "version": "1.4.0"
     },
     "brew:cask:dockdoor-pro": {
       "agentSummary": "Commercial Dock replacement layers window previews, per-display profiles, app groups, widgets, file staging, media controls, gestures, and extensive customization onto macOS.",
@@ -1375,31 +1450,33 @@
       "version": "0.9.39"
     },
     "brew:cask:hol-guard": {
-      "agentSummary": "HOL Guard inspects supported AI-agent actions, package installs, plugins, and MCP traffic locally, applying policy gates while preserving approvals and decision receipts.",
+      "agentSummary": "HOL Guard adds local policy checks, approvals, and receipts around supported coding-agent actions, while retaining each agent's native permission model and documented boundaries.",
       "assessment": {
         "alternatives": [
-          "Native agent approval and sandbox controls",
-          "General endpoint detection and dependency scanning tools"
+          "Rely exclusively on each agent's native approvals",
+          "Use operating-system sandboxing and organization-specific policy tooling"
         ],
         "audiences": [
-          "Developers granting coding agents access to local tools and files",
-          "Teams evaluating agent, plugin, MCP, and package supply-chain risk"
+          "Developers using coding agents with access to files, commands, packages, or MCP tools",
+          "Teams seeking a consistent local review trail across supported agents"
         ],
         "caveats": [
-          "Coverage and enforcement depend on the events exposed by each agent integration",
-          "Policy gates reduce risk but do not replace host isolation or ordinary security controls"
+          "Coverage depends on the events and enforcement points exposed by each integration",
+          "It supplements rather than replaces native permissions and sandboxing",
+          "Cloud synchronization and team features are separate from the local-first core"
         ],
         "complements": [
-          "Codex, Claude Code, Cursor, Gemini CLI, and other supported harnesses",
-          "Existing endpoint, secret-scanning, and dependency-security controls"
+          "Claudoscope for post-session visibility",
+          "Native agent sandboxes and permission prompts"
         ],
         "prerequisites": [
-          "Python 3.10 or newer and pipx",
-          "A supported AI-agent harness for enforcement integration"
+          "A supported operating system and coding-agent integration",
+          "Initial setup and policy review for the selected harness"
         ],
         "useCases": [
-          "Gate supported shell, file, package, plugin, and MCP actions",
-          "Record local approvals and decision evidence for later review"
+          "Review supported risky actions before execution",
+          "Record local approval receipts and inspect policy decisions",
+          "Apply package, secret, plugin, and agent-configuration checks"
         ]
       },
       "category": "security",
@@ -1408,24 +1485,29 @@
       "homepage": "https://hol.org/guard",
       "id": "brew:cask:hol-guard",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahol-guard",
-      "lastUpdatedAt": "2026-09-24T19:15:01Z",
+      "lastUpdatedAt": "2026-10-12T01:54:58Z",
       "manager": "homebrew",
       "repository": "https://github.com/hashgraph-online/hol-guard",
-      "researchedAt": "2026-09-25T11:08:58Z",
+      "researchedAt": "2026-10-12T03:53:02Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "HOL Guard repository and product overview",
+          "title": "HOL Guard upstream repository and security boundaries",
           "url": "https://github.com/hashgraph-online/hol-guard"
         },
         {
           "kind": "primary",
-          "title": "HOL Guard getting-started guide",
-          "url": "https://github.com/hashgraph-online/hol-guard/blob/main/docs/guard/get-started.md"
+          "title": "HOL Guard local-first setup and approval flow",
+          "url": "https://hol.org/guard/docs/guard/get-started"
+        },
+        {
+          "kind": "primary",
+          "title": "HOL Guard feature and compatibility matrix",
+          "url": "https://hol.org/guard/features"
         }
       ],
       "upstreamSummary": "Local-first runtime firewall for AI coding agents",
-      "version": "3.0.108"
+      "version": "3.0.132"
     },
     "brew:cask:kotlin-lsp": {
       "agentSummary": "JetBrains' official Kotlin language server brings IntelliJ-derived completion, diagnostics, navigation, refactoring, and Gradle or Maven project support to LSP-capable editors.",
@@ -1485,53 +1567,6 @@
       ],
       "upstreamSummary": "Official Kotlin Language Server",
       "version": "263.6379.0"
-    },
-    "brew:cask:lightcraft": {
-      "agentSummary": "LightCraft is a local-first Rust photo library and raw developer with desktop, browser, CLI, automation, nondestructive editing, and agent-oriented control surfaces.",
-      "assessment": {
-        "alternatives": [
-          "darktable, RawTherapee, Adobe Lightroom, or Capture One"
-        ],
-        "audiences": [
-          "Photographers and developers seeking an open, automatable raw-photo workflow"
-        ],
-        "caveats": [
-          "The official roadmap describes a young project whose parity with established photo suites is still evolving"
-        ],
-        "complements": [
-          "Camera raw archives, color-managed displays, backup tools, and image editors"
-        ],
-        "prerequisites": [
-          "A supported desktop and willingness to evaluate camera-format and editing-feature coverage"
-        ],
-        "useCases": [
-          "Cataloging, culling, developing, automating, and exporting photographs locally"
-        ]
-      },
-      "category": "media",
-      "displayName": "LightCraft",
-      "docs": "https://getartcraft.com/apps/lightcraft",
-      "homepage": "https://getartcraft.com/apps/lightcraft",
-      "id": "brew:cask:lightcraft",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Alightcraft",
-      "lastUpdatedAt": "2026-10-08T18:36:37Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/storytold/lightcraft",
-      "researchedAt": "2026-10-09T07:33:06Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "LightCraft official project page",
-          "url": "https://getartcraft.com/apps/lightcraft"
-        },
-        {
-          "kind": "primary",
-          "title": "LightCraft v0.1.0 release",
-          "url": "https://github.com/storytold/lightcraft/releases/tag/v0.1.0"
-        }
-      ],
-      "upstreamSummary": "Photo library manager and raw image developer",
-      "version": "0.4.0"
     },
     "brew:cask:look": {
       "agentSummary": "Look is a free, open-source keyboard launcher for macOS, Windows, and Linux, combining application search, clipboard history, commands, and configurable local workflows.",
@@ -2404,6 +2439,66 @@
       "upstreamSummary": "Run all your AI coding agents in tmux",
       "version": "1.4.2"
     },
+    "brew:ccusage": {
+      "agentSummary": "ccusage reads local coding-agent usage files and produces terminal or JSON reports across days, sessions, models, costs, and active usage blocks.",
+      "assessment": {
+        "alternatives": [
+          "Provider billing dashboards",
+          "Custom scripts that parse local session records"
+        ],
+        "audiences": [
+          "Developers who prefer terminal-native reporting",
+          "Teams building their own local usage dashboards or scripts"
+        ],
+        "caveats": [
+          "Reported costs depend on current pricing data and model recognition",
+          "Local logs measure recorded activity rather than the provider's final invoice",
+          "Feature depth varies by source because agent log formats differ"
+        ],
+        "complements": [
+          "Claudoscope for a native macOS session viewer",
+          "Shell tools or dashboards that consume its JSON output"
+        ],
+        "prerequisites": [
+          "Local usage files from a supported coding agent",
+          "A terminal environment capable of running the packaged CLI"
+        ],
+        "useCases": [
+          "Compare daily, weekly, monthly, session, and block-level usage",
+          "Export structured JSON for dashboards and automation",
+          "Review multiple supported coding-agent data sources in a unified view"
+        ]
+      },
+      "category": "ai",
+      "displayName": "ccusage",
+      "docs": "https://ccusage.com/guide",
+      "homepage": "https://github.com/ccusage/ccusage",
+      "id": "brew:ccusage",
+      "installURL": "pkgmgrmgr://install?package=brew%3Accusage",
+      "lastUpdatedAt": "2026-10-11T23:35:21Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/ccusage/ccusage",
+      "researchedAt": "2026-10-12T03:53:02Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "ccusage unified report documentation",
+          "url": "https://ccusage.com/guide/all-reports"
+        },
+        {
+          "kind": "primary",
+          "title": "ccusage JSON output documentation",
+          "url": "https://ccusage.com/guide/json-output"
+        },
+        {
+          "kind": "independent",
+          "title": "npm download statistics for ccusage",
+          "url": "https://api.npmjs.org/downloads/point/last-month/ccusage"
+        }
+      ],
+      "upstreamSummary": "CLI tool for analyzing Claude Code usage from local JSONL files",
+      "version": "20.0.30"
+    },
     "brew:dbmate": {
       "agentSummary": "Dbmate keeps SQL migrations framework-neutral and reviewable, combining timestamped files, transactional execution, schema dumps, and one binary across several database engines.",
       "assessment": {
@@ -2468,123 +2563,6 @@
       ],
       "upstreamSummary": "Lightweight, framework-agnostic database migration tool",
       "version": "2.36.0"
-    },
-    "brew:defuddle": {
-      "agentSummary": "Extracts a page's main content and metadata into cleaner HTML or Markdown, offering a focused preprocessing layer for readers, archives, and language-model workflows.",
-      "assessment": {
-        "alternatives": [
-          "Mozilla Readability",
-          "Trafilatura",
-          "Site-specific extraction rules"
-        ],
-        "audiences": [
-          "Developers preparing web content for language models",
-          "Teams building read-it-later and archival tools"
-        ],
-        "caveats": [
-          "Heuristic extraction can omit meaningful sidebars, captions, or interactive content",
-          "Rendered pages still need a separate browser layer",
-          "Output should be audited before preservation or model ingestion"
-        ],
-        "complements": [
-          "Obscura",
-          "Markdown pipelines",
-          "Retrieval and indexing systems"
-        ],
-        "prerequisites": [
-          "HTML from a browser or HTTP retrieval layer",
-          "Quality checks on representative target pages"
-        ],
-        "useCases": [
-          "Convert article pages into Markdown",
-          "Remove navigation and layout clutter",
-          "Extract page metadata alongside main content"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "defuddle",
-      "docs": "https://github.com/kepano/defuddle#readme",
-      "homepage": "https://defuddle.md",
-      "id": "brew:defuddle",
-      "installURL": "pkgmgrmgr://install?package=brew%3Adefuddle",
-      "lastUpdatedAt": "2026-08-24T03:24:19Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/kepano/defuddle",
-      "researchedAt": "2026-08-24T07:12:30Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Defuddle repository and API overview",
-          "url": "https://github.com/kepano/defuddle"
-        },
-        {
-          "kind": "primary",
-          "title": "Defuddle documentation",
-          "url": "https://defuddle.md/"
-        },
-        {
-          "kind": "primary",
-          "title": "Defuddle release history",
-          "url": "https://github.com/kepano/defuddle/releases"
-        }
-      ],
-      "upstreamSummary": "Extract article content and metadata from web pages",
-      "version": "0.19.2"
-    },
-    "brew:deja-vu": {
-      "agentSummary": "deja-vu locally indexes coding-agent session histories, recalls relevant prior work through search and MCP integrations, and redacts common credential patterns during ingestion.",
-      "assessment": {
-        "alternatives": [
-          "Built-in history search supplied by an individual coding agent",
-          "Manually curated project notes or decision logs"
-        ],
-        "audiences": [
-          "Developers who regularly switch among coding agents",
-          "Privacy-conscious users wanting searchable local session history"
-        ],
-        "caveats": [
-          "Search quality depends on what agent histories recorded and retained",
-          "Automated redaction reduces risk but cannot guarantee detection of every secret shape",
-          "Recall can surface stale decisions, so changed files and current project state still need verification"
-        ],
-        "complements": [
-          "Claude Code, Codex, Cursor, and other supported coding agents",
-          "MCP-capable clients that can call its recall tools"
-        ],
-        "prerequisites": [
-          "Existing local session histories from a supported coding agent",
-          "Permission to read and index those local history files"
-        ],
-        "useCases": [
-          "Find earlier debugging decisions and commands across agent histories",
-          "Inject relevant prior-session context through supported agent integrations",
-          "Create redacted handoffs or move indexed memory between machines over SSH"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "deja-vu",
-      "docs": "https://github.com/vshulcz/deja-vu/blob/main/README.md",
-      "homepage": "https://github.com/vshulcz/deja-vu",
-      "id": "brew:deja-vu",
-      "installURL": "pkgmgrmgr://install?package=brew%3Adeja-vu",
-      "lastUpdatedAt": "2026-08-28T18:31:19Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/vshulcz/deja-vu",
-      "researchedAt": "2026-08-29T10:30:59Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "deja-vu repository and documentation",
-          "url": "https://github.com/vshulcz/deja-vu"
-        },
-        {
-          "kind": "primary",
-          "title": "deja-vu v0.1.0 initial release",
-          "url": "https://github.com/vshulcz/deja-vu/releases/tag/v0.1.0"
-        }
-      ],
-      "upstreamSummary": "Local searchable memory over the session histories of coding agents",
-      "version": "0.19.1"
     },
     "brew:doltlite": {
       "agentSummary": "DoltLite combines SQLite-compatible embedding with Git-style branching, commits, diffs, merges, and remotes, but its beta storage engine needs compatibility and durability evaluation.",
@@ -3345,68 +3323,6 @@
       ],
       "upstreamSummary": "Ambitious Vim-fork focused on extensibility and agility",
       "version": "0.12.5"
-    },
-    "brew:obscura": {
-      "agentSummary": "A Rust headless-browser engine for scraping and agent automation, exposing Chrome DevTools compatibility, JavaScript execution, parallel workers, and optional stealth-oriented features.",
-      "assessment": {
-        "alternatives": [
-          "Chromium headless",
-          "Playwright-managed browsers",
-          "WebKit-based automation"
-        ],
-        "audiences": [
-          "Developers building browser-driven agents",
-          "Scraping teams seeking a compact browser runtime"
-        ],
-        "caveats": [
-          "It is not a complete Chromium implementation, so site and API compatibility must be tested",
-          "Performance comparisons in project materials are maintainer-produced",
-          "Stealth features do not guarantee reliable access or permission to scrape a site"
-        ],
-        "complements": [
-          "Puppeteer",
-          "Playwright",
-          "Agent MCP clients"
-        ],
-        "prerequisites": [
-          "Validation against the target sites and browser APIs",
-          "Rust toolchain plus native build dependencies when building from source"
-        ],
-        "useCases": [
-          "Drive pages through Chrome DevTools Protocol clients",
-          "Run JavaScript-heavy scraping jobs",
-          "Expose browser actions through MCP"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "obscura",
-      "docs": "https://github.com/h4ckf0r0day/obscura#readme",
-      "homepage": "https://obscura.sh",
-      "id": "brew:obscura",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aobscura",
-      "lastUpdatedAt": "2026-08-23T14:58:52Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/h4ckf0r0day/obscura",
-      "researchedAt": "2026-08-24T07:12:30Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Obscura repository and technical overview",
-          "url": "https://github.com/h4ckf0r0day/obscura"
-        },
-        {
-          "kind": "primary",
-          "title": "Obscura release history",
-          "url": "https://github.com/h4ckf0r0day/obscura/releases"
-        },
-        {
-          "kind": "primary",
-          "title": "Obscura project website",
-          "url": "https://obscura.sh/"
-        }
-      ],
-      "upstreamSummary": "Headless browser for AI agents and web scraping",
-      "version": "0.2.1"
     },
     "brew:prek": {
       "agentSummary": "Rust-based Git hook manager compatible with established pre-commit configurations, adding parallel execution, monorepo support, built-in hooks, and a single-binary operational model.",
@@ -4185,7 +4101,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-11T07:30:44Z",
+    "generatedAt": "2026-10-12T03:51:33Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
