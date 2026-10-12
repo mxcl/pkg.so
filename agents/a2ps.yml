@@ -4,7 +4,12 @@ repo: https://git.savannah.gnu.org/git/a2ps.git
 docs:
   - https://www.gnu.org/software/a2ps/manual
   - https://www.gnu.org/software/a2ps
-config-file-location: null
+config-file-location:
+  unix:
+    - $A2PS_CONFIG
+    - ~/.a2ps/a2psrc
+    - ./.a2psrc
+    - /usr/local/etc/a2ps.cfg
 credentials-file-location: null
 history:
   adoption-history:
@@ -64,6 +69,23 @@ history:
       that benefit from syntax-aware pretty-printing. Related tools in the package, such
       as fixps, card, pdiff, lp2, ogonkify, and composeglyphs, reflect the broader
       PostScript-cleanup and print-preparation workflow around it.
+related-packages:
+  - id: brew:enscript
+    reason: >
+      Choose Enscript when you want syntax-highlighted text output in HTML or RTF as
+      well as PostScript.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/a2ps/
+      - https://www.gnu.org/software/enscript/
+  - id: brew:psutils
+    reason: >
+      Rearrange a2ps output into booklets or multiple pages per sheet with PSUtils; a2ps
+      also delegates PostScript layout to its psnup tool.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/a2ps/manual/html_node/Using-Delegations.html
+      - https://github.com/rrthomas/psutils
 tags:
   - cli
   - document-conversion
