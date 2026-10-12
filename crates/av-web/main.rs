@@ -206,7 +206,7 @@ fn handle_connection(mut stream: TcpStream, state: &AppState) -> Result<(), Stri
         return write_stored_response(&mut stream, &request, 200, "OK", response, Vec::new());
     }
 
-    if let Some(response) = blog::response(&state.feed_root, &request.path)? {
+    if let Some(response) = blog::response(&state.feed_root, &request.path, &state.db_path)? {
         return write_stored_response(&mut stream, &request, 200, "OK", response, Vec::new());
     }
 
@@ -750,11 +750,7 @@ fn dynamic_response_for_path(db_path: &Path, path: &str, feed_root: &Path) -> Re
             render_index_page(&connection, locale, feed_root)?,
         )?;
         if locale.code == "en" {
-            if let Ok(modified) = fs::metadata(feed_root.join("v2.json")).and_then(|m| m.modified()) {
-                let database_modified = httpdate::parse_http_date(&response.last_modified)
-                    .unwrap_or(std::time::SystemTime::UNIX_EPOCH);
-                response.last_modified = httpdate::fmt_http_date(modified.max(database_modified));
-            }
+            include_file_last_modified(&mut response, &feed_root.join("v2.json"));
         }
         return Ok(Some(response));
     }
@@ -816,19 +812,22 @@ fn dynamic_response_for_path(db_path: &Path, path: &str, feed_root: &Path) -> Re
         let Some(package) = package_by_provider_slug(&connection, provider, slug)? else {
             return Ok(None);
         };
+        let stories = if locale.code == "en" && package.indexable {
+            blog::package_stories(feed_root, &package.package_key)
+        } else { Vec::new() };
         if markdown {
             if !package.indexable {
                 return Ok(None);
             }
             let generated_at = metadata_string(&connection, "generated_at")?.unwrap_or_default();
             Some((
-                render_package_markdown(&package, locale, &generated_at),
+                render_package_markdown(&package, locale, &generated_at, &stories),
                 "text/markdown; charset=utf-8",
             ))
         } else {
             let generated_at = metadata_string(&connection, "generated_at")?.unwrap_or_default();
             Some((
-                render_package_page(&package, locale, &generated_at),
+                render_package_page(&package, locale, &generated_at, &stories),
                 "text/html; charset=utf-8",
             ))
         }
@@ -854,12 +853,11 @@ fn dynamic_response_for_path(db_path: &Path, path: &str, feed_root: &Path) -> Re
     let Some((body, content_type)) = body_and_type else {
         return Ok(None);
     };
-    Ok(Some(dynamic_stored_response(
-        &connection,
-        &canonical_path,
-        content_type,
-        body,
-    )?))
+    let mut response = dynamic_stored_response(&connection, &canonical_path, content_type, body)?;
+    if locale.code == "en" && (package_route(&canonical_path).is_some() || canonical_path == "/pkg/index.html") {
+        include_file_last_modified(&mut response, &feed_root.join("v2.json"));
+    }
+    Ok(Some(response))
 }
 
 fn landing_locale(path: &str) -> Option<&'static Locale> {
@@ -938,6 +936,14 @@ fn hub_route(path: &str) -> Option<(&str, bool)> {
 fn sitemap_provider(path: &str) -> Option<&str> {
     let provider = path.strip_prefix("/pkg/sitemap-")?.strip_suffix(".xml")?;
     PROVIDERS.contains(&provider).then_some(provider)
+}
+
+fn include_file_last_modified(response: &mut StoredResponse, path: &Path) {
+    if let Ok(modified) = fs::metadata(path).and_then(|m| m.modified()) {
+        let previous = httpdate::parse_http_date(&response.last_modified)
+            .unwrap_or(std::time::SystemTime::UNIX_EPOCH);
+        response.last_modified = httpdate::fmt_http_date(modified.max(previous));
+    }
 }
 
 fn dynamic_stored_response(
@@ -1702,7 +1708,7 @@ fn render_hub_markdown(
     Ok(text)
 }
 
-fn render_package_page(package: &PackageRow, locale: &Locale, generated_at: &str) -> String {
+fn render_package_page(package: &PackageRow, locale: &Locale, generated_at: &str, stories: &[Value]) -> String {
     let install_heading = package_install_heading(package, locale);
     let title = format!("{install_heading} | {SITE_NAME}");
     let description = meta_description(package, locale);
@@ -1742,6 +1748,7 @@ fn render_package_page(package: &PackageRow, locale: &Locale, generated_at: &str
     body.push_str(&render_agent_safety_answer(package, locale));
     body.push_str(&render_install(package, locale));
     body.push_str(&render_overview(package, locale));
+    body.push_str(&blog::stories_html(stories));
     body.push_str(&render_history(package, locale));
     body.push_str(&render_security(package, locale));
     body.push_str(&render_file_locations(package, locale));
@@ -1774,7 +1781,7 @@ fn render_package_page(package: &PackageRow, locale: &Locale, generated_at: &str
     )
 }
 
-fn render_package_markdown(package: &PackageRow, locale: &Locale, generated_at: &str) -> String {
+fn render_package_markdown(package: &PackageRow, locale: &Locale, generated_at: &str, stories: &[Value]) -> String {
     let mut text = format!(
         "# {}\n\n{}\n\n## {}\n\n```sh\n{}\n```\n\n",
         package_install_heading(package, locale),
@@ -1878,6 +1885,7 @@ fn render_package_markdown(package: &PackageRow, locale: &Locale, generated_at: 
         &tx(locale, "freshnessTitle", "Freshness"),
         &markdown_freshness_items(package, generated_at, locale),
     );
+    text.push_str(&blog::stories_markdown(stories));
     markdown_history_section(&mut text, package, locale);
     markdown_security_section(&mut text, package, locale);
     markdown_file_locations(&mut text, package, locale);
@@ -6333,7 +6341,7 @@ mod tests {
             .expect("insert package");
     }
 
-    fn test_database() -> NamedTempFile {
+    pub(super) fn test_database() -> NamedTempFile {
         let file = NamedTempFile::new().expect("temp database");
         let connection = Connection::open(file.path()).expect("open temp database");
         connection
@@ -7146,6 +7154,27 @@ mod tests {
     }
 
     #[test]
+    fn articles_and_package_pages_link_in_both_directions() {
+        let db = test_database();
+        let feed = tempdir().unwrap();
+        fs::write(feed.path().join("v2.json"), json!({"content":[{
+            "type":"editorial", "id":"editorial:2026-10-12:aws-tools",
+            "title":"Working with AWS", "deck":"Cloud tools", "body":"## Getting started\n\nUse these tools.",
+            "publishedAt":"2026-10-12T00:00:00Z", "primaryPackageID":"brew:awscli",
+            "package":{"id":"brew:awscli", "displayName":"AWS CLI"}, "relatedPackages":[]
+        }],"nextPageURL":null}).to_string()).unwrap();
+        let article = blog::response(feed.path(), "/blog/2026-10-12/aws-tools/", db.path()).unwrap().unwrap();
+        let html = String::from_utf8(article.body).unwrap();
+        assert!(html.contains("href=\"/brew/awscli/\""));
+        for path in ["/brew/awscli/", "/brew/awscli/index.md"] {
+            let page = dynamic_response_for_path(db.path(), path, feed.path()).unwrap().unwrap();
+            let text = String::from_utf8(page.body).unwrap();
+            assert!(text.contains("From the blog"), "{path}");
+            assert!(text.contains("/blog/2026-10-12/aws-tools/"), "{path}");
+        }
+    }
+
+    #[test]
     fn dynamic_routes_render_package_hub_and_sitemap() {
         let db = test_database();
         let root = dynamic_response_for_path(db.path(), "/", &db.path().with_extension("feed"))
@@ -7653,7 +7682,7 @@ mod tests {
         );
         assert_eq!(hub_signal_condition("unknown"), None);
 
-        let html = render_package_page(&sparse, &LOCALES[0], "2026-06-07T00:00:00Z");
+        let html = render_package_page(&sparse, &LOCALES[0], "2026-06-07T00:00:00Z", &[]);
         assert!(!html.contains("Package manager source"));
         assert!(!html.contains("Homebrew metadata was not linked in local data."));
         assert!(html.contains("No classifier reasons were present."));
@@ -7694,7 +7723,7 @@ mod tests {
         assert!(cargo_like_overview.contains("<li>sparse</li>"));
         assert!(!cargo_like_overview.contains("Not present in the local metadata."));
 
-        let markdown = render_package_markdown(&sparse, &LOCALES[0], "2026-06-07T00:00:00Z");
+        let markdown = render_package_markdown(&sparse, &LOCALES[0], "2026-06-07T00:00:00Z", &[]);
         assert!(markdown.contains("Bottle: not available"));
         assert!(markdown.contains("Configuration files"));
         assert!(markdown.contains("Unix: $XDG_CONFIG_HOME/sparse/config.yml"));
@@ -7794,7 +7823,7 @@ mod tests {
             "lastVerified": "2026-05-23"
         });
         let mismatch_html =
-            render_package_page(&version_mismatch, &LOCALES[0], "2026-06-07T00:00:00Z");
+            render_package_page(&version_mismatch, &LOCALES[0], "2026-06-07T00:00:00Z", &[]);
         assert!(mismatch_html.contains("Version 2.1.0 via Homebrew; verified 2026-06-04."));
         assert!(!mismatch_html.contains("verified 2026-05-23"));
         assert!(mismatch_html.contains(r#""softwareVersion": "2.1.0""#));
