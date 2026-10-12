@@ -204,7 +204,7 @@ def load_valid_checkpoint(
     if not normalized_path.exists():
         return None
     payload = read_json(normalized_path, default={})
-    if not isinstance(payload, dict):
+    if not isinstance(payload, dict) or payload.get("errors") or payload.get("invalid"):
         return None
     results = payload.get("results")
     if not isinstance(results, list):
@@ -382,7 +382,6 @@ def apply_prepared_batches(
     all_normalized: list[dict[str, Any]] = []
     all_errors: list[str] = []
     all_invalid: list[dict[str, Any]] = []
-    failed_batches = 0
     projects_by_id = {str(record.get("id")): record for record in projects}
 
     for batch in manifest.get("batches", []):
@@ -433,8 +432,6 @@ def apply_prepared_batches(
         all_invalid.extend(invalid)
 
         if not normalized:
-            if not timed_out:
-                failed_batches += 1
             write_json(batch_dir / "apply-summary.json", batch_summary)
             write_json(state_path, state)
             outcome = "timed out" if timed_out else "failed validation"
@@ -460,7 +457,8 @@ def apply_prepared_batches(
             render_combined_tree()
         write_json(batch_dir / "apply-summary.json", batch_summary)
         write_json(state_path, state)
-        write_batch_status(batch_dir, {"batch": batch_name, "status": "applied", "errors": len(errors)})
+        status = "partially-applied" if errors or batch_summary["rejected"] else "applied"
+        write_batch_status(batch_dir, {"batch": batch_name, "status": status, "errors": len(errors)})
         if args.commit_after_batch and not args.dry_run:
             commit = git_commit_if_changed(
                 f"nightly: enrich {args.mode} batch {batch_name}",
@@ -490,7 +488,7 @@ def apply_prepared_batches(
     write_json(run_dir / "apply-summary.json", summary)
     write_json(state_path, state)
     print_summary(summary)
-    return 1 if failed_batches else 0
+    return 1 if all_errors or summary["rejected"] else 0
 
 
 def selected_projects_for_args(args: argparse.Namespace, state: dict[str, Any], today: str) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:

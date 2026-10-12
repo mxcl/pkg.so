@@ -1022,7 +1022,7 @@ class EnrichmentTests(unittest.TestCase):
             self.assertEqual(first_status["status"], "timed-out")
             self.assertEqual(second_status["status"], "codex-cli-completed")
 
-    def test_timed_out_batch_does_not_fail_apply_phase(self):
+    def test_timed_out_batch_fails_apply_phase(self):
         module = load_enrich_projects_module()
         args = sample_enrich_project_args()
         record = sample_record()
@@ -1040,9 +1040,69 @@ class EnrichmentTests(unittest.TestCase):
                     args, manifest, [record], {}, state_path, run_dir, date.today().isoformat()
                 )
 
-            self.assertEqual(exit_code, 0)
+            self.assertEqual(exit_code, 1)
             status = json.loads((batch_dir / "status.json").read_text())
             self.assertEqual(status["status"], "timed-out")
+
+    def test_incomplete_runs_apply_later_batches_and_resume_successfully(self):
+        for failure in ("timeout", "partial"):
+            with self.subTest(failure=failure), tempfile.TemporaryDirectory() as tmp:
+                module = load_enrich_projects_module()
+                args = sample_enrich_project_args(batch_size=2, commit_after_batch=True)
+                root = Path(tmp)
+                run_dir = root / "cache/enrichment/runs/unit-run"
+                state_path = root / "cache/enrichment/state.json"
+                projects = [{**sample_record(), "id": f"brew:{name}"} for name in ("one", "two", "three")]
+                applied = []
+
+                def apply(projects_by_id, state, results, **kwargs):
+                    applied.extend(result["id"] for result in results)
+                    return {**module.empty_summary(len(results)), "changed": len(results)}
+
+                with (mock.patch.object(module, "ROOT", root),
+                      mock.patch.object(module, "apply_results", side_effect=apply),
+                      mock.patch.object(module, "render_combined_tree"),
+                      mock.patch.object(module, "git_commit_if_changed", return_value="abc123") as commit):
+                    manifest = module.prepare_run(args, projects, run_dir)
+                    first, second = manifest["batches"]
+                    second_raw = root / second["codex_output_path"]
+                    second_raw.write_text(json.dumps({"results": [sample_result(id="brew:three")]}))
+                    if failure == "timeout":
+                        module.write_batch_status(root / first["batch_dir"], {"status": "timed-out"})
+                    else:
+                        (root / first["codex_output_path"]).write_text(json.dumps({"results": [
+                            sample_result(id="brew:one"),
+                            sample_result(id="brew:two", **{"category_path": ["invalid"]}),
+                        ]}))
+                    code = module.apply_prepared_batches(args, manifest, projects, {}, state_path, run_dir, "2026-10-12")
+                    self.assertEqual(code, 1)
+                    self.assertEqual(applied, ["brew:three"] if failure == "timeout" else ["brew:one", "brew:three"])
+                    self.assertEqual(commit.call_count, 1 if failure == "timeout" else 2)
+                    summary = json.loads((run_dir / "apply-summary.json").read_text())
+                    self.assertEqual(summary["rejected"], 2 if failure == "timeout" else 1)
+                    if failure == "partial":
+                        status = json.loads((root / first["batch_dir"] / "status.json").read_text())
+                        self.assertEqual(status["status"], "partially-applied")
+                    saved_success = (root / second["normalized_output_path"]).read_bytes()
+
+                    def research(prompt, output, schema):
+                        output.write_text(json.dumps({"results": [sample_result(id="brew:one"), sample_result(id="brew:two")]}))
+                        return True
+
+                    with mock.patch.object(module, "invoke_codex", side_effect=research) as invoke:
+                        module.invoke_codex_cli_for_pending_batches(args, manifest)
+                    invoke.assert_called_once()
+                    self.assertEqual(invoke.call_args.args[1], root / first["codex_output_path"])
+                    self.assertEqual(module.apply_prepared_batches(args, manifest, projects, {}, state_path, run_dir, "2026-10-12"), 0)
+                    self.assertEqual((root / second["normalized_output_path"]).read_bytes(), saved_success)
+                    self.assertEqual(json.loads((run_dir / "apply-summary.json").read_text())["rejected"], 0)
+
+    def test_checkpoint_with_unresolved_errors_is_not_successful(self):
+        module = load_enrich_projects_module()
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "normalized-output.json"
+            path.write_text(json.dumps({"results": [sample_result()], "errors": ["duplicate result"]}))
+            self.assertIsNone(module.load_valid_checkpoint(path, {"brew:bat"}))
 
     def test_validation_aggregates_duplicate_errors_and_counts_rejected_ids(self):
         normalized, errors, invalid_results = validate_codex_payload_partial(

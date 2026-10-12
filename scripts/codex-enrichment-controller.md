@@ -73,7 +73,7 @@ python3 scripts/enrich-projects.py --mode new --limit 50 --batch-size 5 --backen
 
 For stale review, use `--mode review-stale-updated`. For nightly new and missing curated fields, include `--include-missing-curated-fields --limit 250 --batch-size 5 --commit-after-batch`.
 
-5. If apply reports missing outputs or validation failures, leave completed batch commits in place and rerun only the failed batches with the same `--run-id` after their `codex-output.json` files are fixed.
+5. Apply preserves valid results and processes the remaining batches, then exits non-zero if any timeout, validation error, or rejected project remains. The maintenance supervisor treats this as a failed stage and retries or escalates it. Leave completed batch commits in place and rerun only the failed batches with the same `--run-id` after their `codex-output.json` files are fixed.
 
 6. After a successful apply, call `claim-next` again and repeat until it exits non-zero. Do not
 delegate a run returned by the inspection-only `next-run` command.
