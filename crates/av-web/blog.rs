@@ -58,6 +58,31 @@ fn articles(root: &Path) -> Result<Vec<Value>, String> {
     Ok(articles)
 }
 
+pub(super) fn latest_feature(feed_root: &Path) -> String {
+    let result = fs::canonicalize(feed_root)
+        .map_err(|err| err.to_string())
+        .and_then(|root| articles(&root));
+    let articles = match result {
+        Ok(articles) => articles,
+        Err(err) => {
+            eprintln!("blog feature unavailable: {err}");
+            return String::new();
+        }
+    };
+    let Some(article) = articles.first() else {
+        return String::new();
+    };
+    format!(
+        r#"<section class="pkg-section" aria-labelledby="latest-post-title"><article class="blog-preview blog-feature" lang="en">{}<div><p class="eyebrow">Latest from the blog · {}</p><h2 id="latest-post-title"><a href="{}">{}</a></h2><p>{}</p><a class="button secondary" href="{}">Read the story <span aria-hidden="true">→</span></a></div></article></section>"#,
+        artwork(article, true),
+        date(article),
+        html_escape(&article_path(article)),
+        html_escape(field(article, "title")),
+        html_escape(field(article, "deck")),
+        html_escape(&article_path(article))
+    )
+}
+
 fn markdown(body: &str) -> String {
     let events = Parser::new(body).map(|event| match event {
         Event::Html(text) | Event::InlineHtml(text) => Event::Text(text),
@@ -245,6 +270,10 @@ mod tests {
             json!({"content":[latest, old], "nextPageURL":null}).to_string(),
         )
         .unwrap();
+        let feature = latest_feature(&root);
+        assert!(feature.contains("/blog/2026-10-12/new/"));
+        assert!(!feature.contains("/blog/2026-07-23/old/"));
+        assert!(feature.contains("Tools &lt; worth knowing"));
         let index = response(&root, "/blog/").unwrap().unwrap();
         let page = String::from_utf8(index.body.clone()).unwrap();
         assert_eq!(page.matches("class=\"blog-preview\"").count(), 2);
@@ -274,6 +303,10 @@ mod tests {
         .unwrap();
         let empty = response(&root, "/blog/").unwrap().unwrap();
         assert_ne!(index.etag, empty.etag);
+        assert!(latest_feature(&root).is_empty());
+        fs::write(root.join("v2.json"), "broken JSON").unwrap();
+        assert!(latest_feature(&root).is_empty());
+        assert!(latest_feature(&root.join("missing")).is_empty());
         assert!(
             String::from_utf8(empty.body)
                 .unwrap()

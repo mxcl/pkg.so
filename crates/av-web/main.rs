@@ -218,7 +218,7 @@ fn handle_connection(mut stream: TcpStream, state: &AppState) -> Result<(), Stri
         return write_stored_response(&mut stream, &request, 200, "OK", response, Vec::new());
     }
 
-    if let Some(response) = dynamic_response_for_path(&state.db_path, &request.path)? {
+    if let Some(response) = dynamic_response_for_path(&state.db_path, &request.path, &state.feed_root)? {
         return write_stored_response(&mut stream, &request, 200, "OK", response, Vec::new());
     }
 
@@ -703,7 +703,7 @@ struct HubRow {
     group: String,
 }
 
-fn dynamic_response_for_path(db_path: &Path, path: &str) -> Result<Option<StoredResponse>, String> {
+fn dynamic_response_for_path(db_path: &Path, path: &str, feed_root: &Path) -> Result<Option<StoredResponse>, String> {
     if path == "/privacy/" {
         let connection = open_database(db_path)?;
         let locale = &LOCALES[0];
@@ -743,12 +743,20 @@ fn dynamic_response_for_path(db_path: &Path, path: &str) -> Result<Option<Stored
     }
     if let Some(locale) = landing_locale(path) {
         let connection = open_database(db_path)?;
-        return Ok(Some(dynamic_stored_response(
+        let mut response = dynamic_stored_response(
             &connection,
             path,
             "text/html; charset=utf-8",
-            render_index_page(&connection, locale)?,
-        )?));
+            render_index_page(&connection, locale, feed_root)?,
+        )?;
+        if locale.code == "en" {
+            if let Ok(modified) = fs::metadata(feed_root.join("v2.json")).and_then(|m| m.modified()) {
+                let database_modified = httpdate::parse_http_date(&response.last_modified)
+                    .unwrap_or(std::time::SystemTime::UNIX_EPOCH);
+                response.last_modified = httpdate::fmt_http_date(modified.max(database_modified));
+            }
+        }
+        return Ok(Some(response));
     }
     if let Some(locale) = feed_locale(path) {
         let connection = open_database(db_path)?;
@@ -766,7 +774,7 @@ fn dynamic_response_for_path(db_path: &Path, path: &str) -> Result<Option<Stored
     let connection = open_database(db_path)?;
     let body_and_type = if canonical_path == "/pkg/index.html" {
         Some((
-            render_index_page(&connection, locale)?,
+            render_index_page(&connection, locale, feed_root)?,
             "text/html; charset=utf-8",
         ))
     } else if canonical_path == "/pkg/sitemap.xml" {
@@ -1377,7 +1385,7 @@ fn render_feed_page(locale: &Locale) -> String {
     )
 }
 
-fn render_index_page(connection: &Connection, locale: &Locale) -> Result<String, String> {
+fn render_index_page(connection: &Connection, locale: &Locale, feed_root: &Path) -> Result<String, String> {
     let hub_summaries = hub_summaries(connection)?;
     let top_packages = top_packages(connection, 72)?;
     let manifest = metadata_json(connection, "manifest")?;
@@ -1408,6 +1416,9 @@ fn render_index_page(connection: &Connection, locale: &Locale) -> Result<String,
         metric(&tx(locale, "packageHubs", "package hubs"), &fmt_int(hub_summaries.len() as i64)),
         metric(&tx(locale, "sourceFiles", "source files"), &fmt_int(source_files)),
     ));
+    if locale.code == "en" {
+        body.push_str(&blog::latest_feature(feed_root));
+    }
     body.push_str(&format!(
         r#"<section class="pkg-section pkg-search-section" aria-labelledby="pkg-search-title"><div class="search-copy"><p class="section-kicker">{}</p><h2 id="pkg-search-title">{}</h2><p>{}</p></div><div id="search" class="pkg-search" data-av-package-search data-locale="{}" data-search-endpoint="{}" data-placeholder="{}"></div></section>"#,
         html_escape(&tx(locale, "siteSearch", "site search")),
@@ -7005,7 +7016,7 @@ mod tests {
             Some(("brew", "awscli"))
         );
         assert_eq!(
-            dynamic_response_for_path(db.path(), "/not-pkg").unwrap(),
+            dynamic_response_for_path(db.path(), "/not-pkg", &db.path().with_extension("feed")).unwrap(),
             None
         );
     }
@@ -7079,7 +7090,7 @@ mod tests {
     #[test]
     fn markdown_route_returns_markdown_content_type() {
         let db = test_database();
-        let response = dynamic_response_for_path(db.path(), "/pkg/brew/awscli/index.md")
+        let response = dynamic_response_for_path(db.path(), "/pkg/brew/awscli/index.md", &db.path().with_extension("feed"))
             .expect("query")
             .expect("markdown response");
 
@@ -7095,7 +7106,7 @@ mod tests {
     fn adsense_covers_page_types_and_authorizes_publisher() {
         let db = test_database();
         for path in ["/", "/de/", "/brew/awscli/", "/fr/brew/awscli/", "/cloud/", "/feed/", "/privacy/"] {
-            let response = dynamic_response_for_path(db.path(), path).unwrap().unwrap();
+            let response = dynamic_response_for_path(db.path(), path, &db.path().with_extension("feed")).unwrap().unwrap();
             let html = String::from_utf8(response.body).unwrap();
             let head = html.split("</head>").next().unwrap();
             assert_eq!(head.matches("adsbygoogle.js?client=ca-pub-5218328608281545").count(), 1, "{path}");
@@ -7106,70 +7117,99 @@ mod tests {
     }
 
     #[test]
+    fn landing_page_features_latest_article_and_revalidates_when_feed_changes() {
+        let db = test_database();
+        let feed = tempdir().unwrap();
+        let publish = |slug: &str| {
+            fs::write(feed.path().join("v2.json"), json!({
+                "content": [{"type":"editorial", "id":format!("editorial:2026-10-12:{slug}"),
+                    "title":slug, "deck":"A useful tool", "publishedAt":"2026-10-12T00:00:00Z"}],
+                "nextPageURL":null
+            }).to_string()).unwrap();
+        };
+        publish("first");
+        let first = dynamic_response_for_path(db.path(), "/", feed.path()).unwrap().unwrap();
+        let html = String::from_utf8(first.body).unwrap();
+        assert!(html.find("id=\"pkg-title\"").unwrap() < html.find("id=\"latest-post-title\"").unwrap());
+        assert!(html.find("id=\"latest-post-title\"").unwrap() < html.find("id=\"pkg-search-title\"").unwrap());
+        let modified = fs::metadata(feed.path().join("v2.json")).unwrap().modified().unwrap();
+        assert_eq!(first.last_modified, httpdate::fmt_http_date(modified));
+        publish("newest");
+        let next = dynamic_response_for_path(db.path(), "/", feed.path()).unwrap().unwrap();
+        assert_ne!(first.etag, next.etag);
+        assert!(String::from_utf8(next.body).unwrap().contains("/blog/2026-10-12/newest/"));
+        fs::write(feed.path().join("v2.json"), "broken").unwrap();
+        let fallback = dynamic_response_for_path(db.path(), "/", feed.path()).unwrap().unwrap();
+        let html = String::from_utf8(fallback.body).unwrap();
+        assert!(!html.contains("latest-post-title"));
+        assert!(html.contains("pkg-search-title"));
+    }
+
+    #[test]
     fn dynamic_routes_render_package_hub_and_sitemap() {
         let db = test_database();
-        let root = dynamic_response_for_path(db.path(), "/")
+        let root = dynamic_response_for_path(db.path(), "/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("root response");
-        let localized_root = dynamic_response_for_path(db.path(), "/de/")
+        let localized_root = dynamic_response_for_path(db.path(), "/de/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("localized root response");
-        let robots = dynamic_response_for_path(db.path(), "/robots.txt")
+        let robots = dynamic_response_for_path(db.path(), "/robots.txt", &db.path().with_extension("feed"))
             .expect("query")
             .expect("robots response");
-        let root_sitemap = dynamic_response_for_path(db.path(), "/sitemap.xml")
+        let root_sitemap = dynamic_response_for_path(db.path(), "/sitemap.xml", &db.path().with_extension("feed"))
             .expect("query")
             .expect("root sitemap response");
-        let package = dynamic_response_for_path(db.path(), "/brew/awscli/")
+        let package = dynamic_response_for_path(db.path(), "/brew/awscli/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("package response");
-        let cargo_package = dynamic_response_for_path(db.path(), "/cargo/ripgrep/")
+        let cargo_package = dynamic_response_for_path(db.path(), "/cargo/ripgrep/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("cargo package response");
-        let localized_package = dynamic_response_for_path(db.path(), "/fr/brew/awscli/")
+        let localized_package = dynamic_response_for_path(db.path(), "/fr/brew/awscli/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("localized package response");
-        let hub = dynamic_response_for_path(db.path(), "/cloud/")
+        let hub = dynamic_response_for_path(db.path(), "/cloud/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("hub response");
-        let hub_markdown = dynamic_response_for_path(db.path(), "/cloud/index.md")
+        let hub_markdown = dynamic_response_for_path(db.path(), "/cloud/index.md", &db.path().with_extension("feed"))
             .expect("query")
             .expect("hub markdown response");
-        let crates_hub = dynamic_response_for_path(db.path(), "/crates-cli-packages/")
+        let crates_hub = dynamic_response_for_path(db.path(), "/crates-cli-packages/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("crates.io hub response");
         let crates_hub_markdown =
-            dynamic_response_for_path(db.path(), "/crates-cli-packages/index.md")
+            dynamic_response_for_path(db.path(), "/crates-cli-packages/index.md", &db.path().with_extension("feed"))
                 .expect("query")
                 .expect("crates.io hub markdown response");
-        let index = dynamic_response_for_path(db.path(), "/de/")
+        let index = dynamic_response_for_path(db.path(), "/de/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("localized index response");
-        let sitemap_index = dynamic_response_for_path(db.path(), "/sitemap.xml")
+        let sitemap_index = dynamic_response_for_path(db.path(), "/sitemap.xml", &db.path().with_extension("feed"))
             .expect("query")
             .expect("sitemap index response");
-        let hub_sitemap = dynamic_response_for_path(db.path(), "/sitemap-hubs.xml")
+        let hub_sitemap = dynamic_response_for_path(db.path(), "/sitemap-hubs.xml", &db.path().with_extension("feed"))
             .expect("query")
             .expect("hub sitemap response");
-        let sitemap = dynamic_response_for_path(db.path(), "/sitemap-brew.xml")
+        let sitemap = dynamic_response_for_path(db.path(), "/sitemap-brew.xml", &db.path().with_extension("feed"))
             .expect("query")
             .expect("sitemap response");
-        let cargo_sitemap = dynamic_response_for_path(db.path(), "/sitemap-cargo.xml")
+        let cargo_sitemap = dynamic_response_for_path(db.path(), "/sitemap-cargo.xml", &db.path().with_extension("feed"))
             .expect("query")
             .expect("cargo sitemap response");
-        let package_json = dynamic_response_for_path(db.path(), "/brew/awscli.json")
+        let package_json = dynamic_response_for_path(db.path(), "/brew/awscli.json", &db.path().with_extension("feed"))
             .expect("query")
             .expect("package json response");
-        let new_json = dynamic_response_for_path(db.path(), "/new.json")
+        let new_json = dynamic_response_for_path(db.path(), "/new.json", &db.path().with_extension("feed"))
             .expect("query")
             .expect("new json response");
-        let feed_page = dynamic_response_for_path(db.path(), "/feed/")
+        let feed_page = dynamic_response_for_path(db.path(), "/feed/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("feed page response");
-        let localized_feed = dynamic_response_for_path(db.path(), "/de/feed/")
+        let localized_feed = dynamic_response_for_path(db.path(), "/de/feed/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("localized feed response");
-        let manifest = dynamic_response_for_path(db.path(), "/.manifest.json")
+        let manifest = dynamic_response_for_path(db.path(), "/.manifest.json", &db.path().with_extension("feed"))
             .expect("query")
             .expect("manifest response");
 
@@ -7381,7 +7421,7 @@ mod tests {
         assert!(feed_html.contains("free of charge"));
         assert!(feed_html.contains("rate-limit, block, or take other action"));
         assert!(
-            dynamic_response_for_path(db.path(), "/pkg/data/")
+            dynamic_response_for_path(db.path(), "/pkg/data/", &db.path().with_extension("feed"))
                 .expect("query")
                 .is_none()
         );
@@ -7425,10 +7465,10 @@ mod tests {
     #[test]
     fn dynamic_package_markdown_covers_rich_metadata_and_noindex() {
         let db = test_database();
-        let markdown = dynamic_response_for_path(db.path(), "/pkg/brew/awscli/index.md")
+        let markdown = dynamic_response_for_path(db.path(), "/pkg/brew/awscli/index.md", &db.path().with_extension("feed"))
             .expect("query")
             .expect("markdown response");
-        let private_html = dynamic_response_for_path(db.path(), "/pkg/npm/private-tool/")
+        let private_html = dynamic_response_for_path(db.path(), "/pkg/npm/private-tool/", &db.path().with_extension("feed"))
             .expect("query")
             .expect("private response");
 
@@ -7451,7 +7491,7 @@ mod tests {
         assert!(text.contains("Debian apt - awscli - 2.0.0-1"));
 
         assert!(
-            dynamic_response_for_path(db.path(), "/pkg/npm/private-tool/index.md")
+            dynamic_response_for_path(db.path(), "/pkg/npm/private-tool/index.md", &db.path().with_extension("feed"))
                 .expect("query")
                 .is_none()
         );
@@ -7601,7 +7641,7 @@ mod tests {
             )
             .expect("update manifest counts");
         assert!(
-            render_index_page(&connection, &LOCALES[0])
+            render_index_page(&connection, &LOCALES[0], &db.path().with_extension("feed"))
                 .expect("render counted index")
                 .contains(">99<")
         );
@@ -7666,7 +7706,7 @@ mod tests {
         assert!(markdown.contains("fixture note"));
         assert!(markdown.contains("apk - sparse"));
 
-        let dynamic = dynamic_response_for_path(db.path(), "/fr/pkg/brew/sparse/")
+        let dynamic = dynamic_response_for_path(db.path(), "/fr/pkg/brew/sparse/", &db.path().with_extension("feed"))
             .expect("dynamic sparse query")
             .expect("dynamic sparse response");
         assert_eq!(dynamic.content_type, "text/html; charset=utf-8");
@@ -7676,7 +7716,7 @@ mod tests {
                 .contains("sparse")
         );
         assert!(
-            dynamic_response_for_path(db.path(), "/pkg/missing-hub/")
+            dynamic_response_for_path(db.path(), "/pkg/missing-hub/", &db.path().with_extension("feed"))
                 .expect("missing hub query")
                 .is_none()
         );
@@ -8150,7 +8190,7 @@ mod tests {
         let db = test_database();
 
         assert!(
-            dynamic_response_for_path(db.path(), "/pkg/sitemap-gem.xml")
+            dynamic_response_for_path(db.path(), "/pkg/sitemap-gem.xml", &db.path().with_extension("feed"))
                 .expect("query")
                 .is_none()
         );
