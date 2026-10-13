@@ -2,9 +2,99 @@ id: cask:babeledit
 display-name: BabelEdit
 homepage: https://www.codeandweb.com/babeledit
 repo: null
+docs:
+  - https://www.codeandweb.com/babeledit/documentation
+  - https://www.codeandweb.com/babeledit/documentation/framework-selection
+  - https://www.codeandweb.com/babeledit/documentation/machine-translation
+  - https://www.codeandweb.com/babeledit/documentation/project-configuration
+config-file-location:
+  linux: <project>.babel
+  macos: <project>.babel
+  windows: <project>.babel
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      BabelEdit is distributed as a desktop application for macOS, Windows, and Linux.
+      Its adoption is centered on application-development teams that keep translations
+      in their source tree and want to edit all language files together.
+    - >
+      The release archive shows sustained development from at least the 1.6 series in
+      2018 through major releases that added Flatpak distribution, more frameworks,
+      package-based multi-file projects, PO files, source-code extraction, and
+      additional machine-translation services.
+  package-nerd-significance:
+    - >
+      BabelEdit is notable for treating localization files as project assets rather than
+      importing them into a hosted translation platform. Its portable `.babel` project
+      file can be checked into version control while translations remain in their native
+      framework files.
+  project-history:
+    - >
+      CodeAndWeb developed BabelEdit as a cross-platform translation editor for
+      structured application-localization files. It grew from JSON-centered workflows
+      into support for Angular, React, Vue, Flutter, gettext, i18next, Laravel, .NET,
+      Ruby on Rails, Svelte, generic JSON and YAML, and related formats.
+    - >
+      The editor added translation memory, spelling and consistency tools, source-code
+      references and key extraction, approval tracking, and machine translation backed
+      by multiple services.
+  related-projects:
+    - >
+      BabelEdit directly supports localization formats and conventions used by Angular,
+      React, Vue, Flutter, gettext, i18next, Laravel, .NET, Ruby on Rails, and Svelte.
+  sources:
+    - >
+      Official framework guide:
+      https://www.codeandweb.com/babeledit/documentation/framework-selection
+    - 'Official product page: https://www.codeandweb.com/babeledit'
+    - >
+      Official project-file guide:
+      https://www.codeandweb.com/babeledit/documentation/project-configuration
+    - 'Official release archive: https://www.codeandweb.com/babeledit/download'
+  summary:
+    - >
+      BabelEdit is CodeAndWeb's cross-platform desktop editor for maintaining
+      application translations across many frameworks and structured file formats.
+  timeline:
+    - '2018-11-12: The official release archive records BabelEdit 1.6.4.'
+    - >
+      2020: Linux Flatpak distribution and additional framework and machine-translation
+      support appeared in the 2.x line.
+    - >
+      2022: BabelEdit 4 introduced package support for multiple independent
+      translation-file sets.
+    - '2024: BabelEdit added gettext PO support and OpenAI-assisted translation features.'
+  usage:
+    - >
+      Open or create a localization project, add its language files, configure the
+      source language and file format, and edit corresponding translations together.
+    - >
+      BabelEdit stores comments, approval flags, language-file references, and other
+      project settings in a user-selected `.babel` file; the translations themselves
+      remain in the original localization files.
+related-packages:
+  - id: cask:poedit
+    reason: >
+      Choose Poedit for a translation editor with especially established gettext/PO
+      workflows and cloud-localization integrations; choose BabelEdit for
+      framework-oriented projects spanning formats such as Angular, React, Vue, Laravel,
+      and generic JSON or YAML.
+    rel: alternative
+    sources:
+      - https://www.codeandweb.com/babeledit/documentation/framework-selection
+      - https://poedit.com/features/
+      - https://poedit.com/docs/get-started/translate-files/
+category: developer-tools
 package-manager:
   brew-cask: babeledit
 package-manager-url: https://formulae.brew.sh/cask/babeledit
+tags:
+  - cross-platform
+  - i18n
+  - localization
+  - machine-translation
+  - translation-editor
 description: Translation editor
 applications:
   - BabelEdit.app

@@ -1,0 +1,120 @@
+id: cask:nextdns-app
+display-name: NextDNS
+repo: null
+docs:
+  - https://github.com/nextdns/nextdns/wiki/MacOS
+  - https://help.nextdns.io/
+  - https://nextdns.io/
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      NextDNS expanded from a configurable encrypted-DNS service into device and network
+      clients. The official macOS guide presents both a graphical app and the
+      open-source CLI, letting users choose between a menu-bar workflow and a host or
+      router daemon.
+    - >
+      The service's device-independent filtering model encouraged use across phones,
+      computers, home networks, and routers: a single profile can control security,
+      privacy, advertising, tracker, and parental-control policies.
+  package-nerd-significance:
+    - >
+      NextDNS sits between a public recursive resolver and a self-hosted blocker: policy
+      is managed by the service, while clients encrypt DNS traffic and associate it with
+      a configuration profile. The macOS cask packages the simple GUI path; the
+      separately packaged CLI exposes router, cache, split-horizon, and
+      service-management capabilities.
+  project-history:
+    - >
+      NextDNS was founded in May 2019 by Romain Cointepas and Olivier Poitrey. It was
+      positioned as a privacy-oriented, policy-aware DNS service intended to reduce
+      reliance on unencrypted ISP resolvers without further centralizing DNS among only
+      the largest public providers.
+    - >
+      The macOS application provides a graphical client for selecting a NextDNS
+      configuration and connecting the system through the service. It coexists with the
+      open-source NextDNS CLI, which targets routers and Unix-like systems while also
+      supporting macOS and Windows.
+  related-projects:
+    - >
+      The open-source NextDNS CLI is an alternative client for the same service and is
+      documented alongside the graphical macOS application.
+  sources:
+    - 'Official CLI repository: https://github.com/nextdns/nextdns'
+    - 'Official founder history: https://help.nextdns.io/t/y4hmv0n/who-is-behind-nextdns'
+    - 'Official macOS guide: https://github.com/nextdns/nextdns/wiki/MacOS'
+    - 'Official service page: https://nextdns.io/'
+  summary:
+    - >
+      NextDNS for macOS is the graphical client for NextDNS's encrypted,
+      policy-controlled DNS service, including security, advertising, and tracker
+      blocking.
+  timeline:
+    - '2019-05: NextDNS was founded by Romain Cointepas and Olivier Poitrey.'
+    - >
+      2020: The official macOS guide documented both the graphical application and the
+      CLI installation path.
+  usage:
+    - >
+      Install the app, open Preferences, enter the profile's configuration ID as a
+      custom configuration, and connect from the app menu.
+    - >
+      Filtering rules, allowlists, denylists, privacy controls, security protections,
+      logs, and parental controls are managed through the associated NextDNS profile.
+related-packages:
+  - id: brew:nextdns
+    reason: >
+      Choose the NextDNS CLI instead when you need an open-source client, router or
+      server deployment, local caching, conditional profiles, or service-level
+      configuration; the macOS app offers the simpler graphical
+      connect-and-select-profile workflow.
+    rel: alternative
+    sources:
+      - https://github.com/nextdns/nextdns/wiki/MacOS
+      - https://github.com/nextdns/nextdns
+      - https://github.com/nextdns/nextdns/wiki/Configuration
+tags:
+  - ad-blocking
+  - dns
+  - dns-over-https
+  - encrypted-dns
+  - macos
+  - privacy
+  - security
+  - tracker-blocking
+provenance:
+  category-sources:
+    - 'Official macOS guide: https://github.com/nextdns/nextdns/wiki/MacOS'
+    - 'Official service page describes DNS-level security and blocking: https://nextdns.io/'
+    - source_facts.description
+  display-name-sources:
+    - 'Official product name: https://nextdns.io/'
+    - >
+      The official macOS guide calls it the official app:
+      https://github.com/nextdns/nextdns/wiki/MacOS
+  docs-sources:
+    - Official NextDNS macOS setup guide, help center, and product site.
+  history-sources:
+    - 'Official CLI repository: https://github.com/nextdns/nextdns'
+    - 'Official founder history: https://help.nextdns.io/t/y4hmv0n/who-is-behind-nextdns'
+    - 'Official macOS guide: https://github.com/nextdns/nextdns/wiki/MacOS'
+    - 'Official service page: https://nextdns.io/'
+  repo-sources:
+    - >
+      The official macOS documentation links the app separately from the open-source
+      `nextdns/nextdns` CLI and does not identify a public repository for the GUI
+      application: https://github.com/nextdns/nextdns/wiki/MacOS
+  tags-sources:
+    - 'Official macOS guide: https://github.com/nextdns/nextdns/wiki/MacOS'
+    - 'Official service page: https://nextdns.io/'
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - dns
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: medium
+tags-confidence: high

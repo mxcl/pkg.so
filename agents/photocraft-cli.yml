@@ -1,0 +1,124 @@
+id: brew:photocraft-cli
+display-name: PhotoCraft CLI
+repo: null
+docs:
+  - https://github.com/storytold/photocraft/blob/main/docs/control-protocol.md
+  - https://github.com/storytold/photocraft#readme
+  - https://github.com/storytold/photocraft/blob/main/book/src/automation/cli.md
+  - https://github.com/storytold/photocraft/blob/main/book/src/automation/overview.md
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      PhotoCraft CLI is distributed beside the desktop application for macOS, Linux, and
+      Windows. It remains part of an early-alpha project, with upstream explicitly
+      asking users to expect rough edges and report problems.
+  package-nerd-significance:
+    - >
+      The package exposes the same Rust image engine used by PhotoCraft's GUI through
+      one-shot commands, batch actions, a persistent JSON-lines server, and MCP. That
+      combination makes a layered image editor available to shell scripts and software
+      agents without requiring a desktop session.
+  project-history:
+    - >
+      PhotoCraft was created by the ArtCraft team as a native, open-source image editor
+      written in Rust. Its engine-first architecture makes commands shared among the
+      desktop interface, headless CLI, local control channel, and MCP server.
+    - >
+      Public releases in 2026 developed the project from an early layered-image editor
+      into a broader PSD/PSB workflow with batch automation, CPU and GPU compositors,
+      and a public roadmap measuring progress toward Photoshop-compatible workflows.
+  related-projects:
+    - >
+      PhotoCraft CLI and the PhotoCraft desktop application are separate workspace
+      applications over the same command engine.
+    - PhotoCraft belongs to ArtCraft's family of Rust-based creative applications.
+  sources:
+    - >
+      Official CLI guide:
+      https://github.com/storytold/photocraft/blob/main/book/src/automation/cli.md
+    - >
+      Official automation overview:
+      https://github.com/storytold/photocraft/blob/main/book/src/automation/overview.md
+    - 'Official releases: https://github.com/storytold/photocraft/releases'
+    - 'Official repository README: https://github.com/storytold/photocraft#readme'
+    - 'Official roadmap: https://github.com/storytold/photocraft/blob/main/docs/roadmap.md'
+  summary:
+    - >
+      PhotoCraft CLI is the headless command-line, JSON-lines, and MCP interface to
+      PhotoCraft's native Rust image-editing engine.
+  timeline:
+    - >
+      2026: PhotoCraft's first public release series appeared while the project was
+      still described as early alpha.
+    - '2026: The CLI documented convert, info, run, batch, droplet, server, and MCP workflows.'
+  usage:
+    - >
+      Use `convert` for format conversion, `info` for machine-readable document
+      inspection, `run` for command-driven edits, and `batch` for applying an action
+      list to a directory.
+    - >
+      Long-lived automation can use the JSON-lines server or MCP; upstream recommends
+      one-shot commands or stdio MCP when a TCP listener is unnecessary.
+related-packages:
+  - id: brew:imagemagick
+    reason: >
+      Choose ImageMagick for mature, broadly scriptable conversion and manipulation
+      across more than 100 formats; choose PhotoCraft CLI when layered PSD/PSB editing
+      or shared GUI, JSON-lines, and MCP commands matter.
+    rel: alternative
+    sources:
+      - https://github.com/storytold/photocraft/blob/main/book/src/automation/cli.md
+      - https://imagemagick.org/command-line-tools/
+      - https://imagemagick.com/formats/
+tags:
+  - automation
+  - batch-processing
+  - cli
+  - image-conversion
+  - image-editing
+  - mcp
+  - psd
+  - rust
+provenance:
+  category-sources:
+    - >
+      Official CLI documentation describes image conversion, inspection, command
+      execution, and batch processing:
+      https://github.com/storytold/photocraft/blob/main/book/src/automation/cli.md
+  display-name-sources:
+    - >
+      Official documentation names the executable and workspace application
+      `photocraft-cli`:
+      https://github.com/storytold/photocraft/blob/main/book/src/automation/cli.md
+  docs-sources:
+    - >
+      Official command-line guide, automation overview, control-protocol reference, and
+      repository README.
+  history-sources:
+    - >
+      Official CLI guide:
+      https://github.com/storytold/photocraft/blob/main/book/src/automation/cli.md
+    - >
+      Official automation overview:
+      https://github.com/storytold/photocraft/blob/main/book/src/automation/overview.md
+    - 'Official releases: https://github.com/storytold/photocraft/releases'
+    - 'Official repository README: https://github.com/storytold/photocraft#readme'
+    - 'Official roadmap: https://github.com/storytold/photocraft/blob/main/docs/roadmap.md'
+  repo-sources:
+    - source_facts.repo is already populated, so the repository was not re-determined.
+  tags-sources:
+    - >
+      Official CLI guide:
+      https://github.com/storytold/photocraft/blob/main/book/src/automation/cli.md
+    - 'Official repository README: https://github.com/storytold/photocraft#readme'
+category-confidence: high
+category-path:
+  - media
+  - image-processing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

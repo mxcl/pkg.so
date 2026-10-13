@@ -8,24 +8,76 @@ config-file-location:
   unix: config.yaml
 credentials-file-location: null
 history:
-  - >
-    Podcast Archiver is a Codeberg-hosted Python command-line project by janw for saving
-    podcast episodes from RSS feeds and podcast-platform links. Its README frames the
-    project around long-term local archives: given feed URLs, it downloads the available
-    episodes, including episodes exposed through paged feeds, and can update an existing
-    archive.
-  - >
-    The tool sits in the self-hosting and personal-media preservation corner of the
-    podcast ecosystem rather than in playback. Practitioners use it to build disk
-    archives with predictable filenames, metadata sidecars, YAML configuration,
-    environment variables, dry-run checks, and feed inputs from services such as Apple
-    Podcasts, Overcast, Castro, Pocket Casts, SoundCloud, local files, or raw RSS URLs.
-  - >
-    Distribution reflects that operations-friendly role. The project documents
-    installation through pipx, Homebrew, and Docker, and the Homebrew formula packages
-    the `podcast-archiver` executable for macOS and Linux users. It is commonly run
-    manually for one-off preservation, from cron with a config file, or as a container
-    in continuous mode that refreshes feeds and writes into a mounted archive directory.
+  adoption-history:
+    - >
+      The project documents pipx, Homebrew, and container installation. Its
+      cron-friendly configuration and continuous container mode place it in the
+      self-hosting and personal-media-preservation niche rather than the podcast-player
+      market.
+    - >
+      The original `janw/podcast-archiver` GitHub repository was archived in October
+      2025. The package's supplied official homepage now points to the Codeberg project
+      under `hausgeist`.
+  package-nerd-significance:
+    - >
+      Podcast Archiver turns RSS subscriptions into ordinary local media and metadata,
+      making archives portable and independent of a particular listening application.
+      Configuration through command arguments, environment variables, or YAML suits cron
+      jobs and containers.
+  project-history:
+    - >
+      Podcast Archiver began as a Python command-line program for downloading every
+      available episode from one or more podcast feeds, including episodes exposed
+      through paginated feeds. Later documentation added platform-link resolution,
+      filename templates, metadata sidecars, dry runs, and continuous refresh operation.
+  related-projects:
+    - >
+      The project accepts raw RSS feeds and links from services including Apple
+      Podcasts, Overcast, Castro, Pocket Casts, and SoundCloud.
+    - >
+      Its documented container workflow stores downloaded episodes in a mounted archive
+      directory.
+  sources:
+    - 'Active official repository: https://codeberg.org/hausgeist/podcast-archiver'
+    - 'Official Homebrew formula page: https://formulae.brew.sh/formula/podcast-archiver'
+    - 'Original official README: https://github.com/janw/podcast-archiver/blob/main/README.md'
+  summary:
+    - >
+      Podcast Archiver is a Python command-line utility for building and incrementally
+      updating local archives of podcast episodes.
+  timeline:
+    - '2025-10-30: The original GitHub repository was archived by its owner.'
+    - "2026: The package's supplied homepage points to the Codeberg project under `hausgeist`."
+  usage:
+    - >
+      Pass feeds directly for one-off downloads, or use a YAML file to maintain a
+      repeatable archive configuration. `--dry-run` checks feed discovery without
+      downloading media.
+    - >
+      For unattended use, run it periodically from cron or enable continuous mode in a
+      container with the archive directory mounted from the host.
+related-packages:
+  - id: brew:podcast-dl
+    reason: >
+      Choose podcast-dl when you want a Node.js archiver with a persistent JSON archive,
+      transcript and image handling, filters, and ffmpeg post-processing; Podcast
+      Archiver emphasizes YAML, environment-variable, cron, and continuous-container
+      workflows.
+    rel: alternative
+    sources:
+      - https://github.com/janw/podcast-archiver/blob/main/README.md
+      - https://github.com/lightpohl/podcast-dl#readme
+      - https://github.com/lightpohl/podcast-dl/tree/main/docs
+  - id: brew:castget
+    reason: >
+      Choose castget for a small traditional Unix RSS-enclosure downloader configured
+      through `~/.castgetrc`, ID3 tagging, and playlists; Podcast Archiver provides
+      newer feed-link resolution, YAML, and container-oriented operation.
+    rel: alternative
+    sources:
+      - https://github.com/janw/podcast-archiver/blob/main/README.md
+      - https://castget.johndal.com/
+      - https://castget.johndal.com/castgetrc.5.html
 category: media
 package-manager:
   brew: podcast-archiver
