@@ -3,7 +3,9 @@ display-name: ADR Tools
 repo: null
 docs:
   - https://github.com/npryce/adr-tools#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ./.adr-dir
 credentials-file-location: null
 history:
   adoption-history:
@@ -82,6 +84,31 @@ history:
       other text change, and link or supersede older decisions as architecture changes.
       Generated graphs and tables of contents make it useful beyond the first few
       records.
+related-packages:
+  - id: brew:adrs
+    reason: >
+      Choose adrs for a cross-platform Rust binary with adr-tools compatibility,
+      additional formats, search, health checks, import/export, and MCP support.
+    rel: alternative
+    sources:
+      - https://github.com/npryce/adr-tools#readme
+      - https://joshrotenberg.com/adrs/
+  - id: brew:adr-viewer
+    reason: >
+      adr-viewer complements ADR Tools by rendering its default doc/adr Markdown
+      collection as static HTML or a local web page.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/npryce/adr-tools#readme
+      - https://github.com/mrwilson/adr-viewer#readme
+  - id: brew:graphviz
+    reason: >
+      ADR Tools emits decision-history and relationship diagrams in Graphviz format,
+      which Graphviz can render into visual outputs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/npryce/adr-tools/releases
+      - https://graphviz.org/documentation/
 tags:
   - adr
   - architecture-decisions

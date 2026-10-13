@@ -49,6 +49,32 @@ history:
       Users initialize an ADR repository, create decisions, list and search records,
       update status, link ADRs, generate documentation, and export or import JSON-ADR
       data.
+related-packages:
+  - id: brew:adr-tools
+    reason: >
+      Choose ADR Tools for the original lightweight shell workflow; choose adrs for a
+      cross-platform Rust binary with compatibility plus search, validation, formats,
+      import/export, and MCP features.
+    rel: alternative
+    sources:
+      - https://joshrotenberg.com/adrs/
+      - https://github.com/npryce/adr-tools#readme
+  - id: brew:graphviz
+    reason: >
+      adrs generate graph emits a Graphviz diagram, which Graphviz can render into an
+      image or document artifact.
+    rel: adjacent_workflow
+    sources:
+      - https://joshrotenberg.com/adrs/commands/cheatsheet.html
+      - https://graphviz.org/documentation/
+  - id: brew:mdbook
+    reason: >
+      adrs generate book creates mdBook input, after which mdBook can build or serve the
+      generated ADR documentation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/joshrotenberg/adrs#readme
+      - https://rust-lang.github.io/mdBook/
 category: developer-tools
 package-manager:
   brew: adrs
