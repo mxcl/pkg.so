@@ -2,9 +2,83 @@ id: cask:readwise-ibooks
 display-name: Readwise iBooks
 homepage: https://readwise.io/ibooks
 repo: null
+docs:
+  - https://docs.readwise.io/readwise/docs/importing-highlights/apple-books
+  - https://readwise.io/ibooks
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The helper is part of Readwise's broader import system, which consolidates
+      highlights from Apple Books, Kindle, Kobo, physical books, and other reading
+      sources into a central Readwise library.
+  package-nerd-significance:
+    - >
+      The package is a narrowly scoped vendor integration: it bridges Apple Books' local
+      macOS data with a hosted knowledge-management service, providing a packaged
+      solution for an otherwise awkward data-transfer problem.
+  project-history:
+    - >
+      Readwise created the macOS tool because Apple Books highlights are harder to
+      import automatically than highlights from some other reading platforms. The
+      official guide also retains an email-based workflow for iPhone and iPad users.
+  related-projects:
+    - Readwise stores, reviews, and exports the imported highlights.
+    - >
+      Readwise Reader is the vendor's reading application and automatically synchronizes
+      its highlights with Readwise.
+  sources:
+    - https://docs.readwise.io/get-started/app-relationship
+    - https://docs.readwise.io/readwise/docs/importing-highlights
+    - https://docs.readwise.io/readwise/docs/importing-highlights/apple-books
+  summary:
+    - >
+      Readwise iBooks is Readwise's macOS helper for importing highlights from Apple
+      Books into a Readwise account.
+  timeline:
+    - >
+      Current workflow: Readwise documents both the macOS helper and a mobile
+      email-import path for Apple Books highlights.
+  usage:
+    - >
+      Install and run the Mac tool, authenticate with Readwise, and let it import
+      highlights from the Apple Books database. If synchronization stalls, Readwise
+      recommends opening Apple Books to refresh its local data and then using Resync in
+      the helper.
+    - >
+      The helper requires macOS Big Sur or newer and cannot import highlights made in
+      PDFs inside Apple Books. Readwise recommends Reader or another PDF-highlighting
+      workflow for that case.
+related-packages:
+  - id: cask:reader
+    reason: >
+      Choose Readwise Reader when you want to read and highlight PDFs or EPUBs directly;
+      its highlights synchronize automatically with Readwise, while the Apple Books
+      helper only imports supported Apple Books highlights.
+    rel: alternative
+    sources:
+      - https://docs.readwise.io/readwise/docs/importing-highlights/apple-books
+      - https://docs.readwise.io/get-started/app-relationship
+  - id: brew:readwise-cli
+    reason: >
+      Use the official Readwise CLI after importing to search, read, organize, and
+      export the resulting Readwise highlight library from scripts or a terminal.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.readwise.io/tools/cli
+      - https://docs.readwise.io/readwise/docs/importing-highlights/apple-books
+category: productivity
 package-manager:
   brew-cask: readwise-ibooks
 package-manager-url: https://formulae.brew.sh/cask/readwise-ibooks
+tags:
+  - apple-books
+  - ebook-highlights
+  - highlight-import
+  - knowledge-management
+  - macos
+  - readwise
 description: Import highlights from Apple Books to Readwise
 applications:
   - Readwise_iBooks.app

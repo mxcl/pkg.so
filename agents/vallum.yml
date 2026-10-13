@@ -1,0 +1,122 @@
+id: cask:vallum
+display-name: Vallum
+repo: null
+docs:
+  - https://help.vallumfirewall.com/
+  - https://help.vallumfirewall.com/index.php?chapter=rulesets
+  - https://www.vallumfirewall.com/releasenotes.php
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Vallum follows macOS's security-platform evolution. The fourth generation replaced
+      its older kernel-extension design with a System Extension and Network Extension
+      content filter suitable for newer macOS releases.
+    - >
+      Later releases continued adapting the firewall to new macOS generations while
+      preserving migration of user configuration between major Vallum releases.
+  package-nerd-significance:
+    - >
+      Vallum is part of the distinctly macOS ecosystem of per-application outbound
+      firewalls. Package users care about it because installation includes privileged
+      network-filter approval and because firewall rules persist beyond ordinary
+      application-launch behavior.
+  project-history:
+    - >
+      The Murus Team developed Vallum as an application-layer macOS firewall that
+      associates inbound and outbound network flows with applications and evaluates them
+      against ordered rules.
+    - >
+      Vallum 4 first appeared in 2021 with a self-contained application and a
+      macOS-managed System Extension. Vallum 5 subsequently migrated Vallum 4
+      configurations and continued the modern extension-based architecture.
+  related-projects:
+    - >
+      The Murus Team also develops Murus, a graphical front end for macOS's lower-level
+      PF packet filter.
+    - >
+      Apple's Network Extension framework supplies the filtering mechanism used by
+      modern Vallum releases.
+  sources:
+    - https://help.vallumfirewall.com/
+    - https://help.vallumfirewall.com/index.php?chapter=installandupgrade
+    - https://help.vallumfirewall.com/index.php?chapter=rulesets
+    - https://www.vallumfirewall.com/releasenotes.php
+  summary:
+    - >
+      Vallum is a macOS application-layer firewall that monitors application traffic and
+      applies inbound and outbound allow, block, or interactive rules.
+  timeline:
+    - '2021: Vallum 4 is first released using the modern macOS extension architecture.'
+    - '2024: Vallum 5 introduces a new major generation and migrates Vallum 4 configuration.'
+    - '2025: Vallum 5 continues adding macOS compatibility and system integration.'
+  usage:
+    - >
+      By default, Vallum can hold an unmatched connection and display an alert so the
+      user can pass or block it. Users may instead configure inclusive or exclusive
+      behavior and build persistent or temporary rules.
+    - >
+      Rules can match applications or process groups, addresses, hostnames, ports,
+      protocols, users, network conditions, and Wi-Fi context. Ordered inbound and
+      outbound rulesets determine the final verdict for each flow.
+related-packages:
+  - id: cask:lulu
+    reason: >
+      Choose LuLu when you want a free, open-source macOS firewall focused on alerting
+      about and blocking unknown outbound connections; Vallum additionally documents
+      inbound rules and more elaborate rule conditions.
+    rel: alternative
+    sources:
+      - https://objective-see.org/products/lulu.html
+      - https://help.vallumfirewall.com/index.php?chapter=rulesets
+      - https://help.vallumfirewall.com/index.php?chapter=ruleformat
+  - id: cask:little-snitch
+    reason: >
+      Choose Little Snitch when long-term traffic history, visual network monitoring,
+      profiles, and curated blocklists are priorities; Vallum centers on configurable
+      inbound and outbound application rules.
+    rel: alternative
+    sources:
+      - https://www.obdev.at/products/littlesnitch/index.html
+      - https://help.vallumfirewall.com/index.php?chapter=rulesets
+tags:
+  - application-firewall
+  - connection-control
+  - inbound-firewall
+  - macos
+  - network-filter
+  - outbound-firewall
+  - privacy
+provenance:
+  category-sources:
+    - https://help.vallumfirewall.com/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.vallumfirewall.com/
+  docs-sources:
+    - Official Vallum help site.
+    - Official release notes.
+    - Official ruleset documentation.
+  history-sources:
+    - https://help.vallumfirewall.com/
+    - https://help.vallumfirewall.com/index.php?chapter=installandupgrade
+    - https://help.vallumfirewall.com/index.php?chapter=rulesets
+    - https://www.vallumfirewall.com/releasenotes.php
+  repo-sources:
+    - source_facts.repo
+  tags-sources:
+    - https://help.vallumfirewall.com/
+    - https://help.vallumfirewall.com/index.php?chapter=rulesets
+    - source_facts.description
+category-confidence: high
+category-path:
+  - security
+  - firewalls
+  - application-firewall
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -1,0 +1,124 @@
+id: cask:sacnview
+display-name: sACNView
+repo: null
+docs:
+  - https://github.com/docsteer/sacnview#readme
+  - https://sacnview.org/documentation.html
+  - https://sacnview.org/
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The current cross-platform application supports Windows, macOS, and Debian-based
+      Linux, making specialist E1.31 monitoring and test functions available beyond
+      dedicated lighting-console hardware.
+    - >
+      Its workflow spans live monitoring and transmission as well as saved packet
+      captures, allowing technicians to move between on-site observation and
+      reproducible offline diagnosis.
+  package-nerd-significance:
+    - >
+      sACNView packages entertainment-lighting protocol expertise into a portable
+      desktop utility. It is especially useful to network and lighting technicians who
+      need to inspect sources, priorities, sequence errors, universe discovery, and
+      channel levels without a full lighting console.
+  project-history:
+    - >
+      The original sACNView was written in Borland Delphi. The project's current 'mark
+      2' generation replaced it with a C++ and Qt implementation, using sACN reception
+      code from Electronic Theatre Controls.
+    - >
+      The project continued to broaden from basic universe viewing into transmission,
+      oscilloscope, snapshot, multi-universe, logging, discovery, and PCAP-playback
+      workflows.
+  related-projects:
+    - >
+      ANSI E1.31, commonly called Streaming ACN, is the network lighting protocol
+      sACNView monitors and transmits.
+    - >
+      USITT DMX512-A is the lighting-data model closely related to the DMX-like streams
+      carried by E1.31.
+    - Wireshark and libpcap participate in its packet-capture workflow.
+  sources:
+    - https://github.com/docsteer/sacnview
+    - https://github.com/docsteer/sacnview/releases
+    - https://sacnview.org/
+    - https://sacnview.org/documentation.html
+  summary:
+    - >
+      sACNView is a cross-platform graphical tool for viewing, monitoring, testing, and
+      transmitting ANSI E1.31 Streaming ACN lighting-control data.
+  timeline:
+    - 'Original generation: sACNView is implemented in Borland Delphi.'
+    - 'Mark 2: The original application is superseded by a C++ and Qt rewrite.'
+    - >
+      Later releases: Snapshot playback, PCAP playback, discovery, multi-universe
+      transmission, and broader diagnostic views expand the tool's scope.
+  usage:
+    - >
+      Use its universe and scope views to inspect live sources, priorities, channel
+      levels, packet rates, dropped or out-of-order data, and intermittent changes. Its
+      transmitters and snapshot functions can generate levels or temporarily stand in
+      for offline control equipment.
+    - >
+      The PCAP playback tool can reproduce captured Streaming ACN traffic, while logging
+      and pause controls support investigation of intermittent lighting-network faults.
+related-packages:
+  - id: brew:ola
+    reason: >
+      Choose Open Lighting Architecture when you need a daemon, command-line tools,
+      APIs, or protocol bridging around E1.31; choose sACNView for an interactive
+      graphical analyzer and test transmitter.
+    rel: alternative
+    sources:
+      - https://www.openlighting.org/ola/getting-started/command-line-tools/
+      - https://docs.openlighting.org/ola/conf/ola-e131.conf.html
+      - https://sacnview.org/documentation.html
+  - id: cask:wireshark-app
+    reason: >
+      Capture E1.31 traffic with Wireshark and replay the resulting PCAP in sACNView to
+      reproduce and diagnose lighting-network conditions offline.
+    rel: adjacent_workflow
+    sources:
+      - https://sacnview.org/documentation.html
+      - https://www.wireshark.org/docs/wsug_html/
+tags:
+  - dmx
+  - e1-31
+  - lighting-control
+  - network-monitoring
+  - protocol-analysis
+  - sacn
+provenance:
+  category-sources:
+    - https://sacnview.org/
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://sacnview.org/
+  docs-sources:
+    - Official project website.
+    - Official repository README.
+    - Official sACNView user documentation.
+  history-sources:
+    - https://github.com/docsteer/sacnview
+    - https://github.com/docsteer/sacnview/releases
+    - https://sacnview.org/
+    - https://sacnview.org/documentation.html
+  repo-sources:
+    - source_facts.repo
+  tags-sources:
+    - https://sacnview.org/
+    - https://sacnview.org/documentation.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - lighting-control
+  - protocol-analysis
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

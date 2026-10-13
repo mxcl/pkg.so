@@ -53,6 +53,24 @@ history:
       program streams. Typical use is running a52dec against an AC-3/A52 file, with
       options for multiplexed streams, output layer selection, optimization control, and
       dynamic range compression.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Choose FFmpeg when you need AC-3 decoding inside a broad conversion, filtering,
+      probing, or remuxing toolkit; choose a52dec for a small dedicated decoder and
+      liba52 implementation.
+    rel: alternative
+    sources:
+      - https://ffmpeg.org/ffmpeg-codecs.html
+      - https://git.adelielinux.org/community/a52dec/-/raw/current/README
+  - id: brew:aften
+    reason: >
+      Use Aften to encode PCM audio into ATSC A/52 streams and a52dec to decode or test
+      those AC-3 streams in a complementary round-trip workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://aften.sourceforge.net/
+      - https://git.adelielinux.org/community/a52dec/-/raw/current/README
 tags:
   - ac3
   - atsc-a52
