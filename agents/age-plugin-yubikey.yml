@@ -66,6 +66,31 @@ history:
       The README documents platform dependencies such as `pcscd` and `pcsc-lite`, WSL
       usage, PIN-cache behavior, supported YubiKey 4 and 5 variants, PIV slot details,
       and security management for default PIN and management-key handling.
+related-packages:
+  - id: brew:age
+    reason: >
+      Use age as the reference encryption client that discovers age-plugin-yubikey on
+      PATH and encrypts or decrypts with its YubiKey recipients and identities.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/FiloSottile/age/blob/main/README.md
+      - https://github.com/str4d/age-plugin-yubikey#readme
+  - id: brew:rage
+    reason: >
+      Use rage when you prefer the interoperable Rust age client; its official
+      documentation explicitly supports age-plugin-yubikey.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/str4d/rage#readme
+      - https://github.com/str4d/age-plugin-yubikey#readme
+  - id: brew:age-plugin-se
+    reason: >
+      Choose age-plugin-se instead when decryption should be bound to a Mac's Secure
+      Enclave and protected by Touch ID or a passcode rather than a removable YubiKey.
+    rel: alternative
+    sources:
+      - https://github.com/remko/age-plugin-se#readme
+      - https://github.com/str4d/age-plugin-yubikey#readme
 tags:
   - age
   - cli
