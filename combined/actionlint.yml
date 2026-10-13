@@ -66,6 +66,42 @@ history:
       it auto-detects workflow files. Optional configuration files live at
       .github/actionlint.yaml or .github/actionlint.yml, mainly for self-hosted runner
       labels, repository variables, and path-specific ignores.
+related-packages:
+  - id: brew:action-validator
+    reason: >
+      Choose action-validator for schema-oriented validation of both action metadata and
+      workflow files, including repository path-glob checks; choose actionlint for
+      deeper workflow expression, reusable-workflow, script, and security analysis.
+    rel: alternative
+    sources:
+      - https://github.com/rhysd/actionlint#readme
+      - https://github.com/mpalmer/action-validator#readme
+  - id: brew:actions-languageserver
+    reason: >
+      Use the GitHub Actions Language Server for interactive editor completion and
+      diagnostics, then run actionlint locally or in CI for a dedicated static-analysis
+      gate.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/actions/languageservices/tree/main/languageserver#readme
+      - https://github.com/rhysd/actionlint#readme
+  - id: brew:shellcheck
+    reason: >
+      actionlint explicitly invokes ShellCheck to analyze shell scripts embedded in
+      workflow run steps, so installing ShellCheck enables that additional diagnostic
+      layer.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rhysd/actionlint#readme
+      - https://github.com/koalaman/shellcheck#readme
+  - id: brew:pre-commit
+    reason: >
+      actionlint publishes an official pre-commit hook, allowing pre-commit to reject
+      invalid GitHub Actions workflows before they enter repository history.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rhysd/actionlint/blob/main/docs/usage.md
+      - https://pre-commit.com/
 category: developer-tools
 package-manager:
   apk: actionlint

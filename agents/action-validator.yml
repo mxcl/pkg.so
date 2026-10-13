@@ -51,6 +51,34 @@ history:
       The core workflow is to pass one or more GitHub workflow or action YAML files to
       action-validator. The README also shows pre-commit hook usage, npx usage, a Node
       API, and running the validator inside GitHub Actions.
+related-packages:
+  - id: brew:actionlint
+    reason: >
+      Choose actionlint when you need deeper GitHub Actions workflow analysis—including
+      expression typing, reusable-workflow checks, and embedded ShellCheck—while
+      action-validator emphasizes schema and repository-glob validation and also accepts
+      action metadata files.
+    rel: alternative
+    sources:
+      - https://github.com/mpalmer/action-validator#readme
+      - https://github.com/rhysd/actionlint#readme
+  - id: brew:pre-commit
+    reason: >
+      action-validator publishes an official pre-commit hook, so pre-commit can run its
+      YAML validation automatically before changes are committed.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mpalmer/action-validator#using-pre-commit
+      - https://pre-commit.com/
+  - id: brew:action-docs
+    reason: >
+      After action-validator checks an action or reusable-workflow definition, Action
+      docs can generate synchronized Markdown documentation from that same YAML
+      metadata.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mpalmer/action-validator#readme
+      - https://github.com/npalm/action-docs#readme
 tags:
   - cli
   - github-actions
