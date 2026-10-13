@@ -56,6 +56,23 @@ history:
       Developers use Arabica as a C++ library for SAX2 event parsing, DOM manipulation,
       XPath evaluation, XSLT processing, and HTML/XML tooling. The Homebrew package also
       exposes the `mangle` executable.
+related-packages:
+  - id: brew:libxml2
+    reason: >
+      Arabica can use libxml2 as its underlying XML parser, so install it when building
+      Arabica with that backend.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jezhiggins/arabica
+      - https://gnome.pages.gitlab.gnome.org/libxml2/devhelp/
+  - id: brew:xerces-c
+    reason: >
+      Arabica provides SAX2 wrappers for Xerces-C++, making Xerces-C++ a supported
+      parser backend when its validation and XML facilities are preferred.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jezhiggins/arabica
+      - https://xerces.apache.org/xerces-c/
 category: developer-tools
 package-manager:
   brew: arabica
