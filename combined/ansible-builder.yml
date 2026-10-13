@@ -82,6 +82,23 @@ history:
       than a user dotfile. Credentials are not normally owned by ansible-builder itself;
       registry logins, Galaxy credentials, and automation secrets live in the
       surrounding container or Ansible tooling.
+related-packages:
+  - id: brew:ansible
+    reason: >
+      Ansible Builder packages ansible-core, collections, Python libraries, and system
+      dependencies into an execution environment in which Ansible automation can run.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/builder/en/stable/
+      - https://docs.ansible.com/projects/ansible/latest/index.html
+  - id: brew:ansible-creator
+    reason: >
+      Ansible Creator can scaffold an execution-environment project and its definition
+      file, which Ansible Builder then turns into a container image.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/creator/installing/
+      - https://docs.ansible.com/projects/builder/en/stable/
 category: cloud-infrastructure
 package-manager:
   brew: ansible-builder

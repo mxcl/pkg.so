@@ -72,6 +72,31 @@ history:
       For VS Code users it is bundled into the Red Hat Ansible extension experience; for
       terminal-editor users, the packaged `ansible-language-server` executable is the
       useful artifact.
+related-packages:
+  - id: brew:ansible-lint
+    reason: >
+      Ansible Language Server runs ansible-lint in the background to present lint
+      findings as editor diagnostics, unless lint support is disabled.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/vscode-ansible/als/
+      - https://docs.ansible.com/projects/lint/usage/
+  - id: brew:ansible
+    reason: >
+      The language server requires a local Ansible installation and uses its modules and
+      collections to provide Ansible-aware editing features.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/vscode-ansible/als/
+      - https://docs.ansible.com/projects/ansible/latest/index.html
+  - id: brew:ansible-creator
+    reason: >
+      In the official VS Code authoring workflow, Ansible Creator scaffolds projects and
+      resources that are then edited with language-server completion and validation.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/creator/installing/
+      - https://docs.ansible.com/projects/vscode-ansible/
 category: developer-tools
 package-manager:
   brew: ansible-language-server
