@@ -101,6 +101,23 @@ history:
       The package installs executables such as `arm-none-eabi-gdb`,
       `arm-none-eabi-gdb-add-index`, and `arm-none-eabi-gstack`, according to the
       supplied package facts.
+related-packages:
+  - id: brew:open-ocd
+    reason: >
+      OpenOCD provides the remote GDB server and hardware-probe connection used by
+      arm-none-eabi-gdb to debug and program embedded ARM targets.
+    rel: adjacent_workflow
+    sources:
+      - https://openocd.org/doc/html/GDB-and-OpenOCD.html
+      - https://sourceware.org/gdb/current/onlinedocs/gdb.html/Connecting.html
+  - id: brew:arm-none-eabi-gcc
+    reason: >
+      Use the matching GCC cross compiler to build ARM firmware with the executable and
+      debug information consumed by arm-none-eabi-gdb.
+    rel: adjacent_workflow
+    sources:
+      - https://gcc.gnu.org/onlinedocs/gcc/Debugging-Options.html
+      - https://sourceware.org/gdb/current/onlinedocs/gdb.html/Files.html
 tags:
   - arm
   - cli

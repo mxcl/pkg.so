@@ -83,6 +83,15 @@ history:
       gas as a family of assemblers, and ld as the linker that combines object and
       archive files. Those are exactly the jobs that make the package central to
       embedded packaging.
+related-packages:
+  - id: brew:arm-none-eabi-gcc
+    reason: >
+      Install the matching GCC cross compiler when the workflow must compile C or C++ as
+      well as assemble, link, inspect, and convert ARM firmware artifacts.
+    rel: adjacent_workflow
+    sources:
+      - https://gcc.gnu.org/install/download.html
+      - https://sourceware.org/binutils/
 category: developer-tools
 package-manager:
   brew: arm-none-eabi-binutils
