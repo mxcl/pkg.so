@@ -72,6 +72,24 @@ history:
       --database as either a database path or :memory:, but the official docs inspected
       here do not specify a fixed default config-file path. For that reason the
       config-file-location is left null rather than inventing a platform path.
+related-packages:
+  - id: cask:tableplus
+    reason: >
+      Connect TablePlus to `anyquery server` when a native desktop SQL client is
+      preferable to Anyquery's terminal shell; upstream explicitly names TablePlus as a
+      compatible client.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/julien040/anyquery#readme
+      - https://docs.tableplus.com/
+  - id: brew:metabase
+    reason: >
+      Connect Metabase to Anyquery's MySQL-compatible server to explore and visualize
+      plugin-backed tables through a BI interface.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/julien040/anyquery#readme
+      - https://www.metabase.com/docs/latest/databases/connections/mysql
 category: data
 package-manager:
   brew: anyquery

@@ -71,6 +71,32 @@ history:
       Configuration centers on ANYENV_DEFINITION_ROOT, the directory containing install
       manifests. If not set, official docs fall back to
       ${XDG_CONFIG_HOME}/anyenv/anyenv-install or ${HOME}/.config/anyenv/anyenv-install.
+related-packages:
+  - id: brew:rbenv
+    reason: >
+      Install rbenv through anyenv when managing Ruby versions; the default anyenv
+      manifest also installs the ruby-build plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/anyenv/anyenv#readme
+      - https://github.com/anyenv/anyenv-install#readme
+      - https://github.com/rbenv/rbenv#readme
+  - id: brew:pyenv
+    reason: >
+      Install pyenv through anyenv when the required per-language workflow is Python
+      version selection and shims.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/anyenv/anyenv#readme
+      - https://github.com/pyenv/pyenv#readme
+  - id: brew:nodenv
+    reason: >
+      Install nodenv through anyenv when managing project-specific Node.js versions with
+      the rbenv-style shim model.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/anyenv/anyenv#readme
+      - https://github.com/nodenv/nodenv#readme
 tags:
   - cli
   - development-environments

@@ -88,6 +88,23 @@ history:
       WebSocket URL pointed at the AnyCable server. For non-Rails usage, users can run
       standalone signed streams, MySQL-like clients are irrelevant, and the operational
       focus becomes pub/sub, delivery guarantees, and connection draining.
+related-packages:
+  - id: brew:valkey
+    reason: >
+      Use Valkey when AnyCable needs the documented Redis-compatible broadcasting or
+      pub/sub backend under permissive open-source governance.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.anycable.io/anycable-go/configuration
+      - https://valkey.io/topics/introduction
+  - id: brew:nats-server
+    reason: >
+      Run NATS Server when selecting AnyCable's documented NATS broadcasting, pub/sub,
+      or broker adapters.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.anycable.io/anycable-go/configuration
+      - https://docs.nats.io/
 category: developer-tools
 package-manager:
   brew: anycable-go
