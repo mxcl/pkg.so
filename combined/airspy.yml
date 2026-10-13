@@ -71,6 +71,25 @@ history:
       The package is usually not the whole SDR application. It is the plumbing layer
       that lets SDR frontends and scripts talk to Airspy USB hardware through libusb and
       libairspy.
+related-packages:
+  - id: brew:airspyhf
+    reason: >
+      Choose airspyhf for Airspy HF+ hardware and HF/VHF reception; it uses a separate
+      device-specific library and utility set from the Airspy One host package.
+    rel: alternative
+    sources:
+      - https://github.com/airspy/airspyone_host
+      - https://github.com/airspy/airspyhf
+      - https://airspy.com/airspy-hf-discovery/
+  - id: brew:hackrf
+    reason: >
+      Choose HackRF when transmit capability and a wider experimentation platform
+      matter, while Airspy is a receive-oriented host stack for Airspy hardware.
+    rel: alternative
+    sources:
+      - https://github.com/airspy/airspyone_host
+      - https://github.com/greatscottgadgets/hackrf
+      - https://hackrf.readthedocs.io/en/latest/
 category: media
 package-manager:
   brew: airspy
