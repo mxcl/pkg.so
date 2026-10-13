@@ -82,6 +82,25 @@ history:
       runtimes, query engines, and cross-language data interchange. Its package must
       balance native-code performance, ABI concerns, many language bindings, and
       compatibility with file formats such as Parquet and CSV.
+related-packages:
+  - id: brew:duckdb
+    reason: >
+      DuckDB can query Arrow objects and exchange results through an officially
+      documented zero-copy integration, making it a practical SQL analysis companion for
+      Arrow data.
+    rel: adjacent_workflow
+    sources:
+      - https://duckdb.org/docs/current/extensions/overview
+      - https://duckdb.org/docs/current/guides/python/import_arrow.html
+      - https://arrow.apache.org/docs/
+  - id: brew:parquet-cli
+    reason: >
+      Use Parquet CLI to inspect metadata, schemas, pages, statistics, and records in
+      Parquet files that Arrow libraries read and write.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/apache/parquet-java/blob/master/parquet-cli/README.md
+      - https://arrow.apache.org/docs/cpp/parquet.html
 category: data
 package-manager:
   apk: apache-arrow

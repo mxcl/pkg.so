@@ -78,6 +78,25 @@ history:
       In package builds, aom matters both as an executable tool package and as a codec
       library dependency. ABI compatibility notes in the changelog are especially
       relevant to maintainers deciding when downstream media packages need rebuilds.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Use FFmpeg with its documented `libaom-av1` wrapper when libaom encoding must be
+      combined with container handling, filtering, audio, or a larger transcoding
+      pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://ffmpeg.org/ffmpeg-codecs.html
+      - https://aomedia.googlesource.com/aom
+  - id: brew:svt-av1
+    reason: >
+      Choose SVT-AV1 when the task is specifically production-oriented AV1 encoding
+      across VOD, live, and real-time workloads; unlike aom, it is an encoder rather
+      than an encode-and-decode library.
+    rel: alternative
+    sources:
+      - https://gitlab.com/AOMediaCodec/SVT-AV1/
+      - https://aomedia.googlesource.com/aom
 tags:
   - av1
   - cli
