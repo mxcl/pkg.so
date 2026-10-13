@@ -69,6 +69,32 @@ history:
       webroot, standalone, TLS-ALPN, Apache, Nginx, DNS, DNS alias, stateless, or DNS
       persist modes. DNS API credentials are exported once and then saved into
       ~/.acme.sh/account.conf for later renewal runs.
+related-packages:
+  - id: brew:certbot
+    reason: >
+      Choose Certbot when first-party web-server plugins, guided configuration, and the
+      wider Python-based Let's Encrypt client ecosystem are preferable to a shell-only
+      client.
+    rel: alternative
+    sources:
+      - https://github.com/acmesh-official/acme.sh#readme
+      - https://certbot.eff.org/docs/
+  - id: brew:lego
+    reason: >
+      Choose lego when a single Go binary, an embeddable Go ACME library, or its large
+      catalog of built-in DNS providers better fits the deployment.
+    rel: alternative
+    sources:
+      - https://github.com/acmesh-official/acme.sh#readme
+      - https://go-acme.github.io/lego/
+  - id: brew:dehydrated
+    reason: >
+      Choose dehydrated for a comparatively small bash-compatible ACME client organized
+      around domains.txt, editable configuration, OpenSSL, and deployment hooks.
+    rel: alternative
+    sources:
+      - https://github.com/acmesh-official/acme.sh#readme
+      - https://github.com/dehydrated-io/dehydrated#readme
 category: security
 package-manager:
   apk: acme.sh

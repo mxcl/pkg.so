@@ -66,6 +66,34 @@ history:
       .github/workflows. The tool can read command-line options from actrc files, load
       secrets from a .secrets file, and use Docker to run workflow steps in local
       containers.
+related-packages:
+  - id: brew:docker
+    reason: >
+      Docker supplies the Engine API and containers that act normally uses to pull or
+      build runner images and execute workflow jobs locally.
+    rel: adjacent_workflow
+    sources:
+      - https://nektosact.com/
+      - https://nektosact.com/installation/
+      - https://docs.docker.com/reference/cli/docker/
+  - id: brew:gh
+    reason: >
+      GitHub CLI can install act as an extension and can pass the authenticated token
+      from gh auth token into local workflow runs.
+    rel: adjacent_workflow
+    sources:
+      - https://nektosact.com/installation/gh.html
+      - https://nektosact.com/usage/index.html
+      - https://cli.github.com/manual/gh_auth_token
+  - id: brew:actionlint
+    reason: >
+      Use actionlint to statically check the same GitHub Actions workflow files for
+      syntax, expression, action-input, shell, and Python issues before executing them
+      locally with act.
+    rel: adjacent_workflow
+    sources:
+      - https://rhysd.github.io/actionlint/
+      - https://nektosact.com/usage/index.html
 category: developer-tools
 package-manager:
   apk: act
