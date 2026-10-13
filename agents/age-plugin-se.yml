@@ -63,6 +63,25 @@ history:
       The README also documents use with Passage, the file-based password manager built
       around age, so users can unlock password-store entries with Touch ID while
       retaining an ordinary age backup identity.
+related-packages:
+  - id: brew:age
+    reason: >
+      age is the reference client that invokes age-plugin-se from the executable path to
+      encrypt to or decrypt with Secure Enclave-backed identities.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/remko/age-plugin-se#readme
+      - https://filippo.io/age/age.1
+  - id: brew:age-plugin-yubikey
+    reason: >
+      Choose age-plugin-yubikey when the identity must be portable on a YubiKey or
+      compatible PIV token; choose age-plugin-se for a key bound to an Apple device's
+      Secure Enclave.
+    rel: alternative
+    sources:
+      - https://github.com/FiloSottile/awesome-age
+      - https://github.com/remko/age-plugin-se#readme
+      - https://github.com/str4d/age-plugin-yubikey#readme
 tags:
   - age
   - cli

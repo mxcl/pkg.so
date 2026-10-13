@@ -65,6 +65,15 @@ history:
       The README warns that automounted filesystems are proxied through afuse and real
       mounts live under a temporary instance-specific directory, so there is overhead
       and stale temporary directories can remain after unclean shutdowns.
+related-packages:
+  - id: brew:sshfs
+    reason: >
+      SSHFS supplies the remote SFTP filesystem used by afuse's canonical mount
+      template, so install it when afuse should automount SSH-accessible hosts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/pcarrier/afuse#readme
+      - https://github.com/libfuse/sshfs#readme
 tags:
   - automount
   - cli
