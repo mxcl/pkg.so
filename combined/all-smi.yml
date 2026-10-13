@@ -60,6 +60,24 @@ history:
       `all-smi api` to expose metrics. Persistent settings are optional and may be
       supplied through the documented TOML file, environment variables, or command-line
       flags.
+related-packages:
+  - id: brew:nvtop
+    reason: >
+      NVTOP is a focused alternative for interactive per-process GPU and accelerator
+      monitoring; choose it for an ncurses process view, while all-smi additionally
+      emphasizes clusters, remote access, snapshots, recording, and Prometheus export.
+    rel: alternative
+    sources:
+      - https://github.com/lablup/all-smi#readme
+      - https://github.com/Syllo/nvtop#readme
+  - id: brew:prometheus
+    reason: >
+      Prometheus can scrape the metrics endpoint exposed by all-smi api, turning its
+      accelerator telemetry into stored time series, queries, and alerts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lablup/all-smi/blob/main/API.md
+      - https://prometheus.io/docs/introduction/overview/
 category: system
 package-manager:
   brew: all-smi
