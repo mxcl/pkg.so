@@ -12,7 +12,9 @@ config-file-location:
     - ./ansible.cfg
     - ~/.ansible.cfg
     - /etc/ansible/ansible.cfg
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.ansible/galaxy_token
 history:
   adoption-history:
     - >
@@ -107,6 +109,31 @@ history:
       world-writable. That makes Ansible unusually sensitive to cwd, environment
       variables, Python versions, and collection paths compared with many simpler Unix
       commands.
+related-packages:
+  - id: brew:ansible-lint
+    reason: >
+      Run Ansible-lint before Ansible 13 execution to apply Ansible-aware quality rules
+      and the syntax checks on which further linting depends.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/lint/
+      - https://docs.ansible.com/projects/lint/rules/syntax-check/
+  - id: brew:ansible-builder
+    reason: >
+      Use ansible-builder to turn Ansible, collections, and their Python and system
+      dependencies into consistent containerized control nodes.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/builder/en/latest/
+      - https://docs.ansible.com/projects/ansible/latest/getting_started_ee/
+  - id: brew:ansible-creator
+    reason: >
+      Use ansible-creator to scaffold collection projects before checking and running
+      their content with the wider Ansible development toolchain.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/dev-tools/user-guide/building-collection/
+      - https://ansible.readthedocs.io/projects/creator/
 tags:
   - automation
   - cli

@@ -87,6 +87,32 @@ history:
       In CI, teams commonly use ansible-lint as a pull-request gate or GitHub Action.
       Locally, it is also part of editor feedback loops through VS Code and LSP clients,
       often paired with ansible-core, yamllint, and collection dependency installation.
+related-packages:
+  - id: brew:ansible@13
+    reason: >
+      Use Ansible 13 to execute the playbooks and provide the ansible-core syntax
+      behavior that Ansible-lint invokes while checking them.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/lint/rules/syntax-check/
+      - https://docs.ansible.com/projects/ansible/latest/porting_guides/porting_guide_13.html
+  - id: brew:yamllint
+    reason: >
+      Use yamllint alongside Ansible-lint when you want standalone YAML checks using a
+      configuration aligned with Ansible-lint's integrated YAML rules.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/lint/rules/yaml/
+      - https://yamllint.readthedocs.io/
+  - id: brew:ansible-creator
+    reason: >
+      Use ansible-creator to scaffold a collection, then Ansible-lint to check the
+      generated and newly authored content in the documented unified development
+      workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/dev-tools/user-guide/building-collection/
+      - https://ansible.readthedocs.io/projects/creator/
 category: developer-tools
 package-manager:
   apk: ansible-lint

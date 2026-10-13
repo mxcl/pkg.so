@@ -87,6 +87,32 @@ history:
       searches `$ANSIBLE_CONFIG`, the current directory, the home directory, and
       `/etc/ansible`; the Galaxy token path defaults through `ANSIBLE_HOME` to
       `~/.ansible/galaxy_token`.
+related-packages:
+  - id: brew:ansible-lint
+    reason: >
+      Run Ansible-lint against playbooks and roles before executing them with Ansible 12
+      to catch syntax failures and discouraged automation practices.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/lint/
+      - https://docs.ansible.com/projects/lint/rules/syntax-check/
+  - id: brew:ansible-builder
+    reason: >
+      Use ansible-builder to package ansible-core, collections, Python libraries, and
+      system dependencies into portable execution-environment images for Ansible
+      workloads.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/builder/en/latest/
+      - https://docs.ansible.com/projects/ansible/latest/getting_started_ee/
+  - id: brew:ansible-creator
+    reason: >
+      Use ansible-creator to scaffold collections that can then be linted, tested, and
+      run with the Ansible toolchain.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ansible.com/projects/dev-tools/user-guide/building-collection/
+      - https://ansible.readthedocs.io/projects/creator/
 tags:
   - ansible
   - automation
