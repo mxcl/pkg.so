@@ -68,6 +68,24 @@ history:
       synchronization where a pipeline first scans historical tables and then keeps
       reading log changes. The official docs also call out sub-second streaming
       pipelines and exactly-once processing after failures.
+related-packages:
+  - id: brew:apache-flink
+    reason: >
+      Flink is the execution engine beneath Flink CDC and is the appropriate companion
+      when developing or operating the resulting distributed pipelines.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/apache/flink-cdc
+      - https://flink.apache.org/what-is-flink/flink-architecture/
+  - id: brew:kafka
+    reason: >
+      Kafka is a documented Flink CDC pipeline sink for publishing captured database
+      changes as durable event streams.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://nightlies.apache.org/flink/flink-cdc-docs-release-3.4/docs/connectors/pipeline-connectors/overview/
+      - https://kafka.apache.org/documentation/
 tags:
   - apache
   - change-data-capture

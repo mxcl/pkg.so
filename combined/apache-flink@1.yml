@@ -77,6 +77,31 @@ history:
       starting in 1.19, while flink-conf.yaml remains usable when copied into conf and
       is prioritized if detected. That is why both paths are useful for the versioned
       package.
+related-packages:
+  - id: brew:apache-flink-cdc
+    reason: >
+      Flink CDC is a companion for declarative database change pipelines and publishes
+      an explicit compatibility matrix covering Flink 1.x releases.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/apache/flink-cdc
+      - https://nightlies.apache.org/flink/flink-cdc-docs-stable/
+  - id: brew:kafka
+    reason: >
+      Kafka is an officially supported Flink source and sink for feeding and publishing
+      event streams from 1.x jobs.
+    rel: adjacent_workflow
+    sources:
+      - https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/connectors/table/kafka/
+      - https://kafka.apache.org/documentation/
+  - id: brew:apache-spark
+    reason: >
+      Choose Apache Spark as an alternative when its unified structured APIs and wider
+      analytics ecosystem are a better fit than maintaining a Flink 1.x deployment.
+    rel: alternative
+    sources:
+      - https://flink.apache.org/what-is-flink/flink-architecture/
+      - https://spark.apache.org/streaming/
 category: data
 package-manager:
   brew: apache-flink@1

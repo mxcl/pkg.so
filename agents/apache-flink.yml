@@ -74,6 +74,32 @@ history:
       Starting with Flink 2.0, Apache's docs say the supported configuration file is
       config.yaml in the conf directory. That makes $FLINK_HOME/conf/config.yaml the
       package-level config location for the current formula.
+related-packages:
+  - id: brew:apache-flink-cdc
+    reason: >
+      Choose Flink CDC alongside Flink when you want declarative YAML pipelines for
+      database snapshots, change capture, schema evolution, and downstream
+      synchronization.
+    rel: adjacent_workflow
+    sources:
+      - https://nightlies.apache.org/flink/flink-cdc-docs-stable/
+      - https://github.com/apache/flink-cdc
+  - id: brew:kafka
+    reason: >
+      Kafka is a documented Flink source and sink for durable event streams, including
+      checkpoint-backed delivery guarantees.
+    rel: adjacent_workflow
+    sources:
+      - https://nightlies.apache.org/flink/flink-docs-stable/docs/connectors/table/kafka/
+      - https://kafka.apache.org/documentation/
+  - id: brew:apache-spark
+    reason: >
+      Choose Apache Spark as an alternative when its unified DataFrame and Dataset APIs
+      and broader Spark analytics ecosystem better fit the batch-and-streaming workload.
+    rel: alternative
+    sources:
+      - https://flink.apache.org/what-is-flink/flink-architecture/
+      - https://spark.apache.org/streaming/
 tags:
   - apache
   - batch-processing
