@@ -64,6 +64,34 @@ history:
       apibmon is the companion remote-monitoring process. The official docs show apib
       using -M host:port to collect CPU and memory statistics from a target host running
       apibmon, with /proc-based resource collection on Linux-like systems.
+related-packages:
+  - id: brew:hey
+    reason: >
+      Choose hey for a maintained, small ApacheBench-style HTTP load generator with a
+      similarly direct command-line workflow and HTTP/2 support; apib additionally
+      provides its own remote resource monitor.
+    rel: alternative
+    sources:
+      - https://github.com/apigee/apib#readme
+      - https://github.com/rakyll/hey#readme
+  - id: brew:vegeta
+    reason: >
+      Choose Vegeta when a constant request rate and reusable attack-result pipelines
+      are more important than apib's duration-and-concurrency model or `apibmon`
+      integration.
+    rel: alternative
+    sources:
+      - https://github.com/apigee/apib/blob/master/doc/RUNNING.md
+      - https://github.com/tsenart/vegeta#readme
+  - id: brew:k6
+    reason: >
+      Choose Grafana k6 for JavaScript or TypeScript scenarios, thresholds, lifecycle
+      hooks, browser testing, and observability integrations; apib is better suited to
+      compact single-endpoint command-line benchmarks.
+    rel: alternative
+    sources:
+      - https://github.com/apigee/apib#readme
+      - https://grafana.com/docs/k6/latest/
 tags:
   - api-testing
   - benchmark
