@@ -83,6 +83,25 @@ history:
       LLVM/QEMU/Frida/Unicorn feature coverage, sanitizer compatibility, shell helper
       availability, and whether users get enough installed docs to navigate binary-only
       fuzzing, persistent mode, dictionaries, and crash replay.
+related-packages:
+  - id: brew:cargo-fuzz
+    reason: >
+      Choose cargo-fuzz for a Cargo-native Rust workflow backed by libFuzzer; choose
+      AFL++ when you need its broader instrumentation choices, binary-only modes, or
+      AFL-style campaign tools.
+    rel: alternative
+    sources:
+      - https://rust-fuzz.github.io/book/cargo-fuzz.html
+      - https://aflplus.plus/docs/
+  - id: brew:radamsa
+    reason: >
+      Radamsa can augment an AFL++ campaign through AFL++'s officially documented
+      Radamsa custom mutator integration.
+    rel: adjacent_workflow
+    sources:
+      - https://aflplus.plus/docs/readme.radamsa/
+      - https://aflplus.plus/docs/features/
+      - https://gitlab.com/akihe/radamsa
 tags:
   - cli
   - fuzzing

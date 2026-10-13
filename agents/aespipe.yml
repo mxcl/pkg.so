@@ -68,6 +68,23 @@ history:
       aarch64, VIA PadLock, Intel AES, and ARM crypto-extension paths. The hardware
       hooks matter because aespipe is often used for bulk data streams rather than tiny
       secrets.
+related-packages:
+  - id: brew:gnupg
+    reason: >
+      Use GnuPG alongside aespipe to encrypt its key files, a workflow documented by
+      aespipe's official examples.
+    rel: adjacent_workflow
+    sources:
+      - https://loop-aes.sourceforge.net/aespipe.README
+      - https://gnupg.org/documentation/index.html
+  - id: brew:cpio
+    reason: >
+      GNU cpio can create or extract the archive stream that aespipe encrypts or
+      decrypts in an official documented pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://loop-aes.sourceforge.net/aespipe.README
+      - https://www.gnu.org/software/cpio/manual/
 tags:
   - aes
   - cli
@@ -96,8 +113,8 @@ provenance:
     - https://sourceforge.net/projects/loop-aes/files/aespipe/
   repo-sources:
     - >
-      Official distribution provides signed source archives but no authoritative HTTP(S)
-      source-control repository page was identified.
+      https://loop-aes.sourceforge.net/ — the official site publishes source archives
+      but does not identify an authoritative HTTPS source-control repository.
   tags-sources:
     - https://loop-aes.sourceforge.net/aespipe.README
 category-confidence: high
@@ -106,5 +123,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high

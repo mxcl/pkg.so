@@ -69,6 +69,23 @@ history:
       aarch64, VIA PadLock, Intel AES, and ARM crypto-extension paths. The hardware
       hooks matter because aespipe is often used for bulk data streams rather than tiny
       secrets.
+related-packages:
+  - id: brew:gnupg
+    reason: >
+      Use GnuPG alongside aespipe to encrypt its key files, a workflow documented by
+      aespipe's official examples.
+    rel: adjacent_workflow
+    sources:
+      - https://loop-aes.sourceforge.net/aespipe.README
+      - https://gnupg.org/documentation/index.html
+  - id: brew:cpio
+    reason: >
+      GNU cpio can create or extract the archive stream that aespipe encrypts or
+      decrypts in an official documented pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://loop-aes.sourceforge.net/aespipe.README
+      - https://www.gnu.org/software/cpio/manual/
 category: security
 package-manager:
   brew: aespipe
