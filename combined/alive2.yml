@@ -81,6 +81,23 @@ history:
     - >
       The toolchain is intentionally low-level: it needs CMake, a C/C++ compiler, re2c,
       Z3, and often a matching LLVM build with RTTI and exceptions enabled.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      Alive2 validates LLVM IR transformations, and its official translation-validation
+      workflow requires a compatible LLVM build with RTTI and exceptions enabled.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/AliveToolkit/alive2#readme
+      - https://llvm.org/docs/
+  - id: brew:z3
+    reason: >
+      Z3 is Alive2's documented SMT-solver prerequisite and supplies the
+      constraint-solving backend needed for local verification.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/AliveToolkit/alive2#readme
+      - https://github.com/Z3Prover/z3#readme
 category: developer-tools
 package-manager:
   brew: alive2
