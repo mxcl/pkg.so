@@ -63,6 +63,16 @@ history:
       linkdupes walks build output trees and hardlinks files with identical content and
       compatible metadata. Its package-build angle is that it can clamp mtimes against
       SOURCE_DATE_EPOCH and avoid unsafe hardlinking across mismatched SELinux contexts.
+related-packages:
+  - id: brew:strip-nondeterminism
+    reason: >
+      Choose strip-nondeterminism for the established Debian-oriented Perl workflow;
+      choose add-determinism for a from-scratch Rust implementation designed around
+      Fedora/RHEL build roots and formats such as packaged Python bytecode.
+    rel: alternative
+    sources:
+      - https://github.com/keszybz/add-determinism#notes
+      - https://salsa.debian.org/reproducible-builds/strip-nondeterminism
 category: developer-tools
 package-manager:
   brew: add-determinism

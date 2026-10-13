@@ -57,6 +57,25 @@ history:
       Users run `adapterremoval3` with input FASTQ files and an output prefix; default
       behavior can automatically detect adapters, trim low-quality bases, filter reads,
       write compressed FASTQ, and generate HTML and JSON reports.
+related-packages:
+  - id: brew:fastp
+    reason: >
+      Choose fastp when an all-in-one short-read preprocessor with UMI handling,
+      deduplication, output splitting, and extensive before/after QC is preferable to
+      AdapterRemoval's sequencing-read trimming, merging, and demultiplexing workflow.
+    rel: alternative
+    sources:
+      - https://github.com/MikkelSchubert/adapterremoval#readme
+      - https://github.com/OpenGene/fastp#readme
+  - id: brew:cutadapt
+    reason: >
+      Choose Cutadapt when error-tolerant removal of explicitly modeled adapters,
+      primers, poly-A tails, or IUPAC-containing sequences is more important than
+      AdapterRemoval's integrated paired-read merging and QC.
+    rel: alternative
+    sources:
+      - https://github.com/MikkelSchubert/adapterremoval#readme
+      - https://cutadapt.readthedocs.io/en/stable/
 category: science
 package-manager:
   brew: adapterremoval
