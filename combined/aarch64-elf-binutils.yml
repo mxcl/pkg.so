@@ -74,6 +74,25 @@ history:
       The package's target prefix matters operationally: build systems and
       cross-compilers can call aarch64-elf-as or aarch64-elf-ld explicitly, avoiding
       accidental use of platform-native tools.
+related-packages:
+  - id: brew:aarch64-elf-gcc
+    reason: >
+      Install the matching GCC package to compile C and C++ for aarch64-elf; its
+      official Homebrew formula depends directly on this Binutils package for target
+      assembly and linking.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/aarch64-elf-gcc
+      - https://gcc.gnu.org/install/download.html
+  - id: brew:aarch64-elf-gdb
+    reason: >
+      Add the target-matched GDB package when the same AArch64 ELF build workflow also
+      requires source-level or remote debugging.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/aarch64-elf-gdb
+      - https://sourceware.org/gdb/
+      - https://sourceware.org/git/?p=binutils-gdb.git;a=summary
 category: developer-tools
 package-manager:
   brew: aarch64-elf-binutils

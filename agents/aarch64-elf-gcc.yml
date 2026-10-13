@@ -76,6 +76,23 @@ history:
       The executable prefix is the important user-facing contract: build systems can
       select aarch64-elf-gcc or aarch64-elf-g++ explicitly and avoid confusing the
       target compiler with the host system compiler.
+related-packages:
+  - id: brew:aarch64-elf-binutils
+    reason: >
+      This is the required target-matched assembler, linker, and object-tool package;
+      the official Homebrew GCC formula declares it as a dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/aarch64-elf-gcc
+      - https://sourceware.org/binutils/
+  - id: brew:aarch64-elf-gdb
+    reason: >
+      Use the matching GDB package to debug AArch64 ELF programs produced by this
+      compiler, including remote and bare-metal targets.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/aarch64-elf-gdb
+      - https://sourceware.org/gdb/
 tags:
   - aarch64
   - c

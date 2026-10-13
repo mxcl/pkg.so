@@ -48,6 +48,23 @@ history:
       encode, vmaf, and xpsnr. Typical use is to sample an input, choose a CRF that
       meets a target VMAF or XPSNR quality threshold, then run FFmpeg with the selected
       settings.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      ab-av1 requires `ffmpeg` in `PATH` and delegates its probing, sample encodes, full
+      encodes, and quality calculations to an appropriately featured FFmpeg build.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/alexheretic/ab-av1#readme
+      - https://ffmpeg.org/documentation.html
+  - id: brew:svt-av1
+    reason: >
+      Install SVT-AV1 when building or selecting the FFmpeg encoder stack used by ab-av1
+      for its primary AV1 workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/alexheretic/ab-av1#readme
+      - https://gitlab.com/AOMediaCodec/SVT-AV1
 category: media
 package-manager:
   brew: ab-av1

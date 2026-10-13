@@ -87,6 +87,24 @@ history:
       GDB reads early and general initialization files at startup. The official manual
       documents different home-directory locations for non-macOS and macOS hosts, plus a
       local .gdbinit loaded from the current working directory.
+related-packages:
+  - id: brew:aarch64-elf-gcc
+    reason: >
+      Use the matching cross-compiler to build AArch64 ELF programs and emit the
+      source-level debug information consumed by this GDB package.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/aarch64-elf-gcc
+      - https://sourceware.org/gdb/current/onlinedocs/gdb.html
+  - id: brew:aarch64-elf-binutils
+    reason: >
+      Use the target-matched Binutils package to link, inspect, convert, and preserve
+      symbols in the AArch64 ELF files opened by GDB.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/aarch64-elf-binutils
+      - https://sourceware.org/binutils/
+      - https://sourceware.org/git/?p=binutils-gdb.git;a=summary
 tags:
   - aarch64
   - cli
