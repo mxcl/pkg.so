@@ -72,6 +72,24 @@ history:
       targeted ARP/MAC/IP probes. It can ping by IP to get a MAC, ping by MAC to get an
       IP when hosts respond to broadcast pings, and send unsolicited ARP to update
       neighbors' ARP caches.
+related-packages:
+  - id: brew:arp-scan
+    reason: >
+      Use arp-scan when you need to discover and fingerprint many IPv4 hosts on a local
+      network; arping is better suited to targeted IP-or-MAC probes and address-conflict
+      checks.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ThomasHabets/arping#readme
+      - https://github.com/royhills/arp-scan#readme
+  - id: brew:libnet
+    reason: >
+      Install libnet when building or developing against arping, whose official README
+      identifies libnet 1.1 or newer as its packet-construction dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ThomasHabets/arping#readme
+      - https://github.com/libnet/libnet#readme
 tags:
   - arp
   - cli
