@@ -72,6 +72,26 @@ history:
       Shell and scripting users get adnshost for DNS lookups, adnslogres as a faster
       Apache logresolv-style tool, and adnsresfilter for replacing IP addresses in
       streamed command output without delaying the stream unnecessarily.
+related-packages:
+  - id: brew:c-ares
+    reason: >
+      Choose c-ares for an asynchronous C resolver with a permissive license and
+      explicit portability to proprietary applications; its official comparison
+      identifies adns as the GPL alternative.
+    rel: alternative
+    sources:
+      - https://c-ares.org/why.html
+      - https://c-ares.org/docs.html
+      - https://www.chiark.greenend.org.uk/~ian/adns/
+  - id: brew:getdns
+    reason: >
+      Choose getdns when the application needs a higher-level asynchronous API with
+      first-class DNSSEC, arbitrary record types, and event-loop integration.
+    rel: alternative
+    sources:
+      - https://getdnsapi.net/documentation/spec/
+      - https://getdnsapi.net/documentation/readme/
+      - https://www.chiark.greenend.org.uk/~ian/adns/
 tags:
   - asynchronous
   - c-library
