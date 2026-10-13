@@ -51,6 +51,32 @@ history:
       configured control key, lists sessions by running abduco with no arguments, and
       reattaches with abduco -a. The official documentation also describes read-only
       sessions, socket recreation with SIGUSR1, and debugging traces.
+related-packages:
+  - id: brew:dtach
+    reason: >
+      Choose dtach for the closest minimal attach/detach alternative; abduco's official
+      documentation describes itself as an independent implementation with session
+      listing, retained exit status, read-only clients, and socket recovery.
+    rel: alternative
+    sources:
+      - https://github.com/martanne/abduco#readme
+      - https://github.com/crigler/dtach
+  - id: brew:tmux
+    reason: >
+      Choose tmux when you want session persistence and integrated windows and panes,
+      whereas abduco deliberately provides only attach/detach session management.
+    rel: alternative
+    sources:
+      - https://github.com/martanne/abduco#readme
+      - https://github.com/tmux/tmux/wiki
+  - id: brew:screen
+    reason: >
+      Choose GNU Screen when you want a traditional full terminal multiplexer; abduco is
+      the smaller session-only alternative identified by its own manual.
+    rel: alternative
+    sources:
+      - https://github.com/martanne/abduco/blob/master/abduco.1
+      - https://www.gnu.org/software/screen/
 category: system
 package-manager:
   apk: abduco

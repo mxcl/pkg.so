@@ -6,7 +6,8 @@ docs:
   - https://abcl.org/
   - https://abcl.org/releases/latest/abcl.pdf
   - https://armedbear.common-lisp.dev/doc/abcl-user.html
-config-file-location: null
+config-file-location:
+  unix: ~/.abclrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -53,6 +54,16 @@ history:
       Official documentation shows ABCL being run as a jar with java -jar abcl.jar, used
       as an interactive REPL, embedded from Java, and connected to Common Lisp tooling
       such as ASDF, Quicklisp, and SLIME.
+related-packages:
+  - id: brew:sbcl
+    reason: >
+      Choose SBCL when you want a native-code Common Lisp implementation instead of
+      ABCL's JVM hosting and Java-integration model; ABCL's official FAQ directly
+      contrasts their runtime representations.
+    rel: alternative
+    sources:
+      - https://abcl.org/faq.shtml
+      - https://www.sbcl.org/
 category: language-runtime
 package-manager:
   apk: abcl

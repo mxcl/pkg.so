@@ -56,6 +56,37 @@ history:
       normalization, encoding, tagging, moving, replaygain, playlist generation, and
       cleanup. The manpage documents configuration through /etc/abcde.conf,
       $HOME/.abcde.conf, and an optional extra file passed with -c.
+related-packages:
+  - id: brew:flac
+    reason: >
+      Use FLAC with abcde when you want its documented lossless CD-ripping output; abcde
+      delegates FLAC encoding to an external encoder.
+    rel: adjacent_workflow
+    sources:
+      - https://abcde.einval.com/wiki/
+      - https://xiph.org/flac/
+  - id: brew:lame
+    reason: >
+      Use LAME as abcde's external MP3 encoder when broad lossy-format playback
+      compatibility is the priority.
+    rel: adjacent_workflow
+    sources:
+      - https://abcde.einval.com/wiki/
+      - https://lame.sourceforge.io/
+  - id: brew:opus-tools
+    reason: >
+      Use opus-tools with abcde to produce the Opus output format supported by the
+      ripping workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://abcde.einval.com/wiki/
+      - https://opus-codec.org/docs/opus-tools/
+  - id: brew:vorbis-tools
+    reason: Use vorbis-tools with abcde for its traditional Ogg Vorbis encoding workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://abcde.einval.com/wiki/
+      - https://xiph.org/vorbis/
 tags:
   - audio
   - cd-ripping
