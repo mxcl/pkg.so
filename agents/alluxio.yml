@@ -93,6 +93,23 @@ history:
       `alluxio`, `alluxio-start.sh`, `alluxio-stop.sh`, `alluxio-masters.sh`, and
       `alluxio-workers.sh`. In package-manager terms this is not just a CLI utility; it
       is a local entry point into a distributed service stack.
+related-packages:
+  - id: brew:apache-spark
+    reason: >
+      Use Apache Spark with Alluxio when Spark jobs need an HDFS-compatible data layer
+      that transparently caches data from remote storage near executors.
+    rel: adjacent_workflow
+    sources:
+      - https://documentation.alluxio.io/os-en/compute/spark
+      - https://spark.apache.org/docs/latest
+  - id: brew:hadoop
+    reason: >
+      Use Apache Hadoop alongside Alluxio for HDFS-backed storage or Hadoop-compatible
+      applications that access data through Alluxio's unified namespace and cache.
+    rel: adjacent_workflow
+    sources:
+      - https://documentation.alluxio.io/os-en
+      - https://hadoop.apache.org/docs/current
 tags:
   - analytics
   - cache

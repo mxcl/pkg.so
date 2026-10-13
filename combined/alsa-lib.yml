@@ -93,6 +93,25 @@ history:
       locations such as /etc/asound.conf, ~/.asoundrc, and
       $XDG_CONFIG_HOME/alsa/asoundrc, which explains why distribution packaging and
       local audio troubleshooting often revolve around these paths.
+related-packages:
+  - id: brew:pipewire
+    reason: >
+      Use PipeWire alongside alsa-lib when applications need modern graph-based audio
+      routing while hardware is still exposed through PipeWire's ALSA support and
+      compatibility interfaces.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.pipewire.org/page_config.html
+      - https://docs.pipewire.org/page_man_pipewire_conf_5.html
+      - https://github.com/alsa-project/alsa-lib
+  - id: brew:pulseaudio
+    reason: >
+      Use PulseAudio alongside alsa-lib when applications need a shared sound server
+      with per-application mixing and routing above Linux's ALSA hardware layer.
+    rel: adjacent_workflow
+    sources:
+      - https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/
+      - https://www.alsa-project.org/wiki/Introduction
 category: media
 package-manager:
   apk: alsa-lib
