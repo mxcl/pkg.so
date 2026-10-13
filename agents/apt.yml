@@ -105,6 +105,31 @@ history:
       Repository configuration is text-file driven: sources.list controls where packages
       come from, apt.conf controls acquisition and dpkg behavior, and auth.conf stores
       credentials for authenticated archive access.
+related-packages:
+  - id: brew:dpkg
+    reason: >
+      Use dpkg for low-level inspection or installation of local .deb packages; APT
+      builds repository-aware dependency and upgrade workflows on top of it.
+    rel: adjacent_workflow
+    sources:
+      - https://www.debian.org/doc/manuals/debian-handbook/sect.apt-get.en.html
+      - https://www.dpkg.org/
+  - id: brew:aptly
+    reason: >
+      aptly creates, snapshots, and publishes deterministic Debian repositories that APT
+      clients can add as package sources.
+    rel: adjacent_workflow
+    sources:
+      - https://www.aptly.info/doc/overview/
+      - https://manpages.debian.org/testing/apt/sources.list.5.en.html
+  - id: brew:apt-dater
+    reason: >
+      apt-dater coordinates apt-get updates across remote Debian hosts over SSH, making
+      it an operational fleet companion to APT.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/DE-IBH/apt-dater#readme
+      - https://manpages.debian.org/testing/apt/apt.8.en.html
 tags:
   - apt
   - cli

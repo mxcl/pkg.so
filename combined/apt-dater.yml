@@ -82,6 +82,33 @@ history:
       The executable apt-dater coordinates the host view, while adsh acts as an SSH
       wrapper that can record sessions. The tool expects managed hosts to have SSH and
       sudo available.
+related-packages:
+  - id: brew:apt
+    reason: >
+      APT supplies the apt-get package operations that apt-dater invokes on each managed
+      Debian host.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/DE-IBH/apt-dater#readme
+      - https://manpages.debian.org/testing/apt/apt.8.en.html
+  - id: brew:screen
+    reason: >
+      GNU Screen fits apt-dater's documented session workflow, for which upstream
+      supplies a dedicated screenrc example in the management-host configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/DE-IBH/apt-dater#readme
+      - https://www.gnu.org/software/screen/manual/
+  - id: brew:tmux
+    reason: >
+      tmux is a supported terminal-multiplexer workflow in apt-dater's upstream
+      documentation and release maintenance, useful when administrators prefer
+      tmux-backed remote sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/DE-IBH/apt-dater/blob/master/README.ttymux
+      - https://github.com/DE-IBH/apt-dater/releases
+      - https://github.com/tmux/tmux/wiki
 category: system
 package-manager:
   apk: apt-dater

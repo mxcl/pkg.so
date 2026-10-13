@@ -69,6 +69,23 @@ history:
       It is generally installed alongside APR itself. The packaging distinction matters
       because APR is the portability substrate, while APR-util carries optional utility
       integrations whose dependencies vary more by platform.
+related-packages:
+  - id: brew:apr
+    reason: >
+      APR is the required core portability layer that APR-util extends, so APR-based
+      native builds generally establish APR before adding the utility interfaces.
+    rel: adjacent_workflow
+    sources:
+      - https://apr.apache.org/
+      - https://apr.apache.org/docs/apr/1.7/
+  - id: brew:httpd
+    reason: >
+      Apache HTTP Server and its module ecosystem are practical consumers of APR and
+      APR-util when builds require the libraries' portability and utility APIs.
+    rel: adjacent_workflow
+    sources:
+      - https://apr.apache.org/
+      - https://httpd.apache.org/docs/current/install.html
 category: developer-tools
 package-manager:
   apk: apr-util

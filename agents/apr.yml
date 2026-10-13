@@ -77,6 +77,23 @@ history:
       APR's memory pool model and portability wrappers are particularly recognizable to
       C programmers maintaining long-lived server software. They make it possible to
       write one native code path that still behaves sensibly on Unix and Windows.
+related-packages:
+  - id: brew:apr-util
+    reason: >
+      Install APR-util when an APR-based program also needs the project's documented
+      database, XML, crypto, or other higher-level utility interfaces.
+    rel: adjacent_workflow
+    sources:
+      - https://apr.apache.org/
+      - https://apr.apache.org/docs/apr-util/1.6/
+  - id: brew:httpd
+    reason: >
+      Apache HTTP Server is the principal server ecosystem from which APR arose and is a
+      practical consumer for developers building or packaging APR-backed modules.
+    rel: adjacent_workflow
+    sources:
+      - https://apr.apache.org/
+      - https://httpd.apache.org/docs/current/install.html
 tags:
   - apache
   - apr
