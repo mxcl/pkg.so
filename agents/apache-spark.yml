@@ -83,6 +83,33 @@ history:
       Spark users often install it locally even when production jobs run elsewhere,
       because the local CLI is useful for testing jobs, validating dependencies,
       developing notebooks or scripts, and matching cluster runtime behavior.
+related-packages:
+  - id: brew:apache-flink
+    reason: >
+      Flink is the closest packaged alternative when low-latency, stateful stream
+      processing is primary, while Spark offers a broader unified SQL, batch, streaming,
+      and machine-learning environment.
+    rel: alternative
+    sources:
+      - https://spark.apache.org/docs/latest/
+      - https://flink.apache.org/what-is-flink/flink-architecture/
+  - id: brew:hadoop
+    reason: >
+      Spark directly integrates with Hadoop filesystems and YARN, and its documentation
+      describes loading Hadoop client configuration through `HADOOP_CONF_DIR`.
+    rel: adjacent_workflow
+    sources:
+      - https://spark.apache.org/docs/latest/configuration.html
+      - https://hadoop.apache.org/docs/current/
+  - id: brew:hive
+    reason: >
+      Spark SQL can use Hive metastore configuration and Hive UDFs, making Hive a
+      concrete companion for warehouse metadata and compatibility workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://spark.apache.org/docs/latest/configuration.html
+      - https://spark.apache.org/docs/latest/sql-ref-functions-udf-hive.html
+      - https://hive.apache.org/
 tags:
   - analytics
   - apache

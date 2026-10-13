@@ -4,7 +4,8 @@ homepage: https://polaris.apache.org/
 repo: https://github.com/apache/polaris
 docs:
   - https://polaris.apache.org/docs
-config-file-location: null
+config-file-location:
+  unix: $PWD/config/application.properties
 credentials-file-location: null
 history:
   adoption-history:
@@ -74,6 +75,42 @@ history:
       The package installs two command-line entry points, `polaris-server` and
       `polaris-admin`, reflecting the split between running the service and
       administering it.
+related-packages:
+  - id: brew:lakekeeper
+    reason: >
+      Choose Lakekeeper when you want another standards-compatible Iceberg REST catalog
+      with a Rust-native core; Polaris instead runs on Quarkus and is governed as an
+      Apache project.
+    rel: alternative
+    sources:
+      - https://polaris.apache.org/
+      - https://polaris.apache.org/releases/1.8.0/configuration/configuring-polaris/
+      - https://docs.lakekeeper.io/
+  - id: brew:nessie
+    reason: >
+      Choose Nessie when Git-like branches and transactional catalog semantics are
+      central; Polaris emphasizes Iceberg REST interoperability, governance, and
+      credential vending.
+    rel: alternative
+    sources:
+      - https://polaris.apache.org/
+      - https://projectnessie.org/nessie-latest/
+  - id: brew:apache-spark
+    reason: >
+      Spark is a documented Polaris client for creating, transforming, and querying
+      Iceberg tables through a Polaris catalog.
+    rel: adjacent_workflow
+    sources:
+      - https://polaris.apache.org/in-dev/unreleased/polaris-spark-client/
+      - https://spark.apache.org/docs/latest/
+  - id: brew:trino
+    reason: >
+      Trino can use Polaris as its Iceberg REST catalog while providing the distributed
+      SQL query layer.
+    rel: adjacent_workflow
+    sources:
+      - https://polaris.apache.org/guides/jdbc/
+      - https://trino.io/docs/current/connector/iceberg.html
 category: data
 package-manager:
   brew: apache-polaris

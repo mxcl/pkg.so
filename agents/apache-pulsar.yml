@@ -82,6 +82,24 @@ history:
       BookKeeper, and functions worker configuration files live under
       `$PULSAR_HOME/conf`, which keeps command-line experiments close to production
       deployment concepts.
+related-packages:
+  - id: brew:kafka
+    reason: >
+      Kafka is the principal alternative for distributed event streaming; choose it for
+      its log-centric ecosystem, while Pulsar offers separated broker and BookKeeper
+      storage plus built-in multi-tenancy.
+    rel: alternative
+    sources:
+      - https://pulsar.apache.org/docs/next/concepts-architecture-overview/
+      - https://kafka.apache.org/
+  - id: brew:apache-flink
+    reason: >
+      Flink's official Pulsar connector lets streaming jobs consume Pulsar topics and
+      publish results back to Pulsar.
+    rel: adjacent_workflow
+    sources:
+      - https://pulsar.apache.org/
+      - https://nightlies.apache.org/flink/flink-docs-stable/docs/connectors/datastream/pulsar/
 tags:
   - apache
   - cli
