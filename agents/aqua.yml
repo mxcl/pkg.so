@@ -79,6 +79,34 @@ history:
       `$AQUA_CONFIG`, then `.aqua.yaml`, `aqua.yaml`, `aqua/aqua.yaml`, and
       `.aqua/aqua.yaml` while walking up from the current directory, with
       `$AQUA_GLOBAL_CONFIG` for global tools.
+related-packages:
+  - id: brew:asdf
+    reason: >
+      Choose asdf when its broad language-runtime plugin ecosystem and `.tool-versions`
+      convention are required; choose aqua for lazy installation, a central declarative
+      registry, Renovate integration, and built-in checksum-oriented workflows.
+    rel: alternative
+    sources:
+      - https://aquaproj.github.io/docs/
+      - https://asdf-vm.com/guide/getting-started.html
+  - id: brew:mise
+    reason: >
+      Choose mise when one tool should manage runtimes, environment variables, and tasks
+      as well as CLI versions; it can also consume aqua registry packages through its
+      aqua backend.
+    rel: alternative
+    sources:
+      - https://mise.jdx.dev/dev-tools/backends/aqua.html
+      - https://mise.jdx.dev/dev-tools/comparison-to-asdf.html
+      - https://aquaproj.github.io/docs/reference/registry/
+  - id: brew:renovate
+    reason: >
+      Renovate can update tool versions and registry references in committed aqua
+      configuration using aqua's official preset and regex-manager conventions.
+    rel: adjacent_workflow
+    sources:
+      - https://aquaproj.github.io/docs/guides/renovate/
+      - https://docs.renovatebot.com/modules/manager/regex/
 tags:
   - cli
   - developer-tools
