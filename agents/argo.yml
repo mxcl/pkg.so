@@ -85,6 +85,33 @@ history:
       Kubernetes client tool. In actual clusters, the CLI is paired with the controller,
       CRDs, optional UI/server, archives, metrics, and SSO features documented by the
       project.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Argo Workflows requires a Kubernetes cluster, and its official quick start uses
+      kubectl to install the controller and CRDs before workflows are submitted with
+      `argo`.
+    rel: adjacent_workflow
+    sources:
+      - https://argo-workflows.readthedocs.io/en/latest/quick-start/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      The official installation guide supports a Helm chart for deploying the
+      cluster-side Argo Workflows components that the packaged `argo` client manages.
+    rel: adjacent_workflow
+    sources:
+      - https://argo-workflows.readthedocs.io/en/latest/installation/
+      - https://helm.sh/docs/
+  - id: brew:kustomize
+    reason: >
+      Argo Workflows officially documents Kustomize overlays for adapting its release
+      manifests, making Kustomize useful when installation changes should remain
+      declarative patches.
+    rel: adjacent_workflow
+    sources:
+      - https://argo-workflows.readthedocs.io/en/latest/installation/
+      - https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/
 tags:
   - ci-cd
   - cli

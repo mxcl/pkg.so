@@ -79,6 +79,34 @@ history:
       Operationally, package users often install the CLI with Homebrew for day-to-day
       interaction while installing the controller via manifests or Helm in Kubernetes.
       The package is therefore both a workstation tool and a control-plane companion.
+related-packages:
+  - id: brew:flux
+    reason: >
+      Flux is the strongest cataloged alternative for Kubernetes GitOps; choose it for a
+      composable controller toolkit and Git-driven image automation, while Argo CD
+      emphasizes an integrated API, CLI, and fully featured UI.
+    rel: alternative
+    sources:
+      - https://fluxcd.io/flux/
+      - https://argo-cd.readthedocs.io/
+  - id: brew:helm
+    reason: >
+      Argo CD officially renders Helm charts with `helm template` while retaining
+      control of the application lifecycle, so Helm is useful for authoring and
+      validating the charts Argo CD deploys.
+    rel: adjacent_workflow
+    sources:
+      - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/
+      - https://helm.sh/docs/
+  - id: brew:kustomize
+    reason: >
+      Argo CD natively detects `kustomization.yaml` and renders Kustomize overlays,
+      making Kustomize a direct companion for composing the manifests reconciled by Argo
+      CD.
+    rel: adjacent_workflow
+    sources:
+      - https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/
+      - https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/
 tags:
   - cli
   - continuous-delivery
