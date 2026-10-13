@@ -57,6 +57,24 @@ history:
       repo bootstrap` against the current Kubernetes context. After bootstrap, users
       create projects and applications; Autopilot commits manifests to the GitOps
       repository and lets Argo CD reconcile them into the cluster.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Autopilot's official getting-started guide requires kubectl and a kubeconfig
+      before bootstrapping Argo CD into a Kubernetes cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://argocd-autopilot.readthedocs.io/en/stable/Getting-Started/
+      - https://formulae.brew.sh/formula/kubernetes-cli
+  - id: brew:argocd
+    reason: >
+      Use the Argo CD CLI to inspect and operate the Argo CD installation and
+      applications that Autopilot bootstraps and manages through Git.
+    rel: adjacent_workflow
+    sources:
+      - https://argocd-autopilot.readthedocs.io/en/stable/
+      - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd/
+      - https://formulae.brew.sh/formula/argocd
 category: cloud-infrastructure
 package-manager:
   brew: argocd-autopilot

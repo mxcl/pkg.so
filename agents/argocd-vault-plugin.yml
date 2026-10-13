@@ -7,7 +7,9 @@ docs:
 config-file-location:
   unix:
     - /path/to/config/file.yaml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - /path/to/config/file.yaml
 history:
   adoption-history:
     - >
@@ -57,6 +59,17 @@ history:
       Kubernetes Secret containing backend settings. It is also registered as an Argo CD
       config-management plugin so manifests can be rendered during application
       reconciliation.
+related-packages:
+  - id: brew:argocd
+    reason: >
+      Argo CD runs the plugin during manifest generation, making its CLI the natural
+      companion for creating, inspecting, and synchronizing applications that use
+      resolved secrets.
+    rel: adjacent_workflow
+    sources:
+      - https://argocd-vault-plugin.readthedocs.io/en/stable/usage/
+      - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/
+      - https://formulae.brew.sh/formula/argocd
 tags:
   - argocd
   - cli
