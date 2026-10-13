@@ -71,6 +71,23 @@ history:
       install resolves those dependencies and produces a lockfile so collaborators and
       CI can reproduce the same agent context; additional commands cover compilation,
       packaging, auditing, marketplaces, and policy enforcement.
+related-packages:
+  - id: cask:codex
+    reason: >
+      APM has a documented Codex target that deploys agents, skills, hooks, and MCP
+      configuration into locations consumed by the Codex coding-agent CLI.
+    rel: adjacent_workflow
+    sources:
+      - https://microsoft.github.io/apm/reference/targets-matrix/
+      - https://github.com/openai/codex#readme
+  - id: brew:github-mcp-server
+    reason: >
+      APM can declare and install GitHub's official MCP Server as a locked MCP
+      dependency and route its configuration into supported agent harnesses.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/microsoft/apm#readme
+      - https://github.com/github/github-mcp-server#readme
 tags:
   - agent-configuration
   - ai-agents

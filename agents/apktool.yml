@@ -89,6 +89,34 @@ history:
       families. Framework files can be stored or read from a user-specified frame path,
       but the official docs do not present that as a fixed config-file location, so no
       config-file-location is recorded here.
+related-packages:
+  - id: brew:jadx
+    reason: >
+      Use jadx alongside Apktool when you want Java-like decompiled source and an
+      interactive code browser, while Apktool remains better suited to editable
+      resources, smali, and rebuilding APKs.
+    rel: adjacent_workflow
+    sources:
+      - https://apktool.org/
+      - https://github.com/skylot/jadx#readme
+  - id: brew:dex2jar
+    reason: >
+      dex2jar complements Apktool by converting an APK's DEX bytecode into JAR class
+      files for Java-bytecode tooling, whereas Apktool exposes smali and Android
+      resources.
+    rel: adjacent_workflow
+    sources:
+      - https://apktool.org/
+      - https://github.com/pxb1988/dex2jar#readme
+  - id: cask:android-platform-tools
+    reason: >
+      Android Platform Tools supplies `adb`, which Apktool's framework guide explicitly
+      uses to pull framework APKs from a connected device before decoding vendor
+      applications.
+    rel: adjacent_workflow
+    sources:
+      - https://apktool.org/wiki/in-depth/frameworks/
+      - https://developer.android.com/tools/adb
 tags:
   - android
   - apk
