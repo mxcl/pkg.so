@@ -4,7 +4,11 @@ repo: null
 docs:
   - https://anubis.techaro.lol
   - https://github.com/TecharoHQ/anubis#readme
-config-file-location: null
+config-file-location:
+  linux:
+    - /etc/anubis/default.env
+    - /etc/anubis/<service>.env
+    - /etc/anubis/<service>.botPolicies.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -75,6 +79,32 @@ history:
       config, it is the distribution of bot behavior. The default policy file, local
       overrides, known-good bot allowlists, and reverse-proxy examples are where the
       package turns from binary into operational security posture.
+related-packages:
+  - id: brew:caddy
+    reason: >
+      Caddy is a documented front-end reverse proxy for Anubis, terminating public
+      traffic and forwarding it through Anubis before requests reach the protected
+      service.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/TecharoHQ/anubis/blob/main/docs/docs/admin/installation.mdx
+      - https://caddyserver.com/docs/
+  - id: brew:nginx
+    reason: >
+      Nginx is a documented deployment companion that can route public requests and
+      required Anubis asset paths to the Anubis service before the protected origin.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/TecharoHQ/anubis/blob/main/docs/docs/admin/installation.mdx
+      - https://nginx.org/en/docs/
+  - id: brew:traefik
+    reason: >
+      Traefik is covered by Anubis's official environment guidance and can integrate
+      Anubis into dynamic container or Kubernetes routing workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/TecharoHQ/anubis/blob/main/docs/docs/admin/installation.mdx
+      - https://doc.traefik.io/traefik/
 tags:
   - anti-scraping
   - bot-protection
