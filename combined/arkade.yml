@@ -89,6 +89,26 @@ history:
       override OS, architecture, version, and output path. It is used for local
       developer setup, disposable clusters, demos, tutorials, and CI jobs that need a
       handful of cloud-native CLIs quickly.
+related-packages:
+  - id: brew:helm
+    reason: >
+      Use Helm alongside arkade when you need direct chart-repository, values, upgrade,
+      rollback, or custom-chart control; arkade invokes Helm for many curated
+      application installs and supplies simplified defaults.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/alexellis/arkade
+      - https://helm.sh/docs
+      - https://github.com/helm/helm
+  - id: brew:k3sup
+    reason: >
+      Use k3sup to bootstrap a k3s cluster over SSH, then use arkade to install
+      applications and obtain the Kubernetes CLIs needed to operate that cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://blog.alexellis.io/kubernetes-marketplace-two-year-update/
+      - https://github.com/alexellis/k3sup
+      - https://github.com/alexellis/arkade
 category: cloud-infrastructure
 package-manager:
   apk: ark
