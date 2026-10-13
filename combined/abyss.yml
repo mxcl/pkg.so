@@ -73,6 +73,23 @@ history:
       The README documents cluster-oriented MPI mode, Bloom filter mode, scaffolding,
       linked-read workflows, and related tools such as ARCS, Tigmint, Konnector, Sealer,
       and abyss-bloom.
+related-packages:
+  - id: brew:samtools
+    reason: >
+      Install samtools when an ABySS workflow must read BAM inputs, which upstream
+      documents as an optional integration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/BirolLab/abyss#readme
+      - https://www.htslib.org/doc/samtools.html
+  - id: brew:open-mpi
+    reason: >
+      Use Open MPI when running ABySS's legacy MPI assembly mode across processes or
+      machines; the official build and cluster instructions document this integration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/BirolLab/abyss#readme
+      - https://docs.open-mpi.org/
 category: science
 package-manager:
   brew: abyss
