@@ -6,7 +6,8 @@ docs:
   - https://github.com/jonaslu/ain
 config-file-location:
   unix: '*.ain'
-credentials-file-location: null
+credentials-file-location:
+  unix: .env in the current working directory
 history:
   adoption-history:
     - >
@@ -59,6 +60,32 @@ history:
       Ain has no separate credentials store in the official README. Secrets are normally
       represented through template variables, environment variables, `.env`-style
       workflows, scripts, or headers inside user-controlled `.ain` files.
+related-packages:
+  - id: brew:curl
+    reason: >
+      curl is Ain's most broadly available request backend, so install it when you want
+      Ain templates to execute through curl and remain easy to reproduce as ordinary
+      curl commands.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jonaslu/ain
+      - https://curl.se/docs/
+  - id: brew:httpie
+    reason: >
+      HTTPie is a supported Ain backend that pairs Ain's layered request templates with
+      HTTPie's human-friendly terminal HTTP behavior.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jonaslu/ain
+      - https://httpie.io/docs/cli
+  - id: brew:wget
+    reason: >
+      GNU Wget is a supported Ain backend and is useful when an existing shell
+      environment standardizes on Wget for the actual HTTP transfer.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jonaslu/ain
+      - https://www.gnu.org/software/wget/manual/wget.html
 category: developer-tools
 package-manager:
   brew: ain
