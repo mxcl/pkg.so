@@ -1,0 +1,125 @@
+id: brew:memex
+display-name: memex
+repo: null
+docs:
+  - https://github.com/nicosuave/memex/blob/main/docs/configuration.md
+  - https://github.com/nicosuave/memex#readme
+config-file-location:
+  unix:
+    - ~/.memex/config.toml
+    - <root>/config.toml
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Memex is distributed through Homebrew and an upstream installer, with upstream
+      also documenting Arch Linux, Nix, Cargo, and source-build routes.
+    - >
+      Its supported-source list spans several coding-agent ecosystems, while CLI, TUI,
+      browser, native-app, MCP, and agent-skill interfaces reuse the same local index.
+  package-nerd-significance:
+    - >
+      Memex treats otherwise siloed local coding-agent transcripts as indexable user
+      data. Its package appeal lies in combining conventional local storage, BM25
+      search, optional embeddings, background services, SSH federation, MCP, and
+      reusable agent skills without requiring a hosted conversation archive.
+  project-history:
+    - >
+      Memex originated as a local search and browsing tool for coding-agent history. The
+      project grew beyond lexical transcript lookup to include semantic and hybrid
+      search, session resumption, saved-memory search, usage accounting, remote-machine
+      queries, graphical interfaces, an MCP server, and installable agent search skills.
+  related-projects:
+    - >
+      Memex indexes conversations from Claude Code, Codex, Pi, OpenCode, GitHub Copilot,
+      Cursor, and other documented engines.
+    - >
+      Its shared search skill integrates with Codex, OpenCode, Pi, and Oh My Pi, while a
+      separate target installs the skill for Claude Code.
+  sources:
+    - https://github.com/nicosuave/memex#readme
+    - https://github.com/nicosuave/memex/blob/main/docs/configuration.md
+  summary:
+    - >
+      Memex indexes local coding-agent conversations so people and agents can search
+      prior work, inspect original transcripts, resume supported sessions, and analyze
+      locally recorded usage.
+  timeline:
+    - >
+      Current: upstream documents Homebrew, installer, Arch Linux, Nix, Cargo, and
+      source-build installation paths.
+    - >
+      Current: Memex exposes its index through CLI, TUI, Web UI, native applications,
+      MCP, and agent search skills.
+  usage:
+    - >
+      A typical workflow runs `memex index`, searches by text, source, or project, opens
+      a matching transcript, and resumes the original session when the source engine
+      supports it.
+    - >
+      Optional local embeddings add semantic and hybrid retrieval. Remote embeddings are
+      also supported, but upstream warns that they send transcript and memory text to
+      the configured API.
+    - >
+      Teams with several machines can keep an index on each host and query configured
+      machines over SSH; the daemon can continuously refresh indexes and serve the Web
+      UI or MCP endpoint.
+related-packages:
+  - id: cask:codex
+    reason: >
+      Memex explicitly indexes Codex transcripts, can resume supported Codex sessions,
+      and offers a shared search skill that lets Codex retrieve prior work.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nicosuave/memex#readme
+      - https://developers.openai.com/codex
+      - https://github.com/openai/codex
+  - id: cask:claude-code
+    reason: >
+      Memex explicitly indexes Claude Code history and provides a Claude-specific skill
+      installation path for source-backed recall from earlier sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nicosuave/memex#readme
+      - https://code.claude.com/docs/en/overview
+      - https://github.com/anthropics/claude-code
+tags:
+  - agent-history
+  - ai
+  - bm25
+  - cli
+  - coding-agents
+  - hybrid-search
+  - local-first
+  - mcp
+  - session-search
+  - transcripts
+provenance:
+  category-sources:
+    - https://github.com/nicosuave/memex#readme
+    - source_facts.description
+  display-name-sources:
+    - https://github.com/nicosuave/memex
+    - source_facts.name
+  docs-sources:
+    - https://github.com/nicosuave/memex#readme
+    - https://github.com/nicosuave/memex/blob/main/docs/configuration.md
+  history-sources:
+    - https://github.com/nicosuave/memex#readme
+    - https://github.com/nicosuave/memex/blob/main/docs/configuration.md
+  repo-sources:
+    - >
+      source_facts.repo is already populated, so repository discovery is intentionally
+      omitted as required.
+  tags-sources:
+    - https://github.com/nicosuave/memex#readme
+    - source_facts.description
+category-confidence: high
+category-path:
+  - ai
+  - agent-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

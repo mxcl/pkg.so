@@ -1,11 +1,85 @@
 id: brew:apkid
-display-name: apkid
+display-name: APKiD
 homepage: https://github.com/rednaga/APKiD
-repo: null
+repo: https://github.com/rednaga/APKiD
+docs:
+  - https://github.com/rednaga/APKiD#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Upstream distributes APKiD through Python packaging and documents a Docker
+      workflow. Homebrew provides the cataloged command-line package.
+  package-nerd-significance:
+    - >
+      APKiD packages specialist Android reverse-engineering knowledge as maintainable
+      detection rules. Its use of YARA-derived scanning makes it interesting to package
+      maintainers and security researchers who want repeatable APK classification rather
+      than a hosted black-box service.
+  project-history:
+    - >
+      APKiD was created as an Android counterpart to PEiD. The project identifies
+      compilers, packers, obfuscators, app-shielding products, and unusual anti-analysis
+      features found in APK and DEX files.
+    - >
+      The project has been presented in security-research settings including Black Hat
+      Arsenal, while upstream continues to accept samples and detection-rule
+      contributions for previously unidentified Android artifacts.
+  related-projects:
+    - >
+      APKiD's development workflow uses yara-python and yara-python-dex to compile and
+      execute its rules.
+    - >
+      The project describes itself by analogy with PEiD, adapting executable-packer
+      identification to Android packages.
+  sources:
+    - https://github.com/VirusTotal/yara
+    - https://github.com/rednaga/APKiD#readme
+  summary:
+    - >
+      APKiD is a command-line identifier for the compilers, packers, obfuscators,
+      protection systems, and other noteworthy traits present in Android APK and DEX
+      files.
+  timeline:
+    - '2018: APKiD was presented at Black Hat Europe Arsenal as “PEiD for Android Apps”.'
+    - '2023: APKiD was presented at Black Hat USA Arsenal for identifying mobile RASP SDKs.'
+    - >
+      Current: upstream documents installation through Python packaging and Docker, with
+      Homebrew supplying an additional package-manager route.
+  usage:
+    - >
+      Analysts run APKiD against an APK, DEX file, or directory; it can recurse through
+      directories and nested archives and emit human-readable or JSON results.
+    - >
+      Rule contributors submit representative file hashes and add detections for new
+      packers, compilers, obfuscators, app-shielding products, and anti-analysis
+      techniques.
+related-packages:
+  - id: brew:yara
+    reason: >
+      Choose YARA alongside APKiD when you need to write or run general-purpose
+      detection rules; APKiD's own rule build and scan workflow is based on YARA Python
+      bindings.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rednaga/APKiD#readme
+      - https://github.com/VirusTotal/yara
+      - https://yara.readthedocs.io/en/stable/
+category: security
 package-manager:
   brew: apkid
 package-manager-url: https://formulae.brew.sh/formula/apkid
 license: GPL-3.0-only
+tags:
+  - android
+  - apk
+  - cli
+  - malware-analysis
+  - obfuscation
+  - packers
+  - reverse-engineering
+  - yara
 description: Android application identifier for compilers, packers, and obfuscators
 executables:
   - apkid
