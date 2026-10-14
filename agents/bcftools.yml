@@ -78,6 +78,33 @@ history:
       The executable is usually scripted rather than used as a single monolithic
       command: subcommands such as view, query, filter, stats, mpileup, call, norm,
       annotate, merge, and concat make it a toolkit for repeatable genomics workflows.
+related-packages:
+  - id: brew:samtools
+    reason: >
+      Use SAMtools to prepare, inspect, sort, and index SAM/BAM/CRAM alignments before
+      BCFtools performs variant calling or downstream VCF/BCF processing.
+    rel: adjacent_workflow
+    sources:
+      - https://samtools.github.io/
+      - https://academic.oup.com/gigascience/article/10/2/giab008/6137722
+  - id: brew:htslib
+    reason: >
+      HTSlib is the official low-level C library behind the ecosystem and is the
+      appropriate companion when an application needs programmatic access to sequencing
+      formats rather than only BCFtools commands.
+    rel: adjacent_workflow
+    sources:
+      - https://www.htslib.org/
+      - https://academic.oup.com/gigascience/article/10/2/giab008/6137722
+  - id: brew:vcftools
+    reason: >
+      VCFtools is an alternative suite for VCF analysis, while BCFtools provides
+      integrated VCF/BCF manipulation and variant calling and was explicitly developed
+      to replace many older Perl-based operations.
+    rel: alternative
+    sources:
+      - https://vcftools.github.io/
+      - https://github.com/samtools/bcftools
 tags:
   - bcf
   - bioinformatics

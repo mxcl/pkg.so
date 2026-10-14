@@ -61,6 +61,25 @@ history:
     - >
       It is most relevant for legacy C/C++ style normalization, old trees, and users who
       want a formatter less ambitious than clang-format or GNU indent.
+related-packages:
+  - id: brew:clang-format
+    reason: >
+      Choose clang-format for modern, syntax-aware formatting, project-level style
+      files, partial-file operation, and editor integration; choose BCPP for
+      conservative C/C++ indentation that intentionally avoids wrapping long statements.
+    rel: alternative
+    sources:
+      - https://invisible-island.net/bcpp/bcpp.html
+      - https://clang.llvm.org/docs/ClangFormat.html
+  - id: brew:gnu-indent
+    reason: >
+      GNU indent is an alternative C formatter that can restructure and wrap source more
+      aggressively, whereas BCPP explicitly limits itself to indentation and tab/space
+      treatment without wrapping long statements.
+    rel: alternative
+    sources:
+      - https://invisible-island.net/bcpp/bcpp.html
+      - https://www.gnu.org/software/indent/
 tags:
   - beautifier
   - c
@@ -95,8 +114,8 @@ provenance:
   repo-sources:
     - >
       The official project page publishes source archives but does not identify an
-      official HTTP(S) source-control repository:
-      https://invisible-island.net/bcpp/bcpp.html
+      official HTTP(S) source-control project page.
+    - https://invisible-island.net/bcpp/bcpp.html
   tags-sources:
     - >
       Official bcpp synopsis says it indents C/C++ source programs and compares it with
@@ -107,5 +126,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high
