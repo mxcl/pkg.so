@@ -71,6 +71,16 @@ history:
       or barman.d snippets, grants PostgreSQL access using credentials such as .pgpass,
       archives WAL files with barman-wal-archive or streaming, and restores backups
       through barman restore or cloud restore commands.
+related-packages:
+  - id: brew:libpq
+    reason: >
+      Install libpq alongside Barman when a workstation or backup host needs PostgreSQL
+      client utilities such as pg_basebackup and psql without a locally managed
+      PostgreSQL server.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.pgbarman.org/release/3.20.0/user_guide/installation.html
+      - https://www.postgresql.org/docs/current/app-pgbasebackup.html
 category: data
 package-manager:
   apk: barman

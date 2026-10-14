@@ -82,6 +82,24 @@ history:
       The same configuration file can contain translator settings and secrets for
       machine translation, so it is both a project configuration surface and, when
       translation is enabled, a credentials-bearing file.
+related-packages:
+  - id: brew:swiftgen
+    reason: >
+      Run BartyCrouch before SwiftGen so localization files are updated first, then let
+      SwiftGen generate type-safe Swift APIs; BartyCrouch directly supports
+      SwiftGen-structured transformations.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/FlineDev/BartyCrouch#readme
+      - https://github.com/SwiftGen/SwiftGen#readme
+  - id: brew:mint
+    reason: >
+      Use Mint to install, pin, and run BartyCrouch as a versioned Swift command-line
+      dependency shared by developers and CI.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/FlineDev/BartyCrouch#readme
+      - https://github.com/yonaskolb/Mint#readme
 category: developer-tools
 package-manager:
   brew: bartycrouch
