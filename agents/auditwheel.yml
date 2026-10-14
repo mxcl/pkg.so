@@ -69,6 +69,15 @@ history:
       libraries and symbol-version compatibility against manylinux policies. auditwheel
       repair copies required external libraries into the wheel, rewrites RPATH entries,
       and emits a repaired wheel with manylinux tags.
+related-packages:
+  - id: brew:patchelf
+    reason: >
+      patchelf is auditwheel's documented ELF-rewriting requirement and performs the
+      runtime-path changes used when repair vendors shared libraries into a wheel.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/pypa/auditwheel
+      - https://github.com/NixOS/patchelf
 tags:
   - cli
   - elf
