@@ -77,6 +77,31 @@ history:
       Configuration can live in a .bandit INI file for recursive project scans, or in
       YAML/TOML files such as bandit.yaml and pyproject.toml when passed with -c. The
       docs also describe generated configs and plugin-specific overrides.
+related-packages:
+  - id: brew:semgrep
+    reason: >
+      Choose Semgrep when you need customizable, source-like rules across many
+      languages; Bandit is the more focused Python security linter.
+    rel: alternative
+    sources:
+      - https://bandit.readthedocs.io/en/latest/
+      - https://semgrep.dev/docs/contributing/semgrep-philosophy
+  - id: brew:pip-audit
+    reason: >
+      Use pip-audit alongside Bandit to detect known vulnerabilities in Python
+      dependencies while Bandit examines the application's Python source.
+    rel: adjacent_workflow
+    sources:
+      - https://bandit.readthedocs.io/en/latest/
+      - https://github.com/pypa/pip-audit
+  - id: brew:pre-commit
+    reason: >
+      Bandit's official configuration guide documents running its hook through
+      pre-commit so security checks execute before changes are committed.
+    rel: adjacent_workflow
+    sources:
+      - https://bandit.readthedocs.io/en/latest/config.html
+      - https://pre-commit.com/
 tags:
   - cli
   - linter
