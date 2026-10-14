@@ -73,6 +73,32 @@ history:
       The README calls out platform-specific limitations around interception, including
       macOS System Integrity Protection and sandboxed builds such as Nix and Flatpak;
       users are directed to the wiki for workarounds.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      Install LLVM alongside Bear to use the generated compilation database with Clang
+      tools such as clangd and clang-tidy.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rizsotto/Bear#readme
+      - https://clang.llvm.org/docs/JSONCompilationDatabase.html
+      - https://llvm.org/docs/
+  - id: brew:cmake
+    reason: >
+      Choose CMake's native CMAKE_EXPORT_COMPILE_COMMANDS support instead of
+      interception when the project already uses a supported CMake generator.
+    rel: alternative
+    sources:
+      - https://github.com/rizsotto/Bear#when-to-use-bear
+      - https://cmake.org/cmake/help/latest/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html
+  - id: brew:meson
+    reason: >
+      Choose Meson's native compilation-database output instead of Bear when the project
+      is already built with Meson and its Ninja backend.
+    rel: alternative
+    sources:
+      - https://github.com/rizsotto/Bear#when-to-use-bear
+      - https://mesonbuild.com/FAQ.html#how-do-i-generate-a-clang-compilation-database
 category: developer-tools
 package-manager:
   apk: bear
