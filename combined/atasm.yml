@@ -61,6 +61,25 @@ history:
       raw binary output, include paths, predefined symbols, XFD/ATR output, emulator
       state-file merging, symbol/list output, CC65 headers, ATasm include files, and
       JSON symbol dumps for editor integrations.
+related-packages:
+  - id: brew:atari800
+    reason: >
+      Atari800 runs the Atari binaries and disk images produced by ATasm, while its
+      monitor provides an immediate environment for inspecting and debugging assembled
+      code.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/CycoPH/atasm#readme
+      - https://github.com/atari800/atari800/blob/master/DOC/USAGE
+  - id: brew:cc65
+    reason: >
+      Choose cc65 when a project needs a broader 6502 C toolchain with assembler and
+      linker support; choose ATasm for Atari-specific MAC/65-compatible assembly and
+      direct Atari disk or emulator-state outputs.
+    rel: alternative
+    sources:
+      - https://github.com/CycoPH/atasm#readme
+      - https://cc65.github.io/
 category: developer-tools
 package-manager:
   brew: atasm
