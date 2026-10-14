@@ -79,6 +79,16 @@ history:
       The maintained fork also documents backend selection and migration between
       backends, which matters for users moving between macOS Keychain, Linux desktop
       secret stores, 1Password, and encrypted-file fallback.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      AWS Vault is explicitly designed to complement AWS CLI by reading its profiles and
+      launching `aws` or other commands with short-lived credentials from a secure
+      backend.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ByteNess/aws-vault#readme
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 category: security
 package-manager:
   brew: aws-vault

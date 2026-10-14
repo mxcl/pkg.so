@@ -95,6 +95,31 @@ history:
       The CLI also serves as an authentication substrate for other tools in this batch.
       awscurl, awslogs, and AWSume all either read the same shared files or help
       produce/export credentials used by the AWS CLI and SDK credential chain.
+related-packages:
+  - id: brew:awscli@1
+    reason: >
+      Choose AWS CLI v1 only for compatibility with older scripts or integrations; AWS
+      CLI v2 is the current major line and receives current AWS features.
+    rel: alternative
+    sources:
+      - https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration.html
+      - https://aws.amazon.com/blogs/developer/cli-v1-maintenance-mode-announcement/
+  - id: brew:aws-vault
+    reason: >
+      AWS Vault complements AWS CLI by securely storing durable credentials and
+      launching `aws` commands with temporary STS credentials.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ByteNess/aws-vault#readme
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
+  - id: brew:awscli-local
+    reason: >
+      Use awscli-local when the same AWS CLI-style commands should target a LocalStack
+      emulator without repeatedly supplying its endpoint URL.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/localstack/awscli-local#readme
+      - https://github.com/localstack/localstack#readme
 tags:
   - automation
   - aws

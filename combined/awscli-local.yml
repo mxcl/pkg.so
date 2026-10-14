@@ -71,6 +71,23 @@ history:
     - >
       Because it wraps the AWS CLI, it inherits the AWS CLI config and credentials file
       conventions even when LocalStack examples often use placeholder credentials.
+related-packages:
+  - id: brew:localstack
+    reason: >
+      LocalStack provides the local AWS service emulator that `awslocal` targets, so
+      install it to run the services exercised by awscli-local commands.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/localstack/awscli-local#readme
+      - https://github.com/localstack/localstack#readme
+  - id: brew:awscli
+    reason: >
+      awscli-local wraps the standard AWS CLI command model and can use an independently
+      installed AWS CLI v2 executable.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/localstack/awscli-local#readme
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
 category: cloud-infrastructure
 package-manager:
   brew: awscli-local

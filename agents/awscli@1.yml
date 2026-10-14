@@ -81,6 +81,23 @@ history:
     - >
       The practical reason to install `awscli@1` is compatibility: pinning scripts,
       environments, or plugins that have not yet been moved to AWS CLI v2.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      AWS CLI v2 is the supported successor with current AWS features and self-contained
+      installers; retain v1 only when an older workflow requires its behavior.
+    rel: alternative
+    sources:
+      - https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration.html
+      - https://aws.amazon.com/blogs/developer/cli-v1-maintenance-mode-announcement/
+  - id: brew:awscli-local
+    reason: >
+      awscli-local can wrap AWS CLI v1 for LocalStack and specifically recommends v1 as
+      a workaround for its documented CloudFormation package limitation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/localstack/awscli-local#limitations
+      - https://github.com/localstack/awscli-local#installation
 tags:
   - automation
   - aws

@@ -66,6 +66,25 @@ history:
     - >
       The project also includes `aws-sso-lib`, exposing programmatic Identity Center
       login and boto3 session helpers for Python users.
+related-packages:
+  - id: brew:aws-sso-cli
+    reason: >
+      Choose AWS SSO CLI when you want an opinionated multi-account role picker with
+      encrypted token storage; choose aws-sso-util for Python-based profile generation,
+      `credential_process`, SDK helpers, and administrative utilities.
+    rel: alternative
+    sources:
+      - https://github.com/61418/aws-sso-util#readme
+      - https://synfinatic.github.io/aws-sso-cli/latest/
+  - id: brew:awscli
+    reason: >
+      AWS CLI v2 is the underlying official AWS client that aws-sso-util recommends
+      installing and whose IAM Identity Center profiles aws-sso-util generates and
+      extends.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/61418/aws-sso-util#readme
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html
 category: cloud-infrastructure
 package-manager:
   brew: aws-sso-util
