@@ -59,6 +59,47 @@ history:
       The README explicitly shows pipelines into ProjectDiscovery tools such as `tlsx`,
       `dnsx`, `naabu`, `httpx`, and `nuclei`, and it documents JSON and CSV output for
       post-processing.
+related-packages:
+  - id: brew:naabu
+    reason: >
+      Pipe asnmap's CIDR output into Naabu to discover open ports across the mapped
+      network ranges.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/projectdiscovery/asnmap#readme
+      - https://docs.projectdiscovery.io/opensource/naabu/running
+  - id: brew:tlsx
+    reason: >
+      Pipe mapped ranges directly into tlsx when the next step is TLS certificate,
+      cipher, or endpoint inspection.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/projectdiscovery/asnmap#readme
+      - https://github.com/projectdiscovery/tlsx#readme
+  - id: brew:dnsx
+    reason: >
+      Use dnsx with asnmap output and `-ptr` to perform reverse-DNS reconnaissance on
+      mapped address ranges.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/projectdiscovery/asnmap#readme
+      - https://docs.projectdiscovery.io/opensource/dnsx/overview
+  - id: brew:httpx
+    reason: >
+      After Naabu identifies web ports in an asnmap range, httpx can probe the resulting
+      HTTP services and emit structured metadata.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/projectdiscovery/asnmap#readme
+      - https://docs.projectdiscovery.io/tools/httpx/overview
+  - id: brew:nuclei
+    reason: >
+      Nuclei can consume the live HTTP targets produced by the documented
+      asnmap-to-naabu-to-httpx pipeline for template-based checks.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/projectdiscovery/asnmap#readme
+      - https://docs.projectdiscovery.io/opensource/nuclei
 tags:
   - asn
   - cidr
