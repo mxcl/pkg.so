@@ -66,6 +66,26 @@ history:
       The manual explains the mental model: classify failures with retry policy, choose
       a backoff schedule, set a retry limit, and optionally use exponential backoff to
       start aggressively while backing off during persistent outages.
+related-packages:
+  - id: brew:retry
+    reason: >
+      Choose retry when shell-pipeline integration and replaying captured stdin and
+      stdout are important; choose attempt for explicit output predicates, jitter,
+      timeouts, and selectable backoff strategies.
+    rel: alternative
+    sources:
+      - https://github.com/MaxBondABE/attempt
+      - https://github.com/minfrin/retry
+  - id: brew:wait4x
+    reason: >
+      Choose Wait4X for protocol-aware service readiness checks across HTTP, TCP, DNS,
+      databases, and queues; choose attempt when the retry target is an arbitrary
+      command or its output.
+    rel: alternative
+    sources:
+      - https://github.com/MaxBondABE/attempt
+      - https://wait4x.dev/
+      - https://github.com/wait4x/wait4x
 tags:
   - backoff
   - cli

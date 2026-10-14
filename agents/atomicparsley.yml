@@ -84,6 +84,26 @@ history:
       Package users usually reach for AtomicParsley when a media pipeline already has an
       MP4 and needs metadata adjusted without re-encoding. That makes the tool useful in
       shell scripts and post-processing hooks where a GUI tagger would be too manual.
+related-packages:
+  - id: brew:exiftool
+    reason: >
+      Choose ExifTool when you need one metadata reader/writer spanning MP4/MOV and many
+      other file types; choose AtomicParsley for a narrower interface centered on MPEG-4
+      and iTunes atoms.
+    rel: alternative
+    sources:
+      - https://github.com/wez/atomicparsley
+      - https://exiftool.org/exiftool_pod2.html
+      - https://exiftool.org/TagNames.pdf
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg can encode, remux, and copy media metadata before AtomicParsley applies
+      MP4-specific iTunes-style tagging in the same media-processing workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/wez/atomicparsley
+      - https://www.ffmpeg.org/ffmpeg.html
+      - https://www.ffmpeg.org/ffmpeg-formats.html
 tags:
   - cli
   - itunes-tags
