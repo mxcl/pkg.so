@@ -109,6 +109,31 @@ history:
       Sync is optional. With one machine it behaves like an encrypted backup; with
       multiple machines it unifies history across terminals and hosts. Users can use the
       hosted Atuin service, self-host `atuin-server`, or skip sync entirely.
+related-packages:
+  - id: brew:atuin-server
+    reason: >
+      Install atuin-server when Atuin clients should synchronize encrypted shell history
+      through infrastructure you operate yourself.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.atuin.sh/latest/guide/sync/
+      - https://docs.atuin.sh/latest/self-hosting/server-setup/
+  - id: brew:mcfly
+    reason: >
+      Choose McFly for a local, context-ranked Ctrl-R replacement that preserves
+      conventional shell history and does not require Atuin's synchronization model.
+    rel: alternative
+    sources:
+      - https://github.com/cantino/mcfly#readme
+      - https://docs.atuin.sh/latest/guide/getting-started/
+  - id: brew:hstr
+    reason: >
+      Choose HSTR for a lightweight Bash/Zsh history TUI with favorites and history
+      cleanup when cross-device encrypted synchronization is unnecessary.
+    rel: alternative
+    sources:
+      - https://github.com/dvorka-oss/hstr#readme
+      - https://docs.atuin.sh/latest/guide/getting-started/
 tags:
   - cli
   - history

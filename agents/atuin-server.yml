@@ -7,7 +7,9 @@ docs:
 config-file-location:
   unix:
     - ~/.config/atuin/server.toml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.config/atuin/server.toml
 history:
   adoption-history:
     - >
@@ -87,6 +89,15 @@ history:
       is end-to-end encrypted before it reaches the server, so the server package is
       infrastructure for storage and synchronization rather than a plaintext
       command-history database.
+related-packages:
+  - id: brew:atuin
+    reason: >
+      Atuin is the required client-side workflow that records, searches, encrypts, and
+      synchronizes shell history with atuin-server.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.atuin.sh/latest/guide/sync/
+      - https://docs.atuin.sh/latest/self-hosting/server-setup/
 tags:
   - cli
   - postgresql
