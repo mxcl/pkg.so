@@ -69,6 +69,23 @@ history:
     - >
       There is no documented configuration file or credentials store; the tool is a
       stateless encoder/decoder.
+related-packages:
+  - id: brew:base64
+    reason: >
+      Choose Base64 for maximum protocol and tooling compatibility; choose basE91 when
+      reduced ASCII encoding overhead justifies a less common format.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/projects/base91/
+      - https://www.fourmilab.ch/webtools/base64/
+  - id: brew:base16384
+    reason: >
+      Choose base16384 for a denser Unicode-based representation when UTF-16BE transport
+      is acceptable, while basE91 remains ASCII-oriented.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/projects/base91/
+      - https://github.com/fumiama/base16384#readme
 tags:
   - base91
   - cli

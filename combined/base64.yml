@@ -68,6 +68,33 @@ history:
     - >
       There is no documented configuration file or credentials store; the command is
       controlled entirely by flags and file arguments.
+related-packages:
+  - id: brew:coreutils
+    reason: >
+      Choose GNU Coreutils when you want base64 alongside the standard GNU file, shell,
+      and text utilities; choose this package for the small standalone Fourmilab
+      implementation.
+    rel: alternative
+    sources:
+      - https://www.fourmilab.ch/webtools/base64/
+      - https://www.gnu.org/software/coreutils/manual/coreutils.html
+  - id: brew:base91
+    reason: >
+      Choose basE91 when lower ASCII-armoring overhead matters more than Base64's much
+      wider interoperability.
+    rel: alternative
+    sources:
+      - https://www.fourmilab.ch/webtools/base64/
+      - https://sourceforge.net/projects/base91/
+  - id: brew:uudeview
+    reason: >
+      UUDeview complements simple Base64 filtering when decoding multipart email or
+      Usenet material because it sorts parts and auto-detects MIME Base64 and several
+      legacy encodings.
+    rel: adjacent_workflow
+    sources:
+      - https://www.fourmilab.ch/webtools/base64/
+      - https://github.com/hannob/uudeview#readme
 category: developer-tools
 package-manager:
   apk: base64
