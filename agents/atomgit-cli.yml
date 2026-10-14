@@ -4,8 +4,84 @@ repo: https://atomgit.com/hust-open-atom-club/atomgit-cli
 docs:
   - https://atomgit.com/hust-open-atom-club/atomgit-cli
 config-file-location: null
-credentials-file-location: null
-history: null
+credentials-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/ag-cli/token.json
+    - ~/.config/ag-cli/token.json
+    - ~/.atomgit_personal_token.json
+  windows:
+    - '%USERPROFILE%\.config\ag-cli\token.json'
+history:
+  adoption-history:
+    - >
+      The input records distribution through Homebrew, Nix, Scoop, winget, Chocolatey,
+      and Fedora-family package identifiers, reflecting an effort to make the ag
+      executable available across developer platforms.
+    - >
+      Official Homebrew packaging provides bottled installations for macOS and Linux,
+      while the project also documents source installation through the Go toolchain.
+  package-nerd-significance:
+    - >
+      AtomGit CLI brings repository-hosting operations into a packageable executable for
+      an ecosystem whose web interface and documentation are primarily Chinese-language.
+      Its short ag command covers the same terminal-centered collaboration niche that
+      first-party CLIs occupy on other hosting platforms.
+    - >
+      The package also illustrates a common catalog hazard: the executable name ag
+      collides with The Silver Searcher and unrelated package identifiers, making the
+      atomgit-cli project identity more reliable than the binary name alone.
+  project-history:
+    - >
+      AtomGit CLI was created by the HUST OpenAtom Club as a Go command-line client for
+      the AtomGit ecosystem. The project explicitly draws inspiration from GitHub CLI
+      while implementing AtomGit-specific authentication and API operations.
+    - >
+      The CLI grew to cover repositories, branches, pull requests, issues, releases,
+      Actions, collaborators, webhooks, search, notifications, and direct API access.
+      Authentication supports browser-based OAuth as well as token input for headless
+      and CI environments.
+  related-projects:
+    - AtomGit is the repository-hosting platform targeted by the client.
+    - >
+      GitHub CLI is the documented design reference and an analogous command-line client
+      for GitHub.
+  sources:
+    - https://atomgit.com/hust-open-atom-club/atomgit-cli
+    - https://formulae.brew.sh/formula/atomgit-cli
+    - source_facts.package-manager
+  summary:
+    - >
+      AtomGit CLI, invoked as ag, is a command-line client for managing AtomGit
+      repositories and collaboration resources, including pull requests, issues,
+      releases, Actions, search, and authentication.
+  timeline:
+    - >
+      2026: AtomGit CLI was publicly distributed as a Go-based ag executable and entered
+      multiple package-manager catalogs.
+    - >
+      2026: Official project guidance documented OAuth login and token-based
+      authentication for headless environments.
+    - >
+      Present: The project provides cross-platform installation paths and broad AtomGit
+      repository-management commands.
+  usage:
+    - >
+      Users authenticate with ag auth login, optionally supplying an existing token
+      through standard input for containers or CI. The stored token is then used for
+      AtomGit API operations.
+    - >
+      The command supports terminal workflows for repository inspection and creation,
+      pull requests, issues, releases, Actions, collaborators, notifications, search,
+      and direct API calls.
+related-packages:
+  - id: brew:gh
+    reason: >
+      Choose GitHub CLI when the repositories and collaboration resources you need to
+      manage are hosted on GitHub rather than AtomGit.
+    rel: alternative
+    sources:
+      - https://atomgit.com/hust-open-atom-club/atomgit-cli
+      - https://cli.github.com/manual/gh
 tags:
   - atomgit
   - cli
@@ -24,9 +100,9 @@ provenance:
       The official source-control project page is the best verified documentation
       surface for this CLI.
   history-sources:
-    - >
-      The official project page and supplied metadata establish the CLI's purpose, but
-      reliable source-backed historical detail is too thin.
+    - https://atomgit.com/hust-open-atom-club/atomgit-cli
+    - https://formulae.brew.sh/formula/atomgit-cli
+    - source_facts.package-manager
   repo-sources:
     - >
       source_facts.homepage is an official AtomGit source-control project URL;
@@ -41,6 +117,6 @@ category-path:
   - cli
 display-name-confidence: high
 docs-confidence: medium
-history-confidence: low
+history-confidence: medium
 repo-confidence: high
 tags-confidence: high

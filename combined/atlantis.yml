@@ -94,6 +94,31 @@ history:
       repos.yaml, passed with --repo-config. Provider credentials are intentionally left
       to the hosting environment: docs mention environment variables, cloud instance
       roles, Vault, and files such as ~/.aws/credentials.
+related-packages:
+  - id: brew:terragrunt-atlantis-config
+    reason: >
+      Use it with Atlantis to generate atlantis.yaml from Terragrunt dependency
+      configuration instead of maintaining large project lists manually.
+    rel: adjacent_workflow
+    sources:
+      - https://www.runatlantis.io/docs/custom-workflows
+      - https://github.com/transcend-io/terragrunt-atlantis-config#readme
+  - id: brew:terragrunt
+    reason: >
+      Use Terragrunt inside Atlantis custom workflows when a repository needs
+      dependency-aware orchestration around Terraform or OpenTofu modules.
+    rel: adjacent_workflow
+    sources:
+      - https://www.runatlantis.io/docs/custom-workflows
+      - https://terragrunt.gruntwork.io/docs
+  - id: brew:opentofu
+    reason: >
+      Use OpenTofu as the infrastructure engine for an Atlantis project by setting
+      terraform_distribution to opentofu in atlantis.yaml.
+    rel: adjacent_workflow
+    sources:
+      - https://www.runatlantis.io/docs/repo-level-atlantis-yaml.html
+      - https://opentofu.org/docs
 category: cloud-infrastructure
 package-manager:
   brew: atlantis
