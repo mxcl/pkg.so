@@ -127,18 +127,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:diffle",
+        "brew:cask:nextpad++",
+        "brew:cask:genoffice",
+        "brew:bitbucket-cli",
+        "brew:cask:tracexy",
         "brew:cask:fluxer",
         "brew:photocraft-cli",
         "brew:cask:crest-browser",
         "brew:memex",
         "brew:cask:purge",
-        "brew:diffle",
         "brew:cask:claudoscope",
-        "brew:cask:photocraft",
-        "brew:cask:vectorcraft",
-        "brew:cask:pdfcraft",
-        "brew:cask:filmcraft",
-        "brew:maki"
+        "brew:cask:photocraft"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -146,18 +146,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:diffle",
+        "brew:cask:nextpad++",
+        "brew:cask:genoffice",
+        "brew:bitbucket-cli",
+        "brew:cask:tracexy",
         "brew:cask:fluxer",
         "brew:photocraft-cli",
         "brew:cask:crest-browser",
         "brew:memex",
         "brew:cask:purge",
-        "brew:diffle",
         "brew:cask:hol-guard",
-        "brew:ccusage",
-        "brew:cask:claudoscope",
-        "brew:cask:photocraft",
-        "brew:cask:vectorcraft",
-        "brew:cask:pdfcraft"
+        "brew:ccusage"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -852,7 +852,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-13T08:07:49Z",
+  "generatedAt": "2026-10-14T07:05:27Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -972,6 +972,63 @@
       ],
       "upstreamSummary": "Music library manager and tagger",
       "version": "2.14.1"
+    },
+    "brew:bitbucket-cli": {
+      "agentSummary": "bkt brings GitHub-CLI-like ergonomics and structured output to Bitbucket Cloud and Data Center, supporting interactive developers, scripts, CI pipelines, and coding agents.",
+      "assessment": {
+        "alternatives": [
+          "Bitbucket's web interface",
+          "Direct Bitbucket REST API scripts",
+          "Atlassian or third-party Bitbucket command-line clients"
+        ],
+        "audiences": [
+          "Developers working with Bitbucket Cloud or Bitbucket Data Center",
+          "Automation and coding-agent users who need predictable JSON or YAML output"
+        ],
+        "caveats": [
+          "The Homebrew core formula is built without the project's embedded OAuth client credentials",
+          "Cloud browser login from source builds needs explicit OAuth client configuration, though token login remains available",
+          "Resource access tokens cannot perform commands that require a user identity"
+        ],
+        "complements": [
+          "Bitbucket Pipelines secured variables",
+          "Claude Code or Codex through the optional bkt skill",
+          "Operating-system keyrings for stored credentials"
+        ],
+        "prerequisites": [
+          "Access to a Bitbucket Cloud workspace or Data Center server",
+          "An appropriate API token, bearer token, basic-auth identity, or OAuth configuration"
+        ],
+        "useCases": [
+          "Manage Bitbucket repositories, pull requests, issues, pipelines, and releases from a terminal",
+          "Run config-free authenticated commands in CI",
+          "Expose consistent Bitbucket operations to shell scripts and coding agents"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "bitbucket-cli",
+      "docs": "https://github.com/avivsinai/bitbucket-cli/blob/master/README.md",
+      "homepage": "https://github.com/avivsinai/bitbucket-cli",
+      "id": "brew:bitbucket-cli",
+      "installURL": "pkgmgrmgr://install?package=brew%3Abitbucket-cli",
+      "lastUpdatedAt": "2026-10-13T11:15:13Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/avivsinai/bitbucket-cli",
+      "researchedAt": "2026-10-14T07:05:27Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "bkt upstream repository and authentication documentation",
+          "url": "https://github.com/avivsinai/bitbucket-cli"
+        },
+        {
+          "kind": "primary",
+          "title": "bkt first published release",
+          "url": "https://github.com/avivsinai/bitbucket-cli/releases/tag/v0.2.0"
+        }
+      ],
+      "upstreamSummary": "CLI for Bitbucket Cloud and Data Center",
+      "version": "0.33.1"
     },
     "brew:cask:activitywatch": {
       "agentSummary": "ActivityWatch records computer activity into a local, extensible timeline, giving users evidence for reflection while keeping sensitive event data under their control.",
@@ -1288,63 +1345,6 @@
       "upstreamSummary": "Tool discovery and execution layer for AI agents",
       "version": "1.6.10"
     },
-    "brew:cask:filmcraft": {
-      "agentSummary": "FilmCraft is a new Rust video editor offering native and web builds, structured project files, headless commands, and agent control while its production workflow matures.",
-      "assessment": {
-        "alternatives": [
-          "Kdenlive",
-          "DaVinci Resolve",
-          "Adobe Premiere Pro"
-        ],
-        "audiences": [
-          "Early adopters of open-source video tools",
-          "Developers exploring programmable media workflows"
-        ],
-        "caveats": [
-          "The public release history is only days old",
-          "Young media software may expose codec, performance, and project-compatibility gaps",
-          "Automated edits still require review of timing, quality, and export settings"
-        ],
-        "complements": [
-          "FFmpeg for independent media inspection and conversion",
-          "Versioned project and source-media storage",
-          "A mature editor for final delivery fallback"
-        ],
-        "prerequisites": [
-          "A supported desktop platform or browser build",
-          "Media backups and time to validate exports"
-        ],
-        "useCases": [
-          "Timeline-based video editing",
-          "Testing cross-platform project workflows",
-          "Automating edits through CLI, MCP, or a control channel"
-        ]
-      },
-      "category": "media",
-      "displayName": "FilmCraft",
-      "docs": "https://getartcraft.com/apps/filmcraft",
-      "homepage": "https://getartcraft.com/apps/filmcraft",
-      "id": "brew:cask:filmcraft",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Afilmcraft",
-      "lastUpdatedAt": "2026-10-11T01:34:47Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/storytold/filmcraft",
-      "researchedAt": "2026-10-11T07:32:14Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "FilmCraft upstream documentation",
-          "url": "https://github.com/storytold/filmcraft/blob/main/README.md"
-        },
-        {
-          "kind": "primary",
-          "title": "FilmCraft releases",
-          "url": "https://github.com/storytold/filmcraft/releases"
-        }
-      ],
-      "upstreamSummary": "Video editor",
-      "version": "0.6.0"
-    },
     "brew:cask:fluxer": {
       "agentSummary": "Fluxer is an open-source chat and VoIP platform offering text, voice, video, communities, desktop clients, documented APIs, and an operator-managed self-hosting option.",
       "assessment": {
@@ -1407,6 +1407,63 @@
       ],
       "upstreamSummary": "Chat for friends, groups, and communities with text, voice, and video",
       "version": "2026.1012.202129"
+    },
+    "brew:cask:genoffice": {
+      "agentSummary": "GenOffice is a local-first office suite for editing common document formats, with reviewable AI changes, file search, cross-platform desktop apps, and an agent-oriented CLI.",
+      "assessment": {
+        "alternatives": [
+          "LibreOffice for established offline office editing",
+          "Microsoft 365 or Google Workspace for collaboration-centered office workflows",
+          "Format-specific command-line conversion tools"
+        ],
+        "audiences": [
+          "Users seeking an open-source desktop office suite with integrated AI assistance",
+          "Developers who want coding agents to create or edit office documents through a CLI"
+        ],
+        "caveats": [
+          "AI calls leave the device for the provider the user selects unless a local endpoint is configured",
+          "AI-generated edits and document conversions require human review, especially for complex formatting",
+          "The project is young and its format compatibility is still evolving"
+        ],
+        "complements": [
+          "Claude Code, Codex, Cursor, Gemini CLI, or another supported agent client",
+          "User-provided model-provider credentials",
+          "Existing office documents and local file collections"
+        ],
+        "prerequisites": [
+          "A supported macOS, Windows, or Linux system",
+          "A selected model provider or local compatible endpoint for AI features; ordinary editing does not require one"
+        ],
+        "useCases": [
+          "Edit DOCX, XLSX, PPTX, PDF, Markdown, and HTML files",
+          "Review AI-proposed document changes and roll them back",
+          "Create, convert, read, render, and edit office files from agent workflows"
+        ]
+      },
+      "category": "productivity",
+      "displayName": "GenOffice",
+      "docs": "https://genoffice.ai/",
+      "homepage": "https://genoffice.ai/",
+      "id": "brew:cask:genoffice",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agenoffice",
+      "lastUpdatedAt": "2026-10-13T16:14:36Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/genspark-ai/genoffice",
+      "researchedAt": "2026-10-14T07:05:27Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "GenOffice upstream repository and feature documentation",
+          "url": "https://github.com/genspark-ai/genoffice"
+        },
+        {
+          "kind": "primary",
+          "title": "GenOffice first public release",
+          "url": "https://github.com/genspark-ai/genoffice/releases/tag/v0.4.110"
+        }
+      ],
+      "upstreamSummary": "Open-source AI office suite",
+      "version": "0.11.727"
     },
     "brew:cask:highball": {
       "agentSummary": "Highball runs Windows games on Apple Silicon through managed Wine-based engines, pairing launcher automation with an open compatibility database and per-game renderer guidance.",
@@ -1651,6 +1708,63 @@
       "upstreamSummary": "Keyboard-first local launcher",
       "version": "0.7.1"
     },
+    "brew:cask:nextpad++": {
+      "agentSummary": "Nextpad++ ports the Notepad++ codebase into a native universal Mac application, retaining Scintilla editing, macros, search, split views, and a growing plugin catalog.",
+      "assessment": {
+        "alternatives": [
+          "Notepad++ on Windows",
+          "Visual Studio Code or VSCodium",
+          "Native Mac editors with mature extension ecosystems"
+        ],
+        "audiences": [
+          "Mac users who want familiar Notepad++ workflows without a compatibility layer",
+          "Developers and text editors who rely on Scintilla-style search, macros, and plugins"
+        ],
+        "caveats": [
+          "The macOS port is unofficial and is not maintained by the original Notepad++ project",
+          "Only a subset of the Windows plugin ecosystem has been ported",
+          "Upstream says source build instructions are still being developed"
+        ],
+        "complements": [
+          "Nextpad++ Plugin Admin and ported plugin catalog",
+          "The nextpad++ command-line launcher",
+          "Git tools for source-control workflows"
+        ],
+        "prerequisites": [
+          "macOS 11 or later",
+          "An Apple Silicon or Intel Mac"
+        ],
+        "useCases": [
+          "Edit many text or source files in a native tabbed Mac interface",
+          "Run regex and find-in-files searches",
+          "Record macros and use ported Notepad++ plugins"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "Nextpad++",
+      "docs": "https://github.com/nextpad-plus-plus/nextpad-plus-plus-macos#readme",
+      "homepage": "https://nextpad.org/",
+      "id": "brew:cask:nextpad++",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Anextpad%2B%2B",
+      "lastUpdatedAt": "2026-10-13T17:37:14Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/nextpad-plus-plus/nextpad-plus-plus-macos",
+      "researchedAt": "2026-10-14T07:05:27Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Nextpad++ for macOS repository and documentation",
+          "url": "https://github.com/nextpad-plus-plus/nextpad-plus-plus-macos"
+        },
+        {
+          "kind": "primary",
+          "title": "First release under the Nextpad++ name",
+          "url": "https://github.com/nextpad-plus-plus/nextpad-plus-plus-macos/releases/tag/v1.0.6"
+        }
+      ],
+      "upstreamSummary": "Unofficial native port of Notepad++",
+      "version": "1.1.2"
+    },
     "brew:cask:omniwm": {
       "agentSummary": "Mac window manager brings scrolling columns and dwindle tiling to configurable workspaces, with multi-monitor routing and scriptable controls for users comfortable tuning desktop behavior.",
       "assessment": {
@@ -1834,63 +1948,6 @@
       ],
       "upstreamSummary": "Disk space analyser",
       "version": "1.2.1"
-    },
-    "brew:cask:pdfcraft": {
-      "agentSummary": "PdfCraft is a new Rust PDF editor spanning reading, forms, annotations, organization, conversion, and automation, with unusually detailed public tracking of robustness gaps.",
-      "assessment": {
-        "alternatives": [
-          "PDFgear",
-          "LibreOffice Draw",
-          "Adobe Acrobat"
-        ],
-        "audiences": [
-          "Early adopters seeking an open-source PDF editor",
-          "Developers evaluating PDF automation and rendering"
-        ],
-        "caveats": [
-          "Upstream labels robustness as early beta",
-          "Its roadmap reports unresolved out-of-memory crashes or hangs from fuzzing",
-          "Acrobat-level visual and behavioral fidelity remains unmeasured"
-        ],
-        "complements": [
-          "qpdf for structural checks",
-          "A PDF viewer with independent rendering",
-          "Versioned originals for comparison"
-        ],
-        "prerequisites": [
-          "A supported desktop platform",
-          "Duplicate copies of important PDFs before editing"
-        ],
-        "useCases": [
-          "Reading and annotating PDFs",
-          "Editing forms and organizing pages",
-          "Driving repeatable PDF operations through CLI or agent interfaces"
-        ]
-      },
-      "category": "productivity",
-      "displayName": "PdfCraft",
-      "docs": "https://getartcraft.com/apps/pdfcraft",
-      "homepage": "https://getartcraft.com/apps/pdfcraft",
-      "id": "brew:cask:pdfcraft",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apdfcraft",
-      "lastUpdatedAt": "2026-10-11T02:07:46Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/storytold/pdfcraft",
-      "researchedAt": "2026-10-11T07:32:14Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "PdfCraft upstream repository",
-          "url": "https://github.com/storytold/pdfcraft"
-        },
-        {
-          "kind": "primary",
-          "title": "PdfCraft roadmap and honest assessment",
-          "url": "https://github.com/storytold/pdfcraft/blob/main/ROADMAP.md"
-        }
-      ],
-      "upstreamSummary": "PDF editor",
-      "version": "0.6.0"
     },
     "brew:cask:photocraft": {
       "agentSummary": "PhotoCraft is an early-alpha Rust image editor pursuing layered PSD compatibility, native and web builds, local processing, automation, and measurable feature-parity goals.",
@@ -2128,6 +2185,64 @@
       "upstreamSummary": "Windows-style taskbar as a Dock replacement",
       "version": "1.6.3,2026,09"
     },
+    "brew:cask:tracexy": {
+      "agentSummary": "Tracexy is a native, local-first Mac network investigator that groups captured traffic into sessions while preserving decoded fields and raw packet evidence for deeper inspection.",
+      "assessment": {
+        "alternatives": [
+          "Wireshark",
+          "tshark",
+          "tcpdump",
+          "Other native Mac traffic viewers"
+        ],
+        "audiences": [
+          "Mac developers and operators investigating network behavior",
+          "Analysts who prefer session-oriented triage before packet-level inspection"
+        ],
+        "caveats": [
+          "The current release does not decrypt TLS or QUIC traffic",
+          "It does not yet provide general always-on TCP reassembly or deep HTTP/2, HTTP/3, and WebSocket decoding",
+          "Network captures can contain credentials and private content, so exports and retention require careful handling"
+        ],
+        "complements": [
+          "Wireshark or tshark for broader and deeper protocol dissection",
+          "tcpdump for small command-line capture workflows",
+          "Local model endpoints for the optional reviewed-session AI assistant"
+        ],
+        "prerequisites": [
+          "macOS 14 or later",
+          "Approval for the privileged helper when performing live capture; opening saved captures does not require it"
+        ],
+        "useCases": [
+          "Capture live traffic and correlate sessions with processes when macOS context is available",
+          "Open, merge, split, inspect, and export PCAP or PCAPNG evidence",
+          "Review hosts, protocols, timing, decoded fields, and raw bytes in isolated projects"
+        ]
+      },
+      "category": "networking",
+      "displayName": "Tracexy",
+      "docs": "https://github.com/RockxyApp/Tracexy#readme",
+      "homepage": "https://rockxy.io/tracexy",
+      "id": "brew:cask:tracexy",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atracexy",
+      "lastUpdatedAt": "2026-10-13T08:36:15Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/RockxyApp/Tracexy",
+      "researchedAt": "2026-10-14T07:05:27Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Tracexy upstream documentation, boundaries, and privacy model",
+          "url": "https://github.com/RockxyApp/Tracexy"
+        },
+        {
+          "kind": "primary",
+          "title": "Tracexy initial release",
+          "url": "https://github.com/RockxyApp/Tracexy/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "Inspect network sessions, protocols, processes, and packet evidence",
+      "version": "0.9.1,16"
+    },
     "brew:cask:trilium-notes": {
       "agentSummary": "Trilium Notes organizes a local personal knowledge base as linked, hierarchical notes, with self-hosted synchronization, scripting, relations, and structured attributes for deeper workflows.",
       "assessment": {
@@ -2192,63 +2307,6 @@
       ],
       "upstreamSummary": "Hierarchical note taking application",
       "version": "0.106.0"
-    },
-    "brew:cask:vectorcraft": {
-      "agentSummary": "VectorCraft is a young pure-Rust vector editor with SVG, PDF, print, desktop, web, CLI, and agent-control workflows, while openly tracking incomplete Illustrator parity.",
-      "assessment": {
-        "alternatives": [
-          "Inkscape",
-          "Affinity Designer",
-          "Adobe Illustrator"
-        ],
-        "audiences": [
-          "Vector artists willing to test a fast-moving open-source editor",
-          "Developers interested in scriptable graphics tooling"
-        ],
-        "caveats": [
-          "Upstream's parity percentages are self-assessed",
-          "Several advanced effects, scripting, and interaction details remain incomplete",
-          "Some platform and tablet combinations have documented limitations"
-        ],
-        "complements": [
-          "SVG validation tools",
-          "PDF inspection tools",
-          "A mature vector editor for interoperability checks"
-        ],
-        "prerequisites": [
-          "A supported desktop platform or web build",
-          "A fallback workflow for unsupported production features"
-        ],
-        "useCases": [
-          "Drawing and editing vector artwork",
-          "Importing or exporting common vector formats",
-          "Automating documents through CLI, control-channel, or MCP interfaces"
-        ]
-      },
-      "category": "media",
-      "displayName": "VectorCraft",
-      "docs": "https://getartcraft.com/apps/vectorcraft",
-      "homepage": "https://getartcraft.com/apps/vectorcraft",
-      "id": "brew:cask:vectorcraft",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Avectorcraft",
-      "lastUpdatedAt": "2026-10-11T02:56:39Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/storytold/vectorcraft",
-      "researchedAt": "2026-10-11T07:32:14Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "VectorCraft upstream repository and status",
-          "url": "https://github.com/storytold/vectorcraft"
-        },
-        {
-          "kind": "primary",
-          "title": "VectorCraft roadmap",
-          "url": "https://github.com/storytold/vectorcraft/blob/main/ROADMAP.md"
-        }
-      ],
-      "upstreamSummary": "Vector editor",
-      "version": "0.9.0"
     },
     "brew:cask:visual-studio-code@insiders": {
       "agentSummary": "Visual Studio Code Insiders delivers Microsoft's frequently updated preview editor, providing the primary tested client for JetBrains' official Kotlin language server extension.",
@@ -2554,36 +2612,36 @@
       "version": "2.36.0"
     },
     "brew:diffle": {
-      "agentSummary": "diffle provides keyboard-first browser reviews for Git changes, persistent comments, GitHub pending-review export, and optional language-server navigation without modifying the worktree.",
+      "agentSummary": "diffle is a keyboard-first terminal diff reviewer with comments, repository search, LSP navigation, and an explicit handoff to GitHub for final review submission.",
       "assessment": {
         "alternatives": [
-          "GitHub's web review interface for hosted collaboration",
-          "Terminal diff viewers when a browser interface or LSP navigation is unnecessary"
+          "GitHub's web pull-request reviewer",
+          "Terminal diff tools without review-comment or LSP workflows",
+          "Editor-integrated source-control review"
         ],
         "audiences": [
-          "Developers reviewing local Git changes",
-          "Keyboard-focused code reviewers",
-          "Teams moving review comments into GitHub pull requests or agent prompts"
+          "Developers who prefer keyboard-driven code review in a terminal",
+          "Teams reviewing GitHub pull requests or local branch differences"
         ],
         "caveats": [
-          "The review interface runs in a local browser rather than entirely in the terminal",
-          "GitHub workflows depend on authentication and network access",
-          "LSP features are available only when a matching server is installed and discoverable"
+          "diffle prepares GitHub comments as a pending review but intentionally does not submit the review itself",
+          "GitHub-specific operations require credentials, while local review does not",
+          "LSP features depend on separately installed and configured language servers"
         ],
         "complements": [
-          "GitHub CLI for authentication and pending-review workflows",
-          "Language servers for source-aware navigation",
-          "Coding agents that can consume copied review prompts"
+          "GitHub CLI for authentication",
+          "Language servers for code navigation",
+          "Git for local comparison targets"
         ],
         "prerequisites": [
-          "A Git repository and a local web browser",
-          "GitHub CLI or another supported credential path for pull-request access",
-          "Appropriate language servers on PATH for LSP navigation"
+          "A Git repository for repository-aware review workflows",
+          "A GitHub token or authenticated GitHub CLI only when opening pull requests or sending pending review comments",
+          "Configured language servers for LSP navigation features"
         ],
         "useCases": [
-          "Review worktree, staged, branch, commit, range-diff, or pull-request changes",
-          "Record line and file comments without changing tracked files",
-          "Use installed language servers for definitions, references, symbols, and hover details"
+          "Review local changes, commits, branches, patches, or GitHub pull requests",
+          "Draft line and file comments before submitting them through GitHub",
+          "Navigate definitions, references, symbols, and hover information through language servers"
         ]
       },
       "category": "developer-tools",
@@ -2592,29 +2650,24 @@
       "homepage": "https://github.com/moritzwilksch/diffle",
       "id": "brew:diffle",
       "installURL": "pkgmgrmgr://install?package=brew%3Adiffle",
-      "lastUpdatedAt": "2026-10-12T08:37:44Z",
+      "lastUpdatedAt": "2026-10-13T20:54:16Z",
       "manager": "homebrew",
       "repository": "https://github.com/moritzwilksch/diffle",
-      "researchedAt": "2026-10-13T08:07:49Z",
+      "researchedAt": "2026-10-14T07:05:27Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "diffle official repository and documentation",
+          "title": "diffle upstream repository and documentation",
           "url": "https://github.com/moritzwilksch/diffle"
         },
         {
           "kind": "primary",
-          "title": "diffle project site",
-          "url": "https://diffle.app/"
-        },
-        {
-          "kind": "primary",
-          "title": "diffle repository metadata",
-          "url": "https://api.github.com/repos/moritzwilksch/diffle"
+          "title": "diffle initial release",
+          "url": "https://github.com/moritzwilksch/diffle/releases/tag/v0.0.2"
         }
       ],
       "upstreamSummary": "Keyboard-first diff viewer with LSP support and GitHub integration",
-      "version": "0.2.4"
+      "version": "0.2.5"
     },
     "brew:edgevpn": {
       "agentSummary": "EdgeVPN builds decentralized private networks, reverse proxies, and file transfers on libp2p, using shared configuration tokens and an embedded distributed coordination layer.",
@@ -3142,63 +3195,6 @@
       ],
       "upstreamSummary": "Scalable user load testing tool written in Python",
       "version": "2.46.6"
-    },
-    "brew:maki": {
-      "agentSummary": "Maki is a Rust terminal coding agent focused on context efficiency, with provider choice, permission controls, headless operation, and Neovim-style Lua extensibility.",
-      "assessment": {
-        "alternatives": [
-          "Claude Code",
-          "OpenCode",
-          "Codex CLI"
-        ],
-        "audiences": [
-          "Developers who want a terminal coding agent",
-          "Teams experimenting with scriptable agent workflows"
-        ],
-        "caveats": [
-          "Model use can incur provider charges and send repository context off-device",
-          "Agent tool execution requires careful permission and folder-trust choices",
-          "The project remains young and its plugin surface may evolve"
-        ],
-        "complements": [
-          "Repository-scoped AGENTS.md guidance",
-          "ACP-compatible editors",
-          "MCP tool servers"
-        ],
-        "prerequisites": [
-          "An account and credentials for a supported model provider",
-          "A repository whose code and instructions can be shared with that provider"
-        ],
-        "useCases": [
-          "Interactive repository work",
-          "Headless agent tasks in scripts or CI",
-          "Adding custom commands and tools through Lua plugins"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "maki",
-      "docs": "https://maki.sh/docs",
-      "homepage": "https://maki.sh",
-      "id": "brew:maki",
-      "installURL": "pkgmgrmgr://install?package=brew%3Amaki",
-      "lastUpdatedAt": "2026-10-10T18:36:09Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/tontinton/maki",
-      "researchedAt": "2026-10-11T07:32:14Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Maki documentation",
-          "url": "https://maki.sh/docs/"
-        },
-        {
-          "kind": "primary",
-          "title": "Maki v0.1.0 release",
-          "url": "https://github.com/tontinton/maki/releases/tag/v0.1.0"
-        }
-      ],
-      "upstreamSummary": "Efficient AI coding agent extendable by neovim-like Lua plugins",
-      "version": "0.6.2"
     },
     "brew:memex": {
       "agentSummary": "Memex indexes local coding-agent transcripts for lexical or semantic search, session resumption, usage analysis, MCP access, and private cross-machine recall over SSH.",
@@ -4226,7 +4222,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-13T08:06:02Z",
+    "generatedAt": "2026-10-14T07:03:53Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
