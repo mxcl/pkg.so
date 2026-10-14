@@ -105,6 +105,25 @@ history:
       stored centrally with the executable, for example under ~/.astro/config.yaml on
       Unix-like systems. Login-related context and cached identity state also live in
       the user-level config.
+related-packages:
+  - id: brew:podman
+    reason: >
+      Use Podman with Astro CLI to run local Airflow containers through the runtime that
+      current Homebrew and winget installations configure by default.
+    rel: adjacent_workflow
+    sources:
+      - https://www.astronomer.io/astro/cli/install-cli
+      - https://www.astronomer.io/docs/astro/cli/release-notes/
+      - https://podman.io/
+  - id: brew:docker
+    reason: >
+      Use Docker as Astro CLI's alternative container engine when your development
+      environment already standardizes on the Docker daemon and CLI.
+    rel: adjacent_workflow
+    sources:
+      - https://www.astronomer.io/astro/cli/install-cli
+      - https://www.astronomer.io/docs/astro/cli/release-notes/
+      - https://docs.docker.com/get-started/docker-overview/
 category: data
 package-manager:
   brew: astro
