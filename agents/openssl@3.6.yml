@@ -1,0 +1,129 @@
+id: brew:openssl@3.6
+display-name: OpenSSL 3.6
+repo: null
+docs:
+  - https://docs.openssl.org/3.6
+  - https://docs.openssl.org/3.6/man1/openssl
+  - https://docs.openssl.org/3.6/man5/config
+config-file-location:
+  unix:
+    - $OPENSSL_CONF
+    - $OPENSSLDIR/openssl.cnf
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      OpenSSL became foundational infrastructure for secure network software because it
+      combined portable TLS protocol support, general-purpose cryptographic APIs,
+      certificate tooling, and a command-line interface. It is consequently packaged
+      across operating systems and language ecosystems and appears deep in many
+      dependency graphs.
+    - >
+      OpenSSL 3 established a provider-based architecture for cryptographic
+      implementations. The 3.6 branch continued that line with additions including
+      opaque symmetric-key objects, LMS signature verification, and deterministic ECDSA
+      support in the FIPS provider.
+  package-nerd-significance:
+    - >
+      OpenSSL is a classic high-impact dependency: ABI, configuration, provider,
+      certificate-store, security-policy, and compiler changes can affect large portions
+      of a package graph.
+    - >
+      The versioned `openssl@3.6` formula lets consumers deliberately remain on the 3.6
+      branch instead of automatically following another major or minor branch, which is
+      useful for controlled compatibility and migration testing.
+  project-history:
+    - >
+      OpenSSL descends from Eric Young and Tim Hudson's SSLeay library. Mark Cox's
+      official project history records that the successor effort began in 1998 and
+      changed its planned name from OpenTLS to OpenSSL shortly before launch.
+    - >
+      The project published OpenSSL 0.9.1c on December 23, 1998. It grew from an SSL-era
+      web-security library into a broadly used toolkit for TLS, X.509 certificates,
+      cryptographic primitives, providers, and command-line inspection and generation
+      workflows.
+    - >
+      OpenSSL 3.6.0 was released on October 1, 2025 as a feature release in the OpenSSL
+      3 series.
+  related-projects:
+    - SSLeay is the codebase from which OpenSSL originated.
+    - >
+      LibreSSL is an independent OpenBSD-led fork that deliberately modernized and
+      reduced the older OpenSSL codebase.
+  sources:
+    - https://docs.openssl.org/3.6/
+    - https://docs.openssl.org/3.6/man5/config/
+    - https://openssl-library.org/post/2018-12-20-20years/index.html
+    - https://www.openssl-library.org/post/2025-10-01-3.6-release-announcement/
+  summary:
+    - >
+      OpenSSL 3.6 is a branch of the widely deployed open-source toolkit providing TLS,
+      cryptographic algorithms, X.509 certificate handling, libraries, and the `openssl`
+      command-line utility.
+  timeline:
+    - '1998: The OpenSSL successor project was organized from the SSLeay codebase.'
+    - "1998: OpenSSL 0.9.1c became the project's first public release on December 23."
+    - '2025: OpenSSL 3.6.0 was released on October 1.'
+  usage:
+    - >
+      Developers link libssl and libcrypto into secure applications, while
+      administrators and developers use the `openssl` CLI to inspect certificates and
+      TLS endpoints, generate keys and requests, calculate digests, and transform
+      cryptographic formats.
+    - >
+      OpenSSL reads a compiled-in `openssl.cnf` beneath `OPENSSLDIR` by default;
+      `OPENSSL_CONF` can select another configuration file. Private keys and
+      certificates are user-selected inputs rather than credentials stored in one
+      universal OpenSSL credentials file.
+related-packages:
+  - id: brew:libressl
+    reason: >
+      Choose LibreSSL when you specifically want the OpenBSD-led TLS and cryptography
+      fork, while checking downstream API compatibility because it is not ABI-compatible
+      with OpenSSL.
+    rel: alternative
+    sources:
+      - https://www.libressl.org/
+      - https://github.com/libressl/portable
+      - https://docs.openssl.org/3.6/
+tags:
+  - cli
+  - cryptography
+  - libcrypto
+  - libssl
+  - security
+  - ssl
+  - tls
+  - x509
+provenance:
+  category-sources:
+    - https://docs.openssl.org/3.6/
+    - source_facts.description
+  display-name-sources:
+    - https://www.openssl-library.org/post/2025-10-01-3.6-release-announcement/
+    - source_facts.name
+  docs-sources:
+    - https://docs.openssl.org/3.6/
+    - https://docs.openssl.org/3.6/man1/openssl/
+    - https://docs.openssl.org/3.6/man5/config/
+  history-sources:
+    - https://docs.openssl.org/3.6/
+    - https://docs.openssl.org/3.6/man5/config/
+    - https://openssl-library.org/post/2018-12-20-20years/index.html
+    - https://www.openssl-library.org/post/2025-10-01-3.6-release-announcement/
+  repo-sources:
+    - source_facts.repo (already populated; repo intentionally returned null)
+  tags-sources:
+    - https://docs.openssl.org/3.6/
+    - source_facts.description
+    - source_facts.executables
+category-confidence: high
+category-path:
+  - security
+  - cryptography
+  - tls
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

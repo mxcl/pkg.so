@@ -2,9 +2,123 @@ id: cask:tracexy
 display-name: Tracexy
 homepage: https://rockxy.io/tracexy
 repo: https://github.com/RockxyApp/Tracexy
+docs:
+  - https://github.com/RockxyApp/Tracexy/blob/main/docs/README.md
+  - https://github.com/RockxyApp/Tracexy/blob/main/docs/comparison.md
+  - https://github.com/RockxyApp/Tracexy/blob/main/docs/usage.md
+  - https://github.com/RockxyApp/Tracexy#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Tracexy is a young macOS-specific project whose public releases began in 2026. Its
+      adoption pitch is a native, session-first alternative for users who find
+      packet-first investigation cumbersome.
+    - >
+      The project supports both live libpcap capture through a privileged helper and
+      offline PCAP or PCAPNG inspection, allowing it to participate in established
+      capture workflows rather than requiring a proprietary input format.
+  package-nerd-significance:
+    - >
+      Tracexy packages packet capture, protocol decoding, session correlation, process
+      attribution, local SQLite history, and a native macOS interface in one application
+      while keeping captured evidence local by default.
+    - >
+      For network-tool collectors, its distinctive choice is to elevate conversations
+      and correlated activities above individual frames while preserving decoded fields
+      and raw hexadecimal evidence one click away.
+  project-history:
+    - >
+      Tracexy began its tagged public release series with version 0.1.0 on July 31,
+      2026. That release established its privileged capture helper, PCAP and PCAPNG
+      input/output, packet decoding, session summaries, native interface, and signed
+      update mechanism.
+    - >
+      Subsequent 2026 releases added dashboards, deeper protocol inspection, protected
+      session exports, local history, evidence-linked findings, bounded stream
+      following, capture rotation, and expanded command-line analysis.
+    - >
+      The public source edition is licensed under AGPL-3.0-or-later; the repository
+      notes that Rockxy may separately distribute official binaries and commercial
+      offerings.
+  related-projects:
+    - >
+      Wireshark is the packet-oriented analyzer against which Tracexy's official
+      comparison explains its session-first workflow.
+    - >
+      tcpdump is a compact command-line capture and filtering tool whose capture files
+      can be opened by Tracexy.
+    - >
+      Rockxy is the same vendor's active application-layer debugging proxy, while
+      Tracexy performs passive network capture and session analysis.
+  sources:
+    - https://github.com/RockxyApp/Tracexy
+    - https://github.com/RockxyApp/Tracexy/blob/main/CHANGELOG.md
+    - https://github.com/RockxyApp/Tracexy/blob/main/docs/README.md
+    - https://github.com/RockxyApp/Tracexy/blob/main/docs/comparison.md
+    - https://github.com/RockxyApp/Tracexy/blob/main/docs/usage.md
+  summary:
+    - >
+      Tracexy is a native, local-first macOS network analyzer that captures live traffic
+      or opens saved captures and organizes packet evidence into bidirectional sessions,
+      protocol observations, processes, hosts, and correlated activities.
+  timeline:
+    - '2026: Tracexy 0.1.0 began the tagged public release series on July 31.'
+    - >
+      2026: The project added session dashboards, stronger protocol inspection,
+      protected exports, local history, and evidence-linked investigation workflows.
+  usage:
+    - >
+      Users can capture an interface through the approved helper or open PCAP and PCAPNG
+      files without administrator access, then investigate sessions, flows, protocol
+      fields, timing, findings, and raw packet evidence.
+    - >
+      Tracexy can exchange standard capture files with tcpdump and Wireshark-oriented
+      workflows. Its documentation describes durable settings and project data but does
+      not publish one stable user-facing configuration-file path, and its local
+      assistant requires no account or API-key credential file.
+related-packages:
+  - id: cask:wireshark-app
+    reason: >
+      Choose Wireshark for its mature packet-first dissector ecosystem and
+      cross-platform workflow; choose Tracexy when a native macOS, session-first
+      investigation model is more important.
+    rel: alternative
+    sources:
+      - https://github.com/RockxyApp/Tracexy/blob/main/docs/comparison.md
+      - https://www.wireshark.org/docs/wsug_html_chunked/
+  - id: brew:tcpdump
+    reason: >
+      Use tcpdump for compact terminal capture and BPF filtering, then open the
+      resulting pcap files in Tracexy for session-oriented visual investigation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/RockxyApp/Tracexy/blob/main/docs/usage.md
+      - https://www.tcpdump.org/manpages/tcpdump.1.html
+  - id: cask:rockxy
+    reason: >
+      Use Rockxy to intercept and modify application-layer HTTP, HTTPS, WebSocket, and
+      GraphQL traffic alongside Tracexy's passive interface-level session and packet
+      analysis.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/RockxyApp/Tracexy#part-of-the-rockxy-ecosystem
+      - https://github.com/RockxyApp/Rockxy/blob/main/docs/index.mdx
+category: networking
 package-manager:
   brew-cask: tracexy
 package-manager-url: https://formulae.brew.sh/cask/tracexy
+tags:
+  - libpcap
+  - local-first
+  - macos
+  - network-analysis
+  - packet-capture
+  - pcap
+  - pcapng
+  - protocol-analysis
+  - session-analysis
 description: Inspect network sessions, protocols, processes, and packet evidence
 applications:
   - Tracexy.app
