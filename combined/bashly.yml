@@ -65,6 +65,23 @@ history:
     - >
       Optional settings are read from `bashly-settings.yml`, `settings.yml`, or the path
       named by `BASHLY_SETTINGS_PATH`.
+related-packages:
+  - id: brew:shfmt
+    reason: >
+      Bashly can invoke shfmt as its documented post-generation formatter, including
+      custom shfmt arguments for generated scripts.
+    rel: adjacent_workflow
+    sources:
+      - https://bashly.dev/usage/settings/
+      - https://github.com/mvdan/sh
+  - id: brew:shellcheck
+    reason: >
+      ShellCheck provides static analysis for the standalone Bash programs Bashly
+      generates, which Bashly explicitly aims to keep ShellCheck-compliant.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bashly-framework/bashly#readme
+      - https://www.shellcheck.net/
 category: developer-tools
 package-manager:
   brew: bashly
