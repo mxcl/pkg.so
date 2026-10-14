@@ -93,6 +93,26 @@ history:
       `AZCOPY_CONCURRENCY_VALUE`, `AZCOPY_LOG_LOCATION`, and `AZCOPY_JOB_PLAN_LOCATION`.
       Microsoft documents these as configuration settings rather than as a single user
       config file.
+related-packages:
+  - id: brew:rclone
+    reason: >
+      Choose rclone when transfers must span Azure Blob or Azure Files and many other
+      cloud-storage providers through one rsync-like interface; choose AzCopy for
+      Microsoft's Azure-optimized transfer and job-resume workflow.
+    rel: alternative
+    sources:
+      - https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10
+      - https://rclone.org/azureblob/
+      - https://rclone.org/docs/
+  - id: cask:microsoft-azure-storage-explorer
+    reason: >
+      Use Microsoft Azure Storage Explorer when a graphical Azure Storage management
+      experience is preferable; it invokes AzCopy for most underlying data transfers.
+    rel: adjacent_workflow
+    sources:
+      - https://learn.microsoft.com/en-us/azure/storage/common/storage-explorer-network
+      - >
+        https://learn.microsoft.com/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer
 category: cloud-infrastructure
 package-manager:
   brew: azcopy

@@ -8,7 +8,9 @@ config-file-location:
   unix:
     - /etc/axelrc
     - ~/.axelrc
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.netrc
 history:
   adoption-history:
     - >
@@ -67,6 +69,24 @@ history:
       transfers from state, and optionally configure defaults in `/etc/axelrc` or
       `~/.axelrc`. The man page also documents proxy, protocol, output, progress, and
       timeout flags.
+related-packages:
+  - id: brew:aria2
+    reason: >
+      Choose aria2 when the same accelerated-download workflow also needs BitTorrent,
+      Metalink, SFTP, checksums, or remote control through an RPC service.
+    rel: alternative
+    sources:
+      - https://github.com/axel-download-accelerator/axel#related-projects
+      - https://aria2.github.io/manual/en/html/aria2c.html
+  - id: brew:lftp
+    reason: >
+      Choose lftp when downloads are part of a broader interactive or scripted transfer
+      workflow requiring uploads, directory mirroring, queues, background jobs, WebDAV,
+      or SFTP.
+    rel: alternative
+    sources:
+      - https://github.com/axel-download-accelerator/axel#related-projects
+      - https://lftp.yar.ru/lftp-man.html
 tags:
   - accelerator
   - cli
