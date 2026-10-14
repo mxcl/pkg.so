@@ -80,6 +80,25 @@ history:
       `$HOME/.asnrc`, and optional API tokens are read from `$HOME/.asn/` for user mode
       or `/etc/asn/` for server mode. Docker and Google Cloud Shell workflows are
       documented for users who do not want a local install.
+related-packages:
+  - id: brew:mtr
+    reason: >
+      asn uses mtr for its default hop-by-hop AS path tracing, while mtr itself is
+      preferable when the task is focused on continuous latency and packet-loss
+      diagnosis.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nitefood/asn#readme
+      - https://www.bitwizard.nl/mtr.php
+  - id: brew:ipinfo-cli
+    reason: >
+      IPinfo CLI is a focused alternative for direct and bulk IP or ASN lookups against
+      the official IPinfo API, whereas asn aggregates many providers and adds routing,
+      reputation, and traceroute workflows.
+    rel: alternative
+    sources:
+      - https://github.com/nitefood/asn#readme
+      - https://github.com/ipinfo/cli#readme
 category: networking
 package-manager:
   apk: asn
