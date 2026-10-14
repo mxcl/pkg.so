@@ -57,6 +57,39 @@ history:
       Users write Bash test functions and run them with the `bash_unit` executable. The
       tool provides assertions, colored reporting, failure output, and a small runtime
       that remains close to plain shell code.
+related-packages:
+  - id: brew:bats-core
+    reason: >
+      Bats Core is a TAP-compliant alternative with dedicated `.bats` syntax and broad
+      support for testing both Bash code and arbitrary Unix programs.
+    rel: alternative
+    sources:
+      - https://bats-core.readthedocs.io/en/stable/
+      - https://github.com/bash-unit/bash_unit
+  - id: brew:shunit2
+    reason: >
+      shUnit2 is an xUnit-style alternative designed for Bourne-family shells, making it
+      useful when tests must run under shells other than Bash.
+    rel: alternative
+    sources:
+      - https://github.com/kward/shunit2
+      - https://github.com/bash-unit/bash_unit
+  - id: brew:shellcheck
+    reason: >
+      ShellCheck complements bash_unit's runtime assertions with static analysis for
+      defects and portability problems that a test suite may not execute.
+    rel: adjacent_workflow
+    sources:
+      - https://www.shellcheck.net/
+      - https://github.com/bash-unit/bash_unit
+  - id: brew:shfmt
+    reason: >
+      shfmt complements bash_unit by consistently formatting Bash test files and can
+      enforce formatting through CI or pre-commit workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mvdan/sh
+      - https://github.com/bash-unit/bash_unit
 category: developer-tools
 package-manager:
   brew: bash_unit
