@@ -4943,6 +4943,21 @@ fn metadata_number_text(number: &serde_json::Number) -> String {
         .unwrap_or_else(|| number.to_string())
 }
 
+fn related_evidence(item: &Value) -> Vec<&str> {
+    let mut urls = Vec::new();
+    if let Some(values) = item.get("evidence").and_then(Value::as_array) {
+        for value in values.iter().filter_map(Value::as_str) {
+            if (value.starts_with("https://") || value.starts_with("http://"))
+                && !value.chars().any(|c| c.is_whitespace() || matches!(c, '<' | '>'))
+                && !urls.contains(&value)
+            {
+                urls.push(value);
+            }
+        }
+    }
+    urls
+}
+
 fn related_links(
     package: &PackageRow,
     locale: &Locale,
@@ -4984,8 +4999,16 @@ fn related_links(
                     let reason = value_str_key(item, "reason").unwrap_or_default();
                     let href =
                         locale_path(&format!("/pkg/{}/{}/", provider, slugify(&name)), locale);
+                    let evidence = related_evidence(item);
+                    let sources = if evidence.is_empty() {
+                        String::new()
+                    } else {
+                        format!("<small class=\"related-sources\">{}: {}</small>",
+                            html_escape(&tx(locale, "sources", "Sources")),
+                            evidence.iter().map(|url| link_value(url)).collect::<Vec<_>>().join(" · "))
+                    };
                     Some(format!(
-                        r#"<li><a href="{}">{}</a>{}</li>"#,
+                        r#"<li><a href="{}">{}</a>{}{sources}</li>"#,
                         html_escape(&href),
                         html_escape(&label),
                         if reason.is_empty() {
@@ -5776,7 +5799,13 @@ fn markdown_related(text: &mut String, package: &PackageRow, locale: &Locale) {
                     continue;
                 }
                 let url = locale_url(&format!("/pkg/{}/{}/", provider, slugify(&name)), locale);
-                items.push(markdown_link_item(&label, &url, &reason));
+                let mut entry = markdown_link_item(&label, &url, &reason);
+                let evidence = related_evidence(item);
+                if !evidence.is_empty() {
+                    entry.push_str(&format!("\n\n  {}: {}", tx(locale, "sources", "Sources"),
+                        evidence.iter().map(|url| format!("<{url}>")).collect::<Vec<_>>().join(" · ")));
+                }
+                items.push(entry);
             }
         }
     }
@@ -8078,6 +8107,22 @@ mod tests {
             &LOCALES[0],
         );
         assert!(related_markdown.contains("[curl]"));
+        let cited = serde_json_package(&sparse, serde_json::json!({
+            "relatedPackages": [{"provider": "brew", "name": "curl", "rel": "alternative",
+                "reason": "Transfer files.", "evidence": ["https://example.org/?a=1&b=2",
+                    "https://example.org/?a=1&b=2", "javascript:alert(1)", "https://bad.test/<tag>", null]}]
+        }));
+        let cited_html = related_links(&cited, &LOCALES[0], "relatedPackages", 8, false).join("");
+        assert!(cited_html.contains("Sources:"));
+        assert!(cited_html.contains("href=\"https://example.org/?a=1&amp;b=2\""));
+        assert_eq!(cited_html.matches("href=\"https://example.org/").count(), 1);
+        assert!(!cited_html.contains("javascript:"));
+        let mut cited_markdown = String::new();
+        markdown_related(&mut cited_markdown, &cited, &LOCALES[0]);
+        assert!(cited_markdown.contains("Sources: <https://example.org/?a=1&b=2>"));
+        assert!(!cited_markdown.contains("javascript:"));
+        assert!(!cited_markdown.contains("<tag>"));
+
 
         assert!(hub_cluster_block("Empty", &[], &LOCALES[0]).is_empty());
         assert!(hub_related_block("Empty", &[]).is_empty());

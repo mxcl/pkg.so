@@ -3221,6 +3221,10 @@ def md_related_section(page: PackagePage, locale: dict[str, Any] | None = None) 
         href = f"{SITE_ORIGIN}/pkg/{provider}/{slugify(name)}/"
         suffix = f" - {md_text(reason)}" if reason else ""
         lines.append(f"- [{md_text(label)}]({href}){suffix}")
+        evidence = related_evidence(item)
+        if evidence:
+            links = " · ".join(f"<{url}>" for url in evidence)
+            lines.extend(["", f"  {tx(locale, 'sources', 'Sources')}: {links}"])
     lines.append("")
     return lines
 
@@ -4476,6 +4480,15 @@ def has_internal_package_navigation(page: PackagePage) -> bool:
     return has_strong_internal_package_navigation(page)
 
 
+def related_evidence(item: dict[str, Any]) -> list[str]:
+    values = item.get("evidence")
+    if not isinstance(values, list):
+        return []
+    return list(dict.fromkeys(value for value in values if isinstance(value, str)
+                             and value.startswith(("https://", "http://"))
+                             and not re.search(r"[\s<>]", value)))
+
+
 def related_link(item: dict[str, Any], locale: dict[str, Any] | None = None) -> str:
     provider = str(item.get("provider") or "").strip()
     name = str(item.get("name") or "").strip()
@@ -4484,7 +4497,12 @@ def related_link(item: dict[str, Any], locale: dict[str, Any] | None = None) -> 
     if not provider or not name:
         return ""
     href = f"../../{attr(provider)}/{attr(slugify(name))}/"
-    return f'<li><a href="{href}">{html_escape(label)}</a>{f"<span>{html_escape(reason)}</span>" if reason else ""}</li>'
+    evidence = related_evidence(item)
+    sources = ""
+    if evidence:
+        links = " · ".join(f'<a href="{attr(url)}">{html_escape(url)}</a>' for url in evidence)
+        sources = f'<small class="related-sources">{html_escape(tx(locale, "sources", "Sources"))}: {links}</small>'
+    return f'<li><a href="{href}">{html_escape(label)}</a>{f"<span>{html_escape(reason)}</span>" if reason else ""}{sources}</li>'
 
 
 def hub_link(item: dict[str, Any], locale: dict[str, Any] | None = None) -> str:

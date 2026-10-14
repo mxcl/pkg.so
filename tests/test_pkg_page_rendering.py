@@ -92,6 +92,23 @@ def sshfs_page():
 
 
 class PackagePageRenderingTests(unittest.TestCase):
+    def test_related_citations_render_in_html_and_markdown(self):
+        item = {"provider": "brew", "name": "viewer", "rel": "alternative", "reason": "Preview files.",
+                "evidence": ["https://example.org/?a=1&b=2", "https://example.org/?a=1&b=2",
+                             "javascript:alert(1)", "https://bad.test/<tag>", None]}
+        page = pkg_pages.PackagePage(provider="brew", name="reader", related_packages=[item])
+        html = pkg_pages.render_related(page)
+        self.assertIn('href="https://example.org/?a=1&amp;b=2"', html)
+        self.assertEqual(html.count('href="https://example.org/'), 1)
+        markdown = "\n".join(pkg_pages.md_related_section(page))
+        self.assertIn("Sources: <https://example.org/?a=1&b=2>", markdown)
+        for output in (html, markdown):
+            self.assertNotIn("javascript:", output)
+            self.assertNotIn("<tag>", output)
+        item["evidence"] = []
+        self.assertNotIn("related-sources", pkg_pages.related_link(item))
+
+
     def test_curated_recommendations_override_graph_and_prune_missing_targets(self):
         records = {"brew:reader": {"related-packages": [
             {"id": "brew:viewer", "rel": "alternative", "reason": "Preview syntax-highlighted files."},
