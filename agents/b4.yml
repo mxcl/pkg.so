@@ -89,6 +89,33 @@ history:
       and collect reviewed-by or acked-by trailers from mailing-list discussion.
       Configuration is intentionally Git-native, using system, user, repository, and
       optional .b4-config settings.
+related-packages:
+  - id: brew:git
+    reason: >
+      Git is the foundational companion: b4 reads Git configuration and turns retrieved
+      patch discussions into commits, branches, range-diffs, and applied repository
+      history.
+    rel: adjacent_workflow
+    sources:
+      - https://b4.docs.kernel.org/en/latest/config.html
+      - https://git-scm.com/docs
+  - id: brew:stgit
+    reason: >
+      Use StGit with b4 when maintaining a mutable patch stack; b4 documents pre- and
+      post-rewrite hooks that let StGit commit and repair its state around b4 history
+      rewrites.
+    rel: adjacent_workflow
+    sources:
+      - https://b4.docs.kernel.org/en/latest/releases.html
+      - https://stacked-git.github.io/
+  - id: brew:git-bug
+    reason: >
+      Install git-bug to use b4's technology-preview bug workflow, which stores imported
+      mailing-list bug reports as Git objects that travel with the repository.
+    rel: adjacent_workflow
+    sources:
+      - https://b4.docs.kernel.org/en/latest/releases.html
+      - https://github.com/git-bug/git-bug/tree/trunk/doc
 tags:
   - cli
   - email

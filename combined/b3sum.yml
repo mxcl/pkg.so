@@ -82,6 +82,23 @@ history:
       Because BLAKE3 is explicitly not a password-hashing algorithm, b3sum belongs in
       integrity checking, content addressing, deduplication, and build or artifact
       workflows rather than password storage.
+related-packages:
+  - id: brew:b2sum
+    reason: >
+      Choose b2sum when compatibility with the established BLAKE2 family matters more
+      than BLAKE3's newer tree design and multithreaded performance.
+    rel: alternative
+    sources:
+      - https://github.com/BLAKE3-team/BLAKE3
+      - https://www.blake2.net/
+  - id: brew:coreutils
+    reason: >
+      Choose GNU Coreutils when you need traditional checksum commands and a wider suite
+      of standardized file utilities instead of a BLAKE3-specific executable.
+    rel: alternative
+    sources:
+      - https://github.com/BLAKE3-team/BLAKE3#the-b3sum-utility
+      - https://www.gnu.org/software/coreutils/manual/coreutils.html
 category: security
 package-manager:
   apk: b3sum

@@ -10,7 +10,9 @@ config-file-location:
     - ~/.b4n/history.yaml
     - ~/.b4n/plugins/*.yaml
     - ~/.b4n/themes/*.yaml
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.kube/config
+  windows: '%USERPROFILE%\.kube\config'
 history:
   adoption-history:
     - >
@@ -45,6 +47,25 @@ history:
       events and logs, enter containers, forward ports, transfer files, and invoke
       YAML-defined plugins. It uses the active Kubernetes context, while application
       preferences and history live under `$HOME/.b4n`.
+related-packages:
+  - id: brew:k9s
+    reason: >
+      Choose K9s when you want the established Kubernetes TUI that directly inspired
+      b4n, with its own mature documentation and cluster-navigation workflow.
+    rel: alternative
+    sources:
+      - https://github.com/fioletoven/b4n#readme
+      - https://k9scli.io/
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl alongside b4n for scriptable and automation-friendly Kubernetes
+      operations while b4n provides the interactive resource browser over the same
+      kubeconfig contexts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fioletoven/b4n#readme
+      - https://kubernetes.io/docs/reference/kubectl/
+      - https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
 category: cloud-infrastructure
 package-manager:
   brew: b4n
