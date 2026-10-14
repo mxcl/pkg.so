@@ -60,6 +60,32 @@ history:
       `spider`, `email-enum`, `web-basic`, or `web-thorough`. Configuration stores
       module options and API keys, so the same scan recipes can be repeated across
       assessments.
+related-packages:
+  - id: brew:amass
+    reason: >
+      Choose OWASP Amass when the primary goal is deep attack-surface intelligence and
+      asset-relationship mapping; BBOT is broader modular scan orchestration with active
+      security modules.
+    rel: alternative
+    sources:
+      - https://www.blacklanternsecurity.com/bbot/Stable/how_it_works/
+      - https://owasp-amass.github.io/docs/
+  - id: brew:subfinder
+    reason: >
+      Choose subfinder for a focused passive subdomain-enumeration CLI, while BBOT is
+      appropriate when enumeration must feed a larger recursive reconnaissance scan.
+    rel: alternative
+    sources:
+      - https://www.blacklanternsecurity.com/bbot/Stable/scanning/presets_list/
+      - https://docs.projectdiscovery.io/opensource/subfinder/overview
+  - id: brew:nuclei
+    reason: >
+      BBOT has an official Nuclei module that sends discovered URLs into template-driven
+      vulnerability checks and returns the resulting findings to the scan.
+    rel: adjacent_workflow
+    sources:
+      - https://www.blacklanternsecurity.com/bbot/Stable/modules/nuclei/
+      - https://docs.projectdiscovery.io/opensource/nuclei
 tags:
   - attack-surface-management
   - automation

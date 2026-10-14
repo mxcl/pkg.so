@@ -73,6 +73,32 @@ history:
       Because it is Java-based and shell-script driven, BBTools is portable across
       Unix-like systems and easy to embed in HPC, workflow-manager, and lab automation
       environments.
+related-packages:
+  - id: brew:cutadapt
+    reason: >
+      Choose Cutadapt for a focused, Python-based and error-tolerant adapter/primer
+      trimming workflow; BBTools provides the broader BBDuk filtering and preprocessing
+      toolbox.
+    rel: alternative
+    sources:
+      - https://bbmap.org/docs/guides/bbdukguide
+      - https://cutadapt.readthedocs.io/en/stable/
+  - id: brew:bwa
+    reason: >
+      Choose BWA for the established Burrows-Wheeler short-read mapping workflow; BBMap
+      offers a Java-based aligner within a much larger read-processing suite.
+    rel: alternative
+    sources:
+      - https://bbmap.org/docs/guides/bbmapguide
+      - https://github.com/lh3/bwa#readme
+  - id: brew:samtools
+    reason: >
+      BBMap can produce SAM alignments that SAMtools can then convert, sort, index,
+      inspect, and otherwise process as SAM/BAM/CRAM data.
+    rel: adjacent_workflow
+    sources:
+      - https://bbmap.org/docs/guides/bbmapguide
+      - https://www.htslib.org/doc/samtools.html
 tags:
   - alignment
   - assembly
