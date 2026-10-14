@@ -76,6 +76,24 @@ history:
       about the executable because it can build or refresh OpenSSH config, graph the
       host topology, manage sockets, and let normal ssh invocations resolve aliases and
       gateway chains.
+related-packages:
+  - id: brew:openssh
+    reason: >
+      OpenSSH is the underlying client suite that assh wraps and configures, so install
+      or use it for the standard SSH implementation while using assh for higher-level
+      host and gateway configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/moul/assh#readme
+      - https://www.openssh.com/manual.html
+  - id: brew:graphviz
+    reason: >
+      Pipe `assh config graphviz` output to Graphviz's `dot` command to render a visual
+      map of configured SSH hosts and gateways.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/moul/assh#readme
+      - https://graphviz.org/documentation/
 tags:
   - cli
   - networking

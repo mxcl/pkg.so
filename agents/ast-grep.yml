@@ -76,6 +76,25 @@ history:
       and run scan; ast-grep discovers sgconfig.yml by walking up from the working
       directory, and can also use a home-directory sgconfig.yml for global
       configuration.
+related-packages:
+  - id: brew:semgrep
+    reason: >
+      Choose Semgrep when security-focused rules, deeper semantic analysis, or its
+      established rule collection matter more than ast-grep's fast syntactic rewriting
+      and embeddable-library model.
+    rel: alternative
+    sources:
+      - https://ast-grep.github.io/advanced/tool-comparison
+      - https://semgrep.dev/docs/
+  - id: brew:tree-sitter-cli
+    reason: >
+      Use tree-sitter-cli when developing or testing the parsers and grammars that
+      underpin syntax-aware tooling; ast-grep consumes tree-sitter parsers and can
+      dynamically load custom languages.
+    rel: adjacent_workflow
+    sources:
+      - https://ast-grep.github.io/advanced/core-concepts.html
+      - https://tree-sitter.github.io/tree-sitter/
 tags:
   - ast
   - cli
