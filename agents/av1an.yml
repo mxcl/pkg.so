@@ -74,6 +74,47 @@ history:
       jobs, measure quality when requested, and assemble output. That makes it
       attractive on high-core-count machines where a single encoder instance would leave
       CPU resources unused.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Av1an relies on FFmpeg for media probing and processing around its parallel chunk
+      pipeline, so FFmpeg is foundational to a working Av1an toolchain.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-av/Av1an/blob/master/README.md
+      - https://ffmpeg.org/documentation.html
+  - id: brew:svt-av1
+    reason: >
+      SVT-AV1 supplies the SvtAv1EncApp executable that Av1an officially supports for
+      parallel AV1 encoding on CPU-heavy workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-av/Av1an/blob/master/README.md
+      - https://gitlab.com/AOMediaCodec/SVT-AV1
+  - id: brew:aom
+    reason: >
+      AOMedia's aomenc is an officially supported Av1an backend for users who want the
+      reference AV1 encoder and its native controls.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-av/Av1an/blob/master/README.md
+      - https://aomedia.googlesource.com/aom/
+  - id: brew:rav1e
+    reason: >
+      rav1e is an officially supported executable AV1 backend and offers a Rust/Xiph
+      encoder choice within Av1an's parallel orchestration workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-av/Av1an/blob/master/README.md
+      - https://github.com/xiph/rav1e
+  - id: brew:vapoursynth
+    reason: >
+      VapourSynth can provide scripted filtering and frame serving as Av1an's input
+      before frames are distributed to encoder workers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-av/Av1an/blob/master/README.md
+      - https://www.vapoursynth.com/doc/
 tags:
   - av1
   - cli

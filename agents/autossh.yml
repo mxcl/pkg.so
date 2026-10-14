@@ -65,6 +65,32 @@ history:
       on SSH exit behavior, often paired with `ServerAliveInterval`,
       `ServerAliveCountMax`, and `ExitOnForwardFailure`. This is why autossh is common
       in init scripts, launch agents, simple service units, and admin one-liners.
+related-packages:
+  - id: brew:openssh
+    reason: >
+      autossh launches and supervises OpenSSH's client, while OpenSSH provides the
+      tunnel, forwarding rules, authentication, and connection-level keepalives.
+    rel: adjacent_workflow
+    sources:
+      - https://www.harding.motd.ca/autossh/README.txt
+      - https://www.openssh.com/manual.html
+  - id: brew:screen
+    reason: >
+      Upstream supplies an rscreen example for combining autossh with GNU Screen when an
+      interactive remote session should remain detachable and recoverable.
+    rel: adjacent_workflow
+    sources:
+      - https://www.harding.motd.ca/autossh/
+      - https://www.gnu.org/software/screen/
+  - id: brew:mosh
+    reason: >
+      Choose Mosh for a roaming interactive terminal that tolerates IP changes and
+      intermittent connectivity; choose autossh when the requirement is to restart
+      conventional SSH sessions or forwarding tunnels.
+    rel: alternative
+    sources:
+      - https://mosh.org/
+      - https://www.harding.motd.ca/autossh/README.txt
 tags:
   - cli
   - monitoring
@@ -99,8 +125,9 @@ provenance:
     - source_facts.package-manager
   repo-sources:
     - >
-      The official upstream site publishes source archives and documentation but does
-      not identify an official HTTP(S) source-control repository.
+      The official homepage distributes source archives but does not identify an
+      official HTTP(S) source-control repository: https://www.harding.motd.ca/autossh/
+    - source_facts.repo is empty.
   tags-sources:
     - >
       Official README describes ssh session monitoring, reconnect behavior, tunnels,
@@ -111,5 +138,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high
