@@ -68,6 +68,33 @@ history:
       The scripts are intentionally glue code. They depend on common CLI tools such as
       ripgrep, delta, entr, fzf, git, and bat itself where a particular script needs
       them.
+related-packages:
+  - id: brew:bat
+    reason: >
+      bat is the rendering foundation required by the suite and is the command that
+      bat-extras extends into search, manual-page, diff, and paging workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/eth-p/bat-extras
+      - https://github.com/sharkdp/bat
+  - id: brew:ripgrep
+    reason: batgrep runs searches with ripgrep and renders the matching files and lines through bat.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/eth-p/bat-extras
+      - https://github.com/BurntSushi/ripgrep
+  - id: brew:git-delta
+    reason: batdiff can pass diff output through delta for enhanced terminal presentation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/eth-p/bat-extras
+      - https://github.com/dandavison/delta
+  - id: brew:entr
+    reason: batwatch can use entr to rerun its bat-based display when watched files change.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/eth-p/bat-extras
+      - https://github.com/eradman/entr
 category: developer-tools
 package-manager:
   apk: bat-extras
