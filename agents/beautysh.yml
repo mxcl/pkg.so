@@ -55,6 +55,25 @@ history:
       Configuration is documented through command-line arguments first, then a
       [tool.beautysh] section in pyproject.toml, then EditorConfig settings in
       .editorconfig.
+related-packages:
+  - id: brew:shfmt
+    reason: >
+      Choose shfmt when you want a parser-based formatter supporting POSIX shell, Bash,
+      mksh, Bats, and Zsh, rather than beautysh's Bash-focused beautification and style
+      controls.
+    rel: alternative
+    sources:
+      - https://github.com/lovesegfault/beautysh#readme
+      - https://github.com/mvdan/sh
+      - https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd
+  - id: brew:shellcheck
+    reason: >
+      Run ShellCheck alongside beautysh when you need static bug and portability
+      diagnostics in addition to formatting.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lovesegfault/beautysh#readme
+      - https://www.shellcheck.net/
 tags:
   - bash
   - beautifier
