@@ -9,7 +9,9 @@ config-file-location:
   unix:
     - ~/.config/asciinema/config.toml
     - /etc/asciinema/config.toml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.local/state/asciinema/install-id
 history:
   adoption-history:
     - >
@@ -72,6 +74,25 @@ history:
       uploading/streaming them through an asciinema server. CLI 3.x adds TOML
       configuration at the user and system level for server URL, recording behavior,
       playback, notifications, and hotkeys.
+related-packages:
+  - id: brew:agg
+    reason: >
+      Use agg after recording with asciinema when the resulting .cast session must be
+      exported as a portable animated GIF for documentation or sites without an
+      asciinema player.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.asciinema.org/manual/agg/
+      - https://docs.asciinema.org/manual/agg/usage/
+  - id: brew:ttyrec
+    reason: >
+      Choose ttyrec for a smaller traditional tty recorder and ttyplay workflow when web
+      publishing, asciicast interoperability, and asciinema's live-streaming features
+      are unnecessary.
+    rel: alternative
+    sources:
+      - https://0xcc.net/ttyrec/
+      - https://docs.asciinema.org/manual/cli/
 tags:
   - cli
   - recording

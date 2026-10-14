@@ -5,7 +5,13 @@ docs:
   - https://docs.asciidoctor.org/asciidoc/latest
   - https://asciidoc-py.github.io/
   - https://asciidoc-py.github.io/userguide.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.asciidoc/
+    - /etc/asciidoc/
+    - /usr/local/etc/asciidoc/
+    - <document-directory>/asciidoc.conf
+    - <document-directory>/<document-name>.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -82,6 +88,16 @@ history:
       into HTML, DocBook, man pages, EPUB, PDF, and related outputs. The user guide
       describes AsciiDoc as lightweight, consisting of scripts plus configuration files,
       with backend plugins and themes extending output generation.
+related-packages:
+  - id: brew:asciidoctor
+    reason: >
+      Choose Asciidoctor for the modern AsciiDoc syntax and actively developed
+      processor; its official migration guide describes it as a mostly drop-in successor
+      while documenting legacy compatibility differences.
+    rel: alternative
+    sources:
+      - https://docs.asciidoctor.org/asciidoctor/latest/migrate/asciidoc-py/
+      - https://asciidoc-py.github.io/
 tags:
   - asciidoc
   - cli
