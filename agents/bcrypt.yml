@@ -66,6 +66,27 @@ history:
       producing .bfe encrypted files; run it again on .bfe input to decrypt. Options
       control stdout output, compression, removal of input files, and the number of
       overwrite passes before deletion.
+related-packages:
+  - id: brew:age
+    reason: >
+      Choose age for a modern file-encryption format with explicit recipient identities,
+      pipeline-friendly commands, and a deliberately small interface instead of bcrypt's
+      Blowfish passphrase workflow.
+    rel: alternative
+    sources:
+      - https://bcrypt.sourceforge.net/
+      - https://age-encryption.org/v1
+      - https://github.com/FiloSottile/age#readme
+  - id: brew:gnupg
+    reason: >
+      Choose GnuPG when file encryption must also support OpenPGP key management,
+      digital signatures, smart cards, or communication with the wider OpenPGP
+      ecosystem.
+    rel: alternative
+    sources:
+      - https://bcrypt.sourceforge.net/
+      - https://gnupg.org/documentation/index.html
+      - https://gnupg.org/documentation/manuals/gnupg
 tags:
   - blowfish
   - cli
@@ -97,8 +118,9 @@ provenance:
     - source_facts.package-manager
   repo-sources:
     - >
-      The official SourceForge page offers release archives but does not identify an
-      official HTTP(S) source-control project URL: https://bcrypt.sourceforge.net/
+      https://bcrypt.sourceforge.net/ is the official project surface but does not
+      document an official HTTP(S) source-control repository.
+    - source_facts.repo is empty.
   tags-sources:
     - >
       Official bcrypt description and usage document Blowfish encryption, passphrases,

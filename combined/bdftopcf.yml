@@ -61,6 +61,23 @@ history:
       The documented command takes a .bdf font and writes PCF to standard output or an
       output file. Options set glyph padding, scanline unit, bit order, byte order,
       terminal-font conversion, ink-metric handling, and output filename.
+related-packages:
+  - id: brew:mkfontscale
+    reason: >
+      Use mkfontscale's mkfontdir command after installing generated PCF files to
+      rebuild the fonts.dir index used by the legacy X11 font system.
+    rel: adjacent_workflow
+    sources:
+      - https://www.x.org/archive/X11R7.0/doc/PDF/fonts.pdf
+      - https://www.x.org/releases/current/doc/man/man1/mkfontscale.1.xhtml
+  - id: brew:xorg-server
+    reason: >
+      Install X.Org Server when the generated PCF bitmap fonts are intended for an X11
+      server environment that consumes traditional X font resources.
+    rel: adjacent_workflow
+    sources:
+      - https://www.x.org/docs/man/man.pdf
+      - https://www.x.org/wiki/Documentation
 category: system
 package-manager:
   apk: bdftopcf

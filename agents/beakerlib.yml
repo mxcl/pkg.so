@@ -78,6 +78,26 @@ history:
       The library is used for integration and black-box tests where shell commands,
       packages, services, files, sockets, mounts, virtual X, performance metrics, reboot
       handling, and cleanup must be coordinated in a readable script.
+related-packages:
+  - id: brew:tmt
+    reason: >
+      Use tmt alongside BeakerLib to describe, discover, provision, and execute
+      BeakerLib-style tests through repository-hosted fmf metadata and broader test
+      workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://tmt.readthedocs.io/en/stable/overview.html
+      - https://tmt.readthedocs.io/en/stable/examples.html
+      - https://beakerlib.readthedocs.io/en/latest/manual.html
+  - id: brew:bats-core
+    reason: >
+      Choose bats-core for lightweight TAP-producing tests of shell scripts and Unix
+      commands when BeakerLib's system-integration helpers, phases, and XML-style
+      journaling are unnecessary.
+    rel: alternative
+    sources:
+      - https://github.com/bats-core/bats-core#readme
+      - https://beakerlib.readthedocs.io/en/latest/manual.html
 tags:
   - cli
   - integration-testing
