@@ -72,6 +72,26 @@ history:
       executable. The docs emphasize storing backend credentials in environment
       variables or a sibling `.autorestic.env` file so repository keys do not have to
       live directly in YAML.
+related-packages:
+  - id: brew:restic
+    reason: >
+      restic is the required backup engine that autorestic invokes, so install and
+      understand it when diagnosing repositories, encryption, storage backends, or
+      native command behavior.
+    rel: adjacent_workflow
+    sources:
+      - https://autorestic.vercel.app/
+      - https://restic.net/
+      - https://restic.readthedocs.io/
+  - id: brew:resticprofile
+    reason: >
+      Choose resticprofile as an alternative restic wrapper when you want TOML, YAML,
+      JSON, or HCL profiles and built-in integration with systemd, launchd, or Windows
+      Task Scheduler.
+    rel: alternative
+    sources:
+      - https://creativeprojects.github.io/resticprofile/
+      - https://github.com/creativeprojects/resticprofile
 tags:
   - backup
   - cli

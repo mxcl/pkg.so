@@ -72,6 +72,25 @@ history:
       Credentials live in the same configuration files as the backup settings: the
       documented defaults include CONFIG_mysql_dump_username,
       CONFIG_mysql_dump_password, host, socket, and encryption settings.
+related-packages:
+  - id: brew:mydumper
+    reason: >
+      Choose MyDumper when you still want portable logical backups but need
+      multithreaded export and restore for databases too large for a serial dump
+      workflow.
+    rel: alternative
+    sources:
+      - https://mydumper.github.io/mydumper/docs/html/index.html
+      - https://mydumper.github.io/mydumper/docs/html/examples.html
+  - id: brew:percona-xtrabackup
+    reason: >
+      Choose Percona XtraBackup for supported MySQL-family servers when you need online
+      physical hot backups, incremental operation, or lower disruption than a
+      logical-dump script.
+    rel: alternative
+    sources:
+      - https://docs.percona.com/percona-xtrabackup/8.4/
+      - https://docs.percona.com/percona-xtrabackup/8.4/about-xtrabackup.html
 tags:
   - automation
   - backup

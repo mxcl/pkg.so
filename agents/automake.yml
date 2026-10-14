@@ -82,6 +82,23 @@ history:
       The official curation correctly treats Makefile.am and configure.ac as the
       package's relevant configuration/build-input files; Automake has no credentials
       file.
+related-packages:
+  - id: brew:autoconf
+    reason: >
+      Automake assumes an Autoconf-based project and shares configure.ac with Autoconf,
+      so maintainers normally use both when regenerating an Autotools build system.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/automake/manual/html_node/Introduction.html
+      - https://www.gnu.org/software/automake/manual/html_node/Creating-amhello.html
+  - id: brew:libtool
+    reason: >
+      Use GNU Libtool alongside Automake when the project needs portable shared-library
+      targets and linking rules integrated into Makefile.am.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/libtool/manual/libtool.html
+      - https://www.gnu.org/software/libtool/manual/html_node/Using-Automake.html
 tags:
   - autotools
   - build-system

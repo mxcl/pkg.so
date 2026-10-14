@@ -78,6 +78,30 @@ history:
       Configuration can come from a global pycodestyle file, project files such as
       setup.cfg, tox.ini, .pep8, and .flake8, or pyproject.toml under [tool.autopep8],
       which takes precedence over other configuration files.
+related-packages:
+  - id: brew:pycodestyle
+    reason: >
+      Use pycodestyle alongside autopep8 when you need the underlying PEP 8 diagnostics
+      and stable error codes that drive autopep8's fixes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hhatto/autopep8#readme
+      - https://pycodestyle.pycqa.org/en/stable/
+  - id: brew:black
+    reason: >
+      Choose Black when you prefer a deliberately opinionated formatter with little
+      style configuration and consistent whole-project output.
+    rel: alternative
+    sources:
+      - https://black.readthedocs.io/en/stable/
+      - https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html
+  - id: brew:yapf
+    reason: >
+      Choose YAPF when you want a clang-format-inspired optimizer with selectable base
+      styles and a much larger set of formatting controls.
+    rel: alternative
+    sources:
+      - https://github.com/google/yapf#readme
 tags:
   - cli
   - formatter
