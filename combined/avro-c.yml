@@ -76,6 +76,24 @@ history:
       There is no standard per-user configuration file or credential store for Avro C
       itself. Behavior is driven by schemas, Avro container metadata, command-line
       arguments, and application code using the C API.
+related-packages:
+  - id: brew:avro-tools
+    reason: >
+      Use Avro Tools alongside the C library when a workflow needs the broader Java CLI
+      for schema compilation, JSON conversion, file inspection, metadata operations, or
+      repair.
+    rel: adjacent_workflow
+    sources:
+      - https://avro.apache.org/docs/1.12.0/api/java/org/apache/avro/tool/package-summary.html
+      - https://avro.apache.org/docs/1.8.0/api/c/index.html
+  - id: brew:avro-cpp
+    reason: >
+      Choose Avro C++ instead when the application is written in C++ and benefits from
+      generated C++ record types and the `avrogencpp` workflow.
+    rel: alternative
+    sources:
+      - https://avro.apache.org/docs/1.12.0/api/cpp/html/index.html
+      - https://avro.apache.org/docs/1.8.0/api/c/index.html
 category: data
 package-manager:
   brew: avro-c
