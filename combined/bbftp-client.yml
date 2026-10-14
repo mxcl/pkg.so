@@ -63,6 +63,17 @@ history:
       multiple data streams, retry behavior, customized timeouts, and secure
       authentication. `bbftpstatus`, added in the 3.2.0 line, provides status queries
       for the transfer system.
+related-packages:
+  - id: brew:rsync
+    reason: >
+      Choose rsync when both endpoints support rsync or a remote shell and incremental
+      synchronization is the priority; retain bbFTP Client when the destination
+      specifically exposes bbftpd and benefits from its tuned multi-stream transfer
+      protocol.
+    rel: alternative
+    sources:
+      - https://bbftp.cc.in2p3.fr/3.2.1.bbftp.html
+      - https://rsync.samba.org/
 category: networking
 package-manager:
   brew: bbftp-client
