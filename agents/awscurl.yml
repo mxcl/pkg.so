@@ -68,6 +68,24 @@ history:
       The tool exposes curl-like flags for methods, data, headers, redirects, output
       files, and TLS behavior, while adding AWS-specific options such as `--service`,
       `--region`, and `--profile`.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      Use AWS CLI to create and maintain the shared AWS profiles that awscurl reads, or
+      choose it when generated service commands are preferable to raw signed HTTP
+      requests.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/okigan/awscurl#readme
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
+  - id: brew:awsume
+    reason: >
+      AWSume can assume an IAM role and export temporary AWS environment credentials
+      that awscurl accepts when signing requests.
+    rel: adjacent_workflow
+    sources:
+      - https://awsu.me/general/overview.html
+      - https://github.com/okigan/awscurl#readme
 tags:
   - aws
   - aws-signature

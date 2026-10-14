@@ -72,6 +72,25 @@ history:
       awslogs can take explicit AWS access keys, but its README recommends using AWS
       CLI-managed credentials when available; with multiple profiles, users pass
       `--profile` or set `AWS_PROFILE`.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      Choose AWS CLI when you need the vendor-supported `logs filter-log-events` and
+      broader AWS service command set; its configured profiles are also consumed
+      directly by awslogs.
+    rel: alternative
+    sources:
+      - https://github.com/jorgebastida/awslogs#readme
+      - https://docs.aws.amazon.com/cli/latest/reference/logs/filter-log-events.html
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
+  - id: brew:localstack
+    reason: >
+      awslogs explicitly supports custom endpoints for querying a LocalStack CloudWatch
+      Logs environment during local development.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jorgebastida/awslogs#readme
+      - https://docs.localstack.cloud/user-guide/aws/logs/
 tags:
   - aws
   - cli

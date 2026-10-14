@@ -88,6 +88,32 @@ history:
       `${XDG_CONFIG_HOME}/awsume/config.yaml` when XDG config is set. It also caches
       MFA-authenticated credentials under `~/.awsume/cache/` according to the official
       overview.
+related-packages:
+  - id: brew:granted
+    reason: >
+      Choose Granted for an alternative AWS role-assumption workflow with IAM Identity
+      Center, encrypted credential caching, and isolated browser-console sessions.
+    rel: alternative
+    sources:
+      - https://awsu.me/general/overview.html
+      - https://github.com/fwdcloudsec/granted
+      - https://docs.granted.dev/
+  - id: brew:aws-vault
+    reason: >
+      Choose aws-vault when storing long-lived AWS credentials in an operating-system
+      secure keystore and generating temporary sessions is the central requirement.
+    rel: alternative
+    sources:
+      - https://awsu.me/general/overview.html
+      - https://github.com/99designs/aws-vault#readme
+  - id: brew:awscli
+    reason: >
+      AWSume prepares temporary credentials and profile variables for AWS CLI commands,
+      making the two tools a direct shell workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://awsu.me/general/overview.html
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 category: cloud-infrastructure
 package-manager:
   brew: awsume
