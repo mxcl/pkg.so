@@ -83,6 +83,36 @@ history:
       The tool is most relevant for developers who switch across many AWS accounts and
       roles, especially when the AWS web console and CLI both need fast profile
       switching.
+related-packages:
+  - id: brew:aws-sso-util
+    reason: >
+      Choose aws-sso-util when profile population, credential-process compatibility, SDK
+      support, and Identity Center administration are the priority; AWS SSO CLI
+      emphasizes interactive role selection, protected tokens, and console sessions.
+    rel: alternative
+    sources:
+      - https://github.com/synfinatic/aws-sso-cli#readme
+      - https://github.com/61418/aws-sso-util#readme
+      - https://github.com/61418/aws-sso-util/blob/master/docs/configure.md
+  - id: brew:aws-vault
+    reason: >
+      Choose AWS Vault when secure storage and temporary sessions for static IAM keys or
+      varied credential sources are central; AWS SSO CLI is specifically optimized for
+      IAM Identity Center users.
+    rel: alternative
+    sources:
+      - https://github.com/synfinatic/aws-sso-cli#readme
+      - https://github.com/ByteNess/aws-vault#readme
+  - id: brew:awscli
+    reason: >
+      Choose AWS CLI's native SSO commands for the vendor-supported baseline workflow;
+      AWS SSO CLI adds richer multi-account role discovery, profile management, and
+      browser-session features.
+    rel: alternative
+    sources:
+      - https://github.com/synfinatic/aws-sso-cli#readme
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html
+      - https://github.com/aws/aws-cli
 tags:
   - aws
   - cli

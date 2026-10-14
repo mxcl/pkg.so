@@ -54,6 +54,24 @@ history:
       `~/.aws/config` to invoke `aws-spiffe-workload-helper`. The helper can return
       credentials to stdout or write a user-specified credential file for legacy
       consumers.
+related-packages:
+  - id: brew:rolesanywhere-credential-helper
+    reason: >
+      Choose AWS's credential helper for general X.509-based IAM Roles Anywhere use;
+      choose AWS SPIFFE Workload Helper when the certificate is an SVID obtained
+      directly from the SPIFFE Workload API.
+    rel: alternative
+    sources:
+      - https://github.com/spiffe/aws-spiffe-workload-helper#readme
+      - https://github.com/aws/rolesanywhere-credential-helper
+  - id: brew:spiffe-helper
+    reason: >
+      SPIFFE Helper can materialize and renew SVID files for file-oriented workloads,
+      while AWS SPIFFE Workload Helper directly exchanges SVIDs for AWS credentials.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/spiffe/spiffe-helper#readme
+      - https://github.com/spiffe/aws-spiffe-workload-helper#readme
 category: security
 package-manager:
   brew: aws-spiffe-workload-helper
