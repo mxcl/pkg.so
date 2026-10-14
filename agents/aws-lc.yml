@@ -67,6 +67,24 @@ history:
       AWS-LC includes portable C implementations plus optimized assembly for selected
       x86 and Arm processors, and documents supported platforms including Linux, macOS,
       Windows, Android, and iOS.
+related-packages:
+  - id: brew:openssl@3
+    reason: >
+      Choose OpenSSL 3 when software requires upstream OpenSSL's provider architecture
+      or APIs rather than AWS-LC's OpenSSL-compatible, AWS-optimized implementation.
+    rel: alternative
+    sources:
+      - https://github.com/aws/aws-lc/blob/main/PORTING.md
+      - https://docs.openssl.org/3.0/man7/migration_guide/
+  - id: brew:libressl
+    reason: >
+      Choose LibreSSL when the desired stack is the OpenBSD-maintained fork with its
+      libtls API and security-focused removal of legacy OpenSSL code.
+    rel: alternative
+    sources:
+      - https://github.com/aws/aws-lc#readme
+      - https://www.libressl.org/goals.html
+      - https://github.com/libressl/portable#readme
 tags:
   - aws
   - cli

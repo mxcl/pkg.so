@@ -84,6 +84,33 @@ history:
       cluster ID in the request context. The README documents AWS profile selection
       through kubeconfig exec environment variables and maps roles/users/accounts to
       Kubernetes usernames and groups for RBAC.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      For Amazon EKS client authentication, AWS CLI's `aws eks get-token` generates the
+      same class of bearer token without requiring the standalone authenticator client.
+    rel: alternative
+    sources:
+      - https://docs.aws.amazon.com/cli/latest/reference/eks/get-token.html
+      - >
+        https://docs.aws.amazon.com/eks/latest/best-practices/identity-and-access-management.html
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl invokes aws-iam-authenticator through its kubeconfig exec section and
+      passes the generated token to the Kubernetes API server.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kubernetes-sigs/aws-iam-authenticator#readme
+      - >
+        https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins
+  - id: brew:kops
+    reason: >
+      kOps-managed AWS clusters have an officially documented mode for deploying and
+      configuring AWS IAM Authenticator.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kubernetes-sigs/aws-iam-authenticator#kops-usage
+      - https://kops.sigs.k8s.io/authentication/
 tags:
   - authentication
   - aws
