@@ -81,6 +81,40 @@ history:
       Bazel 7 users commonly exercise Bzlmod migration while retaining WORKSPACE
       compatibility, then use the versioned docs and bazelrc docs to control flags
       during migration.
+related-packages:
+  - id: brew:bazelisk
+    reason: >
+      Use Bazelisk to make a repository's .bazelversion select Bazel 7 consistently
+      across developer machines and CI without depending on a globally selected formula
+      version.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bazelbuild/bazelisk
+      - https://bazel.build/install/bazelisk
+  - id: brew:bazel-remote
+    reason: >
+      Add bazel-remote when Bazel 7 developers and CI workers should share remotely
+      cached action results and artifacts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/buchgr/bazel-remote
+      - https://bazel.build/versions/7.7.0/remote/caching
+  - id: brew:bazel-diff
+    reason: >
+      Use bazel-diff with a Bazel 7 workspace to select the targets affected between Git
+      revisions for focused CI builds and tests.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Tinder/bazel-diff
+      - https://bazel.build/versions/7.7.0/query/guide
+  - id: brew:ibazel
+    reason: >
+      Use ibazel when Bazel 7 build, test, or run targets should rerun automatically as
+      source files change during development.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bazelbuild/bazel-watcher
+      - https://bazel.build/versions/7.7.0/docs
 tags:
   - bazel
   - build-system

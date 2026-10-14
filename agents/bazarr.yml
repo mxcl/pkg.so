@@ -9,7 +9,12 @@ config-file-location:
     - data directory inside bazarr root directory
   windows:
     - '%programdata%\Bazarr'
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - /config/config/config.yaml
+    - <Bazarr data directory>/config/config.yaml
+  windows:
+    - '%ProgramData%\Bazarr\config\config.yaml'
 history:
   adoption-history:
     - >
@@ -70,6 +75,16 @@ history:
       The project supports automatic and manual subtitle searches, existing-library
       scans for internal and external subtitles, provider-specific configuration, and
       subtitle synchronization workflows.
+related-packages:
+  - id: cask:plex-media-server
+    reason: >
+      Choose Plex Media Server to catalog and stream the media whose subtitles Bazarr
+      manages; Bazarr documents an integration for refreshing Plex libraries after
+      subtitle changes.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.bazarr.media/Additional-Configuration/Plex/
+      - https://support.plex.tv/articles/200288286-what-is-plex/
 tags:
   - cli
   - media-management

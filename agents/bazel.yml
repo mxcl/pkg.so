@@ -100,6 +100,40 @@ history:
       For repeatable package-manager workflows, .bazelrc files matter: official docs
       document system, workspace, and user rc files, while Bazelisk and .bazelversion
       are often used to pin the Bazel version per repository.
+related-packages:
+  - id: brew:bazelisk
+    reason: >
+      Use Bazelisk when each workspace should select and automatically obtain its pinned
+      Bazel version from .bazelversion instead of relying on one globally installed
+      release.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bazelbuild/bazelisk
+      - https://bazel.build/install/bazelisk
+  - id: brew:bazel-remote
+    reason: >
+      Add bazel-remote when a team wants a self-hosted HTTP or gRPC cache that shares
+      Bazel action results and artifacts across developers or CI workers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/buchgr/bazel-remote
+      - https://bazel.build/remote/caching
+  - id: brew:bazel-diff
+    reason: >
+      Use bazel-diff in Bazel CI to calculate the exact targets affected between two Git
+      revisions and selectively build or test them.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Tinder/bazel-diff
+      - https://bazel.build/query/guide
+  - id: brew:ibazel
+    reason: >
+      Use ibazel during active development when Bazel build, test, or run targets should
+      rerun automatically after source changes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bazelbuild/bazel-watcher
+      - https://bazel.build/docs
 tags:
   - build-tool
   - cli

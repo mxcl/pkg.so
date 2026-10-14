@@ -71,6 +71,24 @@ history:
       The tool is used when correctness matters more than approximate file globs: its
       docs explicitly warn that incorrect affected-test selection erodes trust in
       green-to-red CI transitions.
+related-packages:
+  - id: brew:bazel
+    reason: >
+      bazel-diff invokes Bazel to query and hash the workspace graph, then emits target
+      labels that Bazel can selectively build or test.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Tinder/bazel-diff
+      - https://bazel.build/query/guide
+  - id: brew:bazelisk
+    reason: >
+      Bazelisk can expose the workspace-pinned Bazel release as the Bazel executable
+      used by bazel-diff, keeping local and CI graph calculations on the intended
+      version.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Tinder/bazel-diff
+      - https://github.com/bazelbuild/bazelisk
 category: developer-tools
 package-manager:
   brew: bazel-diff
