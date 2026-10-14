@@ -56,6 +56,23 @@ history:
       Developers use its C API to name formats, convert buffers, add color models or
       data types, and rely on babl's runtime profiling and cached conversion selection
       for fast pixel pipelines.
+related-packages:
+  - id: brew:gegl
+    reason: >
+      GEGL uses babl for pixel-format and color-space conversion, making it the primary
+      framework to pair with babl when building graph-based image-processing pipelines.
+    rel: adjacent_workflow
+    sources:
+      - https://gegl.org/babl/
+      - https://gegl.org/
+  - id: cask:gimp
+    reason: >
+      GIMP uses GEGL buffers with implicit babl-format conversions, so it is the
+      principal end-user application built on this graphics stack.
+    rel: adjacent_workflow
+    sources:
+      - https://gegl.org/babl/
+      - https://www.gimp.org/about/
 tags:
   - cli
   - color-management
