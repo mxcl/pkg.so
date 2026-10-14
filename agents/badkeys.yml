@@ -69,6 +69,15 @@ history:
       Its command-line use is intentionally automation-friendly: quiet output when no
       vulnerable keys are found, an all-keys output flag for audits, and bitmask return
       codes for CI or batch scans.
+related-packages:
+  - id: brew:openssl@3
+    reason: >
+      OpenSSL can inspect or extract public keys and certificates before passing the
+      resulting PEM material to badkeys for vulnerability analysis.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.openssl.org/3.0/man1/openssl-pkey/
+      - https://github.com/badkeys/badkeys
 tags:
   - cli
   - cryptography
