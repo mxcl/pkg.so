@@ -71,6 +71,25 @@ history:
       For containers, the README shows either passing `B2_APPLICATION_KEY` and
       `B2_APPLICATION_KEY_ID` each run or persisting authorization state in a mounted
       volume.
+related-packages:
+  - id: brew:rclone
+    reason: >
+      Choose rclone when the main job is cross-cloud copying, synchronization, or
+      mounting; Backblaze officially documents it as a B2 integration, while `b2`
+      exposes broader B2-native administration.
+    rel: alternative
+    sources:
+      - https://www.backblaze.com/docs/cloud-storage-integrate-rclone-with-backblaze-b2
+      - https://rclone.org/b2/
+  - id: brew:restic
+    reason: >
+      Use restic with B2 when the workflow needs encrypted, deduplicated backup
+      repositories rather than direct bucket and object administration through the B2
+      CLI.
+    rel: adjacent_workflow
+    sources:
+      - https://www.backblaze.com/docs/cloud-storage-integrate-restic-with-backblaze-b2
+      - https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html
 tags:
   - backblaze
   - cli
