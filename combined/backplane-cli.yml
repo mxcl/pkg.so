@@ -59,6 +59,17 @@ history:
       credentials, run managed jobs, and store configuration in
       ~/.config/backplane/config.json. The README warns that this config can contain
       PagerDuty API keys or JIRA tokens and should have restrictive permissions.
+related-packages:
+  - id: brew:openshift-cli
+    reason: >
+      Use OpenShift CLI after backplane-cli establishes a cluster session and
+      kubeconfig; `oc` supplies the general cluster inspection and administration
+      commands used within that authenticated workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/openshift/backplane-cli#readme
+      - >
+        https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/cli_tools/openshift-cli-oc
 category: cloud-infrastructure
 package-manager:
   brew: backplane-cli

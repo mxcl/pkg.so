@@ -72,6 +72,40 @@ history:
       order, supports scheduled when clauses, can test runs without performing backups,
       and provides ninjahelper as a curses-based wizard for creating action
       configuration files.
+related-packages:
+  - id: brew:borgbackup
+    reason: >
+      Choose BorgBackup as backupninja's Borg handler engine when you want encrypted,
+      deduplicated archive repositories managed by backupninja's scheduling and
+      reporting layer.
+    rel: adjacent_workflow
+    sources:
+      - https://0xacab.org/liberate/backupninja/-/blob/master/README.md
+      - https://borgbackup.readthedocs.io/en/stable/
+  - id: brew:restic
+    reason: >
+      Use restic beneath backupninja when you want backupninja to schedule and report
+      encrypted, deduplicated backups to restic-supported storage backends.
+    rel: adjacent_workflow
+    sources:
+      - https://0xacab.org/liberate/backupninja/-/blob/master/README.md
+      - https://restic.readthedocs.io/
+  - id: brew:duplicity
+    reason: >
+      Use duplicity as a backupninja handler when incremental encrypted archives and
+      duplicity's broad remote-storage protocol support fit the destination.
+    rel: adjacent_workflow
+    sources:
+      - https://0xacab.org/liberate/backupninja/-/blob/master/README.md
+      - https://duplicity.us/docs.html
+  - id: brew:rdiff-backup
+    reason: >
+      Use rdiff-backup as a backupninja action when you want a directly browsable
+      current mirror plus retained reverse increments.
+    rel: adjacent_workflow
+    sources:
+      - https://0xacab.org/liberate/backupninja/-/blob/master/README.md
+      - https://rdiff-backup.net/
 category: system
 package-manager:
   brew: backupninja

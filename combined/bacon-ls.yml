@@ -57,6 +57,24 @@ history:
       It can publish diagnostics on save, open, close, rename, and manual triggers; run
       cargo check or clippy directly; or read Bacon's exported diagnostics file when
       Bacon is already running.
+related-packages:
+  - id: brew:rust-analyzer
+    reason: >
+      Run rust-analyzer alongside bacon-ls for completion, navigation, analysis, and
+      refactoring, while bacon-ls takes responsibility for compiler diagnostics as
+      recommended by its official documentation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/crisidev/bacon-ls#readme
+      - https://rust-analyzer.github.io/book/
+  - id: brew:bacon
+    reason: >
+      Install Bacon when you prefer bacon-ls's optional Bacon backend, which consumes
+      the diagnostic export maintained by Bacon's continuous watch loop.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/crisidev/bacon-ls#readme
+      - https://dystroy.org/bacon/
 category: developer-tools
 package-manager:
   brew: bacon-ls
