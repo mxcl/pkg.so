@@ -85,6 +85,31 @@ history:
       script from a release tarball. Developers and distribution maintainers use
       autoreconf, autoheader, autoscan, autoupdate and autom4te when regenerating or
       modernizing build machinery.
+related-packages:
+  - id: brew:automake
+    reason: >
+      Use Automake alongside Autoconf when Makefile.am inputs should generate portable
+      Makefile.in files as part of the GNU build-system workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/autoconf/manual/autoconf-2.71/html_node/Introduction.html
+      - https://www.gnu.org/software/automake/manual/automake.html
+  - id: brew:libtool
+    reason: >
+      Use GNU Libtool with Autoconf when a project needs portable static and
+      shared-library build rules across Unix-like platforms.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/autoconf/manual/autoconf-2.71/html_node/Introduction.html
+      - https://www.gnu.org/software/libtool/manual/libtool.html
+  - id: brew:m4
+    reason: >
+      GNU M4 is Autoconf's required macro-processing engine and is needed when
+      generating configure scripts.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/autoconf/
+      - https://www.gnu.org/software/m4/manual/
 tags:
   - autotools
   - build-system
