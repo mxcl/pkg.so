@@ -97,6 +97,26 @@ history:
       U-Boot for packaging images it reads and boots. That makes mkimage and dumpimage
       especially important outside the firmware tree: they let package builders, board
       vendors, and distro maintainers prepare boot assets reproducibly.
+related-packages:
+  - id: brew:dtc
+    reason: >
+      Device Tree Compiler complements U-Boot Tools by compiling, decoding, and
+      modifying the device-tree blobs used in U-Boot build, runtime, and emulation
+      workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.u-boot.org/en/latest/develop/devicetree/
+      - https://git.kernel.org/pub/scm/utils/dtc/dtc.git/about/
+  - id: brew:qemu
+    reason: >
+      QEMU complements U-Boot Tools by running and testing U-Boot images and boot
+      scripts on emulated ARM, RISC-V, PowerPC, and x86 machines without requiring a
+      physical board.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.u-boot.org/en/stable/board/emulation/qemu-arm.html
+      - https://docs.u-boot.org/en/stable/board/emulation/qemu-x86.html
+      - https://www.qemu.org/docs/master/
 category: system
 package-manager:
   apk: u-boot-tools

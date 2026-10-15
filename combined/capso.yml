@@ -2,9 +2,129 @@ id: cask:capso
 display-name: Capso
 homepage: https://github.com/lzhgus/Capso
 repo: https://github.com/lzhgus/Capso
+docs:
+  - https://github.com/lzhgus/Capso#readme
+  - https://github.com/lzhgus/Capso/releases
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Capso is distributed as a signed macOS application and through Homebrew Cask,
+      while its public repository also documents source builds. Localization and a
+      native SwiftUI implementation target macOS users seeking an integrated capture
+      workflow.
+    - >
+      The project positions itself as a free, source-available alternative to commercial
+      capture utilities and supports both everyday desktop use and reusable
+      Swift-package components for developers.
+  package-nerd-significance:
+    - >
+      Capso combines screenshot capture, recording, OCR, annotation, history, optional
+      bring-your-own cloud sharing, and reusable Swift packages in one macOS cask. It is
+      notable as a modern native application whose source tree exposes much of the
+      capture stack as modular components.
+    - >
+      Its packaging story spans a signed graphical application, Homebrew installation,
+      XcodeGen-based source builds, macOS privacy permissions, and optional user-owned
+      object storage rather than a required hosted sharing account.
+  project-history:
+    - >
+      Capso was developed publicly as a native Swift 6 and SwiftUI alternative to
+      established macOS screenshot and recording tools. The project states that its goal
+      is to keep core capture capabilities freely available while providing an example
+      of a modular modern macOS application.
+    - >
+      The codebase is organized around independent packages for capture, recording,
+      annotation, OCR, export, history, sharing, translation, and related functions. Its
+      product scope grew into an all-in-one capture HUD, video and GIF recording, webcam
+      presentation, editing, OCR, translation, persistent history, and optional
+      Cloudflare R2 sharing.
+  related-projects:
+    - >
+      The official comparison identifies CleanShot X, Shottr, and Cap as direct
+      alternatives with different balances of screenshot depth, recording, OCR,
+      annotation, implementation, openness, and pricing.
+    - >
+      XcodeGen is part of Capso's documented source-build workflow, generating the Xcode
+      project before compilation.
+  sources:
+    - https://github.com/lzhgus/Capso
+    - https://github.com/lzhgus/Capso#readme
+    - https://github.com/lzhgus/Capso/releases
+    - source_facts.package-manager
+  summary:
+    - >
+      Capso is a native macOS application for screenshots and screen recordings, with
+      annotation, OCR, editing, capture history, and optional user-owned cloud sharing.
+  timeline:
+    - >
+      Initial direction: Capso is introduced as a free native alternative to commercial
+      macOS capture tools.
+    - >
+      Modularization: Capture, recording, annotation, OCR, history, and sharing
+      capabilities are organized as reusable Swift packages.
+    - >
+      Expanded workflow: Capso adds integrated recording editing, translation,
+      persistent history, and optional Cloudflare R2 sharing.
+  usage:
+    - >
+      Users select an area, window, full screen, scrolling region, OCR operation, or
+      recording from the capture interface. Results can be copied, saved, annotated,
+      beautified, pinned, translated, recorded as MP4 or GIF, or retained in the capture
+      history.
+    - >
+      Recording workflows can include system audio, microphone input, webcam
+      picture-in-picture, trimming, cursor effects, and export presets. Optional cloud
+      sharing uploads to the user's own Cloudflare R2 bucket through a guided
+      preferences workflow.
+related-packages:
+  - id: cask:cleanshot
+    reason: >
+      Choose CleanShot X for a mature commercial macOS suite combining advanced
+      screenshot capture, recording, annotation, OCR, cloud sharing, and automation.
+    rel: alternative
+    sources:
+      - https://github.com/lzhgus/Capso#readme
+      - https://cleanshot.com/
+      - https://cleanshot.com/features
+  - id: cask:shottr
+    reason: >
+      Choose Shottr for a compact native macOS workflow centered on screenshots,
+      scrolling capture, OCR, measurement, and annotation rather than Capso's broader
+      recording feature set.
+    rel: alternative
+    sources:
+      - https://github.com/lzhgus/Capso#readme
+      - https://shottr.cc/
+  - id: cask:cap
+    reason: >
+      Choose Cap when screen recording and rapid hosted or self-hosted sharing are more
+      important than Capso's deeper screenshot and OCR workflow.
+    rel: alternative
+    sources:
+      - https://github.com/lzhgus/Capso#readme
+      - https://cap.so/
+      - https://cap.so/docs
+  - id: brew:xcodegen
+    reason: >
+      XcodeGen is the documented companion for generating Capso's Xcode project when
+      building or contributing from source.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lzhgus/Capso#readme
+      - https://github.com/yonaskolb/XcodeGen
+category: productivity
 package-manager:
   brew-cask: capso
 package-manager-url: https://formulae.brew.sh/cask/capso
+tags:
+  - annotation
+  - macos
+  - ocr
+  - screen-recording
+  - screenshots
+  - swiftui
 description: Screenshot and screen recording tool
 applications:
   - Capso.app

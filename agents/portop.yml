@@ -1,0 +1,132 @@
+id: brew:portop
+display-name: portop
+repo: null
+docs:
+  - https://github.com/padovanl/portop#readme
+  - https://padovanl.github.io/portop
+config-file-location:
+  unix:
+    - ~/.config/portop/config.yml
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      portop is distributed as a standalone cross-platform binary and through Homebrew,
+      with the official documentation also describing Linux packages, a Snap, source
+      installation, a browser dashboard, and a Cockpit add-on. Its integrations target
+      common Linux administration environments while retaining a reduced macOS mode
+      based on system `lsof` and `ps` commands.
+  package-nerd-significance:
+    - >
+      portop packages several familiar administration queries into a modern interactive
+      interface while retaining JSON and exit-status modes for automation. Package users
+      may choose it when classic socket tools expose the raw data but leave process,
+      container, service, drift, and Compose relationships to manual correlation.
+  project-history:
+    - >
+      portop was developed as an htop-style answer to port ownership questions that
+      `ss`, `netstat`, and `lsof` only partially answer. Its documented scope expanded
+      beyond a terminal table to process actions, configuration, listener baselines,
+      Docker Compose audits, a web dashboard, and Cockpit integration.
+  related-projects:
+    - >
+      The official comparison places portop alongside `ss`, `netstat`, `lsof`, and
+      bandwhich. It also integrates operationally with Docker Compose and systemd by
+      resolving container and service ownership for observed ports.
+  sources:
+    - https://github.com/padovanl/portop
+    - https://github.com/padovanl/portop#readme
+    - source_facts.package-manager
+  summary:
+    - >
+      portop is an htop-style terminal interface for finding which processes, systemd
+      services, and Docker containers own TCP and UDP ports, with interactive actions
+      and scriptable audit modes.
+  timeline:
+    - >
+      Initial scope: portop presents a live terminal view that joins sockets to their
+      owning processes.
+    - >
+      Expanded operations: the project adds listener-baseline drift detection and Docker
+      Compose port auditing.
+    - >
+      Additional interfaces: the same port data becomes available through web-dashboard
+      and Cockpit views.
+  usage:
+    - >
+      Users launch `portop` for a live socket table, filter by port or process, inspect
+      or terminate an owner, and open local services in a browser. Automation modes emit
+      JSON, alert on new listeners, compare a saved baseline, or verify whether
+      Compose-published ports are expected, unused, or in conflict.
+    - >
+      The optional configuration is written immediately by the in-application settings
+      screen. `portop --init-config` creates a commented `~/.config/portop/config.yml`;
+      command-line flags override corresponding file settings.
+related-packages:
+  - id: brew:lsof
+    reason: >
+      Choose lsof for noninteractive, broadly scriptable inspection of every kind of
+      open file and socket; portop is more focused on a live port-oriented interface and
+      actions.
+    rel: alternative
+    sources:
+      - https://github.com/padovanl/portop#readme
+      - https://lsof.readthedocs.io/en/latest/manpage/
+  - id: brew:bandwhich
+    reason: >
+      Choose bandwhich when the primary question is live bandwidth consumption by
+      process or connection rather than which process, service, or container owns a
+      port.
+    rel: alternative
+    sources:
+      - https://github.com/padovanl/portop#readme
+      - https://github.com/imsnif/bandwhich#readme
+  - id: brew:docker
+    reason: >
+      Docker complements portop because portop can use Docker metadata and Compose
+      labels to associate published ports with containers and audit Compose port
+      assignments.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/padovanl/portop#readme
+      - https://docs.docker.com/compose/
+tags:
+  - cli
+  - docker
+  - network-monitoring
+  - ports
+  - processes
+  - systemd
+  - tui
+provenance:
+  category-sources:
+    - >
+      https://github.com/padovanl/portop describes live inspection and management of
+      TCP/UDP ports, processes, systemd units, and Docker containers.
+  display-name-sources:
+    - https://github.com/padovanl/portop consistently names the command and project portop.
+  docs-sources:
+    - >
+      The official README contains installation, usage, configuration, platform, and
+      implementation documentation.
+    - The official repository links padovanl.github.io/portop as its documentation site.
+  history-sources:
+    - https://github.com/padovanl/portop
+    - https://github.com/padovanl/portop#readme
+    - source_facts.package-manager
+  repo-sources:
+    - >
+      source_facts.repo is already populated; per the requested rule, repo is returned
+      as null without reassessment.
+  tags-sources:
+    - https://github.com/padovanl/portop
+    - https://github.com/padovanl/portop#readme
+category-confidence: high
+category-path:
+  - networking
+  - port-monitoring
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
