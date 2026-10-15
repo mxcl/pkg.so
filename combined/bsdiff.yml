@@ -79,6 +79,18 @@ history:
       in O((n+m) log n), while bspatch runs in O(n+m). That tradeoff is acceptable for
       many release pipelines because patch creation happens once, while patch
       application may happen many times.
+related-packages:
+  - id: brew:xdelta
+    reason: >
+      Choose xdelta when you want a VCDIFF-based delta format and broader
+      general-purpose workflow; choose bsdiff when minimizing executable-patch size is
+      the priority and higher patch-generation cost is acceptable.
+    rel: alternative
+    sources:
+      - https://www.daemonology.net/bsdiff/
+      - https://www.daemonology.net/papers/bsdiff.pdf
+      - https://github.com/jmacd/xdelta
+      - https://jmacd.github.io/xdelta/
 category: developer-tools
 package-manager:
   brew: bsdiff
