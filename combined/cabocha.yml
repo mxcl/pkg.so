@@ -81,6 +81,23 @@ history:
       The install path supports Unix builds with configure, make, make check, and make
       install, and Windows builds that expect MeCab to be installed first. The config
       file can switch between IPA, JUMAN, and UniDic part-of-speech/model settings.
+related-packages:
+  - id: brew:mecab
+    reason: >
+      CaboCha's official installation instructions require MeCab for morphological
+      analysis, making it the primary upstream text-analysis companion.
+    rel: adjacent_workflow
+    sources:
+      - https://taku910.github.io/cabocha/
+      - https://taku910.github.io/mecab/
+  - id: brew:crf++
+    reason: >
+      CaboCha's official installation instructions require CRF++, which supplies the
+      conditional-random-field tooling used in its Japanese NLP toolchain.
+    rel: adjacent_workflow
+    sources:
+      - https://taku910.github.io/cabocha/
+      - https://taku910.github.io/crfpp/
 category: data
 package-manager:
   brew: cabocha
