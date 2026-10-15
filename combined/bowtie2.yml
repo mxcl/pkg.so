@@ -79,6 +79,34 @@ history:
       Bowtie 2 is optimized for typical Illumina-style reads aligned to long genomes,
       while still handling local, end-to-end, paired-end, and very long read cases with
       different performance tradeoffs.
+related-packages:
+  - id: brew:samtools
+    reason: >
+      Use SAMtools immediately downstream to convert, sort, index, inspect, and analyze
+      Bowtie 2's SAM/BAM output, following the workflow documented in the Bowtie 2
+      manual.
+    rel: adjacent_workflow
+    sources:
+      - https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
+      - https://www.htslib.org/doc/samtools.html
+  - id: brew:bwa
+    reason: >
+      Choose BWA for established Burrows–Wheeler short-read workflows, particularly
+      where an existing pipeline standardizes on BWA-MEM and its SAM conventions.
+    rel: alternative
+    sources:
+      - https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
+      - https://github.com/lh3/bwa
+  - id: brew:minimap2
+    reason: >
+      Choose minimap2 when the workload centers on noisy long reads, long transcript
+      alignment, or assembly-to-assembly mapping rather than Bowtie 2's typical
+      short-read use case.
+    rel: alternative
+    sources:
+      - https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
+      - https://github.com/lh3/minimap2
+      - https://lh3.github.io/minimap2/minimap2.html
 category: science
 package-manager:
   brew: bowtie2
