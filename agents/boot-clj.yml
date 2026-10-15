@@ -74,6 +74,27 @@ history:
       a `build.boot` script that composes tasks in Clojure. The wrapper script or
       executable is a thin launcher that downloads and runs Boot's JARs from Maven, so
       `boot -u` historically handled updating the runtime bits.
+related-packages:
+  - id: brew:leiningen
+    reason: >
+      Choose Leiningen for the established `project.clj`-based Clojure project workflow;
+      Boot instead models builds as composable Clojure task pipelines and can reuse
+      Leiningen's encrypted credentials file.
+    rel: alternative
+    sources:
+      - https://github.com/boot-clj/boot#readme
+      - https://github.com/boot-clj/boot/wiki/Repository-Credentials-and-Deploying
+      - https://github.com/technomancy/leiningen#readme
+  - id: brew:clojure
+    reason: >
+      Choose the official Clojure CLI for modern `deps.edn` dependency and tool
+      execution workflows when Boot's fileset and task-middleware build model is
+      unnecessary.
+    rel: alternative
+    sources:
+      - https://github.com/boot-clj/boot#readme
+      - https://clojure.org/reference/clojure_cli
+      - https://clojure.org/reference/deps_edn
 tags:
   - automation
   - build-tool
