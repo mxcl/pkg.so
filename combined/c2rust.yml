@@ -85,6 +85,23 @@ history:
       translated code against the original, and `c2rust refactor` tooling for follow-up
       transformations. Developers often need LLVM_CONFIG_PATH or related environment
       variables when building against specific LLVM installs.
+related-packages:
+  - id: brew:cmake
+    reason: >
+      For CMake-based C projects, enable CMake's compilation-database export to produce
+      the `compile_commands.json` input that C2Rust transpiles.
+    rel: adjacent_workflow
+    sources:
+      - https://c2rust.com/manual/quickstart.html
+      - https://cmake.org/cmake/help/latest/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html
+  - id: brew:bear
+    reason: >
+      Use Bear to capture `compile_commands.json` from Make or other builds that cannot
+      export a compilation database directly, then pass that file to C2Rust.
+    rel: adjacent_workflow
+    sources:
+      - https://c2rust.com/manual/quickstart.html
+      - https://github.com/rizsotto/Bear#readme
 category: developer-tools
 package-manager:
   apk: c2rust

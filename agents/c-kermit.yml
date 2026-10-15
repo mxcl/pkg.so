@@ -86,6 +86,24 @@ history:
       On Unix, the project presents it as an alternative or complement to classic tools
       such as cu, tip, minicom, uucp, ftp, telnet, ssh wrappers, expect, wget-like
       retrieval, and shell scripting for communications tasks.
+related-packages:
+  - id: brew:minicom
+    reason: >
+      Choose minicom for a menu-driven, serial-console-focused terminal; choose C-Kermit
+      when file transfer, scripting, character-set conversion, and multiple network
+      protocols are also required.
+    rel: alternative
+    sources:
+      - https://www.kermitproject.org/ck90.html
+      - https://salsa.debian.org/minicom-team/minicom
+  - id: brew:picocom
+    reason: >
+      Choose picocom for a deliberately minimal serial terminal, while C-Kermit suits
+      workflows needing integrated transfer protocols and programmable communications.
+    rel: alternative
+    sources:
+      - https://www.kermitproject.org/ck90.html
+      - https://github.com/npat-efault/picocom#readme
 tags:
   - cli
   - file-transfer
@@ -122,8 +140,12 @@ provenance:
     - source_facts.package-manager
   repo-sources:
     - >
-      The official Kermit Project distributes source archives but does not identify an
-      official HTTP(S) source-control repository.
+      https://www.kermitproject.org/ck90.html — The official project distributes
+      C-Kermit source archives but does not identify an official current HTTP(S)
+      source-control repository.
+    - >
+      https://www.kermitproject.org/whatsnew.html — The official timeline describes
+      GitHub publication as a future handoff rather than naming a canonical repository.
   tags-sources:
     - >
       https://www.kermitproject.org/ck90.html documents terminal sessions, file
@@ -137,5 +159,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high
