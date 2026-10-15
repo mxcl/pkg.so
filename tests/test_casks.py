@@ -18,7 +18,7 @@ from scripts.bootstrap.lib.casks import (
     read_cask_catalog,
     unresolved_cask_app_associations,
 )
-from scripts.bootstrap.lib.render import cask_project_record
+from scripts.bootstrap.lib.render import cask_project_record, merge_matching_cask_route
 
 
 def load_public_db_export():
@@ -476,6 +476,43 @@ class CaskAuthorityTests(unittest.TestCase):
             {"version": "2.3.02", "applications": ["ButterKit-Direct-2.3.02-macOS.app"]},
             [],
         ))
+
+    def test_matching_formula_and_binary_cask_become_install_routes_for_one_project(self):
+        formula = {
+            "id": "brew:vercel",
+            "description": "Command-line interface for Vercel",
+            "executables": ["vc", "vercel"],
+            "package-manager": {"brew": "vercel"},
+        }
+        cask = {
+            "id": "cask:vercel",
+            "description": "Command-line interface for Vercel",
+            "executables": ["vercel", "vc"],
+            "package-manager": {"brew-cask": "vercel"},
+        }
+
+        merged = merge_matching_cask_route(formula, cask, "vercel")
+
+        self.assertIsNotNone(merged)
+        self.assertEqual(
+            merged["package-manager"],
+            {"brew": "vercel", "brew-cask": "vercel"},
+        )
+        self.assertEqual(merged["id"], "brew:vercel")
+
+    def test_ambiguous_formula_and_cask_collision_is_not_merged(self):
+        formula = {
+            "description": "Formula project",
+            "executables": ["same-name"],
+            "package-manager": {"brew": "same-name"},
+        }
+        cask = {
+            "description": "Different cask project",
+            "executables": ["same-name"],
+            "package-manager": {"brew-cask": "same-name"},
+        }
+
+        self.assertIsNone(merge_matching_cask_route(formula, cask, "same-name"))
 
 
 if __name__ == "__main__":

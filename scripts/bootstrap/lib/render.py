@@ -98,12 +98,42 @@ def cask_project_record(token: str, metadata: dict[str, Any], executables: list[
     return record
 
 
+def merge_matching_cask_route(
+    formula: dict[str, Any] | None,
+    cask: dict[str, Any] | None,
+    token: str,
+) -> dict[str, Any] | None:
+    if formula is None or cask is None or cask.get("applications"):
+        return None
+    formula_executables = {
+        item for item in formula.get("executables", []) if isinstance(item, str) and item
+    }
+    cask_executables = {
+        item for item in cask.get("executables", []) if isinstance(item, str) and item
+    }
+    formula_description = str(formula.get("description") or "").strip()
+    cask_description = str(cask.get("description") or "").strip()
+    if (
+        not formula_executables
+        or formula_executables != cask_executables
+        or not formula_description
+        or formula_description != cask_description
+    ):
+        return None
+    merged = dict(formula)
+    package_managers = dict(merged.get("package-manager") or {})
+    package_managers["brew-cask"] = token
+    merged["package-manager"] = package_managers
+    return merged
+
+
 def render_stage(formulae: list[dict[str, Any]], manager_indexes: dict[str, Any]) -> int:
     reset_dir(STAGE_DIR / "deterministic")
     executables = read_executable_index()
     matcher = manager_matcher(manager_indexes)
     count = 0
     formula_names = set()
+    formula_records: dict[str, dict[str, Any]] = {}
     for formula in sorted(formulae, key=lambda item: str(item.get("name") or "")):
         name = str(formula.get("name") or "")
         if name:
@@ -112,6 +142,7 @@ def render_stage(formulae: list[dict[str, Any]], manager_indexes: dict[str, Any]
         if record is None:
             continue
         write_text_if_changed(STAGE_DIR / "deterministic" / f"{name}.yml", yaml_text(record))
+        formula_records[name] = record
         count += 1
     cask_entries, _apps, casks = read_cask_catalog()
     cask_executables: dict[str, list[str]] = {}
@@ -121,9 +152,14 @@ def render_stage(formulae: list[dict[str, Any]], manager_indexes: dict[str, Any]
         token = provider.split(":", 1)[1]
         cask_executables.setdefault(token, []).append(executable)
     for token, metadata in sorted(casks.items()):
-        if token in formula_names:
-            raise ValueError(f"Homebrew formula and cask share public project id: {token}")
         record = cask_project_record(token, metadata, cask_executables.get(token, []))
+        if token in formula_names:
+            merged = merge_matching_cask_route(formula_records.get(token), record, token)
+            if merged is None:
+                raise ValueError(f"Homebrew formula and cask share public project id: {token}")
+            write_text_if_changed(STAGE_DIR / "deterministic" / f"{token}.yml", yaml_text(merged))
+            formula_records[token] = merged
+            continue
         if record is None:
             continue
         write_text_if_changed(STAGE_DIR / "deterministic" / f"{token}.yml", yaml_text(record))
