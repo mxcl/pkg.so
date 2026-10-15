@@ -85,6 +85,24 @@ history:
       orchestration, and compilers such as GCC or Clang for the generated parser code.
       Packagers care about whether projects ship generated parsers in release tarballs
       or require Bison at build time.
+related-packages:
+  - id: brew:byacc
+    reason: >
+      Berkeley Yacc is an independent, public-domain Yacc-compatible parser generator
+      and is a useful alternative when a smaller traditional Yacc implementation is
+      preferred over Bison's GNU extensions.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/bison/manual/bison.html
+      - https://invisible-island.net/byacc/byacc.html
+  - id: brew:flex
+    reason: >
+      Flex generates scanners that commonly feed tokens to Bison-generated parsers
+      through the documented `yylex` interface.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/bison/manual/bison.html
+      - https://westes.github.io/flex/manual/
 tags:
   - cli
   - compiler-tools

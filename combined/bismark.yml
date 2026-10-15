@@ -73,6 +73,23 @@ history:
     - >
       Bismark is used when methylation context matters because its output separates CpG,
       CHG, and CHH methylation calls rather than treating all cytosines identically.
+related-packages:
+  - id: brew:bowtie2
+    reason: >
+      Bowtie 2 is Bismark's default short-read alignment backend and can be used for
+      both bisulfite-genome index preparation and read alignment.
+    rel: adjacent_workflow
+    sources:
+      - https://felixkrueger.github.io/Bismark/installation/
+      - https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
+  - id: brew:minimap2
+    reason: >
+      Minimap2 is a supported Bismark alignment backend for applicable long-read
+      bisulfite sequencing workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://felixkrueger.github.io/Bismark/
+      - https://lh3.github.io/minimap2/minimap2.html
 category: science
 package-manager:
   brew: bismark
