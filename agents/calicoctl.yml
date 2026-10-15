@@ -83,6 +83,17 @@ history:
       The docs warn that calicoctl and Calico versions should match, which is especially
       relevant for package managers: installing a newer CLI than the cluster can break
       calls unless `--allow-version-mismatch` is explicitly set.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl for most Calico resource operations when the Calico API server or
+      native CRDs are available; retain calicoctl for Calico-specific node, IPAM,
+      version, and non-Kubernetes operations.
+    rel: alternative
+    sources:
+      - https://docs.tigera.io/calico/latest/operations/calicoctl/configure/overview
+      - https://docs.tigera.io/calico/latest/operations/calicoctl/install
+      - https://kubernetes.io/docs/reference/kubectl/
 tags:
   - calico
   - cli
