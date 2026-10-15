@@ -2,6 +2,177 @@
   "content": [
     {
       "artwork": {
+        "alt": "Reviewable request cards flow into ivory files, then branch through glowing braided connections toward distinct API environments and a central vault.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#102F3C",
+          "backgroundStart": "#071A25",
+          "foreground": "#F4E7D2"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/noodle-file-first-api-workflows-20261015.png"
+      },
+      "body": "## The collection is a directory, not a database\n\nAPI clients often begin as scratchpads: send a request, inspect the response, and keep enough state around to repeat it. Noodle makes a stronger choice. A collection is a directory of readable YAML request files, with dotenv-style environments and optional settings alongside them. The same files feed its terminal interface and command-line runner. That makes an API workflow visible to an editor, a diff, and ordinary repository review rather than trapping the useful definition inside one application's private store.\n\nThe [collections guide](https://noodlerest.dev/docs/guides/collections/) explains the boundary carefully. Noodle creates `.noodle` UI state and `.timeline` response history inside a collection, but warns that timeline data may include sensitive payloads and should stay out of version control. The durable request definition and the local execution residue occupy neighboring directories, not the same trust category. A good adoption therefore starts with ignore rules and a review of exactly which files a team intends to share.\n\n## Exploration and automation use the same source\n\nNoodle's terminal workspace can edit, send, and inspect a single request, but the collection model continues into ordered runs. Environments select endpoints and ordinary variables; captured response values can feed later requests; assertions can fail checks; CSV or JSON rows can drive repeated iterations. The [runner documentation](https://noodlerest.dev/docs/guides/collection-runner/) describes selection, ordering, fail-fast behavior, tags, and data files. The CLI can run the same collection in CI and return structured results.\n\nThat continuity is the main appeal. A request investigated interactively does not need to be translated into a separate test format before it becomes repeatable. It also creates a responsibility: a successful interactive request is not automatically a durable test. Teams still need explicit assertions, controlled test data, stable environments, and failure handling. Formatting and audit commands can modify files, so their diffs belong in review just like changes made in an editor.\n\nSecrets receive a similarly explicit boundary. Declarations remain in environment files while values can live in the operating-system credential vault or process environment. The documentation notes that scripts can read selected secrets and should be treated as trusted code. On headless Linux, vault access also depends on a usable D-Bus session and unlocked keyring. File-first is helpful because the behavior is inspectable; it does not make an untrusted collection safe to execute.\n\n## Slumber shows the established version of the idea\n\nNoodle is not the first terminal client to make source files central. [Slumber](https://github.com/LucasPickering/slumber) defines request recipes in a collection file and exposes them through a TUI, CLI, and Python package. It supports profiles, dynamic templates, imports, JSONPath response browsing, and locally stored history. Its February 2026 5.0 release reorganized commands and redesigned the interface while keeping collection-format breakage relatively narrow, useful evidence that source-first clients still have compatibility decisions to manage as they mature.\n\nThe structural difference is worth testing rather than declaring a winner. Noodle's directory of per-request YAML files can align naturally with a project's folders and granular diffs. Slumber's collection and recipe model is established, compact, and backed by years of releases. Both can keep request definitions local and reviewable; both can also evaluate dynamic behavior, retain response history, or expose secrets when configured carelessly. `curl` or HTTPie remains a simpler fit when a team only needs a few independent commands.\n\n## Early usage evidence is small but concrete\n\nNoodle's first non-prerelease, [v0.1.0](https://github.com/wilfredinni/noodle/releases/tag/v0.1.0), appeared on July 3, 2026. At research time, Homebrew's public formula analytics reported 83 install events across the available 90-day and 365-day windows, including 48 in the last 30 days. These are manager-specific events, not unique users, and they exclude direct installers and upgrades outside Homebrew. They show real packaging activity, but not broad adoption or production reliability.\n\nFor comparison, the same Homebrew endpoint reported 495 Slumber install events in its 365-day window. That difference is consistent with Slumber's longer history, but the counts are too narrow to rank the tools' total audiences. GitHub release assets and repository interest have similar limitations: they indicate retrieval or attention, not whether a collection became part of a dependable team workflow.\n\n## Evaluate the boundary before the feature list\n\nA useful trial starts with one noncritical API and a deliberately small collection. Import or write a few requests, place the shareable files under Git, and confirm that UI state, response history, and secret values remain outside the commit. Run the same request interactively and from the CLI, then add one assertion and one captured value. Review what appears in logs and structured output when the request fails.\n\nNext, ask another developer to reproduce the run from a clean checkout using their own environment values. If the collection requires scripts, review them as executable code. If CI is the destination, verify headless secret injection rather than assuming a desktop keyring will exist. Finally, repeat the exercise in Slumber or a few explicit shell commands. The important result is not the richest terminal screen. It is a request workflow whose source, secrets, generated history, and automation behavior have boundaries the whole team can explain.",
+      "deck": "A new terminal client treats request definitions as ordinary project files; the useful test is how safely those files move from exploration to automation.",
+      "id": "editorial:2026-10-15:noodle-file-first-api-workflows",
+      "primaryPackageID": "brew:noodle",
+      "publishedAt": "2026-10-15T07:50:24Z",
+      "relatedPackageIDs": [
+        "brew:noodle",
+        "brew:slumber"
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-03T20:32:47Z",
+        "firstStableReleaseSourceURL": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Noodle project repository",
+          "url": "https://github.com/wilfredinni/noodle"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle collections guide",
+          "url": "https://noodlerest.dev/docs/guides/collections/"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle collection runner guide",
+          "url": "https://noodlerest.dev/docs/guides/collection-runner/"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle automation and secret-handling guide",
+          "url": "https://noodlerest.dev/docs/guides/automation/"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle v0.1.0 release",
+          "url": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew analytics for Noodle",
+          "url": "https://formulae.brew.sh/api/formula/noodle.json"
+        },
+        {
+          "kind": "primary",
+          "title": "Slumber project documentation",
+          "url": "https://github.com/LucasPickering/slumber"
+        },
+        {
+          "kind": "primary",
+          "title": "Slumber release history",
+          "url": "https://github.com/LucasPickering/slumber/releases"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew analytics for Slumber",
+          "url": "https://formulae.brew.sh/api/formula/slumber.json"
+        }
+      ],
+      "title": "Noodle and the API Collection You Can Review",
+      "type": "editorial"
+    },
+    {
+      "candidatePackageIDs": [
+        "brew:workmux",
+        "brew:bashka",
+        "brew:termaid",
+        "brew:ketch",
+        "brew:rumdl",
+        "brew:cask:openchrom",
+        "brew:resterm",
+        "brew:beets",
+        "brew:locust",
+        "brew:fastmcp",
+        "brew:form",
+        "brew:sftpgo",
+        "brew:cask:executor",
+        "brew:metview",
+        "brew:dbmate",
+        "brew:ccmux",
+        "brew:cask:tapmap",
+        "brew:cask:zentty",
+        "brew:cask:look",
+        "brew:cask:opendisk",
+        "brew:cask:highball",
+        "brew:ratex",
+        "brew:cask:hol-guard",
+        "brew:sofka"
+      ],
+      "fallbackPackageIDs": [
+        "brew:cask:hol-guard",
+        "brew:sofka",
+        "brew:cask:highball",
+        "brew:ratex",
+        "brew:cask:opendisk",
+        "brew:cask:look",
+        "brew:workmux",
+        "brew:ccmux",
+        "brew:cask:zentty",
+        "brew:cask:tapmap",
+        "brew:bashka",
+        "brew:metview",
+        "brew:dbmate",
+        "brew:cask:executor",
+        "brew:sftpgo",
+        "brew:form",
+        "brew:fastmcp",
+        "brew:resterm",
+        "brew:locust",
+        "brew:beets",
+        "brew:rumdl",
+        "brew:ketch",
+        "brew:cask:openchrom",
+        "brew:termaid"
+      ],
+      "id": "for-you",
+      "title": "For You",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "id": "new-packages",
+      "packageIDs": [
+        "brew:noodle",
+        "brew:memex",
+        "brew:portop",
+        "brew:diffle",
+        "brew:cask:nextpad++",
+        "brew:cask:genoffice",
+        "brew:bitbucket-cli",
+        "brew:cask:tracexy",
+        "brew:cask:fluxer",
+        "brew:photocraft-cli",
+        "brew:cask:crest-browser",
+        "brew:cask:purge"
+      ],
+      "title": "New Packages",
+      "type": "newPackages"
+    },
+    {
+      "id": "recently-updated",
+      "packageIDs": [
+        "brew:slumber",
+        "brew:noodle",
+        "brew:memex",
+        "brew:portop",
+        "brew:diffle",
+        "brew:cask:nextpad++",
+        "brew:cask:genoffice",
+        "brew:bitbucket-cli",
+        "brew:cask:tracexy",
+        "brew:cask:fluxer",
+        "brew:photocraft-cli",
+        "brew:cask:crest-browser"
+      ],
+      "title": "Recently Updated",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
         "alt": "A dark control room where flowing code fragments pass through a luminous lens, usage gauges, and a protective checkpoint.",
         "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
         "boxColors": {
@@ -66,101 +237,6 @@
       ],
       "title": "Claudoscope and the missing view of agent work",
       "type": "editorial"
-    },
-    {
-      "candidatePackageIDs": [
-        "brew:workmux",
-        "brew:bashka",
-        "brew:termaid",
-        "brew:ketch",
-        "brew:rumdl",
-        "brew:cask:openchrom",
-        "brew:resterm",
-        "brew:beets",
-        "brew:locust",
-        "brew:fastmcp",
-        "brew:form",
-        "brew:sftpgo",
-        "brew:cask:executor",
-        "brew:metview",
-        "brew:dbmate",
-        "brew:ccmux",
-        "brew:cask:tapmap",
-        "brew:cask:zentty",
-        "brew:cask:look",
-        "brew:cask:opendisk",
-        "brew:cask:highball",
-        "brew:ratex",
-        "brew:cask:hol-guard",
-        "brew:sofka"
-      ],
-      "fallbackPackageIDs": [
-        "brew:cask:hol-guard",
-        "brew:sofka",
-        "brew:cask:highball",
-        "brew:ratex",
-        "brew:cask:opendisk",
-        "brew:cask:look",
-        "brew:workmux",
-        "brew:ccmux",
-        "brew:cask:zentty",
-        "brew:cask:tapmap",
-        "brew:bashka",
-        "brew:metview",
-        "brew:dbmate",
-        "brew:cask:executor",
-        "brew:sftpgo",
-        "brew:form",
-        "brew:fastmcp",
-        "brew:resterm",
-        "brew:locust",
-        "brew:beets",
-        "brew:rumdl",
-        "brew:ketch",
-        "brew:cask:openchrom",
-        "brew:termaid"
-      ],
-      "id": "for-you",
-      "title": "For You",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "id": "new-packages",
-      "packageIDs": [
-        "brew:diffle",
-        "brew:cask:nextpad++",
-        "brew:cask:genoffice",
-        "brew:bitbucket-cli",
-        "brew:cask:tracexy",
-        "brew:cask:fluxer",
-        "brew:photocraft-cli",
-        "brew:cask:crest-browser",
-        "brew:memex",
-        "brew:cask:purge",
-        "brew:cask:claudoscope",
-        "brew:cask:photocraft"
-      ],
-      "title": "New Packages",
-      "type": "newPackages"
-    },
-    {
-      "id": "recently-updated",
-      "packageIDs": [
-        "brew:diffle",
-        "brew:cask:nextpad++",
-        "brew:cask:genoffice",
-        "brew:bitbucket-cli",
-        "brew:cask:tracexy",
-        "brew:cask:fluxer",
-        "brew:photocraft-cli",
-        "brew:cask:crest-browser",
-        "brew:memex",
-        "brew:cask:purge",
-        "brew:cask:hol-guard",
-        "brew:ccusage"
-      ],
-      "title": "Recently Updated",
-      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -794,65 +870,9 @@
       ],
       "title": "When the terminal became an environmental instrument",
       "type": "editorial"
-    },
-    {
-      "artwork": {
-        "alt": "Glowing file tiles stream through three glass inspection gates and converge into an orderly archive on a dark geometric workbench.",
-        "attribution": "Generated by OpenAI image generation for Package Manager Manager",
-        "boxColors": {
-          "backgroundEnd": "#0B2D35",
-          "backgroundStart": "#071522",
-          "foreground": "#F4FFF9"
-        },
-        "license": "OpenAI-generated artwork; use permitted for this editorial",
-        "path": "feed/assets/prek-fast-quality-gates-2026-08-27.png"
-      },
-      "body": "## The familiar gate gets a new engine\n\nGit hooks occupy an awkward place in developer tooling. They catch formatting drift, malformed configuration, generated-file mistakes, and accidental secrets before review, yet every added check lengthens the pause between `git commit` and getting on with the work. Teams then face a bad bargain: keep useful policy and tolerate the delay, or move checks exclusively to CI and discover simple failures later.\n\n**prek changes the runner rather than demanding a new policy format.** The project is written in Rust and presents itself as a drop-in alternative to pre-commit. It reads the familiar `.pre-commit-config.yaml`, manages hook environments, and runs independent work concurrently. Its first public GitHub release appeared on October 31, 2024, placing it inside the feed's newer-tool window, while its current documentation also describes monorepo discovery, built-in Rust implementations of common hooks, and an optional native TOML configuration.\n\nCompatibility is the important product decision. A repository can evaluate prek against an existing configuration instead of rewriting every hook on day one. That lowers the cost of a trial and keeps the configuration legible to contributors still using pre-commit. The native `prek.toml` path exists for teams that want newer features, but choosing it deliberately gives up that two-runner compatibility.\n\n## Production adoption is more useful than a stopwatch\n\nMaintainer benchmarks are helpful for forming a hypothesis, not for settling it. Hook performance depends on file counts, cache warmth, environment creation, network access, and the actual programs invoked. If a Python formatter consumes most of the wall clock, replacing only the orchestrator cannot turn it into a native Rust check.\n\nHome Assistant supplies stronger evidence of actual use. Its developer documentation announced a migration from pre-commit to prek in January 2026, citing the shared configuration and parallel execution, and its public core configuration contains instructions that invoke `prek`. That does not establish universal compatibility, but it shows the tool operating in a large, polyglot repository rather than only in a demonstration fixture.\n\nA fair trial should record more than the fastest run:\n\n- compare cold and warm runs on the same commit;\n- exercise commit, push, manual, and CI stages the repository relies on;\n- remove caches once to test environment reconstruction;\n- confirm that changed-file selection and exit codes match expectations; and\n- inspect any hooks whose correctness depends on execution order.\n\nParallelism is valuable precisely because hooks are often independent. It can also reveal accidental dependencies that a serial runner concealed. If one hook generates a file that another consumes, encode that relationship explicitly or keep those operations serial instead of trusting historical timing.\n\n## The runner is not the rule\n\nprek coordinates checks; it does not decide whether those checks are appropriate. Remote hook repositories still execute code on developer machines, language environments still need versions, and mutable tags still weaken reproducibility. Pin revisions, review updates, and keep hook scope narrow enough that developers understand what runs when they commit. A faster path should not become a quieter supply-chain path.\n\nThe project includes several built-in hooks, which can avoid environment startup for routine file hygiene. For domain work, focused tools remain useful. **rumdl**, for example, is a Rust Markdown linter and formatter with a dedicated pre-commit hook repository, editor support, CI annotations, and compatibility with existing markdownlint configuration. Pairing it with prek illustrates the clean boundary: prek selects files, stages, and scheduling; rumdl owns Markdown rules and fixes.\n\nThat separation also makes failures easier to diagnose. A hook that never starts points toward configuration or environment setup. A Markdown diagnostic belongs to rumdl and its rule configuration. A CI-only discrepancy suggests different stages, versions, caches, or file sets. Collapsing all of those concerns into a generic “the hook failed” message would squander the operational clarity a composable toolchain can provide.\n\n## Adoption should remain reversible\n\nThe safest migration begins with the existing YAML. Run prek explicitly in local development and CI, compare results with pre-commit on representative changes, then replace installed Git shims only after the team understands the differences. Keep the earlier path documented during the evaluation so contributors can distinguish a runner problem from a policy problem.\n\nSpeed is not merely cosmetic. Short feedback loops make it more likely that checks stay enabled and run before code reaches review. Still, the goal is not the smallest benchmark number. It is a gate developers trust enough to keep, backed by pinned inputs, observable failures, and CI verification. prek's most compelling idea is therefore conservative: preserve the accumulated hook ecosystem, modernize the machinery underneath it, and make the result easy to reverse if the promised compatibility does not hold.",
-      "deck": "A compatible Rust runner can remove friction from established Git-hook policy, but speed pays off only when teams preserve reproducibility, review, and clear scope.",
-      "id": "editorial:2026-08-27:prek-makes-the-commit-gate-disappear",
-      "primaryPackageID": "brew:prek",
-      "publishedAt": "2026-08-27T09:48:59Z",
-      "relatedPackageIDs": [
-        "brew:prek",
-        "brew:rumdl"
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2024-10-31T07:00:36Z",
-        "firstStableReleaseSourceURL": "https://github.com/j178/prek/releases/tag/v0.0.1",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "prek documentation",
-          "url": "https://prek.j178.dev/"
-        },
-        {
-          "kind": "primary",
-          "title": "prek first public release",
-          "url": "https://github.com/j178/prek/releases/tag/v0.0.1"
-        },
-        {
-          "kind": "independent",
-          "title": "Home Assistant migration to prek",
-          "url": "https://developers.home-assistant.io/blog/2026/01/13/replace-pre-commit-with-prek"
-        },
-        {
-          "kind": "independent",
-          "title": "Home Assistant core hook configuration",
-          "url": "https://github.com/home-assistant/core/blob/dev/.pre-commit-config.yaml"
-        },
-        {
-          "kind": "primary",
-          "title": "rumdl repository and pre-commit integration",
-          "url": "https://github.com/rvben/rumdl"
-        }
-      ],
-      "title": "Prek makes the commit gate feel smaller",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-14T07:05:27Z",
+  "generatedAt": "2026-10-15T07:50:24Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -3197,36 +3217,33 @@
       "version": "2.46.6"
     },
     "brew:memex": {
-      "agentSummary": "Memex indexes local coding-agent transcripts for lexical or semantic search, session resumption, usage analysis, MCP access, and private cross-machine recall over SSH.",
+      "agentSummary": "Memex indexes local coding-agent conversations for lexical or optional semantic search, bounded transcript reading, cross-machine queries, usage reports, and supported native session resumption.",
       "assessment": {
         "alternatives": [
-          "Each coding agent's native history search for a simpler single-tool workflow",
-          "General desktop search tools when transcript-aware session resumption is unnecessary"
+          "Search each agent's transcript files directly",
+          "Use an agent-specific session browser or usage reporter"
         ],
         "audiences": [
-          "Developers who use several coding agents",
-          "Teams retaining searchable local agent history",
-          "Users who prefer local-first transcript indexing"
+          "Developers who need to recover decisions from many local agent sessions",
+          "Teams comparing activity across several supported coding tools"
         ],
         "caveats": [
-          "Remote embeddings send transcript and memory text to the configured API",
-          "Search completeness depends on indexing the correct transcript locations",
-          "Session resumption varies by source agent"
+          "Coverage and resume behavior differ by source tool and stored record format",
+          "Optional cost figures are estimates rather than provider invoices",
+          "Experimental transfers do not recreate workspace, permissions, tools, or complete runtime state"
         ],
         "complements": [
-          "Codex and Claude Code transcript workflows",
-          "Local embedding models for private semantic retrieval",
-          "MCP-compatible clients that can query the shared index"
+          "Coding agents that persist local session history",
+          "Local backup practices for transcripts and the search index"
         ],
         "prerequisites": [
-          "Existing local transcripts from a supported coding agent",
-          "Optional embedding configuration for semantic and hybrid search",
-          "SSH access for cross-machine querying"
+          "Local history files from at least one supported coding agent",
+          "The original agent and session data when native resume is required"
         ],
         "useCases": [
-          "Index and search conversations from Codex, Claude Code, Cursor, and other agents",
-          "Open matching transcripts and resume supported sessions",
-          "Query indexes on multiple machines over SSH or expose recall through MCP"
+          "Search and browse locally saved agent transcripts",
+          "Resume supported sessions in their original coding tool",
+          "Expose bounded source-backed history retrieval through MCP or a skill"
         ]
       },
       "category": "ai",
@@ -3235,29 +3252,24 @@
       "homepage": "https://github.com/nicosuave/memex",
       "id": "brew:memex",
       "installURL": "pkgmgrmgr://install?package=brew%3Amemex",
-      "lastUpdatedAt": "2026-10-12T21:28:37Z",
+      "lastUpdatedAt": "2026-10-14T18:18:56Z",
       "manager": "homebrew",
       "repository": "https://github.com/nicosuave/memex",
-      "researchedAt": "2026-10-13T08:07:49Z",
+      "researchedAt": "2026-10-15T07:50:24Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "memex official repository",
-          "url": "https://github.com/nicosuave/memex"
+          "title": "Memex project documentation",
+          "url": "https://github.com/nicosuave/memex/blob/main/README.md"
         },
         {
           "kind": "primary",
-          "title": "memex configuration documentation",
-          "url": "https://github.com/nicosuave/memex/blob/main/docs/configuration.md"
-        },
-        {
-          "kind": "primary",
-          "title": "memex repository metadata",
-          "url": "https://api.github.com/repos/nicosuave/memex"
+          "title": "Memex v0.1.0 release",
+          "url": "https://github.com/nicosuave/memex/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Index and search local agent conversation history",
-      "version": "0.28.0"
+      "version": "0.29.0"
     },
     "brew:metview": {
       "agentSummary": "Metview gives operational and research meteorologists one environment for accessing, processing, scripting, and visualizing ECMWF-oriented weather data through desktop and Python workflows.",
@@ -3382,6 +3394,67 @@
       "upstreamSummary": "Ambitious Vim-fork focused on extensibility and agility",
       "version": "0.12.5"
     },
+    "brew:noodle": {
+      "agentSummary": "Noodle keeps API requests in reviewable YAML collections, combining an interactive terminal client with repeatable CLI runs, assertions, captures, scripting, and guarded secret storage.",
+      "assessment": {
+        "alternatives": [
+          "Slumber for a mature source-first terminal HTTP client",
+          "curl or HTTPie for individual command-line requests",
+          "Graphical clients such as Postman or Insomnia"
+        ],
+        "audiences": [
+          "Developers who want API collections beside application code",
+          "Terminal-first teams reviewing HTTP workflows in Git"
+        ],
+        "caveats": [
+          "The project is young and its collection format is still evolving",
+          "Timeline history can contain response data and should normally stay out of version control",
+          "Collection scripts are trusted code and can read selected secrets"
+        ],
+        "complements": [
+          "Git for reviewing and sharing request definitions",
+          "A CI system for repeatable collection runs"
+        ],
+        "prerequisites": [
+          "A terminal on a supported Linux or macOS system",
+          "An initialized directory of YAML requests for collection workflows"
+        ],
+        "useCases": [
+          "Explore and edit HTTP requests in a terminal interface",
+          "Run ordered API checks with environments, assertions, captures, and data files",
+          "Import existing OpenAPI, Postman, or Insomnia collections"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "noodle",
+      "docs": "https://noodlerest.dev/docs",
+      "homepage": "https://noodlerest.dev",
+      "id": "brew:noodle",
+      "installURL": "pkgmgrmgr://install?package=brew%3Anoodle",
+      "lastUpdatedAt": "2026-10-14T19:58:08Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/wilfredinni/noodle",
+      "researchedAt": "2026-10-15T07:50:24Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Noodle project repository",
+          "url": "https://github.com/wilfredinni/noodle"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle collections guide",
+          "url": "https://noodlerest.dev/docs/guides/collections/"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle v0.1.0 release",
+          "url": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "Terminal REST client with file-based collections",
+      "version": "0.10.0"
+    },
     "brew:photocraft-cli": {
       "agentSummary": "PhotoCraft CLI is a headless Rust image engine for scripted conversion, inspection, and batch editing, sharing its open-source core with the PhotoCraft desktop editor.",
       "assessment": {
@@ -3445,70 +3518,60 @@
       "upstreamSummary": "Headless PhotoCraft engine to convert, inspect and batch-edit images",
       "version": "0.8.2"
     },
-    "brew:prek": {
-      "agentSummary": "Rust-based Git hook manager compatible with established pre-commit configurations, adding parallel execution, monorepo support, built-in hooks, and a single-binary operational model.",
+    "brew:portop": {
+      "agentSummary": "portop presents live TCP and UDP ownership in a terminal UI, connecting sockets to processes, services, and containers while adding alerts and baseline checks.",
       "assessment": {
         "alternatives": [
-          "pre-commit",
-          "lefthook",
-          "Husky",
-          "Custom Git hook scripts"
+          "ss or lsof for noninteractive socket inspection",
+          "bandwhich for network utilization by process"
         ],
         "audiences": [
-          "Teams already using pre-commit configuration",
-          "Polyglot repositories seeking faster local validation",
-          "Monorepo maintainers coordinating many hooks"
+          "Developers diagnosing local port conflicts",
+          "Linux operators auditing listeners, services, and containers"
         ],
         "caveats": [
-          "Drop-in compatibility still needs verification against unusual hook languages and stages",
-          "Parallel execution can expose hidden ordering assumptions",
-          "A faster runner does not make unpinned or untrusted hook repositories safe"
+          "macOS exposes less process, systemd, and container detail than Linux",
+          "Killing a selected process is destructive even though the interface requests confirmation",
+          "Containers expose only their own network namespace unless host metadata is accessible"
         ],
         "complements": [
-          "rumdl",
-          "Ruff",
-          "Continuous integration"
+          "ss, lsof, or netstat for exact command-line snapshots",
+          "Docker Compose and systemd metadata on supported Linux hosts"
         ],
         "prerequisites": [
-          "A Git repository",
-          "A reviewed hook configuration",
-          "Language runtimes required by non-built-in hooks"
+          "Readable operating-system process and socket metadata",
+          "Elevated privileges when another user's process details must be inspected"
         ],
         "useCases": [
-          "Run checks before commits and pushes",
-          "Reuse existing .pre-commit-config.yaml files",
-          "Parallelize independent hooks in local development and CI"
+          "Inspect which processes own active TCP and UDP sockets",
+          "Detect new listening ports against a saved baseline",
+          "Audit whether Docker Compose port declarations are active or conflicting"
         ]
       },
-      "category": "developer-tools",
-      "displayName": "prek",
-      "docs": "https://prek.j178.dev/",
-      "homepage": "https://prek.j178.dev/",
-      "id": "brew:prek",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aprek",
-      "lastUpdatedAt": "2026-08-27T09:26:21Z",
+      "category": "networking",
+      "displayName": "portop",
+      "docs": "https://github.com/padovanl/portop#readme",
+      "homepage": "https://github.com/padovanl/portop",
+      "id": "brew:portop",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aportop",
+      "lastUpdatedAt": "2026-10-14T11:02:42Z",
       "manager": "homebrew",
-      "repository": "https://github.com/j178/prek",
-      "researchedAt": "2026-08-27T09:48:59Z",
+      "repository": "https://github.com/padovanl/portop",
+      "researchedAt": "2026-10-15T07:50:24Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "prek documentation",
-          "url": "https://prek.j178.dev/"
+          "title": "portop project documentation",
+          "url": "https://github.com/padovanl/portop"
         },
         {
           "kind": "primary",
-          "title": "prek release history",
-          "url": "https://github.com/j178/prek/releases"
-        },
-        {
-          "kind": "independent",
-          "title": "Home Assistant migration to prek",
-          "url": "https://developers.home-assistant.io/blog/2026/01/13/replace-pre-commit-with-prek"
+          "title": "portop initial published release",
+          "url": "https://github.com/padovanl/portop/releases/tag/v0.0.2"
         }
       ],
-      "upstreamSummary": "Fast Git hook manager written in Rust, drop-in alternative to pre-commit",
-      "version": "0.4.14"
+      "upstreamSummary": "Terminal UI showing which processes are using TCP and UDP ports",
+      "version": "0.1.0"
     },
     "brew:ratex": {
       "agentSummary": "ratex is an experimental Rust TeX engine emphasizing fast compilation and a compact command-line workflow, best suited to curious TeX users testing an emerging implementation.",
@@ -3808,6 +3871,67 @@
       ],
       "upstreamSummary": "Fully featured SFTP server with optional HTTP/S, FTP/S and WebDAV support",
       "version": "2.7.5"
+    },
+    "brew:slumber": {
+      "agentSummary": "Slumber is a mature source-first HTTP client whose local collections drive a terminal interface, command-line automation, Python access, profiles, templates, imports, and response history.",
+      "assessment": {
+        "alternatives": [
+          "Noodle for directory-based YAML requests and collection runs",
+          "curl or HTTPie for lightweight individual requests",
+          "Graphical API clients"
+        ],
+        "audiences": [
+          "Developers seeking an established terminal HTTP client",
+          "Teams that want shareable request recipes under version control"
+        ],
+        "caveats": [
+          "Dynamic templates can execute commands, so shared collections require code-review discipline",
+          "Major releases can reorganize commands or adjust the collection format",
+          "Local request history may retain sensitive response data"
+        ],
+        "complements": [
+          "Git for source-first collection review",
+          "Shell scripts or Python programs that call its noninteractive interfaces"
+        ],
+        "prerequisites": [
+          "A supported terminal environment",
+          "A Slumber collection file for reusable recipes"
+        ],
+        "useCases": [
+          "Define and execute reusable HTTP request recipes",
+          "Switch endpoints and credentials through profiles and templates",
+          "Use the same collections from a TUI, CLI, or Python package"
+        ]
+      },
+      "category": "developer-tools",
+      "displayName": "slumber",
+      "docs": "https://slumber.lucaspickering.me/",
+      "homepage": "https://slumber.lucaspickering.me/",
+      "id": "brew:slumber",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aslumber",
+      "lastUpdatedAt": "2026-10-15T01:22:14Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/LucasPickering/slumber",
+      "researchedAt": "2026-10-15T07:50:24Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Slumber project repository",
+          "url": "https://github.com/LucasPickering/slumber"
+        },
+        {
+          "kind": "primary",
+          "title": "Slumber official documentation",
+          "url": "https://slumber.lucaspickering.me/"
+        },
+        {
+          "kind": "primary",
+          "title": "Slumber release history",
+          "url": "https://github.com/LucasPickering/slumber/releases"
+        }
+      ],
+      "upstreamSummary": "Terminal-based HTTP/REST client",
+      "version": "5.4.0"
     },
     "brew:sofka": {
       "agentSummary": "A fast Rust Kubernetes TUI that combines resource browsing, deterministic incident explanations, GitOps actions, background port-forwards, and enforceable production guardrails.",
@@ -4222,7 +4346,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-14T07:03:53Z",
+    "generatedAt": "2026-10-15T07:48:55Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
