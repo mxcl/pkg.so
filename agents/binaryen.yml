@@ -50,6 +50,24 @@ history:
       `.wasm` artifacts, for `wasm-as` and `wasm-dis` to move between text-like and
       binary representations, for `wasm-merge`, `wasm-split`, and `wasm-reduce` in
       build/debug loops, and for `wasm2js` when a JavaScript fallback is needed.
+related-packages:
+  - id: brew:emscripten
+    reason: >
+      Choose Emscripten for the complete C/C++-to-WebAssembly toolchain; its documented
+      pipeline uses Binaryen for optimization and WebAssembly-specific post-processing.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/WebAssembly/binaryen#readme
+      - https://emscripten.org/docs/optimizing/Optimizing-Code.html
+  - id: brew:wasm-pack
+    reason: >
+      Use wasm-pack to build and package Rust-generated WebAssembly; Binaryen's official
+      README identifies wasm-pack as a toolchain that invokes Binaryen, typically
+      `wasm-opt`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/WebAssembly/binaryen#readme
+      - https://wasm-bindgen.github.io/wasm-pack/
 tags:
   - cli
   - compiler

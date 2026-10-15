@@ -63,6 +63,25 @@ history:
       or split-horizon DNS service; on developer and operator workstations the package
       is often installed just to get `dig`, `host`, `nslookup`, `nsupdate`, and DNSSEC
       inspection/signing tools.
+related-packages:
+  - id: brew:unbound
+    reason: >
+      Choose Unbound when you need a security-focused validating, recursive, caching
+      resolver without BIND's authoritative-server role and broader administration
+      suite.
+    rel: alternative
+    sources:
+      - https://www.isc.org/bind/
+      - https://unbound.docs.nlnetlabs.nl/en/latest/
+  - id: brew:nsd
+    reason: >
+      Choose NSD for an authoritative-only DNS server with a narrower operational scope,
+      while BIND is appropriate when authoritative service, recursion, and extensive DNS
+      utilities are needed together.
+    rel: alternative
+    sources:
+      - https://www.isc.org/bind/
+      - https://nsd.docs.nlnetlabs.nl/en/latest/
 category: networking
 package-manager:
   apk: bind
