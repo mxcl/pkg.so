@@ -5,7 +5,10 @@ repo: https://github.com/bufbuild/buf
 docs:
   - https://buf.build/docs/cli
   - https://buf.build/docs/reference/cli/buf
-config-file-location: null
+config-file-location:
+  unix:
+    - ./buf.yaml
+    - ./buf.gen.yaml
 credentials-file-location:
   unix: ~/.netrc
 history:
@@ -82,6 +85,25 @@ history:
       Core CLI features work without a Buf Schema Registry account, while signing in
       adds private module dependency resolution, remote plugins, generated SDKs, hosted
       documentation, and server-side checks.
+related-packages:
+  - id: brew:protobuf
+    reason: >
+      Choose the upstream protoc package for the traditional compiler-centered workflow;
+      choose Buf for module-aware workspaces, built-in linting, compatibility checks,
+      dependency management, and registry integration.
+    rel: alternative
+    sources:
+      - https://buf.build/docs/cli
+      - https://protobuf.dev/
+  - id: brew:buffa
+    reason: >
+      Buf can run buffa's official remote plugin to generate Rust Protobuf code without
+      installing a local protoc-gen-buffa binary.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/anthropics/buffa
+      - https://github.com/anthropics/buffa/blob/main/docs/guide.md
+      - https://buf.build/docs/cli
 category: developer-tools
 package-manager:
   apk: buf

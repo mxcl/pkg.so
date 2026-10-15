@@ -3,7 +3,13 @@ display-name: Budget Tracker TUI
 repo: null
 docs:
   - https://github.com/Feromond/budget-tracker-tui#readme
-config-file-location: null
+config-file-location:
+  linux:
+    - ~/.config/BudgetTracker/config.json
+  macos:
+    - ~/Library/Application Support/BudgetTracker/config.json
+  windows:
+    - '%APPDATA%\BudgetTracker\config.json'
 credentials-file-location: null
 history:
   adoption-history:
@@ -39,6 +45,16 @@ history:
     - >
       Run `budget-tracker` to manage transactions, categories, budgets, and spending
       views without leaving the terminal.
+related-packages:
+  - id: brew:hledger
+    reason: >
+      Choose hledger when you want version-controllable plain-text journals and CLI,
+      TUI, or web reporting; choose Budget Tracker TUI for an integrated SQLite-backed
+      interactive budgeting application.
+    rel: alternative
+    sources:
+      - https://github.com/Feromond/budget-tracker-tui
+      - https://hledger.org/
 tags:
   - budgeting
   - cli

@@ -78,6 +78,25 @@ history:
       The generated API emphasizes owned and borrowed message representations,
       unknown-field preservation, binary/JSON/text encodings, runtime reflection, and
       compatibility with protobuf editions.
+related-packages:
+  - id: brew:buf
+    reason: >
+      Buf is buffa's recommended compiler and can execute its registry-hosted generator
+      remotely, avoiding a separate local protoc-gen-buffa installation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/anthropics/buffa
+      - https://github.com/anthropics/buffa/blob/main/docs/guide.md
+      - https://buf.build/docs/cli
+  - id: brew:protobuf
+    reason: >
+      Install Protocol Buffers when using buffa's supported local protoc or buffa-build
+      workflow instead of Buf's built-in compiler and remote plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/anthropics/buffa
+      - https://github.com/anthropics/buffa/blob/main/docs/guide.md
+      - https://protobuf.dev/
 category: developer-tools
 package-manager:
   brew: buffa
