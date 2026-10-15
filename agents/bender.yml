@@ -72,6 +72,17 @@ history:
       in place. This makes Bender closer to Cargo or Bundler in spirit than to a
       simulator wrapper, but specialized for HDL source ordering and EDA tool
       integration.
+related-packages:
+  - id: brew:verilator
+    reason: >
+      Use Verilator after Bender resolves the HDL dependency graph: `bender script
+      verilator` emits the ordered sources, include paths, and defines needed for
+      Verilator's SystemVerilog-to-C++ simulation workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://pulp-platform.github.io/bender/workflow/scripts.html
+      - https://pulp-platform.github.io/bender/targets.html
+      - https://verilator.org/guide/latest/overview.html
 tags:
   - cli
   - dependency-management
