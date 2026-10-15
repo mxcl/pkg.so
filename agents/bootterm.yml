@@ -58,6 +58,25 @@ history:
       registered serial device, `bt -l` to list candidates, `bt -n` to wait for a newly
       attached USB serial device, and baud or control-pin options for board reset and
       bootloader interactions.
+related-packages:
+  - id: brew:tio
+    reason: >
+      Choose tio when you want profiles, automatic reconnect, Lua automation, transfer
+      protocols, or socket redirection; choose BootTerm for a smaller tool centered on
+      detecting and waiting for ephemeral USB serial ports.
+    rel: alternative
+    sources:
+      - https://github.com/wtarreau/bootterm#readme
+      - https://github.com/tio/tio#readme
+  - id: brew:picocom
+    reason: >
+      Choose picocom for a minimal traditional Unix serial terminal with configurable
+      external transfer commands; choose BootTerm when automatic USB-device discovery
+      and board-reset controls are the priority.
+    rel: alternative
+    sources:
+      - https://github.com/wtarreau/bootterm#readme
+      - https://github.com/npat-efault/picocom
 tags:
   - bootloader
   - cli

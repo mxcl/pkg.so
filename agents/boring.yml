@@ -74,6 +74,25 @@ history:
       The tool reads standard SSH configuration where possible and falls back to
       familiar defaults such as the current user, port 22, ssh-agent, and standard
       identity files.
+related-packages:
+  - id: brew:autossh
+    reason: >
+      Choose autossh when you want a small supervisor around a conventional SSH command
+      or long-lived reverse tunnel; choose boring when you want multiple named and
+      grouped tunnels managed declaratively in TOML.
+    rel: alternative
+    sources:
+      - https://www.harding.motd.ca/autossh/README.txt
+      - https://github.com/alebeck/boring#readme
+  - id: brew:openssh
+    reason: >
+      boring relies on OpenSSH-compatible host configuration, keys, agents, and
+      forwarding concepts, while OpenSSH supplies the underlying connectivity and
+      authentication workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/alebeck/boring#readme
+      - https://www.openssh.com/manual.html
 tags:
   - cli
   - port-forwarding

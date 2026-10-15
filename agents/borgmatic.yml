@@ -86,6 +86,34 @@ history:
       such as repository creation, archive creation, pruning, checks, extraction, and
       passphrase handling. Its docs describe both configuration-file passphrases and
       Borg environment variables such as BORG_PASSPHRASE and BORG_PASSCOMMAND.
+related-packages:
+  - id: brew:borgbackup
+    reason: >
+      BorgBackup is the storage and archive engine that borgmatic invokes; install and
+      understand Borg when configuring repositories, encryption, archive operations, and
+      restores through borgmatic.
+    rel: adjacent_workflow
+    sources:
+      - https://torsion.org/borgmatic/
+      - https://borgbackup.readthedocs.io/en/stable/
+  - id: brew:resticprofile
+    reason: >
+      Choose resticprofile when you want declarative profiles and scheduling around
+      restic; choose borgmatic when the underlying repository and backup engine should
+      be Borg.
+    rel: alternative
+    sources:
+      - https://creativeprojects.github.io/resticprofile/
+      - https://torsion.org/borgmatic/
+  - id: brew:autorestic
+    reason: >
+      Choose autorestic for a compact YAML wrapper around restic backends and locations;
+      choose borgmatic for Borg-specific retention, checks, database dumps, hooks, and
+      monitoring integrations.
+    rel: alternative
+    sources:
+      - https://autorestic.vercel.app/
+      - https://torsion.org/borgmatic/
 tags:
   - automation
   - backup

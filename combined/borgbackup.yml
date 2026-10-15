@@ -92,6 +92,35 @@ history:
       of large changing files such as VM images, multi-machine repositories where chunk
       deduplication crosses archive boundaries, and disaster-recovery restores from
       append-only or otherwise protected storage.
+related-packages:
+  - id: brew:borgmatic
+    reason: >
+      borgmatic is a configuration-driven automation layer for Borg, adding repeatable
+      archive creation, retention, checks, database dumps, hooks, and monitoring around
+      the underlying `borg` command.
+    rel: adjacent_workflow
+    sources:
+      - https://torsion.org/borgmatic/
+      - https://torsion.org/borgmatic/how-to/set-up-backups/
+      - https://borgbackup.readthedocs.io/en/stable/internals/frontends.html
+  - id: brew:restic
+    reason: >
+      Choose restic when a portable single binary and native object-storage backends are
+      central; choose Borg when SSH-hosted repositories, mountable archives, and Borg's
+      established chunk repository model fit better.
+    rel: alternative
+    sources:
+      - https://restic.readthedocs.io/en/stable/
+      - https://borgbackup.readthedocs.io/en/stable/
+  - id: brew:duplicity
+    reason: >
+      Choose duplicity for GnuPG-encrypted tar volumes and librsync-style incremental
+      chains across many URL backends; choose Borg for content-defined deduplication
+      within a Borg repository.
+    rel: alternative
+    sources:
+      - https://duplicity.us/
+      - https://borgbackup.readthedocs.io/en/stable/
 category: system
 package-manager:
   apk: borgbackup
