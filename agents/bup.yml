@@ -68,6 +68,33 @@ history:
       save backups, then restore or browse snapshots. bup is especially associated with
       large mutable files because chunking lets later backups reuse most existing data
       even when the file as a whole has changed.
+related-packages:
+  - id: brew:bupstash
+    reason: >
+      Choose bupstash when client-side encryption, encrypted metadata, scoped subkeys,
+      and SSH repositories are central requirements; choose bup when Git-format storage
+      and Git interoperability matter more.
+    rel: alternative
+    sources:
+      - https://bup.github.io/
+      - https://bupstash.io/doc/guides/Getting%20Started.html
+      - https://bupstash.io/doc/man/bupstash.html
+  - id: brew:borgbackup
+    reason: >
+      Choose Borg when authenticated client-side encryption and compression should
+      accompany content-defined deduplication and SSH-hosted repositories.
+    rel: alternative
+    sources:
+      - https://bup.github.io/
+      - https://borgbackup.readthedocs.io/en/stable/
+  - id: brew:restic
+    reason: >
+      Choose restic for a security-focused repository workflow with a compact init,
+      backup, snapshot, restore, and integrity-check command set.
+    rel: alternative
+    sources:
+      - https://bup.github.io/
+      - https://restic.readthedocs.io/en/stable/010_introduction.html
 tags:
   - backup
   - cli

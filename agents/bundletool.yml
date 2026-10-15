@@ -5,7 +5,9 @@ docs:
   - https://developer.android.com/studio/command-line/bundletool
   - https://github.com/google/bundletool#readme
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - User-selected Java keystore, for example /MyApp/keystore.jks (passed with --ks)
 history:
   adoption-history:
     - >
@@ -66,6 +68,16 @@ history:
       APKs for testing, dumping bundle metadata, and creating device spec JSON. Most
       developers encounter it indirectly through Android Studio or Gradle, while release
       engineers use it explicitly in build pipelines.
+related-packages:
+  - id: cask:android-platform-tools
+    reason: >
+      Use Android SDK Platform Tools alongside bundletool when testing generated APK
+      sets, because adb supplies the connected-device communication and
+      application-management workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://developer.android.com/tools/bundletool
+      - https://developer.android.com/tools/adb
 tags:
   - android
   - apk

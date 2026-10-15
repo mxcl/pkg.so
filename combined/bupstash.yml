@@ -74,6 +74,33 @@ history:
       `list`, `get`, `diff`, `restore`, `rm`, and `gc`. Bupstash can store file trees,
       tar streams, and command output, and its `put` command benefits from avoiding
       already-sent file content.
+related-packages:
+  - id: brew:restic
+    reason: >
+      Choose restic when you prefer its mature repository workflow and broad
+      snapshot-oriented interface; choose bupstash when encrypted metadata queries and
+      capability-restricted subkeys are especially valuable.
+    rel: alternative
+    sources:
+      - https://bupstash.io/doc/man/bupstash.html
+      - https://restic.readthedocs.io/en/stable/010_introduction.html
+  - id: brew:borgbackup
+    reason: >
+      Choose Borg when compression choices, mountable archives, and established SSH
+      repository operation are priorities; choose bupstash for its encrypted tag queries
+      and put-only or metadata-only subkeys.
+    rel: alternative
+    sources:
+      - https://bupstash.io/doc/man/bupstash.html
+      - https://borgbackup.readthedocs.io/en/stable/
+  - id: brew:bup
+    reason: >
+      Choose bup when Git-packfile compatibility and Git-based inspection are useful;
+      choose bupstash when built-in encryption and offline-key workflows are required.
+    rel: alternative
+    sources:
+      - https://bupstash.io/doc/guides/Getting%20Started.html
+      - https://bup.github.io/
 category: system
 package-manager:
   apk: bupstash

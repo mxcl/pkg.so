@@ -90,6 +90,25 @@ history:
       `burp -a b` for backup or poll on a schedule to see whether the server has work
       for them. The Windows installer and macOS Homebrew instructions make it usable
       across heterogeneous fleets.
+related-packages:
+  - id: brew:borgbackup
+    reason: >
+      Choose Borg for repository-oriented encrypted deduplicating archives over SSH;
+      choose Burp when a central server must schedule and manage named clients across
+      Unix, macOS, and Windows.
+    rel: alternative
+    sources:
+      - https://burp.grke.org/docs/quickstart.html
+      - https://borgbackup.readthedocs.io/en/stable/
+  - id: brew:restic
+    reason: >
+      Choose restic for a compact secure repository and snapshot CLI; choose Burp when
+      server-controlled client scheduling, per-client policies, and fleet monitoring are
+      required.
+    rel: alternative
+    sources:
+      - https://burp.grke.org/docs/manpage.html
+      - https://restic.readthedocs.io/en/stable/010_introduction.html
 category: system
 package-manager:
   apk: burp
