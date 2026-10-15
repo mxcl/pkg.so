@@ -58,6 +58,26 @@ history:
       NDJSON package and finding records. With an exposure catalog, it can suppress
       ordinary package records and emit only exact package-exposure matches for response
       workflows.
+related-packages:
+  - id: brew:osv-scanner
+    reason: >
+      Use OSV-Scanner alongside Bumblebee when project, lockfile, SBOM, or container
+      inventories should be matched automatically against the OSV vulnerability database
+      rather than only against Bumblebee's operator-supplied exposure catalogs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/perplexityai/bumblebee/blob/main/docs/inventory-sources.md
+      - https://google.github.io/osv-scanner/
+      - https://google.github.io/osv-scanner/usage/
+  - id: brew:syft
+    reason: >
+      Use Syft to generate SBOMs for container images, filesystems, directories, and
+      archives, complementing Bumblebee's developer-endpoint view with an inventory of
+      built and shipped artifacts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/perplexityai/bumblebee#readme
+      - https://oss.anchore.com/docs/guides/sbom/
 category: security
 package-manager:
   brew: bumblebee
