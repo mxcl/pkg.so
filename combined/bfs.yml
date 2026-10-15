@@ -71,6 +71,26 @@ history:
       The tool is also useful in scripts when its extensions matter, but its package
       value is strongest for interactive shell use where friendlier errors and faster
       discovery of shallow matches save time.
+related-packages:
+  - id: brew:findutils
+    reason: >
+      Choose GNU findutils when scripts require the established GNU find and xargs
+      behavior; choose bfs when find-like compatibility plus breadth-first traversal and
+      friendlier diagnostics are more valuable.
+    rel: alternative
+    sources:
+      - https://tavianator.com/projects/bfs.html
+      - https://www.gnu.org/software/findutils/
+      - https://www.gnu.org/software/findutils/manual/html_mono/find.html
+  - id: brew:fd
+    reason: >
+      Choose fd for concise interactive name and path searches with opinionated defaults
+      such as hidden-file and ignore handling; choose bfs when the richer find
+      expression language and compatibility matter.
+    rel: alternative
+    sources:
+      - https://tavianator.com/projects/bfs.html
+      - https://github.com/sharkdp/fd#readme
 category: system
 package-manager:
   apk: bfs
