@@ -1,10 +1,81 @@
 id: cask:cyd
 display-name: Cyd
 homepage: https://cyd.social/
-repo: null
+repo: https://github.com/lockdown-systems/cyd
+docs:
+  - https://cyd.social/docs
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Cyd continues the work of Semiphemeral, a Twitter cleanup service and command-line
+      tool used from 2019 to 2023. Its creator reported that Semiphemeral helped tens of
+      thousands of people remove large collections of tweets, likes, retweets, and
+      direct messages before changes to Twitter's API made the service untenable.
+    - >
+      Cyd relaunched the idea as a local, cross-platform desktop application in December
+      2024. Subsequent releases added formal documentation and migration of archived
+      tweets to Bluesky, while Homebrew Cask and official Linux repositories provided
+      package-managed installation routes.
+  package-nerd-significance:
+    - >
+      Cyd turns social-media offboarding into a local-first, packageable workflow: it
+      drives an embedded browser, stores archives locally, exposes the resulting data as
+      SQLite and static files, and avoids requiring users to surrender their
+      social-media data to a hosted cleanup service.
+  project-history:
+    - >
+      Micah Lee created Cyd as the successor to Semiphemeral after Twitter API
+      restrictions forced the earlier service to shut down. The name expands to
+      “Claw-back Your Data,” reflecting a broader goal of helping users archive,
+      selectively delete, and migrate data held by technology platforms.
+    - >
+      The open-source application is maintained by Lockdown Systems, a worker-owned
+      collective. It initially concentrated on X, then expanded its documented workflows
+      to include migration to Bluesky and additional platform work.
+  related-projects:
+    - >
+      Semiphemeral is Cyd's direct predecessor. Unlike the earlier API-based service and
+      command-line tool, Cyd performs supported tasks locally by automating a browser
+      session.
+    - >
+      Cyd can create a browsable local X archive and migrate eligible archived posts and
+      media to Bluesky.
+  sources:
+    - https://cyd.social/delete-all-your-tweets-for-free-with-cyd/
+    - https://cyd.social/docs/
+    - https://cyd.social/docs/desktop/x/archive/
+    - https://cyd.social/docs/desktop/x/migrate-bluesky/
+    - https://github.com/lockdown-systems/cyd
+  summary:
+    - >
+      Cyd is an open-source desktop application for locally archiving, selectively
+      deleting, and migrating a user's data from social-media platforms.
+  timeline:
+    - "2019–2023: Semiphemeral operated as Cyd's predecessor for Twitter data cleanup."
+    - '2023: Twitter API changes forced Semiphemeral to shut down.'
+    - '2024-12-03: Cyd was publicly introduced as a local desktop successor to Semiphemeral.'
+    - '2025-03-06: Cyd 1.1.0 added formal documentation and X-to-Bluesky migration.'
+  usage:
+    - >
+      Users sign in to a supported social platform through Cyd's embedded browser, build
+      a local archive, review preservation and deletion rules, and then let Cyd automate
+      the requested actions. For X accounts, the default archive is stored beneath
+      `~/Documents/Cyd/X/<username>` and includes a browsable static site and
+      `data.sqlite3`; this is user data rather than Cyd's configuration file.
+related-packages: []
+category: security
 package-manager:
   brew-cask: cyd
 package-manager-url: https://formulae.brew.sh/cask/cyd
+tags:
+  - bluesky
+  - data-archiving
+  - data-deletion
+  - privacy
+  - social-media
+  - x
 description: Archive and delete your data on social media platforms
 applications:
   - Cyd.app

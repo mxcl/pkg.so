@@ -2,9 +2,82 @@ id: cask:music-decoy
 display-name: Music Decoy
 homepage: https://lowtechguys.com/musicdecoy
 repo: https://github.com/FuzzyIdeas/MusicDecoy
+docs:
+  - https://github.com/FuzzyIdeas/MusicDecoy#readme
+  - https://lowtechguys.com/musicdecoy
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Music Decoy is distributed as a directly downloadable macOS application and
+      through Homebrew Cask. Its official instructions target users frustrated by Apple
+      Music opening after media-key or Bluetooth playback events.
+  package-nerd-significance:
+    - >
+      Music Decoy is a deliberately minimal compatibility shim. It suppresses an
+      operating-system behavior by occupying Apple Music's bundle identifier rather than
+      continuously watching processes, which makes it an unusual but narrowly effective
+      macOS utility.
+    - >
+      Its `defaults`-based option for redirecting the play key to another application
+      also makes it easy to provision from shell-based Mac setup scripts.
+  project-history:
+    - >
+      The Low-Tech Guys created Music Decoy to prevent macOS from launching Music when a
+      play event arrives and no other application is playing audio. The utility remains
+      idle while running and relies on the bundle identifier `com.apple.Music` to
+      receive the event that would otherwise cause the system application to launch.
+    - >
+      Version 1.1 added an option to launch another media application when the play
+      button is pressed. The setting is managed with the macOS `defaults` command under
+      the `com.lowtechguys.MusicDecoy` domain; the official documentation does not state
+      a configuration-file path.
+  related-projects:
+    - >
+      The project documents noTunes as an alternative that watches application launches
+      and terminates Music after it starts, in contrast to Music Decoy's
+      bundle-identifier technique.
+  sources:
+    - https://github.com/FuzzyIdeas/MusicDecoy
+    - https://lowtechguys.com/musicdecoy
+  summary:
+    - >
+      Music Decoy is a small macOS utility that prevents Apple Music from opening
+      automatically in response to play-button events.
+  timeline:
+    - >
+      Initial release: Music Decoy introduced its idle bundle-identifier technique for
+      blocking Apple Music launches.
+    - >
+      Version 1.1: Added configuration for launching a chosen media application when the
+      play button is pressed.
+  usage:
+    - >
+      Keep Music Decoy running to prevent macOS's `rcd` daemon from launching Music when
+      no active player handles a play event. Users can optionally set `mediaAppPath`
+      with `defaults write com.lowtechguys.MusicDecoy` to redirect the event to an
+      application such as Spotify.
+related-packages:
+  - id: cask:notunes
+    reason: >
+      Choose noTunes when you prefer a menu-bar utility that detects and terminates
+      Apple Music after launch; Music Decoy's official comparison contrasts that
+      approach with its idle bundle-identifier technique.
+    rel: alternative
+    sources:
+      - https://lowtechguys.com/musicdecoy
+      - https://github.com/tombonez/noTunes
+category: system
 package-manager:
   brew-cask: music-decoy
 package-manager-url: https://formulae.brew.sh/cask/music-decoy
+tags:
+  - apple-music
+  - launch-blocker
+  - macos
+  - media-keys
+  - playback-redirection
 description: Music app blocker utility
 applications:
   - Music Decoy.app
