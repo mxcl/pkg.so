@@ -91,6 +91,24 @@ history:
       There is no general per-user credentials file. Configuration is primarily
       filesystem state, mount options, kernel interfaces, and command-line usage rather
       than a single application config file.
+related-packages:
+  - id: brew:btdu
+    reason: >
+      Use btdu alongside btrfs-progs when shared extents, snapshots, and compression
+      make ordinary directory-size tools unable to explain actual Btrfs space
+      consumption.
+    rel: adjacent_workflow
+    sources:
+      - https://btrfs.readthedocs.io/en/latest/Administration.html
+      - https://github.com/CyberShadow/btdu#readme
+  - id: brew:httm
+    reason: >
+      Use httm with Btrfs snapshots created and managed through btrfs-progs to browse
+      and restore historical versions at the individual-file level.
+    rel: adjacent_workflow
+    sources:
+      - https://btrfs.readthedocs.io/en/latest/Subvolumes.html
+      - https://github.com/kimono-koans/httm#readme
 category: system
 package-manager:
   apk: btrfs-progs
