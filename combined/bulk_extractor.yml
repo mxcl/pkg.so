@@ -84,6 +84,25 @@ history:
       The tool supports scanner selection, histograms, debugging environment variables,
       and VM-based build recipes. Modern 2.x development requires C++17 and uses
       submodules such as be13_api and DFXML.
+related-packages:
+  - id: brew:sleuthkit
+    reason: >
+      Use The Sleuth Kit alongside bulk_extractor when an investigation also needs
+      partition and filesystem metadata analysis, timelines, and targeted file recovery
+      that complement bulk_extractor's metadata-independent byte-stream scan.
+    rel: adjacent_workflow
+    sources:
+      - https://www.sleuthkit.org/sleuthkit/desc.php
+      - https://simsong.github.io/bulk_extractor/
+  - id: brew:foremost
+    reason: >
+      Choose Foremost when the primary task is lightweight signature-based file carving;
+      choose bulk_extractor when broader feature extraction, recursive decoding,
+      histograms, and forensic paths are required.
+    rel: alternative
+    sources:
+      - https://foremost.sourceforge.net/
+      - https://simsong.github.io/bulk_extractor/
 category: security
 package-manager:
   brew: bulk_extractor

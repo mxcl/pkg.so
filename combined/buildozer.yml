@@ -71,6 +71,23 @@ history:
       The tool is most useful when a repository-wide BUILD migration should be expressed
       as a small, repeatable command instead of a one-off script that parses Starlark
       poorly.
+related-packages:
+  - id: brew:buildifier
+    reason: >
+      Run Buildifier after structural Buildozer edits to apply standard formatting and
+      lint checks to the modified Bazel and Starlark files.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bazel-contrib/buildtools/blob/main/buildozer/README.md
+      - https://github.com/bazelbuild/buildtools/blob/main/buildifier/README.md
+  - id: brew:bazel
+    reason: >
+      Use Bazel to query, build, and test the targets whose source BUILD definitions
+      Buildozer edits; Buildozer itself does not evaluate expanded Bazel macros.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bazel-contrib/buildtools/blob/main/buildozer/README.md
+      - https://bazel.build/about/intro
 category: developer-tools
 package-manager:
   brew: buildozer

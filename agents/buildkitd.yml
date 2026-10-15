@@ -71,6 +71,23 @@ history:
       service instead of only the `buildctl` client, for example to run local CI
       builders, expose a remote build farm endpoint, or experiment with non-Docker
       workers.
+related-packages:
+  - id: brew:buildkit
+    reason: >
+      Install BuildKit for the buildctl client that submits builds to and manages a
+      running buildkitd daemon.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/moby/buildkit/blob/master/docs/reference/buildctl.md
+      - https://github.com/moby/buildkit#readme
+  - id: brew:docker-buildx
+    reason: >
+      Use Docker Buildx when you want Docker CLI-compatible access to BuildKit builders,
+      including multi-platform builds and named builder instances.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/build/
+      - https://github.com/docker/buildx#readme
 tags:
   - buildkit
   - cache
