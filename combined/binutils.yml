@@ -99,6 +99,25 @@ history:
       scripts, relocation formats, debug sections, archive indexes, reproducible output,
       and cross builds. The official NEWS files show continuing work on RISC-V, AArch64,
       x86, LoongArch, SFrame, libsframe, readelf, objdump, gas, and ld.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      Choose LLVM when you want its separately maintained assembler and GNU-compatible
+      replacements for addr2line, ar, nm, objcopy, objdump, ranlib, readelf, size,
+      strings, and strip.
+    rel: alternative
+    sources:
+      - https://sourceware.org/binutils/
+      - https://llvm.org/docs/CommandGuide/index.html
+  - id: brew:gdb
+    reason: >
+      Use GDB alongside Binutils when static symbol, section, and disassembly inspection
+      needs to continue into breakpoints, execution control, and runtime state analysis.
+    rel: adjacent_workflow
+    sources:
+      - https://sourceware.org/binutils/
+      - https://sourceware.org/gdb/
+      - https://sourceware.org/projects.html
 category: developer-tools
 package-manager:
   apk: binutils
