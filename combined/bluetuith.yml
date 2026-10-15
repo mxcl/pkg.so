@@ -50,6 +50,41 @@ history:
       settings for the adapter, receive directory, keybindings, and theme; the official
       documentation instructs users to run `bluetuith --help` to discover the
       platform-specific config path and use `--generate` to create it.
+related-packages:
+  - id: brew:bluez
+    reason: >
+      On Linux, BlueZ is bluetuith's required Bluetooth stack and supplies the daemon
+      and D-Bus interfaces that the TUI manages.
+    rel: adjacent_workflow
+    sources:
+      - https://bluetuith-org.github.io/bluetuith/Installation/Linux.html
+      - https://www.bluez.org/about/
+  - id: brew:pulseaudio
+    reason: >
+      Install PulseAudio alongside bluetuith on Linux when the TUI must manage Bluetooth
+      device audio profiles, which the official requirements list as an optional
+      integration.
+    rel: adjacent_workflow
+    sources:
+      - https://bluetuith-org.github.io/bluetuith/Installation/Linux.html
+      - https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/
+  - id: brew:blueutil
+    reason: >
+      Choose blueutil for scriptable macOS Bluetooth state and device operations with
+      JSON output rather than an interactive cross-platform TUI.
+    rel: alternative
+    sources:
+      - https://github.com/bluetuith-org/bluetuith#readme
+      - https://github.com/toy/blueutil#readme
+  - id: brew:bluetoothconnector
+    reason: >
+      Choose BluetoothConnector on macOS when the only requirement is a compact command
+      for connecting, disconnecting, or toggling one paired device, including Automator
+      shortcuts.
+    rel: alternative
+    sources:
+      - https://github.com/bluetuith-org/bluetuith#readme
+      - https://github.com/lapfelix/BluetoothConnector#readme
 category: system
 package-manager:
   apk: bluetuith

@@ -93,6 +93,16 @@ history:
       bmake reads local makefile/Makefile inputs and system .mk includes such as sys.mk,
       so it is both a build command and an interpreter for a particular makefile
       language.
+related-packages:
+  - id: brew:make
+    reason: >
+      Choose GNU Make for GNU-specific makefiles and the dominant GNU/Linux build
+      dialect; choose bmake for NetBSD, pkgsrc, and BSD make syntax because the
+      implementations have meaningful language differences.
+    rel: alternative
+    sources:
+      - https://www.crufty.net/help/sjg/bmake_1.htm
+      - https://www.gnu.org/software/make/manual/make.html
 tags:
   - build-system
   - cli
@@ -128,10 +138,10 @@ provenance:
     - source_facts.package-manager
   repo-sources:
     - >
-      https://www.crufty.net/help/sjg/bmake.html states that the portable distribution
-      is published as official tarballs and points to the NetBSD source mirror only for
-      upstream change history; no official HTTP(S) source-control page for the complete
-      portable distribution is documented
+      https://www.crufty.net/help/sjg/bmake.html documents source archives and points to
+      NetBSD's make source for meaningful upstream changes, but no authoritative
+      standalone source-control repository for the portable bmake distribution is
+      documented.
   tags-sources:
     - Official bmake page describes portability, NetBSD make derivation, and build-tree usage.
 category-confidence: high
