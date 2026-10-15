@@ -70,6 +70,23 @@ history:
       Because it is userspace and permissively licensed, BoringTun is useful where the
       Linux kernel WireGuard module is unavailable or where client apps need portable
       WireGuard behavior across mobile and desktop platforms.
+related-packages:
+  - id: brew:wireguard-tools
+    reason: >
+      Use WireGuard Tools alongside BoringTun for the documented `wg` configuration and
+      `wg-quick` orchestration workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cloudflare/boringtun
+      - https://www.wireguard.com/quickstart/
+  - id: brew:wireguard-go
+    reason: >
+      Choose wireguard-go when you want WireGuard's official Go userspace implementation
+      rather than Cloudflare's Rust library and CLI.
+    rel: alternative
+    sources:
+      - https://github.com/cloudflare/boringtun
+      - https://git.zx2c4.com/wireguard-go/about/
 tags:
   - cli
   - rust

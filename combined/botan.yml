@@ -79,6 +79,23 @@ history:
       For package users, Botan is commonly installed as a development dependency as well
       as a CLI utility; its package significance comes from headers, libraries, ABI
       concerns, and feature selection as much as from the command-line binary.
+related-packages:
+  - id: brew:openssl@3
+    reason: >
+      Choose OpenSSL 3 when compatibility with the dominant C-based TLS and cryptography
+      ecosystem is more important than Botan's modern C++ API and modular design.
+    rel: alternative
+    sources:
+      - https://github.com/randombit/botan
+      - https://docs.openssl.org/3.6/man1/openssl/
+  - id: brew:gnutls
+    reason: >
+      Choose GnuTLS when the primary requirement is a C API focused on TLS, DTLS,
+      certificates, and PKI rather than Botan's broader C++ cryptography interface.
+    rel: alternative
+    sources:
+      - https://github.com/randombit/botan
+      - https://gnutls.org/manual/gnutls.html
 category: security
 package-manager:
   brew: botan
