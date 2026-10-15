@@ -98,6 +98,23 @@ history:
       Its documentation recommends the psf/black-pre-commit-mirror hook for
       version-control integration and warns that blackd does not use pyproject.toml
       configuration.
+related-packages:
+  - id: brew:ruff
+    reason: >
+      Choose Ruff's formatter when you want Black-compatible formatting integrated with
+      Ruff's fast linter and import-sorting workflow in one executable.
+    rel: alternative
+    sources:
+      - https://docs.astral.sh/ruff/formatter/
+      - https://black.readthedocs.io/en/stable/
+  - id: brew:isort
+    reason: >
+      Pair isort's `profile = "black"` mode with Black when imports need dedicated
+      sorting without producing conflicting formatting.
+    rel: adjacent_workflow
+    sources:
+      - https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#isort
+      - https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
 category: developer-tools
 package-manager:
   apk: black
