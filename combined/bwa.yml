@@ -82,6 +82,24 @@ history:
       The README now notes that BWA-MEM has been superseded for many newer workloads by
       minimap2 for long reads and is expected to be superseded by minibwa for short
       reads, while BWA-MEM2 is suggested when exact legacy BWA-MEM behavior is desired.
+related-packages:
+  - id: brew:minimap2
+    reason: >
+      Choose minimap2 for long-read alignment; the BWA project explicitly identifies it
+      as BWA-MEM's replacement for long reads.
+    rel: alternative
+    sources:
+      - https://github.com/lh3/bwa#readme
+      - https://lh3.github.io/minimap2/minimap2.html
+  - id: brew:samtools
+    reason: >
+      BWA emits SAM alignments, and SAMtools provides the documented downstream
+      operations for converting, sorting, indexing, and inspecting those alignment
+      files.
+    rel: adjacent_workflow
+    sources:
+      - https://bio-bwa.sourceforge.net/bwa.shtml
+      - https://www.htslib.org/doc/samtools.html
 category: science
 package-manager:
   brew: bwa
