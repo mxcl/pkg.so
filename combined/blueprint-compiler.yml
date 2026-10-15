@@ -75,6 +75,31 @@ history:
     - >
       The compiler is especially useful in Meson/GNOME workflows where UI files are
       generated during the build but still reviewed and maintained as readable source.
+related-packages:
+  - id: brew:gtk4
+    reason: >
+      GTK 4 is the runtime and widget toolkit targeted by Blueprint; the compiler
+      translates Blueprint source into GtkBuilder UI definitions for GTK 4 applications.
+    rel: adjacent_workflow
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/blueprint-compiler/
+      - https://docs.gtk.org/gtk4/class.Builder.html
+  - id: brew:libadwaita
+    reason: >
+      Install libadwaita when Blueprint interfaces use the documented `Adw` namespace
+      and GNOME's adaptive application widgets.
+    rel: adjacent_workflow
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/blueprint-compiler/reference/document_root.html
+      - https://gnome.pages.gitlab.gnome.org/libadwaita/doc/main/
+  - id: brew:gnome-builder
+    reason: >
+      GNOME Builder provides built-in Blueprint language support and a GNOME-focused
+      build environment for projects that compile `.blp` files.
+    rel: adjacent_workflow
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/blueprint-compiler/
+      - https://builder.readthedocs.io/
 category: developer-tools
 package-manager:
   apk: blueprint-compiler
