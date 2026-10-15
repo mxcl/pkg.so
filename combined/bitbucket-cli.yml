@@ -47,6 +47,33 @@ history:
       workspace or Data Center project, and then operate on repositories and pull
       requests. Headless jobs can instead provide host and token settings through
       environment variables.
+related-packages:
+  - id: brew:git
+    reason: >
+      Use Git for local commits, branches, and remotes, then use `bkt` for the
+      associated Bitbucket pull requests, repository administration, pipelines, and API
+      operations.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/avivsinai/bitbucket-cli
+      - https://git-scm.com/docs
+  - id: brew:gh
+    reason: >
+      GitHub CLI is the closest first-party-style alternative when repositories are
+      hosted on GitHub rather than Bitbucket, and `bkt` explicitly models its ergonomics
+      on `gh`.
+    rel: alternative
+    sources:
+      - https://github.com/avivsinai/bitbucket-cli
+      - https://cli.github.com/manual/
+  - id: brew:glab
+    reason: >
+      Choose GLab for analogous merge-request, issue, and CI workflows on GitLab.com or
+      self-managed GitLab instead of Bitbucket.
+    rel: alternative
+    sources:
+      - https://github.com/avivsinai/bitbucket-cli
+      - https://docs.gitlab.com/cli/
 category: developer-tools
 package-manager:
   apk: bkt

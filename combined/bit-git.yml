@@ -75,6 +75,32 @@ history:
     - >
       The package is useful for interactive terminal workflows where suggestions, branch
       autocomplete, and happy-path commands are more valuable than strict minimalism.
+related-packages:
+  - id: brew:git
+    reason: >
+      Git is the required underlying version-control system; bit-git wraps its
+      repositories and commands rather than replacing it.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/chriswalz/bit
+      - https://git-scm.com/docs
+  - id: brew:git-extras
+    reason: >
+      git-extras is a mature collection of additional Git subcommands and is explicitly
+      credited as the source of convenience commands such as release and info in
+      bit-git.
+    rel: alternative
+    sources:
+      - https://github.com/chriswalz/bit
+      - https://github.com/tj/git-extras#readme
+  - id: brew:gh
+    reason: >
+      GitHub CLI complements bit-git by providing the `gh pr list` capability required
+      by bit-git's documented pull-request feature.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/chriswalz/bit
+      - https://cli.github.com/manual/gh_pr_list
 category: developer-tools
 package-manager:
   brew: bit-git
