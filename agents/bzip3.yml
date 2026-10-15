@@ -71,6 +71,31 @@ history:
       against xz, bzip2, zstd, and lrzip combinations. That makes the package most
       relevant for users comparing archival compression ratios rather than seeking
       maximum decompression ubiquity.
+related-packages:
+  - id: brew:bzip2
+    reason: >
+      Choose bzip2 when compatibility with the established `.bz2` ecosystem matters more
+      than BZip3's newer format and design.
+    rel: alternative
+    sources:
+      - https://github.com/iczelia/bzip3
+      - https://sourceware.org/bzip2/manual/manual.html
+  - id: brew:xz
+    reason: >
+      Choose XZ Utils when you need the widely deployed `.xz`/LZMA ecosystem; BZip3
+      upstream directly benchmarks XZ as a competing high-ratio compressor.
+    rel: alternative
+    sources:
+      - https://github.com/iczelia/bzip3
+      - https://tukaani.org/xz/
+  - id: brew:zstd
+    reason: >
+      Choose Zstandard when decompression speed and broad modern tooling support are
+      priorities; BZip3 upstream directly compares its results with Zstandard.
+    rel: alternative
+    sources:
+      - https://github.com/iczelia/bzip3
+      - https://facebook.github.io/zstd/
 tags:
   - archive
   - bzip2-successor

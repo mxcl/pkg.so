@@ -90,6 +90,25 @@ history:
       On Unix-like systems c-ares reads resolver environment from standard system files
       such as `/etc/resolv.conf` and `/etc/hosts`, matching the package's curated
       config-file locations.
+related-packages:
+  - id: brew:adns
+    reason: >
+      Choose ADNS when a GPL asynchronous DNS library is acceptable and its distinct
+      polling-oriented API better matches the application; c-ares upstream explicitly
+      discusses it as an alternative resolver.
+    rel: alternative
+    sources:
+      - https://c-ares.org/why.html
+      - https://www.chiark.greenend.org.uk/~ian/adns/
+  - id: brew:curl
+    reason: >
+      Use curl or libcurl with c-ares when URL transfers need asynchronous DNS—the
+      c-ares project was created for libcurl and still lists it as a consumer.
+    rel: adjacent_workflow
+    sources:
+      - https://c-ares.org/why.html
+      - https://c-ares.org/
+      - https://curl.se/libcurl/
 tags:
   - async
   - c

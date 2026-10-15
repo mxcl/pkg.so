@@ -57,6 +57,21 @@ history:
     - >
       The tool honors CC, supports cache tuning through C_CACHE_SIZE and C_CACHE_PATH,
       and offers `--clear-cache` for cache cleanup.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      Install GCC alongside `c` when you want GNU's compiler toolchain as the backend
+      selected through `CC`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ryanmjacobs/c
+      - https://gcc.gnu.org/
+  - id: brew:llvm
+    reason: Install LLVM when you want `c` to delegate compilation to Clang by setting `CC=clang`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ryanmjacobs/c
+      - https://clang.llvm.org/
 category: developer-tools
 package-manager:
   brew: c
