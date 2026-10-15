@@ -91,6 +91,17 @@ history:
       the tool's culture: users are expected to decide which metric matters for their
       workload, such as maildir-like small files, database-like large files, or
       disk-zone variation.
+related-packages:
+  - id: brew:fio
+    reason: >
+      Choose fio when you need precisely modeled, reusable job files with selectable I/O
+      engines, queue depths, block sizes, mixed access patterns, or distributed
+      client/server tests; Bonnie++ offers a smaller fixed suite of filesystem-oriented
+      measurements.
+    rel: alternative
+    sources:
+      - https://www.coker.com.au/bonnie%2B%2B/readme.html
+      - https://fio.readthedocs.io/en/latest/fio_doc.html
 tags:
   - benchmark
   - cli
@@ -128,8 +139,9 @@ provenance:
     - source_facts.package-manager
   repo-sources:
     - >
-      source_facts.repo already provides the official repository; per enrichment rules
-      no replacement is returned.
+      The official Bonnie++ pages publish release archives and documentation but do not
+      identify an official HTTP(S) source-control project page.
+    - https://doc.coker.com.au/projects/bonnie/
   tags-sources:
     - >
       source_facts.description says Bonnie++ is a benchmark suite for file systems and
@@ -143,5 +155,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high

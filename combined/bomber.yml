@@ -62,6 +62,24 @@ history:
       README documents OSV as the default no-credential provider, with optional GitHub
       Advisory Database, Sonatype OSS Index, and Snyk providers, plus stdout, HTML,
       JSON, and Markdown output modes.
+related-packages:
+  - id: brew:syft
+    reason: >
+      Use Syft immediately before bomber to generate an SBOM from source, a filesystem,
+      or a container image and pipe that SBOM directly into bomber's vulnerability scan.
+    rel: adjacent_workflow
+    sources:
+      - https://devops-kung-fu.github.io/bomber/#scanning-sboms-from-stdin
+      - https://github.com/anchore/syft#readme
+  - id: brew:grype
+    reason: >
+      Choose Grype when you want a scanner that can examine container images and
+      filesystems directly as well as consume existing SBOMs, rather than bomber's
+      SBOM-first provider workflow.
+    rel: alternative
+    sources:
+      - https://devops-kung-fu.github.io/bomber/
+      - https://github.com/anchore/grype#readme
 category: security
 package-manager:
   brew: bomber
