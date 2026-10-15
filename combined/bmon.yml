@@ -47,6 +47,41 @@ history:
       Users run bmon to watch per-interface traffic rates, packet counters, and related
       statistics from a terminal. It is handy over SSH, in minimal systems, or during
       quick diagnosis when a full metrics stack is unnecessary.
+related-packages:
+  - id: brew:iftop
+    reason: >
+      Choose iftop when the main question is which host-to-host conversations consume an
+      interface; choose bmon for a broader per-interface statistics view with modular
+      and scriptable outputs.
+    rel: alternative
+    sources:
+      - https://github.com/Jafaral/bmon#readme
+      - https://pdw.ex-parrot.com/iftop/
+  - id: brew:nload
+    reason: >
+      Choose nload for a simpler incoming-versus-outgoing traffic graph; choose bmon
+      when you need detailed counters, interface selection, or programmable output.
+    rel: alternative
+    sources:
+      - https://github.com/Jafaral/bmon/blob/master/man/bmon.8
+      - https://www.roland-riegel.de/nload/
+  - id: brew:vnstat
+    reason: >
+      Choose vnStat for persistent historical traffic accounting from kernel interface
+      counters; choose bmon for interactive inspection of current rates and statistics.
+    rel: alternative
+    sources:
+      - https://github.com/Jafaral/bmon#readme
+      - https://humdi.net/vnstat/
+  - id: brew:bandwhich
+    reason: >
+      Choose bandwhich when local process and remote-connection attribution matters;
+      choose bmon for interface-level counters and modular terminal or machine-readable
+      output.
+    rel: alternative
+    sources:
+      - https://github.com/Jafaral/bmon#readme
+      - https://github.com/imsnif/bandwhich#readme
 category: networking
 package-manager:
   apk: bmon

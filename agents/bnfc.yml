@@ -84,6 +84,39 @@ history:
       BNFC is especially useful when the same grammar should produce both implementation
       artifacts and a readable language specification, keeping parser code, AST
       constructors, pretty printers, and documentation aligned.
+related-packages:
+  - id: brew:bison
+    reason: >
+      BNFC's C and C++ workflows can generate parser specifications for Bison, which
+      then produces the parser implementation consumed by the generated front end.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/BNFC/bnfc#readme
+      - https://www.gnu.org/software/bison/manual/
+  - id: brew:flex
+    reason: >
+      BNFC can generate Flex lexer specifications for C-family backends, making Flex the
+      lexer-generation step paired with BNFC's generated grammar artifacts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/BNFC/bnfc#readme
+      - https://westes.github.io/flex/manual/
+  - id: brew:antlr
+    reason: >
+      BNFC's Java ANTLR backend generates grammar artifacts that require ANTLR,
+      providing a direct route from LBNF to an ANTLR-based Java parser.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/BNFC/bnfc#readme
+      - https://github.com/antlr/antlr4/blob/master/doc/index.md
+  - id: brew:menhir
+    reason: >
+      BNFC's OCaml Menhir backend generates parser input for Menhir when users prefer it
+      to the standard OCaml parser generator.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/BNFC/bnfc#readme
+      - https://gallium.inria.fr/~fpottier/menhir/manual.html
 tags:
   - bnf
   - cli
