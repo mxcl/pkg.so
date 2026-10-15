@@ -75,6 +75,24 @@ history:
       it reads a grammar and emits C parser source. It is often chosen when projects
       want yacc compatibility, small generated output, permissive/public-domain
       licensing, and portability to non-GCC or older C environments.
+related-packages:
+  - id: brew:bison
+    reason: >
+      Choose GNU Bison when you need its broader grammar-language features and
+      multi-language output; choose BYACC for a smaller, highly portable implementation
+      closely focused on traditional yacc compatibility.
+    rel: alternative
+    sources:
+      - https://invisible-island.net/byacc/
+      - https://www.gnu.org/software/bison/
+  - id: brew:flex
+    reason: >
+      flex generates lexical scanners that feed tokens to yacc-style parsers, making it
+      the conventional companion to a BYACC-generated parser.
+    rel: adjacent_workflow
+    sources:
+      - https://invisible-island.net/byacc/manpage/yacc.html
+      - https://westes.github.io/flex/manual/
 tags:
   - c
   - cli

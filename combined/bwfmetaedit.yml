@@ -59,6 +59,24 @@ history:
       technical and descriptive fields as CSV or XML, verify or embed MD5 checksums for
       audio data chunks, and validate files against FADGI, EBU, Microsoft, and
       IBM-related WAVE/BWF expectations.
+related-packages:
+  - id: cask:mediainfo
+    reason: >
+      Use MediaInfo alongside BWF MetaEdit to inspect general container, codec, stream,
+      and tag details before performing BWF-specific metadata editing or validation.
+    rel: adjacent_workflow
+    sources:
+      - https://mediaarea.net/BWFMetaEdit
+      - https://mediaarea.net/en/MediaInfo
+  - id: brew:mediaconch
+    reason: >
+      Use MediaConch when a preservation workflow also needs policy-based conformance
+      checking across audiovisual files rather than only Broadcast WAVE metadata
+      validation.
+    rel: adjacent_workflow
+    sources:
+      - https://mediaarea.net/BWFMetaEdit
+      - https://mediaarea.net/MediaConch
 category: media
 package-manager:
   brew: bwfmetaedit
