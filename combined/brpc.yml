@@ -4,7 +4,10 @@ homepage: https://brpc.apache.org/
 repo: https://github.com/apache/brpc
 docs:
   - https://brpc.apache.org/docs
-config-file-location: null
+config-file-location:
+  unix:
+    - ${XDG_CONFIG_HOME:-~/.config}/broot/conf.toml
+    - ${XDG_CONFIG_HOME:-~/.config}/broot/conf.hjson
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,6 +73,26 @@ history:
       naming-service integration, and production observability. It is especially
       relevant to large internal-service deployments where one framework must bridge
       custom protocols and common open protocols.
+related-packages:
+  - id: brew:yazi
+    reason: >
+      Choose Yazi when you prefer a multi-pane terminal file manager built around
+      asynchronous I/O, image previews, and Lua plugins rather than Broot's compact,
+      filterable directory tree.
+    rel: alternative
+    sources:
+      - https://yazi-rs.github.io/
+      - https://yazi-rs.github.io/docs/quick-start
+      - https://dystroy.org/broot/
+  - id: brew:lf
+    reason: >
+      Choose lf when you want a minimalist ranger-inspired file manager with a
+      conventional pane interface, server/client control, and shell-command
+      customization rather than Broot's tree-first navigation.
+    rel: alternative
+    sources:
+      - https://github.com/gokcehan/lf#readme
+      - https://dystroy.org/broot/
 category: developer-tools
 package-manager:
   brew: brpc
