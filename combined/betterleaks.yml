@@ -53,6 +53,34 @@ history:
       storage, and stdin for secrets. Its configuration model uses TOML rules with
       Expr-based filters and validation checks, and it keeps compatibility with
       Gitleaks-shaped configs.
+related-packages:
+  - id: brew:gitleaks
+    reason: >
+      Choose Gitleaks when you want the older, broadly established scanner and its
+      mature pre-commit, CI, and GitHub Action ecosystem; Betterleaks is maintained by
+      people from that project but adds a newer filtering and credential-analysis model.
+    rel: alternative
+    sources:
+      - https://github.com/betterleaks/betterleaks
+      - https://github.com/gitleaks/gitleaks
+  - id: brew:trufflehog
+    reason: >
+      Choose TruffleHog when verified-secret detection and its documented source
+      integrations are the priority; choose Betterleaks when you want highly
+      configurable Expr-based filtering, validation, analysis, and embeddable Go APIs.
+    rel: alternative
+    sources:
+      - https://github.com/betterleaks/betterleaks
+      - https://github.com/trufflesecurity/trufflehog
+  - id: brew:git-secrets
+    reason: >
+      Use git-secrets as a lightweight local Git-hook gate to block configured
+      credential patterns before commit, alongside broader Betterleaks scans of history,
+      hosted platforms, and artifacts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/betterleaks/betterleaks/blob/main/docs/scanning.md
+      - https://github.com/awslabs/git-secrets
 category: security
 package-manager:
   brew: betterleaks
