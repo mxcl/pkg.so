@@ -4,7 +4,9 @@ repo: https://github.com/bitlbee/bitlbee
 docs:
   - https://wiki.bitlbee.org/
   - https://www.bitlbee.org/user-guide.html
-config-file-location: null
+config-file-location:
+  linux:
+    - /etc/bitlbee/bitlbee.conf
 credentials-file-location:
   unix:
     - /var/lib/bitlbee/*.accounts
@@ -86,6 +88,15 @@ history:
       Admins can run BitlBee as a daemon or inetd-style service, and users can
       alternatively connect to public servers. Plugins and libpurple support extend the
       gateway to networks beyond the built-in protocols.
+related-packages:
+  - id: brew:irssi
+    reason: >
+      Use irssi as the terminal IRC client that connects to BitlBee; BitlBee's official
+      getting-started guide demonstrates that workflow explicitly.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.bitlbee.org/GettingStarted
+      - https://irssi.org/
 tags:
   - chat
   - cli
