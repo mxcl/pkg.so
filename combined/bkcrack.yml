@@ -59,6 +59,16 @@ history:
       recover the ZipCrypto internal state, then decrypt data, create an unencrypted
       copy of the archive, change the password, or search for the original password from
       recovered keys.
+related-packages:
+  - id: brew:fcrackzip
+    reason: >
+      Choose fcrackzip when recovery requires brute-force or dictionary guessing; choose
+      bkcrack when corresponding plaintext is available and a much more targeted
+      ZipCrypto known-plaintext attack is possible.
+    rel: alternative
+    sources:
+      - https://github.com/kimci86/bkcrack#readme
+      - https://oldhome.schmorp.de/marc/fcrackzip.html
 category: security
 package-manager:
   brew: bkcrack
