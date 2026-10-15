@@ -3,7 +3,9 @@ display-name: Brigade CLI
 repo: null
 docs:
   - https://docs.brigade.sh/topics/project-developers/brig
-config-file-location: null
+config-file-location:
+  unix:
+    - .brigade/project.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,6 +72,24 @@ history:
       `brig` is used to log into a Brigade instance, initialize projects, create or
       manage events, inspect projects, and view worker or job logs. Installation docs
       offer Homebrew on macOS and direct binary downloads on Linux and Windows.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl to prepare and inspect the Kubernetes cluster that hosts Brigade; the
+      official quickstart requires a Kubernetes cluster and uses kubectl for port
+      forwarding and retrieving the initial login secret.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.brigade.sh/intro/quickstart/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      Use Helm to install and manage Brigade's server-side chart before connecting with
+      `brig`, as prescribed by the official quickstart.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.brigade.sh/intro/quickstart/
+      - https://helm.sh/docs/
 tags:
   - brigade
   - ci-cd
