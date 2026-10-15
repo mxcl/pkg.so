@@ -78,6 +78,24 @@ history:
       The tool also handles multipart cabinet sets and Windows CE installation cabinets,
       and its documentation includes magic-file rules to help distinguish Microsoft
       cabinets from InstallShield files.
+related-packages:
+  - id: brew:gcab
+    reason: >
+      Choose gcab when you need to create Microsoft Cabinet archives as well as list or
+      extract them; cabextract is focused on extraction.
+    rel: alternative
+    sources:
+      - https://github.com/kyz/libmspack
+      - https://gitlab.gnome.org/GNOME/gcab
+  - id: brew:unshield
+    reason: >
+      Use Unshield alongside cabextract when a vendor's .cab files belong to the
+      incompatible InstallShield installer format rather than the standard Microsoft
+      Cabinet format.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kyz/libmspack/tree/master/cabextract
+      - https://github.com/twogood/unshield
 category: system
 package-manager:
   apk: cabextract

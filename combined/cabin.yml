@@ -24,7 +24,14 @@ config-file-location:
     - <workspace-root>\.cabin\config.toml
     - <package-root>\.cabin\config.toml
     - '%CABIN_CONFIG%'
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - $CABIN_CONFIG_HOME/credentials.toml
+    - $XDG_CONFIG_HOME/cabin/credentials.toml
+    - ~/.config/cabin/credentials.toml
+  windows:
+    - '%CABIN_CONFIG_HOME%\credentials.toml'
+    - '%APPDATA%\cabin\credentials.toml'
 history:
   adoption-history:
     - >
@@ -94,6 +101,25 @@ history:
       Cabin targets mixed C/C++ projects where CC and CXX remain independent, C and C++
       standards stay separate, and the resolved build configuration gets a deterministic
       fingerprint.
+related-packages:
+  - id: brew:ninja
+    reason: >
+      Ninja is Cabin's generated low-level build backend, and Cabin explicitly supports
+      invoking Ninja directly against its generated build.ninja files for incremental
+      rebuilds.
+    rel: adjacent_workflow
+    sources:
+      - https://cabinpkg.com/docs/toolchains/
+      - https://ninja-build.org/manual
+  - id: brew:ccache
+    reason: >
+      Configure ccache as Cabin's compiler wrapper when you want repeated C and C++
+      builds to reuse cached compilation results; Cabin's official configuration guide
+      provides this exact workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://cabinpkg.com/docs/config/
+      - https://ccache.dev/documentation.html
 category: developer-tools
 package-manager:
   brew: cabin

@@ -90,6 +90,41 @@ history:
       project configuration, and interaction with Hackage. It is commonly installed
       alongside GHC, and the upstream README lists GHCup, official downloads, source
       builds, and preview releases as supported ways to obtain cabal-install.
+related-packages:
+  - id: brew:ghcup
+    reason: >
+      GHCup is the officially recommended way to install and switch cabal-install
+      together with the rest of the Haskell toolchain.
+    rel: adjacent_workflow
+    sources:
+      - https://www.haskell.org/cabal/download.html
+      - https://www.haskell.org/ghcup/guide/
+  - id: brew:ghc
+    reason: >
+      cabal-install resolves and orchestrates Haskell project builds, while GHC is the
+      compiler it normally drives to compile those projects.
+    rel: adjacent_workflow
+    sources:
+      - https://cabal.readthedocs.io/en/stable/getting-started.html
+      - https://www.haskell.org/ghc/
+  - id: brew:haskell-stack
+    reason: >
+      Choose Stack as an alternative Haskell project build tool when you prefer its
+      snapshot-centered workflow; official GHCup guidance presents Stack and
+      cabal-install as the two common tools for dependency installation and ordered
+      compilation.
+    rel: alternative
+    sources:
+      - https://www.haskell.org/ghcup/steps/
+      - https://docs.haskellstack.org/
+  - id: brew:hpack
+    reason: >
+      Use hpack when you prefer authoring package.yaml and generating the .cabal package
+      description consumed by cabal-install.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/sol/hpack
+      - https://cabal.readthedocs.io/en/stable/cabal-package-description-file.html
 tags:
   - build-tool
   - cabal
