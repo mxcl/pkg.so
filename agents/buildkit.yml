@@ -4,8 +4,14 @@ repo: null
 docs:
   - https://docs.docker.com/build/buildkit
   - https://github.com/moby/buildkit#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  linux:
+    - /etc/buildkit/buildkitd.toml
+    - ~/.config/buildkit/buildkitd.toml
+credentials-file-location:
+  unix:
+    - $DOCKER_CONFIG/config.json
+    - ~/.docker/config.json
 history:
   adoption-history:
     - >
@@ -76,6 +82,34 @@ history:
       For package-manager users, the appeal is that the same engine behind modern Docker
       builds can be installed separately, scripted directly, and connected to non-Docker
       runtimes or remote build workers.
+related-packages:
+  - id: brew:docker-buildx
+    reason: >
+      Docker Buildx is the official Docker CLI plugin for driving BuildKit builders,
+      including multi-platform builds, advanced cache controls, and multiple output
+      formats.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/docker/buildx
+      - https://docs.docker.com/build/buildkit/
+  - id: brew:docker
+    reason: >
+      Docker Engine uses BuildKit for modern `docker build` workflows, giving users the
+      familiar Docker CLI while BuildKit performs the underlying build.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/build/buildkit/
+      - https://github.com/moby/buildkit
+  - id: brew:containerd
+    reason: >
+      BuildKit can use a containerd worker and export into a containerd image store,
+      making containerd a documented runtime component for standalone or embedded
+      builders.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/moby/buildkit#containerd-image-store
+      - https://github.com/moby/buildkit/blob/master/docs/buildkitd.toml.md
+      - https://containerd.io/
 tags:
   - build-system
   - buildctl

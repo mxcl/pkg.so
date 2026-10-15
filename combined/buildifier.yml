@@ -68,6 +68,23 @@ history:
     - >
       The integrated linter runs with `--lint=warn` or `--lint=fix`, and
       machine-readable diagnostics are available with JSON output in check mode.
+related-packages:
+  - id: brew:bazel
+    reason: >
+      Buildifier formats and lints the BUILD, WORKSPACE, MODULE.bazel, and `.bzl` files
+      that define Bazel builds, making Bazel its primary adjacent workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bazelbuild/buildtools/blob/main/buildifier/README.md
+      - https://bazel.build/
+  - id: brew:buildozer
+    reason: >
+      Buildozer performs structured command-line edits to Bazel build files, after which
+      Buildifier can apply canonical formatting and lint checks.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bazelbuild/buildtools/blob/main/buildifier/README.md
+      - https://github.com/bazelbuild/buildtools/tree/main/buildozer
 category: developer-tools
 package-manager:
   brew: buildifier
