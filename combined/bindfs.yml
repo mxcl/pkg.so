@@ -50,6 +50,15 @@ history:
       Common uses include making a directory read-only, hiding executable bits, sharing
       a tree with selected users or groups, changing permission bits with chmod-like
       rules, and controlling permissions used for newly created files.
+related-packages:
+  - id: brew:libfuse
+    reason: >
+      bindfs is implemented on FUSE, so libfuse supplies the Linux userspace filesystem
+      interface it builds and runs against.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mpartel/bindfs
+      - https://github.com/libfuse/libfuse
 category: system
 package-manager:
   apk: bindfs

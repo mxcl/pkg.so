@@ -71,6 +71,24 @@ history:
       generation into a Cargo build script. The README also documents environment
       variables such as BINDGEN_EXTRA_CLANG_ARGS for end-user control without patching
       downstream crates.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      bindgen uses LLVM's libclang to parse C and C++ headers, so LLVM provides the
+      compiler-library side of its generation workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-lang/rust-bindgen#readme
+      - https://llvm.org/docs/
+  - id: brew:cbindgen
+    reason: >
+      cbindgen complements bindgen in bidirectional FFI projects by generating C or C++
+      headers from Rust APIs, while bindgen generates Rust declarations from C or C++
+      headers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-lang/rust-bindgen
+      - https://github.com/mozilla/cbindgen
 tags:
   - bindings
   - cli
