@@ -4,7 +4,10 @@ repo: null
 docs:
   - https://github.com/crytic/caracal/wiki
   - https://github.com/crytic/caracal#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - Scarb.toml
+    - cairo_project.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -69,6 +72,15 @@ history:
       For Scarb projects, the README instructs users to enable SIERRA output in
       Scarb.toml before running Caracal. For standalone analysis with a bundled
       compiler, users may need to provide Cairo corelib with --corelib or CORELIB_PATH.
+related-packages:
+  - id: brew:scarb
+    reason: >
+      Scarb builds Cairo and Starknet projects and emits the SIERRA artifacts Caracal
+      analyzes; Caracal's README documents the required Scarb.toml settings.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/crytic/caracal/blob/master/README.md
+      - https://docs.swmansion.com/scarb/docs
 tags:
   - cli
   - security
