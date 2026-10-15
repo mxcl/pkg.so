@@ -79,6 +79,35 @@ history:
       The bundled tools are operationally important: they let maintainers dump and
       reload databases, recover environments, inspect logs and statistics, verify files,
       and upgrade database formats when moving across versions.
+related-packages:
+  - id: brew:berkeley-db@5
+    reason: >
+      Choose Berkeley DB 5 only when a dependent application requires that older ABI,
+      file-format, or licensing line; the unversioned formula represents the modern
+      Oracle release family.
+    rel: alternative
+    sources:
+      - https://docs.oracle.com/cd/E17076_02/html/programmer_reference/index.html
+      - https://docs.oracle.com/database/bdb181/html/index.html
+  - id: brew:lmdb
+    reason: >
+      Choose LMDB for a smaller memory-mapped transactional key-value store with
+      lock-free readers; choose Berkeley DB when its broader environment, recovery,
+      replication, and access-method facilities are required.
+    rel: alternative
+    sources:
+      - https://www.oracle.com/database/technologies/related/berkeleydb.html
+      - https://www.lmdb.tech/doc/
+  - id: brew:sqlite
+    reason: >
+      Choose SQLite when applications need a portable relational SQL database file;
+      choose Berkeley DB for an embedded key-value API and configurable database
+      environments.
+    rel: alternative
+    sources:
+      - https://www.oracle.com/database/technologies/related/berkeleydb.html
+      - https://www.sqlite.org/about.html
+      - https://www.sqlite.org/whentouse.html
 category: data
 package-manager:
   brew: berkeley-db
