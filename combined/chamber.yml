@@ -51,6 +51,16 @@ history:
       Common commands write, read, list, tag, export, import, and show history for
       secrets. The exec command loads secrets from one or more services, converts secret
       keys to environment variable names, and runs a child process with those values.
+related-packages:
+  - id: brew:aws-vault
+    reason: >
+      Use AWS Vault alongside Chamber when you want long-lived AWS credentials kept in a
+      secure local backend and temporary credentials supplied to `chamber`; Chamber's
+      README explicitly documents the `aws-vault exec … -- chamber` workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/segmentio/chamber#authenticating
+      - https://github.com/ByteNess/aws-vault#readme
 category: security
 package-manager:
   brew: chamber
