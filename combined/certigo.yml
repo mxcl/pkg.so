@@ -48,6 +48,35 @@ history:
       certigo is commonly used to dump certificate files and keystores, connect to
       servers to inspect and verify TLS chains, and verify certificate chains against
       expected names. Its JSON output makes it scriptable with tools such as jq.
+related-packages:
+  - id: brew:step
+    reason: >
+      Choose step when you want certificate inspection and verification within a broader
+      PKI toolkit that also covers certificate creation, trust stores, ACME, JWT, and
+      SSH certificates.
+    rel: alternative
+    sources:
+      - https://smallstep.com/docs/step-cli/
+      - https://smallstep.com/docs/step-cli/reference/certificate/inspect/
+      - https://github.com/square/certigo#readme
+  - id: brew:openssl@3
+    reason: >
+      Choose OpenSSL when you need the standard low-level certificate, key, protocol,
+      and cryptographic command suite rather than certigo's focused, format-detecting
+      inspection interface.
+    rel: alternative
+    sources:
+      - https://docs.openssl.org/3.6/man1/openssl-x509/
+      - https://docs.openssl.org/3.6/man1/openssl-verify/
+      - https://github.com/square/certigo#readme
+  - id: brew:jq
+    reason: >
+      certigo's official README recommends jq for filtering its JSON certificate output,
+      such as selecting weak signatures or CA certificates from a bundle.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/square/certigo#readme
+      - https://jqlang.github.io/jq/manual/
 category: security
 package-manager:
   apk: certigo

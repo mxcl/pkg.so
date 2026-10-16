@@ -52,6 +52,35 @@ history:
       and CSRs, and finally signing certificate requests. By default, generated keys,
       CSRs, certificates, and CRLs are placed in the depot directory, documented as
       out/.
+related-packages:
+  - id: brew:cfssl
+    reason: >
+      Choose CFSSL when you need a larger PKI toolkit with JSON-driven CSR generation,
+      certificate bundling, scanning, OCSP tooling, or an online CA API rather than
+      certstrap's local bootstrap workflow.
+    rel: alternative
+    sources:
+      - https://github.com/cloudflare/cfssl/blob/master/README.md
+      - https://github.com/cloudflare/cfssl/blob/master/doc/cmd/cfssl.txt
+      - https://github.com/square/certstrap#readme
+  - id: brew:step
+    reason: >
+      Choose step when you want a broader user-oriented PKI CLI that can create and
+      inspect certificates and also act as the client for an online step-ca deployment.
+    rel: alternative
+    sources:
+      - https://smallstep.com/docs/step-cli/
+      - https://smallstep.com/docs/step-cli/reference/ca/certificate/
+      - https://github.com/square/certstrap#readme
+  - id: brew:openssl@3
+    reason: >
+      Choose OpenSSL for low-level control and extensive format and protocol operations;
+      choose certstrap when a guided CA, CSR, and signing workflow is more important
+      than OpenSSL's breadth.
+    rel: alternative
+    sources:
+      - https://github.com/square/certstrap#readme
+      - https://docs.openssl.org/3.6/man1/openssl/
 tags:
   - certificate-authority
   - certificates

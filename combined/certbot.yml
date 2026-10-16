@@ -4,7 +4,12 @@ homepage: https://certbot.eff.org/
 repo: https://github.com/certbot/certbot
 docs:
   - https://certbot.eff.org/docs
-config-file-location: null
+config-file-location:
+  unix:
+    - /etc/letsencrypt/cli.ini
+    - $XDG_CONFIG_HOME/letsencrypt/cli.ini
+    - ~/.config/letsencrypt/cli.ini
+    - /etc/letsencrypt/renewal/*.conf
 credentials-file-location:
   macos: ~/Library/Application Support/letsencrypt
   unix:
@@ -61,6 +66,25 @@ history:
       certificates, saves them under /etc/letsencrypt/live, renews them on a schedule,
       and can use plugins for Apache, nginx, webroot, standalone, manual, and DNS-based
       validation.
+related-packages:
+  - id: brew:acme.sh
+    reason: >
+      Choose acme.sh when you want a shell-only ACME client with no Python dependency
+      and broad DNS-provider automation, rather than Certbot's Python and plugin-based
+      workflow.
+    rel: alternative
+    sources:
+      - https://github.com/acmesh-official/acme.sh
+      - https://github.com/certbot/certbot
+  - id: brew:caddy
+    reason: >
+      Choose Caddy when the web server itself should obtain, renew, and deploy
+      certificates automatically, avoiding a separate Certbot process for sites served
+      by Caddy.
+    rel: alternative
+    sources:
+      - https://caddyserver.com/docs/automatic-https
+      - https://www.eff.org/deeplinks/2024/03/should-caddy-and-traefik-replace-certbot
 category: security
 package-manager:
   apk: certbot
