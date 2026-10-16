@@ -60,6 +60,32 @@ history:
       Builders normally enable the tools with CMake and FFmpeg support, producing the
       shared library plus `fpcalc`. Users and applications calculate audio fingerprints,
       then use AcoustID-style matching or duplicate-detection workflows.
+related-packages:
+  - id: cask:musicbrainz-picard
+    reason: >
+      Picard uses the bundled Chromaprint `fpcalc` utility to calculate AcoustID
+      fingerprints and apply MusicBrainz metadata to audio files.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/acoustid/chromaprint/blob/master/README.md
+      - https://picard-docs.musicbrainz.org/en/latest/config/options_fingerprinting.html
+  - id: brew:beets
+    reason: >
+      beets combines Chromaprint-generated fingerprints with AcoustID matching in a
+      command-line music-library tagging workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://acoustid.org/
+      - https://beets.readthedocs.io/en/stable/plugins/chroma.html
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg decodes and resamples audio for `fpcalc`, is required for the standard tool
+      build, and also provides a documented Chromaprint integration.
+    rel: adjacent_workflow
+    sources:
+      - https://acoustid.org/chromaprint
+      - https://github.com/acoustid/chromaprint/blob/master/README.md
+      - https://ffmpeg.org/ffmpeg-formats.html#chromaprint-1
 category: media
 package-manager:
   apk: chromaprint
