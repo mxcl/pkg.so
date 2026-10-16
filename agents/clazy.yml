@@ -62,6 +62,23 @@ history:
       a JSON compilation database. The README shows CMake and qmake usage, check levels,
       environment-variable and compiler-argument selection of checks, fix-it support,
       and warning-noise controls.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      LLVM supplies the Clang framework and compiler interfaces used by Clazy's plugin
+      and standalone analyzer workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://invent.kde.org/sdk/clazy/-/blob/master/README.md
+      - https://llvm.org/
+  - id: brew:qt
+    reason: >
+      Use Qt with Clazy when developing Qt C++ applications, because Clazy's documented
+      checks specifically analyze Qt APIs and programming idioms.
+    rel: adjacent_workflow
+    sources:
+      - https://invent.kde.org/sdk/clazy/-/blob/master/README.md
+      - https://www.qt.io/
 tags:
   - clang
   - clazy-checks
