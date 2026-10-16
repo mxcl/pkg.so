@@ -74,6 +74,55 @@ history:
       Configuration lives at `~/.claude-squad/config.json`; the README documents `cs
       debug` as the way to find the exact path and profiles as the way to persist named
       agent commands.
+related-packages:
+  - id: cask:claude-code
+    reason: >
+      Claude Code is Claude Squad's default agent command and can be run in isolated
+      concurrent worktrees through the TUI.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/smtg-ai/claude-squad#readme
+      - https://github.com/anthropics/claude-code#readme
+  - id: cask:codex
+    reason: >
+      Claude Squad explicitly supports launching Codex sessions with `cs -p "codex"` or
+      a named profile.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/smtg-ai/claude-squad#readme
+      - https://github.com/openai/codex#readme
+  - id: brew:aider
+    reason: >
+      Claude Squad explicitly supports Aider as an agent program, including passing
+      Aider model arguments through its program option or profiles.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/smtg-ai/claude-squad#readme
+      - https://aider.chat/docs/
+  - id: brew:gemini-cli
+    reason: >
+      Claude Squad explicitly documents launching Gemini CLI in a managed session with
+      `cs -p "gemini"`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/smtg-ai/claude-squad#readme
+      - https://github.com/google-gemini/gemini-cli#readme
+  - id: brew:tmux
+    reason: >
+      tmux is an official Claude Squad prerequisite and supplies the isolated terminal
+      sessions used for managed agents.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/smtg-ai/claude-squad#readme
+      - https://github.com/tmux/tmux/wiki
+  - id: brew:gh
+    reason: >
+      GitHub CLI is an official prerequisite used alongside Claude Squad's
+      commit-and-push workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/smtg-ai/claude-squad#readme
+      - https://cli.github.com/manual/gh
 tags:
   - ai
   - ai-agents

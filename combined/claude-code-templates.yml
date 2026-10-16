@@ -13,7 +13,9 @@ config-file-location:
     - .claude/settings.local.json
     - ~/.claude/settings.json
     - .mcp.json
-credentials-file-location: null
+credentials-file-location:
+  unix: .env
+  windows: .env
 history:
   adoption-history:
     - >
@@ -85,6 +87,15 @@ history:
       The project is also used as a discovery layer: the README directs users to
       aitmpl.com to browse more than 100 agents, commands, settings, hooks, and MCPs,
       then install selected components through the CLI.
+related-packages:
+  - id: cask:claude-code
+    reason: >
+      Claude Code loads and runs the agents, commands, hooks, settings, skills, and MCP
+      components installed by Claude Code Templates.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.aitmpl.com/installation
+      - https://github.com/anthropics/claude-code#readme
 category: ai
 package-manager:
   brew: claude-code-templates
