@@ -60,6 +60,48 @@ history:
       A typical workflow is to run clang-uml --init, edit .clang-uml to point at a
       compile_commands.json database and diagram definitions, then generate PlantUML,
       Mermaid, GraphML, or JSON diagram output from selected source globs.
+related-packages:
+  - id: brew:clang-include-graph
+    reason: >
+      clang-include-graph is a narrower alternative when the task is specifically
+      include-cycle, include-tree, reverse-dependency, or topological analysis rather
+      than general UML generation.
+    rel: alternative
+    sources:
+      - https://clang-uml.github.io/
+      - https://github.com/bkryza/clang-include-graph#readme
+  - id: brew:plantuml
+    reason: >
+      The clang-uml quick start documents PlantUML as a renderer for its generated
+      `.puml` diagrams, including an integrated rendering command.
+    rel: adjacent_workflow
+    sources:
+      - https://clang-uml.github.io/md_docs_2quick__start.html
+      - https://plantuml.com/starting
+  - id: brew:mermaid-cli
+    reason: >
+      clang-uml can generate Mermaid files, and its quick start documents using `mmdc`
+      from mermaid-cli to render them as SVG.
+    rel: adjacent_workflow
+    sources:
+      - https://clang-uml.github.io/md_docs_2quick__start.html
+      - https://github.com/mermaid-js/mermaid-cli#readme
+  - id: brew:cmake
+    reason: >
+      CMake can export the `compile_commands.json` database referenced by clang-uml's
+      configuration and quick-start documentation.
+    rel: adjacent_workflow
+    sources:
+      - https://clang-uml.github.io/md_docs_2configuration__file.html
+      - https://cmake.org/cmake/help/latest/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html
+  - id: brew:bear
+    reason: >
+      Bear can produce `compile_commands.json` for build systems that cannot export one,
+      supplying the compilation database clang-uml needs to parse a project accurately.
+    rel: adjacent_workflow
+    sources:
+      - https://clang-uml.github.io/md_docs_2configuration__file.html
+      - https://github.com/rizsotto/Bear#readme
 tags:
   - c
   - clang

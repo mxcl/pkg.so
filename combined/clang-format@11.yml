@@ -56,6 +56,34 @@ history:
       project requires LLVM 11 formatting. Configuration remains project-local via
       .clang-format or _clang-format, with -style=file and -dump-config documented in
       the LLVM 11 manual.
+related-packages:
+  - id: brew:clang-format
+    reason: >
+      The unversioned formula is the direct alternative for projects that want the
+      currently packaged clang-format behavior instead of retaining LLVM 11
+      compatibility.
+    rel: alternative
+    sources:
+      - https://clang.llvm.org/docs/ClangFormat.html
+      - https://releases.llvm.org/11.1.0/tools/clang/docs/ClangFormat.html
+  - id: brew:astyle
+    reason: >
+      Artistic Style is an independently maintained C-family and Java formatter suitable
+      when a project does not need clang-format 11's exact output contract.
+    rel: alternative
+    sources:
+      - https://astyle.sourceforge.net/
+      - https://astyle.sourceforge.net/astyle.html
+      - https://releases.llvm.org/11.1.0/tools/clang/docs/ClangFormat.html
+  - id: brew:gnu-indent
+    reason: >
+      GNU indent is a narrower alternative for C-only projects that prefer traditional
+      GNU or Unix indentation presets.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/indent/
+      - https://www.gnu.org/software/indent/manual/indent.html
+      - https://releases.llvm.org/11.1.0/tools/clang/docs/ClangFormat.html
 category: developer-tools
 package-manager:
   brew: clang-format@11

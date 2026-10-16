@@ -51,6 +51,40 @@ history:
       The tool expects a compile_commands.json database or compile_flags.txt, then lets
       users select translation units and choose output formats such as JSON, Graphviz,
       GraphML, PlantUML, tree views, cycles, or dependency queries.
+related-packages:
+  - id: brew:clang-uml
+    reason: >
+      clang-uml is a broader Clang-based alternative when include diagrams must sit
+      alongside generated class, sequence, and package diagrams.
+    rel: alternative
+    sources:
+      - https://github.com/bkryza/clang-include-graph#readme
+      - https://clang-uml.github.io/
+  - id: brew:cmake
+    reason: >
+      CMake can generate the `compile_commands.json` database that clang-include-graph
+      requires when using Makefile or Ninja generators.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bkryza/clang-include-graph#readme
+      - https://cmake.org/cmake/help/latest/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html
+  - id: brew:bear
+    reason: >
+      Bear records compiler invocations into `compile_commands.json`, supplying
+      clang-include-graph's required input for Make, Autotools, and custom-script builds
+      that cannot export it themselves.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bkryza/clang-include-graph#readme
+      - https://github.com/rizsotto/Bear#readme
+  - id: brew:plantuml
+    reason: >
+      clang-include-graph can emit PlantUML source, which PlantUML can render into
+      visual diagram artifacts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bkryza/clang-include-graph#readme
+      - https://plantuml.com/starting
 tags:
   - clang
   - cli
