@@ -48,6 +48,23 @@ history:
       `.tgz` artifacts to GitHub Releases, then build or push the chart repository
       index. The README documents `$HOME/.cr.yaml`, `CR_` environment variables, and
       command-line flags with CLI-over-env-over-config precedence.
+related-packages:
+  - id: brew:chart-testing
+    reason: >
+      Use Chart Testing to lint and install-test changed Helm charts in CI before Chart
+      Releaser packages and publishes them.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/helm/chart-testing
+      - https://github.com/helm/chart-releaser
+  - id: brew:helm
+    reason: >
+      Helm supplies the chart format and core packaging workflow that Chart Releaser
+      publishes through GitHub Releases and Pages.
+    rel: adjacent_workflow
+    sources:
+      - https://helm.sh/docs/topics/charts/
+      - https://github.com/helm/chart-releaser#readme
 category: developer-tools
 package-manager:
   brew: chart-releaser

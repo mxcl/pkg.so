@@ -56,6 +56,23 @@ history:
       lint-and-install checks. Configuration is supplied by CLI flags, `CT_` environment
       variables, or config files, and default config lookup includes the current
       directory, `$HOME/.ct`, and `/etc/ct`.
+related-packages:
+  - id: brew:helm
+    reason: >
+      Chart Testing invokes Helm-oriented linting and installation workflows, so Helm is
+      the core companion for authoring and operating the charts under test.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/helm/chart-testing#readme
+      - https://helm.sh/docs/topics/chart_tests/
+  - id: brew:chart-releaser
+    reason: >
+      After Chart Testing validates changed charts, Chart Releaser can package them,
+      attach them to GitHub Releases, and update the repository index.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/helm/chart-testing
+      - https://github.com/helm/chart-releaser
 tags:
   - charts
   - ci
