@@ -136,18 +136,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
-        "brew:noodle",
         "brew:memex",
+        "brew:cask:capso",
         "brew:portop",
+        "brew:cask:tine",
+        "brew:cask:genoffice",
+        "brew:cask:purge",
+        "brew:noodle",
         "brew:diffle",
         "brew:cask:nextpad++",
-        "brew:cask:genoffice",
         "brew:bitbucket-cli",
         "brew:cask:tracexy",
-        "brew:cask:fluxer",
-        "brew:photocraft-cli",
-        "brew:cask:crest-browser",
-        "brew:cask:purge"
+        "brew:cask:fluxer"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -155,18 +155,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:memex",
+        "brew:cask:capso",
+        "brew:portop",
+        "brew:cask:tine",
+        "brew:cask:genoffice",
+        "brew:cask:purge",
         "brew:slumber",
         "brew:noodle",
-        "brew:memex",
-        "brew:portop",
         "brew:diffle",
         "brew:cask:nextpad++",
-        "brew:cask:genoffice",
         "brew:bitbucket-cli",
-        "brew:cask:tracexy",
-        "brew:cask:fluxer",
-        "brew:photocraft-cli",
-        "brew:cask:crest-browser"
+        "brew:cask:tracexy"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -872,7 +872,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-15T07:50:24Z",
+  "generatedAt": "2026-10-16T11:00:33Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1115,6 +1115,61 @@
       "upstreamSummary": "Time tracker",
       "version": "0.13.2"
     },
+    "brew:cask:capso": {
+      "agentSummary": "Capso combines native macOS screenshots, recording, annotation, OCR, translation, history, and optional bring-your-own cloud sharing in one open-source capture workflow.",
+      "assessment": {
+        "alternatives": [
+          "CleanShot X for a mature commercial capture workflow",
+          "Built-in macOS Screenshot for simpler capture needs"
+        ],
+        "audiences": [
+          "Mac users producing annotated screenshots or recordings",
+          "Developers wanting reusable Swift capture components"
+        ],
+        "caveats": [
+          "It targets only recent macOS releases",
+          "Cloud sharing requires users to configure and pay for their own compatible storage",
+          "Recording and capture features require sensitive macOS permissions"
+        ],
+        "complements": [
+          "Cloudflare R2 for optional bring-your-own-storage sharing",
+          "Clipboard and drag-and-drop workflows in other Mac applications"
+        ],
+        "prerequisites": [
+          "macOS 15 or later",
+          "Screen recording, camera, or microphone permissions for the corresponding features"
+        ],
+        "useCases": [
+          "Capture areas, windows, full screens, or scrolling content",
+          "Record MP4 or GIF with microphone, system audio, or webcam",
+          "Annotate, OCR, translate, pin, and retain captures"
+        ]
+      },
+      "category": "productivity",
+      "displayName": "Capso",
+      "docs": "https://github.com/lzhgus/Capso#readme",
+      "homepage": "https://github.com/lzhgus/Capso",
+      "id": "brew:cask:capso",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acapso",
+      "lastUpdatedAt": "2026-10-16T06:57:10Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/lzhgus/Capso",
+      "researchedAt": "2026-10-16T11:00:33Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Capso repository and feature guide",
+          "url": "https://github.com/lzhgus/Capso"
+        },
+        {
+          "kind": "primary",
+          "title": "Capso release downloads",
+          "url": "https://github.com/lzhgus/Capso/releases"
+        }
+      ],
+      "upstreamSummary": "Screenshot and screen recording tool",
+      "version": "1.2.1"
+    },
     "brew:cask:claudoscope": {
       "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
       "assessment": {
@@ -1174,69 +1229,6 @@
       ],
       "upstreamSummary": "Menu bar dashboard for Claude Code sessions",
       "version": "1.4.0"
-    },
-    "brew:cask:crest-browser": {
-      "agentSummary": "Crest is an open-source Apple-platform browser separating work, personal, research, and private activity into Spaces with independent sessions, data, permissions, and identities.",
-      "assessment": {
-        "alternatives": [
-          "Safari for a mature WebKit-first Apple browser",
-          "Chromium-based browsers for broader established extension and enterprise ecosystems"
-        ],
-        "audiences": [
-          "Mac, iPhone, and iPad users seeking separated browsing contexts",
-          "Open-source browser enthusiasts",
-          "Users balancing Chromium compatibility with WebKit platform features"
-        ],
-        "caveats": [
-          "The project is young and remains under active development",
-          "A dual-engine browser increases compatibility testing and maintenance complexity",
-          "Mobile distribution and feature parity may differ from the Mac release"
-        ],
-        "complements": [
-          "iCloud synchronization across Apple devices",
-          "Chrome Web Store extensions in Chromium mode",
-          "WebKit Reader, translation, content blocking, and protected-video features"
-        ],
-        "prerequisites": [
-          "A supported Apple device",
-          "User evaluation of an early-stage browser before moving sensitive workflows",
-          "Optional iCloud access for synchronization"
-        ],
-        "useCases": [
-          "Keep work, personal, research, and private browsing data isolated in Spaces",
-          "Choose Chromium or WebKit globally or per website on Mac",
-          "Use Chrome extensions in Chromium mode while retaining WebKit-only platform features"
-        ]
-      },
-      "category": "networking",
-      "displayName": "Crest",
-      "docs": "https://crestbrowser.com/docs",
-      "homepage": "https://crestbrowser.com/",
-      "id": "brew:cask:crest-browser",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acrest-browser",
-      "lastUpdatedAt": "2026-10-13T01:32:22Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/pauljoda/Crest",
-      "researchedAt": "2026-10-13T08:07:49Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Crest browser Field Guide",
-          "url": "https://crestbrowser.com/docs"
-        },
-        {
-          "kind": "primary",
-          "title": "Crest official repository",
-          "url": "https://github.com/pauljoda/Crest"
-        },
-        {
-          "kind": "primary",
-          "title": "Crest distribution documentation",
-          "url": "https://github.com/pauljoda/Crest/blob/main/Documentation/Distribution.md"
-        }
-      ],
-      "upstreamSummary": "Open-source web browser",
-      "version": "0.8.1"
     },
     "brew:cask:dockdoor-pro": {
       "agentSummary": "Commercial Dock replacement layers window previews, per-display profiles, app groups, widgets, file staging, media controls, gestures, and extensive customization onto macOS.",
@@ -1429,35 +1421,34 @@
       "version": "2026.1012.202129"
     },
     "brew:cask:genoffice": {
-      "agentSummary": "GenOffice is a local-first office suite for editing common document formats, with reviewable AI changes, file search, cross-platform desktop apps, and an agent-oriented CLI.",
+      "agentSummary": "GenOffice edits common office and PDF formats locally across desktop platforms, with reviewable AI changes, local search, a CLI, and agent integrations.",
       "assessment": {
         "alternatives": [
-          "LibreOffice for established offline office editing",
-          "Microsoft 365 or Google Workspace for collaboration-centered office workflows",
-          "Format-specific command-line conversion tools"
+          "LibreOffice for a mature office suite without an agent-centered workflow",
+          "Microsoft Office when maximum proprietary-format compatibility and enterprise integration take priority"
         ],
         "audiences": [
-          "Users seeking an open-source desktop office suite with integrated AI assistance",
-          "Developers who want coding agents to create or edit office documents through a CLI"
+          "Users seeking an open-source desktop office suite",
+          "Developers automating document work through coding agents or a CLI"
         ],
         "caveats": [
-          "AI calls leave the device for the provider the user selects unless a local endpoint is configured",
-          "AI-generated edits and document conversions require human review, especially for complex formatting",
-          "The project is young and its format compatibility is still evolving"
+          "AI requests leave the machine for the provider the user selects",
+          "Complex proprietary documents should be checked carefully after round-tripping",
+          "The project is young despite broad format and platform ambitions"
         ],
         "complements": [
-          "Claude Code, Codex, Cursor, Gemini CLI, or another supported agent client",
-          "User-provided model-provider credentials",
-          "Existing office documents and local file collections"
+          "Claude Code, Codex, Cursor, and other documented agent clients",
+          "OpenAI-compatible local or hosted model endpoints"
         ],
         "prerequisites": [
-          "A supported macOS, Windows, or Linux system",
-          "A selected model provider or local compatible endpoint for AI features; ordinary editing does not require one"
+          "macOS, Windows, or Linux on a supported architecture",
+          "A configured provider account or API key is needed for optional AI calls"
         ],
         "useCases": [
-          "Edit DOCX, XLSX, PPTX, PDF, Markdown, and HTML files",
-          "Review AI-proposed document changes and roll them back",
-          "Create, convert, read, render, and edit office files from agent workflows"
+          "Open and edit DOCX, XLSX, PPTX, PDF, Markdown, and HTML",
+          "Convert documents locally",
+          "Review AI-assisted edits and roll them back",
+          "Create or edit office files through the CLI and agent skill"
         ]
       },
       "category": "productivity",
@@ -1466,24 +1457,24 @@
       "homepage": "https://genoffice.ai/",
       "id": "brew:cask:genoffice",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agenoffice",
-      "lastUpdatedAt": "2026-10-13T16:14:36Z",
+      "lastUpdatedAt": "2026-10-15T13:42:42Z",
       "manager": "homebrew",
       "repository": "https://github.com/genspark-ai/genoffice",
-      "researchedAt": "2026-10-14T07:05:27Z",
+      "researchedAt": "2026-10-16T11:00:33Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "GenOffice upstream repository and feature documentation",
+          "title": "GenOffice repository and format guide",
           "url": "https://github.com/genspark-ai/genoffice"
         },
         {
           "kind": "primary",
-          "title": "GenOffice first public release",
-          "url": "https://github.com/genspark-ai/genoffice/releases/tag/v0.4.110"
+          "title": "GenOffice official website",
+          "url": "https://genoffice.ai/"
         }
       ],
       "upstreamSummary": "Open-source AI office suite",
-      "version": "0.11.727"
+      "version": "0.11.829"
     },
     "brew:cask:highball": {
       "agentSummary": "Highball runs Windows games on Apple Silicon through managed Wine-based engines, pairing launcher automation with an open compatibility database and per-game renderer guidance.",
@@ -2027,36 +2018,34 @@
       "version": "0.7.0"
     },
     "brew:cask:purge": {
-      "agentSummary": "Purge is an open-source macOS cleaner and uninstaller emphasizing allowlisted findings, plain-language safety labels, user review, and recoverable Trash-first removal.",
+      "agentSummary": "Purge inventories Mac caches, developer artifacts, large files, duplicates, applications, and leftovers, emphasizing review and moving ordinary removals to Trash for recovery.",
       "assessment": {
         "alternatives": [
-          "Built-in macOS Storage settings for first-party space management",
-          "Commercial maintenance suites when malware scanning and vendor support are required"
+          "Manual Finder and command-line disk inspection",
+          "Commercial Mac cleanup utilities for users preferring vendor support"
         ],
         "audiences": [
-          "Mac users reclaiming disk space conservatively",
-          "Developers with large build, package-manager, editor, or container caches",
-          "Users who want an auditable open-source cleaner"
+          "Mac users investigating unexplained storage use",
+          "Developers accumulating build caches, simulators, dependencies, and agent worktrees"
         ],
         "caveats": [
-          "Cleaning tools require careful review because mistaken deletion can disrupt applications or projects",
-          "Files are recoverable only until Trash is emptied",
-          "Deeper scans require broader macOS filesystem permissions"
+          "Review selections before removal because caches and project artifacts may be expensive to rebuild",
+          "Most removals go to Trash, but simulator data, snapshots, and Apple Intelligence models are documented exceptions",
+          "Granting Full Disk Access increases the importance of trusting and reviewing the software"
         ],
         "complements": [
-          "macOS Trash for recoverable normal removals",
-          "Shortcuts and scheduled cleaning workflows",
-          "Developer toolchains whose caches can be safely rebuilt"
+          "Finder and Quick Look for inspecting candidates",
+          "Native application uninstallers when vendors maintain their own shared components"
         ],
         "prerequisites": [
-          "A supported macOS system",
-          "User review before removal",
-          "Optional Full Disk Access for deeper large-file and leftover coverage"
+          "A supported macOS release",
+          "Full Disk Access is required for large-file and application scans"
         ],
         "useCases": [
-          "Review and remove known caches and rebuildable developer artifacts",
-          "Find large files, duplicates, application leftovers, and local snapshots",
-          "Uninstall applications while reviewing associated data"
+          "Review and remove application or developer-tool caches",
+          "Find large files and byte-identical duplicates",
+          "Uninstall applications with associated leftovers",
+          "Identify stale project artifacts and orphaned worktrees"
         ]
       },
       "category": "system",
@@ -2065,29 +2054,24 @@
       "homepage": "https://purgemac.com/",
       "id": "brew:cask:purge",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apurge",
-      "lastUpdatedAt": "2026-10-12T16:35:15Z",
+      "lastUpdatedAt": "2026-10-15T10:28:00Z",
       "manager": "homebrew",
       "repository": "https://github.com/jithin-sabu/purge-app",
-      "researchedAt": "2026-10-13T08:07:49Z",
+      "researchedAt": "2026-10-16T11:00:33Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Purge official product page",
-          "url": "https://purgemac.com/"
-        },
-        {
-          "kind": "primary",
-          "title": "Purge safety reference",
-          "url": "https://purgemac.com/safety"
-        },
-        {
-          "kind": "primary",
-          "title": "Purge official repository",
+          "title": "Purge repository and safety documentation",
           "url": "https://github.com/jithin-sabu/purge-app"
+        },
+        {
+          "kind": "primary",
+          "title": "Purge official website",
+          "url": "https://purgemac.com/"
         }
       ],
       "upstreamSummary": "Clears caches and junk files by moving them to the Trash",
-      "version": "1.10.0"
+      "version": "1.11.0"
     },
     "brew:cask:tapmap": {
       "agentSummary": "TapMap visualizes local network connections on a world map, builds activity history, and highlights unfamiliar destinations while remaining an awareness tool rather than a firewall.",
@@ -2204,6 +2188,61 @@
       ],
       "upstreamSummary": "Windows-style taskbar as a Dock replacement",
       "version": "1.6.3,2026,09"
+    },
+    "brew:cask:tine": {
+      "agentSummary": "Tine is a fast local outliner that reads and writes Logseq-compatible Markdown graphs, adding native tabs and focused desktop workflows without data migration.",
+      "assessment": {
+        "alternatives": [
+          "Logseq for the established plugin ecosystem and full original workflow",
+          "Plain text editors for minimal direct-file editing"
+        ],
+        "audiences": [
+          "Logseq users who want a lighter local desktop client",
+          "Markdown and Org users who value directly accessible graph files"
+        ],
+        "caveats": [
+          "Compatibility does not imply every Logseq feature or plugin is available",
+          "The upstream documentation warns that current macOS builds may require clearing quarantine and are not yet notarized",
+          "Users should back up shared graphs before alternating between editors"
+        ],
+        "complements": [
+          "Logseq for workflows or plugins Tine does not implement",
+          "Git or file synchronization for user-managed graph history and transport"
+        ],
+        "prerequisites": [
+          "A local Markdown or Org graph",
+          "Platform permissions to access the selected documents directory"
+        ],
+        "useCases": [
+          "Edit an existing Logseq-compatible graph",
+          "Outline and navigate linked local notes",
+          "Switch between Tine and Logseq on the same files"
+        ]
+      },
+      "category": "productivity",
+      "displayName": "Tine",
+      "docs": "https://github.com/martinkoutecky/tine#readme",
+      "homepage": "https://tine.page/",
+      "id": "brew:cask:tine",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atine",
+      "lastUpdatedAt": "2026-10-16T04:31:46Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/martinkoutecky/tine",
+      "researchedAt": "2026-10-16T11:00:33Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Tine repository and compatibility guide",
+          "url": "https://github.com/martinkoutecky/tine"
+        },
+        {
+          "kind": "primary",
+          "title": "Tine project website",
+          "url": "https://tine.page/"
+        }
+      ],
+      "upstreamSummary": "Outliner for Markdown and Org notes",
+      "version": "0.7.4"
     },
     "brew:cask:tracexy": {
       "agentSummary": "Tracexy is a native, local-first Mac network investigator that groups captured traffic into sessions while preserving decoded fields and raw packet evidence for deeper inspection.",
@@ -3217,33 +3256,34 @@
       "version": "2.46.6"
     },
     "brew:memex": {
-      "agentSummary": "Memex indexes local coding-agent conversations for lexical or optional semantic search, bounded transcript reading, cross-machine queries, usage reports, and supported native session resumption.",
+      "agentSummary": "Memex indexes local coding-agent transcripts for lexical or optional semantic search, then helps users inspect, resume, and reuse earlier sessions across supported tools.",
       "assessment": {
         "alternatives": [
-          "Search each agent's transcript files directly",
-          "Use an agent-specific session browser or usage reporter"
+          "Directly searching each agent's own history",
+          "General desktop search when structured session filters are unnecessary"
         ],
         "audiences": [
-          "Developers who need to recover decisions from many local agent sessions",
-          "Teams comparing activity across several supported coding tools"
+          "Developers who regularly switch among coding agents",
+          "Teams retaining local agent transcripts for later retrieval"
         ],
         "caveats": [
-          "Coverage and resume behavior differ by source tool and stored record format",
-          "Optional cost figures are estimates rather than provider invoices",
-          "Experimental transfers do not recreate workspace, permissions, tools, or complete runtime state"
+          "Coverage varies by agent and by the records each tool preserves",
+          "Semantic search requires optional embeddings",
+          "Remote embeddings send transcript text to the configured API",
+          "Session transfer is experimental and does not recreate runtime state or workspace files"
         ],
         "complements": [
-          "Coding agents that persist local session history",
-          "Local backup practices for transcripts and the search index"
+          "Claude Code, Codex, Cursor, OpenCode, Pi, and other documented transcript sources",
+          "SSH for querying indexes on additional machines"
         ],
         "prerequisites": [
-          "Local history files from at least one supported coding agent",
-          "The original agent and session data when native resume is required"
+          "Local transcript data from a supported coding tool",
+          "The original agent and session data are still needed for native resume"
         ],
         "useCases": [
-          "Search and browse locally saved agent transcripts",
-          "Resume supported sessions in their original coding tool",
-          "Expose bounded source-backed history retrieval through MCP or a skill"
+          "Search prior implementation decisions and debugging sessions",
+          "Browse or resume locally retained sessions",
+          "Expose source-backed transcript retrieval through CLI, TUI, web, skills, or MCP"
         ]
       },
       "category": "ai",
@@ -3252,20 +3292,20 @@
       "homepage": "https://github.com/nicosuave/memex",
       "id": "brew:memex",
       "installURL": "pkgmgrmgr://install?package=brew%3Amemex",
-      "lastUpdatedAt": "2026-10-14T18:18:56Z",
+      "lastUpdatedAt": "2026-10-16T07:49:48Z",
       "manager": "homebrew",
       "repository": "https://github.com/nicosuave/memex",
-      "researchedAt": "2026-10-15T07:50:24Z",
+      "researchedAt": "2026-10-16T11:00:33Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Memex project documentation",
-          "url": "https://github.com/nicosuave/memex/blob/main/README.md"
+          "title": "Memex repository and README",
+          "url": "https://github.com/nicosuave/memex"
         },
         {
           "kind": "primary",
-          "title": "Memex v0.1.0 release",
-          "url": "https://github.com/nicosuave/memex/releases/tag/v0.1.0"
+          "title": "Memex search and reading guide",
+          "url": "https://github.com/nicosuave/memex/blob/main/docs/search.md"
         }
       ],
       "upstreamSummary": "Index and search local agent conversation history",
@@ -3455,97 +3495,36 @@
       "upstreamSummary": "Terminal REST client with file-based collections",
       "version": "0.10.0"
     },
-    "brew:photocraft-cli": {
-      "agentSummary": "PhotoCraft CLI is a headless Rust image engine for scripted conversion, inspection, and batch editing, sharing its open-source core with the PhotoCraft desktop editor.",
-      "assessment": {
-        "alternatives": [
-          "ImageMagick for a mature, broad command-line image-processing ecosystem",
-          "GraphicsMagick or format-specific utilities for established production pipelines"
-        ],
-        "audiences": [
-          "Developers automating image-processing workflows",
-          "Photographers and media teams running repeatable batch jobs",
-          "Users who want a scriptable counterpart to the PhotoCraft desktop editor"
-        ],
-        "caveats": [
-          "The project is very new, so command behavior and format coverage may change quickly",
-          "Batch edits should be tested on copies before processing irreplaceable originals",
-          "A young tool has a smaller compatibility and troubleshooting history than established image suites"
-        ],
-        "complements": [
-          "The PhotoCraft desktop editor for interactive work",
-          "Shell scripts and task runners for repeatable media pipelines",
-          "Version-controlled presets or command files for reproducible transformations"
-        ],
-        "prerequisites": [
-          "Input images in formats supported by the project",
-          "Enough CPU, memory, and storage for the intended batch workload",
-          "A shell or automation environment for composing commands"
-        ],
-        "useCases": [
-          "Inspect image metadata and properties from scripts",
-          "Convert images between supported formats",
-          "Apply repeatable edits across batches without opening a graphical editor"
-        ]
-      },
-      "category": "media",
-      "displayName": "photocraft-cli",
-      "docs": "https://github.com/storytold/photocraft#readme",
-      "homepage": "https://getartcraft.com/apps/photocraft",
-      "id": "brew:photocraft-cli",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aphotocraft-cli",
-      "lastUpdatedAt": "2026-10-13T02:00:36Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/storytold/photocraft",
-      "researchedAt": "2026-10-13T08:07:49Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "PhotoCraft official repository",
-          "url": "https://github.com/storytold/photocraft"
-        },
-        {
-          "kind": "primary",
-          "title": "PhotoCraft official product page",
-          "url": "https://getartcraft.com/apps/photocraft"
-        },
-        {
-          "kind": "primary",
-          "title": "PhotoCraft repository metadata",
-          "url": "https://api.github.com/repos/storytold/photocraft"
-        }
-      ],
-      "upstreamSummary": "Headless PhotoCraft engine to convert, inspect and batch-edit images",
-      "version": "0.8.2"
-    },
     "brew:portop": {
-      "agentSummary": "portop presents live TCP and UDP ownership in a terminal UI, connecting sockets to processes, services, and containers while adding alerts and baseline checks.",
+      "agentSummary": "portop presents live TCP and UDP ownership in a terminal, linking ports to processes, services, and containers while adding alerts, audits, and controlled actions.",
       "assessment": {
         "alternatives": [
-          "ss or lsof for noninteractive socket inspection",
-          "bandwhich for network utilization by process"
+          "ss, netstat, or lsof for non-interactive snapshots",
+          "bandwhich when bandwidth rather than port ownership is the main question"
         ],
         "audiences": [
           "Developers diagnosing local port conflicts",
-          "Linux operators auditing listeners, services, and containers"
+          "Linux administrators auditing services and containers"
         ],
         "caveats": [
-          "macOS exposes less process, systemd, and container detail than Linux",
-          "Killing a selected process is destructive even though the interface requests confirmation",
-          "Containers expose only their own network namespace unless host metadata is accessible"
+          "Kill actions can disrupt active workloads despite confirmation",
+          "systemd, Docker, and Cockpit integrations are platform-specific",
+          "Remote web access should use the documented authentication and HTTPS controls"
         ],
         "complements": [
-          "ss, lsof, or netstat for exact command-line snapshots",
-          "Docker Compose and systemd metadata on supported Linux hosts"
+          "Docker Compose for declared-port audits",
+          "systemd and Cockpit on supported Linux systems",
+          "jq and monitoring scripts through JSON output"
         ],
         "prerequisites": [
-          "Readable operating-system process and socket metadata",
-          "Elevated privileges when another user's process details must be inspected"
+          "Linux, macOS, or Windows",
+          "Additional privileges may be needed to see or terminate processes owned by other users"
         ],
         "useCases": [
-          "Inspect which processes own active TCP and UDP sockets",
-          "Detect new listening ports against a saved baseline",
-          "Audit whether Docker Compose port declarations are active or conflicting"
+          "Inspect live listeners and connections with owning processes",
+          "Detect new listeners or drift from a saved baseline",
+          "Audit Docker Compose port declarations",
+          "Open, inspect, or terminate a selected process"
         ]
       },
       "category": "networking",
@@ -3554,24 +3533,24 @@
       "homepage": "https://github.com/padovanl/portop",
       "id": "brew:portop",
       "installURL": "pkgmgrmgr://install?package=brew%3Aportop",
-      "lastUpdatedAt": "2026-10-14T11:02:42Z",
+      "lastUpdatedAt": "2026-10-16T06:19:54Z",
       "manager": "homebrew",
       "repository": "https://github.com/padovanl/portop",
-      "researchedAt": "2026-10-15T07:50:24Z",
+      "researchedAt": "2026-10-16T11:00:33Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "portop project documentation",
+          "title": "portop repository and operational guide",
           "url": "https://github.com/padovanl/portop"
         },
         {
           "kind": "primary",
-          "title": "portop initial published release",
-          "url": "https://github.com/padovanl/portop/releases/tag/v0.0.2"
+          "title": "portop documentation site",
+          "url": "https://padovanl.github.io/portop/"
         }
       ],
       "upstreamSummary": "Terminal UI showing which processes are using TCP and UDP ports",
-      "version": "0.1.0"
+      "version": "0.2.1"
     },
     "brew:ratex": {
       "agentSummary": "ratex is an experimental Rust TeX engine emphasizing fast compilation and a compact command-line workflow, best suited to curious TeX users testing an emerging implementation.",
@@ -4346,7 +4325,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-15T07:48:55Z",
+    "generatedAt": "2026-10-16T10:58:44Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
