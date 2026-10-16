@@ -42,8 +42,8 @@ history:
   timeline:
     - '2013: juju/charm-tools public GitHub repository created.'
     - >
-      2021: Read the Docs build metadata shows charm-tools documentation
-      generated from the GitHub docs tree.
+      2021: Read the Docs build metadata shows charm-tools documentation generated from
+      the GitHub docs tree.
     - '2023: GitHub releases include v3.0.x and v2.8.x maintenance lines.'
     - '2024: v2.8.9 release published.'
   usage:
@@ -51,6 +51,33 @@ history:
       The README highlights `charm create`, `charm build`, `charm proof`, `charm login`,
       `charm push`, `charm release`, and `charm show`; the Homebrew facts expose split
       executables such as `charm-build`, `charm-create`, and `charm-proof`.
+related-packages:
+  - id: brew:charmcraft
+    reason: >
+      Choose Charmcraft for the current supported workflow: it initializes and packs
+      modern charm projects and publishes them directly to Charmhub.
+    rel: alternative
+    sources:
+      - https://charm-tools.readthedocs.io/en/latest/
+      - https://github.com/canonical/charmcraft
+      - https://documentation.ubuntu.com/charmcraft/stable/howto/manage-charms/
+  - id: brew:charm
+    reason: >
+      The legacy `charm` store client complements Charm Tools by pushing, releasing,
+      downloading, and administering the charm artifacts produced by its authoring
+      commands.
+    rel: adjacent_workflow
+    sources:
+      - https://charm-tools.readthedocs.io/en/latest/
+      - https://github.com/juju/charmstore-client
+  - id: brew:juju
+    reason: >
+      Use Juju to deploy and operate the charm artifacts created and validated with
+      Charm Tools.
+    rel: adjacent_workflow
+    sources:
+      - https://charm-tools.readthedocs.io/en/latest/
+      - https://documentation.ubuntu.com/juju/latest/reference/index.html
 tags:
   - charm-authoring
   - charms

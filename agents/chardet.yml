@@ -56,6 +56,24 @@ history:
     - >
       Users call `chardet.detect`, `detect_all`, or `UniversalDetector` from Python, or
       run `chardetect` on files or stdin to print a guessed encoding and confidence.
+related-packages:
+  - id: brew:uchardet
+    reason: >
+      Choose uchardet when the same encoding-detection task needs a native C/C++ library
+      or lightweight standalone CLI instead of a Python API.
+    rel: alternative
+    sources:
+      - https://github.com/chardet/chardet
+      - https://www.freedesktop.org/wiki/Software/uchardet/
+  - id: brew:libchardet
+    reason: >
+      Choose libchardet when a C or C++ application needs a small Mozilla-derived
+      detection API and build-time library integration rather than chardet's Python
+      package.
+    rel: alternative
+    sources:
+      - https://github.com/chardet/chardet
+      - https://github.com/Joungkyun/libchardet
 tags:
   - charset-detection
   - cli
