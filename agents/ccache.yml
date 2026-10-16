@@ -74,6 +74,34 @@ history:
       statistics, automatic cleanup, local and remote storage, cache-specific and
       directory-specific configuration files, environment variables, and direct/depend
       modes.
+related-packages:
+  - id: brew:sccache
+    reason: >
+      Choose sccache when you need Rust compilation caching, cloud storage backends, or
+      its distributed-compilation features; choose ccache for its established
+      C/C++-focused local and remote caching workflow.
+    rel: alternative
+    sources:
+      - https://ccache.dev/manual/latest.html
+      - https://github.com/mozilla/sccache#readme
+  - id: brew:distcc
+    reason: >
+      Use distcc with ccache when cache misses should be compiled across networked
+      workers; ccache officially documents invoking distcc through `CCACHE_PREFIX` or
+      `prefix_command`.
+    rel: adjacent_workflow
+    sources:
+      - https://ccache.dev/manual/latest.html
+      - https://github.com/distcc/distcc#readme
+  - id: brew:icecream
+    reason: >
+      Choose Icecream when the primary requirement is scheduler-managed distributed
+      compilation across a build network rather than reuse of previously cached compiler
+      output.
+    rel: alternative
+    sources:
+      - https://ccache.dev/manual/latest.html
+      - https://github.com/icecc/icecream#readme
 tags:
   - build-cache
   - c
