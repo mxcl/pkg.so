@@ -78,6 +78,27 @@ history:
       CFFI is used to wrap existing shared libraries, compile small C wrapper modules,
       allocate C data from Python, pass buffers and structs, call function pointers, and
       expose Python functions to embedded interpreters.
+related-packages:
+  - id: brew:cython
+    reason: >
+      Choose Cython when you want an extended Python language that compiles
+      performance-sensitive code and C/C++ integrations into extension modules, rather
+      than CFFI's declaration-oriented interface to C libraries.
+    rel: alternative
+    sources:
+      - https://cffi.readthedocs.io/en/stable/goals.html
+      - https://cython.org/
+      - https://docs.cython.org/en/latest/src/quickstart/overview.html
+  - id: brew:swig
+    reason: >
+      Choose SWIG when one C or C++ interface must generate bindings for Python and
+      multiple other target languages; CFFI is Python-specific and keeps declarations
+      close to ordinary C syntax.
+    rel: alternative
+    sources:
+      - https://cffi.readthedocs.io/en/stable/goals.html
+      - https://www.swig.org/exec.html
+      - https://www.swig.org/compare.html
 category: developer-tools
 package-manager:
   brew: cffi
