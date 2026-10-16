@@ -62,6 +62,16 @@ history:
       changes daemon parameters. A common configuration points chrony.conf at NTP
       servers or pools, stores drift, allows initial clock stepping, and may use
       /etc/chrony.keys for symmetric-key authentication.
+related-packages:
+  - id: brew:ntp
+    reason: >
+      NTP supplies the traditional reference-style ntpd toolchain; choose it when
+      compatibility with that implementation and its established utilities matters more
+      than chrony's faster convergence and difficult-network behavior.
+    rel: alternative
+    sources:
+      - https://chrony-project.org/comparison
+      - https://www.ntp.org/documentation
 category: system
 package-manager:
   apk: chrony

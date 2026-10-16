@@ -62,6 +62,33 @@ history:
       switch versions by reading .ruby-version files in the current or parent
       directories. Non-standard Ruby install directories can be appended to the RUBIES
       shell array.
+related-packages:
+  - id: brew:ruby-install
+    reason: >
+      ruby-install is chruby's documented companion for installing CRuby, JRuby,
+      TruffleRuby, or mruby before chruby selects the resulting installation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/postmodern/chruby#readme
+      - https://github.com/postmodern/ruby-install#readme
+  - id: brew:rbenv
+    reason: >
+      rbenv is a documented alternative that selects Ruby through PATH shims and a
+      plugin ecosystem; choose chruby when direct shell environment changes and no shims
+      are preferred.
+    rel: alternative
+    sources:
+      - https://github.com/postmodern/chruby#readme
+      - https://github.com/rbenv/rbenv#readme
+  - id: brew:ruby-build
+    reason: >
+      ruby-build can compile Rubies into directories that chruby detects, and is useful
+      when version-specific build definitions are preferred over ruby-install's
+      release-discovery approach.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/postmodern/chruby#readme
+      - https://github.com/rbenv/ruby-build#readme
 category: developer-tools
 package-manager:
   brew: chruby

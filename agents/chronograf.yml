@@ -58,6 +58,32 @@ history:
       InfluxDB, and optionally connects Kapacitor. Chronograf can use canned dashboards
       for Telegraf input plugins, create custom dashboards, explore data, manage users
       and queries, and configure OAuth or TLS.
+related-packages:
+  - id: brew:influxdb
+    reason: >
+      InfluxDB is the time-series database Chronograf connects to for querying,
+      administration, and visualization.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/chronograf/v1/introduction/installation/
+      - https://github.com/influxdata/influxdb
+  - id: brew:telegraf
+    reason: >
+      Telegraf collects the infrastructure metrics that Chronograf visualizes and
+      supplies inputs for Chronograf's canned dashboards.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/chronograf/v1/administration/config-options/
+      - https://github.com/influxdata/telegraf
+  - id: brew:kapacitor
+    reason: >
+      Kapacitor integrates with Chronograf to provide optional alert-rule,
+      alert-history, TICKscript, and task workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/chronograf/v1/introduction/installation/
+      - https://docs.influxdata.com/chronograf/v1/guides/
+      - https://github.com/influxdata/kapacitor
 tags:
   - cli
   - influxdata

@@ -52,6 +52,15 @@ history:
       chrpath lists the current rpath or runpath by default, deletes it with -d,
       converts RPATH to RUNPATH with -c, and replaces an existing value with -r when the
       replacement is no longer than the current string.
+related-packages:
+  - id: brew:patchelf
+    reason: >
+      PatchELF is the broader alternative when a packaging job must also change the ELF
+      interpreter, SONAME, or declared dependencies instead of only RPATH or RUNPATH.
+    rel: alternative
+    sources:
+      - https://codeberg.org/pere/chrpath/src/branch/master/chrpath.rst
+      - https://github.com/NixOS/patchelf#readme
 category: developer-tools
 package-manager:
   apk: chrpath
