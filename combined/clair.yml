@@ -58,6 +58,27 @@ history:
       against vulnerability data. Operators run Clair with a structured configuration
       file, commonly under /etc/clair, and select a service mode such as indexer,
       matcher, notifier, or combo.
+related-packages:
+  - id: brew:trivy
+    reason: >
+      Choose Trivy for a standalone scanner that covers container images plus
+      filesystems, repositories, Kubernetes, misconfiguration, secrets, licenses, and
+      SBOM discovery without operating a Clair service.
+    rel: alternative
+    sources:
+      - https://github.com/quay/clair
+      - https://trivy.dev/latest/
+      - https://github.com/aquasecurity/trivy#readme
+  - id: brew:grype
+    reason: >
+      Choose Grype for a local CLI centered on vulnerability scanning of images,
+      directories, archives, and existing SBOMs rather than Clair's registry-oriented
+      indexing service.
+    rel: alternative
+    sources:
+      - https://github.com/quay/clair
+      - https://github.com/anchore/grype#readme
+      - https://oss.anchore.com/docs/guides/vulnerability/scan-targets/
 category: security
 package-manager:
   brew: clair
