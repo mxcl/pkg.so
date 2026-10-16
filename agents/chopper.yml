@@ -52,6 +52,16 @@ history:
       writing accepted reads to standard output. Common invocations set minimum quality
       and length thresholds, optionally crop or quality-trim reads, and pipe compressed
       data through gzip or pigz.
+related-packages:
+  - id: brew:pigz
+    reason: >
+      Pipe chopper through pigz to overlap FASTQ decompression with filtering and
+      parallelize output compression, as recommended by chopper's official performance
+      documentation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/wdecoster/chopper#readme
+      - https://zlib.net/pigz/
 tags:
   - bioinformatics
   - cli

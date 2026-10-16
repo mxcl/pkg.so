@@ -51,6 +51,34 @@ history:
       expressions, optionally changing field separators or selecting characters rather
       than fields. It is aimed at quick interactive and scripted shell data extraction
       where `awk '{print $1}'` or `cut` syntax feels too heavy.
+related-packages:
+  - id: brew:hck
+    reason: >
+      Choose hck when you prefer cut-compatible field syntax plus header selection,
+      field reordering, automatic decompression, and an implementation whose official
+      benchmarks directly compare against Choose.
+    rel: alternative
+    sources:
+      - https://github.com/theryangeary/choose#readme
+      - https://github.com/sstadick/hck#readme
+  - id: brew:coreutils
+    reason: >
+      GNU Coreutils supplies cut for portable, conventional byte, character, and
+      delimiter-based field selection when POSIX-style syntax and script familiarity
+      matter more than Choose's slice syntax.
+    rel: alternative
+    sources:
+      - https://github.com/theryangeary/choose#readme
+      - https://www.gnu.org/software/coreutils/manual/html_node/The-cut-command.html
+  - id: brew:gawk
+    reason: >
+      GNU Awk is the better alternative when field selection must grow into
+      calculations, conditions, record transformations, or a complete text-processing
+      program.
+    rel: alternative
+    sources:
+      - https://github.com/theryangeary/choose#readme
+      - https://www.gnu.org/software/gawk/manual/gawk.html
 category: developer-tools
 package-manager:
   apk: choose
