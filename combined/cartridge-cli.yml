@@ -65,6 +65,26 @@ history:
       `cartridge status`, `cartridge replicasets`, and `cartridge pack`. Generated
       Cartridge projects include `.cartridge.yml` and `instances.yml`; packaged
       deployments place instance configuration under `/etc/tarantool/conf.d/`.
+related-packages:
+  - id: brew:tt
+    reason: >
+      Choose `tt` for supported Tarantool application and cluster management; Tarantool
+      identifies it as Cartridge CLI's replacement and provides migration from
+      `.cartridge.yml`.
+    rel: alternative
+    sources:
+      - https://www.tarantool.io/en/doc/latest/tooling/tt_cli/
+      - https://www.tarantool.io/en/doc/2.11/book/cartridge/cartridge_cli/migration-to-tt/
+  - id: brew:tarantool
+    reason: >
+      Cartridge CLI creates and operates applications that run on Tarantool, which its
+      official installation and development guides require as the underlying runtime and
+      database.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tarantool/cartridge-cli
+      - https://www.tarantool.io/en/doc/2.11/book/cartridge/cartridge_dev/
+      - https://github.com/tarantool/tarantool
 category: developer-tools
 package-manager:
   brew: cartridge-cli
