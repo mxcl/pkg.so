@@ -4,7 +4,12 @@ homepage: https://www.checkov.io/
 repo: https://github.com/bridgecrewio/checkov
 docs:
   - https://www.checkov.io/
-config-file-location: null
+config-file-location:
+  unix:
+    - ./.checkov.yml
+    - ./.checkov.yaml
+    - ~/.checkov.yml
+    - ~/.checkov.yaml
 credentials-file-location:
   unix: ~/.bridgecrew/credentials
 history:
@@ -76,6 +81,25 @@ history:
       Teams commonly run Checkov locally, in CI, or in pull request workflows to block
       insecure infrastructure definitions before deployment. With a Prisma Cloud API
       key, the CLI can also use severity thresholds and platform-backed policy metadata.
+related-packages:
+  - id: brew:kics
+    reason: >
+      Choose KICS for a similarly broad infrastructure-as-code scanner when you prefer
+      its explicitly query-oriented, customizable rules architecture and
+      Checkmarx-supported workflow.
+    rel: alternative
+    sources:
+      - https://www.checkov.io/
+      - https://docs.kics.io/latest/
+  - id: brew:trivy
+    reason: >
+      Choose Trivy when you want infrastructure misconfiguration checks combined with
+      vulnerability and secret scanning for repositories, filesystems, and container
+      images in one CLI.
+    rel: alternative
+    sources:
+      - https://github.com/bridgecrewio/checkov
+      - https://trivy.dev/docs/latest/scanner/misconfiguration/
 category: security
 package-manager:
   brew: checkov
