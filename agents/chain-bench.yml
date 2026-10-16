@@ -61,6 +61,24 @@ history:
       settings and report pass/fail results for CIS controls. The README documents
       GitHub and GitLab SCM support, personal access token requirements, Docker usage,
       and CI integration.
+related-packages:
+  - id: brew:trivy
+    reason: >
+      Use Trivy alongside Chain-bench to scan repositories, images, filesystems, and
+      Kubernetes for vulnerabilities, secrets, misconfigurations, licenses, and SBOM
+      data while Chain-bench audits CIS supply-chain controls.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/aquasecurity/chain-bench#readme
+      - https://trivy.dev/
+  - id: brew:kube-bench
+    reason: >
+      Use kube-bench for CIS checks on the deployed Kubernetes environment after
+      Chain-bench has audited the software-delivery and source-control supply chain.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/aquasecurity/chain-bench#readme
+      - https://github.com/aquasecurity/kube-bench#readme
 tags:
   - auditing
   - cis-benchmark

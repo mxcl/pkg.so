@@ -55,6 +55,24 @@ history:
       CGrep is used to search source trees while limiting matches to code, comments,
       string literals, identifiers, native types, keywords, numbers, operators, file
       kinds, languages, or test/non-test code.
+related-packages:
+  - id: brew:ast-grep
+    reason: >
+      Choose ast-grep when searches and rewrites need explicit abstract-syntax-tree
+      patterns; CGrep is closer to grep with language-aware context filters.
+    rel: alternative
+    sources:
+      - https://awgn.github.io/cgrep/
+      - https://ast-grep.github.io/guide/introduction.html
+  - id: brew:ripgrep
+    reason: >
+      Choose ripgrep for very fast recursive regular-expression search with
+      repository-aware ignore handling when CGrep's source-language context is
+      unnecessary.
+    rel: alternative
+    sources:
+      - https://awgn.github.io/cgrep/
+      - https://github.com/BurntSushi/ripgrep#readme
 category: developer-tools
 package-manager:
   brew: cgrep

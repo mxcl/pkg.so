@@ -63,6 +63,32 @@ history:
       the selected match in an editor at the recorded file and line. The README
       positions it as a convenience layer over the find/grep/ctags/cscope family, with
       persistent logs under ~/.cgvg and per-user display/search defaults in ~/.cgvgrc.
+related-packages:
+  - id: brew:cscope
+    reason: >
+      Cscope is the direct alternative that inspired CGVG; choose it for database-backed
+      navigation and richer symbol queries, especially in C code.
+    rel: alternative
+    sources:
+      - https://uzix.org/cgvg.html
+      - https://cscope.sourceforge.net/
+  - id: brew:ctags
+    reason: >
+      CGVG's author specifically recommends using ctags alongside it: tags handle
+      definition jumps while CGVG searches arbitrary references and opens matching
+      lines.
+    rel: adjacent_workflow
+    sources:
+      - https://uzix.org/cgvg.html
+      - https://ctags.sourceforge.net/
+  - id: brew:vim
+    reason: >
+      CGVG's vg command is designed to open numbered search results in vi-like editors,
+      making Vim the documented editor-side component of the workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://uzix.org/cgvg/README
+      - https://www.vim.org/
 category: developer-tools
 package-manager:
   brew: cgvg
