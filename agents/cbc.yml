@@ -51,6 +51,42 @@ history:
       Cbc is used either through the `cbc` executable or as a library embedded by
       optimization modeling tools. Source builds commonly use COIN-OR's `coinbrew`
       helper, which fetches Cbc and its COIN-OR dependencies.
+related-packages:
+  - id: brew:highs
+    reason: >
+      Choose HiGHS for a modern permissively licensed LP and MIP solver with strong
+      emphasis on high-performance linear optimization and official Python and Julia
+      integrations.
+    rel: alternative
+    sources:
+      - https://github.com/coin-or/Cbc#readme
+      - https://ergo-code.github.io/HiGHS/
+  - id: brew:scip
+    reason: >
+      Choose SCIP when you need constraint integer programming, mixed-integer nonlinear
+      programming, branch-cut-and-price customization, or exact-solving capabilities
+      beyond Cbc's MILP focus.
+    rel: alternative
+    sources:
+      - https://github.com/coin-or/Cbc#readme
+      - https://scipopt.org/scip/doc/html/index.php
+  - id: brew:glpk
+    reason: >
+      Choose GLPK when you want a GNU-licensed LP/MIP toolkit that includes the GNU
+      MathProg modeling language and a standalone solver workflow.
+    rel: alternative
+    sources:
+      - https://github.com/coin-or/Cbc#readme
+      - https://www.gnu.org/software/glpk/
+  - id: brew:clp
+    reason: >
+      Install or use Clp alongside Cbc when you need the COIN-OR linear-programming
+      solver that commonly supplies the LP relaxations underlying Cbc's branch-and-cut
+      process.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/coin-or/Cbc#readme
+      - https://coin-or.github.io/Clp/
 tags:
   - cli
   - coin-or

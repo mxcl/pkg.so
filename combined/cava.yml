@@ -58,6 +58,23 @@ history:
       file, and control sensitivity, bar width, colors, reloads, and quit from the
       keyboard. A default config is created in $XDG_CONFIG_HOME/cava/config or
       ~/.config/cava/config on first launch.
+related-packages:
+  - id: brew:pipewire
+    reason: >
+      Use PipeWire as CAVA's capture source on modern Linux systems; CAVA documents
+      native PipeWire input and PipeWire provides the underlying audio graph.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/karlstav/cava#pipewire
+      - https://docs.pipewire.org/
+  - id: brew:mpd
+    reason: >
+      Use Music Player Daemon with a FIFO audio output when you want CAVA to visualize
+      MPD playback directly through its documented FIFO input method.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/karlstav/cava#mpd
+      - https://mpd.readthedocs.io/en/stable/user.html
 category: media
 package-manager:
   apk: cava
