@@ -73,6 +73,31 @@ history:
       enable, cilium connectivity test, cilium connectivity perf, and ClusterMesh setup.
       The README also lists supported environments such as minikube, kind, EKS, GKE, AKS
       BYOCNI, k3s, and self-managed clusters.
+related-packages:
+  - id: brew:hubble
+    reason: >
+      Hubble is Cilium's companion observability CLI; Cilium CLI enables and exposes
+      Hubble while connectivity tests can validate traffic using Hubble flow data.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cilium/cilium-cli#hubble
+      - https://docs.cilium.io/en/stable/observability/hubble/
+  - id: brew:helm
+    reason: >
+      Cilium CLI installs Cilium as a Helm release, and its README documents using Helm
+      to inspect that release and the non-default values chosen by the CLI.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cilium/cilium-cli#examples
+      - https://helm.sh/docs/intro/using_helm/
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl complements Cilium CLI for inspecting the Kubernetes resources it manages
+      and for documented operations such as port-forwarding Hubble Relay.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cilium/cilium-cli#connectivity-check
+      - https://kubernetes.io/docs/reference/kubectl/
 category: networking
 package-manager:
   apk: cilium-cli
