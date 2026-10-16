@@ -71,6 +71,25 @@ history:
       additional modes for containers, git URLs, purls, hosts, AI assets, and
       validation/conversion/signing. The README emphasizes CI/CD use and standalone
       binaries for several commands.
+related-packages:
+  - id: brew:syft
+    reason: >
+      Choose Syft for a focused Go-based SBOM generator with strong container and
+      filesystem cataloging; choose cdxgen for broader BOM types, build-aware polyglot
+      analysis, signing, validation, and SPDX export in one suite.
+    rel: alternative
+    sources:
+      - https://github.com/cdxgen/cdxgen#readme
+      - https://oss.anchore.com/syft/
+      - https://github.com/anchore/syft#readme
+  - id: brew:cyclonedx-cli
+    reason: >
+      Use CycloneDX CLI after cdxgen when generated BOMs need dedicated merging,
+      diffing, format conversion, validation, signing, or signature verification.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cdxgen/cdxgen#readme
+      - https://github.com/CycloneDX/cyclonedx-cli/blob/main/README.md
 category: security
 package-manager:
   brew: cdxgen
