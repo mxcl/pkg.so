@@ -75,6 +75,16 @@ history:
       `--dry-run` before removals, `cargo cache query` for regex searches, `cargo cache
       clean-unref` for cache entries not referenced by a Cargo.toml, `cargo cache sc`
       for local sccache stats, and `cargo cache verify` for extracted crate sources.
+related-packages:
+  - id: brew:sccache
+    reason: >
+      Use sccache to cache Rust compilation results, then use cargo-cache's documented
+      `cargo cache sc` command to inspect the local sccache cache alongside Cargo's
+      other caches.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/matthiaskrgr/cargo-cache
+      - https://github.com/mozilla/sccache
 category: developer-tools
 package-manager:
   brew: cargo-cache

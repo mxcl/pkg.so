@@ -1,6 +1,6 @@
 id: brew:cargo-c
 display-name: cargo-c
-repo: null
+repo: https://github.com/lu-zero/cargo-c
 docs:
   - https://github.com/lu-zero/cargo-c#readme
 config-file-location:
@@ -85,6 +85,23 @@ history:
       `package.metadata.capi` settings in Cargo.toml. cargo-c then produces artifacts
       that C and C-compatible build systems can consume through headers, shared or
       static libraries, and pkg-config.
+related-packages:
+  - id: brew:cbindgen
+    reason: >
+      Use cbindgen with cargo-c when C or C++ headers should be generated from a Rust
+      crate's public C API; cargo-c documents this integration directly.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lu-zero/cargo-c
+      - https://github.com/mozilla/cbindgen
+  - id: brew:pkgconf
+    reason: >
+      pkgconf can consume the pkg-config metadata that cargo-c generates for downstream
+      compilation and linking.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lu-zero/cargo-c
+      - https://github.com/pkgconf/pkgconf
 tags:
   - c-abi
   - cargo
@@ -124,8 +141,8 @@ provenance:
     - 'crates.io API metadata and versions: https://crates.io/api/v1/crates/cargo-c'
   repo-sources:
     - >
-      source_facts.repo already supplies https://github.com/lu-zero/cargo-c; prompt
-      requires repo null when already supplied.
+      source_facts.repo is empty; source_facts.homepage and the official project page
+      identify this repository.
   tags-sources:
     - >
       Official README documents cargo integration, C-ABI libraries, cbindgen header

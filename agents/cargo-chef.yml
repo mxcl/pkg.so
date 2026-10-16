@@ -67,6 +67,16 @@ history:
       The README emphasizes that the tool is mainly intended for container builds, not
       normal local development, because it writes the project skeleton needed to cache
       dependencies.
+related-packages:
+  - id: brew:docker
+    reason: >
+      cargo-chef's official workflow runs `prepare` and `cook` in a multi-stage
+      Dockerfile so Docker can reuse the dependency-build layer when only application
+      source changes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/LukeMathWalker/cargo-chef
+      - https://docs.docker.com/build/cache/
 tags:
   - build-cache
   - cargo
