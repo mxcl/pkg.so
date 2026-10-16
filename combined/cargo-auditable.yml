@@ -76,6 +76,31 @@ history:
       who cannot change direct Cargo invocation can use documented replacement-cargo
       guidance. On nightly Rust, the README documents using Cargo's unstable SBOM
       precursor for more accurate dependency recording.
+related-packages:
+  - id: brew:cargo-audit
+    reason: >
+      cargo-audit directly consumes cargo-auditable metadata from compiled binaries to
+      check their embedded Rust dependencies for known vulnerabilities.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-secure-code/cargo-auditable#readme
+      - https://github.com/rustsec/rustsec/tree/main/cargo-audit
+  - id: brew:syft
+    reason: >
+      Syft recovers cargo-auditable dependency metadata from binaries and can convert it
+      into standard SBOM formats.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-secure-code/cargo-auditable#readme
+      - https://github.com/anchore/syft
+  - id: brew:trivy
+    reason: >
+      Trivy recognizes cargo-auditable metadata when scanning binaries and reports
+      vulnerabilities in the embedded Rust dependency set.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-secure-code/cargo-auditable#readme
+      - https://github.com/aquasecurity/trivy
 category: developer-tools
 package-manager:
   apk: cargo-auditable

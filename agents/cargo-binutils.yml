@@ -90,6 +90,25 @@ history:
       familiar Cargo selectors such as `--bin`, `--example`, `--lib`, `--target`, and
       `--release`, build the requested target, and pass the generated artifact path to
       the LLVM tool.
+related-packages:
+  - id: brew:cargo-bloat
+    reason: >
+      cargo-binutils reports sections, symbols, and disassembly, while cargo-bloat
+      attributes a Rust artifact's code size to individual crates and functions for
+      focused optimization.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rust-embedded/cargo-binutils#readme
+      - https://github.com/RazrFalcon/cargo-bloat#readme
+  - id: brew:binutils
+    reason: >
+      Choose GNU Binutils for the established GNU implementations of tools such as nm
+      and objdump; choose cargo-binutils for Cargo-aware wrappers around the LLVM tools
+      shipped with the active Rust toolchain.
+    rel: alternative
+    sources:
+      - https://github.com/rust-embedded/cargo-binutils#readme
+      - https://sourceware.org/binutils/docs/
 tags:
   - binary-tools
   - cargo

@@ -69,6 +69,24 @@ history:
       The README emphasizes that per-crate numbers are estimates, not exact accounting.
       It also notes that WebAssembly is not supported and points users toward twiggy for
       that use case.
+related-packages:
+  - id: brew:bloaty
+    reason: >
+      Choose Bloaty for language-independent, multi-dimensional binary-size profiles and
+      diffs; choose cargo-bloat for a Cargo-native report attributed directly to Rust
+      crates and functions.
+    rel: alternative
+    sources:
+      - https://github.com/RazrFalcon/cargo-bloat#readme
+      - https://github.com/google/bloaty/blob/main/doc/using.md
+  - id: brew:cargo-binutils
+    reason: >
+      cargo-binutils complements cargo-bloat with LLVM-backed section totals, symbol
+      listings, and disassembly for deeper investigation of the same Rust artifact.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/RazrFalcon/cargo-bloat#readme
+      - https://github.com/rust-embedded/cargo-binutils#readme
 category: developer-tools
 package-manager:
   apk: cargo-bloat
