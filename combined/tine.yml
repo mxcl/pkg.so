@@ -2,9 +2,98 @@ id: cask:tine
 display-name: Tine
 homepage: https://tine.page/
 repo: https://github.com/martinkoutecky/tine
+docs:
+  - https://github.com/martinkoutecky/tine#readme
+  - https://tine.page/
+  - https://tine.page/guide
+config-file-location:
+  unix: <graph-directory>/logseq/config.edn
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Tine is distributed for Linux, macOS, Windows, Android, and Apple mobile
+      platforms, with the macOS build available through Homebrew Cask. Its adoption
+      proposition is deliberately low-risk: users can open an existing file-based Logseq
+      graph rather than migrate or import it.
+    - >
+      The project encourages side-by-side use with file-based Logseq workflows and
+      external synchronization tools such as Syncthing, Dropbox, or Git. It does not
+      require users to adopt a proprietary storage or synchronization service.
+  package-nerd-significance:
+    - >
+      Tine is notable as an independent Rust-based implementation of an existing
+      plain-text knowledge format. It treats compatibility with ordinary Markdown and
+      Org files as the boundary, allowing package users to change editors without
+      changing their data.
+    - >
+      Its desktop and mobile packaging, command-line graph opening and export, static
+      live publishing, and careful handling of filesystem conflicts make it especially
+      relevant to users who manage notes with Unix tools, version control, or
+      bring-your-own synchronization.
+  project-history:
+    - >
+      Tine was created as an independent, local-first reimplementation of the file-based
+      Logseq outliner experience. It is not a fork: the project uses its own Rust and
+      SolidJS implementation while deliberately targeting Logseq's on-disk Markdown and
+      Org conventions.
+    - >
+      The application subsequently added tabs and split views, visual queries, sheet and
+      board views, conflict reconciliation, PDF annotation, quick capture, live static
+      exports, and mobile builds while retaining round-trip compatibility with the
+      underlying graph files.
+  related-projects:
+    - >
+      Logseq OG uses the same file-based graph layout and can edit the same graph at a
+      different time.
+    - >
+      Syncthing, Dropbox, and Git can synchronize Tine's ordinary graph files because
+      Tine does not require built-in sync.
+  sources:
+    - https://github.com/martinkoutecky/tine/releases
+    - https://tine.page/
+    - https://tine.page/guide/
+    - https://tine.page/guide/start-bring-an-existing-graph.html
+  summary:
+    - >
+      Tine is a fast, local outliner that reads and writes file-based Logseq graphs
+      directly, preserving their Markdown or Org files without an import or export step.
+  timeline:
+    - >
+      2026: Tine published signed desktop builds and expanded its file-compatible
+      outliner across desktop and mobile platforms.
+  usage:
+    - >
+      Users open a graph directory containing pages, journals, assets, and
+      logseq/config.edn. Tine edits those same Markdown or Org files and honors graph
+      settings such as journal formats and shortcuts.
+    - >
+      Tine can be used alternately with Logseq OG on the same graph, but the
+      applications should not edit it simultaneously. Existing file-sync or
+      version-control workflows can continue to manage the graph.
+related-packages:
+  - id: cask:logseq-og
+    reason: >
+      Use Logseq OG alongside Tine when you need the original file-based Logseq
+      interface or plugins; both can work with the same Markdown/Org graph without
+      conversion when used one at a time.
+    rel: adjacent_workflow
+    sources:
+      - https://tine.page/
+      - https://tine.page/guide/start-bring-an-existing-graph.html
+      - https://github.com/logseq/og#readme
+category: productivity
 package-manager:
   brew-cask: tine
 package-manager-url: https://formulae.brew.sh/cask/tine
+tags:
+  - knowledge-management
+  - local-first
+  - logseq-compatible
+  - markdown
+  - note-taking
+  - org-mode
+  - outliner
 description: Outliner for Markdown and Org notes
 applications:
   - Tine.app

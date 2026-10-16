@@ -1,0 +1,129 @@
+id: brew:planetiler
+display-name: Planetiler
+repo: null
+docs:
+  - https://github.com/onthegomap/planetiler#readme
+  - https://github.com/onthegomap/planetiler/blob/main/PLANET.md
+  - https://github.com/onthegomap/planetiler/tree/main/planetiler-custommap
+config-file-location:
+  unix:
+    - file supplied with --config
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Planetiler became a practical option for producing OpenMapTiles, Protomaps,
+      Shortbread, and custom vector-tile sets without an external database. Official
+      releases are distributed as a runnable Java archive and container image, while
+      Homebrew packages the command-line tool.
+    - >
+      Its output fits the broader open mapping stack: MBTiles and PMTiles archives can
+      be viewed directly or served through software such as Martin and TileServer GL,
+      and the generated vector tiles work with MapLibre and other MVT clients.
+  package-nerd-significance:
+    - >
+      Planetiler compresses a traditionally heavyweight geospatial pipeline into a
+      reproducible command-line job capable of processing planet-scale OpenStreetMap
+      data on one machine. Its support for Java profiles and declarative YAML schemas
+      serves both programmers and data-pipeline users.
+  project-history:
+    - >
+      The project began publicly under the Flatmap name, with an initial release
+      announced in 2021. It subsequently became Planetiler and developed into a modular
+      Java toolkit for fast, memory-conscious production of vector tiles from
+      OpenStreetMap and other geographic sources.
+  related-projects:
+    - >
+      OpenMapTiles, Protomaps Basemaps, and Shortbread provide full-featured basemap
+      schemas built with Planetiler.
+    - MapLibre clients render the vector tiles Planetiler produces.
+    - Martin and TileServer GL can serve Planetiler's MBTiles or PMTiles output.
+  sources:
+    - https://github.com/onthegomap/planetiler
+    - https://github.com/onthegomap/planetiler/blob/main/PLANET.md
+    - https://github.com/onthegomap/planetiler/discussions/4
+    - https://github.com/onthegomap/planetiler/tree/main/planetiler-custommap
+  summary:
+    - >
+      Planetiler is a Java command-line tool and library for rapidly converting
+      OpenStreetMap and other geospatial sources into MBTiles or PMTiles vector-tile
+      archives.
+  timeline:
+    - >
+      2021: The initial Flatmap release demonstrated a planet-scale vector-tile build on
+      a single machine.
+    - >
+      Later development: The project adopted the Planetiler name and expanded into
+      built-in basemap profiles, custom YAML schemas, and a Java library.
+  usage:
+    - >
+      A typical invocation downloads source data for a selected area and writes an
+      MBTiles or PMTiles archive. Large-area builds require substantial SSD space and
+      memory, while small extracts can be produced with modest resources.
+    - >
+      Simple custom maps can be declared in YAML; complex transformations can use Java
+      profiles. Ordinary runtime parameters may be passed on the command line, through
+      environment or JVM properties, or through a properties file selected with
+      --config.
+related-packages:
+  - id: brew:tippecanoe
+    reason: >
+      Choose Tippecanoe when the primary job is turning collections of GeoJSON features
+      into vector tiles; Planetiler is better oriented toward large OSM-derived and
+      schema-driven basemap pipelines.
+    rel: alternative
+    sources:
+      - https://github.com/onthegomap/planetiler#readme
+      - https://github.com/felt/tippecanoe#readme
+  - id: brew:martin
+    reason: >
+      Use Martin to serve the MBTiles or PMTiles archives produced by Planetiler through
+      a vector-tile server.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/onthegomap/planetiler#readme
+      - https://maplibre.org/martin/quick-start.html
+tags:
+  - cli
+  - geospatial
+  - map-generation
+  - mbtiles
+  - openstreetmap
+  - pmtiles
+  - vector-tiles
+provenance:
+  category-sources:
+    - >
+      Official README describes generating vector tiles from OpenStreetMap and other
+      geographic sources: https://github.com/onthegomap/planetiler#readme
+    - source_facts.description
+  display-name-sources:
+    - >
+      Official repository uses the project name Planetiler:
+      https://github.com/onthegomap/planetiler
+  docs-sources:
+    - >
+      Official README provides installation and usage guidance; PLANET.md covers
+      planet-scale builds; planetiler-custommap documents YAML schemas.
+  history-sources:
+    - https://github.com/onthegomap/planetiler
+    - https://github.com/onthegomap/planetiler/blob/main/PLANET.md
+    - https://github.com/onthegomap/planetiler/discussions/4
+    - https://github.com/onthegomap/planetiler/tree/main/planetiler-custommap
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/onthegomap/planetiler; the requested output therefore omits a
+      replacement.
+  tags-sources:
+    - 'Official README and repository topics: https://github.com/onthegomap/planetiler'
+category-confidence: high
+category-path:
+  - data
+  - geospatial
+  - vector-tiles
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -2,9 +2,78 @@ id: cask:biscotti
 display-name: Biscotti
 homepage: https://biscottiapp.com/
 repo: https://github.com/scosman/Biscotti
+docs:
+  - https://biscottiapp.com/
+  - https://github.com/scosman/Biscotti#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Biscotti is distributed as a native macOS application and through a Homebrew cask.
+      It targets Apple Silicon users seeking local meeting notes without a cloud
+      account, subscription, or conferencing bot.
+  package-nerd-significance:
+    - >
+      Biscotti packages a substantial on-device speech stack into a native desktop
+      application: system-audio capture, Whisper-based transcription, speaker
+      diarization, local language-model summaries, calendar context, and MCP access all
+      operate without a hosted transcription service.
+  project-history:
+    - >
+      Biscotti was created by former Apple engineer Steve Cosman as a private, native
+      alternative to cloud meeting assistants. The project publishes its source and
+      emphasizes an architecture in which recording, transcription, speaker
+      identification, and summarization run on the user's Mac.
+  related-projects:
+    - WhisperKit supplies on-device Whisper transcription.
+    - SpeakerKit supplies on-device speaker identification.
+    - llama.cpp runs the local language models used for summaries.
+  sources:
+    - https://biscottiapp.com/
+    - https://github.com/scosman/Biscotti
+    - source_facts.package-manager
+  summary:
+    - >
+      Biscotti is a native macOS meeting recorder that captures microphone and system
+      audio, creates speaker-labeled transcripts, and produces summaries entirely
+      on-device.
+  timeline:
+    - >
+      Public project era: Biscotti was released as a source-available, account-free
+      macOS meeting recorder and packaged in Homebrew Cask.
+  usage:
+    - >
+      After granting microphone, system-audio, and optional calendar permissions, users
+      start recording from Biscotti rather than adding a bot to a call. It works with
+      conferencing applications and in-person conversations.
+    - >
+      The application retains recordings and meeting notes locally. It can identify
+      recurring speakers, generate summaries and action items, and expose notes to
+      compatible local assistants through MCP.
+related-packages:
+  - id: cask:muesli
+    reason: >
+      Choose Muesli for a local Apple-Silicon transcription workflow that also
+      emphasizes system-wide dictation and offers a structured command-line interface
+      for meeting records.
+    rel: alternative
+    sources:
+      - https://biscottiapp.com/
+      - https://muesli.works/
+      - https://muesli.works/docs/cli/
+category: productivity
 package-manager:
   brew-cask: biscotti
 package-manager-url: https://formulae.brew.sh/cask/biscotti
+tags:
+  - local-ai
+  - macos
+  - meeting-recorder
+  - privacy
+  - speaker-diarization
+  - summarization
+  - transcription
 description: Private meeting transcription
 applications:
   - Biscotti.app
