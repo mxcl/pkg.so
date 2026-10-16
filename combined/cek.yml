@@ -5,7 +5,8 @@ repo: https://github.com/bschaatsbergen/cek
 docs:
   - https://github.com/bschaatsbergen/cek#readme
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.docker/config.json
 history:
   adoption-history:
     - >
@@ -42,6 +43,24 @@ history:
       Users run commands such as `cek ls`, `cek cat`, `cek tags`, `cek export`, `cek
       tree`, and `cek inspect` against OCI image references. The tool can use local
       container daemon sockets through `DOCKER_HOST` or pull from remote registries.
+related-packages:
+  - id: brew:dive
+    reason: >
+      Choose dive when you want an interactive terminal interface focused on layer
+      changes and wasted space; choose cek for scriptable file browsing, extraction,
+      comparison, and registry operations.
+    rel: alternative
+    sources:
+      - https://github.com/bschaatsbergen/cek#readme
+      - https://github.com/wagoodman/dive#readme
+  - id: brew:skopeo
+    reason: >
+      Skopeo complements cek by copying, synchronizing, signing, and deleting registry
+      images, while cek examines their filesystems and layer contents.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bschaatsbergen/cek#readme
+      - https://github.com/containers/skopeo#readme
 category: developer-tools
 package-manager:
   brew: cek
