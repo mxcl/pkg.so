@@ -4,8 +4,12 @@ repo: null
 docs:
   - https://github.com/ashinn/chibi-scheme#readme
   - https://synthcode.com/scheme/chibi
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.snow/config.scm
+credentials-file-location:
+  unix:
+    - ~/.snow/priv-key.scm
 history:
   adoption-history:
     - >
@@ -59,6 +63,24 @@ history:
     - >
       Package users mainly care that the formula installs a tiny Scheme runtime, FFI
       tooling, and documentation helpers without a heavyweight dependency chain.
+related-packages:
+  - id: brew:chicken
+    reason: >
+      Choose CHICKEN for portable Scheme-to-C compilation and its Eggs ecosystem; choose
+      Chibi-Scheme when a smaller dependency-free embeddable R7RS runtime is the
+      priority.
+    rel: alternative
+    sources:
+      - https://www.call-cc.org/
+      - https://synthcode.com/scheme/chibi/
+  - id: brew:chezscheme
+    reason: >
+      Choose Chez Scheme when optimizing native-code compilation and whole-program
+      optimization matter more than Chibi-Scheme's compact embeddable design.
+    rel: alternative
+    sources:
+      - https://cisco.github.io/ChezScheme/
+      - https://synthcode.com/scheme/chibi/
 tags:
   - c-extension
   - cli

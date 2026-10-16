@@ -52,6 +52,16 @@ history:
       Typical use is running chinadns as a local UDP DNS server, often with dnsmasq on
       routers, with a chnroute.txt file generated from APNIC delegated address data and
       options such as DNS compression pointer mutation.
+related-packages:
+  - id: brew:dnsmasq
+    reason: >
+      ChinaDNS's official OpenWrt instructions strongly recommend using it as an
+      upstream for dnsmasq, which adds local caching, TCP DNS handling, and the
+      LAN-facing DNS service.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/shadowsocks/ChinaDNS
+      - https://thekelleys.org.uk/dnsmasq/doc.html
 category: networking
 package-manager:
   brew: chinadns-c
