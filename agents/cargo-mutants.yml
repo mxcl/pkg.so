@@ -68,6 +68,24 @@ history:
       line, or supplied through `CARGO_MUTANTS_` environment variables. The documented
       recommendation is to commit a configuration that lets contributors run the default
       command without extra arguments.
+related-packages:
+  - id: brew:cargo-nextest
+    reason: >
+      cargo-mutants can delegate each mutation's test run to Nextest with
+      `--test-tool=nextest`, which is useful when the suite requires or runs faster
+      under Nextest.
+    rel: adjacent_workflow
+    sources:
+      - https://mutants.rs/changelog.html
+      - https://nexte.st/docs/integrations/cargo-mutants/
+  - id: brew:cargo-llvm-cov
+    reason: >
+      Use cargo-llvm-cov for execution coverage and cargo-mutants for the complementary
+      question of whether tests detect injected behavioral changes.
+    rel: adjacent_workflow
+    sources:
+      - https://nexte.st/docs/integrations/cargo-mutants/
+      - https://github.com/taiki-e/cargo-llvm-cov#readme
 tags:
   - cargo
   - ci

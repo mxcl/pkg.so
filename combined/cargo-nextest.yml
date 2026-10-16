@@ -57,6 +57,23 @@ history:
       .config/nextest.toml, and optionally use user config for personal UI preferences.
       The docs cover profiles, retries, timeouts, test groups, per-test overrides,
       archives, and integrations.
+related-packages:
+  - id: brew:cargo-mutants
+    reason: >
+      cargo-mutants can run mutation-test workloads through Nextest when a suite
+      requires it or benefits from faster failure detection.
+    rel: adjacent_workflow
+    sources:
+      - https://nexte.st/docs/integrations/cargo-mutants/
+      - https://mutants.rs/changelog.html
+  - id: brew:cargo-llvm-cov
+    reason: >
+      cargo-llvm-cov directly supports `cargo llvm-cov nextest` for collecting LLVM
+      coverage while Nextest runs the test binaries.
+    rel: adjacent_workflow
+    sources:
+      - https://nexte.st/docs/integrations/test-coverage/
+      - https://github.com/taiki-e/cargo-llvm-cov#readme
 category: developer-tools
 package-manager:
   apk: cargo-nextest
