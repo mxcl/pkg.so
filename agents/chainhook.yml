@@ -4,8 +4,12 @@ repo: null
 docs:
   - https://github.com/hirosystems/chainhook/tree/develop/docs
   - https://github.com/hirosystems/chainhook#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ./Chainhook.toml
+credentials-file-location:
+  unix:
+    - ./Chainhook.toml
 history:
   adoption-history:
     - >
@@ -60,6 +64,16 @@ history:
       a local bitcoind or Stacks node, and route matches through actions such as HTTP
       POST or file append. The README covers txid, output, OP_RETURN, Ordinals, Stacks
       asset, event, contract-call, and contract-deployment predicates.
+related-packages:
+  - id: brew:clarinet
+    reason: >
+      Use Clarinet to develop and test Stacks smart contracts in a local devnet, then
+      use Chainhook predicates to react to the resulting on-chain events; Hiro
+      documented Chainhook improvements within the Clarinet workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://www.hiro.so/blog/release-roundup-july-2022
+      - https://docs.stacks.co/clarinet
 tags:
   - bitcoin
   - blockchain
