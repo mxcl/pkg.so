@@ -56,6 +56,16 @@ history:
       Administrators use check_postgres actions to monitor connections, locks, bloat,
       replication, database size, transaction age, settings checksums, pgbouncer state,
       and many other PostgreSQL operational signals.
+related-packages:
+  - id: brew:nagios
+    reason: >
+      check_postgres is designed primarily as a Nagios plugin and emits
+      Nagios-compatible status text, performance data, and exit codes for PostgreSQL
+      service checks.
+    rel: adjacent_workflow
+    sources:
+      - https://bucardo.org/check_postgres/check_postgres.pl.html
+      - https://www.nagios.org/projects/nagios-core/
 category: data
 package-manager:
   apk: check_postgres
