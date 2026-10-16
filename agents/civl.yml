@@ -50,6 +50,23 @@ history:
       CIVL is used from the `civl` executable to model, analyze, and verify concurrent
       programs against CIVL's intermediate verification language and runtime model. Its
       official manual is the primary user documentation.
+related-packages:
+  - id: brew:cbmc
+    reason: >
+      Choose CBMC for bounded checking of general C and C++ programs; choose CIVL when
+      MPI, OpenMP, CUDA, or CIVL-C concurrency modeling is central to the analysis.
+    rel: alternative
+    sources:
+      - https://verified-software-lab.github.io/civl/
+      - https://www.cprover.org/cbmc/
+  - id: brew:spin
+    reason: >
+      Choose Spin when the system is modeled explicitly in Promela; choose CIVL when
+      verification should begin from supported C code or parallel-programming APIs.
+    rel: alternative
+    sources:
+      - https://verified-software-lab.github.io/civl/
+      - https://spinroot.com/spin/whatispin.html
 tags:
   - cli
   - concurrency
