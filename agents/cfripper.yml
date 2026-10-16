@@ -66,6 +66,26 @@ history:
       The official docs show rules config files as command inputs rather than a fixed
       application config location, so `config-file-location` remains null. No official
       credential file location is documented for the CLI.
+related-packages:
+  - id: brew:cfn-lint
+    reason: >
+      Run cfn-lint alongside CFRipper to catch CloudFormation schema and
+      template-validity problems before CFRipper applies its security and compliance
+      rules.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Skyscanner/cfripper#readme
+      - https://github.com/aws-cloudformation/cfn-lint#readme
+  - id: brew:checkov
+    reason: >
+      Choose Checkov when the same security scan must cover CloudFormation plus
+      Terraform, Kubernetes, Helm, Dockerfiles, and other IaC formats; choose CFRipper
+      for a focused, plugin-extensible CloudFormation analyzer.
+    rel: alternative
+    sources:
+      - https://github.com/Skyscanner/cfripper#readme
+      - https://www.checkov.io/
+      - https://github.com/bridgecrewio/checkov#readme
 tags:
   - aws
   - cli
