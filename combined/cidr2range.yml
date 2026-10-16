@@ -46,6 +46,25 @@ history:
       As a standalone binary, cidr2range handles the narrow conversion from CIDR
       notation to start-end IP ranges. It is part of a family of small IP list, range,
       and CIDR utilities distributed with IPinfo CLI releases.
+related-packages:
+  - id: brew:range2cidr
+    reason: >
+      range2cidr performs the inverse operation, turning an address range back into
+      equivalent CIDR blocks for round-trip conversion and range normalization
+      workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ipinfo/cli#readme
+      - https://github.com/ipinfo/cli/tree/master/range2cidr
+  - id: brew:prips
+    reason: >
+      prips can enumerate the individual addresses represented by a CIDR block or
+      explicit range when cidr2range's boundary output needs to become a line-oriented
+      address list.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ipinfo/cli#readme
+      - https://devel.ringlet.net/sysutils/prips/
 category: networking
 package-manager:
   brew: cidr2range

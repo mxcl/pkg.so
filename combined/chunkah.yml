@@ -46,6 +46,23 @@ history:
       Buildah. The README also documents Docker image-mount usage, SOURCE_DATE_EPOCH
       support, cosign verification, xattr-based component hints, output formats,
       max-layer tuning, pruning, and bootc-image compatibility.
+related-packages:
+  - id: brew:podman
+    reason: >
+      Podman can inspect the source image, run chunkah's official container, and load
+      the resulting OCI archive in the project's documented image-splitting workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/coreos/chunkah#readme
+      - https://github.com/podman-container-tools/podman#readme
+  - id: brew:skopeo
+    reason: >
+      Skopeo can import chunkah's OCI-directory output or convert its OCI archive when a
+      Docker-compatible archive is required.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/coreos/chunkah#readme
+      - https://github.com/podman-container-tools/skopeo#readme
 category: developer-tools
 package-manager:
   brew: chunkah
