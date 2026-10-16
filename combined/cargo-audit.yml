@@ -77,6 +77,28 @@ history:
       cargo-audit also has a binary-auditing path. The README documents `cargo audit
       bin`, noting that binaries built with cargo-auditable can be audited accurately
       because their dependency lists are embedded in the executable.
+related-packages:
+  - id: brew:cargo-deny
+    reason: >
+      Choose cargo-deny when you need RustSec advisory checks plus enforceable rules for
+      licenses, dependency bans, duplicate versions, and approved package sources;
+      cargo-audit is the more focused vulnerability scanner.
+    rel: alternative
+    sources:
+      - https://rustsec.org/
+      - https://github.com/rustsec/rustsec/tree/main/cargo-audit#readme
+      - https://github.com/EmbarkStudios/cargo-deny
+      - https://embarkstudios.github.io/cargo-deny/
+  - id: brew:cargo-auditable
+    reason: >
+      Build with cargo-auditable to embed the Rust dependency tree in production
+      executables, then use `cargo audit bin` for accurate vulnerability scanning of
+      those artifacts.
+    rel: adjacent_workflow
+    sources:
+      - https://rustsec.org/
+      - https://github.com/rustsec/rustsec/tree/main/cargo-audit#readme
+      - https://github.com/rust-secure-code/cargo-auditable
 category: security
 package-manager:
   apk: cargo-audit

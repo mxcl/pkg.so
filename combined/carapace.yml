@@ -87,6 +87,33 @@ history:
       completions can be specified outside a single shell's scripting language, making
       it useful when a command-line tool needs completions across several shell
       communities.
+related-packages:
+  - id: brew:nushell
+    reason: >
+      Nushell can use carapace as its external completer; the official carapace setup
+      guide provides the exact Nushell initialization and configuration workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://carapace-sh.github.io/carapace-bin/setup.html
+      - https://www.nushell.sh/
+  - id: brew:fish
+    reason: >
+      Fish users can source carapace's generated completer at shell startup, and
+      carapace can also bridge completions registered in Fish.
+    rel: adjacent_workflow
+    sources:
+      - https://carapace-sh.github.io/carapace-bin/setup.html
+      - https://carapace-sh.github.io/carapace-bin/spec/bridge.html
+      - https://fishshell.com/
+  - id: brew:zsh
+    reason: >
+      Zsh users can source carapace from .zshrc, while carapace's bridge support can
+      reuse commands registered in Zsh's native completion system.
+    rel: adjacent_workflow
+    sources:
+      - https://carapace-sh.github.io/carapace-bin/setup.html
+      - https://carapace-sh.github.io/carapace-bin/spec/bridge.html
+      - https://www.zsh.org/
 category: developer-tools
 package-manager:
   apk: carapace
