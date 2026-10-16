@@ -4,7 +4,10 @@ homepage: https://github.com/canonical/chisel
 repo: https://github.com/canonical/chisel
 docs:
   - https://documentation.ubuntu.com/chisel/latest
-config-file-location: null
+config-file-location:
+  unix:
+    - <chisel-release>/chisel.yaml
+    - <chisel-release>/slices/<package-name>.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -51,6 +54,16 @@ history:
       package-slice names. By default Chisel consults the official chisel-releases
       repository; a local or custom release definition may be supplied when maintaining
       private slice sets.
+related-packages:
+  - id: brew:rockcraft
+    reason: >
+      Rockcraft directly consumes Chisel package slices through `stage-packages`, making
+      it the documented companion for turning sliced Ubuntu content into minimal OCI
+      images.
+    rel: adjacent_workflow
+    sources:
+      - https://documentation.ubuntu.com/rockcraft/latest/explanation/chisel/
+      - https://documentation.ubuntu.com/rockcraft/latest/how-to/chiseling/install-slice/
 category: developer-tools
 package-manager:
   brew: chisel-ubuntu
