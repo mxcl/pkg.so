@@ -90,6 +90,23 @@ history:
       Configuration can live in Cargo.toml, package.json, dist-workspace.toml, or
       dist.toml, which matches the project's move from a Cargo-only helper toward a
       general binary distribution tool.
+related-packages:
+  - id: brew:cargo-release
+    reason: >
+      Use cargo-release to update versions, commit, tag, push, and publish crates, then
+      let the resulting tag trigger dist's artifact-building and announcement pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://axodotdev.github.io/cargo-dist/book/workspaces/cargo-release-guide.html
+      - https://github.com/crate-ci/cargo-release
+  - id: brew:oranda
+    reason: >
+      Use oranda to generate a project website that automatically presents installers
+      and platform support produced by cargo-dist.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/axodotdev/oranda#installers-integrating-with-cargo-dist
+      - https://github.com/axodotdev/cargo-dist
 category: developer-tools
 package-manager:
   brew: cargo-dist

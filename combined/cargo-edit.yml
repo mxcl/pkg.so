@@ -76,6 +76,16 @@ history:
       `cargo upgrade` changes version requirements in Cargo.toml, while `cargo update`
       only updates versions selected in Cargo.lock. That distinction is central to why
       cargo-edit remains useful for package-maintenance work.
+related-packages:
+  - id: brew:cargo-outdated
+    reason: >
+      Use cargo-outdated to inspect which dependencies have newer compatible or
+      incompatible releases, then use cargo-edit's `cargo upgrade` to update the chosen
+      Cargo.toml requirements.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kbknapp/cargo-outdated#readme
+      - https://github.com/killercup/cargo-edit#cargo-upgrade
 category: developer-tools
 package-manager:
   apk: cargo-edit
