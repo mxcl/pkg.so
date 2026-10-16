@@ -51,6 +51,42 @@ history:
       cfv is used to verify that files match checksum manifests and to create manifests
       in formats including SFV, CSV, CRC, MD5, SHA-family sums, BLAKE3 b3sum files,
       BitTorrent metainfo files, and test-only PAR/PAR2 files.
+related-packages:
+  - id: brew:rhash
+    reason: >
+      Choose RHash when you want faster broad-format hashing, recursive processing,
+      magnet links, or a reusable hashing library; cfv's official comparison says RHash
+      covers most of the same formats but lacks cfv's missing-file-only mode.
+    rel: alternative
+    sources:
+      - https://github.com/cfv-project/cfv
+      - https://github.com/rhash/RHash
+  - id: brew:cksfv
+    reason: >
+      Choose cksfv for a smaller utility focused specifically on creating and checking
+      SFV manifests, while cfv handles many additional manifest formats.
+    rel: alternative
+    sources:
+      - https://github.com/cfv-project/cfv
+      - https://gitlab.com/heikkiorsila/cksfv
+  - id: brew:coreutils
+    reason: >
+      GNU Coreutils supplies familiar md5sum and SHA-family commands for straightforward
+      single-algorithm manifests, whereas cfv adds multi-format discovery and
+      compatibility.
+    rel: alternative
+    sources:
+      - https://github.com/cfv-project/cfv
+      - https://www.gnu.org/software/coreutils/manual/coreutils.html
+  - id: brew:aria2
+    reason: >
+      Choose aria2c when checksum verification is part of downloading BitTorrent or
+      Metalink content; cfv is the more general tool for creating and checking local
+      manifest files.
+    rel: alternative
+    sources:
+      - https://github.com/cfv-project/cfv
+      - https://aria2.github.io/manual/en/html/aria2c.html
 category: system
 package-manager:
   brew: cfv

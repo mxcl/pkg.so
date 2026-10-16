@@ -54,6 +54,24 @@ history:
       Users launch cgdb as a GDB front end, pass commands through the GDB window,
       navigate source in CGDB mode, and configure behavior through cgdbrc files under
       CGDB_DIR or ~/.cgdb.
+related-packages:
+  - id: brew:gdb
+    reason: >
+      Install GNU GDB as CGDB's underlying command-line debugger, or use GDB directly
+      when scripting and a split-screen terminal interface are unnecessary.
+    rel: adjacent_workflow
+    sources:
+      - https://cgdb.github.io/docs/cgdb.html
+      - https://www.gnu.org/software/gdb/
+  - id: brew:ddd
+    reason: >
+      Choose GNU DDD when you want a graphical debugger front end with interactive
+      data-structure visualization; CGDB instead provides a lightweight curses-and-vi
+      terminal workflow over GDB.
+    rel: alternative
+    sources:
+      - https://cgdb.github.io/docs/cgdb.html
+      - https://www.gnu.org/software/ddd/
 category: developer-tools
 package-manager:
   apk: cgdb
