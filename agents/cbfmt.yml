@@ -47,6 +47,23 @@ history:
       A `.cbfmt.toml` file maps code block languages to formatter commands that read
       stdin and write stdout. Users can check or rewrite files, process directories
       recursively, or read a document from stdin.
+related-packages:
+  - id: brew:black
+    reason: >
+      Use Black as cbfmt's configured stdin/stdout formatter for Python code blocks;
+      cbfmt's official example invokes Black with `black --fast -`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lukas-reineke/cbfmt#readme
+      - https://black.readthedocs.io/en/stable/
+  - id: brew:stylua
+    reason: >
+      Use StyLua as cbfmt's formatter for embedded Lua code; cbfmt's official
+      configuration example invokes `stylua -s -`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lukas-reineke/cbfmt#readme
+      - https://github.com/JohnnyMorganz/StyLua
 tags:
   - cli
   - code-blocks
