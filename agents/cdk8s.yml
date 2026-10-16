@@ -63,6 +63,24 @@ history:
       Typical use starts with cdk8s init, a project-level cdk8s.yaml file, and app code
       that defines charts and constructs. The CLI synthesizes manifests for review or
       deployment through other Kubernetes workflows.
+related-packages:
+  - id: brew:kustomize
+    reason: >
+      Choose Kustomize when you want declarative composition and patches over existing
+      Kubernetes YAML; choose cdk8s when you want typed, object-oriented application
+      code that synthesizes YAML.
+    rel: alternative
+    sources:
+      - https://cdk8s.io/docs/latest/
+      - https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl applies the standard Kubernetes manifests produced by cdk8s, making it the
+      documented deployment companion after cdk8s synth.
+    rel: adjacent_workflow
+    sources:
+      - https://cdk8s.io/docs/latest/
+      - https://kubernetes.io/docs/reference/kubectl/
 tags:
   - cli
   - infrastructure-as-code

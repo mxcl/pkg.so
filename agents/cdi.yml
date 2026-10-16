@@ -1,6 +1,6 @@
 id: brew:cdi
 display-name: CDI
-repo: null
+repo: https://gitlab.dkrz.de/mpim-sw/libcdi
 docs:
   - https://code.mpimet.mpg.de/projects/cdi/embedded/index.html
   - https://code.mpimet.mpg.de/projects/cdi/wiki
@@ -56,6 +56,31 @@ history:
       model-data streams across GRIB, netCDF, SERVICE, EXTRA, and IEG formats. The
       manuals cover C and Fortran bindings, file formats, stream APIs, and
       compiling/linking with the CDI library.
+related-packages:
+  - id: brew:cdo
+    reason: >
+      CDO is the primary user-facing command-line companion: its operators use CDI to
+      process the same GRIB, netCDF, SERVICE, EXTRA, and IEG datasets.
+    rel: adjacent_workflow
+    sources:
+      - https://code.mpimet.mpg.de/projects/cdi/wiki
+      - https://code.mpimet.mpg.de/projects/cdo
+  - id: brew:eccodes
+    reason: >
+      Install ecCodes alongside CDI when applications need CDI's documented GRIB2
+      encoding and decoding support.
+    rel: adjacent_workflow
+    sources:
+      - https://code.mpimet.mpg.de/projects/cdi/embedded/index.html
+      - https://confluence.ecmwf.int/display/ECC
+  - id: brew:netcdf
+    reason: >
+      Install netCDF alongside CDI when applications need CDI's documented netCDF
+      read-and-write support.
+    rel: adjacent_workflow
+    sources:
+      - https://code.mpimet.mpg.de/projects/cdi/embedded/index.html
+      - https://docs.unidata.ucar.edu/netcdf-c/current
 tags:
   - c-library
   - cli
@@ -90,9 +115,8 @@ provenance:
     - https://code.mpimet.mpg.de/projects/cdi/wiki
     - https://formulae.brew.sh/api/formula/cdi.json
   repo-sources:
-    - >
-      source_facts.repo is empty; the official MPI-M project publishes source
-      distributions but does not identify an official HTTP(S) source-control repository
+    - https://gitlab.dkrz.de/mpim-sw
+    - https://gitlab.dkrz.de/mpim-sw/libcdi
   tags-sources:
     - >
       Official CDI overview/wiki list C, Fortran, GRIB, netCDF, SERVICE, EXTRA, and IEG
@@ -104,5 +128,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: medium
+repo-confidence: high
 tags-confidence: high

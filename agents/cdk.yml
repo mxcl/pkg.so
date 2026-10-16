@@ -1,6 +1,6 @@
 id: brew:cdk
 display-name: CDK
-repo: null
+repo: https://github.com/ThomasDickey/cdk-snapshots
 docs:
   - https://invisible-island.net/cdk
   - https://invisible-island.net/cdk/manpage
@@ -59,6 +59,24 @@ history:
       CDK is used when a C program needs form, dialog, menu, scrolling-list, and other
       terminal widgets without building every curses interaction from scratch. The
       Homebrew package exposes cdk5-config for build flags and metadata.
+related-packages:
+  - id: brew:dialog
+    reason: >
+      Choose dialog when shell scripts need ready-made curses dialogs as a standalone
+      command; choose CDK when C applications need linkable and customizable widget
+      objects.
+    rel: alternative
+    sources:
+      - https://invisible-island.net/cdk/
+      - https://invisible-island.net/dialog/
+  - id: brew:ncurses
+    reason: >
+      ncurses supplies the lower-level terminal and screen API on which CDK builds its
+      higher-level widget library.
+    rel: adjacent_workflow
+    sources:
+      - https://invisible-island.net/cdk/
+      - https://invisible-island.net/ncurses/
 tags:
   - c-library
   - cli
@@ -92,9 +110,8 @@ provenance:
     - https://invisible-island.net/cdk/manpage
     - https://formulae.brew.sh/api/formula/cdk.json
   repo-sources:
-    - >
-      The official project page distributes source archives and does not identify an
-      official HTTP(S) source-control repository: https://invisible-island.net/cdk/
+    - https://github.com/ThomasDickey/cdk-snapshots
+    - https://invisible-island.net/cdk/
   tags-sources:
     - >
       Official CDK synopsis describes a curses widget library; official manual lists

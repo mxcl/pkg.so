@@ -1,7 +1,7 @@
 id: brew:cdi
 display-name: CDI
 homepage: https://code.mpimet.mpg.de/projects/cdi
-repo: null
+repo: https://gitlab.dkrz.de/mpim-sw/libcdi
 docs:
   - https://code.mpimet.mpg.de/projects/cdi/embedded/index.html
   - https://code.mpimet.mpg.de/projects/cdi/wiki
@@ -57,6 +57,31 @@ history:
       model-data streams across GRIB, netCDF, SERVICE, EXTRA, and IEG formats. The
       manuals cover C and Fortran bindings, file formats, stream APIs, and
       compiling/linking with the CDI library.
+related-packages:
+  - id: brew:cdo
+    reason: >
+      CDO is the primary user-facing command-line companion: its operators use CDI to
+      process the same GRIB, netCDF, SERVICE, EXTRA, and IEG datasets.
+    rel: adjacent_workflow
+    sources:
+      - https://code.mpimet.mpg.de/projects/cdi/wiki
+      - https://code.mpimet.mpg.de/projects/cdo
+  - id: brew:eccodes
+    reason: >
+      Install ecCodes alongside CDI when applications need CDI's documented GRIB2
+      encoding and decoding support.
+    rel: adjacent_workflow
+    sources:
+      - https://code.mpimet.mpg.de/projects/cdi/embedded/index.html
+      - https://confluence.ecmwf.int/display/ECC
+  - id: brew:netcdf
+    reason: >
+      Install netCDF alongside CDI when applications need CDI's documented netCDF
+      read-and-write support.
+    rel: adjacent_workflow
+    sources:
+      - https://code.mpimet.mpg.de/projects/cdi/embedded/index.html
+      - https://docs.unidata.ucar.edu/netcdf-c/current
 category: science
 package-manager:
   brew: cdi
