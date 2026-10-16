@@ -48,6 +48,26 @@ history:
       The documented CLI reads from stdin or files and converts JSON to YAML or YAML to
       JSON. The Python API exposes `flip`, `to_yaml`, and `to_json` for applications
       that need CloudFormation template serialization.
+related-packages:
+  - id: brew:cfn-format
+    reason: >
+      Choose cfn-format for a dedicated CloudFormation formatter that preserves YAML
+      comments; unlike cfn-flip's Python API, it comes from the Go-based Rain codebase,
+      though that upstream is also archived.
+    rel: alternative
+    sources:
+      - https://github.com/awslabs/aws-cfn-template-flip#readme
+      - https://aws-cloudformation.github.io/rain/rain_fmt.html
+      - https://github.com/aws-cloudformation/rain
+  - id: brew:cf2tf
+    reason: >
+      Use cf2tf after parsing or normalizing a CloudFormation template when the goal is
+      migration to Terraform HCL; cf2tf explicitly documents using cfn-flip's parser in
+      its conversion pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/DontShaveTheYak/cf2tf
+      - https://github.com/awslabs/aws-cfn-template-flip
 category: cloud-infrastructure
 package-manager:
   brew: cfn-flip
