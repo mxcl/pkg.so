@@ -66,6 +66,15 @@ history:
       through CRI-compatible runtimes such as containerd, CRI-O, and cri-dockerd.
       critest is used to verify that a runtime's CRI server implementation conforms to
       Kubernetes expectations without running full Kubernetes end-to-end tests.
+related-packages:
+  - id: brew:containerd
+    reason: >
+      Use containerd with cri-tools when operating or debugging Kubernetes workloads:
+      containerd supplies the CRI runtime endpoint that crictl inspects and exercises.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kubernetes-sigs/cri-tools/blob/master/docs/crictl.md
+      - https://github.com/containerd/containerd/blob/main/docs/getting-started.md
 category: developer-tools
 package-manager:
   apk: cri-tools
