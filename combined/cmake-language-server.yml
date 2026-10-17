@@ -48,6 +48,24 @@ history:
       filetypes. The README's configuration examples pass a buildDirectory
       initialization option; the server uses CMake's file API under
       <buildDirectory>/.cmake/api after the user has configured a build tree with cmake.
+related-packages:
+  - id: brew:cmake
+    reason: >
+      CMake is required to configure the build tree and file-API data that
+      cmake-language-server uses for cached variables and project-aware editor results.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/regen100/cmake-language-server#readme
+      - https://cmake.org/cmake/help/latest/manual/cmake-file-api.7.html
+  - id: brew:neocmakelsp
+    reason: >
+      neocmakelsp is an alternative standalone CMake language server; choose it when its
+      Rust implementation, dedicated configuration files, or broader documented language
+      features better fit the editor setup.
+    rel: alternative
+    sources:
+      - https://github.com/regen100/cmake-language-server#readme
+      - https://neocmakelsp.github.io/docs
 category: developer-tools
 package-manager:
   brew: cmake-language-server

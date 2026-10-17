@@ -57,6 +57,23 @@ history:
       arguments. The README documents .cmakelintrc lookup in the working directory,
       XDG-style config paths, and the home directory, plus inline lint_cmake pragmas for
       per-file filter overrides.
+related-packages:
+  - id: brew:pre-commit
+    reason: >
+      pre-commit can install and run cmake-lint automatically using the hook
+      configuration published by the cmake-lint repository.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cmake-lint/cmake-lint#readme
+      - https://pre-commit.com/
+  - id: brew:cmake
+    reason: >
+      CMake is the build-system tool that consumes the `CMakeLists.txt` and module files
+      checked by cmake-lint.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cmake-lint/cmake-lint#readme
+      - https://cmake.org/cmake/help/latest/manual/cmake-language.7.html
 category: developer-tools
 package-manager:
   brew: cmake-lint

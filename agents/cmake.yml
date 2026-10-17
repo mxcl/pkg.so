@@ -67,6 +67,40 @@ history:
       runs scripts, runs command-line helper actions, and exposes help. CMake projects
       begin from CMakeLists.txt files; modern workflows may also use CMakePresets.json
       and CMakeUserPresets.json, while generated build trees contain CMakeCache.txt.
+related-packages:
+  - id: brew:ninja
+    reason: >
+      Ninja is a fast execution backend that CMake can target with `-G Ninja`, consuming
+      the generated `build.ninja` files for the actual build.
+    rel: adjacent_workflow
+    sources:
+      - https://cmake.org/cmake/help/latest/guide/tutorial/Before%20You%20Begin.html
+      - https://ninja-build.org/manual
+  - id: brew:meson
+    reason: >
+      Meson is an alternative cross-platform build configuration system with its own
+      declarative language and a workflow centered on fast Ninja-backed builds.
+    rel: alternative
+    sources:
+      - https://cmake.org/about/
+      - https://mesonbuild.com/
+  - id: brew:cmake-language-server
+    reason: >
+      cmake-language-server adds completion, hover documentation, and formatting to
+      editors working with CMake files, using CMake's file API for configured build
+      information.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/regen100/cmake-language-server#readme
+      - https://cmake.org/cmake/help/latest/manual/cmake-file-api.7.html
+  - id: brew:cmake-lint
+    reason: >
+      cmake-lint statically checks the style and syntax of the CMake project files that
+      CMake consumes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cmake-lint/cmake-lint#readme
+      - https://cmake.org/cmake/help/latest/manual/cmake-language.7.html
 tags:
   - build-system
   - cli

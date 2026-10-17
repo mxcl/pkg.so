@@ -56,6 +56,39 @@ history:
       shows the common archive pipeline, extracting a tar.lz archive with clzip -cd
       piped into tar, while the manual documents invocation, file-format behavior,
       trailing-data handling, and the reference decompressor used to explain the format.
+related-packages:
+  - id: brew:lzip
+    reason: >
+      Choose lzip for the reference C++ implementation of the same interoperable `.lz`
+      compression format; choose Clzip when a C-only implementation is preferable.
+    rel: alternative
+    sources:
+      - https://www.nongnu.org/lzip/
+      - https://www.nongnu.org/lzip/manual/clzip_manual.html
+  - id: brew:plzip
+    reason: >
+      Choose Plzip when large `.lz` files should be compressed or decompressed across
+      multiple processor cores rather than by Clzip's single-process implementation.
+    rel: alternative
+    sources:
+      - https://www.nongnu.org/lzip/plzip.html
+      - https://www.nongnu.org/lzip/manual/clzip_manual.html
+  - id: brew:tarlz
+    reason: >
+      Tarlz complements Clzip when creating tar archives because it preserves alignment
+      between tar and lzip members and supports parallel archive operations.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/lzip/tarlz.html
+      - https://www.nongnu.org/lzip/manual/clzip_manual.html
+  - id: brew:lziprecover
+    reason: >
+      Lziprecover complements Clzip by diagnosing, merging, and recovering data from
+      damaged `.lz` files created by compatible lzip-family compressors.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/lzip/lziprecover.html
+      - https://www.nongnu.org/lzip/manual/clzip_manual.html
 tags:
   - archive
   - c
@@ -87,9 +120,10 @@ provenance:
     - https://www.nongnu.org/lzip/manual/clzip_manual.html
   repo-sources:
     - >
-      source_facts.repo is empty. The official Clzip surfaces document release archives
-      but do not identify a distinct official HTTP(S) source-control repository for
-      Clzip.
+      The official Clzip project page and release directory provide source archives but
+      do not identify an official HTTP(S) source-control project page:
+      https://www.nongnu.org/lzip/clzip.html
+    - https://download.savannah.nongnu.org/releases/lzip/clzip/
   tags-sources:
     - https://www.nongnu.org/lzip/clzip.html
     - source_facts.description
