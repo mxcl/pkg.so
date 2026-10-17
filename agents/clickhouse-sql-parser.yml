@@ -36,6 +36,24 @@ history:
       Developers import the parser package in Go code or run `clickhouse-sql-parser`
       from the shell to parse SQL strings, format SQL, beautify SQL, or read queries
       from files.
+related-packages:
+  - id: brew:sqlfluff
+    reason: >
+      Choose SQLFluff when the main task is configurable linting and auto-formatting
+      with an officially supported ClickHouse dialect; choose this parser when Go code
+      needs a typed AST and transformation API.
+    rel: alternative
+    sources:
+      - https://github.com/AfterShip/clickhouse-sql-parser#readme
+      - https://docs.sqlfluff.com/en/stable/reference/dialects/
+  - id: cask:clickhouse
+    reason: >
+      Use the parser to analyze, validate, rewrite, or format ClickHouse-dialect queries
+      before sending them to a ClickHouse database or local ClickHouse workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/AfterShip/clickhouse-sql-parser#readme
+      - https://clickhouse.com/docs
 tags:
   - cli
   - clickhouse
