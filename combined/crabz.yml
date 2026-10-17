@@ -43,6 +43,32 @@ history:
       Users call `crabz` to compress or decompress files, select formats, control
       compression level, set thread counts, and optionally write in place or to standard
       output.
+related-packages:
+  - id: brew:pigz
+    reason: >
+      Choose pigz for the established zlib-based parallel gzip implementation; crabz's
+      official benchmarks position crabz as a Rust, cross-platform alternative with
+      additional formats.
+    rel: alternative
+    sources:
+      - https://github.com/sstadick/crabz#readme
+      - https://zlib.net/pigz/
+  - id: brew:gzip
+    reason: >
+      Choose GNU Gzip when maximum availability and the conventional single-threaded
+      gzip interface matter more than crabz's parallelism and extra formats.
+    rel: alternative
+    sources:
+      - https://github.com/sstadick/crabz#readme
+      - https://www.gnu.org/software/gzip/manual/gzip.html
+  - id: brew:zstd
+    reason: >
+      Choose Zstandard when both endpoints can use the `.zst` format and modern
+      compression-ratio and speed tradeoffs matter more than gzip compatibility.
+    rel: alternative
+    sources:
+      - https://github.com/sstadick/crabz#readme
+      - https://facebook.github.io/zstd/
 category: system
 package-manager:
   brew: crabz

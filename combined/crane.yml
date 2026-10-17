@@ -61,6 +61,41 @@ history:
       copying between registries, tagging images in CI, listing tags, and authenticating
       to registries. The go-containerregistry README maps examples such as crane pull,
       crane push, and crane cp to library-level remote and tarball operations.
+related-packages:
+  - id: brew:skopeo
+    reason: >
+      Choose skopeo when you need transports beyond registries, containers/image policy
+      and signing integration, or the broader Podman ecosystem; choose crane for a
+      compact go-containerregistry-based workflow.
+    rel: alternative
+    sources:
+      - https://github.com/google/go-containerregistry/tree/main/cmd/crane#readme
+      - https://github.com/podman-container-tools/skopeo#readme
+  - id: brew:oras
+    reason: >
+      Choose ORAS when the primary task is pushing, attaching, discovering, and copying
+      general OCI artifacts such as SBOMs or policy bundles rather than manipulating
+      container images specifically.
+    rel: alternative
+    sources:
+      - https://github.com/google/go-containerregistry/tree/main/cmd/crane#readme
+      - https://oras.land/docs/
+  - id: brew:cosign
+    reason: >
+      Use cosign alongside crane when images copied or inspected by crane must also be
+      signed, attested, or verified through Sigstore workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/google/go-containerregistry/tree/main/cmd/crane#readme
+      - https://docs.sigstore.dev/cosign/
+  - id: brew:ko
+    reason: >
+      Use ko to build and publish Go applications as OCI images, then use crane for
+      registry-side inspection, copying, tagging, or mutation of the resulting images.
+    rel: adjacent_workflow
+    sources:
+      - https://ko.build/
+      - https://github.com/google/go-containerregistry/blob/main/cmd/crane/recipes.md
 category: cloud-infrastructure
 package-manager:
   apk: crane

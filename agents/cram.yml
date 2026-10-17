@@ -4,7 +4,9 @@ repo: https://github.com/aiiie/cram
 docs:
   - https://bitheap.org/cram
   - https://github.com/aiiie/cram#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - .cramrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -50,6 +52,25 @@ history:
       output are easier to review than imperative test code. It prints unified diffs for
       failures, can write `.err` files, and can interactively merge observed output back
       into tests.
+related-packages:
+  - id: brew:bats-core
+    reason: >
+      Choose bats-core when tests should be written as Bash functions with TAP output
+      and Bash-native setup or assertion helpers; choose Cram for compact
+      language-independent command transcripts.
+    rel: alternative
+    sources:
+      - https://bitheap.org/cram/
+      - https://bats-core.readthedocs.io/en/stable/
+  - id: brew:shellspec
+    reason: >
+      Choose ShellSpec for BDD-style unit testing of shell functions across many POSIX
+      shells, including mocking and coverage; choose Cram for simpler black-box
+      transcript tests of any CLI.
+    rel: alternative
+    sources:
+      - https://bitheap.org/cram/
+      - https://github.com/shellspec/shellspec#readme
 tags:
   - cli
   - functional-testing
