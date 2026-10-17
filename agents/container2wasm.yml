@@ -48,6 +48,23 @@ history:
       output `.wasm` file. The companion `c2w-net` command supports networking
       experiments for converted WASM images, including browser and WebSocket delegation
       modes.
+related-packages:
+  - id: brew:wasmtime
+    reason: >
+      Use Wasmtime to execute and test the WASI images produced by container2wasm;
+      upstream uses it in its primary command examples.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/container2wasm/container2wasm#container-image-to-wasm-wasi
+      - https://github.com/bytecodealliance/wasmtime
+  - id: brew:docker
+    reason: >
+      Use the Docker CLI with Buildx/BuildKit to supply the image-building functionality
+      required by container2wasm's conversion workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/container2wasm/container2wasm#getting-started
+      - https://docs.docker.com/build/buildx/
 tags:
   - cli
   - containers

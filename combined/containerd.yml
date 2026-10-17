@@ -67,6 +67,47 @@ history:
       through Kubernetes CRI, Docker/Moby, or higher-level clients. The getting-started
       guide distinguishes `ctr` as a bundled debugging client, `nerdctl` as a
       human-friendly containerd client, and `crictl` as a Kubernetes CRI debugging tool.
+related-packages:
+  - id: brew:nerdctl
+    reason: >
+      Use nerdctl when you want a Docker-compatible, human-oriented CLI for operating
+      containers directly through containerd.
+    rel: adjacent_workflow
+    sources:
+      - https://containerd.io/docs/2.4/getting-started/
+      - https://github.com/containerd/nerdctl#readme
+  - id: brew:cri-tools
+    reason: >
+      Use the `crictl` client from cri-tools to inspect and debug containerd through
+      Kubernetes's CRI interface.
+    rel: adjacent_workflow
+    sources:
+      - https://containerd.io/docs/2.2/cri/crictl/
+      - https://github.com/kubernetes-sigs/cri-tools/blob/master/docs/crictl.md
+  - id: brew:runc
+    reason: >
+      Install runc as the OCI low-level runtime that containerd commonly invokes to
+      create and run containers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/containerd/containerd#runtime-requirements
+      - https://github.com/opencontainers/runc#readme
+  - id: brew:cni-plugins
+    reason: >
+      Use the CNI plugins to provide container networking for CRI and nerdctl workflows
+      built on containerd.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/containerd/nerdctl#install
+      - https://github.com/containernetworking/plugins#readme
+  - id: brew:buildkit
+    reason: >
+      Use BuildKit with its containerd worker when builds should share
+      containerd-managed images and execution infrastructure.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/containerd/nerdctl/blob/main/docs/build.md
+      - https://github.com/moby/buildkit#containerd-image-store
 category: cloud-infrastructure
 package-manager:
   apk: containerd
