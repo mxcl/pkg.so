@@ -70,6 +70,32 @@ history:
     - >
       The command reference also exposes AMI, bootstrap, controller, EKS,
       garbage-collection, resource, and version subcommands.
+related-packages:
+  - id: brew:clusterctl
+    reason: >
+      clusterctl consumes the AWS prerequisites and encoded credentials prepared by
+      clusterawsadm to initialize the Cluster API AWS infrastructure provider.
+    rel: adjacent_workflow
+    sources:
+      - https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm.html
+      - https://cluster-api.sigs.k8s.io/clusterctl/overview
+  - id: brew:awscli
+    reason: >
+      The official prerequisite workflow requires the AWS CLI alongside clusterawsadm
+      for AWS account and infrastructure operations.
+    rel: adjacent_workflow
+    sources:
+      - https://cluster-api-aws.sigs.k8s.io/topics/using-clusterawsadm-to-fulfill-prerequisites
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
+  - id: brew:aws-vault
+    reason: >
+      The CAPA prerequisite guide recommends AWS Vault for storing AWS credentials in
+      the operating-system keystore and securely exposing them to the clusterawsadm
+      environment.
+    rel: adjacent_workflow
+    sources:
+      - https://cluster-api-aws.sigs.k8s.io/topics/using-clusterawsadm-to-fulfill-prerequisites
+      - https://github.com/ByteNess/aws-vault
 category: cloud-infrastructure
 package-manager:
   brew: clusterawsadm
