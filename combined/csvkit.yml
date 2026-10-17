@@ -67,6 +67,24 @@ history:
       statistics with csvstat, or create/query database tables with csvsql. Its role
       overlaps with small Unix text tools but handles CSV dialects, quoting, encodings,
       and tabular types explicitly.
+related-packages:
+  - id: brew:qsv
+    reason: >
+      Choose qsv when csvkit's official documentation warns that performance or file
+      size has become limiting and a faster, large-data-oriented CSV toolkit is needed.
+    rel: alternative
+    sources:
+      - https://csvkit.readthedocs.io/en/latest/
+      - https://qsv.dathere.com/
+  - id: brew:csview
+    reason: >
+      Choose csview when the task is limited to fast, memory-efficient terminal
+      formatting; csvkit remains the broader choice when viewing must accompany
+      conversion, filtering, joins, statistics, or SQL work.
+    rel: alternative
+    sources:
+      - https://github.com/wfxr/csview#benchmark
+      - https://csvkit.readthedocs.io/en/latest/scripts/csvlook.html
 category: data
 package-manager:
   brew: csvkit
