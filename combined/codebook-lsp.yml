@@ -4,7 +4,17 @@ homepage: https://github.com/blopker/codebook
 repo: https://github.com/blopker/codebook
 docs:
   - https://github.com/blopker/codebook#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/codebook/codebook.toml
+    - ~/.config/codebook/codebook.toml
+    - codebook.toml
+    - .codebook.toml
+  windows:
+    - '%APPDATA%\codebook\codebook.toml'
+    - '%APPDATA%\Roaming\codebook\codebook.toml'
+    - codebook.toml
+    - .codebook.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -60,6 +70,25 @@ history:
       The language server checks code-aware text such as comments, strings, and
       definitions, splits camelCase and snake_case, and manages dictionaries
       automatically.
+related-packages:
+  - id: brew:typos-lsp
+    reason: >
+      Choose typos-lsp for an LSP wrapper around the low-false-positive `typos`
+      correction database; choose Codebook for Tree-sitter-aware checking of comments,
+      strings, and identifier definitions with managed dictionaries.
+    rel: alternative
+    sources:
+      - https://github.com/tekumara/typos-lsp
+      - https://github.com/blopker/codebook
+  - id: brew:harper
+    reason: >
+      Choose Harper when you need offline grammar and style diagnostics as well as
+      spelling through an editor language server; Codebook intentionally focuses on
+      code-aware spelling rather than prose grammar.
+    rel: alternative
+    sources:
+      - https://writewithharper.com/docs/integrations/language-server
+      - https://github.com/blopker/codebook
 category: developer-tools
 package-manager:
   brew: codebook-lsp
