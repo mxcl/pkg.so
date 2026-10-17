@@ -55,6 +55,33 @@ history:
       instances push samples via remote write, while Cortex distributes, ingests,
       stores, and queries data across long-term storage backends such as S3, GCS, Swift,
       and Azure.
+related-packages:
+  - id: brew:prometheus
+    reason: >
+      Prometheus scrapes targets and sends samples to Cortex through remote_write,
+      making it Cortex's primary documented ingestion companion.
+    rel: adjacent_workflow
+    sources:
+      - https://cortexmetrics.io/docs/architecture/
+      - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write
+  - id: brew:grafana
+    reason: >
+      Cortex's getting-started guide configures Grafana to query Cortex as a
+      Prometheus-compatible data source.
+    rel: adjacent_workflow
+    sources:
+      - https://cortexmetrics.io/docs/getting-started/single-binary/
+      - https://grafana.com/docs/grafana/latest/datasources/prometheus/
+  - id: brew:thanos
+    reason: >
+      Thanos is an alternative long-term Prometheus metrics architecture centered on
+      composable components and sidecar-based object-storage uploads; Cortex documents
+      migration from Thanos into its multi-tenant blocks storage.
+    rel: alternative
+    sources:
+      - https://cortexmetrics.io/docs/blocks-storage/migrate-storage-from-thanos-and-prometheus/
+      - https://github.com/thanos-io/thanos
+      - https://github.com/thanos-io/thanos/blob/main/docs/components/sidecar.md
 category: data
 package-manager:
   brew: cortex

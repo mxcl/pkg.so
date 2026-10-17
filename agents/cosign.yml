@@ -53,6 +53,25 @@ history:
       expected OIDC identity and issuer values, sign or verify blobs, and publish
       signatures or attestations alongside artifacts in OCI registries. The README also
       documents offline verification and generic artifact upload flows.
+related-packages:
+  - id: brew:syft
+    reason: >
+      Syft generates SBOM attestations that cosign can attach to OCI images and later
+      verify, providing a documented end-to-end SBOM publishing workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/anchore/syft/wiki/attestation
+      - https://docs.sigstore.dev/cosign/system_config/specifications/
+  - id: brew:notation
+    reason: >
+      Notation is an alternative OCI signing CLI based on Notary Project trust policies
+      and signing plugins, while cosign emphasizes Sigstore identities, Fulcio
+      certificates, and transparency logging.
+    rel: alternative
+    sources:
+      - https://github.com/sigstore/cosign#why-not-use-notary-v2
+      - https://notaryproject.dev/docs/quickstart-guides/quickstart-sign-image-artifact/
+      - https://github.com/notaryproject/notation
 tags:
   - artifact-signing
   - cli

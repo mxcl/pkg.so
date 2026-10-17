@@ -5,7 +5,15 @@ repo: https://github.com/CorsixTH/CorsixTH
 docs:
   - https://github.com/CorsixTH/CorsixTH/wiki
   - https://github.com/CorsixTH/CorsixTH#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/CorsixTH/config.txt
+    - ~/.config/CorsixTH/config.txt
+    - $XDG_CONFIG_HOME/CorsixTH/hotkeys.txt
+    - ~/.config/CorsixTH/hotkeys.txt
+  windows:
+    - '%APPDATA%\CorsixTH\config.txt'
+    - '%APPDATA%\CorsixTH\hotkeys.txt'
 credentials-file-location: null
 history:
   adoption-history:
@@ -54,6 +62,7 @@ history:
       original CD, GOG, EA, or the demo. The wiki documents supported operating systems,
       release builds, package-manager installs, data-file setup, and runtime
       configuration.
+related-packages: []
 category: games
 package-manager:
   brew: corsixth

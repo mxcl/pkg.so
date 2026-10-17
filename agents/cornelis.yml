@@ -3,7 +3,15 @@ display-name: Cornelis
 repo: null
 docs:
   - https://github.com/agda/cornelis#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/nvim/init.vim
+    - $XDG_CONFIG_HOME/nvim/init.lua
+    - ~/.config/nvim/init.vim
+    - ~/.config/nvim/init.lua
+  windows:
+    - ~/AppData/Local/nvim/init.vim
+    - ~/AppData/Local/nvim/init.lua
 credentials-file-location: null
 history:
   adoption-history:
@@ -51,6 +59,24 @@ history:
       Users install Cornelis as a Neovim plugin, build it with Stack, and configure
       Vimscript or Lua variables for behavior such as rewrite mode, Agda input prefix,
       disabling default bindings, and debug logging.
+related-packages:
+  - id: brew:agda
+    reason: >
+      Cornelis provides the interactive Neovim interface for Agda, and its release
+      guidance explicitly ties Cornelis compatibility to the installed Agda release
+      line.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/agda/cornelis
+      - https://agda.readthedocs.io/en/latest/getting-started/what-is-agda.html
+  - id: brew:neovim
+    reason: >
+      Cornelis runs as a Neovim plugin, with its mappings and behavior configured
+      through Neovim's user configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/agda/cornelis
+      - https://neovim.io/doc/user/starting.html
 tags:
   - agda
   - cli
