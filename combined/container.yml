@@ -4,7 +4,10 @@ homepage: https://apple.github.io/container/documentation/
 repo: https://github.com/apple/container
 docs:
   - https://apple.github.io/container/documentation
-config-file-location: null
+config-file-location:
+  macos:
+    - ~/.config/container/config.toml
+    - <installRoot>/etc/container/config.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -55,6 +58,25 @@ history:
       container runs in its own lightweight VM through Apple's Containerization package
       and macOS frameworks such as Virtualization, vmnet, XPC, launchd, Keychain
       services, and unified logging.
+related-packages:
+  - id: brew:container-compose
+    reason: >
+      Container-Compose invokes Apple's container ecosystem to run multiple services
+      described by familiar Compose files.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Mcrich23/Container-Compose#readme
+      - https://github.com/apple/container#readme
+  - id: brew:podman
+    reason: >
+      Choose Podman when you want a mature cross-platform container CLI and Docker-API
+      compatibility on macOS, accepting its shared Podman machine model instead of
+      Apple's per-container lightweight VMs.
+    rel: alternative
+    sources:
+      - https://podman.io/docs/installation
+      - https://docs.podman.io/en/latest/markdown/podman-machine.1.html
+      - https://github.com/apple/container#readme
 category: cloud-infrastructure
 package-manager:
   brew: container

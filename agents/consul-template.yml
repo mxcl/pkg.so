@@ -29,9 +29,9 @@ history:
       compatibility with Consul, Vault, Nomad, and downstream config consumers.
   project-history:
     - >
-      HashiCorp released Consul Template 0.1.0 in October 2014. The README still
-      states the core idea: query a Consul, Vault, or Nomad cluster and update any
-      number of templates on the filesystem.
+      HashiCorp released Consul Template 0.1.0 in October 2014. The README still states
+      the core idea: query a Consul, Vault, or Nomad cluster and update any number of
+      templates on the filesystem.
     - >
       The early changelog shows rapid hardening after launch: 0.2.0 added file and
       key-prefix helpers, tree and ls functions, string helpers, and more examples;
@@ -73,6 +73,15 @@ history:
       The README also documents once mode, reload via SIGHUP, environment variables
       shared with Consul, Vault, and Nomad tooling, and version-specific documentation
       through Git tags.
+related-packages:
+  - id: cask:consul
+    reason: >
+      Consul supplies the key-value and service-catalog data that Consul Template
+      watches and renders into application configuration files.
+    rel: adjacent_workflow
+    sources:
+      - https://developer.hashicorp.com/consul/docs/automate/consul-template
+      - https://github.com/hashicorp/consul-template#readme
 tags:
   - automation
   - cli
