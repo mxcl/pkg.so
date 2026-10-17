@@ -600,6 +600,8 @@ def full_package_data(page_module: Any, page: Any, route: PackageRoute | None = 
         "version": getattr(page, "version", ""),
         "lastUpdatedAt": getattr(page, "last_updated_at", ""),
         "pulseKind": getattr(page, "pulse_kind", ""),
+        "discovery": extra.get("discovery"),
+        "tapSource": extra.get("tapSource"),
         "url": getattr(page, "url", ""),
         "sha256": getattr(page, "sha256", ""),
         "binaries": getattr(page, "binaries", []),

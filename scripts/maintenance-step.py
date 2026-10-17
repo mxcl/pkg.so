@@ -45,6 +45,7 @@ def stages(state):
     settings = state["settings"]
     return [
         ("checkout", None),
+        ("homebrew-discovery", script("update-homebrew-discovery.py")),
         ("source-refresh", script("build-db.py", "--refresh", "--npm-full-scan-parts=7")),
         ("source-render", script("build.py", "--refresh")),
         ("source-commit", None),

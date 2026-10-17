@@ -1988,12 +1988,12 @@ def _overlay_homebrew_pulse_metadata(formulas, casks):
     formula_paths = {
         _formula_source_path(name): name
         for name in formulas.keys()
-        if isinstance(name, str) and name
+        if isinstance(name, str) and name and "/" not in name
     }
     cask_paths = {
         _cask_source_path(token): token
         for token in casks.keys()
-        if isinstance(token, str) and token
+        if isinstance(token, str) and token and "/" not in token
     }
     formula_pulse_events = _git_pulse_events(
         HOMEWBREW_CORE_REPO,
@@ -2231,6 +2231,8 @@ def main():
         "npms": npm_metadata,
     }
 
+    from bootstrap.lib.discovery import overlay
+    overlay(db)
     _write_json_atomic(DB_PATH, db, indent=2)
 
     print(

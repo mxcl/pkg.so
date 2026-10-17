@@ -217,6 +217,7 @@ def main() -> int:
         )
         print(f"commit={commit or 'none'}")
 
+    run([py, "scripts/update-homebrew-discovery.py"])
     run([py, "scripts/build-db.py", "--refresh", "--npm-full-scan-parts=7"])
     run([py, "scripts/build.py", "--refresh"])
     # Preserve successful generation before a fallible remote research stage.

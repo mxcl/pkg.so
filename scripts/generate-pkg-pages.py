@@ -29,6 +29,7 @@ from avdb_paths import (
     RADIOISOTOPES_REPO_DIR,
 )
 from bootstrap.lib.render import parse_simple_yaml
+from bootstrap.lib.discovery import overlay as discovery_overlay
 from geiger_agent_data import load_agent_geiger_data
 from pkg_hub_data import graph_hub_definitions, load_pkg_taxonomy_index, taxonomy_brief, taxonomy_for_package, taxonomy_terms
 
@@ -448,6 +449,8 @@ class PackagePage:
 
     @property
     def display_name(self) -> str:
+        if self.extra.get("displayName"):
+            return self.extra["displayName"]
         if self.provider == "npm" and self.name.startswith("@"):
             return self.name
         return self.name
@@ -691,7 +694,7 @@ def fmt_date(value: str) -> str:
 
 def load_sources() -> dict[str, Any]:
     return {
-        "db": read_json(PACKAGE_INDEX_PATH, {}),
+        "db": discovery_overlay(read_json(PACKAGE_INDEX_PATH, {})),
         "geiger": load_agent_geiger_data(),
         "isotopes": read_json(ISOTOPES_JSON_PATH, {}),
         "npm": read_json(Path("data/npm.json"), {}),
@@ -839,6 +842,12 @@ def package_pages_from_sources(
                 if rank is not None:
                     popularity["rank"] = rank
             page.popularity = popularity
+            page.package_manager_url = info.get("packageManagerUrl") or page.package_manager_url
+            page.install_commands = info.get("installCommands") or page.install_commands
+            page.install_behavior = info.get("installBehavior") or page.install_behavior
+            page.license = info.get("license") or page.license
+            for field in ("discovery", "tapSource", "displayName", "applications"):
+                if info.get(field): page.extra[field] = info[field]
             page.source_notes.append("pkg.so package database")
 
     for name, info in (sources.get("npm") or {}).items():

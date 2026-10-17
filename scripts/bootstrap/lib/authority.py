@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from .brew import source_archive, stable_version
+from .discovery import overlay
 from .common import CACHE_DIR, COMBINED_DIR, ROOT, read_json, write_json
 from .casks import read_cask_cache, read_cask_catalog
 from .crates import CRATES_IO_INDEX_PATH
@@ -485,7 +486,7 @@ def build_automic_vault_db(root: Path = COMBINED_DIR, formulae: list[dict[str, A
         if token in casks:
             casks[token].update(metadata)
     timestamp = generated_at or datetime.datetime.now(datetime.timezone.utc).isoformat()
-    return {
+    return overlay({
         "schema": DB_SCHEMA_VERSION,
         "generated_at": timestamp,
         "entries": dict(sorted(entries.items())),
@@ -494,7 +495,7 @@ def build_automic_vault_db(root: Path = COMBINED_DIR, formulae: list[dict[str, A
         "apps": apps,
         "npms": npms,
         "crates": crates,
-    }
+    })
 
 
 def write_automic_vault_db(path: Path = AUTOMIC_VAULT_DB_PATH) -> dict[str, Any]:
