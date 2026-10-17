@@ -51,6 +51,17 @@ history:
       Consul connection settings through flags and environment variables, optional S3
       URIs, encryption keys, signatures, ACL files, prepared queries, and destructive
       restore safeguards.
+related-packages:
+  - id: cask:consul
+    reason: >
+      Consul's built-in snapshot commands are the official alternative for atomic
+      disaster-recovery snapshots of full server state; choose consul-backinator when
+      selective KV, ACL, or prepared-query backups, transformations, encrypted JSON, or
+      its direct S3 workflow are required.
+    rel: alternative
+    sources:
+      - https://developer.hashicorp.com/consul/commands/snapshot
+      - https://github.com/myENA/consul-backinator#readme
 category: cloud-infrastructure
 package-manager:
   brew: consul-backinator

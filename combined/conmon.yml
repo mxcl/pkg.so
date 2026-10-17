@@ -49,6 +49,31 @@ history:
       Most users do not run conmon directly. It is installed as support infrastructure
       for Podman, CRI-O, and other OCI-container workflows, where it keeps container
       attach sockets, logging, and exit reporting separate from the manager process.
+related-packages:
+  - id: brew:podman
+    reason: >
+      Podman uses conmon as its per-container monitor, so conmon is normally installed
+      and invoked as part of a Podman workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/containers/conmon#readme
+      - https://docs.podman.io/en/latest/
+  - id: brew:crun
+    reason: >
+      conmon can launch crun as the OCI runtime beneath Podman or CRI-O; choose crun
+      when a C-based, low-memory OCI runtime is desired.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/containers/conmon#readme
+      - https://github.com/containers/crun#readme
+  - id: brew:runc
+    reason: >
+      conmon can supervise runc as its OCI runtime, with conmon handling monitoring and
+      I/O while runc implements the container lifecycle.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/containers/conmon#readme
+      - https://github.com/opencontainers/runc#readme
 category: system
 package-manager:
   apk: conmon

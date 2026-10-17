@@ -42,6 +42,32 @@ history:
       ~/.ssh/config with a ProxyCommand line. The README documents SOCKS4, SOCKS4a,
       SOCKS5, HTTP CONNECT, proxy credentials, debug mode, and local socket relay
       behavior.
+related-packages:
+  - id: brew:openssh
+    reason: >
+      OpenSSH invokes connect through ProxyCommand, while connect supplies the SOCKS or
+      HTTP CONNECT transport needed to reach the SSH destination.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gotoh/ssh-connect#readme
+      - https://www.openssh.com/manual.html
+  - id: brew:proxytunnel
+    reason: >
+      Choose proxytunnel when the task specifically requires tunneling through HTTP or
+      HTTPS proxies with its extended proxy-chaining features; connect also supports
+      SOCKS and is intentionally broader but smaller.
+    rel: alternative
+    sources:
+      - https://github.com/proxytunnel/proxytunnel#readme
+      - https://github.com/gotoh/ssh-connect#readme
+  - id: brew:corkscrew
+    reason: >
+      Corkscrew is a narrower SSH-through-HTTP-proxy alternative, whereas connect
+      additionally supports SOCKS4, SOCKS4a, and SOCKS5.
+    rel: alternative
+    sources:
+      - https://github.com/patpadgett/corkscrew#readme
+      - https://github.com/gotoh/ssh-connect#readme
 tags:
   - cli
   - https-proxy

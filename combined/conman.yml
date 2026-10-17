@@ -70,6 +70,30 @@ history:
       logging behavior, then connect with conman or conmen for interactive, monitoring,
       or broadcast sessions. The package is relevant to serial-console fleets, remote
       management networks, and older hardware rooms where SSH alone is not enough.
+related-packages:
+  - id: brew:conserver
+    reason: >
+      Choose Conserver for its established client/server access-control model and shared
+      serial-console logging; choose ConMan when FreeIPMI Serial-over-LAN and parallel
+      Expect-script execution are important.
+    rel: alternative
+    sources:
+      - https://github.com/dun/conman#readme
+      - https://conserver.com/docs/conserver.man.html
+  - id: brew:freeipmi
+    reason: ConMan directly uses FreeIPMI's libipmiconsole to manage IPMI Serial-over-LAN consoles.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dun/conman#readme
+      - https://www.gnu.org/software/freeipmi/freeipmi-faq.html
+  - id: brew:expect
+    reason: >
+      ConMan can drive external Expect processes and execute Expect scripts across
+      multiple consoles in parallel.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dun/conman#readme
+      - https://core.tcl-lang.org/expect/home
 category: system
 package-manager:
   brew: conman
