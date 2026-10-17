@@ -55,6 +55,25 @@ history:
       conda-lock.yml, pyproject.toml, or meta.yaml, choose target platforms, generate
       conda-lock.yml, and install or render platform-specific lock files in CI or
       deployment workflows.
+related-packages:
+  - id: brew:pixi
+    reason: >
+      Choose Pixi when you want a project-centric Conda workflow with its own pixi.toml
+      and pixi.lock; conda-lock provides an official command and migration guide for
+      translating existing specifications.
+    rel: alternative
+    sources:
+      - https://conda.github.io/conda-lock/pixi-migration/
+      - https://pixi.sh/latest/
+  - id: brew:micromamba
+    reason: >
+      Use micromamba alongside conda-lock as a lightweight Conda-compatible solver and
+      environment installer in workflows where conda-lock prepares or consumes
+      reproducible environment metadata.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/conda/conda-lock#readme
+      - https://mamba.readthedocs.io/en/stable/user_guide/micromamba.html
 category: developer-tools
 package-manager:
   brew: conda-lock

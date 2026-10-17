@@ -51,6 +51,23 @@ history:
       conanfile.py or conanfile.txt. The separate Homebrew formula exists to keep older
       projects and lock-step CI environments on the legacy client while Conan 2 evolves
       independently.
+related-packages:
+  - id: brew:conan
+    reason: >
+      Choose the unversioned Conan formula for the supported Conan 2 client; the project
+      marks Conan 1.x as legacy and recommends migration for new work.
+    rel: alternative
+    sources:
+      - https://docs.conan.io/1/
+      - https://docs.conan.io/2/
+  - id: brew:cmake
+    reason: >
+      Use CMake alongside Conan 1.x when maintaining an older Conan-driven C or C++
+      build that relies on its documented CMake generators and build helpers.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.conan.io/1/integrations/build_system/cmake.html
+      - https://cmake.org/cmake/help/latest/
 tags:
   - build-systems
   - c
