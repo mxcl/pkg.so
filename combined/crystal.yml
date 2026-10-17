@@ -5,7 +5,10 @@ repo: https://github.com/crystal-lang/crystal
 docs:
   - https://crystal-lang.org/api/latest
   - https://crystal-lang.org/reference/latest
-config-file-location: null
+config-file-location:
+  unix:
+    - shard.yml
+    - shard.override.yml
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,6 +66,23 @@ history:
       highlights the standard library, fibers, C bindings, macros, and Shards; the
       reference and API docs are the primary documentation surfaces for everyday
       development.
+related-packages:
+  - id: brew:crystal-icr
+    reason: >
+      ICR adds a REPL-like interactive console that repeatedly generates and executes
+      Crystal programs, making it useful for experimentation beside the compiler.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/crystal-community/icr#readme
+      - https://crystal-lang.org/reference/latest/
+  - id: brew:crystalline
+    reason: >
+      Crystalline runs beside Crystal-aware editors to provide completion, navigation,
+      formatting, and diagnostics using Crystal project metadata and compiler behavior.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/elbywan/crystalline#readme
+      - https://crystal-lang.org/reference/latest/
 category: language-runtime
 package-manager:
   apk: crystal

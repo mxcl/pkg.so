@@ -53,6 +53,24 @@ history:
       is invoked as cryptominisat5. The README also documents incremental Python and C++
       usage, including assumptions and repeated solve calls, which are important for
       users embedding the solver in larger verification or search programs.
+related-packages:
+  - id: brew:cadical
+    reason: >
+      Choose CaDiCaL for a clean, well-documented general CDCL solver and embeddable C++
+      library; choose CryptoMiniSat when native XOR reasoning or its Python interface is
+      important.
+    rel: alternative
+    sources:
+      - https://github.com/msoos/cryptominisat#readme
+      - https://github.com/arminbiere/cadical#readme
+  - id: brew:kissat
+    reason: >
+      Choose Kissat for a compact, highly optimized non-incremental C solver, while
+      CryptoMiniSat is the better fit for incremental solving and XOR-heavy inputs.
+    rel: alternative
+    sources:
+      - https://github.com/msoos/cryptominisat#readme
+      - https://github.com/arminbiere/kissat#readme
 category: science
 package-manager:
   brew: cryptominisat

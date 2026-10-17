@@ -50,6 +50,23 @@ history:
       crytic-export/contracts.json containing AST, ABI, and bytecode data. Advanced
       options are supplied as CLI flags or library arguments, not through a documented
       standalone config file.
+related-packages:
+  - id: brew:slither-analyzer
+    reason: >
+      Slither directly uses crytic-compile as its compilation engine to turn framework
+      projects into the ASTs required for Solidity and Vyper static analysis.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/crytic/crytic-compile#readme
+      - https://github.com/crytic/slither#readme
+  - id: brew:echidna
+    reason: >
+      Echidna uses crytic-compile to compile Foundry, Hardhat, and Truffle projects
+      before running property-based smart-contract fuzzing.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/crytic/crytic-compile#readme
+      - https://github.com/crytic/echidna#readme
 category: security
 package-manager:
   brew: crytic-compile
