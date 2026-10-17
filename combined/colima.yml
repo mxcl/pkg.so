@@ -61,6 +61,41 @@ history:
       containerd/nerdctl, Kubernetes, or Incus clients can target the VM-backed runtime.
       Configuration is normally edited with colima start --edit or the colima template
       command.
+related-packages:
+  - id: brew:lima
+    reason: >
+      Lima is the virtual-machine layer underneath Colima; choose it directly when you
+      need general-purpose configurable Linux VMs instead of Colima's higher-level
+      container-focused setup.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/abiosoft/colima
+      - https://lima-vm.io/docs/
+  - id: brew:docker
+    reason: >
+      Colima uses Docker as its default runtime and officially requires the Docker
+      client for the standard colima start followed by docker command workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/abiosoft/colima
+      - https://docs.docker.com/reference/cli/docker/
+  - id: brew:nerdctl
+    reason: >
+      Use nerdctl to operate containers when Colima is started with the containerd
+      runtime; Colima documents both its wrapper command and an optional PATH
+      installation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/abiosoft/colima
+      - https://github.com/containerd/nerdctl
+  - id: brew:kubernetes-cli
+    reason: >
+      Install kubectl when enabling Colima's optional Kubernetes environment, as Colima
+      documents kubectl as the client used to operate that cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/abiosoft/colima
+      - https://kubernetes.io/docs/reference/kubectl/
 category: cloud-infrastructure
 package-manager:
   brew: colima
