@@ -59,6 +59,23 @@ history:
       netcat or socat, Vim mappings that send yanked text to Clipper, shell aliases such
       as `clip="nc localhost 8377"`, and SSH `RemoteForward` rules that carry remote
       clipboard traffic back to the local machine.
+related-packages:
+  - id: brew:tmux
+    reason: >
+      Clipper's primary documented workflow sends tmux copy-mode buffers to the local
+      clipboard over TCP or a Unix socket, including from remote tmux sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/wincent/clipper#readme
+      - https://github.com/tmux/tmux/wiki/Clipboard
+  - id: brew:xclip
+    reason: >
+      Clipper uses xclip as its documented Linux clipboard-writing backend, while using
+      pbcopy by default on macOS.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/wincent/clipper#readme
+      - https://github.com/astrand/xclip#readme
 category: productivity
 package-manager:
   apk: clipper
