@@ -50,6 +50,16 @@ history:
       detects a compiler crash, wrong-code result, warning, or other minimized behavior.
       The README also notes that it can work well on languages beyond C/C++, including
       JavaScript and Rust, despite its primary C/C++ focus.
+related-packages:
+  - id: brew:csmith
+    reason: >
+      Csmith generates random defined-behavior C programs to expose compiler bugs, after
+      which C-Reduce can minimize a failing generated program into a practical bug
+      report.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/csmith-project/csmith#readme
+      - https://github.com/csmith-project/creduce#readme
 category: developer-tools
 package-manager:
   brew: creduce

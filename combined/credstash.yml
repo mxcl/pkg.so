@@ -58,6 +58,26 @@ history:
       credentials are available to boto or botocore, and run credstash setup to create
       the DynamoDB table. Users then put, get, list, delete, and bulk-fetch versioned
       secrets from shell scripts or deployment workflows.
+related-packages:
+  - id: brew:sops
+    reason: >
+      Choose SOPS when secrets should remain as encrypted YAML, JSON, ENV, INI, or
+      binary files in a repository; its official credits identify CredStash as an
+      inspiration, whereas CredStash stores versioned values in DynamoDB and protects
+      them with KMS.
+    rel: alternative
+    sources:
+      - https://getsops.io/docs/
+      - https://github.com/fugue/credstash#readme
+  - id: brew:chamber
+    reason: >
+      Choose Chamber for an AWS-native secrets CLI backed by SSM Parameter Store and
+      service-oriented paths; CredStash instead uses DynamoDB for records and KMS for
+      key wrapping.
+    rel: alternative
+    sources:
+      - https://github.com/segmentio/chamber#readme
+      - https://github.com/fugue/credstash#readme
 category: security
 package-manager:
   brew: credstash
