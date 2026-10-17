@@ -81,6 +81,24 @@ history:
       The official feature docs cover definition and reference lookup, rename,
       completion, Java support, code actions, code lenses, formatting, signature help,
       semantic tokens, call hierarchy, test and project trees, and diagnostics.
+related-packages:
+  - id: brew:clojure
+    reason: >
+      Use the Clojure CLI alongside clojure-lsp for deps.edn projects because the
+      language server invokes project tooling to build the classpath it analyzes.
+    rel: adjacent_workflow
+    sources:
+      - https://clojure-lsp.io/settings/
+      - https://clojure.org/reference/clojure_cli
+  - id: brew:leiningen
+    reason: >
+      Use Leiningen with clojure-lsp when a project is defined by project.clj;
+      clojure-lsp officially recognizes Leiningen projects when discovering their
+      classpaths.
+    rel: adjacent_workflow
+    sources:
+      - https://clojure-lsp.io/settings/
+      - https://codeberg.org/leiningen/leiningen
 category: developer-tools
 package-manager:
   brew: clojure-lsp
