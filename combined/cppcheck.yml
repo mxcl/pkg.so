@@ -66,6 +66,25 @@ history:
       memory issues, out-of-bounds access, uninitialized variables, null dereferences,
       invalid shifts, integer overflows, and other undefined behavior. Upstream also
       documents addon, rules, and platform data files as part of packaged installs.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      Choose LLVM's clang-tidy when compiler-aware checks, compilation-database
+      integration, and automated source fixes are more important than Cppcheck's
+      compiler-independent analysis.
+    rel: alternative
+    sources:
+      - https://clang.llvm.org/extra/clang-tidy/
+      - https://cppcheck.sourceforge.io/manual.html
+  - id: brew:cpplint
+    reason: >
+      Use cpplint alongside Cppcheck when Google C++ style conformance matters, since
+      cpplint checks source style while Cppcheck concentrates on defects and undefined
+      behavior.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cpplint/cpplint
+      - https://cppcheck.sourceforge.io/
 category: developer-tools
 package-manager:
   apk: cppcheck

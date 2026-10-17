@@ -46,6 +46,24 @@ history:
       Typical usage is cpplint [OPTIONS] files. The fork documents practical additions
       such as Python 3 compatibility, recursive file discovery, exclusion support, JUnit
       XML output, configurable extensions, and repository-root overrides.
+related-packages:
+  - id: brew:cppcheck
+    reason: >
+      Pair cpplint's Google-style checks with Cppcheck's defect and undefined-behavior
+      analysis to cover correctness concerns beyond source conventions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cpplint/cpplint
+      - https://cppcheck.sourceforge.io/
+  - id: brew:llvm
+    reason: >
+      Choose LLVM's clang-tidy when compiler-aware analysis, compilation-database
+      support, and automated fixes are needed instead of cpplint's lightweight textual
+      style checks.
+    rel: alternative
+    sources:
+      - https://github.com/cpplint/cpplint
+      - https://clang.llvm.org/extra/clang-tidy/
 category: developer-tools
 package-manager:
   apk: cpplint
