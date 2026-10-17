@@ -5,8 +5,24 @@ repo: https://github.com/cert-manager/cmctl
 docs:
   - https://cert-manager.io/docs/cli/cmctl
   - https://cert-manager.io/docs/reference/cmctl
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.kube/config
+    - files specified by KUBECONFIG
+    - '--kubeconfig'
+  windows:
+    - ~/.kube/config
+    - files specified by KUBECONFIG
+    - '--kubeconfig'
+credentials-file-location:
+  unix:
+    - ~/.kube/config
+    - files specified by KUBECONFIG
+    - '--kubeconfig'
+  windows:
+    - ~/.kube/config
+    - files specified by KUBECONFIG
+    - '--kubeconfig'
 history:
   adoption-history:
     - >
@@ -56,6 +72,7 @@ history:
       checking API health, inspecting Certificate and CertificateRequest objects,
       approving or denying requests, and using experimental `cmctl x` subcommands around
       cert-manager installation and lifecycle tasks.
+related-packages: []
 category: cloud-infrastructure
 package-manager:
   apk: cmctl
