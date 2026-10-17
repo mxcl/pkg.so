@@ -6,7 +6,13 @@ docs:
   - https://github.com/GoogleCloudPlatform/cloud-sql-proxy/tree/main/docs/cmd
   - https://github.com/GoogleCloudPlatform/cloud-sql-proxy#readme
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ${GOOGLE_APPLICATION_CREDENTIALS}
+    - ~/.config/gcloud/application_default_credentials.json
+  windows:
+    - '%GOOGLE_APPLICATION_CREDENTIALS%'
+    - '%APPDATA%\gcloud\application_default_credentials.json'
 history:
   adoption-history:
     - >
@@ -76,6 +82,7 @@ history:
       The proxy obtains credentials through Google Application Default Credentials by
       default, and can also take an OAuth token or service-account key file path
       supplied by the user.
+related-packages: []
 tags:
   - cli
   - cloud-sql
