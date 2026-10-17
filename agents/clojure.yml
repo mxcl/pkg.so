@@ -13,7 +13,10 @@ config-file-location:
     - $CLJ_CONFIG/deps.edn
     - $XDG_CONFIG_HOME/clojure/deps.edn
     - ~/.clojure/deps.edn
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.m2/settings.xml
+    - ~/.ssh/id_rsa
 history:
   adoption-history:
     - >
@@ -85,6 +88,40 @@ history:
       dependencies, Git dependencies, local dependencies, and tool definitions. User
       configuration lives in the Clojure CLI config directory, computed from CLJ_CONFIG,
       XDG_CONFIG_HOME, or ~/.clojure.
+related-packages:
+  - id: brew:leiningen
+    reason: >
+      Use Leiningen as an alternative project and build workflow when maintaining
+      Clojure projects organized around `project.clj`, including its documented `lein
+      repl` development flow.
+    rel: alternative
+    sources:
+      - https://clojure.org/guides/repl/launching_a_basic_repl
+      - https://codeberg.org/leiningen/leiningen
+  - id: brew:clojurescript
+    reason: >
+      Use ClojureScript alongside Clojure when the same Lisp-oriented development model
+      needs to target JavaScript runtimes and browsers.
+    rel: adjacent_workflow
+    sources:
+      - https://clojurescript.org/
+      - https://github.com/clojure/clojurescript
+  - id: brew:clojure-lsp
+    reason: >
+      Add clojure-lsp to provide editors with navigation, diagnostics, completion,
+      refactoring, and other language-aware features for Clojure projects.
+    rel: adjacent_workflow
+    sources:
+      - https://clojure-lsp.io/
+      - https://clojure.org
+  - id: brew:cljfmt
+    reason: >
+      Use cljfmt in Clojure development and CI workflows to check or normalize source
+      formatting consistently.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/weavejester/cljfmt
+      - https://clojure.org
 tags:
   - cli
   - jvm
