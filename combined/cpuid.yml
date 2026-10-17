@@ -46,6 +46,15 @@ history:
       Go programs use the shared cpuid.CPU value to inspect brand, cores, cache,
       frequency, and feature sets, then call Supports, Has, or HasAll to gate optimized
       code paths. The command-line binary prints CPU details and supports JSON output.
+related-packages:
+  - id: brew:cpu_features
+    reason: >
+      Choose cpu_features when the same runtime instruction-set detection is needed from
+      a portable C99 library rather than a Go package.
+    rel: alternative
+    sources:
+      - https://github.com/klauspost/cpuid#readme
+      - https://github.com/google/cpu_features#readme
 category: system
 package-manager:
   brew: cpuid

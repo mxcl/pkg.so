@@ -44,6 +44,29 @@ history:
       The package installs `cql2json`, `cql2csv`, `cql2cql`, and `cqlkit`. Users pass a
       query, file, or standard input and can reuse a cqlsh-compatible
       `~/.cassandra/cqlshrc` file for connection settings.
+related-packages:
+  - id: brew:cassandra
+    reason: >
+      Apache Cassandra is the database and cqlsh provider that cqlkit queries, and
+      cqlkit can reuse Cassandra's cqlshrc connection configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tenmax/cqlkit#readme
+      - https://cassandra.apache.org/doc/latest/
+  - id: brew:jq
+    reason: cqlkit's official README recommends jq for processing the JSON produced by cql2json.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tenmax/cqlkit#readme
+      - https://jqlang.github.io/jq/manual/
+  - id: brew:csvkit
+    reason: >
+      cqlkit's official README recommends csvkit for further command-line processing of
+      cql2csv output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tenmax/cqlkit#readme
+      - https://csvkit.readthedocs.io/
 tags:
   - cassandra
   - cli
