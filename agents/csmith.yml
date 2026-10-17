@@ -47,6 +47,33 @@ history:
       and Clang, run both outputs, and compare results. The README also notes that
       generated programs avoid undefined behavior and that timeouts are best practice
       because generated programs can contain infinite loops.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      Use GCC as one side of Csmith differential testing, compiling generated programs
+      under GCC and another compiler or optimization setting to identify divergent
+      results.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/csmith-project/csmith#readme
+      - https://gcc.gnu.org/
+  - id: brew:llvm
+    reason: >
+      Use LLVM's Clang as a contrasting compiler for Csmith-generated programs; Csmith's
+      official example compares GCC and Clang output directly.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/csmith-project/csmith#readme
+      - https://clang.llvm.org/
+  - id: brew:creduce
+    reason: >
+      Use C-Reduce after Csmith finds a compiler discrepancy to shrink the generated C
+      test case while preserving the crash, miscompilation, or other interesting
+      behavior.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/csmith-project/csmith#readme
+      - https://github.com/csmith-project/creduce
 tags:
   - c
   - c99
