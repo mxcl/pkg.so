@@ -74,6 +74,24 @@ history:
       The indentation documentation explains Clojure-specific rules for macros and forms
       through `:indents` and `:extra-indents`, which is the core reason cljfmt is more
       than a generic pretty-printer.
+related-packages:
+  - id: brew:leiningen
+    reason: >
+      Use Leiningen with cljfmt when the project already uses `project.clj`; upstream
+      provides the `lein-cljfmt` plugin, `lein cljfmt check` and `fix` tasks, and
+      `:cljfmt` project configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/weavejester/cljfmt#readme
+      - https://leiningen.org/
+  - id: brew:clojure
+    reason: >
+      Use the official Clojure CLI with cljfmt when you prefer tool installation and
+      `clj -Tcljfmt` invocations over a standalone binary or Leiningen plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/weavejester/cljfmt#readme
+      - https://clojure.org/guides/deps_and_cli
 category: developer-tools
 package-manager:
   brew: cljfmt
