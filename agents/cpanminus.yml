@@ -58,6 +58,23 @@ history:
       local Perl environments such as perlbrew or plenv, and standalone executable
       placement. cpanminus fetches and unpacks files under ~/.cpanm by default and
       allows PERL_CPANM_HOME to change that working area.
+related-packages:
+  - id: brew:cpm
+    reason: >
+      Choose cpm when parallelism and faster dependency installation are priorities; its
+      upstream documentation explicitly presents cpanminus as a related CPAN installer.
+    rel: alternative
+    sources:
+      - https://github.com/skaji/cpm#readme
+      - https://metacpan.org/pod/App::cpanminus
+  - id: brew:carton
+    reason: >
+      Use Carton with cpanminus when an application needs version-controlled cpanfile
+      snapshots, project-local installs, cached bundles, and repeatable deployment.
+    rel: adjacent_workflow
+    sources:
+      - https://metacpan.org/pod/Carton
+      - https://metacpan.org/pod/App::cpanminus
 tags:
   - cli
   - cpan

@@ -44,6 +44,23 @@ history:
       reconciling, suspending, and resuming HelmReleases. Its working-directory behavior
       is chart-centered, so it fits local iteration on Kubernetes packaging rather than
       cluster-wide platform administration.
+related-packages:
+  - id: brew:helm
+    reason: >
+      Use Helm to author, render, package, and directly manage the charts that cozyhr
+      expects in its working directory.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cozystack/cozyhr#readme
+      - https://helm.sh/docs/
+  - id: brew:fluxcd
+    reason: >
+      Use the Flux CLI to administer the GitOps controllers and HelmRelease resources
+      that cozyhr reconciles during local development.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cozystack/cozyhr#readme
+      - https://fluxcd.io/flux/components/helm/helmreleases/
 tags:
   - cli
   - fluxcd
