@@ -54,6 +54,24 @@ history:
       AWS, Google Cloud, DigitalOcean, or Microsoft Azure, log in with the CLI, keep
       application topology in `convox.yml`, and run commands such as `convox apps`,
       `convox deploy`, and rack-management commands.
+related-packages:
+  - id: brew:heroku
+    reason: >
+      Heroku is an alternative managed PaaS; choose it for the established Heroku app
+      and add-on model, while Convox offers a documented migration path to
+      Kubernetes-backed infrastructure in your cloud environment.
+    rel: alternative
+    sources:
+      - https://docs.convox.com/migration/heroku
+      - https://devcenter.heroku.com/articles/heroku-cli
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl alongside Convox when you need lower-level inspection of a Rack's
+      Kubernetes cluster after generating connection data with `convox rack kubeconfig`.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.convox.com/reference/cli/rack
+      - https://kubernetes.io/docs/reference/kubectl/
 category: cloud-infrastructure
 package-manager:
   brew: convox

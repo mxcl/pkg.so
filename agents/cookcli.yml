@@ -3,7 +3,14 @@ display-name: CookCLI
 repo: null
 docs:
   - https://cooklang.org/docs/getting-started-commands
-config-file-location: null
+config-file-location:
+  unix:
+    - ./config/aisle.conf
+    - ~/.config/cooklang/aisle.conf
+    - /etc/cooklang/aisle.conf
+    - ./config/pantry.conf
+    - ~/.config/cooklang/pantry.conf
+    - /etc/cooklang/pantry.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -51,6 +58,16 @@ history:
       Typical usage is local and file-oriented: users seed example recipes, render
       `.cook` files, combine recipes into shopping lists, run `cook server` for a local
       browser UI, and point commands at a recipe directory with `--base-path`.
+related-packages:
+  - id: brew:git
+    reason: >
+      Git complements CookCLI because Cooklang officially recommends version-controlling
+      its plain-text recipes, menus, and configuration files for tracking and sharing a
+      collection.
+    rel: adjacent_workflow
+    sources:
+      - https://cooklang.org/docs/getting-started/
+      - https://git-scm.com/docs
 tags:
   - cli
   - cooklang
