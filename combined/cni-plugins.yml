@@ -62,6 +62,16 @@ history:
       under /etc/cni/net.d on Linux, and invoke plugin binaries with CNI environment
       variables and JSON configuration. The plugin set supplies common
       interface-creating, IPAM, and meta plugins used directly or chained together.
+related-packages:
+  - id: brew:containerd
+    reason: >
+      containerd's official installation and CRI documentation explicitly use the CNI
+      plugin binaries to provide container networking.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/containerd/containerd/blob/main/docs/getting-started.md
+      - https://containerd.io/docs/2.1/cri/config/
+      - https://github.com/containernetworking/plugins#readme
 category: networking
 package-manager:
   apk: cni-plugins
