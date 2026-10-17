@@ -60,6 +60,32 @@ history:
       install or pnpm install in a project. Corepack reads package.json metadata,
       resolves the intended package manager version, and manages cached package-manager
       binaries rather than acting as the dependency installer itself.
+related-packages:
+  - id: brew:pnpm
+    reason: >
+      Corepack can pin, obtain, and invoke pnpm for a project, while pnpm performs the
+      actual dependency installation with its content-addressed store.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nodejs/corepack#readme
+      - https://pnpm.io/installation#using-corepack
+  - id: brew:yarn
+    reason: >
+      Corepack supplies project-selected Yarn binaries through its shims, while Yarn
+      remains the package manager that resolves and installs the project's dependencies.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nodejs/corepack#readme
+      - https://yarnpkg.com/corepack
+  - id: brew:node
+    reason: >
+      Corepack runs on Node.js and was historically distributed with Node releases, so
+      Node provides the runtime for Corepack-managed JavaScript package-manager
+      workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nodejs/corepack#readme
+      - https://nodejs.org/download/release/v25.8.0/docs/api/corepack.html
 tags:
   - cli
   - nodejs

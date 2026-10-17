@@ -3,8 +3,12 @@ display-name: Corkscrew
 repo: https://github.com/patpadgett/corkscrew
 docs:
   - https://github.com/patpadgett/corkscrew#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.ssh/config
+credentials-file-location:
+  unix:
+    - ~/.ssh/myauth
 history:
   adoption-history:
     - >
@@ -48,6 +52,33 @@ history:
       Typical usage adds a ProxyCommand line to ~/.ssh/config. For proxies requiring
       authentication, the README documents a separate username:password file, commonly
       placed under ~/.ssh with restrictive permissions.
+related-packages:
+  - id: brew:openssh
+    reason: >
+      OpenSSH launches Corkscrew through its ProxyCommand directive, so it is the client
+      that turns Corkscrew's HTTP relay into an SSH connection.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bryanpkc/corkscrew#readme
+      - https://man.openbsd.org/ssh_config#ProxyCommand
+  - id: brew:connect
+    reason: >
+      Choose connect when the SSH proxy helper must support SOCKS 4, 4a, or 5 in
+      addition to HTTP CONNECT, or when interactive and askpass-based proxy
+      authentication is preferable to Corkscrew's credential file.
+    rel: alternative
+    sources:
+      - https://github.com/bryanpkc/corkscrew#readme
+      - https://github.com/gotoh/ssh-connect#readme
+  - id: brew:proxytunnel
+    reason: >
+      Choose proxytunnel when you need advanced HTTPS-proxy features such as TLS to the
+      proxy, certificate validation controls, NTLM, chained proxies, or a wget-format
+      password file.
+    rel: alternative
+    sources:
+      - https://github.com/bryanpkc/corkscrew#readme
+      - https://github.com/proxytunnel/proxytunnel/blob/master/docs/proxytunnel.1.adoc
 tags:
   - cli
   - http-proxy

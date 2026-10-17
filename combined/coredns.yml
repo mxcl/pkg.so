@@ -63,6 +63,33 @@ history:
       define zones, forwarding, caching, Kubernetes integration, logging, metrics, and
       other DNS behaviors. The plugin model lets distributions choose a compiled-in
       plugin set and lets operators reason about behavior from the Corefile.
+related-packages:
+  - id: brew:bind
+    reason: >
+      Choose BIND when you need its mature authoritative and recursive server ecosystem,
+      extensive DNSSEC tooling, dynamic updates, or catalog and response-policy zones
+      instead of a CoreDNS plugin-chain configuration.
+    rel: alternative
+    sources:
+      - https://coredns.io/manual/toc/
+      - https://bind9.readthedocs.io/en/latest/
+  - id: brew:unbound
+    reason: >
+      Choose Unbound for a focused validating, recursive, caching DNS resolver rather
+      than CoreDNS's broader plugin-based authoritative and service-discovery roles.
+    rel: alternative
+    sources:
+      - https://coredns.io/manual/toc/
+      - https://unbound.docs.nlnetlabs.nl/en/latest/
+  - id: brew:dnsmasq
+    reason: >
+      Choose dnsmasq for a lightweight small-network combination of DNS forwarding,
+      caching, and DHCP instead of assembling those behaviors around a CoreDNS
+      deployment.
+    rel: alternative
+    sources:
+      - https://coredns.io/manual/toc/
+      - https://thekelleys.org.uk/dnsmasq/doc.html
 category: networking
 package-manager:
   apk: coredns
