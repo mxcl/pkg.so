@@ -5,7 +5,8 @@ repo: https://github.com/cloudprober/cloudprober
 docs:
   - https://cloudprober.org/docs
   - https://github.com/cloudprober/cloudprober#readme
-config-file-location: null
+config-file-location:
+  unix: /etc/cloudprober.cfg
 credentials-file-location: null
 history:
   adoption-history:
@@ -76,6 +77,15 @@ history:
       their monitoring stack. The getting-started docs also note that running
       cloudprober with no arguments on Linux exposes a built-in sys_metrics probe at a
       local metrics endpoint.
+related-packages:
+  - id: brew:prometheus
+    reason: >
+      Configure Prometheus to scrape Cloudprober's default Prometheus-compatible metrics
+      endpoint for storage, querying, dashboards, and alert evaluation.
+    rel: adjacent_workflow
+    sources:
+      - https://cloudprober.org/docs/overview/getting-started/
+      - https://prometheus.io/docs/introduction/overview/
 category: networking
 package-manager:
   brew: cloudprober

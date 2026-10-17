@@ -53,6 +53,23 @@ history:
       Users run cloudlist with provider filters, service filters, JSON output, and
       optional output files; the default config paths are
       ~/.config/cloudlist/config.yaml and ~/.config/cloudlist/provider-config.yaml.
+related-packages:
+  - id: brew:httpx
+    reason: >
+      Pipe Cloudlist's discovered hosts into httpx to identify live HTTP services before
+      deeper assessment, following ProjectDiscovery's documented workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.projectdiscovery.io/opensource/cloudlist/running
+      - https://docs.projectdiscovery.io/tools/httpx/overview
+  - id: brew:nuclei
+    reason: >
+      Use Nuclei after Cloudlist and httpx to scan discovered cloud-hosted services with
+      security templates, exactly as shown in the official Cloudlist guide.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.projectdiscovery.io/opensource/cloudlist/running
+      - https://docs.projectdiscovery.io/opensource/nuclei
 tags:
   - asset-discovery
   - attack-surface
