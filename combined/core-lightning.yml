@@ -68,6 +68,17 @@ history:
       Configuration is conventionally stored under ~/.lightning, with network-specific
       config directories, and the hsm_secret file is the critical wallet-secret
       material.
+related-packages:
+  - id: brew:bitcoin
+    reason: >
+      Core Lightning requires a synchronized Bitcoin Core `bitcoind` backend for
+      blockchain data and transaction relay, making Bitcoin Core the standard adjacent
+      node package.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ElementsProject/lightning#readme
+      - https://docs.corelightning.org/docs/installation
+      - https://bitcoincore.org/
 category: networking
 package-manager:
   brew: core-lightning

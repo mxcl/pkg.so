@@ -64,6 +64,27 @@ history:
       commands such as copilot init and copilot deploy to create AWS infrastructure and
       deploy services. It expected normal AWS credentials from the AWS SDK and CLI
       chain, including ~/.aws/credentials and ~/.aws/config.
+related-packages:
+  - id: brew:aws-cdk
+    reason: >
+      AWS recommends CDK as a Copilot migration path when teams need fine-grained
+      infrastructure control, reusable constructs, testing, and integration with
+      existing CDK stacks.
+    rel: alternative
+    sources:
+      - >
+        https://aws.amazon.com/blogs/containers/announcing-the-end-of-support-for-the-aws-copilot-cli/
+      - https://docs.aws.amazon.com/cdk/v2/guide/home.html
+  - id: brew:awscli
+    reason: >
+      AWS documents using the AWS CLI to provision ECS Express Mode services, the
+      recommended low-overhead migration path for standard containerized web
+      applications formerly deployed with Copilot.
+    rel: alternative
+    sources:
+      - >
+        https://aws.amazon.com/blogs/containers/announcing-the-end-of-support-for-the-aws-copilot-cli/
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
 category: cloud-infrastructure
 package-manager:
   brew: copilot
