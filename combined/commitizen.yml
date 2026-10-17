@@ -61,6 +61,25 @@ history:
       through pre-commit-style hooks, and `cz bump` for version and changelog updates.
       Its package-manager value comes from making release conventions executable rather
       than leaving them as prose in CONTRIBUTING files.
+related-packages:
+  - id: brew:commitlint
+    reason: >
+      Choose commitlint for focused, Node-oriented commit-message linting with shareable
+      npm rule configurations; choose Commitizen when guided authoring, version bumping,
+      and changelog generation should be handled by one tool.
+    rel: alternative
+    sources:
+      - https://commitizen-tools.github.io/commitizen/
+      - https://commitlint.js.org/
+      - https://commitlint.js.org/reference/configuration.html
+  - id: brew:pre-commit
+    reason: >
+      pre-commit can install and run Commitizen's official commit-msg hook, giving
+      repositories a reproducible way to enforce Commitizen checks during commits.
+    rel: adjacent_workflow
+    sources:
+      - https://commitizen-tools.github.io/commitizen/tutorials/auto_check/
+      - https://pre-commit.com/
 category: developer-tools
 package-manager:
   brew: commitizen
