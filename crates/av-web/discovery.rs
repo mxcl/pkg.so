@@ -103,6 +103,12 @@ pub(super) fn page(connection: &Connection) -> Result<String, String> {
         r##"{}<main><section class="pkg-hero"><div class="hero-copy"><p class="eyebrow">package discovery</p><h1>New &amp; trending</h1><p class="lede">Tools gaining attention, and packages newly discovered in the catalog. Including independent Homebrew taps.</p><div class="hero-actions"><a href="#trending">Trending</a><a href="#recent">Recently discovered</a><a href="#method">How we measure</a></div></div></section>"##,
         site_nav(&LOCALES[0])
     );
+    if data["sourceHealth"]["reportErrors"]
+        .as_object()
+        .is_some_and(|errors| !errors.is_empty())
+    {
+        body.push_str("<p class=\"pkg-section\">Some Homebrew reports could not be refreshed. Entries are shown only while their source data remains current.</p>");
+    }
     for (section, title, anchor, trending) in [
         ("trending", "Trending", "trending", true),
         ("recentlyDiscovered", "Recently discovered", "recent", false),

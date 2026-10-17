@@ -107,6 +107,45 @@ class DiscoveryTests(unittest.TestCase):
             path.write_text('{"schema": 99, "packages": {}}')
             with self.assertRaises(ValueError): d.load_state(path)
 
+    def test_report_validation_and_small_baselines(self):
+        for payload in (None, {}, {"start_date": "2026-09-17", "end_date": "2026-10-17", "items": [None]}):
+            with self.assertRaises(ValueError): d.parse_report(payload, "cask", 30)
+        state = {"schema": 1, "packages": {}}
+        d.observe(state, {"cask": reports(counts=(200, 201, 300))}, TODAY)
+        result = d.trend(state["packages"]["cask:mattt/tap/imcp"]["analytics"], TODAY)
+        self.assertIsNone(result["growthPercent"])
+
+    def test_refreshes_are_not_starved_by_unseen_candidates(self):
+        state = {"schema": 1, "packages": {}}
+        d.observe(state, {"cask": reports()}, TODAY)
+        d.resolve_candidates(state, lambda key: d.read_definition(IMCP, "cask", "mattt/tap/imcp"), TODAY)
+        later = TODAY + dt.timedelta(days=8)
+        d.observe(state, {"cask": reports("other/tap/new", today=later)}, later)
+        calls = []
+        def resolve(key):
+            calls.append(key)
+            return d.read_definition(IMCP, "cask", "mattt/tap/imcp")
+        d.resolve_candidates(state, resolve, later, limit=2)
+        self.assertIn("cask:mattt/tap/imcp", calls)
+        self.assertIn("cask:other/tap/new", calls)
+
+    def test_resolver_pins_commit_and_rejects_ambiguous_paths(self):
+        from unittest.mock import patch
+        fetcher = d.Fetcher(Path("/unused"))
+        urls = []
+        def get(url, **kwargs):
+            urls.append(url)
+            if "/commits/" in url: return {"sha": "abcd"}
+            if "/git/trees/" in url:
+                return {"sha": "tree-sha", "tree": [{"path": "Casks/imcp.rb", "type": "blob", "mode": "100644"}]}
+            return IMCP
+        with patch.object(fetcher, "get", side_effect=get):
+            item = fetcher.resolve("cask:mattt/tap/imcp")
+            self.assertEqual(item["tapSource"]["revision"], "abcd")
+            self.assertIn("/abcd/Casks/imcp.rb", urls[-1])
+            fetcher.trees["mattt/homebrew-tap"]["tree"].append({"path": "Casks/i/imcp.rb", "type": "blob", "mode": "100644"})
+            with self.assertRaises(ValueError): fetcher.resolve("cask:mattt/tap/imcp")
+
     def test_formula_cli_subset(self):
         source = '''class Example < Formula
  desc "Example CLI"
