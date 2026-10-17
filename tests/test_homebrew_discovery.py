@@ -204,6 +204,15 @@ class DiscoveryIntegrationTests(unittest.TestCase):
         public = sql.discovery_document(pages, [page], routes)
         self.assertEqual(public["trending"][0]["packageKey"], key)
         self.assertEqual(public["recentlyDiscovered"], [])
+        # A qualifying tap remains visible when official packages fill the global shelf.
+        import dataclasses
+        crowded = [dataclasses.replace(page, provider="brew", name=f"tool{i}", repository=f"https://example.com/{i}",
+            extra={**page.extra, "tapSource": {}, "discovery": {**page.extra["discovery"],
+                "trend": {**page.extra["discovery"]["trend"], "score": 100}}}) for i in range(60)]
+        all_pages = [page, *crowded]
+        shelves = sql.discovery_document(pages, all_pages, sql.package_routes(all_pages))
+        self.assertNotIn(key, [item["packageKey"] for item in shelves["trending"]])
+        self.assertEqual([item["packageKey"] for item in shelves["independentTaps"]], [key])
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "catalog.sqlite"
             record = sql.package_record(pages, page, routes[key], "iMCP mattt/tap/imcp MCP server")

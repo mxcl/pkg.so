@@ -219,7 +219,9 @@ monitoring remains separate.
 `/new-and-trending/` and `/new-and-trending.json` publish Homebrew discovery
 alongside the catalog. The existing `/new.json` keeps its seven-day
 added-or-updated semantics. Discovery is English-only; package pages continue to
-use the catalog's existing locale routes.
+use the catalog's existing locale routes. The Independent taps section ranks
+qualifying third-party packages separately using the same criteria, so the global
+top 60 cannot crowd them out.
 
 The nightly discovery step reads 30/90/365-day cask-install and formula
 install-on-request analytics, including third-party taps. It compares the latest

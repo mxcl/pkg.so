@@ -738,7 +738,9 @@ def discovery_document(page_module: Any, pages: list[Any], routes: dict[str, Pac
                 result.append(item)
         return result[:60]
     return {"schema": 1, "generatedAt": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "trending": distinct(trending), "recentlyDiscovered": distinct(recent)}
+            "trending": distinct(trending),
+            "independentTaps": distinct([item for item in trending if item["tap"]]),
+            "recentlyDiscovered": distinct(recent)}
 
 
 def build_sqlite(

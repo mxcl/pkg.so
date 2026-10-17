@@ -23,6 +23,7 @@ pub(super) fn document(connection: &Connection) -> Result<Value, String> {
         .map_err(|err| err.to_string())?;
     for (section, field, days) in [
         ("trending", "trend.endDate", 3),
+        ("independentTaps", "trend.endDate", 3),
         ("recentlyDiscovered", "admittedAt", 30),
     ] {
         if let Some(items) = data[section].as_array_mut() {
@@ -100,7 +101,7 @@ pub(super) fn feature(connection: &Connection) -> Result<String, String> {
 pub(super) fn page(connection: &Connection) -> Result<String, String> {
     let data = document(connection)?;
     let mut body = format!(
-        r##"{}<main><section class="pkg-hero"><div class="hero-copy"><p class="eyebrow">package discovery</p><h1>New &amp; trending</h1><p class="lede">Tools gaining attention, and packages newly discovered in the catalog. Including independent Homebrew taps.</p><div class="hero-actions"><a href="#trending">Trending</a><a href="#recent">Recently discovered</a><a href="#method">How we measure</a></div></div></section>"##,
+        r##"{}<main><section class="pkg-hero"><div class="hero-copy"><p class="eyebrow">package discovery</p><h1>New &amp; trending</h1><p class="lede">Tools gaining attention, and packages newly discovered in the catalog. Including independent Homebrew taps.</p><div class="hero-actions"><a href="#trending">Trending</a><a href="#taps">Independent taps</a><a href="#recent">Recently discovered</a><a href="#method">How we measure</a></div></div></section>"##,
         site_nav(&LOCALES[0])
     );
     if data["sourceHealth"]["reportErrors"]
@@ -111,6 +112,7 @@ pub(super) fn page(connection: &Connection) -> Result<String, String> {
     }
     for (section, title, anchor, trending) in [
         ("trending", "Trending", "trending", true),
+        ("independentTaps", "Independent taps", "taps", true),
         ("recentlyDiscovered", "Recently discovered", "recent", false),
     ] {
         let items = value_array(&data, section);
@@ -126,7 +128,7 @@ pub(super) fn page(connection: &Connection) -> Result<String, String> {
         }
         body.push_str("</section>");
     }
-    body.push_str(r#"<section class="pkg-section" aria-labelledby="method"><h2 id="method">How we measure</h2><p>Trending compares the latest 30 days of recorded Homebrew installs with the preceding 60 days. We require at least 30 installs, a meaningful increase, and fresh, aligned reports. Ranking balances growth with the size of the increase; small baselines are smoothed.</p><p>Installation events are not unique users. Homebrew analytics cover participating installations, and package updates can affect activity. Newly discovered means new to this catalog, not necessarily newly released. We verify tap definitions before listing packages; unsupported definitions wait for resolution.</p><p><a href="https://formulae.brew.sh/analytics/">Homebrew analytics</a> · <a href="/new-and-trending.json">Download this list as JSON</a></p></section></main>"#);
+    body.push_str(r#"<section class="pkg-section" aria-labelledby="method"><h2 id="method">How we measure</h2><p>Trending compares the latest 30 days of recorded Homebrew installs with the preceding 60 days. We require at least 30 installs, a meaningful increase, and fresh, aligned reports. Ranking balances growth with the size of the increase; small baselines are smoothed. Independent taps uses the same criteria within third-party taps.</p><p>Installation events are not unique users. Homebrew analytics cover participating installations, and package updates can affect activity. Newly discovered means new to this catalog, not necessarily newly released. We verify tap definitions before listing packages; unsupported definitions wait for resolution.</p><p><a href="https://formulae.brew.sh/analytics/">Homebrew analytics</a> · <a href="/new-and-trending.json">Download this list as JSON</a></p></section></main>"#);
     body.push_str(&site_footer(&LOCALES[0]));
     let schema = json!({"@context": "https://schema.org", "@type": "CollectionPage",
         "name": "New & trending packages", "url": "https://pkg.so/new-and-trending/"});
@@ -173,7 +175,7 @@ mod tests {
             .execute(
                 "INSERT INTO metadata VALUES ('discovery', ?1)",
                 [
-                    json!({"schema": 1, "trending": [item.clone()], "recentlyDiscovered": [item]})
+                    json!({"schema": 1, "trending": [item.clone()], "independentTaps": [item.clone()], "recentlyDiscovered": [item]})
                         .to_string(),
                 ],
             )
@@ -192,6 +194,7 @@ mod tests {
         assert!(html.contains("iMCP &lt;script&gt;"));
         assert!(html.contains("141 recorded installs in 30 days"));
         assert!(html.contains("Third-party tap: mattt/tap"));
+        assert!(html.contains("id=\"taps\""));
         assert!(html.contains("href=\"/cask/mattt-tap-imcp/\""));
         assert!(html.contains("https://pkg.so/new-and-trending/"));
         assert!(!html.contains("hreflang="));
@@ -207,6 +210,7 @@ mod tests {
                 .unwrap()
                 .is_empty()
         );
+        assert!(document(&connection).unwrap()["independentTaps"].as_array().unwrap().is_empty());
         assert!(feature(&connection).unwrap().is_empty());
         assert!(
             page(&connection)
