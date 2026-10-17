@@ -1,0 +1,88 @@
+id: cask:google-chrome@beta
+display-name: Google Chrome Beta
+homepage: https://www.google.com/chrome/beta/
+repo: null
+docs:
+  - https://chromium.googlesource.com/chromium/src/+/HEAD/docs/user_data_dir.md
+  - https://support.google.com/chrome
+  - https://support.google.com/chrome/a/answer/9027636
+config-file-location:
+  macos: ~/Library/Application Support/Google/Chrome Beta
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Chrome's Beta channel became the preview stage immediately ahead of Stable in
+      Google's staged release pipeline. Google currently describes it as offering
+      roughly a four-to-six-week preview, suitable for discovering compatibility issues
+      before a release reaches most users.
+    - >
+      On macOS, current channel builds have distinct application identities and profile
+      directories, allowing Beta to run alongside Stable, Dev, and Canary. This makes
+      the Beta cask useful for cautious pre-release testing without replacing a normal
+      browser profile.
+  package-nerd-significance:
+    - >
+      Beta is the conservative edge of Chrome's pre-release ecosystem: new enough for
+      advance compatibility checks, but more tested than Dev or Canary. A separate cask
+      and profile make switching between Stable and Beta reproducible and low-friction.
+  project-history:
+    - >
+      Google launched Chrome as a Windows beta on September 2, 2008 while releasing its
+      underlying Chromium code as an open-source project. Chrome left beta in December
+      2008.
+    - >
+      Chrome for Mac entered beta in December 2009. The channel system evolved into a
+      pipeline in which changes move through Canary, Dev, Beta, and finally Stable,
+      gathering progressively broader testing feedback.
+  related-projects:
+    - Google Chrome Stable
+    - Google Chrome Dev
+    - Google Chrome Canary
+    - Chromium
+    - Chrome for Testing
+  sources:
+    - https://chrome.googleblog.com/2009/12/google-chrome-for-holidays-mac-linux.html
+    - >
+      https://chromereleases.googleblog.com/2008/12/stable-release-google-chrome-is-out-of.html
+    - https://chromium.googlesource.com/chromium/src/+/HEAD/docs/user_data_dir.md
+    - https://developers.googleblog.com/google-chrome-chromium-and-v8-launch-today/
+    - https://support.google.com/chrome/a/answer/9027636
+    - https://www.chromium.org/chrome-release-channels/
+  summary:
+    - >
+      Google Chrome Beta is Google's comparatively low-risk preview channel for features
+      expected to reach the Stable browser. It occupies the testing stage between the
+      faster-moving Dev channel and Stable.
+  timeline:
+    - '2008: Google Chrome launched publicly as a beta.'
+    - '2008: Chrome 1.0 moved to the Stable channel.'
+    - '2009: Google released Chrome for Mac in beta.'
+  usage:
+    - >
+      Use Beta to preview upcoming web-platform and browser changes, reproduce
+      compatibility issues before Stable promotion, and validate managed-browser
+      deployments. It is not intended to be as conservative as Stable.
+    - >
+      Its separate macOS user-data directory allows a current side-by-side build to keep
+      an independent profile from the other Chrome channels.
+category: networking
+package-manager:
+  brew-cask: google-chrome@beta
+package-manager-url: https://formulae.brew.sh/cask/google-chrome@beta
+tags:
+  - beta
+  - browser
+  - chrome
+  - google
+  - macos
+  - prerelease
+  - testing
+  - web
+description: Web browser
+applications:
+  - Google Chrome Beta.app
+provenance:
+  cask: google-chrome@beta
+  provider: brew-cask
+  source: https://formulae.brew.sh/api/cask.json

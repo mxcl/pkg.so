@@ -179,8 +179,8 @@
     "aigcpanel": {
       "bundle_identifier": null,
       "confidence": "low",
-      "evidence_hash": "3a9fe63508d1551b3c34e8a865ef69544e1dfc484d6a3baff18cc49ceb5e9f7f",
-      "reason": "The application's official electron-builder manifest directly sets appId to AigcPanel and productName to AigcPanel; Homebrew installs the resulting AigcPanel.app.",
+      "evidence_hash": "a12d50093cb7d7b7f9fa7bbcc0cbc1f7e025c41d7d2b53256ce3cbb4cfaba551",
+      "reason": "The official project\u2019s electron-builder manifest sets appId to AigcPanel; electron-builder uses appId as the macOS CFBundleIdentifier.",
       "sources": [
         "https://formulae.brew.sh/cask/aigcpanel",
         "https://github.com/modstart-lib/aigcpanel/blob/main/electron-builder.json5"
@@ -3682,11 +3682,11 @@
     "google-chrome@beta": {
       "bundle_identifier": "com.google.Chrome.beta",
       "confidence": "high",
-      "evidence_hash": "ac529c93eaada487a2ed2c75bdf43e55dab205b9da82d68cfa1afaf17c821dee",
-      "reason": "Google\u2019s official Chromium documentation identifies the side-by-side Chrome Beta app as com.google.Chrome.beta, matching the cask\u2019s distinctly named Beta app and data directory.",
+      "evidence_hash": "774cf7ab7f8d906119da756fb2d58d0b709276cea9b4052f6b242ed350fef6c3",
+      "reason": "Apple\u2019s official browser manifest directly identifies Google Chrome Beta for macOS with this bundle identifier.",
       "sources": [
-        "https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/mac/flavors_of_chrome.md",
-        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/google-chrome@beta.rb"
+        "https://formulae.brew.sh/cask/google-chrome@beta",
+        "https://github.com/apple/password-manager-resources/blob/main/quirks/web-browser-extension-distribution-information.json"
       ]
     },
     "google-chrome@canary": {
@@ -4955,13 +4955,13 @@
       ]
     },
     "lark": {
-      "bundle_identifier": "com.electron.lark",
-      "confidence": "high",
-      "evidence_hash": "31112c1a9b93b6f7720ad460c5a735bdc14a0075f9f16d58cc4579bddd2ddcb6",
-      "reason": "The base identifier corresponds to LarkSuite.app and its saved application state; the other candidate is explicitly the Electron helper.",
+      "bundle_identifier": "com.larksuite.larkApp",
+      "confidence": "medium",
+      "evidence_hash": "6b50eb9a26d395087e99dd66b22e6eda6e370fd87e94f8d5736e51e1d526489c",
+      "reason": "The cask installs the international LarkSuite.app, and its metadata includes the matching com.larksuite.larkApp preference domain; com.electron.lark and its helper identifier are legacy/shared Electron paths and are not convincing identifiers for this primary app.",
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/lark.rb",
-        "https://www.larksuite.com/"
+        "https://www.larksuite.com/en_us/download"
       ]
     },
     "laserpecker-design-space": {
@@ -7334,6 +7334,16 @@
         "https://github.com/Ruben2776/PicView"
       ]
     },
+    "pika@beta": {
+      "bundle_identifier": "com.superhighfives.Pika",
+      "confidence": "high",
+      "evidence_hash": "65c530c77c24dc496d32539aca2a973734e8047c66bab8e7b3f3f81e809464bd",
+      "reason": "The official Pika Xcode project identifies the primary application with this bundle identifier; the other candidate is explicitly the launch-at-login helper.",
+      "sources": [
+        "https://formulae.brew.sh/cask/pika@beta",
+        "https://github.com/superhighfives/pika/blob/main/Pika.xcodeproj/project.pbxproj"
+      ]
+    },
     "pikpak": {
       "bundle_identifier": "com.pikcloud.pikpak.mac",
       "confidence": "high",
@@ -9314,6 +9324,16 @@
         "https://www.nch.com.au/switch/"
       ]
     },
+    "switchbar": {
+      "bundle_identifier": "com.webcatalog.switchbar",
+      "confidence": "medium",
+      "evidence_hash": "3cb7dccd37a0aef7c50cd4667d18b2b494cef11ab34598eb47e3c2d36cca61bc",
+      "reason": "The cask installs Switchbar.app and its zap metadata names com.webcatalog.switchbar as the app preference domain; the vendor\u2019s official documentation confirms Switchbar is the corresponding WebCatalog application, but no direct Info.plist manifest was available.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/s/switchbar.rb",
+        "https://webcatalog.io/en/docs/article/choose-where-links-open-with-switchbar"
+      ]
+    },
     "switchhosts": {
       "bundle_identifier": "net.oldj.switchhosts",
       "confidence": "high",
@@ -10130,6 +10150,17 @@
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/v/vernier-graphical-analysis.rb",
         "https://www.vernier.com/product/graphical-analysis/"
+      ]
+    },
+    "vernier-instrumental-analysis": {
+      "bundle_identifier": "Vernier.InstrumentalAnalysis",
+      "confidence": "medium",
+      "evidence_hash": "8846a165faf06f8d9dab1133ae3de3aec94cc6e5953bcd027e83ecc403a7ef60",
+      "reason": "Homebrew identifies the primary artifact as \u201cVernier Instrumental Analysis.app\u201d; its cask zap metadata uses the same application domain for both the preferences plist and saved-state directory, strongly indicating this bundle identifier, though no direct Info.plist manifest was available.",
+      "sources": [
+        "https://formulae.brew.sh/cask/vernier-instrumental-analysis",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/v/vernier-instrumental-analysis.rb",
+        "https://www.vernier.com/product/instrumental-analysis/"
       ]
     },
     "vernier-spectral-analysis": {
