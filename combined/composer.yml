@@ -4,7 +4,20 @@ homepage: https://getcomposer.org/
 repo: https://github.com/composer/composer
 docs:
   - https://getcomposer.org/doc
-config-file-location: null
+config-file-location:
+  linux:
+    - ./composer.json
+    - $COMPOSER_HOME/config.json
+    - $XDG_CONFIG_HOME/composer/config.json
+    - ~/.composer/config.json
+  macos:
+    - ./composer.json
+    - $COMPOSER_HOME/config.json
+    - ~/.composer/config.json
+  windows:
+    - .\composer.json
+    - '%COMPOSER_HOME%\config.json'
+    - '%APPDATA%\Composer\config.json'
 credentials-file-location:
   macos: ~/Library/Application Support/Composer/auth.json
   unix:
@@ -60,6 +73,7 @@ history:
       for reproducible installs, and installs dependencies into `vendor`. It can be
       installed locally as a PHAR, globally on PATH, through Docker, or through OS
       package managers such as Homebrew.
+related-packages: []
 category: developer-tools
 package-manager:
   apk: composer
