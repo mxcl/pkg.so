@@ -69,6 +69,16 @@ history:
       source-based packaging users: it downloads and builds upstream components, applies
       version-specific patches, and installs an isolated toolchain such as under
       `/opt/x-tools/${CT_TARGET}`.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      GCC is a principal compiler component that crosstool-NG configures and builds into
+      target-specific toolchains, while the standalone GCC package is preferable when a
+      normal host compiler is sufficient.
+    rel: adjacent_workflow
+    sources:
+      - https://crosstool-ng.github.io/docs/introduction/
+      - https://gcc.gnu.org/
 tags:
   - build-tools
   - cli

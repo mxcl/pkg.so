@@ -70,6 +70,27 @@ history:
       controller into a local developer tool: users can install it with Homebrew,
       Winget, Nix, APK, or distribution packages and use it in CI or workstation
       workflows around Crossplane packages.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl alongside Crossplane CLI to apply example resources and inspect the
+      Kubernetes objects created by a Crossplane control plane; the official project
+      guide explicitly hands the generated context to kubectl.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://docs.crossplane.io/cli/latest/get-started/get-started-with-control-plane-projects/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      Use Helm to install or upgrade the in-cluster Crossplane controller, then use
+      Crossplane CLI for package development, rendering, publishing, and
+      troubleshooting.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.crossplane.io/latest/get-started/install/
+      - https://docs.crossplane.io/cli/latest/
+      - https://helm.sh/docs/
 category: cloud-infrastructure
 package-manager:
   apk: crossplane
