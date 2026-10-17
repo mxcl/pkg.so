@@ -120,4 +120,71 @@ end'''
         self.assertEqual(metadata["binaries"], [{"source": "example", "target": "example"}])
 
 
+class DiscoveryIntegrationTests(unittest.TestCase):
+    @staticmethod
+    def module(name, filename):
+        import importlib.util
+        root = Path(__file__).resolve().parents[1]
+        spec = importlib.util.spec_from_file_location(name, root / "scripts" / filename)
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[name] = module
+        spec.loader.exec_module(module)
+        return module
+
+    def test_imcp_catalog_sqlite_search_and_editorial_candidates(self):
+        import json
+        import sqlite3
+        import importlib.machinery
+        import importlib.util
+        from unittest.mock import patch
+        pages = self.module("discovery_test_pages", "generate-pkg-pages.py")
+        sql = self.module("discovery_test_sqlite", "generate-pkg-sqlite.py")
+        loader = importlib.machinery.SourceFileLoader("discovery_test_feed", str(d.ROOT / "scripts/update-discover-feed"))
+        spec = importlib.util.spec_from_loader(loader.name, loader)
+        feed = importlib.util.module_from_spec(spec)
+        loader.exec_module(feed)
+        state = {"schema": 1, "packages": {}}
+        d.observe(state, {"cask": reports()}, TODAY)
+        def resolve(key):
+            metadata = d.read_definition(IMCP, "cask", "mattt/tap/imcp")
+            metadata["tapSource"] = {"tap": "mattt/tap", "revision": "abc123",
+                "repository": "https://github.com/mattt/homebrew-tap", "path": "Casks/imcp.rb",
+                "url": "https://github.com/mattt/homebrew-tap/blob/abc123/Casks/imcp.rb"}
+            metadata["packageManagerUrl"] = metadata["tapSource"]["url"]
+            return metadata
+        d.resolve_candidates(state, resolve, TODAY)
+        db = d.overlay({"generated_at": "2026-10-17T00:00:00Z", "formulas": {}, "casks": {}, "npms": {}}, state, TODAY)
+        with patch.object(pages, "apply_package_page_supplements"):
+            catalog = pages.package_pages_from_sources({"db": db}, cross_ecosystem_only=True)
+        key = "cask:mattt/tap/imcp"
+        page = catalog[key]
+        self.assertTrue(pages.is_indexable_package_page(page))
+        self.assertEqual(page.display_name, "iMCP")
+        self.assertEqual(pages.install_command(page), "brew install --cask mattt/tap/imcp")
+        routes = sql.package_routes([page])
+        public = sql.discovery_document(pages, [page], routes)
+        self.assertEqual(public["trending"][0]["packageKey"], key)
+        self.assertEqual(public["recentlyDiscovered"], [])
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "catalog.sqlite"
+            record = sql.package_record(pages, page, routes[key], "iMCP mattt/tap/imcp MCP server")
+            search = sql.SearchDocument(routes[key].path, "en", "iMCP", page.summary, "cask", key, None, record.search_text)
+            sql.write_sqlite(path, [search], [record], [], [], {"discovery": public})
+            with sqlite3.connect(path) as connection:
+                row = connection.execute("SELECT native_install_command, data_json FROM packages WHERE package_key=?", [key]).fetchone()
+                self.assertEqual(row[0], "brew install --cask mattt/tap/imcp")
+                self.assertEqual(json.loads(row[1])["full"]["tapSource"]["tap"], "mattt/tap")
+                self.assertEqual(connection.execute("SELECT title FROM search_documents WHERE search_text LIKE '%imcp%'").fetchone()[0], "iMCP")
+        _, normalized = feed.normalize_catalog(db)
+        # Even 200 more-popular official discoveries cannot consume the tap quota.
+        for i in range(200):
+            normalized[f"brew:tool{i}"] = {**normalized["brew:cask:mattt/tap/imcp"], "id": f"brew:tool{i}",
+                "discovery": {"trend": {"score": 1000}}, "popularityRank": i}
+        pool = feed.candidate_pool(normalized, [])
+        self.assertIn("brew:cask:mattt/tap/imcp", [p["id"] for p in pool])
+        _, curated = next(d.project_records(state))
+        rendered = json.dumps(curated)
+        for volatile in ("1.6.2", "sha256", "1410", "lastVerifiedAt", "abc123"):
+            self.assertNotIn(volatile, rendered)
+
 if __name__ == "__main__": unittest.main()

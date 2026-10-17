@@ -1,6 +1,7 @@
 #![cfg_attr(test, recursion_limit = "256")]
 
 mod blog;
+mod discovery;
 mod project_history;
 
 use rusqlite::{Connection, OpenFlags, OptionalExtension, params};
@@ -704,6 +705,17 @@ struct HubRow {
 }
 
 fn dynamic_response_for_path(db_path: &Path, path: &str, feed_root: &Path) -> Result<Option<StoredResponse>, String> {
+    if path == "/new-and-trending/" || path == "/new-and-trending.json" {
+        let connection = open_database(db_path)?;
+        let (body, content_type) = if path.ends_with(".json") {
+            (discovery::document(&connection)?.to_string(), "application/json; charset=utf-8")
+        } else {
+            (discovery::page(&connection)?, "text/html; charset=utf-8")
+        };
+        let mut response = dynamic_stored_response(&connection, path, content_type, body)?;
+        discovery::revalidate_daily(&mut response);
+        return Ok(Some(response));
+    }
     if path == "/privacy/" {
         let connection = open_database(db_path)?;
         let locale = &LOCALES[0];
@@ -750,6 +762,7 @@ fn dynamic_response_for_path(db_path: &Path, path: &str, feed_root: &Path) -> Re
             render_index_page(&connection, locale, feed_root)?,
         )?;
         if locale.code == "en" {
+            discovery::revalidate_daily(&mut response);
             include_file_last_modified(&mut response, &feed_root.join("v2.json"));
         }
         return Ok(Some(response));
@@ -1423,6 +1436,7 @@ fn render_index_page(connection: &Connection, locale: &Locale, feed_root: &Path)
         metric(&tx(locale, "sourceFiles", "source files"), &fmt_int(source_files)),
     ));
     if locale.code == "en" {
+        body.push_str(&discovery::feature(connection)?);
         body.push_str(&blog::latest_feature(feed_root));
     }
     body.push_str(&format!(
@@ -1748,6 +1762,7 @@ fn render_package_page(package: &PackageRow, locale: &Locale, generated_at: &str
     body.push_str(&render_agent_safety_answer(package, locale));
     body.push_str(&render_install(package, locale));
     body.push_str(&render_overview(package, locale));
+    if locale.code == "en" { body.push_str(&discovery::package_evidence(package)); }
     body.push_str(&blog::stories_html(stories));
     body.push_str(&render_history(package, locale));
     body.push_str(&render_security(package, locale));
@@ -1963,7 +1978,7 @@ fn html_doc(
         robots = html_escape(robots),
         canonical = html_escape(canonical),
         site_name = SITE_NAME,
-        hreflang = if canonical == "https://pkg.so/privacy/" { String::new() } else { html_hreflang_links(canonical) },
+        hreflang = if canonical == "https://pkg.so/privacy/" || canonical == "https://pkg.so/new-and-trending/" { String::new() } else { html_hreflang_links(canonical) },
         stylesheet = html_escape(&format!(
             "{}?v={}",
             locale_path("/pkg/styles.css", locale),
@@ -1978,7 +1993,7 @@ fn html_doc(
 
 fn site_nav(locale: &Locale) -> String {
     format!(
-        r#"<header class="masthead"><a class="brand" href="{}" aria-label="{}"><span class="brand-mark" aria-hidden="true">pkg</span><span class="brand-lockup"><span class="brand-type">pkg.so</span><span class="brand-tagline">open package index</span></span></a><nav class="nav" aria-label="{}"><a class="nav-primary" href="{}">{}</a><a class="nav-blog" href="/blog/">Blog</a><a href="{}">Feed</a><a href="https://github.com/mxcl/pkg.so">GitHub <span aria-hidden="true">↗</span></a></nav></header>"#,
+        r#"<header class="masthead"><a class="brand" href="{}" aria-label="{}"><span class="brand-mark" aria-hidden="true">pkg</span><span class="brand-lockup"><span class="brand-type">pkg.so</span><span class="brand-tagline">open package index</span></span></a><nav class="nav" aria-label="{}"><a class="nav-primary" href="{}">{}</a><a class="nav-discovery" href="/new-and-trending/">New &amp; trending</a><a class="nav-blog" href="/blog/">Blog</a><a href="{}">Feed</a><a href="https://github.com/mxcl/pkg.so">GitHub <span aria-hidden="true">↗</span></a></nav></header>"#,
         html_escape(&locale_path("/", locale)),
         html_escape(&tx(locale, "brandHomeAria", "pkg.so package catalog")),
         html_escape(&tx(locale, "mainNavigation", "Main navigation")),
@@ -5848,7 +5863,7 @@ fn render_sitemap_index(connection: &Connection) -> Result<String, String> {
 
 fn render_hub_sitemap(connection: &Connection) -> Result<String, String> {
     let lastmod = sitemap_lastmod(connection)?;
-    let mut urls = vec![sitemap_url("/", &lastmod), sitemap_url("/feed/", &lastmod)];
+    let mut urls = vec![sitemap_url("/", &lastmod), sitemap_url("/feed/", &lastmod), format!("  <url><loc>https://pkg.so/new-and-trending/</loc><lastmod>{}</lastmod></url>", html_escape(&lastmod))];
     for hub in hubs(connection)? {
         urls.push(sitemap_url(&hub.path, &lastmod));
     }

@@ -213,3 +213,68 @@ permissions produce `NOTIFICATION_UNDELIVERED` and a persisted local outbox;
 they are never reported as successful delivery. This cannot alert through SES
 when the instance itself, networking, or SES is unavailable; external host
 monitoring remains separate.
+
+## New and trending
+
+`/new-and-trending/` and `/new-and-trending.json` publish Homebrew discovery
+alongside the catalog. The existing `/new.json` keeps its seven-day
+added-or-updated semantics. Discovery is English-only; package pages continue to
+use the catalog's existing locale routes.
+
+The nightly discovery step reads 30/90/365-day cask-install and formula
+install-on-request analytics, including third-party taps. It compares the latest
+30 days with the preceding 60 days, requires at least 30 recent events and ten
+additional monthly events, and ranks by
+`log2((recent + 10) / (prior + 10)) * log1p(recent - prior)`, requiring a smoothed
+ratio of at least 1.2. Reports must have aligned dates and be at most three days
+old. Counts are recorded installation events, not unique users. These thresholds
+are selection policy, not a claim of statistical significance.
+
+First observation and catalog admission are separate from upstream release age.
+The first successful report set per provider establishes a baseline and does not
+create a "new" cohort. Later admissions remain recently discovered for 30 days.
+Editorial research still needs primary evidence before calling a project newly
+released. Dedicated candidate slots let tap discoveries reach editorial research.
+
+Run a bounded refresh locally with:
+
+```sh
+uv run --python 3.12 scripts/update-homebrew-discovery.py --limit 20
+uv run --python 3.12 scripts/update-homebrew-discovery.py \
+  --limit 1 --package cask:mattt/tap/imcp
+```
+
+Persistent state defaults to `state/homebrew-discovery.json`, outside disposable
+`cache/`; set `PKGDB_DISCOVERY_STATE` to an absolute persistent path when operating
+multiple checkouts. Back up this file with the service's persistent data. Never
+remove it to clear an HTTP cache: doing so loses first-seen dates. The adjacent
+`http/` directory is disposable. State writes are atomic and refreshes take an
+exclusive lock. A corrupt state fails closed instead of silently resetting dates.
+
+Each refresh resolves at most 20 packages by default, reserving a third of the
+batch for rechecking admitted packages. Previously unresolved packages retry
+after three days; admitted packages after seven. Candidates require ten events
+in 30 days or 100 in a year. Package and tap identity are retained throughout.
+Packages that fall out of analytics remain in the catalog. Failed source checks
+preserve their last verified metadata but remove them from discovery shelves.
+Metadata older than 14 days is also excluded from shelves. Old published shelves
+expire at request time if maintenance stops.
+
+The resolver reads public GitHub tap trees and pins definition URLs to a commit;
+it never runs Ruby, installs packages, or downloads their binaries. Supported
+literal definitions include app/binary casks and formulas with literal
+`bin.install` artifacts. Dynamic definitions, ambiguous paths, and disabled or
+deprecated packages are not admitted. Failure reasons and source-report errors
+are recorded in state; the command prints status counts. GitHub rate limiting
+leaves candidates available for later retries. Coverage is intentionally partial,
+and unsupported syntax should be expanded using real fixtures rather than eval.
+
+Stable tap curation enters the normal deterministic/agent/human-override stages.
+Versions, source archives, checksums, telemetry, and verification timestamps stay
+in runtime artifacts. Qualified package routes include an identity hash, and
+shelves collapse confirmed shared upstream repository identities without merging
+installation identities. Package pages, search, public export, and discovery
+shelves are built from the same authority. The origin serves shelves from the
+published SQLite snapshot; no network requests or ranking work happen at request
+time. Build/test binaries locally, and use the release-directory deployment
+procedure above when deploying the origin.

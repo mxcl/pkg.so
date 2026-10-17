@@ -711,6 +711,36 @@ def hub_record(hub: Any) -> HubRecord:
     )
 
 
+def discovery_document(page_module: Any, pages: list[Any], routes: dict[str, PackageRoute]) -> dict:
+    trending, recent = [], []
+    for page in pages:
+        data = page.extra.get("discovery") or {}
+        if not data or not page_module.is_indexable_package_page(page):
+            continue
+        item = {"packageKey": page.key, "path": routes[page.key].path,
+                "displayName": page.display_name, "summary": page.summary,
+                "provider": page.provider, "tap": (page.extra.get("tapSource") or {}).get("tap"),
+                "sourceURL": page.package_manager_url, "discovery": data}
+        if data.get("trend"):
+            trending.append(item)
+        if data.get("recentlyDiscovered"):
+            recent.append(item)
+    trending.sort(key=lambda item: (-item["discovery"]["trend"]["score"], item["packageKey"]))
+    recent.sort(key=lambda item: (item["discovery"]["admittedAt"], item["packageKey"]), reverse=True)
+    # One upstream project per shelf; package identities and install routes stay distinct.
+    repositories = {page.key: page.repository.rstrip("/").removesuffix(".git").lower() for page in pages}
+    def distinct(items):
+        seen, result = set(), []
+        for item in items:
+            identity = repositories[item["packageKey"]] or item["packageKey"]
+            if identity not in seen:
+                seen.add(identity)
+                result.append(item)
+        return result[:60]
+    return {"schema": 1, "generatedAt": dt.datetime.now(dt.timezone.utc).isoformat(),
+            "trending": distinct(trending), "recentlyDiscovered": distinct(recent)}
+
+
 def build_sqlite(
     page_module: Any,
     output_path: Path,
@@ -735,6 +765,15 @@ def build_sqlite(
     metadata = manifest_metadata(manifest)
     metadata["locales"] = locales
     metadata["providers"] = sorted({page.provider for page in indexable_pages})
+    metadata["discovery"] = discovery_document(page_module, pages, routes)
+    from bootstrap.lib.discovery import load_state
+    from collections import Counter
+    state = load_state()
+    metadata["discovery"]["sourceHealth"] = {
+        "reportErrors": state.get("reportErrors", {}),
+        "statuses": dict(Counter(record["status"] for record in state["packages"].values())),
+    }
+    del state
 
     def package_rows() -> Iterable[PackageRecord]:
         for page in pages:

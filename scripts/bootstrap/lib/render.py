@@ -9,6 +9,7 @@ from typing import Any
 from .brew import clean_summary, formula_record, repository_project_url
 from .common import AGENTS_DIR, AGENTS_JSON_DIR, COMBINED_DIR, DETERMINISTIC_DIR, HUMAN_OVERRIDE_DIR, STAGE_DIR, read_json, reset_dir, sync_tree, write_text_if_changed
 from .casks import read_cask_catalog
+from .discovery import project_records
 from .executables import read_executable_index
 from .managers import manager_matcher, package_manager_routes
 from .yaml_writer import yaml_text
@@ -163,6 +164,9 @@ def render_stage(formulae: list[dict[str, Any]], manager_indexes: dict[str, Any]
         if record is None:
             continue
         write_text_if_changed(STAGE_DIR / "deterministic" / f"{token}.yml", yaml_text(record))
+        count += 1
+    for slug, record in project_records():
+        write_text_if_changed(STAGE_DIR / "deterministic" / f"{slug}.yml", yaml_text(record))
         count += 1
     return count
 

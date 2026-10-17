@@ -29,7 +29,7 @@ from avdb_paths import (
     RADIOISOTOPES_REPO_DIR,
 )
 from bootstrap.lib.render import parse_simple_yaml
-from bootstrap.lib.discovery import overlay as discovery_overlay
+from bootstrap.lib.discovery import overlay as discovery_overlay, state_path as discovery_state_path
 from geiger_agent_data import load_agent_geiger_data
 from pkg_hub_data import graph_hub_definitions, load_pkg_taxonomy_index, taxonomy_brief, taxonomy_for_package, taxonomy_terms
 
@@ -441,6 +441,8 @@ class PackagePage:
 
     @property
     def slug(self) -> str:
+        if self.provider in {"brew", "cask"} and self.name.count("/") == 2:
+            return "tap-" + slugify(self.name) + "-" + hashlib.sha256(self.key.encode()).hexdigest()[:8]
         return slugify(self.name)
 
     @property
@@ -1767,6 +1769,8 @@ def source_files() -> list[Path]:
         Path("scripts/generate-pkg-pages.py"),
         Path("scripts/pkg_hub_data.py"),
         PACKAGE_INDEX_PATH,
+        discovery_state_path(),
+        Path("scripts/bootstrap/lib/discovery.py"),
         ISOTOPES_JSON_PATH,
     ))
     data = Path("data")

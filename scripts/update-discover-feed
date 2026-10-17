@@ -197,6 +197,7 @@ def normalize_catalog(raw: dict) -> tuple[str, dict[str, dict]]:
             except FeedError:
                 updated = None
             packages[identifier] = {
+                "discovery": metadata.get("discovery") or {},
                 "category": first_string(metadata.get("category")),
                 "displayName": first_string(metadata.get("displayName")) or name,
                 "docs": https_string(metadata.get("upstreamDocs")) or https_string(metadata.get("docs")),
@@ -391,7 +392,13 @@ def candidate_pool(packages: dict[str, dict], new_ids: list[str], limit: int = 1
     underexposed.sort(key=lambda package: (package.get("lastUpdatedAt") or "", package["id"]), reverse=True)
     # The researcher still verifies the rationale, but this ordering makes newer and
     # less-covered tools the default editorial starting point.
-    ordered = [packages[identifier] for identifier in new_ids] + underexposed + popular + recent
+    discoveries = [package for package in packages.values()
+                   if package.get("discovery", {}).get("recentlyDiscovered")
+                   or package.get("discovery", {}).get("trend")]
+    discoveries.sort(key=lambda package: (
+        -((package["discovery"].get("trend") or {}).get("score", 0)), package["id"]))
+    tap_discoveries = [package for package in discoveries if package["id"].count("/") == 2]
+    ordered = tap_discoveries[:20] + discoveries[:40] + [packages[identifier] for identifier in new_ids] + underexposed + popular + recent
     seen, result = set(), []
     for package in ordered:
         if package["id"] not in seen:
@@ -463,6 +470,7 @@ def prompt(request: dict) -> str:
 
 You are the editorial researcher for Package Manager Manager's Discover feed.
 Read .feed-work/request.json. Research without installing or executing any candidate package.
+Candidates may include third-party Homebrew taps. Their discovery dates mean newly observed in our catalog, not newly released upstream. Analytics measure recorded installation events, not unique users. Verify upstream release evidence independently.
 Prefer official repositories, documentation, release history, and registries, supplemented by credible evidence of real-world use. Paraphrase claims, cite URLs, describe tradeoffs honestly, and choose a different candidate if a package cannot be substantiated.
 
 Write .feed-work/response.json as one JSON object with:

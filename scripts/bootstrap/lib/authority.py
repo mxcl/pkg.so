@@ -313,12 +313,12 @@ def overlay_homebrew_pulse_metadata(
     formula_paths = {
         formula_source_path(name, formulae_by_name.get(name)): name
         for name in formulas
-        if isinstance(name, str) and name
+        if isinstance(name, str) and name and "/" not in name
     }
     cask_paths = {
         cask_source_path(token, casks_by_token.get(token)): token
         for token in casks
-        if isinstance(token, str) and token
+        if isinstance(token, str) and token and "/" not in token
     }
     formula_events = git_pulse_events(HOMEBREW_CORE_REPO, formula_paths, "Formula")
     cask_events = git_pulse_events(HOMEBREW_CASK_REPO, cask_paths, "Casks")

@@ -63,12 +63,16 @@ def analytics_url(provider: str, days: int) -> str:
 
 
 def parse_report(payload: dict, provider: str, days: int) -> dict:
+    if not isinstance(payload, dict) or not all(isinstance(payload.get(k), str) for k in ("start_date", "end_date")):
+        raise ValueError("Invalid analytics envelope")
     start, end = (dt.date.fromisoformat(payload[k]) for k in ("start_date", "end_date"))
     if (end - start).days != days or not isinstance(payload.get("items"), list) or not payload["items"]:
         raise ValueError(f"Invalid {provider} {days}-day analytics report")
     counts = {}
     for item in payload["items"]:
+        if not isinstance(item, dict): raise ValueError("Invalid analytics item")
         name = item.get("cask" if provider == "cask" else "formula", "")
+        if not isinstance(name, str): raise ValueError("Invalid analytics package name")
         # Formula reports may contain installation options; these are not identity.
         name = name.split(" ", 1)[0]
         if not valid_name(name):
@@ -96,7 +100,7 @@ def trend(analytics: dict, today: dt.date) -> dict | None:
         if ratio < 1.2 or gain < 10:
             return None
         return {"score": round(math.log2(ratio) * math.log1p(gain), 6),
-                "growthPercent": round((recent / prior - 1) * 100, 1) if prior else None,
+                "growthPercent": round((recent / prior - 1) * 100, 1) if prior >= 10 else None,
                 "installs30d": recent, "previousMonthlyRate": prior,
                 "endDate": a["endDate"], "startDate": b["startDate"],
                 "sources": [a["source"], b["source"]]}
@@ -141,7 +145,7 @@ def literal(value: str) -> str:
 def read_definition(source: str, provider: str, name: str) -> dict:
     """Conservative DSL reader, never Ruby eval. Unknown top-level syntax fails closed."""
     fields: dict[str, Any] = {}
-    apps, binaries = [], []
+    apps, binaries, requirements = [], [], []
     lines = [line.strip() for line in source.splitlines() if line.strip() and not line.lstrip().startswith("#")]
     if not lines or lines[-1] != "end":
         raise ValueError("Missing definition boundary")
@@ -172,7 +176,7 @@ def read_definition(source: str, provider: str, name: str) -> dict:
         if zap:
             if line == "]": zap = False
             continue
-        if line in {"livecheck do", "test do", "bottle do"}:
+        if line in {"livecheck do", "test do", "bottle do", "head do"}:
             ignored_depth = 1
             continue
         if line == "def install" and provider == "brew":
@@ -180,6 +184,15 @@ def read_definition(source: str, provider: str, name: str) -> dict:
             continue
         if line == "zap trash: [":
             zap = True
+            continue
+        if line in {"auto_updates true", "auto_updates false"}:
+            fields["autoUpdates"] = line.endswith("true")
+            continue
+        if re.fullmatch(r"depends_on (?:macos|arch): :[a-zA-Z0-9_]+", line):
+            requirements.append(line.removeprefix("depends_on "))
+            continue
+        if re.fullmatch(r'depends_on "[A-Za-z0-9_./+@-]+"(?: => :(?:build|test|recommended|optional))?', line):
+            requirements.append(line.removeprefix("depends_on "))
             continue
         if line.startswith(("disable!", "deprecate!")):
             raise ValueError("Disabled or deprecated package")
@@ -221,7 +234,8 @@ def read_definition(source: str, provider: str, name: str) -> dict:
             "homepage": fields["homepage"], "repository": repo, "version": fields.get("version", ""),
             "url": fields["url"], "sourceArchive": fields["url"], "sha256": fields.get("sha256", ""),
             "license": fields.get("license", ""), "applications": apps, "binaries": binaries,
-            "installBehavior": {"app": bool(apps), "binary": bool(binaries)},
+            "installBehavior": {"app": bool(apps), "binary": bool(binaries), "requirements": requirements,
+                                "autoUpdates": fields.get("autoUpdates", False)},
             "installCommands": [{"platform": "macos" if provider == "cask" else "portable",
                                  "manager": "Homebrew Cask" if provider == "cask" else "Homebrew",
                                  "command": command, "kind": "package_manager", "confidence": 1.0,
@@ -241,8 +255,9 @@ class Fetcher:
         request = urllib.request.Request(url, headers=headers)
         try:
             with urllib.request.urlopen(request, timeout=30) as response:
-                raw = response.read(4_000_001)
-                if len(raw) > 4_000_000: raise ValueError("Source exceeds size limit")
+                limit = 1_000_000 if text else 32_000_000
+                raw = response.read(limit + 1)
+                if len(raw) > limit: raise ValueError("Source exceeds size limit")
                 value = raw.decode() if text else json.loads(raw)
                 save_state({"etag": response.headers.get("ETag"), "value": value}, path)
                 return value
@@ -279,7 +294,7 @@ class Fetcher:
 
 
 def resolve_candidates(state: dict, resolver, today: dt.date, limit: int = 30, requested: list[str] | None = None) -> None:
-    candidates = []
+    candidates, refreshes = [], []
     for key, record in state["packages"].items():
         if "/" not in key: continue
         analytics = record.get("analytics", {})
@@ -289,9 +304,12 @@ def resolve_candidates(state: dict, resolver, today: dt.date, limit: int = 30, r
         if last and (today - dt.date.fromisoformat(last)).days < (7 if record.get("metadata") else 3):
             continue
         score = (trend(analytics, today) or {}).get("score", 0)
-        candidates.append((last, -score, key))
+        (refreshes if record.get("metadata") else candidates).append((last, -score, key))
     # Oldest attempted first prevents a permanently unsupported high scorer starving the queue.
-    keys = list(dict.fromkeys((requested or []) + [key for _, _, key in sorted(candidates)]))[:limit]
+    refresh_keys = [key for _, _, key in sorted(refreshes)]
+    new_keys = [key for _, _, key in sorted(candidates)]
+    reserve = max(1, limit // 3)
+    keys = list(dict.fromkeys((requested or []) + refresh_keys[:reserve] + new_keys + refresh_keys[reserve:]))[:limit]
     for key in keys:
         provider, name = key.split(":", 1)
         if provider not in CATEGORIES or not valid_name(name) or name.count("/") != 2:
@@ -316,7 +334,10 @@ def overlay(db: dict, state: dict | None = None, today: dt.date | None = None) -
         collection = db.setdefault("casks" if provider == "cask" else "formulas", {})
         if record.get("metadata"):
             # Stored tap authority survives falling out of analytics, and cache rebuilds.
+            existing = collection.get(name, {})
             collection[name] = dict(record["metadata"])
+            for field in ("summary", "category", "docs", "upstreamDocs", "tags", "history", "configFileLocation", "credentialsFileLocation"):
+                if existing.get(field): collection[name][field] = existing[field]
         if name not in collection: continue
         metadata = collection[name]
         verified = record.get("lastVerifiedAt")
@@ -328,3 +349,25 @@ def overlay(db: dict, state: dict | None = None, today: dt.date | None = None) -
                                  "lastVerifiedAt": verified, "analytics": record.get("analytics", {}),
                                  "trend": trend(record.get("analytics", {}), today) if current else None}
     return db
+
+
+def project_records(state: dict | None = None):
+    """Stable curation only: never serialize versions, counts or refresh provenance."""
+    state = load_state() if state is None else state
+    for key, record in sorted(state["packages"].items()):
+        metadata = record.get("metadata")
+        if not metadata: continue
+        provider, name = key.split(":", 1)
+        tap = metadata["tapSource"]
+        source = f'{tap["repository"]}/blob/HEAD/{tap["path"]}'
+        item = {"id": key, "display-name": metadata["displayName"],
+                "homepage": metadata["homepage"], "repo": metadata["repository"] or None,
+                "description": metadata["summary"],
+                "package-manager": {"brew-cask" if provider == "cask" else "brew": name},
+                "package-manager-url": source,
+                "provenance": {"provider": provider, "tap": tap["tap"], "source": source}}
+        if metadata.get("applications"): item["applications"] = metadata["applications"]
+        if metadata.get("binaries"): item["executables"] = sorted({b["target"] for b in metadata["binaries"]})
+        if metadata.get("license"): item["license"] = metadata["license"]
+        slug = "tap-" + name.replace("/", "-") + "-" + hashlib.sha256(key.encode()).hexdigest()[:8]
+        yield slug, item

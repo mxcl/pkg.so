@@ -151,7 +151,7 @@ class HourlyMaintenanceTests(unittest.TestCase):
                 maintenance.main()
 
         self.assertEqual(events, [
-            "scripts/build-db.py", "scripts/build.py", "commit",
+            "scripts/update-homebrew-discovery.py", "scripts/build-db.py", "scripts/build.py", "commit",
             "scripts/resolve-cask-app-associations.py",
         ])
 

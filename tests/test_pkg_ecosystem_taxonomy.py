@@ -92,7 +92,8 @@ class EcosystemCategorizerTests(unittest.TestCase):
             db.write_text(json.dumps({"npms": {"0x": {"summary": "flamegraph profiler", "executable": "0x"}}}), encoding="utf-8")
             crates.write_text(json.dumps({"crates": {"ripgrep": {"summary": "line search", "executables": [{"name": "rg"}]}}}), encoding="utf-8")
 
-            candidates = self.module.load_candidates("all", db, crates)
+            with mock.patch.object(self.module, "read_cask_catalog", return_value=({}, {}, {})):
+                candidates = self.module.load_candidates("all", db, crates)
             selected = self.module.selected_candidates(
                 candidates,
                 {"schema": 1, "packages": {"npm:0x": {"id": "npm:0x"}}},

@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from lib.common import CACHE_DIR, ROOT, ensure_root, stable_json, write_json
+from lib.discovery import state_path
 
 
 STATE_PATH = CACHE_DIR / "build-state.json"
@@ -113,6 +114,8 @@ def steps(refresh: bool, fetch_manifests: bool, manifest_limit: int) -> list[Ste
             [
                 Path("scripts/bootstrap/03-render-projects.py"),
                 Path("scripts/bootstrap/lib/render.py"),
+                Path("scripts/bootstrap/lib/discovery.py"),
+                state_path(),
                 Path("scripts/bootstrap/lib/yaml_writer.py"),
                 Path("scripts/bootstrap/lib/brew.py"),
                 Path("scripts/bootstrap/lib/casks.py"),
@@ -132,6 +135,8 @@ def steps(refresh: bool, fetch_manifests: bool, manifest_limit: int) -> list[Ste
             [
                 Path("scripts/bootstrap/04-publish-projects.py"),
                 Path("scripts/bootstrap/lib/render.py"),
+                Path("scripts/bootstrap/lib/discovery.py"),
+                state_path(),
                 Path("scripts/bootstrap/lib/common.py"),
                 Path("cache/stage/deterministic"),
                 Path("agents"),
