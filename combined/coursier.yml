@@ -69,6 +69,25 @@ history:
       For private repositories, credentials can be supplied inline, by environment or
       Java property, or via `credentials.properties` in platform-specific config
       locations.
+related-packages:
+  - id: brew:sbt
+    reason: >
+      sbt uses Coursier-backed dependency resolution by default, so sbt provides the
+      Scala build workflow while Coursier performs artifact resolution and fetching
+      underneath it.
+    rel: adjacent_workflow
+    sources:
+      - https://get-coursier.io/docs/overview-in-the-wild
+      - https://get-coursier.io/docs/sbt-coursier
+      - https://www.scala-sbt.org/1.x/docs/
+  - id: brew:scala-cli
+    reason: >
+      Coursier's standard setup installs Scala CLI, which then supplies the compile,
+      run, test, REPL, and packaging commands for Scala code.
+    rel: adjacent_workflow
+    sources:
+      - https://get-coursier.io/docs/cli-installation
+      - https://scala-cli.virtuslab.org/docs/overview/
 category: developer-tools
 package-manager:
   brew: coursier
