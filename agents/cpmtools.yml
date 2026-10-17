@@ -51,6 +51,25 @@ history:
       simulators or floppy devices, and define disk geometries through diskdefs. The
       upstream documentation says all CP/M file system features are supported, while
       password protection is exposed as data rather than enforced.
+related-packages:
+  - id: brew:libdsk
+    reason: >
+      LibDsk complements cpmtools by providing access and conversion backends for real
+      floppy devices and numerous emulator image formats before cpmtools operates on the
+      CP/M filesystem.
+    rel: adjacent_workflow
+    sources:
+      - https://www.seasip.info/Unix/LibDsk/
+      - https://www.moria.de/~michael/cpmtools/
+  - id: brew:mtools
+    reason: >
+      Choose mtools when the target disk uses MS-DOS/FAT rather than CP/M; cpmtools'
+      official description explicitly presents mtools as the analogous filesystem
+      utility suite.
+    rel: alternative
+    sources:
+      - https://www.moria.de/~michael/cpmtools/
+      - https://www.gnu.org/software/mtools/manual/mtools.html
 tags:
   - cli
   - cp-m
@@ -81,8 +100,8 @@ provenance:
     - https://www.moria.de/~michael/cpmtools/files/cpmtools-2.24.tar.gz
   repo-sources:
     - >
-      The official homepage distributes source archives but does not identify an
-      official HTTP(S) source-control repository.
+      https://www.moria.de/~michael/cpmtools/ (official page publishes source archives
+      but does not identify an official HTTP(S) source-control project page)
   tags-sources:
     - >
       source_facts.description and executable names such as cpmcp, cpmls, mkfs.cpm, and
@@ -94,5 +113,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high

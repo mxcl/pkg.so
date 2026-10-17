@@ -56,6 +56,26 @@ history:
       copy-in to extract archives, and copy-pass to copy directory trees. The manual
       emphasizes pipelines with find or ls, archive media such as disk files, tapes, and
       pipes, and compatibility with multiple cpio and tar formats.
+related-packages:
+  - id: brew:gnu-tar
+    reason: >
+      Choose GNU tar for mainstream tarball, source-distribution, and incremental-backup
+      workflows; GNU's own comparison explains format and filesystem-handling
+      differences from cpio.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/tar/manual/html_section/cpio.html
+      - https://www.gnu.org/software/cpio/manual/
+  - id: brew:findutils
+    reason: >
+      GNU findutils is a direct workflow companion because official find documentation
+      pipes selected, null-delimited file lists into cpio for safe directory-tree
+      copying.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://www.gnu.org/software/findutils/manual/html_node/find_html/Copying-A-Subset-of-Files.html
+      - https://www.gnu.org/software/cpio/manual/
 tags:
   - archive
   - backup
