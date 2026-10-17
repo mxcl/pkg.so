@@ -3,8 +3,14 @@ display-name: Coder
 repo: null
 docs:
   - https://coder.com/docs
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  linux:
+    - ~/.config/coderv2/url
+  macos:
+    - ~/Library/Application Support/coderv2/url
+credentials-file-location:
+  linux:
+    - ~/.config/coderv2/session
 history:
   adoption-history:
     - >
@@ -52,6 +58,17 @@ history:
       coder login, and connect to workspaces through IDEs, terminals, SSH, or web
       interfaces. Administrators define reusable workspace templates with Terraform,
       then manage users, images, policies, and infrastructure centrally.
+related-packages:
+  - id: brew:code-server
+    reason: >
+      Coder officially supports code-server as its VS Code-in-the-browser workspace
+      application and provides a template module that installs and exposes it through
+      Coder.
+    rel: adjacent_workflow
+    sources:
+      - https://coder.com/docs/code-server/coder
+      - https://coder.com/docs/user-guides/workspace-access/web-ides
+      - https://github.com/coder/code-server
 tags:
   - cli
   - development-environments

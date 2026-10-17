@@ -49,6 +49,23 @@ history:
       CodeQuery database, then browses or queries it with the codequery GUI or searches
       with cqsearch. The tool supports symbols, call relationships, inheritance
       relationships, file lookup, grep-style search, and graph exports.
+related-packages:
+  - id: brew:cscope
+    reason: >
+      cscope generates call and cross-reference data that CodeQuery's cqmakedb consumes
+      when building its searchable database.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ruben2020/codequery
+      - https://cscope.sourceforge.net/
+  - id: brew:universal-ctags
+    reason: >
+      Universal Ctags generates symbol data for CodeQuery and is documented by CodeQuery
+      as a drop-in replacement for Exuberant Ctags.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ruben2020/codequery
+      - https://ctags.io/
 category: developer-tools
 package-manager:
   brew: codequery
