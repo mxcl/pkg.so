@@ -3,7 +3,9 @@ display-name: Cryptol
 repo: https://github.com/GaloisInc/cryptol
 docs:
   - https://galoisinc.github.io/cryptol/master/RefMan.html
-config-file-location: null
+config-file-location:
+  unix:
+    - cryproject.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -53,6 +55,16 @@ history:
       commands through SMT solvers such as Z3. The README also points users toward
       examples, the standard library, and the related SAW tooling for checking
       implementations against specifications.
+related-packages:
+  - id: brew:z3
+    reason: >
+      Z3 is Cryptol's documented default SMT solver for type constraints and the `:sat`
+      and `:prove` commands, and Homebrew installs the compatible solver alongside
+      Cryptol.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/GaloisInc/cryptol
+      - https://github.com/Z3Prover/z3
 tags:
   - cli
   - cryptography

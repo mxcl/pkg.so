@@ -57,6 +57,25 @@ history:
       calls out work on output chunking, files larger than 2 GB, resume behavior,
       compression, and pattern handling, all of which are package-nerd details that
       matter when a formula is used in long-running shell pipelines.
+related-packages:
+  - id: brew:john-jumbo
+    reason: >
+      John the Ripper Jumbo can consume Crunch-generated candidate files in its
+      documented wordlist mode, adding hash and cipher auditing plus word-mangling rules
+      to the workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://sourceforge.net/projects/crunch-wordlist/files/crunch-wordlist/readme.txt
+      - https://openwall.com/john/doc/MODES.shtml
+      - https://github.com/openwall/john
+  - id: brew:hashcat
+    reason: >
+      hashcat accepts one or more wordlists for dictionary and hybrid attacks, so it can
+      test candidate lists generated and constrained with Crunch.
+    rel: adjacent_workflow
+    sources:
+      - https://sourceforge.net/projects/crunch-wordlist/
+      - https://hashcat.net/wiki/doku.php?id=frequently_asked_questions
 category: security
 package-manager:
   brew: crunch

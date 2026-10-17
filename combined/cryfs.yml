@@ -58,6 +58,25 @@ history:
       naming Dropbox, iCloud, OneDrive, and similar services, while the docs warn about
       non-concurrent use and corruption risks if multiple devices or sync clients write
       at the same time.
+related-packages:
+  - id: brew:gocryptfs
+    reason: >
+      gocryptfs is a faster file-by-file encrypted-overlay alternative when preserving
+      the ordinary cloud-sync workflow matters more than CryFS's stronger hiding of file
+      sizes and directory structure.
+    rel: alternative
+    sources:
+      - https://www.cryfs.org/comparison
+      - https://nuetzlich.net/gocryptfs/
+  - id: brew:encfs
+    reason: >
+      EncFS is an older pass-through encrypted-filesystem alternative with broad Unix
+      familiarity, but CryFS's official comparison notes that its file-by-file layout
+      exposes more structural metadata.
+    rel: alternative
+    sources:
+      - https://www.cryfs.org/comparison
+      - https://vgough.github.io/encfs/
 category: security
 package-manager:
   brew: cryfs

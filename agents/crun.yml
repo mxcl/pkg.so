@@ -64,6 +64,26 @@ history:
       so container engines and scripts can select it as the OCI runtime. Build-time
       options such as shared libraries and static Nix builds matter for distribution
       maintainers.
+related-packages:
+  - id: brew:runc
+    reason: >
+      runc is the OCI reference runtime and the principal Go-based alternative when
+      compatibility and reference-implementation status matter more than crun's C
+      library mode and smaller footprint.
+    rel: alternative
+    sources:
+      - https://github.com/containers/crun/blob/main/README.md
+      - https://github.com/opencontainers/runtime-spec/blob/main/implementations.md
+      - https://github.com/opencontainers/runc/blob/main/README.md
+  - id: brew:podman
+    reason: >
+      Podman is a higher-level container engine that discovers and invokes crun as an
+      OCI runtime, giving users image, pod, and container-management workflows above
+      crun's low-level interface.
+    rel: adjacent_workflow
+    sources:
+      - https://podman.io/docs/installation
+      - https://docs.podman.io/en/stable/markdown/podman.1.html
 tags:
   - c-library
   - cli
