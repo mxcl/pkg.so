@@ -46,6 +46,23 @@ history:
     - >
       Users substitute `colormake` where they would normally run `make`; `clmake` pipes
       through `less`, while the `-short` variants truncate long lines to avoid wrapping.
+related-packages:
+  - id: brew:make
+    reason: >
+      Use GNU Make with Colormake because Colormake directly wraps make, passing normal
+      build options through while adding readable colorized output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/pagekite/Colormake
+      - https://www.gnu.org/software/make/
+  - id: brew:less
+    reason: >
+      Use less with Colormake through the supplied clmake command, which pipes colorized
+      build output into the pager for navigating long compilations.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/pagekite/Colormake
+      - https://www.greenwoodsoftware.com/less/index.html
 tags:
   - build-tools
   - cli

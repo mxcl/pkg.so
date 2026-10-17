@@ -54,6 +54,33 @@ history:
       Users run collectd as a daemon, configure global settings and LoadPlugin blocks in
       collectd.conf, and use companion commands such as collectdctl, collectdmon,
       collectd-nagios, and collectd-tg for control or integration.
+related-packages:
+  - id: brew:telegraf
+    reason: >
+      Choose Telegraf as an alternative when you want a single plugin-driven agent with
+      built-in processing and aggregation stages in addition to metric collection and
+      output.
+    rel: alternative
+    sources:
+      - https://docs.influxdata.com/telegraf/v1/concepts/
+      - https://collectd.org/
+  - id: brew:rrdtool
+    reason: >
+      Use RRDtool with collectd when you want collectd's collected values written to
+      fixed-size round-robin databases for retention and graphing.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/collectd/collectd
+      - https://oss.oetiker.ch/rrdtool/doc/index.en.html
+  - id: brew:nagios
+    reason: >
+      Use Nagios Core with collectd when you want collectd-nagios to query collected
+      values through the Unix-socket plugin and translate thresholds into Nagios
+      statuses.
+    rel: adjacent_workflow
+    sources:
+      - https://collectd.org/documentation/manpages/collectd-nagios.html
+      - https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/
 tags:
   - cli
   - daemon
