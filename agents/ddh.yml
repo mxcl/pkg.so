@@ -47,6 +47,34 @@ history:
       CLI usage centers on selecting directories, choosing duplicate-only or all-file
       verbosity, and emitting either human-readable standard output or JSON for
       downstream tools. The README also shows library use through a deduplication API.
+related-packages:
+  - id: brew:rdfind
+    reason: >
+      Choose rdfind when you want duplicate discovery followed by an explicit delete,
+      hard-link, or symbolic-link replacement mode; its default scan only writes a
+      results file.
+    rel: alternative
+    sources:
+      - https://github.com/darakian/ddh
+      - https://github.com/pauldreik/rdfind#readme
+      - https://rdfind.pauldreik.se/rdfind.1.html
+  - id: brew:rmlint
+    reason: >
+      Choose rmlint when you need duplicate detection plus other filesystem lint such as
+      empty files, broken links, or bad ownership, with a reviewable cleanup script.
+    rel: alternative
+    sources:
+      - https://github.com/darakian/ddh
+      - https://rmlint.readthedocs.io/en/master/
+      - https://rmlint.readthedocs.io/en/master/rmlint.1.html
+  - id: brew:fdupes
+    reason: >
+      Choose fdupes for a traditional duplicate-file scanner with interactive deletion
+      and mature safeguards around destructive cleanup.
+    rel: alternative
+    sources:
+      - https://github.com/darakian/ddh
+      - https://github.com/adrianlopezroche/fdupes#readme
 tags:
   - cli
   - deduplication
