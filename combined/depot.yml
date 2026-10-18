@@ -55,6 +55,25 @@ history:
       repo/image:tag .`. `depot init` links the local directory to a Depot project by
       writing `depot.json`; build and bake commands can also take a project flag or
       environment variable for CI use.
+related-packages:
+  - id: brew:docker-buildx
+    reason: >
+      Choose Docker Buildx when you want Docker's BuildKit client with locally operated,
+      Kubernetes, or independently managed remote builders instead of Depot's managed
+      build service.
+    rel: alternative
+    sources:
+      - https://depot.dev/docs/container-builds/how-to-guides/continuous-integration
+      - https://docs.docker.com/build/builders/
+      - https://docs.docker.com/reference/cli/docker/buildx/
+  - id: brew:docker
+    reason: >
+      Use the Docker CLI alongside Depot when you want `depot configure-docker` to route
+      familiar `docker build` or `docker buildx build` commands through a Depot builder.
+    rel: adjacent_workflow
+    sources:
+      - https://depot.dev/docs/container-builds/how-to-guides/local-development
+      - https://docs.docker.com/build/concepts/overview/
 category: cloud-infrastructure
 package-manager:
   brew: depot

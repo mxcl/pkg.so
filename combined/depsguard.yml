@@ -84,6 +84,26 @@ history:
       user-level and repo-level package-manager configuration files, including
       `.github/dependabot.yml` and Renovate files, and only edits files after user
       approval.
+related-packages:
+  - id: brew:renovate
+    reason: >
+      Use Renovate to automate dependency-update pull requests, then let DepsGuard
+      inspect its repository configuration for a minimum release-age policy that delays
+      newly published versions.
+    rel: adjacent_workflow
+    sources:
+      - https://depsguard.com/
+      - https://docs.renovatebot.com/configuration-options/
+      - https://docs.renovatebot.com/self-hosted-configuration/
+  - id: brew:grype
+    reason: >
+      Run Grype to find known vulnerabilities in installed packages, filesystems,
+      images, or SBOMs while DepsGuard separately reduces exposure to freshly published
+      malicious releases before installation.
+    rel: adjacent_workflow
+    sources:
+      - https://depsguard.com/
+      - https://github.com/anchore/grype#readme
 category: security
 package-manager:
   brew: depsguard
