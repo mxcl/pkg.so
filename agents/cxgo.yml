@@ -39,15 +39,24 @@ history:
   summary:
     - CxGo is an experimental source-to-source compiler for translating C source code into Go.
   timeline:
-    - 'The README marks CxGo experimental and documents compiler-test coverage.'
-    - 'GitHub release metadata lists v0.5.2 among the published releases.'
-    - 'The config reference documents cxgo.yml as the YAML project configuration file.'
+    - The README marks CxGo experimental and documents compiler-test coverage.
+    - GitHub release metadata lists v0.5.2 among the published releases.
+    - The config reference documents cxgo.yml as the YAML project configuration file.
   usage:
     - >
       Users install cxgo with go install or a release binary, run cxgo against a C file
       for simple cases, and use cxgo.yml for larger conversions that need roots, include
       paths, file lists, replacements, identifier hints, VCS input, and pre/post
       commands.
+related-packages:
+  - id: brew:go
+    reason: >
+      CxGo emits Go source, and the official Go toolchain provides the formatter,
+      compiler, and test commands used to validate and build that translated code.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gotranspile/cxgo
+      - https://go.dev/doc/
 tags:
   - c
   - cli
