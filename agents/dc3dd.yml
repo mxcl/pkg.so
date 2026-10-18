@@ -55,6 +55,33 @@ history:
       Package users reach for dc3dd when they want dd-style acquisition with integrated
       hashes, verification, progress reporting, and output splitting. Those features
       reduce the shell glue otherwise needed around GNU dd in forensic imaging runs.
+related-packages:
+  - id: brew:dcfldd
+    reason: >
+      Choose dcfldd as an alternative forensic dd when flexible wiping, multiple
+      simultaneous outputs, split output, and native logging or pipelines are central to
+      the acquisition workflow.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/projects/dc3dd/
+      - https://github.com/resurrecting-open-source-projects/dcfldd#readme
+  - id: brew:ddrescue
+    reason: >
+      Choose GNU ddrescue instead when the source medium is failing and resumable,
+      mapfile-driven recovery of readable areas is more important than integrated
+      forensic hashing.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/projects/dc3dd/
+      - https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html
+  - id: brew:coreutils
+    reason: >
+      Choose GNU coreutils dd for ordinary low-level copying when dc3dd's acquisition
+      hashes, verification, progress, and split-output features are unnecessary.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/projects/dc3dd/
+      - https://www.gnu.org/software/coreutils/manual/html_node/dd-invocation.html
 tags:
   - cli
   - data-recovery

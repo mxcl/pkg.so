@@ -71,6 +71,33 @@ history:
       documents, node storage containers, explicit resource cleanup in Java bindings,
       thread-sharing rules for manager/container/query objects, and careful
       configuration of validation and external access.
+related-packages:
+  - id: brew:berkeley-db
+    reason: >
+      Use Berkeley DB alongside Berkeley DB XML when an application needs direct access
+      to the embedded key/value and transactional storage layer on which the XML
+      database is built.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.oracle.com/cd/E17276_01/html/programmer_reference_xml/intro.html
+      - https://www.oracle.com/database/technologies/related/berkeleydb.html
+  - id: brew:xqilla
+    reason: >
+      XQilla is useful for standalone or embedded XQuery and XPath processing because
+      Oracle documents it as the query engine used by Berkeley DB XML.
+    rel: adjacent_workflow
+    sources:
+      - https://www.oracle.com/database/technologies/berkeleydb-xml-faq.html
+      - https://xqilla.sourceforge.net/
+  - id: brew:xerces-c
+    reason: >
+      Xerces-C++ complements Berkeley DB XML when an application also needs direct XML
+      parsing or validation, and Oracle identifies it as the parser beneath XQilla and
+      DB XML.
+    rel: adjacent_workflow
+    sources:
+      - https://www.oracle.com/database/technologies/berkeleydb-xml-faq.html
+      - https://xerces.apache.org/xerces-c/
 category: data
 package-manager:
   brew: dbxml

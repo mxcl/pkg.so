@@ -55,6 +55,33 @@ history:
       progress, verification, split files, or simultaneous destinations. It keeps the
       operational feel of dd but makes common acquisition and wiping tasks less
       dependent on surrounding scripts.
+related-packages:
+  - id: brew:dc3dd
+    reason: >
+      Choose dc3dd as an alternative forensic dd when integrated evidence acquisition,
+      multiple hashing options, pattern writing, and explicit file verification match
+      the intended workflow.
+    rel: alternative
+    sources:
+      - https://github.com/resurrecting-open-source-projects/dcfldd#readme
+      - https://sourceforge.net/projects/dc3dd/
+  - id: brew:ddrescue
+    reason: >
+      Choose GNU ddrescue instead for damaged media when resumable recovery and a
+      persistent mapfile are more important than dcfldd's integrated hashing, wiping,
+      and multiple-output features.
+    rel: alternative
+    sources:
+      - https://github.com/resurrecting-open-source-projects/dcfldd#readme
+      - https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html
+  - id: brew:coreutils
+    reason: >
+      Choose GNU coreutils dd for routine block copying when forensic hashing,
+      verification, wiping patterns, split images, and native logging are not required.
+    rel: alternative
+    sources:
+      - https://github.com/resurrecting-open-source-projects/dcfldd#readme
+      - https://www.gnu.org/software/coreutils/manual/html_node/dd-invocation.html
 category: security
 package-manager:
   brew: dcfldd

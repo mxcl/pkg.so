@@ -4,7 +4,11 @@ homepage: https://github.com/dlang-community/DCD
 repo: https://github.com/dlang-community/DCD
 docs:
   - https://github.com/dlang-community/DCD#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/dcd/dcd.conf
+    - ~/.config/dcd/dcd.conf
+  windows: <current-working-directory>\dcd.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -52,6 +56,23 @@ history:
       tips, symbol locations, and import completion without installing a full IDE. The
       server process is started before editing, and editor plugins usually invoke
       dcd-client on source buffers.
+related-packages:
+  - id: brew:dub
+    reason: >
+      DUB is the documented build path for DCD's client and server and is useful for
+      rebuilding DCD or managing the surrounding D project dependencies.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dlang-community/DCD#readme
+      - https://dub.pm/
+  - id: brew:ldc
+    reason: >
+      LDC provides the recent D compiler environment required to build DCD and the
+      standard-library import trees that DCD indexes for completion.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dlang-community/DCD#readme
+      - https://github.com/ldc-developers/ldc#readme
 category: developer-tools
 package-manager:
   brew: dcd
