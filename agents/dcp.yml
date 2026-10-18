@@ -47,6 +47,32 @@ history:
       copy filesystem content locally. The tool can also pass username and password
       flags for private images, while its README warns that shell history makes that
       convenience insecure.
+related-packages:
+  - id: brew:docker
+    reason: >
+      dcp uses the Docker API and normally connects to the standard Docker socket, so
+      Docker supplies the runtime that pulls images and exposes their contents for
+      extraction.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/exdx/dcp#readme
+      - https://docs.docker.com/reference/cli/docker/
+  - id: brew:podman
+    reason: >
+      When Docker is unavailable, dcp can connect to the current user's Podman socket,
+      making Podman its documented daemonless runtime option.
+    rel: alternative
+    sources:
+      - https://github.com/exdx/dcp#readme
+      - https://docs.podman.io/en/latest/markdown/podman.1.html
+  - id: brew:dive
+    reason: >
+      dcp's FAQ recommends using dive to locate files within container-image layers and
+      then using dcp to extract the selected path.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/exdx/dcp#readme
+      - https://github.com/wagoodman/dive#readme
 tags:
   - cli
   - containers
