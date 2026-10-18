@@ -6,7 +6,9 @@ docs:
   - https://datafusion.apache.org/
   - https://datafusion.apache.org/user-guide/cli/index.html
   - https://datafusion.apache.org/user-guide/introduction.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.datafusionrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -52,6 +54,17 @@ history:
       Developers embed DataFusion as a Rust query engine, use its SQL and DataFrame
       APIs, or run `datafusion-cli` to query data formats such as CSV and Parquet from a
       command line.
+related-packages:
+  - id: brew:duckdb
+    reason: >
+      Choose DuckDB when you want an embeddable analytical database with a persistent
+      single-file database and a feature-rich standalone SQL shell; choose DataFusion
+      when building a highly extensible Rust query engine or custom data system.
+    rel: alternative
+    sources:
+      - https://datafusion.apache.org/
+      - https://datafusion.apache.org/blog/2023/08/05/datafusion_fast_grouping/
+      - https://duckdb.org/docs/stable/clients/cli/overview
 tags:
   - apache-arrow
   - cli
