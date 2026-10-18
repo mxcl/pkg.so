@@ -62,6 +62,31 @@ history:
       fetching remote CVS masters, `cvsconvert` for trial conversion and
       content-mismatch checks against the original CVS, and `cvsstrip` for reducing bug
       reports to metadata-only trees.
+related-packages:
+  - id: brew:reposurgeon
+    reason: >
+      Use reposurgeon after cvs-fast-export to inspect, repair, rewrite, and validate
+      the reconstructed repository history before final import.
+    rel: adjacent_workflow
+    sources:
+      - https://www.catb.org/~esr/cvs-fast-export/cvs-fast-export.html
+      - https://www.catb.org/~esr/reposurgeon/
+  - id: brew:git
+    reason: >
+      Git's fast-import backend consumes the stream emitted by cvs-fast-export and
+      creates the destination repository, branches, tags, commits, and file history.
+    rel: adjacent_workflow
+    sources:
+      - https://www.catb.org/~esr/cvs-fast-export/
+      - https://git-scm.com/docs/git-fast-import.html
+  - id: brew:cvs
+    reason: >
+      CVS is the source system whose repository master files and per-file history
+      cvs-fast-export analyzes during a migration.
+    rel: adjacent_workflow
+    sources:
+      - https://www.catb.org/~esr/cvs-fast-export/
+      - https://www.nongnu.org/cvs/
 category: developer-tools
 package-manager:
   apk: cvs-fast-export

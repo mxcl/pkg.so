@@ -58,6 +58,40 @@ history:
       tag, branch, merge, import vendor drops, and inspect history through the cvs
       command. Administrators maintain repository-side CVSROOT files for policy,
       logging, access, and server behavior.
+related-packages:
+  - id: brew:subversion
+    reason: >
+      Choose Subversion for a centralized system explicitly designed as a better CVS,
+      with atomic commits and versioned directories, copies, renames, and metadata.
+    rel: alternative
+    sources:
+      - https://subversion.apache.org/features.html
+      - https://www.nongnu.org/cvs/
+  - id: brew:git
+    reason: >
+      Choose Git when every clone should contain full history and developers need
+      distributed branching and offline repository operations instead of a central CVS
+      repository.
+    rel: alternative
+    sources:
+      - https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control.html
+      - https://www.nongnu.org/cvs/
+  - id: brew:cvs-fast-export
+    reason: >
+      Use cvs-fast-export to reconstruct repository-wide changesets from CVS or RCS
+      master files and feed the resulting history to Git fast-import.
+    rel: adjacent_workflow
+    sources:
+      - https://www.catb.org/~esr/cvs-fast-export/
+      - https://git-scm.com/docs/git-cvsimport
+  - id: brew:cvsutils
+    reason: >
+      Use CVS Utilities alongside CVS for offline working-copy inspection, cleanup,
+      administrative-file changes, and patch preparation.
+    rel: adjacent_workflow
+    sources:
+      - https://www.red-bean.com/cvsutils/
+      - https://www.nongnu.org/cvs/
 tags:
   - cli
   - cvs
