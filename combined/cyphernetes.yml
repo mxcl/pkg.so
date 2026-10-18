@@ -6,8 +6,15 @@ docs:
   - https://cyphernet.es/docs
   - https://cyphernet.es/docs/cli
   - https://cyphernet.es/docs/language
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - $KUBECONFIG
+    - ~/.kube/config
+    - ~/.cyphernetes/relationships.yaml
+credentials-file-location:
+  unix:
+    - $KUBECONFIG
+    - ~/.kube/config
 history:
   adoption-history:
     - >
@@ -61,6 +68,16 @@ history:
       as a plugin, or the operator for dynamic Kubernetes workflows. Queries can match
       Kubernetes resources, filter them by status fields, return projections, or create
       related resources such as Services from Deployments.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Choose kubectl for the standard resource-oriented Kubernetes command set; choose
+      Cyphernetes when graph patterns make relationships across resources easier to
+      query or modify.
+    rel: alternative
+    sources:
+      - https://cyphernet.es/docs/cli/
+      - https://kubernetes.io/docs/reference/kubectl/
 category: cloud-infrastructure
 package-manager:
   brew: cyphernetes

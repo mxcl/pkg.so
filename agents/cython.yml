@@ -64,6 +64,32 @@ history:
       include wrapping external C libraries, optimizing numerical loops, interacting
       with NumPy arrays, embedding CPython, and maintaining generated C sources for
       reproducible builds.
+related-packages:
+  - id: brew:pythran
+    reason: >
+      Choose Pythran for ahead-of-time compilation of numerical Python kernels with a
+      narrower NumPy-oriented model; choose Cython for its broader extension-language
+      features and direct C or C++ interfaces.
+    rel: alternative
+    sources:
+      - https://docs.cython.org/en/latest/src/tutorial/related_work.html
+      - https://pythran.readthedocs.io/
+  - id: brew:numpy
+    reason: >
+      Cython provides dedicated NumPy declarations, typed array access, and memoryview
+      workflows for building accelerated numerical extensions around NumPy data.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.cython.org/en/latest/src/tutorial/numpy.html
+      - https://numpy.org/doc/stable/
+  - id: brew:python@3.14
+    reason: >
+      Cython's generated native extensions are compiled for and loaded by Python, making
+      the Python runtime and extension API central to its build and execution workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.cython.org/en/latest/src/quickstart/build.html
+      - https://docs.python.org/3/extending/
 tags:
   - c-extensions
   - cli

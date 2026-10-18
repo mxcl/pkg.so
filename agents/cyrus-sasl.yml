@@ -8,7 +8,9 @@ config-file-location:
   unix:
     - /usr/lib/sasl2/<application>.conf
     - /etc/sasl2/<application>.conf
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - /etc/sasldb2
 history:
   adoption-history:
     - >
@@ -77,6 +79,23 @@ history:
       The installation guide documents application configuration through the
       application's own config callback or through per-application SASL configuration
       files such as /usr/lib/sasl/Appname.conf.
+related-packages:
+  - id: brew:openldap
+    reason: >
+      OpenLDAP uses Cyrus SASL for authenticated LDAP sessions and documents SASL
+      configuration as part of its administrator workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://www.openldap.org/doc/admin24/sasl.html
+      - https://www.cyrusimap.org/sasl/sasl/components.html
+  - id: brew:krb5
+    reason: >
+      MIT Kerberos supplies the Kerberos credentials and GSSAPI implementation used by
+      Cyrus SASL's GSSAPI authentication mechanism.
+    rel: adjacent_workflow
+    sources:
+      - https://www.cyrusimap.org/sasl/sasl/installation.html
+      - https://web.mit.edu/kerberos/
 tags:
   - authentication
   - cli

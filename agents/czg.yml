@@ -57,6 +57,25 @@ history:
       subject, and related metadata, and let the tool call through to git commit. The
       CLI also documents subcommands and OpenAI-assisted commit-message options, with
       local API settings stored in the czg config file.
+related-packages:
+  - id: brew:commitizen
+    reason: >
+      Choose Commitizen for its broader guided-commit, version-bump, and changelog
+      workflow; choose czg for the direct cz-git prompt client and its configuration
+      model.
+    rel: alternative
+    sources:
+      - https://commitizen-tools.github.io/commitizen/
+      - https://commitizen-tools.github.io/commitizen/commands/bump/
+      - https://cz-git.qbb.sh/cli/
+  - id: brew:commitlint
+    reason: >
+      commitlint can validate the Conventional Commit messages that czg interactively
+      creates, pairing guided authoring with hook or CI enforcement.
+    rel: adjacent_workflow
+    sources:
+      - https://commitlint.js.org/guides/getting-started.html
+      - https://cz-git.qbb.sh/config/
 tags:
   - cli
   - commit-message

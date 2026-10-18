@@ -4,7 +4,13 @@ homepage: https://github.com/qarmin/czkawka
 repo: https://github.com/qarmin/czkawka
 docs:
   - https://github.com/qarmin/czkawka#readme
-config-file-location: null
+config-file-location:
+  linux:
+    - ~/.config/czkawka/
+    - ~/.config/krokiet/
+  macos:
+    - ~/Library/Application Support/pl.Qarmin.Czkawka/
+    - ~/Library/Application Support/pl.Qarmin.Krokiet/
 credentials-file-location: null
 history:
   adoption-history:
@@ -47,6 +53,33 @@ history:
       executable for repeatable scans in scripts. The documented feature set includes
       duplicate files, empty folders, big files, temporary files, similar images,
       similar videos, music duplicates, invalid symlinks, broken files, and bad names.
+related-packages:
+  - id: brew:fclones
+    reason: >
+      Choose fclones when a fast, feature-rich console duplicate finder is the priority;
+      choose Czkawka for graphical review and its broader collection of cleanup
+      scanners.
+    rel: alternative
+    sources:
+      - https://github.com/qarmin/czkawka#other-apps
+      - https://github.com/pkolaczk/fclones
+  - id: brew:rmlint
+    reason: >
+      rmlint is an upstream-recommended console alternative with filesystem-cleanup
+      scripting, while Czkawka adds cross-platform GUIs and similar-media scanners.
+    rel: alternative
+    sources:
+      - https://github.com/qarmin/czkawka#other-apps
+      - https://rmlint.readthedocs.io/
+  - id: brew:rdfind
+    reason: >
+      rdfind is an upstream-listed alternative focused on ranking and removing duplicate
+      files, whereas Czkawka covers additional cleanup classes and interactive GUI
+      workflows.
+    rel: alternative
+    sources:
+      - https://github.com/qarmin/czkawka#other-apps
+      - https://github.com/pauldreik/rdfind
 category: system
 package-manager:
   apk: czkawka
