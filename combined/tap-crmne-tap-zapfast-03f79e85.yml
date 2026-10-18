@@ -2,9 +2,105 @@ id: cask:crmne/tap/zapfast
 display-name: ZapFast
 homepage: https://zapfast.rocks
 repo: https://github.com/crmne/zapfast
+docs:
+  - https://zapfast.rocks/
+  - https://zapfast.rocks/getting-started
+  - https://zapfast.rocks/how-it-links
+  - https://zapfast.rocks/settings-and-files
+  - https://zapfast.rocks/using-zapfast
+config-file-location:
+  linux: ~/.config/zapfast/settings.json
+  macos: ~/Library/Application Support/me.paolino.zapfast/settings.json
+  windows: '%APPDATA%\paolino\zapfast\config\settings.json'
+credentials-file-location:
+  linux: ~/.local/state/zapfast/accounts/<id>/session.db
+  macos: ~/Library/Application Support/me.paolino.zapfast/accounts/<id>/session.db
+  windows: '%LOCALAPPDATA%\paolino\zapfast\data\accounts\<id>\session.db'
+history:
+  adoption-history:
+    - >
+      ZapFast distributes native builds for Linux, macOS and Windows, with documented
+      Homebrew, Arch, Nix, AppImage and standalone installation routes. Its
+      multi-platform packaging and in-application updater make it usable beyond
+      source-build audiences.
+    - >
+      The project is recent, so available evidence supports active packaging and
+      development rather than broad or long-established adoption.
+  package-nerd-significance:
+    - >
+      ZapFast is an unusual desktop package because it replaces the common
+      embedded-web-view approach with a Rust and egui client linked through
+      whatsapp-rust. It keeps chats in a local encrypted archive while exposing the file
+      layout clearly enough for backup and troubleshooting.
+    - >
+      Its rename and migration support are also noteworthy: packages, executable names
+      and per-user state moved from FastsApp to ZapFast while preserving existing linked
+      sessions and local archives.
+  project-history:
+    - >
+      The application was originally named FastsApp and developed as an unofficial
+      native WhatsApp companion client. It links as a companion device rather than
+      embedding WhatsApp Web, and stores synchronized history locally.
+    - >
+      Version 0.13.0 introduced the ZapFast package and executable names. The
+      application retained migration paths from FastsApp and the still earlier
+      fastwhatsapp data directories while expanding multi-account, privacy, messaging
+      and desktop-integration features.
+  related-projects:
+    - >
+      whatsapp-rust supplies the protocol implementation used to link ZapFast as a
+      companion device.
+    - >
+      Spotifast is the author's sibling native application; both use egui and the shared
+      fastframe application framework.
+  sources:
+    - https://github.com/crmne/zapfast#readme
+    - https://zapfast.rocks/
+    - https://zapfast.rocks/download/
+    - https://zapfast.rocks/how-it-links/
+    - https://zapfast.rocks/settings-and-files/
+  summary:
+    - >
+      ZapFast is an independent native Rust desktop client that links to WhatsApp as a
+      companion device, supports common messaging and media operations, and keeps
+      synchronized chat history in a local encrypted archive.
+  timeline:
+    - '2026: The application is developed under the FastsApp name.'
+    - '2026: Version 0.13.0 introduces the ZapFast package and executable names.'
+    - >
+      2026: Later releases expand multi-account support, local history, privacy controls
+      and cross-platform packaging.
+  usage:
+    - >
+      Open ZapFast and scan its QR code from WhatsApp's Linked devices screen, or use
+      phone-number linking. Each linked number receives separate session, archive,
+      settings and cache storage.
+    - >
+      Users can send messages and media, record voice messages, manage multiple linked
+      numbers and keep the application connected in the system tray. Because ZapFast is
+      unofficial, its documentation warns that using it may carry account risk.
+related-packages:
+  - id: cask:whatsapp
+    reason: >
+      Choose the official WhatsApp desktop client for first-party support and the
+      complete vendor-supported feature set; choose ZapFast for its lightweight native
+      interface and documented local storage model.
+    rel: alternative
+    sources:
+      - https://zapfast.rocks/what-is-zapfast/
+      - https://www.whatsapp.com/download
+category: productivity
 package-manager:
   brew-cask: crmne/tap/zapfast
 package-manager-url: https://github.com/crmne/homebrew-tap/blob/HEAD/Casks/zapfast.rb
+tags:
+  - desktop
+  - local-archive
+  - messaging
+  - multi-account
+  - native
+  - rust
+  - whatsapp
 description: Native WhatsApp client
 applications:
   - ZapFast.app

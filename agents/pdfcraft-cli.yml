@@ -1,0 +1,124 @@
+id: brew:pdfcraft-cli
+display-name: PdfCraft CLI
+repo: null
+docs:
+  - https://github.com/storytold/pdfcraft/tree/main/docs
+  - https://getartcraft.com/apps/pdfcraft
+  - https://github.com/storytold/pdfcraft
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      PdfCraft is distributed as a desktop application, web build, reusable Rust engine
+      and separate headless CLI across macOS, Windows, Linux and FreeBSD. Its official
+      release history shows rapid early iteration, but the project remains too young for
+      claims of long-term adoption.
+  package-nerd-significance:
+    - >
+      PdfCraft CLI packages a clean-room Rust PDF engine as both a conventional
+      command-line program and an opt-in stdio MCP server. That combination makes local
+      PDF inspection and editing available to shell scripts, CI jobs and AI agents
+      without requiring an account or cloud service.
+    - >
+      Its independent verification against qpdf, Poppler and hayro, atomic saves and
+      corpus testing are particularly relevant to packagers because PDF tooling must
+      handle malformed and complex inputs without corrupting users' documents.
+  project-history:
+    - >
+      The project first released under the PrintCraft name in October 2026. It was
+      renamed PdfCraft on October 7, including its repository, crates, binaries and
+      application identity, with migration logic for earlier application data.
+    - >
+      The CLI grew alongside the desktop workbench and shared its engine operations. The
+      official interface exposes PDF inspection, rendering, text extraction, page
+      manipulation, annotations, forms, encryption, scripts and an MCP server through
+      one schema-described tool table.
+  related-projects:
+    - >
+      PdfCraft's official test process uses qpdf and hayro on every
+      continuous-integration run and Poppler as an on-demand corpus oracle.
+    - PdfCraft is part of the ArtCraft family of local creative and productivity applications.
+  sources:
+    - https://getartcraft.com/apps/pdfcraft
+    - https://github.com/storytold/pdfcraft#readme
+    - https://github.com/storytold/pdfcraft/blob/main/ROADMAP.md
+    - https://github.com/storytold/pdfcraft/releases
+  summary:
+    - >
+      PdfCraft CLI is the headless automation interface to PdfCraft's local-first PDF
+      engine. It can inspect, render, extract, edit, combine, split, annotate, fill and
+      protect PDF documents through direct commands, JSON scripts or an MCP server.
+  timeline:
+    - '2026-10: Initial releases are published under the PrintCraft name.'
+    - '2026-10-07: PrintCraft is renamed PdfCraft across the repository, crates and binaries.'
+    - '2026-10-08: PdfCraft-branded releases expand CLI and document-automation capabilities.'
+  usage:
+    - >
+      Use direct commands for common inspection, extraction and editing jobs, or use
+      pdfcraft-cli run with key-value arguments or JSON scripts for multi-step
+      operations. The --root option confines script and MCP file access to a chosen
+      directory.
+    - >
+      Running pdfcraft-cli mcp exposes the same local engine to an MCP client over
+      standard input and output; the server is opt-in and does not open a network port.
+related-packages:
+  - id: brew:qpdf
+    reason: >
+      Choose qpdf for mature, low-level PDF structural transformations and inspection;
+      PdfCraft itself uses qpdf as an independent output verifier.
+    rel: alternative
+    sources:
+      - https://qpdf.readthedocs.io/en/latest/overview.html
+      - https://github.com/storytold/pdfcraft#readme
+  - id: brew:poppler
+    reason: >
+      Use Poppler's command-line utilities to independently render, inspect or extract
+      text from PdfCraft output; PdfCraft documents Poppler as its on-demand corpus
+      oracle.
+    rel: adjacent_workflow
+    sources:
+      - https://poppler.freedesktop.org/
+      - https://github.com/storytold/pdfcraft#readme
+tags:
+  - cli
+  - document-automation
+  - local-first
+  - mcp
+  - pdf
+  - pdf-editing
+  - rust
+provenance:
+  category-sources:
+    - 'Official CLI documentation: https://github.com/storytold/pdfcraft#built-for-agents-too'
+    - 'Official product page describes a PDF workbench: https://getartcraft.com/apps/pdfcraft'
+  display-name-sources:
+    - >
+      Official README names the executable pdfcraft-cli:
+      https://github.com/storytold/pdfcraft#built-for-agents-too
+    - >
+      Official product page calls the download the PdfCraft command-line tool:
+      https://getartcraft.com/apps/pdfcraft
+  docs-sources:
+    - 'Official ArtCraft product page: https://getartcraft.com/apps/pdfcraft'
+    - 'Official repository documentation: https://github.com/storytold/pdfcraft#readme'
+  history-sources:
+    - https://getartcraft.com/apps/pdfcraft
+    - https://github.com/storytold/pdfcraft#readme
+    - https://github.com/storytold/pdfcraft/blob/main/ROADMAP.md
+    - https://github.com/storytold/pdfcraft/releases
+  repo-sources:
+    - Repository was not redetermined because source_facts.repo is already populated.
+  tags-sources:
+    - 'Official CLI feature list: https://github.com/storytold/pdfcraft#built-for-agents-too'
+    - 'Official product description: https://getartcraft.com/apps/pdfcraft'
+category-confidence: high
+category-path:
+  - productivity
+  - document-tools
+  - pdf
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
