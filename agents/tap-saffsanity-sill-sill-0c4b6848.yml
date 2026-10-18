@@ -1,0 +1,108 @@
+id: cask:saffsanity/sill/sill
+display-name: Sill
+repo: null
+docs:
+  - https://github.com/Saffsanity/sill/blob/main/docs/DEVELOPMENT.md
+  - https://getsill.app/support
+  - https://github.com/Saffsanity/sill#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Sill is distributed as a notarized Mac download, through the project's own
+      Homebrew tap, and as an iPhone and iPad application. The complete source is also
+      available for users who want to build either side themselves.
+  package-nerd-significance:
+    - >
+      Sill is a serverless, Apple-platform-specific take on remote desktop: the Mac
+      captures and hardware-encodes a window or desktop, while the mobile device returns
+      touch, pointer, Pencil, and keyboard events. It is notable for supporting local
+      networking, USB, peer-to-peer Wi-Fi, and user-controlled VPN access without
+      requiring a vendor account or relay service.
+  project-history:
+    - >
+      Sill was developed as a free and open-source way to place a live Mac window or
+      desktop on an iPhone or iPad and control it there. Its implementation uses Apple
+      frameworks including ScreenCaptureKit and VideoToolbox, sends HEVC video directly
+      to paired devices, and secures current connections with TLS 1.3 and pinned device
+      keys.
+  related-projects:
+    - >
+      Tailscale is explicitly documented as an easy VPN option for reaching Sill away
+      from home.
+  sources:
+    - https://getsill.app/support
+    - https://github.com/Saffsanity/sill#readme
+    - https://github.com/Saffsanity/sill/blob/main/docs/DEVELOPMENT.md
+  summary:
+    - >
+      Sill streams one Mac window or the full desktop to an iPhone or iPad and sends
+      touch, trackpad, keyboard, and Apple Pencil input back to the Mac without a Sill
+      account or intermediary server.
+  timeline:
+    - Early releases supported local-network, USB, and direct wireless connections.
+    - Pairing at home introduced encrypted TLS 1.3 connections and pinned device identities.
+    - Remote Access extended connections to user-managed VPNs or router port forwarding.
+  usage:
+    - >
+      Users run the Mac menu-bar application, pair an iPhone or iPad by code or USB,
+      choose a window or the desktop, and control it from the mobile device. Away from
+      home, they can enable Remote Access and use a VPN such as Tailscale or a carefully
+      configured port forward.
+related-packages:
+  - id: brew:tailscale
+    reason: >
+      Sill's official Remote Access instructions recommend Tailscale as the easy VPN
+      path for securely reaching a paired Mac from an iPhone or iPad away from home.
+    rel: adjacent_workflow
+    sources:
+      - https://getsill.app/support
+      - https://github.com/Saffsanity/sill/blob/main/docs/DEVELOPMENT.md
+      - https://tailscale.com/docs
+tags:
+  - apple-pencil
+  - encrypted
+  - hevc
+  - ios
+  - ipad
+  - macos
+  - remote-access
+  - remote-desktop
+  - screen-sharing
+  - serverless
+  - swift
+  - tailscale
+provenance:
+  category-sources:
+    - >
+      Official README describes encrypted, direct streaming and remote input between a
+      Mac and iPhone or iPad over local networks, USB, peer-to-peer wireless, or a
+      user-provided VPN: https://github.com/Saffsanity/sill#readme
+  display-name-sources:
+    - 'Official website and repository: https://getsill.app/'
+    - https://github.com/Saffsanity/sill
+  docs-sources:
+    - >
+      The official support page covers end-user setup and troubleshooting; the official
+      README explains operation and requirements; the development guide documents
+      advanced behavior.
+  history-sources:
+    - https://getsill.app/support
+    - https://github.com/Saffsanity/sill#readme
+    - https://github.com/Saffsanity/sill/blob/main/docs/DEVELOPMENT.md
+  repo-sources:
+    - >
+      source_facts.repo is already populated with https://github.com/Saffsanity/sill;
+      per instruction, the repository was not re-determined.
+  tags-sources:
+    - 'Official README and repository topics: https://github.com/Saffsanity/sill#readme'
+category-confidence: high
+category-path:
+  - networking
+  - remote-access
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

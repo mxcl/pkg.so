@@ -1,0 +1,101 @@
+id: cask:portkiller
+display-name: PortKiller
+repo: null
+docs:
+  - https://github.com/productdevbook/port-killer#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      PortKiller is distributed for macOS through Homebrew and as a direct download,
+      while the official project also supports Windows.
+  package-nerd-significance:
+    - >
+      PortKiller packages familiar Unix troubleshooting operations—finding listeners,
+      identifying processes, and terminating them—into a desktop interface. Its
+      management of kubectl port-forward sessions and Cloudflare Tunnels broadens it
+      from a port inspector into a developer networking dashboard.
+  project-history:
+    - >
+      PortKiller developed as a cross-platform desktop port-management project. Its
+      scope grew beyond listing listeners and terminating processes to include watched
+      ports, favorites, Kubernetes port-forward lifecycle management, and visibility
+      into Cloudflare Tunnel connections.
+  related-projects:
+    - kubectl supplies the Kubernetes port-forward functionality managed by PortKiller.
+    - >
+      cloudflared is the Cloudflare Tunnel client whose active connections PortKiller
+      can display and manage.
+  sources:
+    - https://github.com/productdevbook/port-killer#readme
+  summary:
+    - >
+      PortKiller is a cross-platform desktop tool for discovering listening TCP ports,
+      identifying and terminating their processes, and managing development-oriented
+      forwarding and tunnel workflows.
+  timeline:
+    - >
+      The project expanded from local port and process management into Kubernetes
+      port-forward and Cloudflare Tunnel workflows.
+  usage:
+    - >
+      Developers use PortKiller to search active listeners, terminate a process
+      gracefully or forcibly, watch important ports, receive state-change notifications,
+      and manage port forwards from a macOS menu-bar or Windows system-tray application.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      PortKiller provides a graphical way to create, monitor, reconnect, and stop the
+      kubectl port-forward sessions used to reach Kubernetes workloads locally.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/productdevbook/port-killer#readme
+      - https://kubernetes.io/docs/reference/kubectl/generated/kubectl_port-forward/
+  - id: brew:cloudflared
+    reason: >
+      PortKiller can display and manage active Cloudflare Tunnel connections, while
+      cloudflared is the official client that creates and runs those tunnels.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/productdevbook/port-killer#readme
+      - https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/
+tags:
+  - cloudflare-tunnels
+  - kubernetes
+  - macos
+  - menu-bar
+  - port-forwarding
+  - port-management
+  - process-manager
+  - windows
+provenance:
+  category-sources:
+    - >
+      Official README describes port discovery, process termination, Kubernetes port
+      forwarding, and Cloudflare Tunnel management:
+      https://github.com/productdevbook/port-killer#readme
+  display-name-sources:
+    - 'Official repository title and README: https://github.com/productdevbook/port-killer'
+  docs-sources:
+    - The official repository README is the primary installation, feature, and usage surface.
+  history-sources:
+    - https://github.com/productdevbook/port-killer#readme
+  repo-sources:
+    - >
+      source_facts.repo is already populated with
+      https://github.com/productdevbook/port-killer; per instruction, the repository was
+      not re-determined.
+  tags-sources:
+    - >
+      Official feature list and repository topics:
+      https://github.com/productdevbook/port-killer#readme
+category-confidence: high
+category-path:
+  - developer-tools
+  - port-management
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
