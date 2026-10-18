@@ -228,8 +228,8 @@
     "amethyst-nostr": {
       "bundle_identifier": "com.vitorpamplona.amethyst.desktop",
       "confidence": "high",
-      "evidence_hash": "faa18f5b00ab5c162679cbcbbe877fc71025981af26cd9b2bc62cf710256c0fd",
-      "reason": "The official desktop build manifest explicitly sets this value as the macOS bundleID for Amethyst.",
+      "evidence_hash": "522ad0a80c00531ec61af35e9c8668af55073f9e19492441229a85ea093af532",
+      "reason": "Amethyst\u2019s official desktop build manifest explicitly sets this value as the macOS bundleID for Amethyst.app.",
       "sources": [
         "https://github.com/vitorpamplona/amethyst/blob/main/desktopApp/build.gradle.kts"
       ]
@@ -2265,11 +2265,11 @@
     "doubao": {
       "bundle_identifier": "com.bot.pc.doubao",
       "confidence": "medium",
-      "evidence_hash": "9cb561ddcdc516ed137e27b3ede2a369634967c32f0bddb14c848a38a948d7cd",
-      "reason": "Homebrew installs Doubao.app; the root Doubao identifier matches its caches and preferences, while the only alternative is explicitly a Finder Sync extension.",
+      "evidence_hash": "57200df70ae6d4795b9a946faa5955ddceb8d3c0eb1622bff58b257c2addc57c",
+      "reason": "Homebrew installs Doubao.app and associates com.bot.pc.doubao with its preferences, cache, and HTTP storage; the other identifier explicitly belongs to its Finder Sync extension.",
       "sources": [
-        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/d/doubao.rb",
-        "https://www.doubao.com/chat/"
+        "https://formulae.brew.sh/api/cask/doubao.json",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/d/doubao.rb"
       ]
     },
     "doughnut": {
@@ -3702,11 +3702,11 @@
     "google-chrome@dev": {
       "bundle_identifier": "com.google.Chrome.dev",
       "confidence": "high",
-      "evidence_hash": "59cebea030edf86bc13a40be8f09d0a2c8f9f703207a770149c3b200615a72ac",
-      "reason": "Google\u2019s official Chromium documentation identifies the side-by-side Chrome Dev app as com.google.Chrome.dev, matching the cask\u2019s distinctly named Dev app and data directory.",
+      "evidence_hash": "77fc04a9bb8682484ce5ce3fc67c5c480184aedef4e969ae1020373f853c0749",
+      "reason": "Chromium's official macOS flavor manifest directly identifies the side-by-side Google Chrome Dev application as com.google.Chrome.dev; Keystone is only the updater.",
       "sources": [
-        "https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/mac/flavors_of_chrome.md",
-        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/g/google-chrome@dev.rb"
+        "https://chromium.googlesource.com/chromium/src/+/refs/tags/144.0.7504.0/docs/mac/flavors_of_chrome.md",
+        "https://formulae.brew.sh/api/cask/google-chrome@dev.json"
       ]
     },
     "gopanda": {
@@ -4957,11 +4957,11 @@
     "lark": {
       "bundle_identifier": "com.larksuite.larkApp",
       "confidence": "medium",
-      "evidence_hash": "6b50eb9a26d395087e99dd66b22e6eda6e370fd87e94f8d5736e51e1d526489c",
-      "reason": "The cask installs the international LarkSuite.app, and its metadata includes the matching com.larksuite.larkApp preference domain; com.electron.lark and its helper identifier are legacy/shared Electron paths and are not convincing identifiers for this primary app.",
+      "evidence_hash": "dbda7ed60ce7065138e408a3ec0db1a86dd2615acbeab1412407fc1ac1445cd6",
+      "reason": "The cask installs the international LarkSuite.app from Lark's official download service and records com.larksuite.larkApp preferences; com.electron.lark and the helper identifiers are legacy/shared or subordinate components.",
       "sources": [
-        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/lark.rb",
-        "https://www.larksuite.com/en_us/download"
+        "https://formulae.brew.sh/api/cask/lark.json",
+        "https://www.larksuite.com/api/downloads"
       ]
     },
     "laserpecker-design-space": {
@@ -7530,10 +7530,10 @@
     "power-manager": {
       "bundle_identifier": "uk.co.dssw.powermanager.standard",
       "confidence": "medium",
-      "evidence_hash": "a17621f595c1e17649a545c60f1d53f586f736adf5ce42ea562242e5617fabef",
-      "reason": "Homebrew installs Power Manager.app, and the candidate ending in .standard corresponds to its main application container; .update.download is the updater component. The vendor also documents restoring the Mac application bundle identifier.",
+      "evidence_hash": "0f40cec831d4fe85098ad271c2b71f1c436b41db7e2530a77c22b65ad5b40158",
+      "reason": "Homebrew associates the installed Power Manager.app with the standard application container, while uk.co.dssw.powermanager.update.download is explicitly the update-download component.",
       "sources": [
-        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/p/power-manager.rb",
+        "https://formulae.brew.sh/api/cask/power-manager.json",
         "https://version.dssw.co.uk/powermanager/"
       ]
     },
@@ -9548,12 +9548,11 @@
     "textual": {
       "bundle_identifier": "com.codeux.apps.textual",
       "confidence": "high",
-      "evidence_hash": "3607c208d378da02fb0715080079450d24dea785a87ac61605cd207209cb78bc",
-      "reason": "The official Textual documentation assigns standalone Textual.app the Application Scripts location com.codeux.apps.textual, distinguishing it from the -mas build; the cask distributes the standalone vendor build and its preference plist uses the same identifier.",
+      "evidence_hash": "4f612823109823c013d8203513631c7a834e9cf9ba4707a57dd2afcd8965e45f",
+      "reason": "Textual's official documentation assigns non-Mac-App-Store copies the com.codeux.apps.textual application-scripts domain, and Homebrew's vendor-hosted build uses the matching preferences domain; the 8482Q6EPL6 values are team-prefixed group identifiers.",
       "sources": [
-        "https://formulae.brew.sh/cask/textual",
-        "https://github.com/Codeux-Software/Textual",
-        "https://help.codeux.com/textual/Writing-Scripts.kb"
+        "https://formulae.brew.sh/api/cask/textual.json",
+        "https://www.textualapp.com/docs/legacy/guides/writing-scripts"
       ]
     },
     "tg-pro": {
@@ -9921,6 +9920,16 @@
         "https://www.apparentsoft.com/trickster"
       ]
     },
+    "triggerflo": {
+      "bundle_identifier": "app.triggerflo",
+      "confidence": "medium",
+      "evidence_hash": "07f617709de2fcb1ade8f157a0d15123d16caab227d8c9857b4cdc65bc9adfe0",
+      "reason": "Homebrew\u2019s official cask associates TriggerFlo.app with the app.triggerflo container, preferences, caches, HTTP storage, and saved state. The other identifiers are explicitly a TimerWidget extension and an app group; no official app manifest was available for direct confirmation.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/t/triggerflo.rb",
+        "https://triggerflo.app/download/"
+      ]
+    },
     "tripmode": {
       "bundle_identifier": "ch.tripmode.TripMode",
       "confidence": "high",
@@ -10136,8 +10145,8 @@
     "vectorcraft": {
       "bundle_identifier": "ai.storyteller.vectorcraft",
       "confidence": "high",
-      "evidence_hash": "3496c1fa79ed0ff1b185f4ff72f82d940b0220d5239ee4ce0bb6426108fd3327",
-      "reason": "The official macOS Info.plist template for VectorCraft.app directly assigns ai.storyteller.vectorcraft to CFBundleIdentifier.",
+      "evidence_hash": "01b6eddeb795121ef81ae939b766ff06b8c2d08b7ce9dc514dbe788a2e4728d0",
+      "reason": "VectorCraft\u2019s official macOS Info.plist template directly assigns this value to CFBundleIdentifier for VectorCraft.app.",
       "sources": [
         "https://github.com/storytold/vectorcraft/blob/main/packaging/macos/Info.plist.in"
       ]
