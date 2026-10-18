@@ -9,7 +9,13 @@ config-file-location:
     - deno.json
     - deno.jsonc
     - package.json
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ./.npmrc
+    - ~/.npmrc
+  windows:
+    - .\.npmrc
+    - '%USERPROFILE%\.npmrc'
 history:
   adoption-history:
     - >
@@ -82,6 +88,25 @@ history:
       or package.json depending on the project. Deno 2 also supports private npm
       registry configuration through .npmrc, which aligns it with enterprise Node
       package workflows.
+related-packages:
+  - id: brew:node
+    reason: >
+      Choose Node.js when maximum compatibility with the established npm ecosystem and
+      conventional Node deployment environments matters more than Deno's secure defaults
+      and integrated toolchain.
+    rel: alternative
+    sources:
+      - https://deno.com/blog/v2.0
+      - https://nodejs.org/docs/latest/api/
+  - id: brew:bun
+    reason: >
+      Choose Bun when an all-in-one JavaScript toolkit optimized around fast package
+      installation, bundling, and Node-oriented application workflows better matches the
+      project than Deno's web-standard and permission-focused model.
+    rel: alternative
+    sources:
+      - https://docs.deno.com/runtime/
+      - https://bun.com/docs
 category: language-runtime
 package-manager:
   apk: deno

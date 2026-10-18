@@ -76,6 +76,32 @@ history:
       In editor workflows, Delve commonly runs as a headless debug server or DAP server.
       That lets IDEs and editors provide breakpoints and stepping while reusing the same
       Go-specific debugger backend.
+related-packages:
+  - id: brew:go
+    reason: >
+      Install Go alongside Delve to build and test the programs Delve debugs and to use
+      the official go install distribution path for dlv.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/go-delve/delve/blob/master/Documentation/installation/README.md
+      - https://go.dev/doc/
+  - id: brew:gdb
+    reason: >
+      Choose GDB when you need a general-purpose debugger spanning many compiled
+      languages, architectures, and remote targets rather than Delve's Go-specific
+      runtime awareness.
+    rel: alternative
+    sources:
+      - https://github.com/go-delve/delve
+      - https://www.gnu.org/software/gdb/
+  - id: brew:lldb
+    reason: >
+      Choose LLDB when LLVM and Clang integration, native-language debugging, or
+      Xcode-oriented workflows matter more than Delve's specialized Go support.
+    rel: alternative
+    sources:
+      - https://github.com/go-delve/delve
+      - https://lldb.llvm.org/
 category: developer-tools
 package-manager:
   apk: delve

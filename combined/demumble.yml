@@ -67,6 +67,23 @@ history:
       The README's examples emphasize cross-platform convenience: the same binary can
       demangle Itanium ABI names and Microsoft Visual C++ names, reducing the need to
       remember which platform-specific demangler applies.
+related-packages:
+  - id: brew:binutils
+    reason: >
+      Choose GNU Binutils for the traditional c++filt demangler together with a full
+      suite of object-file, symbol-table, linker, and disassembly tools.
+    rel: alternative
+    sources:
+      - https://github.com/nico/demumble#readme
+      - https://sourceware.org/binutils/docs/binutils/c_002b_002bfilt.html
+  - id: brew:llvm
+    reason: >
+      Choose LLVM when you want llvm-cxxfilt as part of a broader compiler and
+      binary-analysis toolchain rather than demumble's small cross-platform executable.
+    rel: alternative
+    sources:
+      - https://github.com/nico/demumble#readme
+      - https://llvm.org/docs/CommandGuide/llvm-cxxfilt.html
 category: developer-tools
 package-manager:
   brew: demumble

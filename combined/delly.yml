@@ -49,6 +49,39 @@ history:
       DELLY accepts user-supplied tabular files for workflows such as sample
       classification and alternate alignments, but the official documentation does not
       define a fixed per-user configuration-file location.
+related-packages:
+  - id: brew:samtools
+    reason: >
+      Use SAMtools to sort, index, duplicate-mark, inspect, and otherwise prepare the
+      BAM or CRAM inputs required by DELLY workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dellytools/delly
+      - https://www.htslib.org/doc/samtools.html
+  - id: brew:bcftools
+    reason: >
+      Use bcftools after DELLY to view, convert, query, and filter its BCF or VCF
+      structural-variant output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dellytools/delly
+      - https://samtools.github.io/bcftools/bcftools.html
+  - id: brew:minimap2
+    reason: >
+      Use minimap2 to create long-read alternate alignments that DELLY can consult when
+      filtering structural variants against another linear reference.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dellytools/delly
+      - https://lh3.github.io/minimap2/minimap2.html
+  - id: brew:minigraph
+    reason: >
+      Use minigraph to align reads against a pangenome graph and supply the resulting
+      GAF alignment to DELLY's alternate-alignment workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dellytools/delly
+      - https://github.com/lh3/minigraph#readme
 category: science
 package-manager:
   brew: delly
