@@ -50,6 +50,16 @@ history:
       filter files, packet-count limits, output paths, ring-buffer pruning, rollover
       size or time, and soft-tap output. The README explicitly frames its BPF filter
       syntax as familiar to tcpdump or Snort users.
+related-packages:
+  - id: brew:tcpdump
+    reason: >
+      Use tcpdump to interactively inspect or later read the pcap traffic captured by
+      DaemonLogger; both tools use BPF capture expressions, while DaemonLogger
+      specializes in unattended rotating logs and soft-tap forwarding.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Cisco-Talos/Daemonlogger#readme
+      - https://www.tcpdump.org/manpages/tcpdump.1.html
 tags:
   - cli
   - network-monitoring
