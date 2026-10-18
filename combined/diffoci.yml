@@ -50,6 +50,16 @@ history:
       image-name annotation noise would make strict output too noisy. It can also
       compare local Docker or Podman images with `docker://` and `podman://` prefixes
       and can dump differing files to a report directory.
+related-packages:
+  - id: brew:diffoscope
+    reason: >
+      Use diffoscope after diffoci extracts conflicting layer files with `--report-dir`;
+      upstream demonstrates this workflow for recursively investigating a
+      non-reproducible archive inside an image layer.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/reproducible-containers/diffoci#readme
+      - https://diffoscope.org/
 category: developer-tools
 package-manager:
   apk: diffoci

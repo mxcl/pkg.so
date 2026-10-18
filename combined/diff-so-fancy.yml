@@ -52,6 +52,31 @@ history:
       The normal Git setup is core.pager set to pipe through diff-so-fancy and less,
       plus interactive.diffFilter for patch mode. It can also consume ordinary unified
       diff output from diff -u or recursive diff.
+related-packages:
+  - id: brew:git-delta
+    reason: >
+      Choose delta for syntax highlighting, line numbers, navigation, side-by-side
+      display, and a documented diff-so-fancy emulation mode.
+    rel: alternative
+    sources:
+      - https://github.com/so-fancy/diff-so-fancy#alternatives
+      - https://dandavison.github.io/delta/features.html
+  - id: brew:difftastic
+    reason: >
+      Choose Difftastic when syntax-aware structural comparison and ignoring
+      formatting-only changes matter more than restyling a line-oriented unified diff.
+    rel: alternative
+    sources:
+      - https://github.com/so-fancy/diff-so-fancy#alternatives
+      - https://difftastic.wilfred.me.uk/
+  - id: brew:lazygit
+    reason: >
+      Lazygit can use diff-so-fancy as a configured stdin diff renderer, adding an
+      interactive Git TUI around its formatted output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/so-fancy/diff-so-fancy#alternatives
+      - https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_DiffRenderers.md
 category: developer-tools
 package-manager:
   brew: diff-so-fancy
