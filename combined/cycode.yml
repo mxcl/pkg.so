@@ -56,6 +56,25 @@ history:
       then run scans over repositories, paths, commit history, pre-commit, or pre-push
       contexts. The CLI stores global credentials and URLs under the user's .cycode
       directory and local ignore rules in .cycode/config.yaml where scans are run.
+related-packages:
+  - id: brew:pre-commit
+    reason: >
+      Use pre-commit with Cycode CLI to run documented secrets, SCA, and SAST hooks
+      automatically before commits or pushes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cycodehq/cycode-cli#install-pre-commit-hook
+      - https://pre-commit.com/
+  - id: brew:trivy
+    reason: >
+      Choose Trivy as a fully open-source alternative when repository, filesystem,
+      image, or Kubernetes scanning is more important than integration with the Cycode
+      platform; its repository scanner covers vulnerabilities, secrets,
+      misconfigurations, licenses, and SBOM generation.
+    rel: alternative
+    sources:
+      - https://github.com/cycodehq/cycode-cli#readme
+      - https://www.trivy.dev/docs/latest/guide/target/repository/
 category: security
 package-manager:
   brew: cycode
