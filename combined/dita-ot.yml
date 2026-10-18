@@ -5,7 +5,12 @@ repo: https://github.com/dita-ot/dita-ot
 docs:
   - https://www.dita-ot.org/
   - https://www.dita-ot.org/dev
-config-file-location: null
+config-file-location:
+  unix:
+    - ./.ditaotrc (or an ancestor directory)
+    - ~/.ditaotrc
+    - <DITA-OT installation directory>/.ditaotrc
+    - <DITA-OT installation directory>/local.properties
 credentials-file-location: null
 history:
   adoption-history:
@@ -54,6 +59,7 @@ history:
       format, often inside documentation build scripts or CI jobs. The toolkit supports
       plug-ins, transformations, project files, and multiple output formats, so it
       functions as both a CLI and an extension point for publishing systems.
+related-packages: []
 category: developer-tools
 package-manager:
   brew: dita-ot
