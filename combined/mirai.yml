@@ -2,9 +2,82 @@ id: cask:mirai
 display-name: Mirai
 homepage: https://trymirai.com/
 repo: https://github.com/trymirai/uzu
+docs:
+  - https://docs.trymirai.com/
+  - https://github.com/trymirai/uzu#readme
+  - https://trymirai.com/chat-for-mac
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Mirai targets developers and Mac users who want private, on-device model execution
+      on Apple Silicon. The official site positions the Mac application as a simpler
+      local-inference alternative to Ollama and LM Studio.
+  package-nerd-significance:
+    - >
+      Mirai is part of a vertically integrated local-AI stack: the native Mac
+      application sits alongside the open-source uzu inference engine and lalamo
+      model-conversion tools. This makes the cask interesting to users comparing
+      packaged local-model front ends with embeddable runtimes.
+  project-history:
+    - >
+      Mirai Labs developed uzu as a Rust inference engine optimized around device
+      hardware and unified memory, then exposed the same local-AI focus through a native
+      macOS chat application and developer libraries.
+  related-projects:
+    - >
+      uzu is the open-source inference runtime associated with Mirai, while lalamo
+      provides model optimization and conversion tooling.
+  sources:
+    - https://docs.trymirai.com/
+    - https://github.com/trymirai/uzu
+    - https://trymirai.com/
+    - https://trymirai.com/chat-for-mac
+  summary:
+    - >
+      Mirai is a native Apple Silicon application for downloading and chatting with AI
+      models locally. It belongs to the Mirai Labs ecosystem built around the uzu
+      inference engine.
+  timeline:
+    - >
+      Mirai Labs introduced an open-source inference and model-conversion stack for
+      Apple Silicon, followed by a native Mac interface for local model use.
+  usage:
+    - >
+      Users install the native Mac application, choose supported models, and run chats
+      locally. Developers can instead embed uzu through Rust, Python, Swift, or
+      TypeScript APIs.
+related-packages:
+  - id: brew:ollama
+    reason: >
+      Choose Ollama when you want a widely supported command-line and service workflow
+      for running open models locally or in the cloud; Mirai explicitly positions its
+      native Mac experience as an alternative.
+    rel: alternative
+    sources:
+      - https://trymirai.com/chat-for-mac
+      - https://ollama.com/
+  - id: cask:lm-studio
+    reason: >
+      Choose LM Studio when you want a broader local desktop agent and model workspace
+      powered by MLX and llama.cpp; Mirai presents itself as a simpler
+      Apple-Silicon-focused alternative.
+    rel: alternative
+    sources:
+      - https://trymirai.com/chat-for-mac
+      - https://lmstudio.ai/
+category: ai
 package-manager:
   brew-cask: mirai
 package-manager-url: https://formulae.brew.sh/cask/mirai
+tags:
+  - apple-silicon
+  - inference
+  - llm
+  - local-ai
+  - on-device
+  - privacy
 description: Inference engine for AI models
 applications:
   - Mirai.app

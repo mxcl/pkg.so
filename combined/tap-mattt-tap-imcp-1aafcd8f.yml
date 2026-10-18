@@ -2,9 +2,67 @@ id: cask:mattt/tap/imcp
 display-name: iMCP
 homepage: https://github.com/mattt/iMCP
 repo: https://github.com/mattt/iMCP
+docs:
+  - https://github.com/mattt/iMCP#readme
+config-file-location:
+  macos: ~/Library/Application Support/Claude/claude_desktop_config.json
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The project documents connections to Claude Desktop, Claude Code, Cursor, and Amp,
+      reflecting MCP's use as a common transport between desktop AI clients and local
+      tools.
+  package-nerd-significance:
+    - >
+      iMCP packages macOS frameworks and user-authorized personal data behind a local
+      MCP server. It is a representative example of Homebrew casks distributing
+      graphical applications that also contain agent-facing command-line services.
+  project-history:
+    - >
+      iMCP was created as an open-source macOS application and bundled MCP server for
+      exposing selected Apple-platform services to compatible AI clients.
+  related-projects:
+    - >
+      Claude Desktop is a documented client: iMCP can add its bundled server command to
+      Claude Desktop's MCP configuration. Claude Code can also register the same
+      executable globally.
+  sources:
+    - https://github.com/mattt/iMCP
+  summary:
+    - >
+      iMCP connects MCP-compatible AI clients to personal data and services available
+      through macOS, including Calendar, Contacts, Messages, Reminders, Maps, Location,
+      Shortcuts, Phone, and Voicemail.
+  timeline:
+    - >
+      MCP era: iMCP emerged as a native bridge between macOS services and MCP-compatible
+      AI clients.
+  usage:
+    - >
+      Install and open the application, grant the requested macOS permissions, then
+      configure an MCP client to launch the bundled imcp-server executable. A
+      client-approval dialog controls whether a connecting application is trusted.
+related-packages:
+  - id: cask:claude
+    reason: >
+      Claude Desktop is a documented iMCP client, and iMCP can add its bundled server
+      directly to Claude Desktop's MCP configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mattt/iMCP
+      - https://claude.com/download
+category: ai
 package-manager:
   brew-cask: mattt/tap/imcp
 package-manager-url: https://github.com/mattt/homebrew-tap/blob/HEAD/Casks/imcp.rb
+tags:
+  - ai-integration
+  - apple-services
+  - macos
+  - mcp
+  - mcp-server
+  - personal-data
 description: MCP server app for your application
 applications:
   - iMCP.app

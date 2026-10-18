@@ -1,10 +1,87 @@
 id: cask:penso/tap/herdr-gpui
-display-name: Herdr
+display-name: Herdr UI
 homepage: https://herdrui.dev
 repo: https://github.com/penso/herdr-gpui
+docs:
+  - https://github.com/penso/herdr-gpui/blob/main/crates/herdr-gpui/README.md
+  - https://github.com/penso/herdr-gpui#readme
+  - https://herdrui.dev/
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/herdr/config-gpui.toml
+    - $XDG_CONFIG_HOME/herdr/config-gpui.local.toml
+    - ~/.config/herdr/config-gpui.toml
+    - ~/.config/herdr/config-gpui.local.toml
+  windows:
+    - '%APPDATA%\herdr\config-gpui.toml'
+    - '%APPDATA%\herdr\config-gpui.local.toml'
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Herdr UI packages a native graphical view of an existing Herdr deployment while
+      preserving interoperability with Herdr's terminal client. The project distributes
+      a Homebrew cask for macOS and also documents Linux, Nix, and experimental Windows
+      builds.
+  package-nerd-significance:
+    - >
+      The package separates presentation from session ownership: the GUI can be
+      installed, upgraded, opened, or closed without taking over the daemon's terminals.
+      It is a useful example of a native client layered on a daemon-first developer
+      tool.
+  project-history:
+    - >
+      Herdr UI was developed as an unaffiliated native Rust/GPUI client for the Herdr
+      daemon. It expanded beyond terminal rendering to workspace and worktree
+      navigation, agent activity, native review tools, browser annotations, remote
+      devices, and session movement.
+  related-projects:
+    - >
+      The independently maintained Herdr daemon owns PTYs, agents, workspaces, and
+      session state. Herdr UI discovers or starts an already installed daemon and
+      attaches through its client socket, while the TUI may remain attached
+      simultaneously.
+  sources:
+    - https://github.com/penso/herdr-gpui
+    - https://github.com/penso/herdr-gpui/blob/main/crates/herdr-gpui/README.md
+    - https://herdr.dev/
+    - https://herdrui.dev/
+  summary:
+    - >
+      Herdr UI is a native graphical client for the Herdr agent-multiplexer daemon. It
+      renders daemon-owned terminal sessions and adds graphical workspace, review,
+      browser, device, and agent-management workflows.
+  timeline:
+    - >
+      2026: Public release activity established Herdr UI as a separately packaged native
+      client for the Herdr daemon.
+    - '2026: Distribution covered macOS, Linux, Nix, and experimental Windows builds.'
+  usage:
+    - >
+      Install the Herdr daemon separately, then launch Herdr UI to attach to its local
+      client socket. Use the GUI alongside the TUI to inspect agents, manage workspaces
+      and worktrees, review changes, and reconnect to persistent sessions.
+related-packages:
+  - id: brew:herdr
+    reason: >
+      Herdr is the required daemon and terminal client that owns the sessions, PTYs,
+      workspaces, and agents displayed by Herdr UI.
+    rel: adjacent_workflow
+    sources:
+      - https://herdrui.dev/
+      - https://github.com/penso/herdr-gpui
+      - https://herdr.dev/
+category: developer-tools
 package-manager:
   brew-cask: penso/tap/herdr-gpui
 package-manager-url: https://github.com/penso/homebrew-tap/blob/HEAD/Casks/herdr-gpui.rb
+tags:
+  - coding-agents
+  - daemon-client
+  - gpui
+  - native-gui
+  - terminal-sessions
+  - worktrees
 description: Native GUI client for an existing local Herdr daemon
 applications:
   - Herdr.app
