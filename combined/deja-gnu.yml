@@ -76,6 +76,40 @@ history:
       DejaGnu matters most when tests must be portable across machines rather than just
       run locally. The same test description can talk to a native program, a remote
       target, or a simulator through Expect-driven interactions.
+related-packages:
+  - id: brew:expect
+    reason: >
+      Expect is the Tcl-based interactive automation layer on which DejaGnu is
+      implemented, making it the essential companion for authoring and debugging DejaGnu
+      tests.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/dejagnu/
+      - https://core.tcl-lang.org/expect/home
+  - id: brew:gcc
+    reason: >
+      GCC's official test instructions require DejaGnu, Tcl, and Expect, so compiler
+      builders use these packages together to validate native and cross-compiler builds.
+    rel: adjacent_workflow
+    sources:
+      - https://gcc.gnu.org/install/test.html
+      - https://www.gnu.org/software/dejagnu/manual/
+  - id: brew:automake
+    reason: >
+      Automake can generate DejaGnu-aware `make check` rules and site.exp configuration,
+      providing a documented build-and-test integration.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/automake/manual/html_node/DejaGnu-Tests.html
+      - https://www.gnu.org/software/dejagnu/manual/
+  - id: brew:gdb
+    reason: >
+      GDB's upstream testsuite uses the DejaGnu framework, making DejaGnu part of the
+      standard debugger-development and package-validation workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://sourceware.org/gdb/current/onlinedocs/gdb.html/Testsuite.html
+      - https://www.gnu.org/software/dejagnu/manual/
 category: developer-tools
 package-manager:
   apk: dejagnu

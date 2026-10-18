@@ -66,6 +66,31 @@ history:
       in domains.txt, configure an HTTP, DNS, or TLS-ALPN challenge, and run `dehydrated
       -c` from cron or another scheduler. The man page emphasizes that certificates are
       normally stored under the configured certificate directory and renewed regularly.
+related-packages:
+  - id: brew:certbot
+    reason: >
+      Choose Certbot when automated web-server configuration and its official Apache,
+      Nginx, or DNS plugin ecosystem are preferable to dehydrated's shell-hook model.
+    rel: alternative
+    sources:
+      - https://eff-certbot.readthedocs.io/en/stable/using.html
+      - https://github.com/dehydrated-io/dehydrated#readme
+  - id: brew:acme.sh
+    reason: >
+      Choose acme.sh when you want a shell ACME client with many DNS-provider
+      integrations included directly rather than selecting or writing dehydrated hooks.
+    rel: alternative
+    sources:
+      - https://github.com/acmesh-official/acme.sh#readme
+      - https://github.com/dehydrated-io/dehydrated/wiki
+  - id: brew:lego
+    reason: >
+      Choose lego when you want a single Go binary, an embeddable Go library, or
+      integrated support for a large set of DNS providers.
+    rel: alternative
+    sources:
+      - https://go-acme.github.io/lego/
+      - https://github.com/dehydrated-io/dehydrated#readme
 tags:
   - acme
   - certificates
