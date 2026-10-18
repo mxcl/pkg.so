@@ -57,6 +57,25 @@ history:
       The README's example workflow builds the distribution, unpacks dex-tools, and runs
       d2j-dex2jar.sh against an APK path. The output is a jar file named after the
       input, such as apk_to_decompile-dex2jar.jar.
+related-packages:
+  - id: brew:jadx
+    reason: >
+      Choose jadx when you want direct APK/DEX-to-Java decompilation and an interactive
+      GUI; choose dex2jar when you specifically need JAR/class conversion or its
+      lower-level d2j-* utilities.
+    rel: alternative
+    sources:
+      - https://github.com/pxb1988/dex2jar#readme
+      - https://github.com/skylot/jadx#readme
+  - id: brew:apktool
+    reason: >
+      Use Apktool alongside dex2jar when an APK workflow also needs decoded Android
+      resources and a rebuildable resource tree, while dex2jar handles DEX and Java
+      bytecode conversion.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/pxb1988/dex2jar#readme
+      - https://apktool.org/wiki/the-basics/intro
 category: developer-tools
 package-manager:
   brew: dex2jar

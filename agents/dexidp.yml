@@ -53,6 +53,32 @@ history:
       configure one or more connectors for upstream authentication. Client applications
       then speak OpenID Connect to Dex instead of implementing every backend identity
       protocol themselves.
+related-packages:
+  - id: brew:kubelogin
+    reason: >
+      Dex provides an official guide for using kubelogin as the Kubernetes
+      exec-credential helper that obtains OIDC tokens from a Dex deployment.
+    rel: adjacent_workflow
+    sources:
+      - https://dexidp.io/docs/guides/kubelogin-activedirectory/
+      - https://github.com/int128/kubelogin#readme
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl is the client used after a Kubernetes API server is configured to trust
+      Dex-issued ID tokens, as demonstrated by Dex's official Kubernetes authentication
+      guide.
+    rel: adjacent_workflow
+    sources:
+      - https://dexidp.io/docs/guides/kubernetes/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:oauth2_proxy
+    reason: >
+      OAuth2 Proxy can protect upstream web applications using its generic OpenID
+      Connect provider, with Dex serving as the OIDC identity service.
+    rel: adjacent_workflow
+    sources:
+      - https://dexidp.io/docs/
+      - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/
 tags:
   - authentication
   - cli

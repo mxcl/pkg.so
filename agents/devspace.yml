@@ -61,6 +61,25 @@ history:
       dev as executing a configured pipeline, deploying dependencies and manifests,
       starting a development container, syncing files, forwarding ports, and exposing a
       localhost UI.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      DevSpace uses the active Kubernetes kube-context and talks directly to the cluster
+      like kubectl, so kubectl is the natural companion for inspecting and administering
+      the same environment.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/devspace-sh/devspace
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      Choose Helm alongside DevSpace when the development pipeline deploys or customizes
+      Helm charts; DevSpace's initialization workflow explicitly supports Helm as a
+      deployment method.
+    rel: adjacent_workflow
+    sources:
+      - https://www.devspace.sh/docs/getting-started/initialize-project
+      - https://helm.sh/docs/
 tags:
   - cli
   - cloud-native
