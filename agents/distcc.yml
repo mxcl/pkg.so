@@ -63,6 +63,25 @@ history:
       configuration under the distcc directory, then invoke parallel builds through make
       -j with CC=distcc or compiler masquerading. The server side is handled by distccd,
       while monitoring and helper commands support day-to-day build-farm operation.
+related-packages:
+  - id: brew:ccache
+    reason: >
+      ccache can run before distcc so repeat compilations are returned from the local
+      cache and only cache misses are sent to distcc workers; this combination excludes
+      pump mode.
+    rel: adjacent_workflow
+    sources:
+      - https://www.distcc.org/man/distcc_1.html
+      - https://ccache.dev/manual/latest.html
+  - id: brew:icecream
+    reason: >
+      Icecream is the stronger alternative for shared or heterogeneous compile clusters
+      because its central scheduler assigns jobs dynamically and it can distribute
+      compiler environments.
+    rel: alternative
+    sources:
+      - https://github.com/icecc/icecream#readme
+      - https://github.com/distcc/distcc#readme
 tags:
   - c
   - c-plus-plus
