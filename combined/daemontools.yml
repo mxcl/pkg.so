@@ -85,6 +85,26 @@ history:
       exit, and can also wire a service's output to a separately supervised log service.
       multilog saves, filters, timestamps, and rotates logs, pausing safely if the disk
       fills rather than dropping data.
+related-packages:
+  - id: brew:runit
+    reason: >
+      Choose runit when you want daemontools-style service directories together with a
+      compact three-stage init system that can run as PID 1.
+    rel: alternative
+    sources:
+      - https://www.smarden.org/runit/
+      - https://www.smarden.org/runit/runit.8
+      - https://www.smarden.org/runit/runscripts
+  - id: brew:s6
+    reason: >
+      Choose s6 when you want the daemontools supervision model extended with readiness
+      notification, event handling, logging, and a broader composable service-management
+      ecosystem.
+    rel: alternative
+    sources:
+      - https://www.skarnet.org/software/s6/
+      - https://www.skarnet.org/software/s6/overview.html
+      - https://skarnet.org/software/s6-frontend/s6-frontend-alias.html
 category: system
 package-manager:
   apk: daemontools
