@@ -54,6 +54,16 @@ history:
       specification violations, desktop-file-install and desktop-file-edit to install or
       modify entries, and update-desktop-database to rebuild the cache of MIME types
       handled by desktop files.
+related-packages:
+  - id: brew:appstream
+    reason: >
+      Use AppStream alongside desktop-file-utils when packaging graphical applications:
+      desktop-file-utils validates and installs launchers, while appstreamcli validates
+      application metadata and can check a tree for associated desktop files.
+    rel: adjacent_workflow
+    sources:
+      - https://www.freedesktop.org/wiki/Software/desktop-file-utils
+      - https://www.freedesktop.org/software/appstream/docs/chap-Quickstart.html
 category: system
 package-manager:
   apk: desktop-file-utils

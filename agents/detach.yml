@@ -46,6 +46,34 @@ history:
       depending on shell job control. The official examples compare it with setsid,
       disown, and nohup, and show why a standalone executable can be useful from scripts
       or other programs.
+related-packages:
+  - id: brew:util-linux
+    reason: >
+      Choose util-linux's setsid when it is already available and you only need detach's
+      original session-creation behavior; the detach author states that setsid does the
+      same job as detach 0.1.0.
+    rel: alternative
+    sources:
+      - https://inglorion.net/software/detach/
+      - https://github.com/util-linux/util-linux/blob/master/sys-utils/setsid.1.adoc
+  - id: brew:daemonize
+    reason: >
+      Choose daemonize when a process needs fuller daemon setup such as a working
+      directory, output files, PID and lock files, or a different user, rather than
+      detach's narrower terminal-detachment interface.
+    rel: alternative
+    sources:
+      - https://inglorion.net/software/detach/
+      - https://software.clapper.org/daemonize/daemonize.html
+  - id: brew:coreutils
+    reason: >
+      Choose GNU nohup when ignoring SIGHUP with conventional nohup output handling is
+      sufficient; choose detach when the process must leave the controlling terminal and
+      remain free to use SIGHUP itself.
+    rel: alternative
+    sources:
+      - https://inglorion.net/software/detach/
+      - https://www.gnu.org/software/coreutils/manual/html_node/nohup-invocation.html
 tags:
   - cli
   - daemon
@@ -79,7 +107,8 @@ provenance:
   repo-sources:
     - >
       The official project page publishes source archives but does not identify an
-      official HTTP(S) source-control repository page.
+      official HTTP(S) source-control repository.
+    - https://inglorion.net/software/detach/
   tags-sources:
     - Official Inglorion page explains terminal detachment and command execution examples.
     - source_facts.description identifies detached process execution.
@@ -90,5 +119,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: medium
+repo-confidence: high
 tags-confidence: high
