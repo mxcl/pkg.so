@@ -74,6 +74,42 @@ history:
       than a single daemon. `dnscache-conf` creates a cache service, `tinydns-conf`
       creates an authoritative service, `tinydns-data` compiles zone data, and query
       tools such as `dnsq`, `dnsqr`, and `dnstrace` help debug DNS behavior.
+related-packages:
+  - id: brew:bind
+    reason: >
+      Choose BIND 9 when you want one actively maintained DNS system covering
+      authoritative service, recursive resolution, and familiar utilities instead of
+      djbdns's separated DJB-style services.
+    rel: alternative
+    sources:
+      - https://cr.yp.to/djbdns.html
+      - https://bind.isc.org/
+  - id: brew:unbound
+    reason: >
+      Choose Unbound when the requirement is specifically a modern validating recursive
+      caching resolver rather than djbdns's broader but older collection of DNS services
+      and tools.
+    rel: alternative
+    sources:
+      - https://cr.yp.to/djbdns.html
+      - https://unbound.docs.nlnetlabs.nl/en/latest/
+  - id: brew:daemontools
+    reason: >
+      Traditional djbdns deployments use daemontools supervision, and the official
+      installation and server guides require it before creating dnscache or tinydns
+      service directories.
+    rel: adjacent_workflow
+    sources:
+      - https://cr.yp.to/djbdns/install.html
+      - https://cr.yp.to/djbdns/run-server.html
+  - id: brew:ucspi-tcp
+    reason: >
+      Install ucspi-tcp alongside djbdns when following the official Unix deployment
+      model, particularly for TCP-facing DNS services such as axfrdns.
+    rel: adjacent_workflow
+    sources:
+      - https://cr.yp.to/djbdns/install.html
+      - https://cr.yp.to/djbdns.html
 category: networking
 package-manager:
   apk: djbdns

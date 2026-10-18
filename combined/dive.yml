@@ -65,6 +65,23 @@ history:
       `dive` invocation mounted to the Docker socket. In CI, setting `CI=true` lets
       teams enforce thresholds from a `.dive-ci` file for image efficiency and wasted
       bytes.
+related-packages:
+  - id: brew:docker
+    reason: >
+      Use Docker to build or load images, then use dive through its documented
+      Docker-engine and Docker-socket workflow to inspect their layers and wasted space.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/wagoodman/dive#readme
+      - https://docs.docker.com/reference/cli/docker/image/build/
+  - id: brew:podman
+    reason: >
+      Choose Podman as the image source when you want dive's layer analysis against a
+      daemonless Linux container engine instead of Docker.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/wagoodman/dive#multiple-image-sources-and-container-engines-supported
+      - https://docs.podman.io/en/latest/
 category: developer-tools
 package-manager:
   apk: dive

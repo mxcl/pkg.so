@@ -70,6 +70,24 @@ history:
       often with an explicit template extension such as `html.j2`. Teams put options in
       project config files and use pre-commit hooks for automatic reformatting and lint
       checks.
+related-packages:
+  - id: brew:djhtml
+    reason: >
+      Choose DjHTML when you want conservative indentation-only changes for Django or
+      Jinja templates; keep djLint when lint rules, structural formatting, or broader
+      template-language support are required.
+    rel: alternative
+    sources:
+      - https://djlint.com/docs/getting-started/
+      - https://raw.githubusercontent.com/rtts/djhtml/main/README.md
+  - id: brew:pre-commit
+    reason: >
+      djLint provides profile-specific pre-commit hooks for both linting and
+      reformatting templates automatically before changes are committed.
+    rel: adjacent_workflow
+    sources:
+      - https://djlint.com/docs/integrations/
+      - https://pre-commit.com/
 tags:
   - cli
   - django

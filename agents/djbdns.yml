@@ -73,6 +73,42 @@ history:
       than a single daemon. `dnscache-conf` creates a cache service, `tinydns-conf`
       creates an authoritative service, `tinydns-data` compiles zone data, and query
       tools such as `dnsq`, `dnsqr`, and `dnstrace` help debug DNS behavior.
+related-packages:
+  - id: brew:bind
+    reason: >
+      Choose BIND 9 when you want one actively maintained DNS system covering
+      authoritative service, recursive resolution, and familiar utilities instead of
+      djbdns's separated DJB-style services.
+    rel: alternative
+    sources:
+      - https://cr.yp.to/djbdns.html
+      - https://bind.isc.org/
+  - id: brew:unbound
+    reason: >
+      Choose Unbound when the requirement is specifically a modern validating recursive
+      caching resolver rather than djbdns's broader but older collection of DNS services
+      and tools.
+    rel: alternative
+    sources:
+      - https://cr.yp.to/djbdns.html
+      - https://unbound.docs.nlnetlabs.nl/en/latest/
+  - id: brew:daemontools
+    reason: >
+      Traditional djbdns deployments use daemontools supervision, and the official
+      installation and server guides require it before creating dnscache or tinydns
+      service directories.
+    rel: adjacent_workflow
+    sources:
+      - https://cr.yp.to/djbdns/install.html
+      - https://cr.yp.to/djbdns/run-server.html
+  - id: brew:ucspi-tcp
+    reason: >
+      Install ucspi-tcp alongside djbdns when following the official Unix deployment
+      model, particularly for TCP-facing DNS services such as axfrdns.
+    rel: adjacent_workflow
+    sources:
+      - https://cr.yp.to/djbdns/install.html
+      - https://cr.yp.to/djbdns.html
 tags:
   - cli
   - dns
@@ -108,9 +144,9 @@ provenance:
     - https://cr.yp.to/djbdns/run-server.html
   repo-sources:
     - >
-      The official djbdns site distributes source archives and documentation but does
-      not identify an official HTTP(S) source-control repository.
-    - source_facts.repo is empty.
+      The official distribution site provides releases and documentation but no official
+      HTTP(S) source-control project page.
+    - https://cr.yp.to/djbdns.html
   tags-sources:
     - >
       source_facts.description and executable list include dnscache, tinydns, axfrdns,
@@ -123,5 +159,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high
