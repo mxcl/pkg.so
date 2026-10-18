@@ -54,6 +54,39 @@ history:
       executable and letting the tool download the referenced media segments. The
       official docs describe command-line use rather than a persistent config file or
       credential store.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      dash-mpd-cli explicitly invokes FFmpeg to mux separate audio and video streams and
+      concatenate compatible multi-period downloads.
+    rel: adjacent_workflow
+    sources:
+      - https://emarsden.github.io/dash-mpd-cli/muxing.html
+      - https://ffmpeg.org/documentation.html
+  - id: brew:mkvtoolnix
+    reason: >
+      Install MKVToolNix when dash-mpd-cli should use mkvmerge as its preferred muxer
+      for Matroska output.
+    rel: adjacent_workflow
+    sources:
+      - https://emarsden.github.io/dash-mpd-cli/muxing.html
+      - https://mkvtoolnix.download/doc/
+  - id: brew:gpac
+    reason: >
+      dash-mpd-cli can use GPAC's MP4Box for MP4 muxing, WebVTT subtitle conversion, and
+      supported decryption workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://emarsden.github.io/dash-mpd-cli/installation.html
+      - https://wiki.gpac.io/MP4Box/
+  - id: brew:bento4
+    reason: >
+      Bento4 supplies mp4decrypt, which dash-mpd-cli officially supports for decrypting
+      compatible MPEG Common Encryption streams.
+    rel: adjacent_workflow
+    sources:
+      - https://emarsden.github.io/dash-mpd-cli/installation.html
+      - https://www.bento4.com/documentation/
 tags:
   - cli
   - dash

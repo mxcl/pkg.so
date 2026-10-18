@@ -3,7 +3,10 @@ display-name: dash
 repo: https://git.kernel.org/pub/scm/utils/dash/dash.git
 docs:
   - https://git.kernel.org/pub/scm/utils/dash/dash.git/tree/src/dash.1
-config-file-location: null
+config-file-location:
+  unix:
+    - /etc/profile
+    - ~/.profile
 credentials-file-location: null
 history:
   adoption-history:
@@ -60,6 +63,24 @@ history:
       `/bin/sh` on systems configured that way. It normally has no package-specific user
       config or credential store; shell startup behavior and scripts are governed by
       POSIX shell conventions and the system configuration.
+related-packages:
+  - id: brew:bash
+    reason: >
+      Choose Bash for interactive use or scripts requiring Bash-specific features;
+      choose dash for fast POSIX `/bin/sh` execution and portability testing.
+    rel: alternative
+    sources:
+      - https://sources.debian.org/src/dash/0.5.2-5/debian/control
+      - https://www.gnu.org/software/bash/manual/bash.html
+  - id: brew:mksh
+    reason: >
+      Choose mksh when Korn-shell-compatible interactive features and scripting
+      extensions are useful; choose dash for a smaller, deliberately POSIX-focused
+      system shell.
+    rel: alternative
+    sources:
+      - https://packages.debian.org/stable/dash
+      - https://www.mirbsd.org/man1/mksh
 tags:
   - ash
   - cli
