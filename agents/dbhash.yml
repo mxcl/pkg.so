@@ -55,6 +55,15 @@ history:
       specific tables, content only, or schema only, making it useful in tests, release
       checks, and remote verification where transferring a whole database would be
       expensive.
+related-packages:
+  - id: brew:sqldiff
+    reason: >
+      Use dbhash for a quick logical-equivalence check, then use sqldiff when differing
+      SQLite databases need a schema/data comparison or transformation SQL.
+    rel: adjacent_workflow
+    sources:
+      - https://www.sqlite.org/dbhash.html
+      - https://www.sqlite.org/sqldiff.html
 tags:
   - cli
   - database

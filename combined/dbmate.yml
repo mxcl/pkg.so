@@ -4,8 +4,14 @@ homepage: https://github.com/amacneil/dbmate
 repo: https://github.com/amacneil/dbmate
 docs:
   - https://github.com/amacneil/dbmate#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - <project-root>/.env
+    - paths supplied with --env-file
+credentials-file-location:
+  unix:
+    - <project-root>/.env
+    - paths supplied with --env-file
 history:
   adoption-history:
     - >
@@ -55,6 +61,16 @@ history:
       keeps migration files under ./db/migrations by default, and runs commands such as
       dbmate new, up, migrate, rollback, status, dump, and load. Dbmate also writes
       schema.sql for diffing schema changes in git.
+related-packages:
+  - id: brew:goose
+    reason: >
+      Choose goose for a Go-centric migration workflow that can mix SQL with registered
+      Go migration functions; choose Dbmate for a framework-neutral standalone binary
+      centered on plain SQL and automatic schema dumps.
+    rel: alternative
+    sources:
+      - https://github.com/amacneil/dbmate#readme
+      - https://pressly.github.io/goose/
 category: developer-tools
 package-manager:
   apk: dbmate
