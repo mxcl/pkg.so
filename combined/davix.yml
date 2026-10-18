@@ -7,7 +7,10 @@ docs:
   - https://davix.web.cern.ch/
   - https://github.com/cern-fts/davix#readme
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.netrc
+    - ~/.davixrc
 history:
   adoption-history:
     - >
@@ -48,6 +51,17 @@ history:
       Package users typically use tools such as `davix-get`, `davix-put`, `davix-ls`,
       and `davix-rm`, or link against libdavix through file-oriented and POSIX-like
       APIs.
+related-packages:
+  - id: brew:curl
+    reason: >
+      Choose curl for general HTTP transfers and manually constructed WebDAV requests;
+      choose Davix when you need higher-level remote file operations plus grid
+      credentials, VOMS, vector I/O, or CERN-oriented storage support.
+    rel: alternative
+    sources:
+      - https://github.com/cern-fts/davix
+      - https://curl.se/docs/faq.html
+      - https://curl.se/docs/manpage.html
 category: networking
 package-manager:
   brew: davix

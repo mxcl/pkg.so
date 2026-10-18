@@ -10,7 +10,11 @@ config-file-location:
   unix:
     - ~/.davmail.properties
     - davmail.properties
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.davmail.properties
+    - $XDG_CONFIG_HOME/davmail/davmail.properties
+    - davmail.properties
 history:
   adoption-history:
     - >
@@ -30,10 +34,10 @@ history:
   project-history:
     - >
       The project dates back to the SourceForge era, with the official GitHub mirror
-      carrying an initial SourceForge import tag from December 2006. The README
-      says the main project site remains on SourceForge and that the GitHub repository
-      is synchronized from the main Subversion repository to make contributions easier
-      for GitHub users.
+      carrying an initial SourceForge import tag from December 2006. The README says the
+      main project site remains on SourceForge and that the GitHub repository is
+      synchronized from the main Subversion repository to make contributions easier for
+      GitHub users.
   related-projects:
     - >
       DavMail sits beside mail clients, calendar clients, and address-book clients
@@ -62,6 +66,18 @@ history:
       setup guide describes preparing a davmail.properties file and running a shared
       gateway for clients that speak POP, IMAP, SMTP, LDAP, CalDAV, or CardDAV while
       DavMail handles Exchange Web Services or Microsoft Graph on the other side.
+related-packages:
+  - id: cask:thunderbird
+    reason: >
+      DavMail's official guides document using Thunderbird with its IMAP, SMTP, CalDAV,
+      CardDAV, and LDAP gateways, making Thunderbird a directly supported client for
+      Exchange and Office 365 workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://davmail.sourceforge.net/thunderbirdmailsetup.html
+      - https://davmail.sourceforge.net/thunderbirdcalendarsetup.html
+      - https://davmail.sourceforge.net/thunderbirdcarddavsetup.html
+      - https://www.thunderbird.net/
 tags:
   - caldav
   - carddav

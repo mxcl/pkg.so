@@ -46,6 +46,25 @@ history:
       Package users install the command-line tool and library when they need AV1
       decoding support, tests, benchmarks, or downstream multimedia software linked
       against a permissively licensed decoder.
+related-packages:
+  - id: brew:aom
+    reason: >
+      Choose libaom when you need the AOMedia reference implementation or AV1 encoding
+      as well as decoding; choose dav1d for a focused, small, performance-oriented AV1
+      decoder.
+    rel: alternative
+    sources:
+      - https://images.videolan.org/projects/dav1d.html
+      - https://aomedia.googlesource.com/aom
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg can be built with libdav1d and uses it through a documented decoder wrapper
+      to decode AV1 streams within broader transcoding and playback workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://www.ffmpeg.org/general.html
+      - https://www.ffmpeg.org/ffmpeg-codecs.html
+      - https://images.videolan.org/projects/dav1d.html
 category: media
 package-manager:
   apk: dav1d

@@ -11,7 +11,11 @@ config-file-location:
   unix:
     - ~/.davmail.properties
     - davmail.properties
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.davmail.properties
+    - $XDG_CONFIG_HOME/davmail/davmail.properties
+    - davmail.properties
 history:
   adoption-history:
     - >
@@ -63,6 +67,18 @@ history:
       setup guide describes preparing a davmail.properties file and running a shared
       gateway for clients that speak POP, IMAP, SMTP, LDAP, CalDAV, or CardDAV while
       DavMail handles Exchange Web Services or Microsoft Graph on the other side.
+related-packages:
+  - id: cask:thunderbird
+    reason: >
+      DavMail's official guides document using Thunderbird with its IMAP, SMTP, CalDAV,
+      CardDAV, and LDAP gateways, making Thunderbird a directly supported client for
+      Exchange and Office 365 workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://davmail.sourceforge.net/thunderbirdmailsetup.html
+      - https://davmail.sourceforge.net/thunderbirdcalendarsetup.html
+      - https://davmail.sourceforge.net/thunderbirdcarddavsetup.html
+      - https://www.thunderbird.net/
 category: networking
 package-manager:
   apk: davmail
