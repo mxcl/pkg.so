@@ -58,6 +58,23 @@ history:
       per-login-session bus for desktop IPC. The package also ships tools such as
       dbus-daemon, dbus-send, dbus-monitor, dbus-run-session, and dbus-uuidgen for
       debugging and service integration.
+related-packages:
+  - id: brew:dbus-glib
+    reason: >
+      Use dbus-glib only when building or maintaining older GLib software that depends
+      on its legacy D-Bus binding and dbus-binding-tool generator.
+    rel: adjacent_workflow
+    sources:
+      - https://dbus.freedesktop.org/doc/dbus-glib/ch01.html
+      - https://dbus.freedesktop.org/doc/dbus-glib/dbus-binding-tool.html
+  - id: brew:glib
+    reason: >
+      GLib supplies GDBus in GIO, the recommended modern API for GLib applications that
+      communicate through a D-Bus message bus.
+    rel: adjacent_workflow
+    sources:
+      - https://dbus.freedesktop.org/doc/dbus-glib/ch01.html
+      - https://docs.gtk.org/gio/class.DBusConnection.html
 tags:
   - cli
   - daemon

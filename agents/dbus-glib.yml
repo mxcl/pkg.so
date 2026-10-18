@@ -47,6 +47,23 @@ history:
       that still use dbus-glib APIs or generated bindings. New GLib code is expected to
       use GDBus, while dbus-glib remains useful when building historical desktop
       software.
+related-packages:
+  - id: brew:glib
+    reason: >
+      Choose GLib's GDBus API for new GLib applications because the D-Bus maintainers
+      explicitly recommend it in place of deprecated dbus-glib.
+    rel: alternative
+    sources:
+      - https://dbus.freedesktop.org/doc/dbus-glib/ch01.html
+      - https://docs.gtk.org/gio/class.DBusConnection.html
+  - id: brew:dbus
+    reason: >
+      D-Bus supplies the protocol, reference daemon, and low-level messaging
+      infrastructure with which legacy dbus-glib applications communicate.
+    rel: adjacent_workflow
+    sources:
+      - https://dbus.freedesktop.org/doc/dbus-glib/ch01.html
+      - https://dbus.freedesktop.org/doc/dbus-daemon.1.html
 tags:
   - bindings
   - cli
