@@ -1,0 +1,2667 @@
+{
+  "content": [
+    {
+      "artwork": {
+        "alt": "Reviewable request cards flow into ivory files, then branch through glowing braided connections toward distinct API environments and a central vault.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#102F3C",
+          "backgroundStart": "#071A25",
+          "foreground": "#F4E7D2"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/noodle-file-first-api-workflows-20261015.png"
+      },
+      "batchID": "20261015T075024Z-e26bf66f",
+      "body": "## The collection is a directory, not a database\n\nAPI clients often begin as scratchpads: send a request, inspect the response, and keep enough state around to repeat it. Noodle makes a stronger choice. A collection is a directory of readable YAML request files, with dotenv-style environments and optional settings alongside them. The same files feed its terminal interface and command-line runner. That makes an API workflow visible to an editor, a diff, and ordinary repository review rather than trapping the useful definition inside one application's private store.\n\nThe [collections guide](https://noodlerest.dev/docs/guides/collections/) explains the boundary carefully. Noodle creates `.noodle` UI state and `.timeline` response history inside a collection, but warns that timeline data may include sensitive payloads and should stay out of version control. The durable request definition and the local execution residue occupy neighboring directories, not the same trust category. A good adoption therefore starts with ignore rules and a review of exactly which files a team intends to share.\n\n## Exploration and automation use the same source\n\nNoodle's terminal workspace can edit, send, and inspect a single request, but the collection model continues into ordered runs. Environments select endpoints and ordinary variables; captured response values can feed later requests; assertions can fail checks; CSV or JSON rows can drive repeated iterations. The [runner documentation](https://noodlerest.dev/docs/guides/collection-runner/) describes selection, ordering, fail-fast behavior, tags, and data files. The CLI can run the same collection in CI and return structured results.\n\nThat continuity is the main appeal. A request investigated interactively does not need to be translated into a separate test format before it becomes repeatable. It also creates a responsibility: a successful interactive request is not automatically a durable test. Teams still need explicit assertions, controlled test data, stable environments, and failure handling. Formatting and audit commands can modify files, so their diffs belong in review just like changes made in an editor.\n\nSecrets receive a similarly explicit boundary. Declarations remain in environment files while values can live in the operating-system credential vault or process environment. The documentation notes that scripts can read selected secrets and should be treated as trusted code. On headless Linux, vault access also depends on a usable D-Bus session and unlocked keyring. File-first is helpful because the behavior is inspectable; it does not make an untrusted collection safe to execute.\n\n## Slumber shows the established version of the idea\n\nNoodle is not the first terminal client to make source files central. [Slumber](https://github.com/LucasPickering/slumber) defines request recipes in a collection file and exposes them through a TUI, CLI, and Python package. It supports profiles, dynamic templates, imports, JSONPath response browsing, and locally stored history. Its February 2026 5.0 release reorganized commands and redesigned the interface while keeping collection-format breakage relatively narrow, useful evidence that source-first clients still have compatibility decisions to manage as they mature.\n\nThe structural difference is worth testing rather than declaring a winner. Noodle's directory of per-request YAML files can align naturally with a project's folders and granular diffs. Slumber's collection and recipe model is established, compact, and backed by years of releases. Both can keep request definitions local and reviewable; both can also evaluate dynamic behavior, retain response history, or expose secrets when configured carelessly. `curl` or HTTPie remains a simpler fit when a team only needs a few independent commands.\n\n## Early usage evidence is small but concrete\n\nNoodle's first non-prerelease, [v0.1.0](https://github.com/wilfredinni/noodle/releases/tag/v0.1.0), appeared on July 3, 2026. At research time, Homebrew's public formula analytics reported 83 install events across the available 90-day and 365-day windows, including 48 in the last 30 days. These are manager-specific events, not unique users, and they exclude direct installers and upgrades outside Homebrew. They show real packaging activity, but not broad adoption or production reliability.\n\nFor comparison, the same Homebrew endpoint reported 495 Slumber install events in its 365-day window. That difference is consistent with Slumber's longer history, but the counts are too narrow to rank the tools' total audiences. GitHub release assets and repository interest have similar limitations: they indicate retrieval or attention, not whether a collection became part of a dependable team workflow.\n\n## Evaluate the boundary before the feature list\n\nA useful trial starts with one noncritical API and a deliberately small collection. Import or write a few requests, place the shareable files under Git, and confirm that UI state, response history, and secret values remain outside the commit. Run the same request interactively and from the CLI, then add one assertion and one captured value. Review what appears in logs and structured output when the request fails.\n\nNext, ask another developer to reproduce the run from a clean checkout using their own environment values. If the collection requires scripts, review them as executable code. If CI is the destination, verify headless secret injection rather than assuming a desktop keyring will exist. Finally, repeat the exercise in Slumber or a few explicit shell commands. The important result is not the richest terminal screen. It is a request workflow whose source, secrets, generated history, and automation behavior have boundaries the whole team can explain.",
+      "deck": "A new terminal client treats request definitions as ordinary project files; the useful test is how safely those files move from exploration to automation.",
+      "id": "editorial:2026-10-15:noodle-file-first-api-workflows",
+      "package": {
+        "agentSummary": "Noodle keeps API requests in reviewable YAML collections, combining an interactive terminal client with repeatable CLI runs, assertions, captures, scripting, and guarded secret storage.",
+        "assessment": {
+          "alternatives": [
+            "Slumber for a mature source-first terminal HTTP client",
+            "curl or HTTPie for individual command-line requests",
+            "Graphical clients such as Postman or Insomnia"
+          ],
+          "audiences": [
+            "Developers who want API collections beside application code",
+            "Terminal-first teams reviewing HTTP workflows in Git"
+          ],
+          "caveats": [
+            "The project is young and its collection format is still evolving",
+            "Timeline history can contain response data and should normally stay out of version control",
+            "Collection scripts are trusted code and can read selected secrets"
+          ],
+          "complements": [
+            "Git for reviewing and sharing request definitions",
+            "A CI system for repeatable collection runs"
+          ],
+          "prerequisites": [
+            "A terminal on a supported Linux or macOS system",
+            "An initialized directory of YAML requests for collection workflows"
+          ],
+          "useCases": [
+            "Explore and edit HTTP requests in a terminal interface",
+            "Run ordered API checks with environments, assertions, captures, and data files",
+            "Import existing OpenAPI, Postman, or Insomnia collections"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "noodle",
+        "docs": "https://noodlerest.dev/docs",
+        "homepage": "https://noodlerest.dev",
+        "id": "brew:noodle",
+        "installURL": "pkgmgrmgr://install?package=brew%3Anoodle",
+        "lastUpdatedAt": "2026-10-14T19:58:08Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/wilfredinni/noodle",
+        "researchedAt": "2026-10-15T07:50:24Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Noodle project repository",
+            "url": "https://github.com/wilfredinni/noodle"
+          },
+          {
+            "kind": "primary",
+            "title": "Noodle collections guide",
+            "url": "https://noodlerest.dev/docs/guides/collections/"
+          },
+          {
+            "kind": "primary",
+            "title": "Noodle v0.1.0 release",
+            "url": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0"
+          }
+        ],
+        "upstreamSummary": "Terminal REST client with file-based collections",
+        "version": "0.10.0"
+      },
+      "primaryPackageID": "brew:noodle",
+      "publishedAt": "2026-10-15T07:50:24Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Noodle keeps API requests in reviewable YAML collections, combining an interactive terminal client with repeatable CLI runs, assertions, captures, scripting, and guarded secret storage.",
+          "assessment": {
+            "alternatives": [
+              "Slumber for a mature source-first terminal HTTP client",
+              "curl or HTTPie for individual command-line requests",
+              "Graphical clients such as Postman or Insomnia"
+            ],
+            "audiences": [
+              "Developers who want API collections beside application code",
+              "Terminal-first teams reviewing HTTP workflows in Git"
+            ],
+            "caveats": [
+              "The project is young and its collection format is still evolving",
+              "Timeline history can contain response data and should normally stay out of version control",
+              "Collection scripts are trusted code and can read selected secrets"
+            ],
+            "complements": [
+              "Git for reviewing and sharing request definitions",
+              "A CI system for repeatable collection runs"
+            ],
+            "prerequisites": [
+              "A terminal on a supported Linux or macOS system",
+              "An initialized directory of YAML requests for collection workflows"
+            ],
+            "useCases": [
+              "Explore and edit HTTP requests in a terminal interface",
+              "Run ordered API checks with environments, assertions, captures, and data files",
+              "Import existing OpenAPI, Postman, or Insomnia collections"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "noodle",
+          "docs": "https://noodlerest.dev/docs",
+          "homepage": "https://noodlerest.dev",
+          "id": "brew:noodle",
+          "installURL": "pkgmgrmgr://install?package=brew%3Anoodle",
+          "lastUpdatedAt": "2026-10-14T19:58:08Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/wilfredinni/noodle",
+          "researchedAt": "2026-10-15T07:50:24Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Noodle project repository",
+              "url": "https://github.com/wilfredinni/noodle"
+            },
+            {
+              "kind": "primary",
+              "title": "Noodle collections guide",
+              "url": "https://noodlerest.dev/docs/guides/collections/"
+            },
+            {
+              "kind": "primary",
+              "title": "Noodle v0.1.0 release",
+              "url": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0"
+            }
+          ],
+          "upstreamSummary": "Terminal REST client with file-based collections",
+          "version": "0.10.0"
+        },
+        {
+          "agentSummary": "Slumber is a mature source-first HTTP client whose local collections drive a terminal interface, command-line automation, Python access, profiles, templates, imports, and response history.",
+          "assessment": {
+            "alternatives": [
+              "Noodle for directory-based YAML requests and collection runs",
+              "curl or HTTPie for lightweight individual requests",
+              "Graphical API clients"
+            ],
+            "audiences": [
+              "Developers seeking an established terminal HTTP client",
+              "Teams that want shareable request recipes under version control"
+            ],
+            "caveats": [
+              "Dynamic templates can execute commands, so shared collections require code-review discipline",
+              "Major releases can reorganize commands or adjust the collection format",
+              "Local request history may retain sensitive response data"
+            ],
+            "complements": [
+              "Git for source-first collection review",
+              "Shell scripts or Python programs that call its noninteractive interfaces"
+            ],
+            "prerequisites": [
+              "A supported terminal environment",
+              "A Slumber collection file for reusable recipes"
+            ],
+            "useCases": [
+              "Define and execute reusable HTTP request recipes",
+              "Switch endpoints and credentials through profiles and templates",
+              "Use the same collections from a TUI, CLI, or Python package"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "slumber",
+          "docs": "https://slumber.lucaspickering.me/",
+          "homepage": "https://slumber.lucaspickering.me/",
+          "id": "brew:slumber",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aslumber",
+          "lastUpdatedAt": "2026-10-15T01:22:14Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/LucasPickering/slumber",
+          "researchedAt": "2026-10-15T07:50:24Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Slumber project repository",
+              "url": "https://github.com/LucasPickering/slumber"
+            },
+            {
+              "kind": "primary",
+              "title": "Slumber official documentation",
+              "url": "https://slumber.lucaspickering.me/"
+            },
+            {
+              "kind": "primary",
+              "title": "Slumber release history",
+              "url": "https://github.com/LucasPickering/slumber/releases"
+            }
+          ],
+          "upstreamSummary": "Terminal-based HTTP/REST client",
+          "version": "5.4.0"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-03T20:32:47Z",
+        "firstStableReleaseSourceURL": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Noodle project repository",
+          "url": "https://github.com/wilfredinni/noodle"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle collections guide",
+          "url": "https://noodlerest.dev/docs/guides/collections/"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle collection runner guide",
+          "url": "https://noodlerest.dev/docs/guides/collection-runner/"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle automation and secret-handling guide",
+          "url": "https://noodlerest.dev/docs/guides/automation/"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle v0.1.0 release",
+          "url": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew analytics for Noodle",
+          "url": "https://formulae.brew.sh/api/formula/noodle.json"
+        },
+        {
+          "kind": "primary",
+          "title": "Slumber project documentation",
+          "url": "https://github.com/LucasPickering/slumber"
+        },
+        {
+          "kind": "primary",
+          "title": "Slumber release history",
+          "url": "https://github.com/LucasPickering/slumber/releases"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew analytics for Slumber",
+          "url": "https://formulae.brew.sh/api/formula/slumber.json"
+        }
+      ],
+      "title": "Noodle and the API Collection You Can Review",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261015T075024Z-7e6fc329",
+      "id": "for-you:productivity:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "A live preview of your emails right in your browser.",
+          "category": "productivity",
+          "displayName": "react-email",
+          "homepage": null,
+          "id": "npm:react-email",
+          "installURL": "pkgmgrmgr://install?package=npm%3Areact-email",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Read and modify Office Add-in manifest files.",
+          "category": "productivity",
+          "displayName": "office-addin-manifest",
+          "homepage": "https://github.com/OfficeDev/Office-Addin-Scripts#readme",
+          "id": "npm:office-addin-manifest",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aoffice-addin-manifest",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "This package helps to transform resources to be used in a typesafe i18next project.",
+          "category": "productivity",
+          "displayName": "i18next-resources-for-ts",
+          "homepage": "https://github.com/i18next/i18next-resources-for-ts",
+          "id": "npm:i18next-resources-for-ts",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ai18next-resources-for-ts",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A unified, high-performance i18next CLI.",
+          "category": "productivity",
+          "displayName": "i18next-cli",
+          "homepage": "https://github.com/i18next/i18next-cli",
+          "id": "npm:i18next-cli",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ai18next-cli",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The Bump CLI is used to interact with your API documentation hosted on Bump.sh by using the APIs of developers.bump.sh",
+          "category": "productivity",
+          "displayName": "bump-cli",
+          "homepage": "https://bump.sh",
+          "id": "npm:bump-cli",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abump-cli",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-15T07:50:24Z",
+      "title": "For You in Productivity",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261015T075024Z-7e6fc329",
+      "id": "new-packages:data:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Flexible tool to build planet-scale vector tilesets from OpenStreetMap data fast",
+          "category": "data",
+          "displayName": "planetiler",
+          "homepage": "https://github.com/onthegomap/planetiler",
+          "id": "brew:planetiler",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aplanetiler",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-15T07:50:24Z",
+      "title": "New Packages in Data",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
+        "alt": "A dark control room where flowing code fragments pass through a luminous lens, usage gauges, and a protective checkpoint.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#123A46",
+          "backgroundStart": "#0B1C2B",
+          "foreground": "#F5F1E8"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/claudoscope-observe-govern.png"
+      },
+      "batchID": "20261012T035302Z-e305f29e",
+      "body": "## The transcript is becoming an operations surface\n\nCoding agents leave more behind than a patch. Their local records can contain prompts, tool calls, plans, model usage, file edits, and the moments when a person had to intervene. That material is useful for debugging both the software change and the way the agent was directed, but raw transcript files are awkward to inspect repeatedly.\n\n[Claudoscope](https://claudoscope.com/) turns that local trail into a native macOS dashboard. Its upstream documentation describes views for sessions, touched files, costs, configuration health, and project activity. The app reads Claude Code and Cowork records already stored on the machine; its [privacy statement](https://claudoscope.com/privacy) says transcript content, prompts, code, and detected secrets are processed locally rather than uploaded. That boundary matters because an observability tool can otherwise become a second destination for sensitive development data.\n\nClaudoscope is genuinely young. The repository and public releases began in March 2026, followed by a stable 1.0 release in July. The [1.0 notes](https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0) describe a persistent local session index, optional cost alerts, lifecycle notifications, per-session file history, and configuration linting. Those notes also report testing against a corpus of roughly 3,000 session files. That is useful evidence of the workload the author designed for, though it is not an independent performance benchmark.\n\n## Three questions, three different tools\n\nA viewer can answer **what happened in this session?** It cannot automatically answer every neighboring question. A practical local stack separates at least three jobs:\n\n- Claudoscope reconstructs and presents Claude Code or Cowork activity on a supported Mac.\n- [ccusage](https://ccusage.com/guide/all-reports) aggregates local usage into daily, weekly, monthly, session, and active-block reports across multiple supported coding agents.\n- [HOL Guard](https://hol.org/guard/features) evaluates supported actions against local policy, routes ambiguous cases for approval, and records receipts where its integrations expose an enforcement point.\n\nThe distinction is temporal as well as functional. Claudoscope and ccusage primarily help after records exist, even when they update live. Guard aims to intervene before supported actions execute. None of them replaces a provider invoice, source control review, operating-system isolation, or the agent's native permission model. Treating them as interchangeable would hide the most important design constraint: each observes a different slice of the workflow.\n\n## Usage evidence without pretending it proves everything\n\nThere are early signs that developers want this visibility. Homebrew's cask API recorded 20 Claudoscope installs in its available 30-day window when this article was researched. That is a modest, manager-specific count, not a census; direct downloads and updates are outside it. The upstream repository also showed public issue and contribution activity, but stars are interest signals rather than proof of sustained use.\n\nccusage has a broader observable footprint. The npm registry reported 776,090 downloads for the package from September 11 through October 10, 2026. Downloads can include automation, repeated installs, and mirrors, so they should not be converted into user counts. They do show that terminal-first usage reporting is not merely a hypothetical need. Its [JSON documentation](https://ccusage.com/guide/json-output) also makes the integration story concrete: every report type can be emitted as structured data, with an option to omit cost fields while retaining token, model, date, and projection information.\n\nHOL Guard is newer and should be evaluated by boundary rather than marketing breadth. Its [setup guide](https://hol.org/guard/docs/guard/get-started) documents different approval paths for different agents and explicitly preserves native controls. That variability is a caveat, but also a sign of an honest integration model: protection is only as strong as the events an agent exposes and the path that can actually block them.\n\n## A disciplined evaluation loop\n\nStart with a narrow question instead of installing an entire observability stack at once. For session review, compare Claudoscope's reconstruction with a known transcript and the resulting Git diff. Check whether cost estimates agree closely enough with the provider's billing view for your models, and confirm that opt-in configuration changes produce recoverable backups. Apple Silicon and macOS 14 are current prerequisites.\n\nFor reporting, run ccusage against a small date range and inspect both the table and JSON forms. Unknown pricing can produce incomplete cost figures, while differing agent formats can limit cross-tool symmetry. For runtime policy, use Guard's documented dry-run and status checks first, then test one harmless action that should be allowed and one controlled action that should require review. Keep native permissions enabled.\n\nThe valuable pattern is **observe, reconcile, then govern**. A session viewer makes agent behavior legible, a usage reporter makes trends comparable, and a runtime guard can add policy at supported decision points. Keeping those roles separate makes the resulting evidence easier to trust—and makes it clearer where human review is still doing the real work.",
+      "deck": "Session viewers, usage reports, and runtime guards expose different parts of an AI coding workflow; the useful stack begins by keeping those boundaries clear.",
+      "id": "editorial:2026-10-12:claudoscope-observing-agent-work",
+      "package": {
+        "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
+        "assessment": {
+          "alternatives": [
+            "Read Claude Code transcript files directly",
+            "Use ccusage when terminal reports are sufficient"
+          ],
+          "audiences": [
+            "Apple Silicon Mac users who run Claude Code or Cowork regularly",
+            "Developers who want a visual audit trail for local coding sessions"
+          ],
+          "caveats": [
+            "It is currently limited to Apple Silicon Macs",
+            "Cost figures are estimates and should be reconciled with provider billing",
+            "Some features can modify Claude Code configuration, but they are opt-in and create backups"
+          ],
+          "complements": [
+            "ccusage for scriptable and cross-agent usage reports",
+            "HOL Guard for supported pre-execution policy checks and approval receipts"
+          ],
+          "prerequisites": [
+            "macOS 14 or later on Apple Silicon",
+            "Claude Code or Cowork session data already present on the Mac"
+          ],
+          "useCases": [
+            "Inspect session history, touched files, plans, token use, and estimated cost",
+            "Watch active sessions and configure optional cost or lifecycle notifications",
+            "Review Claude Code configuration health and locally detected secrets"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "Claudoscope",
+        "docs": "https://claudoscope.com/",
+        "homepage": "https://claudoscope.com/",
+        "id": "brew:cask:claudoscope",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclaudoscope",
+        "lastUpdatedAt": "2026-10-11T17:47:59Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/cordwainersmith/Claudoscope",
+        "researchedAt": "2026-10-12T03:53:02Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Claudoscope upstream repository and requirements",
+            "url": "https://github.com/cordwainersmith/Claudoscope"
+          },
+          {
+            "kind": "primary",
+            "title": "Claudoscope privacy and local-data boundary",
+            "url": "https://claudoscope.com/privacy"
+          },
+          {
+            "kind": "primary",
+            "title": "Claudoscope 1.0 release notes",
+            "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+          }
+        ],
+        "upstreamSummary": "Menu bar dashboard for Claude Code sessions",
+        "version": "1.4.0"
+      },
+      "primaryPackageID": "brew:cask:claudoscope",
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
+          "assessment": {
+            "alternatives": [
+              "Read Claude Code transcript files directly",
+              "Use ccusage when terminal reports are sufficient"
+            ],
+            "audiences": [
+              "Apple Silicon Mac users who run Claude Code or Cowork regularly",
+              "Developers who want a visual audit trail for local coding sessions"
+            ],
+            "caveats": [
+              "It is currently limited to Apple Silicon Macs",
+              "Cost figures are estimates and should be reconciled with provider billing",
+              "Some features can modify Claude Code configuration, but they are opt-in and create backups"
+            ],
+            "complements": [
+              "ccusage for scriptable and cross-agent usage reports",
+              "HOL Guard for supported pre-execution policy checks and approval receipts"
+            ],
+            "prerequisites": [
+              "macOS 14 or later on Apple Silicon",
+              "Claude Code or Cowork session data already present on the Mac"
+            ],
+            "useCases": [
+              "Inspect session history, touched files, plans, token use, and estimated cost",
+              "Watch active sessions and configure optional cost or lifecycle notifications",
+              "Review Claude Code configuration health and locally detected secrets"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "Claudoscope",
+          "docs": "https://claudoscope.com/",
+          "homepage": "https://claudoscope.com/",
+          "id": "brew:cask:claudoscope",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclaudoscope",
+          "lastUpdatedAt": "2026-10-11T17:47:59Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/cordwainersmith/Claudoscope",
+          "researchedAt": "2026-10-12T03:53:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Claudoscope upstream repository and requirements",
+              "url": "https://github.com/cordwainersmith/Claudoscope"
+            },
+            {
+              "kind": "primary",
+              "title": "Claudoscope privacy and local-data boundary",
+              "url": "https://claudoscope.com/privacy"
+            },
+            {
+              "kind": "primary",
+              "title": "Claudoscope 1.0 release notes",
+              "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+            }
+          ],
+          "upstreamSummary": "Menu bar dashboard for Claude Code sessions",
+          "version": "1.4.0"
+        },
+        {
+          "agentSummary": "ccusage reads local coding-agent usage files and produces terminal or JSON reports across days, sessions, models, costs, and active usage blocks.",
+          "assessment": {
+            "alternatives": [
+              "Provider billing dashboards",
+              "Custom scripts that parse local session records"
+            ],
+            "audiences": [
+              "Developers who prefer terminal-native reporting",
+              "Teams building their own local usage dashboards or scripts"
+            ],
+            "caveats": [
+              "Reported costs depend on current pricing data and model recognition",
+              "Local logs measure recorded activity rather than the provider's final invoice",
+              "Feature depth varies by source because agent log formats differ"
+            ],
+            "complements": [
+              "Claudoscope for a native macOS session viewer",
+              "Shell tools or dashboards that consume its JSON output"
+            ],
+            "prerequisites": [
+              "Local usage files from a supported coding agent",
+              "A terminal environment capable of running the packaged CLI"
+            ],
+            "useCases": [
+              "Compare daily, weekly, monthly, session, and block-level usage",
+              "Export structured JSON for dashboards and automation",
+              "Review multiple supported coding-agent data sources in a unified view"
+            ]
+          },
+          "category": "ai",
+          "displayName": "ccusage",
+          "docs": "https://ccusage.com/guide",
+          "homepage": "https://github.com/ccusage/ccusage",
+          "id": "brew:ccusage",
+          "installURL": "pkgmgrmgr://install?package=brew%3Accusage",
+          "lastUpdatedAt": "2026-10-11T23:35:21Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/ccusage/ccusage",
+          "researchedAt": "2026-10-12T03:53:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "ccusage unified report documentation",
+              "url": "https://ccusage.com/guide/all-reports"
+            },
+            {
+              "kind": "primary",
+              "title": "ccusage JSON output documentation",
+              "url": "https://ccusage.com/guide/json-output"
+            },
+            {
+              "kind": "independent",
+              "title": "npm download statistics for ccusage",
+              "url": "https://api.npmjs.org/downloads/point/last-month/ccusage"
+            }
+          ],
+          "upstreamSummary": "CLI tool for analyzing Claude Code usage from local JSONL files",
+          "version": "20.0.30"
+        },
+        {
+          "agentSummary": "HOL Guard adds local policy checks, approvals, and receipts around supported coding-agent actions, while retaining each agent's native permission model and documented boundaries.",
+          "assessment": {
+            "alternatives": [
+              "Rely exclusively on each agent's native approvals",
+              "Use operating-system sandboxing and organization-specific policy tooling"
+            ],
+            "audiences": [
+              "Developers using coding agents with access to files, commands, packages, or MCP tools",
+              "Teams seeking a consistent local review trail across supported agents"
+            ],
+            "caveats": [
+              "Coverage depends on the events and enforcement points exposed by each integration",
+              "It supplements rather than replaces native permissions and sandboxing",
+              "Cloud synchronization and team features are separate from the local-first core"
+            ],
+            "complements": [
+              "Claudoscope for post-session visibility",
+              "Native agent sandboxes and permission prompts"
+            ],
+            "prerequisites": [
+              "A supported operating system and coding-agent integration",
+              "Initial setup and policy review for the selected harness"
+            ],
+            "useCases": [
+              "Review supported risky actions before execution",
+              "Record local approval receipts and inspect policy decisions",
+              "Apply package, secret, plugin, and agent-configuration checks"
+            ]
+          },
+          "category": "security",
+          "displayName": "HOL Guard",
+          "docs": "https://github.com/hashgraph-online/hol-guard/blob/main/docs/guard/get-started.md",
+          "homepage": "https://hol.org/guard",
+          "id": "brew:cask:hol-guard",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahol-guard",
+          "lastUpdatedAt": "2026-10-12T01:54:58Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/hashgraph-online/hol-guard",
+          "researchedAt": "2026-10-12T03:53:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "HOL Guard upstream repository and security boundaries",
+              "url": "https://github.com/hashgraph-online/hol-guard"
+            },
+            {
+              "kind": "primary",
+              "title": "HOL Guard local-first setup and approval flow",
+              "url": "https://hol.org/guard/docs/guard/get-started"
+            },
+            {
+              "kind": "primary",
+              "title": "HOL Guard feature and compatibility matrix",
+              "url": "https://hol.org/guard/features"
+            }
+          ],
+          "upstreamSummary": "Local-first runtime firewall for AI coding agents",
+          "version": "3.0.132"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-27T14:36:05Z",
+        "firstStableReleaseSourceURL": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Claudoscope upstream repository",
+          "url": "https://github.com/cordwainersmith/Claudoscope"
+        },
+        {
+          "kind": "primary",
+          "title": "Claudoscope 1.0 release notes",
+          "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Claudoscope privacy statement",
+          "url": "https://claudoscope.com/privacy"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew Claudoscope cask record and install analytics",
+          "url": "https://formulae.brew.sh/api/cask/claudoscope.json"
+        },
+        {
+          "kind": "primary",
+          "title": "ccusage unified report documentation",
+          "url": "https://ccusage.com/guide/all-reports"
+        },
+        {
+          "kind": "independent",
+          "title": "npm download statistics for ccusage",
+          "url": "https://api.npmjs.org/downloads/point/last-month/ccusage"
+        },
+        {
+          "kind": "primary",
+          "title": "HOL Guard local-first setup guide",
+          "url": "https://hol.org/guard/docs/guard/get-started"
+        }
+      ],
+      "title": "Claudoscope and the missing view of agent work",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261012T035302Z-6f4b50fe",
+      "id": "for-you:media:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "SVGO is a Node.js library and command-line application for optimizing vector images.",
+          "category": "media",
+          "displayName": "svgo",
+          "homepage": "https://svgo.dev",
+          "id": "npm:svgo",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asvgo",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "get dimensions of any image file",
+          "category": "media",
+          "displayName": "image-size",
+          "homepage": null,
+          "id": "npm:image-size",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aimage-size",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Fast math typesetting for the web.",
+          "category": "media",
+          "displayName": "katex",
+          "homepage": "https://katex.org",
+          "id": "npm:katex",
+          "installURL": "pkgmgrmgr://install?package=npm%3Akatex",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "QRCode / 2d Barcode api with both server side and client side support using canvas",
+          "category": "media",
+          "displayName": "qrcode",
+          "homepage": null,
+          "id": "npm:qrcode",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aqrcode",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The smallest and fastest pixel-level image comparison library.",
+          "category": "media",
+          "displayName": "pixelmatch",
+          "homepage": "https://github.com/mapbox/pixelmatch#readme",
+          "id": "npm:pixelmatch",
+          "installURL": "pkgmgrmgr://install?package=npm%3Apixelmatch",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "title": "For You in Media",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "Layered image panels, marked-up document sheets, and geometric page components connect through glowing orange and cyan paths.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#2B3442",
+          "backgroundStart": "#06182A",
+          "foreground": "#F7F2E8"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/rust-document-tools-2026-10-08.png"
+      },
+      "batchID": "20261008T074826Z-7d13ac9a",
+      "body": "## Three projects, one recurring instinct\n\nPhotoCraft, typdiff, and TeXres are not a suite. They do not share a maintainer, file format, or promised integration. What connects them is a young-project instinct: take a workflow normally spread across a large application or distribution, rebuild a focused path in Rust, and expose enough structure that users can inspect the result. Each project published its first non-prerelease build in 2026. That makes them interesting experiments, not automatic replacements for mature tools.\n\nPhotoCraft is the broadest bet. Its first release appeared on October 2, two days after the public repository was created. The project describes a native editor with layers, masks, adjustments, type, vectors, brushes, local selection tools, GPU rendering, and layered PSD or PSB support. It targets desktop platforms and the browser, while its engine-first architecture also supports command-line and structured automation. The ambition is immediately legible: familiar image-editing concepts, local files, and a permissively licensed implementation rather than a web wrapper.\n\nThe project is equally direct about its state. Its repository labels the application **early alpha**. The roadmap warns that a feature-surface estimate can overstate user-facing readiness, and the issue tracker contains reports about brush behavior, transforms, large documents, and interface details. That public friction is useful evidence of actual testing, but it is also a reason to work on copies and keep an established editor nearby. Homebrew now distributes the application, which lowers the evaluation barrier without changing those maturity facts.\n\n## A diff that remains a document\n\ntypdiff makes a narrower intervention. Given old and new Typst sources, it emits another Typst document containing addition and deletion markup. It parses headings, paragraphs, and list structures, performs block and word comparisons, and uses character-level handling for Chinese, Japanese, and Korean text. The resulting source can be compiled into a visual PDF redline. That is different from merely coloring a raw text patch: the review artifact remains inside the document system.\n\nIts first v0.1.0 release arrived on February 18. An independent Typst feature discussion supplies an early usage signal: participants describe visual diffs as useful for manuscripts, peer-review responses, legal redlines, internal documentation, and CI artifacts, and later point to typdiff as a working parser-aware option. That discussion does not prove broad adoption, but it demonstrates a concrete need outside the project’s own README.\n\nThe boundaries matter. Raw blocks, equations, and function calls are atomic, so reviewers should not assume every semantic change receives a fine-grained explanation. typdiff produces Typst; a separate Typst compiler produces the PDF. For source review, ordinary Git diff remains simpler. The tool becomes valuable when a reader needs a document-shaped comparison rather than only changed lines.\n\n## A TeX distribution compressed into one executable\n\nTeXres tackles packaging rather than editing or comparison. Its first v0.1.0 release appeared on September 16. The project combines pdfLaTeX, XeLaTeX, LuaLaTeX, formats, a package archive, fonts, BibTeX, and Biber in a Rust-written distribution that says it downloads nothing during a build. The front-end reruns the necessary passes until references converge, supports watch mode, and offers C and WebAssembly interfaces for in-memory compilation. Its CI compares output with TeX Live 2026.\n\nThat design promises a smaller operational surface, not a simpler language. LaTeX documents can depend on obscure packages, engine behavior, fonts, and years of compatibility assumptions. TeXres uses a bundled font set rather than system fonts; additional fonts must travel with the project. ARM64 Linux requires a recent glibc, while musl systems are unsupported. A responsible trial starts with representative documents and compares PDFs, logs, bibliography output, links, and font substitution before changing a production pipeline.\n\n## Evaluate outcomes, not implementation language\n\nRust is part of all three stories, but it is not the user benefit by itself. The measurable questions sit at the workflow boundary:\n\n- Does PhotoCraft round-trip the layered files and color modes a team actually uses?\n- Does typdiff make review faster without hiding important source changes?\n- Does TeXres reproduce the documents, packages, fonts, and bibliography behavior a project depends on?\n\nThe projects’ youth makes those tests especially important. PhotoCraft already attracts active bug reports and package-manager distribution; typdiff has surfaced in a pre-existing community discussion about visual review; TeXres exposes hundreds of commits and explicit compatibility claims in public. Those are meaningful usage and development signals, but none is a guarantee of production fitness.\n\nThe compelling shared direction is control. Image operations stay local and scriptable. A diff becomes inspectable source rather than an opaque screenshot. A typesetting environment can travel as a bounded executable and archive. If those properties solve a real constraint, each tool now has enough public evidence for a careful pilot. The right next step is not wholesale migration; it is one representative file, one reproducible comparison, and a written record of what still fails.",
+      "deck": "PhotoCraft, typdiff, and TeXres take sharply different approaches to making creative and publishing workflows local, inspectable, and easier to package.",
+      "id": "editorial:2026-10-08:three-young-rust-tools-rework-document-pipelines",
+      "package": {
+        "agentSummary": "PhotoCraft is an early-alpha, native Rust image editor pursuing layered PSD compatibility, local processing, GPU rendering, and cross-platform builds while openly tracking substantial gaps.",
+        "assessment": {
+          "alternatives": [
+            "GIMP or Krita for established open-source raster editing",
+            "Adobe Photoshop or Affinity Photo for mature commercial workflows"
+          ],
+          "audiences": [
+            "Designers and photographers willing to test an early open-source image editor",
+            "Rust contributors interested in graphics, color, file formats, or desktop UI",
+            "Teams evaluating local, automation-friendly creative software"
+          ],
+          "caveats": [
+            "The project explicitly labels itself early alpha and asks users to expect rough edges",
+            "Roadmap parity percentages measure feature surface and can overstate user-facing readiness",
+            "Open issues document gaps in brushes, transforms, large-document performance, and interface behavior"
+          ],
+          "complements": [
+            "A mature image editor for unsupported or production-critical operations",
+            "Representative layered files for compatibility testing",
+            "Color-managed displays and documented export checks"
+          ],
+          "prerequisites": [
+            "A supported macOS, Windows, Linux, FreeBSD, or modern browser environment",
+            "Backups or duplicate files when evaluating early-alpha editing workflows",
+            "Tolerance for missing tools, rough edges, and rapid project change"
+          ],
+          "useCases": [
+            "Editing layered raster documents with masks, adjustments, type, vectors, and brushes",
+            "Testing PSD and PSB round trips against real project files",
+            "Driving image-editing operations through a CLI or structured control channel"
+          ]
+        },
+        "category": "media",
+        "displayName": "PhotoCraft",
+        "docs": "https://getartcraft.com/apps/photocraft",
+        "homepage": "https://getartcraft.com/apps/photocraft",
+        "id": "brew:cask:photocraft",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aphotocraft",
+        "lastUpdatedAt": "2026-10-07T11:50:50Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/storytold/photocraft",
+        "researchedAt": "2026-10-08T07:48:26Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "PhotoCraft product overview",
+            "url": "https://getartcraft.com/apps/photocraft"
+          },
+          {
+            "kind": "primary",
+            "title": "PhotoCraft source, architecture, and alpha status",
+            "url": "https://github.com/storytold/photocraft"
+          },
+          {
+            "kind": "independent",
+            "title": "PhotoCraft availability in Homebrew",
+            "url": "https://formulae.brew.sh/cask/photocraft"
+          }
+        ],
+        "upstreamSummary": "Image editor",
+        "version": "0.3.0"
+      },
+      "primaryPackageID": "brew:cask:photocraft",
+      "publishedAt": "2026-10-08T07:48:26Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "PhotoCraft is an early-alpha, native Rust image editor pursuing layered PSD compatibility, local processing, GPU rendering, and cross-platform builds while openly tracking substantial gaps.",
+          "assessment": {
+            "alternatives": [
+              "GIMP or Krita for established open-source raster editing",
+              "Adobe Photoshop or Affinity Photo for mature commercial workflows"
+            ],
+            "audiences": [
+              "Designers and photographers willing to test an early open-source image editor",
+              "Rust contributors interested in graphics, color, file formats, or desktop UI",
+              "Teams evaluating local, automation-friendly creative software"
+            ],
+            "caveats": [
+              "The project explicitly labels itself early alpha and asks users to expect rough edges",
+              "Roadmap parity percentages measure feature surface and can overstate user-facing readiness",
+              "Open issues document gaps in brushes, transforms, large-document performance, and interface behavior"
+            ],
+            "complements": [
+              "A mature image editor for unsupported or production-critical operations",
+              "Representative layered files for compatibility testing",
+              "Color-managed displays and documented export checks"
+            ],
+            "prerequisites": [
+              "A supported macOS, Windows, Linux, FreeBSD, or modern browser environment",
+              "Backups or duplicate files when evaluating early-alpha editing workflows",
+              "Tolerance for missing tools, rough edges, and rapid project change"
+            ],
+            "useCases": [
+              "Editing layered raster documents with masks, adjustments, type, vectors, and brushes",
+              "Testing PSD and PSB round trips against real project files",
+              "Driving image-editing operations through a CLI or structured control channel"
+            ]
+          },
+          "category": "media",
+          "displayName": "PhotoCraft",
+          "docs": "https://getartcraft.com/apps/photocraft",
+          "homepage": "https://getartcraft.com/apps/photocraft",
+          "id": "brew:cask:photocraft",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aphotocraft",
+          "lastUpdatedAt": "2026-10-07T11:50:50Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/storytold/photocraft",
+          "researchedAt": "2026-10-08T07:48:26Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "PhotoCraft product overview",
+              "url": "https://getartcraft.com/apps/photocraft"
+            },
+            {
+              "kind": "primary",
+              "title": "PhotoCraft source, architecture, and alpha status",
+              "url": "https://github.com/storytold/photocraft"
+            },
+            {
+              "kind": "independent",
+              "title": "PhotoCraft availability in Homebrew",
+              "url": "https://formulae.brew.sh/cask/photocraft"
+            }
+          ],
+          "upstreamSummary": "Image editor",
+          "version": "0.3.0"
+        },
+        {
+          "agentSummary": "typdiff compares two Typst sources and emits compilable Typst with structural and word-level change markup, including character-level handling for Chinese, Japanese, and Korean text.",
+          "assessment": {
+            "alternatives": [
+              "A raw Git text diff for source-level review",
+              "latexdiff for LaTeX documents",
+              "Manual tracked-change workflows in a word processor"
+            ],
+            "audiences": [
+              "Typst authors reviewing revisions to papers, reports, or documentation",
+              "Academic and technical writers who need a printable redline",
+              "Teams adding human-readable document comparison to review pipelines"
+            ],
+            "caveats": [
+              "Raw blocks, equations, and function calls are treated as atomic rather than diffed internally",
+              "The output adds markup but still depends on Typst for PDF rendering",
+              "A young parser-aware tool may encounter valid Typst constructs not covered by its current tests"
+            ],
+            "complements": [
+              "Git for selecting document revisions",
+              "Typst for compiling the generated comparison",
+              "Continuous integration artifacts for reviewable PDFs"
+            ],
+            "prerequisites": [
+              "Two Typst source files representing old and new revisions",
+              "A Typst compiler when a rendered PDF is required"
+            ],
+            "useCases": [
+              "Generate a visual Typst document showing additions and deletions",
+              "Compare headings, paragraphs, lists, and modified text within blocks",
+              "Produce a PDF redline by compiling the generated Typst source"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "typdiff",
+          "docs": "https://github.com/sou1118/typdiff#readme",
+          "homepage": "https://github.com/sou1118/typdiff",
+          "id": "brew:typdiff",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atypdiff",
+          "lastUpdatedAt": "2026-10-08T00:44:54Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/sou1118/typdiff",
+          "researchedAt": "2026-10-08T07:48:26Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "typdiff documentation and implementation overview",
+              "url": "https://github.com/sou1118/typdiff"
+            },
+            {
+              "kind": "primary",
+              "title": "typdiff initial v0.1.0 release",
+              "url": "https://github.com/sou1118/typdiff/releases/tag/v0.1.0"
+            },
+            {
+              "kind": "independent",
+              "title": "Typst community discussion of visual document diffs",
+              "url": "https://github.com/typst/typst/issues/3049"
+            }
+          ],
+          "upstreamSummary": "Diff tool that generates Typst documents highlighting differences between inputs",
+          "version": "0.1.3"
+        },
+        {
+          "agentSummary": "TeXres packages TeX engines, formats, fonts, bibliography tools, and an archive into one Rust executable, aiming for reproducible builds without runtime package downloads.",
+          "assessment": {
+            "alternatives": [
+              "TeX Live for the broadest established package ecosystem",
+              "MiKTeX for on-demand package management",
+              "Tectonic for another self-contained TeX-oriented workflow"
+            ],
+            "audiences": [
+              "LaTeX authors who want a compact, self-contained toolchain",
+              "Teams seeking repeatable document builds without runtime package fetching",
+              "Developers embedding TeX compilation through C or WebAssembly interfaces"
+            ],
+            "caveats": [
+              "Its rapid pre-1.0 development warrants testing output on production documents",
+              "System fonts are not used; additional fonts must be placed with the project",
+              "ARM64 Linux builds require glibc 2.36 or newer and musl-based systems are unsupported"
+            ],
+            "complements": [
+              "A source editor with SyncTeX-aware PDF navigation",
+              "typdiff or latexdiff for revision review",
+              "Continuous integration checks against representative documents"
+            ],
+            "prerequisites": [
+              "A supported macOS, Windows, or glibc-based Linux system",
+              "Project-local font files when the bundled font set is insufficient",
+              "Compatibility testing against the packages and macros used by each document"
+            ],
+            "useCases": [
+              "Compile pdfLaTeX, XeLaTeX, or LuaLaTeX documents from one distribution",
+              "Run bibliography passes and repeated compilation until references converge",
+              "Watch project inputs and rebuild PDFs after meaningful file changes"
+            ]
+          },
+          "category": "productivity",
+          "displayName": "texres",
+          "docs": "https://github.com/leoliu0/texres#readme",
+          "homepage": "https://github.com/leoliu0/texres",
+          "id": "brew:texres",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atexres",
+          "lastUpdatedAt": "2026-10-07T18:45:57Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/leoliu0/texres",
+          "researchedAt": "2026-10-08T07:48:26Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "TeXres documentation and compatibility notes",
+              "url": "https://github.com/leoliu0/texres"
+            },
+            {
+              "kind": "primary",
+              "title": "TeXres initial v0.1.0 release",
+              "url": "https://github.com/leoliu0/texres/releases/tag/v0.1.0"
+            },
+            {
+              "kind": "independent",
+              "title": "TeXres availability in Homebrew",
+              "url": "https://formulae.brew.sh/formula/texres"
+            }
+          ],
+          "upstreamSummary": "Fast TeX engine written in Rust",
+          "version": "0.7.3"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-10-02T00:09:14Z",
+        "firstStableReleaseSourceURL": "https://github.com/storytold/photocraft/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "PhotoCraft product overview",
+          "url": "https://getartcraft.com/apps/photocraft"
+        },
+        {
+          "kind": "primary",
+          "title": "PhotoCraft source, status, and architecture",
+          "url": "https://github.com/storytold/photocraft"
+        },
+        {
+          "kind": "primary",
+          "title": "PhotoCraft first v0.1.0 release",
+          "url": "https://github.com/storytold/photocraft/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "PhotoCraft availability in Homebrew",
+          "url": "https://formulae.brew.sh/cask/photocraft"
+        },
+        {
+          "kind": "primary",
+          "title": "typdiff documentation and implementation overview",
+          "url": "https://github.com/sou1118/typdiff"
+        },
+        {
+          "kind": "independent",
+          "title": "Typst community discussion of visual document diffs",
+          "url": "https://github.com/typst/typst/issues/3049"
+        },
+        {
+          "kind": "primary",
+          "title": "TeXres documentation and compatibility notes",
+          "url": "https://github.com/leoliu0/texres"
+        },
+        {
+          "kind": "primary",
+          "title": "TeXres first v0.1.0 release",
+          "url": "https://github.com/leoliu0/texres/releases/tag/v0.1.0"
+        }
+      ],
+      "title": "Three Young Rust Tools Rework Document Pipelines",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261008T074826Z-3ab4a1be",
+      "id": "recently-updated:science:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Visual Servoing Platform library",
+          "category": "science",
+          "displayName": "visp",
+          "homepage": "https://visp.inria.fr/",
+          "id": "brew:visp",
+          "installURL": "pkgmgrmgr://install?package=brew%3Avisp",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "High-performance theorem prover",
+          "category": "science",
+          "displayName": "z3",
+          "homepage": "https://github.com/Z3Prover/z3",
+          "id": "brew:z3",
+          "installURL": "pkgmgrmgr://install?package=brew%3Az3",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Relatedness, QC and ancestry checks from BAM/CRAM/VCF",
+          "category": "science",
+          "displayName": "somalier",
+          "homepage": "https://github.com/brentp/somalier",
+          "id": "brew:somalier",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asomalier",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Bioinformatics Technology Lab common code library",
+          "category": "science",
+          "displayName": "btllib",
+          "homepage": "https://github.com/BirolLab/btllib",
+          "id": "brew:btllib",
+          "installURL": "pkgmgrmgr://install?package=brew%3Abtllib",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "RPN calculator based on HP-42S",
+          "category": "science",
+          "displayName": "Plus42 Decimal",
+          "homepage": "https://thomasokken.com/plus42/",
+          "id": "brew:cask:plus42-decimal",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aplus42-decimal",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-08T07:48:26Z",
+      "title": "Recently Updated in Science",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "A luminous violet language-intelligence core sends semantic data streams into three distinct abstract code editor panels.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#26134F",
+          "backgroundStart": "#090D2D",
+          "foreground": "#F7F4FF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/kotlin-lsp-editor-boundary-2026-10-04.png"
+      },
+      "batchID": "20261004T080130Z-f09b4fea",
+      "body": "## An official server changes the starting point\n\nKotlin developers outside IntelliJ IDEA have long depended on editor-specific plugins, community servers, or a deliberately lighter editing experience. JetBrains' official Kotlin language server changes that baseline. The repository appeared in 2025, and its first published GitHub release in May shipped both a Visual Studio Code extension and a standalone archive for other Language Server Protocol clients. The project now describes itself as official Kotlin support for VS Code, built from IntelliJ IDEA and Kotlin plugin technology.\n\nThat provenance matters more than the badge. Language tooling is not only syntax coloring. Useful completion needs a project model; navigation must understand dependencies; rename needs semantic references; diagnostics must agree with the language and build. Kotlin LSP currently advertises IntelliJ-derived completion, diagnostics, quick fixes, formatting, call hierarchy, imports, hover information, and refactoring. It can import JVM projects using Gradle or Maven, with experimental Android Gradle Plugin support. In practical terms, the server moves a meaningful portion of JetBrains' Kotlin knowledge behind a standard editor protocol.\n\nIt does **not** turn every editor into IntelliJ IDEA. The project is explicitly alpha, Kotlin Multiplatform support is still planned, and the implementation includes proprietary components drawn from JetBrains products. The public repository is primarily a mirror, not a conventional community implementation accepting core contributions. Those constraints should shape expectations from the first installation.\n\n## The protocol is a boundary, not a guarantee\n\nLSP separates language intelligence from the interface that displays it. The server can answer requests for completion, definitions, symbols, edits, and diagnostics; the client decides how those answers fit into buffers, keybindings, panels, and workflows. That boundary creates portability, but it also creates two moving parts. When an action behaves strangely, users must ask whether the problem is in the project import, the server, the protocol exchange, the editor client, or another plugin.\n\nThe Kotlin project says releases are generally tested with Visual Studio Code. That makes VS Code the most direct path: install the Kotlin by JetBrains extension, open a Kotlin workspace, and let the extension activate the bundled server. Visual Studio Code Insiders is useful when extension developers or early adopters need to test upcoming editor behavior, but its frequent preview updates add another source of change. A reproducible report should record both editor and server versions.\n\nNeovim exposes the other side of the bargain. Its built-in LSP client can attach external servers to buffers and provide diagnostics, navigation, completion hooks, and workspace operations. Kotlin LSP publishes a standalone distribution and community-maintained scripts for editors beyond VS Code, so a Neovim setup is possible. It is also less packaged: users are responsible for the launch command, workspace root, capabilities, completion integration, and any plugin interactions. That control is the attraction and the maintenance cost.\n\n## What day-to-day use looks like\n\nA realistic evaluation begins with one ordinary JVM repository, not the most complicated multiplatform build in the company. Confirm that the server imports the Gradle or Maven model, resolves the intended JDK, and reaches a quiet diagnostic state. Then test a short workflow:\n\n- navigate from a call to source and back;\n- rename a symbol across more than one file;\n- apply a quick fix and inspect the resulting edit;\n- compare formatting with the team's committed style;\n- run the real build and test suite after semantic edits.\n\nThe last step is essential. An editor service accelerates feedback; it does not replace the compiler, build tool, or CI. Teams should also measure startup and indexing on representative repositories, because a language server derived from IDE infrastructure has a different resource profile from a minimal syntax plugin. Recent releases have worked on bundle size, caching, Gradle import, completion latency, Maven support, and memory leaks, evidence that the project is actively addressing exactly these operational edges.\n\n## Choose the client by responsibility\n\nFor the smoothest supported path, use the packaged VS Code extension and stay conscious that alpha releases can regress. Use Insiders when testing future editor integration is itself the job, not merely because it is newer. Choose Neovim when explicit configuration and terminal-native editing are worth owning more integration detail. Keep IntelliJ IDEA or Android Studio available when a project depends on mature Kotlin-specific inspections, Android tooling, or workflows the server has not reached.\n\nKotlin LSP is interesting because it is neither a complete IDE replacement nor a thin community bridge. It is a new official boundary around JetBrains' language intelligence. That makes more editor choices credible, while placing new importance on version pinning, reproducible configurations, and clear bug reports across both sides of the protocol.",
+      "deck": "JetBrains' alpha language server brings IntelliJ-derived Kotlin analysis to VS Code and other LSP clients, while making the editor-server boundary impossible to ignore.",
+      "id": "editorial:2026-10-04:kotlin-lsp-moves-language-intelligence-between-editors",
+      "package": {
+        "agentSummary": "JetBrains' official Kotlin language server brings IntelliJ-derived completion, diagnostics, navigation, refactoring, and Gradle or Maven project support to LSP-capable editors.",
+        "assessment": {
+          "alternatives": [
+            "IntelliJ IDEA or Android Studio for the most complete Kotlin IDE experience",
+            "Community Kotlin language servers for workflows the official alpha does not yet support"
+          ],
+          "audiences": [
+            "Kotlin developers who work outside IntelliJ IDEA",
+            "Editor integrators evaluating official Kotlin language intelligence",
+            "Teams using VS Code for JVM projects"
+          ],
+          "caveats": [
+            "The project is explicitly alpha and feature completeness is still evolving",
+            "Kotlin Multiplatform support is not yet available",
+            "Android Gradle Plugin support is experimental",
+            "The implementation includes proprietary JetBrains components and the repository is mainly a read-only mirror"
+          ],
+          "complements": [
+            "Gradle or Maven for project models and dependency resolution",
+            "A Kotlin compiler and project test suite",
+            "Editor-specific LSP configuration and diagnostics tooling"
+          ],
+          "prerequisites": [
+            "A supported macOS, Linux, or Windows system",
+            "An LSP-capable editor or the bundled Visual Studio Code extension",
+            "A compatible JDK and build-tool configuration for the project"
+          ],
+          "useCases": [
+            "Add completion, diagnostics, navigation, formatting, and refactoring to Kotlin workspaces",
+            "Import Gradle and Maven JVM projects into an LSP-based editor",
+            "Test Kotlin editor workflows against JetBrains' evolving language engine"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "Kotlin LSP",
+        "docs": "https://github.com/Kotlin/kotlin-lsp#readme",
+        "homepage": "https://github.com/Kotlin/kotlin-lsp",
+        "id": "brew:cask:kotlin-lsp",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akotlin-lsp",
+        "lastUpdatedAt": "2026-10-03T14:41:59Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/Kotlin/kotlin-lsp",
+        "researchedAt": "2026-10-04T08:01:30Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Official Kotlin language server repository and documentation",
+            "url": "https://github.com/Kotlin/kotlin-lsp"
+          },
+          {
+            "kind": "primary",
+            "title": "First published Kotlin LSP release",
+            "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
+          }
+        ],
+        "upstreamSummary": "Official Kotlin Language Server",
+        "version": "263.6379.0"
+      },
+      "primaryPackageID": "brew:cask:kotlin-lsp",
+      "publishedAt": "2026-10-04T08:01:30Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "JetBrains' official Kotlin language server brings IntelliJ-derived completion, diagnostics, navigation, refactoring, and Gradle or Maven project support to LSP-capable editors.",
+          "assessment": {
+            "alternatives": [
+              "IntelliJ IDEA or Android Studio for the most complete Kotlin IDE experience",
+              "Community Kotlin language servers for workflows the official alpha does not yet support"
+            ],
+            "audiences": [
+              "Kotlin developers who work outside IntelliJ IDEA",
+              "Editor integrators evaluating official Kotlin language intelligence",
+              "Teams using VS Code for JVM projects"
+            ],
+            "caveats": [
+              "The project is explicitly alpha and feature completeness is still evolving",
+              "Kotlin Multiplatform support is not yet available",
+              "Android Gradle Plugin support is experimental",
+              "The implementation includes proprietary JetBrains components and the repository is mainly a read-only mirror"
+            ],
+            "complements": [
+              "Gradle or Maven for project models and dependency resolution",
+              "A Kotlin compiler and project test suite",
+              "Editor-specific LSP configuration and diagnostics tooling"
+            ],
+            "prerequisites": [
+              "A supported macOS, Linux, or Windows system",
+              "An LSP-capable editor or the bundled Visual Studio Code extension",
+              "A compatible JDK and build-tool configuration for the project"
+            ],
+            "useCases": [
+              "Add completion, diagnostics, navigation, formatting, and refactoring to Kotlin workspaces",
+              "Import Gradle and Maven JVM projects into an LSP-based editor",
+              "Test Kotlin editor workflows against JetBrains' evolving language engine"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "Kotlin LSP",
+          "docs": "https://github.com/Kotlin/kotlin-lsp#readme",
+          "homepage": "https://github.com/Kotlin/kotlin-lsp",
+          "id": "brew:cask:kotlin-lsp",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akotlin-lsp",
+          "lastUpdatedAt": "2026-10-03T14:41:59Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/Kotlin/kotlin-lsp",
+          "researchedAt": "2026-10-04T08:01:30Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Official Kotlin language server repository and documentation",
+              "url": "https://github.com/Kotlin/kotlin-lsp"
+            },
+            {
+              "kind": "primary",
+              "title": "First published Kotlin LSP release",
+              "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
+            }
+          ],
+          "upstreamSummary": "Official Kotlin Language Server",
+          "version": "263.6379.0"
+        },
+        {
+          "agentSummary": "Visual Studio Code Insiders delivers Microsoft's frequently updated preview editor, providing the primary tested client for JetBrains' official Kotlin language server extension.",
+          "assessment": {
+            "alternatives": [
+              "Stable Visual Studio Code for a slower release cadence",
+              "Neovim or another editor with an LSP client",
+              "IntelliJ IDEA for deeply integrated Kotlin tooling"
+            ],
+            "audiences": [
+              "Developers who want early access to Visual Studio Code changes",
+              "Extension authors testing against upcoming editor behavior",
+              "Kotlin developers evaluating JetBrains' official VS Code integration"
+            ],
+            "caveats": [
+              "Insiders builds change frequently and may include regressions",
+              "Preview behavior can differ from the stable channel",
+              "An editor update and a language-server update can introduce separate variables during troubleshooting"
+            ],
+            "complements": [
+              "The Kotlin by JetBrains extension",
+              "Extension development and integration test suites",
+              "Stable Visual Studio Code for daily production work"
+            ],
+            "prerequisites": [
+              "Tolerance for frequent preview updates",
+              "A separate plan for stable-editor workflows and settings synchronization"
+            ],
+            "useCases": [
+              "Evaluate preview editor and extension-host changes",
+              "Run the officially tested Kotlin LSP client experience",
+              "Reproduce extension issues against current Insiders builds"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "Visual Studio Code Insiders",
+          "docs": "https://code.visualstudio.com/docs",
+          "homepage": "https://code.visualstudio.com/insiders/",
+          "id": "brew:cask:visual-studio-code@insiders",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Avisual-studio-code%40insiders",
+          "lastUpdatedAt": "2026-10-03T23:15:15Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/microsoft/vscode",
+          "researchedAt": "2026-10-04T08:01:30Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Visual Studio Code Insiders",
+              "url": "https://code.visualstudio.com/insiders/"
+            },
+            {
+              "kind": "primary",
+              "title": "Visual Studio Code source repository",
+              "url": "https://github.com/microsoft/vscode"
+            }
+          ],
+          "upstreamSummary": "Open-source code editor",
+          "version": "1.141.0-insider,1791051985777,429a4ec703266abbd31f6886764e4127955bdc9d"
+        },
+        {
+          "agentSummary": "Neovim combines modal editing with a built-in LSP client, letting users connect Kotlin and other language servers through explicit, scriptable configuration.",
+          "assessment": {
+            "alternatives": [
+              "Visual Studio Code for a packaged extension workflow",
+              "Helix for another terminal editor with integrated language-server support",
+              "IntelliJ IDEA for the most complete Kotlin integration"
+            ],
+            "audiences": [
+              "Terminal-oriented developers who prefer modal editing",
+              "Users who want direct control over language-server configuration",
+              "Plugin authors building editor workflows around Neovim's APIs"
+            ],
+            "caveats": [
+              "The Kotlin project officially tests releases with Visual Studio Code rather than every LSP client",
+              "Users own more of the launch, root-detection, capability, and plugin configuration",
+              "Editor plugins can add compatibility variables beyond the language server itself"
+            ],
+            "complements": [
+              "Completion and snippet plugins",
+              "Treesitter parsers for syntax-aware editing",
+              "Project-specific formatter, linter, and test commands"
+            ],
+            "prerequisites": [
+              "A working Neovim configuration",
+              "A separately installed and configured language server",
+              "Project roots and launch commands appropriate to each server"
+            ],
+            "useCases": [
+              "Connect external language servers to buffers and workspaces",
+              "Build keyboard-driven diagnostics, navigation, completion, and refactoring workflows",
+              "Experiment with the standalone Kotlin LSP outside its primary VS Code client"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "neovim",
+          "docs": "https://neovim.io/doc",
+          "homepage": "https://neovim.io/",
+          "id": "brew:neovim",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aneovim",
+          "lastUpdatedAt": "2026-10-03T15:40:59Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/neovim/neovim",
+          "researchedAt": "2026-10-04T08:01:30Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Neovim LSP client documentation",
+              "url": "https://neovim.io/doc/user/lsp.html"
+            },
+            {
+              "kind": "primary",
+              "title": "Neovim source repository",
+              "url": "https://github.com/neovim/neovim"
+            }
+          ],
+          "upstreamSummary": "Ambitious Vim-fork focused on extensibility and agility",
+          "version": "0.12.5"
+        }
+      ],
+      "selection": {
+        "newerOverride": {
+          "reason": "JetBrains introduced its official Kotlin language server and VS Code integration as a new alpha product direction in 2025, with a standalone LSP distribution for other editors.",
+          "sourceURL": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
+        },
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Official Kotlin language server repository and documentation",
+          "url": "https://github.com/Kotlin/kotlin-lsp"
+        },
+        {
+          "kind": "primary",
+          "title": "First published Kotlin LSP release",
+          "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
+        },
+        {
+          "kind": "primary",
+          "title": "Visual Studio Code Insiders",
+          "url": "https://code.visualstudio.com/insiders/"
+        },
+        {
+          "kind": "primary",
+          "title": "Neovim LSP client documentation",
+          "url": "https://neovim.io/doc/user/lsp.html"
+        }
+      ],
+      "title": "Kotlin LSP Moves Language Intelligence Between Editors",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261004T080130Z-97631b37",
+      "id": "for-you:cloud-infrastructure:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Fun, full-featured, fully-local simulator for Cloudflare Workers",
+          "category": "cloud-infrastructure",
+          "displayName": "miniflare",
+          "homepage": "https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#readme",
+          "id": "npm:miniflare",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aminiflare",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Command-line interface for all things Cloudflare Workers",
+          "category": "cloud-infrastructure",
+          "displayName": "wrangler",
+          "homepage": "https://github.com/cloudflare/workers-sdk#readme",
+          "id": "npm:wrangler",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awrangler",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "AWS CDK Toolkit CLI, the command line tool for CDK apps",
+          "category": "cloud-infrastructure",
+          "displayName": "aws-cdk",
+          "homepage": "https://github.com/aws/aws-cdk",
+          "id": "npm:aws-cdk",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aaws-cdk",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The command-line interface for Vercel",
+          "category": "cloud-infrastructure",
+          "displayName": "vercel",
+          "homepage": "https://vercel.com",
+          "id": "npm:vercel",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avercel",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Supabase CLI",
+          "category": "cloud-infrastructure",
+          "displayName": "supabase",
+          "homepage": "https://github.com/supabase/cli#readme",
+          "id": "npm:supabase",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asupabase",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-04T08:01:30Z",
+      "title": "For You in Cloud Infrastructure",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261004T080130Z-97631b37",
+      "id": "new-packages:media:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Headless PhotoCraft engine to convert, inspect and batch-edit images",
+          "category": "media",
+          "displayName": "photocraft-cli",
+          "homepage": "https://getartcraft.com/apps/photocraft",
+          "id": "brew:photocraft-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aphotocraft-cli",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Per-app volume, EQ and audio device control",
+          "category": "media",
+          "displayName": "BetterAudio",
+          "homepage": "https://betteraudio.pro/",
+          "id": "brew:cask:betteraudio",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Abetteraudio",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Video crafting engine",
+          "category": "media",
+          "displayName": "ArtCraft",
+          "homepage": "https://getartcraft.com/",
+          "id": "brew:cask:artcraft",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aartcraft",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-04T08:01:30Z",
+      "title": "New Packages in Media",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20261004T080130Z-97631b37",
+      "id": "for-you:science:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Miller Rabin algorithm for primality test",
+          "category": "science",
+          "displayName": "miller-rabin",
+          "homepage": "https://github.com/indutny/miller-rabin",
+          "id": "npm:miller-rabin",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amiller-rabin",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Math.js is an extensive math library for JavaScript and Node.js. It features a flexible expression parser with support for symbolic computation, comes with a large set of built-in functions and constants, and offers an integrated solution to work with dif",
+          "category": "science",
+          "displayName": "mathjs",
+          "homepage": "https://mathjs.org",
+          "id": "npm:mathjs",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amathjs",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Simple and Performant Language detection library (pure JS and zero dependencies)",
+          "category": "science",
+          "displayName": "tinyld",
+          "homepage": null,
+          "id": "npm:tinyld",
+          "installURL": "pkgmgrmgr://install?package=npm%3Atinyld",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "convert wkt to geojson",
+          "category": "science",
+          "displayName": "wellknown",
+          "homepage": "https://github.com/mapbox/wellknown#readme",
+          "id": "npm:wellknown",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awellknown",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Porter Stemmer algorithm",
+          "category": "science",
+          "displayName": "stemmer",
+          "homepage": "https://words.github.io/stemmer/",
+          "id": "npm:stemmer",
+          "installURL": "pkgmgrmgr://install?package=npm%3Astemmer",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-04T08:01:30Z",
+      "title": "For You in Science",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "An operator watches luminous workload clusters above guarded infrastructure nodes while abstract deployment sheets flow into the system.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#152B46",
+          "backgroundStart": "#0B192D",
+          "foreground": "#F4F7FF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/sofka-layered-kubernetes-operations-2026-09-30.png"
+      },
+      "batchID": "20260930T090325Z-0c689ed1",
+      "body": "## A new terminal window into the cluster\n\nKubernetes operators rarely lack commands. The harder problem is choosing the right control surface while an incident is unfolding. `kubectl` is exact and scriptable, dashboards are broad, and established terminal interfaces make resource navigation fast. Sofka enters that crowded space with a sharper premise: keep the interface asynchronous, make safety policy enforceable, and explain unhealthy state from cluster evidence rather than an external AI service.\n\nThe project is genuinely young. Its first non-prerelease GitHub release, v0.1.5, appeared in July 2026, and its documentation already describes a surprisingly wide operating surface. Sofka browses built-in resources and CRDs through one pipeline, follows logs, manages background port-forwards, edits resources, restarts rollouts, and exposes native actions for Flux and Argo CD objects. The `X` view assembles a deterministic incident explanation from observed state, while the timeline view emphasizes change over a static snapshot.\n\nThat breadth could sound like another attempt to put every Kubernetes task behind one screen. The more useful reading is different: sofka is strongest when treated as the **observation and interaction layer**, not the sole source of truth. Its read-only mode, per-context settings, production guardrails, action journal, and RBAC-aware checks all acknowledge that a convenient interface can also make dangerous actions convenient.\n\n## What actual use looks like\n\nA practical session begins with the same credential and context material used by other Kubernetes clients. An operator can open pods in the current namespace, start with `-A` for all namespaces, or use a context picker before connecting. During a rollout, the terminal can filter objects, follow logs, inspect live events, compare state changes, and keep port-forwards running without freezing the interface. For automation or a quick confidence check, `sofka --check` performs discovery and exits, while `--snapshot` renders a resource view to standard output without an interactive terminal.\n\nThe interesting day-two features are the ones that reduce context switching. Native Flux and Argo CD actions let an operator reconcile or suspend supported objects without invoking separate CLIs. A Helm inspector decodes release Secrets, custom-resource views honor printer columns, and workspaces can group related resources. None of that removes the need to understand the API beneath the screen. It does make the first five minutes of investigation more coherent.\n\nThere are real tradeoffs. Sofka is evolving quickly, its downloaded macOS binaries are not yet signed or notarized, and a young TUI cannot inherit years of operational familiarity overnight. Teams should begin in read-only mode, confirm how custom resources render, and keep exact commands in runbooks. A terminal that exposes bulk delete or force-delete deserves the same change discipline as any other privileged client.\n\n## Node lifecycle belongs to talosctl\n\nSofka sees Kubernetes resources after a cluster API is available. Talosctl operates a layer lower. It talks to the Talos API to configure machines, inspect services, bootstrap control planes, gather diagnostics, upgrade nodes, and perform lifecycle operations on Talos Linux. Those are machine-management responsibilities, not merely another resource view.\n\nThat boundary matters during failures. If the Kubernetes API is healthy but a workload is stuck, sofka can organize the evidence. If the node operating system, certificates, or Talos services are the problem, talosctl is the appropriate instrument. Sidero Labs also warns that the talosctl version should match the Talos Linux version on the host. Package upgrades therefore need coordination with cluster upgrades rather than an automatic assumption that newest is always best.\n\nThe credentials differ too. Sofka generally follows kubeconfig and Kubernetes RBAC; talosctl uses talosconfig and Talos API roles. Keeping those files separate, narrowly distributed, and auditable preserves the architectural boundary the tools themselves reflect.\n\n## Desired releases belong in Helmfile\n\nHelmfile occupies the third layer: declared deployment intent. Its state files collect Helm releases, repositories, environments, and values in version control. Teams can review a diff in CI, apply a selected environment, and periodically synchronize to reduce configuration skew. That is a different rhythm from an operator navigating a live cluster.\n\nThe separation creates a clean loop:\n\n- **Helmfile** records and reviews what releases should exist.\n- **sofka** shows what workloads are doing now and supports bounded intervention.\n- **talosctl** manages the machines and services beneath Kubernetes when node-level work is necessary.\n\nOverlap still exists. Sofka can inspect Helm data and trigger GitOps actions; Helmfile can surface changes through diff; talosctl exposes an interactive dashboard in the Talos ecosystem. The test is authority, not interface style. Durable application changes should return to version-controlled release state. Node lifecycle changes should use the node-management API. Live diagnosis should begin with the least-mutating view that answers the question.\n\n## A useful newcomer with an explicit boundary\n\nSofka is compelling because it does not merely redraw a table of pods. Its async architecture, deterministic explanations, custom-resource pipeline, and safety controls make a thoughtful case for a modern Kubernetes TUI. The project is still young enough that operators should validate it against their clusters and policies before depending on every feature.\n\nUsed with clear boundaries, however, it fits a mature workflow. Observe and investigate with sofka. Change declared releases through Helmfile and review. Reach for talosctl when the machine layer is actually at fault. The result is not one magical operations console, but something more reliable: three tools whose scopes explain where each change belongs.",
+      "deck": "A young Rust TUI makes a useful distinction visible: observing workloads, managing nodes, and declaring releases are related jobs, not one job.",
+      "id": "editorial:2026-09-30:sofka-three-layers-kubernetes-operations",
+      "package": {
+        "agentSummary": "A fast Rust Kubernetes TUI that combines resource browsing, deterministic incident explanations, GitOps actions, background port-forwards, and enforceable production guardrails.",
+        "assessment": {
+          "alternatives": [
+            "k9s",
+            "Headlamp",
+            "Lens"
+          ],
+          "audiences": [
+            "Kubernetes operators and platform engineers",
+            "SREs who prefer terminal-first incident response",
+            "Flux CD and Argo CD users"
+          ],
+          "caveats": [
+            "The project is young and evolving quickly",
+            "Downloaded macOS release binaries are not yet signed or notarized",
+            "Mutating actions still depend on Kubernetes RBAC and operator judgment"
+          ],
+          "complements": [
+            "kubectl for scripts and exact API operations",
+            "Helmfile for declarative release state",
+            "talosctl for Talos Linux node lifecycle"
+          ],
+          "prerequisites": [
+            "A reachable Kubernetes cluster and valid kubeconfig",
+            "RBAC permissions appropriate to the intended actions"
+          ],
+          "useCases": [
+            "Browse built-in and custom Kubernetes resources",
+            "Inspect unhealthy workloads with deterministic evidence",
+            "Manage logs, port-forwards, rollouts, and selected GitOps actions"
+          ]
+        },
+        "category": "cloud-infrastructure",
+        "displayName": "sofka",
+        "docs": "https://github.com/nklmilojevic/sofka#readme",
+        "homepage": "https://github.com/nklmilojevic/sofka",
+        "id": "brew:sofka",
+        "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
+        "lastUpdatedAt": "2026-09-30T04:05:54Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/nklmilojevic/sofka",
+        "researchedAt": "2026-09-30T09:03:25Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "sofka project documentation",
+            "url": "https://github.com/nklmilojevic/sofka"
+          },
+          {
+            "kind": "primary",
+            "title": "sofka v0.1.5 first stable release",
+            "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
+          }
+        ],
+        "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
+        "version": "0.29.6"
+      },
+      "primaryPackageID": "brew:sofka",
+      "publishedAt": "2026-09-30T09:03:25Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "A fast Rust Kubernetes TUI that combines resource browsing, deterministic incident explanations, GitOps actions, background port-forwards, and enforceable production guardrails.",
+          "assessment": {
+            "alternatives": [
+              "k9s",
+              "Headlamp",
+              "Lens"
+            ],
+            "audiences": [
+              "Kubernetes operators and platform engineers",
+              "SREs who prefer terminal-first incident response",
+              "Flux CD and Argo CD users"
+            ],
+            "caveats": [
+              "The project is young and evolving quickly",
+              "Downloaded macOS release binaries are not yet signed or notarized",
+              "Mutating actions still depend on Kubernetes RBAC and operator judgment"
+            ],
+            "complements": [
+              "kubectl for scripts and exact API operations",
+              "Helmfile for declarative release state",
+              "talosctl for Talos Linux node lifecycle"
+            ],
+            "prerequisites": [
+              "A reachable Kubernetes cluster and valid kubeconfig",
+              "RBAC permissions appropriate to the intended actions"
+            ],
+            "useCases": [
+              "Browse built-in and custom Kubernetes resources",
+              "Inspect unhealthy workloads with deterministic evidence",
+              "Manage logs, port-forwards, rollouts, and selected GitOps actions"
+            ]
+          },
+          "category": "cloud-infrastructure",
+          "displayName": "sofka",
+          "docs": "https://github.com/nklmilojevic/sofka#readme",
+          "homepage": "https://github.com/nklmilojevic/sofka",
+          "id": "brew:sofka",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
+          "lastUpdatedAt": "2026-09-30T04:05:54Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/nklmilojevic/sofka",
+          "researchedAt": "2026-09-30T09:03:25Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "sofka project documentation",
+              "url": "https://github.com/nklmilojevic/sofka"
+            },
+            {
+              "kind": "primary",
+              "title": "sofka v0.1.5 first stable release",
+              "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
+            }
+          ],
+          "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
+          "version": "0.29.6"
+        },
+        {
+          "agentSummary": "The administrative CLI for Talos Linux, used to configure machines, query the Talos API, inspect services, and manage Kubernetes node lifecycles.",
+          "assessment": {
+            "alternatives": [
+              "Talos Linux API clients",
+              "Distribution-specific node administration tools"
+            ],
+            "audiences": [
+              "Talos Linux cluster administrators",
+              "Platform teams operating immutable Kubernetes nodes"
+            ],
+            "caveats": [
+              "It manages Talos machines rather than serving as a general Kubernetes resource browser",
+              "The CLI version should match the Talos Linux version on managed nodes",
+              "Credential-bearing talosconfig files require careful protection"
+            ],
+            "complements": [
+              "sofka or kubectl for Kubernetes workload inspection",
+              "Omni for managed Talos operations"
+            ],
+            "prerequisites": [
+              "Talos Linux nodes or a planned Talos deployment",
+              "A valid talosconfig with appropriate credentials",
+              "A talosctl version compatible with the cluster"
+            ],
+            "useCases": [
+              "Apply and inspect Talos machine configuration",
+              "Bootstrap, upgrade, reset, and troubleshoot Talos nodes",
+              "Query node services, logs, resources, and health through the Talos API"
+            ]
+          },
+          "category": "cloud-infrastructure",
+          "displayName": "talosctl",
+          "docs": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl",
+          "homepage": "https://www.talos.dev/",
+          "id": "brew:talosctl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atalosctl",
+          "lastUpdatedAt": "2026-09-30T04:06:27Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/siderolabs/talos",
+          "researchedAt": "2026-09-30T09:03:25Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Official talosctl getting-started guide",
+              "url": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl"
+            },
+            {
+              "kind": "primary",
+              "title": "Talos Linux source repository",
+              "url": "https://github.com/siderolabs/talos"
+            }
+          ],
+          "upstreamSummary": "CLI for out-of-band management of Kubernetes nodes created by Talos",
+          "version": "1.14.2"
+        },
+        {
+          "agentSummary": "A declarative layer over Helm that versions release definitions, coordinates environments and values, previews changes, and reconciles many charts consistently.",
+          "assessment": {
+            "alternatives": [
+              "Direct Helm commands",
+              "Flux HelmRelease resources",
+              "Argo CD Applications"
+            ],
+            "audiences": [
+              "Platform engineers managing multiple Helm releases",
+              "GitOps and CI/CD teams",
+              "Operators maintaining environment-specific chart values"
+            ],
+            "caveats": [
+              "Adds another templating and state layer above Helm",
+              "Repository and environment structure require team conventions",
+              "Synchronization can make broad changes, so diff and review discipline matter"
+            ],
+            "complements": [
+              "sofka for interactive observation after deployment",
+              "Git and CI systems for reviewable change delivery",
+              "Argo CD for GitOps reconciliation"
+            ],
+            "prerequisites": [
+              "Helm knowledge and access to target Kubernetes clusters",
+              "Version-controlled Helmfile state and values"
+            ],
+            "useCases": [
+              "Declare many Helm releases in version-controlled files",
+              "Preview release differences before synchronization",
+              "Apply consistent chart state across environments"
+            ]
+          },
+          "category": "cloud-infrastructure",
+          "displayName": "helmfile",
+          "docs": "https://helmfile.readthedocs.io/en/stable",
+          "homepage": "https://github.com/helmfile/helmfile",
+          "id": "brew:helmfile",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ahelmfile",
+          "lastUpdatedAt": "2026-09-30T04:06:27Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/helmfile/helmfile",
+          "researchedAt": "2026-09-30T09:03:25Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Official Helmfile documentation",
+              "url": "https://helmfile.readthedocs.io/en/stable/"
+            },
+            {
+              "kind": "primary",
+              "title": "Helmfile source repository",
+              "url": "https://github.com/helmfile/helmfile"
+            }
+          ],
+          "upstreamSummary": "Deploy Kubernetes Helm Charts",
+          "version": "1.8.1"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-03T17:13:21Z",
+        "firstStableReleaseSourceURL": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "sofka project documentation and usage guide",
+          "url": "https://github.com/nklmilojevic/sofka"
+        },
+        {
+          "kind": "primary",
+          "title": "sofka v0.1.5 release",
+          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
+        },
+        {
+          "kind": "primary",
+          "title": "Official talosctl getting-started guide",
+          "url": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl"
+        },
+        {
+          "kind": "primary",
+          "title": "Official Helmfile documentation",
+          "url": "https://helmfile.readthedocs.io/en/stable/"
+        }
+      ],
+      "title": "Sofka and the Three Layers of Kubernetes Operations",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260930T090325Z-86df3774",
+      "id": "recently-updated:media:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "3D geometric mesh and point cloud compression library",
+          "category": "media",
+          "displayName": "draco",
+          "homepage": "https://google.github.io/draco/",
+          "id": "brew:draco",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adraco",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Library to render SVG files using Cairo",
+          "category": "media",
+          "displayName": "librsvg",
+          "homepage": "https://wiki.gnome.org/Projects/LibRsvg",
+          "id": "brew:librsvg",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibrsvg",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Live streaming and recording software",
+          "category": "media",
+          "displayName": "Meld Studio",
+          "homepage": "https://www.meldstudio.co/",
+          "id": "brew:cask:meld-studio",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ameld-studio",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Ableton setlist manager",
+          "category": "media",
+          "displayName": "AbleSet",
+          "homepage": "https://ableset.app/",
+          "id": "brew:cask:ableset",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aableset",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "HyperFrames CLI — create, preview, and render HTML video compositions",
+          "category": "media",
+          "displayName": "hyperframes",
+          "homepage": "https://github.com/heygen-com/hyperframes#readme",
+          "id": "npm:hyperframes",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ahyperframes",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-30T09:03:25Z",
+      "title": "Recently Updated in Media",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20260930T090325Z-86df3774",
+      "id": "for-you:toys:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Returns from a pool of 15m human-readable IDs",
+          "category": "toys",
+          "displayName": "human-id",
+          "homepage": "https://github.com/RienNeVaPlus/human-id#readme",
+          "id": "npm:human-id",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ahuman-id",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Creates ASCII Art from text. A full implementation of the FIGfont spec.",
+          "category": "toys",
+          "displayName": "figlet",
+          "homepage": "https://github.com/patorjk/figlet.js#readme",
+          "id": "npm:figlet",
+          "installURL": "pkgmgrmgr://install?package=npm%3Afiglet",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Tell Yeoman what to say",
+          "category": "toys",
+          "displayName": "yosay",
+          "homepage": "https://github.com/yeoman/yosay#readme",
+          "id": "npm:yosay",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ayosay",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Generates lorem ipsum placeholder text for Node.js, Deno, browsers, and React Native. Developed with Bun.",
+          "category": "toys",
+          "displayName": "lorem-ipsum",
+          "homepage": null,
+          "id": "npm:lorem-ipsum",
+          "installURL": "pkgmgrmgr://install?package=npm%3Alorem-ipsum",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The Yeoman character in your CLI. Like wat.",
+          "category": "toys",
+          "displayName": "yeoman-character",
+          "homepage": "https://github.com/yeoman/yeoman-character#readme",
+          "id": "npm:yeoman-character",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ayeoman-character",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-30T09:03:25Z",
+      "title": "For You in Toys",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "A private night workspace where abstract activity streams become linked note cards stored in a softly illuminated local vault.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#17384B",
+          "backgroundStart": "#0B2130",
+          "foreground": "#F8E8C8"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/activitywatch-local-ledger.png"
+      },
+      "batchID": "20260926T105505Z-2e9e75c7",
+      "body": "## Measurement is not memory\n\nMost workdays leave two imperfect records: what we remember doing and what the computer happened to observe. ActivityWatch makes the second record inspectable. Its watchers capture events such as active windows and away periods, its local server stores them in buckets, and its interface combines those events into a timeline. The project's [privacy policy](https://docs.activitywatch.net/en/latest/privacy.html) says the standard application stores activity data locally and does not transmit it to the developers or third-party analytics services.\n\nThat architecture matters because activity logs can be unusually revealing. A window title may contain a client name, a medical subject, or the draft title of an unannounced project. Local storage removes one routine disclosure path; it does not make the data harmless. ActivityWatch's own [security notes](https://docs.activitywatch.net/en/latest/security.html) warn that the local API lacks strong authentication and that malware or another user on the same host may reach the database. Treat the timeline as sensitive source material, not a cheerful productivity score.\n\n## A decade-old quantified-self experiment\n\nActivityWatch is underexposed partly because its story is longer and stranger than a typical timer. The project's [history](https://docs.activitywatch.net/en/latest/history.html) traces its motivation to quantified-self experiments in 2013, a prototype begun in December 2014, and a 2016 rewrite that introduced the client-server model behind the current system. That lineage explains the modular design: a watcher produces observations, the server stores events, and clients query them.\n\nThe useful unit is not necessarily a raw event. ActivityWatch's [data guide](https://docs.activitywatch.net/en/latest/examples/working-with-data.html) recommends canonical events that combine window tracking with away detection, categorization, and multi-device handling. It also supplies examples for working-hours analysis, category suggestions, redaction, and bucket merging. Users can export JSON or query the REST API, but the project's [export guidance](https://docs.activitywatch.net/en/latest/features/exporting-data.html) recommends aggregating and redacting locally before any data goes to an AI assistant or another service.\n\n## What actual use can establish\n\nThe strongest evidence for automatic tracking is not that it makes everyone more productive. It is that recollection and observation diverge. ActivityWatch documents a Research Edition used in academic studies; its [research overview](https://docs.activitywatch.net/en/latest/research/index.html) cites a validity study where self-report agreed with software registration for only 18 percent of participants. That result supports careful measurement, not a claim that recorded screen time equals meaningful work.\n\nOutside research, workflows vary. In one recent [community discussion](https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/), users described reviewing reports or feeding locally processed summaries into task workflows. Such accounts are anecdotal rather than adoption statistics, but they show the practical fork: some people inspect dashboards, while others use exports as input to their own systems. A useful weekly review might ask:\n\n- Which project consumed more time than expected?\n- Which interruptions recur at the same point in the day?\n- Which categories are wrong because the rules need adjustment?\n- What decision should survive after the raw timeline is forgotten?\n\n## Give conclusions a durable home\n\nThat last question is where Trilium Notes becomes a useful companion. Trilium is not an ActivityWatch integration; pairing them is an editorial workflow. Its [project overview](https://triliumnotes.org/) describes a local, offline-capable personal knowledge base with optional synchronization through a self-hosted server. Notes can be nested without a separate folder type, placed in multiple parts of the tree through cloning, and connected with labels and relations. The [note model](https://docs.triliumnotes.org/user-guide/concepts/notes) suits a project journal that needs both chronology and structure.\n\nThe tradeoff is explicit. Trilium stores its knowledge base in SQLite rather than exposing a directory of Markdown files. Its [FAQ](https://docs.triliumnotes.org/user-guide/faq) argues that transactions, note clones, ordering, attributes, and fast relations justify the database, while acknowledging that filesystem interoperability would be simpler. Synchronizing multiple devices requires its server. Users who prioritize ordinary files and Git should choose another notes system.\n\nCommunity experiments also show why context needs care. In a [Trilium discussion](https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/), users described dedicated note trees, context maps, incremental indexing, and the difficulty of preserving relationships when notes are copied into vector stores. Those are individual reports, not endorsements or benchmarks, but the failure mode is instructive: automation can retrieve text while flattening the structure that made it intelligible.\n\n## Keep observation, interpretation, and retention separate\n\nA restrained workflow uses three layers. ActivityWatch records locally. A human reviews aggregates and checks whether categories reflect reality. Trilium keeps only the conclusions worth retaining: a project note, a decision, a recurring distraction, or a change to next week's plan. Raw events need not become permanent notes, and neither tool needs access to the other's database.\n\nThat separation limits damage and makes the process easier to audit. Back up both stores, redact before exporting, and periodically delete detail that no longer serves a purpose. Most importantly, resist turning a timeline into a verdict. ActivityWatch can tell you which application was foregrounded; only reflection can explain why it mattered.",
+      "deck": "A local activity timeline can improve retrospectives, but only when observation remains separate from judgment and durable notes preserve the conclusions.",
+      "id": "editorial:2026-09-26:activitywatch-a-private-ledger-for-reflection",
+      "package": {
+        "agentSummary": "ActivityWatch records computer activity into a local, extensible timeline, giving users evidence for reflection while keeping sensitive event data under their control.",
+        "assessment": {
+          "alternatives": [
+            "Manual time logs for lower-detail, intentional tracking.",
+            "Hosted time trackers when team reporting matters more than local data control."
+          ],
+          "audiences": [
+            "People who want an evidence-based view of their computer time without sending activity logs to a hosted tracker.",
+            "Researchers who need an auditable, participant-controlled instrument for measuring computer use."
+          ],
+          "caveats": [
+            "Window titles, application names, and browsing data can reveal sensitive work even when stored locally.",
+            "The local REST API does not provide strong authentication; the project warns that same-host users or malware may access data.",
+            "Collected time is evidence of activity, not a reliable measure of value, focus, or productivity."
+          ],
+          "complements": [
+            "Trilium Notes for converting reviewed activity into linked project notes.",
+            "A local analysis script that aggregates or redacts events before sharing them."
+          ],
+          "prerequisites": [
+            "Permission to observe active applications on the operating system.",
+            "A deliberate retention and backup policy for sensitive local activity data."
+          ],
+          "useCases": [
+            "Reviewing time by application, category, project, or active period.",
+            "Exporting or querying locally collected events for personal analysis.",
+            "Building custom watchers and privacy-aware activity workflows."
+          ]
+        },
+        "category": "productivity",
+        "displayName": "ActivityWatch",
+        "docs": "https://docs.activitywatch.net/en/latest",
+        "homepage": "https://activitywatch.net/",
+        "id": "brew:cask:activitywatch",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aactivitywatch",
+        "lastUpdatedAt": "2026-09-26T02:08:06Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/ActivityWatch/activitywatch",
+        "researchedAt": "2026-09-26T10:55:05Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "ActivityWatch privacy policy",
+            "url": "https://docs.activitywatch.net/en/latest/privacy.html"
+          },
+          {
+            "kind": "primary",
+            "title": "Working with ActivityWatch data",
+            "url": "https://docs.activitywatch.net/en/latest/examples/working-with-data.html"
+          },
+          {
+            "kind": "primary",
+            "title": "ActivityWatch in research",
+            "url": "https://docs.activitywatch.net/en/latest/research/index.html"
+          },
+          {
+            "kind": "independent",
+            "title": "Community discussion of reviewing ActivityWatch data",
+            "url": "https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/"
+          }
+        ],
+        "upstreamSummary": "Time tracker",
+        "version": "0.13.2"
+      },
+      "primaryPackageID": "brew:cask:activitywatch",
+      "publishedAt": "2026-09-26T10:55:05Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "ActivityWatch records computer activity into a local, extensible timeline, giving users evidence for reflection while keeping sensitive event data under their control.",
+          "assessment": {
+            "alternatives": [
+              "Manual time logs for lower-detail, intentional tracking.",
+              "Hosted time trackers when team reporting matters more than local data control."
+            ],
+            "audiences": [
+              "People who want an evidence-based view of their computer time without sending activity logs to a hosted tracker.",
+              "Researchers who need an auditable, participant-controlled instrument for measuring computer use."
+            ],
+            "caveats": [
+              "Window titles, application names, and browsing data can reveal sensitive work even when stored locally.",
+              "The local REST API does not provide strong authentication; the project warns that same-host users or malware may access data.",
+              "Collected time is evidence of activity, not a reliable measure of value, focus, or productivity."
+            ],
+            "complements": [
+              "Trilium Notes for converting reviewed activity into linked project notes.",
+              "A local analysis script that aggregates or redacts events before sharing them."
+            ],
+            "prerequisites": [
+              "Permission to observe active applications on the operating system.",
+              "A deliberate retention and backup policy for sensitive local activity data."
+            ],
+            "useCases": [
+              "Reviewing time by application, category, project, or active period.",
+              "Exporting or querying locally collected events for personal analysis.",
+              "Building custom watchers and privacy-aware activity workflows."
+            ]
+          },
+          "category": "productivity",
+          "displayName": "ActivityWatch",
+          "docs": "https://docs.activitywatch.net/en/latest",
+          "homepage": "https://activitywatch.net/",
+          "id": "brew:cask:activitywatch",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aactivitywatch",
+          "lastUpdatedAt": "2026-09-26T02:08:06Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/ActivityWatch/activitywatch",
+          "researchedAt": "2026-09-26T10:55:05Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "ActivityWatch privacy policy",
+              "url": "https://docs.activitywatch.net/en/latest/privacy.html"
+            },
+            {
+              "kind": "primary",
+              "title": "Working with ActivityWatch data",
+              "url": "https://docs.activitywatch.net/en/latest/examples/working-with-data.html"
+            },
+            {
+              "kind": "primary",
+              "title": "ActivityWatch in research",
+              "url": "https://docs.activitywatch.net/en/latest/research/index.html"
+            },
+            {
+              "kind": "independent",
+              "title": "Community discussion of reviewing ActivityWatch data",
+              "url": "https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/"
+            }
+          ],
+          "upstreamSummary": "Time tracker",
+          "version": "0.13.2"
+        },
+        {
+          "agentSummary": "Trilium Notes organizes a local personal knowledge base as linked, hierarchical notes, with self-hosted synchronization, scripting, relations, and structured attributes for deeper workflows.",
+          "assessment": {
+            "alternatives": [
+              "Joplin for offline-first Markdown notes with several configurable synchronization targets.",
+              "A plain-file notes system when Git interoperability and direct file access are priorities."
+            ],
+            "audiences": [
+              "People maintaining a large, structured personal knowledge base.",
+              "Self-hosters who prefer a database-backed notes system with optional server synchronization."
+            ],
+            "caveats": [
+              "Trilium intentionally stores notes in SQLite, so external file-oriented tools cannot treat the knowledge base as ordinary Markdown folders.",
+              "Supported network synchronization requires a Trilium sync or web server.",
+              "Automation or AI integrations can lose hierarchy and context unless the workflow preserves note relationships explicitly."
+            ],
+            "complements": [
+              "ActivityWatch as a local source of activity evidence for deliberate review.",
+              "Regular database backups and exports for recovery and portability."
+            ],
+            "prerequisites": [
+              "Comfort with a database-backed knowledge base rather than a directory of plain Markdown files.",
+              "A self-hosted Trilium server when synchronization across devices is required."
+            ],
+            "useCases": [
+              "Maintaining nested project journals with links, relations, labels, and reusable note clones.",
+              "Turning activity reviews into durable decisions, context, and follow-up notes.",
+              "Automating specialized knowledge workflows with scripts and the project APIs."
+            ]
+          },
+          "category": "productivity",
+          "displayName": "Trilium Notes",
+          "docs": "https://docs.triliumnotes.org",
+          "homepage": "https://triliumnext.github.io/Docs/",
+          "id": "brew:cask:trilium-notes",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atrilium-notes",
+          "lastUpdatedAt": "2026-09-25T19:44:11Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/TriliumNext/Trilium",
+          "researchedAt": "2026-09-26T10:55:05Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Trilium Notes project overview",
+              "url": "https://triliumnotes.org/"
+            },
+            {
+              "kind": "primary",
+              "title": "Trilium note concepts",
+              "url": "https://docs.triliumnotes.org/user-guide/concepts/notes"
+            },
+            {
+              "kind": "primary",
+              "title": "Trilium FAQ on database storage and synchronization",
+              "url": "https://docs.triliumnotes.org/user-guide/faq"
+            },
+            {
+              "kind": "independent",
+              "title": "Community examples of Trilium as an automated second brain",
+              "url": "https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/"
+            }
+          ],
+          "upstreamSummary": "Hierarchical note taking application",
+          "version": "0.106.0"
+        }
+      ],
+      "selection": {
+        "rationale": "underexposed",
+        "underexposedReason": "ActivityWatch has no popularity rank in the current catalog candidate and is absent from the recent editorial history, despite a documented history since 2014, extensible local-first architecture, and concrete use in academic research."
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "ActivityWatch history",
+          "url": "https://docs.activitywatch.net/en/latest/history.html"
+        },
+        {
+          "kind": "primary",
+          "title": "ActivityWatch privacy policy",
+          "url": "https://docs.activitywatch.net/en/latest/privacy.html"
+        },
+        {
+          "kind": "primary",
+          "title": "ActivityWatch security considerations",
+          "url": "https://docs.activitywatch.net/en/latest/security.html"
+        },
+        {
+          "kind": "primary",
+          "title": "Working with ActivityWatch data",
+          "url": "https://docs.activitywatch.net/en/latest/examples/working-with-data.html"
+        },
+        {
+          "kind": "primary",
+          "title": "ActivityWatch in research",
+          "url": "https://docs.activitywatch.net/en/latest/research/index.html"
+        },
+        {
+          "kind": "independent",
+          "title": "Community discussion of reviewing ActivityWatch data",
+          "url": "https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/"
+        },
+        {
+          "kind": "primary",
+          "title": "Trilium Notes overview",
+          "url": "https://triliumnotes.org/"
+        },
+        {
+          "kind": "primary",
+          "title": "Trilium note concepts",
+          "url": "https://docs.triliumnotes.org/user-guide/concepts/notes"
+        },
+        {
+          "kind": "primary",
+          "title": "Trilium FAQ",
+          "url": "https://docs.triliumnotes.org/user-guide/faq"
+        },
+        {
+          "kind": "independent",
+          "title": "Community examples of Trilium automation",
+          "url": "https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/"
+        }
+      ],
+      "title": "ActivityWatch: a private ledger for reflection",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260926T105505Z-a6e88a3d",
+      "id": "new-packages:security:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Archive and delete your data on social media platforms",
+          "category": "security",
+          "displayName": "Cyd",
+          "homepage": "https://cyd.social/",
+          "id": "brew:cask:cyd",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acyd",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Cryptography and SSL/TLS Toolkit",
+          "category": "security",
+          "displayName": "openssl@3.6",
+          "homepage": "https://openssl-library.org",
+          "id": "brew:openssl@3.6",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aopenssl%403.6",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-26T10:55:05Z",
+      "title": "New Packages in Security",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20260926T105505Z-a6e88a3d",
+      "id": "for-you:networking:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "ECMAScript parser",
+          "category": "networking",
+          "displayName": "acorn",
+          "homepage": "https://github.com/acornjs/acorn",
+          "id": "npm:acorn",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aacorn",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset",
+          "category": "networking",
+          "displayName": "browserslist",
+          "homepage": "https://github.com/browserslist/browserslist#readme",
+          "id": "npm:browserslist",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abrowserslist",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A library for obtaining browser versions with their maximum supported Baseline feature set and Widely Available status.",
+          "category": "networking",
+          "displayName": "baseline-browser-mapping",
+          "homepage": "https://github.com/web-platform-dx/baseline-browser-mapping#readme",
+          "id": "npm:baseline-browser-mapping",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abaseline-browser-mapping",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
+          "category": "networking",
+          "displayName": "autoprefixer",
+          "homepage": "https://github.com/postcss/autoprefixer#readme",
+          "id": "npm:autoprefixer",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aautoprefixer",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Minimal H(TTP) framework built for high performance and portability.",
+          "category": "networking",
+          "displayName": "h3",
+          "homepage": "https://h3.dev",
+          "id": "npm:h3",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ah3",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-09-26T10:55:05Z",
+      "title": "For You in Networking",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "A developer supervises four small robot work bays connected by glowing cyan paths, with one amber attention signal in a moonlit command room.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#123B49",
+          "backgroundStart": "#081D2C",
+          "foreground": "#F6F1E6"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/ccmux-attention-router.png"
+      },
+      "batchID": "20260922T164202Z-253564be",
+      "body": "## Parallelism creates an attention problem\n\nOpening another coding-agent session is easy. Remembering which of four sessions is compiling, waiting for approval, asking a question, or ready for review is harder. **ccmux treats that as a routing problem for human attention.** It runs alongside tmux, observes supported agent sessions, and presents their state in a single terminal interface. Instead of cycling through panes to rediscover what each agent is doing, the operator can start with the session that is blocked.\n\nThat boundary matters. ccmux does not replace the coding agents, Git, or tmux. Its documentation describes support for several agent CLIs and a daemon that watches existing sessions. The dashboard can group work by repository, show working or waiting state, surface diffs and pull-request checks, and send notifications. Worktree creation and spawning help start another task, while handoff features can pass context from one agent to another. The value is coordination around tools developers may already use.\n\n## A new project with a concrete workflow\n\nThe first tagged ccmux release, **v1.0.0, appeared on July 6, 2026**. That makes it genuinely new rather than an old project newly packaged by Homebrew. Its young age should shape expectations: agent output formats change, integrations can lag, and a status classifier that works well in the author's setup may meet unfamiliar prompts or terminal layouts elsewhere. A trial should use disposable branches before the dashboard becomes the team's control surface.\n\nThere is useful evidence beyond the feature list, though not yet evidence of broad adoption. An independent write-up describes coordinating three or four agents across multiple machines, checking sessions from a phone, and returning directly to those needing intervention. That is one practitioner's account, not a survey, but it identifies the real friction: parallel agents save elapsed time only when their questions do not sit unnoticed.\n\nThe model also makes failure visible. A green-looking overview cannot guarantee that an agent's changes are correct, and a waiting indicator cannot explain whether a permission request is reasonable. The dashboard shortens discovery; it does not transfer judgment.\n\n## Three layers for organizing the terminal\n\nccmux, workmux, and Zentty approach the same crowded workspace from different layers:\n\n- **ccmux** observes agent work already living in tmux and prioritizes sessions that need attention. It is the smallest change for an established tmux setup.\n- **workmux** owns more of the task lifecycle. It pairs branches and Git worktrees with terminal windows, applies setup hooks, and helps merge and clean up completed work.\n- **Zentty** is a native macOS terminal with persistent worklanes, a status-aware sidebar, task discovery, and an embedded CLI. It changes the terminal environment itself.\n\nThe tools can overlap, but they should not be stacked automatically. A developer satisfied with manual worktree creation may want only ccmux's overview. Someone repeatedly rebuilding the same task panes may gain more from workmux's opinionated automation. A Mac user who wants visual lanes without maintaining tmux configuration may prefer Zentty. The right layer is the one that removes a recurring coordination cost without hiding ownership of branches, processes, and credentials.\n\n## Isolation is not the same as supervision\n\nNeither a tmux pane nor a Git worktree is a security boundary. Concurrent agents can still share environment variables, cloud credentials, package caches, databases, and network services. They may edit separate directories while targeting the same external resource. ccmux can show where an agent is waiting, but it cannot determine whether the command awaiting approval is safe. workmux can create isolated checkouts and optionally connect sandbox workflows, but safe containment still depends on their configuration. Zentty organizes panes; it does not constrain what runs inside them.\n\nA cautious evaluation should therefore begin with a small routine:\n\n- create two disposable tasks with clearly different branches;\n- confirm that waiting, working, and completed states match what is actually on screen;\n- review notification destinations and every worktree or lifecycle command;\n- inspect diffs and test results outside the agent's summary;\n- verify what secrets and local services remain shared.\n\nThese checks test both the software and the operating habits around it. The goal is not a theatrical wall of autonomous workers. It is a legible queue in which a human can understand what changed and intervene at the right moment.\n\n## The dashboard should reduce uncertainty\n\nccmux is most compelling when developers already trust tmux but have outgrown serial navigation. Its attention-first view acknowledges that agent concurrency shifts the bottleneck: starting work becomes cheap, while review, clarification, and risk decisions remain scarce. workmux is stronger when workspace creation and cleanup are the repetitive burden. Zentty offers the broader native environment for users willing to move.\n\nWhichever layer wins, measure it by uncertainty removed. After glancing at the workspace, can the operator identify the blocked task, the branch it owns, the outstanding decision, and the path to review? If ccmux makes those answers immediate while leaving the underlying sessions inspectable, it earns its place as an attention router rather than merely another dashboard.",
+      "deck": "When several agents work in parallel, the scarce resource is no longer terminal space—it is knowing which session needs a human next.",
+      "id": "editorial:2026-09-22:ccmux-the-attention-router-for-coding-agents",
+      "package": {
+        "agentSummary": "ccmux monitors coding agents already running in tmux, surfaces sessions needing attention, and adds worktree spawning, diff review, notifications, and agent-to-agent handoffs.",
+        "assessment": {
+          "alternatives": [
+            "Native tmux session navigation and status lines",
+            "workmux for opinionated worktree lifecycle automation",
+            "Zentty for a native macOS terminal workspace"
+          ],
+          "audiences": [
+            "Developers running several terminal-based coding agents",
+            "tmux users coordinating parallel repositories or worktrees"
+          ],
+          "caveats": [
+            "Young project with a rapidly evolving workflow",
+            "Monitoring depends on supported agent output and tmux sessions",
+            "Coordination features do not sandbox agents or their credentials"
+          ],
+          "complements": [
+            "Git worktrees",
+            "Desktop or mobile notification delivery",
+            "Pull-request and continuous-integration workflows"
+          ],
+          "prerequisites": [
+            "tmux and Git",
+            "One of the supported coding-agent command-line tools",
+            "Willingness to run a local monitoring daemon"
+          ],
+          "useCases": [
+            "Finding sessions blocked on approval or user input",
+            "Reviewing diffs and handing context between agents",
+            "Starting isolated agent worktrees from one dashboard"
+          ]
+        },
+        "category": null,
+        "displayName": "ccmux",
+        "docs": null,
+        "homepage": "https://github.com/epilande/ccmux",
+        "id": "brew:ccmux",
+        "installURL": "pkgmgrmgr://install?package=brew%3Accmux",
+        "lastUpdatedAt": "2026-09-22T05:11:02Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/epilande/ccmux",
+        "researchedAt": "2026-09-22T16:42:02Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "ccmux repository and documentation",
+            "url": "https://github.com/epilande/ccmux"
+          },
+          {
+            "kind": "independent",
+            "title": "Hands-on ccmux workflow review",
+            "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
+          },
+          {
+            "kind": "primary",
+            "title": "ccmux v1.0.0 release",
+            "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
+          }
+        ],
+        "upstreamSummary": "Run all your AI coding agents in tmux",
+        "version": "1.4.2"
+      },
+      "primaryPackageID": "brew:ccmux",
+      "publishedAt": "2026-09-22T16:42:02Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "ccmux monitors coding agents already running in tmux, surfaces sessions needing attention, and adds worktree spawning, diff review, notifications, and agent-to-agent handoffs.",
+          "assessment": {
+            "alternatives": [
+              "Native tmux session navigation and status lines",
+              "workmux for opinionated worktree lifecycle automation",
+              "Zentty for a native macOS terminal workspace"
+            ],
+            "audiences": [
+              "Developers running several terminal-based coding agents",
+              "tmux users coordinating parallel repositories or worktrees"
+            ],
+            "caveats": [
+              "Young project with a rapidly evolving workflow",
+              "Monitoring depends on supported agent output and tmux sessions",
+              "Coordination features do not sandbox agents or their credentials"
+            ],
+            "complements": [
+              "Git worktrees",
+              "Desktop or mobile notification delivery",
+              "Pull-request and continuous-integration workflows"
+            ],
+            "prerequisites": [
+              "tmux and Git",
+              "One of the supported coding-agent command-line tools",
+              "Willingness to run a local monitoring daemon"
+            ],
+            "useCases": [
+              "Finding sessions blocked on approval or user input",
+              "Reviewing diffs and handing context between agents",
+              "Starting isolated agent worktrees from one dashboard"
+            ]
+          },
+          "category": null,
+          "displayName": "ccmux",
+          "docs": null,
+          "homepage": "https://github.com/epilande/ccmux",
+          "id": "brew:ccmux",
+          "installURL": "pkgmgrmgr://install?package=brew%3Accmux",
+          "lastUpdatedAt": "2026-09-22T05:11:02Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/epilande/ccmux",
+          "researchedAt": "2026-09-22T16:42:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "ccmux repository and documentation",
+              "url": "https://github.com/epilande/ccmux"
+            },
+            {
+              "kind": "independent",
+              "title": "Hands-on ccmux workflow review",
+              "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
+            },
+            {
+              "kind": "primary",
+              "title": "ccmux v1.0.0 release",
+              "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
+            }
+          ],
+          "upstreamSummary": "Run all your AI coding agents in tmux",
+          "version": "1.4.2"
+        },
+        {
+          "agentSummary": "workmux pairs Git worktrees with terminal windows, automating isolated task setup, agent status, review, merging, and cleanup while preserving familiar multiplexer workflows.",
+          "assessment": {
+            "alternatives": [
+              "Manual git worktree and tmux commands",
+              "ccmux for observing agents in existing tmux sessions",
+              "Graphical integrated agent workspaces"
+            ],
+            "audiences": [
+              "Developers who organize concurrent tasks with Git worktrees",
+              "Terminal-multiplexer users running coding agents"
+            ],
+            "caveats": [
+              "Hooks and copy rules can touch sensitive project files",
+              "Worktree separation is not a security boundary",
+              "Pre-1.0 configuration and behavior can change quickly"
+            ],
+            "complements": [
+              "Coding-agent command-line tools",
+              "Container or virtual-machine sandboxes",
+              "Pull-request review workflows"
+            ],
+            "prerequisites": [
+              "Git",
+              "A supported terminal multiplexer or terminal backend",
+              "Reviewed project configuration and lifecycle hooks"
+            ],
+            "useCases": [
+              "Creating a branch, worktree, and terminal workspace together",
+              "Applying repeatable project setup hooks",
+              "Reviewing, merging, and removing finished task workspaces"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "workmux",
+          "docs": "https://github.com/raine/workmux#readme",
+          "homepage": "https://workmux.raine.dev",
+          "id": "brew:workmux",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aworkmux",
+          "lastUpdatedAt": "2026-09-21T11:50:46Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/raine/workmux",
+          "researchedAt": "2026-09-22T16:42:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "workmux repository",
+              "url": "https://github.com/raine/workmux"
+            },
+            {
+              "kind": "independent",
+              "title": "Using worktrees and tmux as an IDE",
+              "url": "https://joe.sh/tmux-ide"
+            },
+            {
+              "kind": "independent",
+              "title": "Community workmux discussion",
+              "url": "https://www.reddit.com/r/tmux/comments/1p7bszd/workmux_git_worktrees_tmux_windows_for/"
+            }
+          ],
+          "upstreamSummary": "Git worktrees + tmux windows for zero-friction parallel dev",
+          "version": "0.1.264"
+        },
+        {
+          "agentSummary": "Zentty is a native macOS terminal for agent-heavy development, combining scrolling worklanes, persistent panes, status-aware sidebars, task discovery, and a scriptable embedded CLI.",
+          "assessment": {
+            "alternatives": [
+              "Terminal.app or iTerm2 with tmux",
+              "Ghostty",
+              "ccmux layered over existing tmux sessions"
+            ],
+            "audiences": [
+              "macOS developers wanting agent-aware terminal organization",
+              "Users who prefer a native graphical shell around terminal sessions"
+            ],
+            "caveats": [
+              "macOS only",
+              "Active development can bring interface or behavior changes",
+              "An integrated terminal changes more of the daily environment than a small tmux companion"
+            ],
+            "complements": [
+              "Git worktrees",
+              "Command-line coding agents",
+              "Shell scripts using the embedded CLI"
+            ],
+            "prerequisites": [
+              "A supported macOS system",
+              "Comfort evaluating an actively developed terminal application"
+            ],
+            "useCases": [
+              "Grouping panes into persistent worklanes",
+              "Seeing task and agent status from a sidebar",
+              "Restoring multi-pane terminal workspaces"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "Zentty",
+          "docs": "https://zentty.org/docs",
+          "homepage": "https://zentty.org/",
+          "id": "brew:cask:zentty",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Azentty",
+          "lastUpdatedAt": "2026-09-22T11:05:40Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/dedene/zentty",
+          "researchedAt": "2026-09-22T16:42:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Zentty repository",
+              "url": "https://github.com/dedene/zentty"
+            },
+            {
+              "kind": "independent",
+              "title": "Zentty documentation",
+              "url": "https://zentty.org/docs/"
+            }
+          ],
+          "upstreamSummary": "Terminal for agent-driven development",
+          "version": "0.3.4"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-06T18:52:23Z",
+        "firstStableReleaseSourceURL": "https://github.com/epilande/ccmux/releases/tag/v1.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "ccmux repository and documentation",
+          "url": "https://github.com/epilande/ccmux"
+        },
+        {
+          "kind": "primary",
+          "title": "ccmux v1.0.0 release",
+          "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
+        },
+        {
+          "kind": "primary",
+          "title": "ccmux agent handoff documentation",
+          "url": "https://github.com/epilande/ccmux/blob/main/docs/handoff.md"
+        },
+        {
+          "kind": "independent",
+          "title": "Hands-on ccmux workflow review",
+          "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
+        },
+        {
+          "kind": "primary",
+          "title": "workmux documentation",
+          "url": "https://workmux.raine.dev/"
+        },
+        {
+          "kind": "independent",
+          "title": "Using worktrees and tmux as an IDE",
+          "url": "https://joe.sh/tmux-ide"
+        },
+        {
+          "kind": "primary",
+          "title": "Zentty documentation",
+          "url": "https://zentty.org/docs/"
+        }
+      ],
+      "title": "ccmux: The Attention Router for Coding Agents",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20260922T164202Z-7725d80a",
+      "id": "new-packages:developer-tools:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "macOS screen capture, accessibility inspection and UI automation",
+          "category": "developer-tools",
+          "displayName": "peekaboo",
+          "homepage": "https://peekaboo.sh/",
+          "id": "brew:peekaboo",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apeekaboo",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "CLI for Bitbucket Cloud and Data Center",
+          "category": "developer-tools",
+          "displayName": "bitbucket-cli",
+          "homepage": "https://github.com/avivsinai/bitbucket-cli",
+          "id": "brew:bitbucket-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Abitbucket-cli",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Terminal REST client with file-based collections",
+          "category": "developer-tools",
+          "displayName": "noodle",
+          "homepage": "https://noodlerest.dev",
+          "id": "brew:noodle",
+          "installURL": "pkgmgrmgr://install?package=brew%3Anoodle",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Keyboard-first diff viewer with LSP support and GitHub integration",
+          "category": "developer-tools",
+          "displayName": "diffle",
+          "homepage": "https://github.com/moritzwilksch/diffle",
+          "id": "brew:diffle",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adiffle",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Unofficial native port of Notepad++",
+          "category": "developer-tools",
+          "displayName": "Nextpad++",
+          "homepage": "https://nextpad.org/",
+          "id": "brew:cask:nextpad++",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Anextpad%2B%2B",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-22T16:42:02Z",
+      "title": "New Packages in Developer Tools",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20260922T164202Z-7725d80a",
+      "id": "recently-updated:security:20261015T075024Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Comprehensive CLI tool for managing .env files",
+          "category": "security",
+          "displayName": "evnx",
+          "homepage": "https://evnx.dev",
+          "id": "brew:evnx",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aevnx",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "ICOA CLI — AI-native competition runtime of the International Cyber Olympiad in AI: learn, practise, and compete in AI & cybersecurity from the terminal (AI4CTF · CTF4AI · CTF4EAI)",
+          "category": "security",
+          "displayName": "icoa-cli",
+          "homepage": null,
+          "id": "npm:icoa-cli",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aicoa-cli",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Official Monero wallet and CPU miner",
+          "category": "security",
+          "displayName": "monero",
+          "homepage": "https://www.getmonero.org/downloads/#cli",
+          "id": "brew:monero",
+          "installURL": "pkgmgrmgr://install?package=brew%3Amonero",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Securely store and access AWS credentials in development environments",
+          "category": "security",
+          "displayName": "aws-vault",
+          "homepage": "https://github.com/ByteNess/aws-vault",
+          "id": "brew:aws-vault",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aaws-vault",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "CLI for Infisical",
+          "category": "security",
+          "displayName": "infisical",
+          "homepage": "https://infisical.com/docs/cli/overview",
+          "id": "brew:infisical",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ainfisical",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-09-22T16:42:02Z",
+      "title": "Recently Updated in Security",
+      "type": "recentlyUpdated"
+    }
+  ],
+  "generatedAt": "2026-10-17T09:48:51Z",
+  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261017T094851Z-4b7e942e.json",
+  "pageID": "20261017T094851Z-686fd978",
+  "schemaVersion": 2
+}
