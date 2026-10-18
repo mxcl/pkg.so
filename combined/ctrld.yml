@@ -49,6 +49,24 @@ history:
       Typical use is to install ctrld as a local service, point a device or LAN at it
       for DNS, and configure Control D resolver behavior through generated or local TOML
       configuration.
+related-packages:
+  - id: brew:dnscrypt-proxy
+    reason: >
+      Choose dnscrypt-proxy for a provider-neutral encrypted-DNS proxy centered on
+      DNSCrypt, DoH, filtering, and anonymized relays; choose ctrld for Control
+      D-managed policy and device onboarding.
+    rel: alternative
+    sources:
+      - https://github.com/Control-D-Inc/ctrld#readme
+      - https://github.com/DNSCrypt/dnscrypt-proxy#readme
+  - id: brew:bind
+    reason: >
+      BIND supplies dig, the DNS client used in ctrld's official verification workflow,
+      for querying the local listener and confirming forwarding behavior.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Control-D-Inc/ctrld#readme
+      - https://bind9.readthedocs.io/en/latest/manpages.html
 category: networking
 package-manager:
   brew: ctrld

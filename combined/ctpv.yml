@@ -55,6 +55,37 @@ history:
       and ctpvquit coordinating preview output and lifecycle. Image previews can use
       Ueberzug, Chafa, or Kitty terminal support, while other previews delegate to
       common tools such as bat, jq, poppler, ffmpegthumbnailer, and atool.
+related-packages:
+  - id: brew:lf
+    reason: >
+      ctpv is designed around lf's previewer and cleaner hooks, providing rich file
+      previews inside lf's terminal interface.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/NikitaIvanovV/ctpv#readme
+      - https://github.com/gokcehan/lf#readme
+  - id: brew:chafa
+    reason: >
+      ctpv can delegate image previews to Chafa, including sixel output for suitable
+      Wayland terminal setups.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nikitaivanov.com/man1/ctpv
+      - https://hpjansson.org/chafa/
+  - id: brew:bat
+    reason: >
+      ctpv uses bat as one of its documented renderers for syntax-highlighted text-file
+      previews.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nikitaivanov.com/man1/ctpv
+      - https://github.com/sharkdp/bat#readme
+  - id: brew:jq
+    reason: ctpv dispatches JSON files to jq for structured, readable terminal previews.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nikitaivanov.com/man1/ctpv
+      - https://jqlang.org/
 category: productivity
 package-manager:
   brew: ctpv

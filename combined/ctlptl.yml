@@ -54,6 +54,39 @@ history:
       delete -f cluster.yaml. Typical package use is in developer-workstation setup
       scripts and CI-friendly local-cluster recipes where a registry, CPU limits,
       Kubernetes version, or Docker Desktop setting needs to be repeatable.
+related-packages:
+  - id: brew:kind
+    reason: >
+      ctlptl can create and declaratively manage kind clusters, including wiring them to
+      a local registry.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tilt-dev/ctlptl#readme
+      - https://kind.sigs.k8s.io/
+  - id: brew:k3d
+    reason: >
+      ctlptl orchestrates k3d clusters and registries when a lightweight k3s-in-Docker
+      environment is preferred.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tilt-dev/ctlptl#readme
+      - https://k3d.io/
+  - id: brew:minikube
+    reason: >
+      ctlptl can provision minikube declaratively while selecting Kubernetes versions
+      and attaching a registry.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tilt-dev/ctlptl#readme
+      - https://minikube.sigs.k8s.io/docs/
+  - id: brew:kubernetes-cli
+    reason: >
+      ctlptl makes a newly created local cluster the current kubectl context, after
+      which kubectl handles workloads and cluster resources.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tilt-dev/ctlptl#readme
+      - https://kubernetes.io/docs/reference/kubectl/
 category: cloud-infrastructure
 package-manager:
   brew: ctlptl
