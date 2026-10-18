@@ -11,7 +11,11 @@ config-file-location:
     - .mcp.json
     - .cursor/mcp.json
     - .opencode.json
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/context7/credentials.json
+    - ~/.config/context7/credentials.json
+    - ~/.context7/credentials.json
 history:
   adoption-history:
     - >
@@ -50,6 +54,15 @@ history:
       ctx7 is used both interactively, for commands such as resolving a library and
       querying docs, and as a setup helper that writes MCP or skill configuration for
       coding agents.
+related-packages:
+  - id: brew:context7-mcp
+    reason: >
+      Choose Context7 MCP when you want an MCP client to call Context7 tools directly;
+      choose ctx7 for terminal queries or one-command MCP and skill setup.
+    rel: alternative
+    sources:
+      - https://context7.com/docs/clients/cli
+      - https://github.com/upstash/context7
 category: ai
 package-manager:
   brew: ctx7

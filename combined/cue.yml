@@ -6,8 +6,19 @@ docs:
   - https://cuelang.org/docs
   - https://cuelang.org/docs/reference/spec
   - https://github.com/cue-lang/cue#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ./cue.mod/module.cue
+    - ./cue.mod/local-module.cue
+  windows:
+    - .\cue.mod\module.cue
+    - .\cue.mod\local-module.cue
+credentials-file-location:
+  linux:
+    - $XDG_CONFIG_HOME/cue/logins.json
+    - ~/.config/cue/logins.json
+  macos: ~/Library/Application Support/cue/logins.json
+  windows: '%AppData%\cue\logins.json'
 history:
   adoption-history:
     - >
@@ -54,6 +65,16 @@ history:
       or extracts schemas, and acts as the package's main user-facing interface.
       Official installation docs include release binaries, source installs, and
       container images.
+related-packages:
+  - id: brew:conftest
+    reason: >
+      Use Conftest alongside CUE when you want Rego policy checks over .cue files or
+      other structured configuration before deployment.
+    rel: adjacent_workflow
+    sources:
+      - https://www.conftest.dev/
+      - https://www.conftest.dev/options/
+      - https://cuelang.org/docs/reference/command/
 category: language-runtime
 package-manager:
   brew: cue

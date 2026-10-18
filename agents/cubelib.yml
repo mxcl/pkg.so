@@ -1,6 +1,6 @@
 id: brew:cubelib
 display-name: CubeLib
-repo: null
+repo: https://gitlab.jsc.fz-juelich.de/perftools/cubelib
 docs:
   - https://apps.fz-juelich.de/scalasca/releases/cube/4.9/docs/derived/html/reference.html
   - >
@@ -52,6 +52,16 @@ history:
       CubeLib underlies command-line tools for manipulating and inspecting Cube
       performance reports, including operations such as diff, merge, mean, call-tree
       conversion, metrics derivation, and report dumping.
+related-packages:
+  - id: brew:otf2
+    reason: >
+      Use OTF2 alongside CubeLib when a Score-P workflow needs event traces as well as
+      Cube profile reports; OTF2 supplies the trace-format library and inspection
+      utilities.
+    rel: adjacent_workflow
+    sources:
+      - https://www.vi-hps.org/projects/score-p/documentation/documentation.html
+      - https://www.scalasca.org/software/cube-4.x/download.html
 tags:
   - cli
   - command-line-tools
@@ -95,9 +105,8 @@ provenance:
     - https://apps.fz-juelich.de/scalasca/releases/cube/4.9/docs/derived/html/reference.html
   repo-sources:
     - >
-      The official Scalasca pages provide component source downloads but do not
-      establish an official HTTP(S) source-control repository for CubeLib.
-    - source_facts.repo is empty.
+      The official Cube download page links its CubeLib developer build from the Jülich
+      perftools infrastructure: https://www.scalasca.org/software/cube-4.x/download.html
   tags-sources:
     - >
       Official Cube documentation describes CUBE components and command-line tools for
@@ -112,5 +121,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high
