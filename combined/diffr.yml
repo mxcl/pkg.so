@@ -44,6 +44,33 @@ history:
       diffr reads unified diff input on stdin and writes enhanced output on stdout. The
       README shows `git show HEAD | diffr` for one-off use and `.gitconfig` settings
       that route Git paging and interactive diffs through diffr.
+related-packages:
+  - id: brew:git-delta
+    reason: >
+      Choose git-delta when you want a richer Git and unified-diff pager with syntax
+      highlighting, navigation, line numbers, and optional side-by-side views; diffr is
+      a smaller word-highlighting filter.
+    rel: alternative
+    sources:
+      - https://github.com/mookid/diffr#readme
+      - https://dandavison.github.io/delta/
+  - id: brew:diff-so-fancy
+    reason: >
+      Choose diff-so-fancy for more extensive Git-oriented patch reformatting; choose
+      diffr when preserving the ordinary unified-diff layout with focused word-level
+      highlights is preferable.
+    rel: alternative
+    sources:
+      - https://github.com/mookid/diffr#readme
+      - https://github.com/so-fancy/diff-so-fancy#readme
+  - id: brew:git
+    reason: >
+      Git directly produces the unified diffs that diffr filters, and diffr's official
+      setup configures it as Git's pager and interactive diff filter.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mookid/diffr#readme
+      - https://git-scm.com/docs/git-diff
 category: developer-tools
 package-manager:
   brew: diffr

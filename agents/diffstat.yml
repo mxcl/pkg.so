@@ -46,6 +46,32 @@ history:
       diffstat sits after `diff` in a pipeline and turns patch text into a
       size-and-shape summary. That makes it useful in email review, release notes,
       package deltas, and quick scans of large changes before reading detailed hunks.
+related-packages:
+  - id: brew:git
+    reason: >
+      Choose Git's built-in `--stat` reporting for repository-aware summaries that can
+      account for moves and renames; use diffstat when processing standalone diff or
+      patch text.
+    rel: alternative
+    sources:
+      - https://invisible-island.net/diffstat/diffstat.html
+      - https://git-scm.com/docs/git-diff
+  - id: brew:diffutils
+    reason: >
+      GNU diffutils produces the unified, context, or normal diff output that diffstat
+      summarizes into per-file histograms.
+    rel: adjacent_workflow
+    sources:
+      - https://invisible-island.net/diffstat/manpage/diffstat.html
+      - https://www.gnu.org/software/diffutils/manual/diffutils.html
+  - id: brew:gpatch
+    reason: >
+      GNU patch consumes the same diff output that diffstat summarizes, letting
+      maintainers inspect a patch's scope before applying it.
+    rel: adjacent_workflow
+    sources:
+      - https://invisible-island.net/diffstat/diffstat.html
+      - https://www.gnu.org/software/diffutils/manual/html_node/Invoking-patch.html
 tags:
   - cli
   - code-review
@@ -81,9 +107,9 @@ provenance:
     - https://invisible-island.net/diffstat/CHANGES
   repo-sources:
     - >
-      The official Invisible Island project surfaces documentation, changelogs, source
-      archives, and downloads but no official HTTP(S) source-control project page:
-      https://invisible-island.net/diffstat/
+      The official project pages publish source archives but do not identify an official
+      HTTP(S) source-control project page.
+    - https://invisible-island.net/diffstat/
   tags-sources:
     - Official page and manpage describe histograms and summaries for large patch files.
     - source_facts.description describes graphing changes from a diff file.

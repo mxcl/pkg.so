@@ -47,6 +47,32 @@ history:
       diffstat sits after `diff` in a pipeline and turns patch text into a
       size-and-shape summary. That makes it useful in email review, release notes,
       package deltas, and quick scans of large changes before reading detailed hunks.
+related-packages:
+  - id: brew:git
+    reason: >
+      Choose Git's built-in `--stat` reporting for repository-aware summaries that can
+      account for moves and renames; use diffstat when processing standalone diff or
+      patch text.
+    rel: alternative
+    sources:
+      - https://invisible-island.net/diffstat/diffstat.html
+      - https://git-scm.com/docs/git-diff
+  - id: brew:diffutils
+    reason: >
+      GNU diffutils produces the unified, context, or normal diff output that diffstat
+      summarizes into per-file histograms.
+    rel: adjacent_workflow
+    sources:
+      - https://invisible-island.net/diffstat/manpage/diffstat.html
+      - https://www.gnu.org/software/diffutils/manual/diffutils.html
+  - id: brew:gpatch
+    reason: >
+      GNU patch consumes the same diff output that diffstat summarizes, letting
+      maintainers inspect a patch's scope before applying it.
+    rel: adjacent_workflow
+    sources:
+      - https://invisible-island.net/diffstat/diffstat.html
+      - https://www.gnu.org/software/diffutils/manual/html_node/Invoking-patch.html
 category: developer-tools
 package-manager:
   brew: diffstat

@@ -52,6 +52,58 @@ history:
       `diff` compares text files and can emit normal, context, or unified output; `cmp`
       checks byte-level differences; `diff3` compares three files for merge-style
       workflows; and `sdiff` supports side-by-side comparison and merging.
+related-packages:
+  - id: brew:gpatch
+    reason: >
+      GNU patch applies the comparison output produced by GNU diff, forming the
+      traditional create-with-diff and apply-with-patch workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/diffutils/manual/diffutils.html
+      - https://www.gnu.org/software/diffutils/manual/html_node/Invoking-patch.html
+  - id: brew:diffstat
+    reason: >
+      diffstat summarizes GNU diff output into per-file change counts and histograms,
+      making large patches easier to triage.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/diffutils/manual/diffutils.html
+      - https://invisible-island.net/diffstat/diffstat.html
+  - id: brew:colordiff
+    reason: >
+      colordiff wraps or filters conventional diff output to add terminal color while
+      preserving the familiar diff-oriented workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/diffutils/manual/diffutils.html
+      - https://www.colordiff.org/
+  - id: brew:difftastic
+    reason: >
+      Choose Difftastic for syntax-aware source comparisons that can ignore misleading
+      formatting changes; choose GNU Diffutils for standardized line-oriented output and
+      patch interoperability.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/diffutils/manual/diffutils.html
+      - https://difftastic.wilfred.me.uk/introduction
+  - id: brew:diffoscope
+    reason: >
+      Choose diffoscope when comparing packages, archives, binaries, or other nested
+      build artifacts; choose GNU Diffutils for direct text, byte, directory, and
+      three-way comparisons.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/diffutils/
+      - https://diffoscope.org/
+  - id: brew:wdiff
+    reason: >
+      Choose GNU wdiff when word-level changes within text lines are the primary
+      concern; GNU Diffutils remains the conventional choice for line-oriented and
+      byte-oriented comparisons.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/diffutils/manual/diffutils.html
+      - https://www.gnu.org/software/wdiff/manual/wdiff.html
 tags:
   - cli
   - diff

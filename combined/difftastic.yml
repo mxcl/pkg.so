@@ -4,7 +4,8 @@ homepage: https://difftastic.wilfred.me.uk/
 repo: https://github.com/Wilfred/difftastic
 docs:
   - https://difftastic.wilfred.me.uk/
-config-file-location: null
+config-file-location:
+  unix: ~/.gitconfig
 credentials-file-location: null
 history:
   adoption-history:
@@ -52,6 +53,41 @@ history:
       diff`, `git show`, or `git log -p` can display syntax-aware differences. When
       files are unrecognized or parsing fails, the README documents fallback behavior to
       line-oriented diffing.
+related-packages:
+  - id: brew:diffutils
+    reason: >
+      Choose GNU diffutils for portable, conventional line-oriented output and patch
+      generation; choose Difftastic when syntax-aware matching is more important than
+      standard patch format.
+    rel: alternative
+    sources:
+      - https://difftastic.wilfred.me.uk/introduction
+      - https://www.gnu.org/software/diffutils/manual/diffutils.html
+  - id: brew:git-delta
+    reason: >
+      Choose git-delta when you want a feature-rich pager that decorates Git's existing
+      unified diffs; choose Difftastic when you want the comparison algorithm itself to
+      understand syntax trees.
+    rel: alternative
+    sources:
+      - https://difftastic.wilfred.me.uk/introduction
+      - https://dandavison.github.io/delta/
+  - id: brew:git
+    reason: >
+      Difftastic officially integrates with Git as an external diff command, alias
+      target, or difftool configured through `~/.gitconfig`.
+    rel: adjacent_workflow
+    sources:
+      - https://difftastic.wilfred.me.uk/git.html
+      - https://git-scm.com/docs/git-difftool
+  - id: brew:mergiraf
+    reason: >
+      Use Mergiraf alongside Difftastic when syntax awareness is also needed for
+      resolving Git merge conflicts, rather than only displaying differences.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Wilfred/difftastic#readme
+      - https://mergiraf.org/
 category: developer-tools
 package-manager:
   apk: difftastic
