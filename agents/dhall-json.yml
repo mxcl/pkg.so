@@ -60,6 +60,32 @@ history:
       render JSON or YAML for downstream tools; the official examples show records,
       booleans, lists, and null-producing optional values becoming conventional JSON or
       YAML.
+related-packages:
+  - id: brew:dhall
+    reason: >
+      Use the core Dhall CLI to format, type-check, normalize, and freeze source
+      expressions before rendering them as JSON or YAML.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dhall-lang/dhall-haskell
+      - https://docs.dhall-lang.org/tutorials/Getting-started_Generate-JSON-or-YAML.html
+  - id: brew:dhall-yaml
+    reason: >
+      Choose dhall-yaml for the newer YAML-focused dhall-to-yaml-ng workflow; dhall-json
+      remains the package centered on JSON and its legacy YAML command.
+    rel: alternative
+    sources:
+      - https://docs.dhall-lang.org/howtos/How-to-integrate-Dhall.html
+      - https://github.com/dhall-lang/dhall-haskell/tree/main/dhall-yaml
+      - https://github.com/dhall-lang/dhall-haskell/tree/main/dhall-json
+  - id: brew:dhall-lsp-server
+    reason: >
+      Use dhall-lsp-server while editing Dhall files that will later be converted to
+      JSON or YAML for editor diagnostics and language-aware assistance.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.dhall-lang.org/howtos/Text-editor-configuration.html
+      - https://github.com/dhall-lang/dhall-haskell/tree/main/dhall-lsp-server
 tags:
   - cli
   - compiler

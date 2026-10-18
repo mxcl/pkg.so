@@ -61,6 +61,47 @@ history:
       The dhall executable parses, type-checks, evaluates, and pretty-prints Dhall
       expressions. In practice users combine it with converters such as dhall-to-json
       and dhall-to-yaml when a target tool still expects JSON or YAML.
+related-packages:
+  - id: brew:dhall-json
+    reason: >
+      Use dhall-json to render type-checked Dhall expressions as JSON for applications
+      that cannot consume Dhall directly.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.dhall-lang.org/tutorials/Getting-started_Generate-JSON-or-YAML.html
+      - https://github.com/dhall-lang/dhall-haskell/tree/main/dhall-json
+  - id: brew:dhall-yaml
+    reason: >
+      Use dhall-yaml when the downstream system expects YAML; the official integration
+      guide identifies its dhall-to-yaml-ng executable as the YAML conversion path.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.dhall-lang.org/howtos/How-to-integrate-Dhall.html
+      - https://github.com/dhall-lang/dhall-haskell/tree/main/dhall-yaml
+  - id: brew:dhall-bash
+    reason: >
+      Use dhall-bash to marshal checked Dhall values into Bash syntax for shell-based
+      configuration workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.dhall-lang.org/howtos/How-to-integrate-Dhall.html
+      - https://github.com/dhall-lang/dhall-haskell/tree/main/dhall-bash
+  - id: brew:dhall-toml
+    reason: >
+      Use dhall-toml to bridge Dhall configuration and TOML within the official Haskell
+      toolchain.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dhall-lang/dhall-haskell
+      - https://github.com/dhall-lang/dhall-haskell/tree/main/dhall-toml
+  - id: brew:dhall-lsp-server
+    reason: >
+      Use dhall-lsp-server alongside the interpreter for editor diagnostics, navigation,
+      formatting, and other language-aware authoring support.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.dhall-lang.org/howtos/Text-editor-configuration.html
+      - https://github.com/dhall-lang/dhall-haskell/tree/main/dhall-lsp-server
 category: language-runtime
 package-manager:
   brew: dhall
