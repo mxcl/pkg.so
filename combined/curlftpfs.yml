@@ -52,6 +52,24 @@ history:
       curlftpfs, and then browsing the remote tree with shell commands. It highlights
       SSL/TLS support, tunneling HTTP proxies, reconnecting after server timeouts, and
       rewriting absolute symlinks back into the FTP filesystem.
+related-packages:
+  - id: brew:curl
+    reason: >
+      curl supplies the libcurl FTP transfer engine on which CurlFtpFS is based and is
+      useful for testing the same server outside the FUSE mount.
+    rel: adjacent_workflow
+    sources:
+      - https://curlftpfs.sourceforge.net/
+      - https://curl.se/docs/faq.html
+  - id: brew:sshfs
+    reason: >
+      Choose SSHFS when the remote host offers SSH/SFTP instead of FTP; it provides the
+      same mount-and-use-filesystem workflow over SSH's encrypted file-transfer
+      protocol.
+    rel: alternative
+    sources:
+      - https://curlftpfs.sourceforge.net/
+      - https://github.com/libfuse/sshfs
 category: networking
 package-manager:
   apk: curlftpfs

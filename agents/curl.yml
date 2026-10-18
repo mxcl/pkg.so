@@ -62,6 +62,53 @@ history:
       protocols, especially HTTP(S), FTP(S), SMTP, IMAP, SFTP, WebSocket, and related
       network protocols. libcurl is embedded by applications that need the same transfer
       features through a stable C API.
+related-packages:
+  - id: brew:wget
+    reason: >
+      Choose Wget for recursive downloads or website-oriented retrieval; curl upstream
+      explicitly says curl targets single-shot transfers and its comparison shows Wget's
+      recursive-download support.
+    rel: alternative
+    sources:
+      - https://curl.se/docs/faq.html
+      - https://curl.se/docs/comparison-table.html
+      - https://www.gnu.org/software/wget/
+  - id: brew:httpie
+    reason: >
+      Choose HTTPie for a more human-oriented HTTP request interface; curl's official
+      comparison identifies it as an HTTP client while showing curl's substantially
+      broader protocol coverage.
+    rel: alternative
+    sources:
+      - https://curl.se/docs/comparison-table.html
+      - https://httpie.io/docs/cli
+  - id: brew:curlie
+    reason: >
+      Curlie is a curl frontend for interactive API work that retains curl options while
+      adding HTTPie-inspired syntax, streaming formatting, and pretty JSON output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rs/curlie#readme
+      - https://curl.se/docs/comparison-table.html
+  - id: brew:aria2
+    reason: >
+      Choose aria2 when parallel or multi-connection downloading is central; curl's
+      official comparison documents aria2's parallel-transfer and same-file
+      multi-connection capabilities.
+    rel: alternative
+    sources:
+      - https://curl.se/docs/comparison-table.html
+      - https://aria2.github.io/
+  - id: brew:lftp
+    reason: >
+      Choose lftp for interactive or recursive FTP/SFTP workflows; curl targets one-shot
+      transfers, while its comparison documents lftp's recursive downloading, parallel
+      transfers, and FTP third-party transfers.
+    rel: alternative
+    sources:
+      - https://curl.se/docs/faq.html
+      - https://curl.se/docs/comparison-table.html
+      - https://lftp.yar.ru/
 tags:
   - cli
   - data-transfer
