@@ -7,7 +7,8 @@ docs:
   - https://github.com/rafael2k/darkice#readme
 config-file-location:
   unix: /etc/darkice.cfg
-credentials-file-location: null
+credentials-file-location:
+  unix: /etc/darkice.cfg
 history:
   adoption-history:
     - >
@@ -56,6 +57,16 @@ history:
       when no -c path is supplied. The man page documents sections for general settings,
       input, Icecast, Icecast2, ShoutCast, and file outputs, including password fields
       for streaming servers.
+related-packages:
+  - id: brew:icecast
+    reason: >
+      Use Icecast as the receiving server for streams encoded and uploaded by DarkIce;
+      DarkIce's official documentation explicitly supports Icecast source connections.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rafael2k/darkice/tree/master/darkice
+      - https://github.com/rafael2k/darkice/blob/master/darkice/darkice.cfg
+      - https://icecast.org/docs/
 category: media
 package-manager:
   apk: darkice

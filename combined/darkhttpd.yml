@@ -46,6 +46,24 @@ history:
       Users run darkhttpd by pointing it at a document root, then add command-line flags
       for port, bind address, logging, chroot, privilege drop, directory listing
       behavior, pidfiles, redirects, custom headers, and Docker deployment.
+related-packages:
+  - id: brew:caddy
+    reason: >
+      Choose Caddy when static-file serving also needs a maintained configuration system
+      and automatic HTTPS rather than darkhttpd's minimal command-line-only model.
+    rel: alternative
+    sources:
+      - https://unix4lyfe.org/darkhttpd/
+      - https://caddyserver.com/docs/quick-starts/static-files
+  - id: brew:nginx
+    reason: >
+      Choose nginx when the deployment also needs reverse proxying, reloadable
+      configuration, or broader HTTP service controls beyond darkhttpd's static-only
+      scope.
+    rel: alternative
+    sources:
+      - https://unix4lyfe.org/darkhttpd/
+      - https://nginx.org/en/docs/beginners_guide.html
 category: networking
 package-manager:
   apk: darkhttpd

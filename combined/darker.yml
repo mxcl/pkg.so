@@ -50,6 +50,48 @@ history:
       Users typically run darker on files or directories inside a Git repository,
       optionally selecting a revision range, showing a diff, or configuring behavior
       through pyproject.toml under tool.darker.
+related-packages:
+  - id: brew:black
+    reason: >
+      Choose Black directly for whole-project formatting or new codebases; Darker
+      upstream specifically reserves its changed-region workflow for incremental
+      adoption.
+    rel: alternative
+    sources:
+      - https://github.com/akaihola/darker#why
+      - https://black.readthedocs.io/en/stable/
+  - id: brew:ruff
+    reason: >
+      Choose Ruff directly when you want a fast standalone formatter, while Darker can
+      also invoke Ruff to restrict formatting to Git-changed regions.
+    rel: alternative
+    sources:
+      - https://github.com/akaihola/darker#what
+      - https://docs.astral.sh/ruff/formatter/
+  - id: brew:isort
+    reason: >
+      Darker can run isort on imports alongside changed-region code formatting through
+      its documented --isort integration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/akaihola/darker#what
+      - https://pycqa.github.io/isort/
+  - id: brew:pre-commit
+    reason: >
+      Darker publishes an official pre-commit hook and setup instructions for running
+      changed-region formatting before commits.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/akaihola/darker#using-as-a-pre-commit-hook
+      - https://pre-commit.com/
+  - id: brew:git
+    reason: >
+      Darker uses Git revisions and the working tree to discover modified regions, so
+      Git supplies the history underlying its primary workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/akaihola/darker#what
+      - https://git-scm.com/about
 category: developer-tools
 package-manager:
   brew: darker
