@@ -60,6 +60,25 @@ history:
       requirements files, Pipenv projects, and Poetry projects. It uses CycloneDX Python
       libraries for data structures, serialization, and validation while keeping its own
       public surface centered on the CLI.
+related-packages:
+  - id: brew:cyclonedx-cli
+    reason: >
+      Use CycloneDX CLI after cyclonedx-python when a Python BOM needs format
+      conversion, validation, merging, comparison, signing, or signature verification.
+    rel: adjacent_workflow
+    sources:
+      - https://cyclonedx-bom-tool.readthedocs.io/
+      - https://github.com/CycloneDX/cyclonedx-cli/blob/main/README.md
+  - id: brew:cdxgen
+    reason: >
+      Choose cdxgen for polyglot repositories, containers, or broader BOM variants;
+      choose cyclonedx-python for focused analysis of Python environments, requirements,
+      Poetry, and Pipenv inputs.
+    rel: alternative
+    sources:
+      - https://github.com/cdxgen/cdxgen#readme
+      - https://cyclonedx-bom-tool.readthedocs.io/
+      - https://cyclonedx.org/tool-center/
 category: security
 package-manager:
   brew: cyclonedx-python

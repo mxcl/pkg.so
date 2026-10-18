@@ -85,6 +85,25 @@ history:
       The official docs explain that the tool uses npm-ls against the target project and
       interprets npm's output, with package.json files inside node_modules used as an
       additional evidence source when needed.
+related-packages:
+  - id: brew:cyclonedx-cli
+    reason: >
+      Use CycloneDX CLI after cyclonedx-npm when the generated npm BOM needs validation,
+      conversion, merging, diffing, signing, or verification.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/CycloneDX/cyclonedx-node-npm#readme
+      - https://github.com/CycloneDX/cyclonedx-cli/blob/main/README.md
+  - id: brew:cdxgen
+    reason: >
+      Choose cdxgen for polyglot repositories, container inputs, or broader BOM types;
+      choose cyclonedx-npm for a focused generator built around npm's installed
+      dependency graph and workspace behavior.
+    rel: alternative
+    sources:
+      - https://github.com/cdxgen/cdxgen#readme
+      - https://github.com/CycloneDX/cyclonedx-node-npm#readme
+      - https://github.com/CycloneDX/cyclonedx-node-npm/blob/main/docs/how.md
 tags:
   - cli
   - cyclonedx

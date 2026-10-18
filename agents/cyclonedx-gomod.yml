@@ -49,6 +49,24 @@ history:
       SBOMs for built applications, whole modules, or existing Go binaries. It accounts
       for Go build constraints such as GOARCH, GOOS, CGO_ENABLED, and GOFLAGS when
       producing application SBOMs.
+related-packages:
+  - id: brew:cyclonedx-cli
+    reason: >
+      Use CycloneDX CLI after cyclonedx-gomod when a generated Go BOM needs conversion,
+      validation, merging, comparison, signing, or signature verification.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/CycloneDX/cyclonedx-gomod#readme
+      - https://github.com/CycloneDX/cyclonedx-cli/blob/main/README.md
+  - id: brew:cdxgen
+    reason: >
+      Choose cdxgen when one scan must cover Go alongside other languages, containers,
+      or additional BOM types; choose cyclonedx-gomod for Go-specific app, module, and
+      binary semantics.
+    rel: alternative
+    sources:
+      - https://github.com/cdxgen/cdxgen#readme
+      - https://github.com/CycloneDX/cyclonedx-gomod#readme
 tags:
   - bom
   - cli

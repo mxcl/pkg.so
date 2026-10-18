@@ -53,6 +53,41 @@ history:
       between XML, JSON, Protobuf, CSV, and SPDX JSON, validating against schema
       versions, merging component BOMs, diffing releases, and signing or verifying BOM
       artifacts in CI pipelines.
+related-packages:
+  - id: brew:cdxgen
+    reason: >
+      Use cdxgen to generate polyglot or container SBOMs, then CycloneDX CLI when those
+      BOMs need dedicated merging, diffing, conversion, validation, signing, or
+      verification.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cdxgen/cdxgen#readme
+      - https://github.com/CycloneDX/cyclonedx-cli/blob/main/README.md
+  - id: brew:cyclonedx-gomod
+    reason: >
+      cyclonedx-gomod generates Go-aware application, module, and binary SBOMs that
+      CycloneDX CLI can subsequently convert, validate, merge, sign, or compare.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/CycloneDX/cyclonedx-gomod#readme
+      - https://github.com/CycloneDX/cyclonedx-cli/blob/main/README.md
+  - id: brew:cyclonedx-npm
+    reason: >
+      cyclonedx-npm extracts an npm project's installed dependency graph into a
+      CycloneDX BOM, which CycloneDX CLI can then validate, transform, merge, or sign.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/CycloneDX/cyclonedx-node-npm#readme
+      - https://github.com/CycloneDX/cyclonedx-cli/blob/main/README.md
+  - id: brew:cyclonedx-python
+    reason: >
+      cyclonedx-python generates BOMs from Python environments and manifests, while
+      CycloneDX CLI supplies the downstream document-conversion and verification
+      operations.
+    rel: adjacent_workflow
+    sources:
+      - https://cyclonedx-bom-tool.readthedocs.io/
+      - https://github.com/CycloneDX/cyclonedx-cli/blob/main/README.md
 tags:
   - bom
   - cli
