@@ -55,6 +55,23 @@ history:
       sensor ROMs, then uses commands such as `digitemp -a` to read all sensors or
       `digitemp -a -l/var/log/temperature` from cron. Command-line arguments can
       temporarily override the configuration file.
+related-packages:
+  - id: brew:rrdtool
+    reason: >
+      DigiTemp ships scripts for placing sensor readings in Round Robin databases, while
+      RRDtool is specifically designed to log and graph time-series data.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bcl/digitemp#readme
+      - https://oss.oetiker.ch/rrdtool/
+  - id: brew:gnuplot
+    reason: >
+      DigiTemp's official README documents scripts that turn its logged sensor readings
+      into graphs with gnuplot.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bcl/digitemp#readme
+      - http://www.gnuplot.info/
 tags:
   - 1-wire
   - cli
