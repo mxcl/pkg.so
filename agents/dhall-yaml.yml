@@ -52,6 +52,24 @@ history:
       and yaml-to-dhall for the reverse direction, with library modules for Haskell
       callers. It is usually installed as a companion to Dhall when a downstream system
       still consumes YAML.
+related-packages:
+  - id: brew:dhall-json
+    reason: >
+      Choose dhall-json's dhall-to-yaml executable when compatibility with its
+      JSON-based conversion path is preferable; dhall-yaml provides the HsYAML-based
+      dhall-to-yaml-ng and the reverse yaml-to-dhall tool.
+    rel: alternative
+    sources:
+      - https://github.com/dhall-lang/dhall-haskell/tree/main/dhall-yaml
+      - https://hackage.haskell.org/package/dhall-json/docs
+  - id: brew:dhall
+    reason: >
+      Use the core Dhall package alongside dhall-yaml for type checking, normalization,
+      formatting, and other direct work on the source expressions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dhall-lang/dhall-haskell
+      - https://docs.dhall-lang.org/tutorials/Getting-started_Generate-JSON-or-YAML.html
 tags:
   - cli
   - configuration

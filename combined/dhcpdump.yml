@@ -49,6 +49,15 @@ history:
       The original manual documents use on a network interface, optional
       client-hardware-address filtering, and verbose decoded output of DHCP headers and
       options. Later releases moved from parsing tcpdump output to using pcap directly.
+related-packages:
+  - id: brew:dhcping
+    reason: >
+      Use dhcping first to test whether a DHCP server responds, then dhcpdump when
+      packet-level decoding is needed to investigate the exchange.
+    rel: adjacent_workflow
+    sources:
+      - https://www.mavetju.org/unix/dhcping-man.php
+      - https://www.mavetju.org/unix/dhcpdump-man.php
 category: networking
 package-manager:
   apk: dhcpdump
