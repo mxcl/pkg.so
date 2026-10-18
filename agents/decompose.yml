@@ -52,6 +52,49 @@ history:
       estate. The README emphasizes stdout-oriented Unix behavior, sorted output for
       version control, offline processing from saved JSON streams, metadata enrichment,
       and multiple graph/export formats.
+related-packages:
+  - id: brew:dockviz
+    reason: >
+      Choose Dockviz for compact Docker image, container, and layer visualizations;
+      choose decompose when observed live network connections and broader export formats
+      are required.
+    rel: alternative
+    sources:
+      - https://github.com/s0rg/decompose#analogs
+      - https://github.com/justone/dockviz
+  - id: brew:graphviz
+    reason: >
+      decompose can emit Graphviz DOT, which Graphviz renders into visual architecture
+      diagrams such as SVG.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/s0rg/decompose
+      - https://graphviz.org/documentation/
+  - id: brew:plantuml
+    reason: >
+      decompose exports PlantUML text that PlantUML can turn into a rendered,
+      text-maintained architecture diagram.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/s0rg/decompose
+      - https://plantuml.com/starting
+  - id: brew:structurizr-cli
+    reason: >
+      decompose can export Structurizr DSL, after which Structurizr CLI can validate,
+      export, or publish the resulting workspace.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/s0rg/decompose
+      - https://docs.structurizr.com/cli
+  - id: brew:docker-compose
+    reason: >
+      decompose can generate Compose-style YAML as an overview of an observed estate,
+      which can then be reviewed with Docker Compose while respecting decompose's
+      warning that the output may need repair before deployment.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/s0rg/decompose
+      - https://docs.docker.com/compose/
 tags:
   - cli
   - containers
