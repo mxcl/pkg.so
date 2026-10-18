@@ -45,6 +45,15 @@ history:
       optionally send results to a remote API, Telegram, Prometheus Pushgateway,
       webhook, or Discord. Its one-shot design makes it natural for cron jobs and small
       decentralized monitors.
+related-packages:
+  - id: brew:prometheus
+    reason: >
+      Use Prometheus alongside dish when dish's one-shot checks should push failure
+      metrics through Pushgateway for later scraping and time-series monitoring.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/thevxn/dish#readme
+      - https://prometheus.io/docs/instrumenting/pushing/
 category: networking
 package-manager:
   brew: dish
