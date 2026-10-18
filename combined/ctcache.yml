@@ -49,6 +49,23 @@ history:
       commonly through a `clang-tidy` shim earlier in `PATH`. Runtime behavior is
       configured with `CTCACHE_*` environment variables; there is no documented standard
       ctcache configuration file.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      LLVM supplies clang-tidy, the static analyzer that ctcache wraps and invokes
+      whenever a matching cached result is unavailable.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/matus-chochlik/ctcache
+      - https://clang.llvm.org/extra/clang-tidy/
+  - id: brew:redis
+    reason: >
+      ctcache officially supports Redis as a shared result backend, allowing multiple
+      clients to reuse cached clang-tidy outcomes through one Redis service.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/matus-chochlik/ctcache
+      - https://redis.io/docs/latest/
 category: developer-tools
 package-manager:
   brew: ctcache

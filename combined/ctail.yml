@@ -38,6 +38,16 @@ history:
       Users pass machine lists with -m and optionally a default log path with -f. The
       README examples show tailing /var/log/messages and web access logs across multiple
       hosts.
+related-packages:
+  - id: brew:openssh
+    reason: >
+      ctail explicitly relies on existing non-interactive SSH authentication to connect
+      to each target machine, so OpenSSH supplies the client, keys, agent, and host
+      configuration used by the workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/pquerna/ctail
+      - https://www.openssh.com/manual.html
 category: system
 package-manager:
   brew: ctail
