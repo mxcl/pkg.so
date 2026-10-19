@@ -70,6 +70,25 @@ history:
       eu-unstrip, or library usage through libelf, libdw, and libdebuginfod. debuginfod
       usage centers on configuring debug tools to query one or more HTTP servers for
       artifacts identified by build ID.
+related-packages:
+  - id: brew:gdb
+    reason: >
+      Use GDB with elfutils' debuginfod service when you need an interactive debugger
+      that can automatically retrieve missing ELF/DWARF debug information and source
+      files.
+    rel: adjacent_workflow
+    sources:
+      - https://sourceware.org/elfutils/Debuginfod.html
+      - https://sourceware.org/gdb/current/onlinedocs/gdb.html/Debuginfod-Settings.html
+  - id: brew:binutils
+    reason: >
+      Use GNU Binutils alongside elfutils for its broader assembler, linker, and
+      object-manipulation suite; its objdump and readelf can use elfutils' libdebuginfod
+      client.
+    rel: adjacent_workflow
+    sources:
+      - https://sourceware.org/elfutils/
+      - https://sourceware.org/binutils/docs/binutils/debuginfod.html
 category: developer-tools
 package-manager:
   apk: debuginfod
