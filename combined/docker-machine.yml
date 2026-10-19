@@ -73,6 +73,32 @@ history:
       environment variables, and docker-machine rm to remove a host. The tool also
       stores per-machine TLS material under ~/.docker/machine so the client can securely
       reach remote Docker daemons.
+related-packages:
+  - id: brew:rancher-machine
+    reason: >
+      Choose Rancher Machine when the same host-provisioning model is needed for Rancher
+      workflows; it is Rancher's downstream fork, while this package follows GitLab's
+      CI-focused fork.
+    rel: alternative
+    sources:
+      - https://github.com/rancher/machine#readme
+      - https://gitlab.com/gitlab-org/ci-cd/docker-machine/-/raw/main/README.md
+  - id: brew:docker-machine-driver-vmware
+    reason: >
+      Install this external driver with Docker Machine to provision local hosts through
+      VMware Fusion or Workstation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/machine-drivers/docker-machine-driver-vmware#readme
+      - https://gitlab.com/gitlab-org/ci-cd/docker-machine/-/raw/main/README.md
+  - id: brew:docker-machine-driver-vultr
+    reason: >
+      Install this provider driver with Docker Machine when hosts should be created and
+      managed in Vultr.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/vultr/docker-machine-driver-vultr#readme
+      - https://gitlab.com/gitlab-org/ci-cd/docker-machine/-/raw/main/README.md
 category: developer-tools
 package-manager:
   brew: docker-machine

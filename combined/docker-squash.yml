@@ -52,6 +52,17 @@ history:
       layers, tags the new image with --tag, writes an archive with --output-path, or
       controls whether the result is loaded back into Docker. The README examples
       compare docker history before and after squashing to show layer changes.
+related-packages:
+  - id: brew:docker-buildx
+    reason: >
+      Choose Docker Buildx with a multi-stage Dockerfile for new builds that should
+      exclude build-time artifacts up front; docker-squash instead rewrites the layers
+      of an existing image afterward.
+    rel: alternative
+    sources:
+      - https://github.com/goldmann/docker-squash#readme
+      - https://docs.docker.com/build/building/multi-stage/
+      - https://docs.docker.com/reference/cli/docker/buildx/
 category: developer-tools
 package-manager:
   brew: docker-squash

@@ -52,6 +52,23 @@ history:
       on PATH, provide a Vultr API key, and run a create command with the vultr driver.
       The documented options expose Vultr-specific server type, region, plan, OS, SSH
       key, networking, backups, firewall, tag, and startup-data controls.
+related-packages:
+  - id: brew:rancher-machine
+    reason: >
+      Upstream recommends Rancher Machine as the maintained host application for using
+      this driver in Rancher-oriented provisioning workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/vultr/docker-machine-driver-vultr#readme
+      - https://github.com/rancher/machine#readme
+  - id: brew:docker-machine
+    reason: >
+      The driver remains compatible with Docker Machine, which discovers it on PATH and
+      delegates Vultr host creation to it.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/vultr/docker-machine-driver-vultr#readme
+      - https://gitlab.com/gitlab-org/ci-cd/docker-machine/-/raw/main/README.md
 category: developer-tools
 package-manager:
   brew: docker-machine-driver-vultr
