@@ -56,6 +56,25 @@ history:
       Compose stacks, and optionally prune dangling images afterward. Configuration
       lives in dockcheck.config beside the script or under ~/.config, and notifications
       are driven by shell templates plus channel-specific environment variables.
+related-packages:
+  - id: brew:docker
+    reason: >
+      Dockcheck inspects and updates images belonging to Docker containers, so the
+      Docker CLI and engine provide the container and image operations on which its
+      workflow depends.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mag37/dockcheck#readme
+      - https://docs.docker.com/reference/cli/docker/
+  - id: brew:docker-compose
+    reason: >
+      Use Docker Compose with Dockcheck when updated services must be recreated from a
+      Compose definition; upstream explicitly recommends the Compose workflow over
+      merely restarting docker-run containers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mag37/dockcheck#readme
+      - https://docs.docker.com/compose/
 tags:
   - automation
   - cli

@@ -7,7 +7,9 @@ docs:
 config-file-location:
   unix:
     - ./agent.yaml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.config/cagent/.env
 history:
   adoption-history:
     - >
@@ -58,6 +60,15 @@ history:
       coding agents, operations and SRE tasks, multi-agent teams, filesystem and shell
       tools, MCP integrations, local models through Docker Model Runner, and pushing or
       pulling agents through OCI registries.
+related-packages:
+  - id: brew:docker
+    reason: >
+      Install Docker alongside Docker Agent when using it as the docker agent CLI plugin
+      or when agents need Docker-native container, registry, and local-model workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/ai/docker-agent/
+      - https://docs.docker.com/reference/cli/docker/
 tags:
   - ai
   - ai-agents
