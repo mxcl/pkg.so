@@ -49,6 +49,32 @@ history:
       systemd, or NSSM. Docuum listens to `docker system events`, keeps local usage
       timestamp state, and evicts images when total Docker image disk usage exceeds the
       configured threshold.
+related-packages:
+  - id: brew:docker
+    reason: >
+      Docker Engine is Docuum's required runtime and supplies the image store and event
+      stream that Docuum monitors and cleans.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/stepchowfun/docuum#requirements
+      - https://docs.docker.com/get-started/docker-overview/
+  - id: brew:docker-compose
+    reason: >
+      Use Docker Compose to run multi-container application stacks while Docuum controls
+      the accumulated Docker image footprint; upstream explicitly says the tools work
+      well together.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/stepchowfun/docuum#readme
+      - https://docs.docker.com/compose/
+  - id: brew:toast
+    reason: >
+      Toast runs containerized development and CI tasks and officially recommends Docuum
+      for evicting the Docker images those workflows accumulate.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/stepchowfun/docuum#readme
+      - https://github.com/stepchowfun/toast#readme
 tags:
   - cli
   - containers
