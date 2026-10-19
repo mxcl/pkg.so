@@ -80,6 +80,24 @@ history:
       For package users, dnsdist is the sharp DNS operations tool: install the package,
       write a small rules/config file, and get DNS-specific traffic control without
       composing a generic proxy with DNS scripts.
+related-packages:
+  - id: brew:pdns
+    reason: >
+      PowerDNS Authoritative Server is a natural downstream for dnsdist when an
+      authoritative deployment needs DNS-aware load balancing, health checks, and edge
+      policy.
+    rel: adjacent_workflow
+    sources:
+      - https://www.dnsdist.org/
+      - https://doc.powerdns.com/authoritative/
+  - id: brew:pdnsrec
+    reason: >
+      PowerDNS Recursor can provide recursive resolution behind dnsdist while dnsdist
+      handles client-facing distribution, protection, and encrypted-DNS traffic.
+    rel: adjacent_workflow
+    sources:
+      - https://www.dnsdist.org/
+      - https://docs.powerdns.com/recursor/
 tags:
   - cli
   - dns

@@ -75,6 +75,32 @@ history:
     - >
       Package users care that dnsmasq is small enough to run on embedded systems but
       standard enough to be scripted and supervised like any other Unix daemon.
+related-packages:
+  - id: brew:unbound
+    reason: >
+      Unbound is the stronger alternative when the primary requirement is a full
+      validating recursive DNS resolver rather than Dnsmasq's lightweight forwarding
+      plus integrated DHCP services.
+    rel: alternative
+    sources:
+      - https://thekelleys.org.uk/dnsmasq/doc.html
+      - https://unbound.docs.nlnetlabs.nl/en/latest/
+  - id: brew:bind
+    reason: >
+      BIND is a broader alternative for complex authoritative or recursive DNS service,
+      while Dnsmasq is optimized for lightweight small-network DNS and DHCP.
+    rel: alternative
+    sources:
+      - https://thekelleys.org.uk/dnsmasq/doc.html
+      - https://bind9.readthedocs.io/en/latest/
+  - id: brew:libvirt
+    reason: >
+      Libvirt starts dnsmasq instances to provide DNS and DHCP for managed virtual
+      networks, making the packages a documented virtualization-host workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.libvirt.org/Libvirtd_and_dnsmasq.html
+      - https://libvirt.org/formatnetwork.html
 category: networking
 package-manager:
   apk: dnsmasq
