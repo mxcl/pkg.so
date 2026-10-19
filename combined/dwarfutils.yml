@@ -93,6 +93,24 @@ history:
       Typical users are compiler and debugger implementers, build-system and
       distribution maintainers, binary-analysis developers, and anyone debugging
       problems in generated debug information.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      Choose LLVM when you want `llvm-dwarfdump` plus a full compiler-toolchain suite;
+      choose dwarfutils for the focused libdwarf library and its standalone `dwarfdump`
+      implementation.
+    rel: alternative
+    sources:
+      - https://llvm.org/docs/CommandGuide/llvm-dwarfdump.html
+      - https://www.prevanders.net/dwarf.html
+  - id: brew:binutils
+    reason: >
+      Choose GNU Binutils when DWARF inspection should be part of a broader ELF workflow
+      using `readelf`, `objdump`, and related binary utilities.
+    rel: alternative
+    sources:
+      - https://sourceware.org/binutils/docs/binutils/readelf.html
+      - https://www.prevanders.net/dwarf.html
 category: developer-tools
 package-manager:
   brew: dwarfutils

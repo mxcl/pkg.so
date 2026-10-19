@@ -75,6 +75,16 @@ history:
       artifact store than a writable filesystem. Its tuning knobs cover compression
       level, block size, categorization, worker counts, memory limits, duplicate segment
       search, and related compression-performance tradeoffs.
+related-packages:
+  - id: brew:squashfs
+    reason: >
+      Choose SquashFS for the established Linux compressed read-only filesystem
+      ecosystem; choose DwarFS when cross-file similarity and deduplication can
+      materially improve compression, accepting a newer format and tooling stack.
+    rel: alternative
+    sources:
+      - https://github.com/mhx/dwarfs#comparison-with-squashfs
+      - https://github.com/plougher/squashfs-tools
 category: system
 package-manager:
   brew: dwarfs
