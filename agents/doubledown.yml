@@ -70,6 +70,16 @@ history:
       Because it repeatedly connects to the server, the README explicitly requires SSH
       key pairs rather than password authentication. That makes it closer to a developer
       loop tool than a one-shot file transfer command.
+related-packages:
+  - id: brew:rsync
+    reason: >
+      Use rsync directly for scripted or one-shot incremental transfers; doubledown
+      itself invokes rsync for its initial download and upload before adding continuous
+      filesystem watching.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/devstructure/doubledown
+      - https://rsync.samba.org/
 tags:
   - cli
   - deployment
