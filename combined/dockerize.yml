@@ -67,6 +67,17 @@ history:
       checks, `-timeout` for fail-fast startup, and `-stdout` or `-stderr` log-tail
       targets. Templates use Go's `text/template` with environment access through
       `.Env`.
+related-packages:
+  - id: brew:wait4x
+    reason: >
+      Choose Wait4X when readiness checking is the main task and you need database,
+      broker, DNS, parallel, or inverted checks; choose dockerize when startup also
+      requires template rendering or file-log forwarding.
+    rel: alternative
+    sources:
+      - https://github.com/jwilder/dockerize#readme
+      - https://wait4x.dev/docs
+      - https://github.com/wait4x/wait4x#readme
 category: developer-tools
 package-manager:
   apk: dockerize

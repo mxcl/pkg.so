@@ -65,6 +65,24 @@ history:
       Dockerfile` to rewrite files, `dockerfmt -c Dockerfile` to check formatting, or
       pipe Dockerfiles through stdin. It can read EditorConfig properties such as
       `indent_size` and `insert_final_newline` when formatting files by path.
+related-packages:
+  - id: brew:hadolint
+    reason: >
+      Run dockerfmt for deterministic Dockerfile layout and Hadolint afterward for
+      Dockerfile best-practice rules and ShellCheck-backed analysis of `RUN`
+      instructions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/reteps/dockerfmt#readme
+      - https://github.com/hadolint/hadolint#readme
+  - id: brew:pre-commit
+    reason: >
+      dockerfmt publishes an official pre-commit hook, allowing formatting checks or
+      rewrites to run automatically before commits.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/reteps/dockerfmt#pre-commit
+      - https://pre-commit.com/
 category: developer-tools
 package-manager:
   brew: dockerfmt
