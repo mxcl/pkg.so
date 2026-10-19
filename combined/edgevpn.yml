@@ -66,6 +66,36 @@ history:
       Common uses include starting a VPN interface with per-node virtual addresses,
       exposing TCP services through the p2p network, sending files, and embedding
       EdgeVPN as a Go library.
+related-packages:
+  - id: brew:localai
+    reason: >
+      LocalAI directly embeds EdgeVPN as a library to create token-protected peer
+      networks for federated and distributed inference, making the two packages a
+      documented integrated workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mudler/edgevpn#readme
+      - https://localai.io/docs/features/distribute/index.print.html
+  - id: brew:tailscale
+    reason: >
+      Choose Tailscale when identity, access policies, automatic WireGuard key
+      management, and a centralized coordination plane are desirable; choose EdgeVPN for
+      shared-token, libp2p-based networking without a central server.
+    rel: alternative
+    sources:
+      - https://mudler.github.io/edgevpn/docs/
+      - https://mudler.github.io/edgevpn/docs/explanation/security-model/
+      - https://tailscale.com/docs/concepts/control-data-planes
+      - https://tailscale.com/docs/concepts/tailscale-identity
+  - id: brew:wireguard-tools
+    reason: >
+      Choose WireGuard Tools for a small, manually configured encrypted tunnel using
+      explicit peer keys and interfaces; choose EdgeVPN when automatic peer discovery,
+      shared-token membership, reverse proxying, or file transfer is needed.
+    rel: alternative
+    sources:
+      - https://mudler.github.io/edgevpn/docs/
+      - https://www.wireguard.com/quickstart/
 category: networking
 package-manager:
   brew: edgevpn

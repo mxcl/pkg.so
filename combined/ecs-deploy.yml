@@ -67,6 +67,16 @@ history:
       Configuration follows boto3 and AWS CLI conventions. The README points users to
       AWS credential configuration, `aws configure`, explicit access-key options, or
       named AWS profiles.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      Use AWS CLI to create the shared AWS profile and credentials that ecs-deploy
+      consumes, and keep it available for lower-level ECS operations outside
+      ecs-deploy's focused workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fabfuel/ecs-deploy#configuration
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 category: cloud-infrastructure
 package-manager:
   brew: ecs-deploy
