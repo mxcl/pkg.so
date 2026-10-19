@@ -4,7 +4,10 @@ homepage: https://ecl.common-lisp.dev
 repo: https://gitlab.com/embeddable-common-lisp/ecl
 docs:
   - https://ecl.common-lisp.dev/static/manual
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.ecl
+    - ~/.eclrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -97,6 +100,17 @@ history:
       C calling conventions, letting C and Lisp call each other without a separate
       foreign-function layer. That makes ECL especially relevant for applications that
       want Common Lisp as an extension language or as a compiled library component.
+related-packages:
+  - id: brew:sbcl
+    reason: >
+      Choose SBCL when the priority is a high-performance native Common Lisp compiler
+      and development environment; choose ECL when embedding Lisp in C or producing
+      linkable libraries is the central requirement.
+    rel: alternative
+    sources:
+      - https://www.sbcl.org/
+      - https://ecl.common-lisp.dev/static/manual/What-is-ECL.html
+      - https://ecl.common-lisp.dev/static/manual/System-building.html
 category: language-runtime
 package-manager:
   apk: ecl

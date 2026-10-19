@@ -87,6 +87,26 @@ history:
       Configuration is commonly supplied through a YAML file passed with --config
       config.yaml. Users tune EVM and test-generation parameters, select test modes,
       collect corpora, and integrate results into text, JSON, or CI workflows.
+related-packages:
+  - id: brew:crytic-compile
+    reason: >
+      Use crytic-compile to compile Foundry, Hardhat, Truffle, and other project layouts
+      into the contract metadata Echidna consumes; Echidna officially delegates
+      build-system support to it.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/crytic/echidna
+      - https://github.com/crytic/crytic-compile
+  - id: brew:slither-analyzer
+    reason: >
+      Run Slither before Echidna for fast static findings and to inspect the
+      Echidna-specific contract information when troubleshooting compilation or analysis
+      failures.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://github.com/crytic/building-secure-contracts/blob/master/program-analysis/echidna/frequently_asked_questions.md
+      - https://github.com/crytic/slither
 tags:
   - cli
   - ethereum

@@ -5,7 +5,8 @@ repo: https://github.com/brentp/echtvar
 docs:
   - https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkac931/6775383
   - https://github.com/brentp/echtvar#readme
-config-file-location: null
+config-file-location:
+  unix: conf.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -73,6 +74,16 @@ history:
     - >
       Encode configuration uses JSON5 to select and rename VCF fields, while annotation
       consumes decomposed and normalized VCF/BCF inputs and can stream from stdin.
+related-packages:
+  - id: brew:bcftools
+    reason: >
+      Use bcftools norm to split multiallelic records and normalize variants before
+      annotation, matching echtvar's documented requirement for decomposed and
+      normalized VCF or BCF input.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/brentp/echtvar
+      - https://samtools.github.io/bcftools/bcftools
 category: science
 package-manager:
   brew: echtvar
