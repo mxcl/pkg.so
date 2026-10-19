@@ -83,6 +83,23 @@ history:
       MS-DOS and Windows variants, FAT12/FAT16/FAT32 cluster handling, sparse-file test
       images, CHS geometry for SD cards, MBR helper behavior, and repair behavior for
       corrupt FAT tables.
+related-packages:
+  - id: brew:mtools
+    reason: >
+      Use mtools alongside dosfstools to copy, inspect, rename, and otherwise manipulate
+      files on FAT media or images without mounting them.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dosfstools/dosfstools
+      - https://www.gnu.org/software/mtools/
+  - id: brew:fatsort
+    reason: >
+      Use FATSort after creating or populating FAT media when hardware displays files in
+      raw directory-entry order and that ordering needs to be changed.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dosfstools/dosfstools
+      - https://fatsort.sourceforge.io/
 tags:
   - cli
   - dosfsck
