@@ -6,7 +6,11 @@ docs:
   - https://cofyc.github.io/dnscrypt-wrapper
   - https://github.com/cofyc/dnscrypt-wrapper
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ./secret.key
+    - ./1.key
+    - ./1.cert
 history:
   adoption-history:
     - >
@@ -57,6 +61,23 @@ history:
       expose a DNSCrypt endpoint. The package is therefore configured around server
       keys, certificates, provider names, listen addresses, and forwarding to the local
       resolver.
+related-packages:
+  - id: brew:dnscrypt-proxy
+    reason: >
+      dnscrypt-proxy is the documented client companion for connecting to and testing a
+      DNSCrypt endpoint published by dnscrypt-wrapper.
+    rel: adjacent_workflow
+    sources:
+      - https://cofyc.github.io/dnscrypt-wrapper/
+      - https://github.com/DNSCrypt/dnscrypt-proxy
+  - id: brew:unbound
+    reason: >
+      Unbound can provide the recursive resolving backend while dnscrypt-wrapper adds
+      the client-facing DNSCrypt transport and certificate layer.
+    rel: adjacent_workflow
+    sources:
+      - https://cofyc.github.io/dnscrypt-wrapper/
+      - https://nlnetlabs.nl/projects/unbound/about/
 category: networking
 package-manager:
   apk: dnscrypt-wrapper
