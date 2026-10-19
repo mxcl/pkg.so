@@ -54,6 +54,24 @@ history:
       use SQL-exposed version-control features for branching and merging table data. The
       README also documents imports from existing PostgreSQL databases with `pg_dump`
       and `psql`.
+related-packages:
+  - id: brew:dolt
+    reason: >
+      Choose Dolt when MySQL compatibility and its longer production history matter more
+      than PostgreSQL syntax and client compatibility.
+    rel: alternative
+    sources:
+      - https://www.dolthub.com/blog/2025-04-17-doltgres-over-dolt/
+      - https://github.com/dolthub/dolt#readme
+  - id: brew:doltlite
+    reason: >
+      Choose DoltLite for an embedded, SQLite-compatible, single-file versioned
+      database; choose Doltgres when applications need a PostgreSQL-compatible server
+      and client ecosystem.
+    rel: alternative
+    sources:
+      - https://github.com/dolthub/doltlite#readme
+      - https://github.com/dolthub/doltgresql#readme
 category: data
 package-manager:
   brew: doltgres

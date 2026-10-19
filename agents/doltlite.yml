@@ -5,7 +5,9 @@ docs:
   - https://github.com/dolthub/doltlite
   - https://github.com/dolthub/doltlite/tree/master/doc/doltlite
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.doltlite/creds
 history:
   adoption-history:
     - >
@@ -67,6 +69,33 @@ history:
     - >
       Its main niche is local-first or embedded software that needs auditable, mergeable
       structured data without operating a separate database server.
+related-packages:
+  - id: brew:sqlite
+    reason: >
+      Choose SQLite when maximum upstream compatibility, maturity, and conventional
+      embedded storage matter more than built-in branching, merging, history, and remote
+      synchronization.
+    rel: alternative
+    sources:
+      - https://github.com/dolthub/doltlite#readme
+      - https://www.sqlite.org/about.html
+  - id: brew:dolt
+    reason: >
+      Choose Dolt when a MySQL-compatible client/server database and Git-like
+      command-line repository workflow are preferable to DoltLite's embedded
+      SQLite-compatible model.
+    rel: alternative
+    sources:
+      - https://www.dolthub.com/blog/2026-04-27-why-doltlite/
+      - https://github.com/dolthub/dolt#readme
+  - id: brew:doltgres
+    reason: >
+      Choose Doltgres when PostgreSQL wire compatibility and server-based application
+      access are required instead of an embedded SQLite-compatible library.
+    rel: alternative
+    sources:
+      - https://github.com/dolthub/doltlite#readme
+      - https://github.com/dolthub/doltgresql#readme
 tags:
   - cli
   - embedded-database
