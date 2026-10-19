@@ -60,6 +60,23 @@ history:
       configuration. It is a package-manager-friendly way to put Envoy Gateway
       diagnostics and operator commands on a workstation without installing the whole
       project from source.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl manages the Kubernetes and Gateway API resources on which egctl operates,
+      while egctl adds Envoy Gateway-specific inspection and diagnostic commands.
+    rel: adjacent_workflow
+    sources:
+      - https://gateway.envoyproxy.io/latest/tasks/operations/egctl/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:envoy
+    reason: >
+      Envoy is the data-plane proxy whose generated configuration egctl can retrieve and
+      inspect through Envoy Gateway.
+    rel: adjacent_workflow
+    sources:
+      - https://gateway.envoyproxy.io/latest/tasks/operations/egctl/
+      - https://www.envoyproxy.io/docs/envoy/latest/
 tags:
   - cli
   - cloud-native
