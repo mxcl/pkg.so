@@ -54,6 +54,39 @@ history:
     - >
       Configuration can come from a config.yaml file or from LSP DidChangeConfiguration
       notifications, with documented Unix and Windows default paths.
+related-packages:
+  - id: brew:neovim
+    reason: >
+      Neovim's built-in LSP client can configure and launch efm-langserver directly,
+      including sending settings that make config.yaml optional.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mattn/efm-langserver
+      - https://neovim.io/doc/user/lsp.html
+  - id: brew:helix
+    reason: >
+      Helix can register efm-langserver for selected language features such as
+      diagnostics and formatting alongside language-specific servers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mattn/efm-langserver
+      - https://docs.helix-editor.com/languages.html
+  - id: brew:prettier
+    reason: >
+      efm-langserver's official configuration examples invoke Prettier as a formatting
+      backend for web-language files.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mattn/efm-langserver
+      - https://prettier.io/docs/
+  - id: brew:shellcheck
+    reason: >
+      efm-langserver's official example configuration uses ShellCheck as the diagnostic
+      backend for shell scripts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mattn/efm-langserver
+      - https://www.shellcheck.net/
 category: developer-tools
 package-manager:
   apk: efm-langserver
