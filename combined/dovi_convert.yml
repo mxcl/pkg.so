@@ -75,6 +75,39 @@ history:
       The project also ships Docker-oriented workflows with a web terminal, which
       matters for NAS and media-server environments where users may run conversion jobs
       next to their media storage.
+related-packages:
+  - id: brew:dovi_tool
+    reason: >
+      dovi_tool is a declared requirement that supplies the Dolby Vision metadata
+      operations used by dovi_convert.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cryptochrome/dovi_convert
+      - https://github.com/quietvoid/dovi_tool
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg is a declared dovi_convert requirement for the video-stream stages of its
+      conversion workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cryptochrome/dovi_convert
+      - https://ffmpeg.org/ffmpeg.html
+  - id: brew:mkvtoolnix
+    reason: >
+      MKVToolNix is a declared requirement for working with the MKV containers processed
+      by dovi_convert.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cryptochrome/dovi_convert
+      - https://mkvtoolnix.download/doc/
+  - id: cask:mediainfo
+    reason: >
+      MediaInfo is a declared requirement used alongside dovi_convert to inspect media
+      metadata and validate inputs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cryptochrome/dovi_convert
+      - https://mediaarea.net/en/MediaInfo
 category: media
 package-manager:
   brew: dovi_convert
