@@ -75,6 +75,32 @@ history:
       The README emphasizes no configuration file and no post-configuration; the secret
       key has a user-chosen path, so there is no stable credential-file location for
       metadata purposes.
+related-packages:
+  - id: brew:wireguard-tools
+    reason: >
+      Choose WireGuard for a modern UDP-based VPN with its established
+      interface-management tooling; choose DSVPN when TCP traversal and a much narrower
+      setup are the deciding requirements.
+    rel: alternative
+    sources:
+      - https://github.com/jedisct1/dsvpn#why
+      - https://www.wireguard.com/quickstart/
+  - id: brew:openvpn
+    reason: >
+      Choose OpenVPN when its mature, extensively configurable VPN platform is needed;
+      DSVPN is aimed at the smaller shared-key TCP-tunnel use case.
+    rel: alternative
+    sources:
+      - https://github.com/jedisct1/dsvpn#why
+      - https://openvpn.net/community-resources/
+  - id: brew:sshuttle
+    reason: >
+      Choose sshuttle when SSH access and transparent TCP proxying are sufficient; DSVPN
+      additionally carries non-TCP traffic through a full tunnel.
+    rel: alternative
+    sources:
+      - https://github.com/jedisct1/dsvpn#why
+      - https://sshuttle.readthedocs.io/
 category: networking
 package-manager:
   brew: dsvpn
