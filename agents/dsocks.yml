@@ -38,6 +38,32 @@ history:
       The documented examples wrap scp through an SSH dynamic tunnel, use Tor with a DNS
       proxy to avoid DNS leaks while browsing, and run ssh through Tor with
       dsocks-torify.sh.
+related-packages:
+  - id: brew:torsocks
+    reason: >
+      Choose torsocks for a Tor Project-maintained wrapper designed specifically to
+      force compatible Unix applications through Tor, with documented leak limitations
+      and broader modern packaging.
+    rel: alternative
+    sources:
+      - https://gitlab.torproject.org/tpo/core/torsocks#readme
+      - https://www.monkey.org/~dugsong/dsocks/
+  - id: brew:openssh
+    reason: >
+      OpenSSH's dynamic forwarding mode creates the local SOCKS proxy used by dsocks in
+      its documented remote-gateway workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://www.monkey.org/~dugsong/dsocks/
+      - https://www.openssh.com/manual.html
+  - id: brew:tor
+    reason: >
+      The Tor daemon provides the local SOCKS service used by dsocks' documented
+      anonymous SSH and browsing workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://www.monkey.org/~dugsong/dsocks/
+      - https://gitlab.torproject.org/tpo/core/tor/-/raw/main/README.md
 tags:
   - cli
   - dns-proxy

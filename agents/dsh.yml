@@ -72,6 +72,33 @@ history:
       commands such as `dsh -a -c -- uname -a` or `dsh -g group -c -- command`. The tool
       also supports limiting the number of simultaneous connections, hierarchical
       invocation, and NIS netgroups.
+related-packages:
+  - id: brew:pssh
+    reason: >
+      Choose PSSH when you want a maintained Python suite that parallels not only remote
+      commands but also scp, rsync, file collection, and process termination across a
+      host list.
+    rel: alternative
+    sources:
+      - https://github.com/lilydjwg/pssh#readme
+      - https://www.netfort.gr.jp/~dancer/software/dsh.html.en
+  - id: brew:parallel
+    reason: >
+      Choose GNU Parallel when remote SSH fan-out should be part of a broader
+      command-parallelization and shell-pipeline tool rather than a dedicated
+      distributed shell.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/parallel/parallel.html
+      - https://www.netfort.gr.jp/~dancer/software/dsh.html.en
+  - id: brew:openssh
+    reason: >
+      OpenSSH supplies the `ssh` remote-command transport that dsh is documented to
+      invoke across its configured machine lists.
+    rel: adjacent_workflow
+    sources:
+      - https://www.netfort.gr.jp/~dancer/software/dsh.html.en
+      - https://www.openssh.com/manual.html
 tags:
   - cli
   - cluster-management
@@ -106,9 +133,11 @@ provenance:
     - https://formulae.brew.sh/formula/dsh
   repo-sources:
     - >
-      The official project page links an authoritative source-download area but does not
-      identify an official HTTP(S) source-control repository.
-    - source_facts.repo is empty.
+      https://www.netfort.gr.jp/~dancer/software/downloads/ — official source archives;
+      not a source-control repository.
+    - >
+      https://www.netfort.gr.jp/~dancer/software/dsh.html.en — official page links
+      release downloads but no current official HTTP(S) source-control project page.
   tags-sources:
     - >
       source_facts.description and official homepage describe executing commands across
