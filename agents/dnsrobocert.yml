@@ -67,6 +67,36 @@ history:
       acme, profiles, and certificates sections. Profiles hold DNS provider credentials
       for Lexicon, certificates reference those profiles, and the service validates the
       file before issuing or renewing certificates.
+related-packages:
+  - id: brew:certbot
+    reason: >
+      Use Certbot directly when an official DNS plugin or web-server installer covers
+      the deployment and you prefer explicit ACME commands; DNSroboCert adds centralized
+      multi-certificate YAML orchestration, Lexicon providers, and service hooks around
+      Certbot.
+    rel: alternative
+    sources:
+      - https://github.com/adferrand/dnsrobocert
+      - https://certbot.eff.org/instructions?os=pip&ws=other
+  - id: brew:lego
+    reason: >
+      Choose lego for a standalone Go ACME client supporting DNS-01, HTTP-01,
+      TLS-ALPN-01, many DNS providers, and multiple ACME servers; choose DNSroboCert for
+      a long-running YAML-managed Certbot and Lexicon workflow.
+    rel: alternative
+    sources:
+      - https://go-acme.github.io/lego/
+      - https://adferrand.github.io/dnsrobocert/user_guide.html
+  - id: brew:lexicon
+    reason: >
+      Lexicon is DNSroboCert's documented provider abstraction, so its provider-specific
+      options and credentials determine how DNSroboCert creates and removes DNS-01 TXT
+      records.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/adferrand/dnsrobocert
+      - https://github.com/dns-lexicon/dns-lexicon
+      - https://adferrand.github.io/dnsrobocert/configuration_reference.html
 tags:
   - acme
   - automation

@@ -60,6 +60,16 @@ history:
       Users run dnstracer with a domain name and optional query type or starting server.
       It is useful for visualizing referrals, cached answers, authoritative answers,
       missing glue, lame servers, and PTR/SOA/MX tracing paths.
+related-packages:
+  - id: brew:bind
+    reason: >
+      BIND's dig +trace is the better-supported alternative for iterative delegation
+      tracing and also enables DNSSEC-oriented trace behavior, while dnstracer offers a
+      dedicated tree-style authority-chain view and lame-server detection.
+    rel: alternative
+    sources:
+      - https://www.mavetju.org/unix/dnstracer-man.php
+      - https://bind9.readthedocs.io/en/stable/manpages.html#dig-dns-lookup-utility
 category: networking
 package-manager:
   apk: dnstracer

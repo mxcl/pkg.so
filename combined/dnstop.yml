@@ -67,6 +67,25 @@ history:
       unknown TLD leakage, RFC1918 PTR leakage, REFUSED, SERVFAIL, NXDOMAIN, and other
       DNS patterns, then switch between live tables interactively or print top entries
       from a capture in non-interactive mode.
+related-packages:
+  - id: brew:wireshark
+    reason: >
+      Choose Wireshark when you need packet-by-packet DNS dissection, display filters,
+      and broader protocol analysis; choose dnstop for a compact terminal view of ranked
+      DNS traffic aggregates.
+    rel: alternative
+    sources:
+      - https://dns.measurement-factory.com/tools/dnstop/
+      - https://wiki.wireshark.org/DNS
+      - https://www.wireshark.org/docs/dfref/d/dns.html
+  - id: brew:tcpdump
+    reason: >
+      tcpdump can capture the traffic first and write a savefile that dnstop later reads
+      for DNS-focused aggregation and filtering.
+    rel: adjacent_workflow
+    sources:
+      - https://dns.measurement-factory.com/tools/dnstop/
+      - https://www.tcpdump.org/manpages/tcpdump.1.html
 category: networking
 package-manager:
   apk: dnstop
