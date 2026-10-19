@@ -37,8 +37,8 @@ history:
     - >
       The official DjView4 page describes it as a new portable DjVu viewer and browser
       plugin, entirely based on the public DjVuLibre API and written in portable Qt4 for
-      Qt/X11, Qt/Mac, and Qt/Windows. The page lists version 4.12 with a
-      2020-11-20 release date.
+      Qt/X11, Qt/Mac, and Qt/Windows. The page lists version 4.12 with a 2020-11-20
+      release date.
   related-projects:
     - >
       Related tools include DjVuLibre's command-line utilities such as ddjvu, djvused,
@@ -69,14 +69,31 @@ history:
     - >
       2001-10-11: Official djview4 man page carries an update date in the DjVuLibre
       documentation.
-    - >
-      2020-11-20: DjView4 4.12 released, as listed by the official DjView4 page.
+    - '2020-11-20: DjView4 4.12 released, as listed by the official DjView4 page.'
   usage:
     - >
       Users run `djview4 file.djvu` or open local and remote DjVu URLs. The official man
       page notes standalone viewing, browser-plugin slave-process behavior, command-line
       options, multi-page display, hidden-text search, thumbnail display, bundled or
       indirect multi-page saving, and export or print workflows.
+related-packages:
+  - id: brew:djvulibre
+    reason: >
+      DjView4 is built on the public DjVuLibre API and requires DjVuLibre, whose package
+      also supplies the command-line encoders, decoders, and document utilities used
+      around the viewer.
+    rel: adjacent_workflow
+    sources:
+      - https://djvu.sourceforge.net/djview4.html
+      - https://djvu.sourceforge.net/
+  - id: brew:evince
+    reason: >
+      Choose Evince when you want one GNOME document viewer for DjVu, PDF, PostScript,
+      DVI, XPS, and comic archives instead of a DjVu-focused viewer.
+    rel: alternative
+    sources:
+      - https://djvu.sourceforge.net/djview4.html
+      - https://help.gnome.org/users/evince/stable/formats.html
 tags:
   - browser-plugin
   - cli

@@ -42,6 +42,23 @@ history:
     - >
       Users install DjVuLibre and Ghostscript, then run the djvu2pdf executable to
       convert DjVu documents into PDFs for readers and document-processing pipelines.
+related-packages:
+  - id: brew:djvulibre
+    reason: >
+      djvu2pdf officially requires DjVuLibre's command-line tools to decode and process
+      the DjVu input before PDF generation.
+    rel: adjacent_workflow
+    sources:
+      - https://0x2a.at/site/projects/djvu2pdf
+      - https://djvu.sourceforge.net/doc/index.html
+  - id: brew:ghostscript
+    reason: >
+      djvu2pdf officially requires Ghostscript for the PDF/PostScript stage of its
+      conversion pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://0x2a.at/site/projects/djvu2pdf
+      - https://www.ghostscript.com/
 tags:
   - cli
   - converter
@@ -70,9 +87,8 @@ provenance:
     - source_facts.package-manager
   repo-sources:
     - >
-      The official project page offers release downloads but does not identify an
+      The official project page publishes source archives but does not identify an
       official HTTP(S) source-control repository.
-    - source_facts.repo is empty.
   tags-sources:
     - >
       Official page describes DjVu-to-PDF conversion and dependencies on
@@ -85,5 +101,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: medium
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high
