@@ -50,6 +50,25 @@ history:
       across a repository. Output formats include terminal text, compact text, JSON,
       GitHub annotations, and SARIF; teams can commit a root-level droast.toml for
       shared defaults and policy.
+related-packages:
+  - id: brew:hadolint
+    reason: >
+      Hadolint is the established Haskell-based Dockerfile linter with ShellCheck-backed
+      `RUN` analysis; droast is a Rust alternative that can import Hadolint policy or
+      emulate common Hadolint flags and rule identities.
+    rel: alternative
+    sources:
+      - https://github.com/immanuwell/dockerfile-roast#configuration
+      - https://github.com/hadolint/hadolint#readme
+  - id: brew:shellcheck
+    reason: >
+      Install ShellCheck alongside droast when shell-form `RUN` instructions and script
+      heredocs should receive `SC####` diagnostics through droast's documented optional
+      integration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/immanuwell/dockerfile-roast#configuration
+      - https://github.com/koalaman/shellcheck#readme
 category: developer-tools
 package-manager:
   brew: droast
