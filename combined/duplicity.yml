@@ -98,6 +98,35 @@ history:
       FIFOs, and device files, but the official site notes hard links are not supported.
       Administrators often wrap it in cron jobs, system scripts, duply profiles, or GUI
       frontends.
+related-packages:
+  - id: brew:duply
+    reason: >
+      Choose duply with duplicity when recurring jobs need named profiles, pre/post
+      scripts, verification, and retention batches; the duplicity project officially
+      identifies duply as its shell frontend.
+    rel: adjacent_workflow
+    sources:
+      - https://duplicity.us/
+      - https://duply.net/Main_Page
+  - id: brew:rdiff-backup
+    reason: >
+      Choose rdiff-backup instead when an ordinary browsable mirror of the latest backup
+      and reverse-difference history are preferable to duplicity's encrypted tar
+      volumes.
+    rel: alternative
+    sources:
+      - https://duplicity.us/
+      - https://rdiff-backup.net/
+  - id: brew:restic
+    reason: >
+      Choose restic instead for a snapshot repository built around content-defined
+      chunking, deduplication, authenticated encryption, and explicit integrity checking
+      rather than duplicity's tar-volume and librsync model.
+    rel: alternative
+    sources:
+      - https://duplicity.us/
+      - https://restic.readthedocs.io/en/stable/
+      - https://restic.net/
 category: system
 package-manager:
   apk: duplicity

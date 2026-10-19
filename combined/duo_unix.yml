@@ -91,6 +91,16 @@ history:
     - >
       `login_duo` can also protect command execution without PAM. The README shows a
       test invocation that runs a command only after successful Duo authentication.
+related-packages:
+  - id: brew:openssh
+    reason: >
+      OpenSSH is Duo Unix's principal documented integration target: `pam_duo` adds Duo
+      authentication to sshd after PAM and keyboard-interactive authentication are
+      enabled.
+    rel: adjacent_workflow
+    sources:
+      - https://duo.com/docs/duounix
+      - https://www.openssh.com/manual.html
 category: security
 package-manager:
   apk: duo_unix
