@@ -49,6 +49,16 @@ history:
       install path with -p. The tool walks otool -L dependencies, copies libraries,
       changes install names, and prepares the executable and bundled libraries for
       distribution.
+related-packages:
+  - id: brew:cmake
+    reason: >
+      Choose CMake BundleUtilities when dependency collection and bundle fixups should
+      run inside a CMake installation script; choose dylibbundler for a focused
+      standalone post-build command.
+    rel: alternative
+    sources:
+      - https://github.com/auriamg/macdylibbundler
+      - https://cmake.org/cmake/help/latest/module/BundleUtilities.html
 tags:
   - bundling
   - cli
