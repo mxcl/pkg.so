@@ -8,7 +8,9 @@ docs:
 config-file-location:
   unix:
     - elvis.config
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - elvis.config
 history:
   adoption-history:
     - >
@@ -51,6 +53,16 @@ history:
     - >
       Users run elvis commands such as rock, git-branch, and git-hook. By default elvis
       looks for elvis.config, while the --config option allows a different path.
+related-packages:
+  - id: brew:rebar3
+    reason: >
+      Use rebar3 with the documented rebar3_lint plugin when you want Elvis rules
+      exposed as the normal rebar3 lint task inside an Erlang application.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/project-fifo/rebar3_lint#readme
+      - https://github.com/inaka/elvis_core#readme
+      - https://rebar3.org/docs/
 tags:
   - cli
   - erlang

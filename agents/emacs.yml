@@ -12,7 +12,11 @@ config-file-location:
     - ~/.config/emacs/init.el
     - ~/.emacs.d/early-init.el
     - ~/.config/emacs/early-init.el
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.authinfo.gpg
+    - ~/.authinfo
+    - ~/.netrc
 history:
   adoption-history:
     - >
@@ -100,6 +104,27 @@ history:
       control, mail, notes, and literate configuration. Its significance is not one
       workflow but the fact that many workflows can be implemented in Emacs Lisp and
       loaded into the same editor.
+related-packages:
+  - id: brew:neovim
+    reason: >
+      Choose Neovim when you want modal Vim-style editing with Lua configuration,
+      built-in language-server support, and an API-oriented editor platform instead of
+      Emacs Lisp workflows.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/emacs/
+      - https://neovim.io/
+      - https://neovim.io/doc/
+  - id: brew:vim
+    reason: >
+      Choose Vim when you want a vi-compatible modal editor with a smaller,
+      terminal-centered workflow rather than Emacs's Lisp-programmable application
+      environment.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/emacs/
+      - https://www.vim.org/
+      - https://www.vim.org/docs.php
 tags:
   - cli
   - emacs-lisp
