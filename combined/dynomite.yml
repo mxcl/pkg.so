@@ -61,6 +61,26 @@ history:
       specifying datacenter, rack, tokens, seeds, listen addresses, datastore protocol,
       server pools, gossip, encryption scope, and statistics settings. The package also
       includes hash and test helper tools.
+related-packages:
+  - id: brew:redis
+    reason: >
+      Run Redis beside Dynomite when you need Redis data structures and protocol
+      compatibility with Dynomite-provided peer-to-peer replication and multi-datacenter
+      availability.
+    rel: adjacent_workflow
+    sources:
+      - https://netflix.github.io/dynomite/4.0%20Getting-Started/
+      - https://netflix.github.io/dynomite/2.0%20Architecture/
+      - https://redis.io/docs/latest/
+  - id: brew:memcached
+    reason: >
+      Run Memcached as Dynomite's local datastore when a cache-oriented Memcached
+      protocol is preferable to Redis data structures.
+    rel: adjacent_workflow
+    sources:
+      - https://netflix.github.io/dynomite/4.0%20Getting-Started/
+      - https://netflix.github.io/dynomite/7.0%20FAQ/
+      - https://docs.memcached.org/
 category: data
 package-manager:
   brew: dynomite

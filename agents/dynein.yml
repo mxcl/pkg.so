@@ -57,6 +57,16 @@ history:
       commands, and DynamoDB Local workflows. The README states that dynein stores local
       config under `$HOME/.dynein/` and uses AWS credential sources such as
       `~/.aws/credentials`, environment variables, profiles, and instance roles.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      AWS CLI configures and verifies the same AWS credential environment that dynein
+      uses, and dynein's official README recommends testing it with `aws dynamodb
+      list-tables`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/awslabs/dynein#readme
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 tags:
   - aws
   - cli
