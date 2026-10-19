@@ -6,7 +6,8 @@ docs:
   - https://easyengine.io/docs
   - https://easyengine.io/cli/handbook
   - https://easyengine.io/commands
-config-file-location: null
+config-file-location:
+  linux: /opt/easyengine/config/config.yml
 credentials-file-location: null
 history:
   adoption-history:
@@ -58,6 +59,24 @@ history:
       The README's first examples create WordPress sites, cached WordPress sites,
       multisite installs, plain HTML sites, and interactive shells. The documented
       command set is explicitly server-management oriented and expects root privileges.
+related-packages:
+  - id: brew:wp-cli
+    reason: >
+      EasyEngine provisions and operates the WordPress hosting environment, while WP-CLI
+      handles application-level WordPress administration and also supplies EasyEngine's
+      underlying command framework.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/EasyEngine/easyengine#development
+      - https://wp-cli.org/
+  - id: brew:docker-compose
+    reason: >
+      EasyEngine uses Docker Compose to define and run the multi-container services
+      behind its managed sites.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/EasyEngine/easyengine#requirements
+      - https://docs.docker.com/compose/
 category: cloud-infrastructure
 package-manager:
   brew: easyengine

@@ -10,7 +10,9 @@ config-file-location:
   unix:
     - pki/vars
     - vars
-credentials-file-location: null
+credentials-file-location:
+  unix: ${EASYRSA_PKI}/private/
+  windows: <PKI directory>\private\
 history:
   adoption-history:
     - >
@@ -101,6 +103,24 @@ history:
       certificates, private keys, serial numbers, issued certificates, request files,
       and revocation data. That makes the package easy to understand and easy to back
       up, but also puts responsibility for private-key handling on the administrator.
+related-packages:
+  - id: brew:openvpn
+    reason: >
+      Use Easy-RSA to create the CA and endpoint certificates needed by
+      certificate-authenticated OpenVPN deployments.
+    rel: adjacent_workflow
+    sources:
+      - https://openvpn.net/community-docs/how-to.html
+      - https://easy-rsa.readthedocs.io/en/latest/
+  - id: brew:openssl@3
+    reason: >
+      OpenSSL supplies the cryptographic operations Easy-RSA orchestrates and is the
+      more direct tool when you need low-level key, request, or certificate commands
+      rather than an opinionated CA workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://easy-rsa.readthedocs.io/en/latest/
+      - https://docs.openssl.org/3.0/man1/openssl/
 category: security
 package-manager:
   apk: easy-rsa
