@@ -3,7 +3,11 @@ display-name: Dust
 repo: null
 docs:
   - https://github.com/bootandy/dust#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/dust/config.toml
+    - ~/.config/dust/config.toml
+    - ~/.dust.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -59,6 +63,31 @@ history:
       apparent size, directories-only or files-only views, filesystem boundaries, JSON
       output, and collapsed directories. The README documents config through
       `~/.config/dust/config.toml` or `~/.dust.toml` for persistent defaults.
+related-packages:
+  - id: brew:ncdu
+    reason: >
+      Choose ncdu when you want an interactive terminal browser with navigation and
+      deletion instead of Dust's immediate non-interactive summary.
+    rel: alternative
+    sources:
+      - https://github.com/bootandy/dust#alternatives
+      - https://dev.yorhel.nl/ncdu
+  - id: brew:dua-cli
+    reason: >
+      Choose dua-cli when fast parallel scanning should be paired with an interactive
+      terminal mode for exploring and deleting unwanted data.
+    rel: alternative
+    sources:
+      - https://github.com/bootandy/dust#alternatives
+      - https://github.com/Byron/dua-cli#readme
+  - id: brew:dutree
+    reason: >
+      Choose dutree for a simpler colored filesystem tree with explicit aggregation,
+      depth, and comparison controls.
+    rel: alternative
+    sources:
+      - https://github.com/bootandy/dust#alternatives
+      - https://github.com/nachoparker/dutree#readme
 tags:
   - cli
   - disk-usage

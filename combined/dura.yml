@@ -4,7 +4,8 @@ homepage: https://github.com/tkellogg/dura
 repo: https://github.com/tkellogg/dura
 docs:
   - https://github.com/tkellogg/dura#readme
-config-file-location: null
+config-file-location:
+  unix: ~/.config/dura/config.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -61,6 +62,15 @@ history:
       Typical use is `dura serve` in the background, then `dura watch` inside each Git
       repository to snapshot. Recovery is performed through normal Git inspection and
       checkout/reset operations against the generated `dura/<commit>` branches.
+related-packages:
+  - id: brew:tig
+    reason: >
+      Use Tig to browse Dura's generated branches and locate a recovery commit, a
+      workflow explicitly suggested by Dura's recovery instructions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tkellogg/dura#how-to-recover
+      - https://jonas.github.io/tig/
 category: developer-tools
 package-manager:
   brew: dura
