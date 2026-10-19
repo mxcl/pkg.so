@@ -61,6 +61,23 @@ history:
       regenerate output and notify a service with a signal or command. It also supports
       config files with multiple template directives and Docker connection settings
       through flags or Docker environment variables.
+related-packages:
+  - id: brew:nginx
+    reason: >
+      docker-gen can render nginx virtual-host configuration from container metadata and
+      signal nginx to reload whenever that metadata changes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nginx-proxy/docker-gen#nginx-reverse-proxy-config
+      - https://github.com/nginx-proxy/nginx-proxy/blob/main/docs/README.md
+  - id: brew:docker-engine
+    reason: >
+      docker-gen connects to the Docker API and watches Engine container events as the
+      source data for its templates.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nginx-proxy/docker-gen#usage
+      - https://docs.docker.com/engine/
 tags:
   - automation
   - cli

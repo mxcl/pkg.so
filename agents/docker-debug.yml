@@ -56,6 +56,23 @@ history:
       separate debug container, joins the target container's namespaces, mounts the
       target filesystem, runs the requested command, and then cleans up after the debug
       container exits.
+related-packages:
+  - id: brew:docker-engine
+    reason: >
+      docker-debug uses the Docker Engine API and requires a running target container
+      whose namespaces it can join.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/zeromake/docker-debug#details
+      - https://docs.docker.com/engine/
+  - id: brew:docker
+    reason: >
+      The Docker CLI complements docker-debug for locating, starting, and inspecting the
+      containers that docker-debug subsequently attaches a toolbox container to.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/zeromake/docker-debug#quick-start
+      - https://docs.docker.com/reference/cli/docker/container/
 tags:
   - attach
   - cli

@@ -97,6 +97,55 @@ history:
       Common package-level usage includes installing dockerd as a service, configuring
       daemon.json for hosts, storage, logging, proxies, or rootless mode, and keeping
       Engine aligned with containerd, runc, BuildKit, and Docker CLI versions.
+related-packages:
+  - id: brew:docker
+    reason: >
+      Install the Docker CLI to issue commands to the dockerd daemon and consume the
+      Engine API from the command line.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/engine/
+      - https://docs.docker.com/reference/cli/docker/
+  - id: brew:docker-compose
+    reason: >
+      Docker Compose uses Docker Engine to create and coordinate the multi-container
+      applications declared in Compose files.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/compose/
+      - https://docs.docker.com/compose/intro/features-uses/
+  - id: brew:docker-buildx
+    reason: >
+      Buildx is Docker's CLI plugin for advanced builds and drives BuildKit-backed build
+      workflows against Docker Engine builders.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/build/concepts/overview/
+      - https://github.com/moby/moby/blob/master/ROADMAP.md
+  - id: brew:containerd
+    reason: >
+      Docker Engine delegates container lifecycle and image-store responsibilities to
+      containerd, making it a lower-level component of the Engine runtime stack.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/engine/daemon/embedded-containerd/
+      - https://github.com/moby/moby/blob/master/ROADMAP.md
+  - id: brew:buildkit
+    reason: >
+      BuildKit is the build backend integrated into Docker Engine and is the preferred
+      component for modern Dockerfile builds.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/build/buildkit/
+      - https://github.com/moby/moby/blob/master/ROADMAP.md
+  - id: brew:rootlesskit
+    reason: >
+      RootlessKit supplies the user-namespace, networking, and port-forwarding
+      foundation used when Docker Engine runs in rootless mode.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/engine/security/rootless/
+      - https://github.com/rootless-containers/rootlesskit#readme
 category: developer-tools
 package-manager:
   apk: docker-engine

@@ -62,6 +62,24 @@ history:
       editor. The server provides Dockerfile, Compose, and Bake language features, with
       optional initialization settings for telemetry, Compose support, Dockerfile
       diagnostic overlap handling, and experimental Bake code-lens capabilities.
+related-packages:
+  - id: brew:docker-buildx
+    reason: >
+      Install Buildx to enable the language server's Buildx-dependent Dockerfile linting
+      and Bake-related features.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/docker/docker-language-server#requirements
+      - https://docs.docker.com/build/architecture/
+  - id: brew:dockerfile-language-server
+    reason: >
+      Choose Dockerfile Language Server when you need a narrower Dockerfile-only LSP;
+      Docker Language Server covers Dockerfile, Compose, and Bake and explicitly
+      provides an option to suppress diagnostics duplicated by this server.
+    rel: alternative
+    sources:
+      - https://github.com/docker/docker-language-server#language-server-configuration
+      - https://github.com/rcjsuen/dockerfile-language-server#readme
 tags:
   - cli
   - compose
