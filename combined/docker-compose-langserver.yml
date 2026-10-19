@@ -55,6 +55,27 @@ history:
       especially Compose file version 3 style documents. It supplies YAML-aware editing
       assistance rather than running containers itself, and the README notes that VS
       Code-specific telemetry events can be ignored by non-VS Code clients.
+related-packages:
+  - id: brew:docker-language-server
+    reason: >
+      Choose Docker Language Server for a broader official Docker editor backend
+      covering Compose, Dockerfiles, and Bake files; choose Compose Language Service
+      when Microsoft's Compose-focused implementation or Container Tools integration is
+      required.
+    rel: alternative
+    sources:
+      - https://github.com/docker/docker-language-server#readme
+      - >
+        https://github.com/microsoft/vscode-containers/tree/main/packages/compose-language-service
+  - id: brew:docker-compose
+    reason: >
+      Install Docker Compose to execute and inspect the multi-container application
+      definitions that the language service helps users author.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://github.com/microsoft/vscode-containers/tree/main/packages/compose-language-service
+      - https://docs.docker.com/compose/
 category: developer-tools
 package-manager:
   brew: docker-compose-langserver

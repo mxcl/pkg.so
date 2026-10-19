@@ -71,6 +71,33 @@ history:
       streaming logs, and running one-off commands, making Compose common in local
       development, test environments, staging, simple production deployments, and CI
       workflows.
+related-packages:
+  - id: brew:docker-buildx
+    reason: >
+      Use Docker Buildx with Compose when Compose-defined service builds need Bake,
+      multi-platform output, shared cache, or other advanced BuildKit controls.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/build/bake/compose-file/
+      - https://docs.docker.com/guides/compose-bake/
+  - id: brew:docker-compose-langserver
+    reason: >
+      Use the Compose Language Service while authoring Compose YAML to add completion,
+      diagnostics, formatting, signatures, and hover information in an LSP-capable
+      editor.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://github.com/microsoft/vscode-containers/tree/main/packages/compose-language-service
+      - https://docs.docker.com/reference/compose-file/
+  - id: brew:podman-compose
+    reason: >
+      Choose podman-compose when you want a Compose-style multi-container workflow
+      backed by daemonless, rootless-oriented Podman rather than Docker.
+    rel: alternative
+    sources:
+      - https://github.com/containers/podman-compose#readme
+      - https://docs.docker.com/compose/
 category: developer-tools
 package-manager:
   brew: docker-compose

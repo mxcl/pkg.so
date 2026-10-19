@@ -60,6 +60,23 @@ history:
       inspection and manipulation, and docker buildx prune or du for build cache
       maintenance. It is especially common in CI pipelines that publish
       multi-architecture container images.
+related-packages:
+  - id: brew:docker-compose
+    reason: >
+      Use Docker Compose with Buildx when service build definitions in a Compose file
+      should also drive BuildKit builds through Bake.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.docker.com/build/bake/compose-file/
+      - https://docs.docker.com/compose/
+  - id: brew:docker-language-server
+    reason: >
+      Use Docker Language Server while authoring Dockerfiles, Compose files, and Bake
+      files; its Dockerfile linting features explicitly rely on Buildx and BuildKit.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/docker/docker-language-server#readme
+      - https://github.com/docker/buildx#readme
 category: developer-tools
 package-manager:
   brew: docker-buildx
