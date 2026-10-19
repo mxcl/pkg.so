@@ -67,6 +67,25 @@ history:
       JSON output, shell completion, multiple authentication contexts, and resource
       commands such as droplet listing, domain record creation, registry login, and
       Kubernetes configuration.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl after doctl saves a DigitalOcean Kubernetes kubeconfig; DigitalOcean
+      documents the two tools as the standard workflow for connecting to and
+      administering a cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:s3cmd
+    reason: >
+      Use s3cmd alongside doctl when managing DigitalOcean Spaces objects because doctl
+      manages Spaces keys but DigitalOcean directs object uploads, downloads, and bucket
+      operations to S3-compatible clients.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.digitalocean.com/reference/doctl/
+      - https://docs.digitalocean.com/products/spaces/reference/s3cmd-usage/
 tags:
   - api-client
   - cli
