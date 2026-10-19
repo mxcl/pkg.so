@@ -75,6 +75,25 @@ history:
       scaling or draining node groups, updating clusters, configuring endpoint access,
       managing add-on policies, and inspecting the CloudFormation stacks that back a
       cluster.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      eksctl writes kubeconfig for the clusters it creates, after which kubectl is the
+      standard client for inspecting resources and performing day-to-day Kubernetes
+      operations.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.aws.amazon.com/eks/latest/eksctl/creating-and-managing-clusters.html
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:awscli
+    reason: >
+      AWS documents configuring the AWS CLI and verifying the active identity as
+      prerequisites for eksctl, and both tools use the same AWS profile and credential
+      environment.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.aws.amazon.com/eks/latest/eksctl/tutorial.html
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 category: cloud-infrastructure
 package-manager:
   brew: eksctl
