@@ -6,8 +6,13 @@ docs:
   - https://kevin-hanselman.github.io/dud
   - https://kevin-hanselman.github.io/dud/cli/dud
   - https://kevin-hanselman.github.io/dud/getting_started
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - .dud/config.yaml
+    - $XDG_CONFIG_HOME/dud/config.yaml
+    - ~/.config/dud/config.yaml
+credentials-file-location:
+  unix: .dud/rclone.conf
 history:
   adoption-history:
     - >
@@ -57,6 +62,24 @@ history:
       store small stage metadata in source control, and fetch or push cached data as
       needed. The tool is aimed at teams that want data reproducibility without
       experiment tracking or automatic cache mutation.
+related-packages:
+  - id: brew:dvc
+    reason: >
+      Choose DVC when you want a broader, batteries-included machine-learning workflow
+      with experiment and metric management; choose Dud for a smaller tool focused on
+      explicit data versioning and reproduction.
+    rel: alternative
+    sources:
+      - https://kevin-hanselman.github.io/dud/#concrete-differences-with-dvc
+      - https://dvc.org/doc
+  - id: brew:rclone
+    reason: >
+      Dud invokes rclone for fetch and push operations and exposes a project-specific
+      rclone configuration for defining the remote cache.
+    rel: adjacent_workflow
+    sources:
+      - https://kevin-hanselman.github.io/dud/getting_started/
+      - https://rclone.org/docs/
 category: data
 package-manager:
   brew: dud
