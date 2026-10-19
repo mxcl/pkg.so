@@ -45,6 +45,25 @@ history:
       usually with `.emmyrc.json` or `.luarc.json` in the project root. Companion
       commands such as `emmylua_check`, `emmylua_formatter`, and `emmylua_doc_cli` cover
       CI-oriented analysis, formatting, and documentation generation.
+related-packages:
+  - id: brew:lua-language-server
+    reason: >
+      Choose Lua Language Server for its mature dedicated documentation and Lua-native
+      implementation; EmmyLua Language Server is a Rust-based alternative that can read
+      `.luarc.json` during migration.
+    rel: alternative
+    sources:
+      - https://github.com/EmmyLuaLs/emmylua-analyzer-rust#readme
+      - https://github.com/LuaLS/lua-language-server
+      - https://luals.github.io/wiki/configuration/
+  - id: brew:neovim
+    reason: >
+      EmmyLua documents a concrete Neovim LSP configuration that launches `emmylua_ls`
+      and recognizes its project configuration files as workspace roots.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/EmmyLuaLs/emmylua-analyzer-rust#readme
+      - https://neovim.io/doc/user/lsp.html
 tags:
   - cli
   - language-server
