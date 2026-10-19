@@ -48,6 +48,25 @@ history:
       Users run elf2uf2-rs to convert firmware to UF2 files or deploy ELF output
       directly to a connected board. The README also documents adding a runner command
       to .cargo/config.toml so cargo run can flash a microcontroller.
+related-packages:
+  - id: brew:picotool
+    reason: >
+      Choose Raspberry Pi's picotool for first-party RP2040/RP2350 ELF and UF2 handling
+      plus richer device inspection, verification, reboot, partition, and security
+      operations.
+    rel: alternative
+    sources:
+      - https://github.com/JoNil/elf2uf2-rs#readme
+      - https://github.com/raspberrypi/picotool#readme
+  - id: brew:probe-rs-tools
+    reason: >
+      Choose probe-rs Tools when firmware should be flashed and debugged through a
+      hardware debug probe with RTT or defmt logging rather than through a UF2 USB
+      bootloader.
+    rel: alternative
+    sources:
+      - https://github.com/JoNil/elf2uf2-rs#readme
+      - https://probe.rs/docs/tools/probe-rs/
 tags:
   - cli
   - elf

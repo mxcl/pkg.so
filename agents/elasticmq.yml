@@ -3,7 +3,9 @@ display-name: ElasticMQ
 repo: null
 docs:
   - https://github.com/softwaremill/elasticmq#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - elasticmq.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -36,6 +38,24 @@ history:
     - >
       Point an AWS SDK at its local endpoint. Consumers should tolerate duplicate
       delivery and respect visibility timeouts.
+related-packages:
+  - id: brew:localstack
+    reason: >
+      Choose LocalStack when tests need SQS together with a broader set of locally
+      emulated AWS services and AWS CLI or infrastructure-as-code workflows.
+    rel: alternative
+    sources:
+      - https://github.com/softwaremill/elasticmq#readme
+      - https://docs.localstack.cloud/aws/services/sqs/
+  - id: brew:moto
+    reason: >
+      Choose Moto when Python tests benefit from in-process AWS mocks, or when a
+      standalone mock server covering SQS and other AWS APIs is preferable.
+    rel: alternative
+    sources:
+      - https://github.com/softwaremill/elasticmq#readme
+      - https://docs.getmoto.org/en/latest/docs/getting_started.html
+      - https://docs.getmoto.org/en/latest/docs/services/sqs.html
 tags:
   - amazon-sqs
   - cli
