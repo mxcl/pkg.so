@@ -4,7 +4,11 @@ repo: null
 docs:
   - https://learn.microsoft.com/en-us/dotnet
   - https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-8/overview
-config-file-location: null
+config-file-location:
+  unix:
+    - <working-directory-or-ancestor>/global.json
+  windows:
+    - <working-directory-or-ancestor>/global.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -51,6 +55,31 @@ history:
       targeting net8.0, ASP.NET Core 8, EF Core 8, and related SDK workloads. The CLI
       behavior is the standard `dotnet` workflow, with SDK selection typically
       controlled by project target frameworks or global.json.
+related-packages:
+  - id: brew:dotnet
+    reason: >
+      Choose the unversioned formula when the project can follow Homebrew's current .NET
+      SDK line instead of remaining on .NET 8.
+    rel: alternative
+    sources:
+      - https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
+      - https://github.com/dotnet/core/blob/main/releases.md
+  - id: brew:dotnet@9
+    reason: >
+      Choose .NET 9 when the application specifically targets that newer Standard Term
+      Support generation rather than the .NET 8 LTS APIs and toolchain.
+    rel: alternative
+    sources:
+      - https://github.com/dotnet/core/blob/main/release-notes/8.0/README.md
+      - https://github.com/dotnet/core/blob/main/release-notes/9.0/README.md
+  - id: brew:nuget
+    reason: >
+      Use the standalone NuGet client for dedicated package publication and repository
+      operations around dependencies consumed by .NET 8 projects.
+    rel: adjacent_workflow
+    sources:
+      - https://learn.microsoft.com/en-us/nuget/what-is-nuget
+      - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet
 tags:
   - cli
   - csharp

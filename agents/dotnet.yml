@@ -4,7 +4,11 @@ repo: null
 docs:
   - https://learn.microsoft.com/dotnet
   - https://learn.microsoft.com/dotnet/core/tools
-config-file-location: null
+config-file-location:
+  unix:
+    - <working-directory-or-ancestor>/global.json
+  windows:
+    - <working-directory-or-ancestor>/global.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,6 +67,31 @@ history:
       run, test, publish, manage workloads, and select SDK behavior through project
       files and global.json. It is both a language-runtime package and a build tool
       package.
+related-packages:
+  - id: brew:dotnet@8
+    reason: >
+      Choose the versioned .NET 8 formula when a project must remain on the .NET 8 SDK
+      and target-framework generation instead of following the current unversioned line.
+    rel: alternative
+    sources:
+      - https://github.com/dotnet/core/blob/main/release-notes/8.0/README.md
+      - https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
+  - id: brew:dotnet@9
+    reason: >
+      Choose the versioned .NET 9 formula when builds or CI still require that major SDK
+      line rather than Homebrew's moving current line.
+    rel: alternative
+    sources:
+      - https://github.com/dotnet/core/blob/main/release-notes/9.0/README.md
+      - https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
+  - id: brew:nuget
+    reason: >
+      Use the standalone NuGet client for dedicated package creation, publication, and
+      repository operations around the NuGet dependencies consumed by .NET projects.
+    rel: adjacent_workflow
+    sources:
+      - https://learn.microsoft.com/en-us/nuget/what-is-nuget
+      - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet
 tags:
   - cli
   - csharp
