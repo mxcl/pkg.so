@@ -15,7 +15,11 @@ config-file-location:
     - ~/.config/dtop/config.yml
     - ~/.dtop.yaml
     - ~/.dtop.yml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - $DOCKER_CERT_PATH/key.pem
+    - $DOCKER_CERT_PATH/cert.pem
+    - $DOCKER_CERT_PATH/ca.pem
 history:
   adoption-history:
     - >
@@ -59,6 +63,16 @@ history:
       A typical user runs `dtop` against the local Docker daemon or passes one or more
       `--host` values for remote hosts. The optional YAML config lets users persist
       hosts, Dozzle URLs, filters, icon mode, and display preferences.
+related-packages:
+  - id: brew:ctop
+    reason: >
+      Choose ctop for its established single-host, top-like container view; choose dtop
+      when one dashboard must combine multiple local or remote Docker hosts and
+      integrate with Dozzle.
+    rel: alternative
+    sources:
+      - https://github.com/amir20/dtop#readme
+      - https://bcicen.github.io/ctop/
 category: cloud-infrastructure
 package-manager:
   brew: dtop
