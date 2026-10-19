@@ -78,6 +78,32 @@ history:
       Its outputs cover the practical documentation formats that made DocBook popular:
       chunked HTML, single-page HTML, XSL-FO for print/PDF, man pages, EPUB, and
       help-system formats.
+related-packages:
+  - id: brew:libxslt
+    reason: >
+      Use libxslt's `xsltproc` to execute the DocBook XSLT stylesheets and transform
+      DocBook XML into HTML, XSL-FO, or other supported outputs.
+    rel: adjacent_workflow
+    sources:
+      - https://docbook.org/stylesheets/
+      - https://gnome.pages.gitlab.gnome.org/libxslt/devhelp/
+  - id: brew:xmlto
+    reason: >
+      Use xmlto as a higher-level command-line frontend that selects DocBook
+      transformations and invokes backends such as xsltproc, FOP, or dblatex for the
+      requested output format.
+    rel: adjacent_workflow
+    sources:
+      - https://pagure.io/xmlto/
+      - https://docbook.org/stylesheets/
+  - id: brew:fop
+    reason: >
+      Use Apache FOP after the DocBook FO stylesheets to render generated XSL-FO into
+      PDF, PostScript, or other paginated formats.
+    rel: adjacent_workflow
+    sources:
+      - https://docbook.sourceforge.net/release/xsl/current/doc/fo/
+      - https://xmlgraphics.apache.org/fop/
 tags:
   - cli
   - docbook

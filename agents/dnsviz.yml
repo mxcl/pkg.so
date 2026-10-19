@@ -4,7 +4,9 @@ repo: https://github.com/dnsviz/dnsviz
 docs:
   - https://dnsviz.net/
   - https://github.com/dnsviz/dnsviz#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - /etc/resolv.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -82,6 +84,15 @@ history:
       The tool is used for DNSSEC pre-deployment testing, post-deployment
       troubleshooting, and explaining DNSSEC authentication chains to humans who need
       more than raw dig or delv output.
+related-packages:
+  - id: brew:bind
+    reason: >
+      Use ISC BIND alongside DNSViz when pre-deployment testing needs `named` to serve
+      local zone files or proposed delegation data for DNSViz to analyze.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dnsviz/dnsviz
+      - https://www.isc.org/bind/
 tags:
   - analysis
   - cli

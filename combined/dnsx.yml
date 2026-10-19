@@ -68,6 +68,25 @@ history:
       types, use custom resolver pools, brute-force names, and remove wildcard DNS noise
       from large candidate sets.
     - Its stdin/stdout design makes it useful in shell pipelines and CI-style scanning jobs.
+related-packages:
+  - id: brew:subfinder
+    reason: >
+      Run subfinder first for passive subdomain discovery, then pipe its output into
+      dnsx to resolve the candidates and retain active hostnames, exactly as
+      ProjectDiscovery's dnsx guide demonstrates.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.projectdiscovery.io/opensource/dnsx/running
+      - https://docs.projectdiscovery.io/opensource/subfinder/overview
+  - id: brew:shuffledns
+    reason: >
+      Choose shuffleDNS when the job centers on MassDNS-backed, high-volume active brute
+      forcing and wildcard filtering; choose dnsx for broader DNS record querying and
+      general-purpose pipeline use.
+    rel: alternative
+    sources:
+      - https://github.com/projectdiscovery/shuffledns
+      - https://docs.projectdiscovery.io/opensource/dnsx/running
 category: networking
 package-manager:
   brew: dnsx
