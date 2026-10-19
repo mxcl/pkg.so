@@ -4,7 +4,13 @@ homepage: https://github.com/chojs23/ec
 repo: https://github.com/chojs23/ec
 docs:
   - https://github.com/chojs23/ec#readme
-config-file-location: null
+config-file-location:
+  linux:
+    - $XDG_CONFIG_HOME/ec/themes.json
+    - ~/.config/ec/themes.json
+  macos:
+    - $XDG_CONFIG_HOME/ec/themes.json
+    - ~/Library/Application Support/ec/themes.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -55,6 +61,16 @@ history:
       Git's mergetool command so Git passes BASE, LOCAL, REMOTE, and MERGED paths to ec.
       The README also documents Jujutsu merge-editor integration and non-interactive
       modes such as --check and --apply-all.
+related-packages:
+  - id: cask:meld
+    reason: >
+      Choose Meld when you prefer a graphical two- or three-way diff and merge
+      application; choose ec for a keyboard-driven terminal workflow and documented
+      Git/Jujutsu integration.
+    rel: alternative
+    sources:
+      - https://github.com/chojs23/ec
+      - https://meldmerge.org/
 category: developer-tools
 package-manager:
   brew: ec
