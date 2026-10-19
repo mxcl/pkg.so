@@ -75,6 +75,16 @@ history:
       Its key use case is avoiding a mount step. On non-Linux systems it can access ext
       filesystems where the OS lacks native support; on Linux it can manipulate images
       or floppies without loopback mounting or root access.
+related-packages:
+  - id: brew:e2fsprogs
+    reason: >
+      e2tools uses e2fsprogs' libext2fs for file-level image access, while e2fsprogs
+      supplies the complementary formatting, checking, resizing, tuning, and debugging
+      commands for those ext filesystems.
+    rel: adjacent_workflow
+    sources:
+      - https://e2tools.github.io/
+      - https://github.com/tytso/e2fsprogs
 category: system
 package-manager:
   apk: e2tools
