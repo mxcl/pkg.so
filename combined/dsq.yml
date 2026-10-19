@@ -72,6 +72,40 @@ history:
       joining multiple files as numbered tables, pretty-printing results, dumping
       inferred schema, caching imported data, or using the interactive REPL added in the
       0.16 line.
+related-packages:
+  - id: brew:duckdb
+    reason: >
+      Choose DuckDB for actively developed, vectorized analytical SQL over local CSV and
+      Parquet data; dsq's own README recommends it as a stronger successor.
+    rel: alternative
+    sources:
+      - https://github.com/multiprocessio/dsq#readme
+      - https://duckdb.org/docs/stable/data/overview
+  - id: cask:clickhouse
+    reason: >
+      Choose ClickHouse's local mode when performance and ClickHouse SQL matter more
+      than dsq's smaller SQLite-based workflow; upstream explicitly recommends
+      ClickHouse-local.
+    rel: alternative
+    sources:
+      - https://github.com/multiprocessio/dsq#readme
+      - https://clickhouse.com/docs/operations/utilities/clickhouse-local
+  - id: brew:octosql
+    reason: >
+      Choose OctoSQL when a single SQL query must combine local files, streams, and
+      database-backed sources through an extensible query engine.
+    rel: alternative
+    sources:
+      - https://github.com/multiprocessio/dsq#readme
+      - https://github.com/cube2222/octosql#readme
+  - id: brew:csvq
+    reason: >
+      Choose csvq for a maintained SQL-like CLI focused on CSV, TSV, fixed-width, JSON,
+      and JSON Lines data with a smaller format scope.
+    rel: alternative
+    sources:
+      - https://github.com/multiprocessio/dsq#readme
+      - https://mithrandie.github.io/csvq
 category: data
 package-manager:
   brew: dsq
