@@ -6,7 +6,8 @@ docs:
   - https://dmalloc.com/docs/dmalloc.html
   - https://dmalloc.com/docs/dmalloc.pdf
   - https://dmalloc.com/docs/getting-started
-config-file-location: null
+config-file-location:
+  unix: ~/.dmallocrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -50,6 +51,17 @@ history:
       dmalloc.h for file and line reporting, and uses the dmalloc utility plus the
       DMALLOC_OPTIONS environment variable to enable checks such as leak logging, heap
       verification, and abort-on-error behavior.
+related-packages:
+  - id: brew:valgrind
+    reason: >
+      Choose Valgrind Memcheck when you want broad invalid-access, uninitialized-value,
+      bad-free, and leak detection by running an existing native binary under
+      instrumentation rather than linking a replacement allocator.
+    rel: alternative
+    sources:
+      - https://dmalloc.com/
+      - https://valgrind.org/info/tools.html
+      - https://valgrind.org/docs/manual/mc-manual.html
 category: developer-tools
 package-manager:
   brew: dmalloc
