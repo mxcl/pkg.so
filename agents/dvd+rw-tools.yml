@@ -72,6 +72,27 @@ history:
       In package-nerd workflows it often appears after tools such as mkisofs,
       genisoimage, or dvdauthor: one tool builds a filesystem or VIDEO_TS tree, and
       dvd+rw-tools writes the result to physical media.
+related-packages:
+  - id: brew:cdrtools
+    reason: >
+      Choose Cdrtools when you need a broader premastering and recording suite spanning
+      CD, DVD, and Blu-ray with tools such as mkisofs and cdrecord; choose dvd+rw-tools
+      for growisofs-centered DVD writing and its focused DVD media utilities.
+    rel: alternative
+    sources:
+      - https://cdrtools.sourceforge.net/private/cdrecord.html
+      - https://cdrtools.sourceforge.net/private/man
+      - https://fy.chalmers.se/~appro/linux/DVD+RW
+  - id: brew:dvdauthor
+    reason: >
+      Use dvdauthor to assemble menus, titles, chapters, subtitles, and the DVD-Video
+      directory structure, then use growisofs from dvd+rw-tools to record that structure
+      to disc.
+    rel: adjacent_workflow
+    sources:
+      - https://dvdauthor.sourceforge.net/
+      - https://dvdauthor.sourceforge.net/doc
+      - https://fy.chalmers.se/~appro/linux/DVD+RW
 tags:
   - blu-ray
   - burning
@@ -103,9 +124,8 @@ provenance:
     - https://man.archlinux.org/man/growisofs.1.en
   repo-sources:
     - >
-      The official upstream documentation and manuals do not identify an official
-      HTTP(S) source-control repository; downstream package repositories and mirrors are
-      intentionally excluded.
+      The official project site does not identify an official HTTP(S) source-control
+      project page; package-maintainer mirrors were rejected.
   tags-sources:
     - growisofs and dvd+rw-format manual pages
 category-confidence: high
