@@ -58,6 +58,25 @@ history:
       cloud-storage outputs. The docs emphasize consistency options, GC safe-point
       handling for TiDB, table filtering, parallel export, file sizing, compression, and
       downstream import with TiDB Lightning.
+related-packages:
+  - id: brew:mydumper
+    reason: >
+      Choose MyDumper for a community MySQL-family parallel dump-and-restore workflow
+      that includes MyLoader; for TiDB-specific exports, PingCAP explicitly recommends
+      Dumpling instead of its deprecated Mydumper fork.
+    rel: alternative
+    sources:
+      - https://docs.pingcap.com/tidb/stable/dumpling-overview
+      - https://mydumper.github.io/mydumper/docs/html/
+  - id: brew:mysql-client
+    reason: >
+      Choose the mysql-client package when the standard mysqldump utility and broad
+      MySQL compatibility are sufficient; choose Dumpling for parallel, TiDB-aware
+      exports and TiDB Lightning workflows.
+    rel: alternative
+    sources:
+      - https://docs.pingcap.com/tidb/stable/dumpling-overview
+      - https://dev.mysql.com/doc/refman/en/mysqldump.html
 tags:
   - backup
   - cli

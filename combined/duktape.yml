@@ -101,6 +101,32 @@ history:
       bindings, WHATWG Encoding API bindings, CBOR bindings, a debugger, Unicode
       support, coroutines, bytecode dump/load, finalization, and low-memory
       configuration options.
+related-packages:
+  - id: brew:quickjs
+    reason: >
+      Choose QuickJS when a compact embeddable engine with newer ECMAScript coverage and
+      the qjsc compiler is more important than Duktape's ES5-oriented compatibility and
+      stack API.
+    rel: alternative
+    sources:
+      - https://duktape.org/guide.html
+      - https://bellard.org/quickjs/quickjs.html
+  - id: brew:mujs
+    reason: >
+      Choose MuJS for a particularly small ES5 interpreter with a Lua-like C interface
+      and a default sandboxed design.
+    rel: alternative
+    sources:
+      - https://duktape.org/guide.html
+      - https://mujs.com/introduction.html
+  - id: brew:jerryscript
+    reason: >
+      Choose JerryScript when the target is a severely memory-constrained IoT or
+      microcontroller environment and footprint is the primary constraint.
+    rel: alternative
+    sources:
+      - https://duktape.org/guide.html
+      - https://jerryscript.net/
 category: language-runtime
 package-manager:
   apk: duktape

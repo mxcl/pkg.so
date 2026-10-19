@@ -51,6 +51,41 @@ history:
       ffmpeg and ffplay, sharing terminal sessions with tty-share, forwarding local
       development web servers, forwarding Unix sockets such as Zellij sessions, and
       connecting to custom iroh ALPN protocols.
+related-packages:
+  - id: brew:netcat
+    reason: >
+      Choose netcat for direct IP-address and port-based socket work on reachable
+      networks; choose dumbpipe when endpoint identity, TLS encryption, NAT traversal,
+      and relay fallback are needed.
+    rel: alternative
+    sources:
+      - https://github.com/n0-computer/dumbpipe#readme
+      - https://man.openbsd.org/nc
+  - id: brew:ffmpeg
+    reason: >
+      Pipe FFmpeg capture output through dumbpipe and feed the receiving stream to
+      ffplay for encrypted peer-to-peer video streaming, as demonstrated by dumbpipe
+      upstream.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/n0-computer/dumbpipe#readme
+      - https://ffmpeg.org/ffmpeg.html
+  - id: brew:tty-share
+    reason: >
+      Run tty-share behind dumbpipe's TCP forwarding to add an encrypted peer-to-peer
+      transport to collaborative terminal sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/n0-computer/dumbpipe#readme
+      - https://tty-share.com/
+  - id: brew:zellij
+    reason: >
+      Forward a remote Zellij session socket with dumbpipe and attach a local Zellij
+      client through the locally recreated Unix socket.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/n0-computer/dumbpipe#readme
+      - https://zellij.dev/documentation/
 tags:
   - cli
   - nat-traversal

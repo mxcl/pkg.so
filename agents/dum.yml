@@ -49,6 +49,41 @@ history:
       test`, or `dum <bin>` to run package scripts and project-local executables. It
       also forwards install/add/remove commands to the detected package manager by
       checking lock files.
+related-packages:
+  - id: brew:bun
+    reason: >
+      Choose Bun when you want an integrated JavaScript runtime and package manager as
+      well as fast package.json script execution; dum is only a lightweight runner and
+      dispatcher.
+    rel: alternative
+    sources:
+      - https://github.com/egoist/dum#readme
+      - https://bun.sh/docs/cli/run
+  - id: brew:node
+    reason: >
+      Choose Node.js for the standard npm run and npx workflow when broad npm
+      compatibility matters more than dum's reduced command-startup overhead.
+    rel: alternative
+    sources:
+      - https://github.com/egoist/dum#readme
+      - https://docs.npmjs.com/cli/commands/npm-run-script
+  - id: brew:pnpm
+    reason: >
+      Choose pnpm when you need dependency installation, workspaces, filtering, and
+      lifecycle-script execution in one package manager; dum can detect and delegate
+      package operations to pnpm.
+    rel: alternative
+    sources:
+      - https://github.com/egoist/dum#readme
+      - https://pnpm.io/cli/run
+  - id: brew:yarn
+    reason: >
+      Choose Yarn when the project already uses Yarn's lockfile and workspace workflow
+      and you want its native run command instead of a separate script-runner binary.
+    rel: alternative
+    sources:
+      - https://github.com/egoist/dum#readme
+      - https://yarnpkg.com/cli/run
 tags:
   - cli
   - npm
