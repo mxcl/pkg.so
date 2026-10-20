@@ -57,6 +57,32 @@ history:
       go-to-definition, references, call hierarchy, diagnostics, linting, refactoring
       support, and type checking. Project configuration is handled with `.elp.toml` and
       lint settings with `.elp_lint.toml`.
+related-packages:
+  - id: brew:erlang
+    reason: >
+      Install Erlang/OTP as the language and runtime underlying the Erlang projects that
+      ELP analyzes.
+    rel: adjacent_workflow
+    sources:
+      - https://whatsapp.github.io/erlang-language-platform/docs/get-started/install/
+      - https://www.erlang.org/docs
+  - id: brew:rebar3
+    reason: >
+      Use Rebar3 for the project build workflow; ELP officially detects `rebar.config`
+      projects and derives their source and dependency structure.
+    rel: adjacent_workflow
+    sources:
+      - https://whatsapp.github.io/erlang-language-platform/docs/get-started/configure-project/
+      - https://rebar3.org/docs/
+  - id: brew:erlang_ls
+    reason: >
+      Choose Erlang LS when you prefer an LSP layer that connects established OTP and
+      third-party tools, while ELP provides its own incremental compiler front-end and
+      is positioned by its maintainers as the successor.
+    rel: alternative
+    sources:
+      - https://github.com/WhatsApp/erlang-language-platform/blob/main/FAQ.md
+      - https://github.com/erlang-ls/erlang_ls
 tags:
   - cli
   - erlang

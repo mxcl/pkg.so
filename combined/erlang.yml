@@ -5,8 +5,10 @@ repo: https://github.com/erlang/otp
 docs:
   - https://www.erlang.org/docs
   - https://www.erlang.org/doc/system/reference_manual.html
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix: ~/.erlang
+credentials-file-location:
+  unix: ~/.erlang.cookie
 history:
   adoption-history:
     - >
@@ -98,6 +100,31 @@ history:
       wxWidgets for GUI pieces, and documentation tooling because optional OTP
       applications are built or skipped depending on what the build environment
       provides.
+related-packages:
+  - id: brew:rebar3
+    reason: >
+      Use Rebar3 with Erlang/OTP to create, compile, test, document, and release Erlang
+      projects through the ecosystem's standard build workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://rebar3.org/docs/
+      - https://www.erlang.org/docs
+  - id: brew:erlang-language-platform
+    reason: >
+      Add Erlang Language Platform when you want incremental IDE analysis, LSP
+      navigation, refactoring, linting, and eqWAlizer checks for Erlang code.
+    rel: adjacent_workflow
+    sources:
+      - https://whatsapp.github.io/erlang-language-platform/docs/feature-gallery/
+      - https://www.erlang.org/docs
+  - id: brew:elixir
+    reason: >
+      Install Elixir when you want its language and tooling while continuing to run on
+      the Erlang VM and use OTP facilities.
+    rel: adjacent_workflow
+    sources:
+      - https://elixir-lang.org/getting-started/introduction.html
+      - https://www.erlang.org/docs
 category: language-runtime
 package-manager:
   brew: erlang
