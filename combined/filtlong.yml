@@ -60,6 +60,24 @@ history:
     - >
       The maintainer cautions that incomplete or biologically mismatched external
       references can incorrectly penalize genuine long reads.
+related-packages:
+  - id: brew:chopper
+    reason: >
+      Choose chopper for a Rust-based streaming FASTQ filter centered on quality,
+      length, cropping, and trimming; choose Filtlong when global read ranking or
+      reference-guided k-mer scoring is required.
+    rel: alternative
+    sources:
+      - https://github.com/wdecoster/chopper
+      - https://github.com/rrwick/Filtlong
+  - id: brew:gzip
+    reason: >
+      Filtlong's official examples pipe filtered reads directly into gzip, making GNU
+      gzip a practical companion for keeping FASTQ output compressed.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rrwick/Filtlong
+      - https://www.gnu.org/software/gzip/manual/gzip.html
 category: science
 package-manager:
   brew: filtlong

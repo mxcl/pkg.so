@@ -74,6 +74,25 @@ history:
       Because FileQL is read-oriented and local, its workflow is lightweight: install
       the CLI, point it at paths, and use SQL-style expressions where shell globbing or
       ad hoc parsing gets awkward.
+related-packages:
+  - id: brew:findutils
+    reason: >
+      Choose GNU findutils for established predicate-and-action filesystem searches and
+      direct command execution; choose FileQL when SQL-style projection, grouping, and
+      aggregation over file metadata are more convenient.
+    rel: alternative
+    sources:
+      - https://github.com/AmrDeveloper/FileQL
+      - https://www.gnu.org/software/findutils/manual/html_mono/find.html
+  - id: brew:gql
+    reason: >
+      GitQL is an adjacent tool from the same SDK family for applying SQL-like queries
+      to Git repository data instead of FileQL's filesystem metadata.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/AmrDeveloper/FileQL
+      - https://github.com/AmrDeveloper/GQL
+      - https://amrdeveloper.github.io/GQL/
 category: developer-tools
 package-manager:
   brew: fileql
