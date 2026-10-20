@@ -4,7 +4,11 @@ repo: null
 docs:
   - https://github.com/rrthomas/enchant#readme
   - https://rrthomas.github.io/enchant
-config-file-location: null
+config-file-location:
+  unix:
+    - $ENCHANT_CONFIG_DIR/enchant.ordering
+    - $XDG_CONFIG_HOME/enchant/enchant.ordering
+    - ~/.config/enchant/enchant.ordering
 credentials-file-location: null
 history:
   adoption-history:
@@ -73,6 +77,40 @@ history:
       Configuration is documented through the `enchant(5)` man page, which controls
       provider selection by language and personal word lists. That makes Enchant both a
       developer library and a small user-facing CLI package.
+related-packages:
+  - id: brew:hunspell
+    reason: >
+      Use Hunspell as a widely deployed dictionary and morphology engine behind Enchant;
+      Enchant officially lists it as a supported provider.
+    rel: adjacent_workflow
+    sources:
+      - https://rrthomas.github.io/enchant/
+      - https://hunspell.github.io/
+  - id: brew:nuspell
+    reason: >
+      Use Nuspell behind Enchant when you want a modern C++ spell-checking engine
+      compatible with Hunspell dictionaries.
+    rel: adjacent_workflow
+    sources:
+      - https://rrthomas.github.io/enchant/
+      - https://nuspell.github.io/documentation.html
+  - id: brew:aspell
+    reason: >
+      Use GNU Aspell as another Enchant backend, particularly when its interactive
+      spelling tools and native dictionary ecosystem fit the workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://rrthomas.github.io/enchant/
+      - http://aspell.net/man-html/Introduction.html
+  - id: brew:gspell
+    reason: >
+      Use gspell when adding spell checking to GTK applications; Enchant identifies
+      gspell as an application-layer integration through which GTK/GNOME software
+      consumes Enchant providers.
+    rel: adjacent_workflow
+    sources:
+      - https://rrthomas.github.io/enchant/
+      - https://gitlab.gnome.org/GNOME/gspell
 tags:
   - c
   - c-plus-plus

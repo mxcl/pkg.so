@@ -77,6 +77,31 @@ history:
       `MaxLineLength`, `MaxClients`, `LogLevel`, and `BindFamily`. Signals are also part
       of normal operation: SIGTERM shuts down cleanly, SIGHUP reloads configuration, and
       SIGUSR1 prints connection statistics.
+related-packages:
+  - id: brew:openssh
+    reason: >
+      Run OpenSSH as the real remote-access service on a different port while Endlessh
+      occupies the public tarpit port, exactly as the Endlessh README recommends.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/skeeto/endlessh#readme
+      - https://www.openssh.com/manual.html
+  - id: brew:fail2ban
+    reason: >
+      Choose Fail2Ban when you want log-driven detection and firewall bans across SSH
+      and other services instead of deliberately retaining scanner connections.
+    rel: alternative
+    sources:
+      - https://github.com/skeeto/endlessh#readme
+      - https://fail2ban.readthedocs.io/
+  - id: brew:sshguard
+    reason: >
+      Choose SSHGuard for a small log-monitoring and firewall-blocking defense that
+      rejects abusive hosts rather than trapping their SSH clients.
+    rel: alternative
+    sources:
+      - https://github.com/skeeto/endlessh#readme
+      - https://www.sshguard.net/docs
 category: security
 package-manager:
   apk: endlessh
