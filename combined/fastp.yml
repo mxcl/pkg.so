@@ -68,6 +68,33 @@ history:
       output, partial processing for quick previews, output splitting, paired-end
       merging, and automatic adapter handling. No persistent config or credential file
       is documented.
+related-packages:
+  - id: brew:cutadapt
+    reason: >
+      Choose Cutadapt when flexible, error-tolerant matching of explicitly modeled
+      adapters, primers, poly-A tails, or IUPAC-containing sequences matters more than
+      fastp's integrated one-pass QC and filtering workflow.
+    rel: alternative
+    sources:
+      - https://github.com/OpenGene/fastp#readme
+      - https://cutadapt.readthedocs.io/en/stable/guide.html
+  - id: brew:adapterremoval
+    reason: >
+      Choose AdapterRemoval when adapter identification, overlapping paired-read
+      merging, barcode demultiplexing, and its dedicated sequencing QC workflow better
+      match the experiment than fastp's broader short-read preprocessing feature set.
+    rel: alternative
+    sources:
+      - https://github.com/OpenGene/fastp#readme
+      - https://adapterremoval.readthedocs.io/en/latest/manpage.html
+  - id: brew:fastplong
+    reason: >
+      Choose fastplong for Oxford Nanopore or PacBio long-read FASTQ preprocessing;
+      fastp is designed around short-read sequencing workflows.
+    rel: alternative
+    sources:
+      - https://github.com/OpenGene/fastp#readme
+      - https://github.com/OpenGene/fastplong#readme
 category: science
 package-manager:
   brew: fastp
