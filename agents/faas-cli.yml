@@ -83,6 +83,25 @@ history:
       templates from remote Git repositories and using a template store for official,
       incubator, and community templates, which is why the tool matters beyond simply
       sending API calls to a gateway.
+related-packages:
+  - id: brew:docker
+    reason: >
+      faas-cli’s standard build command creates a function image in the local Docker
+      library before it is pushed and deployed, so Docker is the direct companion for
+      local builds.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.openfaas.com/cli/build/
+      - https://docs.openfaas.com/cli/templates/
+      - https://docs.docker.com/reference/cli/docker/image/build/
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl is used alongside faas-cli to inspect or port-forward an OpenFaaS gateway
+      and manage the Kubernetes cluster on which OpenFaaS runs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/openfaas/faas-netes/blob/master/chart/openfaas/README.md
+      - https://kubernetes.io/docs/reference/kubectl/
 tags:
   - cli
   - deployment

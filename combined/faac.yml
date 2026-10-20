@@ -82,6 +82,25 @@ history:
       Because the README includes a patent-royalty warning, downstream users and
       packagers traditionally treat FAAC as both a useful codec tool and a package with
       legal/licensing context to understand before redistribution or product use.
+related-packages:
+  - id: brew:faad2
+    reason: >
+      FAAD2 is FAAC’s companion AAC decoder, making it useful for decoding or validating
+      AAC streams produced by the encoder.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/FreewareAdvancedAudio/faac#readme
+      - https://github.com/FreewareAdvancedAudio/faad2#readme
+  - id: brew:ffmpeg
+    reason: >
+      Choose FFmpeg when AAC encoding must be combined with container conversion,
+      filtering, streaming, or other audio and video codecs; choose FAAC for its focused
+      dependency-free encoder and library.
+    rel: alternative
+    sources:
+      - https://github.com/FreewareAdvancedAudio/faac#readme
+      - https://ffmpeg.org/about.html
+      - https://ffmpeg.org/ffmpeg-codecs.html
 category: media
 package-manager:
   apk: faac

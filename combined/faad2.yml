@@ -59,6 +59,25 @@ history:
       media software. The source tree explicitly separates the command-line frontend,
       public include files, API docs, and decoder library, which is why distributions
       can package both executable and library use cases.
+related-packages:
+  - id: brew:faac
+    reason: >
+      FAAC is FAAD2’s companion AAC encoder, providing the inverse side of an AAC
+      encode/decode or validation workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/FreewareAdvancedAudio/faad2#readme
+      - https://github.com/FreewareAdvancedAudio/faac#readme
+  - id: brew:ffmpeg
+    reason: >
+      Choose FFmpeg when AAC decoding must be combined with demuxing, filtering,
+      playback, or transcoding across many formats; choose FAAD2 for a focused AAC
+      decoder library and frontend.
+    rel: alternative
+    sources:
+      - https://github.com/FreewareAdvancedAudio/faad2#readme
+      - https://ffmpeg.org/about.html
+      - https://ffmpeg.org/ffmpeg-codecs.html
 category: media
 package-manager:
   apk: faad2
