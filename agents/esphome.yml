@@ -7,7 +7,9 @@ docs:
 config-file-location:
   unix:
     - <config-directory>/*.yaml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - <config-directory>/secrets.yaml
 history:
   adoption-history:
     - >
@@ -70,6 +72,25 @@ history:
       YAML configuration, such as sensors, switches, lights, and binary sensors,
       automatically appears in Home Assistant after the device is installed and
       connected.
+related-packages:
+  - id: brew:esptool
+    reason: >
+      Use esptool when you need direct serial flashing or low-level inspection of an
+      ESPHome-generated firmware image outside ESPHome's normal upload workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://esphome.io/guides/getting_started_command_line/
+      - https://docs.espressif.com/projects/esptool/en/latest/esp32/esptool/basic-commands.html
+  - id: brew:platformio
+    reason: >
+      PlatformIO is a useful companion when an ESPHome configuration uses the PlatformIO
+      toolchain or when you need to inspect and work with the generated embedded
+      project.
+    rel: adjacent_workflow
+    sources:
+      - https://esphome.io/guides/cli/
+      - https://developers.esphome.io/architecture/overview/
+      - https://docs.platformio.org/en/latest/core/index.html
 tags:
   - cli
   - esp32

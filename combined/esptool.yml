@@ -75,6 +75,34 @@ history:
       `espsecure`, and `esp_rfc2217_server`, so package users get both everyday flashing
       and lower-level provisioning, security, and remote serial helpers from the same
       source package.
+related-packages:
+  - id: brew:espflash
+    reason: >
+      Choose espflash when you prefer a Rust-native Espressif flasher and Cargo
+      integration; its official project describes it as loosely based on esptool.py.
+    rel: alternative
+    sources:
+      - https://github.com/esp-rs/espflash
+      - https://github.com/espressif/esptool
+  - id: brew:platformio
+    reason: >
+      PlatformIO invokes esptool underneath its Espressif upload workflow, so the two
+      tools are useful together when diagnosing or reproducing the exact low-level flash
+      command.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://docs.espressif.com/projects/esptool/en/latest/esp32/esptool/flashing-firmware.html
+      - https://docs.platformio.org/en/latest/core/index.html
+  - id: brew:esphome
+    reason: >
+      ESPHome generates firmware that can be installed with esptool, making esptool
+      useful for manual first flashes and recovery outside ESPHome's normal upload
+      command.
+    rel: adjacent_workflow
+    sources:
+      - https://esphome.io/guides/getting_started_command_line/
+      - https://docs.espressif.com/projects/esptool/en/latest/esp32/esptool/basic-commands.html
 category: developer-tools
 package-manager:
   apk: esptool

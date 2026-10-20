@@ -98,6 +98,34 @@ history:
       methods let tools and libraries query chain state, submit transactions, deploy
       smart contracts, and inspect execution. The Homebrew package also ships related
       utilities such as Clef, abigen, evm, devp2p, and rlpdump.
+related-packages:
+  - id: brew:lighthouse
+    reason: >
+      Lighthouse supplies the consensus client that Geth must be paired with to form a
+      complete proof-of-stake Ethereum node, sharing an Engine API endpoint and JWT
+      secret.
+    rel: adjacent_workflow
+    sources:
+      - https://geth.ethereum.org/docs/getting-started/consensus-clients
+      - https://lighthouse-book.sigmaprime.io/run_a_node.html
+  - id: brew:teku
+    reason: >
+      Teku is a Java-based consensus-client option that can provide the consensus half
+      of a complete Ethereum node alongside Geth's execution layer.
+    rel: adjacent_workflow
+    sources:
+      - https://geth.ethereum.org/docs/getting-started/consensus-clients
+      - https://docs.teku.consensys.io/concepts/node-types
+  - id: brew:foundry
+    reason: >
+      Foundry's Cast command can query and submit transactions through the JSON-RPC
+      endpoint exposed by Geth, while Forge and Anvil support adjacent
+      contract-development and testing workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://geth.ethereum.org/docs/getting-started/consensus-clients
+      - https://getfoundry.sh/cast/reference/rpc
+      - https://www.getfoundry.sh/
 tags:
   - blockchain
   - cli
