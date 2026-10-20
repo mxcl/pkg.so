@@ -48,6 +48,24 @@ history:
     - >
       Installing erlang@27 provides the normal Erlang/OTP CLI surface for that line:
       erl, erlc, escript, dialyzer, ct_run, epmd, typer, and related runtime utilities.
+related-packages:
+  - id: brew:rebar3
+    reason: >
+      Use Rebar3 with OTP 27 to create, compile, test, dependency-lock, and release
+      Erlang applications; its official compatibility table documents OTP 27 support.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/erlang/rebar3
+      - https://rebar3.org/docs/
+  - id: brew:erlfmt
+    reason: >
+      Use erlfmt to format OTP 27 source and enforce formatting in CI; its official
+      releases specifically added support for OTP 27 sigils, triple-quoted strings, and
+      documentation attributes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/WhatsApp/erlfmt
+      - https://github.com/WhatsApp/erlfmt/releases
 category: language-runtime
 package-manager:
   apk: erlang27

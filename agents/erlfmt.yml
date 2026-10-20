@@ -49,6 +49,23 @@ history:
       project, or run the escript directly against Erlang source globs. Later releases
       kept pace with OTP language changes, including OTP 27 sigils and triple-quoted
       strings and OTP 28 comprehension features.
+related-packages:
+  - id: brew:rebar3
+    reason: >
+      Use Rebar3 to load erlfmt as a project plugin, configure it in rebar.config, and
+      expose the rebar3 fmt and CI-check workflows documented by erlfmt.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/WhatsApp/erlfmt#usage
+      - https://github.com/erlang/rebar3
+  - id: brew:erlang@28
+    reason: >
+      Use OTP 28 as the runtime for erlfmt when formatting source that uses OTP 28
+      generators or nominal types, which erlfmt's official releases explicitly support.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/WhatsApp/erlfmt/releases
+      - https://www.erlang.org/news/180
 tags:
   - cli
   - code-style
