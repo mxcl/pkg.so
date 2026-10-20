@@ -45,6 +45,25 @@ history:
       pull fields from log lines, paths, or colon-separated records. The official docs
       position it as a concise alternative to repeated cut or awk invocations for
       selected field extraction.
+related-packages:
+  - id: brew:gawk
+    reason: >
+      Choose GNU Awk when extraction also needs calculations, conditions, record
+      processing, or a full text-processing language rather than fex's compact selector
+      syntax.
+    rel: alternative
+    sources:
+      - https://www.semicomplete.com/projects/fex/
+      - https://www.gnu.org/software/gawk/manual/gawk.html
+  - id: brew:coreutils
+    reason: >
+      GNU Coreutils supplies cut for straightforward character-, byte-, and
+      delimiter-based field selection when fex's nested or negative-offset selectors are
+      unnecessary.
+    rel: alternative
+    sources:
+      - https://www.semicomplete.com/projects/fex/
+      - https://www.gnu.org/software/coreutils/manual/html_node/cut-invocation.html
 tags:
   - cli
   - field-extraction
