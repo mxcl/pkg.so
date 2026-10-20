@@ -5,7 +5,14 @@ docs:
   - https://etsh.dev/doc
   - https://etsh.dev/man/_etsh.1.html
   - https://etsh.dev/usage
-config-file-location: null
+config-file-location:
+  unix:
+    - /usr/local/etc/etsh.login
+    - /usr/local/etc/etsh.etshrc
+    - ~/.etsh.login
+    - ~/.etshrc
+    - /usr/local/etc/etsh.logout
+    - ~/.etsh.logout
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,6 +78,15 @@ history:
       that fit the V6 shell model. The usage guide frames the shells as a way to do
       useful work with a small shell plus classic Unix pipelines and external tools such
       as awk, expr, grep, and sed.
+related-packages:
+  - id: brew:dash-shell
+    reason: >
+      Choose dash for a small modern POSIX `/bin/sh` and portability testing; choose
+      Etsh when historical V6 Thompson-shell behavior is the point.
+    rel: alternative
+    sources:
+      - https://etsh.dev/man/_etsh.1.html
+      - https://git.kernel.org/pub/scm/utils/dash/dash.git/tree/src/dash.1
 tags:
   - cli
   - posix

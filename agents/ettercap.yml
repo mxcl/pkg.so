@@ -85,6 +85,32 @@ history:
       interception with two interfaces, pcap-filtered capture, offline analysis from
       pcap files, and writing captured packets for later inspection with tools such as
       tcpdump or Wireshark.
+related-packages:
+  - id: brew:bettercap
+    reason: >
+      Choose bettercap for a newer modular framework spanning wired, Wi-Fi, BLE, HID,
+      CAN, proxy, REST, and caplet workflows; choose Ettercap for its classic
+      switched-LAN MITM, filter, and multi-interface suite.
+    rel: alternative
+    sources:
+      - https://github.com/Ettercap/ettercap
+      - https://www.bettercap.org/
+  - id: brew:wireshark
+    reason: >
+      Use Wireshark after an Ettercap session when you need deep graphical protocol
+      analysis of packet captures written by Ettercap.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Ettercap/ettercap/blob/master/man/ettercap.8.in
+      - https://www.wireshark.org/docs/wsug_html_chunked/ChWorkOpen.html
+  - id: brew:tcpdump
+    reason: >
+      Use tcpdump to capture, filter, or inspect pcap traffic from the command line
+      before or after an authorized Ettercap interception workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Ettercap/ettercap/blob/master/man/ettercap.8.in
+      - https://www.tcpdump.org/manpages/tcpdump.1.html
 tags:
   - cli
   - interceptor
