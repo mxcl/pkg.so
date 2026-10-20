@@ -5,7 +5,13 @@ docs:
   - https://exiv2.org/
   - https://exiv2.org/doc
   - https://exiv2.org/manpage.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ./.exiv2
+    - ~/.exiv2
+  windows:
+    - .\exiv2.ini
+    - '%USERPROFILE%\exiv2.ini'
 credentials-file-location: null
 history:
   adoption-history:
@@ -81,6 +87,16 @@ history:
       systems and exiv2.ini on Windows, searched first in the current directory and then
       in the user's home directory. That file lets users add lens definitions for
       translated metadata output.
+related-packages:
+  - id: brew:exiftool
+    reason: >
+      Choose ExifTool when maximum file-format and metadata-tag coverage matters; choose
+      Exiv2 when a native C++ library and faster in-process integration are the
+      priority.
+    rel: alternative
+    sources:
+      - https://dev.exiv2.org/projects/exiv2/wiki/How_does_Exiv2_compare_to_Exiftool
+      - https://exiftool.org/
 tags:
   - c-plus-plus
   - cli

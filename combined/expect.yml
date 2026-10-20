@@ -79,6 +79,24 @@ history:
       package-manager terms, Expect is often installed not because it is fashionable,
       but because some installer, test, login workflow, serial-console workflow, or
       legacy admin script needs to drive an interactive prompt reliably.
+related-packages:
+  - id: brew:tcl-tk
+    reason: >
+      Tcl is Expect's underlying scripting language, while Tk can add graphical
+      interfaces around Expect-driven interactive programs.
+    rel: adjacent_workflow
+    sources:
+      - https://core.tcl-lang.org/expect/home
+      - https://www.tcl-lang.org/
+  - id: brew:deja-gnu
+    reason: >
+      GNU DejaGnu is implemented in Expect and Tcl, so the packages work together to
+      drive portable regression and conformance tests for interactive, remote, and
+      cross-target programs.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/dejagnu/
+      - https://core.tcl-lang.org/expect/home
 category: developer-tools
 package-manager:
   apk: expect
