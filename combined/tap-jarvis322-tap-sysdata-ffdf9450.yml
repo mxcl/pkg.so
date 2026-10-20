@@ -2,9 +2,87 @@ id: cask:jarvis322/tap/sysdata
 display-name: System Data Unpacked
 homepage: https://github.com/Jarvis322/macos-sysdata
 repo: https://github.com/Jarvis322/macos-sysdata
+docs:
+  - https://github.com/Jarvis322/macos-sysdata#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The application is distributed from GitHub releases and through the maintainer's
+      Jarvis322 Homebrew tap. Signed and notarized releases made it usable as a
+      conventional macOS utility rather than only a source-built developer tool.
+    - >
+      Its inventory explicitly recognizes storage produced by Xcode simulators, Android
+      tooling, package managers, virtual machines, AI models, browsers, communication
+      apps, and project build directories, giving it particular relevance on developer
+      Macs.
+  package-nerd-significance:
+    - >
+      System Data Unpacked addresses a characteristically macOS packaging problem: many
+      unrelated caches, SDKs, runtimes, package stores, and application-support
+      directories are combined into the opaque System Data category.
+    - >
+      Unlike a generic cache cleaner, it reports measured filesystem entries with Safe,
+      Review, or Manual classifications and uses tool-specific cleanup commands where
+      appropriate. That makes it useful for understanding which development ecosystems
+      are consuming disk space before removing anything.
+  project-history:
+    - >
+      The project began as an open-source Swift menu-bar utility for making macOS System
+      Data inspectable and reclaimable item by item. Its architecture separates
+      read-only storage probes from the component that performs reclamation.
+    - >
+      Subsequent releases expanded the inventory, safety guidance, batch operations,
+      project-oriented views, history charts, command-line JSON output, and guarded
+      cleanup workflows while retaining explicit user control over deletion.
+  related-projects:
+    - Xcode and Simulator storage inspected by dedicated probes
+    - Android SDK and emulator storage inspected by dedicated probes
+    - Ollama and other local-model stores recognized in the inventory
+    - Homebrew and other package-manager stores counted as System Data
+  sources:
+    - https://github.com/Jarvis322/macos-sysdata#readme
+    - https://github.com/Jarvis322/macos-sysdata/releases
+  summary:
+    - >
+      System Data Unpacked is a macOS menu-bar storage inspector and selective cleanup
+      utility. It exposes the files and tool-generated data grouped by macOS under
+      System Data, measures their real disk use, and distinguishes automatically
+      regenerable data from items requiring review.
+  timeline:
+    - >
+      2026: The project was distributed through the Jarvis322 Homebrew tap and signed,
+      notarized GitHub releases.
+    - >
+      2026: Releases expanded the tool with project views, storage history, guarded
+      batch cleanup, and model-aware inventory.
+  usage:
+    - >
+      Launch the menu-bar application to scan storage, expand categories, inspect their
+      largest entries, and select individual items for reclamation. Review items
+      normally go to the Trash, while explicitly regenerable Safe items may be removed
+      directly.
+    - >
+      The application can emit its complete inventory as JSON for scripts. A separate
+      shell script covers Safe categories with scan, dry-run, and explicit-apply modes.
+    - >
+      Full Disk Access or administrator approval may be needed for protected locations
+      and selected cleanup actions. The utility intentionally leaves Manual items to
+      their owning tool or System Settings.
+related-packages: []
+category: system
 package-manager:
   brew-cask: jarvis322/tap/sysdata
 package-manager-url: https://github.com/jarvis322/homebrew-tap/blob/HEAD/Casks/sysdata.rb
+tags:
+  - developer-tools
+  - disk-usage
+  - macos
+  - menu-bar
+  - storage-cleanup
+  - swift
+  - system-data
 description: Menu bar app that shows what is inside macOS System Data and deletes it item by item
 applications:
   - System Data Unpacked.app
