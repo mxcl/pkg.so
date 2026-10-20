@@ -67,6 +67,24 @@ history:
       Other included tools include edentify for image identification, hocr2pdf for
       searchable PDF generation from hOCR input, bardecode for barcode recognition, and
       edisplay for image viewing.
+related-packages:
+  - id: brew:imagemagick
+    reason: >
+      Choose ImageMagick for the broader, widely documented general-purpose image CLI
+      ecosystem; ExactImage's own project page presents its faster specialized library
+      and `econvert` frontend as an alternative for selected workloads.
+    rel: alternative
+    sources:
+      - https://exactcode.com/opensource/exactimage/
+      - https://imagemagick.org/command-line-processing.php
+  - id: brew:tesseract
+    reason: >
+      Tesseract can produce hOCR from scanned images, which ExactImage's `hocr2pdf`
+      consumes to build searchable PDFs with the recognized text layer.
+    rel: adjacent_workflow
+    sources:
+      - https://exactcode.com/opensource/exactimage/
+      - https://tesseract-ocr.github.io/tessdoc/Command-Line-Usage.html
 category: media
 package-manager:
   brew: exact-image
