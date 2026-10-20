@@ -81,6 +81,24 @@ history:
       configurable cryptographic methods and TUN/TAP behavior. The daemon can be run as
       part of routers, Linux servers, BSD hosts, or macOS test environments, with
       distribution packages handling service integration.
+related-packages:
+  - id: brew:wireguard-tools
+    reason: >
+      Choose WireGuard Tools for a streamlined layer-3 VPN configured through `wg` and
+      `wg-quick`; fastd remains useful for UDP-based TUN, TAP, and mesh topologies.
+    rel: alternative
+    sources:
+      - https://www.wireguard.com/quickstart/
+      - https://fastd.readthedocs.io/en/stable/manual/config.html
+  - id: brew:openvpn
+    reason: >
+      Choose OpenVPN when you need its mature TLS/certificate ecosystem and routed or
+      bridged VPN workflows; fastd offers a smaller peer-key daemon oriented toward
+      lightweight tunnels and meshes.
+    rel: alternative
+    sources:
+      - https://openvpn.net/community-docs/
+      - https://fastd.readthedocs.io/en/stable/manual/config.html
 tags:
   - cli
   - daemon

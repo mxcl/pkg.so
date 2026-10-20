@@ -76,6 +76,25 @@ history:
       records alignments in a compact `.1aln` representation. Users handling repeated
       comparisons can prebuild GDB and GIX files to avoid repeated conversion and
       indexing costs.
+related-packages:
+  - id: brew:minimap2
+    reason: >
+      Choose minimap2 when one aligner must also cover noisy long reads, spliced RNA
+      reads, and assembly-to-assembly mapping; choose FASTGA for its database-and-index
+      workflow around high-quality whole genomes.
+    rel: alternative
+    sources:
+      - https://lh3.github.io/minimap2/minimap2.html
+      - https://github.com/thegenemyers/FASTGA
+  - id: brew:mummer
+    reason: >
+      Choose MUMmer for its established whole-genome comparison suite, including nucmer,
+      dnadiff, coordinate inspection, and plotting; choose FASTGA for compact ONEcode
+      alignment storage and reusable GDB/GIX artifacts.
+    rel: alternative
+    sources:
+      - https://mummer4.github.io/
+      - https://github.com/thegenemyers/FASTGA
 category: science
 package-manager:
   brew: fastga

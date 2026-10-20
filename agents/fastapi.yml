@@ -3,7 +3,11 @@ display-name: FastAPI
 repo: https://github.com/fastapi/fastapi
 docs:
   - https://fastapi.tiangolo.com/
-config-file-location: null
+config-file-location:
+  unix:
+    - ./pyproject.toml
+  windows:
+    - .\pyproject.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -102,6 +106,15 @@ history:
       FastAPI is especially common for JSON APIs, machine-learning inference services,
       internal platform APIs, and microservices where validation and generated
       client-facing documentation matter as much as raw request handling.
+related-packages:
+  - id: brew:uvicorn
+    reason: >
+      Use Uvicorn when you want direct control of the ASGI server beneath FastAPI;
+      FastAPI's own CLI documentation says it uses Uvicorn internally.
+    rel: adjacent_workflow
+    sources:
+      - https://fastapi.tiangolo.com/fastapi-cli/
+      - https://uvicorn.dev/
 tags:
   - api
   - async
