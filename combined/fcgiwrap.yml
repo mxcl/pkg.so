@@ -70,6 +70,31 @@ history:
       Operators usually run it as a long-lived process or socket-activated service, then
       configure a web server FastCGI location to pass CGI requests to the fcgiwrap
       socket.
+related-packages:
+  - id: brew:spawn-fcgi
+    reason: >
+      The fcgiwrap README specifically recommends spawn-fcgi for launching and
+      supervising the wrapper's FastCGI process.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gnosek/fcgiwrap#readme
+      - https://git.lighttpd.net/lighttpd/spawn-fcgi/src/branch/master/README.md
+  - id: brew:fcgi
+    reason: >
+      fcgiwrap links against the FastCGI development library, so the SDK provides the
+      protocol implementation underlying the wrapper.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gnosek/fcgiwrap#readme
+      - https://fastcgi-archives.github.io/fcgi2/doc/overview.html
+  - id: brew:nginx
+    reason: >
+      nginx can forward requests with its FastCGI module while fcgiwrap supplies the
+      CGI-execution endpoint behind that connection.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gnosek/fcgiwrap#readme
+      - https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html
 category: networking
 package-manager:
   apk: fcgiwrap

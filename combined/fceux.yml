@@ -5,7 +5,10 @@ repo: https://github.com/TASEmulators/fceux
 docs:
   - https://fceux.com/web/documentation.html
   - https://fceux.com/web/help/fceux.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.fceux/fceux.cfg
+    - ~/.fceux/cfg.d/*.cfg
 credentials-file-location: null
 history:
   adoption-history:
@@ -76,6 +79,25 @@ history:
       FCEUX is also a package nerd's emulator because it bundles a CLI-friendly SDL
       heritage with a GUI and long-lived documentation, so it can serve both desktop
       users and scripted emulator workflows.
+related-packages:
+  - id: brew:mednafen
+    reason: >
+      Choose Mednafen when you want a command-line-driven emulator covering NES plus
+      many other console families; choose FCEUX for its NES-specific debugging,
+      ROM-hacking, Lua, and TAS toolset.
+    rel: alternative
+    sources:
+      - https://fceux.com/web/home.html
+      - https://mednafen.github.io/
+  - id: brew:nestopia-ue
+    reason: >
+      Choose Nestopia UE for a focused cross-platform NES emulator with a standalone
+      GUI; choose FCEUX when integrated debugging and tool-assisted-movie features are
+      more important.
+    rel: alternative
+    sources:
+      - https://fceux.com/web/home.html
+      - https://github.com/0ldsk00l/nestopia
 category: games
 package-manager:
   apk: fceux
