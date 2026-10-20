@@ -98,6 +98,15 @@ history:
       install Filebeat, point it at logs, verify output connectivity, and let it
       continuously tail files with registry state so restarts do not resend the whole
       world.
+related-packages:
+  - id: brew:logstash
+    reason: >
+      Place Logstash after Filebeat when collected events need richer parsing,
+      enrichment, conditional routing, or delivery to multiple outputs.
+    rel: adjacent_workflow
+    sources:
+      - https://www.elastic.co/docs/reference/beats/filebeat/logstash-output
+      - https://www.elastic.co/docs/reference/logstash
 tags:
   - cli
   - elasticsearch
