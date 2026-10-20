@@ -68,6 +68,15 @@ history:
       The original description, preserved in the README, is careful about scope: fierce
       is meant to identify likely targets inside and outside a corporate network through
       DNS, not to indiscriminately scan the internet or exploit hosts.
+related-packages:
+  - id: brew:nmap
+    reason: >
+      Run Fierce first to discover likely hostnames and address ranges, then use Nmap to
+      scan the resulting targets for ports and services.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mschwager/fierce#readme
+      - https://nmap.org/book/man.html
 category: security
 package-manager:
   brew: fierce

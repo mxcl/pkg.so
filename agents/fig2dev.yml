@@ -77,6 +77,47 @@ history:
       For bitmap outputs, the README and installation guide both document fig2dev's
       dependency on helper tools: Ghostscript first renders PostScript, then netpbm,
       ImageMagick, or GraphicsMagick converts PPM output to final bitmap formats.
+related-packages:
+  - id: brew:xfig
+    reason: >
+      Xfig creates and edits `.fig` drawings, while fig2dev is its documented backend
+      for printing and exporting them to other formats.
+    rel: adjacent_workflow
+    sources:
+      - https://mcj.sourceforge.net/installation.html
+      - https://sourceforge.net/p/mcj/fig2dev/ci/master/tree/README
+  - id: brew:ghostscript
+    reason: >
+      Install Ghostscript with fig2dev when PDF or bitmap export is needed, because the
+      official guide identifies it as the required renderer for those outputs.
+    rel: adjacent_workflow
+    sources:
+      - https://mcj.sourceforge.net/installation.html
+      - https://www.ghostscript.com/
+  - id: brew:netpbm
+    reason: >
+      Netpbm supplies bitmap-conversion commands that fig2dev can invoke after
+      Ghostscript renders intermediate image data.
+    rel: adjacent_workflow
+    sources:
+      - https://mcj.sourceforge.net/installation.html
+      - https://netpbm.sourceforge.net/
+  - id: brew:imagemagick
+    reason: >
+      ImageMagick is one documented optional backend for completing fig2dev bitmap
+      conversions when Netpbm is not preferred.
+    rel: adjacent_workflow
+    sources:
+      - https://mcj.sourceforge.net/installation.html
+      - https://imagemagick.org/
+  - id: brew:graphicsmagick
+    reason: >
+      GraphicsMagick is another documented optional backend that fig2dev can call to
+      produce final bitmap output.
+    rel: adjacent_workflow
+    sources:
+      - https://mcj.sourceforge.net/installation.html
+      - https://graphicsmagick.sourceforge.io/
 tags:
   - cli
   - conversion
