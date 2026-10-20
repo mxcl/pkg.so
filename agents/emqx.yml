@@ -44,10 +44,10 @@ history:
       in 2020 with a built-in SQL-based rule engine, and EMQX 5.0 with larger-scale
       clustering, MQTT over QUIC, and 100M+ connection testing.
     - >
-      The README describes EMQX as a platform rather than only a broker, with
-      support for MQTT 5.0, 3.1.1, and 3.1, plus MQTT-SN, CoAP, LwM2M, and MQTT over
-      QUIC. It also documents the 5.9.0 licensing/product change that unified features
-      from the previous open-source and enterprise editions under BSL 1.1.
+      The README describes EMQX as a platform rather than only a broker, with support
+      for MQTT 5.0, 3.1.1, and 3.1, plus MQTT-SN, CoAP, LwM2M, and MQTT over QUIC. It
+      also documents the 5.9.0 licensing/product change that unified features from the
+      previous open-source and enterprise editions under BSL 1.1.
   related-projects:
     - >
       Related EMQ projects and surfaces include EMQX Cloud, the EMQX Kubernetes
@@ -90,6 +90,24 @@ history:
       for IoT data, with rules and bridges sending messages to Kafka, RabbitMQ,
       PostgreSQL, MySQL, MongoDB, Redis, ClickHouse, cloud messaging services, webhooks,
       and observability systems.
+related-packages:
+  - id: brew:mosquitto
+    reason: >
+      Choose Eclipse Mosquitto for a lightweight MQTT broker with lower resource needs
+      in small or edge deployments; choose EMQX when built-in clustering, dashboards,
+      integrations, and large-scale operation matter.
+    rel: alternative
+    sources:
+      - https://www.emqx.com/en/blog/emqx-vs-mosquitto-2023-mqtt-broker-comparison
+      - https://mosquitto.org/
+  - id: cask:mqttx
+    reason: >
+      Use MQTTX to connect to EMQX, publish and subscribe to test topics, inspect MQTT
+      traffic, and exercise broker authentication and protocol behavior.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.emqx.com/en/cloud/latest/connect_to_deployments/mqttx.html
+      - https://mqttx.app/docs/
 tags:
   - broker
   - cli

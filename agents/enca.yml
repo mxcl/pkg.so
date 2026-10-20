@@ -22,11 +22,11 @@ history:
       one-liner.
   project-history:
     - >
-      The README preserves a clear maintenance lineage: original copyright by
-      David Necas from 2000 to 2003, later work by Michal Cihar from 2009 to 2016, and
-      Project OSS Revival maintenance from 2025 to 2026. Michal Cihar's project page
-      lists Enca 1.19 and links the historical `nijel/enca` repository, while the
-      package metadata points to the revived Project OSS Revival repository.
+      The README preserves a clear maintenance lineage: original copyright by David
+      Necas from 2000 to 2003, later work by Michal Cihar from 2009 to 2016, and Project
+      OSS Revival maintenance from 2025 to 2026. Michal Cihar's project page lists Enca
+      1.19 and links the historical `nijel/enca` repository, while the package metadata
+      points to the revived Project OSS Revival repository.
   related-projects:
     - >
       GNU recode, iconv, Perl Unicode::Map, and cstocs are documented as converter
@@ -53,6 +53,33 @@ history:
       integration to rewrite text into another encoding. The README documents optional
       use of GNU recode, iconv, Perl charset converters, and cstocs, which is exactly
       the kind of plumbing that made it useful in legacy text cleanup workflows.
+related-packages:
+  - id: brew:uchardet
+    reason: >
+      Choose uchardet when you want a compact Mozilla-derived, language-independent
+      detector and library; choose Enca when language-specific analysis and integrated
+      conversion backends are useful.
+    rel: alternative
+    sources:
+      - https://www.freedesktop.org/wiki/Software/uchardet/
+      - https://cihar.com/software/enca/
+  - id: brew:recode
+    reason: >
+      Use GNU Recode with Enca when detection should feed a broad charset and
+      surface-conversion workflow; Enca's official README documents recode as an
+      optional converter backend.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Project-OSS-Revival/enca/blob/master/README.md
+      - https://github.com/rrthomas/recode#readme
+  - id: brew:libiconv
+    reason: >
+      Use GNU libiconv as Enca's conversion backend on systems needing its character-set
+      coverage; Enca documents optional compilation against the UNIX98 iconv interface.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Project-OSS-Revival/enca/blob/master/README.md
+      - https://www.gnu.org/software/libiconv/
 tags:
   - charset
   - cli

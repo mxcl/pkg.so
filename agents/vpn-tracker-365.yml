@@ -1,0 +1,160 @@
+id: cask:vpn-tracker-365
+display-name: VPN Tracker 365
+repo: null
+docs:
+  - https://blog.vpntracker.com/setting-up-vpn-tracker-365
+  - https://www.vpntracker.com/us/faq.html
+  - https://www.vpntracker.com/us/techspecs.html
+config-file-location:
+  macos:
+    - /Library/Application Support/VPN Tracker 365
+    - ~/Library/Application Support/VPN Tracker 365
+    - /Library/Preferences/com.vpntracker.365mac.plist
+    - ~/Library/Preferences/com.vpntracker.365mac.plist
+credentials-file-location:
+  macos:
+    - macOS Keychain
+    - VPN Tracker Personal Safe
+    - Team Safe
+history:
+  adoption-history:
+    - >
+      VPN Tracker became a long-lived Mac-oriented VPN client, with the vendor
+      describing more than twenty years of Mac VPN experience. Its role expanded from
+      individual remote-access connections to managed team deployments, encrypted
+      connection synchronization, role-based access, and MDM-assisted rollout.
+    - >
+      The product supports a broad collection of corporate VPN protocols and gateway
+      families. This makes it particularly useful on Macs that must connect to several
+      organizations or legacy gateways without maintaining a separate vendor client for
+      each protocol.
+  package-nerd-significance:
+    - >
+      VPN Tracker is notable in the macOS package catalog as a proprietary, native,
+      multi-protocol VPN client rather than a thin interface around one open-source
+      daemon. Packaging encompasses the application, privileged helpers, launch
+      services, system extensions, preference files, and Keychain integration.
+    - >
+      It also preserves access to older enterprise VPN configurations as Apple changes
+      or removes built-in protocol and cryptographic support, making release
+      compatibility and system-extension behavior unusually important to its users.
+  project-history:
+    - >
+      Official documentation carrying copyright dates from 2002 establishes VPN
+      Tracker's lineage in the early Mac OS X era. The product subsequently progressed
+      through numbered desktop releases and the subscription-oriented VPN Tracker 365
+      line.
+    - >
+      The modern application added an Apple Silicon-native VPN engine, system-extension
+      integration, encrypted Personal and Team Safe storage, iPhone and iPad support,
+      and administration features for deploying and revoking organizational connections.
+  related-projects:
+    - >
+      OpenVPN and WireGuard are protocols and implementations whose connection profiles
+      VPN Tracker can import or operate.
+    - >
+      Tunnelblick and Viscosity are alternative macOS VPN clients with a narrower
+      emphasis on OpenVPN.
+    - VPN Tracker is developed by equinux and integrates with the equinux ID account system.
+  sources:
+    - https://www.equinux.com/download/Manual_VPN_Tracker_5.4.4.pdf
+    - >
+      https://www.vpntracker.com/epa/epa_item_file.php/1366/Connection%20Safe%20White%20Paper.pdf
+    - https://www.vpntracker.com/us/
+    - https://www.vpntracker.com/us/faq.html
+    - https://www.vpntracker.com/us/teams.html
+    - https://www.vpntracker.com/us/version_history.html
+  summary:
+    - >
+      VPN Tracker 365 is equinux's commercial VPN client for Apple platforms. It
+      consolidates IPsec, IKEv2, L2TP, OpenVPN, WireGuard, SSTP, and several
+      vendor-specific SSL VPN workflows in one native application.
+  timeline:
+    - >
+      2002: Early official VPN Tracker documentation establishes the product's Mac OS
+      X-era lineage.
+    - '2018: VPN Tracker 10 continued the numbered desktop release line.'
+    - >
+      2020-2021: A redesigned engine added native Apple Silicon and macOS
+      system-extension support.
+    - >
+      2020s: Personal Safe, Team Safe, mobile support, and managed organizational
+      rollout became central product features.
+  usage:
+    - >
+      Users create a connection manually or import a gateway-supplied profile, enter the
+      gateway and authentication settings, and start the tunnel from the native
+      application. Connection-specific passwords, keys, and certificates can be retained
+      in the macOS Keychain.
+    - >
+      Teams use VPN Tracker to distribute preconfigured connections, restrict editing,
+      update configurations remotely, and revoke access. Personal and Team Safe features
+      encrypt connection data for synchronization between authorized devices.
+related-packages:
+  - id: cask:tunnelblick
+    reason: >
+      Choose Tunnelblick when you want a free, open-source macOS client specifically for
+      OpenVPN; VPN Tracker is commercial and supports a substantially broader set of VPN
+      protocols and vendor gateways.
+    rel: alternative
+    sources:
+      - https://www.tunnelblick.net/
+      - https://www.vpntracker.com/us/techspecs.html
+  - id: cask:viscosity
+    reason: >
+      Choose Viscosity for a commercial OpenVPN-focused client available on macOS and
+      Windows; choose VPN Tracker for Apple-focused, multi-protocol corporate VPN
+      support and team management.
+    rel: alternative
+    sources:
+      - https://www.sparklabs.com/viscosity/
+      - https://www.vpntracker.com/us/teams.html
+      - https://www.vpntracker.com/us/techspecs.html
+tags:
+  - enterprise-networking
+  - ipsec
+  - macos
+  - openvpn
+  - remote-access
+  - vpn
+  - vpn-client
+  - wireguard
+provenance:
+  category-sources:
+    - >
+      https://www.vpntracker.com/us/techspecs.html — official protocol and platform
+      specifications.
+    - source_facts.description identifies a multi-protocol VPN client.
+  display-name-sources:
+    - current_curation.display-name
+    - https://www.vpntracker.com/ — official product site.
+  docs-sources:
+    - Official VPN Tracker support, technical-specification, and setup pages.
+  history-sources:
+    - https://www.equinux.com/download/Manual_VPN_Tracker_5.4.4.pdf
+    - >
+      https://www.vpntracker.com/epa/epa_item_file.php/1366/Connection%20Safe%20White%20Paper.pdf
+    - https://www.vpntracker.com/us/
+    - https://www.vpntracker.com/us/faq.html
+    - https://www.vpntracker.com/us/teams.html
+    - https://www.vpntracker.com/us/version_history.html
+  repo-sources:
+    - >
+      The official product and support sites do not publish an official source-control
+      repository.
+    - source_facts.repo is empty.
+  tags-sources:
+    - https://www.vpntracker.com/us/teams.html — official team and enterprise workflows.
+    - >
+      https://www.vpntracker.com/us/techspecs.html — official supported protocols and
+      platforms.
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - vpn-clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: medium
+tags-confidence: high

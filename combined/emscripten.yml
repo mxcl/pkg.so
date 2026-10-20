@@ -94,6 +94,33 @@ history:
       The toolchain matters beyond browsers because Emscripten documents output for
       Node.js, Deno, Bun, and wasm runtimes. That makes it a package-manager fixture for
       developers who need reproducible local builds of wasm artifacts from native code.
+related-packages:
+  - id: brew:binaryen
+    reason: >
+      Use Binaryen to optimize, transform, reduce, or inspect Emscripten-generated
+      WebAssembly; Emscripten's documented optimized-link pipeline invokes Binaryen
+      directly.
+    rel: adjacent_workflow
+    sources:
+      - https://emscripten.org/docs/optimizing/Optimizing-Code.html
+      - https://github.com/WebAssembly/binaryen#readme
+  - id: brew:llvm
+    reason: >
+      Install LLVM when assembling or debugging a manual Emscripten toolchain, because
+      Emscripten uses Clang and LLVM's WebAssembly backend for native-language
+      compilation.
+    rel: adjacent_workflow
+    sources:
+      - https://emscripten.org/docs/building_from_source/index.html
+      - https://llvm.org/docs/
+  - id: brew:wabt
+    reason: >
+      Use WABT after Emscripten compilation to translate generated Wasm to text,
+      validate modules, inspect sections, or run low-level interpreter tests.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/WebAssembly/wabt#readme
+      - https://github.com/emscripten-core/emscripten/blob/main/README.md
 category: developer-tools
 package-manager:
   brew: emscripten
