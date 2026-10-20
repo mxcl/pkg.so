@@ -3,7 +3,13 @@ display-name: Evil Helix
 repo: null
 docs:
   - https://github.com/usagi-flow/evil-helix#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.config/helix/config.toml
+    - .helix/config.toml
+  windows:
+    - '%AppData%\helix\config.toml'
+    - .helix\config.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -36,14 +42,25 @@ history:
   timeline:
     - '2022: Tags begin with Helix-style date releases such as 22.03.'
     - >
-      README documents the project as a soft fork with small, regular releases
-      tagged on demand.
+      README documents the project as a soft fork with small, regular releases tagged on
+      demand.
   usage:
     - >
       Users run Evil Helix like Helix, configure it with Helix TOML configuration paths,
       and can toggle the fork behavior with the `editor.evil` option. The documented
       differences include Vim commands, motions, visual-line mode, modeline support, and
       adjusted defaults.
+related-packages:
+  - id: brew:helix
+    reason: >
+      Choose upstream Helix for its native selection-first modal model and release line;
+      choose Evil Helix when you want Helix compatibility with built-in Vim-style
+      bindings and defaults.
+    rel: alternative
+    sources:
+      - https://github.com/usagi-flow/evil-helix#readme
+      - https://helix-editor.com/
+      - https://docs.helix-editor.com/
 tags:
   - cli
   - helix

@@ -4,7 +4,13 @@ homepage: https://evil-helix.github.io
 repo: https://github.com/usagi-flow/evil-helix
 docs:
   - https://github.com/usagi-flow/evil-helix#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.config/helix/config.toml
+    - .helix/config.toml
+  windows:
+    - '%AppData%\helix\config.toml'
+    - .helix\config.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -45,6 +51,17 @@ history:
       and can toggle the fork behavior with the `editor.evil` option. The documented
       differences include Vim commands, motions, visual-line mode, modeline support, and
       adjusted defaults.
+related-packages:
+  - id: brew:helix
+    reason: >
+      Choose upstream Helix for its native selection-first modal model and release line;
+      choose Evil Helix when you want Helix compatibility with built-in Vim-style
+      bindings and defaults.
+    rel: alternative
+    sources:
+      - https://github.com/usagi-flow/evil-helix#readme
+      - https://helix-editor.com/
+      - https://docs.helix-editor.com/
 category: developer-tools
 package-manager:
   apk: hx
