@@ -4,8 +4,18 @@ homepage: https://exercism.io/cli/
 repo: https://github.com/exercism/cli
 docs:
   - https://exercism.org/docs/using/solving-exercises/working-locally
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - $EXERCISM_CONFIG_HOME/user.json
+    - $XDG_CONFIG_HOME/exercism/user.json
+    - ~/.config/exercism/user.json
+  windows: '%APPDATA%\exercism\user.json'
+credentials-file-location:
+  unix:
+    - $EXERCISM_CONFIG_HOME/user.json
+    - $XDG_CONFIG_HOME/exercism/user.json
+    - ~/.config/exercism/user.json
+  windows: '%APPDATA%\exercism\user.json'
 history:
   adoption-history:
     - >
@@ -78,6 +88,7 @@ history:
       The CLI also handles routine support tasks: checking the installed version,
       finding the binary with which exercism, opening issue-tracker context through
       troubleshoot output, and showing command help for less common operations.
+related-packages: []
 category: developer-tools
 package-manager:
   apk: exercism

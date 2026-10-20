@@ -90,6 +90,33 @@ history:
       Users can define custom tags, use config files, process directory trees, format
       output for other tools, and combine many operations into repeatable media-cleanup
       or archival workflows.
+related-packages:
+  - id: brew:jhead
+    reason: >
+      Choose jhead for a deliberately small JPEG-camera utility focused on timestamps,
+      comments, stripping, thumbnails, and rotation; choose ExifTool for much broader
+      metadata and format coverage.
+    rel: alternative
+    sources:
+      - https://github.com/Matthias-Wandel/jhead
+      - https://exiftool.org/exiftool_pod.html
+  - id: brew:exif
+    reason: >
+      Choose exif when a compact libexif-based tool for recognized JPEG EXIF tags is
+      sufficient and ExifTool's cross-format feature set is unnecessary.
+    rel: alternative
+    sources:
+      - https://libexif.github.io/man/exif.html
+      - https://exiftool.org/exiftool_pod.html
+  - id: brew:exempi
+    reason: >
+      Use Exempi alongside ExifTool when an application needs a native C API and stable
+      ABI specifically for XMP packets while retaining ExifTool for command-line batch
+      metadata work.
+    rel: adjacent_workflow
+    sources:
+      - https://libopenraw.freedesktop.org/exempi/
+      - https://exiftool.org/exiftool_pod.html
 tags:
   - cli
   - exif
