@@ -56,6 +56,25 @@ history:
       selected paths or release assets, verify SHA256 or SHA512 checksums, and use
       environment variables such as GITHUB_OAUTH_TOKEN or GITLAB_TOKEN for private
       repositories.
+related-packages:
+  - id: brew:gh
+    reason: >
+      Choose GitHub CLI when the workflow is GitHub-only and should combine
+      release-asset downloads with GitHub authentication and the platform's broader
+      issue, pull-request, API, and repository commands.
+    rel: alternative
+    sources:
+      - https://cli.github.com/manual/gh_release_download
+      - https://github.com/gruntwork-io/fetch#readme
+  - id: brew:glab
+    reason: >
+      Choose GLab when the workflow is GitLab-only and should combine release downloads
+      with the broader GitLab CLI rather than fetch's cross-host, installer-focused
+      interface.
+    rel: alternative
+    sources:
+      - https://docs.gitlab.com/cli/release/download/
+      - https://github.com/gruntwork-io/fetch#readme
 tags:
   - cli
   - download

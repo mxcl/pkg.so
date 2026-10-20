@@ -76,6 +76,32 @@ history:
       or unlinked resources. Package users care about fast installation, shell
       completions, a default config path on security distributions, and reproducible CLI
       behavior across Linux, macOS, and Windows.
+related-packages:
+  - id: brew:ffuf
+    reason: >
+      Choose ffuf when you want a general web fuzzer whose wordlist substitution can
+      target URL paths, headers, request bodies, or other request positions instead of
+      emphasizing recursive directory discovery.
+    rel: alternative
+    sources:
+      - https://github.com/ffuf/ffuf
+      - https://epi052.github.io/feroxbuster-docs/overview/
+  - id: brew:gobuster
+    reason: >
+      Choose Gobuster when the job also includes DNS-subdomain or virtual-host
+      enumeration alongside directory and file discovery.
+    rel: alternative
+    sources:
+      - https://github.com/OJ/gobuster
+      - https://epi052.github.io/feroxbuster-docs/overview/
+  - id: cask:burp-suite
+    reason: >
+      Proxy feroxbuster through Burp Suite when you need to inspect, log, or manually
+      replay the HTTP requests generated during discovery.
+    rel: adjacent_workflow
+    sources:
+      - https://epi052.github.io/feroxbuster-docs/configuration/command-line/
+      - https://portswigger.net/burp/documentation
 category: security
 package-manager:
   brew: feroxbuster

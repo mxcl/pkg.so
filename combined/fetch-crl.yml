@@ -65,6 +65,15 @@ history:
       trust-anchor metadata to /etc/grid-security/certificates. Version 3 added stateful
       retrieval, HEAD requests, multiple output formats, proxy controls, retry/fallback
       URLs, per-trust-anchor suppression, and parallel retrieval.
+related-packages:
+  - id: brew:openssl@3
+    reason: >
+      Use OpenSSL alongside fetch-crl to consume and inspect the hash-directory or PEM
+      revocation material that fetch-crl retrieves and installs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dlgroep/fetch-crl#readme
+      - https://docs.openssl.org/3.0/man1/openssl-crl/
 category: security
 package-manager:
   brew: fetch-crl
