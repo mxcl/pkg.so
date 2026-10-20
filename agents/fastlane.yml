@@ -93,6 +93,40 @@ history:
       localized screenshots, pilot uploads to TestFlight, deliver uploads to App Store
       Connect, and supply works with Google Play. CI actions help prepare Jenkins,
       Travis CI, CircleCI, and other automated environments.
+related-packages:
+  - id: brew:cocoapods
+    reason: >
+      fastlane's documented cocoapods action runs pod install inside a release lane,
+      letting dependency installation precede testing or building.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.fastlane.tools/actions/cocoapods/
+      - https://guides.cocoapods.org/using/using-cocoapods.html
+  - id: brew:carthage
+    reason: >
+      fastlane's documented carthage action bootstraps Carthage dependencies as a lane
+      step before the app is built or released.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.fastlane.tools/actions/carthage/
+      - https://github.com/Carthage/Carthage#readme
+  - id: brew:gradle
+    reason: >
+      fastlane delegates Android builds and tests to Gradle through its built-in gradle
+      action before uploading the resulting APK or app bundle.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.fastlane.tools/actions/gradle/
+      - https://docs.fastlane.tools/getting-started/android/release-deployment/
+      - https://docs.gradle.org/current/
+  - id: brew:xcodes
+    reason: >
+      fastlane's xcodes action can install or select the Xcode version required by a
+      lane, which is especially useful for reproducible macOS CI workers.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.fastlane.tools/actions/xcodes/
+      - https://github.com/XcodesOrg/xcodes#readme
 tags:
   - ci
   - cli
