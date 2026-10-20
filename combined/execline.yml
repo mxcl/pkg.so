@@ -75,6 +75,23 @@ history:
       command with consistent exit behavior: temporary errors exit 111, permanent
       misuse-style errors exit 100, failed exec lookup exits 127, and other exec
       failures exit 126.
+related-packages:
+  - id: brew:s6
+    reason: >
+      Use execline with s6 when writing supervision and service scripts; the default s6
+      build uses execline for binaries that launch execlineb-interpreted scripts.
+    rel: adjacent_workflow
+    sources:
+      - https://skarnet.org/software/execline/
+      - https://skarnet.org/software/s6/
+  - id: brew:s6-rc
+    reason: >
+      Use execline with s6-rc to build dependency-ordered service management on s6, for
+      which execline is an explicit build-time and runtime requirement.
+    rel: adjacent_workflow
+    sources:
+      - https://skarnet.org/software/execline/
+      - https://skarnet.org/software/s6-rc/
 category: system
 package-manager:
   apk: execline

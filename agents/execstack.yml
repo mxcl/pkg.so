@@ -56,6 +56,25 @@ history:
       files require an executable stack, execstack -c to mark known-safe objects as not
       requiring one, or execstack -s for the rare case where a binary really needs
       executable stack support.
+related-packages:
+  - id: brew:patchelf
+    reason: >
+      Choose PatchELF when you need the same GNU_STACK print, clear, or set operations
+      together with broader ELF interpreter, RPATH, and dependency editing.
+    rel: alternative
+    sources:
+      - https://people.redhat.com/jakub/prelink/
+      - https://github.com/NixOS/patchelf/blob/master/patchelf.1
+  - id: brew:binutils
+    reason: >
+      Use binutils readelf to inspect GNU_STACK headers and ld options to prevent
+      executable-stack markings during linking, reserving execstack for post-link
+      changes.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/9.6_release_notes/new-features
+      - https://sourceware.org/binutils/docs/ld/Options.html
 tags:
   - binary-analysis
   - cli
@@ -87,9 +106,10 @@ provenance:
     - https://man7.org/linux/man-pages/man8/execstack.8.html
     - https://sourceware.org/legacy-ml/binutils/2003-05/msg00741.html
   repo-sources:
-    - https://people.redhat.com/jakub/prelink/
-    - source_facts.homepage
-    - source_facts.repo
+    - >
+      The official upstream page exposes prelink source archives but no confirmed
+      current official HTTP(S) source-control project page for execstack itself:
+      https://people.redhat.com/jakub/prelink/
   tags-sources:
     - source_facts.description names executable stack bit operations.
     - source_facts.executables lists execstack as the command-line utility.
