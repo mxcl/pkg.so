@@ -56,6 +56,24 @@ history:
       plugin, while developers can link the C API. The ffmsindex executable builds index
       files so later frame and audio access can be deterministic instead of relying on
       ad hoc seeking through containers.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg provides the demuxers and decoders wrapped by FFMS2, so it is the
+      foundational adjacent package for building or understanding an FFMS2 media-access
+      stack.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/FFMS/ffms2/blob/master/doc/ffms2-api.md
+      - https://ffmpeg.org/documentation.html
+  - id: brew:vapoursynth
+    reason: >
+      Choose VapourSynth as the Python-based video-processing host in which FFMS2 can
+      act as a frame-accurate source plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/FFMS/ffms2#readme
+      - https://www.vapoursynth.com/doc/
 category: media
 package-manager:
   apk: ffms2

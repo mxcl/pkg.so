@@ -69,6 +69,33 @@ history:
       ffuf reads a default config file from `$XDG_CONFIG_HOME/ffuf/ffufrc` when present.
       Command-line options override values from that default file, while repeatable
       flags such as headers are appended.
+related-packages:
+  - id: brew:gobuster
+    reason: >
+      Choose Gobuster when you want explicit modes for directory/file, DNS,
+      virtual-host, bucket, or TFTP enumeration instead of ffuf's general keyword-driven
+      request fuzzing.
+    rel: alternative
+    sources:
+      - https://github.com/ffuf/ffuf#readme
+      - https://github.com/OJ/gobuster#readme
+  - id: brew:feroxbuster
+    reason: >
+      Choose feroxbuster when recursive forced browsing and automatic link extraction
+      are the center of the task; choose ffuf for more general placement of fuzz inputs
+      in URLs, headers, and bodies.
+    rel: alternative
+    sources:
+      - https://github.com/ffuf/ffuf#readme
+      - https://github.com/epi052/feroxbuster#readme
+  - id: brew:radamsa
+    reason: >
+      ffuf's official README documents feeding Radamsa-generated mutations through
+      `--input-cmd`, making Radamsa a concrete companion for payload generation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ffuf/ffuf#using-external-mutator-to-produce-test-cases
+      - https://gitlab.com/akihe/radamsa
 category: security
 package-manager:
   apk: ffuf
