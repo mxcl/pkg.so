@@ -46,6 +46,30 @@ history:
       ffmpeg@6 is useful for command-line transcoding and probing as well as for builds
       that need FFmpeg 6.x headers and shared libraries, especially where FFmpeg 7 or 8
       changes would be premature.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Choose the unversioned formula for Homebrew's current FFmpeg line when you no
+      longer need the 6.x ABI.
+    rel: alternative
+    sources:
+      - https://formulae.brew.sh/formula/ffmpeg
+      - https://formulae.brew.sh/formula/ffmpeg@6
+  - id: brew:ffmpeg-full
+    reason: >
+      Choose ffmpeg-full when you need a wider selection of optional libraries and
+      codecs than the standard formula enables.
+    rel: alternative
+    sources:
+      - https://formulae.brew.sh/formula/ffmpeg
+  - id: brew:ffms2
+    reason: >
+      FFMS2 wraps FFmpeg for indexed, frame-oriented media access and documented FFmpeg
+      6.1 as its minimum dependency for release 5.0.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/FFMS/ffms2/releases
+      - https://formulae.brew.sh/formula/ffms2
 tags:
   - audio
   - cli

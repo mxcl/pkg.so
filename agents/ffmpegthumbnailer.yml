@@ -56,6 +56,24 @@ history:
       Typical use is either direct CLI thumbnail generation or integration by a file
       manager/desktop thumbnail service. Because it delegates decoding to FFmpeg, its
       practical media coverage follows the FFmpeg build options available on the system.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg is the decoding foundation used by ffmpegthumbnailer, and its enabled
+      formats determine which media files can be thumbnailed.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dirkvdb/ffmpegthumbnailer
+      - https://formulae.brew.sh/formula/ffmpegthumbnailer
+      - https://ffmpeg.org/about.html
+  - id: brew:geeqie
+    reason: >
+      Geeqie is a media-browsing application whose Homebrew formula explicitly depends
+      on ffmpegthumbnailer for video-preview workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/geeqie
+      - https://formulae.brew.sh/formula/ffmpegthumbnailer
 tags:
   - cli
   - ffmpeg

@@ -47,6 +47,31 @@ history:
       Users install ffmpeg@7 for the ffmpeg, ffprobe, and ffplay tools or for builds
       that need FFmpeg 7.x headers and libraries, especially when a workflow has been
       validated against the 7.1 branch.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Choose the unversioned formula when you want Homebrew's current FFmpeg line
+      instead of retaining the 7.x ABI.
+    rel: alternative
+    sources:
+      - https://formulae.brew.sh/formula/ffmpeg
+      - https://formulae.brew.sh/formula/ffmpeg@7
+  - id: brew:ffmpeg-full
+    reason: >
+      Choose ffmpeg-full when broad optional codec and integration support is more
+      important than the standard formula's smaller dependency set.
+    rel: alternative
+    sources:
+      - https://formulae.brew.sh/formula/ffmpeg
+  - id: brew:ffms2
+    reason: >
+      FFMS2 builds indexed, frame-accurate media-access workflows on FFmpeg's demuxing
+      and decoding libraries.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/FFMS/ffms2
+      - https://github.com/FFMS/ffms2/blob/master/doc/ffms2-api.md
+      - https://formulae.brew.sh/formula/ffms2
 category: media
 package-manager:
   apk: ffmpeg7
