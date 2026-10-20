@@ -50,6 +50,23 @@ history:
       A normal setup installs the `fish-lsp` binary, configures an editor language
       client to run `fish-lsp start` for fish files, and optionally installs shell
       completions with `fish-lsp complete > ~/.config/fish/completions/fish-lsp.fish`.
+related-packages:
+  - id: brew:fish
+    reason: >
+      fish is the language runtime and configuration environment that fish-lsp parses,
+      indexes, and augments inside editors.
+    rel: adjacent_workflow
+    sources:
+      - https://www.fish-lsp.dev/
+      - https://fishshell.com/docs/current/
+  - id: brew:neovim
+    reason: >
+      fish-lsp officially documents Neovim client configuration that starts `fish-lsp
+      start` for fish buffers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ndonfris/fish-lsp#client-configuration-required
+      - https://neovim.io/doc/user/lsp.html
 category: developer-tools
 package-manager:
   brew: fish-lsp
