@@ -80,6 +80,41 @@ history:
       other commands. Examples in the README include formatting matching source files
       with `clang-format`, opening test files in an editor, computing checksums in
       parallel, and piping selected file classes into ripgrep.
+related-packages:
+  - id: brew:findutils
+    reason: >
+      Choose GNU Findutils when scripts need the full expressive power and established
+      semantics of `find`; choose fd for concise interactive searches, parallel
+      traversal, and opinionated ignore handling.
+    rel: alternative
+    sources:
+      - https://github.com/sharkdp/fd
+      - https://www.gnu.org/software/findutils/manual/html_mono/find.html
+  - id: brew:bfs
+    reason: >
+      Choose bfs when you want broad `find` expression compatibility with breadth-first
+      traversal; choose fd when simpler regex/glob syntax and Git-aware defaults matter
+      more.
+    rel: alternative
+    sources:
+      - https://github.com/sharkdp/fd
+      - https://tavianator.com/projects/bfs.html
+  - id: brew:fzf
+    reason: >
+      fd's official integration guide uses fd as fzf's file-list generator, combining
+      fast filesystem enumeration with interactive fuzzy selection.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/sharkdp/fd
+      - https://junegunn.github.io/fzf/
+  - id: brew:tree
+    reason: >
+      The fd README documents piping filtered fd results into `tree --fromfile` to
+      render an ignore-aware or extension-filtered directory tree.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/sharkdp/fd
+      - https://oldmanprogrammer.net/source.php?dir=projects/tree
 tags:
   - cli
   - filesystem-search

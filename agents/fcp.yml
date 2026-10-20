@@ -52,6 +52,16 @@ history:
       Its performance story is based on parallelizing directory walking and copying
       across CPU cores, plus platform copy-on-write support on macOS through underlying
       system calls.
+related-packages:
+  - id: brew:coreutils
+    reason: >
+      Choose GNU Coreutils `cp` when scripts need its mature metadata, recursive-copy,
+      linking, backup, or portability options; choose fcp for its narrower parallel-copy
+      path on SSD-backed Unix systems.
+    rel: alternative
+    sources:
+      - https://github.com/Svetlitski/fcp
+      - https://www.gnu.org/software/coreutils/manual/html_node/cp-invocation.html
 tags:
   - cli
   - copy
