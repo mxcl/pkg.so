@@ -5,7 +5,11 @@ repo: https://github.com/fabric/fabric
 docs:
   - https://docs.fabfile.org/
   - https://www.fabfile.org/
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.fabric.yaml
+    - ~/.ssh/config
+    - /etc/ssh/ssh_config
 credentials-file-location: null
 history:
   adoption-history:
@@ -96,6 +100,15 @@ history:
       In legacy usage, users wrote fabfiles and called named tasks from the shell. In
       modern usage, the same broad goal remains, but configuration, SSH auth, gateways,
       command execution, and task composition are more explicit and object-oriented.
+related-packages:
+  - id: brew:pyinvoke
+    reason: >
+      Choose Invoke for Python task automation and local command execution when Fabric's
+      SSH-specific connection layer is unnecessary.
+    rel: adjacent_workflow
+    sources:
+      - https://www.fabfile.org/upgrading.html
+      - https://docs.pyinvoke.org/
 category: developer-tools
 package-manager:
   apk: fabric
