@@ -100,6 +100,32 @@ history:
       package-manager culture comes from how often it appears in `devDependencies`,
       lockfiles, shareable configs, monorepo lint scripts, and pre-commit or CI quality
       gates.
+related-packages:
+  - id: brew:eslint_d
+    reason: >
+      Use eslint_d as an ESLint-compatible frontend when repeated editor or shell
+      invocations need lower startup latency from a persistent background process.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mantoni/eslint_d.js#readme
+      - https://eslint.org/docs/latest/use/integrations
+  - id: brew:prettier
+    reason: >
+      Use Prettier alongside ESLint for deterministic formatting, with
+      eslint-config-prettier disabling stylistic lint rules that would conflict with it.
+    rel: adjacent_workflow
+    sources:
+      - https://prettier.io/docs/integrating-with-linters.html
+      - https://prettier.io/docs/comparison.html
+  - id: brew:standard
+    reason: >
+      Choose JavaScript Standard Style when you want an ESLint-based linter and fixer
+      with a prescribed rule set and minimal configuration instead of maintaining a
+      custom ESLint policy.
+    rel: alternative
+    sources:
+      - https://standardjs.com/
+      - https://eslint.org/docs/latest/use/configure/
 tags:
   - ast
   - cli

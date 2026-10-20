@@ -5,7 +5,8 @@ repo: https://github.com/mantoni/eslint_d.js
 docs:
   - https://github.com/mantoni/eslint_d.js#readme
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix: RESOLVED_ESLINT_INSTALLATION/.eslint_d
 history:
   adoption-history:
     - >
@@ -49,6 +50,16 @@ history:
       start, stop, or restart the daemon automatically. It can use the local project
       ESLint package, fall back to a bundled ESLint, report daemon status, and provide
       an extra `--fix-to-stdout` option for editor save hooks.
+related-packages:
+  - id: brew:eslint
+    reason: >
+      ESLint is the underlying linter that eslint_d executes, and a project-local
+      installation lets eslint_d use that project's exact rules, plugins, and
+      configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mantoni/eslint_d.js#readme
+      - https://eslint.org/docs/latest/use/getting-started
 category: developer-tools
 package-manager:
   brew: eslint_d
