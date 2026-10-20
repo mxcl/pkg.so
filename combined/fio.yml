@@ -93,6 +93,24 @@ history:
       filesystem behavior, device saturation, and failure or verification cases. Because
       it can reproduce tailored workloads without writing new C test programs, it is a
       common bridge between bug reports and repeatable performance experiments.
+related-packages:
+  - id: brew:stress-ng
+    reason: >
+      Choose stress-ng when storage I/O should be exercised alongside CPU, memory,
+      filesystem, and kernel stressors; choose fio when precise storage workload
+      modeling and latency or IOPS measurement are the priority.
+    rel: alternative
+    sources:
+      - https://github.com/ColinIanKing/stress-ng
+      - https://fio.readthedocs.io/en/latest/fio_doc.html
+  - id: brew:gnuplot
+    reason: >
+      fio's included `fio_generate_plots` script uses gnuplot to turn fio log output
+      into graphs.
+    rel: adjacent_workflow
+    sources:
+      - https://fio.readthedocs.io/en/latest/fio_doc.html
+      - http://www.gnuplot.info/
 category: system
 package-manager:
   apk: fio

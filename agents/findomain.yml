@@ -3,8 +3,16 @@ display-name: Findomain
 repo: null
 docs:
   - https://github.com/Findomain/Findomain#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ./findomain.toml
+  windows:
+    - .\findomain.toml
+credentials-file-location:
+  unix:
+    - ./findomain.toml
+  windows:
+    - .\findomain.toml
 history:
   adoption-history:
     - >
@@ -77,6 +85,25 @@ history:
       zero-configuration public lookups to richer authenticated enumeration using
       providers such as VirusTotal, SecurityTrails, Facebook Certificate Transparency,
       and C99.
+related-packages:
+  - id: brew:subfinder
+    reason: >
+      Use Subfinder for its focused passive-enumeration workflow, then import its output
+      into Findomain for combined resolution, filtering, and reporting.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Findomain/Findomain/blob/master/README.md
+      - https://docs.projectdiscovery.io/tools/subfinder/overview
+  - id: brew:amass
+    reason: >
+      Use OWASP Amass when you need broader attack-surface mapping and active DNS
+      techniques; Findomain officially documents importing Amass results into its
+      processing pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Findomain/Findomain/blob/master/README.md
+      - https://github.com/owasp-amass/amass
+      - https://github.com/owasp-amass/amass/wiki/User-Guide
 tags:
   - bug-bounty
   - cli

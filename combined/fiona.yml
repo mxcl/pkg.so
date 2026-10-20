@@ -5,7 +5,9 @@ repo: https://github.com/Toblerity/Fiona
 docs:
   - https://fiona.readthedocs.io/en/stable
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.aws/credentials
+  windows: '%USERPROFILE%\.aws\credentials'
 history:
   adoption-history:
     - >
@@ -79,6 +81,24 @@ history:
       and provides subcommands documented in the official CLI docs. That makes it useful
       in pipelines with tools such as jq and in quick format-inspection tasks where
       opening a full GIS application would be overkill.
+related-packages:
+  - id: brew:gdal
+    reason: >
+      GDAL is Fiona's underlying native geospatial library and is the better direct tool
+      when you need its full driver and command-line surface rather than Fiona's
+      Pythonic vector API.
+    rel: adjacent_workflow
+    sources:
+      - https://fiona.readthedocs.io/en/stable/README.html
+      - https://gdal.org/en/stable/
+  - id: brew:jq
+    reason: >
+      Fiona's official CLI guide pipes `fio` output into jq to aggregate and transform
+      streamed GeoJSON values.
+    rel: adjacent_workflow
+    sources:
+      - https://fiona.readthedocs.io/en/stable/cli.html
+      - https://jqlang.github.io/jq/manual/
 category: data
 package-manager:
   apk: fio
