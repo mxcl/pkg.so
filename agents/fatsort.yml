@@ -62,6 +62,16 @@ history:
       random order, modification-time order, locale handling, and directory inclusion or
       exclusion as needed. The man page emphasizes that it sorts the filesystem
       directory structure itself.
+related-packages:
+  - id: brew:dosfstools
+    reason: >
+      Use dosfstools' fsck.fat to check or repair FAT media before FATSort changes
+      directory ordering, since FATSort's official man page requires a consistent
+      filesystem.
+    rel: adjacent_workflow
+    sources:
+      - https://fatsort.sourceforge.io/fatsort.1.html
+      - https://github.com/dosfstools/dosfstools
 tags:
   - cli
   - exfat

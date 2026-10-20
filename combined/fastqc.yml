@@ -5,7 +5,8 @@ repo: https://github.com/s-andrews/FastQC
 docs:
   - https://www.bioinformatics.babraham.ac.uk/projects/fastqc
   - https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help
-config-file-location: null
+config-file-location:
+  unix: <FastQC installation>/Configuration/limits.txt
 credentials-file-location: null
 history:
   adoption-history:
@@ -62,6 +63,16 @@ history:
       FastQC can process multiple files in the graphical application, or run headlessly
       in pipelines to generate one report per input file. It documents no persistent
       package configuration file or credential store.
+related-packages:
+  - id: brew:fastp
+    reason: >
+      Choose fastp when quality reporting should be combined with read filtering,
+      adapter trimming, and cleaned FASTQ output; FastQC is the more focused standalone
+      quality-analysis application.
+    rel: alternative
+    sources:
+      - https://github.com/OpenGene/fastp
+      - https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 category: science
 package-manager:
   brew: fastqc
