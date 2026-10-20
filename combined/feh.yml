@@ -87,6 +87,24 @@ history:
       they use another image viewer interactively: window-manager and dotfile setups can
       call feh from startup scripts to set backgrounds without pulling in a desktop
       environment.
+related-packages:
+  - id: brew:imagemagick
+    reason: >
+      Use ImageMagick alongside feh to convert SVG, XCF, OTF, and other formats that feh
+      cannot load directly when conversion support is enabled.
+    rel: adjacent_workflow
+    sources:
+      - https://man.finalrewind.org/1/feh/
+      - https://imagemagick.org/
+  - id: brew:chafa
+    reason: >
+      Choose Chafa when images must be rendered inside a terminal using graphics
+      protocols or ANSI/Unicode art; choose feh for native X11 windows and wallpaper
+      management.
+    rel: alternative
+    sources:
+      - https://feh.finalrewind.org/
+      - https://github.com/hpjansson/chafa
 category: media
 package-manager:
   apk: feh

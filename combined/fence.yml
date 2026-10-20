@@ -58,6 +58,17 @@ history:
       Basic usage wraps a command with network access blocked by default. Users can
       apply templates, monitor blocked requests, deny dangerous commands, configure
       filesystem read/write rules, and inspect the merged config with fence config show.
+related-packages:
+  - id: brew:bubblewrap
+    reason: >
+      Fence invokes bubblewrap as part of its Linux sandbox implementation, so
+      installing bubblewrap supplies the low-level namespace and mount isolation Fence
+      composes with its higher-level policy.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fencesandbox/fence#readme
+      - https://github.com/fencesandbox/fence/blob/main/ARCHITECTURE.md
+      - https://github.com/containers/bubblewrap#readme
 category: security
 package-manager:
   brew: fence

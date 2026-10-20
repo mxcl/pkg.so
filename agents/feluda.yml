@@ -4,8 +4,14 @@ repo: null
 docs:
   - https://feluda.readthedocs.io/en/latest
   - https://github.com/anistark/feluda#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ./.feluda.toml
+    - ./config/license_compatibility.toml
+    - ~/.feluda/license_compatibility.toml
+credentials-file-location:
+  unix:
+    - ./.feluda.toml
 history:
   adoption-history:
     - >
@@ -46,6 +52,25 @@ history:
       Default usage scans a project path for dependency license information, with
       language selection, local-license detection, network lookup fallback, OSI approval
       filters, compliance file generation, and SPDX or CycloneDX SBOM output.
+related-packages:
+  - id: brew:syft
+    reason: >
+      Use Syft to catalogue a container image or filesystem, then pipe its SPDX output
+      into Feluda to resolve licenses and enforce restrictive or incompatible-license
+      policy.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/anistark/feluda#readme
+      - https://github.com/anchore/syft
+  - id: brew:cargo-deny
+    reason: >
+      Choose cargo-deny for Rust-specific advisory, license, source, ban, and
+      duplicate-dependency policy; choose Feluda for multi-ecosystem license and SBOM
+      workflows.
+    rel: alternative
+    sources:
+      - https://feluda.readthedocs.io/en/latest/
+      - https://embarkstudios.github.io/cargo-deny/
 tags:
   - cli
   - license-compliance
