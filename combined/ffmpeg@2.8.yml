@@ -4,7 +4,11 @@ homepage: https://ffmpeg.org/
 repo: https://git.ffmpeg.org/ffmpeg.git
 docs:
   - https://ffmpeg.org/documentation.html
-config-file-location: null
+config-file-location:
+  unix:
+    - $FFMPEG_DATADIR/*.ffpreset
+    - ~/.ffmpeg/*.ffpreset
+    - PREFIX/share/ffmpeg/*.ffpreset
 credentials-file-location: null
 history:
   adoption-history:
@@ -77,6 +81,25 @@ history:
       generally: read inputs, choose streams and options, then write outputs. The
       difference is the release line and linked dependency set, not a separate
       interface.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Choose the current unversioned FFmpeg formula when legacy 2.8 library or command
+      compatibility is unnecessary and newer codec and filter support is desired.
+    rel: alternative
+    sources:
+      - https://ffmpeg.org/olddownload.html
+      - https://formulae.brew.sh/formula/ffmpeg
+      - https://formulae.brew.sh/formula/ffmpeg@2.8
+  - id: brew:ffmpeg@4
+    reason: >
+      Choose FFmpeg 4 as a newer compatibility line when software can move beyond the
+      2.8 ABI but is not yet ready for the current unversioned FFmpeg branch.
+    rel: alternative
+    sources:
+      - https://ffmpeg.org/olddownload.html
+      - https://ffmpeg.org/index.html
+      - https://formulae.brew.sh/formula/ffmpeg@4
 category: media
 package-manager:
   apk: ffmpeg
