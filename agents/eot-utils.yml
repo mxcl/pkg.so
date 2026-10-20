@@ -54,6 +54,16 @@ history:
       strings, while `eotinfo` prints a human-readable view of an EOT header. The source
       distribution follows a traditional autotools build path with `configure`, `make`,
       and `make install`, or `bootstrap.sh` when working from individual source files.
+related-packages:
+  - id: brew:fontforge
+    reason: >
+      Use FontForge before eot-utils when an OpenType font must be converted to TrueType
+      outlines; the official eot-utils distribution includes a FontForge script
+      specifically for that preparation step.
+    rel: adjacent_workflow
+    sources:
+      - https://www.w3.org/Tools/eot-utils/README
+      - https://fontforge.org/docs/index.html
 tags:
   - cli
   - conversion
@@ -85,8 +95,9 @@ provenance:
     - https://www.w3.org/submissions/2008/01/
   repo-sources:
     - >
-      The official W3C source distribution is a file directory; no official HTTP(S)
-      source-control project page is documented.
+      The official W3C directory publishes source files and archives but does not
+      identify an official HTTP(S) source-control repository:
+      https://www.w3.org/Tools/eot-utils/
   tags-sources:
     - >
       source_facts.description identifies OTF/TTF to EOT conversion; official W3C README
@@ -98,5 +109,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high

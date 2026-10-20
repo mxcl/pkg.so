@@ -90,6 +90,24 @@ history:
       configuration file, validating proxy behavior in development, running it as a
       sidecar in service mesh deployments, or using it as an edge or middle proxy in
       front of applications.
+related-packages:
+  - id: brew:egctl
+    reason: >
+      Use egctl alongside Envoy when operating Envoy Gateway, whose control plane
+      translates Kubernetes Gateway API resources into xDS configuration for managed
+      Envoy Proxy instances.
+    rel: adjacent_workflow
+    sources:
+      - https://gateway.envoyproxy.io/docs/concepts/proxy/
+      - https://gateway.envoyproxy.io/latest/tasks/operations/egctl/
+  - id: brew:istioctl
+    reason: >
+      Use istioctl to install and inspect an Istio mesh whose sidecar data plane deploys
+      Envoy proxies beside workloads and configures them through Istio's control plane.
+    rel: adjacent_workflow
+    sources:
+      - https://istio.io/latest/docs/overview/dataplane-modes/
+      - https://istio.io/latest/docs/reference/commands/istioctl/
 category: networking
 package-manager:
   brew: envoy
