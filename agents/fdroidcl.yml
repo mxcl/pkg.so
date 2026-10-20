@@ -71,6 +71,23 @@ history:
       The README also documents clear limits: fdroidcl does not run as a daemon, does
       not act as an F-Droid server, and does not swap apps with devices. Those
       boundaries make it a focused CLI rather than a general F-Droid platform.
+related-packages:
+  - id: cask:android-platform-tools
+    reason: >
+      fdroidcl operates on connected Android devices through ADB, which Android SDK
+      Platform-Tools supplies.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Hoverth/fdroidcl/blob/master/README.md
+      - https://developer.android.com/tools/adb
+  - id: brew:fdroidserver
+    reason: >
+      Use fdroidserver to create and publish an F-Droid-compatible repository, then use
+      fdroidcl to search it and install its apps on connected devices.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Hoverth/fdroidcl/blob/master/README.md
+      - https://f-droid.org/en/docs/Setup_an_F-Droid_App_Repo/
 tags:
   - android
   - cli
