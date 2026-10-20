@@ -56,9 +56,6 @@
       "candidatePackageIDs": [
         "brew:workmux",
         "brew:bashka",
-        "brew:cask:openchrom",
-        "brew:resterm",
-        "brew:beets",
         "brew:locust",
         "brew:fastmcp",
         "brew:form",
@@ -77,9 +74,15 @@
         "brew:sofka",
         "brew:prek",
         "brew:tgrep",
-        "brew:oras"
+        "brew:oras",
+        "brew:nub",
+        "brew:cask:jarvis322/tap/sysdata",
+        "brew:dekit"
       ],
       "fallbackPackageIDs": [
+        "brew:nub",
+        "brew:dekit",
+        "brew:cask:jarvis322/tap/sysdata",
         "brew:tgrep",
         "brew:prek",
         "brew:oras",
@@ -100,10 +103,7 @@
         "brew:sftpgo",
         "brew:form",
         "brew:fastmcp",
-        "brew:resterm",
-        "brew:locust",
-        "brew:beets",
-        "brew:cask:openchrom"
+        "brew:locust"
       ],
       "id": "for-you",
       "title": "For You",
@@ -112,6 +112,7 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:textus",
         "brew:portop",
         "brew:cask:portkiller",
         "brew:cask:petal",
@@ -122,8 +123,7 @@
         "brew:cask:tine",
         "brew:cask:genoffice",
         "brew:cask:purge",
-        "brew:noodle",
-        "brew:diffle"
+        "brew:noodle"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -131,6 +131,8 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:nub",
+        "brew:cask:textus",
         "brew:prek",
         "brew:oras",
         "brew:tgrep",
@@ -140,9 +142,7 @@
         "brew:cask:petal",
         "brew:cask:pulse",
         "brew:cask:superhuman-docs",
-        "brew:memex",
-        "brew:cask:capso",
-        "brew:cask:tine"
+        "brew:memex"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -868,7 +868,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-19T11:24:28Z",
+  "generatedAt": "2026-10-20T06:37:44Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -926,68 +926,6 @@
       ],
       "upstreamSummary": "Static verification of installation bash scripts",
       "version": "0.12.0"
-    },
-    "brew:beets": {
-      "agentSummary": "beets catalogs personal music libraries, matches releases through MusicBrainz, rewrites metadata and filenames, and extends into artwork, fingerprints, ReplayGain, queries, and automation through plugins.",
-      "assessment": {
-        "alternatives": [
-          "MusicBrainz Picard for a graphical tagging workflow",
-          "Kid3 or Mp3tag for direct manual tag editing",
-          "Player-managed libraries when filesystem organization is unimportant"
-        ],
-        "audiences": [
-          "Collectors maintaining large local music libraries",
-          "Self-hosters feeding organized libraries into players such as Navidrome or Plex"
-        ],
-        "caveats": [
-          "Initial imports can demand substantial review when releases are obscure, incomplete, or absent from MusicBrainz",
-          "Aggressive move, rename, or retag settings can create broad changes across a library",
-          "Its configuration and plugin surface are powerful but can feel demanding for small collections"
-        ],
-        "complements": [
-          "MusicBrainz for community-maintained release metadata",
-          "A local music server or player",
-          "Reliable backups for original audio and tags"
-        ],
-        "prerequisites": [
-          "A local music collection and willingness to review ambiguous matches",
-          "A tested configuration plus a backup before allowing metadata or file changes"
-        ],
-        "useCases": [
-          "Matching albums and correcting inconsistent tags during import",
-          "Renaming and reorganizing files from metadata-driven templates",
-          "Adding artwork, acoustic fingerprints, ReplayGain, and custom metadata through plugins"
-        ]
-      },
-      "category": "media",
-      "displayName": "beets",
-      "docs": "https://beets.readthedocs.io/",
-      "homepage": "https://beets.io/",
-      "id": "brew:beets",
-      "installURL": "pkgmgrmgr://install?package=brew%3Abeets",
-      "lastUpdatedAt": "2026-09-18T20:17:17Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/beetbox/beets",
-      "researchedAt": "2026-09-19T06:48:56Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "beets project overview",
-          "url": "https://beets.io/"
-        },
-        {
-          "kind": "primary",
-          "title": "beets documentation",
-          "url": "https://beets.readthedocs.io/"
-        },
-        {
-          "kind": "independent",
-          "title": "Hacker News discussion of long-term beets workflows and limitations",
-          "url": "https://news.ycombinator.com/item?id=45873037"
-        }
-      ],
-      "upstreamSummary": "Music library manager and tagger",
-      "version": "2.14.1"
     },
     "brew:cask:activitywatch": {
       "agentSummary": "ActivityWatch records computer activity into a local, extensible timeline, giving users evidence for reflection while keeping sensitive event data under their control.",
@@ -1475,6 +1413,93 @@
       "upstreamSummary": "Local-first runtime firewall for AI coding agents",
       "version": "3.0.132"
     },
+    "brew:cask:jarvis322/tap/sysdata": {
+      "agentSummary": "System Data Unpacked explains macOS storage categories and previews cleanup commands before execution, but deleting caches or developer data still requires careful review and backups.",
+      "assessment": {
+        "alternatives": [
+          "Use Finder, System Settings storage views, and individual developer-tool cleanup commands for a more manual workflow."
+        ],
+        "audiences": [
+          "Mac users investigating unexplained System Data growth, especially developers with large build caches and simulator artifacts."
+        ],
+        "caveats": [
+          "Cleanup is inherently destructive even when the app labels an item safe; review every command and preserve important caches or archives.",
+          "Full Disk Access is a broad permission, though the project documents its scanning boundaries and local-only data handling."
+        ],
+        "complements": [
+          "Backups and native macOS storage tools provide a recovery and comparison path before destructive cleanup."
+        ],
+        "prerequisites": [
+          "Full Disk Access is needed to measure protected locations, and administrator authorization is required for some cleanup actions."
+        ],
+        "useCases": [
+          "Inventory storage by category, inspect reclaim actions, identify idle project artifacts, and optionally clean reviewed items."
+        ]
+      },
+      "category": null,
+      "discovery": {
+        "admittedAt": "2026-10-20",
+        "analytics": {
+          "30": {
+            "count": 347,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-20"
+          },
+          "365": {
+            "count": 391,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-20"
+          },
+          "90": {
+            "count": 391,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-22"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": "2026-10-20",
+        "recentlyDiscovered": false,
+        "status": "resolved",
+        "trend": {
+          "endDate": "2026-10-20",
+          "growthPercent": 1477.3,
+          "installs30d": 347,
+          "previousMonthlyRate": 22.0,
+          "score": 20.137131,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+          ],
+          "startDate": "2026-07-22"
+        }
+      },
+      "displayName": "System Data Unpacked",
+      "docs": null,
+      "homepage": "https://github.com/Jarvis322/macos-sysdata",
+      "id": "brew:cask:jarvis322/tap/sysdata",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ajarvis322%2Ftap%2Fsysdata",
+      "lastUpdatedAt": null,
+      "manager": "homebrew",
+      "repository": "https://github.com/Jarvis322/macos-sysdata",
+      "researchedAt": "2026-10-20T06:37:44Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "System Data Unpacked repository and safety documentation",
+          "url": "https://github.com/Jarvis322/macos-sysdata"
+        },
+        {
+          "kind": "primary",
+          "title": "System Data Unpacked release history",
+          "url": "https://github.com/Jarvis322/macos-sysdata/releases"
+        }
+      ],
+      "upstreamSummary": "Menu bar app that shows what is inside macOS System Data and deletes it item by item",
+      "version": "1.9.0"
+    },
     "brew:cask:kotlin-lsp": {
       "agentSummary": "JetBrains' official Kotlin language server brings IntelliJ-derived completion, diagnostics, navigation, refactoring, and Gradle or Maven project support to LSP-capable editors.",
       "assessment": {
@@ -1659,64 +1684,6 @@
       ],
       "upstreamSummary": "Tiling window manager",
       "version": "0.6.9"
-    },
-    "brew:cask:openchrom": {
-      "agentSummary": "OpenChrom provides cross-platform, vendor-independent chromatography and spectroscopy analysis, emphasizing GC/MS and GC/FID workflows with modular peak processing, identification, quantitation, and reporting.",
-      "assessment": {
-        "alternatives": [
-          "Vendor-supplied chromatography data systems",
-          "MZmine for mass-spectrometry data processing",
-          "OpenMS for programmable mass-spectrometry analysis pipelines"
-        ],
-        "audiences": [
-          "Analytical chemists working with chromatographic or spectrometric measurements",
-          "Laboratories seeking an open-source analysis layer across instrument vendors",
-          "Researchers teaching or reproducing GC/MS and GC/FID workflows"
-        ],
-        "caveats": [
-          "OpenChrom analyzes data but does not control instruments",
-          "The community source tree excludes some vendor-specific converters and commercial extensions",
-          "Its strongest documented focus is nominal-resolution chromatography and mass spectrometry, so specialized workflows need validation"
-        ],
-        "complements": [
-          "Validated reference spectra and compound libraries",
-          "Laboratory quality-control procedures and retained raw data",
-          "Vendor software when instrument control or unsupported proprietary formats are required"
-        ],
-        "prerequisites": [
-          "Measurement files in a supported format or an appropriate converter",
-          "Domain knowledge to validate peak detection, identification, calibration, and quantitation"
-        ],
-        "useCases": [
-          "Detecting, integrating, identifying, and quantifying chromatographic peaks",
-          "Reviewing measurements from multiple instrument formats on Windows, macOS, or Linux",
-          "Automating repeat analyses with process methods and batch workflows"
-        ]
-      },
-      "category": "science",
-      "displayName": "OpenChrom",
-      "docs": "https://github.com/OpenChrom/openchrom#readme",
-      "homepage": "https://www.openchrom.net/",
-      "id": "brew:cask:openchrom",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopenchrom",
-      "lastUpdatedAt": "2026-09-18T10:26:14Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/OpenChrom/openchrom",
-      "researchedAt": "2026-09-18T19:56:21Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "OpenChrom project site",
-          "url": "https://www.openchrom.net/"
-        },
-        {
-          "kind": "independent",
-          "title": "OpenChrom: a cross-platform open source software for chromatographic mass-spectrometry data",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2920884/"
-        }
-      ],
-      "upstreamSummary": "Data analysis for analytical chemistry",
-      "version": "1.6.33"
     },
     "brew:cask:opendisk": {
       "agentSummary": "OpenDisk visualizes macOS storage as an interactive sunburst, streams scan results, supports incremental rescans, and helps review large files before deliberate cleanup.",
@@ -2259,6 +2226,92 @@
       "upstreamSummary": "Windows-style taskbar as a Dock replacement",
       "version": "1.6.3,2026,09"
     },
+    "brew:cask:textus": {
+      "agentSummary": "Textus is a cross-platform WYSIWYG Markdown editor with multiple writing modes, export formats, and optional AI assistance; users should review provider setup and generated edits.",
+      "assessment": {
+        "alternatives": [
+          "A source-oriented Markdown editor is simpler for users who do not need live WYSIWYG rendering or AI-assisted revision."
+        ],
+        "audiences": [
+          "Writers and note-takers who want visual Markdown editing while keeping ordinary .md files."
+        ],
+        "caveats": [
+          "Remote AI requests send relevant writing context to the provider the user selects; generated suggestions still require editorial review."
+        ],
+        "complements": [
+          "Git or another file-versioning workflow can track the plain Markdown documents Textus edits."
+        ],
+        "prerequisites": [
+          "No AI service is required for editing; AI features require a configured provider account, API key, or local Ollama model."
+        ],
+        "useCases": [
+          "Write and revise Markdown in visual, split-view, or source modes, then export to formats including PDF, Word, and HTML."
+        ]
+      },
+      "category": "productivity",
+      "discovery": {
+        "admittedAt": "2026-10-20",
+        "analytics": {
+          "30": {
+            "count": 54,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-20"
+          },
+          "365": {
+            "count": 54,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-20"
+          },
+          "90": {
+            "count": 54,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-22"
+          }
+        },
+        "firstObservedAt": "2026-10-20",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-20",
+          "growthPercent": null,
+          "installs30d": 54,
+          "previousMonthlyRate": 0.0,
+          "score": 10.731926,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+          ],
+          "startDate": "2026-07-22"
+        }
+      },
+      "displayName": "Textus",
+      "docs": "https://github.com/CatVinci-Studio/Textus#readme",
+      "homepage": "https://textus.catvinci.com/",
+      "id": "brew:cask:textus",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atextus",
+      "lastUpdatedAt": "2026-10-19T20:09:44Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/CatVinci-Studio/Textus",
+      "researchedAt": "2026-10-20T06:37:44Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Textus upstream repository and documentation",
+          "url": "https://github.com/CatVinci-Studio/Textus"
+        },
+        {
+          "kind": "primary",
+          "title": "Textus first upstream release",
+          "url": "https://github.com/CatVinci-Studio/Textus/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "WYSIWYG Markdown editor with built-in AI writing tools",
+      "version": "1.1.1"
+    },
     "brew:cask:tine": {
       "agentSummary": "Tine is a fast local outliner that reads and writes Logseq-compatible Markdown graphs, adding native tabs and focused desktop workflows without data migration.",
       "assessment": {
@@ -2682,63 +2735,92 @@
       "upstreamSummary": "Lightweight, framework-agnostic database migration tool",
       "version": "2.36.0"
     },
-    "brew:diffle": {
-      "agentSummary": "diffle is a keyboard-first terminal diff reviewer with comments, repository search, LSP navigation, and an explicit handoff to GitHub for final review submission.",
+    "brew:dekit": {
+      "agentSummary": "dekit manages development and production processes from declarative configuration, with dependency ordering, restarts, and terminal controls; teams should evaluate maturity before replacing established supervisors.",
       "assessment": {
         "alternatives": [
-          "GitHub's web pull-request reviewer",
-          "Terminal diff tools without review-comment or LSP workflows",
-          "Editor-integrated source-control review"
+          "Use mprocs for an established local multiprocess workflow or a platform-native supervisor for production services."
         ],
         "audiences": [
-          "Developers who prefer keyboard-driven code review in a terminal",
-          "Teams reviewing GitHub pull requests or local branch differences"
+          "Developers who run several local services and small teams seeking the same task model in development and production."
         ],
         "caveats": [
-          "diffle prepares GitHub comments as a pending review but intentionally does not submit the review itself",
-          "GitHub-specific operations require credentials, while local review does not",
-          "LSP features depend on separately installed and configured language servers"
+          "The project describes dekit as the next version of mprocs, so migration behavior and configuration compatibility should be tested.",
+          "Production use still requires independent monitoring, access control, and recovery practices beyond starting and restarting processes."
         ],
         "complements": [
-          "GitHub CLI for authentication",
-          "Language servers for code navigation",
-          "Git for local comparison targets"
+          "Service-specific logs, health checks, and deployment automation remain useful around dekit's process supervision."
         ],
         "prerequisites": [
-          "A Git repository for repository-aware review workflows",
-          "A GitHub token or authenticated GitHub CLI only when opening pull requests or sending pending review comments",
-          "Configured language servers for LSP navigation features"
+          "Each managed task and its readiness behavior must be described accurately in the project's dekit configuration."
         ],
         "useCases": [
-          "Review local changes, commits, branches, patches, or GitHub pull requests",
-          "Draft line and file comments before submitting them through GitHub",
-          "Navigate definitions, references, symbols, and hover information through language servers"
+          "Define dependent servers, databases, and workers in configuration, keep them running, and inspect or control them through a TUI or CLI."
         ]
       },
       "category": "developer-tools",
-      "displayName": "diffle",
-      "docs": "https://github.com/moritzwilksch/diffle#readme",
-      "homepage": "https://github.com/moritzwilksch/diffle",
-      "id": "brew:diffle",
-      "installURL": "pkgmgrmgr://install?package=brew%3Adiffle",
-      "lastUpdatedAt": "2026-10-13T20:54:16Z",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 288,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-20"
+          },
+          "365": {
+            "count": 288,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-20"
+          },
+          "90": {
+            "count": 288,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-22"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-20",
+          "growthPercent": null,
+          "installs30d": 288,
+          "previousMonthlyRate": 0.0,
+          "score": 27.749854,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-22"
+        }
+      },
+      "displayName": "dekit",
+      "docs": "https://dekit.run/docs",
+      "homepage": "https://dekit.run",
+      "id": "brew:dekit",
+      "installURL": "pkgmgrmgr://install?package=brew%3Adekit",
+      "lastUpdatedAt": "2026-10-11T21:15:12Z",
       "manager": "homebrew",
-      "repository": "https://github.com/moritzwilksch/diffle",
-      "researchedAt": "2026-10-14T07:05:27Z",
+      "repository": "https://github.com/pvolok/dekit",
+      "researchedAt": "2026-10-20T06:37:44Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "diffle upstream repository and documentation",
-          "url": "https://github.com/moritzwilksch/diffle"
+          "title": "dekit upstream repository",
+          "url": "https://github.com/pvolok/dekit"
         },
         {
           "kind": "primary",
-          "title": "diffle initial release",
-          "url": "https://github.com/moritzwilksch/diffle/releases/tag/v0.0.2"
+          "title": "dekit official documentation",
+          "url": "https://dekit.run/docs"
         }
       ],
-      "upstreamSummary": "Keyboard-first diff viewer with LSP support and GitHub integration",
-      "version": "0.2.5"
+      "upstreamSummary": "Process manager for dev and prod",
+      "version": "0.10.2"
     },
     "brew:diskwatch": {
       "agentSummary": "Presents read-only disk capacity, I/O, latency, health, volume, and hot-file signals in one terminal dashboard, with explicit limits for unavailable measurements.",
@@ -3486,6 +3568,93 @@
       "upstreamSummary": "Terminal REST client with file-based collections",
       "version": "0.10.0"
     },
+    "brew:nub": {
+      "agentSummary": "Nub combines TypeScript execution, package installation, script running, and Node version management over stock Node, trading a unified workflow for another fast-moving toolchain dependency.",
+      "assessment": {
+        "alternatives": [
+          "Use Node with separate tools such as npm or pnpm, tsx, and a dedicated Node version manager for narrower responsibilities."
+        ],
+        "audiences": [
+          "Node.js and TypeScript developers who want one command-line interface for common runtime and package-management tasks."
+        ],
+        "caveats": [
+          "Nub is not a separate JavaScript runtime or bundler, and some augmented modes require Node 18.19 or newer.",
+          "Its broad surface area means teams should test lockfile behavior, lifecycle scripts, and CI compatibility before standardizing on it."
+        ],
+        "complements": [
+          "Existing Node projects, npm-compatible registries, and CI workflows can remain in place while Nub supplies the local orchestration layer."
+        ],
+        "prerequisites": [
+          "Augmented execution requires a supported stock Node release; projects should retain and review their normal package and lock files."
+        ],
+        "useCases": [
+          "Run TypeScript files, package scripts, local command-line tools, dependency installs, and pinned Node versions from one CLI."
+        ]
+      },
+      "category": "language-runtime",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 81,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-20"
+          },
+          "365": {
+            "count": 181,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-20"
+          },
+          "90": {
+            "count": 181,
+            "endDate": "2026-10-20",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-22"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-20",
+          "growthPercent": 62.0,
+          "installs30d": 81,
+          "previousMonthlyRate": 50.0,
+          "score": 2.082575,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-22"
+        }
+      },
+      "displayName": "nub",
+      "docs": "https://nubjs.com/docs",
+      "homepage": "https://nubjs.com",
+      "id": "brew:nub",
+      "installURL": "pkgmgrmgr://install?package=brew%3Anub",
+      "lastUpdatedAt": "2026-10-19T22:01:40Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/nubjs/nub",
+      "researchedAt": "2026-10-20T06:37:44Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Nub upstream repository",
+          "url": "https://github.com/nubjs/nub"
+        },
+        {
+          "kind": "primary",
+          "title": "Nub documentation and FAQ",
+          "url": "https://nubjs.com/docs/faq"
+        }
+      ],
+      "upstreamSummary": "Fast TypeScript runtime and package manager that augments Node",
+      "version": "0.9.7"
+    },
     "brew:oras": {
       "agentSummary": "ORAS lets teams push, pull, copy, tag, and discover arbitrary OCI artifacts in compliant registries without wrapping every payload as a container image.",
       "assessment": {
@@ -3795,67 +3964,6 @@
       ],
       "upstreamSummary": "Fast TeX engine written in Rust",
       "version": "0.4.3"
-    },
-    "brew:resterm": {
-      "agentSummary": "Resterm is a keyboard-driven terminal client for HTTP, GraphQL, gRPC, WebSocket, and SSE workflows, keeping reviewable requests in local text files without cloud synchronization.",
-      "assessment": {
-        "alternatives": [
-          "curl or HTTPie for smaller command-oriented workflows",
-          "Postman or Insomnia for graphical, team-hosted API collections",
-          "grpcurl and websocat for focused protocol-specific tooling"
-        ],
-        "audiences": [
-          "API developers who prefer terminal and Vim-style workflows",
-          "Teams wanting request definitions that can be reviewed in version control"
-        ],
-        "caveats": [
-          "Request files or environment files can leak credentials if committed carelessly",
-          "Its broad feature set and custom scripting language introduce more concepts than a simple HTTP client",
-          "The project is young and community-maintained, so interfaces may continue changing"
-        ],
-        "complements": [
-          "Git for reviewing shared request definitions",
-          "A secrets manager or command-backed authentication provider"
-        ],
-        "prerequisites": [
-          "Comfort with terminal interfaces and text-based request files",
-          "Secure local handling of tokens, environment files, and client credentials"
-        ],
-        "useCases": [
-          "Exploring and debugging APIs across several protocols",
-          "Running request files headlessly with assertions in development or CI",
-          "Tracing, profiling, mocking, and comparing API responses"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "resterm",
-      "docs": "https://github.com/unkn0wn-root/resterm#readme",
-      "homepage": "https://github.com/unkn0wn-root/resterm",
-      "id": "brew:resterm",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aresterm",
-      "lastUpdatedAt": "2026-09-18T20:59:36Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/unkn0wn-root/resterm",
-      "researchedAt": "2026-09-19T06:48:56Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Resterm repository and documentation",
-          "url": "https://github.com/unkn0wn-root/resterm"
-        },
-        {
-          "kind": "independent",
-          "title": "LinuxLinks review of Resterm",
-          "url": "https://www.linuxlinks.com/resterm-terminal-based-rest-graphql-grpc-websocket-sse-client/"
-        },
-        {
-          "kind": "independent",
-          "title": "Terminal Trove Resterm overview",
-          "url": "https://terminaltrove.com/resterm/"
-        }
-      ],
-      "upstreamSummary": "Terminal client for .http/.rest files with HTTP, GraphQL, and gRPC support",
-      "version": "1.8.2"
     },
     "brew:sftpgo": {
       "agentSummary": "SFTPGo provides managed file transfer across SFTP, SCP, FTPS, WebDAV, and web clients, combining local or cloud storage with granular access controls.",
@@ -4429,7 +4537,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-19T11:22:51Z",
+    "generatedAt": "2026-10-20T06:36:01Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
