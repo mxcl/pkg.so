@@ -64,6 +64,24 @@ history:
     - >
       No user credentials or persistent configuration file are documented in the
       supplied curation or the official Flang docs.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      Choose GCC when you want its mature GNU Fortran frontend and GNU toolchain instead
+      of Flang's LLVM-, FIR-, and MLIR-based compiler pipeline.
+    rel: alternative
+    sources:
+      - https://gcc.gnu.org/fortran/
+      - https://flang.llvm.org/docs/
+      - https://flang.llvm.org/docs/Overview.html
+  - id: brew:llvm
+    reason: >
+      LLVM supplies the optimization and code-generation infrastructure used after Flang
+      lowers Fortran through FIR and MLIR to LLVM IR.
+    rel: adjacent_workflow
+    sources:
+      - https://flang.llvm.org/docs/Overview.html
+      - https://llvm.org/
 tags:
   - cli
   - compiler
