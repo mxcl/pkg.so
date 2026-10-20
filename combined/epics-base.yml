@@ -6,7 +6,11 @@ docs:
   - https://docs.epics-controls.org/en/latest
   - https://epics-controls.org/
   - https://github.com/epics-base/epics-base#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $EPICS_BASE/configure/CONFIG_SITE
+    - $EPICS_BASE/configure/CONFIG_SITE_ENV
+    - $EPICS_BASE/configure/os/CONFIG_SITE.<host>.<target>
 credentials-file-location: null
 history:
   adoption-history:
@@ -80,6 +84,7 @@ history:
       repository README shows a quick `make` build and a `softIoc` example, while the
       documentation indexes installation, IOC creation, database concepts, Channel
       Access commands, and system administration topics.
+related-packages: []
 category: science
 package-manager:
   brew: epics-base

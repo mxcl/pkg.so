@@ -64,6 +64,17 @@ history:
       sequential init/start/stop work, disabling runtime fsync, spinning for the first
       connection, pre-initializing a background database under `/tmp`, and shutting down
       asynchronously.
+related-packages:
+  - id: brew:postgresql@18
+    reason: >
+      ephemeralpg invokes the standard PostgreSQL server and client toolchain to create
+      its disposable databases, so a PostgreSQL installation supplies the core runtime
+      it orchestrates.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/eradman/ephemeralpg#readme
+      - https://www.postgresql.org/docs/18/app-initdb.html
+      - https://www.postgresql.org/docs/18/app-pg-ctl.html
 category: data
 package-manager:
   brew: ephemeralpg

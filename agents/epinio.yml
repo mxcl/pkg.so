@@ -3,8 +3,12 @@ display-name: Epinio
 repo: null
 docs:
   - https://docs.epinio.io/
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.config/epinio/settings.yaml
+credentials-file-location:
+  unix:
+    - ~/.config/epinio/settings.yaml
 history:
   adoption-history:
     - >
@@ -56,6 +60,32 @@ history:
       management, then installing Epinio through Helm and using the epinio CLI to create
       namespaces and push applications. The project targets teams that want a
       Heroku-like developer experience on top of Kubernetes.
+related-packages:
+  - id: brew:helm
+    reason: >
+      Epinio's official installation workflow deploys and upgrades the platform through
+      its Helm chart, making Helm the primary cluster-side installation companion.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.epinio.io/getting-started/quickstart
+      - https://docs.epinio.io/reference/helm
+      - https://helm.sh/docs/
+  - id: brew:kubernetes-cli
+    reason: >
+      Epinio requires a Kubernetes cluster and its quickstart explicitly lists kubectl
+      for inspecting and operating the cluster on which Epinio is installed.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.epinio.io/getting-started/quickstart
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:minikube
+    reason: >
+      The Epinio quickstart documents minikube-specific networking and domain setup,
+      making minikube a practical local cluster for trying the platform.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.epinio.io/getting-started/quickstart
+      - https://minikube.sigs.k8s.io/docs/
 tags:
   - app-deployment
   - cli

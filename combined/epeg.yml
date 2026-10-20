@@ -55,6 +55,31 @@ history:
       desired thumbnail. The performance advantage comes from avoiding full-resolution
       decode work and, in some cases, avoiding colorspace conversion when YUV or
       grayscale access is sufficient.
+related-packages:
+  - id: brew:vips
+    reason: >
+      Choose libvips for demand-driven, multi-format image pipelines; epeg is the
+      narrower choice when the job is specifically fast JPEG thumbnail generation.
+    rel: alternative
+    sources:
+      - https://github.com/mattes/epeg#readme
+      - https://www.libvips.org/API/current/
+  - id: brew:imagemagick
+    reason: >
+      ImageMagick is the broader command-line alternative for thumbnails, geometry,
+      effects, and many formats, while epeg concentrates on efficient JPEG downscaling.
+    rel: alternative
+    sources:
+      - https://github.com/mattes/epeg#readme
+      - https://imagemagick.org/Usage/resize/#thumbnail
+  - id: brew:jpeg-turbo
+    reason: >
+      libjpeg-turbo provides a libjpeg-compatible implementation that can supply the
+      JPEG decoding API on which epeg's reduced-resolution workflow depends.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mattes/epeg#readme
+      - https://github.com/libjpeg-turbo/libjpeg-turbo#readme
 category: media
 package-manager:
   brew: epeg
