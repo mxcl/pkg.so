@@ -56,6 +56,32 @@ history:
       invoking it on message files, and configuring mutt macros. It also documents
       options for help, man output, list mode, plain-text mode, quoted-printable
       decoding, config file selection, and version output.
+related-packages:
+  - id: brew:urlscan
+    reason: >
+      Choose urlscan for a more polished terminal selection interface; extract_url.pl's
+      official comparison says urlscan improves on urlview's interface while
+      extract_url.pl better reconstructs some MIME format=flowed URLs.
+    rel: alternative
+    sources:
+      - https://www.memoryhole.net/~kyle/extract_url/
+      - https://github.com/firecat53/urlscan#readme
+  - id: brew:urlview
+    reason: >
+      Use urlview as the simpler curses URL launcher, or pipe extract_url.pl into it
+      when you want extract_url.pl's MIME repair followed by urlview's selector.
+    rel: alternative
+    sources:
+      - https://www.memoryhole.net/~kyle/extract_url/
+      - https://github.com/sigpipe/urlview#readme
+  - id: brew:mutt
+    reason: >
+      Mutt can pipe the current email into extract_url.pl through the officially
+      documented macros, including variants for encrypted messages.
+    rel: adjacent_workflow
+    sources:
+      - https://www.memoryhole.net/~kyle/extract_url/
+      - https://www.mutt.org/doc/manual/
 tags:
   - cli
   - email
