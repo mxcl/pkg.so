@@ -91,6 +91,15 @@ history:
       root-looking ownership or device information in an archive. Its -s and -i options
       can save and reload a fakeroot environment, with documented caveats about touching
       files outside the saved fake view.
+related-packages:
+  - id: brew:dpkg
+    reason: >
+      dpkg-buildpackage can invoke fakeroot for the privilege-simulated package assembly
+      stage, making dpkg the most direct companion in Debian source-package builds.
+    rel: adjacent_workflow
+    sources:
+      - https://manpages.debian.org/testing/fakeroot/fakeroot.1.en.html
+      - https://manpages.debian.org/testing/dpkg-dev/dpkg-buildpackage.1.en.html
 tags:
   - cli
   - fakeroot

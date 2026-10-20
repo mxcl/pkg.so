@@ -59,6 +59,34 @@ history:
       Typical use is to run fakecloud, then configure AWS SDKs or the AWS CLI to use
       http://localhost:4566 with dummy credentials. Configuration is through CLI flags
       and FAKECLOUD_* environment variables rather than a documented config file.
+related-packages:
+  - id: brew:localstack
+    reason: >
+      Choose LocalStack when its established container-oriented AWS development platform
+      and commercial feature tiers fit your workflow; fakecloud documents a direct
+      migration path for users preferring its free single-binary model.
+    rel: alternative
+    sources:
+      - https://fakecloud.dev/localstack-alternative/
+      - https://docs.localstack.cloud/overview/
+  - id: brew:moto
+    reason: >
+      Choose Moto for Python-native mocks and decorators or its standalone test server;
+      choose fakecloud when a language-neutral single-binary AWS endpoint is the better
+      fit.
+    rel: alternative
+    sources:
+      - https://docs.getmoto.org/en/latest/docs/getting_started.html
+      - https://docs.getmoto.org/en/latest/docs/server_mode.html
+      - https://fakecloud.dev/docs/
+  - id: brew:awscli
+    reason: >
+      AWS CLI commands can target fakecloud with --endpoint-url, providing a direct way
+      to create and inspect resources during local tests.
+    rel: adjacent_workflow
+    sources:
+      - https://fakecloud.dev/sqs-emulator/
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-endpoints.html
 category: cloud-infrastructure
 package-manager:
   brew: fakecloud
