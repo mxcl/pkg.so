@@ -58,6 +58,40 @@ history:
     - >
       Common examples include sounding an alert when a directory changes, rebuilding
       LESS/CSS assets, and syncing a working tree to a remote server.
+related-packages:
+  - id: brew:fsevent_watch
+    reason: >
+      Choose fsevent_watch when you need raw, tab-delimited FSEvents records for a
+      custom pipeline rather than FSEvents Tools' wait, command-loop, and
+      synchronization helpers.
+    rel: alternative
+    sources:
+      - https://github.com/ggreer/fsevents-tools#readme
+      - https://github.com/proger/fsevent_watch#readme
+  - id: brew:inotify-tools
+    reason: >
+      Choose inotify-tools for the analogous command-line filesystem-monitoring workflow
+      on Linux; FSEvents Tools was explicitly created as its macOS counterpart.
+    rel: alternative
+    sources:
+      - https://github.com/ggreer/fsevents-tools#readme
+      - https://github.com/inotify-tools/inotify-tools#readme
+  - id: brew:lsyncd
+    reason: >
+      Choose Lsyncd for a long-running, configurable live-mirroring daemon; the FSEvents
+      Tools README names it as related synchronization software.
+    rel: alternative
+    sources:
+      - https://github.com/ggreer/fsevents-tools#readme
+      - https://lsyncd.github.io/lsyncd/
+  - id: brew:rsync
+    reason: >
+      rsync is the transfer engine used by the packaged `autorsync` helper, so it is the
+      natural companion when customizing or reproducing that synchronization workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ggreer/fsevents-tools#readme
+      - https://download.samba.org/pub/rsync/rsync.1
 category: system
 package-manager:
   brew: fsevents-tools

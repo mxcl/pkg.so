@@ -46,6 +46,33 @@ history:
       The README examples pipe `fsevent_watch -F` into line-buffered filters and `xargs`
       to rebuild C files or regenerate Markdown output. The tool does not document a
       config or credentials file; it is used directly from shell pipelines.
+related-packages:
+  - id: brew:fsevents-tools
+    reason: >
+      Choose FSEvents Tools when you want higher-level one-shot, command-loop, or
+      automatic rsync helpers; choose fsevent_watch when you want raw, parseable
+      FSEvents output for a custom pipeline.
+    rel: alternative
+    sources:
+      - https://github.com/proger/fsevent_watch#readme
+      - https://github.com/ggreer/fsevents-tools#readme
+  - id: brew:fswatch
+    reason: >
+      Choose fswatch when the same watcher script must run across macOS, Linux, BSD,
+      Solaris, and Windows backends instead of targeting macOS FSEvents alone.
+    rel: alternative
+    sources:
+      - https://github.com/proger/fsevent_watch#readme
+      - https://github.com/emcrisostomo/fswatch#readme
+  - id: brew:watchexec
+    reason: >
+      Choose watchexec when you want a cross-platform watcher that supervises and
+      restarts commands directly rather than assembling an event-processing shell
+      pipeline.
+    rel: alternative
+    sources:
+      - https://github.com/proger/fsevent_watch#readme
+      - https://watchexec.github.io/docs/
 category: system
 package-manager:
   brew: fsevent_watch
