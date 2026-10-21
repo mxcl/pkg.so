@@ -66,6 +66,15 @@ history:
       fpsync builds on fpart to parallelize rsync, cpio, pax, or tar jobs, use SSH
       clusters for distributed migrations, start transfers while crawling continues, and
       resume or replay transfer runs.
+related-packages:
+  - id: brew:rsync
+    reason: >
+      rsync is fpsync's default transfer engine: fpart divides the tree into work units
+      and fpsync runs multiple rsync jobs locally or through SSH workers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/martymac/fpart/blob/master/docs/www.fpart.org/docs/fpsync.md
+      - https://rsync.samba.org/
 tags:
   - cli
   - file-trees
