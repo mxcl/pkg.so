@@ -5,7 +5,8 @@ repo: https://github.com/mmueller65/fuego
 docs:
   - https://fuego.sourceforge.net/
   - https://fuego.sourceforge.net/fuego-doc-1.1/main.html
-config-file-location: null
+config-file-location:
+  unix: ${HOME}/.config/func-e
 credentials-file-location: null
 history:
   adoption-history:
@@ -69,6 +70,17 @@ history:
       experiments. The official documentation is organized by libraries such as
       GtpEngine, SmartGame, Go, SimplePlayers, and GoUct, plus applications such as
       FuegoMain and FuegoTest.
+related-packages:
+  - id: brew:envoy
+    reason: >
+      Install Envoy alongside func-e when you need the proxy itself; func-e can run
+      downloaded Envoy versions or use an existing custom Envoy binary through
+      ENVOY_PATH.
+    rel: adjacent_workflow
+    sources:
+      - https://func-e.io/
+      - https://github.com/tetratelabs/func-e/blob/master/USAGE.md
+      - https://www.envoyproxy.io/docs
 category: games
 package-manager:
   brew: fuego
