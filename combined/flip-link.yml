@@ -68,6 +68,25 @@ history:
       The official docs note support for ARM Cortex-M programs using cortex-m-rt 0.6.x
       and 0.7.x with LLD, with other architectures and runtime crates outside the tested
       scope.
+related-packages:
+  - id: brew:probe-rs-tools
+    reason: >
+      Knurling's official project template uses flip-link for overflow-safe linking and
+      probe-rs to flash, run, and debug the resulting embedded firmware on target
+      hardware.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/knurling-rs/app-template
+      - https://probe.rs/docs/tools/probe-rs/
+  - id: brew:cargo-generate
+    reason: >
+      The official Knurling application template uses cargo-generate to create a
+      ready-to-configure project that already integrates flip-link into its embedded
+      build setup.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/knurling-rs/app-template
+      - https://cargo-generate.github.io/cargo-generate/
 category: system
 package-manager:
   brew: flip-link

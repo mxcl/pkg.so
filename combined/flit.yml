@@ -75,6 +75,25 @@ history:
       Flit is intentionally narrow: it packages one importable module or package at a
       time, reads common metadata from pyproject.toml and the module, and delegates
       standard wheel installation behavior to pip.
+related-packages:
+  - id: brew:python-build
+    reason: >
+      Python build can invoke `flit_core` through the standard PEP 517 interface,
+      providing a backend-neutral way to build a Flit-configured project in an isolated
+      environment.
+    rel: adjacent_workflow
+    sources:
+      - https://build.pypa.io/en/latest/explanation/build-backends.html
+      - https://flit.pypa.io/en/stable/pyproject_toml.html
+  - id: brew:poetry
+    reason: >
+      Choose Poetry when dependency resolution, lockfiles, and managed environments are
+      central; Flit is intentionally narrower and focuses on packaging and publishing
+      simple Python modules.
+    rel: alternative
+    sources:
+      - https://flit.pypa.io/en/stable/rationale.html
+      - https://python-poetry.org/docs/
 category: developer-tools
 package-manager:
   brew: flit

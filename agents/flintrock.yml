@@ -70,6 +70,25 @@ history:
       The README recommends IAM roles for S3 access rather than copying AWS credentials
       to clusters, and describes Flintrock as unsuitable for permanent infrastructure or
       non-Spark Hadoop services.
+related-packages:
+  - id: brew:apache-spark
+    reason: >
+      Flintrock provisions and operates clusters running Apache Spark, while the Apache
+      Spark package supplies the engine, shells, and submission tools used for Spark
+      applications.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nchammas/flintrock#readme
+      - https://spark.apache.org/docs/latest/
+  - id: brew:hadoop
+    reason: >
+      Flintrock can install HDFS alongside Spark and documents Hadoop version alignment
+      for S3A access, making Hadoop a concrete companion when distributed storage is
+      required.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nchammas/flintrock#accessing-data-on-s3
+      - https://hadoop.apache.org/docs/current/
 tags:
   - apache-spark
   - cli
