@@ -47,6 +47,32 @@ history:
       also documents fstab startup usage, Windows operation with WinFSP,
       environment-variable credentials, and custom credential files through
       --shared-config.
+related-packages:
+  - id: brew:s3fs
+    reason: >
+      Choose s3fs when broader POSIX-style operations, native S3 object representation,
+      and its established `/etc/fstab` workflow matter more than GeeseFS's small-file
+      performance focus.
+    rel: alternative
+    sources:
+      - https://github.com/yandex-cloud/geesefs
+      - https://github.com/s3fs-fuse/s3fs-fuse
+  - id: brew:rclone
+    reason: >
+      Choose rclone when the workflow needs copying, synchronization, encryption, or
+      access to many cloud backends in addition to mounting S3 storage.
+    rel: alternative
+    sources:
+      - https://github.com/yandex-cloud/geesefs
+      - https://rclone.org/s3/
+  - id: brew:gcsfuse
+    reason: >
+      Choose Cloud Storage FUSE for a Google Cloud Storage-native mount, especially when
+      Google-supported GKE and application-default-credential integration is required.
+    rel: alternative
+    sources:
+      - https://github.com/yandex-cloud/geesefs
+      - https://docs.cloud.google.com/storage/docs/cloud-storage-fuse/overview
 category: cloud-infrastructure
 package-manager:
   brew: geesefs
