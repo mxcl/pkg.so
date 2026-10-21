@@ -72,6 +72,23 @@ history:
       The client side is also where users configure proxy definitions, local IPs and
       ports, plugins, authentication parameters, optional compression or encryption, and
       newer transport settings such as the frpc/frps wire protocol.
+related-packages:
+  - id: brew:frps
+    reason: >
+      frps is the public-server counterpart that accepts frpc connections and publishes
+      the client's configured private services.
+    rel: adjacent_workflow
+    sources:
+      - https://gofrp.org/en/docs/setup/
+      - https://github.com/fatedier/frp
+  - id: brew:rathole
+    reason: >
+      Choose rathole when you want a more narrowly focused Rust client/server reverse
+      tunnel with a single TOML-configured binary for both roles.
+    rel: alternative
+    sources:
+      - https://github.com/rathole-org/rathole#readme
+      - https://gofrp.org/en/docs/setup/
 category: networking
 package-manager:
   brew: frpc

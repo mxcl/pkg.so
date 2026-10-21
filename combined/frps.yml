@@ -66,6 +66,23 @@ history:
     - >
       The server is the upgrade anchor in mixed-version deployments: the v0.69.0 release
       notes tell users to upgrade frps before frpc when moving through protocol changes.
+related-packages:
+  - id: brew:frpc
+    reason: >
+      frpc runs beside private services and connects them to the publicly reachable frps
+      server.
+    rel: adjacent_workflow
+    sources:
+      - https://gofrp.org/en/docs/setup/
+      - https://github.com/fatedier/frp
+  - id: brew:rathole
+    reason: >
+      Choose rathole when you prefer a smaller Rust-based reverse-tunnel server and
+      client with a more focused feature set.
+    rel: alternative
+    sources:
+      - https://github.com/rathole-org/rathole#readme
+      - https://gofrp.org/en/docs/setup/
 category: networking
 package-manager:
   brew: frps
