@@ -58,6 +58,23 @@ history:
       radio listings with regular expressions, download by index, PID, or BBC URL,
       select quality levels, fetch subtitles, tag metadata, and run saved PVR searches
       from cron or Task Scheduler.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      get_iplayer uses FFmpeg to record and convert the media streams selected by its
+      BBC-specific discovery and PVR workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/get-iplayer/get_iplayer/wiki/installation
+      - https://ffmpeg.org/documentation.html
+  - id: brew:atomicparsley
+    reason: >
+      get_iplayer can invoke AtomicParsley to write metadata and artwork into supported
+      MP4 output after recording.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/get-iplayer/get_iplayer/wiki/installation
+      - https://github.com/wez/atomicparsley#readme
 tags:
   - bbc-iplayer
   - bbc-sounds

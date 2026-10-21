@@ -58,6 +58,33 @@ history:
       DNSSEC status, IDNA handling, event-loop adapters, or DNS-over-TLS behavior. The
       package also installs `getdns_query` for command-line testing and
       `getdns_server_mon` for server capability checks.
+related-packages:
+  - id: brew:stubby
+    reason: >
+      Stubby is built on getdns and turns the library's DNS Privacy support into a local
+      DNS-over-TLS stub resolver for applications on the same machine.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/getdnsapi/getdns#stubby
+      - https://github.com/getdnsapi/stubby#readme
+  - id: brew:c-ares
+    reason: >
+      c-ares is a lighter asynchronous DNS-library alternative when an application
+      primarily needs nonblocking name resolution rather than getdns's structured DNS,
+      DNSSEC, and DNS-over-TLS feature set.
+    rel: alternative
+    sources:
+      - https://c-ares.org/docs.html
+      - https://getdnsapi.net/documentation/spec/
+  - id: brew:ldns
+    reason: >
+      ldns is an alternative DNS programming library with a broad suite of DNS and
+      DNSSEC utilities, suited to low-level packet and zone manipulation rather than
+      getdns's application-oriented asynchronous API.
+    rel: alternative
+    sources:
+      - https://nlnetlabs.nl/projects/ldns/about/
+      - https://getdnsapi.net/documentation/spec/
 category: networking
 package-manager:
   apk: getdns
