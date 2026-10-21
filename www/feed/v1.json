@@ -56,9 +56,6 @@
       "candidatePackageIDs": [
         "brew:workmux",
         "brew:bashka",
-        "brew:locust",
-        "brew:fastmcp",
-        "brew:form",
         "brew:sftpgo",
         "brew:cask:executor",
         "brew:metview",
@@ -77,9 +74,15 @@
         "brew:oras",
         "brew:nub",
         "brew:cask:jarvis322/tap/sysdata",
-        "brew:dekit"
+        "brew:dekit",
+        "brew:pyrefly",
+        "brew:worktrunk",
+        "brew:plakar"
       ],
       "fallbackPackageIDs": [
+        "brew:worktrunk",
+        "brew:pyrefly",
+        "brew:plakar",
         "brew:nub",
         "brew:dekit",
         "brew:cask:jarvis322/tap/sysdata",
@@ -100,10 +103,7 @@
         "brew:metview",
         "brew:dbmate",
         "brew:cask:executor",
-        "brew:sftpgo",
-        "brew:form",
-        "brew:fastmcp",
-        "brew:locust"
+        "brew:sftpgo"
       ],
       "id": "for-you",
       "title": "For You",
@@ -112,6 +112,9 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:capso",
+        "brew:cask:figcraft",
+        "brew:cask:artcraft-launcher",
         "brew:cask:textus",
         "brew:portop",
         "brew:cask:portkiller",
@@ -119,11 +122,8 @@
         "brew:cask:pulse",
         "brew:cask:superhuman-docs",
         "brew:memex",
-        "brew:cask:capso",
         "brew:cask:tine",
-        "brew:cask:genoffice",
-        "brew:cask:purge",
-        "brew:noodle"
+        "brew:cask:genoffice"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -131,18 +131,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:worktrunk",
+        "brew:plakar",
+        "brew:cask:capso",
+        "brew:cask:figcraft",
+        "brew:cask:artcraft-launcher",
         "brew:nub",
         "brew:cask:textus",
         "brew:prek",
         "brew:oras",
         "brew:tgrep",
         "brew:portop",
-        "brew:diskwatch",
-        "brew:cask:portkiller",
-        "brew:cask:petal",
-        "brew:cask:pulse",
-        "brew:cask:superhuman-docs",
-        "brew:memex"
+        "brew:diskwatch"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -868,7 +868,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-20T06:37:44Z",
+  "generatedAt": "2026-10-21T06:21:47Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -992,60 +992,192 @@
       "upstreamSummary": "Time tracker",
       "version": "0.13.2"
     },
-    "brew:cask:capso": {
-      "agentSummary": "Capso combines native macOS screenshots, recording, annotation, OCR, translation, history, and optional bring-your-own cloud sharing in one open-source capture workflow.",
+    "brew:cask:artcraft-launcher": {
+      "agentSummary": "ArtCraft Launcher installs, updates, discovers, and launches the Craft App Suite through a native Rust interface while retaining each platform's conventional application locations.",
       "assessment": {
         "alternatives": [
-          "CleanShot X for a mature commercial capture workflow",
-          "Built-in macOS Screenshot for simpler capture needs"
+          "Installing each Craft application directly from its official release page",
+          "Using the operating system's native app store or package manager where equivalent applications are available"
         ],
         "audiences": [
-          "Mac users producing annotated screenshots or recordings",
-          "Developers wanting reusable Swift capture components"
+          "Users evaluating several applications in the Craft App Suite",
+          "Administrators who prefer one native interface for suite discovery, installation, updates, and launching"
         ],
         "caveats": [
-          "It targets only recent macOS releases",
-          "Cloud sharing requires users to configure and pay for their own compatible storage",
-          "Recording and capture features require sensitive macOS permissions"
+          "The launcher and many applications it manages are young projects with rapidly evolving releases",
+          "Linux installation behavior varies by available package format and whether the launcher itself runs inside Flatpak",
+          "A launcher simplifies distribution but does not remove the need to assess each managed application's maturity separately"
         ],
         "complements": [
-          "Cloudflare R2 for optional bring-your-own-storage sharing",
-          "Clipboard and drag-and-drop workflows in other Mac applications"
+          "FigCraft, PhotoCraft, LightCraft, FilmCraft, and the other applications managed by the launcher",
+          "Operating-system package and application management tools used alongside the suite"
         ],
         "prerequisites": [
-          "macOS 15 or later",
-          "Screen recording, camera, or microphone permissions for the corresponding features"
+          "A supported desktop operating system and permission to install applications",
+          "Network access to retrieve official Craft App Suite release packages"
         ],
         "useCases": [
-          "Capture areas, windows, full screens, or scrolling content",
-          "Record MP4 or GIF with microphone, system audio, or webcam",
-          "Annotate, OCR, translate, pin, and retain captures"
+          "Browse the available Craft applications and manage their installation state",
+          "Install official release packages into conventional macOS, Windows, or Linux locations",
+          "Keep suite applications updated and launch them from one interface"
         ]
       },
       "category": "productivity",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 218,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-21"
+          },
+          "365": {
+            "count": 218,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-21"
+          },
+          "90": {
+            "count": 218,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-23"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-21",
+          "growthPercent": null,
+          "installs30d": 218,
+          "previousMonthlyRate": 0.0,
+          "score": 24.309897,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+          ],
+          "startDate": "2026-07-23"
+        }
+      },
+      "displayName": "ArtCraft Launcher",
+      "docs": "https://getartcraft.com/apps",
+      "homepage": "https://github.com/storytold/craft-launcher",
+      "id": "brew:cask:artcraft-launcher",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aartcraft-launcher",
+      "lastUpdatedAt": "2026-10-20T18:43:57Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/storytold/craft-launcher",
+      "researchedAt": "2026-10-21T06:21:47Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "ArtCraft Launcher repository and installation behavior",
+          "url": "https://github.com/storytold/craft-launcher"
+        },
+        {
+          "kind": "primary",
+          "title": "ArtCraft Launcher 0.1.0 first release",
+          "url": "https://github.com/storytold/craft-launcher/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "Installer and updater for the Craft App Suite",
+      "version": "0.6.0"
+    },
+    "brew:cask:capso": {
+      "agentSummary": "Capso combines native macOS screenshots, scrolling capture, OCR, annotation, and MP4 or GIF recording in an open-source Swift application requiring modern macOS permissions.",
+      "assessment": {
+        "alternatives": [
+          "The built-in macOS Screenshot utility for simpler capture needs",
+          "CleanShot X or Cap for established commercial capture workflows"
+        ],
+        "audiences": [
+          "macOS users who regularly create annotated screenshots, tutorials, bug reports, or product demonstrations",
+          "Swift developers interested in a modular, open-source native capture application"
+        ],
+        "caveats": [
+          "It is a young project with a rapidly changing feature set and a shorter operational history than mature commercial tools",
+          "Advanced capture modes require broad macOS privacy permissions, which security-conscious users should review before enabling"
+        ],
+        "complements": [
+          "Issue trackers, documentation systems, and team chat applications that consume visual explanations",
+          "Video editors when a capture needs production work beyond Capso's built-in trimming and presentation tools"
+        ],
+        "prerequisites": [
+          "macOS 15 or later",
+          "Screen recording permission, plus camera or microphone permission when those inputs are used"
+        ],
+        "useCases": [
+          "Capture areas, windows, full screens, scrolling content, or text through OCR",
+          "Record the screen with microphone, system audio, webcam picture-in-picture, and MP4 or GIF export",
+          "Annotate, beautify, translate, organize, and quickly share recent captures"
+        ]
+      },
+      "category": "productivity",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 114,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-21"
+          },
+          "365": {
+            "count": 114,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-21"
+          },
+          "90": {
+            "count": 114,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-23"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-21",
+          "growthPercent": null,
+          "installs30d": 114,
+          "previousMonthlyRate": 0.0,
+          "score": 17.234866,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+          ],
+          "startDate": "2026-07-23"
+        }
+      },
       "displayName": "Capso",
       "docs": "https://github.com/lzhgus/Capso#readme",
       "homepage": "https://github.com/lzhgus/Capso",
       "id": "brew:cask:capso",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acapso",
-      "lastUpdatedAt": "2026-10-16T06:57:10Z",
+      "lastUpdatedAt": "2026-10-20T21:46:45Z",
       "manager": "homebrew",
       "repository": "https://github.com/lzhgus/Capso",
-      "researchedAt": "2026-10-16T11:00:33Z",
+      "researchedAt": "2026-10-21T06:21:47Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Capso repository and feature guide",
-          "url": "https://github.com/lzhgus/Capso"
+          "title": "Capso README and feature documentation",
+          "url": "https://github.com/lzhgus/Capso/blob/main/README.md"
         },
         {
           "kind": "primary",
-          "title": "Capso release downloads",
-          "url": "https://github.com/lzhgus/Capso/releases"
+          "title": "Capso 0.1.0 first release",
+          "url": "https://github.com/lzhgus/Capso/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Screenshot and screen recording tool",
-      "version": "1.2.1"
+      "version": "1.2.5"
     },
     "brew:cask:claudoscope": {
       "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
@@ -1233,6 +1365,100 @@
       ],
       "upstreamSummary": "Tool discovery and execution layer for AI agents",
       "version": "1.6.10"
+    },
+    "brew:cask:figcraft": {
+      "agentSummary": "FigCraft is an ambitious Rust interface-design and prototyping application with vector editing, components, variables, exports, plugins, and experimental collaboration across desktop platforms.",
+      "assessment": {
+        "alternatives": [
+          "Figma for mature collaboration, ecosystem depth, and production-tested file compatibility",
+          "Penpot for an established open-source web-based design and prototyping workflow"
+        ],
+        "audiences": [
+          "Designers and developers willing to evaluate an open-source interface-design tool while it is still in alpha",
+          "Teams interested in inspectable Rust tooling, self-hosted collaboration, plugins, or MCP-driven design automation"
+        ],
+        "caveats": [
+          "The project's own roadmap labels it alpha and describes collaboration as a preview",
+          "Importing and exporting .fig files is experimental, and real-world fidelity is not yet established",
+          "The unusually rapid development pace warrants careful evaluation before production adoption"
+        ],
+        "complements": [
+          "Version control for tracking exported assets and project changes",
+          "A browser and self-hosted FigCraft server when testing collaborative workflows"
+        ],
+        "prerequisites": [
+          "A tolerance for alpha software and incomplete compatibility with established design formats",
+          "Platform-specific desktop dependencies or a supported packaged build"
+        ],
+        "useCases": [
+          "Create interface layouts with vectors, text, auto layout, components, styles, variables, and prototypes",
+          "Export SVG, PNG, JPG, or PDF assets and inspect designs during developer handoff",
+          "Experiment with plugins, a control protocol, MCP commands, and early live collaboration"
+        ]
+      },
+      "category": "productivity",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 201,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-21"
+          },
+          "365": {
+            "count": 201,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-21"
+          },
+          "90": {
+            "count": 201,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-23"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-21",
+          "growthPercent": null,
+          "installs30d": 201,
+          "previousMonthlyRate": 0.0,
+          "score": 23.351978,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+          ],
+          "startDate": "2026-07-23"
+        }
+      },
+      "displayName": "FigCraft",
+      "docs": "https://getartcraft.com/apps/figcraft",
+      "homepage": "https://getartcraft.com/apps/figcraft",
+      "id": "brew:cask:figcraft",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Afigcraft",
+      "lastUpdatedAt": "2026-10-20T18:59:49Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/storytold/figcraft",
+      "researchedAt": "2026-10-21T06:21:47Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "FigCraft roadmap and readiness assessment",
+          "url": "https://github.com/storytold/figcraft/blob/main/ROADMAP.md"
+        },
+        {
+          "kind": "primary",
+          "title": "FigCraft 0.2.0 first release",
+          "url": "https://github.com/storytold/figcraft/releases/tag/v0.2.0"
+        }
+      ],
+      "upstreamSummary": "Interface design and prototyping tool",
+      "version": "0.8.0"
     },
     "brew:cask:genoffice": {
       "agentSummary": "GenOffice edits common office and PDF formats locally across desktop platforms, with reviewable AI changes, local search, a CLI, and agent integrations.",
@@ -1998,62 +2224,6 @@
       ],
       "upstreamSummary": "System activity monitor for CPU, memory, GPU, disk and network",
       "version": "0.1.20"
-    },
-    "brew:cask:purge": {
-      "agentSummary": "Purge inventories Mac caches, developer artifacts, large files, duplicates, applications, and leftovers, emphasizing review and moving ordinary removals to Trash for recovery.",
-      "assessment": {
-        "alternatives": [
-          "Manual Finder and command-line disk inspection",
-          "Commercial Mac cleanup utilities for users preferring vendor support"
-        ],
-        "audiences": [
-          "Mac users investigating unexplained storage use",
-          "Developers accumulating build caches, simulators, dependencies, and agent worktrees"
-        ],
-        "caveats": [
-          "Review selections before removal because caches and project artifacts may be expensive to rebuild",
-          "Most removals go to Trash, but simulator data, snapshots, and Apple Intelligence models are documented exceptions",
-          "Granting Full Disk Access increases the importance of trusting and reviewing the software"
-        ],
-        "complements": [
-          "Finder and Quick Look for inspecting candidates",
-          "Native application uninstallers when vendors maintain their own shared components"
-        ],
-        "prerequisites": [
-          "A supported macOS release",
-          "Full Disk Access is required for large-file and application scans"
-        ],
-        "useCases": [
-          "Review and remove application or developer-tool caches",
-          "Find large files and byte-identical duplicates",
-          "Uninstall applications with associated leftovers",
-          "Identify stale project artifacts and orphaned worktrees"
-        ]
-      },
-      "category": "system",
-      "displayName": "Purge",
-      "docs": "https://github.com/jithin-sabu/purge-app#readme",
-      "homepage": "https://purgemac.com/",
-      "id": "brew:cask:purge",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apurge",
-      "lastUpdatedAt": "2026-10-15T10:28:00Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/jithin-sabu/purge-app",
-      "researchedAt": "2026-10-16T11:00:33Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Purge repository and safety documentation",
-          "url": "https://github.com/jithin-sabu/purge-app"
-        },
-        {
-          "kind": "primary",
-          "title": "Purge official website",
-          "url": "https://purgemac.com/"
-        }
-      ],
-      "upstreamSummary": "Clears caches and junk files by moving them to the Trash",
-      "version": "1.11.0"
     },
     "brew:cask:superhuman-docs": {
       "agentSummary": "Superhuman Docs brings the collaborative Coda document model into a dedicated Mac client, with tabbed documents, multiple accounts, starred-item access, and integrated AI features.",
@@ -2982,131 +3152,6 @@
       "upstreamSummary": "Immutable, decentralized, statically built p2p VPN",
       "version": "0.35.4"
     },
-    "brew:fastmcp": {
-      "agentSummary": "FastMCP turns typed Python functions into MCP tools, resources, and prompts, while handling schemas, validation, transports, authentication, clients, and protocol compatibility.",
-      "assessment": {
-        "alternatives": [
-          "The lower-level official MCP Python SDK APIs",
-          "The official MCP TypeScript SDK for JavaScript and TypeScript services",
-          "Direct JSON-RPC and transport implementations for unusually constrained systems"
-        ],
-        "audiences": [
-          "Python developers building MCP servers and clients",
-          "Teams turning existing application functions into agent-accessible tools"
-        ],
-        "caveats": [
-          "The MCP protocol and FastMCP major versions are evolving quickly, so upgrades need compatibility testing",
-          "Project documentation follows the main branch and can describe features not yet present in a stable release",
-          "Remote tool endpoints require explicit authentication, authorization, input validation, and network controls"
-        ],
-        "complements": [
-          "Pydantic models for structured inputs and outputs",
-          "The Model Context Protocol specification and official SDK documentation",
-          "An identity provider, reverse proxy, or MCP gateway for network deployments"
-        ],
-        "prerequisites": [
-          "A supported Python environment",
-          "An MCP host or client for end-to-end use",
-          "A reviewed authentication and authorization model for remote transports"
-        ],
-        "useCases": [
-          "Expose typed Python functions as MCP tools, resources, and prompts",
-          "Build clients, proxies, and composed servers for local or remote MCP services"
-        ]
-      },
-      "category": "ai",
-      "displayName": "fastmcp",
-      "docs": "https://gofastmcp.com/getting-started/welcome",
-      "homepage": "https://gofastmcp.com/getting-started/welcome",
-      "id": "brew:fastmcp",
-      "installURL": "pkgmgrmgr://install?package=brew%3Afastmcp",
-      "lastUpdatedAt": "2026-09-18T21:32:22Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/PrefectHQ/fastmcp",
-      "researchedAt": "2026-09-19T06:52:52Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "FastMCP documentation",
-          "url": "https://gofastmcp.com/getting-started/welcome"
-        },
-        {
-          "kind": "primary",
-          "title": "FastMCP v1.0 release",
-          "url": "https://github.com/PrefectHQ/fastmcp/releases/tag/v1.0"
-        },
-        {
-          "kind": "independent",
-          "title": "Official MCP Python SDK v1 documentation",
-          "url": "https://py.sdk.modelcontextprotocol.io/v1/"
-        }
-      ],
-      "upstreamSummary": "Fast, Pythonic way to build MCP servers and clients",
-      "version": "4.0.5"
-    },
-    "brew:form": {
-      "agentSummary": "FORM processes symbolic expressions too large for memory by streaming terms through disk-backed transformations, serving specialized high-energy-physics calculations rather than general interactive algebra.",
-      "assessment": {
-        "alternatives": [
-          "Mathematica or Maple for broader interactive computer algebra",
-          "SymPy for Python-native symbolic workflows",
-          "Cadabra for field-theory-oriented tensor algebra"
-        ],
-        "audiences": [
-          "High-energy physicists working with very large symbolic expressions",
-          "Researchers building repeatable batch-oriented algebra pipelines"
-        ],
-        "caveats": [
-          "Its textual batch language has a steeper learning curve than notebook-oriented algebra systems",
-          "Disk-backed processing trades lower memory pressure for potentially substantial storage and I/O demands",
-          "FORM is purpose-built for huge expressions and is not a general replacement for every computer algebra workflow"
-        ],
-        "complements": [
-          "FeynCalc and FormLink for Mathematica-connected workflows",
-          "GMP, MPFR, FLINT, and compression libraries for optional capabilities",
-          "Batch schedulers and reproducible research environments"
-        ],
-        "prerequisites": [
-          "Familiarity with FORM's domain-specific programming language",
-          "Enough local disk capacity and I/O performance for large intermediate expressions",
-          "Validated mathematical procedures and representative test calculations"
-        ],
-        "useCases": [
-          "Transform expressions whose intermediate terms exceed available memory",
-          "Automate perturbative quantum-field-theory and other large symbolic calculations",
-          "Apply specialized pattern matching and algebraic rewrites from text programs"
-        ]
-      },
-      "category": "science",
-      "displayName": "form",
-      "docs": "https://github.com/form-dev/form#readme",
-      "homepage": "https://www.nikhef.nl/~form/",
-      "id": "brew:form",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aform",
-      "lastUpdatedAt": "2026-09-18T19:56:22Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/form-dev/form",
-      "researchedAt": "2026-09-19T06:52:52Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "FORM project repository",
-          "url": "https://github.com/form-dev/form"
-        },
-        {
-          "kind": "primary",
-          "title": "FORM reference manual",
-          "url": "https://form-dev.github.io/form/"
-        },
-        {
-          "kind": "independent",
-          "title": "FORM version 4.2 paper",
-          "url": "https://arxiv.org/abs/1707.06453"
-        }
-      ],
-      "upstreamSummary": "Symbolic manipulation system",
-      "version": "5.0.2"
-    },
     "brew:git-xet": {
       "agentSummary": "Git-Xet connects familiar Git workflows to Hugging Face’s chunk-based storage, reducing redundant large-file transfers while retaining Git LFS as a required integration layer.",
       "assessment": {
@@ -3265,68 +3310,6 @@
       ],
       "upstreamSummary": "Jupyter notebooks as Markdown documents, Julia, Python or R scripts",
       "version": "1.19.5"
-    },
-    "brew:locust": {
-      "agentSummary": "Locust models load-test users in ordinary Python, runs interactively or headlessly, and distributes traffic generation across workers for flexible, code-reviewed performance testing.",
-      "assessment": {
-        "alternatives": [
-          "k6 for JavaScript-authored load scenarios",
-          "Apache JMeter for a mature GUI-centered ecosystem",
-          "Gatling for JVM and Scala-oriented performance testing"
-        ],
-        "audiences": [
-          "Python-fluent developers, performance engineers, and site-reliability teams",
-          "Teams needing customizable user journeys rather than recorded request scripts"
-        ],
-        "caveats": [
-          "Client-side generator limits can be mistaken for limits in the tested system",
-          "Unrepresentative wait times, data, or user flows produce misleading capacity conclusions",
-          "High-scale or production testing can cause outages or unexpected infrastructure cost without strict safeguards"
-        ],
-        "complements": [
-          "Metrics, tracing, and log aggregation on the tested system",
-          "Representative test data and production-informed traffic models",
-          "Cloud or container orchestration for large distributed tests"
-        ],
-        "prerequisites": [
-          "Python knowledge for defining user behavior and custom clients",
-          "A safe target environment, agreed load limits, and server-side observability"
-        ],
-        "useCases": [
-          "Simulating realistic multi-step traffic against web services",
-          "Running repeatable performance tests in continuous integration",
-          "Distributing high-volume load generation across multiple workers"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "locust",
-      "docs": "https://docs.locust.io/",
-      "homepage": "https://locust.io/",
-      "id": "brew:locust",
-      "installURL": "pkgmgrmgr://install?package=brew%3Alocust",
-      "lastUpdatedAt": "2026-09-18T20:59:21Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/locustio/locust",
-      "researchedAt": "2026-09-19T06:48:56Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Locust documentation: What is Locust?",
-          "url": "https://docs.locust.io/en/stable/what-is-locust.html"
-        },
-        {
-          "kind": "independent",
-          "title": "Zalando Engineering production load-testing case study",
-          "url": "https://engineering.zalando.com/posts/2019/04/end-to-end-load-testing-zalandos-production-website.html"
-        },
-        {
-          "kind": "independent",
-          "title": "Microsoft Azure guide for running Locust tests",
-          "url": "https://learn.microsoft.com/en-us/azure/app-testing/load-testing/quickstart-create-run-load-test-with-locust"
-        }
-      ],
-      "upstreamSummary": "Scalable user load testing tool written in Python",
-      "version": "2.46.6"
     },
     "brew:memex": {
       "agentSummary": "Memex indexes local coding-agent transcripts for lexical or optional semantic search, then helps users inspect, resume, and reuse earlier sessions across supported tools.",
@@ -3737,6 +3720,104 @@
       "upstreamSummary": "OCI Registry As Storage",
       "version": "1.3.5"
     },
+    "brew:plakar": {
+      "agentSummary": "Plakar creates browsable, encrypted, compressed, deduplicated snapshots across files and integrated data sources, with verification, selective restores, extensible storage backends, and a web interface.",
+      "assessment": {
+        "alternatives": [
+          "Restic or BorgBackup for mature encrypted deduplicating backup workflows",
+          "Kopia for snapshot-based backups with multiple storage targets",
+          "Native database backup tools when application-consistent dumps are required"
+        ],
+        "audiences": [
+          "Operators and developers who want inspectable, verifiable backups without a proprietary repository format",
+          "Teams backing up files, databases, object stores, or Kubernetes workloads through integrations"
+        ],
+        "caveats": [
+          "Encryption does not protect against lost keys, weak operational practices, or untested restores",
+          "Integrations and remote backends add credentials, compatibility, and failure modes beyond a local file backup",
+          "Retention, monitoring, and off-site redundancy remain operator responsibilities"
+        ],
+        "complements": [
+          "Object storage or local disks used as Kloset storage backends",
+          "Schedulers and monitoring systems for recurring backups and failure alerts",
+          "Off-site replication and documented disaster-recovery procedures"
+        ],
+        "prerequisites": [
+          "A destination with sufficient durable capacity for the chosen retention policy",
+          "Secure management of encryption passphrases, key files, and any remote-storage credentials",
+          "Regular restore testing appropriate to the protected workload"
+        ],
+        "useCases": [
+          "Create encrypted and deduplicated snapshots in local or remote Kloset stores",
+          "Browse or compare snapshots and restore an individual file or a complete data set",
+          "Verify snapshot integrity without performing a restore",
+          "Operate backup workflows through the command line or built-in web interface"
+        ]
+      },
+      "category": "system",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 124,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-21"
+          },
+          "365": {
+            "count": 1522,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-21"
+          },
+          "90": {
+            "count": 325,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-23"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-21",
+          "growthPercent": 23.4,
+          "installs30d": 124,
+          "previousMonthlyRate": 100.5,
+          "score": 0.889828,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-23"
+        }
+      },
+      "displayName": "plakar",
+      "docs": "https://docs.plakar.io/",
+      "homepage": "https://plakar.io",
+      "id": "brew:plakar",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aplakar",
+      "lastUpdatedAt": "2026-10-21T00:05:51Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/PlakarKorp/plakar",
+      "researchedAt": "2026-10-21T06:21:47Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Plakar repository and feature overview",
+          "url": "https://github.com/PlakarKorp/plakar"
+        },
+        {
+          "kind": "primary",
+          "title": "Plakar documentation",
+          "url": "https://docs.plakar.io/"
+        }
+      ],
+      "upstreamSummary": "Create backups with compression, encryption and deduplication",
+      "version": "1.1.8"
+    },
     "brew:portop": {
       "agentSummary": "Shows TCP and UDP listeners in a keyboard-driven terminal interface, linking ports to processes and offering focused inspection before an operator decides what to stop.",
       "assessment": {
@@ -3911,6 +3992,102 @@
       ],
       "upstreamSummary": "Fast Git hook manager written in Rust, drop-in alternative to pre-commit",
       "version": "0.5.5"
+    },
+    "brew:pyrefly": {
+      "agentSummary": "Pyrefly combines a fast Python type checker with a language server, strong inference, refactoring, framework-aware analysis, and editor support for large codebases.",
+      "assessment": {
+        "alternatives": [
+          "mypy for a mature, widely integrated Python type-checking ecosystem",
+          "Pyright or basedpyright for established editor-centered static analysis",
+          "ty for another performance-focused newer Python type checker"
+        ],
+        "audiences": [
+          "Python teams seeking fast static analysis in local development and continuous integration",
+          "Editor users who want type-driven navigation, completion, refactoring, and diagnostics from one language server"
+        ],
+        "caveats": [
+          "Migration can expose different inference and compatibility behavior than an existing checker",
+          "Notebook support is documented as experimental",
+          "Projects still need runtime tests because type analysis cannot validate dynamic behavior or external services"
+        ],
+        "complements": [
+          "Ruff for linting and formatting alongside type analysis",
+          "pytest for runtime behavior that static type checking cannot verify",
+          "VS Code, JupyterLab, Marimo, or another Language Server Protocol client"
+        ],
+        "prerequisites": [
+          "A Python project and a supported command-line or editor integration",
+          "Project configuration when defaults do not match the repository's import paths or desired strictness"
+        ],
+        "useCases": [
+          "Check Python types from the command line or in continuous integration",
+          "Provide IDE navigation, completion, inlay hints, rename, hierarchy, and refactoring features",
+          "Analyze partially annotated code and projects using supported Django or Pydantic patterns"
+        ]
+      },
+      "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 1344,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-21"
+          },
+          "365": {
+            "count": 5207,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-21"
+          },
+          "90": {
+            "count": 1525,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-23"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-21",
+          "growthPercent": 1385.1,
+          "installs30d": 1344,
+          "previousMonthlyRate": 90.5,
+          "score": 26.768332,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-23"
+        }
+      },
+      "displayName": "pyrefly",
+      "docs": "https://pyrefly.org/",
+      "homepage": "https://pyrefly.org/",
+      "id": "brew:pyrefly",
+      "installURL": "pkgmgrmgr://install?package=brew%3Apyrefly",
+      "lastUpdatedAt": "2026-10-15T18:41:02Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/facebook/pyrefly",
+      "researchedAt": "2026-10-21T06:21:47Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Pyrefly FAQ and design positioning",
+          "url": "https://pyrefly.org/en/docs/pyrefly-faq/"
+        },
+        {
+          "kind": "primary",
+          "title": "Pyrefly IDE feature documentation",
+          "url": "https://pyrefly.org/en/docs/IDE-features/"
+        }
+      ],
+      "upstreamSummary": "Fast type checker and IDE for Python",
+      "version": "1.4.0"
     },
     "brew:ratex": {
       "agentSummary": "ratex is an experimental Rust TeX engine emphasizing fast compilation and a compact command-line workflow, best suited to curious TeX users testing an emerging implementation.",
@@ -4533,11 +4710,97 @@
       ],
       "upstreamSummary": "Git worktrees + tmux windows for zero-friction parallel dev",
       "version": "0.1.264"
+    },
+    "brew:worktrunk": {
+      "agentSummary": "Worktrunk streamlines Git worktrees for parallel development and coding agents with branch-oriented switching, status views, lifecycle hooks, merge workflows, and shared build caches.",
+      "assessment": {
+        "alternatives": [
+          "Native git worktree commands for minimal dependencies and complete manual control",
+          "Custom shell scripts or task runners for repository-specific worktree automation"
+        ],
+        "audiences": [
+          "Developers running several feature branches or coding agents in parallel",
+          "Teams that already use Git worktrees and want automation around their lifecycle"
+        ],
+        "caveats": [
+          "Merge and removal automation can affect branches and worktrees, so teams should review defaults and hooks before adoption",
+          "Background post-hooks can race when they modify the same files or Git state",
+          "Its agent-oriented convenience adds configuration and conventions beyond native Git"
+        ],
+        "complements": [
+          "GitHub CLI or GitLab CLI for pull-request and merge-request workflows",
+          "Claude Code, Codex, and other command-line coding agents",
+          "Project-specific build, test, lint, and development-server commands attached through hooks"
+        ],
+        "prerequisites": [
+          "An existing Git repository and familiarity with branches and worktrees",
+          "Shell integration for commands that change the caller's working directory",
+          "A supported copy-on-write filesystem for shared-cache features"
+        ],
+        "useCases": [
+          "Create, switch, inspect, merge, and remove worktrees with shorter branch-oriented commands",
+          "Launch coding agents or development commands inside isolated worktrees",
+          "Automate setup, checks, cleanup, and notifications with lifecycle hooks",
+          "Share copy-on-write build caches on supported filesystems"
+        ]
+      },
+      "category": "ai",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 2442,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-21"
+          },
+          "365": {
+            "count": 26631,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-21"
+          },
+          "90": {
+            "count": 7599,
+            "endDate": "2026-10-21",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-23"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": null
+      },
+      "displayName": "worktrunk",
+      "docs": "https://worktrunk.dev/",
+      "homepage": "https://worktrunk.dev",
+      "id": "brew:worktrunk",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aworktrunk",
+      "lastUpdatedAt": "2026-10-21T01:13:21Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/max-sixty/worktrunk",
+      "researchedAt": "2026-10-21T06:21:47Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Worktrunk repository and workflow overview",
+          "url": "https://github.com/max-sixty/worktrunk"
+        },
+        {
+          "kind": "primary",
+          "title": "Worktrunk lifecycle hook documentation",
+          "url": "https://worktrunk.dev/hook/"
+        }
+      ],
+      "upstreamSummary": "CLI for Git worktree management, designed for parallel AI agent workflows",
+      "version": "0.81.0"
     }
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-20T06:36:01Z",
+    "generatedAt": "2026-10-21T06:20:02Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
