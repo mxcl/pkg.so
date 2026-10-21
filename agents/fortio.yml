@@ -59,6 +59,26 @@ history:
       modes, report saved JSON results, and execute scripts. Typical load-test flags
       include target QPS, connection count, duration or call count, histogram
       resolution, headers, payloads, and JSON output.
+related-packages:
+  - id: brew:wrk
+    reason: >
+      Choose wrk for a lean HTTP benchmark focused on generating maximum throughput;
+      Fortio's official comparison favors Fortio when fixed QPS, exact call counts,
+      latency comparisons, or an integrated test server matter.
+    rel: alternative
+    sources:
+      - https://github.com/fortio/fortio/wiki/FAQ
+      - https://github.com/wg/wrk
+  - id: brew:ghz
+    reason: >
+      Choose ghz for dedicated gRPC benchmarking with protobuf definitions, reflection,
+      call data, streaming methods, and structured performance-test workflows; Fortio is
+      broader across HTTP, gRPC, servers, proxies, and network debugging.
+    rel: alternative
+    sources:
+      - https://ghz.sh/docs/intro.html
+      - https://ghz.sh/docs/options
+      - https://github.com/fortio/fortio
 tags:
   - benchmarking
   - cli

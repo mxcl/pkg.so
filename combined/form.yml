@@ -5,7 +5,10 @@ repo: https://github.com/form-dev/form
 docs:
   - https://github.com/form-dev/form#readme
   - https://www.nikhef.nl/~form
-config-file-location: null
+config-file-location:
+  unix:
+    - ./form.set
+    - $FORMSETUP
 credentials-file-location: null
 history:
   adoption-history:
@@ -66,6 +69,25 @@ history:
       set includes form for sequential use and tform for multithreaded use, with
       optional dependencies such as GMP, MPFR, zstd, zlib, and FLINT improving
       capabilities or performance.
+related-packages:
+  - id: brew:singular
+    reason: >
+      Choose Singular for specialized polynomial, Gröbner-basis, commutative-algebra, or
+      algebraic-geometry work rather than FORM's emphasis on extremely large symbolic
+      expressions in physics calculations.
+    rel: alternative
+    sources:
+      - https://www.singular.uni-kl.de/
+      - https://www.nikhef.nl/~form/aboutform/aboutform.html
+  - id: brew:maxima
+    reason: >
+      Choose Maxima when you need a general-purpose interactive computer algebra system;
+      FORM is more specialized toward high-throughput manipulation of very large
+      expressions.
+    rel: alternative
+    sources:
+      - https://maxima.sourceforge.io/
+      - https://www.nikhef.nl/~form/aboutform/aboutform.html
 category: science
 package-manager:
   brew: form

@@ -64,6 +64,25 @@ history:
       fixes with --fix, and inspect rule explanations with fortitude explain.
       Configuration can live in fortitude.toml, .fortitude.toml, fpm.toml under
       extra.fortitude, or pyproject.toml under tool.fortitude.
+related-packages:
+  - id: brew:fortls
+    reason: >
+      Use fortls alongside Fortitude in an LSP-capable editor: Fortitude supplies lint
+      diagnostics and fixes, while fortls provides Fortran navigation, completion, hover
+      information, and symbol features.
+    rel: adjacent_workflow
+    sources:
+      - https://fortitude.readthedocs.io/en/stable/editors/
+      - https://fortls.fortran-lang.org/
+  - id: brew:fpm
+    reason: >
+      Fortitude can read its lint settings from the extra.fortitude table in an fpm.toml
+      manifest, letting Fortran Package Manager projects keep build metadata and lint
+      configuration in the same project file.
+    rel: adjacent_workflow
+    sources:
+      - https://fortitude.readthedocs.io/en/stable/configuration/
+      - https://fpm.fortran-lang.org/
 category: developer-tools
 package-manager:
   brew: fortitude
