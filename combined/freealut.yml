@@ -67,6 +67,17 @@ history:
       helpers for initialization, shutdown, sleeping, version checking, and loading
       sound sample data. The README now recommends CMake for modern builds while keeping
       deprecated autotools and Visual Studio instructions for older workflows.
+related-packages:
+  - id: brew:openal-soft
+    reason: >
+      Use OpenAL Soft as the OpenAL implementation beneath freealut; freealut's official
+      build documentation requires OpenAL, while OpenAL Soft provides the cross-platform
+      core audio API that ALUT supplements.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/vancegroup/freealut#readme
+      - https://github.com/kcat/openal-soft
+      - https://openal-soft.org/
 category: media
 package-manager:
   apk: freealut

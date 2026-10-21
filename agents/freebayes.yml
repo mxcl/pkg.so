@@ -90,6 +90,35 @@ history:
       standard input, post-call filtering through vcflib's vcffilter, parallel execution
       by splitting the genome into regions, and Snakemake examples for cluster-friendly
       parallelism.
+related-packages:
+  - id: brew:vcflib
+    reason: >
+      Use vcflib immediately after freebayes to filter low-confidence calls or decompose
+      haplotype calls; the official freebayes manual provides pipelines using vcffilter
+      and vcfallelicprimitives.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/freebayes/freebayes#readme
+      - https://github.com/vcflib/vcflib#readme
+  - id: brew:snakemake
+    reason: >
+      Use Snakemake to parallelize freebayes across genomic regions with dynamic job
+      scheduling; freebayes ships an official example workflow specifically for this
+      approach.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/freebayes/freebayes#parallelisation
+      - https://github.com/freebayes/freebayes/tree/master/examples
+      - https://snakemake.readthedocs.io/en/stable/
+  - id: brew:bcftools
+    reason: >
+      Use bcftools to inspect, normalize, filter, and transform the VCF produced by
+      freebayes; the freebayes manual explicitly lists it as a post-call decomposition
+      and normalization option.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/freebayes/freebayes#readme
+      - https://samtools.github.io/bcftools/bcftools.html
 tags:
   - bioinformatics
   - cli
