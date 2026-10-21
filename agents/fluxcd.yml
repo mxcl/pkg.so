@@ -58,6 +58,48 @@ history:
       supported sources, and let its controllers reconcile applications and
       infrastructure. The flux CLI installs and bootstraps components, creates sources
       and secrets, inspects reconciliation, and supports automation workflows.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl alongside Flux to inspect the Kubernetes resources and clusters that
+      Flux continuously reconciles.
+    rel: adjacent_workflow
+    sources:
+      - https://fluxcd.io/flux/get-started/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      Flux's Helm Controller declaratively installs and upgrades Helm releases, while
+      the Helm CLI remains useful for authoring and inspecting charts.
+    rel: adjacent_workflow
+    sources:
+      - https://fluxcd.io/flux/use-cases/helm/
+      - https://helm.sh/docs/
+  - id: brew:kustomize
+    reason: >
+      Flux's Kustomize Controller reconciles plain manifests and Kustomize overlays,
+      while the Kustomize CLI can generate and validate those overlays before they are
+      committed.
+    rel: adjacent_workflow
+    sources:
+      - https://fluxcd.io/flux/components/kustomize/
+      - https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/
+  - id: brew:sops
+    reason: >
+      SOPS encrypts Kubernetes secrets before they enter Git, and Flux's Kustomize
+      Controller decrypts them during reconciliation.
+    rel: adjacent_workflow
+    sources:
+      - https://fluxcd.io/flux/guides/mozilla-sops/
+      - https://github.com/getsops/sops
+  - id: brew:argocd
+    reason: >
+      Choose Argo CD as an alternative Kubernetes GitOps controller when its built-in
+      web UI, SSO, and manual synchronization controls better fit the operating model.
+    rel: alternative
+    sources:
+      - https://fluxcd.io/flux/
+      - https://argo-cd.readthedocs.io/en/stable/
 tags:
   - cli
   - cncf
