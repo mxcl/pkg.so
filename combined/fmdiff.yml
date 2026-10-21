@@ -4,7 +4,10 @@ homepage: https://github.com/brunodefraine/fmscripts
 repo: https://github.com/brunodefraine/fmscripts
 docs:
   - https://github.com/brunodefraine/fmscripts#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.subversion/config
+    - ~/.hgrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -51,6 +54,23 @@ history:
       `fmdiff3` as a `diff3`-like command for update and merge operations, `fmresolve`
       for resolving existing Subversion conflicts, and `fmmerge` as an external merge
       tool.
+related-packages:
+  - id: brew:subversion
+    reason: >
+      Subversion can invoke fmdiff and fmdiff3 directly through its external diff
+      options or `~/.subversion/config`, making it fmdiff's primary documented workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/brunodefraine/fmscripts
+      - https://subversion.apache.org/docs
+  - id: brew:mercurial
+    reason: >
+      Mercurial can register fmdiff through its extdiff extension and fmmerge through
+      merge-tool settings in `~/.hgrc`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/brunodefraine/fmscripts
+      - https://www.mercurial-scm.org/help/topics/config.html
 category: developer-tools
 package-manager:
   brew: fmdiff
