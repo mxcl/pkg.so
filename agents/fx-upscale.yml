@@ -55,6 +55,26 @@ history:
       The README notes a format behavior for output above 4K: some `.mp4` inputs may be
       converted to `.mov` and h264 or hevc may be re-encoded as ProRes 422 because of
       macOS playback and codec limits.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Choose FFmpeg when you need cross-platform video scaling, selectable resampling
+      algorithms, filters, and control over encoding; choose fx-upscale for a minimal
+      macOS Metal-oriented upscaling command.
+    rel: alternative
+    sources:
+      - https://github.com/finnvoor/fx-upscale#readme
+      - https://ffmpeg.org/ffmpeg-scaler.html
+      - https://ffmpeg.org/ffmpeg-filters.html
+  - id: brew:mint
+    reason: >
+      Mint is an adjacent workflow because the fx-upscale README explicitly supports
+      `mint install finnvoor/fx-upscale`, making Mint suitable for versioned
+      Swift-package installation and execution.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/finnvoor/fx-upscale#readme
+      - https://github.com/yonaskolb/Mint#readme
 tags:
   - cli
   - macos
