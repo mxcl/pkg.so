@@ -69,6 +69,25 @@ history:
       The user guide emphasizes that the select command generates and applies XSLT from
       command-line templates, which lets shell scripts perform structured XML queries
       without writing a separate stylesheet.
+related-packages:
+  - id: brew:libxml2
+    reason: >
+      Choose libxml2's xmllint when you mainly need low-level XML parsing, validation,
+      formatting, or XPath inspection; XMLStarlet provides a broader shell-oriented
+      editing and transformation interface built on libxml2.
+    rel: alternative
+    sources:
+      - https://xmlstar.sourceforge.net/doc/UG/xmlstarlet-ug.html
+      - https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html
+  - id: brew:libxslt
+    reason: >
+      libxslt is the transformation engine beneath XMLStarlet, and its xsltproc utility
+      is a useful adjacent tool when a workflow centers on applying complete XSLT
+      stylesheets rather than composing XMLStarlet subcommands.
+    rel: adjacent_workflow
+    sources:
+      - https://xmlstar.sourceforge.net/doc/UG/xmlstarlet-ug.html
+      - https://gnome.pages.gitlab.gnome.org/libxslt/xsltproc.html
 tags:
   - cli
   - validation

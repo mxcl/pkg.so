@@ -2,10 +2,88 @@ id: brew:tpcgen-cli
 display-name: tpcgen-cli
 homepage: https://github.com/datafusion-contrib/tpcgen-rs
 repo: https://github.com/datafusion-contrib/tpcgen-rs
+docs:
+  - https://github.com/datafusion-contrib/tpcgen-rs
+  - https://github.com/datafusion-contrib/tpcgen-rs/tree/main/tpcgen-cli
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The project offers both a command-line program and embeddable Rust libraries. Its
+      official README also documents Python-package distribution, while the supplied
+      catalog facts establish Homebrew availability, giving benchmark users several ways
+      to incorporate the generator into local and automated workflows.
+  package-nerd-significance:
+    - >
+      tpcgen-cli packages the traditionally cumbersome generation of TPC benchmark
+      fixtures into a fast, constant-memory command that can emit modern analytical
+      formats. It is useful for reproducible database-engine comparisons and for
+      creating realistically shaped test data without retaining a large fixture corpus.
+  project-history:
+    - >
+      tpcgen-rs began as clflushopt/tpchgen-rs and later moved under datafusion-contrib.
+      The scope grew from TPC-H generation to a family of TPC-H and TPC-DS generators,
+      including a unified tpcgen-cli and embeddable Rust and Arrow libraries.
+    - >
+      The maintainers emphasize byte-for-byte comparison with the reference generators,
+      multicore execution, bounded memory use, and direct output to Parquet, Arrow, and
+      CSV.
+  related-projects:
+    - TPC-H
+    - TPC-DS
+    - Apache Arrow
+    - Apache Parquet
+    - Apache DataFusion
+  sources:
+    - https://github.com/datafusion-contrib/tpcgen-rs
+    - https://github.com/datafusion-contrib/tpcgen-rs/tree/main/tpcgen-cli
+    - source_facts.package-manager
+  summary:
+    - >
+      tpcgen-cli is the unified command-line interface from tpcgen-rs for generating
+      TPC-H and TPC-DS benchmark datasets in analytical formats.
+  timeline:
+    - >
+      Undated: The original clflushopt/tpchgen-rs project moved to
+      datafusion-contrib/tpcgen-rs.
+    - >
+      Later development: The project added TPC-DS support and introduced tpcgen-cli as
+      the unified command-line interface.
+  usage:
+    - >
+      Users select TPC-H or TPC-DS, an output format, a scale factor, and an output
+      directory. The official quick start demonstrates generating Parquet datasets,
+      while the project also supports Arrow and CSV output.
+    - >
+      Typical uses include preparing repeatable analytical benchmark inputs, comparing
+      query engines, and generating partitioned datasets without holding the full result
+      in memory.
+related-packages:
+  - id: brew:duckdb
+    reason: >
+      Choose DuckDB when you want to generate and query TPC-H data directly inside a SQL
+      engine; its official tpch extension provides dbgen and benchmark queries, while
+      tpcgen-cli is the better fit for standalone, reference-compatible Parquet, Arrow,
+      or CSV datasets.
+    rel: alternative
+    sources:
+      - https://duckdb.org/docs/current/core_extensions/tpch
+      - https://github.com/datafusion-contrib/tpcgen-rs
+category: data
 package-manager:
   brew: tpcgen-cli
 package-manager-url: https://formulae.brew.sh/formula/tpcgen-cli
 license: Apache-2.0
+tags:
+  - apache-arrow
+  - benchmark-data
+  - cli
+  - csv
+  - data-generation
+  - parquet
+  - tpc-ds
+  - tpc-h
 description: Fast TPC-H and TPC-DS data generator
 executables:
   - tpcgen-cli
