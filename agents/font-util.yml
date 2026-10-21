@@ -50,6 +50,16 @@ history:
       The package supplies command-line helpers such as `bdftruncate` and `ucs2any`,
       plus build-time metadata/macros used when producing and installing X.Org font
       packages.
+related-packages:
+  - id: brew:mkfontscale
+    reason: >
+      After font-util's helpers prepare legacy X11 bitmap-font sources, mkfontscale can
+      scan the installed font directory and generate the `fonts.scale` and `fonts.dir`
+      indexes consumed by the legacy X font system.
+    rel: adjacent_workflow
+    sources:
+      - https://gitlab.freedesktop.org/xorg/font/util/-/blob/master/README.md
+      - https://www.x.org/releases/current/doc/man/man1/mkfontscale.1.xhtml
 tags:
   - cli
   - fonts
