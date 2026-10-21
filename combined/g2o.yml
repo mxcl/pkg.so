@@ -68,6 +68,16 @@ history:
       Package users commonly install the library and tools, then link against g2o from
       robotics or computer-vision software, or use its command-line binaries such as g2o
       and the simulator tools.
+related-packages:
+  - id: brew:suite-sparse
+    reason: >
+      Install SuiteSparse when building or using g2o workloads that benefit from its
+      optional CHOLMOD-backed sparse factorization support, while reviewing the
+      licensing caveat documented by g2o.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/RainerKuemmerle/g2o#requirements
+      - https://github.com/DrTimothyAldenDavis/SuiteSparse
 category: science
 package-manager:
   brew: g2o

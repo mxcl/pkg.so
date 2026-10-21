@@ -52,6 +52,32 @@ history:
       execute it. The README documents a repeat mode, a history-focused launch mode,
       shell aliases, and detection rules for Makefiles, npm package locks, pnpm
       lockfiles, yarn locks, justfiles, and Taskfile output.
+related-packages:
+  - id: brew:just
+    reason: >
+      fzf-make discovers justfiles and lets users fuzzy-select and run their recipes,
+      including recipes from a justfile found in an ancestor directory.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kyu08/fzf-make#readme
+      - https://github.com/casey/just#readme
+  - id: brew:go-task
+    reason: >
+      fzf-make integrates with Task by consuming `task --list-all --json`, giving
+      Taskfile users an interactive selector for declared tasks and includes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kyu08/fzf-make#readme
+      - https://taskfile.dev/
+  - id: brew:make
+    reason: >
+      In directories containing GNUmakefile, makefile, or Makefile, fzf-make discovers
+      Make targets and provides preview, selection, history, and execution around the
+      existing Make workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kyu08/fzf-make#readme
+      - https://www.gnu.org/software/make/
 category: developer-tools
 package-manager:
   brew: fzf-make

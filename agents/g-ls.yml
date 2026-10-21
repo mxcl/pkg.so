@@ -4,7 +4,14 @@ repo: null
 docs:
   - https://equationzhao.github.io/g
   - https://github.com/Equationzhao/g#readme
-config-file-location: null
+config-file-location:
+  linux:
+    - $XDG_CONFIG_HOME/g/g.yaml
+    - ~/.config/g/g.yaml
+  macos:
+    - ~/Library/Application Support/g/g.yaml
+  windows:
+    - '%AppData%\g\g.yaml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -58,6 +65,24 @@ history:
       long format, tree layout, JSON, markdown, CSV, git status, MIME and charset
       display, fuzzy path matching, and shell initialization scripts for Bash, Zsh,
       Fish, PowerShell, and Nushell.
+related-packages:
+  - id: brew:eza
+    reason: >
+      Choose eza when you want the faster, maintained exa successor with familiar
+      modern-ls layouts and Unix metadata; g's official comparison highlights g instead
+      for extra structured formats, MIME, and charset output.
+    rel: alternative
+    sources:
+      - https://github.com/Equationzhao/g#alternatives
+      - https://github.com/eza-community/eza#readme
+  - id: brew:lsd
+    reason: >
+      Choose lsd for an ls-compatible, color-and-icon-focused alternative; g's official
+      README lists it among the projects that inspired g.
+    rel: alternative
+    sources:
+      - https://github.com/Equationzhao/g#alternatives
+      - https://github.com/lsd-rs/lsd#readme
 tags:
   - cli
   - cross-platform
