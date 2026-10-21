@@ -52,6 +52,32 @@ history:
       generate language-specific code, serialize data with generated builders, and read
       buffers through generated accessors. The package manager executable flatc is
       therefore central to most FlatBuffers workflows.
+related-packages:
+  - id: brew:flatcc
+    reason: >
+      Choose flatcc when the producer and consumer must remain pure C while retaining
+      the FlatBuffers format; it supplies a C-written schema compiler and C runtime.
+    rel: alternative
+    sources:
+      - https://flatbuffers.dev/
+      - https://github.com/dvidelabs/flatcc
+  - id: brew:protobuf
+    reason: >
+      Choose Protocol Buffers when broad language support, conventional
+      parse-and-serialize APIs, and integration with gRPC are more important than
+      FlatBuffers' direct buffer access.
+    rel: alternative
+    sources:
+      - https://flatbuffers.dev/
+      - https://protobuf.dev/overview/
+  - id: brew:capnp
+    reason: >
+      Choose Cap'n Proto when you want a serialization system with direct in-memory
+      access plus a built-in capability-based RPC model.
+    rel: alternative
+    sources:
+      - https://flatbuffers.dev/
+      - https://capnproto.org/
 category: developer-tools
 package-manager:
   apk: flatbuffers

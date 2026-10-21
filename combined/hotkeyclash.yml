@@ -2,9 +2,72 @@ id: cask:hotkeyclash
 display-name: HotkeyClash
 homepage: https://hotkeyclash.com/
 repo: https://github.com/Wunderlandmedia/HotkeyClash
+docs:
+  - https://github.com/Wunderlandmedia/HotkeyClash#readme
+  - https://hotkeyclash.com/features
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      HotkeyClash is distributed as a native macOS application and Homebrew cask. Its
+      official documentation positions it as a focused replacement for manually checking
+      application menus, automation-tool configurations, and macOS system settings for
+      shortcut collisions.
+  package-nerd-significance:
+    - >
+      HotkeyClash is notable as a narrowly scoped, open-source macOS diagnostic utility.
+      It understands configuration formats used by tools such as Karabiner-Elements and
+      skhd while also inspecting live application menus through the Accessibility API.
+  project-history:
+    - >
+      Wunderlandmedia developed HotkeyClash as a native Swift and SwiftUI menu-bar
+      utility for finding keyboard-shortcut conflicts. The project deliberately
+      separates detection from remediation: it reports claimants and likely precedence
+      but leaves shortcut reassignment to the owning applications.
+  related-projects:
+    - >
+      The official documentation contrasts HotkeyClash with shortcut cheat-sheet tools
+      such as KeyClu and describes integrations with Karabiner-Elements, skhd, Keyboard
+      Maestro, BetterTouchTool, Hammerspoon, and Alfred.
+  sources:
+    - https://github.com/Wunderlandmedia/HotkeyClash#readme
+    - https://hotkeyclash.com/features/
+  summary:
+    - >
+      HotkeyClash is an open-source macOS menu-bar utility that inventories shortcuts
+      from running applications, automation-tool configurations, and macOS itself, then
+      identifies definite and potential conflicts.
+  timeline:
+    - >
+      2026: The official product site documents HotkeyClash as a free, open-source
+      conflict detector for macOS 14 and later.
+  usage:
+    - >
+      Users grant Accessibility permission for live menu inspection, run a scan, inspect
+      conflicts and their source layers, fix bindings in the responsible application or
+      configuration file, and rescan. Reports can be searched and exported as Markdown.
+related-packages:
+  - id: cask:keyclu
+    reason: >
+      Use KeyClu alongside HotkeyClash when you want an on-demand cheat sheet of an
+      application's available shortcuts after resolving conflicts; HotkeyClash
+      explicitly identifies KeyClu as serving that separate role.
+    rel: adjacent_workflow
+    sources:
+      - https://hotkeyclash.com/features/
+      - https://github.com/Anze/KeyCluCask
+category: productivity
 package-manager:
   brew-cask: hotkeyclash
 package-manager-url: https://formulae.brew.sh/cask/hotkeyclash
+tags:
+  - accessibility
+  - automation
+  - conflict-detection
+  - keyboard-shortcuts
+  - macos
+  - menu-bar
 description: Keyboard shortcut conflict detector
 applications:
   - HotkeyClash.app

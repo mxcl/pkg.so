@@ -2,9 +2,94 @@ id: cask:nanako0129/tap/syrtis
 display-name: Syrtis
 homepage: https://github.com/Nanako0129/syrtis
 repo: https://github.com/Nanako0129/syrtis
+docs:
+  - https://github.com/Nanako0129/syrtis/blob/main/docs/knowledge/README.md
+  - https://github.com/Nanako0129/syrtis#readme
+  - https://syrtis.nyanako.com/
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Syrtis packages local AI-coding usage analysis as a native macOS menu-bar
+      application installed through its Homebrew tap or signed releases. Its support for
+      many coding agents reflects the spread of local session-log formats across Claude
+      Code, Codex, Cursor, OpenCode, Gemini CLI, Copilot, Kiro, and related tools.
+  package-nerd-significance:
+    - >
+      Syrtis is significant to package enthusiasts because it combines a native SwiftUI
+      shell, a shared Rust parsing core, a third-party Homebrew cask, and Sparkle
+      updates around data produced by many independently packaged coding agents. It also
+      illustrates how an application can provide usage observability without requiring
+      its own cloud account.
+  project-history:
+    - >
+      The product line began as a fork of tokcat, which itself used tokscale. The
+      current macOS application is a ground-up native Swift rewrite with a Rust core
+      derived from tokscale-core rather than a continuation of tokcat's Tauri code.
+    - >
+      The macOS application was called TokenBar before version 2.0 and was renamed
+      Syrtis while preserving existing settings, history, and login-item state. A
+      Windows tray application uses the same Syrtis name and shared Rust parsing core.
+  related-projects:
+    - >
+      The official credits identify tokscale as the parsing and dashboard ancestor,
+      tokcat as the original menu-bar concept, RunCat as the inspiration for the
+      animated cat, and CodexBar as a reference for quota-pace cards.
+  sources:
+    - https://github.com/Nanako0129/syrtis#readme
+    - https://github.com/Nanako0129/syrtis/blob/main/docs/knowledge/README.md
+    - https://syrtis.nyanako.com/
+  summary:
+    - >
+      Syrtis is a local-first macOS menu-bar dashboard for token usage, estimated cost,
+      activity, and subscription quotas across AI coding tools. It reads session data
+      already stored on the computer and requires no Syrtis account or cloud
+      synchronization.
+  timeline:
+    - 'Initial product line: The project began from the tokcat and tokscale ecosystem.'
+    - 'Native rewrite: A SwiftUI macOS shell was built around a shared Rust parsing core.'
+    - >
+      Version 2.0: The macOS application changed its public name from TokenBar to Syrtis
+      while retaining user state.
+  usage:
+    - >
+      Users install the cask, open the menu-bar application, and inspect overview,
+      quota, model, monthly, daily, hourly, statistics, and agent views. The application
+      reads supported agents' local logs and, where enabled, their existing provider
+      authentication to display quota information.
+related-packages:
+  - id: cask:codexbar
+    reason: >
+      Choose CodexBar when you want a native menu-bar monitor with a bundled CLI,
+      documented JSON configuration, widgets, and automation-oriented output across AI
+      providers.
+    rel: alternative
+    sources:
+      - https://github.com/Nanako0129/syrtis#readme
+      - https://github.com/steipete/CodexBar
+      - https://github.com/steipete/CodexBar/blob/main/docs/cli.md
+  - id: brew:ccusage
+    reason: >
+      Choose ccusage when you prefer terminal-based, scriptable local reports over
+      Syrtis's persistent macOS menu-bar dashboard.
+    rel: alternative
+    sources:
+      - https://github.com/Nanako0129/syrtis#readme
+      - https://ccusage.com/guide
+      - https://github.com/ccusage/ccusage
+category: developer-tools
 package-manager:
   brew-cask: nanako0129/tap/syrtis
 package-manager-url: https://github.com/nanako0129/homebrew-tap/blob/HEAD/Casks/syrtis.rb
+tags:
+  - ai-coding
+  - cost-monitoring
+  - local-first
+  - macos
+  - menu-bar
+  - quota-monitoring
+  - token-usage
 description: Menubar dashboard for local AI token usage
 applications:
   - Syrtis.app
