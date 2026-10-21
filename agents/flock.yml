@@ -59,6 +59,17 @@ history:
     - >
       Because it is a small system utility, its value is in predictable process
       coordination from shell scripts without embedding lock handling into each script.
+related-packages:
+  - id: brew:util-linux
+    reason: >
+      Choose util-linux on Linux for the platform's established flock implementation;
+      choose this package when you need the separately maintained portable
+      implementation documented for Darwin, FreeBSD, Illumos, and Linux.
+    rel: alternative
+    sources:
+      - https://github.com/discoteq/flock#wait-isnt-there-already-a-flock1
+      - >
+        https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/tree/sys-utils/flock.1.adoc
 tags:
   - cli
   - concurrency
