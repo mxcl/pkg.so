@@ -57,6 +57,23 @@ history:
       providers, and proxy settings, and output JSON. It automatically looks for
       `$HOME/.gau.toml` or `%USERPROFILE%\.gau.toml` unless an alternate config is
       supplied.
+related-packages:
+  - id: brew:httpx
+    reason: >
+      Pipe URLs discovered by gau into ProjectDiscovery httpx to probe which endpoints
+      are reachable and collect HTTP metadata for the next reconnaissance stage.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lc/gau#readme
+      - https://docs.projectdiscovery.io/tools/httpx/overview
+  - id: brew:katana
+    reason: >
+      Use Katana alongside gau when active crawling of reachable applications is needed
+      in addition to gau's archive- and intelligence-backed URL discovery.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lc/gau#readme
+      - https://docs.projectdiscovery.io/tools/katana/overview
 tags:
   - alienvault-otx
   - cli

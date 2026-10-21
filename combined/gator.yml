@@ -59,6 +59,24 @@ history:
       reports violations through both output and exit status. `gator policy` provides a
       brew-inspired interface for discovering, installing, upgrading, and managing
       policies from the official gatekeeper-library.
+related-packages:
+  - id: brew:opa
+    reason: >
+      Use Open Policy Agent for general-purpose Rego evaluation and policy services;
+      gator is the more specialized choice for testing Gatekeeper ConstraintTemplates,
+      Constraints, and Kubernetes resources.
+    rel: alternative
+    sources:
+      - https://open-policy-agent.github.io/gatekeeper/website/docs/gator/
+      - https://www.openpolicyagent.org/docs/latest/
+  - id: brew:conftest
+    reason: >
+      Use Conftest when the main task is testing structured configuration files with
+      Rego, while gator fits Gatekeeper-specific Kubernetes admission-policy artifacts.
+    rel: alternative
+    sources:
+      - https://open-policy-agent.github.io/gatekeeper/website/docs/gator/
+      - https://www.conftest.dev/
 category: security
 package-manager:
   brew: gator
