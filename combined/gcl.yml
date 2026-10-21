@@ -51,6 +51,43 @@ history:
       is most relevant where CLtL1 compatibility, GNU provenance, and native-code
       generation through a local C compiler are more important than tracking the newest
       Common Lisp implementation fashions.
+related-packages:
+  - id: brew:sbcl
+    reason: >
+      Choose SBCL when ANSI Common Lisp conformance, a high-performance native compiler,
+      and a rich interactive debugging and profiling environment are higher priorities
+      than GCL compatibility.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/gcl/
+      - https://www.sbcl.org/
+  - id: brew:ecl
+    reason: >
+      Choose ECL when embedding Common Lisp in C or C++ and linking a modular Lisp
+      runtime into another application are central requirements.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/gcl/
+      - https://ecl.common-lisp.dev/static/manual/What-is-ECL.html
+  - id: brew:clisp
+    reason: >
+      Choose GNU CLISP for a portable ANSI Common Lisp environment with bytecode
+      compilation and scripting-oriented command-line features; choose GCL for its
+      native Lisp-to-C lineage and compatibility with GCL-dependent software.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/gcl/
+      - https://clisp.sourceforge.io/
+      - https://clisp.sourceforge.io/impnotes/clisp.html
+  - id: brew:maxima
+    reason: >
+      Maxima is a concrete companion application: GCL's official history says supporting
+      Maxima was a primary purpose of the implementation, and the project continues to
+      identify Maxima among the applications GCL compiles.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/gcl/
+      - https://maxima.sourceforge.io/
 category: language-runtime
 package-manager:
   brew: gcl

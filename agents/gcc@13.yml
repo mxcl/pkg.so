@@ -88,6 +88,27 @@ history:
     - >
       The GCC 13 change notes include toolchain-facing features such as SARIF diagnostic
       output, LTO jobserver improvements, and C/C++ warning and analyzer work.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      Choose LLVM/Clang for a production C-family compiler with a modular tooling
+      architecture and substantial GCC command-line compatibility; GCC 13 remains
+      preferable when GNU-specific extensions, its other language front ends, or its
+      runtime ecosystem are required.
+    rel: alternative
+    sources:
+      - https://clang.llvm.org/
+      - https://clang.llvm.org/docs/UsersManual.html
+      - https://gcc.gnu.org/
+  - id: brew:binutils
+    reason: >
+      GNU Binutils supplies assemblers, linkers, archivers, and other target tools that
+      GCC documents as part of native and cross-compiler construction workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://gcc.gnu.org/install/download.html
+      - https://gcc.gnu.org/install/build.html
+      - https://www.gnu.org/software/binutils/binutils.html
 tags:
   - c
   - cli

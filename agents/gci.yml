@@ -70,6 +70,24 @@ history:
       GCI groups imports into sections such as standard, default, custom prefix, blank,
       dot, alias, and localmodule. Local module detection reads go.mod or go.work in the
       directory where gci is invoked.
+related-packages:
+  - id: brew:goimports
+    reason: >
+      Choose goimports when automatically adding and removing imports alongside
+      gofmt-style formatting is more important than GCI's configurable import-section
+      ordering.
+    rel: alternative
+    sources:
+      - https://github.com/daixiang0/gci#readme
+      - https://pkg.go.dev/golang.org/x/tools/cmd/goimports
+  - id: brew:golangci-lint
+    reason: >
+      golangci-lint embeds GCI as an autofixing formatter, allowing its section-order
+      rules to run with the rest of a repository's lint and formatting checks.
+    rel: adjacent_workflow
+    sources:
+      - https://golangci-lint.run/docs/formatters/configuration/#gci
+      - https://github.com/daixiang0/gci#readme
 tags:
   - cli
   - code-style
