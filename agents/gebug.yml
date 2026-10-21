@@ -49,6 +49,25 @@ history:
       Practitioners run `gebug init` inside a Go application, edit generated files under
       `.gebug` when needed, and run `gebug start` or `gebug ui` to work with hot reload,
       Delve debugging, exposed ports, environment variables, and Docker networking.
+related-packages:
+  - id: brew:delve
+    reason: >
+      Delve is the Go debugger enabled by Gebug inside its generated container
+      environment, so install or use it directly when you need lower-level debugging
+      outside Gebug's orchestration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/moshebe/gebug#how-does-it-work
+      - https://github.com/go-delve/delve
+  - id: brew:docker-compose
+    reason: >
+      Gebug generates and runs Docker Compose configuration for the application's
+      debugging stack, making Docker Compose the underlying tool for inspecting or
+      operating those services directly.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/moshebe/gebug#how-does-it-work
+      - https://docs.docker.com/compose/
 tags:
   - cli
   - containers

@@ -4,7 +4,10 @@ homepage: https://github.com/Scony/godot-gdscript-toolkit
 repo: https://github.com/Scony/godot-gdscript-toolkit
 docs:
   - https://github.com/Scony/godot-gdscript-toolkit#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ./gdlintrc
+    - ./gdformatrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -52,6 +55,15 @@ history:
       style rules, gdparse to inspect parse trees, and gdradon to calculate code metrics
       similar to Radon for Python. The project is commonly wired into CI or pre-commit
       so Godot projects can reject unformatted or lint-failing scripts.
+related-packages:
+  - id: brew:pre-commit
+    reason: >
+      Use pre-commit to run GDScript Toolkit's officially supplied gdlint and gdformat
+      hooks automatically during commits or across all files in CI.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Scony/godot-gdscript-toolkit#using-gdtookit-in-pre-commit
+      - https://pre-commit.com/
 category: developer-tools
 package-manager:
   brew: gdtoolkit
