@@ -57,6 +57,31 @@ history:
       AWS, Azure, GCP, 1Password, Bitwarden, Infisical, Vault, and Doppler, plus local
       keychain and password-store providers. Common usage is `fnox init`, `fnox set`,
       `fnox get`, `fnox exec`, and shell activation.
+related-packages:
+  - id: brew:age
+    reason: >
+      fnox officially uses age identities to encrypt secrets directly into `fnox.toml`,
+      and the age CLI supplies the documented `age-keygen` setup workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://fnox.jdx.dev/guide/quick-start
+      - https://fnox.jdx.dev/providers/age
+  - id: brew:pass
+    reason: >
+      fnox has a documented `password-store` provider that reads and writes through the
+      pass CLI, letting existing pass stores supply project secrets.
+    rel: adjacent_workflow
+    sources:
+      - https://fnox.jdx.dev/providers/overview
+      - https://www.passwordstore.org/
+  - id: brew:gopass
+    reason: >
+      fnox documents gopass as a local storage provider, so teams with an initialized
+      gopass store can expose its entries through the same fnox workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://fnox.jdx.dev/providers/overview
+      - https://www.gopass.pw/
 category: security
 package-manager:
   brew: fnox
