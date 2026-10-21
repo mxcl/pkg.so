@@ -68,6 +68,23 @@ history:
       The configuration file stores account ID, license key, and edition IDs, and Unix
       deployments commonly automate the command with cron so local `.mmdb` files are
       refreshed without application code handling MaxMind download details.
+related-packages:
+  - id: brew:mmdbinspect
+    reason: >
+      Use mmdbinspect after GeoIP Update to query or audit the downloaded MMDB files
+      with structured YAML or JSONL output for IP addresses and CIDR networks.
+    rel: adjacent_workflow
+    sources:
+      - https://dev.maxmind.com/geoip/updating-databases/
+      - https://github.com/maxmind/mmdbinspect/blob/main/README.md
+  - id: brew:libmaxminddb
+    reason: >
+      libmaxminddb provides the C reader and mmdblookup utility for consuming the GeoIP
+      and GeoLite MMDB files maintained by GeoIP Update.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/maxmind/geoipupdate
+      - https://github.com/maxmind/libmaxminddb
 category: networking
 package-manager:
   brew: geoipupdate
