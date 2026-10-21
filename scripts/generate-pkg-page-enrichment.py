@@ -1019,17 +1019,16 @@ def expected_enrichment(
     registry_cache_only: bool = False,
     previous_packages: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    # Cache-only applies to npm/PyPI; Homebrew snapshots must still revalidate.
     formulae = fetch_json(
         FORMULA_URL,
-        force_refresh=force_refresh and not registry_cache_only,
-        prefer_cache=registry_cache_only,
+        force_refresh=force_refresh,
     )
     if not isinstance(formulae, list):
         raise ValueError("Homebrew formula API payload must be a list")
     casks = fetch_json(
         CASK_URL,
-        force_refresh=force_refresh and not registry_cache_only,
-        prefer_cache=registry_cache_only,
+        force_refresh=force_refresh,
     )
     if not isinstance(casks, list):
         raise ValueError("Homebrew cask API payload must be a list")

@@ -16,6 +16,30 @@ SPEC.loader.exec_module(pkg_page_enrichment)
 
 
 class FetchJsonTests(unittest.TestCase):
+    def test_registry_cache_only_still_refreshes_homebrew(self):
+        module = pkg_page_enrichment
+        stale = {"token": "notchnook", "version": "1.6.2", "homepage": "https://lo.cafe/notchnook"}
+        read_json = module.read_json
+
+        def read_source(path):
+            if path in (module.PACKAGE_INDEX_PATH, Path("data/pip.json")):
+                return {}
+            return read_json(path)
+
+        with (
+            tempfile.TemporaryDirectory() as tmp,
+            mock.patch.object(module, "CACHE_DIR", Path(tmp)),
+            mock.patch.object(module, "read_json", side_effect=read_source),
+            mock.patch.object(module, "fetch_url", return_value=(200, {}, b"[]")) as fetch,
+        ):
+            for url, payload in ((module.FORMULA_URL, []), (module.CASK_URL, [stale])):
+                module.write_cache(module.cache_path_for(url, module.ECOSYSTEM), payload, "old", 0)
+            result = module.expected_enrichment(force_refresh=True, registry_cache_only=True)
+
+        self.assertNotIn("cask:notchnook", result["packages"])
+        self.assertEqual([call.args[0] for call in fetch.call_args_list],
+                         [module.FORMULA_URL, module.CASK_URL])
+
     def test_fetch_json_retries_incomplete_read(self):
         original_cache_dir = pkg_page_enrichment.CACHE_DIR
         calls = []
