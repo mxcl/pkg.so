@@ -4,7 +4,11 @@ homepage: https://github.com/gastownhall/gastown
 repo: https://github.com/gastownhall/gastown
 docs:
   - https://github.com/gastownhall/gastown#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/gt/settings/config.json
+    - ~/gt/<rig>/settings/config.json
+    - ~/gt/mayor/config.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -59,6 +63,40 @@ history:
       git-backed rig, adding a crew workspace, and attaching the mayor session. From
       there the tool manages agent dispatch, persistent hooks, convoys, escalation,
       session discovery, and merge processing.
+related-packages:
+  - id: brew:gascity
+    reason: >
+      Choose Gas City when you want to assemble a custom multi-agent platform from
+      declarative packs and runtime providers; retain Gas Town for its more opinionated,
+      ready-made workspace and role model.
+    rel: alternative
+    sources:
+      - https://docs.gascityhall.com/getting-started/coming-from-gastown
+      - https://github.com/gastownhall/gastown#readme
+  - id: brew:beads
+    reason: >
+      Gas Town uses Beads as its dependency-aware work and convoy system, so `bd` is
+      part of the normal task creation, claiming, routing, and completion workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gastownhall/gastown#readme
+      - https://gastownhall.github.io/beads/
+  - id: brew:dolt
+    reason: >
+      Dolt provides version-controlled SQL storage used by Gas Town's Beads-backed
+      coordination state and distributed workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gastownhall/gastown#readme
+      - https://docs.dolthub.com/
+  - id: brew:tmux
+    reason: >
+      Gas Town hosts and reconnects to persistent agent sessions through tmux, making
+      the multiplexer part of its standard local workspace lifecycle.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gastownhall/gastown#readme
+      - https://github.com/tmux/tmux/wiki
 category: ai
 package-manager:
   brew: gastown

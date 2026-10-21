@@ -55,6 +55,24 @@ history:
       with the OpenIoTHub client, and then access network ports and services from the
       client side. The README also documents per-package configuration file locations
       for Homebrew, Snap, and deb/rpm installations.
+related-packages:
+  - id: brew:frpc
+    reason: >
+      Choose frpc for a general-purpose, explicitly configured client-to-frps
+      reverse-proxy deployment; choose gateway-go for OpenIoTHub's QR-paired client and
+      device-access workflow.
+    rel: alternative
+    sources:
+      - https://github.com/OpenIoTHub/gateway-go#readme
+      - https://gofrp.org/en/docs/
+  - id: brew:openiothub-server
+    reason: >
+      openiothub-server is the optional self-hosted relay counterpart for operators who
+      want their gateway-go deployment to use their own OpenIoTHub forwarding server.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/OpenIoTHub/gateway-go#readme
+      - https://github.com/OpenIoTHub/server-go#readme
 category: networking
 package-manager:
   brew: gateway-go
