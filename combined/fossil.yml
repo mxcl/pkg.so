@@ -5,7 +5,16 @@ repo: https://www.fossil-scm.org/home
 docs:
   - https://www.fossil-scm.org/home/doc/trunk/www/index.wiki
   - https://www.fossil-scm.org/home/help
-config-file-location: null
+config-file-location:
+  unix:
+    - $FOSSIL_HOME/.fossil
+    - ~/.fossil
+    - $XDG_CONFIG_HOME/fossil.db
+    - ~/.config/fossil.db
+  windows:
+    - '%FOSSIL_HOME%/_fossil'
+    - '%LOCALAPPDATA%/_fossil'
+    - '%APPDATA%/_fossil'
 credentials-file-location: null
 history:
   adoption-history:
@@ -68,6 +77,28 @@ history:
       The official quick start is `fossil init`, `fossil open`, `fossil add`, `fossil
       commit`, and `fossil ui`. That last command starts the built-in web interface,
       which is central to Fossil's identity as more than a plain VCS.
+related-packages:
+  - id: brew:git
+    reason: >
+      Choose Git when you want the dominant file-versioning ecosystem and separate
+      hosting or project-management services; choose Fossil when you prefer version
+      control, tickets, wiki, forum, and web UI integrated into one executable, with
+      official Git import and export available for migration.
+    rel: alternative
+    sources:
+      - https://www.fossil-scm.org/home/doc/trunk/www/fossil-v-git.wiki
+      - https://www.fossil-scm.org/home/doc/trunk/www/inout.wiki
+      - https://git-scm.com/docs
+  - id: brew:mercurial
+    reason: >
+      Choose Mercurial for a conventional extensible distributed VCS without Fossil's
+      bundled tracker, wiki, forum, and server UI; Fossil's official overview identifies
+      Mercurial as a peer DVCS while distinguishing Fossil through its integrated
+      project-management features.
+    rel: alternative
+    sources:
+      - https://www.fossil-scm.org/home/doc/trunk/www/index.wiki
+      - https://www.mercurial-scm.org/
 category: developer-tools
 package-manager:
   apk: fossil

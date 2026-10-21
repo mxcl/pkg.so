@@ -10,7 +10,8 @@ config-file-location:
   unix:
     - foundry.toml
     - ~/.foundry/foundry.toml
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.foundry/keystores
 history:
   adoption-history:
     - >
@@ -70,6 +71,25 @@ history:
       common operational workflows include `cast block-number`, `cast balance`, and
       `anvil --fork-url` for a forked local chain. Configuration is kept in
       `foundry.toml` with profiles and environment-variable overrides.
+related-packages:
+  - id: brew:slither-analyzer
+    reason: >
+      Run Slither at a Foundry project root for fast Solidity and Vyper static analysis;
+      Slither officially detects Foundry projects and uses their compilation framework
+      to analyze contracts with dependencies.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/crytic/slither
+      - https://github.com/foundry-rs/foundry
+  - id: brew:echidna
+    reason: >
+      Use Echidna after or alongside Forge tests for longer property and invariant
+      fuzzing campaigns; Echidna officially compiles Foundry projects through
+      crytic-compile and supports Foundry-style tests.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/crytic/echidna
+      - https://github.com/foundry-rs/foundry
 category: developer-tools
 package-manager:
   apk: foundry
