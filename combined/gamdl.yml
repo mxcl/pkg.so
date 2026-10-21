@@ -61,6 +61,23 @@ history:
       music-video, post-video, or Classical URLs. Command-line options and config.ini
       control output paths, codecs, templates, lyrics formats, metadata language, and
       download mode.
+related-packages:
+  - id: brew:yt-dlp
+    reason: >
+      Gamdl uses yt-dlp as its default file-download library while continuing to fetch
+      media directly from Apple Music's servers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/glomatico/gamdl#readme
+      - https://github.com/yt-dlp/yt-dlp#readme
+  - id: brew:ffmpeg
+    reason: >
+      Gamdl requires FFmpeg when its optional N_m3u8DL-RE download mode is selected,
+      making FFmpeg part of that faster transfer and media-processing workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/glomatico/gamdl#readme
+      - https://ffmpeg.org/documentation.html
 category: media
 package-manager:
   brew: gamdl
