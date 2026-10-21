@@ -4,7 +4,15 @@ repo: https://github.com/Flexget/Flexget
 docs:
   - https://flexget.readthedocs.io/en/stable
   - https://flexget.com/CLI
-config-file-location: null
+config-file-location:
+  unix:
+    - ./config.yml
+    - $VIRTUAL_ENV/config.yml
+    - ~/.flexget/config.yml
+    - ~/.config/flexget/config.yml
+  windows:
+    - C:\Users\YOURUSER\flexget\config.yml
+    - C:\Documents and Settings\YOURUSER\flexget\config.yml
 credentials-file-location: null
 history:
   adoption-history:
@@ -78,6 +86,16 @@ history:
       HTML, CSV, plugins for sites without useful feeds, daemon scheduling, client
       integration with download applications, and site integration with media metadata
       services.
+related-packages:
+  - id: cask:transmission
+    reason: >
+      Transmission is a practical downstream client for FlexGet because FlexGet's
+      official transmission plugin sends accepted torrent files and magnet links
+      directly to it.
+    rel: adjacent_workflow
+    sources:
+      - https://flexget.com/Plugins
+      - https://github.com/transmission/transmission
 tags:
   - automation
   - cli
