@@ -64,6 +64,31 @@ history:
     - >
       forgit depends on fzf 0.60.0 or newer and can also be used as git forgit
       subcommands when git-forgit is available on PATH.
+related-packages:
+  - id: brew:fzf
+    reason: >
+      fzf is forgit's required fuzzy-selection engine and powers every interactive Git
+      picker exposed by the shell plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/wfxr/forgit#installation
+      - https://github.com/junegunn/fzf
+  - id: brew:git
+    reason: >
+      forgit wraps Git commands and repository data, so Git remains the underlying
+      version-control tool for every forgit workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/wfxr/forgit#usage
+      - https://git-scm.com/docs
+  - id: brew:lazygit
+    reason: >
+      Choose lazygit when you prefer a persistent full-screen Git TUI; choose forgit
+      when you want lightweight shell aliases and task-specific fzf pickers.
+    rel: alternative
+    sources:
+      - https://github.com/wfxr/forgit
+      - https://github.com/jesseduffield/lazygit
 category: developer-tools
 package-manager:
   brew: forgit

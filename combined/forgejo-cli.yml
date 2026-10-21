@@ -62,6 +62,47 @@ history:
     - >
       The README explicitly says fj is not meant to replace git; it covers Forgejo API
       and hosting workflows that git itself does not handle.
+related-packages:
+  - id: brew:forgejo
+    reason: >
+      Forgejo CLI is a companion to Forgejo servers, providing terminal access to the
+      server's collaboration and repository-management APIs.
+    rel: adjacent_workflow
+    sources:
+      - https://codeberg.org/forgejo-contrib/forgejo-cli
+      - https://forgejo.org/
+  - id: brew:tea
+    reason: >
+      Choose Tea for the equivalent terminal workflow against Gitea instances; Forgejo
+      CLI's README identifies Tea as the Gitea counterpart to `fj`.
+    rel: alternative
+    sources:
+      - https://codeberg.org/forgejo-contrib/forgejo-cli/raw/branch/main/README.md
+      - https://gitea.com/gitea/tea
+  - id: brew:gh
+    reason: >
+      Choose GitHub CLI when the target forge is GitHub; it covers analogous issue,
+      pull-request, release, repository, and API workflows.
+    rel: alternative
+    sources:
+      - https://codeberg.org/forgejo-contrib/forgejo-cli/raw/branch/main/README.md
+      - https://cli.github.com/manual/gh
+  - id: brew:glab
+    reason: >
+      Choose GLab when the target forge is GitLab; it provides corresponding
+      merge-request, issue, pipeline, release, and API commands.
+    rel: alternative
+    sources:
+      - https://codeberg.org/forgejo-contrib/forgejo-cli/raw/branch/main/README.md
+      - https://docs.gitlab.com/cli/
+  - id: brew:git
+    reason: >
+      Use Git alongside `fj` for commits, branches, fetches, and pushes because Forgejo
+      CLI explicitly handles forge APIs rather than replacing Git.
+    rel: adjacent_workflow
+    sources:
+      - https://codeberg.org/forgejo-contrib/forgejo-cli/raw/branch/main/README.md
+      - https://git-scm.com/docs
 category: developer-tools
 package-manager:
   brew: forgejo-cli
