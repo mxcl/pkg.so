@@ -76,6 +76,32 @@ history:
       `fleet.yaml` is automatically turned into a bundle. The file can define namespace
       behavior, Helm options, Kustomize settings, target customizations, rollout
       behavior, dependencies, and monitoring ignore rules.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl is the cluster-access companion for Fleet CLI: Fleet's official setup
+      requires kubectl to be configured, and generated Bundle resources can be applied
+      and inspected with it.
+    rel: adjacent_workflow
+    sources:
+      - https://fleet.rancher.io/how-tos-for-users/install-use-fleet-cli
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      Helm is a documented Fleet CLI prerequisite and Fleet can convert Helm charts into
+      bundles for deployment across targeted Kubernetes clusters.
+    rel: adjacent_workflow
+    sources:
+      - https://fleet.rancher.io/how-tos-for-users/install-use-fleet-cli
+      - https://helm.sh/docs/
+  - id: brew:kustomize
+    reason: >
+      Fleet CLI accepts Kustomize directories as bundle inputs, so Kustomize can prepare
+      overlays that Fleet then targets and deploys across clusters.
+    rel: adjacent_workflow
+    sources:
+      - https://fleet.rancher.io/how-tos-for-users/install-use-fleet-cli
+      - https://kubectl.docs.kubernetes.io/references/kustomize/
 category: cloud-infrastructure
 package-manager:
   brew: fleet-cli
