@@ -57,6 +57,23 @@ history:
       lengths, and spatial-index queries. Package users also get `geos-config` for
       compiler and linker flags and `geosop` as a command-line operator for GEOS
       geometry operations.
+related-packages:
+  - id: brew:postgis
+    reason: >
+      Use PostGIS when GEOS-backed geometry processing needs to live inside PostgreSQL
+      with spatial storage, indexing, and SQL queries.
+    rel: adjacent_workflow
+    sources:
+      - https://libgeos.org/
+      - https://postgis.net/
+  - id: brew:gdal
+    reason: >
+      Use GDAL alongside GEOS for raster and vector format conversion pipelines that
+      feed data into geometry-processing workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://libgeos.org/
+      - https://gdal.org/en/stable/
 tags:
   - c-api
   - c-plus-plus
