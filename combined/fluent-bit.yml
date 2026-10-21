@@ -62,6 +62,25 @@ history:
       aggregator. Its data pipeline model wires inputs, parsers, filters, processors,
       buffering, and outputs to ship telemetry into systems such as Prometheus,
       OpenTelemetry, cloud log services, search engines, and Fluentd.
+related-packages:
+  - id: brew:logstash
+    reason: >
+      Choose Logstash when a JVM-based pipeline and Elastic's broader plugin-oriented
+      ingestion workflow are more important than Fluent Bit's small edge-agent
+      footprint.
+    rel: alternative
+    sources:
+      - https://docs.fluentbit.io/manual/about/fluentd-and-fluent-bit
+      - https://www.elastic.co/docs/reference/logstash/how-logstash-works
+      - https://www.elastic.co/guide/en/logstash/current/configuration.html
+  - id: brew:prometheus
+    reason: >
+      Fluent Bit can collect metrics and send them to a Prometheus server using its
+      documented Prometheus remote-write output.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.fluentbit.io/manual/data-pipeline/outputs/prometheus-remote-write
+      - https://prometheus.io/docs/introduction/overview/
 category: data
 package-manager:
   apk: fluent-bit

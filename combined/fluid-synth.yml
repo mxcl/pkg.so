@@ -5,7 +5,13 @@ repo: https://github.com/FluidSynth/fluidsynth
 docs:
   - https://www.fluidsynth.org/documentation
   - https://www.fluidsynth.org/api
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.fluidsynth
+    - /etc/fluidsynth.conf
+  windows:
+    - '%USERPROFILE%\fluidsynth.cfg'
+    - '%ProgramData%\fluidsynth\fluidsynth.cfg'
 credentials-file-location: null
 history:
   adoption-history:
@@ -65,6 +71,16 @@ history:
       script the built-in shell, or use libfluidsynth from applications that need
       software MIDI synthesis. Developers use the API documentation when embedding the
       synthesizer in games, notation software, sequencers, or audio utilities.
+related-packages:
+  - id: brew:timidity
+    reason: >
+      Choose TiMidity++ for its classic MIDI-to-audio workflow and support for legacy
+      patch and module formats; choose FluidSynth when an embeddable SoundFont-focused
+      library is required.
+    rel: alternative
+    sources:
+      - https://www.fluidsynth.org/
+      - https://timidity.sourceforge.net/
 category: media
 package-manager:
   apk: fluidsynth

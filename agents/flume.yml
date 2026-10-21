@@ -74,6 +74,24 @@ history:
       configuration. Typical topologies include fan-in collection from many log
       producers, fan-out routing, RPC ingestion, and delivery to storage or analytics
       systems.
+related-packages:
+  - id: brew:kafka
+    reason: >
+      Flume has documented Kafka source, channel, and sink components, allowing Kafka to
+      receive events from Flume or supply events to a Flume pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://flume.apache.org/FlumeUserGuide
+      - https://kafka.apache.org/documentation/
+  - id: brew:hadoop
+    reason: >
+      Flume's HDFS sink uses Hadoop libraries to write collected events into HDFS,
+      making Hadoop the canonical storage-side companion for traditional Flume
+      deployments.
+    rel: adjacent_workflow
+    sources:
+      - https://flume.apache.org/FlumeUserGuide
+      - https://hadoop.apache.org/docs/current/
 tags:
   - apache
   - cli
