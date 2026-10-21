@@ -66,6 +66,16 @@ history:
       The project also distributes pre-built static binaries for multiple architectures
       through GitHub Releases, which makes it practical on container hosts where the
       binary is needed before normal package-manager integration is available.
+related-packages:
+  - id: brew:podman
+    reason: >
+      Podman can automatically use fuse-overlayfs as its mount program for rootless
+      overlay storage when native OverlayFS is unavailable.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://github.com/podman-container-tools/podman/blob/main/docs/source/markdown/podman.1.md
+      - https://github.com/containers/fuse-overlayfs
 category: system
 package-manager:
   apk: fuse-overlayfs
