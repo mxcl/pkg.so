@@ -4,7 +4,10 @@ repo: https://git.savannah.gnu.org/cgit/gdbm.git
 docs:
   - https://www.gnu.org.ua/software/gdbm/manual
   - https://www.gnu.org/software/gdbm/manual/gdbm.pdf
-config-file-location: null
+config-file-location:
+  unix:
+    - ./.gdbmtoolrc
+    - ~/.gdbmtoolrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -60,6 +63,16 @@ history:
     - >
       The package includes command-line utilities such as gdbmtool, gdbm_dump, and
       gdbm_load for inspecting, modifying, exporting, and importing GDBM databases.
+related-packages:
+  - id: brew:berkeley-db
+    reason: >
+      Choose Berkeley DB when an embedded key/value application needs database
+      environments, transactions, replication, or its established Berkeley DB APIs;
+      choose GDBM for a smaller GNU dbm-style hashed-file interface.
+    rel: alternative
+    sources:
+      - https://www.gnu.org.ua/software/gdbm/manual/Intro.html
+      - https://docs.oracle.com/database/bdb181/html/programmer_reference/index.html
 tags:
   - cli
   - database

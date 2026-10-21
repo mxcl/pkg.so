@@ -4,8 +4,22 @@ homepage: https://gdal.org/en/stable/
 repo: https://github.com/OSGeo/gdal
 docs:
   - https://gdal.org/en/stable
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - $GDAL_CONFIG_FILE
+    - $PREFIX/etc/gdal/gdalrc
+    - ~/.gdal/gdalrc
+  windows:
+    - '%GDAL_CONFIG_FILE%'
+    - '%USERPROFILE%/.gdal/gdalrc'
+credentials-file-location:
+  unix:
+    - $GDAL_CONFIG_FILE
+    - $PREFIX/etc/gdal/gdalrc
+    - ~/.gdal/gdalrc
+  windows:
+    - '%GDAL_CONFIG_FILE%'
+    - '%USERPROFILE%/.gdal/gdalrc'
 history:
   adoption-history:
     - >
@@ -75,6 +89,32 @@ history:
       Starting with GDAL 3.11, the project documents a new single gdal command with
       subcommands as a provisional alternative interface alongside the traditional
       utilities.
+related-packages:
+  - id: brew:proj
+    reason: >
+      Install PROJ alongside GDAL for coordinate-reference-system definitions and
+      transformations; current GDAL builds require PROJ and use its database for
+      geospatial coordinate operations.
+    rel: adjacent_workflow
+    sources:
+      - https://gdal.org/en/stable/development/rfc/rfc98_build_requirements_gdal_3_9.html
+      - https://proj.org/en/stable/
+  - id: brew:rasterio
+    reason: >
+      Choose Rasterio when you want a focused Pythonic interface for raster workflows
+      while retaining GDAL as the underlying format and I/O engine.
+    rel: adjacent_workflow
+    sources:
+      - https://rasterio.readthedocs.io/en/stable/intro.html
+      - https://gdal.org/en/stable/software_using_gdal.html
+  - id: brew:fiona
+    reason: >
+      Choose Fiona for a focused Python interface to OGR-supported vector data formats
+      while using GDAL/OGR underneath.
+    rel: adjacent_workflow
+    sources:
+      - https://fiona.readthedocs.io/en/stable/README.html
+      - https://gdal.org/en/stable/software_using_gdal.html
 category: data
 package-manager:
   apk: gdal
