@@ -62,6 +62,25 @@ history:
       editor integration. With ConfigArgParse installed it reads ~/.fprettify.rc plus
       .fprettify.rc files in parent directories of the input file, starting from the
       current directory when reading stdin.
+related-packages:
+  - id: brew:findent
+    reason: >
+      Choose findent when working with vintage or fixed-form Fortran or when format
+      conversion and label renumbering matter; fprettify focuses on comprehensive
+      whitespace formatting for modern Fortran.
+    rel: alternative
+    sources:
+      - https://github.com/fortran-lang/fprettify
+      - https://www.ratrabbit.nl/ratrabbit/findent/index.html
+  - id: brew:fypp
+    reason: >
+      Fypp preprocesses parameterized Fortran sources, and fprettify explicitly
+      understands Fypp directives so generated-source projects can keep their templates
+      consistently formatted.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fortran-lang/fprettify
+      - https://fypp.readthedocs.io/en/stable/
 tags:
   - cli
   - formatter
