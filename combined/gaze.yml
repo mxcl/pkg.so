@@ -4,7 +4,10 @@ homepage: https://github.com/wtetsu/gaze
 repo: https://github.com/wtetsu/gaze
 docs:
   - https://github.com/wtetsu/gaze#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.config/gaze/gaze.yml
+    - ~/.gaze.yml
 credentials-file-location: null
 history:
   adoption-history:
@@ -52,6 +55,27 @@ history:
       a default or user-specified command. Users can pass glob patterns, set a custom
       command with `-c`, restart previous processes with `-r`, set timeouts with `-t`,
       and inspect default YAML with `gaze -y`.
+related-packages:
+  - id: brew:watchexec
+    reason: >
+      Choose watchexec when you need recursive cross-platform watching with ignore-file
+      support, event filtering, process supervision, or structured change events; choose
+      Gaze for built-in language command defaults and a compact YAML configuration.
+    rel: alternative
+    sources:
+      - https://github.com/wtetsu/gaze#readme
+      - https://github.com/watchexec/watchexec#readme
+      - https://watchexec.github.io/
+  - id: brew:entr
+    reason: >
+      Choose entr for a minimal Unix pipeline where another command supplies the exact
+      watched-file list on standard input; choose Gaze for glob discovery, built-in
+      language defaults, and YAML configuration.
+    rel: alternative
+    sources:
+      - https://github.com/wtetsu/gaze#readme
+      - https://github.com/eradman/entr#readme
+      - https://eradman.com/entrproject/
 category: developer-tools
 package-manager:
   brew: gaze

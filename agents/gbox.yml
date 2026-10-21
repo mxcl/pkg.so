@@ -51,6 +51,25 @@ history:
       connecting an Android device or cloud environment, and exporting an MCP server
       configuration for tools such as Claude Code or Cursor. The README also documents
       browser, desktop, SDK, and Android-device scenarios.
+related-packages:
+  - id: cask:android-platform-tools
+    reason: >
+      Install Android SDK Platform-Tools when GBOX needs ADB to connect, inspect,
+      install to, or run commands on local Android devices; GBOX's official setup
+      explicitly lists ADB as a dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/babelcloud/gbox#readme
+      - https://developer.android.com/tools/adb
+  - id: brew:appium
+    reason: >
+      Use Appium alongside GBOX for WebDriver-based mobile application automation, as
+      GBOX's complete setup explicitly installs the Appium server, drivers, and plugins
+      for its Android workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/babelcloud/gbox#readme
+      - https://appium.io/docs/en/latest/intro/appium/
 tags:
   - ai
   - ai-agents
