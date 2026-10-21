@@ -9,7 +9,10 @@ docs:
   - https://wiki.freeradius.org/
 config-file-location:
   unix: /etc/raddb/radiusd.conf
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - /etc/raddb/clients.conf
+    - /etc/raddb/mods-config/files/authorize
 history:
   adoption-history:
     - >
@@ -63,6 +66,16 @@ history:
       other network access systems. The upstream README emphasizes starting from the
       default configuration, running radiusd -X for debugging, and making small tested
       configuration changes.
+related-packages:
+  - id: brew:freediameter
+    reason: >
+      Choose freeDiameter when an AAA deployment requires Diameter peer routing and
+      Diameter applications; retain FreeRADIUS for RADIUS clients and RADIUS-centered
+      network-access policy.
+    rel: alternative
+    sources:
+      - https://github.com/freeDiameter/freeDiameter#readme
+      - https://www.freeradius.org/
 category: networking
 package-manager:
   brew: freeradius-server

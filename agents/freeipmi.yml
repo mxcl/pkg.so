@@ -5,8 +5,12 @@ docs:
   - https://www.gnu.org/software/freeipmi/documentation.html
   - https://www.gnu.org/software/freeipmi
   - https://www.gnu.org/software/freeipmi/freeipmi-faq.html
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - /etc/freeipmi/freeipmi.conf
+credentials-file-location:
+  unix:
+    - /etc/freeipmi/freeipmi.conf
 history:
   adoption-history:
     - >
@@ -56,6 +60,24 @@ history:
       ipmi-fru, ipmi-raw, bmc-config, bmc-info, and ipmiconsole for hardware inventory,
       monitoring, remote power control, and BMC configuration. Packagers must expose
       many small utilities and keep library/tool compatibility aligned.
+related-packages:
+  - id: brew:ipmitool
+    reason: >
+      Choose IPMItool for a compact, widely recognized general-purpose IPMI command;
+      choose FreeIPMI for its broader suite of specialized tools, libraries, monitoring,
+      discovery, and cluster-oriented capabilities.
+    rel: alternative
+    sources:
+      - https://codeberg.org/IPMITool/ipmitool
+      - https://www.gnu.org/software/freeipmi/
+  - id: brew:conman
+    reason: >
+      ConMan directly uses FreeIPMI's libipmiconsole to provide managed IPMI
+      Serial-over-LAN console sessions and logging.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dun/conman#readme
+      - https://www.gnu.org/software/freeipmi/freeipmi-faq.html
 tags:
   - bmc
   - cli
