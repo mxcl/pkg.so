@@ -53,6 +53,34 @@ history:
       lto-dump-11, and target-prefixed gcc/g++/gfortran executables. Upstream source
       control uses the same GCC repository with release branches such as releases/gcc-11
       and release tags documented by the GCC Git page.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      Choose the unversioned GCC formula for the currently maintained compiler line when
+      a project no longer requires GCC 11 compatibility.
+    rel: alternative
+    sources:
+      - https://gcc.gnu.org/
+      - https://gcc.gnu.org/releases.html
+      - https://gcc.gnu.org/git.html
+  - id: brew:llvm
+    reason: >
+      Choose LLVM when a GCC-compatible Clang toolchain with modular libraries and
+      different diagnostics is preferable to retaining GCC 11.
+    rel: alternative
+    sources:
+      - https://gcc.gnu.org/gcc-11/changes.html
+      - https://clang.llvm.org/docs/UsersManual.html
+      - https://clang.llvm.org/features.html
+  - id: brew:binutils
+    reason: >
+      Pair GCC 11 with GNU Binutils when the build requires GNU assembler, linker,
+      archive, or binary-inspection tools.
+    rel: adjacent_workflow
+    sources:
+      - https://gcc.gnu.org/install/download.html
+      - https://sourceware.org/binutils/
+      - https://sourceware.org/binutils/docs/
 tags:
   - c
   - cli
