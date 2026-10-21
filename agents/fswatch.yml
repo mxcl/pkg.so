@@ -73,6 +73,31 @@ history:
       File Events Notification on Solaris derivatives, inotify on Linux, the Windows
       monitor on Windows, kqueue for small BSD/macOS watch sets, and polling as the
       fallback.
+related-packages:
+  - id: brew:entr
+    reason: >
+      Choose entr for a smaller Unix-oriented workflow where a file list is piped in and
+      an arbitrary command or service is rerun when those files change.
+    rel: alternative
+    sources:
+      - https://emcrisostomo.github.io/fswatch/usage.html
+      - https://eradman.com/entrproject/
+  - id: brew:watchexec
+    reason: >
+      Choose watchexec when the primary task is cross-platform command rerunning with
+      built-in process restart and development-server workflows.
+    rel: alternative
+    sources:
+      - https://emcrisostomo.github.io/fswatch/usage.html
+      - https://watchexec.github.io/
+  - id: brew:inotify-tools
+    reason: >
+      Choose inotify-tools for Linux-specific shell access to inotify or fanotify
+      instead of fswatch's portable multi-backend abstraction.
+    rel: alternative
+    sources:
+      - https://emcrisostomo.github.io/fswatch/
+      - https://github.com/inotify-tools/inotify-tools
 tags:
   - cli
   - cross-platform
