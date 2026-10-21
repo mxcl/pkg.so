@@ -4,7 +4,10 @@ homepage: https://fontforge.github.io
 repo: https://github.com/fontforge/fontforge
 docs:
   - https://fontforge.org/docs/index.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.FontForge/prefs
+    - $sharedir/fontforge/prefs
 credentials-file-location: null
 history:
   adoption-history:
@@ -73,6 +76,16 @@ history:
       Users launch the FontForge GUI for visual font editing, or use bundled
       command-line utilities such as `fontforge`, `fontlint`, `sfddiff`, `fontimage`,
       and conversion helpers for automated inspection and conversion workflows.
+related-packages:
+  - id: brew:fonttools
+    reason: >
+      Choose fontTools when the same font-inspection, conversion, subsetting, or
+      modification work is better expressed through Python APIs and focused command-line
+      utilities rather than a graphical editor.
+    rel: alternative
+    sources:
+      - https://github.com/fontforge/fontforge
+      - https://fonttools.readthedocs.io/en/stable/
 category: media
 package-manager:
   apk: fontforge

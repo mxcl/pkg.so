@@ -60,6 +60,31 @@ history:
       output format. The configuration guide documents fop.xconf as an XML configuration
       file, with a sample at {fop-dir}/conf/fop.xconf that users copy and edit before
       telling FOP where to find it.
+related-packages:
+  - id: brew:docbook-xsl
+    reason: >
+      Use the DocBook XSL stylesheets to transform DocBook XML into XSL-FO, then pass
+      that generated FO document to FOP for PDF or other paginated output.
+    rel: adjacent_workflow
+    sources:
+      - https://docbook.sourceforge.net/release/xsl/current/doc/fo/
+      - https://xmlgraphics.apache.org/fop/quickstartguide.html
+  - id: brew:xmlto
+    reason: >
+      Use xmlto as a higher-level DocBook conversion frontend that can select FOP as the
+      formatter for print-oriented output.
+    rel: adjacent_workflow
+    sources:
+      - https://pagure.io/xmlto/
+      - https://xmlgraphics.apache.org/fop/
+  - id: brew:batik
+    reason: >
+      Install Apache Batik for complementary SVG tooling; FOP officially includes Batik
+      for SVG processing within formatted documents.
+    rel: adjacent_workflow
+    sources:
+      - https://xmlgraphics.apache.org/fop/trunk/running.html
+      - https://xmlgraphics.apache.org/batik/
 category: productivity
 package-manager:
   brew: fop
