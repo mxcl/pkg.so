@@ -72,6 +72,25 @@ history:
       The tool is deliberately not an update distribution service. Upstream
       documentation expects users to deliver `.fw` files through external media, network
       streams, Ansible, or other deployment tooling.
+related-packages:
+  - id: brew:asdf
+    reason: >
+      asdf can install and pin fwup through the official asdf-fwup plugin, keeping its
+      version in the same committed `.tool-versions` file as other project tools.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fwup-home/fwup
+      - https://github.com/fwup-home/asdf-fwup
+      - https://asdf-vm.com/
+  - id: brew:mise
+    reason: >
+      mise can use the official asdf-fwup plugin and read `.tool-versions`, providing
+      automatic project-level activation for the fwup version used by a firmware build.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fwup-home/fwup
+      - https://github.com/fwup-home/asdf-fwup
+      - https://mise.jdx.dev/
 tags:
   - cli
   - embedded-linux
