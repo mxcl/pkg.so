@@ -55,6 +55,50 @@ history:
       Users run gdl to download Google Drive files or folders, with options for
       authentication, multiple inputs, progress bars, interrupted-download resume, and
       per-user installation without root access.
+related-packages:
+  - id: brew:gdown
+    reason: >
+      Choose gdown for a maintained Python CLI and importable library with cached
+      downloads, direct browser-cookie import, and native Python workflow integration.
+    rel: alternative
+    sources:
+      - https://github.com/Akianonymus/gdrive-downloader#readme
+      - https://github.com/wkentaro/gdown#readme
+  - id: brew:gdrive
+    reason: >
+      Choose gdrive when you need broader authenticated Drive account operations such as
+      listing, uploading, exporting, and organizing content rather than download-focused
+      shell scripts.
+    rel: alternative
+    sources:
+      - https://github.com/Akianonymus/gdrive-downloader#readme
+      - https://github.com/glotlabs/gdrive#readme
+      - https://github.com/glotlabs/gdrive/blob/main/docs/basic_usage.md
+  - id: brew:curl
+    reason: >
+      curl is the downloader's required network-transfer engine and performs its normal
+      file requests, making it a direct runtime companion for source or custom
+      installations.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Akianonymus/gdrive-downloader#readme
+      - https://curl.se/docs/
+  - id: brew:aria2
+    reason: >
+      aria2c can optionally perform gdl transfers, particularly with API-key or OAuth
+      modes where split and resumable downloading are supported.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Akianonymus/gdrive-downloader#readme
+      - https://aria2.github.io/manual/en/html/aria2c.html
+  - id: brew:jq
+    reason: >
+      jq is a required companion used by current gdrive-downloader scripts to parse
+      Google Drive API JSON responses reliably.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Akianonymus/gdrive-downloader#readme
+      - https://jqlang.github.io/jq/manual/
 category: networking
 package-manager:
   brew: gdrive-downloader

@@ -5,7 +5,8 @@ repo: https://github.com/wkentaro/gdown
 docs:
   - https://github.com/wkentaro/gdown#readme
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.cache/gdown/cookies.txt
 history:
   adoption-history:
     - >
@@ -56,6 +57,36 @@ history:
       optionally adding output paths, resume mode, folder mode, export formats, or
       cookie support. Python users can call gdown.download, gdown.download_folder, or
       cached_download from scripts and data-processing workflows.
+related-packages:
+  - id: brew:gdrive-downloader
+    reason: >
+      Choose gdrive-downloader for a Bash-oriented alternative with parallel downloads,
+      API-key and OAuth modes, and minimal native command-line dependencies instead of a
+      Python library.
+    rel: alternative
+    sources:
+      - https://github.com/wkentaro/gdown#readme
+      - https://github.com/Akianonymus/gdrive-downloader#readme
+  - id: brew:gdrive
+    reason: >
+      Choose gdrive when you need an authenticated Drive account client for listing,
+      uploading, downloading, exporting, and organizing files rather than a downloader
+      centered on shared links.
+    rel: alternative
+    sources:
+      - https://github.com/wkentaro/gdown#readme
+      - https://github.com/glotlabs/gdrive#readme
+      - https://github.com/glotlabs/gdrive/blob/main/docs/basic_usage.md
+  - id: brew:rclone
+    reason: >
+      Choose rclone when Google Drive must participate in repeatable copy,
+      synchronization, service-account, shared-drive, or multi-cloud workflows rather
+      than a single-purpose download flow.
+    rel: alternative
+    sources:
+      - https://github.com/wkentaro/gdown#readme
+      - https://rclone.org/drive/
+      - https://rclone.org/docs/
 category: networking
 package-manager:
   brew: gdown
