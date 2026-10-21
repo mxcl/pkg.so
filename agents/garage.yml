@@ -55,6 +55,24 @@ history:
       cluster, and access storage through S3-compatible clients. The project documents
       common operations such as binary packages, systemd service setup, gateway nodes,
       reverse proxying, monitoring, and upgrades.
+related-packages:
+  - id: brew:minio
+    reason: >
+      Choose MinIO when strong consistency and erasure coding fit the deployment better;
+      Garage's official comparison contrasts those properties with Garage's lightweight,
+      replication-based, multi-site design.
+    rel: alternative
+    sources:
+      - https://garagehq.deuxfleurs.fr/documentation/design/related-work/
+      - https://min.io/product/aistor/object-store
+  - id: brew:restic
+    reason: >
+      Garage officially documents using restic with a Garage bucket as an S3 backup
+      repository, including the required endpoint, key, and repository settings.
+    rel: adjacent_workflow
+    sources:
+      - https://garagehq.deuxfleurs.fr/documentation/connect/backup/
+      - https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html
 tags:
   - cli
   - distributed-storage
