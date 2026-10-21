@@ -75,6 +75,32 @@ history:
       or lower-level bidi-type, embedding-level, and reorder functions. The package also
       ships a `fribidi` command-line utility that processes text line by line and is
       used for testing the algorithm.
+related-packages:
+  - id: brew:pango
+    reason: >
+      Pango is a higher-level text-layout library that officially uses FriBidi, making
+      it the natural next layer when an application needs complete internationalized
+      layout rather than bidi reordering alone.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fribidi/fribidi#readme
+      - https://www.gtk.org/docs/architecture/pango
+  - id: cask:vlc
+    reason: >
+      VLC is an end-user media application identified by FriBidi as a consumer, notably
+      fitting workflows that need right-to-left subtitle rendering.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fribidi/fribidi#readme
+      - https://www.videolan.org/vlc/
+  - id: brew:mplayer
+    reason: >
+      MPlayer is another officially named FriBidi consumer and provides a command-line
+      media workflow that benefits from bidirectional subtitle text handling.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fribidi/fribidi#readme
+      - https://www.mplayerhq.hu/
 tags:
   - bidirectional-text
   - c-library
