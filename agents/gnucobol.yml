@@ -4,7 +4,11 @@ repo: https://sourceforge.net/p/gnucobol/code/HEAD/tree
 docs:
   - https://gnucobol.sourceforge.io/doc/gnucobol.html
   - https://gnucobol.sourceforge.io/faq
-config-file-location: null
+config-file-location:
+  unix:
+    - $COB_CONFIG_DIR/runtime.cfg
+    - $COB_CONFIG_DIR/default.conf
+    - $COB_CONFIG_DIR/*.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -80,6 +84,23 @@ history:
       code, and prototyping around vendor dialects. Because GnuCOBOL emits C, users can
       lean on the host compiler, linker, debugger, and platform libraries rather than
       requiring a dedicated COBOL runtime environment for every step.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      GnuCOBOL translates COBOL into C and invokes a native C compiler, making GCC a
+      practical backend for producing executables and shared modules.
+    rel: adjacent_workflow
+    sources:
+      - https://gnucobol.sourceforge.io/
+      - https://gcc.gnu.org/
+  - id: brew:gdb
+    reason: >
+      Use GDB to inspect GnuCOBOL programs when source-level debugging is needed;
+      GnuCOBOL officially documents GNU GDB support.
+    rel: adjacent_workflow
+    sources:
+      - https://gnucobol.sourceforge.io/
+      - https://www.gnu.org/software/gdb/
 tags:
   - cli
   - cobol
