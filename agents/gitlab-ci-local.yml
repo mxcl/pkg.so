@@ -8,7 +8,10 @@ config-file-location:
     - .gitlab-ci.yml
     - .gitlab-ci-local-env
     - ~/.gitlab-ci-local/.env
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - .gitlab-ci-local-variables.yml
+    - ~/.gitlab-ci-local/variables.yml
 history:
   adoption-history:
     - >
@@ -68,6 +71,16 @@ history:
       and use variables files to model CI/CD variables. They also use `--list`,
       `--list-all`, and CSV listing modes to inspect planned jobs before executing a
       pipeline.
+related-packages:
+  - id: brew:gitlab-ci-linter
+    reason: >
+      Choose gitlab-ci-linter when you only need authoritative validation through the
+      target GitLab instance's lint API or want validation installed as a pre-commit
+      hook.
+    rel: alternative
+    sources:
+      - https://github.com/firecow/gitlab-ci-local
+      - https://gitlab.com/orobardet/gitlab-ci-linter/-/blob/master/README.md
 tags:
   - ci
   - cli
