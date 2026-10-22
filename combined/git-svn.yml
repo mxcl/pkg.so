@@ -64,6 +64,24 @@ history:
       server. It is also used as a migration tool: teams import a legacy SVN repository
       into Git, inspect or repair branch/tag mapping, and later stop using SVN once the
       Git repository becomes authoritative.
+related-packages:
+  - id: brew:git-svn-abandon
+    reason: >
+      Use git-svn-abandon after a git-svn import when retiring SVN permanently and
+      converting SVN refs, tags, and message metadata into a clean ordinary Git
+      repository.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nothingmuch/git-svn-abandon#readme
+      - https://git-scm.com/docs/git-svn
+  - id: brew:subversion
+    reason: >
+      Apache Subversion's native client complements git-svn when operators need to
+      inspect or validate the authoritative SVN repository outside the Git bridge.
+    rel: adjacent_workflow
+    sources:
+      - https://git-scm.com/docs/git-svn
+      - https://subversion.apache.org/quick-start.html
 category: developer-tools
 package-manager:
   apk: git-svn
