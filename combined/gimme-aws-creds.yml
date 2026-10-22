@@ -64,6 +64,24 @@ history:
       to write temporary credentials to the AWS shared credentials file or to stdout.
       Teams use named profiles and environment overrides to switch accounts, roles,
       durations, MFA behavior, and cloud-provider mode.
+related-packages:
+  - id: brew:okta-aws-cli
+    reason: >
+      Choose Okta's okta-aws-cli for an Identity Engine-native, browser-driven flow with
+      minimal configuration; its official comparison contrasts that model with
+      gimme-aws-creds' broader Classic and credential-prompting options.
+    rel: alternative
+    sources:
+      - https://github.com/okta/okta-aws-cli#comparison
+      - https://github.com/Nike-Inc/gimme-aws-creds#readme
+  - id: brew:awscli
+    reason: >
+      gimme-aws-creds writes temporary profiles to AWS's shared credentials file, which
+      AWS CLI can consume with its standard profile workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Nike-Inc/gimme-aws-creds/blob/master/README.md
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 category: cloud-infrastructure
 package-manager:
   brew: gimme-aws-creds

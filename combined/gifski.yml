@@ -53,6 +53,24 @@ history:
       directory of PNG frames exported from animation or video software. They tune
       output size and quality with width, height, frame rate, quality, lossy quality,
       and motion quality options.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Use FFmpeg to decode a video and stream YUV4MPEG frames directly into gifski,
+      following gifski's officially documented video-to-GIF pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ImageOptim/gifski/blob/main/README.md
+      - https://ffmpeg.org/documentation.html
+  - id: brew:gifsicle
+    reason: >
+      Choose Gifsicle when editing, assembling, or aggressively optimizing existing GIF
+      frames matters more than gifski's high-quality video-frame encoding.
+    rel: alternative
+    sources:
+      - https://github.com/ImageOptim/gifski/blob/main/README.md
+      - https://www.lcdf.org/gifsicle/
+      - https://www.lcdf.org/gifsicle/man.html
 category: media
 package-manager:
   apk: gifski

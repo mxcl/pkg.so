@@ -58,6 +58,26 @@ history:
       client certificates into the .gimmecert tree. The generated PEM files are suited
       to software that requires TLS or mutual-TLS material during tests without
       introducing a long-lived certificate authority.
+related-packages:
+  - id: brew:mkcert
+    reason: >
+      Choose mkcert when the main goal is a zero-configuration certificate trusted by
+      local browsers and operating-system trust stores; choose Gimmecert for an explicit
+      per-project hierarchy with server and client certificates.
+    rel: alternative
+    sources:
+      - https://github.com/FiloSottile/mkcert#readme
+      - https://gimmecert.readthedocs.io/en/stable/usage.html
+  - id: brew:openssl@3
+    reason: >
+      Choose OpenSSL when you need direct control over CSRs, CA databases, extensions,
+      revocation, and certificate formats; Gimmecert automates the smaller disposable-CA
+      workflow.
+    rel: alternative
+    sources:
+      - https://gimmecert.readthedocs.io/en/stable/about.html
+      - https://docs.openssl.org/3.6/man1/openssl-req/
+      - https://docs.openssl.org/3.6/man1/openssl-ca/
 tags:
   - certificate-authority
   - certificates
