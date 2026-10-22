@@ -59,6 +59,26 @@ history:
       packagers install `gitoxide` to experiment with the `gix` and `ein` binaries. The
       README warns that the command-line tools may remain unstable, so library use is
       the steadier integration path.
+related-packages:
+  - id: brew:libgit2
+    reason: >
+      libgit2 is the established portable C library for embedding Git through C or
+      language bindings, while gitoxide provides a native Rust crate architecture;
+      gitoxide's documentation explicitly helps users map git2 APIs to gix.
+    rel: alternative
+    sources:
+      - https://github.com/GitoxideLabs/gitoxide#feature-discovery
+      - https://docs.rs/gix/
+      - https://libgit2.org/
+  - id: brew:git
+    reason: >
+      Git is the stable, full-featured reference command-line tool, whereas gitoxide's
+      gix and ein binaries expose its Rust implementation and are explicitly documented
+      as potentially unstable for scripts.
+    rel: alternative
+    sources:
+      - https://github.com/GitoxideLabs/gitoxide#readme
+      - https://git-scm.com/
 tags:
   - cli
   - git
