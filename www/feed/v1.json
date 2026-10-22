@@ -2,6 +2,163 @@
   "content": [
     {
       "artwork": {
+        "alt": "Indigo project files flow through a luminous geometric analysis prism and resolve into a network of validated cyan and coral nodes.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#102B55",
+          "backgroundStart": "#081A35",
+          "foreground": "#F7FBFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/pyrefly-static-analysis-2026-10-22.png"
+      },
+      "body": "## From alpha to stable\n\nMeta introduced Pyrefly publicly in May 2025 as a type checker and language-server project derived from its experience with Pyre. One year later, the [Pyrefly 1.0 release notes](https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md) marked the project stable on May 12, 2026. The notes say it had become the default type checker for Instagram and was adopted by projects including PyTorch and JAX. Those are upstream claims, but they establish a stronger production story than a synthetic benchmark alone.\n\nStability does not mean every Python project will receive the same diagnostics as mypy, Pyright, or ty. Pyrefly performs aggressive inference even when code has few annotations. That can reveal real inconsistencies in lightly typed code, while also flagging patterns that a more gradual checker accepts. The practical question is therefore not whether one checker wins in the abstract, but whether its model helps a particular codebase.\n\n## Migration is an experiment, not a switch\n\nPyrefly's [migration guide](https://pyrefly.org/en/docs/migrating-to-pyrefly/) recommends an incremental route: generate configuration, run it alongside an existing checker, and use a baseline or targeted suppressions to isolate new findings from inherited work. This lets a team compare diagnostic categories before changing a required CI gate. **A baseline is a migration instrument, not proof that existing errors are harmless**; assign owners and reduce it over time.\n\nAn independent evaluation from [Posit](https://opensource.posit.co/blog/2026-03-31_python-type-checkers/) compared Pyrefly, ty, Basedpyright, and Zuban across editor features, correctness, performance, and ecosystem health. Posit chose Pyrefly for Positron's data-science IDE workload, citing its inference and language-server experience, but explicitly said it was not a runaway winner. Basedpyright was more mature, while ty had a different gradual philosophy and faster measurements in Posit's setup. That is a useful pattern for adoption: test representative repositories and interactive tasks, document what matters, and preserve an exit path.\n\n## Let uv fix the environment boundary\n\nA checker can only reason about imports it resolves. If a developer's editor, a local command, and CI point at different interpreters or dependency sets, their results may disagree before the checker evaluates any interesting application logic. uv can make that boundary explicit by managing Python versions, locking dependencies, and synchronizing an environment from the lockfile. Its [project documentation](https://docs.astral.sh/uv/concepts/projects/sync/) explains that exact synchronization also removes packages absent from the lockfile, so teams should review the first sync rather than treating it as a harmless install command.\n\nFor a trial, pin the checker in the project or CI tool environment, select the same supported Python version everywhere, and run Pyrefly through the same locked context. uv is a companion here, not a requirement: an existing reproducible environment manager can serve the same purpose. The important result is that a diagnostic can be reproduced by another developer and by CI.\n\n## FastAPI makes annotations operational\n\nFastAPI is a revealing test case because type hints cross the boundary between editor assistance and runtime behavior. The framework uses annotations to parse requests, validate values, build OpenAPI schemas, and drive interactive documentation. Its [response-model guide](https://github.com/fastapi/fastapi/blob/master/docs/en/docs/tutorial/response-model.md) also shows how declared output types affect validation, documentation, and serialization.\n\nPyrefly can catch mismatched calls and inconsistent application types before execution, but it cannot prove that an HTTP client sends the expected payload, authentication rules hold, or a database transaction behaves correctly. Keep runtime and integration tests. During migration, compare generated OpenAPI output and send representative requests through the service; this catches changes at the framework boundary that static analysis is not designed to observe.\n\n## A practical rollout\n\nStart with one service or library whose owners can judge the results. Record the current checker's output, run Pyrefly beside it, and classify the differences instead of immediately suppressing them. Generate configuration with the migration tooling, review every broad exclusion, and create a baseline only for findings that cannot be addressed in the trial.\n\nNext, reproduce the environment in CI, pinning the interpreter and dependencies with uv or the team's existing lock workflow. For a FastAPI service, run both the static check and the API test suite, then compare its OpenAPI schema. Promote Pyrefly to a required check only after the team has defined ownership for new diagnostics and a schedule for shrinking the baseline. Stable software makes that evaluation reasonable; a measured rollout makes it trustworthy.",
+      "deck": "A stable checker is only the start; environments, migration strategy, and runtime API boundaries determine whether its diagnostics become useful engineering feedback.",
+      "id": "editorial:2026-10-22:pyrefly-stable-types-in-a-real-python-project",
+      "primaryPackageID": "brew:pyrefly",
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "relatedPackageIDs": [
+        "brew:pyrefly",
+        "brew:uv",
+        "brew:fastapi"
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-05-12T00:00:00Z",
+        "firstStableReleaseSourceURL": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Pyrefly 1.0 stable release notes",
+          "url": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Meta's introduction to Pyrefly",
+          "url": "https://engineering.fb.com/2025/05/15/developer-tools/introducing-pyrefly-a-new-type-checker-and-ide-experience-for-python/"
+        },
+        {
+          "kind": "primary",
+          "title": "Pyrefly migration guide",
+          "url": "https://pyrefly.org/en/docs/migrating-to-pyrefly/"
+        },
+        {
+          "kind": "independent",
+          "title": "Posit's Python type-checker evaluation",
+          "url": "https://opensource.posit.co/blog/2026-03-31_python-type-checkers/"
+        },
+        {
+          "kind": "primary",
+          "title": "uv project locking and synchronization",
+          "url": "https://docs.astral.sh/uv/concepts/projects/sync/"
+        },
+        {
+          "kind": "primary",
+          "title": "FastAPI response models",
+          "url": "https://github.com/fastapi/fastapi/blob/master/docs/en/docs/tutorial/response-model.md"
+        }
+      ],
+      "title": "Pyrefly 1.0: A Type Checker Meets the Real Project",
+      "type": "editorial"
+    },
+    {
+      "candidatePackageIDs": [
+        "brew:workmux",
+        "brew:bashka",
+        "brew:dbmate",
+        "brew:ccmux",
+        "brew:cask:tapmap",
+        "brew:cask:zentty",
+        "brew:cask:look",
+        "brew:cask:opendisk",
+        "brew:cask:highball",
+        "brew:ratex",
+        "brew:cask:hol-guard",
+        "brew:sofka",
+        "brew:prek",
+        "brew:tgrep",
+        "brew:oras",
+        "brew:nub",
+        "brew:cask:jarvis322/tap/sysdata",
+        "brew:dekit",
+        "brew:pyrefly",
+        "brew:worktrunk",
+        "brew:plakar",
+        "brew:python@3.15",
+        "brew:uv",
+        "brew:fastapi"
+      ],
+      "fallbackPackageIDs": [
+        "brew:uv",
+        "brew:python@3.15",
+        "brew:pyrefly",
+        "brew:fastapi",
+        "brew:worktrunk",
+        "brew:plakar",
+        "brew:nub",
+        "brew:dekit",
+        "brew:cask:jarvis322/tap/sysdata",
+        "brew:tgrep",
+        "brew:prek",
+        "brew:oras",
+        "brew:cask:hol-guard",
+        "brew:sofka",
+        "brew:cask:highball",
+        "brew:ratex",
+        "brew:cask:opendisk",
+        "brew:cask:look",
+        "brew:workmux",
+        "brew:ccmux",
+        "brew:cask:zentty",
+        "brew:cask:tapmap",
+        "brew:bashka",
+        "brew:dbmate"
+      ],
+      "id": "for-you",
+      "title": "For You",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "id": "new-packages",
+      "packageIDs": [
+        "brew:cask:clamshell",
+        "brew:cask:capso",
+        "brew:cask:figcraft",
+        "brew:cask:artcraft-launcher",
+        "brew:cask:textus",
+        "brew:portop",
+        "brew:cask:portkiller",
+        "brew:cask:petal",
+        "brew:cask:pulse",
+        "brew:cask:superhuman-docs",
+        "brew:memex",
+        "brew:cask:tine"
+      ],
+      "title": "New Packages",
+      "type": "newPackages"
+    },
+    {
+      "id": "recently-updated",
+      "packageIDs": [
+        "brew:uv",
+        "brew:fastapi",
+        "brew:cask:clamshell",
+        "brew:python@3.15",
+        "brew:worktrunk",
+        "brew:plakar",
+        "brew:cask:capso",
+        "brew:cask:figcraft",
+        "brew:cask:artcraft-launcher",
+        "brew:nub",
+        "brew:cask:textus",
+        "brew:prek"
+      ],
+      "title": "Recently Updated",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
         "alt": "An unattended diagnostic workstation links glowing network paths to layered disk maps in a dark geometric systems landscape.",
         "attribution": "Generated by OpenAI image generation for Package Manager Manager",
         "boxColors": {
@@ -51,101 +208,6 @@
       ],
       "title": "Diagnose the port before you kill it",
       "type": "editorial"
-    },
-    {
-      "candidatePackageIDs": [
-        "brew:workmux",
-        "brew:bashka",
-        "brew:sftpgo",
-        "brew:cask:executor",
-        "brew:metview",
-        "brew:dbmate",
-        "brew:ccmux",
-        "brew:cask:tapmap",
-        "brew:cask:zentty",
-        "brew:cask:look",
-        "brew:cask:opendisk",
-        "brew:cask:highball",
-        "brew:ratex",
-        "brew:cask:hol-guard",
-        "brew:sofka",
-        "brew:prek",
-        "brew:tgrep",
-        "brew:oras",
-        "brew:nub",
-        "brew:cask:jarvis322/tap/sysdata",
-        "brew:dekit",
-        "brew:pyrefly",
-        "brew:worktrunk",
-        "brew:plakar"
-      ],
-      "fallbackPackageIDs": [
-        "brew:worktrunk",
-        "brew:pyrefly",
-        "brew:plakar",
-        "brew:nub",
-        "brew:dekit",
-        "brew:cask:jarvis322/tap/sysdata",
-        "brew:tgrep",
-        "brew:prek",
-        "brew:oras",
-        "brew:cask:hol-guard",
-        "brew:sofka",
-        "brew:cask:highball",
-        "brew:ratex",
-        "brew:cask:opendisk",
-        "brew:cask:look",
-        "brew:workmux",
-        "brew:ccmux",
-        "brew:cask:zentty",
-        "brew:cask:tapmap",
-        "brew:bashka",
-        "brew:metview",
-        "brew:dbmate",
-        "brew:cask:executor",
-        "brew:sftpgo"
-      ],
-      "id": "for-you",
-      "title": "For You",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "id": "new-packages",
-      "packageIDs": [
-        "brew:cask:capso",
-        "brew:cask:figcraft",
-        "brew:cask:artcraft-launcher",
-        "brew:cask:textus",
-        "brew:portop",
-        "brew:cask:portkiller",
-        "brew:cask:petal",
-        "brew:cask:pulse",
-        "brew:cask:superhuman-docs",
-        "brew:memex",
-        "brew:cask:tine",
-        "brew:cask:genoffice"
-      ],
-      "title": "New Packages",
-      "type": "newPackages"
-    },
-    {
-      "id": "recently-updated",
-      "packageIDs": [
-        "brew:worktrunk",
-        "brew:plakar",
-        "brew:cask:capso",
-        "brew:cask:figcraft",
-        "brew:cask:artcraft-launcher",
-        "brew:nub",
-        "brew:cask:textus",
-        "brew:prek",
-        "brew:oras",
-        "brew:tgrep",
-        "brew:portop",
-        "brew:diskwatch"
-      ],
-      "title": "Recently Updated",
-      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -815,60 +877,9 @@
       ],
       "title": "Three Ways to Rebuild the Mac Desktop",
       "type": "editorial"
-    },
-    {
-      "artwork": {
-        "alt": "A glowing catlike packet follows a cyan network path between two distant workstations, passing relays and firewalls in a dark landscape.",
-        "attribution": "Generated with OpenAI image generation",
-        "boxColors": {
-          "backgroundEnd": "#073044",
-          "backgroundStart": "#031421",
-          "foreground": "#FFFFFF"
-        },
-        "license": "OpenAI terms of use",
-        "path": "feed/assets/tailcat-ephemeral-network-path-2026-09-03.png"
-      },
-      "body": "## A network compressed into an address\n\nMost private-network tools begin by establishing an organization: create an account, enroll devices, name them, and define who may reach what. **Tailcat** starts somewhere smaller. One machine listens, produces a `tc...` address, and another uses that address to connect. The result resembles netcat's bidirectional byte pipe, but the traffic rides Tailscale's userspace WireGuard implementation, NAT traversal, and DERP relay system. It needs neither a Tailscale account nor root access because it does not add routes, configure DNS, or create a kernel tunnel interface.\n\nThat compact model is the interesting part. A Tailcat address contains public-key and relay-bootstrap information encoded in CBOR. The peers rendezvous through DERP, then Tailscale's transport attempts a direct UDP path; the relay remains a fallback when NAT or firewall conditions prevent direct contact. Instead of asking a control plane to introduce two named devices, users exchange one capability-like string through an existing trusted channel.\n\n## Old ingredients, newly separated\n\nTailcat is new as a public tool, but not as an idea or code sketch. Its upstream history says Brad Fitzpatrick first wrote `derpcat` inside a Tailscale fork during a flight in September 2023. It repeatedly fell behind internal changes. The revived version became a regular Go module and was open-sourced at TailscaleUp in August 2026. Its first tagged release, `v0.1.0`, arrived on August 30, followed by Tailscale's public launch on August 31.\n\nThis lineage explains both its confidence and its caution. Tailcat extracts field-tested networking components, yet the new composition has not accumulated the operating history of Tailscale itself. The repository explicitly offers **no stability promise** for command flags, Go APIs, output, or the wire format. Public Tailcat DERP relays are best-effort, rate-limited, and have no uptime or throughput target. Those are not footnotes for production adoption; they define the current product boundary.\n\n## What people can actually do with it\n\nThe CLI now reaches beyond a raw pipe. Documented workflows include:\n\n- forwarding a local port to a remote service;\n- running SSH, SCP, and SFTP through the connection;\n- copying and listing files with Tailcat-native commands;\n- creating a SOCKS proxy for an otherwise unaware program such as `curl`;\n- waiting until NAT traversal produces a direct path.\n\nThere is also a Go library and an experimental WebAssembly demo. The browser currently travels through DERP rather than forming direct connections, an important distinction from the native CLI.\n\nIndependent hands-on evidence is encouraging but appropriately messy. Compendia Labs built the tool, inspected its connection flow, and exercised a server. In that test environment, DERP connectivity succeeded while blocked UDP egress caused rendezvous to time out. That is useful actual-use evidence precisely because it is not a victory lap: software designed to cross network boundaries still depends on the network allowing the transports its rendezvous and path discovery expect. Community projects have already begun integrating Tailcat into proxy and graphical file-sharing experiments, but the ecosystem is days old, not mature.\n\n## Capability strings are a security decision\n\nRemoving accounts does not remove trust; it relocates trust into keys and connection material. A short address identifies the server. Optional client allowlists can narrow access, while reusable saved keys create stable endpoints. The choice between an ephemeral address and a persistent one should therefore be deliberate. Share addresses as secrets when they confer access, verify SSH host keys, and keep application authentication in place rather than treating transport encryption as authorization.\n\nRunning a private DERP server reduces dependence on Tailscale's free relays, but it also makes relay availability, patching, capacity, and logging your responsibility. Tailcat deliberately omits the policy, device inventory, identity lifecycle, audit controls, and administrative guardrails a managed tailnet supplies. For a temporary developer connection, that absence can be refreshing. For a team network, it can become missing infrastructure.\n\n## Tailcat or a whole virtual network?\n\nThe related **EdgeVPN** illustrates the next step up in scope. It uses libp2p and shared tokens to form a decentralized virtual network, assign virtual addresses, provide DNS, proxy services, and coordinate nodes through a distributed ledger. Kairos uses it for peer-to-peer Kubernetes coordination, concrete evidence that the design supports more than demos. Kairos also documents additional CPU cost from layered encryption, while EdgeVPN warns that exposing a token can hand over broad network control.\n\nChoose Tailcat when the desired object is one temporary path: a port, shell, file copy, or embedded Go connection. Choose EdgeVPN when several nodes need an ongoing network and discovery layer. Choose managed Tailscale when identity, ACLs, device administration, and dependable service matter more than eliminating the control plane.\n\nTailcat's achievement is conceptual economy. It shows that the difficult data-plane pieces can be packaged as a small, portable connection without pretending that coordination and governance were unnecessary all along. For experiments, incident access, and short-lived developer bridges, that may be exactly the amount of network required.",
-      "deck": "Tailscale's new experiment turns its data plane into a temporary encrypted pipe, trading accounts and policy machinery for portable connection material.",
-      "id": "editorial:2026-09-03:tailcat-networking-without-the-control-plane",
-      "primaryPackageID": "brew:tailcat",
-      "publishedAt": "2026-09-03T09:56:38Z",
-      "relatedPackageIDs": [
-        "brew:tailcat",
-        "brew:edgevpn"
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2026-08-30T03:10:00Z",
-        "firstStableReleaseSourceURL": "https://github.com/tailscale/tailcat/releases/tag/v0.1.0",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Tailcat project repository and technical documentation",
-          "url": "https://github.com/tailscale/tailcat"
-        },
-        {
-          "kind": "primary",
-          "title": "Tailcat v0.1.0 release",
-          "url": "https://github.com/tailscale/tailcat/releases/tag/v0.1.0"
-        },
-        {
-          "kind": "primary",
-          "title": "Tailscale launch announcement for Tailcat",
-          "url": "https://tailscale.com/blog/tailcat"
-        },
-        {
-          "kind": "independent",
-          "title": "Compendia Labs hands-on Tailcat test",
-          "url": "https://blog.compendialabs.org/posts/2026-09-01-dk-tailcat"
-        }
-      ],
-      "title": "Tailcat and the Smallest Useful Private Network",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-21T06:21:47Z",
+  "generatedAt": "2026-10-22T07:02:48Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1179,6 +1190,93 @@
       "upstreamSummary": "Screenshot and screen recording tool",
       "version": "1.2.5"
     },
+    "brew:cask:clamshell": {
+      "agentSummary": "Clamshell keeps supported Apple-silicon MacBooks awake with the lid closed, adding deliberate arming, thermal safeguards, optional low-battery protection, and scriptable controls.",
+      "assessment": {
+        "alternatives": [
+          "Apple's supported closed-display mode with an external display.",
+          "Amphetamine or carefully reviewed built-in power-management commands."
+        ],
+        "audiences": [
+          "Apple-silicon MacBook owners who need deliberate closed-lid operation.",
+          "People running long local builds, downloads, or agent tasks."
+        ],
+        "caveats": [
+          "The application is paid after its trial period.",
+          "A closed lid can worsen heat dissipation, and long battery-powered sessions increase drain.",
+          "It does not support Intel Macs or older macOS releases."
+        ],
+        "complements": [
+          "Remote-access software and battery monitoring.",
+          "Shortcuts or scripts that make activation explicit."
+        ],
+        "prerequisites": [
+          "An Apple-silicon MacBook running macOS 14 or later.",
+          "A power, battery, and thermal plan appropriate for the workload."
+        ],
+        "useCases": [
+          "Keep a supported MacBook awake for a bounded task without an external display.",
+          "Arm or disarm closed-lid operation through Shortcuts and scripts."
+        ]
+      },
+      "category": "system",
+      "discovery": {
+        "admittedAt": "2026-10-22",
+        "analytics": {
+          "30": {
+            "count": 2,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-22"
+          },
+          "365": {
+            "count": 2,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-22"
+          },
+          "90": {
+            "count": 2,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-24"
+          }
+        },
+        "firstObservedAt": "2026-10-22",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": null
+      },
+      "displayName": "Clamshell",
+      "docs": "https://clamshell.dev/",
+      "homepage": "https://clamshell.dev/",
+      "id": "brew:cask:clamshell",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclamshell",
+      "lastUpdatedAt": "2026-10-21T14:33:57Z",
+      "manager": "homebrew",
+      "repository": null,
+      "researchedAt": "2026-10-22T07:02:48Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Clamshell changelog",
+          "url": "https://clamshell.dev/changelog"
+        },
+        {
+          "kind": "primary",
+          "title": "Clamshell closed-lid operation guide",
+          "url": "https://clamshell.dev/guides/keep-macbook-awake-lid-closed"
+        },
+        {
+          "kind": "primary",
+          "title": "Clamshell privacy policy",
+          "url": "https://clamshell.dev/privacy"
+        }
+      ],
+      "upstreamSummary": "Keep the computer awake with the lid closed and the built-in display dark",
+      "version": "1.4.24,228"
+    },
     "brew:cask:claudoscope": {
       "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
       "assessment": {
@@ -1303,69 +1401,6 @@
       "upstreamSummary": "Dock replacement with widgets, profiles and window previews",
       "version": "1.3.3"
     },
-    "brew:cask:executor": {
-      "agentSummary": "Executor centralizes MCP, OpenAPI, and GraphQL tools for multiple AI agents, pairing shared credentials and catalogs with per-tool execution policies.",
-      "assessment": {
-        "alternatives": [
-          "Configuring each MCP server directly in every agent client",
-          "Building narrow OpenAPI-to-MCP adapters with FastMCP or similar frameworks",
-          "Using a managed API gateway when agent-specific tool discovery is unnecessary"
-        ],
-        "audiences": [
-          "Teams operating several MCP-compatible coding or automation agents",
-          "Platform engineers governing access to internal APIs and agent tools"
-        ],
-        "caveats": [
-          "The project is young and its interfaces and deployment model may change quickly",
-          "Centralizing credentials and execution policy creates a sensitive control point that needs careful hardening",
-          "Protocol support does not guarantee that every imported operation has safe descriptions, scopes, or side-effect metadata"
-        ],
-        "complements": [
-          "MCP-compatible clients such as Claude Code, Cursor, and OpenCode",
-          "OpenAPI specifications and GraphQL schemas",
-          "Secret providers and human approval workflows"
-        ],
-        "prerequisites": [
-          "An MCP-compatible agent or an application using Executor's SDK",
-          "Node.js 20 or newer for the documented local CLI workflow",
-          "Credentials and authorization rules for each connected service"
-        ],
-        "useCases": [
-          "Presenting one searchable tool catalog to multiple agent clients",
-          "Connecting OpenAPI, GraphQL, and MCP services behind shared authentication and approval policies",
-          "Running the integration layer locally, in a desktop app, or on self-hosted infrastructure"
-        ]
-      },
-      "category": "ai",
-      "displayName": "Executor",
-      "docs": "https://executor.sh/docs",
-      "homepage": "https://executor.sh/",
-      "id": "brew:cask:executor",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aexecutor",
-      "lastUpdatedAt": "2026-09-18T18:59:47Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/RhysSullivan/executor",
-      "researchedAt": "2026-09-19T06:55:32Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Executor repository and architecture overview",
-          "url": "https://github.com/UsefulSoftwareCo/executor"
-        },
-        {
-          "kind": "primary",
-          "title": "Executor v1.1.8 stable release",
-          "url": "https://github.com/UsefulSoftwareCo/executor/releases/tag/v1.1.8"
-        },
-        {
-          "kind": "independent",
-          "title": "Context.dev case study on Executor integrations",
-          "url": "https://www.context.dev/blog/executor-powers-3000-integrations-with-context-dev"
-        }
-      ],
-      "upstreamSummary": "Tool discovery and execution layer for AI agents",
-      "version": "1.6.10"
-    },
     "brew:cask:figcraft": {
       "agentSummary": "FigCraft is an ambitious Rust interface-design and prototyping application with vector editing, components, variables, exports, plugins, and experimental collaboration across desktop platforms.",
       "assessment": {
@@ -1459,62 +1494,6 @@
       ],
       "upstreamSummary": "Interface design and prototyping tool",
       "version": "0.8.0"
-    },
-    "brew:cask:genoffice": {
-      "agentSummary": "GenOffice edits common office and PDF formats locally across desktop platforms, with reviewable AI changes, local search, a CLI, and agent integrations.",
-      "assessment": {
-        "alternatives": [
-          "LibreOffice for a mature office suite without an agent-centered workflow",
-          "Microsoft Office when maximum proprietary-format compatibility and enterprise integration take priority"
-        ],
-        "audiences": [
-          "Users seeking an open-source desktop office suite",
-          "Developers automating document work through coding agents or a CLI"
-        ],
-        "caveats": [
-          "AI requests leave the machine for the provider the user selects",
-          "Complex proprietary documents should be checked carefully after round-tripping",
-          "The project is young despite broad format and platform ambitions"
-        ],
-        "complements": [
-          "Claude Code, Codex, Cursor, and other documented agent clients",
-          "OpenAI-compatible local or hosted model endpoints"
-        ],
-        "prerequisites": [
-          "macOS, Windows, or Linux on a supported architecture",
-          "A configured provider account or API key is needed for optional AI calls"
-        ],
-        "useCases": [
-          "Open and edit DOCX, XLSX, PPTX, PDF, Markdown, and HTML",
-          "Convert documents locally",
-          "Review AI-assisted edits and roll them back",
-          "Create or edit office files through the CLI and agent skill"
-        ]
-      },
-      "category": "productivity",
-      "displayName": "GenOffice",
-      "docs": "https://genoffice.ai/",
-      "homepage": "https://genoffice.ai/",
-      "id": "brew:cask:genoffice",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agenoffice",
-      "lastUpdatedAt": "2026-10-15T13:42:42Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/genspark-ai/genoffice",
-      "researchedAt": "2026-10-16T11:00:33Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "GenOffice repository and format guide",
-          "url": "https://github.com/genspark-ai/genoffice"
-        },
-        {
-          "kind": "primary",
-          "title": "GenOffice official website",
-          "url": "https://genoffice.ai/"
-        }
-      ],
-      "upstreamSummary": "Open-source AI office suite",
-      "version": "0.11.829"
     },
     "brew:cask:highball": {
       "agentSummary": "Highball runs Windows games on Apple Silicon through managed Wine-based engines, pairing launcher automation with an open compatibility database and per-game renderer guidance.",
@@ -3088,69 +3067,105 @@
       "upstreamSummary": "Cross-platform disk diagnostics TUI",
       "version": "0.6.1"
     },
-    "brew:edgevpn": {
-      "agentSummary": "EdgeVPN builds decentralized private networks, reverse proxies, and file transfers on libp2p, using shared configuration tokens and an embedded distributed coordination layer.",
+    "brew:fastapi": {
+      "agentSummary": "FastAPI turns standard Python type hints into request parsing, runtime validation, OpenAPI schemas, interactive documentation, and editor assistance for typed web APIs.",
       "assessment": {
         "alternatives": [
-          "Tailcat for narrow, temporary application connections",
-          "Tailscale or NetBird for managed identity and policy",
-          "WireGuard for manually configured point-to-point tunnels"
+          "Django REST Framework.",
+          "Flask combined with a validation and schema library.",
+          "Litestar."
         ],
         "audiences": [
-          "Edge-computing and distributed-systems operators",
-          "Self-hosters wanting decentralized node discovery",
-          "Go developers building peer-to-peer networking features"
+          "Python teams building typed HTTP APIs.",
+          "Developers who want API schemas derived from application declarations."
         ],
         "caveats": [
-          "A leaked token can grant broad network control unless trusted zones are configured",
-          "Peer establishment may take minutes according to upstream guidance",
-          "Kairos documents extra CPU cost from additional encryption layers"
+          "A static checker does not replace tests of network inputs, authentication, persistence, or deployment behavior.",
+          "Response annotations and explicit response models need deliberate review to avoid unintended serialization.",
+          "Blocking work inside asynchronous handlers can still harm service performance."
         ],
         "complements": [
-          "Kairos for decentralized edge Kubernetes",
-          "Centralized secret management for network tokens",
-          "Monitoring for peer health, latency, and resource use"
+          "Pyrefly for static feedback on application code.",
+          "uv for locking and synchronizing the service environment."
         ],
         "prerequisites": [
-          "Administrative access when creating a system network interface",
-          "Secure distribution of the shared network token",
-          "Time for peer discovery and convergence"
+          "A supported Python environment with an ASGI server and Pydantic dependencies.",
+          "Runtime, integration, and schema tests in addition to static analysis."
         ],
         "useCases": [
-          "Joining remote nodes into a virtual private network",
-          "Exposing TCP services through a peer-to-peer reverse proxy",
-          "Coordinating decentralized Kubernetes nodes"
+          "Validate and parse typed request data.",
+          "Serialize response models and generate OpenAPI documentation.",
+          "Build asynchronous or synchronous ASGI services."
         ]
       },
-      "category": "networking",
-      "displayName": "edgevpn",
-      "docs": "https://mudler.github.io/edgevpn",
-      "homepage": "https://mudler.github.io/edgevpn",
-      "id": "brew:edgevpn",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aedgevpn",
-      "lastUpdatedAt": "2026-09-03T08:53:42Z",
+      "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 495,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-22"
+          },
+          "365": {
+            "count": 7038,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-22"
+          },
+          "90": {
+            "count": 1108,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-24"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-22",
+          "growthPercent": 61.5,
+          "installs30d": 495,
+          "previousMonthlyRate": 306.5,
+          "score": 3.535127,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-24"
+        }
+      },
+      "displayName": "fastapi",
+      "docs": "https://fastapi.tiangolo.com/",
+      "homepage": "https://fastapi.tiangolo.com/",
+      "id": "brew:fastapi",
+      "installURL": "pkgmgrmgr://install?package=brew%3Afastapi",
+      "lastUpdatedAt": "2026-10-22T04:33:33Z",
       "manager": "homebrew",
-      "repository": "https://github.com/mudler/edgevpn",
-      "researchedAt": "2026-09-03T09:56:38Z",
+      "repository": "https://github.com/fastapi/fastapi",
+      "researchedAt": "2026-10-22T07:02:48Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "EdgeVPN project repository",
-          "url": "https://github.com/mudler/edgevpn"
+          "title": "FastAPI and Python type hints",
+          "url": "https://github.com/fastapi/fastapi/blob/master/docs/en/docs/python-types.md"
         },
         {
           "kind": "primary",
-          "title": "EdgeVPN documentation",
-          "url": "https://mudler.github.io/edgevpn/docs/"
+          "title": "FastAPI response models",
+          "url": "https://github.com/fastapi/fastapi/blob/master/docs/en/docs/tutorial/response-model.md"
         },
         {
-          "kind": "independent",
-          "title": "Kairos peer-to-peer network architecture",
-          "url": "https://kairos.io/docs/architecture/network/"
+          "kind": "primary",
+          "title": "FastAPI project overview",
+          "url": "https://github.com/fastapi/fastapi/blob/master/README.md?plain=1"
         }
       ],
-      "upstreamSummary": "Immutable, decentralized, statically built p2p VPN",
-      "version": "0.35.4"
+      "upstreamSummary": "CLI for FastAPI framework",
+      "version": "0.155.0"
     },
     "brew:git-xet": {
       "agentSummary": "Git-Xet connects familiar Git workflows to Hugging Face’s chunk-based storage, reducing redundant large-file transfers while retaining Git LFS as a required integration layer.",
@@ -3366,70 +3381,6 @@
       ],
       "upstreamSummary": "Index and search local agent conversation history",
       "version": "0.29.0"
-    },
-    "brew:metview": {
-      "agentSummary": "Metview gives operational and research meteorologists one environment for accessing, processing, scripting, and visualizing ECMWF-oriented weather data through desktop and Python workflows.",
-      "assessment": {
-        "alternatives": [
-          "Python stacks built from xarray, cfgrib, Cartopy, and Matplotlib",
-          "Panoply for lightweight NetCDF, HDF, and GRIB inspection",
-          "Command-line workflows using Climate Data Operators"
-        ],
-        "audiences": [
-          "Operational meteorologists working with forecast products",
-          "Atmospheric researchers analyzing GRIB, BUFR, NetCDF, or ODB data",
-          "Scientists building repeatable weather-data visualization workflows"
-        ],
-        "caveats": [
-          "Its concepts and interface are specialized for meteorology rather than general scientific visualization",
-          "ECMWF-oriented workflows and file formats carry a substantial learning curve",
-          "Some data-access examples depend on external services, accounts, and dataset licensing"
-        ],
-        "complements": [
-          "ECMWF ecCodes for GRIB and BUFR handling",
-          "Magics for meteorological plotting",
-          "Jupyter notebooks and the Metview Python interface"
-        ],
-        "prerequisites": [
-          "Familiarity with meteorological fields, coordinate systems, and forecast products",
-          "Access rights and credentials for any restricted ECMWF datasets",
-          "Native scientific libraries supplied by the package or operating-system environment"
-        ],
-        "useCases": [
-          "Exploring and plotting meteorological fields interactively",
-          "Automating forecast-data processing with Python or Metview Macro",
-          "Combining ECMWF data access, transformation, and publication-quality visualization"
-        ]
-      },
-      "category": "science",
-      "displayName": "metview",
-      "docs": "https://metview.readthedocs.io/en/latest",
-      "homepage": "https://metview.readthedocs.io/en/latest/",
-      "id": "brew:metview",
-      "installURL": "pkgmgrmgr://install?package=brew%3Ametview",
-      "lastUpdatedAt": "2026-09-19T04:37:11Z",
-      "manager": "homebrew",
-      "repository": "https://git.ecmwf.int/users/dabh/repos/metview/browse",
-      "researchedAt": "2026-09-19T06:55:32Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Metview documentation and new-user overview",
-          "url": "https://metview.readthedocs.io/en/latest/"
-        },
-        {
-          "kind": "primary",
-          "title": "ECMWF Metview workstation paper",
-          "url": "https://www.ecmwf.int/sites/default/files/elibrary/1991/11655-metviewws-manipulation-and-visualisation-meteorological-data-workstations.pdf"
-        },
-        {
-          "kind": "independent",
-          "title": "INPE paper on operational Metview use",
-          "url": "https://www.dpi.inpe.br/gilberto/papers/metview.pdf"
-        }
-      ],
-      "upstreamSummary": "Meteorological workstation software",
-      "version": "5.26.2"
     },
     "brew:neovim": {
       "agentSummary": "Neovim combines modal editing with a built-in LSP client, letting users connect Kotlin and other language servers through explicit, scriptable configuration.",
@@ -3994,35 +3945,35 @@
       "version": "0.5.5"
     },
     "brew:pyrefly": {
-      "agentSummary": "Pyrefly combines a fast Python type checker with a language server, strong inference, refactoring, framework-aware analysis, and editor support for large codebases.",
+      "agentSummary": "Pyrefly combines a fast Python type checker with language-server features, incremental migration tools, configuration presets, and production use across large Meta and open-source codebases.",
       "assessment": {
         "alternatives": [
-          "mypy for a mature, widely integrated Python type-checking ecosystem",
-          "Pyright or basedpyright for established editor-centered static analysis",
-          "ty for another performance-focused newer Python type checker"
+          "mypy.",
+          "Pyright or Basedpyright.",
+          "ty."
         ],
         "audiences": [
-          "Python teams seeking fast static analysis in local development and continuous integration",
-          "Editor users who want type-driven navigation, completion, refactoring, and diagnostics from one language server"
+          "Python teams adding static analysis to application or library code.",
+          "IDE users who want navigation and diagnostics from the same engine."
         ],
         "caveats": [
-          "Migration can expose different inference and compatibility behavior than an existing checker",
-          "Notebook support is documented as experimental",
-          "Projects still need runtime tests because type analysis cannot validate dynamic behavior or external services"
+          "Aggressive inference can produce different diagnostics from gradual or established checkers.",
+          "A baseline can make migration manageable but may also conceal debt if it is never reduced.",
+          "Performance and compatibility should be measured on the team's own repositories and CI environment."
         ],
         "complements": [
-          "Ruff for linting and formatting alongside type analysis",
-          "pytest for runtime behavior that static type checking cannot verify",
-          "VS Code, JupyterLab, Marimo, or another Language Server Protocol client"
+          "uv for reproducible Python environments.",
+          "FastAPI for a framework where annotations also shape API behavior.",
+          "Runtime tests such as pytest."
         ],
         "prerequisites": [
-          "A Python project and a supported command-line or editor integration",
-          "Project configuration when defaults do not match the repository's import paths or desired strictness"
+          "A Python project whose dependencies and interpreter can be resolved consistently.",
+          "Review of generated configuration, diagnostics, and suppression baselines."
         ],
         "useCases": [
-          "Check Python types from the command line or in continuous integration",
-          "Provide IDE navigation, completion, inlay hints, rename, hierarchy, and refactoring features",
-          "Analyze partially annotated code and projects using supported Django or Pydantic patterns"
+          "Run type checks in continuous integration.",
+          "Provide language-server navigation, hover information, and diagnostics.",
+          "Migrate incrementally from an existing checker using a baseline."
         ]
       },
       "category": "developer-tools",
@@ -4030,22 +3981,22 @@
         "admittedAt": "2026-10-17",
         "analytics": {
           "30": {
-            "count": 1344,
-            "endDate": "2026-10-21",
+            "count": 1408,
+            "endDate": "2026-10-22",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
-            "startDate": "2026-09-21"
+            "startDate": "2026-09-22"
           },
           "365": {
-            "count": 5207,
-            "endDate": "2026-10-21",
+            "count": 5245,
+            "endDate": "2026-10-22",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
-            "startDate": "2025-10-21"
+            "startDate": "2025-10-22"
           },
           "90": {
-            "count": 1525,
-            "endDate": "2026-10-21",
+            "count": 1588,
+            "endDate": "2026-10-22",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
-            "startDate": "2026-07-23"
+            "startDate": "2026-07-24"
           }
         },
         "firstObservedAt": "2026-10-17",
@@ -4053,16 +4004,16 @@
         "recentlyDiscovered": false,
         "status": "official",
         "trend": {
-          "endDate": "2026-10-21",
-          "growthPercent": 1385.1,
-          "installs30d": 1344,
-          "previousMonthlyRate": 90.5,
-          "score": 26.768332,
+          "endDate": "2026-10-22",
+          "growthPercent": 1464.4,
+          "installs30d": 1408,
+          "previousMonthlyRate": 90.0,
+          "score": 27.486851,
           "sources": [
             "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
             "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
           ],
-          "startDate": "2026-07-23"
+          "startDate": "2026-07-24"
         }
       },
       "displayName": "pyrefly",
@@ -4073,21 +4024,119 @@
       "lastUpdatedAt": "2026-10-15T18:41:02Z",
       "manager": "homebrew",
       "repository": "https://github.com/facebook/pyrefly",
-      "researchedAt": "2026-10-21T06:21:47Z",
+      "researchedAt": "2026-10-22T07:02:48Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Pyrefly FAQ and design positioning",
-          "url": "https://pyrefly.org/en/docs/pyrefly-faq/"
+          "title": "Pyrefly 1.0 stable release notes",
+          "url": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md"
         },
         {
           "kind": "primary",
-          "title": "Pyrefly IDE feature documentation",
-          "url": "https://pyrefly.org/en/docs/IDE-features/"
+          "title": "Pyrefly migration guide",
+          "url": "https://pyrefly.org/en/docs/migrating-to-pyrefly/"
+        },
+        {
+          "kind": "independent",
+          "title": "Posit's Python type-checker evaluation",
+          "url": "https://opensource.posit.co/blog/2026-03-31_python-type-checkers/"
         }
       ],
       "upstreamSummary": "Fast type checker and IDE for Python",
       "version": "1.4.0"
+    },
+    "brew:python@3.15": {
+      "agentSummary": "Python 3.15 adds lazy imports, UTF-8 defaults, immutable mapping and sentinel built-ins, profiling tools, and stable free-threaded ABI support while advancing its experimental JIT.",
+      "assessment": {
+        "alternatives": [
+          "Remain on a supported Python 3.14 release while dependencies catch up.",
+          "Use an organization-provided Python distribution instead of Homebrew."
+        ],
+        "audiences": [
+          "Python developers evaluating the newest stable language release.",
+          "Library maintainers preparing compatibility across supported interpreters."
+        ],
+        "caveats": [
+          "A new interpreter can expose removed APIs or third-party extension incompatibilities.",
+          "The experimental JIT should not be treated as a guaranteed application-level speedup.",
+          "Python's official release page notes a macOS 27 issue affecting tkinter dialog workflows."
+        ],
+        "complements": [
+          "uv for selecting and locking a project interpreter.",
+          "Pyrefly and FastAPI after their Python 3.15 compatibility is verified."
+        ],
+        "prerequisites": [
+          "Dependencies and deployment targets that explicitly support Python 3.15.",
+          "A test matrix that retains every older Python version the project still promises to support."
+        ],
+        "useCases": [
+          "Test applications and libraries against Python 3.15.",
+          "Adopt new language, typing, profiling, and runtime capabilities after compatibility review."
+        ]
+      },
+      "category": "language-runtime",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 12047,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-22"
+          },
+          "365": {
+            "count": 12046,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-22"
+          },
+          "90": {
+            "count": 12047,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-24"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-22",
+          "growthPercent": null,
+          "installs30d": 12047,
+          "previousMonthlyRate": 0.0,
+          "score": 96.180911,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-24"
+        }
+      },
+      "displayName": "python@3.15",
+      "docs": "https://docs.python.org/3.15",
+      "homepage": "https://www.python.org/",
+      "id": "brew:python@3.15",
+      "installURL": "pkgmgrmgr://install?package=brew%3Apython%403.15",
+      "lastUpdatedAt": "2026-10-21T10:44:28Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/python/cpython",
+      "researchedAt": "2026-10-22T07:02:48Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Python 3.15.0 stable release",
+          "url": "https://www.python.org/downloads/release/python-3150/"
+        },
+        {
+          "kind": "primary",
+          "title": "What's new in Python 3.15",
+          "url": "https://docs.python.org/3.15/whatsnew/3.15.html"
+        }
+      ],
+      "upstreamSummary": "Interpreted, interactive, object-oriented programming language",
+      "version": "3.15.0"
     },
     "brew:ratex": {
       "agentSummary": "ratex is an experimental Rust TeX engine emphasizing fast compilation and a compact command-line workflow, best suited to curious TeX users testing an emerging implementation.",
@@ -4141,70 +4190,6 @@
       ],
       "upstreamSummary": "Fast TeX engine written in Rust",
       "version": "0.4.3"
-    },
-    "brew:sftpgo": {
-      "agentSummary": "SFTPGo provides managed file transfer across SFTP, SCP, FTPS, WebDAV, and web clients, combining local or cloud storage with granular access controls.",
-      "assessment": {
-        "alternatives": [
-          "OpenSSH internal-sftp for a narrower local-filesystem service",
-          "MinIO or native cloud object-storage APIs when legacy transfer protocols are unnecessary",
-          "Commercial managed file-transfer platforms with vendor-operated support"
-        ],
-        "audiences": [
-          "Administrators replacing legacy file-transfer servers",
-          "Teams exposing cloud object storage through established transfer protocols",
-          "Organizations needing self-hosted partner file exchange"
-        ],
-        "caveats": [
-          "The Community edition uses AGPL-3.0-only with additional terms, while some advanced capabilities belong to Enterprise",
-          "Every enabled protocol and automation hook expands the configuration and attack surface",
-          "The published independent audit covered important components but explicitly excluded several authentication and storage features"
-        ],
-        "complements": [
-          "A reverse proxy or load balancer for HTTPS deployments",
-          "Prometheus-compatible monitoring and centralized audit logging",
-          "Object storage lifecycle policies and independent backups"
-        ],
-        "prerequisites": [
-          "TLS and SSH host-key management appropriate to the exposed protocols",
-          "Least-privilege service and storage credentials",
-          "A database and shared storage design suitable for the intended deployment topology"
-        ],
-        "useCases": [
-          "Serve local, encrypted, S3-compatible, Google Cloud, or Azure storage over common transfer protocols",
-          "Manage per-user virtual folders, quotas, authentication, and protocol permissions",
-          "Trigger event-driven retention, notification, and cross-storage workflows"
-        ]
-      },
-      "category": "networking",
-      "displayName": "sftpgo",
-      "docs": "https://docs.sftpgo.com/latest",
-      "homepage": "https://sftpgo.com/",
-      "id": "brew:sftpgo",
-      "installURL": "pkgmgrmgr://install?package=brew%3Asftpgo",
-      "lastUpdatedAt": "2026-09-18T22:05:31Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/drakkan/sftpgo",
-      "researchedAt": "2026-09-19T06:52:52Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "SFTPGo Community documentation",
-          "url": "https://docs.sftpgo.com/latest/"
-        },
-        {
-          "kind": "primary",
-          "title": "SFTPGo project repository",
-          "url": "https://github.com/drakkan/sftpgo"
-        },
-        {
-          "kind": "independent",
-          "title": "Open Technology Fund SFTPGo security audit",
-          "url": "https://www.opentech.fund/security-safety-audits/sftpgo-security-audit/"
-        }
-      ],
-      "upstreamSummary": "Fully featured SFTP server with optional HTTP/S, FTP/S and WebDAV support",
-      "version": "2.7.5"
     },
     "brew:slumber": {
       "agentSummary": "Slumber is a mature source-first HTTP client whose local collections drive a terminal interface, command-line automation, Python access, profiles, templates, imports, and response history.",
@@ -4324,70 +4309,6 @@
       ],
       "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
       "version": "0.29.6"
-    },
-    "brew:tailcat": {
-      "agentSummary": "Tailcat creates encrypted, netcat-like peer connections through Tailscale's userspace WireGuard, NAT traversal, and DERP components, without accounts, routes, or a control plane.",
-      "assessment": {
-        "alternatives": [
-          "Tailscale for managed identity, policy, and a persistent tailnet",
-          "WireGuard for explicitly configured durable tunnels",
-          "EdgeVPN for a broader decentralized virtual network"
-        ],
-        "audiences": [
-          "Developers needing temporary connectivity between machines",
-          "Network engineers exploring userspace peer-to-peer tunnels",
-          "Self-hosters prepared to manage connection tokens and relays"
-        ],
-        "caveats": [
-          "The project explicitly promises no CLI, Go API, or wire-format stability",
-          "Public relays are rate-limited and carry no uptime or throughput guarantee",
-          "Possession of connection material replaces centralized identity and authorization"
-        ],
-        "complements": [
-          "A self-hosted DERP relay for operational independence",
-          "SSH host-key verification and application-level authentication",
-          "Firewall and traffic-observation tools for troubleshooting"
-        ],
-        "prerequisites": [
-          "A secure out-of-band channel for exchanging tailcat addresses",
-          "Outbound network access to a DERP relay unless self-hosting one",
-          "Tolerance for a young command line and wire protocol"
-        ],
-        "useCases": [
-          "Copying files or forwarding a port across NAT boundaries",
-          "Opening temporary SSH, SFTP, or SOCKS connections",
-          "Embedding Tailscale data-plane connectivity in Go programs"
-        ]
-      },
-      "category": "networking",
-      "displayName": "tailcat",
-      "docs": "https://github.com/tailscale/tailcat#readme",
-      "homepage": "https://github.com/tailscale/tailcat",
-      "id": "brew:tailcat",
-      "installURL": "pkgmgrmgr://install?package=brew%3Atailcat",
-      "lastUpdatedAt": "2026-09-03T00:16:39Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/tailscale/tailcat",
-      "researchedAt": "2026-09-03T09:56:38Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Tailcat project repository and technical documentation",
-          "url": "https://github.com/tailscale/tailcat"
-        },
-        {
-          "kind": "primary",
-          "title": "Tailscale launch announcement for Tailcat",
-          "url": "https://tailscale.com/blog/tailcat"
-        },
-        {
-          "kind": "independent",
-          "title": "Compendia Labs hands-on Tailcat test",
-          "url": "https://blog.compendialabs.org/posts/2026-09-01-dk-tailcat"
-        }
-      ],
-      "upstreamSummary": "Netcat-like tool over Tailscale's data plane, without its control plane",
-      "version": "0.5.0"
     },
     "brew:talosctl": {
       "agentSummary": "The administrative CLI for Talos Linux, used to configure machines, query the Talos API, inspect services, and manage Kubernetes node lifecycles.",
@@ -4648,6 +4569,106 @@
       "upstreamSummary": "Diff tool that generates Typst documents highlighting differences between inputs",
       "version": "0.1.3"
     },
+    "brew:uv": {
+      "agentSummary": "uv manages Python interpreters, environments, dependencies, lockfiles, workspaces, scripts, and tools through one fast CLI, with exact synchronization and a shared package cache.",
+      "assessment": {
+        "alternatives": [
+          "pip, venv, and pip-tools.",
+          "Poetry or PDM.",
+          "pyenv for interpreter selection."
+        ],
+        "audiences": [
+          "Python application and library maintainers.",
+          "Teams standardizing local and continuous-integration environments."
+        ],
+        "caveats": [
+          "Exact synchronization removes packages that are not represented by the lockfile.",
+          "Managed Python distributions may differ from system or organization-provided interpreters.",
+          "Migration should include review of dependency resolution and CI cache behavior."
+        ],
+        "complements": [
+          "Pyrefly in a pinned analysis environment.",
+          "FastAPI application projects and their test suites."
+        ],
+        "prerequisites": [
+          "A reviewed pyproject configuration and lockfile policy.",
+          "CI cache and interpreter choices that match the project's support matrix."
+        ],
+        "useCases": [
+          "Lock and synchronize project dependencies.",
+          "Install and select Python versions.",
+          "Run tools, scripts, and workspace commands."
+        ]
+      },
+      "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 210512,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-22"
+          },
+          "365": {
+            "count": 1964266,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-22"
+          },
+          "90": {
+            "count": 550091,
+            "endDate": "2026-10-22",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-24"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-22",
+          "growthPercent": 24.0,
+          "installs30d": 210512,
+          "previousMonthlyRate": 169789.5,
+          "score": 3.291987,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-24"
+        }
+      },
+      "displayName": "uv",
+      "docs": "https://docs.astral.sh/uv",
+      "homepage": "https://docs.astral.sh/uv/",
+      "id": "brew:uv",
+      "installURL": "pkgmgrmgr://install?package=brew%3Auv",
+      "lastUpdatedAt": "2026-10-22T04:52:41Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/astral-sh/uv",
+      "researchedAt": "2026-10-22T07:02:48Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "uv project repository and feature overview",
+          "url": "https://github.com/astral-sh/uv"
+        },
+        {
+          "kind": "primary",
+          "title": "uv project locking and synchronization",
+          "url": "https://docs.astral.sh/uv/concepts/projects/sync/"
+        },
+        {
+          "kind": "primary",
+          "title": "uv Python version management",
+          "url": "https://docs.astral.sh/uv/concepts/python-versions/"
+        }
+      ],
+      "upstreamSummary": "Extremely fast Python package installer and resolver, written in Rust",
+      "version": "0.13.4"
+    },
     "brew:workmux": {
       "agentSummary": "workmux pairs Git worktrees with terminal windows, automating isolated task setup, agent status, review, merging, and cleanup while preserving familiar multiplexer workflows.",
       "assessment": {
@@ -4800,7 +4821,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-21T06:20:02Z",
+    "generatedAt": "2026-10-22T07:01:16Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }

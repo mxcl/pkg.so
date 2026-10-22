@@ -2,6 +2,594 @@
   "content": [
     {
       "artwork": {
+        "alt": "Indigo project files flow through a luminous geometric analysis prism and resolve into a network of validated cyan and coral nodes.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#102B55",
+          "backgroundStart": "#081A35",
+          "foreground": "#F7FBFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/pyrefly-static-analysis-2026-10-22.png"
+      },
+      "batchID": "20261022T070248Z-74faafac",
+      "body": "## From alpha to stable\n\nMeta introduced Pyrefly publicly in May 2025 as a type checker and language-server project derived from its experience with Pyre. One year later, the [Pyrefly 1.0 release notes](https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md) marked the project stable on May 12, 2026. The notes say it had become the default type checker for Instagram and was adopted by projects including PyTorch and JAX. Those are upstream claims, but they establish a stronger production story than a synthetic benchmark alone.\n\nStability does not mean every Python project will receive the same diagnostics as mypy, Pyright, or ty. Pyrefly performs aggressive inference even when code has few annotations. That can reveal real inconsistencies in lightly typed code, while also flagging patterns that a more gradual checker accepts. The practical question is therefore not whether one checker wins in the abstract, but whether its model helps a particular codebase.\n\n## Migration is an experiment, not a switch\n\nPyrefly's [migration guide](https://pyrefly.org/en/docs/migrating-to-pyrefly/) recommends an incremental route: generate configuration, run it alongside an existing checker, and use a baseline or targeted suppressions to isolate new findings from inherited work. This lets a team compare diagnostic categories before changing a required CI gate. **A baseline is a migration instrument, not proof that existing errors are harmless**; assign owners and reduce it over time.\n\nAn independent evaluation from [Posit](https://opensource.posit.co/blog/2026-03-31_python-type-checkers/) compared Pyrefly, ty, Basedpyright, and Zuban across editor features, correctness, performance, and ecosystem health. Posit chose Pyrefly for Positron's data-science IDE workload, citing its inference and language-server experience, but explicitly said it was not a runaway winner. Basedpyright was more mature, while ty had a different gradual philosophy and faster measurements in Posit's setup. That is a useful pattern for adoption: test representative repositories and interactive tasks, document what matters, and preserve an exit path.\n\n## Let uv fix the environment boundary\n\nA checker can only reason about imports it resolves. If a developer's editor, a local command, and CI point at different interpreters or dependency sets, their results may disagree before the checker evaluates any interesting application logic. uv can make that boundary explicit by managing Python versions, locking dependencies, and synchronizing an environment from the lockfile. Its [project documentation](https://docs.astral.sh/uv/concepts/projects/sync/) explains that exact synchronization also removes packages absent from the lockfile, so teams should review the first sync rather than treating it as a harmless install command.\n\nFor a trial, pin the checker in the project or CI tool environment, select the same supported Python version everywhere, and run Pyrefly through the same locked context. uv is a companion here, not a requirement: an existing reproducible environment manager can serve the same purpose. The important result is that a diagnostic can be reproduced by another developer and by CI.\n\n## FastAPI makes annotations operational\n\nFastAPI is a revealing test case because type hints cross the boundary between editor assistance and runtime behavior. The framework uses annotations to parse requests, validate values, build OpenAPI schemas, and drive interactive documentation. Its [response-model guide](https://github.com/fastapi/fastapi/blob/master/docs/en/docs/tutorial/response-model.md) also shows how declared output types affect validation, documentation, and serialization.\n\nPyrefly can catch mismatched calls and inconsistent application types before execution, but it cannot prove that an HTTP client sends the expected payload, authentication rules hold, or a database transaction behaves correctly. Keep runtime and integration tests. During migration, compare generated OpenAPI output and send representative requests through the service; this catches changes at the framework boundary that static analysis is not designed to observe.\n\n## A practical rollout\n\nStart with one service or library whose owners can judge the results. Record the current checker's output, run Pyrefly beside it, and classify the differences instead of immediately suppressing them. Generate configuration with the migration tooling, review every broad exclusion, and create a baseline only for findings that cannot be addressed in the trial.\n\nNext, reproduce the environment in CI, pinning the interpreter and dependencies with uv or the team's existing lock workflow. For a FastAPI service, run both the static check and the API test suite, then compare its OpenAPI schema. Promote Pyrefly to a required check only after the team has defined ownership for new diagnostics and a schedule for shrinking the baseline. Stable software makes that evaluation reasonable; a measured rollout makes it trustworthy.",
+      "deck": "A stable checker is only the start; environments, migration strategy, and runtime API boundaries determine whether its diagnostics become useful engineering feedback.",
+      "id": "editorial:2026-10-22:pyrefly-stable-types-in-a-real-python-project",
+      "package": {
+        "agentSummary": "Pyrefly combines a fast Python type checker with language-server features, incremental migration tools, configuration presets, and production use across large Meta and open-source codebases.",
+        "assessment": {
+          "alternatives": [
+            "mypy.",
+            "Pyright or Basedpyright.",
+            "ty."
+          ],
+          "audiences": [
+            "Python teams adding static analysis to application or library code.",
+            "IDE users who want navigation and diagnostics from the same engine."
+          ],
+          "caveats": [
+            "Aggressive inference can produce different diagnostics from gradual or established checkers.",
+            "A baseline can make migration manageable but may also conceal debt if it is never reduced.",
+            "Performance and compatibility should be measured on the team's own repositories and CI environment."
+          ],
+          "complements": [
+            "uv for reproducible Python environments.",
+            "FastAPI for a framework where annotations also shape API behavior.",
+            "Runtime tests such as pytest."
+          ],
+          "prerequisites": [
+            "A Python project whose dependencies and interpreter can be resolved consistently.",
+            "Review of generated configuration, diagnostics, and suppression baselines."
+          ],
+          "useCases": [
+            "Run type checks in continuous integration.",
+            "Provide language-server navigation, hover information, and diagnostics.",
+            "Migrate incrementally from an existing checker using a baseline."
+          ]
+        },
+        "category": "developer-tools",
+        "discovery": {
+          "admittedAt": "2026-10-17",
+          "analytics": {
+            "30": {
+              "count": 1408,
+              "endDate": "2026-10-22",
+              "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+              "startDate": "2026-09-22"
+            },
+            "365": {
+              "count": 5245,
+              "endDate": "2026-10-22",
+              "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+              "startDate": "2025-10-22"
+            },
+            "90": {
+              "count": 1588,
+              "endDate": "2026-10-22",
+              "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+              "startDate": "2026-07-24"
+            }
+          },
+          "firstObservedAt": "2026-10-17",
+          "lastVerifiedAt": null,
+          "recentlyDiscovered": false,
+          "status": "official",
+          "trend": {
+            "endDate": "2026-10-22",
+            "growthPercent": 1464.4,
+            "installs30d": 1408,
+            "previousMonthlyRate": 90.0,
+            "score": 27.486851,
+            "sources": [
+              "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+              "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+            ],
+            "startDate": "2026-07-24"
+          }
+        },
+        "displayName": "pyrefly",
+        "docs": "https://pyrefly.org/",
+        "homepage": "https://pyrefly.org/",
+        "id": "brew:pyrefly",
+        "installURL": "pkgmgrmgr://install?package=brew%3Apyrefly",
+        "lastUpdatedAt": "2026-10-15T18:41:02Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/facebook/pyrefly",
+        "researchedAt": "2026-10-22T07:02:48Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Pyrefly 1.0 stable release notes",
+            "url": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md"
+          },
+          {
+            "kind": "primary",
+            "title": "Pyrefly migration guide",
+            "url": "https://pyrefly.org/en/docs/migrating-to-pyrefly/"
+          },
+          {
+            "kind": "independent",
+            "title": "Posit's Python type-checker evaluation",
+            "url": "https://opensource.posit.co/blog/2026-03-31_python-type-checkers/"
+          }
+        ],
+        "upstreamSummary": "Fast type checker and IDE for Python",
+        "version": "1.4.0"
+      },
+      "primaryPackageID": "brew:pyrefly",
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Pyrefly combines a fast Python type checker with language-server features, incremental migration tools, configuration presets, and production use across large Meta and open-source codebases.",
+          "assessment": {
+            "alternatives": [
+              "mypy.",
+              "Pyright or Basedpyright.",
+              "ty."
+            ],
+            "audiences": [
+              "Python teams adding static analysis to application or library code.",
+              "IDE users who want navigation and diagnostics from the same engine."
+            ],
+            "caveats": [
+              "Aggressive inference can produce different diagnostics from gradual or established checkers.",
+              "A baseline can make migration manageable but may also conceal debt if it is never reduced.",
+              "Performance and compatibility should be measured on the team's own repositories and CI environment."
+            ],
+            "complements": [
+              "uv for reproducible Python environments.",
+              "FastAPI for a framework where annotations also shape API behavior.",
+              "Runtime tests such as pytest."
+            ],
+            "prerequisites": [
+              "A Python project whose dependencies and interpreter can be resolved consistently.",
+              "Review of generated configuration, diagnostics, and suppression baselines."
+            ],
+            "useCases": [
+              "Run type checks in continuous integration.",
+              "Provide language-server navigation, hover information, and diagnostics.",
+              "Migrate incrementally from an existing checker using a baseline."
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 1408,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "startDate": "2026-09-22"
+              },
+              "365": {
+                "count": 5245,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+                "startDate": "2025-10-22"
+              },
+              "90": {
+                "count": 1588,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+                "startDate": "2026-07-24"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-22",
+              "growthPercent": 1464.4,
+              "installs30d": 1408,
+              "previousMonthlyRate": 90.0,
+              "score": 27.486851,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+              ],
+              "startDate": "2026-07-24"
+            }
+          },
+          "displayName": "pyrefly",
+          "docs": "https://pyrefly.org/",
+          "homepage": "https://pyrefly.org/",
+          "id": "brew:pyrefly",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apyrefly",
+          "lastUpdatedAt": "2026-10-15T18:41:02Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/facebook/pyrefly",
+          "researchedAt": "2026-10-22T07:02:48Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Pyrefly 1.0 stable release notes",
+              "url": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md"
+            },
+            {
+              "kind": "primary",
+              "title": "Pyrefly migration guide",
+              "url": "https://pyrefly.org/en/docs/migrating-to-pyrefly/"
+            },
+            {
+              "kind": "independent",
+              "title": "Posit's Python type-checker evaluation",
+              "url": "https://opensource.posit.co/blog/2026-03-31_python-type-checkers/"
+            }
+          ],
+          "upstreamSummary": "Fast type checker and IDE for Python",
+          "version": "1.4.0"
+        },
+        {
+          "agentSummary": "uv manages Python interpreters, environments, dependencies, lockfiles, workspaces, scripts, and tools through one fast CLI, with exact synchronization and a shared package cache.",
+          "assessment": {
+            "alternatives": [
+              "pip, venv, and pip-tools.",
+              "Poetry or PDM.",
+              "pyenv for interpreter selection."
+            ],
+            "audiences": [
+              "Python application and library maintainers.",
+              "Teams standardizing local and continuous-integration environments."
+            ],
+            "caveats": [
+              "Exact synchronization removes packages that are not represented by the lockfile.",
+              "Managed Python distributions may differ from system or organization-provided interpreters.",
+              "Migration should include review of dependency resolution and CI cache behavior."
+            ],
+            "complements": [
+              "Pyrefly in a pinned analysis environment.",
+              "FastAPI application projects and their test suites."
+            ],
+            "prerequisites": [
+              "A reviewed pyproject configuration and lockfile policy.",
+              "CI cache and interpreter choices that match the project's support matrix."
+            ],
+            "useCases": [
+              "Lock and synchronize project dependencies.",
+              "Install and select Python versions.",
+              "Run tools, scripts, and workspace commands."
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 210512,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "startDate": "2026-09-22"
+              },
+              "365": {
+                "count": 1964266,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+                "startDate": "2025-10-22"
+              },
+              "90": {
+                "count": 550091,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+                "startDate": "2026-07-24"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-22",
+              "growthPercent": 24.0,
+              "installs30d": 210512,
+              "previousMonthlyRate": 169789.5,
+              "score": 3.291987,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+              ],
+              "startDate": "2026-07-24"
+            }
+          },
+          "displayName": "uv",
+          "docs": "https://docs.astral.sh/uv",
+          "homepage": "https://docs.astral.sh/uv/",
+          "id": "brew:uv",
+          "installURL": "pkgmgrmgr://install?package=brew%3Auv",
+          "lastUpdatedAt": "2026-10-22T04:52:41Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/astral-sh/uv",
+          "researchedAt": "2026-10-22T07:02:48Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "uv project repository and feature overview",
+              "url": "https://github.com/astral-sh/uv"
+            },
+            {
+              "kind": "primary",
+              "title": "uv project locking and synchronization",
+              "url": "https://docs.astral.sh/uv/concepts/projects/sync/"
+            },
+            {
+              "kind": "primary",
+              "title": "uv Python version management",
+              "url": "https://docs.astral.sh/uv/concepts/python-versions/"
+            }
+          ],
+          "upstreamSummary": "Extremely fast Python package installer and resolver, written in Rust",
+          "version": "0.13.4"
+        },
+        {
+          "agentSummary": "FastAPI turns standard Python type hints into request parsing, runtime validation, OpenAPI schemas, interactive documentation, and editor assistance for typed web APIs.",
+          "assessment": {
+            "alternatives": [
+              "Django REST Framework.",
+              "Flask combined with a validation and schema library.",
+              "Litestar."
+            ],
+            "audiences": [
+              "Python teams building typed HTTP APIs.",
+              "Developers who want API schemas derived from application declarations."
+            ],
+            "caveats": [
+              "A static checker does not replace tests of network inputs, authentication, persistence, or deployment behavior.",
+              "Response annotations and explicit response models need deliberate review to avoid unintended serialization.",
+              "Blocking work inside asynchronous handlers can still harm service performance."
+            ],
+            "complements": [
+              "Pyrefly for static feedback on application code.",
+              "uv for locking and synchronizing the service environment."
+            ],
+            "prerequisites": [
+              "A supported Python environment with an ASGI server and Pydantic dependencies.",
+              "Runtime, integration, and schema tests in addition to static analysis."
+            ],
+            "useCases": [
+              "Validate and parse typed request data.",
+              "Serialize response models and generate OpenAPI documentation.",
+              "Build asynchronous or synchronous ASGI services."
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 495,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "startDate": "2026-09-22"
+              },
+              "365": {
+                "count": 7038,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+                "startDate": "2025-10-22"
+              },
+              "90": {
+                "count": 1108,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+                "startDate": "2026-07-24"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-22",
+              "growthPercent": 61.5,
+              "installs30d": 495,
+              "previousMonthlyRate": 306.5,
+              "score": 3.535127,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+              ],
+              "startDate": "2026-07-24"
+            }
+          },
+          "displayName": "fastapi",
+          "docs": "https://fastapi.tiangolo.com/",
+          "homepage": "https://fastapi.tiangolo.com/",
+          "id": "brew:fastapi",
+          "installURL": "pkgmgrmgr://install?package=brew%3Afastapi",
+          "lastUpdatedAt": "2026-10-22T04:33:33Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/fastapi/fastapi",
+          "researchedAt": "2026-10-22T07:02:48Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "FastAPI and Python type hints",
+              "url": "https://github.com/fastapi/fastapi/blob/master/docs/en/docs/python-types.md"
+            },
+            {
+              "kind": "primary",
+              "title": "FastAPI response models",
+              "url": "https://github.com/fastapi/fastapi/blob/master/docs/en/docs/tutorial/response-model.md"
+            },
+            {
+              "kind": "primary",
+              "title": "FastAPI project overview",
+              "url": "https://github.com/fastapi/fastapi/blob/master/README.md?plain=1"
+            }
+          ],
+          "upstreamSummary": "CLI for FastAPI framework",
+          "version": "0.155.0"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-05-12T00:00:00Z",
+        "firstStableReleaseSourceURL": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Pyrefly 1.0 stable release notes",
+          "url": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Meta's introduction to Pyrefly",
+          "url": "https://engineering.fb.com/2025/05/15/developer-tools/introducing-pyrefly-a-new-type-checker-and-ide-experience-for-python/"
+        },
+        {
+          "kind": "primary",
+          "title": "Pyrefly migration guide",
+          "url": "https://pyrefly.org/en/docs/migrating-to-pyrefly/"
+        },
+        {
+          "kind": "independent",
+          "title": "Posit's Python type-checker evaluation",
+          "url": "https://opensource.posit.co/blog/2026-03-31_python-type-checkers/"
+        },
+        {
+          "kind": "primary",
+          "title": "uv project locking and synchronization",
+          "url": "https://docs.astral.sh/uv/concepts/projects/sync/"
+        },
+        {
+          "kind": "primary",
+          "title": "FastAPI response models",
+          "url": "https://github.com/fastapi/fastapi/blob/master/docs/en/docs/tutorial/response-model.md"
+        }
+      ],
+      "title": "Pyrefly 1.0: A Type Checker Meets the Real Project",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261022T070248Z-d7a3111f",
+      "id": "new-packages:media:20261022T070248Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Audio recorder and editor",
+          "category": "media",
+          "displayName": "Sound Studio",
+          "homepage": "https://www.felttip.com/ss/",
+          "id": "brew:cask:sound-studio",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asound-studio",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "title": "New Packages in Media",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20261022T070248Z-d7a3111f",
+      "id": "for-you:developer-tools:20261022T070248Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "The semantic version parser used by npm.",
+          "category": "developer-tools",
+          "displayName": "semver",
+          "homepage": "https://github.com/npm/node-semver#readme",
+          "id": "npm:semver",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asemver",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "RFC9562 UUIDs",
+          "category": "developer-tools",
+          "displayName": "uuid",
+          "homepage": "https://github.com/uuidjs/uuid#readme",
+          "id": "npm:uuid",
+          "installURL": "pkgmgrmgr://install?package=npm%3Auuid",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "An extremely fast JavaScript and CSS bundler and minifier.",
+          "category": "developer-tools",
+          "displayName": "esbuild",
+          "homepage": "https://github.com/evanw/esbuild#readme",
+          "id": "npm:esbuild",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aesbuild",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "resolve like require.resolve() on behalf of files asynchronously and synchronously",
+          "category": "developer-tools",
+          "displayName": "resolve",
+          "homepage": "https://github.com/browserify/resolve#readme",
+          "id": "npm:resolve",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aresolve",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Native-ESM powered web dev build tool",
+          "category": "developer-tools",
+          "displayName": "vite",
+          "homepage": "https://vite.dev",
+          "id": "npm:vite",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avite",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "title": "For You in Developer Tools",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261022T070248Z-d7a3111f",
+      "id": "new-packages:productivity:20261022T070248Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Headless PdfCraft CLI and MCP server to create, edit, inspect and fill PDFs",
+          "category": "productivity",
+          "displayName": "pdfcraft-cli",
+          "homepage": "https://getartcraft.com/apps/pdfcraft",
+          "id": "brew:pdfcraft-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apdfcraft-cli",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Installer and updater for the Craft App Suite",
+          "category": "productivity",
+          "displayName": "ArtCraft Launcher",
+          "homepage": "https://github.com/storytold/craft-launcher",
+          "id": "brew:cask:artcraft-launcher",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aartcraft-launcher",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Desktop client for team documents",
+          "category": "productivity",
+          "displayName": "Superhuman Docs",
+          "homepage": "https://superhuman.com/docs",
+          "id": "brew:cask:superhuman-docs",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asuperhuman-docs",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "WYSIWYG Markdown editor with built-in AI writing tools",
+          "category": "productivity",
+          "displayName": "Textus",
+          "homepage": "https://textus.catvinci.com/",
+          "id": "brew:cask:textus",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atextus",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Keyboard shortcut conflict detector",
+          "category": "productivity",
+          "displayName": "HotkeyClash",
+          "homepage": "https://hotkeyclash.com/",
+          "id": "brew:cask:hotkeyclash",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahotkeyclash",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "title": "New Packages in Productivity",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
         "alt": "An unattended diagnostic workstation links glowing network paths to layered disk maps in a dark geometric systems landscape.",
         "attribution": "Generated by OpenAI image generation for Package Manager Manager",
         "boxColors": {
@@ -409,75 +997,156 @@
     },
     {
       "batchID": "20261018T103040Z-fd56ff4d",
-      "id": "new-packages:ai:20261018T103040Z-f220bb45",
+      "id": "for-you:system:20261022T070248Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Workspace for connecting and coordinating AI agents",
-          "category": "ai",
-          "displayName": "Tutti",
-          "homepage": "https://tutti.sh/",
-          "id": "brew:cask:tutti",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atutti",
+          "agentSummary": "Like which(1) unix command. Find the first instance of an executable in the PATH.",
+          "category": "system",
+          "displayName": "which",
+          "homepage": "https://github.com/npm/node-which#readme",
+          "id": "npm:which",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awhich",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A deep deletion module for node (like `rm -rf`)",
+          "category": "system",
+          "displayName": "rimraf",
+          "homepage": "https://github.com/isaacs/rimraf#readme",
+          "id": "npm:rimraf",
+          "installURL": "pkgmgrmgr://install?package=npm%3Arimraf",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Recursively mkdir, like `mkdir -p`",
+          "category": "system",
+          "displayName": "mkdirp",
+          "homepage": "https://github.com/isaacs/node-mkdirp#readme",
+          "id": "npm:mkdirp",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amkdirp",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a Docker container",
+          "category": "system",
+          "displayName": "is-docker",
+          "homepage": "https://github.com/sindresorhus/is-docker#readme",
+          "id": "npm:is-docker",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-docker",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a container (Docker/Podman)",
+          "category": "system",
+          "displayName": "is-inside-container",
+          "homepage": "https://github.com/sindresorhus/is-inside-container#readme",
+          "id": "npm:is-inside-container",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-inside-container",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-18T10:30:40Z",
+      "title": "For You in System",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261018T103040Z-fd56ff4d",
+      "id": "new-packages:developer-tools:20261022T070248Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Cross-language logging library",
+          "category": "developer-tools",
+          "displayName": "bqlog",
+          "homepage": "https://github.com/Tencent/BqLog",
+          "id": "brew:bqlog",
+          "installURL": "pkgmgrmgr://install?package=brew%3Abqlog",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Work with Buildkite from the command-line",
+          "category": "developer-tools",
+          "displayName": "buildkite",
+          "homepage": "https://github.com/buildkite/cli",
+          "id": "brew:buildkite",
+          "installURL": "pkgmgrmgr://install?package=brew%3Abuildkite",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "AI-powered database client",
+          "category": "developer-tools",
+          "displayName": "Tamery",
+          "homepage": "https://tamery.app/",
+          "id": "brew:cask:tamery",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atamery",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Monitor listening ports and kill their processes",
+          "category": "developer-tools",
+          "displayName": "PortKiller",
+          "homepage": "https://github.com/productdevbook/port-killer",
+          "id": "brew:cask:portkiller",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aportkiller",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-10-18T10:30:40Z",
-      "title": "New Packages in Ai",
+      "title": "New Packages in Developer Tools",
       "type": "newPackages"
     },
     {
       "batchID": "20261018T103040Z-fd56ff4d",
-      "id": "recently-updated:productivity:20261018T103040Z-f220bb45",
+      "id": "for-you:games:20261022T070248Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Official command-line interface for Todoist",
-          "category": "productivity",
-          "displayName": "todoist-cli",
-          "homepage": "https://github.com/Doist/todoist-cli",
-          "id": "brew:todoist-cli",
-          "installURL": "pkgmgrmgr://install?package=brew%3Atodoist-cli",
+          "agentSummary": "Query for the status of any game server in Node.JS",
+          "category": "games",
+          "displayName": "gamedig",
+          "homepage": "https://github.com/gamedig/node-gamedig#readme",
+          "id": "npm:gamedig",
+          "installURL": "pkgmgrmgr://install?package=npm%3Agamedig",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The Stockfish chess engine in Web Assembly (WASM)",
+          "category": "games",
+          "displayName": "stockfish",
+          "homepage": "https://github.com/nmrugg/stockfish.js#readme",
+          "id": "npm:stockfish",
+          "installURL": "pkgmgrmgr://install?package=npm%3Astockfish",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Rom manager for AdvanceMAME/MESS",
+          "category": "games",
+          "displayName": "advancescan",
+          "homepage": "https://www.advancemame.it/scan-readme.html",
+          "id": "brew:advancescan",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aadvancescan",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Fork of Nylas Mail",
-          "category": "productivity",
-          "displayName": "Mailspring",
-          "homepage": "https://getmailspring.com/",
-          "id": "brew:cask:mailspring",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amailspring",
+          "agentSummary": "Near-future Sci-Fi roguelike and tactical squad combat game",
+          "category": "games",
+          "displayName": "allureofthestars",
+          "homepage": "https://allureofthestars.com/",
+          "id": "brew:allureofthestars",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aallureofthestars",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Team inbox and chat tool",
-          "category": "productivity",
-          "displayName": "Missive",
-          "homepage": "https://missiveapp.com/",
-          "id": "brew:cask:missive",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amissive",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Trading platform",
-          "category": "productivity",
-          "displayName": "VBrokers",
-          "homepage": "https://www.vbkr.com/",
-          "id": "brew:cask:vbrokers",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Avbrokers",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Parametric 2d/3d CAD",
-          "category": "productivity",
-          "displayName": "SolveSpace",
-          "homepage": "https://solvespace.com/index.pl/",
-          "id": "brew:cask:solvespace",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asolvespace",
+          "agentSummary": "Dungeon exploration game",
+          "category": "games",
+          "displayName": "angband",
+          "homepage": "https://rephial.org/",
+          "id": "brew:angband",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aangband",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-10-18T10:30:40Z",
-      "title": "Recently Updated in Productivity",
-      "type": "recentlyUpdated"
+      "title": "For You in Games",
+      "type": "personalizedRecommendations"
     },
     {
       "artwork": {
@@ -739,7 +1408,133 @@
     },
     {
       "batchID": "20261015T075024Z-7e6fc329",
-      "id": "for-you:ai:20261018T103040Z-f220bb45",
+      "id": "new-packages:cloud-infrastructure:20261022T070248Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Command-line interface for Fly.io Sprites",
+          "category": "cloud-infrastructure",
+          "displayName": "Sprites",
+          "homepage": "https://sprites.dev/",
+          "id": "brew:cask:sprites",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asprites",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-15T07:50:24Z",
+      "title": "New Packages in Cloud Infrastructure",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20261015T075024Z-7e6fc329",
+      "id": "for-you:science:20261022T070248Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Miller Rabin algorithm for primality test",
+          "category": "science",
+          "displayName": "miller-rabin",
+          "homepage": "https://github.com/indutny/miller-rabin",
+          "id": "npm:miller-rabin",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amiller-rabin",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Math.js is an extensive math library for JavaScript and Node.js. It features a flexible expression parser with support for symbolic computation, comes with a large set of built-in functions and constants, and offers an integrated solution to work with dif",
+          "category": "science",
+          "displayName": "mathjs",
+          "homepage": "https://mathjs.org",
+          "id": "npm:mathjs",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amathjs",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Simple and Performant Language detection library (pure JS and zero dependencies)",
+          "category": "science",
+          "displayName": "tinyld",
+          "homepage": null,
+          "id": "npm:tinyld",
+          "installURL": "pkgmgrmgr://install?package=npm%3Atinyld",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "convert wkt to geojson",
+          "category": "science",
+          "displayName": "wellknown",
+          "homepage": "https://github.com/mapbox/wellknown#readme",
+          "id": "npm:wellknown",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awellknown",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Porter Stemmer algorithm",
+          "category": "science",
+          "displayName": "stemmer",
+          "homepage": "https://words.github.io/stemmer/",
+          "id": "npm:stemmer",
+          "installURL": "pkgmgrmgr://install?package=npm%3Astemmer",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-15T07:50:24Z",
+      "title": "For You in Science",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261015T075024Z-7e6fc329",
+      "id": "recently-updated:games:20261022T070248Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Sega Model 3 arcade emulator",
+          "category": "games",
+          "displayName": "supermodel",
+          "homepage": "https://github.com/trzy/Supermodel",
+          "id": "brew:supermodel",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asupermodel",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Official Hytale Launcher",
+          "category": "games",
+          "displayName": "Hytale",
+          "homepage": "https://hytale.com/",
+          "id": "brew:cask:hytale",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahytale",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Free-to-play online poker",
+          "category": "games",
+          "displayName": "PokerStars",
+          "homepage": "https://www.pokerstars.net/",
+          "id": "brew:cask:pokerstars",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apokerstars",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Minecraft modding platform",
+          "category": "games",
+          "displayName": "Modrinth App",
+          "homepage": "https://modrinth.com/",
+          "id": "brew:cask:modrinth",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amodrinth",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Original Xbox Emulator",
+          "category": "games",
+          "displayName": "xemu",
+          "homepage": "https://xemu.app/",
+          "id": "brew:cask:xemu",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Axemu",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-15T07:50:24Z",
+      "title": "Recently Updated in Games",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20261015T075024Z-7e6fc329",
+      "id": "for-you:ai:20261022T070248Z-f220bb45",
       "packages": [
         {
           "agentSummary": "The open agent skills ecosystem",
@@ -1098,51 +1893,51 @@
     },
     {
       "batchID": "20261012T035302Z-6f4b50fe",
-      "id": "recently-updated:security:20261018T103040Z-f220bb45",
+      "id": "recently-updated:security:20261022T070248Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Artifact Ratification Framework",
+          "agentSummary": "Database of public exploits and corresponding vulnerable software",
           "category": "security",
-          "displayName": "ratify",
-          "homepage": "https://ratify.dev",
-          "id": "brew:ratify",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aratify",
+          "displayName": "exploitdb",
+          "homepage": "https://www.exploit-db.com/",
+          "id": "brew:exploitdb",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aexploitdb",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "CLI for interacting with Rekor",
+          "agentSummary": "FUSE driver to read/write Windows' BitLocker-ed volumes",
           "category": "security",
-          "displayName": "rekor-cli",
-          "homepage": "https://docs.sigstore.dev/logging/overview/",
-          "id": "brew:rekor-cli",
-          "installURL": "pkgmgrmgr://install?package=brew%3Arekor-cli",
+          "displayName": "dislocker",
+          "homepage": "https://github.com/Aorimn/dislocker",
+          "id": "brew:dislocker",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adislocker",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Securely store and access AWS credentials in development environments",
+          "agentSummary": "Open-source identity provider for secure user authentication",
           "category": "security",
-          "displayName": "aws-vault",
-          "homepage": "https://github.com/ByteNess/aws-vault",
-          "id": "brew:aws-vault",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aaws-vault",
+          "displayName": "pocket-id",
+          "homepage": "https://pocket-id.org",
+          "id": "brew:pocket-id",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apocket-id",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Easiest way to access your cloud",
+          "agentSummary": "CLI for managing Lacework",
           "category": "security",
-          "displayName": "granted",
-          "homepage": "https://granted.dev/",
-          "id": "brew:granted",
-          "installURL": "pkgmgrmgr://install?package=brew%3Agranted",
+          "displayName": "lacework-cli",
+          "homepage": "https://github.com/lacework/go-sdk",
+          "id": "brew:lacework-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alacework-cli",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "VPN client",
+          "agentSummary": "Prevent cloud misconfigurations during build-time for IaC tools",
           "category": "security",
-          "displayName": "Obscura VPN",
-          "homepage": "https://obscura.net/",
-          "id": "brew:cask:obscura-vpn",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aobscura-vpn",
+          "displayName": "checkov",
+          "homepage": "https://www.checkov.io/",
+          "id": "brew:checkov",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acheckov",
           "manager": "homebrew"
         }
       ],
@@ -1475,164 +2270,56 @@
     },
     {
       "batchID": "20261008T074826Z-3ab4a1be",
-      "id": "new-packages:productivity:20261018T103040Z-f220bb45",
+      "id": "for-you:data:20261022T070248Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Screenshot and screen recording tool",
-          "category": "productivity",
-          "displayName": "Capso",
-          "homepage": "https://github.com/lzhgus/Capso",
-          "id": "brew:cask:capso",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Acapso",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Interface design and prototyping tool",
-          "category": "productivity",
-          "displayName": "FigCraft",
-          "homepage": "https://getartcraft.com/apps/figcraft",
-          "id": "brew:cask:figcraft",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Afigcraft",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Installer and updater for the Craft App Suite",
-          "category": "productivity",
-          "displayName": "ArtCraft Launcher",
-          "homepage": "https://github.com/storytold/craft-launcher",
-          "id": "brew:cask:artcraft-launcher",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aartcraft-launcher",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Desktop client for team documents",
-          "category": "productivity",
-          "displayName": "Superhuman Docs",
-          "homepage": "https://superhuman.com/docs",
-          "id": "brew:cask:superhuman-docs",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asuperhuman-docs",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "WYSIWYG Markdown editor with built-in AI writing tools",
-          "category": "productivity",
-          "displayName": "Textus",
-          "homepage": "https://textus.catvinci.com/",
-          "id": "brew:cask:textus",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atextus",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-10-08T07:48:26Z",
-      "title": "New Packages in Productivity",
-      "type": "newPackages"
-    },
-    {
-      "batchID": "20261008T074826Z-3ab4a1be",
-      "id": "recently-updated:data:20261018T103040Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Enables developers to manage Confluent Cloud or Confluent Platform",
+          "agentSummary": "YAML 1.2 parser and serializer",
           "category": "data",
-          "displayName": "Confluent CLI",
-          "homepage": "https://docs.confluent.io/confluent-cli/current/overview.html",
-          "id": "brew:cask:confluent-cli",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aconfluent-cli",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Manage files with git without checking in file contents",
-          "category": "data",
-          "displayName": "git-annex",
-          "homepage": "https://git-annex.branchable.com/",
-          "id": "brew:git-annex",
-          "installURL": "pkgmgrmgr://install?package=brew%3Agit-annex",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "To build and run Airflow DAGs locally and interact with the Astronomer API",
-          "category": "data",
-          "displayName": "astro",
-          "homepage": "https://www.astronomer.io/",
-          "id": "brew:astro",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aastro",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Horizontally-scalable, highly-available log aggregation system",
-          "category": "data",
-          "displayName": "loki",
-          "homepage": "https://grafana.com/oss/loki",
-          "id": "brew:loki",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aloki",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Git for Data",
-          "category": "data",
-          "displayName": "dolt",
-          "homepage": "https://www.dolthub.com",
-          "id": "brew:dolt",
-          "installURL": "pkgmgrmgr://install?package=brew%3Adolt",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-10-08T07:48:26Z",
-      "title": "Recently Updated in Data",
-      "type": "recentlyUpdated"
-    },
-    {
-      "batchID": "20261008T074826Z-3ab4a1be",
-      "id": "for-you:cloud-infrastructure:20261018T103040Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Fun, full-featured, fully-local simulator for Cloudflare Workers",
-          "category": "cloud-infrastructure",
-          "displayName": "miniflare",
-          "homepage": "https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#readme",
-          "id": "npm:miniflare",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aminiflare",
+          "displayName": "js-yaml",
+          "homepage": "https://github.com/nodeca/js-yaml#readme",
+          "id": "npm:js-yaml",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajs-yaml",
           "manager": "npm"
         },
         {
-          "agentSummary": "Command-line interface for all things Cloudflare Workers",
-          "category": "cloud-infrastructure",
-          "displayName": "wrangler",
-          "homepage": "https://github.com/cloudflare/workers-sdk#readme",
-          "id": "npm:wrangler",
-          "installURL": "pkgmgrmgr://install?package=npm%3Awrangler",
+          "agentSummary": "JSON for Humans",
+          "category": "data",
+          "displayName": "json5",
+          "homepage": null,
+          "id": "npm:json5",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajson5",
           "manager": "npm"
         },
         {
-          "agentSummary": "AWS CDK Toolkit CLI, the command line tool for CDK apps",
-          "category": "cloud-infrastructure",
-          "displayName": "aws-cdk",
-          "homepage": "https://github.com/aws/aws-cdk",
-          "id": "npm:aws-cdk",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aaws-cdk",
+          "agentSummary": "JavaScript parser and stringifier for YAML",
+          "category": "data",
+          "displayName": "yaml",
+          "homepage": "https://eemeli.org/yaml/",
+          "id": "npm:yaml",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ayaml",
           "manager": "npm"
         },
         {
-          "agentSummary": "The command-line interface for Vercel",
-          "category": "cloud-infrastructure",
-          "displayName": "vercel",
-          "homepage": "https://vercel.com",
-          "id": "npm:vercel",
-          "installURL": "pkgmgrmgr://install?package=npm%3Avercel",
+          "agentSummary": "Given some data, jsesc returns the shortest possible stringified & ASCII-safe representation of that data.",
+          "category": "data",
+          "displayName": "jsesc",
+          "homepage": "https://mths.be/jsesc",
+          "id": "npm:jsesc",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajsesc",
           "manager": "npm"
         },
         {
-          "agentSummary": "Supabase CLI",
-          "category": "cloud-infrastructure",
-          "displayName": "supabase",
-          "homepage": "https://github.com/supabase/cli#readme",
-          "id": "npm:supabase",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asupabase",
+          "agentSummary": "A comprehensive library for mime-type mapping",
+          "category": "data",
+          "displayName": "mime",
+          "homepage": "https://github.com/broofa/mime#readme",
+          "id": "npm:mime",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amime",
           "manager": "npm"
         }
       ],
       "publishedAt": "2026-10-08T07:48:26Z",
-      "title": "For You in Cloud Infrastructure",
+      "title": "For You in Data",
       "type": "personalizedRecommendations"
     },
     {
@@ -1924,8 +2611,17 @@
     },
     {
       "batchID": "20261004T080130Z-97631b37",
-      "id": "new-packages:system:20261018T103040Z-f220bb45",
+      "id": "new-packages:system:20261022T070248Z-f220bb45",
       "packages": [
+        {
+          "agentSummary": "Keep the computer awake with the lid closed and the built-in display dark",
+          "category": "system",
+          "displayName": "Clamshell",
+          "homepage": "https://clamshell.dev/",
+          "id": "brew:cask:clamshell",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclamshell",
+          "manager": "homebrew"
+        },
         {
           "agentSummary": "Menu bar and Dock monitor for Wi-Fi, battery, and volume",
           "category": "system",
@@ -1948,114 +2644,6 @@
       "publishedAt": "2026-10-04T08:01:30Z",
       "title": "New Packages in System",
       "type": "newPackages"
-    },
-    {
-      "batchID": "20261004T080130Z-97631b37",
-      "id": "for-you:data:20261018T103040Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "YAML 1.2 parser and serializer",
-          "category": "data",
-          "displayName": "js-yaml",
-          "homepage": "https://github.com/nodeca/js-yaml#readme",
-          "id": "npm:js-yaml",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ajs-yaml",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "JSON for Humans",
-          "category": "data",
-          "displayName": "json5",
-          "homepage": null,
-          "id": "npm:json5",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ajson5",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "JavaScript parser and stringifier for YAML",
-          "category": "data",
-          "displayName": "yaml",
-          "homepage": "https://eemeli.org/yaml/",
-          "id": "npm:yaml",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ayaml",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Given some data, jsesc returns the shortest possible stringified & ASCII-safe representation of that data.",
-          "category": "data",
-          "displayName": "jsesc",
-          "homepage": "https://mths.be/jsesc",
-          "id": "npm:jsesc",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ajsesc",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "A comprehensive library for mime-type mapping",
-          "category": "data",
-          "displayName": "mime",
-          "homepage": "https://github.com/broofa/mime#readme",
-          "id": "npm:mime",
-          "installURL": "pkgmgrmgr://install?package=npm%3Amime",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-10-04T08:01:30Z",
-      "title": "For You in Data",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20261004T080130Z-97631b37",
-      "id": "recently-updated:ai:20261018T103040Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Create, run, and share large language models (LLMs)",
-          "category": "ai",
-          "displayName": "ollama",
-          "homepage": "https://ollama.com/",
-          "id": "brew:ollama",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aollama",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Portable multi-agent harness for .agents-based skills and workflows",
-          "category": "ai",
-          "displayName": "oh-my-agent",
-          "homepage": "https://firstfluke.com/oh-my-agent/",
-          "id": "brew:oh-my-agent",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aoh-my-agent",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Go manage your Ollama models",
-          "category": "ai",
-          "displayName": "gollama",
-          "homepage": "https://smcleod.net",
-          "id": "brew:gollama",
-          "installURL": "pkgmgrmgr://install?package=brew%3Agollama",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Run local AI models on Apple Silicon",
-          "category": "ai",
-          "displayName": "vMLX",
-          "homepage": "https://mlx.studio/",
-          "id": "brew:cask:vmlx",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Avmlx",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Get up and running with large language models locally",
-          "category": "ai",
-          "displayName": "Ollama",
-          "homepage": "https://ollama.com/",
-          "id": "brew:cask:ollama-binary",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aollama-binary",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-10-04T08:01:30Z",
-      "title": "Recently Updated in Ai",
-      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -2336,685 +2924,10 @@
       ],
       "title": "Sofka and the Three Layers of Kubernetes Operations",
       "type": "editorial"
-    },
-    {
-      "batchID": "20260930T090325Z-86df3774",
-      "id": "new-packages:developer-tools:20261018T103040Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "AI-powered database client",
-          "category": "developer-tools",
-          "displayName": "Tamery",
-          "homepage": "https://tamery.app/",
-          "id": "brew:cask:tamery",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atamery",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Cross-language logging library",
-          "category": "developer-tools",
-          "displayName": "bqlog",
-          "homepage": "https://github.com/Tencent/BqLog",
-          "id": "brew:bqlog",
-          "installURL": "pkgmgrmgr://install?package=brew%3Abqlog",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Monitor listening ports and kill their processes",
-          "category": "developer-tools",
-          "displayName": "PortKiller",
-          "homepage": "https://github.com/productdevbook/port-killer",
-          "id": "brew:cask:portkiller",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aportkiller",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-09-30T09:03:25Z",
-      "title": "New Packages in Developer Tools",
-      "type": "newPackages"
-    },
-    {
-      "artwork": {
-        "alt": "A private night workspace where abstract activity streams become linked note cards stored in a softly illuminated local vault.",
-        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#17384B",
-          "backgroundStart": "#0B2130",
-          "foreground": "#F8E8C8"
-        },
-        "license": "AI-generated artwork; no third-party source artwork used.",
-        "path": "feed/assets/activitywatch-local-ledger.png"
-      },
-      "batchID": "20260926T105505Z-2e9e75c7",
-      "body": "## Measurement is not memory\n\nMost workdays leave two imperfect records: what we remember doing and what the computer happened to observe. ActivityWatch makes the second record inspectable. Its watchers capture events such as active windows and away periods, its local server stores them in buckets, and its interface combines those events into a timeline. The project's [privacy policy](https://docs.activitywatch.net/en/latest/privacy.html) says the standard application stores activity data locally and does not transmit it to the developers or third-party analytics services.\n\nThat architecture matters because activity logs can be unusually revealing. A window title may contain a client name, a medical subject, or the draft title of an unannounced project. Local storage removes one routine disclosure path; it does not make the data harmless. ActivityWatch's own [security notes](https://docs.activitywatch.net/en/latest/security.html) warn that the local API lacks strong authentication and that malware or another user on the same host may reach the database. Treat the timeline as sensitive source material, not a cheerful productivity score.\n\n## A decade-old quantified-self experiment\n\nActivityWatch is underexposed partly because its story is longer and stranger than a typical timer. The project's [history](https://docs.activitywatch.net/en/latest/history.html) traces its motivation to quantified-self experiments in 2013, a prototype begun in December 2014, and a 2016 rewrite that introduced the client-server model behind the current system. That lineage explains the modular design: a watcher produces observations, the server stores events, and clients query them.\n\nThe useful unit is not necessarily a raw event. ActivityWatch's [data guide](https://docs.activitywatch.net/en/latest/examples/working-with-data.html) recommends canonical events that combine window tracking with away detection, categorization, and multi-device handling. It also supplies examples for working-hours analysis, category suggestions, redaction, and bucket merging. Users can export JSON or query the REST API, but the project's [export guidance](https://docs.activitywatch.net/en/latest/features/exporting-data.html) recommends aggregating and redacting locally before any data goes to an AI assistant or another service.\n\n## What actual use can establish\n\nThe strongest evidence for automatic tracking is not that it makes everyone more productive. It is that recollection and observation diverge. ActivityWatch documents a Research Edition used in academic studies; its [research overview](https://docs.activitywatch.net/en/latest/research/index.html) cites a validity study where self-report agreed with software registration for only 18 percent of participants. That result supports careful measurement, not a claim that recorded screen time equals meaningful work.\n\nOutside research, workflows vary. In one recent [community discussion](https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/), users described reviewing reports or feeding locally processed summaries into task workflows. Such accounts are anecdotal rather than adoption statistics, but they show the practical fork: some people inspect dashboards, while others use exports as input to their own systems. A useful weekly review might ask:\n\n- Which project consumed more time than expected?\n- Which interruptions recur at the same point in the day?\n- Which categories are wrong because the rules need adjustment?\n- What decision should survive after the raw timeline is forgotten?\n\n## Give conclusions a durable home\n\nThat last question is where Trilium Notes becomes a useful companion. Trilium is not an ActivityWatch integration; pairing them is an editorial workflow. Its [project overview](https://triliumnotes.org/) describes a local, offline-capable personal knowledge base with optional synchronization through a self-hosted server. Notes can be nested without a separate folder type, placed in multiple parts of the tree through cloning, and connected with labels and relations. The [note model](https://docs.triliumnotes.org/user-guide/concepts/notes) suits a project journal that needs both chronology and structure.\n\nThe tradeoff is explicit. Trilium stores its knowledge base in SQLite rather than exposing a directory of Markdown files. Its [FAQ](https://docs.triliumnotes.org/user-guide/faq) argues that transactions, note clones, ordering, attributes, and fast relations justify the database, while acknowledging that filesystem interoperability would be simpler. Synchronizing multiple devices requires its server. Users who prioritize ordinary files and Git should choose another notes system.\n\nCommunity experiments also show why context needs care. In a [Trilium discussion](https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/), users described dedicated note trees, context maps, incremental indexing, and the difficulty of preserving relationships when notes are copied into vector stores. Those are individual reports, not endorsements or benchmarks, but the failure mode is instructive: automation can retrieve text while flattening the structure that made it intelligible.\n\n## Keep observation, interpretation, and retention separate\n\nA restrained workflow uses three layers. ActivityWatch records locally. A human reviews aggregates and checks whether categories reflect reality. Trilium keeps only the conclusions worth retaining: a project note, a decision, a recurring distraction, or a change to next week's plan. Raw events need not become permanent notes, and neither tool needs access to the other's database.\n\nThat separation limits damage and makes the process easier to audit. Back up both stores, redact before exporting, and periodically delete detail that no longer serves a purpose. Most importantly, resist turning a timeline into a verdict. ActivityWatch can tell you which application was foregrounded; only reflection can explain why it mattered.",
-      "deck": "A local activity timeline can improve retrospectives, but only when observation remains separate from judgment and durable notes preserve the conclusions.",
-      "id": "editorial:2026-09-26:activitywatch-a-private-ledger-for-reflection",
-      "package": {
-        "agentSummary": "ActivityWatch records computer activity into a local, extensible timeline, giving users evidence for reflection while keeping sensitive event data under their control.",
-        "assessment": {
-          "alternatives": [
-            "Manual time logs for lower-detail, intentional tracking.",
-            "Hosted time trackers when team reporting matters more than local data control."
-          ],
-          "audiences": [
-            "People who want an evidence-based view of their computer time without sending activity logs to a hosted tracker.",
-            "Researchers who need an auditable, participant-controlled instrument for measuring computer use."
-          ],
-          "caveats": [
-            "Window titles, application names, and browsing data can reveal sensitive work even when stored locally.",
-            "The local REST API does not provide strong authentication; the project warns that same-host users or malware may access data.",
-            "Collected time is evidence of activity, not a reliable measure of value, focus, or productivity."
-          ],
-          "complements": [
-            "Trilium Notes for converting reviewed activity into linked project notes.",
-            "A local analysis script that aggregates or redacts events before sharing them."
-          ],
-          "prerequisites": [
-            "Permission to observe active applications on the operating system.",
-            "A deliberate retention and backup policy for sensitive local activity data."
-          ],
-          "useCases": [
-            "Reviewing time by application, category, project, or active period.",
-            "Exporting or querying locally collected events for personal analysis.",
-            "Building custom watchers and privacy-aware activity workflows."
-          ]
-        },
-        "category": "productivity",
-        "displayName": "ActivityWatch",
-        "docs": "https://docs.activitywatch.net/en/latest",
-        "homepage": "https://activitywatch.net/",
-        "id": "brew:cask:activitywatch",
-        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aactivitywatch",
-        "lastUpdatedAt": "2026-09-26T02:08:06Z",
-        "manager": "homebrew",
-        "repository": "https://github.com/ActivityWatch/activitywatch",
-        "researchedAt": "2026-09-26T10:55:05Z",
-        "sources": [
-          {
-            "kind": "primary",
-            "title": "ActivityWatch privacy policy",
-            "url": "https://docs.activitywatch.net/en/latest/privacy.html"
-          },
-          {
-            "kind": "primary",
-            "title": "Working with ActivityWatch data",
-            "url": "https://docs.activitywatch.net/en/latest/examples/working-with-data.html"
-          },
-          {
-            "kind": "primary",
-            "title": "ActivityWatch in research",
-            "url": "https://docs.activitywatch.net/en/latest/research/index.html"
-          },
-          {
-            "kind": "independent",
-            "title": "Community discussion of reviewing ActivityWatch data",
-            "url": "https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/"
-          }
-        ],
-        "upstreamSummary": "Time tracker",
-        "version": "0.13.2"
-      },
-      "primaryPackageID": "brew:cask:activitywatch",
-      "publishedAt": "2026-09-26T10:55:05Z",
-      "relatedPackages": [
-        {
-          "agentSummary": "ActivityWatch records computer activity into a local, extensible timeline, giving users evidence for reflection while keeping sensitive event data under their control.",
-          "assessment": {
-            "alternatives": [
-              "Manual time logs for lower-detail, intentional tracking.",
-              "Hosted time trackers when team reporting matters more than local data control."
-            ],
-            "audiences": [
-              "People who want an evidence-based view of their computer time without sending activity logs to a hosted tracker.",
-              "Researchers who need an auditable, participant-controlled instrument for measuring computer use."
-            ],
-            "caveats": [
-              "Window titles, application names, and browsing data can reveal sensitive work even when stored locally.",
-              "The local REST API does not provide strong authentication; the project warns that same-host users or malware may access data.",
-              "Collected time is evidence of activity, not a reliable measure of value, focus, or productivity."
-            ],
-            "complements": [
-              "Trilium Notes for converting reviewed activity into linked project notes.",
-              "A local analysis script that aggregates or redacts events before sharing them."
-            ],
-            "prerequisites": [
-              "Permission to observe active applications on the operating system.",
-              "A deliberate retention and backup policy for sensitive local activity data."
-            ],
-            "useCases": [
-              "Reviewing time by application, category, project, or active period.",
-              "Exporting or querying locally collected events for personal analysis.",
-              "Building custom watchers and privacy-aware activity workflows."
-            ]
-          },
-          "category": "productivity",
-          "displayName": "ActivityWatch",
-          "docs": "https://docs.activitywatch.net/en/latest",
-          "homepage": "https://activitywatch.net/",
-          "id": "brew:cask:activitywatch",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aactivitywatch",
-          "lastUpdatedAt": "2026-09-26T02:08:06Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/ActivityWatch/activitywatch",
-          "researchedAt": "2026-09-26T10:55:05Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "ActivityWatch privacy policy",
-              "url": "https://docs.activitywatch.net/en/latest/privacy.html"
-            },
-            {
-              "kind": "primary",
-              "title": "Working with ActivityWatch data",
-              "url": "https://docs.activitywatch.net/en/latest/examples/working-with-data.html"
-            },
-            {
-              "kind": "primary",
-              "title": "ActivityWatch in research",
-              "url": "https://docs.activitywatch.net/en/latest/research/index.html"
-            },
-            {
-              "kind": "independent",
-              "title": "Community discussion of reviewing ActivityWatch data",
-              "url": "https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/"
-            }
-          ],
-          "upstreamSummary": "Time tracker",
-          "version": "0.13.2"
-        },
-        {
-          "agentSummary": "Trilium Notes organizes a local personal knowledge base as linked, hierarchical notes, with self-hosted synchronization, scripting, relations, and structured attributes for deeper workflows.",
-          "assessment": {
-            "alternatives": [
-              "Joplin for offline-first Markdown notes with several configurable synchronization targets.",
-              "A plain-file notes system when Git interoperability and direct file access are priorities."
-            ],
-            "audiences": [
-              "People maintaining a large, structured personal knowledge base.",
-              "Self-hosters who prefer a database-backed notes system with optional server synchronization."
-            ],
-            "caveats": [
-              "Trilium intentionally stores notes in SQLite, so external file-oriented tools cannot treat the knowledge base as ordinary Markdown folders.",
-              "Supported network synchronization requires a Trilium sync or web server.",
-              "Automation or AI integrations can lose hierarchy and context unless the workflow preserves note relationships explicitly."
-            ],
-            "complements": [
-              "ActivityWatch as a local source of activity evidence for deliberate review.",
-              "Regular database backups and exports for recovery and portability."
-            ],
-            "prerequisites": [
-              "Comfort with a database-backed knowledge base rather than a directory of plain Markdown files.",
-              "A self-hosted Trilium server when synchronization across devices is required."
-            ],
-            "useCases": [
-              "Maintaining nested project journals with links, relations, labels, and reusable note clones.",
-              "Turning activity reviews into durable decisions, context, and follow-up notes.",
-              "Automating specialized knowledge workflows with scripts and the project APIs."
-            ]
-          },
-          "category": "productivity",
-          "displayName": "Trilium Notes",
-          "docs": "https://docs.triliumnotes.org",
-          "homepage": "https://triliumnext.github.io/Docs/",
-          "id": "brew:cask:trilium-notes",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atrilium-notes",
-          "lastUpdatedAt": "2026-09-25T19:44:11Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/TriliumNext/Trilium",
-          "researchedAt": "2026-09-26T10:55:05Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Trilium Notes project overview",
-              "url": "https://triliumnotes.org/"
-            },
-            {
-              "kind": "primary",
-              "title": "Trilium note concepts",
-              "url": "https://docs.triliumnotes.org/user-guide/concepts/notes"
-            },
-            {
-              "kind": "primary",
-              "title": "Trilium FAQ on database storage and synchronization",
-              "url": "https://docs.triliumnotes.org/user-guide/faq"
-            },
-            {
-              "kind": "independent",
-              "title": "Community examples of Trilium as an automated second brain",
-              "url": "https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/"
-            }
-          ],
-          "upstreamSummary": "Hierarchical note taking application",
-          "version": "0.106.0"
-        }
-      ],
-      "selection": {
-        "rationale": "underexposed",
-        "underexposedReason": "ActivityWatch has no popularity rank in the current catalog candidate and is absent from the recent editorial history, despite a documented history since 2014, extensible local-first architecture, and concrete use in academic research."
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "ActivityWatch history",
-          "url": "https://docs.activitywatch.net/en/latest/history.html"
-        },
-        {
-          "kind": "primary",
-          "title": "ActivityWatch privacy policy",
-          "url": "https://docs.activitywatch.net/en/latest/privacy.html"
-        },
-        {
-          "kind": "primary",
-          "title": "ActivityWatch security considerations",
-          "url": "https://docs.activitywatch.net/en/latest/security.html"
-        },
-        {
-          "kind": "primary",
-          "title": "Working with ActivityWatch data",
-          "url": "https://docs.activitywatch.net/en/latest/examples/working-with-data.html"
-        },
-        {
-          "kind": "primary",
-          "title": "ActivityWatch in research",
-          "url": "https://docs.activitywatch.net/en/latest/research/index.html"
-        },
-        {
-          "kind": "independent",
-          "title": "Community discussion of reviewing ActivityWatch data",
-          "url": "https://www.reddit.com/r/ActivityWatch/comments/1wf86wg/do_you_actually_look_back_at_your_activitywatch/"
-        },
-        {
-          "kind": "primary",
-          "title": "Trilium Notes overview",
-          "url": "https://triliumnotes.org/"
-        },
-        {
-          "kind": "primary",
-          "title": "Trilium note concepts",
-          "url": "https://docs.triliumnotes.org/user-guide/concepts/notes"
-        },
-        {
-          "kind": "primary",
-          "title": "Trilium FAQ",
-          "url": "https://docs.triliumnotes.org/user-guide/faq"
-        },
-        {
-          "kind": "independent",
-          "title": "Community examples of Trilium automation",
-          "url": "https://www.reddit.com/r/Trilium/comments/1u16aaf/anyone_here_using_trilium_as_an_llm_second_brain/"
-        }
-      ],
-      "title": "ActivityWatch: a private ledger for reflection",
-      "type": "editorial"
-    },
-    {
-      "batchID": "20260926T105505Z-a6e88a3d",
-      "id": "for-you:toys:20261018T103040Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Returns from a pool of 15m human-readable IDs",
-          "category": "toys",
-          "displayName": "human-id",
-          "homepage": "https://github.com/RienNeVaPlus/human-id#readme",
-          "id": "npm:human-id",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ahuman-id",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Creates ASCII Art from text. A full implementation of the FIGfont spec.",
-          "category": "toys",
-          "displayName": "figlet",
-          "homepage": "https://github.com/patorjk/figlet.js#readme",
-          "id": "npm:figlet",
-          "installURL": "pkgmgrmgr://install?package=npm%3Afiglet",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Tell Yeoman what to say",
-          "category": "toys",
-          "displayName": "yosay",
-          "homepage": "https://github.com/yeoman/yosay#readme",
-          "id": "npm:yosay",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ayosay",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Generates lorem ipsum placeholder text for Node.js, Deno, browsers, and React Native. Developed with Bun.",
-          "category": "toys",
-          "displayName": "lorem-ipsum",
-          "homepage": null,
-          "id": "npm:lorem-ipsum",
-          "installURL": "pkgmgrmgr://install?package=npm%3Alorem-ipsum",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "The Yeoman character in your CLI. Like wat.",
-          "category": "toys",
-          "displayName": "yeoman-character",
-          "homepage": "https://github.com/yeoman/yeoman-character#readme",
-          "id": "npm:yeoman-character",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ayeoman-character",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-09-26T10:55:05Z",
-      "title": "For You in Toys",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "artwork": {
-        "alt": "A developer supervises four small robot work bays connected by glowing cyan paths, with one amber attention signal in a moonlit command room.",
-        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#123B49",
-          "backgroundStart": "#081D2C",
-          "foreground": "#F6F1E6"
-        },
-        "license": "AI-generated artwork; no third-party source artwork used.",
-        "path": "feed/assets/ccmux-attention-router.png"
-      },
-      "batchID": "20260922T164202Z-253564be",
-      "body": "## Parallelism creates an attention problem\n\nOpening another coding-agent session is easy. Remembering which of four sessions is compiling, waiting for approval, asking a question, or ready for review is harder. **ccmux treats that as a routing problem for human attention.** It runs alongside tmux, observes supported agent sessions, and presents their state in a single terminal interface. Instead of cycling through panes to rediscover what each agent is doing, the operator can start with the session that is blocked.\n\nThat boundary matters. ccmux does not replace the coding agents, Git, or tmux. Its documentation describes support for several agent CLIs and a daemon that watches existing sessions. The dashboard can group work by repository, show working or waiting state, surface diffs and pull-request checks, and send notifications. Worktree creation and spawning help start another task, while handoff features can pass context from one agent to another. The value is coordination around tools developers may already use.\n\n## A new project with a concrete workflow\n\nThe first tagged ccmux release, **v1.0.0, appeared on July 6, 2026**. That makes it genuinely new rather than an old project newly packaged by Homebrew. Its young age should shape expectations: agent output formats change, integrations can lag, and a status classifier that works well in the author's setup may meet unfamiliar prompts or terminal layouts elsewhere. A trial should use disposable branches before the dashboard becomes the team's control surface.\n\nThere is useful evidence beyond the feature list, though not yet evidence of broad adoption. An independent write-up describes coordinating three or four agents across multiple machines, checking sessions from a phone, and returning directly to those needing intervention. That is one practitioner's account, not a survey, but it identifies the real friction: parallel agents save elapsed time only when their questions do not sit unnoticed.\n\nThe model also makes failure visible. A green-looking overview cannot guarantee that an agent's changes are correct, and a waiting indicator cannot explain whether a permission request is reasonable. The dashboard shortens discovery; it does not transfer judgment.\n\n## Three layers for organizing the terminal\n\nccmux, workmux, and Zentty approach the same crowded workspace from different layers:\n\n- **ccmux** observes agent work already living in tmux and prioritizes sessions that need attention. It is the smallest change for an established tmux setup.\n- **workmux** owns more of the task lifecycle. It pairs branches and Git worktrees with terminal windows, applies setup hooks, and helps merge and clean up completed work.\n- **Zentty** is a native macOS terminal with persistent worklanes, a status-aware sidebar, task discovery, and an embedded CLI. It changes the terminal environment itself.\n\nThe tools can overlap, but they should not be stacked automatically. A developer satisfied with manual worktree creation may want only ccmux's overview. Someone repeatedly rebuilding the same task panes may gain more from workmux's opinionated automation. A Mac user who wants visual lanes without maintaining tmux configuration may prefer Zentty. The right layer is the one that removes a recurring coordination cost without hiding ownership of branches, processes, and credentials.\n\n## Isolation is not the same as supervision\n\nNeither a tmux pane nor a Git worktree is a security boundary. Concurrent agents can still share environment variables, cloud credentials, package caches, databases, and network services. They may edit separate directories while targeting the same external resource. ccmux can show where an agent is waiting, but it cannot determine whether the command awaiting approval is safe. workmux can create isolated checkouts and optionally connect sandbox workflows, but safe containment still depends on their configuration. Zentty organizes panes; it does not constrain what runs inside them.\n\nA cautious evaluation should therefore begin with a small routine:\n\n- create two disposable tasks with clearly different branches;\n- confirm that waiting, working, and completed states match what is actually on screen;\n- review notification destinations and every worktree or lifecycle command;\n- inspect diffs and test results outside the agent's summary;\n- verify what secrets and local services remain shared.\n\nThese checks test both the software and the operating habits around it. The goal is not a theatrical wall of autonomous workers. It is a legible queue in which a human can understand what changed and intervene at the right moment.\n\n## The dashboard should reduce uncertainty\n\nccmux is most compelling when developers already trust tmux but have outgrown serial navigation. Its attention-first view acknowledges that agent concurrency shifts the bottleneck: starting work becomes cheap, while review, clarification, and risk decisions remain scarce. workmux is stronger when workspace creation and cleanup are the repetitive burden. Zentty offers the broader native environment for users willing to move.\n\nWhichever layer wins, measure it by uncertainty removed. After glancing at the workspace, can the operator identify the blocked task, the branch it owns, the outstanding decision, and the path to review? If ccmux makes those answers immediate while leaving the underlying sessions inspectable, it earns its place as an attention router rather than merely another dashboard.",
-      "deck": "When several agents work in parallel, the scarce resource is no longer terminal space—it is knowing which session needs a human next.",
-      "id": "editorial:2026-09-22:ccmux-the-attention-router-for-coding-agents",
-      "package": {
-        "agentSummary": "ccmux monitors coding agents already running in tmux, surfaces sessions needing attention, and adds worktree spawning, diff review, notifications, and agent-to-agent handoffs.",
-        "assessment": {
-          "alternatives": [
-            "Native tmux session navigation and status lines",
-            "workmux for opinionated worktree lifecycle automation",
-            "Zentty for a native macOS terminal workspace"
-          ],
-          "audiences": [
-            "Developers running several terminal-based coding agents",
-            "tmux users coordinating parallel repositories or worktrees"
-          ],
-          "caveats": [
-            "Young project with a rapidly evolving workflow",
-            "Monitoring depends on supported agent output and tmux sessions",
-            "Coordination features do not sandbox agents or their credentials"
-          ],
-          "complements": [
-            "Git worktrees",
-            "Desktop or mobile notification delivery",
-            "Pull-request and continuous-integration workflows"
-          ],
-          "prerequisites": [
-            "tmux and Git",
-            "One of the supported coding-agent command-line tools",
-            "Willingness to run a local monitoring daemon"
-          ],
-          "useCases": [
-            "Finding sessions blocked on approval or user input",
-            "Reviewing diffs and handing context between agents",
-            "Starting isolated agent worktrees from one dashboard"
-          ]
-        },
-        "category": null,
-        "displayName": "ccmux",
-        "docs": null,
-        "homepage": "https://github.com/epilande/ccmux",
-        "id": "brew:ccmux",
-        "installURL": "pkgmgrmgr://install?package=brew%3Accmux",
-        "lastUpdatedAt": "2026-09-22T05:11:02Z",
-        "manager": "homebrew",
-        "repository": "https://github.com/epilande/ccmux",
-        "researchedAt": "2026-09-22T16:42:02Z",
-        "sources": [
-          {
-            "kind": "primary",
-            "title": "ccmux repository and documentation",
-            "url": "https://github.com/epilande/ccmux"
-          },
-          {
-            "kind": "independent",
-            "title": "Hands-on ccmux workflow review",
-            "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
-          },
-          {
-            "kind": "primary",
-            "title": "ccmux v1.0.0 release",
-            "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
-          }
-        ],
-        "upstreamSummary": "Run all your AI coding agents in tmux",
-        "version": "1.4.2"
-      },
-      "primaryPackageID": "brew:ccmux",
-      "publishedAt": "2026-09-22T16:42:02Z",
-      "relatedPackages": [
-        {
-          "agentSummary": "ccmux monitors coding agents already running in tmux, surfaces sessions needing attention, and adds worktree spawning, diff review, notifications, and agent-to-agent handoffs.",
-          "assessment": {
-            "alternatives": [
-              "Native tmux session navigation and status lines",
-              "workmux for opinionated worktree lifecycle automation",
-              "Zentty for a native macOS terminal workspace"
-            ],
-            "audiences": [
-              "Developers running several terminal-based coding agents",
-              "tmux users coordinating parallel repositories or worktrees"
-            ],
-            "caveats": [
-              "Young project with a rapidly evolving workflow",
-              "Monitoring depends on supported agent output and tmux sessions",
-              "Coordination features do not sandbox agents or their credentials"
-            ],
-            "complements": [
-              "Git worktrees",
-              "Desktop or mobile notification delivery",
-              "Pull-request and continuous-integration workflows"
-            ],
-            "prerequisites": [
-              "tmux and Git",
-              "One of the supported coding-agent command-line tools",
-              "Willingness to run a local monitoring daemon"
-            ],
-            "useCases": [
-              "Finding sessions blocked on approval or user input",
-              "Reviewing diffs and handing context between agents",
-              "Starting isolated agent worktrees from one dashboard"
-            ]
-          },
-          "category": null,
-          "displayName": "ccmux",
-          "docs": null,
-          "homepage": "https://github.com/epilande/ccmux",
-          "id": "brew:ccmux",
-          "installURL": "pkgmgrmgr://install?package=brew%3Accmux",
-          "lastUpdatedAt": "2026-09-22T05:11:02Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/epilande/ccmux",
-          "researchedAt": "2026-09-22T16:42:02Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "ccmux repository and documentation",
-              "url": "https://github.com/epilande/ccmux"
-            },
-            {
-              "kind": "independent",
-              "title": "Hands-on ccmux workflow review",
-              "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
-            },
-            {
-              "kind": "primary",
-              "title": "ccmux v1.0.0 release",
-              "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
-            }
-          ],
-          "upstreamSummary": "Run all your AI coding agents in tmux",
-          "version": "1.4.2"
-        },
-        {
-          "agentSummary": "workmux pairs Git worktrees with terminal windows, automating isolated task setup, agent status, review, merging, and cleanup while preserving familiar multiplexer workflows.",
-          "assessment": {
-            "alternatives": [
-              "Manual git worktree and tmux commands",
-              "ccmux for observing agents in existing tmux sessions",
-              "Graphical integrated agent workspaces"
-            ],
-            "audiences": [
-              "Developers who organize concurrent tasks with Git worktrees",
-              "Terminal-multiplexer users running coding agents"
-            ],
-            "caveats": [
-              "Hooks and copy rules can touch sensitive project files",
-              "Worktree separation is not a security boundary",
-              "Pre-1.0 configuration and behavior can change quickly"
-            ],
-            "complements": [
-              "Coding-agent command-line tools",
-              "Container or virtual-machine sandboxes",
-              "Pull-request review workflows"
-            ],
-            "prerequisites": [
-              "Git",
-              "A supported terminal multiplexer or terminal backend",
-              "Reviewed project configuration and lifecycle hooks"
-            ],
-            "useCases": [
-              "Creating a branch, worktree, and terminal workspace together",
-              "Applying repeatable project setup hooks",
-              "Reviewing, merging, and removing finished task workspaces"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "workmux",
-          "docs": "https://github.com/raine/workmux#readme",
-          "homepage": "https://workmux.raine.dev",
-          "id": "brew:workmux",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aworkmux",
-          "lastUpdatedAt": "2026-09-21T11:50:46Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/raine/workmux",
-          "researchedAt": "2026-09-22T16:42:02Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "workmux repository",
-              "url": "https://github.com/raine/workmux"
-            },
-            {
-              "kind": "independent",
-              "title": "Using worktrees and tmux as an IDE",
-              "url": "https://joe.sh/tmux-ide"
-            },
-            {
-              "kind": "independent",
-              "title": "Community workmux discussion",
-              "url": "https://www.reddit.com/r/tmux/comments/1p7bszd/workmux_git_worktrees_tmux_windows_for/"
-            }
-          ],
-          "upstreamSummary": "Git worktrees + tmux windows for zero-friction parallel dev",
-          "version": "0.1.264"
-        },
-        {
-          "agentSummary": "Zentty is a native macOS terminal for agent-heavy development, combining scrolling worklanes, persistent panes, status-aware sidebars, task discovery, and a scriptable embedded CLI.",
-          "assessment": {
-            "alternatives": [
-              "Terminal.app or iTerm2 with tmux",
-              "Ghostty",
-              "ccmux layered over existing tmux sessions"
-            ],
-            "audiences": [
-              "macOS developers wanting agent-aware terminal organization",
-              "Users who prefer a native graphical shell around terminal sessions"
-            ],
-            "caveats": [
-              "macOS only",
-              "Active development can bring interface or behavior changes",
-              "An integrated terminal changes more of the daily environment than a small tmux companion"
-            ],
-            "complements": [
-              "Git worktrees",
-              "Command-line coding agents",
-              "Shell scripts using the embedded CLI"
-            ],
-            "prerequisites": [
-              "A supported macOS system",
-              "Comfort evaluating an actively developed terminal application"
-            ],
-            "useCases": [
-              "Grouping panes into persistent worklanes",
-              "Seeing task and agent status from a sidebar",
-              "Restoring multi-pane terminal workspaces"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "Zentty",
-          "docs": "https://zentty.org/docs",
-          "homepage": "https://zentty.org/",
-          "id": "brew:cask:zentty",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Azentty",
-          "lastUpdatedAt": "2026-09-22T11:05:40Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/dedene/zentty",
-          "researchedAt": "2026-09-22T16:42:02Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Zentty repository",
-              "url": "https://github.com/dedene/zentty"
-            },
-            {
-              "kind": "independent",
-              "title": "Zentty documentation",
-              "url": "https://zentty.org/docs/"
-            }
-          ],
-          "upstreamSummary": "Terminal for agent-driven development",
-          "version": "0.3.4"
-        }
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2026-07-06T18:52:23Z",
-        "firstStableReleaseSourceURL": "https://github.com/epilande/ccmux/releases/tag/v1.0.0",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "ccmux repository and documentation",
-          "url": "https://github.com/epilande/ccmux"
-        },
-        {
-          "kind": "primary",
-          "title": "ccmux v1.0.0 release",
-          "url": "https://github.com/epilande/ccmux/releases/tag/v1.0.0"
-        },
-        {
-          "kind": "primary",
-          "title": "ccmux agent handoff documentation",
-          "url": "https://github.com/epilande/ccmux/blob/main/docs/handoff.md"
-        },
-        {
-          "kind": "independent",
-          "title": "Hands-on ccmux workflow review",
-          "url": "https://blog.skz.dev/ccmux-tmux-manager-for-ai-coding-agents"
-        },
-        {
-          "kind": "primary",
-          "title": "workmux documentation",
-          "url": "https://workmux.raine.dev/"
-        },
-        {
-          "kind": "independent",
-          "title": "Using worktrees and tmux as an IDE",
-          "url": "https://joe.sh/tmux-ide"
-        },
-        {
-          "kind": "primary",
-          "title": "Zentty documentation",
-          "url": "https://zentty.org/docs/"
-        }
-      ],
-      "title": "ccmux: The Attention Router for Coding Agents",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-21T06:21:47Z",
-  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261021T062147Z-101eb48a.json",
-  "pageID": "20261021T062147Z-e1bcef8c",
+  "generatedAt": "2026-10-22T07:02:48Z",
+  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261022T070248Z-40ff4f09.json",
+  "pageID": "20261022T070248Z-bfc850a0",
   "schemaVersion": 2
 }
