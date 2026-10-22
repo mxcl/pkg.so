@@ -4,7 +4,13 @@ homepage: https://www.gnu.org/software/smalltalk/
 repo: https://git.savannah.gnu.org/cgit/smalltalk.git
 docs:
   - https://www.gnu.org/software/smalltalk/manual/html_node
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.st/pre.st
+    - ~/.st/init.st
+    - ~/.st/kernel/
+    - ~/.st/packages.xml
+    - /usr/local/share/smalltalk/site-pre.st
 credentials-file-location: null
 history:
   adoption-history:
@@ -56,6 +62,16 @@ history:
       Smalltalk programs with C and other free software libraries. The manual emphasizes
       using Smalltalk's object model for script-like programs as well as larger
       prototypes.
+related-packages:
+  - id: cask:squeak
+    reason: >
+      Choose Squeak for a graphical, live Smalltalk environment centered on Morphic and
+      interactive development; choose GNU Smalltalk when command-line scripting and
+      headless processing are the priority.
+    rel: alternative
+    sources:
+      - https://squeak.org/
+      - https://www.gnu.org/software/smalltalk/manual/html_node/Overview.html
 category: language-runtime
 package-manager:
   brew: gnu-smalltalk

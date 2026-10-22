@@ -65,6 +65,39 @@ history:
       through pipes, and combine archiving with compression tools. System administrators
       also use GNU tar for full and incremental backups, including snapshot-file
       workflows with --listed-incremental.
+related-packages:
+  - id: brew:libarchive
+    reason: >
+      Choose libarchive when you need a reusable multi-format library or its bsdtar
+      implementation rather than GNU tar's GNU-focused command-line behavior.
+    rel: alternative
+    sources:
+      - https://github.com/libarchive/libarchive
+      - https://www.gnu.org/software/tar/manual/tar.html
+  - id: brew:gzip
+    reason: >
+      GNU tar invokes gzip with -z to create or read the widely supported .tar.gz
+      format, and GNU gzip explicitly describes itself as tar's compression complement.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/tar/manual/html_node/gzip.html
+      - https://www.gnu.org/software/gzip/manual/gzip.html
+  - id: brew:xz
+    reason: >
+      GNU tar invokes XZ with -J and recognizes .tar.xz archives, pairing tar's archive
+      structure with XZ compression.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/tar/manual/html_node/gzip.html
+      - https://tukaani.org/xz/
+  - id: brew:bzip2
+    reason: >
+      GNU tar invokes bzip2 with -j and recognizes .tar.bz2 archives for established
+      bzip2-compressed source and backup workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/tar/manual/html_node/gzip.html
+      - https://sourceware.org/bzip2/
 tags:
   - archive
   - backup
