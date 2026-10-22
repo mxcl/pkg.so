@@ -27,6 +27,24 @@ pub(super) fn document(connection: &Connection) -> Result<Value, String> {
         ("recentlyDiscovered", "admittedAt", 30),
     ] {
         if let Some(items) = data[section].as_array_mut() {
+            for item in items.iter_mut() {
+                let fresh = item["commentary"]["researchedAt"]
+                    .as_str()
+                    .is_some_and(|date| {
+                        connection
+                            .query_row(
+                                "SELECT julianday(?1) - julianday(?2) BETWEEN 0 AND 6",
+                                params![today, date],
+                                |row| row.get::<_, bool>(0),
+                            )
+                            .unwrap_or(false)
+                    });
+                if !fresh {
+                    if let Some(object) = item.as_object_mut() {
+                        object.remove("commentary");
+                    }
+                }
+            }
             items.retain(|item| {
                 let date = if field == "trend.endDate" {
                     &item["discovery"]["trend"]["endDate"]
@@ -68,14 +86,40 @@ fn reason(item: &Value, trending: bool) -> String {
     )
 }
 
+fn commentary(item: &Value) -> String {
+    let Some(text) = item["commentary"]["text"].as_str() else {
+        return String::new();
+    };
+    let sources: Vec<String> = value_array(&item["commentary"], "sources")
+        .iter()
+        .filter_map(|source| {
+            let url = source["url"].as_str()?;
+            if !url.starts_with("https://") {
+                return None;
+            }
+            Some(format!(
+                r#"<a href="{}">{}</a>"#,
+                html_escape(url),
+                html_escape(source["title"].as_str().unwrap_or("Source"))
+            ))
+        })
+        .collect();
+    format!(
+        r#"<p class="discovery-commentary">{}</p><small>AI commentary · {}</small>"#,
+        html_escape(text),
+        sources.join(" · ")
+    )
+}
+
 fn rows(items: Vec<&Value>, trending: bool, limit: usize) -> String {
     items.iter().take(limit).map(|item| {
         let tap = item["tap"].as_str().map(|tap| format!("Third-party tap: {tap}"))
             .unwrap_or_else(|| "Homebrew".to_string());
-        format!(r#"<li class="discovery-row"><a href="{}"><strong>{}</strong></a><p>{}</p><p class="discovery-evidence">{}</p><small>{}</small></li>"#,
+        format!(r#"<li class="discovery-row"><a href="{}"><strong>{}</strong></a>{}<p class="discovery-evidence">{}</p><small>{}</small></li>"#,
             html_escape(item["path"].as_str().unwrap_or("/")),
             html_escape(item["displayName"].as_str().unwrap_or("")),
-            html_escape(item["summary"].as_str().unwrap_or("")),
+            if item["commentary"]["text"].as_str().is_some() { commentary(item) }
+            else { format!("<p>{}</p>", html_escape(item["summary"].as_str().unwrap_or(""))) },
             html_escape(&reason(item, trending)), html_escape(&tap))
     }).collect()
 }
@@ -202,21 +246,70 @@ mod tests {
     }
 
     #[test]
+    fn commentary_is_escaped_with_sources_and_description_fallback() {
+        let item = json!({"summary": "Original description", "commentary": {
+            "text": "Useful <script> & fast", "sources": [
+                {"title": "Release & notes", "url": "https://example.com/releases"},
+                {"title": "Bad", "url": "javascript:alert(1)"}]}});
+        let html = rows(vec![&item], true, 3);
+        assert!(html.contains("Useful &lt;script&gt; &amp; fast"));
+        assert!(html.contains("AI commentary"));
+        assert!(html.contains("Release &amp; notes"));
+        assert!(!html.contains("javascript:"));
+        assert!(!html.contains("Original description"));
+        assert!(
+            rows(vec![&json!({"summary": "Original description"})], false, 3)
+                .contains("Original description")
+        );
+    }
+
+    #[test]
+    fn stale_commentary_expires_even_when_rankings_are_current() {
+        let connection = database("2000-01-01");
+        let today: String = connection
+            .query_row("SELECT date('now')", [], |row| row.get(0))
+            .unwrap();
+        let connection = database(&today);
+        let mut data = document(&connection).unwrap();
+        data["trending"][0]["commentary"] =
+            json!({"text": "Old note", "researchedAt": "2000-01-01"});
+        connection
+            .execute(
+                "UPDATE metadata SET value=?1 WHERE key='discovery'",
+                [data.to_string()],
+            )
+            .unwrap();
+        assert!(document(&connection).unwrap()["trending"][0]
+            .get("commentary")
+            .is_none());
+        data["trending"][0]["commentary"]["researchedAt"] = json!(today);
+        connection
+            .execute(
+                "UPDATE metadata SET value=?1 WHERE key='discovery'",
+                [data.to_string()],
+            )
+            .unwrap();
+        assert_eq!(
+            document(&connection).unwrap()["trending"][0]["commentary"]["text"],
+            "Old note"
+        );
+    }
+
+    #[test]
     fn stale_snapshots_and_missing_metadata_have_honest_empty_states() {
         let connection = database("2000-01-01");
-        assert!(
-            document(&connection).unwrap()["trending"]
-                .as_array()
-                .unwrap()
-                .is_empty()
-        );
-        assert!(document(&connection).unwrap()["independentTaps"].as_array().unwrap().is_empty());
+        assert!(document(&connection).unwrap()["trending"]
+            .as_array()
+            .unwrap()
+            .is_empty());
+        assert!(document(&connection).unwrap()["independentTaps"]
+            .as_array()
+            .unwrap()
+            .is_empty());
         assert!(feature(&connection).unwrap().is_empty());
-        assert!(
-            page(&connection)
-                .unwrap()
-                .contains("No packages currently meet")
-        );
+        assert!(page(&connection)
+            .unwrap()
+            .contains("No packages currently meet"));
         connection.execute("DELETE FROM metadata", []).unwrap();
         assert!(page(&connection).unwrap().contains("No new discoveries"));
     }

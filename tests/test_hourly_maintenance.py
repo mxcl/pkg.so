@@ -89,7 +89,7 @@ class HourlyMaintenanceTests(unittest.TestCase):
         self.assertIn("codex-cli", enrichment)
         self.assertIn("run", enrichment)
         self.assertIn(
-            [sys.executable, "scripts/generate-pkg-sqlite.py", "--output", "pkg.sqlite.next"],
+            [sys.executable, "scripts/generate-pkg-sqlite.py", "--research-discovery", "--output", "pkg.sqlite.next"],
             commands,
         )
 

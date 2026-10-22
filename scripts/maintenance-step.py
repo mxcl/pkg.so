@@ -63,7 +63,7 @@ def stages(state):
         ("graph", script("generate-pkg-graph.py")),
         ("graph-curation", script("generate-pkg-graph-curation.py")),
         ("graph-final", script("generate-pkg-graph.py")),
-        ("sqlite", script("generate-pkg-sqlite.py", "--output", str(LIVE / "pkg.sqlite.next"))),
+        ("sqlite", script("generate-pkg-sqlite.py", "--research-discovery", "--output", str(LIVE / "pkg.sqlite.next"))),
         ("sqlite-check", script("generate-pkg-sqlite.py", "--check", "--output", str(LIVE / "pkg.sqlite.next"))),
         ("data-commit", None),
         ("json", script("export-automic-vault-db.py", "--output", str(LIVE / "db.json.next"))),

@@ -271,7 +271,8 @@ def main() -> int:
     run_pkg_graph_curation([py, "scripts/generate-pkg-graph-curation.py"])
     run([py, "scripts/generate-pkg-graph.py"])
     if not args.skip_sqlite:
-        run([py, "scripts/generate-pkg-sqlite.py", "--output", args.sqlite_output])
+        research = not args.skip_enrichment and os.environ.get("AVDB_ENRICH_BACKEND") == "codex-cli"
+        run([py, "scripts/generate-pkg-sqlite.py", *(["--research-discovery"] if research else []), "--output", args.sqlite_output])
 
     checkpoint("nightly: refresh package database")
     # Keep this last so the export reflects every successful daily update.

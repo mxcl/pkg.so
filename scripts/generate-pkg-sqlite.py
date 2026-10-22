@@ -719,6 +719,7 @@ def discovery_document(page_module: Any, pages: list[Any], routes: dict[str, Pac
             continue
         item = {"packageKey": page.key, "path": routes[page.key].path,
                 "displayName": page.display_name, "summary": page.summary,
+                "version": page.version, "homepage": page.homepage, "repository": page.repository,
                 "provider": page.provider, "tap": (page.extra.get("tapSource") or {}).get("tap"),
                 "sourceURL": page.package_manager_url, "discovery": data}
         if data.get("trend"):
@@ -746,6 +747,7 @@ def discovery_document(page_module: Any, pages: list[Any], routes: dict[str, Pac
 def build_sqlite(
     page_module: Any,
     output_path: Path,
+    research_discovery: bool = False,
 ) -> tuple[int, int, int, dict[str, Any]]:
     sources = page_module.load_sources()
     pages_by_key = page_module.package_pages_from_sources(sources)
@@ -768,6 +770,8 @@ def build_sqlite(
     metadata["locales"] = locales
     metadata["providers"] = sorted({page.provider for page in indexable_pages})
     metadata["discovery"] = discovery_document(page_module, pages, routes)
+    from discovery_commentary import enrich
+    enrich(metadata["discovery"], refresh=research_discovery)
     from bootstrap.lib.discovery import load_state
     from collections import Counter
     state = load_state()
@@ -867,6 +871,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate the Atlas package-origin SQLite artifact.")
     parser.add_argument("--check", action="store_true", help="Validate that pkg.sqlite matches current package source data.")
     parser.add_argument("--output", default=str(OUTPUT_PATH), help=f"Output SQLite path. Defaults to {OUTPUT_PATH}.")
+    parser.add_argument("--research-discovery", action="store_true", help="Research missing or stale discovery commentary with Codex.")
     parser.add_argument("--json", action="store_true", help="Print machine-readable status.")
     return parser.parse_args()
 
@@ -888,7 +893,7 @@ def main() -> int:
         return check_current(page_module, output_path, terminal)
 
     terminal.step("Rendering package pages into SQLite")
-    package_count, hub_count, document_count, metadata = build_sqlite(page_module, output_path)
+    package_count, hub_count, document_count, metadata = build_sqlite(page_module, output_path, args.research_discovery)
     terminal.ok(
         f"Wrote {package_count:,} packages, {hub_count:,} hubs, "
         f"{document_count:,} search documents, and metadata to {output_path}"
