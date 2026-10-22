@@ -90,6 +90,55 @@ history:
       numcopies and preferred content rules, encrypt remotes, verify checksums, keep
       drives offline, and later ask git-annex where content lives or move it to a
       desired repository.
+related-packages:
+  - id: brew:git-lfs
+    reason: >
+      Choose Git LFS for a simpler host-backed large-file extension that preserves an
+      ordinary Git workflow and uses pointer files, while git-annex is better suited to
+      multiple stores, offline media, copy policies, and heterogeneous remotes.
+    rel: alternative
+    sources:
+      - https://git-lfs.com/
+      - https://git-annex.branchable.com/
+      - https://git-annex.branchable.com/special_remotes/
+  - id: brew:datalad
+    reason: >
+      Use DataLad on top of git-annex when research datasets need higher-level commands
+      for nested datasets, retrieval, publication, and provenance while retaining direct
+      compatibility with git-annex repositories.
+    rel: adjacent_workflow
+    sources:
+      - https://handbook.datalad.org/en/latest/basics/101-180-FAQ.html
+      - https://docs.datalad.org/en/stable/
+  - id: brew:rclone
+    reason: >
+      Use rclone as a git-annex special remote to place annexed content on cloud
+      providers supported by rclone while git-annex retains file identity, location
+      tracking, and policy.
+    rel: adjacent_workflow
+    sources:
+      - https://git-annex.branchable.com/special_remotes/
+      - https://git-annex.branchable.com/special_remotes/rclone/
+      - https://rclone.org/
+  - id: brew:borgbackup
+    reason: >
+      Use BorgBackup as a git-annex special remote when annexed content should be stored
+      through Borg's deduplicating archive format rather than a normal annex repository.
+    rel: adjacent_workflow
+    sources:
+      - https://git-annex.branchable.com/special_remotes/
+      - https://git-annex.branchable.com/special_remotes/borg/
+      - https://www.borgbackup.org/
+  - id: brew:git
+    reason: >
+      Git supplies the commits, branches, remotes, and directory history, while
+      git-annex stores and tracks large file content outside Git's normal object
+      database.
+    rel: adjacent_workflow
+    sources:
+      - https://git-annex.branchable.com/
+      - https://git-annex.branchable.com/walkthrough/
+      - https://git-scm.com/docs
 category: data
 package-manager:
   apk: git-annex

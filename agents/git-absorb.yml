@@ -3,7 +3,12 @@ display-name: gistit
 repo: null
 docs:
   - https://github.com/jrbasso/gistit#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - .git/config
+    - $XDG_CONFIG_HOME/git/config
+    - ~/.config/git/config
+    - ~/.gitconfig
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,6 +68,35 @@ history:
       generated fixup commits, and then use git rebase -i --autosquash to fold them into
       the original commits. Users who trust the result can run git absorb --and-rebase,
       while recovery is documented through PRE_ABSORB_HEAD and the reflog.
+related-packages:
+  - id: brew:git-revise
+    reason: >
+      Choose git-revise when you want explicit, efficient in-memory updating, splitting,
+      rewording, or rearranging of commits instead of automatic hunk-to-commit
+      assignment.
+    rel: alternative
+    sources:
+      - https://git-revise.readthedocs.io/en/latest/
+      - https://github.com/mystor/git-revise
+  - id: brew:git-branchless
+    reason: >
+      Use git-branchless with git-absorb for a broader patch-stack workflow: branchless
+      visualizes, moves, restacks, and repairs commit graphs, while absorb routes staged
+      fixes into earlier changes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/arxanas/git-branchless
+      - https://github.com/arxanas/git-branchless/wiki/Related-tools
+      - https://github.com/tummychow/git-absorb
+  - id: brew:git
+    reason: >
+      Git supplies the index, commits, fixup-message convention, reflog, and autosquash
+      rebase that git-absorb analyzes and orchestrates.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tummychow/git-absorb/blob/master/Documentation/git-absorb.adoc
+      - https://git-scm.com/docs/git-rebase
+      - https://git-scm.com/docs/git-commit
 tags:
   - autosquash
   - cli

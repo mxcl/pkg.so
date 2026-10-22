@@ -5,7 +5,14 @@ repo: https://git.kernel.org/pub/scm/git/git.git
 docs:
   - https://git-scm.com/docs
   - https://git-scm.com/doc
-config-file-location: null
+config-file-location:
+  unix:
+    - $(prefix)/etc/gitconfig
+    - $XDG_CONFIG_HOME/git/config
+    - ~/.config/git/config
+    - ~/.gitconfig
+    - $GIT_DIR/config
+    - $GIT_DIR/config.worktree
 credentials-file-location:
   unix: ~/.git-credentials
 history:
@@ -87,6 +94,57 @@ history:
       commits, release tags, submodules, worktrees, hooks, and CI triggers. The same
       executable serves both interactive daily work and automation in release scripts,
       package recipes, deployment systems, and source archives.
+related-packages:
+  - id: brew:jj
+    reason: >
+      Choose Jujutsu for a different version-control interface with operation-level undo
+      and automatic history evolution while retaining a Git-backed mode that
+      interoperates with Git repositories and users.
+    rel: alternative
+    sources:
+      - https://docs.jj-vcs.dev/latest/
+      - https://docs.jj-vcs.dev/latest/git-compatibility/
+  - id: brew:mercurial
+    reason: >
+      Choose Mercurial when you want another mature distributed SCM with a smaller, more
+      uniform command model and an extension-driven workflow.
+    rel: alternative
+    sources:
+      - https://www.mercurial-scm.org/
+  - id: brew:git-lfs
+    reason: >
+      Add Git LFS when a normal Git workflow must version large binaries through pointer
+      files and a compatible external storage service.
+    rel: adjacent_workflow
+    sources:
+      - https://git-lfs.com/
+      - https://git-scm.com/docs/gitattributes
+  - id: brew:git-filter-repo
+    reason: >
+      Use git-filter-repo with Git when you need fast, purpose-built repository-history
+      rewriting such as removing large or sensitive files, splitting paths, or renaming
+      content across history.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/newren/git-filter-repo
+      - https://git-scm.com/docs/git-filter-branch
+  - id: brew:git-absorb
+    reason: >
+      Use git-absorb on a Git feature branch to map staged review fixes to earlier
+      commits and generate fixup commits for Git's autosquash workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tummychow/git-absorb
+      - https://git-scm.com/docs/git-rebase
+  - id: brew:gh
+    reason: >
+      Use GitHub CLI alongside Git when repository transport and local history are
+      handled by Git but pull requests, issues, releases, and other GitHub objects need
+      a first-party command-line interface.
+    rel: adjacent_workflow
+    sources:
+      - https://cli.github.com/manual/gh
+      - https://docs.github.com/en/github-cli/github-cli/about-github-cli
 category: developer-tools
 package-manager:
   apk: git
