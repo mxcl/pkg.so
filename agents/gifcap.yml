@@ -42,6 +42,31 @@ history:
       animation polish, or sharing visual defects in chat and issue trackers. The
       command records a physical Android device until interrupted and writes the
       resulting GIF to the requested filename.
+related-packages:
+  - id: cask:android-platform-tools
+    reason: >
+      gifcap requires `adb`, which Android SDK Platform-Tools supplies for communicating
+      with and recording the connected device.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/outlook/gifcap#readme
+      - https://developer.android.com/tools/adb
+  - id: brew:ffmpeg
+    reason: >
+      gifcap requires FFmpeg and ffprobe to process the Android screen recording into
+      its final GIF.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/outlook/gifcap#readme
+      - https://ffmpeg.org/ffmpeg.html
+  - id: brew:gifify
+    reason: >
+      Choose gifify when a screen recording or movie already exists; unlike gifcap, it
+      converts a local video instead of recording an attached Android device.
+    rel: alternative
+    sources:
+      - https://github.com/outlook/gifcap#readme
+      - https://github.com/jclem/gifify#readme
 tags:
   - android
   - cli

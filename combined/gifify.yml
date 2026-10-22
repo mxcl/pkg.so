@@ -47,6 +47,31 @@ history:
       choosing an output name, crop rectangle, framerate, playback speed, or loop count.
       It is used most often for lightweight demonstrations rather than archival video
       processing.
+related-packages:
+  - id: brew:gifski
+    reason: >
+      Choose gifski when perceptual GIF quality and advanced temporal dithering matter
+      more than gifify's minimal shell-script workflow.
+    rel: alternative
+    sources:
+      - https://github.com/jclem/gifify#readme
+      - https://gif.ski/
+  - id: brew:ffmpeg
+    reason: >
+      gifify invokes FFmpeg to decode the input movie and stream frames into its
+      GIF-generation pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://raw.githubusercontent.com/jclem/gifify/master/gifify.sh
+      - https://ffmpeg.org/ffmpeg.html
+  - id: brew:imagemagick
+    reason: >
+      gifify pipes FFmpeg's frames into ImageMagick's `convert` command for dithering,
+      animation optimization, looping, and GIF output.
+    rel: adjacent_workflow
+    sources:
+      - https://raw.githubusercontent.com/jclem/gifify/master/gifify.sh
+      - https://imagemagick.org/command-line-processing/
 category: media
 package-manager:
   brew: gifify

@@ -60,6 +60,35 @@ history:
       metadata, shrink colormaps, and optimize animations by storing only changed frame
       regions. In build scripts it often appears as the final asset-shrinking step for
       generated GIFs.
+related-packages:
+  - id: brew:gifski
+    reason: >
+      Choose gifski when creating a high-quality animation from video or image frames;
+      choose Gifsicle for detailed manipulation and optimization of existing GIF
+      structures.
+    rel: alternative
+    sources:
+      - https://www.lcdf.org/gifsicle/
+      - https://gif.ski/
+      - https://github.com/ImageOptim/gifski#readme
+  - id: brew:imagemagick
+    reason: >
+      Choose ImageMagick when the workflow spans many image formats and general
+      transformations rather than requiring Gifsicle's GIF-specific frame and
+      optimization controls.
+    rel: alternative
+    sources:
+      - https://www.lcdf.org/gifsicle/man.html
+      - https://imagemagick.org/command-line-processing/
+      - https://imagemagick.org/formats/
+  - id: cask:clop
+    reason: >
+      Clop embeds Gifsicle to provide automatic and interactive GIF optimization through
+      a macOS clipboard, Finder, watched-folder, and GUI workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kohler/gifsicle
+      - https://github.com/FuzzyIdeas/Clop#readme
 category: media
 package-manager:
   apk: gifsicle

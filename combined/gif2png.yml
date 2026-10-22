@@ -68,6 +68,24 @@ history:
     - >
       Typical use is archival cleanup, static-site maintenance, packaging tests around
       image conversion, or migration of old GIF-heavy web assets to PNG.
+related-packages:
+  - id: brew:imagemagick
+    reason: >
+      Choose ImageMagick when GIF-to-PNG conversion must be combined with resizing,
+      cropping, color processing, or other multi-format transformations.
+    rel: alternative
+    sources:
+      - https://gitlab.com/esr/gif2png
+      - https://imagemagick.org/command-line-processing/
+      - https://imagemagick.org/formats/
+  - id: brew:pngquant
+    reason: >
+      Run pngquant on gif2png's PNG output when the next step is palette-based lossy
+      compression for smaller web assets.
+    rel: adjacent_workflow
+    sources:
+      - https://gitlab.com/esr/gif2png
+      - https://pngquant.org/
 category: media
 package-manager:
   brew: gif2png
