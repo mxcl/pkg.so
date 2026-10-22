@@ -64,6 +64,43 @@ history:
       paths, repositories, staged changes, Docker images, package artifacts, or CI
       workspaces. Teams commonly install it as a pre-commit, pre-push, or pre-receive
       hook so leaked credentials are blocked before they enter shared repositories.
+related-packages:
+  - id: brew:gitleaks
+    reason: >
+      Choose Gitleaks for its standalone SAST workflow, TOML rule model, and official
+      GitHub Action; choose ggshield for GitGuardian API-backed detection and
+      platform-aligned policy.
+    rel: alternative
+    sources:
+      - https://github.com/GitGuardian/ggshield
+      - https://github.com/gitleaks/gitleaks
+      - https://docs.gitguardian.com/ggshield-docs/configuration
+  - id: brew:trufflehog
+    reason: >
+      Choose TruffleHog when verified-secret detection across Git and other
+      infrastructure sources is central; choose ggshield for GitGuardian-integrated
+      developer and CI guardrails.
+    rel: alternative
+    sources:
+      - https://github.com/GitGuardian/ggshield
+      - https://github.com/trufflesecurity/trufflehog
+  - id: brew:detect-secrets
+    reason: >
+      Choose detect-secrets when an auditable repository baseline is needed to accept
+      existing findings while blocking new ones; choose ggshield for API-backed scanning
+      and GitGuardian policy integration.
+    rel: alternative
+    sources:
+      - https://github.com/GitGuardian/ggshield
+      - https://github.com/Yelp/detect-secrets
+  - id: brew:pre-commit
+    reason: >
+      Use pre-commit to install and orchestrate ggshield as a repository-defined hook
+      alongside other checks; GitGuardian officially documents this integration.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.gitguardian.com/ggshield-docs/integrations/overview
+      - https://pre-commit.com/
 category: security
 package-manager:
   brew: ggshield

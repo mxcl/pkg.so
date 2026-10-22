@@ -54,6 +54,39 @@ history:
       Practitioners run commands such as `ggc status`, `ggc add`, `ggc commit`, and
       branch-management verbs directly, or launch `ggc` without arguments to search
       commands, queue steps, review the workflow, and execute the pipeline.
+related-packages:
+  - id: brew:git
+    reason: >
+      Git is the required underlying version-control engine: ggc wraps Git commands and
+      explicitly falls back to raw Git for operations outside its shortcut set.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bmf-san/ggc
+      - https://git-scm.com/docs
+  - id: brew:lazygit
+    reason: >
+      Choose lazygit for an action-oriented full-screen Git TUI; choose ggc when the
+      same shortcuts must also work non-interactively in scripts and CI.
+    rel: alternative
+    sources:
+      - https://github.com/bmf-san/ggc
+      - https://github.com/jesseduffield/lazygit
+  - id: brew:gitui
+    reason: >
+      Choose GitUI for a fast interactive terminal workbench; choose ggc when searchable
+      commands must also compose into reusable command-line workflows.
+    rel: alternative
+    sources:
+      - https://github.com/bmf-san/ggc
+      - https://github.com/gitui-org/gitui
+  - id: brew:tig
+    reason: >
+      Choose Tig primarily for ncurses-based browsing of Git history and changes; choose
+      ggc for write-oriented shortcuts and multi-step workflow execution.
+    rel: alternative
+    sources:
+      - https://github.com/bmf-san/ggc
+      - https://jonas.github.io/tig/
 tags:
   - cli
   - developer-tools
