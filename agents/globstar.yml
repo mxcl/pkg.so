@@ -3,7 +3,9 @@ display-name: Globstar
 repo: null
 docs:
   - https://globstar.dev/
-config-file-location: null
+config-file-location:
+  unix:
+    - ./.globstar/*.yml
 credentials-file-location: null
 history:
   adoption-history:
@@ -45,6 +47,27 @@ history:
       Practitioners define custom checkers under a repository's .globstar directory and
       run globstar check locally or in CI. The documented workflow combines built-in
       checks with project-specific tree-sitter patterns.
+related-packages:
+  - id: brew:semgrep
+    reason: >
+      Semgrep is an alternative custom-rule static analyzer with YAML rules plus mature
+      data-flow and taint-analysis features, making it a stronger fit when analysis must
+      extend beyond Globstar's tree-sitter-oriented checks.
+    rel: alternative
+    sources:
+      - https://globstar.dev/reference/checker-yaml
+      - https://semgrep.dev/docs/writing-rules/overview
+      - https://semgrep.dev/docs/writing-rules/data-flow/overview
+  - id: brew:ast-grep
+    reason: >
+      ast-grep is an alternative AST-based rule engine that also performs structural
+      rewriting and codemods, so it is preferable when findings should include automated
+      source transformations.
+    rel: alternative
+    sources:
+      - https://globstar.dev/reference/checker-yaml
+      - https://ast-grep.github.io/
+      - https://ast-grep.github.io/guide/project/lint-rule
 tags:
   - ci
   - cli

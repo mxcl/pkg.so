@@ -4,7 +4,11 @@ repo: https://sourceware.org/git/glibc.git
 docs:
   - https://sourceware.org/glibc/manual/2.43/html_node/index.html
   - https://www.gnu.org/software/libc/manual
-config-file-location: null
+config-file-location:
+  unix:
+    - /etc/nsswitch.conf
+    - /etc/ld.so.conf
+    - /etc/tunables.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -87,6 +91,24 @@ history:
       for APIs, feature-test macros, portability notes, locale behavior, memory
       allocation, dynamic loading, threads, sockets, name service, and process
       facilities.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      GCC compiles GNU/Linux native programs that are then linked against and run on
+      glibc, making it the natural compiler-side companion in a GNU toolchain.
+    rel: adjacent_workflow
+    sources:
+      - https://gcc.gnu.org/
+      - https://sourceware.org/glibc/manual/latest/html_node/Introduction.html
+  - id: brew:binutils
+    reason: >
+      GNU Binutils supplies the assembler, linker, and binary utilities used with glibc
+      when building and inspecting native executables and shared libraries.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/binutils/binutils.html
+      - https://sourceware.org/binutils/docs/
+      - https://sourceware.org/glibc/manual/latest/html_node/Dynamic-Linker-Hardening.html
 tags:
   - c-library
   - cli

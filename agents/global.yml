@@ -4,7 +4,13 @@ repo: https://savannah.gnu.org/cvs?group=global
 docs:
   - https://www.gnu.org/software/global/manual
   - https://www.gnu.org/software/global/globaldoc_toc.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ./gtags.conf
+    - ./obj/gtags.conf
+    - ~/.globalrc
+    - /etc/gtags.conf
+    - /usr/local/etc/gtags.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,6 +76,26 @@ history:
       The package is useful when a source tree does not have a language server, when
       developers need fast offline symbol lookup, or when generated cross-reference HTML
       is more convenient than editor-only navigation.
+related-packages:
+  - id: brew:universal-ctags
+    reason: >
+      Universal Ctags is a documented parser plug-in for GNU GLOBAL, extending language
+      parsing while GLOBAL continues to provide its cross-reference databases and query
+      tools.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/global/globaldoc_toc.html
+      - https://docs.ctags.io/
+  - id: brew:cscope
+    reason: >
+      cscope is an alternative interactive source browser for C-family code; choose it
+      for the traditional cscope workflow, while GLOBAL offers broader editor, shell,
+      and generated-hypertext interfaces.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/global/
+      - https://cscope.sourceforge.net/
+      - https://cscope.sourceforge.net/cscope_man_page.html
 tags:
   - cli
   - code-navigation
