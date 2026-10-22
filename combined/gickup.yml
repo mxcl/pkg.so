@@ -6,7 +6,11 @@ docs:
   - https://cooperspencer.github.io/gickup-documentation
 config-file-location:
   unix: Configuration path supplied as the positional argument, for example conf.yml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - Path set by token_file, interpreted relative to the process working directory
+    - Path set by sshkey; $HOME/.ssh/id_rsa is used when sshkey is empty
+    - Path set by app_private_key_file for GitHub App authentication
 history:
   adoption-history:
     - >
@@ -66,6 +70,7 @@ history:
       The example configuration shows credentials supplied as tokens, token files,
       username-password pairs, SSH keys, or GitHub App credentials, with filters for
       stars, last activity, archive status, forks, and languages.
+related-packages: []
 category: developer-tools
 package-manager:
   brew: gickup

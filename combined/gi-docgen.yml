@@ -4,7 +4,10 @@ homepage: https://gnome.pages.gitlab.gnome.org/gi-docgen/
 repo: https://gitlab.gnome.org/GNOME/gi-docgen
 docs:
   - https://gnome.pages.gitlab.gnome.org/gi-docgen
-config-file-location: null
+config-file-location:
+  unix:
+    - Path supplied with -C
+    - '--config; no default path is documented'
 credentials-file-location: null
 history:
   adoption-history:
@@ -65,6 +68,32 @@ history:
       The README emphasizes that GI-DocGen is not a general C documentation tool. Its
       practical use is strongest in GObject projects that already produce introspection
       data and want API pages aligned with GTK and GNOME documentation conventions.
+related-packages:
+  - id: brew:gobject-introspection
+    reason: >
+      GObject Introspection produces the GIR metadata that GI-DocGen requires to
+      generate API-reference documentation.
+    rel: adjacent_workflow
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/gi-docgen/tutorial.html
+      - https://gi.readthedocs.io/en/latest/
+  - id: brew:gtk-doc
+    reason: >
+      GTK-Doc is an established GObject-aware documentation alternative; choose it for
+      projects that retain its source-scanning and DocBook-oriented workflow.
+    rel: alternative
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/gi-docgen/
+      - https://gitlab.gnome.org/GNOME/gtk-doc/-/tree/master/help/manual/C
+  - id: brew:doxygen
+    reason: >
+      Doxygen is the officially recommended alternative when a project needs a
+      general-purpose, multi-language documentation generator rather than GI-DocGen's
+      introspection-focused GTK workflow.
+    rel: alternative
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/gi-docgen/
+      - https://www.doxygen.nl/manual/index.html
 category: developer-tools
 package-manager:
   apk: gi-docgen
