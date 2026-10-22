@@ -64,6 +64,17 @@ history:
       direct master migration, or replica-only modes. Common practice is to test on
       replicas, run a noop check, execute the migration, watch throttling and lag
       controls, and postpone cut-over until an operator chooses the swap window.
+related-packages:
+  - id: brew:percona-toolkit
+    reason: >
+      Choose Percona Toolkit's `pt-online-schema-change` when its trigger-based workflow
+      and broader DBA toolkit fit your environment; choose gh-ost when
+      binary-log-driven, triggerless migration and explicit cut-over control are
+      priorities.
+    rel: alternative
+    sources:
+      - https://github.com/github/gh-ost#readme
+      - https://docs.percona.com/percona-toolkit/pt-online-schema-change.html
 tags:
   - cli
   - database

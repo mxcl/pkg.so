@@ -71,6 +71,24 @@ history:
       `action.yml` files. A `ghalint.yaml` configuration file can disable selected
       policies for named workflows, jobs, or actions when a repository has an
       intentional exception.
+related-packages:
+  - id: brew:actionlint
+    reason: >
+      Choose actionlint for broad workflow syntax, expression, reusable-workflow, and
+      embedded-script analysis; use ghalint when enforcement of GitHub Actions security
+      policies is the primary task.
+    rel: alternative
+    sources:
+      - https://github.com/rhysd/actionlint#readme
+      - https://github.com/suzuki-shunsuke/ghalint#readme
+  - id: brew:pinact
+    reason: >
+      pinact rewrites action and reusable-workflow references to immutable full commit
+      hashes, directly helping repositories satisfy ghalint's full-length-SHA policy.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/suzuki-shunsuke/ghalint/blob/main/docs/policies/008.md
+      - https://github.com/suzuki-shunsuke/pinact#readme
 tags:
   - ci-cd
   - cli

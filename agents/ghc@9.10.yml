@@ -4,7 +4,14 @@ repo: https://gitlab.haskell.org/ghc/ghc
 docs:
   - https://downloads.haskell.org/ghc/9.10.3/docs/users_guide
   - https://www.haskell.org/ghc
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/ghc/ghci.conf
+    - ~/.ghc/ghci.conf
+    - ./.ghci
+  windows:
+    - '%APPDATA%\ghc\ghci.conf'
+    - .\.ghci
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,6 +78,32 @@ history:
       The underlying workflow remains normal GHC usage: compile with `ghc`, explore code
       in `ghci`, run scripts with `runghc`, inspect package databases with `ghc-pkg`,
       and generate API docs with Haddock.
+related-packages:
+  - id: brew:ghcup
+    reason: >
+      GHCup is an official toolchain installer that can install and select specific GHC
+      releases, making it useful when a project needs finer version switching than a
+      single Homebrew branch formula.
+    rel: adjacent_workflow
+    sources:
+      - https://ghc.gitlab.haskell.org/homepage/
+      - https://www.haskell.org/ghcup/guide/
+  - id: brew:cabal-install
+    reason: >
+      cabal-install resolves project dependencies and invokes the selected GHC 9.10
+      compiler to build Haskell packages and targets.
+    rel: adjacent_workflow
+    sources:
+      - https://cabal.readthedocs.io/en/stable/getting-started.html
+      - https://downloads.haskell.org/ghc/9.10.3/docs/users_guide/
+  - id: brew:haskell-stack
+    reason: >
+      Stack can select a compiler matching a project snapshot and then use that GHC
+      installation for reproducible builds, tests, and interactive sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.haskellstack.org/en/stable/topics/stack_work/
+      - https://ghc.gitlab.haskell.org/homepage/
 tags:
   - cli
   - compiler

@@ -4,7 +4,14 @@ repo: https://gitlab.haskell.org/ghc/ghc
 docs:
   - https://downloads.haskell.org/ghc/9.14.1/docs/users_guide
   - https://ghc.gitlab.haskell.org/ghc/doc
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/ghc/ghci.conf
+    - ~/.ghc/ghci.conf
+    - ./.ghci
+  windows:
+    - '%APPDATA%\ghc\ghci.conf'
+    - .\.ghci
 credentials-file-location: null
 history:
   adoption-history:
@@ -92,6 +99,31 @@ history:
       users to call every compiler flag by hand. Advanced users still care about GHC
       flags directly for optimisation, profiling, language extensions, cross-platform
       builds, and debugging package database or linker issues.
+related-packages:
+  - id: brew:ghcup
+    reason: >
+      GHC's official homepage recommends GHCup as an installation and version-selection
+      route for GHC and its companion Haskell tools.
+    rel: adjacent_workflow
+    sources:
+      - https://ghc.gitlab.haskell.org/homepage/
+      - https://www.haskell.org/ghcup/guide/
+  - id: brew:cabal-install
+    reason: >
+      cabal-install resolves dependencies and orchestrates Haskell project builds,
+      invoking GHC to compile the selected packages and project targets.
+    rel: adjacent_workflow
+    sources:
+      - https://cabal.readthedocs.io/en/stable/getting-started.html
+      - https://ghc.gitlab.haskell.org/homepage/
+  - id: brew:haskell-stack
+    reason: >
+      Stack can install or select GHC and then drive reproducible, snapshot-based
+      Haskell project builds with that compiler.
+    rel: adjacent_workflow
+    sources:
+      - https://ghc.gitlab.haskell.org/homepage/
+      - https://docs.haskellstack.org/en/stable/topics/stack_work/
 tags:
   - cli
   - compiler
