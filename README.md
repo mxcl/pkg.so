@@ -34,6 +34,11 @@ $ AV_WEB_DB_PATH=cache/pkg.sqlite cargo run --release -p av-web
 av-web listening on 127.0.0.1:3004
 ```
 
+Google ads are disabled by default. Set `AV_ENABLE_GOOGLE_ADS=1` when starting
+the server or running `scripts/generate-pkg-pages.py` to enable them. Restart
+the server or regenerate static pages after changing the flag; cached pages
+may take five minutes to refresh. Google Analytics is independent of this flag.
+
 `AV_WEB_DB_PATH` selects the SQLite file. The production service defaults to
 `/var/lib/automic-vault-web/pkg.sqlite`; origin-header settings remain in
 `/etc/automic-vault-web.env` on Atlas.

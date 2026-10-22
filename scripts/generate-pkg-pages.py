@@ -54,6 +54,7 @@ COMBINED_YAML_DIR = Path("combined")
 COMBINED_YAML_GITHUB_BASE = "https://github.com/mxcl/pkgdb/blob/main"
 INDEXABLE_MIN_SIGNAL_COUNT = 2
 PACKAGE_PROVIDERS = ("brew", "cask", "npm", "pip", "cargo")
+GOOGLE_ADS = '  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5218328608281545" crossorigin="anonymous"></script>'
 GOOGLE_TAG = """  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CMPY7XG4QH"></script>
   <script>
@@ -4935,7 +4936,7 @@ def html_doc(
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{stylesheet_href}">
 {GOOGLE_TAG}
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5218328608281545" crossorigin="anonymous"></script>
+{GOOGLE_ADS if os.environ.get("AV_ENABLE_GOOGLE_ADS") == "1" else ""}
 {extra_head}
   <script type="application/ld+json">
 {schema_json}

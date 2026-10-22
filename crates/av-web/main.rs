@@ -1950,7 +1950,7 @@ fn html_doc(
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{stylesheet}">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5218328608281545" crossorigin="anonymous"></script>
+{google_ads}
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CMPY7XG4QH"></script>
   <script>
@@ -1977,6 +1977,9 @@ fn html_doc(
         description = html_escape(description),
         robots = html_escape(robots),
         canonical = html_escape(canonical),
+        google_ads = if env::var("AV_ENABLE_GOOGLE_ADS").as_deref() == Ok("1") {
+            r#"  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5218328608281545" crossorigin="anonymous"></script>"#
+        } else { "" },
         site_name = SITE_NAME,
         hreflang = if canonical == "https://pkg.so/privacy/" || canonical == "https://pkg.so/new-and-trending/" { String::new() } else { html_hreflang_links(canonical) },
         stylesheet = html_escape(&format!(
@@ -7061,13 +7064,13 @@ mod tests {
     }
 
     #[test]
-    fn adsense_covers_page_types_and_authorizes_publisher() {
+    fn adsense_respects_flag_on_all_page_types_and_authorizes_publisher() {
         let db = test_database();
         for path in ["/", "/de/", "/brew/awscli/", "/fr/brew/awscli/", "/cloud/", "/feed/", "/privacy/"] {
             let response = dynamic_response_for_path(db.path(), path, &db.path().with_extension("feed")).unwrap().unwrap();
             let html = String::from_utf8(response.body).unwrap();
             let head = html.split("</head>").next().unwrap();
-            assert_eq!(head.matches("adsbygoogle.js?client=ca-pub-5218328608281545").count(), 1, "{path}");
+            assert_eq!(head.matches("adsbygoogle.js?client=ca-pub-5218328608281545").count(), usize::from(env::var("AV_ENABLE_GOOGLE_ADS").as_deref() == Ok("1")), "{path}");
         }
         let ads = static_asset_response("/ads.txt").unwrap();
         assert_eq!(ads.content_type, "text/plain; charset=utf-8");

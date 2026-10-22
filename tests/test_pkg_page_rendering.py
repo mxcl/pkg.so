@@ -194,14 +194,22 @@ class PackagePageRenderingTests(unittest.TestCase):
         self.assertIn("What is sshfs?", questions)
         self.assertIn("Is sshfs safe for AI agents to use?", questions)
 
+    @mock.patch.dict(pkg_pages.os.environ, {}, clear=True)
     def test_rendered_html_contains_top_summary_support_and_agent_risk(self):
         html = pkg_pages.render_package_page(sshfs_page(), {"generated_at": "2026-06-12T00:00:00Z"})
 
-        self.assertEqual(html.split("</head>")[0].count("adsbygoogle.js?client=ca-pub-5218328608281545"), 1)
+        self.assertEqual(html.split("</head>")[0].count("adsbygoogle.js?client=ca-pub-5218328608281545"), 0)
         self.assertIn('class="summary-card"', html)
         self.assertIn('id="support-title"', html)
         self.assertIn("Agent Risk Assessment", html)
         self.assertIn('"@type": "FAQPage"', html)
+
+    def test_google_ads_require_explicit_opt_in(self):
+        for value in ("1", "0", "true", ""):
+            with self.subTest(value=value), mock.patch.dict(pkg_pages.os.environ, {"AV_ENABLE_GOOGLE_ADS": value}):
+                html = pkg_pages.render_package_page(sshfs_page(), {"generated_at": "2026-06-12T00:00:00Z"})
+                self.assertEqual(html.count("adsbygoogle.js?client=ca-pub-5218328608281545"), int(value == "1"))
+                self.assertIn("G-CMPY7XG4QH", html)
 
     def test_npm_zero_ranks_are_rebuilt_from_download_counts(self):
         pages = pkg_pages.package_pages_from_sources(
