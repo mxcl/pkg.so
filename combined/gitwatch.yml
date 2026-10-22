@@ -69,6 +69,31 @@ history:
       dotfiles, or generated configuration. gitwatch waits briefly after a change to
       avoid racing partial writes, commits the changed file or directory contents, and
       can push to a remote when configured.
+related-packages:
+  - id: brew:git
+    reason: >
+      Git provides the repositories, staging, commits, and optional pushes that gitwatch
+      automates.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gitwatch/gitwatch#requirements
+      - https://git-scm.com/docs/git
+  - id: brew:inotify-tools
+    reason: >
+      On Linux, gitwatch invokes inotifywait from inotify-tools to detect changes before
+      creating commits.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gitwatch/gitwatch#requirements
+      - https://github.com/inotify-tools/inotify-tools
+  - id: brew:fswatch
+    reason: >
+      On macOS, gitwatch uses fswatch in place of Linux inotifywait for recursive
+      filesystem notifications.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gitwatch/gitwatch#notes-for-mac
+      - https://emcrisostomo.github.io/fswatch/
 category: developer-tools
 package-manager:
   brew: gitwatch
