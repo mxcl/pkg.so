@@ -3,7 +3,9 @@ display-name: Git Trim
 repo: null
 docs:
   - https://github.com/foriequal0/git-trim#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - <repository>/.git/config
 credentials-file-location: null
 history:
   adoption-history:
@@ -51,6 +53,26 @@ history:
       Practitioners run git trim after reviews or after synchronizing a repository. The
       README recommends dry-run mode for cautious use and trim.bases configuration for
       workflows with base branches such as develop and master.
+related-packages:
+  - id: brew:git-delete-merged-branches
+    reason: >
+      git-delete-merged-branches is the closest dedicated alternative, emphasizing
+      interactive and dry-run cleanup of merged local and remote branches, while
+      git-trim classifies tracking branches against configured bases and multiple merge
+      styles.
+    rel: alternative
+    sources:
+      - https://github.com/hartwork/git-delete-merged-branches#readme
+      - https://github.com/foriequal0/git-trim#readme
+  - id: brew:git
+    reason: >
+      git-trim operates on standard Git branches, remotes, tracking relationships, and
+      repository-local configuration supplied by Git.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/foriequal0/git-trim#readme
+      - https://git-scm.com/docs/git-branch
+      - https://git-scm.com/docs/git-config
 tags:
   - branch-cleanup
   - cli
