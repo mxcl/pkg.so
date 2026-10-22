@@ -2,9 +2,94 @@ id: cask:qzz0518/tap/dukou
 display-name: Dukou
 homepage: https://github.com/qzz0518/Dukou
 repo: https://github.com/qzz0518/Dukou
+docs:
+  - https://github.com/qzz0518/Dukou/blob/main/README.md
+  - https://github.com/qzz0518/Dukou/blob/main/README_EN.md
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Dukou targets macOS WeChat users who want to hand a complete conversation to an AI
+      assistant or another application without reading or decrypting WeChat's database.
+      Its Homebrew tap provides a package-manager installation route for the same signed
+      and notarized build distributed through GitHub Releases.
+  package-nerd-significance:
+    - >
+      Dukou packages a distinctly modern desktop bridge: a collection of macOS share
+      extensions turns an otherwise closed application's exported ZIP into input for
+      ChatGPT, Claude, terminals, archives, or user-selected applications. Its
+      local-only and sandboxed design is notable in a category often associated with
+      database extraction or injection.
+  project-history:
+    - >
+      Dukou was released in 2026 as an MIT-licensed native macOS utility for WeChat's
+      third-party forwarding facility. The project began with direct hand-off and a
+      temporary shelf, then expanded toward compliant bulk backup, offline HTML viewing,
+      Moments export, Markdown output, and per-chat continuation prompts.
+  related-projects:
+    - WeChat supplies the exported chat-history ZIP that Dukou receives.
+    - ChatGPT and Claude are explicit hand-off targets exposed by Dukou's share extensions.
+  sources:
+    - https://github.com/qzz0518/Dukou/blob/main/LICENSE
+    - https://github.com/qzz0518/Dukou/blob/main/README_EN.md
+    - https://github.com/qzz0518/Dukou/releases
+  summary:
+    - >
+      Dukou is an open-source, local macOS bridge for forwarding and archiving WeChat
+      chat history through WeChat's own export and share mechanisms.
+  timeline:
+    - '2026: Dukou was published as an MIT-licensed macOS project.'
+    - >
+      2026: Releases added bulk WeChat and Moments export, offline HTML previews,
+      Markdown output, and per-chat continuation prompts.
+  usage:
+    - >
+      Users enable Dukou's share extensions, select messages in WeChat, and choose a
+      destination such as the shelf, clipboard, ChatGPT, Claude, or a custom
+      application.
+    - >
+      Its experimental quick-forward workflows can export chats or Moments to
+      chronological text bundles with optional media, offline HTML, or Markdown while
+      avoiding database access, decryption, and code injection.
+related-packages:
+  - id: cask:wechat
+    reason: >
+      Dukou consumes chat-history bundles produced by WeChat for Mac's own
+      forward/export flow, so WeChat is the required source application for its core
+      workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/qzz0518/Dukou/blob/main/README_EN.md
+      - https://mac.weixin.qq.com/
+  - id: cask:chatgpt
+    reason: >
+      Dukou's “Send to Codex” share entry explicitly brings the ChatGPT macOS app
+      forward and pastes the exported WeChat bundle into its input.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/qzz0518/Dukou/blob/main/README_EN.md
+      - https://help.openai.com/en/articles/9703738-macos
+  - id: cask:claude
+    reason: >
+      Dukou provides a dedicated share entry that activates Claude for macOS and pastes
+      the exported WeChat bundle into it.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/qzz0518/Dukou/blob/main/README_EN.md
+      - https://support.claude.com/en/articles/10065433-install-claude-desktop
+category: productivity
 package-manager:
   brew-cask: qzz0518/tap/dukou
 package-manager-url: https://github.com/qzz0518/homebrew-tap/blob/HEAD/Casks/dukou.rb
+tags:
+  - ai-handoff
+  - backup
+  - chat-export
+  - local-first
+  - macos
+  - share-extension
+  - wechat
 description: Forward WeChat chat history to Codex, Claude or any app from the Share menu
 applications:
   - Dukou.app

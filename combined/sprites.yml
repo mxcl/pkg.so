@@ -1,10 +1,114 @@
 id: cask:sprites
-display-name: sprites
+display-name: Sprites
 homepage: https://sprites.dev/
 repo: null
+docs:
+  - https://docs.sprites.dev/
+  - https://docs.sprites.dev/quickstart
+  - https://docs.sprites.dev/working-with-sprites
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Fly.io initially launched Sprites as a skunkworks product aimed at coding agents,
+      development environments, and arbitrary or untrusted code. In July 2026 the
+      company made computers for agents a central strategic focus and expanded Sprites
+      with a new block-device system and credential-brokering Connectors.
+    - >
+      Official examples place Claude, Gemini, and Codex directly inside Sprites and also
+      expose the platform through a CLI, REST API, SDKs, skills, and a hosted MCP
+      server.
+  package-nerd-significance:
+    - >
+      Sprites expresses a shift from short-lived, stateless sandboxes toward
+      package-manager-friendly remote computers with persistent filesystems. The sprite
+      CLI lets developers create, target, execute commands on, proxy ports from,
+      checkpoint, and restore those machines from an ordinary terminal.
+    - >
+      For agent-tooling enthusiasts, its combination of hardware isolation, fast
+      creation, automatic sleep, durable ext4 storage, HTTP routing, and
+      whole-filesystem checkpoints provides a practical substrate for repeatable builds,
+      experiments, and delegated coding work.
+  project-history:
+    - >
+      Fly.io publicly launched Sprites in January 2026 as rapidly created Linux virtual
+      machines with durable root filesystems, automatic idle behavior, and a workflow
+      centered on agents rather than container images.
+    - >
+      The implementation reused Fly Machines while changing storage and orchestration
+      around persistent, disposable computers. Later work introduced the Sprite Block
+      Device for faster checkpointing and large-scale drive forking, plus Connectors for
+      authenticated external-service access without placing raw provider credentials
+      inside a Sprite.
+  related-projects:
+    - >
+      Fly Machines supply underlying infrastructure used by the initial Sprites
+      implementation.
+    - >
+      Claude Code, Gemini CLI, and Codex are official examples of coding agents run
+      inside Sprites.
+    - >
+      The official Sprites MCP server and SDKs expose the same compute lifecycle to
+      agent clients and application code.
+  sources:
+    - https://docs.sprites.dev/
+    - https://docs.sprites.dev/quickstart/
+    - https://fly.io/blog/code-and-let-live/
+    - https://fly.io/blog/design-and-implementation/
+    - https://fly.io/blog/kurt-scott-money-sprites/
+  summary:
+    - >
+      Sprites is Fly.io's platform of persistent, hardware-isolated Linux computers
+      designed for agents, development environments, services, and untrusted code.
+  timeline:
+    - '2026-01-09: Fly.io publicly launched Sprites.'
+    - '2026-01-14: Fly.io published its design and implementation account.'
+    - '2026-03-10: Fly.io added an official MCP access path.'
+    - >
+      2026-07-24: Fly.io made computers for agents a central company focus and
+      introduced a new Sprites generation with drive forking and Connectors.
+  usage:
+    - >
+      Users authenticate the sprite CLI, create or select an environment, run one-off
+      commands or interactive consoles, forward ports, expose services through a Sprite
+      URL, and preserve or roll back filesystem state with checkpoints.
+    - >
+      Common workflows include isolated coding-agent sessions, persistent development
+      environments, CI tasks, untrusted-code execution, MCP servers, prototypes, and
+      long-running services that sleep when idle.
+related-packages:
+  - id: cask:claude-code
+    reason: >
+      Fly.io documents Claude as a preinstalled coding agent that can work directly
+      inside a Sprite, giving Claude Code a persistent isolated computer for building
+      and testing.
+    rel: adjacent_workflow
+    sources:
+      - https://fly.io/blog/design-and-implementation/
+      - https://code.claude.com/docs/en/overview
+  - id: cask:codex
+    reason: >
+      Fly.io documents Codex as a preinstalled agent for Sprite-based coding workflows,
+      pairing Codex with durable remote storage, checkpoints, and an isolated Linux
+      environment.
+    rel: adjacent_workflow
+    sources:
+      - https://fly.io/blog/design-and-implementation/
+      - https://developers.openai.com/codex
+category: cloud-infrastructure
 package-manager:
   brew-cask: sprites
 package-manager-url: https://formulae.brew.sh/cask/sprites
+tags:
+  - ai-agents
+  - checkpoints
+  - cli
+  - cloud-compute
+  - development-environment
+  - hardware-isolation
+  - linux-vm
+  - persistent-storage
 description: Command-line interface for Fly.io Sprites
 executables:
   - sprite

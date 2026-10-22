@@ -3,7 +3,9 @@ display-name: Supaterm
 repo: https://github.com/supabitapp/supaterm
 docs:
   - https://docs.supaterm.com/
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.config/supaterm/settings.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -50,6 +52,25 @@ history:
     - >
       The sp CLI can create and target spaces, tabs, and panes, inspect the workspace as
       JSON, send text, capture output, and install supported agent hooks and skills.
+related-packages:
+  - id: cask:codex
+    reason: >
+      Supaterm has a managed Codex hook integration and can display Codex state or fork
+      Codex sessions from its agent panel.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.supaterm.com/guides/coding-agents/setup/
+      - https://docs.supaterm.com/guides/coding-agents/integrations/
+      - https://developers.openai.com/codex
+  - id: cask:claude-code
+    reason: >
+      Supaterm installs managed Claude hooks and supports monitoring and forking Claude
+      Code sessions directly from its terminal interface.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.supaterm.com/guides/coding-agents/setup/
+      - https://docs.supaterm.com/guides/coding-agents/integrations/
+      - https://code.claude.com/docs/en/overview
 tags:
   - agent-aware
   - automation
