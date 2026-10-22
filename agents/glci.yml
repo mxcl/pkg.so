@@ -11,8 +11,113 @@ config-file-location:
     - ~/.glci/config.toml
     - <project-root>/.glciconfig.toml
     - <project-root>/.gitlab-ci.yml
-credentials-file-location: null
-history: null
+credentials-file-location:
+  unix:
+    - ~/.glci/config.toml
+    - <project-root>/.glciconfig.toml
+    - ~/.config/glab-cli/config.yml
+history:
+  adoption-history:
+    - >
+      glci entered GitLab's runner-tools namespace as an experimental local pipeline
+      runner. Its initial release series rapidly added pipeline visualization, an
+      interactive terminal interface, background execution, artifacts, caching, an
+      embedded registry, Docker-in-Docker, context simulation, and GitLab-token
+      integration.
+    - >
+      Its adoption case is the local feedback loop: developers can inspect and run
+      `.gitlab-ci.yml` changes without committing and consuming hosted CI resources. The
+      project distinguishes itself from local reimplementations by running the official
+      GitLab Runner container against a lightweight local implementation of the GitLab
+      services that jobs expect.
+  package-nerd-significance:
+    - >
+      glci is notable because it packages much of a hosted CI environment into one local
+      CLI while delegating job execution to the official runner image. This exposes
+      package-management concerns around container engines, cached images, background
+      state, authentication, and compatibility with GitLab's evolving pipeline
+      semantics.
+    - >
+      It is also a very new package with a fast-moving pre-1.0 interface, making
+      provenance, release freshness, and explicit configuration paths particularly
+      important to package maintainers.
+  project-history:
+    - >
+      GitLab created the glci project in its `ci-cd/runner-tools` group on March 31,
+      2026. The first documented release, v0.1.0, followed on April 28, 2026.
+    - >
+      The project progressed through multiple releases during 2026. By v0.8.0 it
+      documented an interactive TUI, background daemon, official GitLab Runner
+      execution, offline YAML parsing, artifact passing, persistent CI caches, an
+      embedded OCI registry, Docker-in-Docker, remote Docker support, and local GitLab
+      Pages previews.
+  related-projects:
+    - >
+      glci is built around GitLab CI/CD and the official `gitlab/gitlab-runner`
+      container. Docker or Podman supplies its container engine, while glab can supply
+      authenticated GitLab credentials. gitlab-ci-local is a directly documented
+      alternative with different fidelity and implementation tradeoffs.
+  sources:
+    - https://gitlab.com/gitlab-org/ci-cd/runner-tools/glci
+    - https://glci-e20136.gitlab.io/
+    - https://glci-e20136.gitlab.io/changelog/
+    - https://glci-e20136.gitlab.io/comparison/
+    - https://glci-e20136.gitlab.io/getting-started/prerequisites/
+  summary:
+    - >
+      glci is an experimental GitLab project for inspecting and running GitLab CI/CD
+      pipelines locally. It parses the pipeline, simulates GitLab services, and
+      delegates job execution to the official GitLab Runner container.
+  timeline:
+    - '2026-03-31: GitLab created the glci project.'
+    - '2026-04-28: v0.1.0 was released.'
+    - '2026-08-01: v0.7.0 was released.'
+    - '2026-09-15: v0.8.0 was released.'
+  usage:
+    - >
+      Developers run `glci show`, `glci jobs`, `glci lint`, and `glci merged` to inspect
+      a pipeline, then use `glci run` for the full pipeline, selected jobs, or a stage.
+      Running `glci` without arguments opens the interactive terminal interface.
+    - >
+      Docker or Podman is required to run the GitLab Runner image, mock server, and job
+      containers. GitLab tokens are needed for features such as remote project includes,
+      CI/CD variables, and cross-project triggers; glci can read them from flags,
+      environment variables, its TOML configuration, or an authenticated glab
+      installation.
+related-packages:
+  - id: brew:gitlab-ci-local
+    reason: >
+      gitlab-ci-local is the documented lightweight alternative that reimplements GitLab
+      job execution and supports shell or Docker executors, while glci prioritizes
+      fidelity by running the official runner against simulated GitLab services.
+    rel: alternative
+    sources:
+      - https://glci-e20136.gitlab.io/comparison/
+      - https://github.com/firecow/gitlab-ci-local#readme
+  - id: brew:docker
+    reason: >
+      Docker provides the container engine glci uses by default to run its GitLab Runner
+      image, mock server, and CI job containers.
+    rel: adjacent_workflow
+    sources:
+      - https://glci-e20136.gitlab.io/getting-started/prerequisites/
+      - https://docs.docker.com/engine/
+  - id: brew:podman
+    reason: >
+      Podman is glci's documented drop-in alternative container engine when its
+      Docker-compatible API socket is enabled.
+    rel: adjacent_workflow
+    sources:
+      - https://glci-e20136.gitlab.io/getting-started/prerequisites/
+      - https://podman.io/docs
+  - id: brew:glab
+    reason: >
+      An authenticated glab installation can provide the GitLab token glci needs for
+      remote includes, CI/CD variables, and cross-project triggers.
+    rel: adjacent_workflow
+    sources:
+      - https://glci-e20136.gitlab.io/getting-started/prerequisites/
+      - https://gitlab.com/gitlab-org/cli
 tags:
   - ci-cd
   - cli
@@ -38,10 +143,11 @@ provenance:
       getting-started, configuration, and CLI sections:
       https://gitlab.com/gitlab-org/ci-cd/runner-tools/glci/-/blob/main/README.md
   history-sources:
-    - >
-      The official README identifies glci as an experimental GitLab project, but
-      reliable long-term adoption history is not yet documented:
-      https://gitlab.com/gitlab-org/ci-cd/runner-tools/glci/-/blob/main/README.md
+    - https://gitlab.com/gitlab-org/ci-cd/runner-tools/glci
+    - https://glci-e20136.gitlab.io/
+    - https://glci-e20136.gitlab.io/changelog/
+    - https://glci-e20136.gitlab.io/comparison/
+    - https://glci-e20136.gitlab.io/getting-started/prerequisites/
   repo-sources:
     - >
       source_facts.homepage is the canonical GitLab project page; the official README
@@ -57,6 +163,6 @@ category-path:
   - continuous-integration
 display-name-confidence: high
 docs-confidence: high
-history-confidence: low
+history-confidence: high
 repo-confidence: high
 tags-confidence: high

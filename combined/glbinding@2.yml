@@ -56,6 +56,24 @@ history:
       recipe. They still use the upstream pattern: create an OpenGL context with a
       toolkit such as GLFW, GTK, Qt, or SDL, initialize glbinding, and link through the
       package's CMake integration.
+related-packages:
+  - id: brew:glew
+    reason: >
+      GLEW is a C/C++ OpenGL extension loader with a traditional single-header API;
+      choose it for established GLEW-based code, while glbinding emphasizes generated,
+      type-safe C++11 interfaces.
+    rel: alternative
+    sources:
+      - https://glbinding.org/docs/v2.0/
+      - https://glew.sourceforge.net/
+  - id: brew:cmake
+    reason: >
+      CMake is glbinding's documented build and downstream package-discovery system,
+      providing `find_package` and imported-target integration.
+    rel: adjacent_workflow
+    sources:
+      - https://glbinding.org/
+      - https://cmake.org/cmake/help/latest/command/find_package.html
 category: developer-tools
 package-manager:
   brew: glbinding@2
