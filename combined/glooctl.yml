@@ -49,6 +49,23 @@ history:
       inspection in Gloo environments. The CLI reference groups commands around checking
       installations, installing gateway components, inspecting resources, and managing
       local CLI configuration.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl beside glooctl to inspect and manage the Kubernetes cluster on which
+      glooctl installs and diagnoses Gloo resources.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.solo.io/gloo-edge/main/reference/cli/glooctl/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      Use Helm for chart-based Kubernetes release management while glooctl performs
+      Gloo-specific installation checks, diagnostics, and resource operations.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.solo.io/gloo-edge/main/reference/cli/glooctl/
+      - https://helm.sh/docs/
 category: cloud-infrastructure
 package-manager:
   brew: glooctl

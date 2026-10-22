@@ -82,6 +82,31 @@ history:
       visualization build, compiling GLSL or ESSL to SPIR-V for Vulkan pipelines,
       checking generated shader code in CI, and inspecting reflection information for
       engine resource binding code.
+related-packages:
+  - id: brew:spirv-tools
+    reason: >
+      Use SPIRV-Tools after glslang to validate, optimize, assemble, disassemble, link,
+      or reduce the SPIR-V modules generated from shader source.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/KhronosGroup/glslang#readme
+      - https://github.com/KhronosGroup/SPIRV-Tools#readme
+  - id: brew:spirv-cross
+    reason: >
+      Use SPIRV-Cross to reflect on glslang-generated SPIR-V or translate it back into
+      high-level shader languages for other graphics APIs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/KhronosGroup/glslang#readme
+      - https://github.com/KhronosGroup/SPIRV-Cross#readme
+  - id: brew:shaderc
+    reason: >
+      Choose Shaderc when a Vulkan-oriented `glslc` command and compiler-library
+      interface built around glslang and SPIR-V tooling better fit the build pipeline.
+    rel: alternative
+    sources:
+      - https://github.com/KhronosGroup/glslang#readme
+      - https://github.com/google/shaderc#readme
 tags:
   - cli
   - essl
