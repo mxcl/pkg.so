@@ -78,6 +78,16 @@ history:
       Library users include ecm.h and link against libecm to call ecm_factor from their
       own factoring software. That split lets package managers install both a CLI for
       interactive factor hunting and a library for larger systems.
+related-packages:
+  - id: brew:pari
+    reason: >
+      Choose PARI/GP when you need a broader interactive number-theory system whose
+      `factorint` combines ECM with SQUFOF, Pollard rho, and MPQS; choose GMP-ECM for
+      direct control of dedicated ECM, P-1, and P+1 runs.
+    rel: alternative
+    sources:
+      - https://gitlab.inria.fr/zimmerma/ecm/-/raw/master/README
+      - https://pari.math.u-bordeaux.fr/dochtml/html-stable/Arithmetic_functions.html
 category: science
 package-manager:
   brew: gmp-ecm
