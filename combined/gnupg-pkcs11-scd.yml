@@ -51,6 +51,24 @@ history:
       Practitioners use it as a drop-in or near-drop-in scdaemon replacement for GnuPG,
       typically in setups involving OpenSC, vendor PKCS#11 modules, smart cards,
       hardware tokens or enterprise certificate devices.
+related-packages:
+  - id: brew:gnupg
+    reason: >
+      GnuPG is the host OpenPGP toolchain whose gpg-agent launches gnupg-pkcs11-scd as a
+      replacement smart-card daemon.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://github.com/alonbl/gnupg-pkcs11-scd/blob/master/gnupg-pkcs11-scd/gnupg-pkcs11-scd.1
+      - https://www.gnupg.org/
+  - id: brew:opensc
+    reason: >
+      Use OpenSC alongside the daemon when a supported smart card or token should be
+      exposed through OpenSC's PKCS#11 module to GnuPG.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/OpenSC/OpenSC/wiki/GnuPG-and-OpenSC
+      - https://github.com/OpenSC/OpenSC
 category: security
 package-manager:
   brew: gnupg-pkcs11-scd

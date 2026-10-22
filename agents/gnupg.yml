@@ -72,6 +72,32 @@ history:
       directory mechanisms, operate smart cards and verify downloaded source releases.
       Its command-line interface also makes it common in scripts, build systems and
       release automation.
+related-packages:
+  - id: brew:pinentry
+    reason: >
+      Use pinentry with GnuPG when passphrases or PINs should be collected through the
+      Assuan-compatible prompt program designed for gpg-agent.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnupg.org/related_software/pinentry/
+      - https://gnupg.org/documentation/manuals/gnupg/Agent-Options.html
+  - id: brew:gpgme
+    reason: >
+      Use GPGME when an application needs a supported library API for driving GnuPG
+      instead of parsing the interactive gpg command-line interface.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnupg.org/related_software/gpgme/
+      - https://gnupg.org/documentation/manuals/gpgme/
+  - id: brew:gnupg-pkcs11-scd
+    reason: >
+      Add gnupg-pkcs11-scd when GnuPG must use keys held by a PKCS#11 token through a
+      replacement smart-card daemon.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/alonbl/gnupg-pkcs11-scd
+      - >
+        https://github.com/alonbl/gnupg-pkcs11-scd/blob/master/gnupg-pkcs11-scd/gnupg-pkcs11-scd.1
 tags:
   - cli
   - encryption
