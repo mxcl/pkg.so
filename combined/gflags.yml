@@ -62,6 +62,23 @@ history:
       call the parser during program startup, and then read `FLAGS_name` variables from
       the relevant code. The installation docs cover use through distro packages,
       Homebrew, Bazel, vcpkg, and CMake.
+related-packages:
+  - id: brew:cmake
+    reason: >
+      CMake is gflags' primary documented build system and exposes configuration and
+      imported targets for building or consuming the library.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gflags/gflags/blob/main/INSTALL.md
+      - https://cmake.org/documentation/
+  - id: brew:bazel
+    reason: >
+      Bazel projects can declare gflags as a module dependency and link its official
+      `gflags` target directly from `cc_binary` or `cc_library` rules.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gflags/gflags/blob/main/INSTALL.md
+      - https://bazel.build/docs
 category: developer-tools
 package-manager:
   apk: gflags

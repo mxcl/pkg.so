@@ -4,7 +4,12 @@ repo: https://github.com/gogf/gf
 docs:
   - https://goframe.org/en/docs
   - https://goframe.org/en/docs/cli
-config-file-location: null
+config-file-location:
+  unix:
+    - ./hack/config.yaml
+    - ./config.{toml,yaml,yml,json,ini,xml,properties}
+    - ./config/config.{toml,yaml,yml,json,ini,xml,properties}
+    - ./manifest/config/config.{toml,yaml,yml,json,ini,xml,properties}
 credentials-file-location: null
 history:
   adoption-history:
@@ -58,6 +63,23 @@ history:
       controllers and database/protobuf entities, build resource-aware binaries, and run
       framework upgrades. The recommended version-management path is Go modules, with
       the CLI available for full framework upgrades from a project root.
+related-packages:
+  - id: brew:go
+    reason: >
+      Go is the required toolchain for compiling GoFrame applications, managing their
+      modules, and installing the `gf` CLI.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gogf/gf
+      - https://go.dev/doc/
+  - id: brew:protobuf
+    reason: >
+      Choose Protocol Buffers alongside GoFrame when using `gf gen pb` to generate Go
+      interfaces and controller-related code from `.proto` definitions.
+    rel: adjacent_workflow
+    sources:
+      - https://goframe.org/docs/cli/gen
+      - https://protobuf.dev/overview/
 tags:
   - application-framework
   - cli
