@@ -63,6 +63,16 @@ history:
       The `-d` flag displays conflict diffs from the base, and `-e` opens an editor for
       conflicted files that cannot be resolved automatically. This makes the tool useful
       during manual conflict cleanup rather than as a full merge driver replacement.
+related-packages:
+  - id: brew:git
+    reason: >
+      Git generates the diff3 or zdiff3 conflict markers that git-mediate simplifies and
+      provides rerere when resolved conflicts should be reused later.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Peaker/git-mediate
+      - https://git-scm.com/docs/git-merge
+      - https://git-scm.com/docs/git-rerere
 category: developer-tools
 package-manager:
   brew: git-mediate

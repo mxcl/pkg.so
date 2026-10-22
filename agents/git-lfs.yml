@@ -85,6 +85,35 @@ history:
       moved into LFS, with the usual history-rewrite consequences. Operators also use
       `git lfs env`, tracing, signed release verification, and the command manpages when
       debugging installs or server interactions.
+related-packages:
+  - id: brew:git-annex
+    reason: >
+      Choose git-annex when you need multiple or encrypted storage remotes and explicit
+      content-placement policies; it can also use an existing Git LFS service as a
+      special remote.
+    rel: alternative
+    sources:
+      - https://git-annex.branchable.com/tips/storing_data_in_git-lfs/
+      - https://git-annex.branchable.com/walkthrough/using_special_remotes/
+      - https://git-lfs.com/
+  - id: brew:dvc
+    reason: >
+      Choose DVC when large-file versioning is part of a reproducible data-science
+      workflow with pipelines, metrics, caches, and ordinary object-store remotes rather
+      than an LFS-specific server.
+    rel: alternative
+    sources:
+      - https://doc.dvc.org/user-guide
+      - https://git-lfs.com/
+  - id: brew:git
+    reason: >
+      Git provides the attributes, filters, hooks, configuration, commits, and remotes
+      through which Git LFS integrates with repository workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://git-lfs.com/
+      - https://github.com/git-lfs/git-lfs/blob/main/docs/man/git-lfs-config.adoc
+      - https://git-scm.com/docs/gitattributes
 tags:
   - cli
   - git
