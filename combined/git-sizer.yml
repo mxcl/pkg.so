@@ -63,6 +63,31 @@ history:
       The output points maintainers toward remedies such as removing generated files,
       moving binary assets to Git LFS or git-annex, pruning excess refs, splitting
       subprojects, or reshaping directories.
+related-packages:
+  - id: brew:git-filter-repo
+    reason: >
+      Use git-filter-repo after git-sizer identifies unwanted or oversized historical
+      content that must be removed or transformed through a repository rewrite.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/github/git-sizer#readme
+      - https://github.com/newren/git-filter-repo#readme
+  - id: brew:git-lfs
+    reason: >
+      Use Git LFS to keep future large binary content outside ordinary Git object
+      storage when git-sizer reveals blob-driven repository growth.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/github/git-sizer#readme
+      - https://git-lfs.com/
+  - id: brew:git-annex
+    reason: >
+      Use git-annex for large assets whose content should be distributed among multiple
+      stores while Git continues tracking filenames and availability metadata.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/github/git-sizer#readme
+      - https://git-annex.branchable.com/
 category: developer-tools
 package-manager:
   apk: git-sizer
