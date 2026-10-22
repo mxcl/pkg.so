@@ -3,7 +3,11 @@ display-name: git-pkgs
 repo: https://github.com/git-pkgs/git-pkgs
 docs:
   - https://github.com/git-pkgs/git-pkgs#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - .git/config
+    - ~/.gitconfig
+    - $XDG_CONFIG_HOME/git/config
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,6 +67,34 @@ history:
       Security and platform teams use it to explain who introduced a dependency or
       vulnerability, compare branches semantically instead of reading lockfile noise,
       generate SBOMs, and add CI checks that focus reviewers on dependency changes.
+related-packages:
+  - id: brew:osv-scanner
+    reason: >
+      Choose OSV-Scanner for dedicated vulnerability scanning of source trees,
+      manifests, SBOMs, or containers; choose git-pkgs when Git-history attribution and
+      exposure timelines are the priority.
+    rel: alternative
+    sources:
+      - https://git-pkgs.dev/
+      - https://google.github.io/osv-scanner/
+  - id: brew:syft
+    reason: >
+      Choose Syft for dedicated SBOM generation from container images, registries,
+      filesystems, and archives; git-pkgs is better suited to SBOMs and package analysis
+      rooted in a repository's dependency history.
+    rel: alternative
+    sources:
+      - https://git-pkgs.dev/
+      - https://oss.anchore.com/docs/guides/sbom/
+  - id: brew:git-pkgs-brief
+    reason: >
+      Run brief first to inventory a repository's languages, package managers, and tool
+      configuration, then use git-pkgs when you need historical dependency queries and
+      supply-chain analysis.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/git-pkgs/brief#readme
+      - https://git-pkgs.dev/
 tags:
   - cli
   - dependencies
