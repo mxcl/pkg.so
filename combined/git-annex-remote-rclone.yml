@@ -61,6 +61,23 @@ history:
       Password-protected rclone configs are passed through environment variables or a
       password command, while credentials remain in the rclone configuration rather than
       in git-annex.
+related-packages:
+  - id: brew:git-annex
+    reason: >
+      git-annex provides the repository and external special-remote framework that this
+      helper extends with rclone-backed storage.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/git-annex-remote-rclone/git-annex-remote-rclone/blob/master/README.md
+      - https://git-annex.branchable.com/special_remotes/rclone/
+  - id: brew:rclone
+    reason: >
+      rclone supplies the cloud-storage transports and named remotes to which this
+      git-annex helper delegates storage operations.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/git-annex-remote-rclone/git-annex-remote-rclone/blob/master/README.md
+      - https://rclone.org/docs/
 category: data
 package-manager:
   brew: git-annex-remote-rclone

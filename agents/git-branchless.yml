@@ -68,6 +68,41 @@ history:
       repository, and then use git sl for a smart log, git undo for repository-level
       undo, git restack to repair abandoned descendants, git sync to rebase local
       stacks, and git move to manipulate subtrees of commits without checking them out.
+related-packages:
+  - id: brew:jj
+    reason: >
+      Choose Jujutsu for a separate Git-compatible VCS and working-copy model with
+      anonymous branches, automatic rebasing, checked-in conflicts, and undo;
+      git-branchless instead incrementally augments an ordinary Git working copy.
+    rel: alternative
+    sources:
+      - https://github.com/arxanas/git-branchless/wiki/Related-tools
+      - https://docs.jj-vcs.dev/latest/
+  - id: brew:stgit
+    reason: >
+      Choose StGit when you want an explicitly managed stack of named patches alongside
+      normal Git work; git-branchless instead encourages manipulating commits directly,
+      with branches remaining optional labels.
+    rel: alternative
+    sources:
+      - https://github.com/arxanas/git-branchless/wiki/Related-tools
+      - https://stacked-git.github.io/
+  - id: brew:git-absorb
+    reason: >
+      git-absorb complements a branchless commit stack by routing staged fixup changes
+      into the earlier commits that introduced the affected lines.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/arxanas/git-branchless/wiki/Related-tools
+      - https://github.com/tummychow/git-absorb
+  - id: brew:git-revise
+    reason: >
+      git-revise complements git-branchless with efficient working-copy-free operations
+      for updating, splitting, and rearranging commits.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/arxanas/git-branchless/wiki/Related-tools
+      - https://git-revise.readthedocs.io/en/latest/
 tags:
   - cli
   - git
