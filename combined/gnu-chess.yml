@@ -4,7 +4,10 @@ homepage: https://www.gnu.org/software/chess/
 repo: https://git.savannah.gnu.org/cgit/chess.git
 docs:
   - https://www.gnu.org/software/chess/manual/html_node
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/gnuchess/gnuchess.ini
+    - ~/.config/gnuchess/gnuchess.ini
 credentials-file-location: null
 history:
   adoption-history:
@@ -72,6 +75,26 @@ history:
       when a UCI-speaking interface is desired. Package users also rely on its book
       files, PGN loading and saving, FEN/EPD workflows, and configuration file behavior
       for repeatable engine sessions.
+related-packages:
+  - id: brew:stockfish
+    reason: >
+      Choose Stockfish when maximum orthodox-chess analysis strength and a dedicated UCI
+      engine are the priority; choose GNU Chess when terminal play and historical XBoard
+      compatibility are useful.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/chess/
+      - https://stockfishchess.org/
+      - https://github.com/official-stockfish/Stockfish#readme
+  - id: brew:xboard
+    reason: >
+      XBoard is GNU Chess’s documented graphical front end and can launch it as a
+      backend using the `--xboard` protocol mode.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/chess/manual/html_node/XBoard-chess-engine.html
+      - https://www.gnu.org/software/xboard/
+      - https://www.gnu.org/software/xboard/manual/xboard.html
 category: games
 package-manager:
   apk: gnuchess
