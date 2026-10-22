@@ -3,7 +3,12 @@ display-name: GNU Complexity
 repo: https://git.savannah.gnu.org/cgit/complexity.git
 docs:
   - https://www.gnu.org/software/complexity/manual
-config-file-location: null
+config-file-location:
+  unix:
+    - $(pkgdatadir)/complex.conf
+    - ~/.complexityrc
+    - $PROJECT_ROOT/complex.conf
+    - $PWD/.complexityrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -51,6 +56,24 @@ history:
       line counts, source locations, and optional histograms. The manual's example runs
       the tool against its own source with a low threshold, illustrating use as a quick
       audit tool for ranking functions before refactoring or review.
+related-packages:
+  - id: brew:pmccabe
+    reason: >
+      pmccabe is the traditional McCabe-style C/C++ complexity analyzer that GNU
+      Complexity's manual compares against; choose it when cyclomatic path counts are
+      the desired metric.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/complexity/manual/complexity.html
+      - https://pmccabe.gitlab.io/pmccabe/pmccabe.html
+  - id: brew:unifdef
+    reason: >
+      GNU Complexity can invoke unifdef through its -u option to remove selected
+      conditional-compilation branches before scoring C source.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/complexity/manual/complexity.html
+      - https://dotat.at/prog/unifdef/unifdef.txt
 tags:
   - c
   - cli

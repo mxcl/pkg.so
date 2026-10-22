@@ -3,7 +3,11 @@ display-name: GNU indent
 repo: https://git.savannah.gnu.org/cgit/indent.git
 docs:
   - https://www.gnu.org/software/indent/manual/indent.html
-config-file-location: null
+config-file-location:
+  unix:
+    - $INDENT_PROFILE
+    - $PWD/.indent.pro
+    - ~/.indent.pro
 credentials-file-location: null
 history:
   adoption-history:
@@ -53,6 +57,26 @@ history:
       K&R, Berkeley, or Linux. It also supports a profile file mechanism, so teams or
       individual developers can keep repeated formatting options outside the command
       line.
+related-packages:
+  - id: brew:clang-format
+    reason: >
+      clang-format is a broader alternative for C-family and several other languages,
+      with project configuration and editor integrations; choose GNU indent for
+      traditional C-only formatting and its established style presets.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/indent/manual/indent.html
+      - https://clang.llvm.org/docs/ClangFormat.html
+  - id: brew:astyle
+    reason: >
+      Artistic Style is an alternative formatter for C, C++, Objective-C, C#, and Java
+      that can also be embedded as a library, while GNU indent focuses on command-line C
+      formatting.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/indent/manual/indent.html
+      - https://astyle.sourceforge.net/
+      - https://astyle.sourceforge.net/astyle.html
 tags:
   - c
   - c-plus-plus
