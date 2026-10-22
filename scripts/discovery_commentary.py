@@ -4,6 +4,7 @@ from __future__ import annotations
 import datetime as dt
 import hashlib
 import json
+import re
 from pathlib import Path
 import subprocess
 import tempfile
@@ -24,7 +25,10 @@ def fingerprint(item):
 def valid_note(note):
     if not isinstance(note, dict) or not isinstance(note.get("text"), str):
         return False
-    if not 40 <= len(note["text"].strip()) <= 1000:
+    text = note["text"].strip()
+    if not 40 <= len(text) <= 280 or len(text.split()) > 35:
+        return False
+    if re.search(r"""[.!?]["'”’)]*\s+\S""", text) or "\n" in text:
         return False
     sources = note.get("sources")
     if not isinstance(sources, list) or not 1 <= len(sources) <= 3:
@@ -58,14 +62,18 @@ def research(items):
                       "sources": {"type": "array", "items": {"type": "object",
                           "additionalProperties": False, "required": ["title", "url"],
                           "properties": {"title": {"type": "string"}, "url": {"type": "string"}}}}}}}}}
-    prompt = """Write one short editorial note (2–3 sentences, at most 1000 characters) for EACH
-pkg.so discovery entry below. Explain what the product does and why it may be gaining attention.
+    prompt = """Write ONE concise sentence per pkg.so discovery entry: aim for 20–30 words,
+never exceed 35 words or 280 characters. Explain the product's appeal and a plausible reason
+for attention, or highlight one or two notable features for a version-specific release.
+Do not cram a feature list or multiple clauses into a long sentence; choose the most useful point.
+Avoid abbreviations with periods and line breaks.
 Browse official product documentation, release notes or the upstream repository; cite 1–3 exact
 HTTPS pages supporting the note. For a version-specific package, verify that exact release's
 status and highlight concrete features, never features borrowed from another version. Do not
 assume a version is stable or a significant release just because it appears in the catalog.
 Distinguish verified facts from your interpretation: use 'may' or 'likely' for a plausible reason
-for growth, and say when no specific catalyst is established. Install activity alone cannot
+for growth; if no catalyst is supported, focus on the product's appeal without inventing one.
+Do not append boilerplate disclaimers. Install activity alone cannot
 establish causation or unique user growth. For newly discovered entries without a trend, explain
 its appeal without claiming growth or a new release. Avoid repeating counts or relative dates.
 Use plain text, no Markdown. Return the exact packageKey for every entry, a text and sources

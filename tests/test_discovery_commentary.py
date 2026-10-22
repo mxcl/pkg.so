@@ -13,7 +13,7 @@ import discovery_commentary as c
 class CommentaryTests(unittest.TestCase):
     def test_research_cache_shared_shelves_expiry_and_version_change(self):
         item = {"packageKey": "brew:python@3.15", "version": "3.15.0", "summary": "Python"}
-        note = {"text": "Python is a programming language. Its new release may explain increased interest.",
+        note = {"text": "Python’s new release adds features that may explain increased interest in the language.",
                 "sources": [{"title": "Release notes", "url": "https://python.org/releases/"}]}
         today = dt.date(2026, 10, 22)
         def document():
@@ -43,6 +43,21 @@ class CommentaryTests(unittest.TestCase):
         self.assertTrue(c.valid_note(note))
         note["sources"] = []
         self.assertFalse(c.valid_note(note))
+
+    def test_commentary_is_one_short_sentence_with_version_numbers(self):
+        note = {"text": "Python 3.15 adds lazy imports and immutable dictionaries, which may be driving interest in the new release.",
+                "sources": [{"title": "Release notes", "url": "https://python.org/releases/"}]}
+        self.assertTrue(c.valid_note(note))
+        for text in (
+            "Python adds lazy imports. These features may be driving interest.",
+            "Why is Python trending? Its release adds useful features.",
+            "A useful language! Its release adds features for developers.",
+            "Python adds lazy imports\nwhich may be driving interest in the release.",
+            "word " * 36,
+            "x" * 281,
+        ):
+            with self.subTest(text=text):
+                self.assertFalse(c.valid_note({**note, "text": text}))
 
     def test_failed_research_preserves_cache(self):
         with tempfile.TemporaryDirectory() as tmp:
