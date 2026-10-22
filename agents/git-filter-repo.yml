@@ -61,6 +61,25 @@ history:
       mailmap information, or replacing text across historical blobs. The tool
       deliberately encourages use from a fresh clone and performs cleanup steps such as
       pruning old history and repacking so users do not mix rewritten and original refs.
+related-packages:
+  - id: brew:bfg
+    reason: >
+      BFG Repo-Cleaner is an alternative optimized for common large-file and credential
+      purges, while git-filter-repo supports a broader transformation model and
+      programmable callbacks.
+    rel: alternative
+    sources:
+      - https://github.com/newren/git-filter-repo
+      - https://rtyley.github.io/bfg-repo-cleaner/
+  - id: brew:git
+    reason: >
+      git-filter-repo installs as a Git subcommand and replaces repository-rewriting
+      workflows that Git's own documentation discourages users from performing with
+      filter-branch.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/newren/git-filter-repo
+      - https://git-scm.com/docs/git-filter-branch
 tags:
   - cli
   - git
