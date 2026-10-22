@@ -4,7 +4,9 @@ repo: https://gitlab.com/gnutls/gnutls
 docs:
   - https://gnutls.org/manual/gnutls.html
   - https://gnutls.org/reference
-config-file-location: null
+config-file-location:
+  unix:
+    - /etc/gnutls/config
 credentials-file-location: null
 history:
   adoption-history:
@@ -76,6 +78,40 @@ history:
       library requirements and operational tooling needs. It is a small command-line
       surface on top of a security-sensitive shared library, so maintainers care about
       ABI stability, protocol defaults, and timely security updates.
+related-packages:
+  - id: brew:nettle
+    reason: >
+      Nettle supplies the cryptographic primitives used by GnuTLS's documented
+      cryptographic backend.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnutls.org/manual/gnutls.html
+      - https://www.lysator.liu.se/~nisse/nettle/
+  - id: brew:libtasn1
+    reason: >
+      Libtasn1 provides the ASN.1 and DER functionality that GnuTLS uses for certificate
+      and protocol data structures.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnutls.org/manual/gnutls.html
+      - https://www.gnu.org/software/libtasn1/
+  - id: brew:p11-kit
+    reason: >
+      p11-kit can provide GnuTLS with configured PKCS #11 modules and a system
+      trust-policy module for smart cards, HSMs, and shared certificate trust.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnutls.org/manual/gnutls.html
+      - https://p11-glue.github.io/p11-glue/p11-kit/manual/
+  - id: brew:openssl@3
+    reason: >
+      Choose OpenSSL 3 as an alternative general-purpose TLS and cryptography stack when
+      software targets OpenSSL's native APIs or provider architecture; GnuTLS only
+      offers a limited compatibility layer.
+    rel: alternative
+    sources:
+      - https://www.gnutls.org/manual/gnutls.html
+      - https://docs.openssl.org/3.0/man7/migration_guide/
 tags:
   - cli
   - cryptography

@@ -5,7 +5,10 @@ repo: https://github.com/gnuradio/gnuradio
 docs:
   - https://wiki.gnuradio.org/index.php/Main_Page
   - https://wiki.gnuradio.org/index.php?title=Tutorials
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.gnuradio/config.conf
+    - <prefix>/etc/gnuradio/conf.d/*.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -77,6 +80,40 @@ history:
       C++ for performance-sensitive blocks, and gr_modtool to build out-of-tree modules.
       The command-line tools in package builds are also used for inspecting installs,
       compiling flowgraphs, plotting samples, and testing radio chains.
+related-packages:
+  - id: brew:uhd
+    reason: >
+      Install UHD alongside GNU Radio to use the documented UHD source and sink blocks
+      with Ettus Research USRP hardware.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.gnuradio.org/index.php/Guided_Tutorial_Hardware_Considerations
+      - https://files.ettus.com/manual/
+  - id: brew:volk
+    reason: >
+      VOLK provides the vector-optimized kernels used by GNU Radio, and volk_profile can
+      tune kernel selection for the local CPU.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.gnuradio.org/index.php?title=Volk
+      - https://www.libvolk.org/
+  - id: cask:gqrx
+    reason: >
+      Gqrx is a ready-made graphical SDR receiver built on GNU Radio's DSP blocks and
+      runtime, making it useful when a receiver application is preferable to
+      constructing a flowgraph.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gqrx.dk/doc/gqrx-design
+      - https://www.gnuradio.org/
+  - id: brew:hackrf
+    reason: >
+      HackRF supplies host tools and libraries for radio hardware that the official
+      HackRF documentation lists as directly supported by GNU Radio.
+    rel: adjacent_workflow
+    sources:
+      - https://hackrf.readthedocs.io/en/latest/software_support.html
+      - https://www.gnuradio.org/
 category: science
 package-manager:
   apk: gnuradio
