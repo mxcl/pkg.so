@@ -4,7 +4,12 @@ repo: null
 docs:
   - https://github.com/felipec/git-remote-hg/wiki
   - https://github.com/felipec/git-remote-hg#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - .git/config
+    - ~/.gitconfig
+    - ~/.config/git/config
+    - /etc/gitconfig
 credentials-file-location: null
 history:
   adoption-history:
@@ -51,6 +56,16 @@ history:
       commands such as `git clone hg::https://example/repo`. Configuration options cover
       Mercurial notes, branch tracking, insecure HTTPS handling, and hg-git
       compatibility.
+related-packages:
+  - id: brew:git-cinnabar
+    reason: >
+      git-cinnabar is another bidirectional Git remote helper for Mercurial,
+      distinguished by not keeping a local Mercurial clone and by its strong focus on
+      Mozilla repositories and workflows.
+    rel: alternative
+    sources:
+      - https://github.com/glandium/git-cinnabar
+      - https://github.com/felipec/git-remote-hg
 tags:
   - cli
   - git

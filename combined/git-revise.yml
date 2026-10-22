@@ -63,6 +63,26 @@ history:
       an older commit, or use interactive and autosquash modes to edit a stack of
       unpublished commits. It is used beside `git rebase`, not as a full replacement for
       every history-rewriting case.
+related-packages:
+  - id: brew:git-absorb
+    reason: >
+      git-absorb automatically maps staged hunks to earlier commits and creates fixup
+      commits, while git-revise is preferable when the user wants deliberate splitting,
+      rewording, or reordering control.
+    rel: alternative
+    sources:
+      - https://github.com/tummychow/git-absorb
+      - https://git-revise.readthedocs.io/en/latest/man.html
+  - id: brew:git-branchless
+    reason: >
+      git-branchless complements git-revise with smart-log, undo, restacking,
+      synchronization, and commit-graph navigation around the patch stacks that
+      git-revise edits.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/arxanas/git-branchless/wiki/Related-tools
+      - https://github.com/arxanas/git-branchless
+      - https://git-revise.readthedocs.io/en/latest/
 category: developer-tools
 package-manager:
   apk: git-revise

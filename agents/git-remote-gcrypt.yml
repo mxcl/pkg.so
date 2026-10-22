@@ -4,7 +4,12 @@ repo: null
 docs:
   - https://github.com/spwhitton/git-remote-gcrypt#readme
   - https://spwhitton.name/tech/code/git-remote-gcrypt
-config-file-location: null
+config-file-location:
+  unix:
+    - .git/config
+    - ~/.gitconfig
+    - ~/.config/git/config
+    - /etc/gitconfig
 credentials-file-location: null
 history:
   adoption-history:
@@ -65,6 +70,16 @@ history:
       rsync, sftp, or Git-backed storage. Access is managed through GPG keys and Git
       config keys such as `gcrypt.participants`, so teams can use familiar Git commands
       while encrypting the remote-side repository data.
+related-packages:
+  - id: brew:git-crypt
+    reason: >
+      git-crypt transparently encrypts selected files while leaving most of a repository
+      ordinary, whereas git-remote-gcrypt is the better fit when the entire remote
+      repository needs encryption.
+    rel: alternative
+    sources:
+      - https://github.com/AGWA/git-crypt#limitations
+      - https://github.com/spwhitton/git-remote-gcrypt/blob/master/README.rst
 tags:
   - cli
   - encryption
