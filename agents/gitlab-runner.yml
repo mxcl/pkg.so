@@ -8,7 +8,11 @@ config-file-location:
     - /etc/gitlab-runner/config.toml
     - ~/.gitlab-runner/config.toml
     - ./config.toml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - /etc/gitlab-runner/config.toml
+    - ~/.gitlab-runner/config.toml
+    - ./config.toml
 history:
   adoption-history:
     - >
@@ -79,6 +83,16 @@ history:
       isolate sensitive workloads, attach tags to route jobs, monitor logs and metrics,
       and keep runner versions aligned with GitLab releases so pipeline features behave
       as expected.
+related-packages:
+  - id: brew:glab
+    reason: >
+      GLab can run inside GitLab Runner jobs to manage GitLab resources, and GitLab's
+      documented release workflow uses it from `.gitlab-ci.yml` jobs.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.gitlab.com/runner/
+      - https://docs.gitlab.com/user/project/releases/release_cli/
+      - https://docs.gitlab.com/cli/
 tags:
   - automation
   - ci

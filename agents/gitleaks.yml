@@ -75,6 +75,42 @@ history:
       allowlists, report formats, or redaction behavior. In package-manager workflows,
       the single binary makes it easy to add secret scanning to local development and CI
       images without a language runtime.
+related-packages:
+  - id: brew:trufflehog
+    reason: >
+      Choose TruffleHog when live-credential verification and scanning sources beyond
+      local code—such as cloud storage, container images, and hosted organizations—are
+      primary requirements.
+    rel: alternative
+    sources:
+      - https://github.com/gitleaks/gitleaks
+      - https://github.com/trufflesecurity/trufflehog
+  - id: brew:detect-secrets
+    reason: >
+      Choose detect-secrets when a reviewed baseline and plugin/filter model are
+      preferable for preventing new findings in a large repository with accepted
+      historical results.
+    rel: alternative
+    sources:
+      - https://github.com/gitleaks/gitleaks
+      - https://github.com/Yelp/detect-secrets
+  - id: brew:git-secrets
+    reason: >
+      Choose git-secrets for a Git-hook-centered pattern blocker, particularly when AWS
+      patterns or credential-file providers are central to the workflow.
+    rel: alternative
+    sources:
+      - https://github.com/gitleaks/gitleaks
+      - https://github.com/awslabs/git-secrets
+  - id: brew:pre-commit
+    reason: >
+      Gitleaks officially documents a pre-commit configuration, while pre-commit
+      installs and manages the hook environment that runs the scanner before commits are
+      accepted.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gitleaks/gitleaks#pre-commit
+      - https://pre-commit.com/
 tags:
   - cli
   - devsecops

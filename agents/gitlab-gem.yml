@@ -4,8 +4,12 @@ repo: null
 docs:
   - https://narkoz.github.io/gitlab
   - https://www.rubydoc.info/gems/gitlab
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - config/initializers/gitlab.rb
+credentials-file-location:
+  unix:
+    - config/initializers/gitlab.rb
 history:
   adoption-history:
     - >
@@ -64,6 +68,16 @@ history:
       configure those values in Ruby with `Gitlab.configure`. CLI users call client
       methods as commands, such as `gitlab users`, `gitlab user`, and `gitlab
       create_merge_request`, with YAML-style option hashes where needed.
+related-packages:
+  - id: brew:glab
+    reason: >
+      Choose GLab for GitLab's official, broad terminal workflow covering issues, merge
+      requests, pipelines, changelogs, and releases; choose gitlab-gem when Ruby-library
+      integration or its method-oriented CLI is required.
+    rel: alternative
+    sources:
+      - https://narkoz.github.io/gitlab/
+      - https://docs.gitlab.com/cli/
 tags:
   - api-client
   - cli
