@@ -56,6 +56,25 @@ history:
       `gpg.format` to `x509`, and then sign commits with `git commit -S` or sign tags
       with `git tag -s`. Verification commonly uses `gitsign verify` so callers can
       check both cryptographic integrity and certificate identity claims.
+related-packages:
+  - id: brew:smimesign
+    reason: >
+      Choose smimesign when Git signatures must use conventional S/MIME certificates
+      from platform certificate stores or smart cards; choose gitsign for short-lived
+      Sigstore certificates tied to an OIDC identity and recorded in a transparency log.
+    rel: alternative
+    sources:
+      - https://github.com/sigstore/gitsign
+      - https://github.com/github/smimesign
+  - id: brew:gittuf
+    reason: >
+      gittuf can enforce repository policies that rely on authenticated Git signatures,
+      and its official signing-key guide documents gitsign as the Sigstore configuration
+      for signing commits and tags.
+    rel: adjacent_workflow
+    sources:
+      - https://gittuf.dev/documentation/contributors/signing-keys
+      - https://github.com/sigstore/gitsign
 tags:
   - cli
   - git
