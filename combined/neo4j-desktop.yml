@@ -1,10 +1,113 @@
 id: cask:neo4j-desktop
 display-name: Neo4j Desktop
 homepage: https://neo4j.com/download/
-repo: null
+repo: https://github.com/neo4j-devtools/neo4j-desktop
+docs:
+  - https://neo4j.com/docs/desktop/current
+  - https://neo4j.com/docs/desktop/current/installation
+  - https://neo4j.com/docs/desktop/current/operations/instance-management
+config-file-location:
+  unix: <Neo4j Desktop instance folder>/conf/neo4j.conf
+  windows: <Neo4j Desktop instance folder>\conf\neo4j.conf
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Neo4j Desktop packages a local developer environment around Neo4j rather than
+      requiring users to assemble a database server, JVM, query UI, import tooling, and
+      visualization tools separately. It supports macOS, Windows, and Linux and can
+      manage local databases while also connecting to remote Neo4j and Aura instances.
+    - >
+      Desktop includes a Developer edition license for local single-user use and
+      supports installing plugins through its interface, making it a common entry point
+      for graph application development and Cypher experimentation.
+  package-nerd-significance:
+    - >
+      Neo4j Desktop is the batteries-included desktop distribution in the Neo4j
+      ecosystem. Package users care about it because the application manages multiple
+      DBMS versions and instance directories while bundling import, query, Bloom
+      visualization, and dashboard tools.
+    - >
+      It differs from the standalone Neo4j server package: Desktop prioritizes an
+      interactive local workspace and lifecycle management, whereas the server and
+      Cypher Shell packages better suit services, scripts, and headless environments.
+  project-history:
+    - >
+      Neo4j Desktop began as a desktop packaging of the Neo4j graph platform with a
+      bundled JVM, Developer Edition database, and graph applications. The official
+      project repository describes it as a client containing everything needed to start
+      working with Neo4j.
+    - >
+      Desktop 2.x is described by Neo4j as an evolution of the original Desktop, with a
+      redesigned and more unified experience that mirrors the Neo4j Aura console. It
+      consolidated local instance management with Import, Query, Bloom, and Dashboards
+      in Desktop Studio.
+  related-projects:
+    - Neo4j DBMS is the graph database managed locally by Desktop.
+    - Neo4j Aura supplies managed remote Neo4j instances that Desktop can connect to.
+    - >
+      Cypher Shell provides a command-line path for running queries and administrative
+      commands.
+    - APOC plugins can be installed into compatible local instances from Desktop.
+  sources:
+    - https://github.com/neo4j-devtools/neo4j-desktop
+    - https://neo4j.com/docs/desktop/current/
+    - https://neo4j.com/docs/desktop/current/operations/instance-management/
+    - https://neo4j.com/docs/desktop/current/visual-tour/
+  summary:
+    - >
+      Neo4j Desktop is Neo4j's graphical local development and management environment
+      for creating DBMS instances, managing graph databases, running Cypher, importing
+      data, visualizing graphs, and connecting to remote Neo4j services.
+  timeline:
+    - >
+      The original Neo4j Desktop combined a local Neo4j developer installation with
+      bundled graph applications.
+    - >
+      Desktop 2.x introduced a redesigned workspace aligned with the Aura console and
+      unified Import, Query, Bloom, and Dashboards as Desktop Studio.
+    - Desktop 2.x added migration support for cloning compatible instances from Desktop 1.x.
+  usage:
+    - >
+      Developers create projects and local DBMS instances, select a Neo4j version, start
+      or stop instances, edit each instance's `neo4j.conf`, install plugins, import
+      data, and query or visualize graphs from the bundled Studio tools.
+    - >
+      The official UI exposes each local instance's folder, log, configuration file,
+      data path, connection URI, security controls, backup actions, and upgrade
+      workflow.
+related-packages:
+  - id: brew:neo4j
+    reason: >
+      Choose the Neo4j formula when you need the self-managed database server and
+      administration commands without Desktop's bundled graphical workspace and instance
+      manager.
+    rel: alternative
+    sources:
+      - https://neo4j.com/docs/desktop/current/
+      - https://neo4j.com/docs/operations-manual/current/
+  - id: brew:cypher-shell
+    reason: >
+      Cypher Shell complements Desktop with a scriptable terminal client for querying
+      and administering the local or remote Neo4j instances that Desktop manages or
+      connects to.
+    rel: adjacent_workflow
+    sources:
+      - https://neo4j.com/docs/desktop/current/operations/instance-management/
+      - https://neo4j.com/docs/operations-manual/current/cypher-shell/
+category: data
 package-manager:
   brew-cask: neo4j-desktop
 package-manager-url: https://formulae.brew.sh/cask/neo4j-desktop
+tags:
+  - cypher
+  - data-import
+  - database-management
+  - desktop
+  - developer-environment
+  - graph-database
+  - neo4j
+  - visualization
 description: Developer IDE or Management Environment for Neo4j instances
 applications:
   - Neo4j Desktop 2.app

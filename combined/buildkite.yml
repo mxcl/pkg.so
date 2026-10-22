@@ -1,11 +1,80 @@
 id: brew:buildkite
-display-name: buildkite
+display-name: Buildkite CLI
 homepage: https://github.com/buildkite/cli
 repo: https://github.com/buildkite/cli
+docs:
+  - https://buildkite.com/docs/platform/cli
+  - https://buildkite.com/docs/platform/cli/configuration
+  - https://buildkite.com/docs/platform/cli/reference
+config-file-location:
+  unix:
+    - ~/.config/bk.yaml
+    - .bk.yaml (current project directory)
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Buildkite distributes the CLI for macOS, Linux, and Windows and documents
+      installation through native packages, Homebrew, and downloadable binaries. Its
+      place in package-manager culture is as a scriptable counterpart to the Buildkite
+      web interface.
+  package-nerd-significance:
+    - >
+      The CLI gives terminal-oriented users one package for querying and operating
+      Buildkite resources through its REST and GraphQL APIs. Its support for
+      project-local organization selection, multiple organizations, OAuth, and headless
+      device authorization makes it useful on both developer workstations and
+      administrative hosts.
+  project-history:
+    - >
+      Buildkite develops the CLI as an open-source Go project in the buildkite/cli
+      repository. The command is presented upstream as `bk`, with Buildkite maintaining
+      dedicated installation, configuration, and command-reference documentation
+      alongside repository releases.
+  related-projects:
+    - >
+      The Buildkite platform supplies the pipelines, builds, jobs, artifacts, and other
+      resources operated by the CLI.
+    - Buildkite's REST and GraphQL APIs provide the service interfaces used by the CLI.
+  sources:
+    - https://buildkite.com/docs/platform/cli
+    - https://buildkite.com/docs/platform/cli/configuration
+    - https://buildkite.com/docs/platform/cli/installation
+    - https://github.com/buildkite/cli
+  summary:
+    - >
+      Buildkite CLI is Buildkite's official command-line client for managing platform
+      resources such as pipelines, builds, jobs, agents, and artifacts.
+  timeline:
+    - >
+      The Buildkite CLI became an officially documented, cross-platform client with
+      dedicated package repositories and command-reference documentation.
+    - >
+      The CLI added browser-based OAuth and device authorization in addition to manually
+      supplied API access tokens.
+  usage:
+    - >
+      Users invoke `bk` commands to inspect and manage Buildkite resources from a
+      terminal. Authentication can use an OAuth login flow or an API access token.
+    - >
+      Global organization configuration is stored in `$HOME/.config/bk.yaml`, while
+      `.bk.yaml` selects the organization for a particular working directory. OAuth
+      credentials are kept in the operating system's credential store rather than the
+      YAML file.
+related-packages: []
+category: developer-tools
 package-manager:
   brew: buildkite
 package-manager-url: https://formulae.brew.sh/formula/buildkite
 license: MIT
+tags:
+  - api-client
+  - build-automation
+  - buildkite
+  - ci-cd
+  - cli
+  - devops
+  - pipelines
 description: Work with Buildkite from the command-line
 executables:
   - buildkite

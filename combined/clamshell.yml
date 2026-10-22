@@ -2,9 +2,81 @@ id: cask:clamshell
 display-name: Clamshell
 homepage: https://clamshell.dev/
 repo: null
+docs:
+  - https://clamshell.dev/
+  - https://clamshell.dev/changelog
+  - https://clamshell.dev/guides
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Clamshell targets Apple-silicon Mac laptops running macOS 14 or later. The
+      developer distributes it directly and through Setapp; the supplied catalog record
+      also identifies a Homebrew cask, giving command-line-oriented Mac users a
+      package-managed installation route.
+  package-nerd-significance:
+    - >
+      Clamshell addresses a macOS behavior that ordinary idle-sleep assertions do not:
+      lid-close sleep. It is notable to developers running builds, downloads, SSH
+      sessions, simulators, or coding agents because it keeps those jobs active without
+      requiring an external display, `sudo`, a kernel extension, or a privileged helper.
+    - >
+      The package also emphasizes reversible system behavior: disarming, quitting, or
+      restarting restores normal lid-close sleep, while low-battery and thermal
+      protections can end or block an armed session.
+  project-history:
+    - >
+      Clamshell was first released in May 2026 as a lightweight menu-bar utility for
+      keeping a MacBook awake with its lid closed. Subsequent releases added automatic
+      updating, crash recovery, low-battery protection, Shortcuts actions, scriptable
+      URL actions, thermal safeguards, and improved support for screen-dependent agent
+      workflows.
+  related-projects:
+    - >
+      macOS `caffeinate` prevents idle sleep but, as Clamshell's official documentation
+      explains, does not override the separate lid-close sleep path.
+    - >
+      Apple's conventional closed-display mode is the built-in alternative when power,
+      an external display, a keyboard, and a pointing device are available.
+  sources:
+    - https://clamshell.dev/
+    - https://clamshell.dev/changelog
+    - https://clamshell.dev/guides/
+    - source_facts.package-manager
+  summary:
+    - >
+      Clamshell is a macOS menu-bar utility that keeps an Apple-silicon MacBook awake
+      and network-accessible with its lid closed while leaving the built-in display
+      dark.
+  timeline:
+    - '2026-05-29: Clamshell 1.0.0 was released.'
+    - '2026-06-14: The 1.4.0 release added scriptable URL actions and explicit menu-bar arming.'
+    - >
+      2026: Later releases added thermal protection, power-transition handling,
+      localization, and support for screen-dependent agent sessions.
+  usage:
+    - >
+      Users arm Clamshell from its menu, a shortcut, an automation action, or—on
+      supported models—by holding Option while closing the lid. Opening the lid,
+      disarming, quitting, or restarting restores normal behavior.
+    - >
+      Typical uses include keeping terminal jobs, coding agents, downloads, SSH access,
+      music playback, headed browser tests, and the iOS Simulator running while the
+      laptop is closed.
+related-packages: []
+category: system
 package-manager:
   brew-cask: clamshell
 package-manager-url: https://formulae.brew.sh/cask/clamshell
+tags:
+  - apple-silicon
+  - automation
+  - lid-closed
+  - macos
+  - menu-bar
+  - power-management
+  - prevent-sleep
 description: Keep the computer awake with the lid closed and the built-in display dark
 applications:
   - Clamshell.app
