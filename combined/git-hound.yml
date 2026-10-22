@@ -51,6 +51,26 @@ history:
       commit`, or `git hound sniff` to scan a commit, a manual diff, a whole codebase,
       or repository history. The `.githound.yml` file separates warning patterns,
       failure patterns, and skipped filenames.
+related-packages:
+  - id: brew:git-secrets
+    reason: >
+      Choose git-secrets when you want installed pre-commit, commit-msg, and
+      prepare-commit-msg hooks plus built-in AWS credential registration; Git Hound
+      instead applies a small repository-local PCRE rule set through its own commit
+      wrapper.
+    rel: alternative
+    sources:
+      - https://github.com/ezekg/git-hound#readme
+      - https://github.com/awslabs/git-secrets#readme
+  - id: brew:gitleaks
+    reason: >
+      Choose Gitleaks for maintained built-in detection rules, repository and directory
+      scanning, structured reports, CI use, and documented pre-commit integration; Git
+      Hound is a narrower regex-driven Git plugin.
+    rel: alternative
+    sources:
+      - https://github.com/ezekg/git-hound#readme
+      - https://github.com/gitleaks/gitleaks#readme
 category: security
 package-manager:
   brew: git-hound
