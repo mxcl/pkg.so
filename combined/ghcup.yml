@@ -55,6 +55,31 @@ history:
       versions. Its guide and changelog show growth beyond basic installation into a
       TUI, metadata-driven installation, release channels, tool revisions, health
       checks, and support for editor workflows that depend on Haskell Language Server.
+related-packages:
+  - id: brew:ghc
+    reason: >
+      Install GHC alongside GHCup when you need the compiler itself; GHCup manages and
+      switches among installed GHC toolchains.
+    rel: adjacent_workflow
+    sources:
+      - https://www.haskell.org/ghcup/guide/
+      - https://www.haskell.org/ghc/
+  - id: brew:cabal-install
+    reason: >
+      Use cabal-install for Haskell builds and package management after GHCup has
+      provisioned the desired compiler and Cabal tool versions.
+    rel: adjacent_workflow
+    sources:
+      - https://www.haskell.org/ghcup/guide/
+      - https://www.haskell.org/cabal/
+  - id: brew:haskell-language-server
+    reason: >
+      Add Haskell Language Server for editor diagnostics and navigation; GHCup supports
+      installing HLS versions that match installed GHC toolchains.
+    rel: adjacent_workflow
+    sources:
+      - https://www.haskell.org/ghcup/guide/
+      - https://haskell-language-server.readthedocs.io/
 category: developer-tools
 package-manager:
   brew: ghcup
