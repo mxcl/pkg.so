@@ -89,6 +89,25 @@ history:
       The documentation is explicit about limits: file names, commit messages, symlink
       targets, and other metadata are not encrypted, and access revocation is not solved
       for old history.
+related-packages:
+  - id: brew:git-remote-gcrypt
+    reason: >
+      Choose git-remote-gcrypt when the entire remote repository must be encrypted;
+      git-crypt's own documentation recommends that model over file filters for mostly
+      encrypted repositories.
+    rel: alternative
+    sources:
+      - https://github.com/AGWA/git-crypt#limitations
+      - https://spwhitton.name/tech/code/git-remote-gcrypt/
+  - id: brew:git-secret
+    reason: >
+      Choose git-secret when you prefer an explicit Bash-and-GPG workflow with per-user
+      public keys, reveal and hide commands, and documented access removal instead of
+      transparent Git filters.
+    rel: alternative
+    sources:
+      - https://github.com/AGWA/git-crypt#readme
+      - https://sobolevn.me/git-secret/
 tags:
   - cli
   - encryption
