@@ -16,7 +16,17 @@ config-file-location:
     - /usr/local/etc/glances/glances.conf
     - /usr/share/doc/glances/glances.conf
   windows: '%APPDATA%\glances\glances.conf'
-credentials-file-location: null
+credentials-file-location:
+  linux:
+    - ~/.config/glances/<login>.pwd
+    - /etc/glances/<login>.pwd
+    - /usr/share/doc/glances/<login>.pwd
+  macos:
+    - ~/.config/glances/<login>.pwd
+    - ~/Library/Application Support/glances/<login>.pwd
+    - /usr/local/etc/glances/<login>.pwd
+    - /usr/share/doc/glances/<login>.pwd
+  windows: '%APPDATA%\glances\<login>.pwd'
 history:
   adoption-history:
     - >
@@ -72,6 +82,23 @@ history:
       monitoring, glances --stdout or --stdout-json for scripts, and glances --fetch for
       a quick machine summary. Optional extras enable web and export features, while the
       Python API lets scripts consume the same plugin data.
+related-packages:
+  - id: brew:htop
+    reason: >
+      Choose htop for a focused interactive process viewer; choose Glances when you also
+      need broader host metrics, remote modes, a Web UI, APIs, or exporters.
+    rel: alternative
+    sources:
+      - https://github.com/nicolargo/glances
+      - https://htop.dev/
+  - id: brew:btop
+    reason: >
+      Choose btop for a highly polished resource-monitoring TUI; choose Glances when
+      cross-platform server, browser, API, and machine-readable output modes matter.
+    rel: alternative
+    sources:
+      - https://github.com/nicolargo/glances
+      - https://github.com/aristocratos/btop
 category: system
 package-manager:
   apk: glances

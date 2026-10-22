@@ -56,6 +56,24 @@ history:
       namespaces. Projects commonly link it through CMake targets such as
       glbinding::glbinding and optionally glbinding::glbinding-aux for metadata,
       logging, and diagnostic support.
+related-packages:
+  - id: brew:glew
+    reason: >
+      Choose GLEW for the conventional C/C++ extension-loader model and broad legacy
+      compatibility; choose glbinding for generated modern-C++ namespaces, typed enums,
+      real functions, callbacks, and metadata.
+    rel: alternative
+    sources:
+      - https://github.com/cginternals/glbinding
+      - https://glew.sourceforge.net/
+  - id: brew:gtk4
+    reason: >
+      GTK 4 can create the window and OpenGL context around a glbinding-based renderer,
+      and glbinding ships an explicit GTK 4 OpenGL integration example.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cginternals/glbinding
+      - https://www.gtk.org/docs/
 category: media
 package-manager:
   brew: glbinding

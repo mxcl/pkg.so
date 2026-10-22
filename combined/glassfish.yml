@@ -9,7 +9,8 @@ config-file-location:
     - domain-dir/config/domain.xml
     - as-install/lib/templates/domain.xml
     - asenv.conf
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.asadminpass
 history:
   adoption-history:
     - >
@@ -67,6 +68,17 @@ history:
       deployments, and build from source when they need to test server changes. The
       Homebrew formula exposes the traditional command-line surface, including asadmin,
       startserv, and stopserv.
+related-packages:
+  - id: brew:tomcat
+    reason: >
+      Choose Apache Tomcat for applications needing only the Jakarta Servlet, Pages,
+      WebSocket, EL, Authentication, and related web-profile subset; choose GlassFish
+      for a complete Jakarta EE application server with the full required and optional
+      API set.
+    rel: alternative
+    sources:
+      - https://projects.eclipse.org/proposals/eclipse-glassfish
+      - https://tomcat.apache.org/whichversion.html
 category: developer-tools
 package-manager:
   brew: glassfish

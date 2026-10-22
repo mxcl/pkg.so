@@ -62,6 +62,34 @@ history:
       install, update, configure, describe, open, suspend, resume, or uninstall
       Kubernetes packages. Noninteractive users manage package repositories and values
       through CLI flags, while GitOps users work with the package custom resources.
+related-packages:
+  - id: brew:helm
+    reason: >
+      Choose Helm for its mature chart ecosystem and flexible client-side templating;
+      Glasskube added dependency-aware, server-side lifecycle and typed-configuration
+      features and could wrap Helm charts, but its original repository is now archived.
+    rel: alternative
+    sources:
+      - https://glasskube.dev/products/package-manager/docs/comparisons/helm/
+      - https://helm.sh/docs/
+  - id: brew:kustomize
+    reason: >
+      Choose Kustomize when the task is to create readable environment-specific overlays
+      for plain Kubernetes manifests; Glasskube targeted package discovery,
+      installation, dependencies, and lifecycle management.
+    rel: alternative
+    sources:
+      - https://glasskube.dev/blog/kustomize-vs-helm/
+      - https://kubectl.docs.kubernetes.io/references/kustomize/
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl complements Glasskube for inspecting and operating the Kubernetes
+      resources that Glasskube creates, and both default to the active context in
+      ~/.kube/config.
+    rel: adjacent_workflow
+    sources:
+      - https://glasskube.dev/products/package-manager/docs/
+      - https://kubernetes.io/docs/reference/kubectl/
 tags:
   - cli
   - cloud-native
