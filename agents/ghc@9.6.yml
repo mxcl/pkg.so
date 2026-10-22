@@ -75,6 +75,35 @@ history:
       behavior, imports, and local `.ghci` setup. Build tools generally call the
       compiler underneath, but package maintainers still inspect GHCi, `ghc-pkg`,
       profiling output, and Haddock output when diagnosing branch-specific issues.
+related-packages:
+  - id: brew:ghcup
+    reason: >
+      Use GHCup when you need to install and switch among multiple GHC releases instead
+      of managing one Homebrew compiler branch.
+    rel: adjacent_workflow
+    sources:
+      - https://www.haskell.org/ghcup/guide/
+  - id: brew:cabal-install
+    reason: >
+      cabal-install resolves dependencies and invokes GHC to build, test, and run Cabal
+      projects.
+    rel: adjacent_workflow
+    sources:
+      - https://cabal.readthedocs.io/en/stable/getting-started.html
+  - id: brew:haskell-stack
+    reason: >
+      Stack selects a GHC toolchain and uses it for snapshot-oriented Haskell builds,
+      tests, and interactive sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.haskellstack.org/en/stable/
+  - id: brew:haskell-language-server
+    reason: >
+      Haskell Language Server adds editor diagnostics and completion through binaries
+      selected to match the project's GHC version.
+    rel: adjacent_workflow
+    sources:
+      - https://haskell-language-server.readthedocs.io/en/stable/what-is-hls.html
 tags:
   - cli
   - compiler

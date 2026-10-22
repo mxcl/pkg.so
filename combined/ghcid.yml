@@ -50,6 +50,40 @@ history:
       or .ghcid argument file. On save, it reloads the GHCi session, lists errors and
       warnings, and can run test expressions once the code is warning-free or
       error-free.
+related-packages:
+  - id: brew:ghcitty
+    reason: >
+      Choose ghcitty when you want a more interactive GHCi frontend with highlighting,
+      completion, multiline editing, and session features rather than ghcid's compact
+      save-and-reload status display.
+    rel: alternative
+    sources:
+      - https://github.com/ndmitchell/ghcid#readme
+      - https://github.com/mattlianje/ghcitty#readme
+  - id: brew:haskell-language-server
+    reason: >
+      Choose Haskell Language Server for protocol-based diagnostics, completion, and
+      code actions embedded directly in an LSP-capable editor.
+    rel: alternative
+    sources:
+      - https://github.com/ndmitchell/ghcid#readme
+      - https://haskell-language-server.readthedocs.io/en/stable/what-is-hls.html
+  - id: brew:cabal-install
+    reason: >
+      ghcid falls back to `cabal repl`, so cabal-install provides the project-aware GHCi
+      session for Cabal projects.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ndmitchell/ghcid#readme
+      - https://cabal.readthedocs.io/en/stable/getting-started.html
+  - id: brew:haskell-stack
+    reason: >
+      ghcid automatically selects `stack ghci` when it detects a Stack workspace, making
+      Stack its project and dependency context.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ndmitchell/ghcid#readme
+      - https://docs.haskellstack.org/en/stable/
 category: developer-tools
 package-manager:
   brew: ghcid

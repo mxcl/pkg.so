@@ -49,6 +49,39 @@ history:
       documents one-shot eval, JSON output, named sessions, persistent replay under
       `~/.local/share/ghcitty/<session>.hs`, and a simple `~/.ghcitty` key-value config
       file.
+related-packages:
+  - id: brew:ghcid
+    reason: >
+      Choose ghcid when the main need is a deliberately minimal save-triggered GHCi
+      reload and test loop rather than an enhanced interactive REPL interface.
+    rel: alternative
+    sources:
+      - https://github.com/mattlianje/ghcitty#readme
+      - https://github.com/ndmitchell/ghcid#readme
+  - id: brew:cabal-install
+    reason: >
+      ghcitty detects Cabal projects and can launch within their project-aware REPL
+      context, while cabal-install manages the build plan and dependencies.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mattlianje/ghcitty#readme
+      - https://cabal.readthedocs.io/en/stable/getting-started.html
+  - id: brew:haskell-stack
+    reason: >
+      ghcitty detects `stack.yaml` and can use Stack's GHCi environment for
+      snapshot-based projects.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mattlianje/ghcitty#readme
+      - https://docs.haskellstack.org/en/stable/
+  - id: brew:ghcup
+    reason: >
+      GHCup installs and selects the GHC executable that ghcitty wraps, which is useful
+      when projects require different compiler releases.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mattlianje/ghcitty#readme
+      - https://www.haskell.org/ghcup/guide/
 tags:
   - cli
   - ghci

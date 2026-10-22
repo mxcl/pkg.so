@@ -4,7 +4,11 @@ repo: https://gitlab.haskell.org/ghc/ghc
 docs:
   - https://downloads.haskell.org/ghc/9.12.3/docs/users_guide
   - https://www.haskell.org/ghc
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/ghc/ghci.conf
+    - ~/.ghc/ghci.conf
+    - ./.ghci
 credentials-file-location: null
 history:
   adoption-history:
@@ -68,6 +72,36 @@ history:
       The underlying GHC workflow is unchanged: use `ghc` for batch compilation, `ghci`
       for interactive exploration, and build tools such as Cabal or Stack to coordinate
       flags, dependencies, and package databases.
+related-packages:
+  - id: brew:ghcup
+    reason: >
+      Use GHCup when you need to install and switch among multiple GHC releases instead
+      of managing one Homebrew compiler branch.
+    rel: adjacent_workflow
+    sources:
+      - https://www.haskell.org/ghcup/guide/
+  - id: brew:cabal-install
+    reason: >
+      cabal-install resolves dependencies and drives GHC to build, test, and run Cabal
+      projects.
+    rel: adjacent_workflow
+    sources:
+      - https://cabal.readthedocs.io/en/stable/getting-started.html
+      - https://www.haskell.org/ghc/download_ghc_9_12_1.html
+  - id: brew:haskell-stack
+    reason: >
+      Stack selects a GHC toolchain and uses it for snapshot-oriented Haskell builds,
+      tests, and interactive sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.haskellstack.org/en/stable/
+  - id: brew:haskell-language-server
+    reason: >
+      Haskell Language Server adds editor diagnostics and completion through binaries
+      selected to match the project's GHC version.
+    rel: adjacent_workflow
+    sources:
+      - https://haskell-language-server.readthedocs.io/en/stable/what-is-hls.html
 tags:
   - cli
   - compiler
