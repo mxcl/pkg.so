@@ -3,7 +3,14 @@ display-name: git gui
 repo: https://git.kernel.org/pub/scm/git/git.git
 docs:
   - https://git-scm.com/docs/git-gui
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/git/config
+    - ~/.gitconfig
+    - <repository>/.git/config
+  windows:
+    - '%USERPROFILE%\.gitconfig'
+    - <repository>\.git\config
 credentials-file-location: null
 history:
   adoption-history:
@@ -58,6 +65,32 @@ history:
       blame-style single-file annotation, and basic repository actions without leaving
       Git's native tooling. The `citool` mode starts a reduced interface intended to
       make exactly one commit and return to the shell.
+related-packages:
+  - id: brew:git-cola
+    reason: >
+      Choose git-cola for a Python/Qt graphical Git client with its own broader GUI
+      workflow; Git GUI is the smaller Tcl/Tk commit tool distributed with Git.
+    rel: alternative
+    sources:
+      - https://git-cola.github.io/
+      - https://git-scm.com/docs/git-gui
+  - id: brew:gitui
+    reason: >
+      Choose GitUI when you want keyboard-driven staging, committing, stashing, and
+      history browsing inside a terminal instead of Git GUI's desktop Tcl/Tk interface.
+    rel: alternative
+    sources:
+      - https://github.com/gitui-org/gitui#readme
+      - https://git-scm.com/docs/git-gui
+  - id: brew:git
+    reason: >
+      Git is the underlying command suite and configuration system that Git GUI wraps,
+      and the official Git GUI project lists Git as a required dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/j6t/git-gui
+      - https://git-scm.com/docs
+      - https://git-scm.com/docs/git-gui
 tags:
   - cli
   - git
