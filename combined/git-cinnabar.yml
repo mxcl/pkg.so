@@ -56,6 +56,24 @@ history:
       Mercurial changesets. The tool also exposes Mercurial bookmarks, branch tips, and
       heads as Git refs and includes metadata validation and cleanup commands for
       long-lived clones.
+related-packages:
+  - id: brew:mercurial
+    reason: >
+      Choose Mercurial when you want the repositories' native hg workflow; git-cinnabar
+      instead translates those repositories for users who want to retain Git commands
+      and local Git objects.
+    rel: alternative
+    sources:
+      - https://github.com/glandium/git-cinnabar
+      - https://www.mercurial-scm.org/about
+  - id: brew:git
+    reason: >
+      git-cinnabar implements Git's remote-helper workflow, allowing normal Git clone,
+      fetch, and push operations to communicate with Mercurial repositories.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/glandium/git-cinnabar
+      - https://git-scm.com/docs/gitremote-helpers
 category: developer-tools
 package-manager:
   brew: git-cinnabar
