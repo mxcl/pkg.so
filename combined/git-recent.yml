@@ -59,6 +59,33 @@ history:
     - >
       Users who do not want the fzf dependency can run git recent-og, the renamed 2016
       implementation, with options such as -n to limit the number of branches shown.
+related-packages:
+  - id: brew:fzf
+    reason: >
+      fzf is the required interactive selector for git-recent 2.x, providing the branch
+      list navigation and selection interface used by `git recent`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/paulirish/git-recent#readme
+      - https://github.com/junegunn/fzf#readme
+  - id: brew:git-delta
+    reason: >
+      Install git-delta when you want syntax-highlighted formatting for git-recent's
+      Ctrl-O branch-diff preview; git-recent detects delta and otherwise falls back to
+      plain output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/paulirish/git-recent#readme
+      - https://dandavison.github.io/delta/
+  - id: brew:git-plus
+    reason: >
+      Choose git-plus when you prefer a simpler recent-branch command bundled with
+      multi-repository, branch-relation, stale-branch, and semantic-version helpers
+      instead of git-recent's dedicated fzf interface.
+    rel: alternative
+    sources:
+      - https://github.com/paulirish/git-recent#readme
+      - https://github.com/tkrajina/git-plus#readme
 category: developer-tools
 package-manager:
   brew: git-recent
