@@ -68,6 +68,23 @@ history:
       The language server shells out to `golangci-lint run` and reads JSON output, so
       its practical behavior is tightly coupled to the installed golangci-lint version
       and the project's `.golangci` configuration.
+related-packages:
+  - id: brew:golangci-lint
+    reason: >
+      golangci-lint is the required analysis backend that the language server invokes to
+      obtain JSON diagnostics.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nametake/golangci-lint-langserver
+      - https://golangci-lint.run/
+  - id: brew:gopls
+    reason: >
+      Use gopls as the main Go language server beside this specialized lint server; the
+      documented Emacs integration starts both together.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nametake/golangci-lint-langserver
+      - https://go.dev/gopls/
 category: developer-tools
 package-manager:
   brew: golangci-lint-langserver
