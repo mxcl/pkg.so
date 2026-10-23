@@ -130,6 +130,33 @@ history:
       curated path
       `META-INF/native-image/<groupId>/<artifactId>/reachability-metadata.json` reflects
       that package-ecosystem convention.
+related-packages:
+  - id: brew:gradle
+    reason: >
+      Choose Gradle alongside GraalVM when a Java project should build and test Native
+      Image executables through GraalVM's documented Gradle plugin and `nativeCompile`
+      tasks.
+    rel: adjacent_workflow
+    sources:
+      - https://www.graalvm.org/latest/reference-manual/native-image/
+      - https://docs.gradle.org/current/userguide/userguide.html
+  - id: brew:maven
+    reason: >
+      Choose Maven alongside GraalVM when a Maven project should produce Native Image
+      executables through the documented `native-maven-plugin` package lifecycle.
+    rel: adjacent_workflow
+    sources:
+      - https://www.graalvm.org/latest/reference-manual/native-image/
+      - https://maven.apache.org/
+  - id: cask:visualvm
+    reason: >
+      VisualVM complements GraalVM by recognizing GraalVM processes, profiling supported
+      guest languages, and providing basic monitoring of Native Image processes.
+    rel: adjacent_workflow
+    sources:
+      - https://visualvm.github.io/graal.html
+      - https://visualvm.github.io/graalvmvisualvm.html
+      - https://www.graalvm.org/
 category: language-runtime
 package-manager:
   brew: graalvm
