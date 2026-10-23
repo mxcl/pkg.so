@@ -116,6 +116,31 @@ history:
       coverage, open licensing, interoperability over common infrastructure,
       general-purpose performance, streaming, blocking and non-blocking APIs,
       cancellation, flow control, pluggability, metadata, and standardized status codes.
+related-packages:
+  - id: brew:protobuf
+    reason: >
+      Protocol Buffers supplies gRPC's default service-definition and message format,
+      while `protoc` drives the code-generation plugins installed by gRPC.
+    rel: adjacent_workflow
+    sources:
+      - https://grpc.io/docs/what-is-grpc/introduction/
+      - https://protobuf.dev/overview/
+  - id: brew:grpcurl
+    reason: >
+      grpcurl uses server reflection, proto sources, or descriptor sets to inspect and
+      invoke gRPC servers from the command line.
+    rel: adjacent_workflow
+    sources:
+      - https://grpc.io/docs/guides/reflection/
+      - https://github.com/fullstorydev/grpcurl
+  - id: brew:grpcui
+    reason: >
+      grpcui provides a browser-based form for exploring and invoking gRPC services
+      discovered through reflection or supplied descriptors.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fullstorydev/grpcui
+      - https://grpc.io/docs/guides/reflection/
 category: developer-tools
 package-manager:
   apk: grpc

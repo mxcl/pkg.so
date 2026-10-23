@@ -65,6 +65,31 @@ history:
       It supports plaintext and TLS servers, mutual TLS, request metadata, JSON request
       entry, response headers and trailers, and descriptor discovery through reflection,
       proto files, or protosets.
+related-packages:
+  - id: brew:grpcurl
+    reason: >
+      grpcurl is the command-line counterpart to grpcui and is better suited to scripts,
+      terminal workflows, and interactive bidirectional streams.
+    rel: alternative
+    sources:
+      - https://github.com/fullstorydev/grpcui
+      - https://github.com/fullstorydev/grpcurl
+  - id: brew:grpc
+    reason: >
+      grpcui is designed to explore and invoke services implemented with gRPC, using
+      server reflection or service descriptors to understand their APIs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fullstorydev/grpcui
+      - https://grpc.io/docs/guides/reflection/
+  - id: brew:protobuf
+    reason: >
+      grpcui can read `.proto` sources and compiled descriptor sets produced by `protoc`
+      when a server does not expose reflection.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fullstorydev/grpcui
+      - https://protobuf.dev/overview/
 category: developer-tools
 package-manager:
   apk: grpcui
