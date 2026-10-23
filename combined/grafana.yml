@@ -84,6 +84,34 @@ history:
       The bundled Grafana server CLI is a separate administration surface for tasks such
       as plugin management and admin operations, while grafanactl and gcx address
       Grafana-as-code workflows outside the server package.
+related-packages:
+  - id: brew:prometheus
+    reason: >
+      Use Prometheus to scrape and store metrics that Grafana can query through its
+      built-in Prometheus data source and display in dashboards.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://grafana.com/docs/grafana/latest/fundamentals/getting-started/first-dashboards/get-started-grafana-prometheus/
+      - https://prometheus.io/docs/introduction/overview/
+  - id: brew:grafana-alloy
+    reason: >
+      Use Grafana Alloy to collect and process telemetry before sending it to Grafana
+      Cloud or the self-managed backends visualized through Grafana.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/alloy/latest/introduction/
+      - https://grafana.com/docs/grafana-cloud/send-data/alloy/introduction/how-alloy-works/
+  - id: brew:grafanactl
+    reason: >
+      Use grafanactl with Grafana 12 or later to manage Grafana environments and
+      resources from scripts or CI through the Grafana REST API, while planning
+      migration to gcx because grafanactl is deprecated.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://grafana.com/docs/grafana/latest/as-code/observability-as-code/grafana-cli/grafanactl/
+      - https://grafana.github.io/grafanactl/
 category: developer-tools
 package-manager:
   apk: grafana

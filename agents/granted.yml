@@ -78,6 +78,17 @@ history:
       Granted also intersects with package-manager and OS security details because it
       can use platform credential stores and must behave correctly across macOS, Linux,
       Windows, shells, and browsers.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      Use AWS CLI alongside Granted because Granted reads the same AWS profiles,
+      recommends the CLI for initial SSO configuration and verification, and exports
+      credentials that AWS CLI commands can consume.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.granted.dev/getting-started/
+      - https://docs.granted.dev/configuration/
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 tags:
   - aws
   - aws-sso
