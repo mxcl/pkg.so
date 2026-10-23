@@ -118,6 +118,25 @@ history:
       Unlike many CLI tools in this batch, groff has no normal per-user credentials and
       no single project config file. Its behavior is driven by command-line options,
       macro files, font/devices data, and documents being formatted.
+related-packages:
+  - id: brew:mandoc
+    reason: >
+      mandoc is a smaller manual-page-focused alternative that formats `mdoc` and `man`
+      sources and supports only the roff features relevant to that narrower workflow,
+      whereas groff is a general typesetting suite.
+    rel: alternative
+    sources:
+      - https://mandoc.bsd.lv/
+      - https://mandoc.bsd.lv/man/
+      - https://www.gnu.org/software/groff/
+  - id: brew:man-db
+    reason: >
+      man-db provides the indexed `man`, `apropos`, and `whatis` browsing workflow that
+      commonly hands roff manual sources to groff or another compatible formatter.
+    rel: adjacent_workflow
+    sources:
+      - https://gitlab.com/man-db/man-db
+      - https://www.gnu.org/software/groff/
 category: developer-tools
 package-manager:
   apk: groff
