@@ -97,6 +97,24 @@ history:
       changelog records build-system transitions such as the end of autotools support
       after the 1.60 line and the later drop of autotools in the 1.61 development
       series.
+related-packages:
+  - id: brew:vala
+    reason: >
+      Vala is an officially documented compile-time consumer of GObject Introspection
+      metadata, making the two packages part of the same GObject language-binding
+      workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://gi.readthedocs.io/en/latest/users.html
+      - https://docs.vala.dev/
+  - id: brew:gjs
+    reason: >
+      GJS uses GObject Introspection typelibs at runtime to expose GNOME libraries to
+      JavaScript applications.
+    rel: adjacent_workflow
+    sources:
+      - https://gi.readthedocs.io/en/latest/users.html
+      - https://gjs-docs.gnome.org/gjs
 category: developer-tools
 package-manager:
   apk: gobject-introspection
