@@ -53,6 +53,17 @@ history:
       development patterns: debug mode loads assets from disk during iteration, release
       mode embeds them into the binary, and flags such as `-o`, `-ignore`, `-prefix`,
       `-nocompress`, and `-nomemcopy` tune output shape and runtime tradeoffs.
+related-packages:
+  - id: brew:go
+    reason: >
+      For new Go projects, the standard embed package and //go:embed directive provide
+      toolchain-native compile-time asset embedding without a separate go-bindata
+      generation step.
+    rel: alternative
+    sources:
+      - https://pkg.go.dev/embed
+      - https://go.dev/blog/go1.16
+      - https://github.com/kevinburke/go-bindata
 tags:
   - asset-embedding
   - cli

@@ -70,6 +70,33 @@ history:
       The tool is most useful during iterative development of long-running Go programs,
       especially HTTP services. It can also be used as a generic file-triggered rebuild
       loop when the build command is customized.
+related-packages:
+  - id: brew:reflex
+    reason: >
+      Choose Reflex when the watched command may use any language and you want explicit
+      glob or regular-expression filtering instead of Air's Go-oriented build defaults.
+    rel: alternative
+    sources:
+      - https://github.com/cespare/reflex
+      - https://github.com/air-verse/air#readme
+  - id: brew:watchexec
+    reason: >
+      Choose watchexec for a language-neutral, cross-platform command rerunner; choose
+      Air when you want a Go-focused build-and-restart workflow driven by .air.toml.
+    rel: alternative
+    sources:
+      - https://watchexec.github.io/
+      - https://watchexec.github.io/docs/
+      - https://github.com/air-verse/air#readme
+  - id: brew:go-blueprint
+    reason: >
+      Go-Blueprint can scaffold projects with an .air.toml file and a Makefile watch
+      target that invokes Air, providing a ready-made live-reload workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.go-blueprint.dev/
+      - https://docs.go-blueprint.dev/creating-project/makefile/
+      - https://github.com/air-verse/air#readme
 category: developer-tools
 package-manager:
   brew: go-air

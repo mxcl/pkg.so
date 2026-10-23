@@ -4,7 +4,12 @@ homepage: https://go.dev/
 repo: https://go.googlesource.com/go
 docs:
   - https://go.dev/doc
-config-file-location: null
+config-file-location:
+  linux:
+    - $XDG_CONFIG_HOME/go/env
+    - ~/.config/go/env
+  macos: ~/Library/Application Support/go/env
+  windows: '%AppData%\go\env'
 credentials-file-location: null
 history:
   adoption-history:
@@ -69,6 +74,33 @@ history:
       standard library, compiler, assembler, and other tools; beginning with Go 1.21,
       the go command can also select or download toolchains according to go and
       toolchain lines in a module or workspace.
+related-packages:
+  - id: brew:gopls
+    reason: >
+      Install gopls alongside Go to add official Go-aware completion, navigation,
+      diagnostics, analysis, and refactoring to an LSP-compatible editor.
+    rel: adjacent_workflow
+    sources:
+      - https://go.dev/gopls/
+      - https://go.dev/cmd/go/
+  - id: brew:golangci-lint
+    reason: >
+      golangci-lint complements the Go compiler and tests by running a configurable
+      collection of Go static analyzers locally or in CI.
+    rel: adjacent_workflow
+    sources:
+      - https://golangci-lint.run/
+      - https://golangci-lint.run/docs/welcome/quick-start/
+      - https://go.dev/cmd/go/
+  - id: brew:goreleaser
+    reason: >
+      GoReleaser uses Go build configuration to turn Go projects into cross-platform
+      archives and package-manager release artifacts.
+    rel: adjacent_workflow
+    sources:
+      - https://goreleaser.com/getting-started/
+      - https://goreleaser.com/customization/builds/go/
+      - https://go.dev/cmd/go/
 category: language-runtime
 package-manager:
   apk: go
