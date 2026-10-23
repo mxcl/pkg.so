@@ -74,6 +74,25 @@ history:
       gocryptfs stores encrypted data in CIPHERDIR and presents a plaintext view at
       MOUNTPOINT. Its `gocryptfs.conf` file is part of the encrypted directory metadata,
       while the password or master key remains the user's responsibility.
+related-packages:
+  - id: brew:cryfs
+    reason: >
+      Choose CryFS when hiding file sizes and directory structure is more important than
+      gocryptfs's higher-speed file-by-file layout; CryFS's official comparison
+      discusses this tradeoff directly.
+    rel: alternative
+    sources:
+      - https://www.cryfs.org/comparison
+      - https://nuetzlich.net/gocryptfs/
+  - id: brew:encfs
+    reason: >
+      EncFS provides the older FUSE pass-through design that inspired gocryptfs, while
+      gocryptfs was explicitly created to address its security issues and is the better
+      choice for a new filesystem.
+    rel: alternative
+    sources:
+      - https://github.com/rfjakob/gocryptfs/blob/master/Documentation/MANPAGE.md
+      - https://github.com/vgough/encfs
 tags:
   - cli
   - encryption

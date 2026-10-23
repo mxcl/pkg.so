@@ -4,7 +4,10 @@ repo: null
 docs:
   - https://go-zero.dev/getting-started/installation/goctl
   - https://go-zero.dev/reference/cli-guide
-config-file-location: null
+config-file-location:
+  unix:
+    - ./goctl.yaml in the applicable Go module
+    - workspace root
 credentials-file-location: null
 history:
   adoption-history:
@@ -74,6 +77,34 @@ history:
       The CLI reference groups goctl commands around API generation, RPC generation,
       model generation, Docker, Kubernetes, environment checks, config, templates,
       naming style, Swagger, upgrades, migration, shell completion, and bug reporting.
+related-packages:
+  - id: brew:protobuf
+    reason: >
+      Protocol Buffers supplies the `protoc` compiler and `.proto` schema toolchain that
+      goctl's RPC command delegates to before adding go-zero-specific generated service
+      code.
+    rel: adjacent_workflow
+    sources:
+      - https://go-zero.dev/reference/cli-guide/rpc/
+      - https://protobuf.dev/overview/
+  - id: brew:grpcurl
+    reason: >
+      After goctl generates and developers run a gRPC service, grpcurl provides a
+      shell-friendly way to inspect and invoke that service through reflection or its
+      generated protobuf descriptors.
+    rel: adjacent_workflow
+    sources:
+      - https://go-zero.dev/reference/cli-guide/rpc/
+      - https://github.com/fullstorydev/grpcurl
+  - id: brew:grpcui
+    reason: >
+      grpcui complements goctl-generated gRPC services with an interactive browser
+      interface for exploring methods and submitting requests without writing another
+      client.
+    rel: adjacent_workflow
+    sources:
+      - https://go-zero.dev/reference/cli-guide/rpc/
+      - https://github.com/fullstorydev/grpcui
 tags:
   - cli
   - code-generation

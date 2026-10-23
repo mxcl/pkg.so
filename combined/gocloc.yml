@@ -50,6 +50,32 @@ history:
       supported languages with --show-lang, or run it through Docker. The README also
       documents Jenkins/SLOCCount-oriented output workflows, making it useful both at
       the terminal and in reporting pipelines.
+related-packages:
+  - id: brew:cloc
+    reason: >
+      Choose cloc when you want the established Perl-based counter with extensive
+      archive, repository, and diff support; gocloc intentionally implements the same
+      basic counting task as a compiled Go CLI.
+    rel: alternative
+    sources:
+      - https://github.com/hhatto/gocloc
+      - https://github.com/AlDanial/cloc
+  - id: brew:tokei
+    reason: >
+      Choose Tokei when you want a Rust implementation with library use and JSON, YAML,
+      or CBOR reporting; gocloc officially cites it as an inspiration.
+    rel: alternative
+    sources:
+      - https://github.com/hhatto/gocloc
+      - https://github.com/XAMPPRocky/tokei
+  - id: brew:scc
+    reason: >
+      Choose scc when line counts should be accompanied by complexity and COCOMO cost
+      estimates rather than gocloc's narrower cloc-style report.
+    rel: alternative
+    sources:
+      - https://github.com/hhatto/gocloc
+      - https://github.com/boyter/scc
 category: developer-tools
 package-manager:
   brew: gocloc
