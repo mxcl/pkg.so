@@ -63,6 +63,24 @@ history:
       matching lines or only the matching address tokens. Users can restrict matches to
       IPv4 or IPv6, include CIDR/range strings, disable color, and exclude reserved or
       bogon addresses.
+related-packages:
+  - id: brew:cidr2range
+    reason: >
+      Pipe CIDR values extracted with grepip into cidr2range when a workflow needs
+      explicit start and end addresses instead of prefix notation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ipinfo/cli#readme
+      - https://github.com/ipinfo/cli/tree/master/grepip
+      - https://github.com/ipinfo/cli/tree/master/cidr2range
+  - id: brew:prips
+    reason: >
+      Use prips after extracting a CIDR or range when each represented IP address must
+      be expanded onto its own line for further shell processing.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ipinfo/cli#readme
+      - https://devel.ringlet.net/sysutils/prips/
 tags:
   - cli
   - ip-filtering

@@ -6,7 +6,8 @@ docs:
   - https://docs.grin.mw/
 config-file-location:
   unix: ~/.grin/main/grin-server.toml
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.grin/main/.api_secret
 history:
   adoption-history:
     - >
@@ -87,6 +88,17 @@ history:
       not only a command but also a long-running network daemon with consensus
       compatibility requirements. Upgrades can matter when protocol hard forks, API
       changes, or sync changes are deployed.
+related-packages:
+  - id: brew:grin-wallet
+    reason: >
+      Install Grin Wallet alongside the node to create and manage wallet state,
+      construct transactions, and communicate with a local or remote Grin node through
+      the reference wallet APIs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mimblewimble/grin-wallet
+      - https://docs.grin.mw/getting-started/wallet-handbook/
+      - https://github.com/mimblewimble/grin
 category: networking
 package-manager:
   brew: grin
