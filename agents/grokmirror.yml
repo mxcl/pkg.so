@@ -57,6 +57,17 @@ history:
       An origin server generates a manifest from bare Git repositories and serves it
       over HTTP. A replica runs `grok-pull`, commonly from cron or a daemon, to fetch
       the manifest and update only repositories that changed.
+related-packages:
+  - id: brew:git
+    reason: >
+      grokmirror operates on bare Git repositories and invokes Git updates, so Git is
+      the required adjacent repository engine while grokmirror supplies collection-wide
+      manifest orchestration.
+    rel: adjacent_workflow
+    sources:
+      - https://git.kernel.org/pub/scm/utils/grokmirror/grokmirror.git/plain/README.rst
+      - https://www.kernel.org/mirroring-kernelorg-repositories.html
+      - https://git-scm.com/docs
 tags:
   - cli
   - developer-tool

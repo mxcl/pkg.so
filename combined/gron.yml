@@ -78,6 +78,25 @@ history:
       `--json` emits a stream form for users who prefer machine-readable path/value
       rows. gron is often used as an exploratory bridge between raw JSON and more
       precise tools such as jq.
+related-packages:
+  - id: brew:grep
+    reason: >
+      Pipe gron's assignment-oriented output into GNU grep to locate values while
+      retaining each value's complete JSON path, exactly as demonstrated by gron's
+      official documentation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tomnomnom/gron#readme
+      - https://www.gnu.org/software/grep/manual/grep.html
+  - id: brew:jq
+    reason: >
+      Choose jq for precise programmable JSON queries and transformations; choose gron
+      when exploratory path discovery through grep, diff, and other line-oriented tools
+      is more convenient.
+    rel: alternative
+    sources:
+      - https://github.com/tomnomnom/gron#readme
+      - https://jqlang.github.io/jq/manual/
 category: developer-tools
 package-manager:
   apk: gron
