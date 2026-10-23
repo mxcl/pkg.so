@@ -79,6 +79,23 @@ history:
     - >
       The package also includes gsmartcontrol-root, a helper used by desktop packaging
       to launch the GUI with the permissions needed to query storage hardware.
+related-packages:
+  - id: brew:smartmontools
+    reason: >
+      Install smartmontools for the smartctl engine that GSmartControl invokes to query
+      drives and run SMART tests.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ashaduri/gsmartcontrol/blob/main/README.md
+      - https://www.smartmontools.org/
+  - id: brew:diskwatch
+    reason: >
+      Choose DiskWatch when you want terminal-based disk, filesystem, I/O, and optional
+      SMART diagnostics instead of GSmartControl's desktop GUI.
+    rel: alternative
+    sources:
+      - https://gsmartcontrol.shaduri.dev/
+      - https://www.netwatchlabs.com/labs/diskwatch
 category: system
 package-manager:
   brew: gsmartcontrol
