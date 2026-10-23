@@ -6,7 +6,11 @@ docs:
   - https://wiki.gpac.io/
   - https://wiki.gpac.io/Filters/Filters
   - https://wiki.gpac.io/MP4Box/MP4Box
-config-file-location: null
+config-file-location:
+  unix: ~/.gpac/GPAC.cfg
+  windows:
+    - C:\Users\<user>\AppData\Roaming\GPAC\GPAC.cfg
+    - C:\Program Files\GPAC\GPAC.cfg
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,6 +75,25 @@ history:
       segmentation, RTP hinting, and packaging operations. The `gpac` application
       exposes the framework's filter engine directly, letting users build arbitrary
       media-processing pipelines from filters.
+related-packages:
+  - id: brew:bento4
+    reason: >
+      Choose Bento4 for a focused toolkit and SDK around MP4, DASH, and HLS packaging;
+      choose GPAC when you also need a broad filter graph, playback, streaming, and
+      interactive-media framework.
+    rel: alternative
+    sources:
+      - https://wiki.gpac.io/MP4Box/MP4Box
+      - https://www.bento4.com/documentation/
+  - id: brew:ffmpeg
+    reason: >
+      Choose FFmpeg primarily for broad codec transcoding, filtering, capture, and
+      playback; use GPAC when standards-focused MP4/ISOBMFF inspection and DASH/CMAF
+      packaging are central.
+    rel: alternative
+    sources:
+      - https://github.com/gpac/gpac#features
+      - https://ffmpeg.org/about.html
 category: media
 package-manager:
   brew: gpac
