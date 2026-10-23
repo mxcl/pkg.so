@@ -83,6 +83,23 @@ history:
       The project depends on GnuPG, GPGME, libgpg-error, and Rust. It uses GPGME where
       that API fits and executes `gpg` for cases such as refresh operations or
       menu-driven behavior.
+related-packages:
+  - id: brew:gnupg
+    reason: >
+      GnuPG is gpg-tui's required cryptographic backend and provides the `gpg` command
+      used for fallback operations outside the TUI's GPGME implementation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/orhun/gpg-tui
+      - https://blog.orhun.dev/introducing-gpg-tui/
+  - id: brew:gpgme
+    reason: >
+      gpg-tui uses GPGME's high-level GnuPG API for key listing and other supported
+      key-management operations.
+    rel: adjacent_workflow
+    sources:
+      - https://blog.orhun.dev/introducing-gpg-tui/
+      - https://github.com/orhun/gpg-tui
 tags:
   - cli
   - gnupg
