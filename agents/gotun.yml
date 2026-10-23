@@ -50,6 +50,26 @@ history:
       SSH port and identity file selection, use `-J` for jump hosts, and pass `--rules`
       to load a Clash-style YAML rules file. The README recommends SSH key
       authentication and warns against passing passwords directly on the command line.
+related-packages:
+  - id: brew:sshuttle
+    reason: >
+      Choose sshuttle when transparent subnet and DNS forwarding over SSH is the primary
+      goal; choose gotun for a local HTTP/SOCKS proxy, Clash-style routing rules, or its
+      optional TCP-oriented TUN mode.
+    rel: alternative
+    sources:
+      - https://github.com/Sesame2/gotun#readme
+      - https://sshuttle.readthedocs.io/en/stable/overview.html
+      - https://sshuttle.readthedocs.io/en/stable/usage.html
+  - id: brew:openssh
+    reason: >
+      OpenSSH supplies the remote SSH service and general-purpose forwarding tools that
+      underpin the same bastion-host workflow, while gotun adds a single HTTP/SOCKS
+      proxy endpoint and rule-based routing.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Sesame2/gotun#readme
+      - https://www.openssh.com/manual.html
 tags:
   - cli
   - http-proxy
