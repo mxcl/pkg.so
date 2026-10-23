@@ -6,7 +6,8 @@ docs:
   - https://docs.goshs.de/
 config-file-location:
   unix: .goshs
-credentials-file-location: null
+credentials-file-location:
+  unix: <webroot>/.goshs
 history:
   adoption-history:
     - >
@@ -71,6 +72,27 @@ history:
       for credential and hash capture, DNS/SMTP callbacks for interaction tracking,
       WebDAV/FTP/SFTP/TFTP for protocol-specific transfer, TTL for temporary servers, or
       the TUI for SSH sessions without a browser.
+related-packages:
+  - id: brew:filebrowser
+    reason: >
+      Choose File Browser when the main need is a persistent browser-based file manager
+      with users and a database; choose goshs for temporary multi-protocol transfer and
+      security-testing workflows.
+    rel: alternative
+    sources:
+      - https://docs.goshs.de/
+      - https://github.com/filebrowser/filebrowser
+      - https://filebrowser.org/
+  - id: brew:darkhttpd
+    reason: >
+      Choose darkhttpd when a tiny command-line-only static HTTP server is sufficient
+      and goshs's uploads, authentication, transfer protocols, and red-team features are
+      unnecessary.
+    rel: alternative
+    sources:
+      - https://docs.goshs.de/
+      - https://unix4lyfe.org/darkhttpd/
+      - https://github.com/emikulic/darkhttpd
 category: security
 package-manager:
   apk: goshs
