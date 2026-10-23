@@ -108,6 +108,27 @@ history:
       Docker and OCI images, local directories, archives, and SBOM files. Its results
       depend on package cataloging and vulnerability database matching, so it is often
       paired with Syft when an explicit SBOM artifact is desired.
+related-packages:
+  - id: brew:syft
+    reason: >
+      Use Syft to generate reusable SBOMs that Grype accepts directly for vulnerability
+      analysis.
+    rel: adjacent_workflow
+    sources:
+      - https://oss.anchore.com/docs/architecture/grype/
+      - https://oss.anchore.com/docs/guides/vulnerability/scan-targets/
+      - https://oss.anchore.com/docs/guides/sbom/
+  - id: brew:trivy
+    reason: >
+      Choose Trivy when the same scanning workflow must also cover secrets,
+      infrastructure-as-code misconfigurations, or repository licenses in addition to
+      vulnerabilities.
+    rel: alternative
+    sources:
+      - https://oss.anchore.com/docs/guides/vulnerability/
+      - https://trivy.dev/docs/latest/target/repository/
+      - https://trivy.dev/docs/latest/scanner/misconfiguration/
+      - https://trivy.dev/docs/latest/guide/scanner/secret/
 category: security
 package-manager:
   apk: grype

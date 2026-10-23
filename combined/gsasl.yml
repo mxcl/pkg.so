@@ -100,6 +100,25 @@ history:
       DIGEST-MD5, EXTERNAL, GS2-KRB5, GSSAPI, LOGIN, NTLM, OPENID20, PLAIN, SCRAM-SHA-1,
       SCRAM-SHA-1-PLUS, SCRAM-SHA-256, SCRAM-SHA-256-PLUS, SAML20, and SECURID are
       documented by the project README and GNU page.
+related-packages:
+  - id: brew:cyrus-sasl
+    reason: >
+      Choose Cyrus SASL when an application or server needs its plugin-oriented
+      authentication backends, sasldb, or saslauthd; GNU SASL instead emphasizes a
+      portable library and testing client.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/gsasl/manual/gsasl.html
+      - https://www.cyrusimap.org/sasl/sasl/installation.html
+      - https://www.cyrusimap.org/sasl/sasl/sysadmin.html
+  - id: brew:gnutls
+    reason: >
+      Use GnuTLS with the GNU SASL command-line client to add its documented STARTTLS
+      support for IMAP and SMTP authentication sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/gsasl/manual/gsasl.html
+      - https://gnutls.org/manual/gnutls.html
 category: networking
 package-manager:
   brew: gsasl
