@@ -49,6 +49,27 @@ history:
       records; import CSV, JSON, or JSONL into Parquet; merge or split files; and
       transcode compression or encoding. The README also documents access to local files
       and remote storage such as S3, GCS, Azure storage, HDFS, and HTTP endpoints.
+related-packages:
+  - id: brew:parquet-cli
+    reason: >
+      Apache Parquet CLI offers overlapping inspection and conversion commands from the
+      official Java implementation; choose it for Hadoop or parquet-java workflows and
+      go-parquet-tools for a Go-based standalone utility with broad remote-storage
+      support.
+    rel: alternative
+    sources:
+      - https://github.com/hangxie/parquet-tools
+      - https://github.com/apache/parquet-java/blob/master/parquet-cli/README.md
+  - id: brew:duckdb
+    reason: >
+      DuckDB complements parquet-tools by running SQL directly over Parquet files and
+      exposing Parquet metadata as queryable tables after low-level inspection
+      identifies what needs analysis.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hangxie/parquet-tools
+      - https://duckdb.org/docs/lts/data/parquet/overview
+      - https://duckdb.org/docs/current/data/parquet/metadata
 category: data
 package-manager:
   brew: go-parquet-tools

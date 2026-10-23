@@ -49,6 +49,31 @@ history:
       or other outputs, and use jsonnetfmt, jsonnet-lint, and jsonnet-deps around
       repository review and build pipelines. Go programs can embed the VM directly to
       evaluate Jsonnet snippets or files inside larger tools.
+related-packages:
+  - id: brew:jsonnet
+    reason: >
+      Choose the original C++ Jsonnet implementation when you need its native toolchain;
+      choose go-jsonnet for a pure-Go implementation with an embeddable Go API.
+    rel: alternative
+    sources:
+      - https://github.com/google/jsonnet
+      - https://github.com/google/go-jsonnet
+  - id: brew:jsonnet-bundler
+    reason: >
+      jsonnet-bundler installs and vendors Jsonnet libraries that go-jsonnet can resolve
+      through its import path.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jsonnet-bundler/jsonnet-bundler
+      - https://github.com/google/go-jsonnet
+  - id: brew:tanka
+    reason: >
+      Tanka uses Jsonnet as its configuration language, so go-jsonnet skills and
+      libraries transfer directly to Tanka-managed Kubernetes configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://tanka.dev/jsonnet/overview/
+      - https://github.com/google/go-jsonnet
 category: developer-tools
 package-manager:
   apk: go-jsonnet
