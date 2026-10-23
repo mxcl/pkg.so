@@ -63,6 +63,43 @@ history:
       Customization is mostly through command flags and environment variables, keeping
       the package useful in one-off scripts and shared dotfiles without a separate
       application framework.
+related-packages:
+  - id: brew:fzf
+    reason: >
+      Choose fzf when the requirement is a dedicated, highly programmable fuzzy selector
+      with preview and shell-integration features; Gum covers fuzzy filtering but also
+      bundles prompts, confirmation, formatting, and other script UI components.
+    rel: alternative
+    sources:
+      - https://github.com/charmbracelet/gum#filter
+      - https://github.com/junegunn/fzf#readme
+  - id: brew:tmux
+    reason: >
+      Gum can turn `tmux list-sessions` output into an interactive session picker before
+      switching or attaching to the selected session, a workflow shown in Gum's official
+      README.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/charmbracelet/gum#readme
+      - https://github.com/tmux/tmux/wiki
+  - id: brew:gh
+    reason: >
+      Gum's official examples pipe `gh pr list` through `gum choose` and then pass the
+      chosen pull request to `gh pr checkout`, adding an interactive picker to GitHub
+      CLI workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/charmbracelet/gum#readme
+      - https://cli.github.com/manual/gh_pr
+  - id: brew:skate
+    reason: >
+      Gum's official README demonstrates selecting a Skate key interactively by piping
+      `skate list -k` through `gum filter` and retrieving the chosen value with `skate
+      get`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/charmbracelet/gum#readme
+      - https://github.com/charmbracelet/skate#readme
 tags:
   - cli
   - prompts
