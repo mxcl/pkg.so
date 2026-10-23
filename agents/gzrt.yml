@@ -75,6 +75,16 @@ history:
       transferred in FTP ASCII mode and should be re-transferred in binary mode before
       attempting recovery. That warning is part of the tool's operational history: it is
       a last-resort recovery command, not a replacement for gunzip.
+related-packages:
+  - id: brew:cpio
+    reason: >
+      Use GNU cpio after gzrecover when a recovered tar stream still contains damaged
+      records, as gzrt’s official documentation specifically recommends cpio for
+      extracting around them.
+    rel: adjacent_workflow
+    sources:
+      - https://raw.githubusercontent.com/arenn/gzrt/master/README
+      - https://www.gnu.org/software/cpio/manual/
 tags:
   - archive
   - cli

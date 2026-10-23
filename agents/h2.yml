@@ -4,7 +4,11 @@ repo: null
 docs:
   - https://h2database.github.io/html/commands.html
   - https://h2database.github.io/html/main.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.h2.server.properties
+  windows:
+    - '%USERPROFILE%\.h2.server.properties'
 credentials-file-location: null
 history:
   adoption-history:
@@ -97,6 +101,16 @@ history:
       Package managers expose an `h2` executable in addition to the Java jar ecosystem,
       which is useful for local console workflows, demos, and scripted development
       setups.
+related-packages:
+  - id: brew:sqlite
+    reason: >
+      Choose SQLite when a native, serverless database with a portable single-file
+      format is preferable; choose H2 when Java/JDBC integration and JVM-embedded or
+      Java server modes are central.
+    rel: alternative
+    sources:
+      - https://h2database.com/html/features.html
+      - https://www.sqlite.org/about.html
 tags:
   - cli
   - database
