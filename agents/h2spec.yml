@@ -80,6 +80,21 @@ history:
       Package users typically run it against a local web server, proxy, HTTP/2 library
       example server, or appliance endpoint to catch protocol-state, frame-format,
       stream, HPACK, or error-handling mistakes.
+related-packages:
+  - id: brew:h2o
+    reason: Run h2spec against H2O when developing or validating the server's HTTP/2 behavior.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/summerwind/h2spec
+      - https://h2o.examp1e.net/
+  - id: brew:nghttp2
+    reason: >
+      Use nghttp2's server or proxy programs as concrete HTTP/2 endpoints for h2spec,
+      while its client and diagnostic tools provide complementary protocol testing.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/summerwind/h2spec
+      - https://nghttp2.org/documentation/
 tags:
   - cli
   - conformance

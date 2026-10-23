@@ -87,6 +87,22 @@ history:
       For CLI/package users, H2O is commonly installed to test or operate a compact web
       server with HTTP/2 and HTTP/3 behavior, to compare prioritization and push
       behavior, or to embed HTTP serving behavior through the library.
+related-packages:
+  - id: brew:h2spec
+    reason: Use h2spec alongside H2O to check a running server for HTTP/2 and HPACK conformance.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/summerwind/h2spec
+      - https://raw.githubusercontent.com/h2o/h2o/master/Changes
+  - id: brew:nghttp2
+    reason: >
+      Choose nghttp2 when you need a general HTTP/2 C library plus dedicated client,
+      server, proxy, and load-testing programs rather than H2O's integrated web-server
+      focus.
+    rel: alternative
+    sources:
+      - https://h2o.examp1e.net/
+      - https://nghttp2.org/documentation/
 tags:
   - c
   - cli
