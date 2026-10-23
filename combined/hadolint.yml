@@ -99,6 +99,24 @@ history:
       the first file found. This makes the Homebrew package useful for teams that want a
       repository-local `.hadolint.yaml` while still allowing individual defaults under
       XDG or home-directory paths.
+related-packages:
+  - id: brew:shellcheck
+    reason: >
+      Hadolint delegates shell code inside Dockerfile RUN instructions to ShellCheck, so
+      installing ShellCheck separately is useful for linting the corresponding
+      standalone shell scripts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hadolint/hadolint
+      - https://www.shellcheck.net/
+  - id: brew:docker
+    reason: >
+      Use Hadolint to check a Dockerfile before using Docker to build and run the
+      resulting image.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hadolint/hadolint
+      - https://docs.docker.com/build/concepts/dockerfile/
 category: developer-tools
 package-manager:
   brew: hadolint

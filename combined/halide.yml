@@ -110,6 +110,31 @@ history:
       libraries, tools such as generators, and CMake integration without managing a
       custom LLVM build. The Homebrew formula is especially useful on macOS where LLVM
       discovery and CMake presets can otherwise dominate the first build.
+related-packages:
+  - id: brew:cmake
+    reason: >
+      Halide provides an official CMake package for finding Halide, linking JIT
+      applications, and generating ahead-of-time pipeline libraries.
+    rel: adjacent_workflow
+    sources:
+      - https://halide-lang.org/docs/HalideCMakePackage.html
+      - https://cmake.org/documentation/
+  - id: brew:ninja
+    reason: >
+      Halide's build guide strongly recommends Ninja as the CMake generator because it
+      accurately handles Halide's rich incremental dependency graph.
+    rel: adjacent_workflow
+    sources:
+      - https://halide-lang.org/docs/BuildingHalideWithCMake.html
+      - https://ninja-build.org/manual.html
+  - id: brew:llvm
+    reason: >
+      LLVM, Clang, and LLD are required by Halide's documented source-build workflow and
+      provide the compiler infrastructure used for its target backends.
+    rel: adjacent_workflow
+    sources:
+      - https://halide-lang.org/docs/BuildingHalideWithCMake.html
+      - https://llvm.org/docs/
 category: language-runtime
 package-manager:
   brew: halide
