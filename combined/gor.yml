@@ -80,6 +80,24 @@ history:
       timing characteristics. That makes it useful for regression testing, load testing,
       and deployment confidence checks using observed traffic rather than synthetic
       request sets.
+related-packages:
+  - id: brew:k6
+    reason: >
+      Choose k6 for scripted, metrics-centered load tests; choose GoReplay when the test
+      should shadow or replay traffic captured from a live HTTP workload.
+    rel: alternative
+    sources:
+      - https://goreplay.org/docs/load-testing/
+      - https://grafana.com/docs/k6/latest/
+  - id: brew:vegeta
+    reason: >
+      Choose Vegeta for compact target-driven HTTP load generation and latency reports;
+      choose GoReplay when realistic recorded production requests should supply the
+      workload.
+    rel: alternative
+    sources:
+      - https://goreplay.org/docs/load-testing/
+      - https://github.com/tsenart/vegeta#readme
 category: developer-tools
 package-manager:
   brew: gor
