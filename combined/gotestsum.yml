@@ -62,6 +62,16 @@ history:
       --post-run-command for notifications or follow-up scripts, and gotestsum tool
       slowest for identifying expensive tests. Its design keeps go test semantics close
       while making the output easier to scan.
+related-packages:
+  - id: brew:gotests
+    reason: >
+      Use gotests before gotestsum when functions need editable table-driven test
+      scaffolding generated first; gotestsum can then execute and report on those
+      ordinary Go tests.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cweill/gotests#readme
+      - https://github.com/gotestyourself/gotestsum#readme
 category: developer-tools
 package-manager:
   apk: gotestsum
