@@ -1,11 +1,108 @@
 id: brew:zvec-grep
 display-name: zvec-grep
 homepage: https://github.com/zvec-ai/zvec-grep
-repo: null
+repo: https://github.com/zvec-ai/zvec-grep
+docs:
+  - https://github.com/zvec-ai/zvec-grep/blob/main/docs/02-cli.md
+  - https://github.com/zvec-ai/zvec-grep/blob/main/docs/README.md
+config-file-location:
+  unix: ~/.zvec-grep/config.json
+credentials-file-location:
+  unix: ~/.zvec-grep/config.json
+history:
+  adoption-history:
+    - >
+      The project targets both direct terminal users and AI coding-agent workflows. Its
+      official integration documentation covers Codex, Claude Code, Qwen Code, Qoder,
+      Cursor, GitHub Copilot, VS Code, Grok Build, and OpenCode.
+    - >
+      At the time documented, zvec-grep explicitly identifies itself as work in progress
+      before a first stable release, so its adoption story is still centered on early
+      agent-tool integration and local workspace search rather than long-established
+      package compatibility.
+  package-nerd-significance:
+    - >
+      zvec-grep combines several search traditions in one command: ripgrep-style
+      exhaustive matching, BM25 lexical ranking, vector retrieval, and reciprocal result
+      fusion. This makes it notable as a package that turns local source trees and
+      documents into persistent retrieval infrastructure for both people and agents.
+    - >
+      Its local-first design is also package-relevant: indexes and local embedding
+      models remain on the machine by default, while remote embeddings require explicit
+      configuration and workspace authorization.
+  project-history:
+    - >
+      zvec-grep was developed by the zvec project as a local-first search interface
+      powered by the zvec in-process vector database. The TypeScript and Node.js
+      implementation is documented as the primary user-facing implementation, with a
+      separate Rust implementation under development.
+    - >
+      The project expanded from a search CLI into a shared CLI and MCP search layer with
+      workspace indexing, background server modes, embedding-model selection, agent
+      installation helpers, authorization controls, and structured retrieval routes.
+  related-projects:
+    - zvec supplies the embedded vector database behind zvec-grep.
+    - >
+      ripgrep supplies the model for exhaustive regular-expression searching exposed
+      through zg's managed-rg route.
+    - >
+      Model Context Protocol integrations expose indexed workspace retrieval to
+      supported coding agents.
+  sources:
+    - https://github.com/alibaba/zvec
+    - https://github.com/zvec-ai/zvec-grep
+    - https://github.com/zvec-ai/zvec-grep/blob/main/docs/02-cli.md
+    - https://github.com/zvec-ai/zvec-grep/blob/main/docs/README.md
+  summary:
+    - >
+      zvec-grep, invoked as `zg`, is a local-first workspace search tool that combines
+      ripgrep, BM25, and vector search for terminal users and AI agents.
+  timeline:
+    - >
+      2026: The zvec project highlighted zvec-grep as its local-first hybrid
+      workspace-search CLI.
+    - >
+      Pre-stable development: The project documented CLI, MCP, agent integrations,
+      indexing, execution modes, and local or remote embedding models while warning that
+      commands and configuration could still change.
+  usage:
+    - >
+      Users index a workspace and search it with hybrid, lexical, vector, or exhaustive
+      managed-ripgrep routes. Results retain source locations and can cover code,
+      documents, and structured data.
+    - >
+      The global configuration stores provider credentials and model defaults.
+      Workspace-specific indexes and remote-embedding grants live under `.zvec-grep`,
+      while environment variables can override state, model, server, token, and provider
+      settings.
+related-packages:
+  - id: brew:ripgrep
+    reason: >
+      Choose ripgrep for mature, index-free recursive regex search with repository-aware
+      defaults; choose zvec-grep when semantic retrieval, BM25 ranking, persistent
+      indexes, rich-content search, or coding-agent integration is required.
+    rel: alternative
+    sources:
+      - https://github.com/zvec-ai/zvec-grep
+      - https://github.com/zvec-ai/zvec-grep/blob/main/docs/02-cli.md
+      - https://github.com/BurntSushi/ripgrep
+      - https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md
+category: developer-tools
 package-manager:
   brew: zvec-grep
 package-manager-url: https://formulae.brew.sh/formula/zvec-grep
 license: Apache-2.0
+tags:
+  - ai-agents
+  - bm25
+  - cli
+  - code-search
+  - full-text-search
+  - local-first
+  - mcp
+  - semantic-search
+  - vector-search
+  - workspace-search
 description: Agent-friendly hybrid workspace search across code and non-code content
 executables:
   - zg

@@ -1,0 +1,126 @@
+id: brew:xfr
+display-name: xfr
+repo: null
+docs:
+  - https://github.com/lance0/xfr/tree/master/docs
+  - https://github.com/lance0/xfr#readme
+config-file-location:
+  linux:
+    - $XDG_CONFIG_HOME/xfr/config.toml
+    - ~/.config/xfr/config.toml
+  macos:
+    - ~/Library/Application Support/xfr/config.toml
+  windows:
+    - '%APPDATA%\xfr\config.toml'
+credentials-file-location:
+  linux:
+    - $XDG_CONFIG_HOME/xfr/config.toml
+    - ~/.config/xfr/config.toml
+  macos:
+    - ~/Library/Application Support/xfr/config.toml
+  windows:
+    - '%APPDATA%\xfr\config.toml'
+history:
+  adoption-history:
+    - >
+      xfr is distributed as a Rust crate, native release binaries, a container image,
+      and a Homebrew package. That distribution mix targets both interactive workstation
+      diagnostics and repeatable server or automation deployments.
+  package-nerd-significance:
+    - >
+      xfr belongs to the modern wave of Rust command-line replacements that retain a
+      familiar Unix client/server workflow while adding a live TUI, structured output,
+      discovery, and observability features in one binary.
+    - >
+      It is especially interesting beside iperf3 because its official comparison
+      documents deliberate differences: a multi-client server, client and server TUIs,
+      CSV output, Prometheus metrics, saved configuration, LAN discovery, QUIC, and
+      result comparison.
+  project-history:
+    - >
+      xfr was developed as a modern iperf3 alternative written in Rust. Its scope grew
+      beyond basic TCP and UDP throughput tests to include QUIC, MPTCP, bidirectional
+      tests, path-MTU probing, mDNS discovery, multiple output formats, result diffing,
+      and Prometheus integration.
+  related-projects:
+    - >
+      iperf3 is xfr's principal comparison point and uses a similar client/server
+      bandwidth-testing workflow.
+    - >
+      Prometheus and Grafana can consume or visualize metrics from an xfr server built
+      with metrics support.
+  sources:
+    - https://github.com/lance0/xfr
+    - https://github.com/lance0/xfr/releases
+    - https://github.com/lance0/xfr/tree/master/docs
+  summary:
+    - >
+      xfr is a Rust network-throughput testing tool with a live terminal interface,
+      multi-client server, and support for TCP, UDP, QUIC, and MPTCP.
+  timeline:
+    - >
+      Prerelease development: xfr established an iperf-like client/server workflow and
+      expanded it with TUI and multi-client operation.
+    - >
+      Later development: QUIC, MPTCP, discovery, structured output, result comparison,
+      and Prometheus support broadened its diagnostic role.
+  usage:
+    - >
+      Run `xfr serve` on one endpoint and `xfr HOST` on another to measure throughput.
+      Options select UDP, QUIC, MPTCP, reverse or bidirectional traffic, parallel
+      streams, duration, bitrate, and output format.
+    - >
+      Configuration supplies client and server defaults. A pre-shared key can be placed
+      in the same configuration file or supplied through `--psk-file`; the official
+      documentation requires restrictive permissions when a Unix configuration contains
+      a PSK.
+related-packages:
+  - id: brew:iperf3
+    reason: >
+      Choose iperf3 for the established ESnet implementation and its widely deployed
+      measurement workflow; choose xfr when you need a live TUI, multi-client service,
+      QUIC, discovery, saved configuration, or built-in result comparison.
+    rel: alternative
+    sources:
+      - https://github.com/lance0/xfr#readme
+      - https://github.com/esnet/iperf
+      - https://software.es.net/iperf/
+tags:
+  - bandwidth
+  - benchmark
+  - cli
+  - iperf-alternative
+  - network-testing
+  - quic
+  - rust
+  - tui
+provenance:
+  category-sources:
+    - >
+      Official README describes xfr as an iperf3 alternative for bandwidth testing:
+      https://github.com/lance0/xfr#readme
+  display-name-sources:
+    - 'Official repository and README title: https://github.com/lance0/xfr'
+  docs-sources:
+    - >
+      The official README links its repository-hosted documentation:
+      https://github.com/lance0/xfr#readme
+  history-sources:
+    - https://github.com/lance0/xfr
+    - https://github.com/lance0/xfr/releases
+    - https://github.com/lance0/xfr/tree/master/docs
+  repo-sources:
+    - >
+      source_facts.repo is already populated; the task requires returning null without
+      re-evaluating it.
+  tags-sources:
+    - 'Official repository topics and README: https://github.com/lance0/xfr'
+category-confidence: high
+category-path:
+  - networking
+  - network-testing
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

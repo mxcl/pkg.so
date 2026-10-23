@@ -2,9 +2,107 @@ id: cask:anypointstudio
 display-name: Anypoint Studio
 homepage: https://www.mulesoft.com/platform/studio
 repo: null
+docs:
+  - https://docs.mulesoft.com/studio
+  - https://docs.mulesoft.com/studio/secure-storage
+  - https://docs.mulesoft.com/studio/use-maven-in-studio
+config-file-location:
+  macos: /Applications/AnypointStudio.app/Contents/Eclipse/AnypointStudio.ini
+credentials-file-location:
+  macos: ~/.eclipse/org.eclipse.equinox.security/secure_storage
+history:
+  adoption-history:
+    - >
+      Anypoint Studio is adopted as the desktop development environment for Mule
+      applications because it connects local design and testing with the wider Anypoint
+      Platform. Official documentation covers importing assets from Exchange, running an
+      embedded Mule runtime, testing with MUnit, and deploying to CloudHub.
+    - >
+      Its Eclipse and Maven foundations fit established enterprise Java workflows.
+      Studio bundles Maven by default but can use an external Maven installation so
+      builds can share versions and configuration with command-line and
+      continuous-integration environments.
+  package-nerd-significance:
+    - >
+      Anypoint Studio is a substantial vendor IDE bundle rather than a small editor
+      package. Releases coordinate Eclipse, a JDK, Maven, Mule Maven Plugin, Mule
+      runtime engine, DataWeave, MUnit, and platform compatibility, making runtime and
+      toolchain matrices important to packaging.
+    - >
+      Its credential transition is also notable: Studio 7.10 and earlier kept
+      authenticated-user information per workspace, while 7.11 and later use shared
+      Eclipse Secure Storage with operating-system-specific password providers.
+  project-history:
+    - >
+      MuleSoft developed Anypoint Studio as an Eclipse-based environment for visually
+      designing, editing, running, debugging, and testing Mule integration applications
+      and API specifications. Its tooling integrates with Anypoint Exchange and
+      deployment services including CloudHub.
+    - >
+      The Studio 7 line has continued to update its bundled Java and Maven toolchain
+      alongside Mule runtime compatibility. Later releases added shared encrypted
+      credential storage and continued shipping coordinated versions of Eclipse, Maven,
+      Mule tooling, and JDK components.
+  related-projects:
+    - Mule runtime engine executes the integrations developed and tested in Studio.
+    - MUnit supplies the integrated Mule application testing workflow.
+    - >
+      Apache Maven and Mule Maven Plugin provide dependency and build automation inside
+      Studio and in external CI workflows.
+    - >
+      Anypoint Exchange and CloudHub provide asset reuse and deployment destinations
+      integrated into the IDE.
+  sources:
+    - https://docs.mulesoft.com/release-notes/studio/anypoint-studio-7.28.0-release-notes
+    - https://docs.mulesoft.com/studio/
+    - https://docs.mulesoft.com/studio/deploy-mule-application-task
+    - https://docs.mulesoft.com/studio/secure-storage
+    - https://docs.mulesoft.com/studio/test-with-munit-in-studio
+    - https://docs.mulesoft.com/studio/use-maven-in-studio
+  summary:
+    - >
+      Anypoint Studio is MuleSoft's Eclipse-based IDE for designing, running, testing,
+      and deploying Mule integration applications and APIs.
+  timeline:
+    - 'Studio 7.11: Eclipse Secure Storage replaced workspace-local authenticated-user storage.'
+    - >
+      Studio 7.16: The bundled Maven and Mule Maven Plugin line changed, with documented
+      compatibility implications.
+    - >
+      2026: Studio 7.28 continued the coordinated Eclipse, JDK, Maven, Mule runtime,
+      DataWeave, and MUnit distribution model.
+  usage:
+    - >
+      Developers use graphical flow editors and XML editors to create Mule applications,
+      run them against an embedded Mule runtime, and debug or test them with MUnit.
+    - >
+      Studio connects to Anypoint Platform accounts to import Exchange assets and deploy
+      applications. It stores those credentials encrypted in Eclipse Secure Storage,
+      shared across Studio instances and Eclipse-based workspaces.
+related-packages:
+  - id: brew:maven
+    reason: >
+      Use Apache Maven alongside Studio when Mule builds must share an external Maven
+      version and configuration with command-line or continuous-integration
+      environments; Studio otherwise includes an embedded Maven distribution.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.mulesoft.com/studio/use-maven-in-studio
+      - https://docs.mulesoft.com/studio/configure-studio-to-use-your-own-maven
+      - https://maven.apache.org/
+category: developer-tools
 package-manager:
   brew-cask: anypointstudio
 package-manager-url: https://formulae.brew.sh/cask/anypointstudio
+tags:
+  - anypoint-platform
+  - eclipse
+  - enterprise-integration
+  - ide
+  - mule
+  - mulesoft
+  - munit
+  - visual-development
 description: Eclipse-based IDE for designing and testing Mule applications
 applications:
   - AnypointStudio.app
