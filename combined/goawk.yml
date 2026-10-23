@@ -75,6 +75,25 @@ history:
       install, and supports CSV/TSV processing with -i and -o modes. As a library, Go
       programs can parse and execute AWK programs directly, reuse parsed programs, and
       configure interpreter behavior.
+related-packages:
+  - id: brew:gawk
+    reason: >
+      Choose GNU Awk when GNU-specific extensions and its broader tooling are required;
+      choose GoAWK for an embeddable Go API, native CSV/TSV workflows, and Go-oriented
+      distribution.
+    rel: alternative
+    sources:
+      - https://github.com/benhoyt/goawk#readme
+      - https://www.gnu.org/software/gawk/manual/gawk.html
+  - id: brew:mawk
+    reason: >
+      Choose mawk when compactness and maximum traditional AWK throughput are the
+      priority; GoAWK's author notes mawk is usually faster, while GoAWK adds CSV
+      support and embedding in Go programs.
+    rel: alternative
+    sources:
+      - https://github.com/benhoyt/goawk#readme
+      - https://invisible-island.net/mawk/manpage/mawk.html
 category: language-runtime
 package-manager:
   apk: goawk
