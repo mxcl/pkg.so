@@ -70,6 +70,24 @@ history:
       gwctl also has analysis and graphing roles: gwctl analyze can evaluate resource
       definitions before creation, and gwctl get -o graph emits DOT graphs that
       visualize relationships among Gateway API resources.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl alongside gwctl for general Kubernetes administration and
+      kubeconfig-oriented cluster access, reserving gwctl for Gateway API relationships,
+      policy analysis, and specialized descriptions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kubernetes-sigs/gwctl#readme
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:graphviz
+    reason: >
+      Pipe gwctl's documented DOT graph output into Graphviz when Gateway API resource
+      relationships need to be rendered as an image or document.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kubernetes-sigs/gwctl#readme
+      - https://graphviz.org/documentation/
 category: cloud-infrastructure
 package-manager:
   brew: gwctl
