@@ -53,6 +53,25 @@ history:
       `depth`, `indexcov`, `indexsplit`, or `samplename`. For rapid cohort QC, `goleft
       indexcov --directory output/ *.bam` produces tabular and interactive HTML coverage
       outputs.
+related-packages:
+  - id: brew:mosdepth
+    reason: >
+      Choose mosdepth for fast per-base, window, or BED-region BAM/CRAM depth
+      calculations; choose goleft indexcov when an index-only, seconds-scale
+      whole-genome coverage estimate is sufficient.
+    rel: alternative
+    sources:
+      - https://github.com/brentp/goleft/blob/master/indexcov/README.md
+      - https://github.com/brentp/mosdepth#readme
+  - id: brew:samtools
+    reason: >
+      SAMtools complements goleft because goleft's `depth` command parallelizes SAMtools
+      over user-defined windows, while SAMtools supplies the underlying general
+      alignment-processing commands.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/brentp/goleft#readme
+      - https://www.htslib.org/doc/samtools.html
 tags:
   - bam
   - bioinformatics

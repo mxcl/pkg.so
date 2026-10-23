@@ -74,6 +74,33 @@ history:
       The base formatter defaults to goimports when available and falls back to gofmt,
       so golines is usually an additive formatter step rather than a replacement for the
       Go formatting toolchain.
+related-packages:
+  - id: brew:golangci-lint
+    reason: >
+      golangci-lint can run golines as a configured formatter, making it the stronger
+      choice when line wrapping should be enforced alongside a wider lint-and-format CI
+      policy.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/golangci/golangci-lint/blob/main/CHANGELOG.md
+      - https://github.com/golangci/golines#readme
+  - id: brew:goimports
+    reason: >
+      goimports is a practical companion because golines uses it as the preferred base
+      formatter when present, adding and removing imports before shortening long lines.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/golangci/golines#readme
+      - https://pkg.go.dev/golang.org/x/tools/cmd/goimports
+  - id: brew:gofumpt
+    reason: >
+      Choose gofumpt when the goal is a stricter, deterministic extension of gofmt
+      style; choose golines when explicit maximum-line-length wrapping is the primary
+      requirement.
+    rel: alternative
+    sources:
+      - https://github.com/golangci/golines#readme
+      - https://github.com/mvdan/gofumpt#readme
 tags:
   - cli
   - code-formatting
