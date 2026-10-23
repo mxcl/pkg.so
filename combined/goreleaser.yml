@@ -12,7 +12,11 @@ config-file-location:
     - .goreleaser.yaml
     - goreleaser.yml
     - goreleaser.yaml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.config/goreleaser/github_token
+    - ~/.config/goreleaser/gitlab_token
+    - ~/.config/goreleaser/gitea_token
 history:
   adoption-history:
     - >
@@ -97,6 +101,15 @@ history:
       Maintainers can review a single YAML file for binary matrix, archive naming,
       checksums, signing, Homebrew or Scoop publication, Docker images, and release-note
       behavior instead of keeping bespoke shell scripts in every repository.
+related-packages:
+  - id: brew:nfpm
+    reason: >
+      Use nFPM alongside GoReleaser when the release pipeline must turn built files into
+      native deb, rpm, apk, Arch Linux, ipk, or MSIX packages.
+    rel: adjacent_workflow
+    sources:
+      - https://goreleaser.com/customization/package/nfpm/
+      - https://nfpm.goreleaser.com/docs/
 category: developer-tools
 package-manager:
   brew: goreleaser
