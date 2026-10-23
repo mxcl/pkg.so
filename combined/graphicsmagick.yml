@@ -120,6 +120,24 @@ history:
       Configuration lives in `.mgk` files such as colors, delegates, log, modules, and
       type definitions. That matters to packagers because delegate programs and codec
       support vary by platform and build options.
+related-packages:
+  - id: brew:imagemagick
+    reason: >
+      Choose ImageMagick for its current `magick` toolchain and broader modern
+      ecosystem; choose GraphicsMagick when its `gm` interface, smaller footprint, or
+      stability policy better fits the workflow.
+    rel: alternative
+    sources:
+      - https://graphicsmagick.sourceforge.io/
+      - https://imagemagick.org/command-line-tools/
+  - id: brew:ghostscript
+    reason: >
+      Use Ghostscript alongside GraphicsMagick when a workflow needs GraphicsMagick to
+      render or read PostScript and PDF input.
+    rel: adjacent_workflow
+    sources:
+      - https://graphicsmagick.sourceforge.io/formats.html
+      - https://www.ghostscript.com/
 category: media
 package-manager:
   apk: graphicsmagick
