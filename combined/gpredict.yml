@@ -101,6 +101,23 @@ history:
       Radio workflows are a major differentiator: Gpredict can perform Doppler tuning
       through Hamlib rigctld and antenna-rotator control through Hamlib rotctld, making
       it useful at an operator station rather than only as a visualization tool.
+related-packages:
+  - id: brew:hamlib
+    reason: >
+      Use Hamlib alongside Gpredict to provide the documented `rigctld` and `rotctld`
+      interfaces for Doppler tuning and antenna-rotator control.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/csete/gpredict#readme
+      - https://github.com/Hamlib/Hamlib
+  - id: brew:gpsd
+    reason: >
+      gpsd can supply live receiver position data for Gpredict, an integration
+      explicitly maintained in Gpredict's official release history.
+    rel: adjacent_workflow
+    sources:
+      - https://raw.githubusercontent.com/csete/gpredict/master/NEWS
+      - https://gpsd.gitlab.io/gpsd/
 category: science
 package-manager:
   brew: gpredict

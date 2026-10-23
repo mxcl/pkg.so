@@ -75,6 +75,31 @@ history:
       Options prune small nodes and edges, choose input format, pick color maps, strip
       C++ qualifiers, focus on roots or leaves, limit graph depth, and compare two
       similarly structured profiles.
+related-packages:
+  - id: brew:graphviz
+    reason: >
+      Graphviz is the required renderer used to turn gprof2dot's DOT stream into SVG,
+      PNG, PDF, or other graph output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jrfonseca/gprof2dot#requirements
+      - https://graphviz.org/documentation/
+  - id: brew:xdot
+    reason: >
+      Use xdot.py when gprof2dot's generated call graph needs interactive zooming and
+      navigation instead of a static rendered image.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jrfonseca/gprof2dot#readme
+      - https://github.com/jrfonseca/xdot.py
+  - id: brew:flamegraph
+    reason: >
+      FlameGraph's stack-collapse tools can prepare folded stack data that gprof2dot
+      accepts through its `collapse` input format.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jrfonseca/gprof2dot#readme
+      - https://github.com/brendangregg/FlameGraph
 category: developer-tools
 package-manager:
   brew: gprof2dot
