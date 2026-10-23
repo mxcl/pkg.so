@@ -4,7 +4,8 @@ homepage: https://gtk.org/
 repo: https://gitlab.gnome.org/GNOME/gtk
 docs:
   - https://docs.gtk.org/gtk2
-config-file-location: null
+config-file-location:
+  unix: ~/.gtkrc-2.0
 credentials-file-location: null
 history:
   adoption-history:
@@ -87,6 +88,31 @@ history:
       gtk-builder-convert, gtk-query-immodules-2.0, and gtk2-update-icon-cache. That
       makes the formula useful both for building older applications and for keeping
       their auxiliary tooling available.
+related-packages:
+  - id: brew:gtk+3
+    reason: >
+      Choose GTK+ 3 when porting beyond the final GTK+ 2.24 API; upstream documents GTK
+      3 as an API- and ABI-breaking successor rather than a drop-in upgrade.
+    rel: alternative
+    sources:
+      - https://docs.gtk.org/gtk3/migrating-2to3.html
+      - https://docs.gtk.org/gtk3/
+  - id: brew:glib
+    reason: >
+      Use GLib alongside GTK+ 2 for the portable data types, main loop, object system,
+      and application infrastructure on which GTK is built.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gtk.org/docs/architecture/glib
+      - https://docs.gtk.org/glib/
+  - id: brew:gtk-doc
+    reason: >
+      Use GTK-Doc when maintaining the GObject-aware API documentation workflow
+      historically used by GTK and other GNOME C libraries.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.gnome.org/DocumentationProject/GtkDoc
+      - https://gitlab.gnome.org/GNOME/gtk-doc
 category: developer-tools
 package-manager:
   brew: gtk+

@@ -4,7 +4,8 @@ homepage: https://gtk.org/
 repo: https://gitlab.gnome.org/GNOME/gtk
 docs:
   - https://docs.gtk.org/gtk3
-config-file-location: null
+config-file-location:
+  unix: $XDG_CONFIG_HOME/gtk-3.0/settings.ini
 credentials-file-location: null
 history:
   adoption-history:
@@ -92,6 +93,40 @@ history:
       UI definitions; gtk-query-settings reports toolkit settings;
       gtk-query-immodules-3.0 manages input modules; gtk-launch works with desktop
       entries; icon-cache tools support themed icons.
+related-packages:
+  - id: brew:gtk4
+    reason: >
+      Choose GTK 4 for new GTK applications or a deliberate modernization effort;
+      upstream provides a dedicated GTK 3-to-4 migration path because it is not a
+      drop-in ABI replacement.
+    rel: alternative
+    sources:
+      - https://docs.gtk.org/gtk4/migrating-3to4.html
+      - https://docs.gtk.org/gtk4/
+  - id: brew:gtk+
+    reason: >
+      Choose GTK+ 2 only when building software that still targets the legacy `gtk+-2.0`
+      API; upstream documents GTK 3 as an incompatible successor.
+    rel: alternative
+    sources:
+      - https://docs.gtk.org/gtk3/migrating-2to3.html
+      - https://docs.gtk.org/gtk2/
+  - id: brew:glib
+    reason: >
+      Use GLib with GTK+ 3 for the object system, main loop, containers, and portable
+      application services underlying GTK.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gtk.org/docs/architecture/glib
+      - https://docs.gtk.org/glib/
+  - id: brew:gobject-introspection
+    reason: >
+      Use GObject Introspection to generate the metadata that exposes GTK and other
+      GObject libraries to supported language-binding runtimes.
+    rel: adjacent_workflow
+    sources:
+      - https://gi.readthedocs.io/en/latest/
+      - https://docs.gtk.org/gtk3/
 category: developer-tools
 package-manager:
   apk: gtk-update-icon-cache
