@@ -114,6 +114,39 @@ history:
       configuration-driven: Gource needs OpenGL/3D acceleration, can generate logs from
       supported VCS formats, and can pipe frames to encoders such as ffmpeg. It does not
       require a persistent config file for ordinary package-manager installation.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Gource's official video guide documents piping its PPM frame stream into FFmpeg to
+      encode repository visualizations as video.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/acaudwell/Gource/wiki/Videos
+      - https://ffmpeg.org/
+  - id: brew:git
+    reason: >
+      Gource can directly generate and visualize logs from Git repositories, making Git
+      history a primary input to its visualization workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://gource.io/
+      - https://git-scm.com/
+  - id: brew:mercurial
+    reason: >
+      Gource includes built-in Mercurial log generation, allowing Mercurial repositories
+      to be visualized without an intermediate conversion tool.
+    rel: adjacent_workflow
+    sources:
+      - https://gource.io/
+      - https://www.mercurial-scm.org/
+  - id: brew:subversion
+    reason: >
+      Gource includes built-in Subversion log support for visualizing the history of SVN
+      repositories.
+    rel: adjacent_workflow
+    sources:
+      - https://gource.io/
+      - https://subversion.apache.org/
 category: developer-tools
 package-manager:
   apk: gource

@@ -106,6 +106,16 @@ history:
       pkg.go.dev documentation states that those requests contain module paths with
       vulnerabilities known to the database rather than code or other properties of the
       user's program, and the repository links to a dedicated privacy policy.
+related-packages:
+  - id: brew:go
+    reason: >
+      govulncheck analyzes Go modules and binaries, while the Go toolchain's module
+      commands are used to upgrade affected dependencies and rebuild the corrected
+      program.
+    rel: adjacent_workflow
+    sources:
+      - https://go.dev/doc/tutorial/govulncheck
+      - https://go.dev/ref/mod
 category: security
 package-manager:
   brew: govulncheck
