@@ -64,9 +64,6 @@
     },
     {
       "candidatePackageIDs": [
-        "brew:workmux",
-        "brew:bashka",
-        "brew:dbmate",
         "brew:ccmux",
         "brew:cask:tapmap",
         "brew:cask:zentty",
@@ -87,9 +84,15 @@
         "brew:plakar",
         "brew:python@3.15",
         "brew:uv",
-        "brew:fastapi"
+        "brew:fastapi",
+        "brew:zvec-grep",
+        "brew:fortitude",
+        "brew:buildkite"
       ],
       "fallbackPackageIDs": [
+        "brew:zvec-grep",
+        "brew:fortitude",
+        "brew:buildkite",
         "brew:uv",
         "brew:python@3.15",
         "brew:pyrefly",
@@ -108,12 +111,9 @@
         "brew:ratex",
         "brew:cask:opendisk",
         "brew:cask:look",
-        "brew:workmux",
         "brew:ccmux",
         "brew:cask:zentty",
-        "brew:cask:tapmap",
-        "brew:bashka",
-        "brew:dbmate"
+        "brew:cask:tapmap"
       ],
       "id": "for-you",
       "title": "For You",
@@ -122,18 +122,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:textus",
+        "brew:pdfcraft-cli",
+        "brew:xfr",
+        "brew:cask:artcraft-launcher",
+        "brew:cask:opendisplay-receiver",
+        "brew:zvec-grep",
         "brew:cask:clamshell",
         "brew:cask:capso",
         "brew:cask:figcraft",
-        "brew:cask:artcraft-launcher",
-        "brew:cask:textus",
         "brew:portop",
         "brew:cask:portkiller",
-        "brew:cask:petal",
-        "brew:cask:pulse",
-        "brew:cask:superhuman-docs",
-        "brew:memex",
-        "brew:cask:tine"
+        "brew:cask:petal"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -141,18 +141,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:textus",
+        "brew:fortitude",
+        "brew:pdfcraft-cli",
+        "brew:buildkite",
+        "brew:xfr",
+        "brew:cask:artcraft-launcher",
+        "brew:cask:opendisplay-receiver",
+        "brew:zvec-grep",
         "brew:uv",
         "brew:fastapi",
         "brew:cask:clamshell",
-        "brew:python@3.15",
-        "brew:worktrunk",
-        "brew:plakar",
-        "brew:cask:capso",
-        "brew:cask:figcraft",
-        "brew:cask:artcraft-launcher",
-        "brew:nub",
-        "brew:cask:textus",
-        "brew:prek"
+        "brew:python@3.15"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -879,7 +879,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-22T07:02:48Z",
+  "generatedAt": "2026-10-23T08:21:21Z",
   "packages": {
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -937,6 +937,85 @@
       ],
       "upstreamSummary": "Static verification of installation bash scripts",
       "version": "0.12.0"
+    },
+    "brew:buildkite": {
+      "agentSummary": "Buildkite's official CLI manages pipelines, builds, jobs, agents, and authentication from scripts or terminals, complementing the hosted platform while requiring account access and careful token handling.",
+      "assessment": {
+        "alternatives": [
+          "Direct Buildkite API calls for narrowly scoped integrations."
+        ],
+        "audiences": [
+          "Buildkite users automating CI administration and inspecting builds from a terminal."
+        ],
+        "caveats": [
+          "CLI actions can affect live CI resources and should use least-privilege credentials.",
+          "The Homebrew core formula installs the command as buildkite, while upstream examples commonly use bk.",
+          "Some workflows still require the hosted Buildkite platform and organization configuration."
+        ],
+        "complements": [
+          "Buildkite agents, pipeline definitions, and the Buildkite web interface."
+        ],
+        "prerequisites": [
+          "A Buildkite account, organization access, and suitable API permissions.",
+          "Browser login or a BUILDKITE_API_TOKEN for non-interactive environments."
+        ],
+        "useCases": [
+          "Create or inspect pipelines, builds, jobs, and agents without opening the web interface.",
+          "Script Buildkite operations and authenticate interactively or with an environment token."
+        ]
+      },
+      "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-20",
+        "analytics": {
+          "30": {
+            "count": 19,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-23"
+          },
+          "365": {
+            "count": 19,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-23"
+          },
+          "90": {
+            "count": 19,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-25"
+          }
+        },
+        "firstObservedAt": "2026-10-20",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": null
+      },
+      "displayName": "buildkite",
+      "docs": "https://buildkite.com/docs/platform/cli",
+      "homepage": "https://github.com/buildkite/cli",
+      "id": "brew:buildkite",
+      "installURL": "pkgmgrmgr://install?package=brew%3Abuildkite",
+      "lastUpdatedAt": "2026-10-23T05:10:17Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/buildkite/cli",
+      "researchedAt": "2026-10-23T08:21:21Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Buildkite CLI upstream repository",
+          "url": "https://github.com/buildkite/cli"
+        },
+        {
+          "kind": "primary",
+          "title": "Buildkite CLI documentation",
+          "url": "https://buildkite.com/docs/platform/cli"
+        }
+      ],
+      "upstreamSummary": "Work with Buildkite from the command-line",
+      "version": "3.65.0"
     },
     "brew:cask:activitywatch": {
       "agentSummary": "ActivityWatch records computer activity into a local, extensible timeline, giving users evidence for reflection while keeping sensitive event data under their control.",
@@ -1004,33 +1083,31 @@
       "version": "0.13.2"
     },
     "brew:cask:artcraft-launcher": {
-      "agentSummary": "ArtCraft Launcher installs, updates, discovers, and launches the Craft App Suite through a native Rust interface while retaining each platform's conventional application locations.",
+      "agentSummary": "ArtCraft Launcher installs, verifies, updates, and opens Craft Suite applications across desktop platforms, selecting architecture-specific releases while remaining an early-alpha manager for one software ecosystem.",
       "assessment": {
         "alternatives": [
-          "Installing each Craft application directly from its official release page",
-          "Using the operating system's native app store or package manager where equivalent applications are available"
+          "Install each Craft application directly from its signed upstream release.",
+          "Use the operating system's package manager where a suite application is available."
         ],
         "audiences": [
-          "Users evaluating several applications in the Craft App Suite",
-          "Administrators who prefer one native interface for suite discovery, installation, updates, and launching"
+          "Users adopting several applications from the Craft App Suite."
         ],
         "caveats": [
-          "The launcher and many applications it manages are young projects with rapidly evolving releases",
-          "Linux installation behavior varies by available package format and whether the launcher itself runs inside Flatpak",
-          "A launcher simplifies distribution but does not remove the need to assess each managed application's maturity separately"
+          "The project explicitly describes itself as early alpha.",
+          "It manages only the Craft Suite rather than general-purpose software.",
+          "Installation behavior and privilege prompts vary by platform and package format."
         ],
         "complements": [
-          "FigCraft, PhotoCraft, LightCraft, FilmCraft, and the other applications managed by the launcher",
-          "Operating-system package and application management tools used alongside the suite"
+          "PdfCraft, PhotoCraft, and other applications in the Craft Suite.",
+          "Operating-system package records or backups for tracking installed applications."
         ],
         "prerequisites": [
-          "A supported desktop operating system and permission to install applications",
-          "Network access to retrieve official Craft App Suite release packages"
+          "A supported macOS, Windows, Linux, or FreeBSD system.",
+          "System authorization when the chosen installation format requires it."
         ],
         "useCases": [
-          "Browse the available Craft applications and manage their installation state",
-          "Install official release packages into conventional macOS, Windows, or Linux locations",
-          "Keep suite applications updated and launch them from one interface"
+          "Discover installed Craft applications and available updates in one interface.",
+          "Select, checksum-verify, install, update, and launch platform-appropriate builds."
         ]
       },
       "category": "productivity",
@@ -1038,22 +1115,22 @@
         "admittedAt": "2026-10-17",
         "analytics": {
           "30": {
-            "count": 218,
-            "endDate": "2026-10-21",
+            "count": 352,
+            "endDate": "2026-10-23",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "startDate": "2026-09-21"
+            "startDate": "2026-09-23"
           },
           "365": {
-            "count": 218,
-            "endDate": "2026-10-21",
+            "count": 352,
+            "endDate": "2026-10-23",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
-            "startDate": "2025-10-21"
+            "startDate": "2025-10-23"
           },
           "90": {
-            "count": 218,
-            "endDate": "2026-10-21",
+            "count": 352,
+            "endDate": "2026-10-23",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
-            "startDate": "2026-07-23"
+            "startDate": "2026-07-25"
           }
         },
         "firstObservedAt": "2026-10-17",
@@ -1061,16 +1138,16 @@
         "recentlyDiscovered": false,
         "status": "official",
         "trend": {
-          "endDate": "2026-10-21",
+          "endDate": "2026-10-23",
           "growthPercent": null,
-          "installs30d": 218,
+          "installs30d": 352,
           "previousMonthlyRate": 0.0,
-          "score": 24.309897,
+          "score": 30.376089,
           "sources": [
             "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
             "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
           ],
-          "startDate": "2026-07-23"
+          "startDate": "2026-07-25"
         }
       },
       "displayName": "ArtCraft Launcher",
@@ -1078,24 +1155,24 @@
       "homepage": "https://github.com/storytold/craft-launcher",
       "id": "brew:cask:artcraft-launcher",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aartcraft-launcher",
-      "lastUpdatedAt": "2026-10-20T18:43:57Z",
+      "lastUpdatedAt": "2026-10-23T01:07:58Z",
       "manager": "homebrew",
       "repository": "https://github.com/storytold/craft-launcher",
-      "researchedAt": "2026-10-21T06:21:47Z",
+      "researchedAt": "2026-10-23T08:21:21Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "ArtCraft Launcher repository and installation behavior",
+          "title": "ArtCraft Launcher upstream documentation",
           "url": "https://github.com/storytold/craft-launcher"
         },
         {
           "kind": "primary",
-          "title": "ArtCraft Launcher 0.1.0 first release",
+          "title": "ArtCraft Launcher initial release",
           "url": "https://github.com/storytold/craft-launcher/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Installer and updater for the Craft App Suite",
-      "version": "0.6.0"
+      "version": "0.7.0"
     },
     "brew:cask:capso": {
       "agentSummary": "Capso combines native macOS screenshots, scrolling capture, OCR, annotation, and MP4 or GIF recording in an open-source Swift application requiring modern macOS permissions.",
@@ -1951,6 +2028,97 @@
       "upstreamSummary": "Disk space analyser",
       "version": "1.2.1"
     },
+    "brew:cask:opendisplay-receiver": {
+      "agentSummary": "OpenDisplay Receiver turns a spare Mac into an extended display for another Mac over Wi-Fi or cable, with Retina resolution but no receiver-side input forwarding yet.",
+      "assessment": {
+        "alternatives": [
+          "Apple AirPlay to Mac, Luna Display, or Duet Display for other Mac-to-Mac display workflows."
+        ],
+        "audiences": [
+          "Mac users repurposing an older Mac as an additional monitor."
+        ],
+        "caveats": [
+          "Input from the receiving Mac's keyboard and mouse is not yet forwarded.",
+          "The sender relies on Apple's private CGVirtualDisplay API and may be affected by macOS changes.",
+          "The upstream privacy documentation notes a current Wi-Fi encryption caveat, so trusted networks are important."
+        ],
+        "complements": [
+          "A reliable Wi-Fi network, Ethernet link, Thunderbolt or USB4 cable, or supported USB-C data link."
+        ],
+        "prerequisites": [
+          "OpenDisplay on the sending Mac and OpenDisplay Receiver on the spare Mac.",
+          "macOS 14 or newer on the sender and macOS 12 or newer on the receiver.",
+          "Local Network and screen-capture permissions as prompted."
+        ],
+        "useCases": [
+          "Extend a sending Mac desktop onto a spare Mac over local networking or a supported cable.",
+          "Reuse a Retina display without a subscription or vendor-hosted relay."
+        ]
+      },
+      "category": "productivity",
+      "discovery": {
+        "admittedAt": "2026-10-19",
+        "analytics": {
+          "30": {
+            "count": 58,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-23"
+          },
+          "365": {
+            "count": 58,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-23"
+          },
+          "90": {
+            "count": 58,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-25"
+          }
+        },
+        "firstObservedAt": "2026-10-19",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-23",
+          "growthPercent": null,
+          "installs30d": 58,
+          "previousMonthlyRate": 0.0,
+          "score": 11.276571,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+          ],
+          "startDate": "2026-07-25"
+        }
+      },
+      "displayName": "OpenDisplay Receiver",
+      "docs": "https://github.com/peetzweg/opendisplay#readme",
+      "homepage": "https://opendisplay.app/",
+      "id": "brew:cask:opendisplay-receiver",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopendisplay-receiver",
+      "lastUpdatedAt": "2026-10-22T16:45:46Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/peetzweg/opendisplay",
+      "researchedAt": "2026-10-23T08:21:21Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "OpenDisplay upstream documentation",
+          "url": "https://github.com/peetzweg/opendisplay"
+        },
+        {
+          "kind": "primary",
+          "title": "OpenDisplay privacy documentation",
+          "url": "https://peetzweg.github.io/opendisplay/privacy.html"
+        }
+      ],
+      "upstreamSummary": "Receiver that turns a computer into a second display for OpenDisplay",
+      "version": "1.26.0"
+    },
     "brew:cask:petal": {
       "agentSummary": "Petal turns each shared application into a movable native window, supporting simultaneous screen sharing, remote control, persistent rooms, hosted meetings, and self-hosted LiveKit deployments.",
       "assessment": {
@@ -2148,117 +2316,6 @@
       "upstreamSummary": "Monitor listening ports and kill their processes",
       "version": "3.4.0"
     },
-    "brew:cask:pulse": {
-      "agentSummary": "Pulse presents processes, CPU, memory, graphics, storage, network, battery, and thermal activity in one calm native system-monitor window across major desktop platforms.",
-      "assessment": {
-        "alternatives": [
-          "Activity Monitor on macOS",
-          "Task Manager on Windows",
-          "htop or btop for terminal-oriented monitoring"
-        ],
-        "audiences": [
-          "Desktop users diagnosing performance or battery problems",
-          "Developers who want per-process resource visibility"
-        ],
-        "caveats": [
-          "The project is very new and its interface may evolve quickly",
-          "Some measurements and process details vary by operating system",
-          "A system monitor identifies resource use but does not by itself explain every performance problem"
-        ],
-        "complements": [
-          "Platform logs and profiling tools for deeper root-cause analysis",
-          "Battery-health and hardware-diagnostic workflows"
-        ],
-        "prerequisites": [
-          "Apple silicon Mac for the macOS build",
-          "Windows or Linux for the corresponding platform build"
-        ],
-        "useCases": [
-          "Inspecting CPU, memory pressure, GPU, disk, and network activity",
-          "Finding processes that consume energy or prevent sleep",
-          "Keeping selected system metrics visible in the menu bar"
-        ]
-      },
-      "category": "system",
-      "displayName": "Pulse",
-      "docs": "https://pulse.egoist.dev/",
-      "homepage": "https://pulse.egoist.dev/",
-      "id": "brew:cask:pulse",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apulse",
-      "lastUpdatedAt": "2026-10-16T19:54:54Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/egoist/pulse-feedback",
-      "researchedAt": "2026-10-17T09:48:51Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Pulse product and feature overview",
-          "url": "https://pulse.egoist.dev/"
-        },
-        {
-          "kind": "primary",
-          "title": "Pulse initial upstream release",
-          "url": "https://github.com/egoist/pulse-feedback/releases/tag/v0.1.4"
-        }
-      ],
-      "upstreamSummary": "System activity monitor for CPU, memory, GPU, disk and network",
-      "version": "0.1.20"
-    },
-    "brew:cask:superhuman-docs": {
-      "agentSummary": "Superhuman Docs brings the collaborative Coda document model into a dedicated Mac client, with tabbed documents, multiple accounts, starred-item access, and integrated AI features.",
-      "assessment": {
-        "alternatives": [
-          "The Superhuman Docs web application",
-          "Other collaborative document and workspace applications"
-        ],
-        "audiences": [
-          "Teams already collaborating in Superhuman Docs or Coda",
-          "Mac users who prefer a dedicated document application"
-        ],
-        "caveats": [
-          "The desktop client largely mirrors the web product rather than providing a separate offline workflow",
-          "Only one tab per document can be open in the app",
-          "Former Coda desktop beta users must sign in again after migration"
-        ],
-        "complements": [
-          "Superhuman Databases for larger structured datasets",
-          "Superhuman Mail, Calendar, and connected team workflows"
-        ],
-        "prerequisites": [
-          "A Superhuman or migrated Coda account",
-          "macOS; the official help page says Windows support is not yet available"
-        ],
-        "useCases": [
-          "Writing and organizing collaborative team documents",
-          "Working across multiple accounts in separate windows",
-          "Using Docs AI without keeping the product in a browser tab"
-        ]
-      },
-      "category": "productivity",
-      "displayName": "Superhuman Docs",
-      "docs": "https://help.superhuman.com/hc/en-us/articles/46875595711117-Superhuman-Docs-desktop-app",
-      "homepage": "https://superhuman.com/docs",
-      "id": "brew:cask:superhuman-docs",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asuperhuman-docs",
-      "lastUpdatedAt": "2026-10-16T13:46:46Z",
-      "manager": "homebrew",
-      "repository": null,
-      "researchedAt": "2026-10-17T09:48:51Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Superhuman Docs launch announcement",
-          "url": "https://blog.superhuman.com/superhuman-launches-superhuman-docs/"
-        },
-        {
-          "kind": "primary",
-          "title": "Superhuman Docs desktop app guide",
-          "url": "https://help.superhuman.com/hc/en-us/articles/46875595711117-Superhuman-Docs-desktop-app"
-        }
-      ],
-      "upstreamSummary": "Desktop client for team documents",
-      "version": "1.0.13"
-    },
     "brew:cask:tapmap": {
       "agentSummary": "TapMap visualizes local network connections on a world map, builds activity history, and highlights unfamiliar destinations while remaining an awareness tool rather than a firewall.",
       "assessment": {
@@ -2376,25 +2433,30 @@
       "version": "1.6.3,2026,09"
     },
     "brew:cask:textus": {
-      "agentSummary": "Textus is a cross-platform WYSIWYG Markdown editor with multiple writing modes, export formats, and optional AI assistance; users should review provider setup and generated edits.",
+      "agentSummary": "Textus is a cross-platform, local-first Markdown editor offering rendered writing modes, exports, optional bring-your-own-model AI assistance, and plain files without required accounts or telemetry.",
       "assessment": {
         "alternatives": [
-          "A source-oriented Markdown editor is simpler for users who do not need live WYSIWYG rendering or AI-assisted revision."
+          "Typora or a source-oriented Markdown editor for users who do not need Textus's AI workflow."
         ],
         "audiences": [
-          "Writers and note-takers who want visual Markdown editing while keeping ordinary .md files."
+          "Writers who want a visual Markdown editor while retaining portable plain-text files.",
+          "Users who prefer to choose their own hosted or local language model."
         ],
         "caveats": [
-          "Remote AI requests send relevant writing context to the provider the user selects; generated suggestions still require editorial review."
+          "Hosted AI requests go directly to the selected provider and may incur provider charges.",
+          "The editor works offline, but hosted AI features do not."
         ],
         "complements": [
-          "Git or another file-versioning workflow can track the plain Markdown documents Textus edits."
+          "Git or another file-sync workflow for versioning the underlying Markdown files.",
+          "Ollama for keeping optional model inference local."
         ],
         "prerequisites": [
-          "No AI service is required for editing; AI features require a configured provider account, API key, or local Ollama model."
+          "A supported macOS, Windows, or Linux system.",
+          "An external model account, API key, or local Ollama instance only when AI features are used."
         ],
         "useCases": [
-          "Write and revise Markdown in visual, split-view, or source modes, then export to formats including PDF, Word, and HTML."
+          "Write Markdown with rendered formatting, math, tables, diagrams, and focused editing modes.",
+          "Export documents to PDF, Word, or HTML and optionally review AI-proposed edits."
         ]
       },
       "category": "productivity",
@@ -2402,22 +2464,22 @@
         "admittedAt": "2026-10-20",
         "analytics": {
           "30": {
-            "count": 54,
-            "endDate": "2026-10-20",
+            "count": 120,
+            "endDate": "2026-10-23",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "startDate": "2026-09-20"
+            "startDate": "2026-09-23"
           },
           "365": {
-            "count": 54,
-            "endDate": "2026-10-20",
+            "count": 120,
+            "endDate": "2026-10-23",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
-            "startDate": "2025-10-20"
+            "startDate": "2025-10-23"
           },
           "90": {
-            "count": 54,
-            "endDate": "2026-10-20",
+            "count": 120,
+            "endDate": "2026-10-23",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
-            "startDate": "2026-07-22"
+            "startDate": "2026-07-25"
           }
         },
         "firstObservedAt": "2026-10-20",
@@ -2425,16 +2487,16 @@
         "recentlyDiscovered": true,
         "status": "official",
         "trend": {
-          "endDate": "2026-10-20",
+          "endDate": "2026-10-23",
           "growthPercent": null,
-          "installs30d": 54,
+          "installs30d": 120,
           "previousMonthlyRate": 0.0,
-          "score": 10.731926,
+          "score": 17.746534,
           "sources": [
             "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
             "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
           ],
-          "startDate": "2026-07-22"
+          "startDate": "2026-07-25"
         }
       },
       "displayName": "Textus",
@@ -2442,79 +2504,24 @@
       "homepage": "https://textus.catvinci.com/",
       "id": "brew:cask:textus",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atextus",
-      "lastUpdatedAt": "2026-10-19T20:09:44Z",
+      "lastUpdatedAt": "2026-10-23T08:00:37Z",
       "manager": "homebrew",
       "repository": "https://github.com/CatVinci-Studio/Textus",
-      "researchedAt": "2026-10-20T06:37:44Z",
+      "researchedAt": "2026-10-23T08:21:21Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Textus upstream repository and documentation",
+          "title": "Textus upstream documentation",
           "url": "https://github.com/CatVinci-Studio/Textus"
         },
         {
           "kind": "primary",
-          "title": "Textus first upstream release",
+          "title": "Textus initial release",
           "url": "https://github.com/CatVinci-Studio/Textus/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "WYSIWYG Markdown editor with built-in AI writing tools",
-      "version": "1.1.1"
-    },
-    "brew:cask:tine": {
-      "agentSummary": "Tine is a fast local outliner that reads and writes Logseq-compatible Markdown graphs, adding native tabs and focused desktop workflows without data migration.",
-      "assessment": {
-        "alternatives": [
-          "Logseq for the established plugin ecosystem and full original workflow",
-          "Plain text editors for minimal direct-file editing"
-        ],
-        "audiences": [
-          "Logseq users who want a lighter local desktop client",
-          "Markdown and Org users who value directly accessible graph files"
-        ],
-        "caveats": [
-          "Compatibility does not imply every Logseq feature or plugin is available",
-          "The upstream documentation warns that current macOS builds may require clearing quarantine and are not yet notarized",
-          "Users should back up shared graphs before alternating between editors"
-        ],
-        "complements": [
-          "Logseq for workflows or plugins Tine does not implement",
-          "Git or file synchronization for user-managed graph history and transport"
-        ],
-        "prerequisites": [
-          "A local Markdown or Org graph",
-          "Platform permissions to access the selected documents directory"
-        ],
-        "useCases": [
-          "Edit an existing Logseq-compatible graph",
-          "Outline and navigate linked local notes",
-          "Switch between Tine and Logseq on the same files"
-        ]
-      },
-      "category": "productivity",
-      "displayName": "Tine",
-      "docs": "https://github.com/martinkoutecky/tine#readme",
-      "homepage": "https://tine.page/",
-      "id": "brew:cask:tine",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atine",
-      "lastUpdatedAt": "2026-10-16T04:31:46Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/martinkoutecky/tine",
-      "researchedAt": "2026-10-16T11:00:33Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Tine repository and compatibility guide",
-          "url": "https://github.com/martinkoutecky/tine"
-        },
-        {
-          "kind": "primary",
-          "title": "Tine project website",
-          "url": "https://tine.page/"
-        }
-      ],
-      "upstreamSummary": "Outliner for Markdown and Org notes",
-      "version": "0.7.4"
+      "version": "1.1.2"
     },
     "brew:cask:trilium-notes": {
       "agentSummary": "Trilium Notes organizes a local personal knowledge base as linked, hierarchical notes, with self-hosted synchronization, scripting, relations, and structured attributes for deeper workflows.",
@@ -2819,71 +2826,6 @@
       "upstreamSummary": "CLI tool for analyzing Claude Code usage from local JSONL files",
       "version": "20.0.30"
     },
-    "brew:dbmate": {
-      "agentSummary": "Dbmate keeps SQL migrations framework-neutral and reviewable, combining timestamped files, transactional execution, schema dumps, and one binary across several database engines.",
-      "assessment": {
-        "alternatives": [
-          "Flyway or Liquibase for broader enterprise migration features",
-          "Goose or golang-migrate for Go-centered workflows",
-          "Framework-native systems such as Active Record, Alembic, or Prisma Migrate"
-        ],
-        "audiences": [
-          "Polyglot teams wanting one migration workflow across services",
-          "Developers who prefer explicit SQL over ORM-managed schemas",
-          "Small infrastructure teams seeking a self-contained migration binary"
-        ],
-        "caveats": [
-          "Rollback behavior must be authored explicitly in each migration",
-          "Pending files can run out of timestamp order unless strict mode is enabled",
-          "Automatic schema dumps rely on database-specific tools and may add review noise",
-          "It intentionally omits richer change planning and drift-management features found in larger platforms"
-        ],
-        "complements": [
-          "sqlc for generating typed code from SQL",
-          "Docker Compose development environments",
-          "Continuous-integration checks for migration ordering and schema drift"
-        ],
-        "prerequisites": [
-          "A supported PostgreSQL, MySQL, MariaDB, SQLite, ClickHouse, BigQuery, or Spanner database",
-          "A database connection URL and credentials with appropriate schema privileges",
-          "Enough SQL knowledge to write both forward and rollback sections safely"
-        ],
-        "useCases": [
-          "Creating, applying, and rolling back timestamped SQL migrations",
-          "Keeping a generated schema file reviewable in version control",
-          "Waiting for a database and applying migrations in CI or container startup"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "dbmate",
-      "docs": "https://github.com/amacneil/dbmate#readme",
-      "homepage": "https://github.com/amacneil/dbmate",
-      "id": "brew:dbmate",
-      "installURL": "pkgmgrmgr://install?package=brew%3Adbmate",
-      "lastUpdatedAt": "2026-09-19T02:33:23Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/amacneil/dbmate",
-      "researchedAt": "2026-09-19T06:55:32Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Dbmate official documentation",
-          "url": "https://github.com/amacneil/dbmate/blob/main/README.md"
-        },
-        {
-          "kind": "independent",
-          "title": "Dbmate Go library reference",
-          "url": "https://pkg.go.dev/github.com/amacneil/dbmate/v2/pkg/dbmate"
-        },
-        {
-          "kind": "independent",
-          "title": "Production-use discussion from data engineering practitioners",
-          "url": "https://www.reddit.com/r/dataengineering/comments/12hiyuw/automation_gitops_for_databases_schemas_tables/"
-        }
-      ],
-      "upstreamSummary": "Lightweight, framework-agnostic database migration tool",
-      "version": "2.36.0"
-    },
     "brew:dekit": {
       "agentSummary": "dekit manages development and production processes from declarative configuration, with dependency ordering, restarts, and terminal controls; teams should evaluate maturity before replacing established supervisors.",
       "assessment": {
@@ -3167,6 +3109,90 @@
       "upstreamSummary": "CLI for FastAPI framework",
       "version": "0.155.0"
     },
+    "brew:fortitude": {
+      "agentSummary": "Fortitude is a Rust-built Fortran linter with more than one hundred rules, automatic fixes, configurable selections, multiple CI formats, and a tree-sitter parser aimed at scientific codebases.",
+      "assessment": {
+        "alternatives": [
+          "Compiler warnings or other Fortran linters for teams needing different rule coverage."
+        ],
+        "audiences": [
+          "Fortran maintainers and scientific-software teams adding automated code-quality checks."
+        ],
+        "caveats": [
+          "Automatic fixes cover only selected rules and still require review.",
+          "A syntax-tree linter cannot replace compilation, tests, or domain validation.",
+          "Rule adoption may require staged configuration for older scientific codebases."
+        ],
+        "complements": [
+          "A Fortran compiler, formatter, tests, and CI code-scanning workflow."
+        ],
+        "prerequisites": [
+          "A Fortran source tree; compilation is not required for basic linting.",
+          "Project configuration when the default rule selection is not appropriate."
+        ],
+        "useCases": [
+          "Lint Fortran projects locally or in CI and explain individual diagnostics.",
+          "Apply supported automatic fixes and emit SARIF, GitHub, GitLab, or concise reports."
+        ]
+      },
+      "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 9,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-23"
+          },
+          "365": {
+            "count": 862,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-23"
+          },
+          "90": {
+            "count": 44,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-25"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": null
+      },
+      "displayName": "fortitude",
+      "docs": "https://fortitude.readthedocs.io/en/latest/linter",
+      "homepage": "https://fortitude.readthedocs.io/en/stable/",
+      "id": "brew:fortitude",
+      "installURL": "pkgmgrmgr://install?package=brew%3Afortitude",
+      "lastUpdatedAt": "2026-10-23T06:00:55Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/PlasmaFAIR/fortitude",
+      "researchedAt": "2026-10-23T08:21:21Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Fortitude upstream repository",
+          "url": "https://github.com/PlasmaFAIR/fortitude"
+        },
+        {
+          "kind": "primary",
+          "title": "Fortitude documentation",
+          "url": "https://fortitude.readthedocs.io/en/stable/"
+        },
+        {
+          "kind": "independent",
+          "title": "Fortitude paper in the Journal of Open Source Software",
+          "url": "https://joss.theoj.org/papers/10.21105/joss.10570"
+        }
+      ],
+      "upstreamSummary": "Fortran linter",
+      "version": "0.9.2"
+    },
     "brew:git-xet": {
       "agentSummary": "Git-Xet connects familiar Git workflows to Hugging Face’s chunk-based storage, reducing redundant large-file transfers while retaining Git LFS as a required integration layer.",
       "assessment": {
@@ -3325,62 +3351,6 @@
       ],
       "upstreamSummary": "Jupyter notebooks as Markdown documents, Julia, Python or R scripts",
       "version": "1.19.5"
-    },
-    "brew:memex": {
-      "agentSummary": "Memex indexes local coding-agent transcripts for lexical or optional semantic search, then helps users inspect, resume, and reuse earlier sessions across supported tools.",
-      "assessment": {
-        "alternatives": [
-          "Directly searching each agent's own history",
-          "General desktop search when structured session filters are unnecessary"
-        ],
-        "audiences": [
-          "Developers who regularly switch among coding agents",
-          "Teams retaining local agent transcripts for later retrieval"
-        ],
-        "caveats": [
-          "Coverage varies by agent and by the records each tool preserves",
-          "Semantic search requires optional embeddings",
-          "Remote embeddings send transcript text to the configured API",
-          "Session transfer is experimental and does not recreate runtime state or workspace files"
-        ],
-        "complements": [
-          "Claude Code, Codex, Cursor, OpenCode, Pi, and other documented transcript sources",
-          "SSH for querying indexes on additional machines"
-        ],
-        "prerequisites": [
-          "Local transcript data from a supported coding tool",
-          "The original agent and session data are still needed for native resume"
-        ],
-        "useCases": [
-          "Search prior implementation decisions and debugging sessions",
-          "Browse or resume locally retained sessions",
-          "Expose source-backed transcript retrieval through CLI, TUI, web, skills, or MCP"
-        ]
-      },
-      "category": "ai",
-      "displayName": "memex",
-      "docs": "https://github.com/nicosuave/memex#readme",
-      "homepage": "https://github.com/nicosuave/memex",
-      "id": "brew:memex",
-      "installURL": "pkgmgrmgr://install?package=brew%3Amemex",
-      "lastUpdatedAt": "2026-10-16T07:49:48Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/nicosuave/memex",
-      "researchedAt": "2026-10-16T11:00:33Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Memex repository and README",
-          "url": "https://github.com/nicosuave/memex"
-        },
-        {
-          "kind": "primary",
-          "title": "Memex search and reading guide",
-          "url": "https://github.com/nicosuave/memex/blob/main/docs/search.md"
-        }
-      ],
-      "upstreamSummary": "Index and search local agent conversation history",
-      "version": "0.29.0"
     },
     "brew:neovim": {
       "agentSummary": "Neovim combines modal editing with a built-in LSP client, letting users connect Kotlin and other language servers through explicit, scriptable configuration.",
@@ -3670,6 +3640,98 @@
       ],
       "upstreamSummary": "OCI Registry As Storage",
       "version": "1.3.5"
+    },
+    "brew:pdfcraft-cli": {
+      "agentSummary": "pdfcraft-cli exposes PdfCraft's Rust PDF engine for inspection, text extraction, page operations, editing, scripted tool calls, and an opt-in, directory-confined MCP server.",
+      "assessment": {
+        "alternatives": [
+          "qpdf, pdftk, or MuPDF tools for narrower, mature command-line operations."
+        ],
+        "audiences": [
+          "Developers and document operators automating repeatable PDF work.",
+          "Agent users who need a locally scoped PDF tool server."
+        ],
+        "caveats": [
+          "The upstream project labels PdfCraft alpha and documents incomplete professional workflows.",
+          "MCP access should use --root to constrain readable and writable files.",
+          "The MCP server is opt-in and runs over standard input and output, not a network port."
+        ],
+        "complements": [
+          "PdfCraft's graphical application for interactive review of the same document engine.",
+          "A versioned scripts directory for auditable batch operations."
+        ],
+        "prerequisites": [
+          "Local PDF files and a supported desktop or Unix-like environment.",
+          "An MCP-capable client only when using the optional server mode."
+        ],
+        "useCases": [
+          "Inspect PDF structure, extract text, render pages, combine, split, rotate, or edit documents.",
+          "Run JSON-described tool sequences or expose the same tools over an opt-in MCP process."
+        ]
+      },
+      "category": "productivity",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 71,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-23"
+          },
+          "365": {
+            "count": 71,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-23"
+          },
+          "90": {
+            "count": 71,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-25"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-23",
+          "growthPercent": null,
+          "installs30d": 71,
+          "previousMonthlyRate": 0.0,
+          "score": 12.906644,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-25"
+        }
+      },
+      "displayName": "pdfcraft-cli",
+      "docs": "https://getartcraft.com/apps/pdfcraft",
+      "homepage": "https://getartcraft.com/apps/pdfcraft",
+      "id": "brew:pdfcraft-cli",
+      "installURL": "pkgmgrmgr://install?package=brew%3Apdfcraft-cli",
+      "lastUpdatedAt": "2026-10-23T05:13:39Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/storytold/pdfcraft",
+      "researchedAt": "2026-10-23T08:21:21Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "PdfCraft upstream README and CLI documentation",
+          "url": "https://github.com/storytold/pdfcraft"
+        },
+        {
+          "kind": "primary",
+          "title": "PdfCraft initial release",
+          "url": "https://github.com/storytold/pdfcraft/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "Headless PdfCraft CLI and MCP server to create, edit, inspect and fill PDFs",
+      "version": "0.12.0"
     },
     "brew:plakar": {
       "agentSummary": "Plakar creates browsable, encrypted, compressed, deduplicated snapshots across files and integrated data sources, with verification, selective restores, extensible storage backends, and a web interface.",
@@ -4817,11 +4879,173 @@
       ],
       "upstreamSummary": "CLI for Git worktree management, designed for parallel AI agent workflows",
       "version": "0.81.0"
+    },
+    "brew:xfr": {
+      "agentSummary": "xfr measures network throughput through a live terminal interface, supporting TCP, UDP, QUIC, parallel streams, automation formats, and multi-client serving while using its own non-iperf protocol.",
+      "assessment": {
+        "alternatives": [
+          "iperf3 for an established ecosystem and protocol-compatible peers."
+        ],
+        "audiences": [
+          "Network engineers and homelab operators who want interactive throughput tests.",
+          "Automation authors who need JSON, streaming JSON, or CSV results."
+        ],
+        "caveats": [
+          "xfr uses its own protocol and cannot connect to iperf3 servers.",
+          "QUIC and MPTCP support vary by platform and network path.",
+          "Benchmark traffic can saturate links, so tests should be scheduled deliberately."
+        ],
+        "complements": [
+          "Prometheus when optional metrics need longer-term collection.",
+          "Packet capture and operating-system network tools for diagnosing unexpected results."
+        ],
+        "prerequisites": [
+          "xfr on both peers, preferably at the same version.",
+          "Required firewall access, normally including TCP and UDP port 5201."
+        ],
+        "useCases": [
+          "Measure TCP, UDP, QUIC, or Linux MPTCP performance between controlled endpoints.",
+          "Observe multiple clients through a server dashboard or export results for scripts."
+        ]
+      },
+      "category": "networking",
+      "discovery": {
+        "admittedAt": "2026-10-22",
+        "analytics": {
+          "30": {
+            "count": 16,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-23"
+          },
+          "365": {
+            "count": 16,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-23"
+          },
+          "90": {
+            "count": 16,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-25"
+          }
+        },
+        "firstObservedAt": "2026-10-22",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": null
+      },
+      "displayName": "xfr",
+      "docs": "https://github.com/lance0/xfr#readme",
+      "homepage": "https://github.com/lance0/xfr",
+      "id": "brew:xfr",
+      "installURL": "pkgmgrmgr://install?package=brew%3Axfr",
+      "lastUpdatedAt": "2026-10-23T01:33:11Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/lance0/xfr",
+      "researchedAt": "2026-10-23T08:21:21Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "xfr upstream documentation",
+          "url": "https://github.com/lance0/xfr"
+        },
+        {
+          "kind": "primary",
+          "title": "xfr comparison and migration guide",
+          "url": "https://github.com/lance0/xfr/blob/master/docs/COMPARISON.md"
+        }
+      ],
+      "upstreamSummary": "Modern network bandwidth testing with TUI",
+      "version": "0.12.1"
+    },
+    "brew:zvec-grep": {
+      "agentSummary": "zvec-grep builds local workspace indexes combining exact, BM25, and vector search for people and agents, with multi-format parsing, source-linked results, and optional remote embeddings.",
+      "assessment": {
+        "alternatives": [
+          "ripgrep for text-only search, or a dedicated code-search service for centrally managed indexes."
+        ],
+        "audiences": [
+          "Developers searching mixed code and documentation workspaces.",
+          "Agent users who want ranked, source-linked local evidence."
+        ],
+        "caveats": [
+          "Indexes are additional local state and must be refreshed as files change.",
+          "Remote embedding providers receive document data only when explicitly selected, but their privacy terms then apply.",
+          "Local embedding performance and GPU support depend on the selected runtime and hardware."
+        ],
+        "complements": [
+          "ripgrep for immediate exact searches without an index.",
+          "OpenCode or another supported agent integration."
+        ],
+        "prerequisites": [
+          "Node.js 22 or newer for the documented TypeScript implementation.",
+          "Disk space and initial indexing time for each workspace."
+        ],
+        "useCases": [
+          "Index a workspace and combine semantic, full-text, exact, or regular-expression searches.",
+          "Install agent integrations that query the same local workspace index."
+        ]
+      },
+      "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-21",
+        "analytics": {
+          "30": {
+            "count": 25,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-23"
+          },
+          "365": {
+            "count": 25,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-23"
+          },
+          "90": {
+            "count": 25,
+            "endDate": "2026-10-23",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-25"
+          }
+        },
+        "firstObservedAt": "2026-10-21",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": null
+      },
+      "displayName": "zvec-grep",
+      "docs": "https://github.com/zvec-ai/zvec-grep/blob/main/docs/02-cli.md",
+      "homepage": "https://github.com/zvec-ai/zvec-grep",
+      "id": "brew:zvec-grep",
+      "installURL": "pkgmgrmgr://install?package=brew%3Azvec-grep",
+      "lastUpdatedAt": "2026-10-22T11:09:06Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/zvec-ai/zvec-grep",
+      "researchedAt": "2026-10-23T08:21:21Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "zvec-grep upstream documentation",
+          "url": "https://github.com/zvec-ai/zvec-grep"
+        },
+        {
+          "kind": "primary",
+          "title": "zvec-grep CLI documentation",
+          "url": "https://github.com/zvec-ai/zvec-grep/blob/main/docs/02-cli.md"
+        }
+      ],
+      "upstreamSummary": "Agent-friendly hybrid workspace search across code and non-code content",
+      "version": "0.2.2"
     }
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-22T07:01:16Z",
+    "generatedAt": "2026-10-23T08:19:36Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
