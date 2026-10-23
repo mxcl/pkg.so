@@ -18,7 +18,11 @@ config-file-location:
     - >
       %AppData%\go\env (default GOENV file, derived from Go docs: per-user config dir
       plus go/env)
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.netrc
+  windows:
+    - '%USERPROFILE%\_netrc'
 history:
   adoption-history:
     - >
@@ -87,6 +91,33 @@ history:
       tests, formatting, dependency resolution, cross-compilation, and installation of
       Go tools. For a versioned track such as go@1.24, users typically install it to
       keep a specific Go release line available alongside other toolchain versions.
+related-packages:
+  - id: brew:go
+    reason: >
+      Choose the unversioned Go formula for the current toolchain; retain go@1.24 only
+      when a project or compatibility matrix specifically requires the 1.24 release
+      line.
+    rel: alternative
+    sources:
+      - https://go.dev/doc/devel/release
+      - https://formulae.brew.sh/formula/go
+      - https://formulae.brew.sh/formula/go@1.24
+  - id: brew:delve
+    reason: >
+      Delve provides source-level debugging for programs built with the Go toolchain,
+      including debug, test, attach, core, and DAP workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/go-delve/delve
+      - https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv.md
+  - id: brew:golangci-lint
+    reason: >
+      golangci-lint runs a configurable suite of Go linters in parallel and complements
+      the toolchain's standard formatting, testing, and vetting commands.
+    rel: adjacent_workflow
+    sources:
+      - https://golangci-lint.run/
+      - https://pkg.go.dev/cmd/go
 tags:
   - cli
   - compiler
