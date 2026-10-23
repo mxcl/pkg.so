@@ -82,6 +82,25 @@ history:
       scripts can be loaded from ./.git/theme.gws, ~/.theme.gws, or ~/.config/gws/theme;
       the README deliberately avoids loading themes from the project manifest directory
       because a synced repository could otherwise inject shell code.
+related-packages:
+  - id: brew:git-workspace
+    reason: >
+      Choose git-workspace when repositories should be discovered and reconciled from
+      GitHub, GitLab, or Gitea provider rules; choose gws for a small, explicitly
+      versioned repository manifest.
+    rel: alternative
+    sources:
+      - https://streakycobra.github.io/gws/
+      - https://github.com/orf/git-workspace#readme
+  - id: brew:peru
+    reason: >
+      Use peru alongside or instead of gws when the workflow must pin and materialize
+      selected files from Git, Mercurial, Subversion, or archives rather than manage
+      full working repositories.
+    rel: adjacent_workflow
+    sources:
+      - https://streakycobra.github.io/gws/
+      - https://github.com/buildinspace/peru#readme
 category: developer-tools
 package-manager:
   brew: gws

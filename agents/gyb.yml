@@ -5,7 +5,15 @@ docs:
   - https://github.com/GAM-team/got-your-back/wiki
   - https://github.com/GAM-team/got-your-back#readme
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - <GYB config folder>/client_secrets.json
+    - <GYB config folder>/<email-address>.cfg
+    - <GYB config folder>/oauth2service.json
+  windows:
+    - <GYB config folder>\client_secrets.json
+    - <GYB config folder>\<email-address>.cfg
+    - <GYB config folder>\oauth2service.json
 history:
   adoption-history:
     - >
@@ -85,6 +93,7 @@ history:
       workflows are not shaped for repeatable administrator automation. GYB gives
       package-managed environments a small executable that can sit in scripts, scheduled
       jobs, migration runbooks, and support procedures.
+related-packages: []
 tags:
   - backup
   - cli

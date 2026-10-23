@@ -100,6 +100,33 @@ history:
       interchange. RFC 1952 explicitly calls out producing and consuming data streams
       with bounded intermediate storage, which fits Unix filters, HTTP/content encoding
       history, archival transfer, and ETL-style processing.
+related-packages:
+  - id: brew:pigz
+    reason: >
+      Choose pigz when gzip-compatible output is required but compression should use
+      multiple processor cores; decompression remains substantially serial.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/gzip/manual/gzip.html
+      - https://www.zlib.net/pigz/
+      - https://www.zlib.net/pigz/pigz.pdf
+  - id: brew:zstd
+    reason: >
+      Choose Zstandard when a separate format is acceptable and the workflow benefits
+      from a wider speed-versus-ratio range, fast decoding, or dictionary compression.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/gzip/
+      - https://facebook.github.io/zstd/
+      - https://facebook.github.io/zstd/zstd_manual.html
+  - id: brew:gnu-tar
+    reason: >
+      Use GNU tar with gzip when multiple files, directory structure, permissions, or
+      other archive metadata must be preserved in a compressed `.tar.gz` artifact.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/gzip/manual/gzip.html
+      - https://www.gnu.org/software/tar/manual/html_chapter/Formats.html
 category: system
 package-manager:
   apk: gzip
