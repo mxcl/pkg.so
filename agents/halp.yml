@@ -64,6 +64,15 @@ history:
       arguments such as `-h`, `--help`, `-v`, and `--version`. The `plz` subcommand
       opens local manual pages or cheat.sh, and the documented configuration file lets
       users tune the checked arguments and helper commands.
+related-packages:
+  - id: brew:man-db
+    reason: >
+      Use man-db alongside halp because halp's `plz` workflow explicitly invokes `man`,
+      while man-db supplies the indexed local manual-page viewer and search system.
+    rel: adjacent_workflow
+    sources:
+      - https://halp.cli.rs/
+      - https://man-db.gitlab.io/man-db/
 tags:
   - cli
   - help
