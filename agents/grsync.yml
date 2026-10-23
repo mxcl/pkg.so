@@ -4,7 +4,9 @@ repo: https://sourceforge.net/p/grsync/code/HEAD/tree
 docs:
   - https://sourceforge.net/projects/grsync
   - https://www.opbyte.it/grsync
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.config/grsync/grsync.ini
 credentials-file-location: null
 history:
   adoption-history:
@@ -77,6 +79,17 @@ history:
       synchronization, preview runs, view rsync output, and reuse saved options. The
       companion grsync-batch command lets saved sessions participate in shell, cron, or
       scripted workflows without asking users to reconstruct the full rsync invocation.
+related-packages:
+  - id: brew:rsync
+    reason: >
+      Grsync is a graphical front end that executes rsync, so install or use rsync
+      directly when scripting, advanced option coverage, or headless operation matters
+      more than saved GUI sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://www.opbyte.it/grsync/
+      - https://rsync.samba.org/
+      - https://rsync.samba.org/ftp/rsync/rsync.html
 tags:
   - backup
   - cli
