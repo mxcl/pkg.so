@@ -1,0 +1,92 @@
+id: cask:firezone
+display-name: Firezone
+homepage: https://www.firezone.dev/
+repo: https://github.com/firezone/firezone
+docs:
+  - https://www.firezone.dev/kb
+  - https://www.firezone.dev/kb/install/macos
+  - https://www.firezone.dev/kb/reference/cli/macos
+config-file-location: null
+credentials-file-location:
+  macos: macOS Keychain
+history:
+  adoption-history:
+    - >
+      The project reports that its early self-hosted VPN-server incarnation grew to
+      thousands of deployed instances and a substantial open-source community. It was
+      accepted into Y Combinator's Winter 2022 batch and subsequently funded.
+    - >
+      Firezone later evolved from a straightforward WireGuard management tool into a
+      cross-platform, identity-aware remote-access platform with clients, gateways,
+      policies, relays, device trust, and audit facilities.
+  package-nerd-significance:
+    - >
+      Firezone is notable for combining WireGuard's encrypted data plane with
+      higher-level identity, policy, resource discovery, and NAT-traversal machinery.
+      Its monorepo spans Rust data-plane components, an Elixir control plane, and native
+      platform clients.
+    - >
+      For macOS package users, the cask supplies the native client while the bundled CLI
+      supports terminal-driven tunnel control. Operators should note that official
+      production self-hosting support and published-client compatibility are distinct
+      from the project's source availability.
+  project-history:
+    - >
+      Jamil Bou Kheir and Jason Gong founded Firezone in 2021 after an earlier side
+      project sought to make WireGuard easier to deploy and manage. The initial code
+      commit dates to April 2020, followed by a public launch in September 2021.
+    - >
+      The original product focused on a self-hosted WireGuard VPN server. Subsequent
+      work broadened Firezone into zero-trust remote access with identity-based
+      policies, clients and gateways, and a managed control plane.
+  related-projects:
+    - WireGuard supplies the core encrypted tunnel protocol.
+    - >
+      Firezone's data plane is primarily implemented in Rust, while its control plane
+      uses Elixir and Phoenix.
+  sources:
+    - 'Official company history: https://www.firezone.dev/about'
+    - 'Official macOS CLI reference: https://www.firezone.dev/kb/reference/cli/macos'
+    - 'Official macOS client guide: https://www.firezone.dev/kb/install/macos'
+    - 'Official repository overview: https://github.com/firezone/firezone'
+  summary:
+    - >
+      Firezone is an open-source remote-access platform built around WireGuard. It
+      connects authenticated clients to private resources through granular policies,
+      gateways, direct encrypted paths, and relays when direct connectivity is
+      unavailable.
+  timeline:
+    - '2020: The initial Firezone codebase commit was made.'
+    - '2021: Firezone was founded and received its first public release.'
+    - "2021: The company was accepted into Y Combinator's Winter 2022 batch."
+    - '2022: Firezone completed the batch and raised seed funding.'
+    - '2024: Firezone launched the first commercial version of its zero-trust product.'
+  usage:
+    - >
+      Administrators deploy gateways near protected resources, define resources and
+      access policies, and connect an identity provider. End users install a client,
+      authenticate, and access authorized applications, servers, databases, or subnets.
+    - >
+      On macOS the menu-bar client handles interactive sign-in and VPN permission. The
+      bundled `firezone` CLI can control the same tunnel; its official reference says
+      tokens are stored in the macOS Keychain by default and warns against placing
+      long-lived tokens directly on the command line.
+category: security
+package-manager:
+  brew-cask: firezone
+package-manager-url: https://formulae.brew.sh/cask/firezone
+tags:
+  - identity-aware-access
+  - macos-client
+  - network-security
+  - remote-access
+  - vpn
+  - wireguard
+  - zero-trust
+description: Zero-trust access platform built on WireGuard
+applications:
+  - Firezone.app
+provenance:
+  cask: firezone
+  provider: brew-cask
+  source: https://formulae.brew.sh/api/cask.json

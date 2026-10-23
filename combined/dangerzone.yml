@@ -1,0 +1,96 @@
+id: cask:dangerzone
+display-name: Dangerzone
+homepage: https://dangerzone.rocks/
+repo: https://github.com/freedomofpress/dangerzone
+docs:
+  - https://dangerzone.rocks/about
+  - https://github.com/freedomofpress/dangerzone#readme
+  - https://github.com/freedomofpress/dangerzone/blob/main/INSTALL.md
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Dangerzone was developed by Micah Lee at First Look Media and later became a
+      Freedom of the Press Foundation project. FPF positions it for journalists,
+      activists, newsrooms, and others who must inspect documents received from
+      untrusted sources.
+    - >
+      The application supports macOS, Windows, multiple Linux distributions, Tails, and
+      beta support for Qubes OS. A 2023 independent security audit reported no high-risk
+      findings, and the conversion design was strengthened with gVisor in 2024.
+  package-nerd-significance:
+    - >
+      Dangerzone packages a complex document-sanitization pipeline—office-format
+      conversion, PDF rasterization, OCR, and reconstruction—behind a desktop
+      application and CLI. Its nested sandboxing design is of particular interest to
+      security-conscious package users.
+    - >
+      Its distribution story spans signed desktop installers, Linux packages, container
+      images, Homebrew Cask, and air-gapped operation. Later releases separated
+      sandbox-image updates from application releases so security fixes could ship
+      independently.
+  project-history:
+    - >
+      Dangerzone began with a 0.1 release in 2020. It was originally developed at First
+      Look Media and is now maintained by Freedom of the Press Foundation under the
+      AGPLv3 license.
+    - >
+      The project progressively hardened its conversion boundary: it moved Linux
+      execution to Podman, added gVisor as an inner sandbox, adopted reproducible
+      container images, and embedded Podman for macOS and Windows so users no longer had
+      to manage Docker Desktop.
+  related-projects:
+    - The design was inspired by Qubes trusted PDF.
+    - >
+      LibreOffice handles office-document conversion, PyMuPDF renders PDFs to pixels,
+      and gVisor adds an application-kernel isolation layer.
+    - Podman supplies the container runtime in current desktop builds.
+  sources:
+    - https://dangerzone.rocks/about/
+    - https://dangerzone.rocks/journalists/
+    - https://dangerzone.rocks/news/2024-09-23-gvisor/
+    - https://dangerzone.rocks/news/2025-12-02-0.10.0/
+    - https://github.com/freedomofpress/dangerzone/blob/main/CHANGELOG.md
+  summary:
+    - >
+      Dangerzone is an open-source document-sanitization application that renders
+      untrusted documents into pixels inside an isolated sandbox and reconstructs those
+      pixels as a new PDF.
+  timeline:
+    - '2020: Dangerzone 0.1 became the first release.'
+    - '2021: Linux execution moved from Docker to Podman.'
+    - "2023: Include Security completed the project's first independent security audit."
+    - '2024: Dangerzone 0.7.0 added gVisor to reduce the conversion attack surface.'
+    - >
+      2025: Dangerzone 0.10.0 embedded Podman on macOS and Windows and introduced
+      independently updatable sandbox images.
+  usage:
+    - >
+      Users give Dangerzone an untrusted PDF, office document, e-book, or image. It
+      converts the content in a network-disabled sandbox, reconstructs a safe PDF, and
+      can optionally add an OCR text layer and compression.
+    - >
+      The output should be treated like a virtual print-and-rescan: active content,
+      formulas, and macros are not preserved, and the tool does not remove threats
+      encoded purely in visible content, such as printer tracking dots or steganography.
+category: security
+package-manager:
+  brew-cask: dangerzone
+package-manager-url: https://formulae.brew.sh/cask/dangerzone
+tags:
+  - document-security
+  - gvisor
+  - journalism
+  - malware-defense
+  - pdf-sanitization
+  - podman
+  - privacy
+  - sandbox
+description: Convert potentially dangerous PDFs or Office documents into safe PDFs
+applications:
+  - Dangerzone.app
+provenance:
+  cask: dangerzone
+  provider: brew-cask
+  source: https://formulae.brew.sh/api/cask.json
