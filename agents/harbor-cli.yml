@@ -78,6 +78,39 @@ history:
     - >
       It stores configuration and login-related material under the Harbor CLI config
       location, with environment variables available for containerized or scripted use.
+related-packages:
+  - id: brew:docker
+    reason: >
+      Docker is the standard adjacent client for logging into Harbor and pushing or
+      pulling the container images that Harbor stores and governs.
+    rel: adjacent_workflow
+    sources:
+      - https://goharbor.io/docs/main/administration/configure-authentication/oidc-auth/
+      - https://docs.docker.com/reference/cli/docker/
+  - id: brew:oras
+    reason: >
+      ORAS complements Harbor CLI by pushing, pulling, and managing arbitrary OCI
+      artifacts stored in Harbor repositories.
+    rel: adjacent_workflow
+    sources:
+      - https://goharbor.io/blog/harbor-as-universal-oci-hub/
+      - https://oras.land/docs/commands/oras_pull/
+  - id: brew:helm
+    reason: >
+      Helm works with Harbor's OCI registry to package, push, pull, and install Helm
+      charts while Harbor CLI administers the surrounding projects and repositories.
+    rel: adjacent_workflow
+    sources:
+      - https://goharbor.io/docs/edge/working-with-projects/working-with-oci/
+      - https://helm.sh/docs/topics/registries/
+  - id: brew:cosign
+    reason: >
+      Cosign signs OCI artifacts and uploads their signatures to Harbor, where Harbor
+      associates and governs the signatures alongside the source artifacts.
+    rel: adjacent_workflow
+    sources:
+      - https://goharbor.io/docs/main/working-with-projects/working-with-images/sign-images/
+      - https://docs.sigstore.dev/cosign/
 tags:
   - cli
   - cncf

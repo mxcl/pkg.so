@@ -105,6 +105,24 @@ history:
       Production Unix installations commonly pair the daemon with a service manager and
       a configuration file such as `haproxy.cfg`, but the batch input has no official
       config path to preserve.
+related-packages:
+  - id: brew:nginx
+    reason: >
+      NGINX is an alternative when the same process should combine HTTP reverse proxying
+      and load balancing with web-content serving.
+    rel: alternative
+    sources:
+      - https://github.com/haproxy/haproxy#readme
+      - https://nginx.org/en/docs/http/load_balancing.html
+  - id: brew:envoy
+    reason: >
+      Envoy is an alternative for cloud-native edge or service-mesh deployments that
+      prioritize dynamic control-plane configuration, service discovery, tracing, and
+      advanced distributed routing.
+    rel: alternative
+    sources:
+      - https://github.com/haproxy/haproxy#readme
+      - https://www.envoyproxy.io/docs/envoy/latest/intro/what_is_envoy.html
 category: networking
 package-manager:
   apk: haproxy
