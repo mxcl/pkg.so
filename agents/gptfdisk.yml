@@ -88,6 +88,25 @@ history:
       The official documentation warns about platform limits such as FreeBSD write
       behavior on mounted disks and macOS System Integrity Protection restricting
       low-level access to system disks.
+related-packages:
+  - id: brew:gptsync
+    reason: >
+      Choose gptsync only for the narrower Intel Mac and legacy dual-boot task of
+      synchronizing an MBR view from an existing GPT; GPT fdisk is the broader editor,
+      converter, and repair suite.
+    rel: alternative
+    sources:
+      - https://refit.sourceforge.net/doc/c3s3_config.html
+      - https://www.rodsbooks.com/gdisk/hybrid.html
+  - id: brew:testdisk
+    reason: >
+      Use TestDisk alongside GPT fdisk when partitions must be discovered or files
+      recovered first, then use GPT fdisk for deliberate GPT inspection, conversion, or
+      metadata repair.
+    rel: adjacent_workflow
+    sources:
+      - https://www.cgsecurity.org/wiki/TestDisk
+      - https://www.rodsbooks.com/gdisk/repairing.html
 tags:
   - cli
   - disk-utility
