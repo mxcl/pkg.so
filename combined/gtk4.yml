@@ -5,7 +5,10 @@ repo: https://gitlab.gnome.org/GNOME/gtk
 docs:
   - https://docs.gtk.org/gtk4
   - https://www.gtk.org/docs
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/gtk-4.0/settings.ini
+    - $XDG_CONFIG_HOME/gtk-4.0/gtk.css
 credentials-file-location: null
 history:
   adoption-history:
@@ -112,6 +115,31 @@ history:
       applications, print testing, settings queries, render-node inspection, and visual
       experiments. Those tools make gtk4 a developer-platform package even when a
       desktop user sees it only as an application dependency.
+related-packages:
+  - id: brew:gtk+3
+    reason: >
+      Choose GTK 3 when maintaining an application that still targets the stable 3.24
+      API and has not completed the source and UI changes required by GTK 4.
+    rel: alternative
+    sources:
+      - https://docs.gtk.org/gtk3/
+      - https://docs.gtk.org/gtk4/migrating-3to4.html
+  - id: brew:libadwaita
+    reason: >
+      Use libadwaita with GTK 4 to build modern adaptive GNOME interfaces with
+      GNOME-specific widgets and layout behavior.
+    rel: adjacent_workflow
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/libadwaita/
+      - https://docs.gtk.org/gtk4/
+  - id: brew:glib
+    reason: >
+      GLib supplies the portable data structures, main loop, object-system foundations,
+      and utility APIs used beneath GTK applications.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.gtk.org/glib/
+      - https://docs.gtk.org/gtk4/
 category: developer-tools
 package-manager:
   brew: gtk4
