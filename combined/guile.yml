@@ -4,7 +4,8 @@ homepage: https://www.gnu.org/software/guile/
 repo: https://codeberg.org/guile/guile
 docs:
   - https://www.gnu.org/software/guile/manual
-config-file-location: null
+config-file-location:
+  unix: ~/.guile
 credentials-file-location: null
 history:
   adoption-history:
@@ -111,6 +112,25 @@ history:
       `guile-snarf`, and `guile-tools`. For developers, Guile's appeal is a practical
       Scheme with R5RS, much of R6RS, R7RS support, SRFIs, modules, POSIX APIs,
       networking, threads, dynamic linking, and FFI.
+related-packages:
+  - id: brew:mit-scheme
+    reason: >
+      MIT/GNU Scheme is an alternative complete Scheme development environment with its
+      own compiler, debugger, editor, and runtime library; choose Guile when GNU
+      application embedding and extension-language integration are the priority.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/guile/manual/
+      - https://www.gnu.org/software/mit-scheme/
+  - id: cask:gnucash
+    reason: >
+      GnuCash embeds Guile to execute its Scheme report system, so Guile knowledge and
+      tooling are directly useful when creating or modifying GnuCash reports.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/guile/
+      - https://www.gnucash.org/docs/v5/C/gnucash-manual.pdf
+      - https://wiki.gnucash.org/wiki/Custom_Reports
 category: language-runtime
 package-manager:
   apk: guile

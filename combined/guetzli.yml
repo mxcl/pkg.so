@@ -77,6 +77,26 @@ history:
       Guetzli assumes sRGB input with gamma 2.2 and ignores color-profile metadata. That
       assumption is important in package notes because it affects whether the tool is
       appropriate for a given image workflow.
+related-packages:
+  - id: brew:mozjpeg
+    reason: >
+      MozJPEG is the production-oriented, libjpeg-turbo-based alternative for
+      standards-compatible JPEG encoding; choose it when API compatibility and practical
+      pipeline throughput matter more than Guetzli's expensive perceptual search.
+    rel: alternative
+    sources:
+      - https://github.com/google/guetzli
+      - https://research.mozilla.org/2014/03/05/introducing-the-mozjpeg-project/
+      - https://github.com/mozilla/mozjpeg
+  - id: brew:jpegoptim
+    reason: >
+      jpegoptim is better suited to batch, in-place, or lossless optimization of
+      existing JPEG files, whereas Guetzli is an exceptionally slow perceptual
+      re-encoder that can also start from PNG input.
+    rel: alternative
+    sources:
+      - https://github.com/google/guetzli
+      - https://github.com/tjko/jpegoptim
 category: media
 package-manager:
   apk: guetzli
