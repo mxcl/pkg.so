@@ -75,6 +75,25 @@ history:
       The formatter depends on javac internals through the `jdk.compiler` module, so
       editor and library integrations document extra JVM export flags on strongly
       encapsulated JDKs.
+related-packages:
+  - id: brew:checkstyle
+    reason: >
+      Use Checkstyle alongside google-java-format when a project must enforce broader
+      Google Java Style rules that extend beyond automatically rewriting layout and
+      imports.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/google/google-java-format
+      - https://checkstyle.org/google-style.html
+      - https://checkstyle.org/checks.html
+  - id: brew:ktfmt
+    reason: >
+      Use ktfmt as the corresponding opinionated formatter for Kotlin sources in a mixed
+      Java/Kotlin repository that already formats Java with google-java-format.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/google/google-java-format
+      - https://github.com/facebook/ktfmt
 tags:
   - cli
   - code-quality

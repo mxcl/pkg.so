@@ -73,6 +73,25 @@ history:
       Custom log formats are YAML definitions placed under ~/.config/gonzo/formats/,
       letting users map structured or unstructured logs to timestamp, severity, body,
       and attributes without rebuilding the tool.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl is the documented companion for selecting and streaming Kubernetes
+      workload logs into Gonzo for interactive analysis.
+    rel: adjacent_workflow
+    sources:
+      - https://gonzo.controltheory.com/
+      - https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/
+  - id: brew:k9s
+    reason: >
+      Choose K9s when the main task is broader interactive Kubernetes resource
+      management; Gonzo explicitly adopts a k9s-inspired interface but specializes in
+      deeper multi-source log analysis.
+    rel: alternative
+    sources:
+      - https://gonzo.controltheory.com/
+      - https://github.com/control-theory/gonzo
+      - https://k9scli.io/
 tags:
   - cli
   - debugging

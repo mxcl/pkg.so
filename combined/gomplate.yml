@@ -98,6 +98,27 @@ history:
       data from files, env, HTTP, Git, S3, Google Cloud Storage, AWS Parameter Store and
       Secrets Manager, Consul, Vault, merge datasources, and more, then feed that data
       into Go templates.
+related-packages:
+  - id: brew:ytt
+    reason: >
+      Choose ytt when the primary input is YAML and structure-aware templating and
+      overlays are preferable to gomplate's general-purpose Go-template and datasource
+      model.
+    rel: alternative
+    sources:
+      - https://docs.gomplate.ca/
+      - https://carvel.dev/ytt/
+      - https://carvel.dev/ytt/docs/v0.52.x/ytt-vs-x/
+  - id: brew:consul-template
+    reason: >
+      Choose Consul Template when configuration must be continuously rendered from
+      Consul or Vault and changes should trigger commands or service notifications,
+      rather than using gomplate as a broader one-shot renderer.
+    rel: alternative
+    sources:
+      - https://docs.gomplate.ca/datasources/
+      - https://github.com/hashicorp/consul-template
+      - https://github.com/hashicorp/consul-template/blob/main/docs/configuration.md
 category: developer-tools
 package-manager:
   apk: gomplate
