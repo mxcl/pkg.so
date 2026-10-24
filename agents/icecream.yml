@@ -70,6 +70,32 @@ history:
       The project also supports heterogeneous and cross-compilation setups by packaging
       compiler environments, which is one of the key differences from a simple
       remote-shell build farm.
+related-packages:
+  - id: brew:distcc
+    reason: >
+      distcc is the simpler alternative when a static host list is sufficient, while
+      Icecream adds a central scheduler that dynamically assigns jobs on shared
+      clusters.
+    rel: alternative
+    sources:
+      - https://github.com/icecc/icecream#readme
+      - https://www.distcc.org/
+  - id: brew:ccache
+    reason: >
+      ccache can return repeated compilations locally and pass cache misses to Icecream
+      by setting `CCACHE_PREFIX=icecc`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/icecc/icecream/blob/master/doc/icecream.adoc
+      - https://ccache.dev/manual/latest.html
+  - id: brew:icemon
+    reason: >
+      Icemon connects to an Icecream scheduler and provides a graphical view of worker
+      and compilation activity.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/icecc/icecream/blob/master/doc/icecream.adoc
+      - https://github.com/icecc/icemon#readme
 tags:
   - build-acceleration
   - cli

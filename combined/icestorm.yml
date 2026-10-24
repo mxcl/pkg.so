@@ -78,6 +78,23 @@ history:
       The package is especially associated with small iCE40 boards such as the iCEstick
       and HX8K breakout board, where a command-line flow is enough to build, inspect,
       and upload simple FPGA designs.
+related-packages:
+  - id: brew:yosys
+    reason: >
+      Yosys synthesizes Verilog into the netlist consumed by the place-and-route stage
+      of the officially documented IceStorm flow.
+    rel: adjacent_workflow
+    sources:
+      - https://prjicestorm.readthedocs.io/en/latest/overview.html
+      - https://yosyshq.readthedocs.io/projects/yosys/en/latest/
+  - id: brew:nextpnr-ice40
+    reason: >
+      nextpnr-ice40 performs iCE40 place-and-route between Yosys synthesis and
+      IceStorm's `icepack` bitstream generation step.
+    rel: adjacent_workflow
+    sources:
+      - https://prjicestorm.readthedocs.io/en/latest/overview.html
+      - https://github.com/YosysHQ/nextpnr#readme
 category: developer-tools
 package-manager:
   apk: icestorm
