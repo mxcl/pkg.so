@@ -4,7 +4,12 @@ homepage: https://httpie.io/
 repo: https://github.com/httpie/cli
 docs:
   - https://httpie.io/docs/cli
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/httpie/config.json
+    - ~/.config/httpie/config.json
+    - ~/.httpie/config.json
+  windows: '%APPDATA%\httpie\config.json'
 credentials-file-location:
   unix:
     - $XDG_CONFIG_HOME/httpie/sessions
@@ -61,6 +66,32 @@ history:
       package-level use cases include API exploration, JSON POST and PUT requests,
       scripted smoke tests, file uploads, redirects, sessions stored under the HTTPie
       config directory, and readable terminal output during debugging.
+related-packages:
+  - id: brew:xh
+    reason: >
+      Choose xh when you want an HTTPie-compatible human-friendly request syntax in a
+      fast, self-contained Rust implementation.
+    rel: alternative
+    sources:
+      - https://httpie.io/docs/cli
+      - https://github.com/ducaale/xh#readme
+  - id: brew:curl
+    reason: >
+      Choose curl for broader URL-transfer protocol coverage, a mature embeddable
+      library, and maximum scripting portability; HTTPie's own documentation identifies
+      it as an alternative.
+    rel: alternative
+    sources:
+      - https://httpie.io/docs/cli
+      - https://curl.se/docs/
+  - id: brew:jq
+    reason: >
+      Pipe HTTPie's JSON responses into jq for filtering, transformation, and
+      extraction; HTTPie's official documentation explicitly recommends the pairing.
+    rel: adjacent_workflow
+    sources:
+      - https://httpie.io/docs/cli
+      - https://jqlang.github.io/jq/manual/
 category: developer-tools
 package-manager:
   apk: httpie

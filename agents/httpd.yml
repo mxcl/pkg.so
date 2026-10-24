@@ -4,7 +4,10 @@ repo: https://svn.apache.org/repos/asf/httpd/httpd/branches/2.4.x
 docs:
   - https://httpd.apache.org/docs
   - https://httpd.apache.org/docs/current
-config-file-location: null
+config-file-location:
+  unix:
+    - $HOMEBREW_PREFIX/etc/httpd/httpd.conf
+    - $HOMEBREW_PREFIX/etc/httpd/extra/httpd-ssl.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -61,6 +64,33 @@ history:
       making the package useful for running a local server, testing configuration,
       building modules, managing password files, rotating logs, and benchmarking request
       throughput.
+related-packages:
+  - id: brew:nginx
+    reason: >
+      Choose nginx when an event-driven web server and reverse proxy with a smaller
+      configuration model better fits the deployment than Apache's module-oriented
+      architecture.
+    rel: alternative
+    sources:
+      - https://httpd.apache.org/
+      - https://nginx.org/en/docs/
+  - id: brew:caddy
+    reason: >
+      Choose Caddy when automatic certificate management and a concise Caddyfile are
+      more important than Apache's mature module and per-directory configuration
+      ecosystem.
+    rel: alternative
+    sources:
+      - https://httpd.apache.org/
+      - https://caddyserver.com/docs/
+  - id: brew:certbot
+    reason: >
+      Certbot's Apache integration can obtain certificates and automatically modify
+      Apache configuration to enable and renew HTTPS.
+    rel: adjacent_workflow
+    sources:
+      - https://httpd.apache.org/docs/current/ssl/
+      - https://certbot.eff.org/instructions?ws=apache&os=pip
 tags:
   - apache
   - cli

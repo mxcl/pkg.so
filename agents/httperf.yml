@@ -57,6 +57,31 @@ history:
       target server, request count, request rate, timeout, and SSL support. The README
       explicitly warns that a client should usually run only one copy because httperf
       attempts to consume available CPU to generate an accurate workload.
+related-packages:
+  - id: brew:wrk
+    reason: >
+      Choose wrk for high-throughput multithreaded HTTP benchmarking with optional Lua
+      request and reporting scripts.
+    rel: alternative
+    sources:
+      - https://github.com/httperf/httperf#readme
+      - https://github.com/wg/wrk#readme
+  - id: brew:siege
+    reason: >
+      Choose Siege when a URL list, randomized site traversal, and concurrent-user
+      simulation better represent the workload than httperf's connection-rate controls.
+    rel: alternative
+    sources:
+      - https://github.com/httperf/httperf#readme
+      - https://www.joedog.org/siege
+  - id: brew:autocannon
+    reason: >
+      Choose autocannon for a Node.js-native benchmark tool that also exposes a
+      programmatic JavaScript API and HTTP pipelining controls.
+    rel: alternative
+    sources:
+      - https://github.com/httperf/httperf#readme
+      - https://github.com/mcollina/autocannon#readme
 tags:
   - benchmarking
   - cli

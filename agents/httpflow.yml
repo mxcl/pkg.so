@@ -45,6 +45,31 @@ history:
       tcpdump-style capture expressions, filter URLs with a regular expression, read
       packet data from standard input, and write captured HTTP request and response data
       to a directory.
+related-packages:
+  - id: brew:tcpdump
+    reason: >
+      Use tcpdump to make filtered pcap captures that httpflow can later read and turn
+      into extracted HTTP request and response data.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/six-ddc/httpflow#readme
+      - https://www.tcpdump.org/manpages/tcpdump.1.html
+  - id: brew:tcpflow
+    reason: >
+      Choose tcpflow when you need reconstruction of arbitrary TCP conversations rather
+      than httpflow's HTTP-specific extraction.
+    rel: alternative
+    sources:
+      - https://github.com/six-ddc/httpflow#readme
+      - https://github.com/simsong/tcpflow#readme
+  - id: brew:wireshark
+    reason: >
+      Choose Wireshark when interactive inspection and decoding across many protocols is
+      more useful than a small HTTP-only command-line dumper.
+    rel: alternative
+    sources:
+      - https://github.com/six-ddc/httpflow#readme
+      - https://www.wireshark.org/docs/
 tags:
   - cli
   - http
