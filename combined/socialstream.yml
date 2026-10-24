@@ -1,0 +1,99 @@
+id: cask:socialstream
+display-name: Social Stream Ninja
+homepage: https://socialstream.ninja/
+repo: https://github.com/steveseguin/social_stream
+docs:
+  - https://socialstream.ninja/docs
+  - https://socialstream.ninja/docs/commands.html
+  - https://socialstream.ninja/docs/getting-started.html
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The project is distributed in several forms for different streaming workflows:
+      browser extensions, standalone desktop applications for Windows, macOS, and Linux,
+      and a smaller Lite web application. Official guides describe support for more than
+      100 chat platforms.
+    - >
+      The Homebrew cask represented by this record packages the macOS desktop
+      application, placing Social Stream Ninja in the package-manager workflow alongside
+      its direct downloads and browser-extension distribution.
+  package-nerd-significance:
+    - >
+      Social Stream Ninja is notable as an open-source bridge between platform-specific
+      chat systems and streaming tools. Its shared web surfaces, browser extension,
+      desktop runtime, overlays, WebSocket/HTTP APIs, and local automation support make
+      it more composable than a conventional single-service chat client.
+    - >
+      For package users, the important distinction is between the shared social_stream
+      codebase and the companion ssn_app desktop runtime. Official releases combine
+      those pieces into desktop artifacts, while the browser extension and hosted pages
+      offer alternative deployment models.
+  project-history:
+    - >
+      Social Stream Ninja developed as a free, GPL-licensed collection of
+      multistream-chat and audience-interaction tools. The official social_stream
+      repository contains the shared web interface, browser extension, overlays, and
+      platform-capture scripts; the companion ssn_app repository contains the Electron
+      desktop runtime.
+    - >
+      The project expanded beyond chat consolidation into OBS overlays, moderation,
+      text-to-speech, automation, event workflows, APIs, games, and loyalty features.
+      Its official documentation now treats the desktop app, extension, and Lite web app
+      as distinct ways to run the same broader system.
+  related-projects:
+    - 'ssn_app: the official companion repository for the standalone Electron desktop runtime.'
+    - >
+      Ninja SDK and VDO.Ninja: related official projects used for peer-to-peer and
+      programmable integrations.
+    - >
+      OBS Studio and Streamlabs: common consumers of Social Stream Ninja's generated
+      browser-source overlays.
+  sources:
+    - https://github.com/steveseguin/social_stream
+    - https://github.com/steveseguin/ssn_app
+    - https://socialstream.ninja/docs/
+    - https://socialstream.ninja/docs/download.html
+    - https://socialstream.ninja/docs/guides.html
+    - source_facts.package-manager
+  summary:
+    - >
+      Social Stream Ninja is a free, open-source toolkit for combining live messages
+      from multiple social platforms and routing them into operator docks, stream
+      overlays, moderation tools, and automations. It can run as a browser extension,
+      desktop application, or limited web app.
+  timeline:
+    - >
+      Current: The project maintains browser-extension, standalone desktop, and Lite web
+      deployment options around a shared collection of chat-capture and overlay
+      components.
+  usage:
+    - >
+      A typical setup connects one or more live-chat sources, verifies incoming messages
+      in the operator dock, and adds a generated overlay URL to OBS or Streamlabs as a
+      browser source. The source, dock, and overlay must use the same session
+      identifier.
+    - >
+      Operators can feature or moderate messages, relay chat, run text-to-speech and
+      audience interactions, or integrate external controls through the documented HTTP
+      and WebSocket APIs. Official guidance recommends exporting settings before updates
+      and keeping session identifiers, passwords, and backup files private.
+category: media
+package-manager:
+  brew-cask: socialstream
+package-manager-url: https://formulae.brew.sh/cask/socialstream
+tags:
+  - audience-interaction
+  - automation
+  - chat-aggregation
+  - live-streaming
+  - multistream-chat
+  - obs-overlays
+description: Consolidate, control, and customise live social messaging streams
+applications:
+  - socialstream.app
+provenance:
+  cask: socialstream
+  provider: brew-cask
+  source: https://formulae.brew.sh/api/cask.json
