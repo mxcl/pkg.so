@@ -69,6 +69,15 @@ history:
       Environment variables provide the small amount of configuration the tool needs:
       `HOSTESS_FMT` can override format detection and `HOSTESS_PATH` can override the
       hosts-file path.
+related-packages:
+  - id: brew:dnsmasq
+    reason: >
+      hostess can manage a dedicated hosts-format file through `HOSTESS_PATH`, which
+      dnsmasq can load with `--addn-hosts` to publish those entries through local DNS.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cbednarski/hostess#readme
+      - https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
 tags:
   - cli
   - development

@@ -65,6 +65,16 @@ history:
       The package is most relevant in environments where DNS/DHCP data should be
       generated from source-controlled text, but where running a database-backed IPAM
       system would be excessive.
+related-packages:
+  - id: brew:bind
+    reason: >
+      HostDB generates BIND zone and named configuration files, while BIND 9 serves and
+      validates the resulting DNS configuration.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://www.usenix.org/conference/lisa-05/hostdb-best-damn-host2dnsdhcp-script-ever-written
+      - https://www.isc.org/bind/
 category: networking
 package-manager:
   brew: hostdb
