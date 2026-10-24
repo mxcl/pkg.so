@@ -3,7 +3,9 @@ display-name: Hesiod
 repo: null
 docs:
   - https://github.com/achernya/hesiod#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - /usr/local/etc/hesiod.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -99,6 +101,15 @@ history:
       interfaces, a context-based `hesiod_*` API, shared-library installation, Debian
       packaging, automake, pkg-config metadata, and relicensing MIT material under the
       2-clause BSD license.
+related-packages:
+  - id: brew:bind
+    reason: >
+      Use BIND alongside Hesiod to host the authoritative DNS zone containing Hesiod TXT
+      and CNAME records.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/achernya/hesiod#readme
+      - https://bind9.readthedocs.io/
 tags:
   - c
   - cli
