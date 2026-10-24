@@ -119,6 +119,24 @@ history:
       plus keystore support for secrets. The batch's curated config and credentials
       paths reflect Elastic's documented directory layout conventions for heartbeat.yml
       and heartbeat.keystore.
+related-packages:
+  - id: brew:metricbeat
+    reason: >
+      Use Metricbeat alongside Heartbeat to add infrastructure metrics or to collect
+      Heartbeat's own internal metrics through its documented HTTP monitoring endpoint.
+    rel: adjacent_workflow
+    sources:
+      - https://www.elastic.co/docs/reference/beats/heartbeat/monitoring-metricbeat-collection
+      - https://www.elastic.co/docs/reference/beats/metricbeat
+  - id: brew:filebeat
+    reason: >
+      Use Filebeat to add application and system logs to the same Elastic observability
+      workflow in which Heartbeat supplies uptime and reachability data.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://www.elastic.co/docs/reference/beats/heartbeat/heartbeat-installation-configuration
+      - https://www.elastic.co/docs/reference/beats/filebeat
 tags:
   - cli
   - elastic-stack
