@@ -7,7 +7,9 @@ docs:
 config-file-location:
   unix:
     - /etc/httrack.conf
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - cookies.txt
 history:
   adoption-history:
     - >
@@ -97,6 +99,16 @@ history:
       official docs include a 'How not to Use' section. For package users, that makes it
       both a practical offline browser and a tool that requires care around bandwidth,
       robots rules, and site-owner expectations.
+related-packages:
+  - id: brew:wget
+    reason: >
+      Choose GNU Wget for script-oriented recursive retrieval and straightforward
+      `--mirror` jobs; choose HTTrack when richer offline-site reconstruction, project
+      caches, GUI front ends, or detailed crawl controls are important.
+    rel: alternative
+    sources:
+      - https://www.httrack.com/html/index.html
+      - https://www.gnu.org/software/wget/manual/html_node/Recursive-Download.html
 tags:
   - archiving
   - cli
