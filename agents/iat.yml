@@ -46,6 +46,23 @@ history:
       The package fits the rescue-and-conversion corner of Unix tooling: users install a
       tiny CLI when they need to turn legacy CD-ROM image formats into a plain ISO-9660
       image that other tools can mount, inspect, or burn.
+related-packages:
+  - id: brew:bchunk
+    reason: >
+      bchunk is a narrower alternative when the source is specifically a BIN/CUE image
+      and separate ISO, CDR, or WAV tracks are desired.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/projects/iat.berlios/
+      - http://he.fi/bchunk/
+  - id: brew:xorriso
+    reason: >
+      After IAT converts a legacy image to ISO-9660, xorriso can inspect, extract,
+      modify, or record the resulting ISO filesystem.
+    rel: adjacent_workflow
+    sources:
+      - https://sourceforge.net/projects/iat.berlios/
+      - https://www.gnu.org/software/xorriso/
 tags:
   - cd-rom
   - cli
@@ -77,8 +94,9 @@ provenance:
     - https://sourceforge.net/projects/iat.berlios/
   repo-sources:
     - >
-      The official preserved SourceForge project exposes release files but no verifiable
-      HTTP(S) source-control repository page.
+      The official project page exposes release files but no verified official HTTP(S)
+      source-control repository.
+    - https://sourceforge.net/projects/iat.berlios/
   tags-sources:
     - https://packages.debian.org/sid/iat
     - input curation tags

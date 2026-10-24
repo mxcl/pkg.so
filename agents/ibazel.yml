@@ -58,6 +58,23 @@ history:
       `ibazel run` during active development. The output runner feature reads
       `%WORKSPACE%/.bazel_fix_commands.json` and can prompt for generated repair
       commands such as Buildozer or Gazelle invocations.
+related-packages:
+  - id: brew:bazel
+    reason: >
+      ibazel is a watch-mode companion that repeatedly invokes Bazel builds, tests, and
+      run targets when workspace sources change.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bazelbuild/bazel-watcher
+      - https://bazel.build/
+  - id: brew:buildozer
+    reason: >
+      ibazel's documented output runner can recognize Buildozer suggestions in Bazel
+      output and prompt the user to apply those BUILD-file repairs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bazelbuild/bazel-watcher
+      - https://github.com/bazel-contrib/buildtools/blob/main/buildozer/README.md
 tags:
   - bazel
   - build

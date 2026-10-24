@@ -56,6 +56,23 @@ history:
       be reviewed in pull requests. The tool deliberately prints AWS CLI commands for
       `push`, which makes destructive or privilege-changing operations visible before
       execution.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      IAMy invokes AWS CLI commands to read and apply IAM changes, so the AWS CLI is its
+      documented execution companion.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/99designs/iamy
+      - https://aws.amazon.com/cli/
+  - id: brew:aws-vault
+    reason: >
+      IAMy's README recommends AWS Vault as a complementary way to supply and manage the
+      AWS credentials used by its AWS CLI workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/99designs/iamy
+      - https://github.com/ByteNess/aws-vault
 category: cloud-infrastructure
 package-manager:
   brew: iamy
