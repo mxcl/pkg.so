@@ -2,9 +2,110 @@ id: cask:kero
 display-name: Kero
 homepage: https://kero.sh/
 repo: https://github.com/egoist/kero
+docs:
+  - https://kero.sh/docs
+  - https://kero.sh/docs/configuration
+  - https://kero.sh/docs/quick-start
+  - https://kero.sh/docs/terminal
+config-file-location:
+  unix: ~/.config/kero/config.toml
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Kero is distributed for macOS, Windows, and Linux, with a graphical application
+      and an optional `kero` command placed on the user's PATH. The macOS release is
+      also available through the developer's Homebrew tap.
+    - >
+      The application supports ordinary login shells while adding project restoration,
+      panes, file and Git views, notifications, and lifecycle coordination for supported
+      coding agents.
+  package-nerd-significance:
+    - >
+      Kero sits in the emerging category of terminals designed around long-running
+      coding-agent sessions rather than treating agents as ordinary transient commands.
+    - >
+      It is also technically distinctive for offering two native GPU-accelerated
+      terminal backends—libghostty and Alacritty—behind one workspace interface, with
+      Kero owning shared behavior such as panes, themes, search, notifications, and
+      session restoration.
+  project-history:
+    - >
+      Kero was created as a terminal-centered project workspace combining shells with
+      files, Git state, process information, browser panes, and agent-aware session
+      management.
+    - >
+      Its official documentation presents a cross-platform application whose persistent
+      settings use a small TOML configuration, while platform-owned preferences retain
+      window and session state.
+  related-projects:
+    - Ghostty supplies Kero's default terminal backend through libghostty.
+    - >
+      Alacritty is the lower-memory alternative terminal backend available from Kero's
+      settings.
+    - >
+      Supported coding agents can report lifecycle state to Kero when its optional AI
+      automation integration is enabled.
+  sources:
+    - https://github.com/egoist/kero
+    - https://github.com/egoist/kero/blob/main/PRODUCT.md
+    - https://kero.sh/docs
+    - https://kero.sh/docs/configuration/
+    - https://kero.sh/docs/installation/
+    - https://kero.sh/docs/terminal/
+  summary:
+    - >
+      Kero is a cross-platform terminal and project workspace optimized for coding-agent
+      sessions. It combines terminal panes with project navigation, Git and file views,
+      notifications, restoration, and optional agent lifecycle integration.
+  timeline:
+    - >
+      Public development: The official egoist/kero repository established Kero as a
+      terminal-centered project workspace.
+    - >
+      Current release line: Official documentation covers signed desktop distribution,
+      Homebrew installation, self-updates, and cross-platform command-line integration.
+  usage:
+    - >
+      Users open a project directory and arrange terminal, file, browser, and diff panes
+      around the work. Each terminal launches the user's real login shell, preserving
+      existing prompts, aliases, functions, and dotfiles.
+    - >
+      For agent-heavy work, Kero can coordinate supported background panes and notify
+      the user when an agent finishes, fails, or needs input. Projects, tabs, panes, and
+      working directories are restored after relaunch, while terminal processes start
+      fresh.
+related-packages:
+  - id: cask:ghostty
+    reason: >
+      Choose Ghostty for a focused native terminal emulator without Kero's project and
+      coding-agent workspace layer; Kero itself uses libghostty as its default terminal
+      backend.
+    rel: alternative
+    sources:
+      - https://kero.sh/docs/terminal/
+      - https://ghostty.org/docs/about
+  - id: cask:warp
+    reason: >
+      Choose Warp for another agent-oriented terminal environment with structured
+      command blocks, shared workflows, and integrated development agents.
+    rel: alternative
+    sources:
+      - https://kero.sh/docs
+      - https://docs.warp.dev/
+category: developer-tools
 package-manager:
   brew-cask: kero
 package-manager-url: https://formulae.brew.sh/cask/kero
+tags:
+  - coding-agent
+  - cross-platform
+  - desktop-app
+  - developer-tools
+  - gpu-accelerated
+  - project-workspace
+  - session-management
+  - terminal-emulator
 description: Terminal app optimised for agents
 applications:
   - Kero.app

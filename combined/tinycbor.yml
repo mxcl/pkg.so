@@ -1,11 +1,78 @@
 id: brew:tinycbor
-display-name: tinycbor
+display-name: TinyCBOR
 homepage: https://github.com/intel/tinycbor
 repo: https://github.com/intel/tinycbor
+docs:
+  - https://github.com/intel/tinycbor
+  - https://intel.github.io/tinycbor/current
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      TinyCBOR is distributed as a small C library and also supplies the `cbordump`
+      diagnostic utility. Its straightforward Make and CMake build surfaces suit
+      embedding and downstream system packaging.
+    - >
+      The project is maintained in Intel's public GitHub organization under the MIT
+      license and has been packaged by Homebrew for command-line and development use.
+  package-nerd-significance:
+    - >
+      TinyCBOR appeals to package and embedded-software users because it implements the
+      standardized CBOR binary data format with a compact C API and few surrounding
+      runtime requirements.
+    - >
+      The package is useful both as a linkable serialization library and through
+      `cbordump`, which lets developers inspect CBOR data from the command line.
+  project-history:
+    - >
+      Intel began the TinyCBOR codebase in the mid-2010s as a concise implementation of
+      Concise Binary Object Representation for C software.
+    - >
+      The project subsequently published versioned API documentation, examples, tests,
+      build files for multiple toolchains, and a command-line dump utility while
+      retaining its small-library focus.
+  related-projects:
+    - CBOR is the IETF-standardized binary data format implemented by TinyCBOR.
+    - >
+      The repository's build and package metadata expose both the TinyCBOR library and
+      the cbordump inspection tool.
+  sources:
+    - https://github.com/intel/tinycbor
+    - https://github.com/intel/tinycbor/blob/main/CMakeLists.txt
+    - https://intel.github.io/tinycbor/current/
+  summary:
+    - >
+      TinyCBOR is Intel's compact C implementation of Concise Binary Object
+      Representation. It provides encoding and parsing APIs plus the `cbordump` utility
+      for inspecting serialized CBOR values.
+  timeline:
+    - >
+      2015: Copyright history in the official build files records Intel's early TinyCBOR
+      development.
+    - '2019: The current official documentation generation identifies the TinyCBOR 0.5.2 API.'
+  usage:
+    - >
+      C applications link TinyCBOR to encode structured values into CBOR or parse CBOR
+      input without adopting a larger serialization framework.
+    - >
+      Developers and package users run `cbordump` to turn encoded CBOR input into a
+      human-inspectable representation during debugging and interoperability work.
+related-packages: []
+category: developer-tools
 package-manager:
   brew: tinycbor
 package-manager-url: https://formulae.brew.sh/formula/tinycbor
 license: MIT
+tags:
+  - binary-format
+  - c-library
+  - cbor
+  - cbordump
+  - cli
+  - data-serialization
+  - embedded
+  - library
 description: Concise Binary Object Representation (CBOR) Library
 executables:
   - cbordump

@@ -1,0 +1,144 @@
+id: brew:gitea-cli
+display-name: Gitea CLI
+repo: https://gitea.com/gitea/cli
+docs:
+  - https://docs.gitea.com/cli
+  - https://gitea.com/gitea/cli
+config-file-location:
+  unix:
+    - ~/.config/gitea-cli/
+credentials-file-location:
+  unix:
+    - ~/.config/gitea-cli/
+history:
+  adoption-history:
+    - >
+      The initial release was distributed through official install scripts, native
+      downloads, Docker, source installation, and package managers. It targets Gitea 28
+      and newer.
+    - >
+      Gitea deliberately allows gt and Tea to be installed side by side: they use
+      different executables and configuration directories, and gt does not migrate Tea's
+      configuration.
+  package-nerd-significance:
+    - >
+      Gitea CLI gives users of self-hosted Gitea instances a modern forge CLI comparable
+      in role to the official clients associated with other major hosting platforms.
+    - >
+      Package users should distinguish `gt` from its predecessor Tea: it is a new
+      program with a new repository, configuration layout, command surface, and
+      compatibility baseline rather than a renamed Tea binary.
+  project-history:
+    - >
+      Gitea's original official CLI, Tea, had served users since 2018 but accumulated
+      inconsistent commands and tightly coupled handlers. Gitea rewrote the client
+      around Cobra, service and transport layers, structured output, and extensive
+      tests.
+    - >
+      The rewrite initially developed in Tea's repository, but with less than four
+      percent of the new code inherited and no configuration compatibility, Gitea moved
+      it into a separate repository and released it as Gitea CLI with the executable
+      name `gt`.
+  related-projects:
+    - Tea is the preceding Gitea command-line client and remains separately installable.
+    - >
+      Gitea is the server platform whose repositories, issues, pull requests, Actions,
+      packages, releases, and administrative resources gt manages.
+    - Git remains necessary for commands that clone, check out, or push repository content.
+  sources:
+    - https://blog.gitea.com/release-of-gitea-cli-0.1.0/
+    - https://docs.gitea.com/cli/
+    - https://gitea.com/gitea/cli
+  summary:
+    - >
+      Gitea CLI, invoked as `gt`, is Gitea's official command-line client for
+      repositories, issues, pull requests, releases, Actions, packages, and other
+      resources on a Gitea instance.
+  timeline:
+    - "2018: Tea began serving as Gitea's official command-line client."
+    - '2026: Gitea separated its ground-up CLI rewrite from Tea into the new gitea/cli project.'
+    - 'October 2026: Gitea CLI 0.1.0 was released with the `gt` executable.'
+  usage:
+    - >
+      After `gt auth login`, users run commands inside a Git clone or select a
+      repository explicitly with `--repo`. Interactive login supports browser OAuth or a
+      token, while CI can supply a token non-interactively.
+    - >
+      The CLI supports human-readable output as well as `--json` and `--jq` automation,
+      and covers forge operations including pull-request review, workflow runs,
+      packages, secrets, releases, notifications, and repository administration.
+related-packages:
+  - id: brew:tea
+    reason: >
+      Choose Tea when you need the older Gitea CLI or compatibility with its established
+      command surface and configuration; gt is a separate rewrite and both can be
+      installed together.
+    rel: alternative
+    sources:
+      - https://blog.gitea.com/release-of-gitea-cli-0.1.0/
+      - https://gitea.com/gitea/tea
+  - id: brew:gitea
+    reason: >
+      Install Gitea to run the forge server whose repositories, issues, pull requests,
+      Actions, packages, and other resources gt manages.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.gitea.com/cli/
+      - https://docs.gitea.com/
+  - id: brew:git
+    reason: >
+      Use Git alongside gt for clone, checkout, and push operations, which the official
+      Gitea CLI documentation identifies as requiring Git.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.gitea.com/cli/
+      - https://git-scm.com/docs
+tags:
+  - api-client
+  - cli
+  - continuous-integration
+  - forge
+  - git
+  - gitea
+  - issues
+  - packages
+  - pull-requests
+  - releases
+provenance:
+  category-sources:
+    - >
+      https://blog.gitea.com/release-of-gitea-cli-0.1.0/ — describes its
+      forge-management scope.
+    - >
+      https://docs.gitea.com/cli/ — identifies gt as Gitea's official CLI for
+      repositories and collaboration resources.
+  display-name-sources:
+    - >
+      https://blog.gitea.com/release-of-gitea-cli-0.1.0/ — announces gitea-cli and its
+      `gt` executable.
+    - https://docs.gitea.com/cli/ — official documentation title is Gitea CLI.
+  docs-sources:
+    - https://docs.gitea.com/cli/ — dedicated official documentation.
+    - https://gitea.com/gitea/cli — official source project and README.
+  history-sources:
+    - https://blog.gitea.com/release-of-gitea-cli-0.1.0/
+    - https://docs.gitea.com/cli/
+    - https://gitea.com/gitea/cli
+  repo-sources:
+    - >
+      https://blog.gitea.com/release-of-gitea-cli-0.1.0/ — identifies
+      gitea.com/gitea/cli as the new official home.
+    - https://docs.gitea.com/cli/ — official documentation links the Gitea CLI project.
+  tags-sources:
+    - https://blog.gitea.com/release-of-gitea-cli-0.1.0/
+    - https://docs.gitea.com/cli/
+category-confidence: high
+category-path:
+  - developer-tools
+  - version-control
+  - forge-clients
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

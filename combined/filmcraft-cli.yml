@@ -1,11 +1,96 @@
 id: brew:filmcraft-cli
-display-name: filmcraft-cli
+display-name: FilmCraft CLI
 homepage: https://getartcraft.com/apps/filmcraft
 repo: https://github.com/storytold/filmcraft
+docs:
+  - https://github.com/storytold/filmcraft/blob/main/docs/agents.md
+  - https://github.com/storytold/filmcraft/blob/main/docs/control-protocol.md
+  - https://github.com/storytold/filmcraft/blob/main/docs/project-files.md
+config-file-location:
+  linux:
+    - $XDG_DATA_HOME/filmcraft/preferences.json
+    - ~/.local/share/filmcraft/preferences.json
+  macos: ~/Library/Application Support/FilmCraft/preferences.json
+  windows: '%APPDATA%\FilmCraft\preferences.json'
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      FilmCraft is distributed as a desktop application and separate CLI across macOS,
+      Windows, Linux, and additional Unix-like targets. Its official releases provide
+      native packages in several formats, while Homebrew makes the headless CLI
+      available independently.
+    - >
+      The project explicitly supports agent-driven workflows through MCP and a
+      JSON-lines control channel, allowing the same editing engine to be operated
+      interactively, from scripts, or by AI clients.
+  package-nerd-significance:
+    - >
+      FilmCraft CLI is notable as a headless, packageable interface to a full nonlinear
+      video-editing engine rather than merely a media transcoding wrapper. It exposes
+      structured inspection, editing, rendering, export, and MCP operations with
+      machine-readable output.
+    - >
+      Its cross-platform Rust implementation, separate desktop and CLI artifacts,
+      versioned project format, and extensive native release matrix make it an unusually
+      ambitious young media package.
+  project-history:
+    - >
+      FilmCraft was developed as an open-source nonlinear video editor written in Rust,
+      with its engine shared by desktop, command-line, MCP, and web-facing interfaces.
+    - >
+      During its 2026 0.x release series, the project rapidly expanded editing,
+      media-format, GPU, automation, localization, and packaging support. The CLI became
+      a first-class route for running the same commands headlessly or controlling a live
+      desktop session.
+  related-projects:
+    - >
+      FilmCraft belongs to the Storytold family of Craft applications, whose automation
+      interfaces follow related conventions.
+    - >
+      The desktop FilmCraft application and filmcraft-cli share the same editing engine
+      and command catalog.
+  sources:
+    - https://github.com/storytold/filmcraft
+    - https://github.com/storytold/filmcraft/blob/main/ROADMAP.md
+    - https://github.com/storytold/filmcraft/blob/main/docs/agents.md
+    - https://github.com/storytold/filmcraft/blob/main/docs/project-files.md
+    - https://github.com/storytold/filmcraft/releases
+  summary:
+    - >
+      FilmCraft CLI is the headless command-line and MCP interface to FilmCraft, an
+      open-source nonlinear video editor. It can inspect, edit, render, and export
+      FilmCraft projects without a graphical window or can bridge to a running desktop
+      application.
+  timeline:
+    - '2026: FilmCraft progressed through a rapid series of public 0.x releases.'
+    - >
+      October 2026: The project published releases through FilmCraft 0.11.0 with broad
+      native packaging and continued CLI and MCP work.
+  usage:
+    - >
+      Users can open or create `.fcproj` projects, inspect sequences, import media,
+      execute editing commands, save changes, and export finished media from shell
+      scripts.
+    - >
+      Agent clients can start `filmcraft-cli mcp` for a headless editing session or use
+      bridge mode to drive a running FilmCraft desktop application. Commands return
+      structured output suitable for automation.
+related-packages: []
+category: media
 package-manager:
   brew: filmcraft-cli
 package-manager-url: https://formulae.brew.sh/formula/filmcraft-cli
 license: MIT OR Apache-2.0
+tags:
+  - cli
+  - headless
+  - mcp-server
+  - nonlinear-editor
+  - rendering
+  - rust
+  - video-editing
+  - video-export
 description: Headless FilmCraft CLI and MCP server to edit, render and export video projects
 executables:
   - filmcraft-cli
