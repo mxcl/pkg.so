@@ -4,8 +4,12 @@ homepage: https://hermes-agent.nousresearch.com
 repo: https://github.com/NousResearch/hermes-agent
 docs:
   - https://hermes-agent.nousresearch.com/docs
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix: ~/.hermes/config.yaml
+credentials-file-location:
+  unix:
+    - ~/.hermes/.env
+    - ~/.hermes/auth.json
 history:
   adoption-history:
     - >
@@ -82,6 +86,15 @@ history:
       agent-created skills under `~/.hermes/skills/`, a bundled skills catalog,
       hub-installed skills, and a write-approval gate for users who want review before
       background self-improvement writes skill changes.
+related-packages:
+  - id: brew:herdr
+    reason: >
+      Herdr has official Hermes Agent detection and a direct integration, providing
+      persistent panes and cross-agent status visibility around Hermes sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://herdr.dev/docs/agents/
+      - https://hermes-agent.nousresearch.com/docs/
 category: ai
 package-manager:
   apk: hermes

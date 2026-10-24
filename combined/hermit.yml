@@ -4,7 +4,8 @@ homepage: https://cashapp.github.io/hermit
 repo: https://github.com/cashapp/hermit
 docs:
   - https://cashapp.github.io/hermit
-config-file-location: null
+config-file-location:
+  unix: ./bin/hermit.hcl
 credentials-file-location: null
 history:
   adoption-history:
@@ -96,6 +97,16 @@ history:
       Hermit's package definitions are HCL manifests commonly retrieved from Git
       repositories. The official packaging docs describe these manifests as the way
       packages define source archives, installation behavior, and binary mappings.
+related-packages:
+  - id: brew:asdf
+    reason: >
+      Choose Hermit for repository-owned, binary-only, self-bootstrapping tool
+      environments; choose asdf when the main need is installing and switching among
+      user-level language or tool versions.
+    rel: alternative
+    sources:
+      - https://cashapp.github.io/hermit/faq/
+      - https://asdf-vm.com/guide/introduction.html
 category: developer-tools
 package-manager:
   brew: hermit

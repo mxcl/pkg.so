@@ -4,7 +4,9 @@ homepage: https://herdr.dev
 repo: https://github.com/herdrdev/herdr
 docs:
   - https://herdr.dev/docs
-config-file-location: null
+config-file-location:
+  unix: ~/.config/herdr/config.toml
+  windows: '%APPDATA%\herdr\config.toml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -79,6 +81,32 @@ history:
       the machine where the code and credentials live, reachable over SSH or through
       Herdr's remote client behavior. Agents can also interact with Herdr through a
       local Unix socket and command-line API.
+related-packages:
+  - id: brew:tmux
+    reason: >
+      Choose tmux for a mature general-purpose terminal multiplexer; choose Herdr when
+      coding-agent state detection and agent-oriented automation are central to the
+      workflow.
+    rel: alternative
+    sources:
+      - https://herdr.dev/docs/
+      - https://github.com/tmux/tmux/wiki
+  - id: brew:zellij
+    reason: >
+      Choose Zellij for a general terminal workspace with discoverable defaults and
+      layouts; choose Herdr for first-class coding-agent supervision and integrations.
+    rel: alternative
+    sources:
+      - https://herdr.dev/docs/
+      - https://zellij.dev/documentation/
+  - id: brew:hermes-agent
+    reason: >
+      Herdr officially detects Hermes Agent and provides a direct Hermes integration,
+      making Hermes a supported workload inside Herdr panes.
+    rel: adjacent_workflow
+    sources:
+      - https://herdr.dev/docs/agents/
+      - https://hermes-agent.nousresearch.com/docs/
 category: developer-tools
 package-manager:
   brew: herdr
