@@ -71,6 +71,24 @@ history:
       The tool is used for day-to-day sr.ht work from a terminal: cloning and
       configuring repositories, submitting or inspecting builds, handling tickets and
       patches, managing pages, and reading or updating account/project metadata.
+related-packages:
+  - id: brew:git
+    reason: >
+      Git is the primary companion for hut's SourceHut repository workflows, and hut can
+      configure cloned repositories for the forge's `git send-email` contribution flow.
+    rel: adjacent_workflow
+    sources:
+      - https://git.xenrox.net/~xenrox/hut
+      - https://git.xenrox.net/~xenrox/hut/tree/master/item/doc/hut.1.scd
+      - https://git-scm.com/docs
+  - id: brew:jq
+    reason: >
+      The hut manual explicitly demonstrates piping `hut graphql` JSON into jq for
+      formatting and query-driven processing.
+    rel: adjacent_workflow
+    sources:
+      - https://git.xenrox.net/~xenrox/hut/tree/master/item/doc/hut.1.scd
+      - https://jqlang.github.io/jq/manual/
 category: developer-tools
 package-manager:
   apk: hut

@@ -64,6 +64,23 @@ history:
       related utilities to inspect topology, bind processes, calculate CPU or NUMA sets,
       export XML topologies, and debug locality issues. Developers use the C API to make
       runtime, scheduler, MPI, database, and performance tools topology-aware.
+related-packages:
+  - id: brew:open-mpi
+    reason: >
+      Open MPI requires hwloc for topology discovery and placement, making it a strong
+      companion when building or diagnosing topology-aware MPI workloads.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.open-mpi.org/en/main/installing-open-mpi/required-support-libraries.html
+      - https://www.open-mpi.org/projects/hwloc/
+  - id: brew:numactl
+    reason: >
+      On Linux, numactl supplies NUMA policy and memory-binding operations, while hwloc
+      documents helpers for converting its CPU and node sets to libnuma representations.
+    rel: adjacent_workflow
+    sources:
+      - https://www.open-mpi.org/projects/hwloc/doc/v2.15.0/interoperability.html
+      - https://github.com/numactl/numactl
 category: system
 package-manager:
   apk: hwloc
