@@ -76,6 +76,34 @@ history:
       Administrators can use the build-time driver options to force or disable platform
       backends, and SNMP support lets the same style of output poll remote equipment
       when net-snmp or ucd-snmp is available.
+related-packages:
+  - id: brew:nload
+    reason: >
+      Choose nload for an interactive console with separate incoming and outgoing
+      graphs; choose ifstat for compact tabular rates, multiple interfaces, or optional
+      SNMP polling.
+    rel: alternative
+    sources:
+      - http://gael.roualland.free.fr/ifstat/
+      - https://www.roland-riegel.de/nload/
+  - id: brew:bmon
+    reason: >
+      Choose bmon for a curses interface, detailed counters, and programmable output
+      modules; choose ifstat for a smaller vmstat-like bandwidth table and its broad
+      legacy Unix portability.
+    rel: alternative
+    sources:
+      - http://gael.roualland.free.fr/ifstat/
+      - https://github.com/Jafaral/bmon
+  - id: brew:iftop
+    reason: >
+      Choose iftop when host-to-host conversations must be attributed through packet
+      capture; choose ifstat when interface-level receive and transmit rates are
+      sufficient.
+    rel: alternative
+    sources:
+      - http://gael.roualland.free.fr/ifstat/
+      - https://pdw.ex-parrot.com/iftop/
 category: networking
 package-manager:
   brew: ifstat
