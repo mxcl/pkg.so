@@ -5,8 +5,14 @@ repo: https://github.com/hofstadter-io/hof
 docs:
   - https://hofstadter.io/
   - https://hofstadter.io/getting-started
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix: ./cue.mod/module.cue
+credentials-file-location:
+  unix:
+    - ~/.netrc
+    - ~/.ssh/config
+    - /etc/ssh/config
+    - ~/.ssh/id_rsa
 history:
   adoption-history:
     - >
@@ -83,6 +89,17 @@ history:
       migrations and conversion functions can be produced. That makes hof less like a
       one-shot scaffolder and more like a development-time tool that stays in the
       project loop.
+related-packages:
+  - id: brew:cue
+    reason: >
+      Use CUE alongside hof because hof uses CUE as its schema and configuration
+      substrate, while the cue CLI supplies the underlying language's native validation,
+      evaluation, and export commands.
+    rel: adjacent_workflow
+    sources:
+      - https://hofstadter.io/
+      - https://hofstadter.io/modules/
+      - https://cuelang.org/docs/
 category: developer-tools
 package-manager:
   brew: hof
