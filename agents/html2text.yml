@@ -58,6 +58,32 @@ history:
       shows a mailcap entry using html2text with ANSI output, link references, charset
       conversion, and terminal-width wrapping, plus Mutt configuration that auto-views
       HTML mail through the converter.
+related-packages:
+  - id: brew:neomutt
+    reason: >
+      NeoMutt can automatically display text/html MIME parts through a mailcap-defined
+      filter, making html2text a practical external renderer for terminal email.
+    rel: adjacent_workflow
+    sources:
+      - https://gitlab.com/grobian/html2text/-/blob/master/README.md
+      - https://docs.neomutt.org/howto/mime.html
+  - id: brew:w3m
+    reason: >
+      Choose w3m when you want HTML-to-text dumping plus an interactive terminal
+      browser, rather than html2text's more focused email-rendering workflow.
+    rel: alternative
+    sources:
+      - https://gitlab.com/grobian/html2text
+      - https://w3m.sourceforge.net/MANUAL
+  - id: brew:lynx
+    reason: >
+      Choose Lynx when formatted text output is needed alongside mature interactive
+      browsing and crawling features; its official command supports noninteractive
+      output with `-dump`.
+    rel: alternative
+    sources:
+      - https://gitlab.com/grobian/html2text
+      - https://lynx.invisible-island.net/manpage/
 tags:
   - cli
   - converter
