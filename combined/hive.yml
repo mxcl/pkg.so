@@ -129,6 +129,33 @@ history:
       Typical workloads include SQL analytics on distributed storage, ETL, table and
       partition management, metastore-backed data lake catalogs, batch reporting,
       compaction, replication, and integration with BI and JDBC/ODBC clients.
+related-packages:
+  - id: brew:hadoop
+    reason: >
+      Hadoop is the storage and distributed-processing foundation on which Hive was
+      built, so it is the natural companion when operating traditional HDFS or
+      YARN-backed Hive workloads.
+    rel: adjacent_workflow
+    sources:
+      - https://hive.apache.org/
+      - https://hadoop.apache.org/
+  - id: brew:trino
+    reason: >
+      Choose Trino for interactive distributed SQL across heterogeneous sources; its
+      official Hive connector can query Hive data and metadata without using HiveQL or
+      Hive's execution environment.
+    rel: alternative
+    sources:
+      - https://hive.apache.org/
+      - https://trino.io/docs/current/connector/hive.html
+  - id: brew:apache-spark
+    reason: >
+      Spark SQL can read an existing Hive installation and Hive-backed tables, making
+      Spark a companion computation engine for data managed through Hive conventions.
+    rel: adjacent_workflow
+    sources:
+      - https://hive.apache.org/
+      - https://spark.apache.org/docs/latest/sql-programming-guide.html
 category: data
 package-manager:
   brew: hive
