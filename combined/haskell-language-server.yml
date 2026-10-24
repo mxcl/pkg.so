@@ -112,6 +112,39 @@ history:
       rules. That makes HLS especially sensitive to how a project is built, which is why
       package users care about the wrapper, the supported-GHC matrix, and the
       documentation around troubleshooting build cradles.
+related-packages:
+  - id: brew:ghcup
+    reason: >
+      Use GHCup to install HLS alongside compatible GHC and Cabal toolchains and to
+      manage the compiler versions that the HLS wrapper must match.
+    rel: adjacent_workflow
+    sources:
+      - https://haskell-language-server.readthedocs.io/en/stable/installation.html
+      - https://www.haskell.org/ghcup/guide/
+  - id: brew:hlint
+    reason: >
+      Use HLint with HLS to surface Haskell style and simplification suggestions inside
+      an LSP editor through HLS's documented HLint plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/haskell/haskell-language-server/blob/master/docs/configuration.md
+      - https://github.com/ndmitchell/hlint#readme
+  - id: brew:ormolu
+    reason: >
+      Use Ormolu as HLS's documented formatting provider when a project wants the
+      formatter's deliberately fixed Haskell style.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/haskell/haskell-language-server/blob/master/docs/configuration.md
+      - https://github.com/tweag/ormolu#readme
+  - id: brew:fourmolu
+    reason: >
+      Use Fourmolu as HLS's formatting provider when the project needs configurable
+      formatting rules rather than Ormolu's fixed style.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/haskell/haskell-language-server/blob/master/docs/configuration.md
+      - https://fourmolu.github.io/
 category: developer-tools
 package-manager:
   apk: haskell-language-server
