@@ -73,6 +73,27 @@ history:
       The README examples cover scanning github.com with defaults, scanning localhost
       across all ports with custom concurrency and timeout, scanning specific host/port
       ranges, and scanning one port with retries.
+related-packages:
+  - id: brew:nmap
+    reason: >
+      Choose Nmap when you need UDP and multiple TCP scan techniques, service and OS
+      detection, or the Nmap Scripting Engine rather than havn's focused concurrent TCP
+      connect scans.
+    rel: alternative
+    sources:
+      - https://github.com/mrjackwills/havn
+      - https://nmap.org/book/port-scanning.html
+      - https://nmap.org/book/man-version-detection.html
+      - https://nmap.org/book/nse.html
+  - id: brew:rustscan
+    reason: >
+      Choose RustScan when fast port discovery must feed directly into Nmap or custom
+      scripts; choose havn for a smaller standalone scanner with straightforward
+      timeout, retry, and range controls.
+    rel: alternative
+    sources:
+      - https://github.com/mrjackwills/havn
+      - https://github.com/bee-san/RustScan
 category: networking
 package-manager:
   apk: havn

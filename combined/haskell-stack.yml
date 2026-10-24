@@ -124,6 +124,31 @@ history:
       environment. That makes it attractive for tutorials and CI scripts because one
       command can reproduce a build plan that would otherwise require several separate
       tools.
+related-packages:
+  - id: brew:cabal-install
+    reason: >
+      Choose cabal-install for a solver-driven Hackage workflow centered on
+      cabal.project files instead of Stack's Stackage snapshot model.
+    rel: alternative
+    sources:
+      - https://docs.haskellstack.org/en/stable/
+      - https://www.haskell.org/cabal/
+  - id: brew:hpack
+    reason: >
+      Hpack complements Stack by generating the Cabal package description that Stack
+      consumes from a project's package.yaml file.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.haskellstack.org/en/stable/tutorial/stack_configuration/
+      - https://github.com/sol/hpack
+  - id: brew:ghcup
+    reason: >
+      GHCup complements Stack when users want a dedicated installer and version manager
+      for GHC, Cabal, Stack, and Haskell Language Server.
+    rel: adjacent_workflow
+    sources:
+      - https://www.haskell.org/ghcup/
+      - https://docs.haskellstack.org/en/stable/
 category: developer-tools
 package-manager:
   apk: stack
