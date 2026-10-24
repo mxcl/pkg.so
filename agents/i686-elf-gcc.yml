@@ -81,6 +81,23 @@ history:
       In package-manager workflows it is usually paired with i686-elf-binutils and
       sometimes i686-elf-gdb or i686-elf-grub, forming a compact
       operating-system-development toolchain.
+related-packages:
+  - id: brew:i686-elf-binutils
+    reason: >
+      Install the matching assembler, linker, archiver, and object utilities that GCC
+      needs for an i686-elf cross toolchain.
+    rel: adjacent_workflow
+    sources:
+      - https://gcc.gnu.org/install/build.html
+      - https://sourceware.org/binutils/
+  - id: brew:i686-elf-grub
+    reason: >
+      Use GRUB to package and boot a compatible kernel or system image produced with the
+      i686-elf compiler toolchain.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/grub/manual/grub/grub.html
+      - https://www.gnu.org/software/grub/manual/grub/html_node/Obtaining-and-Building-GRUB.html
 tags:
   - cli
   - compiler

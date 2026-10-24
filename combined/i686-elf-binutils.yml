@@ -77,6 +77,23 @@ history:
       The package is most useful in bare-metal, kernel, bootloader, and low-level
       systems work where output objects target i686-elf rather than the host machine's
       native ABI.
+related-packages:
+  - id: brew:i686-elf-gcc
+    reason: >
+      Pair it with the matching GCC cross-compiler, which requires a cross-assembler and
+      cross-linker to compile and link i686-elf programs.
+    rel: adjacent_workflow
+    sources:
+      - https://gcc.gnu.org/install/build.html
+      - https://sourceware.org/binutils/
+  - id: brew:i686-elf-grub
+    reason: >
+      Use the matching GRUB tools after building i686-elf artifacts to create bootloader
+      images or bootable rescue media.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/grub/manual/grub/grub.html
+      - https://www.gnu.org/software/grub/manual/grub/html_node/Obtaining-and-Building-GRUB.html
 category: developer-tools
 package-manager:
   brew: i686-elf-binutils

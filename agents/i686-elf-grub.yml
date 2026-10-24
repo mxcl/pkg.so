@@ -84,6 +84,23 @@ history:
     - >
       In this form, GRUB is less about administering a workstation boot menu and more
       about producing boot artifacts from a reproducible target-prefixed toolchain.
+related-packages:
+  - id: brew:i686-elf-gcc
+    reason: >
+      Use the matching cross-compiler to build freestanding 32-bit x86 kernels and other
+      code that GRUB can place into a boot workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/grub/manual/grub/grub.html
+      - https://gcc.gnu.org/install/build.html
+  - id: brew:i686-elf-binutils
+    reason: >
+      Use the matching assembler, linker, and object utilities when producing the
+      i686-elf artifacts consumed by the GRUB image-building workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/grub/manual/grub/html_node/Obtaining-and-Building-GRUB.html
+      - https://sourceware.org/binutils/
 tags:
   - bootloader
   - cli

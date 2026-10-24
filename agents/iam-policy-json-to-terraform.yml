@@ -68,6 +68,24 @@ history:
       The tool is deliberately narrow: it converts one policy representation into
       another. It does not manage AWS resources or run Terraform, which keeps it useful
       in scripts, editor workflows, and migration chores.
+related-packages:
+  - id: brew:opentofu
+    reason: >
+      Use OpenTofu to initialize, plan, and apply compatible Terraform configuration
+      containing the generated aws_iam_policy_document HCL.
+    rel: adjacent_workflow
+    sources:
+      - https://flosell.github.io/iam-policy-json-to-terraform/
+      - https://opentofu.org/docs/intro/migration/
+      - https://opentofu.org/docs/
+  - id: brew:terraform-iam-policy-validator
+    reason: >
+      After incorporating the generated HCL into a Terraform configuration, validate the
+      planned IAM policies against AWS IAM Access Analyzer checks.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/flosell/iam-policy-json-to-terraform
+      - https://github.com/awslabs/terraform-iam-policy-validator
 tags:
   - aws
   - cli
