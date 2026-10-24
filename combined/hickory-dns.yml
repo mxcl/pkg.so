@@ -101,6 +101,24 @@ history:
       operations, hosted-zone server construction, application resolver integration, and
       recursive resolution. The README also documents DNSSEC support and feature-gated
       cryptography providers for DNSSEC, DNS-over-TLS, and related protocols.
+related-packages:
+  - id: brew:bind
+    reason: >
+      Choose BIND 9 when you want the long-established ISC DNS suite and its extensive
+      authoritative-server, caching-resolver, DNSSEC, dynamic-update, and operational
+      tooling.
+    rel: alternative
+    sources:
+      - https://hickory-dns.org/
+      - https://bind9.readthedocs.io/
+  - id: brew:unbound
+    reason: >
+      Choose Unbound when the primary requirement is a dedicated validating, caching
+      recursive resolver rather than Hickory's broader Rust library and server stack.
+    rel: alternative
+    sources:
+      - https://hickory-dns.org/
+      - https://unbound.docs.nlnetlabs.nl/en/latest/
 category: networking
 package-manager:
   apk: hickory-dns

@@ -74,6 +74,31 @@ history:
       hgrep is most useful when raw grep output has too little context: it groups nearby
       matches, chooses context around blank lines, applies syntax highlighting, and can
       generate shell completions or a manual page for packaged installs.
+related-packages:
+  - id: brew:ripgrep
+    reason: >
+      Use ripgrep when you need its complete search feature set, then pipe `rg -nH`
+      output into hgrep for highlighted contextual presentation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rhysd/hgrep#readme
+      - https://github.com/BurntSushi/ripgrep#readme
+  - id: brew:grep
+    reason: >
+      GNU grep can perform conventional or highly portable matching and feed its
+      documented `grep -nH` output format directly to hgrep.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rhysd/hgrep#readme
+      - https://www.gnu.org/software/grep/manual/grep.html
+  - id: brew:less
+    reason: >
+      Pipe hgrep into `less -R` when you want to page through its colored results
+      interactively, as demonstrated by hgrep's official README.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rhysd/hgrep#readme
+      - https://www.greenwoodsoftware.com/less/index.html
 tags:
   - cli
   - grep
