@@ -82,6 +82,25 @@ history:
       threshold checks, NO_COLOR handling, and environment variables such as
       HTTPSTAT_CURL_BIN for choosing a curl binary. That keeps it useful both for
       interactive diagnosis and for lightweight scripting.
+related-packages:
+  - id: brew:httptap
+    reason: >
+      Choose httptap for redirect-by-redirect waterfalls, TLS certificate details, HAR,
+      Prometheus, and OpenTelemetry output; choose httpstat for a lightweight visual
+      layer over an existing curl installation.
+    rel: alternative
+    sources:
+      - https://github.com/reorx/httpstat#readme
+      - https://github.com/ozeranskii/httptap#how-it-compares
+  - id: brew:curl
+    reason: >
+      httpstat delegates requests and timing collection to curl, so curl supplies the
+      underlying HTTP behavior and accepts additional request options passed through by
+      httpstat.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/reorx/httpstat#readme
+      - https://curl.se/docs/manpage.html
 category: developer-tools
 package-manager:
   brew: httpstat

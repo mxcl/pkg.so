@@ -90,6 +90,23 @@ history:
       `$HOME/.config/httpx/config.yaml`, plus rate-limit, proxy, resolver, SNI,
       random-agent, redirect, JSON/CSV, and database-output flags. That makes the tool
       useful both as an interactive CLI and as a stage in automated recon pipelines.
+related-packages:
+  - id: brew:subfinder
+    reason: >
+      ProjectDiscovery's official examples pipe Subfinder's discovered subdomains
+      directly into httpx for live HTTP probing and metadata enrichment.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.projectdiscovery.io/opensource/httpx/running
+      - https://docs.projectdiscovery.io/opensource/subfinder/overview
+  - id: brew:nuclei
+    reason: >
+      After httpx identifies and enriches reachable HTTP targets, Nuclei can consume its
+      output to run template-based vulnerability checks.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.projectdiscovery.io/opensource/httpx/overview
+      - https://docs.projectdiscovery.io/tools/nuclei/input-formats
 category: security
 package-manager:
   apk: httpx
