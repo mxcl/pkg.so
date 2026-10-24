@@ -66,6 +66,24 @@ history:
       configured with `.htmltest.yml`. Its job is to catch broken internal or external
       references and markup hygiene issues before a static site, docs tree, or generated
       HTML artifact is published.
+related-packages:
+  - id: brew:lychee
+    reason: >
+      Choose lychee when the job is primarily fast asynchronous link checking across
+      Markdown, HTML, plaintext, and websites; choose htmltest for broader
+      generated-site checks such as images, scripts, doctypes, and alt attributes.
+    rel: alternative
+    sources:
+      - https://lychee.cli.rs/overview/
+      - https://github.com/wjdp/htmltest
+  - id: brew:vnu
+    reason: >
+      Run the Nu Html Checker alongside htmltest when generated-site reference checks
+      must be complemented by standards validation of HTML, CSS, and SVG markup.
+    rel: adjacent_workflow
+    sources:
+      - https://validator.github.io/validator/
+      - https://github.com/wjdp/htmltest
 category: developer-tools
 package-manager:
   brew: htmltest
