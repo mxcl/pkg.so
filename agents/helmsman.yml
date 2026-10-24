@@ -72,6 +72,23 @@ history:
       The tool can run as a binary, as a container in CI, or as a container inside a
       Kubernetes cluster. Its value is strongest where release ordering, namespace
       protection, and repeated idempotent application matter.
+related-packages:
+  - id: brew:helm@3
+    reason: >
+      Helm provides the chart and release commands that Helmsman plans and executes from
+      its desired-state files.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mkubaczyk/helmsman
+      - https://helm.sh/docs/
+  - id: brew:helmfile
+    reason: >
+      Choose Helmfile instead when environment layering, release templates, lock files,
+      and its Helm-oriented diff/apply workflow are the better fit.
+    rel: alternative
+    sources:
+      - https://github.com/mkubaczyk/helmsman
+      - https://helmfile.readthedocs.io/en/stable/
 tags:
   - charts-as-code
   - cli

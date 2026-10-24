@@ -106,6 +106,31 @@ history:
       kubeconfig-based Kubernetes identity for cluster operations. That makes it fit
       both laptops and CI runners, while keeping authentication boundaries in Kubernetes
       and registry tooling.
+related-packages:
+  - id: brew:helmfile
+    reason: >
+      Use Helmfile when multiple Helm releases and environment-specific values should be
+      managed together from declarative, version-controlled state.
+    rel: adjacent_workflow
+    sources:
+      - https://helmfile.readthedocs.io/en/stable/
+      - https://helm.sh/docs/
+  - id: brew:helmsman
+    reason: >
+      Use Helmsman when Helm releases should converge from one desired-state file with
+      planning, ordering, and release-protection controls.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mkubaczyk/helmsman
+      - https://helm.sh/docs/
+  - id: brew:helmify
+    reason: >
+      Use Helmify to generate a chart from existing Kubernetes YAML, then lint, package,
+      and install that chart with Helm.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/arttor/helmify
+      - https://helm.sh/docs/topics/charts/
 tags:
   - charts
   - cli
