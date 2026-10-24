@@ -82,6 +82,23 @@ history:
       The surrounding Hertz framework targets high-usability, high-performance,
       extensible HTTP services with middleware, streaming, protocol support,
       observability hooks, and optional Netpoll or Go net transport behavior.
+related-packages:
+  - id: brew:protobuf
+    reason: >
+      Install Protocol Buffers when hz projects use `.proto` IDL, because hz delegates
+      Protocol Buffers parsing and plugin-oriented generation to `protoc`.
+    rel: adjacent_workflow
+    sources:
+      - https://www.cloudwego.io/docs/hertz/tutorials/toolkit/command/
+      - https://protobuf.dev/programming-guides/proto3/
+  - id: brew:thriftgo
+    reason: >
+      Install Thriftgo when hz projects use `.thrift` IDL, because hz's Thrift
+      generation is built on the thriftgo plugin model.
+    rel: adjacent_workflow
+    sources:
+      - https://www.cloudwego.io/docs/hertz/tutorials/toolkit/more-feature/plugin/
+      - https://github.com/cloudwego/thriftgo
 category: developer-tools
 package-manager:
   brew: hz
