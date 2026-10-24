@@ -74,6 +74,24 @@ history:
       Comment conventions in `values.yaml` let maintainers document fields next to the
       defaults they control. That makes the generated table useful for reviewers and
       users who need to understand chart configuration without reading every template.
+related-packages:
+  - id: brew:helm
+    reason: >
+      Helm supplies the chart metadata and values structure that helm-docs parses, so it
+      is the essential companion for creating, linting, packaging, and using the
+      documented charts.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/norwoodj/helm-docs#readme
+      - https://helm.sh/docs/topics/charts/
+  - id: brew:pre-commit
+    reason: >
+      helm-docs officially provides pre-commit hook configurations that regenerate chart
+      READMEs when chart metadata, values, or templates change.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/norwoodj/helm-docs#readme
+      - https://pre-commit.com/
 category: developer-tools
 package-manager:
   brew: helm-docs

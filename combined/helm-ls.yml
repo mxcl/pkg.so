@@ -75,6 +75,24 @@ history:
       content, generate schemas for values files, expose completion and hover data, run
       diagnostics from `helm lint`, and process dependency charts after `helm dependency
       build`.
+related-packages:
+  - id: brew:helm
+    reason: >
+      helm-ls invokes Helm-aware workflows such as chart dependency processing and `helm
+      lint`, so the Helm CLI is its core chart-authoring companion.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mrjosh/helm-ls#readme
+      - https://helm.sh/docs/helm/helm_lint/
+  - id: brew:yaml-language-server
+    reason: >
+      helm-ls has a documented optional integration with YAML Language Server for
+      schema-backed completion, hover information, symbols, and diagnostics in chart
+      templates and values files.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mrjosh/helm-ls#readme
+      - https://github.com/redhat-developer/yaml-language-server#readme
 category: developer-tools
 package-manager:
   apk: helm-ls

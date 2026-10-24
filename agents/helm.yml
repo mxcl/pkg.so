@@ -109,6 +109,41 @@ history:
       Helm's local repository configuration is stored in `repositories.yaml` under the
       user's Helm config directory. Because repository entries can include credentials,
       that file is also treated as a credentials location in the curation data.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl is the core cluster-administration companion: Helm uses Kubernetes
+      contexts and kubeconfig credentials, while kubectl lets users inspect and operate
+      the resources created by Helm releases.
+    rel: adjacent_workflow
+    sources:
+      - https://helm.sh/docs/intro/quickstart/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:chart-testing
+    reason: >
+      Chart Testing adds change detection, linting, and installation tests for Helm
+      charts, making it a strong CI companion for chart repositories.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/helm/chart-testing#readme
+      - https://helm.sh/docs/topics/chart_tests/
+  - id: brew:helm-docs
+    reason: >
+      helm-docs generates chart README content from `Chart.yaml`, `values.yaml`, and
+      templates, keeping a Helm package's user-facing configuration documentation
+      synchronized with its source.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/norwoodj/helm-docs#readme
+      - https://helm.sh/docs/topics/charts/
+  - id: brew:helm-ls
+    reason: >
+      helm-ls adds Helm-aware completion, navigation, hover information, and lint
+      diagnostics to editors used for chart authoring.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mrjosh/helm-ls#readme
+      - https://helm.sh/docs/topics/charts/
 tags:
   - cli
   - deployment
