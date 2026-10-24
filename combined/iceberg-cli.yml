@@ -79,6 +79,34 @@ history:
       The CLI is useful as a small operational companion to larger engines such as
       Spark, Flink, Trino, and Hive rather than as the primary compute engine for
       queries.
+related-packages:
+  - id: brew:duckdb
+    reason: >
+      DuckDB's official Iceberg extension can query table files directly or attach an
+      Iceberg REST catalog for reads and writes, complementing the CLI's metadata
+      inspection and maintenance commands.
+    rel: adjacent_workflow
+    sources:
+      - https://duckdb.org/docs/stable/core_extensions/iceberg/overview
+      - https://go.iceberg.apache.org/cli.html
+  - id: brew:trino
+    reason: >
+      Trino's Iceberg connector provides distributed SQL over Iceberg tables and
+      supported catalogs, while the CLI supplies lightweight catalog inspection and
+      operational maintenance.
+    rel: adjacent_workflow
+    sources:
+      - https://trino.io/docs/current/connector/iceberg.html
+      - https://go.iceberg.apache.org/cli.html
+  - id: brew:apache-spark
+    reason: >
+      Apache Iceberg recommends Spark as its most feature-rich compute engine, making
+      Spark the query and data-processing companion to the CLI's catalog and metadata
+      administration.
+    rel: adjacent_workflow
+    sources:
+      - https://iceberg.apache.org/docs/latest/spark-getting-started/
+      - https://go.iceberg.apache.org/cli.html
 category: data
 package-manager:
   brew: iceberg-cli

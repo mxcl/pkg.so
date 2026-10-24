@@ -81,6 +81,40 @@ history:
       The FAQ warns users to start from the default config and change only the passwords
       before adding more settings, which fits the server's long history of copy-pasted
       and overgrown configurations.
+related-packages:
+  - id: brew:liquidsoap
+    reason: >
+      Liquidsoap's `output.icecast` operator generates, mixes, schedules, encodes, and
+      sends a station feed to Icecast, which then relays it to listeners.
+    rel: adjacent_workflow
+    sources:
+      - https://www.liquidsoap.info/doc-dev/icecast
+      - https://icecast.org/docs/
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg documents an Icecast output protocol, allowing captured, remuxed, or
+      transcoded media to be published directly to an Icecast mountpoint.
+    rel: adjacent_workflow
+    sources:
+      - https://ffmpeg.org/ffmpeg-protocols.html#Icecast
+      - https://icecast.org/docs/
+  - id: brew:darkice
+    reason: >
+      DarkIce records and encodes live audio and can send it to a streaming server,
+      providing a focused live source-client workflow for an Icecast deployment.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rafael2k/darkice
+      - https://www.icecast.org/download/
+  - id: brew:libshout
+    reason: >
+      libshout is Xiph.Org's client library for applications that need to send encoded
+      streams to Icecast, complementing the server for custom source-client development.
+    rel: adjacent_workflow
+    sources:
+      - https://icecast.org/docs/libshout/
+      - https://gitlab.xiph.org/xiph/icecast-libshout
+      - https://icecast.org/download/
 category: media
 package-manager:
   apk: icecast

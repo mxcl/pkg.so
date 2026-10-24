@@ -55,6 +55,34 @@ history:
       The direct command form is `icdiff [options] left_file right_file`. It can also be
       used as `git difftool --extcmd icdiff`, as `git icdiff` through the helper script,
       as an SVN diff command, or as a Mercurial extdiff command.
+related-packages:
+  - id: brew:git-delta
+    reason: >
+      Choose delta when you primarily want a syntax-highlighting pager for Git diff,
+      blame, and grep output; choose icdiff for a simpler direct two-column comparison
+      of arbitrary files.
+    rel: alternative
+    sources:
+      - https://dandavison.github.io/delta/introduction.html
+      - https://dandavison.github.io/delta/features.html
+      - https://github.com/jeffkaufman/icdiff#readme
+  - id: brew:difftastic
+    reason: >
+      Choose Difftastic when syntax-aware structural comparison should ignore
+      formatting-only changes; choose icdiff for language-independent, line-oriented
+      side-by-side output.
+    rel: alternative
+    sources:
+      - https://difftastic.wilfred.me.uk/
+      - https://github.com/jeffkaufman/icdiff#readme
+  - id: brew:git
+    reason: >
+      icdiff includes a `git-icdiff` helper and documents Git difftool integration,
+      letting Git select repository changes while icdiff renders each comparison.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jeffkaufman/icdiff#readme
+      - https://git-scm.com/docs/git-difftool
 category: developer-tools
 package-manager:
   apk: icdiff
