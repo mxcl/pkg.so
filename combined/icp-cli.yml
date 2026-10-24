@@ -9,7 +9,10 @@ docs:
 config-file-location:
   unix: icp.yaml
   windows: icp.yaml
-credentials-file-location: null
+credentials-file-location:
+  linux: ~/.local/share/icp-cli/identity/keys/<name>.pem
+  macos: ~/Library/Application Support/org.dfinity.icp-cli/identity/keys/<name>.pem
+  windows: '%APPDATA%\icp-cli\data\identity\keys\<name>.pem'
 history:
   adoption-history:
     - >
@@ -73,6 +76,15 @@ history:
     - >
       The configuration surface centers on icp.yaml, matching the curated config-file
       location for both Unix-like systems and Windows.
+related-packages:
+  - id: brew:ic-wasm
+    reason: >
+      Install ic-wasm with icp-cli to optimize and annotate Internet Computer canister
+      WebAssembly; the official quick start marks it as required.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dfinity/icp-cli#quick-start
+      - https://github.com/dfinity/ic-wasm#readme
 category: developer-tools
 package-manager:
   brew: icp-cli
