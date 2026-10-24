@@ -92,6 +92,23 @@ history:
       that nonce-error correction is not performed by the tools. These details are why
       package users often care about exact upstream versions matching hcxdumptool and
       Hashcat behavior.
+related-packages:
+  - id: brew:hashcat
+    reason: >
+      Hashcat is the primary downstream companion for auditing the WPA-PBKDF2-PMKID and
+      EAPOL hash files produced and filtered by hcxtools.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ZerBea/hcxtools#readme
+      - https://hashcat.net/hashcat/
+  - id: brew:john-jumbo
+    reason: >
+      John the Ripper Jumbo is the documented alternative downstream engine for
+      hcxtools' JtR-compatible wireless and authentication hash outputs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ZerBea/hcxtools#readme
+      - https://www.openwall.com/john/
 tags:
   - cli
   - hashcat

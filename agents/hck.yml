@@ -56,6 +56,32 @@ history:
       -f2,1,3-, choose regex delimiters for whitespace or unusual separators, select
       columns by header literal or regex, and optionally process compressed inputs when
       a local decompressor exists.
+related-packages:
+  - id: brew:choose-rust
+    reason: >
+      Choose is a direct field-selection alternative with Python-style ranges, negative
+      indexes, and regex separators; choose it when slice-oriented syntax matters more
+      than hck's header selection and decompression features.
+    rel: alternative
+    sources:
+      - https://github.com/sstadick/hck#readme
+      - https://github.com/theryangeary/choose#readme
+  - id: brew:awk
+    reason: >
+      One True Awk is the more expressive alternative when field extraction must grow
+      into calculations, conditions, or record-processing programs.
+    rel: alternative
+    sources:
+      - https://github.com/sstadick/hck#readme
+      - https://awk.dev/
+  - id: brew:miller
+    reason: >
+      Miller is the stronger alternative for structured CSV, TSV, and JSON processing
+      when quoting and record semantics exceed hck's intentionally line-oriented model.
+    rel: alternative
+    sources:
+      - https://github.com/sstadick/hck#readme
+      - https://miller.readthedocs.io/
 tags:
   - cli
   - cut
