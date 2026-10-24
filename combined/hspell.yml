@@ -87,6 +87,25 @@ history:
       word lists: Hspell can feed Aspell, Hunspell/MySpell-style dictionaries, and
       applications that need Hebrew morphology rather than only command-line spell
       checking.
+related-packages:
+  - id: brew:aspell
+    reason: >
+      Use GNU Aspell with Hspell-generated Hebrew data when an application expects
+      Aspell's library, pipe protocol or editor integrations rather than Hspell's native
+      command-line interface.
+    rel: adjacent_workflow
+    sources:
+      - https://hspell.sourceforge.net/oldnews.html
+      - http://aspell.net/man-html/Introduction.html
+  - id: brew:hunspell
+    reason: >
+      Choose Hunspell when the target workflow requires the MySpell-compatible
+      dictionary format and broad office-suite or browser integration; Hspell supplies
+      Hebrew linguistic data for that ecosystem.
+    rel: adjacent_workflow
+    sources:
+      - https://hspell.sourceforge.net/download.html
+      - https://hunspell.github.io/
 category: productivity
 package-manager:
   brew: hspell
