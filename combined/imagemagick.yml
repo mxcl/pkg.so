@@ -97,6 +97,24 @@ history:
       windows, and streaming pixel data. The resources documentation also makes
       policy.xml and other configuration files central to production use, especially
       where untrusted images or resource limits matter.
+related-packages:
+  - id: brew:graphicsmagick
+    reason: >
+      Choose GraphicsMagick when compatibility with its stable `gm` interface, fewer
+      external dependencies, or a smaller installation footprint matters more than
+      ImageMagick's newer feature set.
+    rel: alternative
+    sources:
+      - https://graphicsmagick.sourceforge.io/FAQ.html
+      - https://graphicsmagick.sourceforge.io/GraphicsMagick.html
+  - id: brew:vips
+    reason: >
+      Choose libvips for high-throughput or memory-sensitive batch image processing
+      where its demand-driven, horizontally threaded architecture is a better fit.
+    rel: alternative
+    sources:
+      - https://github.com/libvips/libvips
+      - https://www.libvips.org/
 category: media
 package-manager:
   apk: imagemagick
