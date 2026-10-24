@@ -4,7 +4,12 @@ homepage: https://github.com/icann/icann-rdap/wiki
 repo: https://github.com/icann/icann-rdap
 docs:
   - https://icann.github.io/icann-rdap
-config-file-location: null
+config-file-location:
+  linux:
+    - $XDG_CONFIG_HOME/rdap/rdap.env
+    - ~/.config/rdap/rdap.env
+  macos: ~/Library/Application Support/rdap/rdap.env
+  windows: '{FOLDERID_RoamingAppData}\rdap\config\rdap.env'
 credentials-file-location: null
 history:
   adoption-history:
@@ -65,6 +70,17 @@ history:
       The Homebrew formula installs the `rdap` client and `rdap-test` command. The
       intended use is querying RDAP services for domain and registry data, testing RDAP
       endpoints, and developing tooling around the ICANN-maintained Rust libraries.
+related-packages:
+  - id: brew:whois
+    reason: >
+      Choose whois when a registry or legacy workflow still requires the older port-43
+      protocol; choose ICANN RDAP for standardized structured responses, HTTPS,
+      internationalization, and authoritative bootstrapping.
+    rel: alternative
+    sources:
+      - >
+        https://www.icann.org/en/contracted-parties/registry-operators/resources/registration-data-access-protocol
+      - https://github.com/rfc1036/whois
 category: networking
 package-manager:
   brew: icann-rdap

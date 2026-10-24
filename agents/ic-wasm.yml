@@ -52,6 +52,16 @@ history:
       optimization levels, preservation of `icp` metadata during shrink and optimize
       operations, endpoint checks against Candid, and profiling instrumentation for
       stable-memory or heap-memory trace storage.
+related-packages:
+  - id: brew:binaryen
+    reason: >
+      Use Binaryen's wasm-opt after ic-wasm when general WebAssembly optimization is
+      required; ic-wasm's maintainers explicitly replaced their former optimization
+      wrapper with direct wasm-opt usage.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dfinity/ic-wasm#readme
+      - https://github.com/WebAssembly/binaryen
 tags:
   - canisters
   - cli
