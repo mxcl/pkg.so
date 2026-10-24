@@ -99,6 +99,23 @@ history:
       conf/hbase-env.sh, start and stop services with scripts such as start-hbase.sh and
       stop-hbase.sh, and use the shell, Java API, REST, Thrift, MapReduce jobs, and
       operational tools to manage data and clusters.
+related-packages:
+  - id: brew:hadoop
+    reason: >
+      Apache Hadoop supplies HDFS, the distributed filesystem on which production HBase
+      stores its indexed data files.
+    rel: adjacent_workflow
+    sources:
+      - https://hbase.apache.org/book.html
+      - https://hadoop.apache.org/docs/current/
+  - id: brew:zookeeper
+    reason: >
+      Apache ZooKeeper coordinates HBase cluster state; HBase can manage an embedded
+      ensemble or connect to an independently operated ZooKeeper cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://hbase.apache.org/docs/zookeeper/
+      - https://zookeeper.apache.org/
 category: data
 package-manager:
   brew: hbase
