@@ -85,6 +85,24 @@ history:
       permissions set on Unix-like systems. Other commands include restore, copy, and
       single-account backup flows, with performance settings for delayed metadata writes
       and multi-fetch size.
+related-packages:
+  - id: brew:imapsync
+    reason: >
+      Choose imapsync for incremental server-to-server IMAP migration; choose
+      imap-backup when the primary artifact must be a local mboxrd archive that can
+      later be restored.
+    rel: alternative
+    sources:
+      - https://github.com/joeyates/imap-backup/blob/main/docs/commands/backup.md
+      - https://imapsync.lamiral.info/
+  - id: brew:isync
+    reason: >
+      Choose isync/mbsync when you need ongoing bidirectional synchronization between
+      IMAP and a local Maildir rather than an archival mboxrd backup.
+    rel: alternative
+    sources:
+      - https://github.com/joeyates/imap-backup/blob/main/docs/commands/backup.md
+      - https://isync.sourceforge.io/
 category: productivity
 package-manager:
   brew: imap-backup

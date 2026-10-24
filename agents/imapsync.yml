@@ -96,6 +96,33 @@ history:
       backup, not active two-way synchronization. It points users who need two-way sync
       toward offlineimap or mbsync, and it documents strict destination cleanup with
       options such as --delete2.
+related-packages:
+  - id: brew:isync
+    reason: >
+      Choose isync/mbsync for continuing bidirectional IMAP-to-Maildir synchronization;
+      imapsync's official documentation recommends it when one-way migration is
+      insufficient.
+    rel: alternative
+    sources:
+      - https://imapsync.lamiral.info/
+      - https://isync.sourceforge.io/
+  - id: brew:offlineimap
+    reason: >
+      Choose OfflineIMAP when you need a Python-based bidirectional IMAP-to-Maildir
+      workflow rather than imapsync's one-way server-to-server transfer model.
+    rel: alternative
+    sources:
+      - https://imapsync.lamiral.info/
+      - https://www.offlineimap.org/documentation.html
+  - id: brew:imap-backup
+    reason: >
+      Choose imap-backup when email must be archived to local mboxrd files and later
+      restored; imapsync explicitly operates only between IMAP accounts.
+    rel: alternative
+    sources:
+      - https://imapsync.lamiral.info/
+      - https://github.com/joeyates/imap-backup/blob/main/docs/commands/backup.md
+      - https://github.com/joeyates/imap-backup/blob/main/docs/commands/restore.md
 tags:
   - cli
   - email-backup
