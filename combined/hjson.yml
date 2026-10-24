@@ -74,6 +74,23 @@ history:
     - >
       The format is intentionally scoped. The Internet-Draft recommends it for data
       primarily viewed or edited by humans and advises against protocol use.
+related-packages:
+  - id: brew:json5
+    reason: >
+      Choose JSON5 when JavaScript-aligned ECMAScript syntax is preferable; choose Hjson
+      for its more aggressively minimal, quoteless human-editing syntax.
+    rel: alternative
+    sources:
+      - https://hjson.github.io/syntax.html
+      - https://json5.org/
+  - id: brew:jq
+    reason: >
+      Convert Hjson to standard JSON with hjson, then use jq for structured filtering,
+      transformation, and extraction in shell pipelines.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hjson/hjson-go#readme
+      - https://jqlang.github.io/jq/manual/
 category: developer-tools
 package-manager:
   brew: hjson

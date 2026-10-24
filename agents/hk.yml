@@ -82,6 +82,33 @@ history:
       The configuration docs emphasize precedence and local overrides: hk.local.pkl is
       for local changes that should not be committed, while ~/.config/hk/config.pkl can
       hold user-wide defaults.
+related-packages:
+  - id: brew:lefthook
+    reason: >
+      Lefthook is a direct Git-hook-manager alternative; hk's official benchmark
+      highlights hk's file-locking model while documenting lefthook's parallel read-only
+      groups and sequential fixers.
+    rel: alternative
+    sources:
+      - https://hk.jdx.dev/benchmarks
+      - https://hk.jdx.dev/migrate-lefthook.html
+      - https://github.com/evilmartians/lefthook#readme
+  - id: brew:pre-commit
+    reason: >
+      pre-commit is the established framework-oriented alternative, while hk emphasizes
+      concurrent steps, integrated fixes, and automatic staging.
+    rel: alternative
+    sources:
+      - https://hk.jdx.dev/benchmarks
+      - https://pre-commit.com/
+  - id: brew:mise
+    reason: >
+      mise can install hk and its project tools, launch Git hooks in the correct
+      environment, and expose mise tasks as hk steps.
+    rel: adjacent_workflow
+    sources:
+      - https://hk.jdx.dev/mise_integration.html
+      - https://mise.jdx.dev/
 tags:
   - cli
   - development-workflow
