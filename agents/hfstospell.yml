@@ -90,6 +90,25 @@ history:
       obtain ZHFST/HFST resources for a language, test correction behavior with the
       command-line tools, and integrate the runtime through Voikko or adjacent proofing
       infrastructure.
+related-packages:
+  - id: brew:libvoikko
+    reason: >
+      The hfst-ospell project explicitly recommends Voikko for using HFST spellers in
+      real applications, making libvoikko the primary integration layer for
+      application-facing proofing.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hfst/hfst-ospell#use-in-real-world-applications
+      - https://voikko.puimula.org/docs.html
+  - id: brew:enchant
+    reason: >
+      HFST's documentation describes an hfst-ospell-to-Voikko-to-Enchant path, allowing
+      applications that use Enchant's common spell-checking interface to reach
+      HFST-backed language resources.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hfst/hfst-ospell#use-in-real-world-applications
+      - https://rrthomas.github.io/enchant/
 tags:
   - cli
   - finite-state-transducer

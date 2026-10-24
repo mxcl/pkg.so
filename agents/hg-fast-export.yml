@@ -93,6 +93,32 @@ history:
       or plugins. Large repositories can use the bundled Git LFS import path to write
       LFS pointers during conversion rather than doing a separate full history rewrite
       afterward.
+related-packages:
+  - id: brew:git
+    reason: >
+      Git provides the destination repository and `git fast-import` plumbing that
+      hg-fast-export drives, so it is required for the conversion workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/frej/fast-export#usage
+      - https://git-scm.com/docs/git-fast-import
+  - id: brew:mercurial
+    reason: >
+      Mercurial supplies and locally clones the source repository whose changesets
+      hg-fast-export reads through Mercurial's interfaces.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/frej/fast-export#usage
+      - https://www.mercurial-scm.org/
+  - id: brew:git-lfs
+    reason: >
+      For repositories containing large files, hg-fast-export documents both an
+      integrated Git LFS importer and a post-conversion `git lfs migrate import`
+      workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/frej/fast-export#mercurial-largefiles-extension
+      - https://git-lfs.com/
 tags:
   - cli
   - git
