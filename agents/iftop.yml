@@ -81,6 +81,31 @@ history:
       Because it uses libpcap, iftop often needs elevated privileges or packet-capture
       permissions. It is most useful during incident response, capacity checks, and
       quick diagnosis of unexpected traffic.
+related-packages:
+  - id: brew:bmon
+    reason: >
+      Choose bmon when you want visual rates and statistics aggregated by network
+      interface rather than iftop's host-pair conversation view.
+    rel: alternative
+    sources:
+      - https://github.com/tgraf/bmon
+      - https://pdw.ex-parrot.com/iftop/
+  - id: brew:nload
+    reason: >
+      Choose nload for a simpler per-interface incoming/outgoing traffic graph when
+      identifying individual communicating hosts is unnecessary.
+    rel: alternative
+    sources:
+      - https://www.roland-riegel.de/nload/
+      - https://pdw.ex-parrot.com/iftop/
+  - id: brew:tcpdump
+    reason: >
+      Use tcpdump alongside iftop when a bandwidth-heavy conversation needs packet-level
+      capture or protocol inspection using the same pcap filtering model.
+    rel: adjacent_workflow
+    sources:
+      - https://www.tcpdump.org/
+      - https://code.blinkace.com/pdw/iftop/-/blob/master/iftop.8
 tags:
   - bandwidth
   - cli

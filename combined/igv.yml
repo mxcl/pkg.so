@@ -4,7 +4,8 @@ homepage: https://igv.org/doc/desktop/
 repo: https://github.com/igvteam/igv
 docs:
   - https://igv.org/doc/desktop
-config-file-location: null
+config-file-location:
+  unix: ~/igv/prefs.properties
 credentials-file-location: null
 history:
   adoption-history:
@@ -61,6 +62,31 @@ history:
       annotations, expression data, and other genomics tracks. The Homebrew package
       exposes both `igv` and `igvtools`, reflecting the split between interactive
       visualization and command-line data preparation.
+related-packages:
+  - id: brew:samtools
+    reason: >
+      Use SAMtools to inspect, sort, convert, and index SAM/BAM/CRAM alignment data
+      before loading those indexed alignments into IGV for visual review.
+    rel: adjacent_workflow
+    sources:
+      - https://www.htslib.org/doc/samtools.html
+      - https://igv.org/doc/desktop/UserGuide/tracks/alignments/
+  - id: brew:bcftools
+    reason: >
+      Use BCFtools to call, filter, normalize, and query VCF/BCF variants, then load the
+      resulting variant files into IGV alongside supporting reads.
+    rel: adjacent_workflow
+    sources:
+      - https://samtools.github.io/bcftools/bcftools.html
+      - https://igv.org/doc/desktop/UserGuide/tracks/variants/
+  - id: brew:bedtools
+    reason: >
+      Use BEDTools to derive, intersect, or summarize genomic intervals and load the
+      resulting BED-compatible tracks into IGV for contextual visualization.
+    rel: adjacent_workflow
+    sources:
+      - https://bedtools.readthedocs.io/en/latest/
+      - https://igv.org/doc/desktop/FileFormats/DataTracks/
 category: science
 package-manager:
   brew: igv

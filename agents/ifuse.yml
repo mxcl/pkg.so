@@ -58,6 +58,24 @@ history:
       with options such as `--documents`, `--container`, `--list-apps`, and `--root`
       covering app file sharing and jailbroken-device cases. Unmounting is delegated to
       the platform's FUSE tooling.
+related-packages:
+  - id: brew:libimobiledevice
+    reason: >
+      Install and use libimobiledevice tools alongside ifuse for pairing, diagnostics,
+      backups, and other device services beyond filesystem mounting; ifuse uses the
+      library for all device communication.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/libimobiledevice/ifuse
+      - https://github.com/libimobiledevice/libimobiledevice
+  - id: brew:ideviceinstaller
+    reason: >
+      Use ideviceinstaller to install, remove, or inspect applications on the same iOS
+      devices whose shared documents or containers you mount with ifuse.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/libimobiledevice/ifuse
+      - https://github.com/libimobiledevice/ideviceinstaller
 tags:
   - cli
   - filesystem

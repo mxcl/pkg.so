@@ -4,7 +4,8 @@ homepage: https://github.com/konradsz/igrep
 repo: https://github.com/konradsz/igrep
 docs:
   - https://github.com/konradsz/igrep#readme
-config-file-location: null
+config-file-location:
+  unix: $RIPGREP_CONFIG_PATH
 credentials-file-location: null
 history:
   adoption-history:
@@ -50,6 +51,25 @@ history:
       Users run `ig [OPTIONS] <PATTERN|--type-list> [PATHS]...`; igrep searches
       recursively, respects ripgrep configuration through `RIPGREP_CONFIG_PATH`, and
       chooses an editor from command-line options or editor environment variables.
+related-packages:
+  - id: brew:ripgrep
+    reason: >
+      Choose ripgrep for fast, scriptable search output and shell pipelines; choose
+      igrep when you want to browse the same style of recursive results interactively
+      and open a selected match in an editor.
+    rel: alternative
+    sources:
+      - https://github.com/konradsz/igrep
+      - https://github.com/BurntSushi/ripgrep
+  - id: brew:fzf
+    reason: >
+      Choose fzf when you need a general-purpose fuzzy selector that can interactively
+      filter output from many commands, rather than igrep's purpose-built grep result
+      browser.
+    rel: alternative
+    sources:
+      - https://github.com/konradsz/igrep
+      - https://github.com/junegunn/fzf
 category: developer-tools
 package-manager:
   apk: igrep
