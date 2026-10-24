@@ -84,6 +84,23 @@ history:
       operation into a scriptable executable. The README examples show stdin pipelines
       from ffmpeg, which is why the package matters to shell-heavy encoding pipelines
       and reproducible media-processing recipes.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg can demux and convert containerized HEVC video to an Annex B stream that is
+      piped directly into hdr10plus_tool for extraction or removal.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/quietvoid/hdr10plus_tool
+      - https://ffmpeg.org/documentation.html
+  - id: brew:x265
+    reason: >
+      x265 participates in the same HDR10+ workflow by encoding HEVC with
+      dynamic-metadata JSON that hdr10plus_tool can extract, inspect, or reinject.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/quietvoid/hdr10plus_tool
+      - https://x265.readthedocs.io/
 category: media
 package-manager:
   apk: hdr10plus-tool

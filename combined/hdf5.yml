@@ -110,6 +110,31 @@ history:
       HDF5 files. The serial hdf5 package remains the ordinary default for many desktop,
       scripting, and build dependencies, while MPI-enabled builds are split out by
       package managers when parallel I/O semantics are needed.
+related-packages:
+  - id: brew:hdf5-mpi
+    reason: >
+      Choose the MPI-enabled variant when an application needs Parallel HDF5 and its
+      MPI-IO driver rather than the ordinary serial build.
+    rel: alternative
+    sources:
+      - https://support.hdfgroup.org/documentation/hdf5/latest/_h5_f__u_g.html
+      - https://support.hdfgroup.org/documentation/hdf5-docs/hdf5_topics/ParallelHDF5.html
+  - id: brew:netcdf
+    reason: >
+      Use netCDF alongside HDF5 when software needs the standardized netCDF data model
+      and API; netCDF-4 files are implemented as a constrained form of HDF5.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.unidata.ucar.edu/netcdf-c/current/file_format_specifications.html
+      - https://support.hdfgroup.org/documentation/hdf5/latest/
+  - id: brew:adios2
+    reason: >
+      ADIOS2 is useful in adjacent HPC I/O workflows because its official HDF5 engine
+      can read and write HDF5 data through the ADIOS2 API.
+    rel: adjacent_workflow
+    sources:
+      - https://adios2.readthedocs.io/en/v2.8.3/engines/engines.html
+      - https://support.hdfgroup.org/documentation/hdf5/latest/
 category: data
 package-manager:
   apk: hdf5

@@ -82,6 +82,31 @@ history:
       The package exposes MPI-aware compiler wrappers and tools recorded in the batch
       input, including h5pcc, h5pfc, h5perf, and ph5diff. Those names signal to build
       systems and users that this package is for parallel HDF5 development and testing.
+related-packages:
+  - id: brew:hdf5
+    reason: >
+      Choose the serial HDF5 package when software does not require MPI-IO, avoiding the
+      MPI dependency and parallel-library ABI.
+    rel: alternative
+    sources:
+      - https://github.com/HDFGroup/hdf5
+      - https://support.hdfgroup.org/documentation/hdf5-docs/hdf5_topics/ParallelHDF5.html
+  - id: brew:open-mpi
+    reason: >
+      Open MPI supplies an MPI implementation and MPI-IO runtime that can be used to
+      compile and run Parallel HDF5 applications.
+    rel: adjacent_workflow
+    sources:
+      - https://support.hdfgroup.org/documentation/hdf5-docs/hdf5_topics/ParallelHDF5.html
+      - https://docs.open-mpi.org/
+  - id: brew:netcdf
+    reason: >
+      netCDF is useful above this stack when applications need the netCDF data model
+      with HDF5-backed storage and parallel scientific-I/O workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.unidata.ucar.edu/netcdf-c/current/file_format_specifications.html
+      - https://support.hdfgroup.org/documentation/hdf5-docs/hdf5_topics/ParallelHDF5.html
 tags:
   - cli
   - file-format
