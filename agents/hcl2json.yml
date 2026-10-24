@@ -51,6 +51,23 @@ history:
       output for downstream tools. The README also documents a simplify mode and an HCL
       pack-format mode, while warning that some HCL constructs cannot be converted with
       exact semantic equivalence.
+related-packages:
+  - id: brew:hcledit
+    reason: >
+      hcledit complements hcl2json by making token-preserving, schemaless changes to HCL
+      before the resulting document is converted to JSON.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tmccombs/hcl2json#readme
+      - https://github.com/minamijoyo/hcledit#readme
+  - id: brew:jq
+    reason: >
+      jq is a practical downstream companion for querying or transforming the JSON that
+      hcl2json writes to standard output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tmccombs/hcl2json#readme
+      - https://jqlang.github.io/jq/manual/
 tags:
   - cli
   - format-conversion
