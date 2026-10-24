@@ -3,7 +3,14 @@ display-name: I2P
 repo: null
 docs:
   - https://geti2p.net/en/docs
-config-file-location: null
+config-file-location:
+  linux:
+    - ~/.i2p/router.config
+    - ~/.i2p/wrapper.config
+    - ~/.i2p/i2ptunnel.config
+    - /var/lib/i2p/i2p-config/i2ptunnel.config
+  macos:
+    - ~/Library/Application Support/i2p/router.config
 credentials-file-location: null
 history:
   adoption-history:
@@ -77,6 +84,17 @@ history:
       Developers use I2P when they want application traffic to stay inside an anonymous
       overlay rather than leave through exit nodes. The Java implementation also serves
       as the reference for specifications and behavior used by related clients.
+related-packages:
+  - id: brew:i2pd
+    reason: >
+      Choose i2pd for a stable, fully compatible C++ I2P router suited to servers or
+      lower-resource systems; choose Java I2P for the standard full router with its
+      broader bundled console, plugin, and application environment.
+    rel: alternative
+    sources:
+      - https://i2p.net/en/docs/overview/alternative-clients/
+      - https://github.com/PurpleI2P/i2pd
+      - https://github.com/i2p/i2p.i2p
 tags:
   - anonymous-network
   - cli

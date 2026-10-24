@@ -74,6 +74,25 @@ history:
       The project README also documents libi2c for C and C++ access over i2c-dev,
       py-smbus as an optional Python wrapper, and build-time control over static and
       dynamic library variants.
+related-packages:
+  - id: brew:ddcutil
+    reason: >
+      Use ddcutil alongside i2c-tools when diagnosing or controlling DDC/CI monitors;
+      ddcutil officially uses i2cdetect as an independent check for the DDC address on
+      an I2C bus.
+    rel: adjacent_workflow
+    sources:
+      - https://www.ddcutil.com/tech_support/
+      - https://git.kernel.org/pub/scm/utils/i2c-tools/i2c-tools.git/plain/README
+  - id: brew:lm-sensors
+    reason: >
+      Use lm-sensors for Linux temperature, voltage, and fan monitoring; i2c-tools was
+      split from that project to cover general-purpose I2C devices beyond monitoring
+      chips.
+    rel: adjacent_workflow
+    sources:
+      - https://git.kernel.org/pub/scm/utils/i2c-tools/i2c-tools.git/plain/README
+      - https://github.com/lm-sensors/lm-sensors#readme
 tags:
   - cli
   - hardware
