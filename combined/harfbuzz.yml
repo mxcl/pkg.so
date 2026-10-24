@@ -105,6 +105,31 @@ history:
       maintainers. Tools such as `hb-shape`, `hb-view`, `hb-info`, and `hb-subset` help
       reproduce shaping behavior, inspect font support, render examples, and create
       smaller font subsets.
+related-packages:
+  - id: brew:freetype
+    reason: >
+      Use FreeType with HarfBuzz when a text stack needs FreeType to load and rasterize
+      the glyphs that HarfBuzz selects and positions.
+    rel: adjacent_workflow
+    sources:
+      - https://harfbuzz.github.io/integration-freetype.html
+      - https://freetype.org/freetype2/docs/documentation.html
+  - id: brew:pango
+    reason: >
+      Use Pango above HarfBuzz when an application needs higher-level text segmentation
+      and layout before individual runs are shaped.
+    rel: adjacent_workflow
+    sources:
+      - https://harfbuzz.github.io/integration.html
+      - https://docs.gtk.org/Pango/
+  - id: brew:graphite2
+    reason: >
+      Install Graphite2 for workflows requiring the Graphite shaping model, which
+      HarfBuzz supports through an optional integration backend.
+    rel: adjacent_workflow
+    sources:
+      - https://harfbuzz.github.io/building.html
+      - https://graphite.sil.org/graphite_techAbout.html
 category: developer-tools
 package-manager:
   apk: harfbuzz
