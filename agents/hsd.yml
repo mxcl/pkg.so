@@ -78,6 +78,24 @@ history:
       The README emphasizes bitcoind-style RPC plus additional REST APIs, name auction
       commands such as sendopen, sendbid, sendreveal, sendupdate, and DNSSEC-based claim
       flows.
+related-packages:
+  - id: cask:kyokan-bob
+    reason: >
+      Bob Wallet provides a graphical Handshake wallet and DNS/name-auction interface
+      with an integrated HSD full node.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/handshake-org/hsd
+      - https://github.com/bob-wallet/bob-wallet
+  - id: brew:unbound
+    reason: >
+      HSD can use native libunbound bindings for better recursive-DNS performance and
+      standards conformance, making Unbound a specific runtime companion for resolver
+      deployments.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/handshake-org/hsd
+      - https://nlnetlabs.nl/projects/unbound/about/
 tags:
   - blockchain
   - cli
