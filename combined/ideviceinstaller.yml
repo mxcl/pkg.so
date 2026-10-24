@@ -78,6 +78,24 @@ history:
       Because it talks to real devices through libimobiledevice and usbmux-style
       plumbing, package users care about matching library versions, device firmware
       behavior, and output formats for automation.
+related-packages:
+  - id: brew:libimobiledevice
+    reason: >
+      libimobiledevice is the underlying device-communication library used by
+      ideviceinstaller and also supplies pairing, device-information, backup,
+      screenshot, and syslog tools for the same workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/libimobiledevice/ideviceinstaller#readme
+      - https://libimobiledevice.org/
+  - id: brew:ifuse
+    reason: >
+      Use ifuse after identifying or installing an app when you need to mount that app's
+      shared documents or sandbox container as a local filesystem.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/libimobiledevice/ideviceinstaller/blob/master/man/ideviceinstaller.1
+      - https://github.com/libimobiledevice/ifuse#readme
 category: developer-tools
 package-manager:
   apk: ideviceinstaller

@@ -77,6 +77,26 @@ history:
       Authors use idnits directly on RFCXML or plaintext drafts, or indirectly through
       the Author Tools service. Toolsmiths can use its library form to integrate draft
       checks into editors and publishing pipelines.
+related-packages:
+  - id: brew:xml2rfc
+    reason: >
+      Use xml2rfc to validate and render RFCXML, then idnits for policy and formatting
+      checks; official IETF author and submission services run these tools in the same
+      document pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://authors.ietf.org/author-tools-web-service
+      - https://authors.ietf.org/submitting-your-internet-draft
+      - https://github.com/ietf-tools/xml2rfc
+  - id: brew:mmark
+    reason: >
+      Mmark converts Markdown Internet-Drafts to RFCXML for xml2rfc, after which idnits
+      can check the resulting draft as part of the pre-submission workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mmarkdown/mmark/blob/master/README.md
+      - https://authors.ietf.org/tools-catalog
+      - https://authors.ietf.org/author-tools-web-service
 category: developer-tools
 package-manager:
   brew: idnits

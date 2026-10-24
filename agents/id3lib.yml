@@ -78,6 +78,31 @@ history:
       The library's age is part of its maintenance profile. Project pages and downstream
       comments point to ID3v2.3-era behavior and limited ID3v2.4 support, so package
       users often keep it for compatibility rather than for newer tagging features.
+related-packages:
+  - id: brew:taglib
+    reason: >
+      Choose TagLib for new native applications that need maintained metadata support
+      across many audio formats; the id3lib project itself recommends migrating to it.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/projects/id3lib/
+      - https://taglib.org/
+  - id: brew:id3v2
+    reason: >
+      Use id3v2 when you want a dedicated shell editor built on id3lib rather than
+      integrating the C++ library directly.
+    rel: adjacent_workflow
+    sources:
+      - https://id3v2.sourceforge.net/
+      - https://id3lib.sourceforge.net/
+  - id: brew:eye-d3
+    reason: >
+      Choose eyeD3 when a Python library and plugin-oriented CLI with ID3v2.4 support
+      fit better than id3lib's legacy C++ API and utilities.
+    rel: alternative
+    sources:
+      - https://id3lib.sourceforge.net/
+      - https://eyed3.readthedocs.io/en/latest/
 tags:
   - audio
   - c
