@@ -73,6 +73,23 @@ history:
       The tool is used after capture rather than during acquisition: users record
       samples with SDR hardware or another program, then inspect timing, symbol rates,
       modulation traces, and extracted regions offline.
+related-packages:
+  - id: brew:hackrf
+    reason: >
+      Use HackRF's capture tooling to record complex signed 8-bit samples, then open
+      those recordings in inspectrum for offline visualization and measurement.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/miek/inspectrum#readme
+      - https://hackrf.readthedocs.io/en/latest/
+  - id: brew:gnuradio
+    reason: >
+      GNU Radio can create complex floating-point recordings that inspectrum explicitly
+      supports, allowing flowgraph-based capture followed by focused offline inspection.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/miek/inspectrum#readme
+      - https://wiki.gnuradio.org/index.php/Main_Page
 category: science
 package-manager:
   brew: inspectrum

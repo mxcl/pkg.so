@@ -66,6 +66,31 @@ history:
       `--monitor`. The man page documents recursive watching, event selection, CSV and
       custom output formatting, daemon mode, syslog output, and warnings about watch
       limits such as `/proc/sys/fs/inotify/max_user_watches`.
+related-packages:
+  - id: brew:entr
+    reason: >
+      Choose entr when the primary goal is to rerun a command after input files change
+      using a small Unix pipeline, including on BSD and macOS as well as Linux.
+    rel: alternative
+    sources:
+      - https://github.com/inotify-tools/inotify-tools
+      - https://eradman.com/entrproject/
+  - id: brew:watchexec
+    reason: >
+      Choose watchexec for cross-platform recursive watching with ignore-file handling
+      and built-in child-process supervision.
+    rel: alternative
+    sources:
+      - https://github.com/inotify-tools/inotify-tools
+      - https://watchexec.github.io/docs/
+  - id: brew:fswatch
+    reason: >
+      Choose fswatch when one portable command or library must abstract native
+      filesystem notification mechanisms across multiple operating systems.
+    rel: alternative
+    sources:
+      - https://github.com/inotify-tools/inotify-tools
+      - https://emcrisostomo.github.io/fswatch/documentation.html
 tags:
   - cli
   - filesystem

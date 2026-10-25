@@ -69,6 +69,31 @@ history:
       or test checksums. Users commonly run `innoextract installer.exe`, optionally
       adding an output directory, language selection, collision handling, password
       options, or GOG-specific extraction flags.
+related-packages:
+  - id: brew:unar
+    reason: >
+      Choose unar when the input may be one of many archive formats rather than
+      specifically an Inno Setup installer.
+    rel: alternative
+    sources:
+      - https://constexpr.org/innoextract/innoextract.1
+      - https://theunarchiver.com/command-line
+  - id: brew:unshield
+    reason: >
+      Choose Unshield for InstallShield cabinet files, which are a different proprietary
+      installer format from the Inno Setup packages handled by innoextract.
+    rel: alternative
+    sources:
+      - https://constexpr.org/innoextract/innoextract.1
+      - https://github.com/twogood/unshield
+  - id: brew:cabextract
+    reason: >
+      Choose cabextract when the payload is a Microsoft Cabinet archive rather than an
+      Inno Setup executable.
+    rel: alternative
+    sources:
+      - https://constexpr.org/innoextract/innoextract.1
+      - https://www.cabextract.org.uk/
 category: system
 package-manager:
   apk: innoextract
