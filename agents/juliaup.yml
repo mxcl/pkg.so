@@ -3,7 +3,12 @@ display-name: Juliaup
 repo: null
 docs:
   - https://github.com/JuliaLang/juliaup#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.julia/juliaup/juliaup.json
+    - ~/.julia/juliaupself.json
+    - $JULIAUP_DEPOT_PATH/juliaup/juliaup.json
+    - $JULIAUP_DEPOT_PATH/juliaupself.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -74,6 +79,16 @@ history:
       Juliaup stores Julia versions and its configuration in the Julia depot under
       `~/.julia` unless `JULIAUP_DEPOT_PATH` is set, and it can download binaries from a
       mirror via `JULIAUP_SERVER`.
+related-packages:
+  - id: brew:julia
+    reason: >
+      Julia is the runtime that Juliaup installs and selects, so install it directly
+      when one system-managed Julia version is sufficient and use Juliaup when multiple
+      upstream channels are needed.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/JuliaLang/juliaup
+      - https://julialang.org/downloads/
 tags:
   - cli
   - installer
