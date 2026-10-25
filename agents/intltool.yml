@@ -79,6 +79,24 @@ history:
       intltool-extract, intltool-merge, intltool-update, and intltool-prepare. The
       important operational detail is that it participates in the source tree's
       translation build flow rather than acting as an end-user localization editor.
+related-packages:
+  - id: brew:gettext
+    reason: >
+      Choose GNU gettext for maintained projects that can replace intltool-specific
+      extraction and merge rules with the modern native format support documented by
+      GNOME.
+    rel: alternative
+    sources:
+      - https://wiki.gnome.org/MigratingFromIntltoolToGettext
+      - https://www.gnu.org/software/gettext/manual/gettext.html
+  - id: brew:itstool
+    reason: >
+      Use ITS Tool alongside gettext when an XML localization workflow requires ITS
+      rules and dedicated XML-to-PO extraction or merge handling.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.gnome.org/MigratingFromIntltoolToGettext
+      - https://itstool.org/documentation/
 tags:
   - cli
   - gettext
