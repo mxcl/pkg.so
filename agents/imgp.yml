@@ -66,6 +66,24 @@ history:
       suffixing output files; converting PNG to JPEG; and processing the working
       directory when no path is supplied. Operational notes warn about lossy resize and
       rotate operations, overwrite behavior, and repeated processing of generated files.
+related-packages:
+  - id: brew:imagemagick
+    reason: >
+      Choose ImageMagick when you need a much broader programmable image-processing
+      suite; choose imgp for a focused batch resize-and-rotate interface built around
+      Pillow.
+    rel: alternative
+    sources:
+      - https://github.com/jarun/imgp
+      - https://imagemagick.org/command-line-processing/
+  - id: brew:nnn
+    reason: >
+      nnn provides a documented file-manager script that invokes imgp for interactive
+      batch image resizing from a terminal workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jarun/imgp
+      - https://github.com/jarun/nnn
 tags:
   - batch-processing
   - cli
