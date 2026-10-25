@@ -72,6 +72,42 @@ history:
       reusable jq modules. Its single-binary distribution model also makes it popular in
       containers and remote machines where installing a language runtime would be
       heavier.
+related-packages:
+  - id: brew:gojq
+    reason: >
+      Choose gojq when a pure-Go executable or embeddable Go library, YAML support, and
+      arbitrary-precision integers outweigh the documented compatibility differences
+      from canonical jq.
+    rel: alternative
+    sources:
+      - https://github.com/itchyny/gojq#readme
+      - https://jqlang.org/manual/
+  - id: brew:jaq
+    reason: >
+      Choose jaq for a Rust implementation focused on performance and simplicity with
+      additional structured formats; choose jq for the canonical language implementation
+      and reference behavior.
+    rel: alternative
+    sources:
+      - https://github.com/01mf02/jaq#readme
+      - https://gedenkt.at/jaq/manual/
+      - https://jqlang.org/manual/
+  - id: brew:yq
+    reason: >
+      Use yq beside jq when a workflow must process or convert YAML, XML, TOML, INI,
+      properties, CSV, or TSV as well as JSON.
+    rel: adjacent_workflow
+    sources:
+      - https://mikefarah.gitbook.io/yq/
+      - https://jqlang.org/manual/
+  - id: brew:jq-lsp
+    reason: >
+      Use jq-lsp with jq scripts to add syntax diagnostics, completion, definitions,
+      hover documentation, symbols, and import awareness in supported editors.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/wader/jq-lsp#readme
+      - https://jqlang.org/manual/
 tags:
   - cli
   - data-transformation
