@@ -8,7 +8,10 @@ config-file-location:
     - $JENKINS_HOME/config.xml
     - $JENKINS_HOME/*.xml
     - $JENKINS_HOME/jobs/[JOBNAME]/config.xml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - $JENKINS_HOME/credentials.xml
+    - $JENKINS_HOME/secrets/
 history:
   adoption-history:
     - >
@@ -85,6 +88,25 @@ history:
       bundled CLI. Jenkins stores much of its controller and job configuration under
       JENKINS_HOME as XML files, while newer workflows often define build logic in
       Jenkinsfiles through Pipeline.
+related-packages:
+  - id: brew:jenkins-lts
+    reason: >
+      Choose Jenkins LTS for a more conservative controller release line that receives
+      selected, battle-tested bug and security fixes instead of the faster weekly
+      feature cadence.
+    rel: alternative
+    sources:
+      - https://www.jenkins.io/download/lts/
+      - https://www.jenkins.io/doc/
+  - id: brew:jenkins-cli
+    reason: >
+      Use jcli alongside a Jenkins controller when you want a native client for
+      switching among servers and managing jobs, plugins, restarts, and Configuration as
+      Code workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jenkins-zh/jenkins-cli
+      - https://www.jenkins.io/doc/book/managing/cli/
 tags:
   - automation-server
   - ci-cd
