@@ -65,6 +65,31 @@ history:
       Typical usage is document-pipeline work: encode scanned bilevel images with jbig2,
       then use jbig2topdf.py to wrap the JBIG2 output into a PDF. The README also
       documents standalone .jb2 output and sample commands for multi-image PDF creation.
+related-packages:
+  - id: brew:ocrmypdf
+    reason: >
+      OCRmyPDF automatically uses jbig2enc, when available, to losslessly compress
+      bitonal images and reduce the size of OCR-processed PDFs.
+    rel: adjacent_workflow
+    sources:
+      - https://ocrmypdf.readthedocs.io/en/latest/jbig2.html
+      - https://ocrmypdf.readthedocs.io/en/stable/installation.html
+  - id: brew:leptonica
+    reason: >
+      Leptonica supplies the image-processing library required by jbig2enc for reading
+      and preparing source images before JBIG2 encoding.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/agl/jbig2enc
+      - http://www.leptonica.org/
+  - id: brew:jbig2dec
+    reason: >
+      jbig2dec can decode and inspect the JBIG2 streams produced by jbig2enc, which is
+      useful for validating codec output and document pipelines.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/agl/jbig2enc
+      - https://github.com/ArtifexSoftware/jbig2dec/blob/master/jbig2dec.1
 category: media
 package-manager:
   apk: jbig2enc

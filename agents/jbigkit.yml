@@ -57,6 +57,31 @@ history:
       pbmtojbg, jbgtopbm, pbmtojbg85, and jbgtopbm85 command-line tools. Its
       documentation frames the tools as simple converters for PBM and JBIG streams,
       while the library API is intended for document and image applications.
+related-packages:
+  - id: brew:libtiff
+    reason: >
+      libtiff can be built with JBIG-KIT support, making the library relevant when TIFF
+      workflows must read or write JBIG-compressed image data.
+    rel: adjacent_workflow
+    sources:
+      - https://www.cl.cam.ac.uk/~mgk25/jbigkit/
+      - https://libtiff.gitlab.io/libtiff/
+  - id: brew:netpbm
+    reason: >
+      Netpbm complements JBIG-KIT because its PBM image format is the native interchange
+      used by JBIG-KIT's pbmtojbg and jbgtopbm converters.
+    rel: adjacent_workflow
+    sources:
+      - https://www.cl.cam.ac.uk/~mgk25/jbigkit/
+      - https://netpbm.sourceforge.net/
+  - id: brew:jbig2dec
+    reason: >
+      jbig2dec is the alternative for decoding the newer JBIG2 standard, which targets
+      stronger monochrome-document compression rather than JBIG-KIT's JBIG1 streams.
+    rel: alternative
+    sources:
+      - https://www.cl.cam.ac.uk/~mgk25/jbigkit/
+      - https://github.com/ArtifexSoftware/jbig2dec
 tags:
   - bilevel-images
   - cli

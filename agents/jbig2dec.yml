@@ -62,6 +62,24 @@ history:
       documents diagnostic, dump, hash, quiet, verbose, and output-format options, while
       the README says the decoder remains useful in limited contexts and requests
       problematic files for testing.
+related-packages:
+  - id: brew:ghostscript
+    reason: >
+      Ghostscript is the broader alternative when JBIG2 decoding is needed as part of
+      complete PDF, PostScript, or page-description-language rendering rather than as a
+      dedicated stream-decoding utility.
+    rel: alternative
+    sources:
+      - https://github.com/ArtifexSoftware/jbig2dec
+      - https://github.com/ArtifexSoftware/ghostpdl/blob/master/README
+  - id: brew:jbig2enc
+    reason: >
+      jbig2enc produces JBIG2 streams that jbig2dec can decode or inspect, making the
+      pair useful for codec development and document-pipeline validation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ArtifexSoftware/jbig2dec/blob/master/jbig2dec.1
+      - https://github.com/agl/jbig2enc
 tags:
   - cli
   - decoder
