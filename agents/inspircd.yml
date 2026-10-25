@@ -4,7 +4,11 @@ repo: null
 docs:
   - https://docs.inspircd.org/
   - https://api.inspircd.org/
-config-file-location: null
+config-file-location:
+  unix:
+    - /etc/inspircd
+  windows:
+    - C:\Program Files\InspIRCd\conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -74,6 +78,25 @@ history:
       The project warns that some distribution packages may carry modifications or lag
       security updates, which is unusually direct packaging guidance and important for
       daemon operators.
+related-packages:
+  - id: brew:ngircd
+    reason: >
+      Choose ngIRCd for a smaller, deliberately lightweight IRC server with a lean
+      configuration file and a focus on small or private networks.
+    rel: alternative
+    sources:
+      - https://www.inspircd.org/
+      - https://ngircd.barton.de/
+  - id: brew:ircd-hybrid
+    reason: >
+      Choose ircd-hybrid when EFnet lineage, its traditional high-performance IRCd
+      design, or compatibility with the Hybrid ecosystem matters more than InspIRCd's
+      broader module system.
+    rel: alternative
+    sources:
+      - https://www.inspircd.org/
+      - https://www.ircd-hybrid.org/
+      - https://www.ircd-hybrid.org/history.html
 tags:
   - c-plus-plus
   - cli
