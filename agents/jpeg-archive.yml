@@ -58,6 +58,31 @@ history:
       core optimizer. jpeg-recompress searches for the smallest JPEG quality that
       preserves perceived visual quality, optimizes Huffman tables, and can copy EXIF,
       IPTC, XMP, and color profile metadata by default.
+related-packages:
+  - id: brew:parallel
+    reason: >
+      GNU Parallel can execute JPEG Archive's per-image recompression jobs across CPU
+      cores, a batch workflow explicitly recommended by JPEG Archive's README.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/danielgtaylor/jpeg-archive#readme
+      - https://www.gnu.org/software/parallel/
+  - id: brew:dcraw
+    reason: >
+      dcraw decodes camera raw photos into the image stream consumed by JPEG Archive's
+      documented RAW-to-JPEG workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/danielgtaylor/jpeg-archive#readme
+      - https://www.dechifro.org/dcraw/
+  - id: brew:exiftool
+    reason: >
+      ExifTool supplies the metadata handling required by JPEG Archive's
+      folder-processing script when preserving photo metadata during recompression.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/danielgtaylor/jpeg-archive#readme
+      - https://exiftool.org/
 tags:
   - cli
   - deduplication

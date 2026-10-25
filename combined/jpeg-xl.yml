@@ -83,6 +83,31 @@ history:
       Users encode with commands such as cjxl input.png output.jxl and decode with djxl
       input.jxl output.png. For JPEG input, libjxl can losslessly recompress an existing
       JPEG into JPEG XL and later reconstruct the original JPEG bitstream.
+related-packages:
+  - id: brew:webp
+    reason: >
+      Choose WebP when broad established browser support is more important than JPEG
+      XL's reversible JPEG transcoding and newer high-fidelity feature set.
+    rel: alternative
+    sources:
+      - https://jpeg.org/jpegxl/index.html
+      - https://developers.google.com/speed/webp/
+  - id: brew:libavif
+    reason: >
+      Choose libavif when you need command-line and library support for the AV1-derived
+      AVIF format instead of the JPEG XL coding system.
+    rel: alternative
+    sources:
+      - https://jpeg.org/jpegxl/index.html
+      - https://github.com/AOMediaCodec/libavif
+  - id: brew:exiftool
+    reason: >
+      ExifTool complements libjxl by reading and writing metadata in JPEG XL files, an
+      integration documented by libjxl's official software-support list.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/libjxl/libjxl/blob/main/doc/software_support.md
+      - https://exiftool.org/
 category: media
 package-manager:
   brew: jpeg-xl

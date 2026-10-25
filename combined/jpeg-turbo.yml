@@ -83,6 +83,23 @@ history:
       API, the TurboJPEG API, or command-line tools such as cjpeg, djpeg, jpegtran,
       rdjpgcom, wrjpgcom, and tjbench. The library is used for both compression and
       decompression, with color-space extensions for common RGB/BGR buffer layouts.
+related-packages:
+  - id: brew:mozjpeg
+    reason: >
+      Choose MozJPEG when smaller, visually optimized JPEG output is the priority; it
+      extends libjpeg-turbo while retaining libjpeg API and ABI compatibility.
+    rel: alternative
+    sources:
+      - https://github.com/libjpeg-turbo/libjpeg-turbo
+      - https://github.com/mozilla/mozjpeg
+  - id: brew:jpeg
+    reason: >
+      Choose IJG JPEG when you specifically require the canonical IJG release lineage
+      rather than libjpeg-turbo's performance-oriented compatible implementation.
+    rel: alternative
+    sources:
+      - https://www.libjpeg-turbo.org/About/TurboJPEG
+      - https://www.ijg.org/
 category: media
 package-manager:
   brew: jpeg-turbo
