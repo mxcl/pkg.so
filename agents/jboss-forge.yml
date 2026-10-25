@@ -5,7 +5,9 @@ docs:
   - https://forge.jboss.org/
   - https://forge.jboss.org/document/hands-on-lab
   - https://github.com/forge/core#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - <project>/.forge_settings
 credentials-file-location: null
 history:
   adoption-history:
@@ -57,6 +59,15 @@ history:
       guided commands rather than editing every framework file by hand. The official
       install script places Forge under a home-directory installation and updates common
       shell profiles with FORGE_HOME and PATH entries.
+related-packages:
+  - id: brew:maven
+    reason: >
+      Use Apache Maven with Forge-created Java projects for the build, dependency, and
+      lifecycle workflow referenced by Forge's official getting-started documentation.
+    rel: adjacent_workflow
+    sources:
+      - https://forge.jboss.org/1.x/docs/
+      - https://maven.apache.org/guides/
 tags:
   - cli
   - ide
