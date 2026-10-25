@@ -48,6 +48,25 @@ history:
       Users typically pipe JSON into `jshon`, chain extraction and conversion flags, and
       combine its line-oriented output with ordinary shell tools. The `-F` and `-I`
       options also support file input and in-place edits for small JSON changes.
+related-packages:
+  - id: brew:jq
+    reason: >
+      Choose jq when you need a richer, widely used filter language for querying and
+      transforming JSON streams; choose jshon for its compact stack-oriented shell
+      interface and in-place file operations.
+    rel: alternative
+    sources:
+      - https://github.com/keenerd/jshon/blob/master/jshon.1
+      - https://jqlang.org/manual/
+  - id: brew:jo
+    reason: >
+      Use jo to construct safely quoted JSON from shell arguments, then pass that JSON
+      to jshon when the same script needs jshon's key, array, conversion, or editing
+      operations.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jpmens/jo#readme
+      - https://github.com/keenerd/jshon/blob/master/jshon.1
 tags:
   - cli
   - data-processing
