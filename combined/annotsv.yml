@@ -1,11 +1,78 @@
 id: brew:annotsv
-display-name: annotsv
+display-name: AnnotSV
 homepage: https://lbgi.fr/AnnotSV/
 repo: https://github.com/lgmgeo/AnnotSV
+docs:
+  - https://www.lbgi.fr/AnnotSV/Documentation/README.AnnotSV_latest.pdf
+  - https://lbgi.fr/AnnotSV
+config-file-location:
+  unix:
+    - <AnnotSV installation directory>/configfile
+    - <input-file directory>/configfile
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      AnnotSV became part of clinical and research structural-variant workflows by
+      combining many annotation datasets behind one VCF/BED-oriented command. The later
+      AnnotSV and knotAnnotSV web service made the same annotation and ranking approach
+      accessible without a local installation.
+  package-nerd-significance:
+    - >
+      AnnotSV is notable to bioinformatics packagers because installing the executable
+      is only part of the operational footprint: useful runs depend on sizeable,
+      separately maintained genomic annotation resources. Its command-line interface
+      nevertheless makes a specialized human-genetics workflow reproducible in
+      pipelines.
+  project-history:
+    - >
+      AnnotSV was developed by Véronique Geoffroy and collaborators as an integrated
+      tool for annotating human structural variants and their breakpoints. Its first
+      peer-reviewed description appeared in Bioinformatics in 2018.
+    - >
+      The project subsequently added pathogenicity ranking and an official web
+      interface, paired with knotAnnotSV for visualization and interpretation.
+  related-projects:
+    - >
+      knotAnnotSV is the project's official companion web application for visualizing
+      and interpreting AnnotSV results.
+  sources:
+    - https://academic.oup.com/bioinformatics/article/34/20/3572/4970516
+    - https://academic.oup.com/nar/article/49/W1/W21/6281473
+    - https://lbgi.fr/AnnotSV/
+    - https://www.lbgi.fr/AnnotSV/Documentation/README.AnnotSV_latest.pdf
+  summary:
+    - >
+      AnnotSV is an open-source command-line and web-supported system for annotating and
+      ranking human structural variants from VCF or BED input.
+  timeline:
+    - '2017: The official project site dates the beginning of the maintained AnnotSV service.'
+    - >
+      2018: AnnotSV was described in Bioinformatics as an integrated
+      structural-variation annotation tool.
+    - '2021: The AnnotSV and knotAnnotSV web server was described in Nucleic Acids Research.'
+  usage:
+    - >
+      Users provide structural variants in VCF or BED form, select genome build and
+      annotation options, and receive tabular annotations and pathogenicity-oriented
+      ranking. Command options can be supplied directly or modified through a
+      `configfile`.
+related-packages: []
+category: science
 package-manager:
   brew: annotsv
 package-manager-url: https://formulae.brew.sh/formula/annotsv
 license: GPL-3.0-or-later
+tags:
+  - bed
+  - bioinformatics
+  - cli
+  - clinical-genetics
+  - genomics
+  - structural-variants
+  - variant-annotation
+  - variant-ranking
+  - vcf
 description: Annotation and ranking of structural variations
 executables:
   - AnnotSV

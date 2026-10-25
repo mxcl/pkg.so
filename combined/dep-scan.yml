@@ -1,11 +1,105 @@
 id: brew:dep-scan
-display-name: dep-scan
+display-name: OWASP dep-scan
 homepage: https://github.com/owasp-dep-scan/dep-scan
-repo: null
+repo: https://github.com/owasp-dep-scan/dep-scan
+docs:
+  - https://depscan.readthedocs.io/
+  - https://github.com/owasp-dep-scan/dep-scan#readme
+  - https://owasp.org/projects/dep-scan
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      dep-scan grew as a local and CI-oriented scanner for source trees, lockfiles,
+      container images, operating-system packages, Kubernetes manifests, and CycloneDX
+      SBOMs. It joined OWASP in 2023 as an incubator project.
+    - >
+      The project broadened conventional vulnerability matching with dependency-risk
+      auditing, license checks, reachability analysis, VDR/VEX output, and server modes
+      intended for integration with vulnerability-management platforms.
+  package-nerd-significance:
+    - >
+      dep-scan sits at the junction of package metadata, SBOM generation, advisory
+      databases, and static reachability analysis. Package and security engineers care
+      because it can distinguish declared dependencies from vulnerable code paths and
+      can turn ecosystem manifests into standardized CycloneDX and VEX-oriented outputs.
+  project-history:
+    - >
+      The tool began as AppThreat dep-scan and was later transferred into the OWASP
+      project ecosystem as OWASP dep-scan.
+    - >
+      Its architecture uses cdxgen to generate CycloneDX SBOM data and combines that
+      inventory with vulnerability sources such as OSV, NVD, GitHub advisories, npm
+      advisories, and Linux vulnerability lists.
+  related-projects:
+    - >
+      CycloneDX Generator (cdxgen) is dep-scan's documented SBOM-generation companion
+      and is used internally for supported project ecosystems.
+    - OWASP hosts dep-scan alongside other software-supply-chain security projects.
+  sources:
+    - https://depscan.readthedocs.io/
+    - https://github.com/owasp-dep-scan/dep-scan
+    - https://owasp.org/blog/2023/10/05/appthreat-depscan-joins-owasp
+    - https://owasp.org/projects/dep-scan
+  summary:
+    - >
+      OWASP dep-scan is a security and risk auditing tool for application dependencies,
+      SBOMs, container images, operating systems, and cloud-native manifests.
+  timeline:
+    - 'Before 2023: The project was developed as AppThreat dep-scan.'
+    - '2023: AppThreat dep-scan joined OWASP and became OWASP dep-scan.'
+    - >
+      Current project: Standalone binaries bundle cdxgen, while richer profiles add
+      multi-language reachability and standardized VDR, VEX, and CSAF outputs.
+  usage:
+    - >
+      Run `depscan --src <project> --reports-dir <directory>` for a local audit, select
+      a project type when automatic detection is insufficient, or supply a CycloneDX
+      SBOM with `--bom`. Research profiles add reachability analysis; container and
+      server modes support CI and platform integration.
+    - >
+      Customization is documented through command options and environment variables.
+      Tokens such as `GITHUB_TOKEN`, threat-database credentials, and server API keys
+      are environment values rather than credentials files. Although the CLI accepts
+      `--config`, the official material reviewed does not establish a standard
+      config-file location.
+related-packages:
+  - id: brew:cdxgen
+    reason: >
+      Use cdxgen to produce or customize the CycloneDX SBOM that dep-scan analyzes;
+      dep-scan documents cdxgen as its internal and server-mode BOM generator.
+    rel: adjacent_workflow
+    sources:
+      - https://owasp.org/projects/dep-scan
+      - https://github.com/CycloneDX/cdxgen
+      - https://cdxgen.github.io/cdxgen
+  - id: brew:trivy
+    reason: >
+      Choose Trivy when you need one scanner spanning vulnerabilities,
+      misconfigurations, secrets, SBOMs, Kubernetes, and cloud resources; choose
+      dep-scan for its dependency-risk and reachability-analysis emphasis.
+    rel: alternative
+    sources:
+      - https://github.com/owasp-dep-scan/dep-scan
+      - https://trivy.dev/latest/
+category: security
 package-manager:
   brew: dep-scan
 package-manager-url: https://formulae.brew.sh/formula/dep-scan
 license: MIT
+tags:
+  - cli
+  - container-security
+  - cyclonedx
+  - dependency-scanning
+  - devsecops
+  - license-audit
+  - reachability-analysis
+  - sbom
+  - software-supply-chain
+  - vex
+  - vulnerability-scanning
 description: Security and risk audit tool for project dependencies and container images
 executables:
   - depscan

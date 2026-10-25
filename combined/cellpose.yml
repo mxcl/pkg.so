@@ -1,11 +1,95 @@
 id: brew:cellpose
-display-name: cellpose
+display-name: Cellpose
 homepage: https://www.cellpose.org/
-repo: null
+repo: https://github.com/MouseLand/cellpose
+docs:
+  - https://cellpose.readthedocs.io/en/latest
+  - https://cellpose.readthedocs.io/en/latest/api.html
+  - https://cellpose.readthedocs.io/en/latest/cli.html
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Cellpose was designed to work across varied microscopy imagery without requiring a
+      bespoke model for every dataset. A GUI, Python API, command-line interface,
+      pretrained models, and community-oriented model training helped it spread across
+      laboratory and computational-imaging workflows.
+    - >
+      Cellpose 2.0 added human-in-the-loop custom-model training. Later project
+      generations added image restoration and SAM-derived generalist segmentation while
+      retaining access to older workflows in the official documentation.
+  package-nerd-significance:
+    - >
+      Cellpose turns a research-grade deep-learning method into an installable end-user
+      application, CLI, and Python library. Packaging is unusually consequential because
+      CPU, CUDA, ROCm, and Apple MPS execution paths combine scientific Python,
+      neural-network runtimes, GUI dependencies, and model downloads.
+  project-history:
+    - >
+      Carsen Stringer and Marius Pachitariu created Cellpose as a generalist
+      deep-learning method for segmenting cells and nuclei across diverse microscopy
+      images. The original paper was published online in 2020 and appeared in Nature
+      Methods in 2021.
+    - >
+      Cellpose 2.0, published in 2022, introduced a human-in-the-loop workflow for
+      adapting pretrained models. The official documentation subsequently organized
+      Cellpose 3 and Cellpose-SAM as later generations of the project.
+  related-projects:
+    - >
+      BioImage.IO is supported as a discovery and sharing surface for user-trained
+      Cellpose models.
+    - >
+      ImageJ interoperability is supported through native ROI archive output and a
+      legacy ROI Manager-compatible interface.
+  sources:
+    - https://cellpose.readthedocs.io/en/latest/
+    - https://www.cellpose.org/
+    - https://www.nature.com/articles/s41592-020-01018-x
+    - https://www.nature.com/articles/s41592-022-01663-4
+  summary:
+    - >
+      Cellpose is a generalist neural-network system for two- and three-dimensional
+      segmentation of cells, nuclei, and other anatomical structures.
+  timeline:
+    - '2020: The original Cellpose paper was published online.'
+    - '2021: The original method appeared in Nature Methods.'
+    - '2022: Cellpose 2.0 introduced rapid human-in-the-loop training of custom models.'
+    - >
+      Later releases: Cellpose 3 added image-restoration workflows, followed by the
+      Cellpose-SAM generation.
+  usage:
+    - >
+      Users can segment image directories through the CLI, work interactively in the
+      GUI, or call the Python API from notebooks and analysis pipelines. Pretrained
+      models are downloaded by default under `~/.cellpose/models/`;
+      `CELLPOSE_LOCAL_MODELS_PATH` can relocate that model cache, but it is not a
+      configuration file.
+related-packages:
+  - id: brew:baysor
+    reason: >
+      Use Cellpose masks as a morphology-derived prior for Baysor when combining
+      microscopy segmentation with molecule-level spatial-transcriptomics data.
+    rel: adjacent_workflow
+    sources:
+      - https://cellpose.readthedocs.io/en/latest/
+      - https://kharchenkolab.github.io/Baysor/0.7.1/segmentation/
+category: science
 package-manager:
   brew: cellpose
 package-manager-url: https://formulae.brew.sh/formula/cellpose
 license: BSD-3-Clause
+tags:
+  - bioimaging
+  - cell-segmentation
+  - cli
+  - computer-vision
+  - deep-learning
+  - gui
+  - microscopy
+  - nucleus-segmentation
+  - python
+  - scientific-computing
 description: Generalist algorithm for cell and nucleus segmentation
 executables:
   - cellpose

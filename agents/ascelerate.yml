@@ -1,0 +1,125 @@
+id: brew:ascelerate
+display-name: ASCelerate
+repo: null
+docs:
+  - https://ascelerate.dev/docs
+  - https://ascelerate.dev/docs/getting-started/setup
+config-file-location:
+  macos:
+    - ~/.ascelerate/config.json
+credentials-file-location:
+  macos:
+    - ~/.ascelerate/AuthKey_<KEY_ID>.p8
+history:
+  adoption-history:
+    - >
+      ASCelerate is distributed as a Homebrew-installed or directly downloaded macOS
+      CLI. Its documentation targets terminal-driven release work and CI-style
+      automation, while optional shell completions and an installable coding-agent skill
+      broaden its automation ergonomics.
+  package-nerd-significance:
+    - >
+      ASCelerate represents a newer Swift-native approach to App Store operations: a
+      focused package-managed binary instead of a Ruby-based automation environment or
+      hand-written API scripts. It is especially relevant to Apple-platform release
+      engineers who want structured commands close to the App Store Connect API.
+  project-history:
+    - >
+      ASCelerate was created as a Swift command-line client for App Store Connect. Its
+      documented scope expanded beyond basic application and build operations to cover
+      release submission, provisioning, localization, screenshots, subscriptions,
+      reports, Apple Ads, reviews, in-app events, and custom product pages.
+  related-projects:
+    - Apple's App Store Connect API is the service ASCelerate automates.
+    - >
+      The project uses the generated asc-swift client to cover the App Store Connect API
+      surface.
+  sources:
+    - https://ascelerate.dev/
+    - https://ascelerate.dev/docs/getting-started/installation/
+    - https://ascelerate.dev/docs/getting-started/setup/
+    - https://github.com/keremerkan/ascelerate/releases
+  summary:
+    - >
+      ASCelerate is a Swift command-line tool for building, publishing, and
+      administering Apple applications through App Store Connect and related Apple
+      services.
+  timeline:
+    - >
+      Early release line: ASCelerate established a Swift-native App Store Connect
+      command-line client.
+    - >
+      Current release line: Commands cover the release path from Xcode archive through
+      App Review submission, plus broader application commerce and reporting workflows.
+  usage:
+    - >
+      Run `ascelerate configure` with an App Store Connect key ID, issuer ID, and `.p8`
+      private key, verify access with `ascelerate apps list`, then use resource-specific
+      commands or the documented full-release workflow. Apple Ads credentials are
+      configured separately into the same configuration file.
+related-packages:
+  - id: brew:asc
+    reason: >
+      Choose asc when you want a cross-platform, self-contained Go client with App Store
+      Connect and Apple Ads coverage plus explicit CI-oriented authentication modes.
+    rel: alternative
+    sources:
+      - https://ascelerate.dev/
+      - https://asccli.sh
+      - https://github.com/rorkai/App-Store-Connect-CLI#readme
+  - id: brew:asccli
+    reason: >
+      Choose asc-cli for a Swift-native App Store Connect client that also offers JSON
+      affordances, project context, a TUI, and optional server workflows.
+    rel: alternative
+    sources:
+      - https://ascelerate.dev/
+      - https://github.com/tddworks/asc-cli#readme
+      - https://github.com/tddworks/asc-cli/tree/main/docs
+  - id: brew:fastlane
+    reason: >
+      Choose fastlane when you need its mature lane/action ecosystem or one
+      release-automation framework spanning both Apple and Google Play.
+    rel: alternative
+    sources:
+      - https://ascelerate.dev/
+      - https://docs.fastlane.tools/
+tags:
+  - app-store-connect
+  - apple
+  - ci-cd
+  - cli
+  - ios
+  - macos
+  - release-automation
+  - swift
+  - testflight
+provenance:
+  category-sources:
+    - https://ascelerate.dev/
+    - source_facts.description
+  display-name-sources:
+    - https://ascelerate.dev/
+  docs-sources:
+    - https://ascelerate.dev/
+    - https://ascelerate.dev/docs/getting-started/setup/
+  history-sources:
+    - https://ascelerate.dev/
+    - https://ascelerate.dev/docs/getting-started/installation/
+    - https://ascelerate.dev/docs/getting-started/setup/
+    - https://github.com/keremerkan/ascelerate/releases
+  repo-sources:
+    - source_facts.repo is already populated; repo is intentionally null as required.
+  tags-sources:
+    - https://ascelerate.dev/
+    - https://ascelerate.dev/docs/getting-started/setup/
+category-confidence: high
+category-path:
+  - developer-tools
+  - release-automation
+  - apple-platforms
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

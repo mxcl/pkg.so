@@ -1,0 +1,141 @@
+id: brew:erpc
+display-name: eRPC
+repo: null
+docs:
+  - https://docs.erpc.cloud/
+  - https://docs.erpc.cloud/config/auth
+  - https://docs.erpc.cloud/config/example
+config-file-location:
+  unix:
+    - ./erpc.yaml
+    - ./erpc.yml
+    - ./erpc.ts
+    - ./erpc.js
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      eRPC targets operators who would otherwise maintain custom retry, failover,
+      provider-selection, caching, and chain-routing layers around managed or
+      self-hosted RPC nodes. Its distribution as a standalone binary, container,
+      npm-started service, and Homebrew formula supports both workstation trials and
+      deployed infrastructure.
+    - >
+      The project expanded from an EVM-focused proxy into infrastructure that also
+      applies its routing, caching, consensus, and failure-handling machinery to
+      SVM-compatible Solana clusters.
+  package-nerd-significance:
+    - >
+      eRPC packages a specialized blockchain reliability layer as a conventional
+      infrastructure service. It is interesting to operators because a declarative YAML,
+      JavaScript, or TypeScript configuration can replace application-specific RPC
+      failover code while integrating with familiar Redis, Prometheus, and Grafana
+      components.
+  project-history:
+    - >
+      eRPC was created as an open-source fault-tolerant RPC proxy and
+      reorganization-aware caching layer for blockchain workloads. It centralizes
+      multiple managed providers and self-hosted nodes behind one routing surface.
+    - >
+      Later development added richer selection policies, consensus checks, multiple
+      persistent-cache backends, configuration validation and dumping, TypeScript
+      configuration, and SVM routing alongside EVM networks.
+  related-projects:
+    - Redis can provide a cache shared across eRPC replicas.
+    - >
+      Prometheus consumes eRPC's metrics endpoint, and the repository supplies a Grafana
+      dashboard for visualization.
+  sources:
+    - https://docs.erpc.cloud/
+    - https://docs.erpc.cloud/config/example
+    - https://github.com/erpc/erpc
+  summary:
+    - >
+      eRPC is a fault-tolerant proxy for EVM and SVM JSON-RPC traffic, providing
+      multi-provider routing, retries, failover, consensus checks, rate controls, and
+      reorganization-aware caching.
+  timeline:
+    - >
+      Initial project: eRPC established an EVM RPC proxy with provider failover and
+      permanent caching.
+    - >
+      Later project: Selection policies, consensus, cache connectors, observability, and
+      typed configuration became part of the documented production setup.
+    - 'Current project: SVM cluster routing is supported alongside EVM networks.'
+  usage:
+    - >
+      Create `erpc.yaml` in the working directory, define projects and upstream
+      providers, validate it with `erpc validate`, and run the server. Applications then
+      send JSON-RPC calls through paths such as `/<project>/evm/<chain-id>` or
+      `/<project>/svm/<cluster>`.
+    - >
+      Provider API keys and proxy secrets can be interpolated from environment variables
+      into YAML or read in TypeScript configuration. The official documentation does not
+      prescribe a separate credentials file.
+related-packages:
+  - id: brew:redis
+    reason: >
+      Use Redis as eRPC's documented shared cache backend when multiple proxy replicas
+      need access to the same cached RPC responses.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.erpc.cloud/config/example
+      - https://redis.io/docs/latest/
+  - id: brew:prometheus
+    reason: >
+      Prometheus can scrape eRPC's documented metrics endpoint to retain and query
+      request, latency, failover, cache, and upstream-health telemetry.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.erpc.cloud/
+      - https://prometheus.io/docs/introduction/overview/
+  - id: brew:grafana
+    reason: >
+      Grafana displays eRPC operational metrics through the prebuilt dashboard shipped
+      by the eRPC repository and documented monitoring stack.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.erpc.cloud/
+      - https://grafana.com/docs/grafana/latest/
+tags:
+  - blockchain
+  - caching
+  - cli
+  - evm
+  - failover
+  - go
+  - json-rpc
+  - load-balancing
+  - observability
+  - rate-limiting
+  - rpc-proxy
+  - solana
+provenance:
+  category-sources:
+    - https://docs.erpc.cloud/
+    - https://github.com/erpc/erpc
+  display-name-sources:
+    - https://docs.erpc.cloud/
+    - https://github.com/erpc/erpc
+  docs-sources:
+    - https://docs.erpc.cloud/
+    - https://docs.erpc.cloud/config/example
+  history-sources:
+    - https://docs.erpc.cloud/
+    - https://docs.erpc.cloud/config/example
+    - https://github.com/erpc/erpc
+  repo-sources:
+    - source_facts.repo is already populated; repo is intentionally null as required.
+  tags-sources:
+    - https://docs.erpc.cloud/
+    - https://github.com/erpc/erpc
+category-confidence: high
+category-path:
+  - cloud-infrastructure
+  - blockchain
+  - rpc-proxy
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high
