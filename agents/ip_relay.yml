@@ -75,6 +75,16 @@ history:
       The FAQ is explicit about the tradeoffs: ip_relay is not authenticated, not
       secure, not designed for multiple users, and single-threaded. It is best
       understood as a local testing and personal bandwidth-shaping tool.
+related-packages:
+  - id: brew:rinetd
+    reason: >
+      Choose rinetd for a persistent configuration-driven TCP redirection server;
+      ip_relay is narrower and adds an interactive bandwidth limit for small personal or
+      testing setups.
+    rel: alternative
+    sources:
+      - https://stewart.com.au/ip_relay/README
+      - https://github.com/samhocevar/rinetd
 tags:
   - bandwidth
   - cli
@@ -108,9 +118,10 @@ provenance:
     - https://stewart.com.au/ip_relay/README
   repo-sources:
     - >
-      source_facts.repo is empty, so repository research was permitted. The official
-      author-maintained project page exposes release archives and documentation but no
-      official HTTP(S) source-control repository page.
+      https://stewart.com.au/ip_relay/ is the author's official release and
+      documentation site, but it does not identify an official HTTP(S) source-control
+      repository.
+    - source_facts.repo is empty.
   tags-sources:
     - https://formulae.brew.sh/formula/ip_relay
     - https://stewart.com.au/ip_relay/

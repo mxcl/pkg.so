@@ -74,6 +74,24 @@ history:
       Release notes show practical polish around output compatibility, such as v2.1.0's
       fix for IPAs that some signing apps and tools could not extract and v2.1.3's fix
       for signing unusual binaries.
+related-packages:
+  - id: brew:zsign
+    reason: >
+      Use zsign after patching when the resulting IPA must be signed with a certificate
+      and provisioning profile before distribution or installation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/asdfzxcvbn/ipapatch
+      - https://github.com/zhlynn/zsign
+  - id: brew:ipsw
+    reason: >
+      Use ipsw for broader iOS and macOS firmware and Mach-O research; ipapatch's
+      upstream README specifically credits ipsw and go-macho for the native load-command
+      injection foundation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/asdfzxcvbn/ipapatch
+      - https://github.com/blacktop/ipsw
 category: developer-tools
 package-manager:
   brew: ipapatch

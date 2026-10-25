@@ -63,6 +63,24 @@ history:
       run ios_webkit_debug_proxy, and open the local device list or JSON endpoints. The
       proxy assigns ports beginning with a device-list page and then per-device DevTools
       endpoints, allowing WebSocket clients and browser frontends to inspect pages.
+related-packages:
+  - id: brew:libimobiledevice
+    reason: >
+      Install libimobiledevice for the native iOS service communication and device
+      utilities that the proxy's Linux build and troubleshooting workflow explicitly
+      requires.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/google/ios-webkit-debug-proxy
+      - https://github.com/libimobiledevice/libimobiledevice
+  - id: brew:libusbmuxd
+    reason: >
+      libusbmuxd supplies the client-side USB multiplexing layer used to reach iOS
+      device services through the usbmuxd socket.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/google/ios-webkit-debug-proxy
+      - https://github.com/libimobiledevice/libusbmuxd
 category: developer-tools
 package-manager:
   brew: ios-webkit-debug-proxy
