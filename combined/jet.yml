@@ -65,6 +65,26 @@ history:
       generates SQL builder and model packages, after which application code imports
       those packages and builds typed SELECT, INSERT, UPDATE, DELETE, LOCK, and WITH
       statements.
+related-packages:
+  - id: brew:sqlc
+    reason: >
+      Choose sqlc when handwritten SQL should remain the source of truth and the tool
+      should generate typed methods from those queries; choose Jet when queries should
+      be composed through a generated, type-safe Go builder.
+    rel: alternative
+    sources:
+      - https://github.com/go-jet/jet/wiki
+      - https://docs.sqlc.dev/
+      - https://docs.sqlc.dev/en/latest/howto/generate.html
+  - id: brew:sqlboiler
+    reason: >
+      Choose SQLBoiler when you want a database-first generated ORM with relationships,
+      hooks, eager loading, and model lifecycle helpers; Jet intentionally remains a SQL
+      builder and result mapper rather than an ORM.
+    rel: alternative
+    sources:
+      - https://github.com/go-jet/jet/wiki
+      - https://github.com/aarondl/sqlboiler#readme
 category: developer-tools
 package-manager:
   brew: jet

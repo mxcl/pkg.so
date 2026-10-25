@@ -63,6 +63,27 @@ history:
       producing the `jerry` executable. Library users embed the engine through its C
       API, while the snapshot mechanism allows JavaScript source to be precompiled to
       bytecode before deployment.
+related-packages:
+  - id: brew:quickjs
+    reason: >
+      Choose QuickJS for a small embeddable engine with broader current ECMAScript
+      coverage and a compiler that can turn JavaScript into standalone executables;
+      JerryScript focuses more explicitly on microcontroller-class memory constraints.
+    rel: alternative
+    sources:
+      - https://jerryscript.net/
+      - https://bellard.org/quickjs/
+      - https://bellard.org/quickjs/quickjs.html
+  - id: brew:duktape
+    reason: >
+      Choose Duktape when an easily vendored C/C++ engine with an ES5-oriented
+      compatibility baseline and compact portable integration is preferable to
+      JerryScript's IoT-focused snapshot workflow.
+    rel: alternative
+    sources:
+      - https://jerryscript.net/
+      - https://duktape.org/
+      - https://duktape.org/guide.html
 category: language-runtime
 package-manager:
   brew: jerryscript
