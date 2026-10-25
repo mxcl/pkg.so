@@ -78,6 +78,31 @@ history:
     - >
       The tool is deliberately not a general metadata framework. Its docs tell users to
       reach for ExifTool or Exiv2 when they need broader format or tag coverage.
+related-packages:
+  - id: brew:exiftool
+    reason: >
+      Choose ExifTool when you need much broader file-format and metadata-tag coverage
+      than jhead's deliberately compact JPEG-focused feature set.
+    rel: alternative
+    sources:
+      - https://github.com/Matthias-Wandel/jhead#readme
+      - https://exiftool.org/exiftool_pod2.html
+  - id: brew:exiv2
+    reason: >
+      Choose Exiv2 when you need a fast native tool and library that reads and writes
+      EXIF, IPTC, XMP, ICC profiles, previews, and metadata across many image formats.
+    rel: alternative
+    sources:
+      - https://github.com/Matthias-Wandel/jhead#readme
+      - https://exiv2.org/manpage.html
+  - id: brew:jpeg
+    reason: >
+      jhead can call the jpegtran executable supplied by the IJG JPEG tools to rotate or
+      mirror JPEG image data losslessly according to EXIF orientation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Matthias-Wandel/jhead/blob/master/usage.html
+      - https://www.ijg.org/
 category: media
 package-manager:
   apk: jhead

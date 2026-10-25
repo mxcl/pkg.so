@@ -75,6 +75,23 @@ history:
       the regular expressions, and emits actions or tokens; projects commonly wire the
       generated scanner into CUP-family parsers or build tools such as Maven, Ant, and
       Bazel.
+related-packages:
+  - id: brew:flex
+    reason: >
+      Choose flex when the generated scanner should be C or C++; choose JFlex when it
+      should be Java and integrate with Java parser and build tooling.
+    rel: alternative
+    sources:
+      - https://jflex.de/manual.html
+      - https://westes.github.io/flex/manual/Introduction.html
+  - id: brew:maven
+    reason: >
+      Maven can run JFlex's official plugin during the build to generate Java scanner
+      sources from grammar files automatically.
+    rel: adjacent_workflow
+    sources:
+      - https://jflex.de/manual.html
+      - https://maven.apache.org/guides/introduction/introduction-to-plugins.html
 tags:
   - cli
   - compiler-tools
