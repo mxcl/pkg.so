@@ -64,6 +64,32 @@ history:
       the underscore object. Queries can be Python expressions, comprehensions, loops,
       or code loaded from a query file, and output can be JSON, JSON Lines,
       bash-array-friendly lines, or a grep-able schema.
+related-packages:
+  - id: brew:jq
+    reason: >
+      Choose jq for its purpose-built, portable JSON query language; choose jello when
+      Python dictionary, list, and comprehension syntax is more familiar or directly
+      useful.
+    rel: alternative
+    sources:
+      - https://github.com/kellyjonbrazil/jello#readme
+      - https://jqlang.github.io/jq/manual/
+  - id: brew:jc
+    reason: >
+      Use jc before jello to convert ordinary command output into JSON that jello can
+      filter with Python expressions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kellyjonbrazil/jc#readme
+      - https://github.com/kellyjonbrazil/jello#readme
+  - id: brew:jtbl
+    reason: >
+      Pipe jello's filtered JSON or JSON Lines into jtbl when the result should be
+      rendered as a terminal, CSV, HTML, or Markdown table.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kellyjonbrazil/jtbl#readme
+      - https://github.com/kellyjonbrazil/jello#readme
 tags:
   - cli
   - jq-alternative
