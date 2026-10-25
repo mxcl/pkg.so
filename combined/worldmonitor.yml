@@ -1,11 +1,98 @@
 id: brew:worldmonitor
-display-name: worldmonitor
+display-name: World Monitor CLI
 homepage: https://worldmonitor.app/docs/cli
-repo: null
+repo: https://github.com/koala73/worldmonitor
+docs:
+  - https://www.worldmonitor.app/docs/api-reference
+  - https://www.worldmonitor.app/docs/authentication
+  - https://www.worldmonitor.app/docs/cli
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The CLI extends World Monitor beyond its browser dashboard to shell scripts, CI
+      jobs, terminal users, and AI-agent workflows. It is distributed through npm and
+      Homebrew, installs both `worldmonitor` and `wm`, and shares the hosted platform's
+      authentication and data contracts.
+    - >
+      Its adoption path is tied to the wider World Monitor product family: the same
+      maintained repository supplies the web dashboard, desktop application, MCP server,
+      REST API, agent skills, and official SDKs.
+  package-nerd-significance:
+    - >
+      World Monitor CLI packages a large, rapidly changing intelligence platform behind
+      a small command-line interface. Package users receive stable commands and JSON
+      output without needing to reproduce the dashboard's many data collectors, maps, or
+      service integrations locally.
+    - >
+      It also illustrates the convergence of conventional CLI packaging with agent
+      infrastructure: the executable can call registered MCP tools, access REST
+      operations, list prompts and resources, and perform server-side JMESPath
+      projections to reduce returned data.
+  project-history:
+    - >
+      World Monitor began as an open-source real-time global-intelligence dashboard
+      combining news, geopolitics, markets, infrastructure, aviation, maritime, cyber,
+      climate, and military signals. Its maintained public repository was created in
+      January 2026 and expanded into web variants and a cross-platform desktop
+      application.
+    - >
+      Programmatic access subsequently grew around a shared platform: a hosted MCP
+      server, versioned REST services, agent skills, zero-dependency SDKs, and the
+      official CLI. The CLI's human-facing documentation was completed in July 2026 and
+      presents it as a thin wrapper over MCP with a REST escape hatch.
+  related-projects:
+    - >
+      The World Monitor MCP server is the recommended agent surface, while the official
+      Python, Ruby, Go, and JavaScript SDKs provide library access to the same platform.
+      The CLI source lives in the main World Monitor repository.
+  sources:
+    - https://github.com/koala73/worldmonitor
+    - https://github.com/koala73/worldmonitor/issues/4744
+    - https://www.worldmonitor.app/developers.md
+    - https://www.worldmonitor.app/docs/cli
+    - https://www.worldmonitor.app/world-monitor.md
+  summary:
+    - >
+      World Monitor CLI is the official terminal client for World Monitor's
+      global-intelligence platform. It provides shortcuts for country briefs, risk,
+      markets, conflict, cyber, disaster, sanctions, forecast, maritime, MCP-tool, and
+      REST API queries, plus an interactive terminal dashboard.
+  timeline:
+    - '2026-01-08: The maintained World Monitor repository is created.'
+    - >
+      2026: World Monitor expands from its dashboard into MCP, REST, SDK, agent-skill,
+      desktop, and CLI surfaces.
+    - '2026-07: The project completes a human-facing landing page for the CLI.'
+    - '2026: Homebrew distributes the `worldmonitor` and `wm` executables.'
+  usage:
+    - >
+      Running `worldmonitor` interactively opens a terminal dashboard; scripting
+      subcommands return intelligence such as country briefs, risk scores, markets,
+      conflicts, cyber threats, disasters, sanctions, forecasts, and maritime activity.
+      `tools`, `list`, and source-discovery operations expose public metadata.
+    - >
+      Subscription-gated data commands read `WORLDMONITOR_API_KEY` or accept
+      `--api-key`; the official documentation does not describe a credentials file.
+      Users can invoke any registered MCP tool, call REST paths directly, request
+      compact or raw JSON, and project responses server-side with JMESPath.
+related-packages: []
+category: data
 package-manager:
   brew: worldmonitor
 package-manager-url: https://formulae.brew.sh/formula/worldmonitor
 license: MIT
+tags:
+  - api-client
+  - cli
+  - geopolitics
+  - global-intelligence
+  - mcp
+  - monitoring
+  - osint
+  - situational-awareness
+  - terminal-dashboard
 description: Command-line client for the World Monitor global intelligence API
 executables:
   - wm

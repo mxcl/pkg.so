@@ -1,11 +1,84 @@
 id: brew:gitea-importer
-display-name: gitea-importer
+display-name: Gitea Importer
 homepage: https://gitea.com/gitea/importer
-repo: null
+repo: https://gitea.com/gitea/importer
+docs:
+  - https://gitea.com/gitea/importer
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Gitea Importer entered the official Gitea project namespace as a focused migration
+      utility and is distributed through Homebrew. Its scope is narrower than Gitea's
+      interactive per-repository migration UI: it is intended for repeatable
+      command-line migration work across GitHub, GitLab, and Gitea sources.
+  package-nerd-significance:
+    - >
+      The package gives self-hosters a dedicated, scriptable migration executable rather
+      than requiring one repository at a time through a forge UI. It is especially
+      relevant during forge consolidation, disaster recovery, or moves from hosted
+      services to a self-managed Gitea instance.
+  project-history:
+    - >
+      In January 2026, Gitea maintainer Lunny announced the official importer project
+      while discussing the long-standing request for bulk repository importing. The
+      project was created under Gitea's own gitea.com organization to simplify transfers
+      into Gitea.
+  related-projects:
+    - >
+      Gitea is the destination forge. Tea is Gitea's official command-line client for
+      managing repositories, issues, pull requests, releases, and other forge resources
+      after migration.
+  sources:
+    - https://gitea.com/gitea/importer
+    - https://github.com/go-gitea/gitea/issues/2569
+    - source_facts.description
+    - source_facts.package-manager
+  summary:
+    - >
+      Gitea Importer is Gitea's command-line migration utility for transferring
+      repositories from GitHub, GitLab, or another Gitea service into Gitea.
+  timeline:
+    - >
+      2026-01: A Gitea maintainer announces the official importer project as a way to
+      simplify bulk migration.
+    - '2026: Gitea Importer becomes available as a Homebrew formula.'
+  usage:
+    - >
+      Administrators use the CLI during forge moves, supplying the source service and
+      destination Gitea details needed to reproduce repositories on the target instance.
+      Authentication material is provided as command input rather than through an
+      officially documented credentials file.
+related-packages:
+  - id: brew:gitea
+    reason: Install Gitea as the destination forge into which Gitea Importer transfers repositories.
+    rel: adjacent_workflow
+    sources:
+      - https://gitea.com/gitea/importer
+      - https://about.gitea.com/
+      - https://docs.gitea.com/
+  - id: brew:tea
+    reason: >
+      Use Gitea's official Tea CLI to manage repositories, issues, pull requests, and
+      releases after the importer has moved them into Gitea.
+    rel: adjacent_workflow
+    sources:
+      - https://gitea.com/gitea/importer
+      - https://gitea.com/gitea/tea
+category: developer-tools
 package-manager:
   brew: gitea-importer
 package-manager-url: https://formulae.brew.sh/formula/gitea-importer
 license: MIT
+tags:
+  - cli
+  - git
+  - gitea
+  - github
+  - gitlab
+  - repository-migration
+  - self-hosting
 description: CLI to migrate repositories from GitHub, GitLab and Gitea into Gitea
 executables:
   - gitea-importer

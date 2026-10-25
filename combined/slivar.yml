@@ -2,10 +2,127 @@ id: brew:slivar
 display-name: slivar
 homepage: https://github.com/brentp/slivar
 repo: https://github.com/brentp/slivar
+docs:
+  - https://github.com/brentp/slivar/wiki
+  - https://github.com/brentp/slivar#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      slivar's adoption is concentrated in rare-disease and cohort genomics, where
+      researchers need transparent inheritance and quality expressions over VCF records.
+      Its official repository supplies static binaries, Docker images, JavaScript helper
+      functions, and compact gnotate resources for common population annotations.
+    - >
+      A 2021 peer-reviewed rare-disease filtering study used slivar to establish and
+      apply data-driven filters, while later workflows have used it for de novo variant
+      selection in parent-child trios.
+  package-nerd-significance:
+    - >
+      slivar packages a specialized but composable genomics workflow as a single CLI: it
+      reads standard VCF/BCF and PED inputs, embeds JavaScript expressions, and emits
+      annotations that can continue through ordinary variant-processing pipelines.
+    - >
+      Package maintainers encounter a characteristically scientific dependency stack:
+      Nim implementation, HTSlib-backed genomic I/O, optional shared or static binaries,
+      reference-specific annotation archives, and reproducibility requirements around
+      normalized inputs and pedigree metadata.
+  project-history:
+    - >
+      Brent Pedersen and collaborators introduced slivar publicly as a flexible
+      filtering and annotation tool for genetic variants. A 2019 American Society of
+      Human Genetics abstract described customizable expressions applied directly to VCF
+      data for rare-disease analysis.
+    - >
+      The project subsequently added family, group, and sample expressions; compact
+      gnotate annotations; compound-heterozygote analysis; duo deletion discovery;
+      data-driven cutoff exploration; TSV reporting; and pslivar-based parallel
+      execution. The 2021 rare-disease filtering study published the analysis workflow
+      and recommendations built around slivar.
+  related-projects:
+    - >
+      slivar operates in the HTSlib and VCF ecosystem. Its documentation recommends
+      decomposed inputs, making bcftools a practical preprocessing companion.
+      gnomAD-derived gnotate archives provide population-frequency annotations, while
+      vcfanno and echtvar address related annotation tasks with different configuration
+      and performance models.
+  sources:
+    - https://github.com/brentp/slivar
+    - https://github.com/brentp/slivar/wiki
+    - https://www.ashg.org/wp-content/uploads/2019/10/ASHG-2019-poster-abstracts.pdf
+    - https://www.nature.com/articles/s41525-021-00227-3
+  summary:
+    - >
+      slivar is a command-line variant filtering and annotation tool for VCF/BCF data.
+      It applies JavaScript expressions to variant, sample, trio, family, and
+      custom-group attributes and includes workflows for rare-disease inheritance
+      analysis.
+  timeline:
+    - >
+      2019: An ASHG abstract presents slivar as flexible expression-based filtering and
+      annotation for rare-disease VCF data.
+    - >
+      2021-07-15: A peer-reviewed rare-disease filtering study built with slivar is
+      published online.
+    - >
+      2020s: The project adds gnotate resources, family expressions,
+      compound-heterozygote analysis, duo deletion discovery, data-driven cutoffs, and
+      parallel execution.
+  usage:
+    - >
+      A typical workflow normalizes and decomposes a VCF, supplies a PED pedigree and
+      optional gnotate population archive, and runs `slivar expr` with INFO, trio,
+      family, group, or sample expressions. Helper JavaScript can encode reusable
+      inheritance tests such as de novo, recessive, and dominant models.
+    - >
+      Other subcommands build compact annotation archives, locate compound
+      heterozygotes, investigate deletions in parent-child duos, explore data-driven
+      quality thresholds, and turn filtered VCF results into a reviewable TSV.
+related-packages:
+  - id: brew:bcftools
+    reason: >
+      Use bcftools to normalize, split multiallelic records, inspect, and manipulate
+      VCF/BCF inputs before applying slivar's family-aware expressions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/brentp/slivar#readme
+      - https://samtools.github.io/bcftools/bcftools.html
+  - id: brew:echtvar
+    reason: >
+      Choose echtvar when the main task is extremely fast population-dataset annotation
+      and simple expression filtering; choose slivar for pedigree-aware trio, family,
+      group, and inheritance analysis.
+    rel: alternative
+    sources:
+      - https://github.com/brentp/echtvar
+      - https://doi.org/10.1093/nar/gkac931
+      - https://github.com/brentp/slivar#readme
+  - id: brew:vcfanno
+    reason: >
+      Choose vcfanno for configurable annotation from many VCF, BED, BAM, or
+      tabix-indexed resources; choose slivar when sample genotypes and pedigree
+      relationships drive filtering.
+    rel: alternative
+    sources:
+      - https://brentp.github.io/vcfanno
+      - https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0973-5
+      - https://github.com/brentp/slivar#readme
+category: science
 package-manager:
   brew: slivar
 package-manager-url: https://formulae.brew.sh/formula/slivar
 license: MIT
+tags:
+  - bioinformatics
+  - cli
+  - cohort-analysis
+  - genomics
+  - pedigree
+  - rare-disease
+  - variant-annotation
+  - variant-filtering
+  - vcf
 description: Filter and annotate genetic variants with expressions, for trios and cohorts
 executables:
   - slivar

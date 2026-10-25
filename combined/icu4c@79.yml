@@ -1,11 +1,107 @@
 id: brew:icu4c@79
-display-name: icu4c@79
+display-name: ICU4C 79
 homepage: https://icu.unicode.org/home
 repo: https://github.com/unicode-org/icu
+docs:
+  - https://unicode-org.github.io/icu
+  - https://unicode-org.github.io/icu-docs/apidoc/released/icu4c
+  - https://unicode-org.github.io/icu/userguide/icu4c
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      ICU became foundational internationalization infrastructure because it offers
+      portable, data-driven Unicode and locale behavior across operating systems. ICU4C
+      is embedded in browsers, databases, programming-language runtimes, desktop
+      software, and server applications that need consistent collation, conversion,
+      formatting, normalization, segmentation, and regular-expression behavior.
+    - >
+      Package managers commonly maintain ICU as a versioned library because ABI
+      compatibility and the Unicode and CLDR data revision can affect a large downstream
+      dependency graph. Parallel versioned Homebrew formulas let dependent software
+      retain an older compatible ICU line during transitions.
+  package-nerd-significance:
+    - >
+      ICU is a classic high-impact library package: end users may rarely invoke its
+      utilities directly, yet a change in its libraries, ABI, locale data, or C++
+      requirements can trigger widespread rebuilds. Its command suite—including uconv,
+      icupkg, genrb, and makeconv—also exposes the data-building and conversion
+      machinery behind the library.
+    - >
+      The `icu4c@79` formula captures a specific compatibility line of a project that
+      tracks Unicode and CLDR releases. That makes it useful when software cannot
+      immediately follow the unversioned ICU package.
+  project-history:
+    - >
+      ICU originated in internationalization work at Taligent. Some Taligent Java
+      classes entered Sun's JDK 1.1; the work was subsequently extended as ICU4J and
+      ported to C++ and C as ICU4C.
+    - >
+      IBM open-sourced ICU in 1999. The project later moved from CVS to Subversion in
+      2006 and to GitHub in 2018. It is now stewarded by the Unicode Consortium, with
+      ICU4C and ICU4J developed together around current Unicode and CLDR data.
+  related-projects:
+    - >
+      ICU4J provides the corresponding Java implementation. Unicode defines the
+      character standard ICU implements, while CLDR supplies much of its locale data.
+      The shared repository contains ICU4C, ICU4J, tools, and vendored data.
+  sources:
+    - https://github.com/unicode-org/icu
+    - https://unicode-org.github.io/icu/devsetup/source/
+    - https://unicode-org.github.io/icu/download/
+    - https://unicode-org.github.io/icu/userguide/icu/
+    - https://unicode-org.github.io/icu/userguide/icu4c/
+  summary:
+    - >
+      ICU4C is the C and C++ implementation of International Components for Unicode,
+      providing Unicode text handling, character conversion, collation, normalization,
+      locale data, formatting, calendars, transliteration, segmentation, and regular
+      expressions.
+  timeline:
+    - >
+      1990s: Internationalization classes are developed at Taligent; related Java
+      classes enter JDK 1.1.
+    - '1999: ICU is open-sourced using CVS and Jitterbug.'
+    - '2006-11-30: ICU moves its source history to Subversion and issue tracking to Trac.'
+    - '2018-07: ICU moves to GitHub and Atlassian Cloud Jira.'
+    - "2016 onward: The Unicode Consortium is the repository's stated steward."
+    - '2026: ICU 79 aligns the maintained release line with Unicode 18 and CLDR 49.'
+  usage:
+    - >
+      Developers link ICU4C into C or C++ applications for locale-sensitive formatting,
+      collation, calendars, transliteration, normalization, charset conversion, text
+      boundaries, Unicode properties, and regular expressions.
+    - >
+      Build systems should use ICU's installed pkg-config metadata; the official guide
+      deprecates `icu-config` for production use. The installed utilities support
+      conversion and data packaging, while most applications consume the libraries and
+      headers directly.
+related-packages:
+  - id: brew:simdutf
+    reason: >
+      Choose simdutf when the task is narrowly focused on very high-speed Unicode
+      validation and transcoding; choose ICU4C when full locale, collation, formatting,
+      calendar, segmentation, and transliteration services are required.
+    rel: alternative
+    sources:
+      - https://simdutf.github.io/simdutf/
+      - https://unicode-org.github.io/icu/userguide/icu4c/
+category: language-runtime
 package-manager:
   brew: icu4c@79
 package-manager-url: https://formulae.brew.sh/formula/icu4c@79
 license: Unicode-3.0
+tags:
+  - c
+  - cli
+  - cpp
+  - globalization
+  - internationalization
+  - library
+  - locale
+  - text-processing
+  - unicode
 description: C/C++ and Java libraries for Unicode and globalization
 executables:
   - derb

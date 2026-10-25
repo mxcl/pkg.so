@@ -1,11 +1,106 @@
 id: brew:kontext
-display-name: kontext
+display-name: Kontext
 homepage: https://kontext.security
 repo: https://github.com/kontext-security/kontext
+docs:
+  - https://docs.kontext.security/
+  - https://github.com/kontext-security/kontext#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Kontext's self-service onboarding initially centers on macOS and Homebrew, while
+      its documentation describes managed deployment paths for organizational and cloud
+      environments. It integrates with Claude Code, Claude Cowork, and Codex through
+      supported hook contracts.
+    - >
+      Its recommended rollout starts in observe mode, where policy decisions are
+      recorded without interruption, and progresses to enforcement after teams validate
+      which actions would be denied.
+  package-nerd-significance:
+    - >
+      Kontext represents an emerging package category around local AI-agent governance.
+      Unlike a generic audit logger, it places deterministic policy evaluation in the
+      synchronous path before supported tool actions and ties the decision to a local
+      authorization ledger.
+    - >
+      It is also notable for separating semantic authorization from sandboxing: Kontext
+      decides whether a supported action should proceed, while an operating-system
+      sandbox constrains what the process can physically access.
+  project-history:
+    - >
+      Kontext was developed as a local runtime authorization layer for increasingly
+      capable AI agents that can execute tools, access credentials, modify
+      infrastructure, and interact with production systems. The project evolved around
+      pre-action enforcement, local evidence, managed policy rollout, and explicit
+      support matrices for each agent integration.
+    - >
+      By 2026 the public release line included authority discovery, agent-configuration
+      scanning, managed export health, deterministic policy controls, and risk-oriented
+      guard features.
+  related-projects:
+    - >
+      Codex and Claude Code are explicitly supported agent integrations. The Kontext
+      organization also develops Sandy as a complementary native process-containment
+      layer, although Sandy is not currently represented by a catalog package id.
+  sources:
+    - https://docs.kontext.security/getting-started/welcome
+    - https://github.com/kontext-security/kontext
+    - https://github.com/kontext-security/kontext/releases
+    - https://kontext.security/
+  summary:
+    - >
+      Kontext is a runtime authorization and governance tool for AI agents. It receives
+      supported agent events through hooks, evaluates local policy before consequential
+      actions, and records attributable decision evidence.
+  timeline:
+    - >
+      2026: Public releases document agent authority discovery, managed policy rollout,
+      local authorization records, and supported Codex, Claude Code, and Claude Cowork
+      hooks.
+    - '2026-09: The v1.6 release line adds authority scanning and guard-related capabilities.'
+  usage:
+    - >
+      A user installs Kontext, creates an installation token in the dashboard, runs
+      `kontext setup`, and verifies agent hooks and daemon health with `kontext doctor`.
+      The official self-service flow stores its installation token in the macOS login
+      keychain rather than a documented credentials file.
+    - >
+      Security teams begin with observing policies, examine would-deny matches and
+      recorded evidence, then promote validated policies to enforcement on hook surfaces
+      that can synchronously stop an action.
+related-packages:
+  - id: cask:codex
+    reason: >
+      Install Codex as a coding agent whose pre-tool-use events Kontext officially
+      supports for local policy decisions and activity evidence.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kontext-security/kontext#readme
+      - https://developers.openai.com/codex
+  - id: cask:claude-code
+    reason: >
+      Install Claude Code as another officially supported agent whose pre-tool-use hooks
+      Kontext can observe or enforce.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kontext-security/kontext#readme
+      - https://code.claude.com/docs/en/overview
+category: security
 package-manager:
   brew: kontext
 package-manager-url: https://formulae.brew.sh/formula/kontext
 license: MIT
+tags:
+  - ai-agents
+  - authorization
+  - cli
+  - governance
+  - policy-enforcement
+  - runtime-security
+  - security
+  - tool-hooks
 description: Identity, credentials, and governance for AI agents
 executables:
   - kontext
