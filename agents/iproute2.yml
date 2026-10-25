@@ -92,6 +92,24 @@ history:
       container hosts, routers, CI images, embedded Linux, network namespaces, and any
       environment where tc, ss, bridge, devlink, or rdma commands are part of
       operational vocabulary.
+related-packages:
+  - id: brew:net-tools
+    reason: >
+      Choose net-tools when maintaining legacy scripts that require ifconfig, route,
+      arp, or netstat; choose iproute2 for modern Linux networking and traffic-control
+      features.
+    rel: alternative
+    sources:
+      - https://wiki.linuxfoundation.org/networking/iproute2
+      - https://net-tools.sourceforge.io/
+  - id: brew:iproute2mac
+    reason: >
+      On macOS, iproute2mac offers a deliberately limited ip-, bridge-, and ss-style
+      compatibility layer, whereas iproute2 is the native, full Linux suite.
+    rel: alternative
+    sources:
+      - https://github.com/brona/iproute2mac#readme
+      - https://wiki.linuxfoundation.org/networking/iproute2
 tags:
   - cli
   - linux
