@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any
 
 from avdb_paths import PACKAGE_INDEX_PATH
+from bootstrap.lib.crates import cargo_install_commands
 
 
 SCHEMA_VERSION = 5
@@ -103,6 +104,7 @@ def source_files() -> list[Path]:
         Path("data/pip.json"),
         PKG_MANAGER_INDEX_PATH,
         Path("scripts/generate-pkg-cross-ecosystem.py"),
+        Path("scripts/bootstrap/lib/crates.py"),
         Path("scripts/generate-pkg-manager-indexes.py"),
     ]
     for root in (Path("data/pkg-pages"),):
@@ -206,6 +208,7 @@ def page_facts(page: Any) -> dict[str, Any]:
         "version": page.version,
         "license": page.license,
         "executables": executable_names(page)[:24],
+        "cargoRequiredFeatures": page.extra.get("cargoRequiredFeatures") or {},
         "dependencies": list(page.dependencies)[:32],
         "keywords": list(page.keywords)[:32],
         "classifiers": list(page.classifiers)[:16],
@@ -281,7 +284,8 @@ def native_commands(facts: dict[str, Any]) -> list[dict[str, Any]]:
     if provider == "pip":
         return [command("portable", "pip", f"pip install {name}", 1.0, "local PyPI package metadata")]
     if provider == "cargo":
-        return [command("portable", "Cargo", f"cargo install {name}", 1.0, "local crates.io package metadata")]
+        return [command("portable", "Cargo", value, 1.0, "local crates.io package metadata")
+                for value in cargo_install_commands(name, facts.get("cargoRequiredFeatures"))]
     return []
 
 

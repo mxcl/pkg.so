@@ -58,7 +58,7 @@ def steps(refresh: bool, fetch_manifests: bool, manifest_limit: int) -> list[Ste
     py = sys.executable
     brew_cmd = [py, "scripts/bootstrap/01-brew-fetch.py"]
     manager_cmd = [py, "scripts/bootstrap/02-manager-indexes.py"]
-    crates_cmd = [py, "scripts/bootstrap/02-crates-index.py"]
+    crates_cmd = ["uv", "run", "--python", "3.11", "scripts/bootstrap/02-crates-index.py"]
     if refresh:
         brew_cmd.append("--refresh")
         crates_cmd.append("--refresh")

@@ -545,6 +545,68 @@ name = "bat"
 
         self.assertEqual(calls, [("unsafe-libyaml", "0.2.11"), ("bat", "0.26.1"), ("sourcefail", "1.0.0")])
 
+    def test_required_features_survive_index_and_rendering(self):
+        archive = crate_archive_bytes({
+            "ripgrep-15.1.0/Cargo.toml": '\n[[bin]]\nname = "rg"\nrequired-features = ["cli"]\n',
+            "ripgrep-15.1.0/Cargo.toml.orig": '[package]\nname = "ignored-original"\n',
+        })
+        with tempfile.TemporaryDirectory() as tmp:
+            dump_path = Path(tmp) / "db-dump.tar.gz"
+            write_fixture_dump(dump_path)
+            with mock.patch.object(crates_index, "CRATES_IO_SOURCE_INSPECTION_CACHE_PATH", Path(tmp) / "inspection.json"):
+                index = crates_index.build_index_from_dump(
+                    dump_path, min_recent_downloads=50,
+                    source_archive_fetcher=lambda *_: archive,
+                )
+        record = index["crates"]["ripgrep"]
+        self.assertEqual(record["cargoRequiredFeatures"], {"rg": ["cli"]})
+        sources = {
+            "db": {}, "crates": index, "geiger": {}, "pkg_page_enrichment": {},
+            "pkg_version_freshness": {}, "pkg_graph": {}, "pkg_cross_ecosystem": {},
+            "pkg_agent_safety_answers": {},
+        }
+        page = pkg_pages.package_pages_from_sources(sources)["cargo:ripgrep"]
+        expected = "cargo install ripgrep --bin=rg --features=cli"
+        self.assertEqual(pkg_pages.native_install_command(page), expected)
+        # Old runtime cross-ecosystem commands must not reintroduce the broken route.
+        page.install_commands = [{"manager": "Cargo", "command": "cargo install ripgrep"}]
+        pkg_pages.verify_local_install_commands({page.key: page})
+        self.assertEqual([item["command"] for item in page.install_commands], [expected])
+        other = pkg_pages.PackagePage(provider="brew", name="ripgrep", install_commands=[
+            {"manager": "Cargo", "command": "cargo install ripgrep"},
+        ])
+        pkg_pages.verify_local_install_commands({page.key: page, other.key: other})
+        self.assertEqual(other.install_commands[0]["command"], expected)
+        manifest = {"generated_at": "2026-10-25T00:00:00Z"}
+        self.assertIn(expected, pkg_pages.render_package_page(page, manifest))
+        self.assertIn(expected, pkg_pages.render_package_markdown(page, manifest))
+
+    def test_normalized_binary_does_not_change_internal_cli_classification(self):
+        archive = crate_archive_bytes({
+            "library/Cargo.toml.orig": '[package]\nname = "library"\n',
+            "library/Cargo.toml": '[[bin]]\nname = "run-test-suite"\nrequired-features = ["test"]\n',
+            "library/src/bin/run-test-suite.rs": "fn main() {}",
+        })
+        intent = crates_index.cargo_executable_intent(
+            "library", {}, {"num": "1.0.0", "has_lib": "t", "description": "A library"},
+            ["run-test-suite"], source_archive_fetcher=lambda *_: archive,
+        )
+        self.assertEqual(intent["intent"], "internal_only")
+
+    def test_cargo_commands_keep_binary_feature_sets_separate(self):
+        commands = crates_index.cargo_install_commands("tool", {
+            "client": ["client", "tls"], "server": ["server"], "plain": [],
+        })
+        self.assertEqual(commands, [
+            "cargo install tool --bin=client --features=client,tls",
+            "cargo install tool --bin=plain",
+            "cargo install tool --bin=server --features=server",
+        ])
+        self.assertEqual(crates_index.cargo_install_commands("tool", {}), ["cargo install tool"])
+        import shlex
+        command = crates_index.cargo_install_commands("tool", {"bin": ["$(touch nope)"]})[0]
+        self.assertEqual(shlex.split(command)[-1], "--features=$(touch nope)")
+
     def test_crates_index_creates_cargo_package_pages_without_db_entries(self):
         sources = {
             "db": {"entries": {}, "formulas": {}, "casks": {}, "npms": {}},

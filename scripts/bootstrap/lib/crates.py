@@ -6,6 +6,7 @@ import io
 import json
 import os
 import re
+import shlex
 import sqlite3
 import sys
 import tarfile
@@ -19,7 +20,7 @@ from typing import Any, BinaryIO, Callable
 from .common import CACHE_DIR, CHECK_INTERVAL_SECONDS, DEFAULT_TIMEOUT, USER_AGENT, replace_if_changed, stable_hash, write_json
 
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 CRATES_IO_DUMP_URL = "https://static.crates.io/db-dump.tar.gz"
 CRATES_IO_CACHE_DIR = CACHE_DIR / "cratesio"
 CRATES_IO_DUMP_PATH = CRATES_IO_CACHE_DIR / "db-dump.tar.gz"
@@ -492,10 +493,12 @@ def default_source_archive_fetcher(name: str, version: str) -> bytes:
 def inspect_source_archive(data: bytes) -> dict[str, Any]:
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as archive:
         names = [member.name for member in archive if member.isfile()]
-        manifest_name = next((name for name in names if name.endswith("/Cargo.toml.orig")), "")
-        if not manifest_name:
-            manifest_name = next((name for name in names if name.endswith("/Cargo.toml")), "")
+        normalized_name = next((name for name in names if name.endswith("/Cargo.toml")), "")
+        manifest_name = next((name for name in names if name.endswith("/Cargo.toml.orig")), "") or normalized_name
         manifest = read_archive_text(archive, manifest_name) if manifest_name else ""
+        # Cargo's published manifest resolves targets, but only the original tells
+        # us whether the author explicitly advertised a binary.
+        normalized_manifest = read_archive_text(archive, normalized_name) if normalized_name else manifest
         readme_name = next(
             (
                 name
@@ -515,7 +518,19 @@ def inspect_source_archive(data: bytes) -> dict[str, Any]:
             for name in names
             if re.search(r"/(tests?|benches|fixtures?|testdata|data)/", name, flags=re.IGNORECASE)
         ]
+    import tomllib
+
+    parsed = tomllib.loads(normalized_manifest)
+    required_features = {
+        target["name"]: target.get("required-features", [])
+        for target in parsed.get("bin", [])
+        if isinstance(target, dict) and isinstance(target.get("name"), str)
+    }
+    if any(not isinstance(features, list) or any(not isinstance(f, str) for f in features)
+           for features in required_features.values()):
+        raise CratesIndexError("invalid binary required-features")
     return {
+        "required_features": required_features,
         "manifest": manifest,
         "manifest_name": manifest_name,
         "readme": readme,
@@ -556,8 +571,6 @@ def cargo_executable_intent(
 ) -> dict[str, Any]:
     summary = clean_summary(version.get("description") or crate.get("description"))
     has_lib = str(version.get("has_lib") or "").lower() == "t"
-    if not has_lib:
-        return {"intent": "public_cli", "signals": ["crate has no library target"]}
 
     version_num = str(version.get("num") or "").strip()
     fetcher = source_archive_fetcher or default_source_archive_fetcher
@@ -570,7 +583,11 @@ def cargo_executable_intent(
             "error": str(err),
         }
 
+    requirements = {binary: archive["required_features"].get(binary, []) for binary in executables}
+    feature_metadata = {"cargoRequiredFeatures": requirements} if any(requirements.values()) else {}
     strong_public_signals: list[str] = []
+    if not has_lib:
+        strong_public_signals.append("crate has no library target")
     if archive.get("declares_binary"):
         strong_public_signals.append("manifest declares a binary target")
     if archive.get("has_src_main"):
@@ -580,7 +597,7 @@ def cargo_executable_intent(
     if any(executable_is_cargo_subcommand(name, executable, summary) for executable in executables):
         strong_public_signals.append("binary is a Cargo subcommand")
     if strong_public_signals:
-        return {"intent": "public_cli", "signals": strong_public_signals}
+        return {"intent": "public_cli", "signals": strong_public_signals, **feature_metadata}
 
     internal_signals: list[str] = []
     if all(executable_name_looks_internal(executable) for executable in executables):
@@ -824,6 +841,8 @@ def build_index_from_dump(
                     for key, value in intent.items()
                     if key in {"intent", "signals"}
                 }
+        if intent.get("cargoRequiredFeatures"):
+            record["cargoRequiredFeatures"] = intent["cargoRequiredFeatures"]
         crates[name] = record
 
     inspection_summary = {
@@ -892,3 +911,17 @@ def build_crates_index(
     )
     write_json(output_path, index)
     return index
+
+
+def cargo_install_commands(name: str, required_features: dict[str, list[str]] | None = None) -> list[str]:
+    base = f"cargo install {shlex.quote(name)}"
+    if not required_features or not any(required_features.values()):
+        return [base]
+    # Keep feature sets separate: enabling every binary's features can conflict.
+    commands = []
+    for binary, features in sorted(required_features.items()):
+        command = f"{base} --bin={shlex.quote(binary)}"
+        if features:
+            command += f" --features={shlex.quote(','.join(sorted(set(features))))}"
+        commands.append(command)
+    return commands

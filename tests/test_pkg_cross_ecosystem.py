@@ -40,6 +40,14 @@ def dnf_item(package_id):
 
 
 class PackageCrossEcosystemTests(unittest.TestCase):
+    def test_cargo_native_commands_use_manifest_features(self):
+        commands = cross.native_commands({
+            "provider": "cargo", "name": "raw-cpuid",
+            "cargoRequiredFeatures": {"cpuid": ["cli"]},
+        })
+        self.assertEqual([item["command"] for item in commands],
+                         ["cargo install raw-cpuid --bin=cpuid --features=cli"])
+
     def test_exact_package_id_wins_over_prefixed_external_match(self):
         facts = {"provider": "brew", "name": "openjpeg", "executables": []}
         matcher = {"openjpeg": [dnf_item("mingw32-openjpeg"), dnf_item("openjpeg")]}

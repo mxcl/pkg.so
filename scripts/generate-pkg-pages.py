@@ -28,6 +28,7 @@ from avdb_paths import (
     ISOTOPES_JSON_PATH,
     RADIOISOTOPES_REPO_DIR,
 )
+from bootstrap.lib.crates import cargo_install_commands
 from bootstrap.lib.render import parse_simple_yaml
 from bootstrap.lib.discovery import overlay as discovery_overlay, state_path as discovery_state_path
 from geiger_agent_data import load_agent_geiger_data
@@ -887,6 +888,7 @@ def package_pages_from_sources(
             page.package_manager = info.get("packageManager") or "Cargo"
             page.package_manager_url = info.get("packageManagerUrl") or f"https://crates.io/crates/{urllib.parse.quote(name, safe='')}"
             page.extra["registryInsights"] = info.get("registryInsights") or page.extra.get("registryInsights")
+            page.extra["cargoRequiredFeatures"] = info.get("cargoRequiredFeatures") or {}
             page.source_notes.append("crates.io package index")
 
     entries = db.get("entries") or {}
@@ -1385,6 +1387,22 @@ def verified_install_evidence(provider: str) -> str:
 
 def verify_local_install_commands(pages: dict[str, PackagePage]) -> None:
     for page in pages.values():
+        requirements = page.extra.get("cargoRequiredFeatures")
+        if page.provider == "cargo" and requirements:
+            # Regenerate the native route even when cross-ecosystem data is older.
+            native_prefix = f"cargo install {page.name}"
+            page.install_commands = [
+                item for item in page.install_commands
+                if not isinstance(item, dict) or not (
+                    str(item.get("command") or "") == native_prefix
+                    or str(item.get("command") or "").startswith(native_prefix + " ")
+                )
+            ]
+            page.install_commands.extend({
+                "platform": "portable", "manager": "Cargo", "command": command,
+                "kind": "package_manager", "confidence": 1.0,
+                "evidence": "published Cargo manifest binary requirements",
+            } for command in cargo_install_commands(page.name, requirements))
         verified_commands: list[dict[str, Any]] = []
         verified_links: list[dict[str, Any]] = []
         for item in page.install_commands:
@@ -1400,11 +1418,15 @@ def verify_local_install_commands(pages: dict[str, PackagePage]) -> None:
             if target is None or target.key == page.key:
                 verified_commands.append(item)
                 continue
-            verified_commands.append({
+            commands = (cargo_install_commands(name, target.extra["cargoRequiredFeatures"])
+                        if provider == "cargo" and target.extra.get("cargoRequiredFeatures")
+                        else [item["command"]])
+            verified_commands.extend({
                 **item,
+                "command": command,
                 "confidence": 1.0,
                 "evidence": verified_install_evidence(provider),
-            })
+            } for command in commands)
             verified_links.append({
                 "provider": provider,
                 "name": name,
@@ -1768,6 +1790,7 @@ def source_files() -> list[Path]:
         CRATES_IO_INDEX_PATH,
         path_for_digest(Path(__file__)),
         Path("scripts/generate-pkg-pages.py"),
+        Path("scripts/bootstrap/lib/crates.py"),
         Path("scripts/pkg_hub_data.py"),
         PACKAGE_INDEX_PATH,
         discovery_state_path(),
@@ -3431,7 +3454,7 @@ def native_install_command(page: PackagePage) -> str:
     if page.provider == "pip":
         return f"pip install {page.name}"
     if page.provider == "cargo":
-        return f"cargo install {page.name}"
+        return cargo_install_commands(page.name, page.extra.get("cargoRequiredFeatures"))[0]
     return ""
 
 

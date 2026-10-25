@@ -1,4 +1,4 @@
-#!/usr/bin/env -S uv run --python 3.10
+#!/usr/bin/env -S uv run --python 3.11
 from __future__ import annotations
 
 import argparse
