@@ -75,6 +75,23 @@ history:
       InfluxDB 2 is used for metrics, events, observability, IoT, and application
       time-series workloads where the database, UI, tasks, and alerting are expected to
       arrive as one platform rather than several separately deployed components.
+related-packages:
+  - id: brew:influxdb-cli
+    reason: >
+      Use the standalone influx CLI to initialize the server and manage its buckets,
+      organizations, tokens, tasks, backups, and other v2 resources.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/influxdb/v2/tools/influx-cli/
+      - https://docs.influxdata.com/influxdb/v2/reference/cli/influx/
+  - id: brew:telegraf
+    reason: >
+      Telegraf collects and processes metrics before writing them to InfluxDB 2, and its
+      configurations can be managed through the v2 API and CLI.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/telegraf/v1/
+      - https://docs.influxdata.com/influxdb/v2/reference/cli/influx/telegrafs/
 category: data
 package-manager:
   brew: influxdb@2

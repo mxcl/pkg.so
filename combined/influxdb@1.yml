@@ -84,6 +84,31 @@ history:
       different operational models. Keeping 1.x separately installable avoids forcing a
       database and client migration when an application only needs the established 1.x
       server.
+related-packages:
+  - id: brew:telegraf
+    reason: >
+      Telegraf is the TICK stack collector that gathers metrics and writes them into
+      InfluxDB 1.x.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/platform/
+      - https://docs.influxdata.com/platform/getting-started/
+  - id: brew:chronograf
+    reason: >
+      Chronograf connects to InfluxDB 1.x to provide data exploration, dashboards,
+      infrastructure monitoring, and alert management.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/chronograf/v1/
+      - https://docs.influxdata.com/chronograf/v1/administration/creating-connections/
+  - id: brew:kapacitor
+    reason: >
+      Kapacitor consumes InfluxDB streams or queries batches from InfluxDB to transform
+      data and trigger alerts.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/kapacitor/v1/introduction/getting-started/
+      - https://docs.influxdata.com/platform/getting-started/
 category: data
 package-manager:
   brew: influxdb@1
