@@ -52,6 +52,26 @@ history:
       Users reach for jrsonnet when they want a Rust-native Jsonnet evaluator, a
       drop-in-style libjsonnet shared library, or bindings that expose Jsonnet
       evaluation inside other Rust, Python, JavaScript, or C/C++ environments.
+related-packages:
+  - id: brew:go-jsonnet
+    reason: >
+      Choose go-jsonnet when you prefer Jsonnet's official, production-oriented Go
+      implementation and its linter; choose jrsonnet for a Rust-native, embeddable
+      implementation that advertises drop-in compatibility.
+    rel: alternative
+    sources:
+      - https://delta.rocks/jrsonnet
+      - https://jsonnet.org/learning/getting_started.html
+      - https://github.com/google/go-jsonnet
+  - id: brew:jsonnet-bundler
+    reason: >
+      Use jsonnet-bundler alongside jrsonnet to fetch and vendor reusable Jsonnet
+      libraries, then expose its vendor tree through the interpreter's library search
+      path.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jsonnet-bundler/jsonnet-bundler
+      - https://delta.rocks/jrsonnet
 tags:
   - cli
   - configuration
