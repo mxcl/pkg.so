@@ -6,7 +6,15 @@ docs:
   - https://jmeter.apache.org/usermanual/component_reference.html
   - https://jmeter.apache.org/usermanual/get-started.html
   - https://jmeter.apache.org/usermanual/index.html
-config-file-location: null
+config-file-location:
+  unix:
+    - $JMETER_HOME/bin/user.properties
+    - $JMETER_HOME/bin/system.properties
+    - $JMETER_HOME/bin/log4j2.xml
+  windows:
+    - '%JMETER_HOME%\bin\user.properties'
+    - '%JMETER_HOME%\bin\system.properties'
+    - '%JMETER_HOME%\bin\log4j2.xml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -91,6 +99,17 @@ history:
       JMeter can test static and dynamic resources and many server/protocol types. Its
       manual organizes it around test plans, samplers, thread groups, listeners,
       functions, properties, distributed testing, recording, and component references.
+related-packages:
+  - id: brew:k6
+    reason: >
+      Choose k6 when you prefer code-authored JavaScript or TypeScript load tests and
+      primarily target HTTP, WebSocket, or gRPC workflows rather than JMeter's
+      GUI-authored plans and broader built-in protocol set.
+    rel: alternative
+    sources:
+      - https://jmeter.apache.org/
+      - https://grafana.com/docs/k6/latest/get-started/
+      - https://grafana.com/docs/k6/latest/using-k6/protocols/
 tags:
   - apache
   - cli
