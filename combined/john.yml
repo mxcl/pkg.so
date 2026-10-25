@@ -5,7 +5,8 @@ repo: https://github.com/openwall/john
 docs:
   - https://github.com/openwall/john
   - https://www.openwall.com/john/doc
-config-file-location: null
+config-file-location:
+  unix: $JOHN/john.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,6 +71,24 @@ history:
       format, crack with wordlist, single, or incremental modes, and save cracked values
       to john.pot. Related tools such as unshadow and unique support the Unix
       password-auditing workflow around the main john executable.
+related-packages:
+  - id: brew:john-jumbo
+    reason: >
+      Choose John the Ripper Jumbo when you need hundreds of additional hash and cipher
+      formats or broader CPU/GPU support; choose core John for the smaller, more
+      conservative upstream feature set.
+    rel: alternative
+    sources:
+      - https://www.openwall.com/john/
+      - https://github.com/openwall/john#readme
+  - id: brew:hashcat
+    reason: >
+      Choose hashcat when GPU-oriented, multi-device password recovery and its extensive
+      optimized hash-mode catalog are the priority.
+    rel: alternative
+    sources:
+      - https://www.openwall.com/john/
+      - https://hashcat.net/hashcat/
 category: security
 package-manager:
   apk: john

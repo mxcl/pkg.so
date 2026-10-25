@@ -5,7 +5,10 @@ repo: https://github.com/openwall/john
 docs:
   - https://www.openwall.com/john
   - https://www.openwall.com/john/doc
-config-file-location: null
+config-file-location:
+  unix:
+    - $JOHN/john.conf
+    - $JOHN/john-local.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,6 +73,23 @@ history:
       operating-system password stores, databases, or web application hashes. Users
       typically run converter tools where needed, crack with john, and inspect results
       with john --show or the john.pot store.
+related-packages:
+  - id: brew:john
+    reason: >
+      Choose core John the Ripper when its narrower format set is sufficient and you
+      prefer the smaller, more conservative upstream line.
+    rel: alternative
+    sources:
+      - https://www.openwall.com/john/
+      - https://github.com/openwall/john#readme
+  - id: brew:hashcat
+    reason: >
+      Choose hashcat when GPU-oriented multi-device cracking and its optimized hash-mode
+      ecosystem better match the auditing workload.
+    rel: alternative
+    sources:
+      - https://www.openwall.com/john/
+      - https://hashcat.net/hashcat/
 category: security
 package-manager:
   apk: john
