@@ -60,6 +60,35 @@ history:
       Imposm3 reads, writes, deploys production tables, and can update a database from
       OSM diff files, making it useful for map tiles, WMS services, and custom
       geospatial products.
+related-packages:
+  - id: brew:osm2pgsql
+    reason: >
+      Choose osm2pgsql for its actively documented flex-output, slim-mode, and broad
+      OpenStreetMap rendering ecosystem; choose Imposm3 when its mapping model, built-in
+      production-schema deployment, and Go-based parallel importer better fit the
+      pipeline.
+    rel: alternative
+    sources:
+      - https://imposm.org/docs/imposm3/latest/
+      - https://osm2pgsql.org/doc/manual.html
+  - id: brew:postgis
+    reason: >
+      PostGIS is the database extension Imposm3 writes to, providing the spatial types,
+      indexes, and queries used by renderers, tile services, and later geospatial
+      analysis.
+    rel: adjacent_workflow
+    sources:
+      - https://imposm.org/docs/imposm3/latest/
+      - https://postgis.net/docs/
+  - id: brew:mapnik
+    reason: >
+      Mapnik can render maps from the PostgreSQL/PostGIS tables produced by Imposm3,
+      matching Imposm3's documented goal of preparing databases for rendering and tile
+      services.
+    rel: adjacent_workflow
+    sources:
+      - https://imposm.org/docs/imposm3/latest/
+      - https://mapnik.org/
 tags:
   - cli
   - geospatial

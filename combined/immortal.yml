@@ -58,6 +58,26 @@ history:
       The tool is used to run a command detached from a controlling terminal, restart it
       after termination, keep logs, and expose status and control through a Unix socket.
       The companion immortalctl command provides the operator-facing control surface.
+related-packages:
+  - id: brew:runit
+    reason: >
+      Choose runit when you want a mature three-stage init system and daemontools-style
+      per-service run scripts; choose immortal for portable YAML-defined supervision
+      that can sit under an existing Unix init system.
+    rel: alternative
+    sources:
+      - https://immortal.run/post/immortaldir/
+      - https://smarden.org/runit/
+  - id: brew:supervisor
+    reason: >
+      Choose Supervisor when you need its established INI configuration, XML-RPC
+      interface, process groups, and optional web control; choose immortal for a smaller
+      Go-based supervisor centered on YAML files and Unix-socket control.
+    rel: alternative
+    sources:
+      - https://immortal.run/post/run.yml/
+      - https://supervisord.org/introduction.html
+      - https://supervisord.org/configuration.html
 category: system
 package-manager:
   brew: immortal
