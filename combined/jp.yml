@@ -51,6 +51,24 @@ history:
       Typical use is exploratory: combine jq or another data producer with jp, select
       x/y values using JSONPath, and render quick charts directly in a terminal session.
       CSV support made it useful beyond JSON APIs and logs.
+related-packages:
+  - id: brew:youplot
+    reason: >
+      Choose YouPlot when your input is delimiter-oriented tabular data or you need
+      terminal chart types such as density and box plots; choose jp for direct
+      JSON/JSONPath selection and heatmaps.
+    rel: alternative
+    sources:
+      - https://github.com/sgreben/jp#readme
+      - https://github.com/red-data-tools/YouPlot/
+  - id: brew:jq
+    reason: >
+      Use jq before jp to reshape or aggregate JSON—especially JSON Lines with jq's
+      slurp mode—before jp selects values and renders the terminal plot.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/sgreben/jp#readme
+      - https://jqlang.github.io/jq/manual/
 category: developer-tools
 package-manager:
   apk: jp
