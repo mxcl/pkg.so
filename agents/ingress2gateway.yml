@@ -4,8 +4,16 @@ repo: null
 docs:
   - https://github.com/kubernetes-sigs/ingress2gateway/tree/main/docs
   - https://github.com/kubernetes-sigs/ingress2gateway#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.kube/config
+  windows:
+    - '%USERPROFILE%\.kube\config'
+credentials-file-location:
+  unix:
+    - ~/.kube/config
+  windows:
+    - '%USERPROFILE%\.kube\config'
 history:
   adoption-history:
     - >
@@ -76,6 +84,26 @@ history:
       It does not own credentials files; Kubernetes access follows normal kubeconfig
       behavior. Its warnings and notifications are part of the migration workflow
       because unsupported annotations and lossy conversions are often the real work.
+related-packages:
+  - id: brew:gwctl
+    reason: >
+      After ingress2gateway produces Gateway API resources, gwctl provides a
+      purpose-built way to inspect their relationships, status, and attached policies in
+      a Kubernetes cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kubernetes-sigs/ingress2gateway
+      - https://github.com/kubernetes-sigs/gwctl
+  - id: brew:kubernetes-cli
+    reason: >
+      ingress2gateway uses the standard Kubernetes kubeconfig and emits Kubernetes
+      manifests, while kubectl supplies the conventional cluster inspection and
+      manifest-application workflow around those resources.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kubernetes-sigs/ingress2gateway
+      - https://kubernetes.io/docs/reference/kubectl/
+      - https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
 tags:
   - cli
   - gateway-api

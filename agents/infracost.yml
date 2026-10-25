@@ -3,7 +3,13 @@ display-name: Infracost
 repo: null
 docs:
   - https://www.infracost.io/docs
-config-file-location: null
+config-file-location:
+  unix:
+    - infracost.yml
+    - infracost.yml.tmpl
+  windows:
+    - infracost.yml
+    - infracost.yml.tmpl
 credentials-file-location: null
 history:
   adoption-history:
@@ -74,6 +80,15 @@ history:
       The CLI has authentication flows and SaaS integrations, but the package itself is
       best understood as a developer and CI executable. The input data is infrastructure
       code; the output is a cost breakdown, policy signal, or PR comment.
+related-packages:
+  - id: brew:terragrunt
+    reason: >
+      Terragrunt organizes reusable Terraform-compatible stacks, and Infracost
+      explicitly analyzes Terragrunt projects to add cost feedback to that workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://www.infracost.io/docs/features/terragrunt/
+      - https://terragrunt.gruntwork.io/docs/
 tags:
   - cli
   - cloudformation

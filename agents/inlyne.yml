@@ -3,7 +3,13 @@ display-name: Inlyne
 repo: null
 docs:
   - https://github.com/Inlyne-Project/inlyne#readme
-config-file-location: null
+config-file-location:
+  linux:
+    - ~/.config/inlyne/inlyne.toml
+  macos:
+    - ~/Library/Application Support/inlyne/inlyne.toml
+  windows:
+    - '%APPDATA%\inlyne\inlyne.toml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -47,6 +53,25 @@ history:
       supports an `inlyne.toml` configuration file in the platform-specific user
       configuration directory, though the batch curation keeps config location null
       because the requested history-only pass preserves existing non-history fields.
+related-packages:
+  - id: brew:glow
+    reason: >
+      Glow is a terminal-native Markdown reader with a TUI, pager, stdin, and
+      remote-source support, making it a strong alternative when terminal rendering is
+      preferable to Inlyne's GPU-backed desktop window.
+    rel: alternative
+    sources:
+      - https://github.com/Inlyne-Project/inlyne
+      - https://github.com/charmbracelet/glow
+  - id: cask:visual-studio-code
+    reason: >
+      Inlyne's own FAQ identifies Visual Studio Code preview as a more feature-complete
+      alternative, while Inlyne is intended for faster standalone viewing without
+      opening a full editor.
+    rel: alternative
+    sources:
+      - https://github.com/Inlyne-Project/inlyne
+      - https://code.visualstudio.com/docs/languages/markdown
 tags:
   - cli
   - gpu
