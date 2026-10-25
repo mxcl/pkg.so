@@ -63,6 +63,25 @@ history:
       devices, upload and download files from an app container, inspect installed bundle
       IDs, manage provisioning profiles, and emit JSON output for scripts. The README
       requires macOS, Xcode, and a valid iOS development certificate.
+related-packages:
+  - id: brew:ideviceinstaller
+    reason: >
+      Choose ideviceinstaller for cross-platform install, upgrade, uninstall, and
+      app-enumeration workflows through libimobiledevice; choose ios-deploy on supported
+      macOS/iOS combinations when installation must be combined with LLDB debugging and
+      app-container operations.
+    rel: alternative
+    sources:
+      - https://raw.githubusercontent.com/ios-control/ios-deploy/master/README.md
+      - https://raw.githubusercontent.com/libimobiledevice/ideviceinstaller/master/README.md
+  - id: brew:lldb
+    reason: >
+      ios-deploy's debug mode installs the app and launches it in LLDB, making LLDB the
+      documented interactive debugger for that workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://raw.githubusercontent.com/ios-control/ios-deploy/master/README.md
+      - https://lldb.llvm.org/
 category: developer-tools
 package-manager:
   brew: ios-deploy

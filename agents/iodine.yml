@@ -70,6 +70,25 @@ history:
       the server and client should speak the same protocol version, that users need
       control over a real domain for routed use, and that tunneled traffic is not
       encrypted by iodine itself.
+related-packages:
+  - id: brew:dns2tcp
+    reason: >
+      Choose dns2tcp for named TCP-service tunnels that do not require an IP-level TUN
+      interface; choose iodine when routing arbitrary IPv4 traffic through the DNS
+      tunnel is required.
+    rel: alternative
+    sources:
+      - https://github.com/alex-sector/dns2tcp
+      - https://code.kryo.se/iodine/README.html
+  - id: brew:openvpn
+    reason: >
+      Iodine's official documentation recommends running a VPN through its unencrypted
+      DNS tunnel when confidentiality is needed, and OpenVPN supplies that encrypted VPN
+      layer.
+    rel: adjacent_workflow
+    sources:
+      - https://code.kryo.se/iodine/README.html
+      - https://openvpn.net/community-docs/
 tags:
   - cli
   - dns-tunnel
