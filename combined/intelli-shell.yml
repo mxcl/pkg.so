@@ -5,8 +5,14 @@ repo: https://github.com/lasantosr/intelli-shell
 docs:
   - https://github.com/lasantosr/intelli-shell#readme
   - https://lasantosr.github.io/intelli-shell
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  linux: ~/.config/intelli-shell/config.toml
+  macos: ~/Library/Application Support/org.IntelliShell.Intelli-Shell/config.toml
+  windows: '%APPDATA%\IntelliShell\Intelli-Shell\config\config.toml'
+credentials-file-location:
+  linux: ~/.config/intelli-shell/config.toml
+  macos: ~/Library/Application Support/org.IntelliShell.Intelli-Shell/config.toml
+  windows: '%APPDATA%\IntelliShell\Intelli-Shell\config\config.toml'
 history:
   adoption-history:
     - >
@@ -52,6 +58,17 @@ history:
       search them through keybindings, fill `{{variables}}`, and import or export
       reusable command libraries. Project-local `.intellishell` files let teams share
       task recipes without adding a separate task runner.
+related-packages:
+  - id: brew:atuin
+    reason: >
+      Use Atuin to retain and search automatic chronological shell history alongside
+      IntelliShell's curated templates; IntelliShell also documents importing Atuin
+      history into its library.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lasantosr/intelli-shell#readme
+      - https://lasantosr.github.io/intelli-shell/reference/import.html
+      - https://docs.atuin.sh/
 category: productivity
 package-manager:
   brew: intelli-shell
