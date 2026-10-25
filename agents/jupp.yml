@@ -3,7 +3,9 @@ display-name: jupp
 repo: null
 docs:
   - https://mbsd.evolvis.org/jupp.htm
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.jupprc
 credentials-file-location: null
 history:
   adoption-history:
@@ -65,6 +67,16 @@ history:
       The page documents source downloads, checksums, CVS checkout, GNU autotools build
       commands, manpages, and editor tricks such as visible spaces, hex editing, syntax
       highlighting toggles, bracketed paste, and conflict-marker search.
+related-packages:
+  - id: brew:joe
+    reason: >
+      Choose JOE for the actively maintained original editor line; jupp is a separately
+      maintained JOE-derived variant based on older JOE code with its own fixes and
+      portability work.
+    rel: alternative
+    sources:
+      - https://mbsd.evolvis.org/jupp.htm
+      - https://joe-editor.sourceforge.io/
 tags:
   - cli
   - programming
@@ -93,11 +105,9 @@ provenance:
     - https://mbsd.evolvis.org/jupp.htm
   repo-sources:
     - >
-      A downstream packaging repository or unofficial mirror would not satisfy the
-      repository requirement.
-    - >
-      The official project page documents source archives and CVS access, but an
-      unambiguous official HTTP(S) source-control project page could not be verified.
+      The official project page documents project-maintained distribution and CVS access
+      but does not identify an official HTTP(S) source-control project page:
+      https://mbsd.evolvis.org/jupp.htm
   tags-sources:
     - >
       source_facts.description identifies a programmer screen editor;
