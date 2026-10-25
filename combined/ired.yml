@@ -53,6 +53,24 @@ history:
       or hex pairs, seeking, resizing, dumping and loading blocks, and running shell
       commands. The README lists portability across GNU/Linux, macOS, Windows through
       MinGW, Cygwin, Solaris, and BSD-family systems.
+related-packages:
+  - id: brew:radare2
+    reason: >
+      Use radare2 alongside ired when a workflow grows from minimal raw editing into
+      disassembly or reverse engineering; ired's own disassembly path can invoke
+      radare2's `rasm2` utility.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/radare/ired/blob/master/ired.c
+      - https://github.com/radareorg/radare2#readme
+  - id: brew:hexedit
+    reason: >
+      Choose hexedit when you want a full-screen interactive hexadecimal and ASCII
+      editor, whereas ired favors a terse command language and scripted operation.
+    rel: alternative
+    sources:
+      - https://github.com/radare/ired#readme
+      - https://rigaux.org/hexedit.html
 category: developer-tools
 package-manager:
   brew: ired
