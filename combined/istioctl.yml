@@ -94,6 +94,27 @@ history:
       The command is also important in documentation and tutorials because it gives
       Istio a reproducible CLI path before users decide whether to move parts of the
       workflow into Helm, GitOps, or platform automation.
+related-packages:
+  - id: brew:helm
+    reason: >
+      Choose Helm for Istio installation when you want chart-based, release-oriented
+      lifecycle management instead of istioctl installation profiles and generated
+      manifests.
+    rel: alternative
+    sources:
+      - https://istio.io/latest/docs/setup/install/helm/
+      - https://istio.io/latest/docs/setup/install/istioctl/
+      - https://helm.sh/docs/
+  - id: brew:kubernetes-cli
+    reason: >
+      Pair kubectl with istioctl because both operate on the same Kubernetes clusters
+      and contexts, with kubectl handling general resources while istioctl supplies
+      mesh-specific validation and diagnostics.
+    rel: adjacent_workflow
+    sources:
+      - https://istio.io/latest/docs/reference/commands/istioctl/
+      - https://kubernetes.io/docs/reference/kubectl/
+      - https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
 category: cloud-infrastructure
 package-manager:
   brew: istioctl

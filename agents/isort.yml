@@ -82,6 +82,31 @@ history:
       The tool can be used conservatively to check import order or actively to rewrite
       files, with profiles and options controlling section names, known first-party
       modules, line length, Black compatibility, and skip rules.
+related-packages:
+  - id: brew:ruff
+    reason: >
+      Choose Ruff when you want isort-compatible import sorting combined with fast
+      Python linting and autofixes in one executable.
+    rel: alternative
+    sources:
+      - https://docs.astral.sh/ruff/linter/
+      - https://isort.readthedocs.io/en/latest/
+  - id: brew:black
+    reason: >
+      Pair Black with isort's documented `black` profile when you want dedicated import
+      organization plus deterministic whole-file formatting without conflicting layouts.
+    rel: adjacent_workflow
+    sources:
+      - https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#isort
+      - https://isort.readthedocs.io/en/latest/configuration/black_compatibility.html
+  - id: brew:pre-commit
+    reason: >
+      Use pre-commit to install and run isort's official hook automatically at commit
+      time and consistently in CI.
+    rel: adjacent_workflow
+    sources:
+      - https://isort.readthedocs.io/en/latest/configuration/pre-commit.html
+      - https://pre-commit.com/
 tags:
   - cli
   - formatter
