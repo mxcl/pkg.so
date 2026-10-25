@@ -57,6 +57,23 @@ history:
       Inside the TUI, keybindings cycle between query, input, and output panes, run
       filters, copy queries, save output, hide the input panel, and manage query
       history.
+related-packages:
+  - id: brew:jq
+    reason: >
+      jqp provides an interactive playground for developing jq filters, which can then
+      be reused directly with jq in scripts and pipelines.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/noahgorstein/jqp
+      - https://jqlang.org/manual/
+  - id: brew:gojq
+    reason: >
+      jqp executes jq-compatible queries through gojq, making gojq the relevant
+      standalone runtime when the same Go implementation is wanted without the TUI.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/noahgorstein/jqp
+      - https://github.com/itchyny/gojq
 tags:
   - cli
   - jq

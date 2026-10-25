@@ -3,7 +3,10 @@ display-name: JR
 repo: null
 docs:
   - https://jrnd.io/docs
-config-file-location: null
+config-file-location:
+  unix:
+    - ./jrconfig.json
+    - $JR_SYSTEM_DIR/jrconfig.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -52,6 +55,23 @@ history:
       frequency, and duration options, and pipe JSON output to tools such as jq or Kafka
       command-line clients. JR also documents custom template directories, embedded
       templates, key/value output templates, and a built-in function manual.
+related-packages:
+  - id: brew:kcat
+    reason: >
+      JR documents a `--kcat` output mode and piping workflow for sending generated
+      key/value records to Kafka with kcat.
+    rel: adjacent_workflow
+    sources:
+      - https://jrnd.io/docs/kafka/
+      - https://github.com/edenhill/kcat
+  - id: brew:jq
+    reason: >
+      JR's official introduction recommends piping generated JSON to jq for syntax
+      highlighting and inspection.
+    rel: adjacent_workflow
+    sources:
+      - https://jrnd.io/docs/
+      - https://jqlang.org/manual/
 tags:
   - cli
   - kafka

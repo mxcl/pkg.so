@@ -64,6 +64,32 @@ history:
       from local development or CI/CD. The guide includes quick starts for the CLI,
       Maven, Gradle, and Ant, and concept pages for workflows, distributions, artifacts,
       templates, packagers, deployers, announcers, and signing.
+related-packages:
+  - id: brew:goreleaser
+    reason: >
+      GoReleaser is the clearest alternative for Go-centric release automation, while
+      JReleaser's official FAQ notes that it inspired JReleaser's broader cross-language
+      approach.
+    rel: alternative
+    sources:
+      - https://jreleaser.org/guide/latest/faq.html
+      - https://goreleaser.com/intro/
+  - id: brew:syft
+    reason: >
+      JReleaser can invoke Syft during its catalog stage to generate SPDX, CycloneDX,
+      and other SBOM formats for distributions and files.
+    rel: adjacent_workflow
+    sources:
+      - https://jreleaser.org/guide/latest/reference/catalog/sbom/syft.html
+      - https://github.com/anchore/syft
+  - id: brew:cosign
+    reason: >
+      JReleaser has a documented Cosign signing backend for release artifacts, files,
+      and checksums and can upload the public key with the release.
+    rel: adjacent_workflow
+    sources:
+      - https://jreleaser.org/guide/latest/reference/signing.html
+      - https://docs.sigstore.dev/cosign/signing/overview/
 category: developer-tools
 package-manager:
   apk: jreleaser
