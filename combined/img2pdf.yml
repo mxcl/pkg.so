@@ -82,6 +82,40 @@ history:
       As a library, callers use img2pdf.convert with filenames, file handles, pathlib
       paths, globs, or in-memory image data. Options cover page layout, DPI, rotation
       handling, and PDF/A output.
+related-packages:
+  - id: brew:imagemagick
+    reason: >
+      Choose ImageMagick when you need broad image editing and format conversion; choose
+      img2pdf when direct, lossless image embedding and low memory use are the priority.
+    rel: alternative
+    sources:
+      - https://gitlab.mister-muffin.de/josch/img2pdf
+      - https://imagemagick.org/command-line-processing
+  - id: brew:tesseract
+    reason: >
+      Choose Tesseract when the resulting PDF also needs OCR text; img2pdf's official
+      comparison notes that Tesseract can losslessly produce PDFs from JPEG and PNG but
+      may transform other inputs.
+    rel: alternative
+    sources:
+      - https://gitlab.mister-muffin.de/josch/img2pdf
+      - https://tesseract-ocr.github.io/tessdoc/Command-Line-Usage.html
+  - id: brew:sane-backends
+    reason: >
+      The img2pdf README documents a scanner-to-PDF pipeline in which SANE's `scanimage`
+      supplies image data directly to img2pdf.
+    rel: adjacent_workflow
+    sources:
+      - https://gitlab.mister-muffin.de/josch/img2pdf
+      - https://www.sane-project.org/man/scanimage.1.html
+  - id: brew:jbig2enc
+    reason: >
+      jbig2enc can encode monochrome document images as JBIG2 data that img2pdf supports
+      embedding into PDF documents.
+    rel: adjacent_workflow
+    sources:
+      - https://gitlab.mister-muffin.de/josch/img2pdf
+      - https://github.com/agl/jbig2enc/blob/master/README.md
 category: media
 package-manager:
   brew: img2pdf

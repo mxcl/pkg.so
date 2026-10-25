@@ -84,6 +84,32 @@ history:
       It is mostly read-only archival tooling: useful for personal backups, migration,
       compliance retention, legal discovery preparation, and diagnostics, rather than
       for sending messages or modifying Apple's database.
+related-packages:
+  - id: brew:msgvault
+    reason: >
+      Choose Msgvault when imported iMessage history should remain in a searchable local
+      archive alongside other communications; choose iMessage Exporter for direct text
+      or HTML exports and database diagnostics.
+    rel: alternative
+    sources:
+      - https://github.com/ReagentX/imessage-exporter/blob/develop/imessage-exporter/README.md
+      - https://github.com/kenn-io/msgvault/blob/main/docs/usage/text-messages.md
+  - id: brew:imagemagick
+    reason: >
+      iMessage Exporter officially uses ImageMagick on non-macOS systems when
+      attachment-copy modes need HEIC images converted to JPEG.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ReagentX/imessage-exporter/blob/develop/imessage-exporter/README.md
+      - https://imagemagick.org/command-line-processing
+  - id: brew:ffmpeg
+    reason: >
+      iMessage Exporter officially uses FFmpeg for video conversion on all platforms and
+      for audio conversion outside macOS during full attachment exports.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ReagentX/imessage-exporter/blob/develop/imessage-exporter/README.md
+      - https://ffmpeg.org/documentation.html
 tags:
   - cli
   - database

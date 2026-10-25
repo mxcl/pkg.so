@@ -72,6 +72,33 @@ history:
       The package belongs in web asset pipelines, small Go services, and local
       optimization scripts where libvips performance is desired without directly binding
       to the whole libvips surface.
+related-packages:
+  - id: brew:caesiumclt
+    reason: >
+      Choose CaesiumCLT for a self-contained cross-platform batch CLI with explicit
+      lossy, lossless, recursive, and target-size modes; choose imgdiet when a
+      Go/libvips API is useful alongside the command.
+    rel: alternative
+    sources:
+      - https://git.sr.ht/~jamesponddotco/imgdiet-go
+      - https://github.com/Lymphatus/caesium-clt#readme
+  - id: cask:imageoptim
+    reason: >
+      Choose ImageOptim for a native macOS drag-and-drop optimizer that coordinates
+      several specialist compressors; choose imgdiet for Go applications and
+      shell-oriented libvips workflows.
+    rel: alternative
+    sources:
+      - https://git.sr.ht/~jamesponddotco/imgdiet-go
+      - https://imageoptim.com/mac
+  - id: brew:vips
+    reason: >
+      imgdiet is built on libvips, so the `vips` package is the underlying engine to use
+      directly when a broader native CLI or API surface is required.
+    rel: adjacent_workflow
+    sources:
+      - https://git.sr.ht/~jamesponddotco/imgdiet-go/tree/trunk/item/README.md
+      - https://www.libvips.org/API/current/
 tags:
   - cli
   - compression
