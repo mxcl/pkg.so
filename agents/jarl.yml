@@ -47,6 +47,25 @@ history:
       Users commonly run `jarl check` against R projects, select or ignore rules in
       `jarl.toml`, suppress individual findings with `# jarl-ignore`, apply fixes, or
       emit concise, GitHub, or JSON diagnostics.
+related-packages:
+  - id: brew:air
+    reason: >
+      Use Air alongside Jarl to format R code after linting; Jarl is built on Air and
+      its documentation explicitly recommends Air for formatting because Jarl itself is
+      not a formatter.
+    rel: adjacent_workflow
+    sources:
+      - https://jarl.etiennebacher.com/
+      - https://jarl.etiennebacher.com/getting-started
+      - https://posit-dev.github.io/air/
+  - id: brew:pre-commit
+    reason: >
+      Use pre-commit to run Jarl automatically on staged R files through Jarl's
+      documented `jarl-pre-commit` hook.
+    rel: adjacent_workflow
+    sources:
+      - https://jarl.etiennebacher.com/howto/precommit
+      - https://pre-commit.com/
 tags:
   - cli
   - continuous-integration

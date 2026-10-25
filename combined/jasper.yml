@@ -68,6 +68,26 @@ history:
       JPEG 2000 JP2 and codestream support, while the software overview also notes use
       of the IJG JPEG library for JPEG support and graphics libraries selected for
       cross-platform availability.
+related-packages:
+  - id: brew:openjpeg
+    reason: >
+      Choose OpenJPEG as an alternative C library and command-line codec focused
+      specifically on JPEG 2000; choose JasPer when its broader image-toolkit API or
+      supported auxiliary formats fit the application.
+    rel: alternative
+    sources:
+      - https://jasper-software.github.io/jasper/
+      - https://www.openjpeg.org/
+      - https://github.com/uclouvain/openjpeg/wiki/DocJ2KCodec
+  - id: brew:imagemagick
+    reason: >
+      Use ImageMagick for higher-level image conversion and processing workflows that
+      can incorporate JasPer as JPEG 2000 codec support, as documented by JasPer's
+      official downstream-user list.
+    rel: adjacent_workflow
+    sources:
+      - https://jasper-software.github.io/jasper/
+      - https://imagemagick.org/command-line-processing
 category: media
 package-manager:
   apk: jasper
