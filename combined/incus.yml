@@ -6,7 +6,12 @@ docs:
   - https://linuxcontainers.org/incus/docs/main
 config-file-location:
   unix: ~/.config/incus/config.yml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.config/incus/client.crt
+    - ~/.config/incus/client.key
+    - ~/.config/incus/clientcerts/
+    - ~/.config/incus/servercerts/
 history:
   adoption-history:
     - >
@@ -73,6 +78,16 @@ history:
       common where operators want VM-like full-system environments with container
       density, or a local private-cloud control plane for development labs, CI workers,
       and small infrastructure clusters.
+related-packages:
+  - id: brew:docker
+    reason: >
+      Choose Docker for its established single-application container workflow; choose
+      Incus when full-system containers and virtual machines must share one management
+      plane, while noting that Incus can also consume OCI images.
+    rel: alternative
+    sources:
+      - https://linuxcontainers.org/incus/docs/main/explanation/containers_and_vms/
+      - https://docs.docker.com/get-started/docker-overview/
 category: cloud-infrastructure
 package-manager:
   apk: incus

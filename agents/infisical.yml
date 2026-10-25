@@ -4,7 +4,10 @@ repo: null
 docs:
   - https://infisical.com/docs/cli/overview
   - https://infisical.com/docs/cli/usage
-config-file-location: null
+config-file-location:
+  unix:
+    - <project>/.infisical.yaml
+    - <project>/.infisical.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -72,6 +75,16 @@ history:
       The CLI also covers secret export and secret scanning. The usage docs warn that
       terminal history can retain commands that set secrets, which is a small but
       important operational detail for a secrets-management CLI.
+related-packages:
+  - id: brew:sops
+    reason: >
+      Choose SOPS when encrypted YAML, JSON, dotenv, or binary files should live in
+      version control; choose Infisical CLI when applications should retrieve or inject
+      secrets from a centralized Infisical service.
+    rel: alternative
+    sources:
+      - https://getsops.io/docs/
+      - https://infisical.com/docs/cli/usage
 tags:
   - cli
   - devops

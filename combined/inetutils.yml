@@ -5,7 +5,12 @@ repo: https://git.savannah.gnu.org/cgit/inetutils.git
 docs:
   - https://www.gnu.org/software/inetutils/manual/inetutils.html
   - https://www.gnu.org/software/inetutils
-config-file-location: null
+config-file-location:
+  unix:
+    - /etc/inetd.conf
+    - /etc/inetd.d/
+    - /etc/syslog.conf
+    - /etc/syslog.d/
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,6 +76,24 @@ history:
       environments that expect GNU command behavior. Security-sensitive deployments
       generally treat plaintext remote-login tools as legacy compatibility rather than
       preferred administration paths.
+related-packages:
+  - id: brew:iputils
+    reason: >
+      Choose iputils for a focused Linux-oriented set of modern diagnostics such as
+      ping, arping, and tracepath; choose Inetutils when GNU implementations of the
+      broader traditional client-and-server suite are required.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/inetutils/
+      - https://github.com/iputils/iputils
+  - id: brew:openssh
+    reason: >
+      Choose OpenSSH for encrypted remote login and file transfer instead of Inetutils'
+      legacy plaintext rsh, rlogin, rexec, and telnet workflows.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/inetutils/manual/inetutils.html
+      - https://www.openssh.com/
 category: networking
 package-manager:
   apk: gping

@@ -79,6 +79,15 @@ history:
       Its output is used during dependency cleanup, code-review preparation, CI checks,
       and large refactors where accidental reliance on another file's transitive include
       would otherwise hide missing direct dependencies.
+related-packages:
+  - id: brew:cmake
+    reason: >
+      CMake can invoke IWYU alongside C or C++ compilation through its documented
+      INCLUDE_WHAT_YOU_USE target property, making it a direct build-workflow companion.
+    rel: adjacent_workflow
+    sources:
+      - https://cmake.org/cmake/help/latest/prop_tgt/LANG_INCLUDE_WHAT_YOU_USE.html
+      - https://include-what-you-use.org/
 category: developer-tools
 package-manager:
   apk: include-what-you-use
