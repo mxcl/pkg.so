@@ -2,6 +2,617 @@
   "content": [
     {
       "artwork": {
+        "alt": "An operator oversees three glowing agent workspaces connected by branching task paths in a dark terminal control room.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#164252",
+          "backgroundStart": "#071B2A",
+          "foreground": "#FFF1D6"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/agent-terminal-workspaces.png"
+      },
+      "batchID": "20261025T102927Z-fa7c6db9",
+      "body": "## The terminal is becoming a control surface\n\nCoding agents changed the shape of terminal work. A single prompt can run for minutes, stop for a decision, launch tests, or finish while the developer is reading another diff. Multiplying that by several projects turns a row of indistinguishable tabs into an attention problem. Kero’s answer is to treat each command as a durable **session** with an observable state, not merely as a process attached to a window. Its documentation describes working, waiting, idle, error, and exited states, plus a shortcut that jumps to the pane requiring attention. That is a modest idea with practical consequences: the interface is organized around what needs a human next.\n\nKero appeared publicly in 2026, and its v2.0.0 release is the first stable release in the upstream release history. The project is still young, so this is not a claim of mature adoption. It is evidence of a new tool entering a quickly changing category. The useful question is not whether it replaces every terminal, but whether its session model matches how someone actually supervises agents.\n\n## Persistence moves outside the window\n\nKero runs sessions in a small daemon named `kerod`. Closing the graphical application leaves those sessions running; reopening it restores panes and scrollback. The same architecture supports remote hosts over SSH or Tailscale, allowing an agent to continue on a workstation or cloud machine while the laptop sleeps. The Kero CLI can also create sessions, split panes, type input, wait, and read screens. In other words, an agent can operate neighboring sessions as part of a larger task.\n\nThat design is useful when work is long-lived, but it changes the trust boundary. A persistent daemon retains active processes after the window disappears, and remote hosts add credentials, network reachability, and another machine’s security posture. Notifications indicate that work finished or became blocked; they do not prove that the result is correct. A sensible trial should begin with disposable repositories and explicit resource limits.\n\nAn actual evaluation can be concrete:\n\n- Start two agent sessions and one test watcher in a temporary project.\n- Close and reopen Kero, then verify process state and scrollback.\n- Trigger a question or failure and check whether the attention state is accurate.\n- Repeat on a remote host, then confirm which credentials and ports were required.\n\nThese checks measure the documented workflow without treating installation counts as evidence of individual users or reliability.\n\n## Three products, three different boundaries\n\nKaku is closer to a polished general-purpose Mac terminal. It builds on WezTerm, supplies fonts, themes, shell integration, and familiar Mac shortcuts, while retaining Lua customization. It can run coding agents, but its primary promise is a pleasant terminal with useful defaults. Choose that boundary when the terminal itself is the product and agent supervision can remain in ordinary tabs or panes.\n\nGhostex takes the opposite direction. Its upstream documentation describes chat views, readable diffs, queued prompts, worktrees, embedded browser panes, session search, and mobile access. It can hand a session between different agents and lets agents create and steer other sessions through a command. That makes it closer to an integrated agent workspace than a terminal with status indicators. The tradeoff is a larger surface area: more application features, more state, and more remote-access decisions to understand.\n\nKero sits between them. It keeps a terminal-first mental model but adds persistence, status, project grouping, and agent-drivable session control. The comparison is editorial rather than an official compatibility claim: these projects do not need to integrate with one another, and their rapid release cycles make feature matrices perishable.\n\n## Decide by the handoff you need\n\nThe central choice is where the human-agent handoff should live. Kaku leaves it mostly inside the command-line program. Kero elevates session state and attention routing while preserving terminal interaction. Ghostex moves the handoff into chat, review, previews, and cross-device access.\n\nBefore adopting any of them, document the failure path. What happens when an agent requests approval, a daemon restarts, a remote connection drops, or a session consumes excessive resources? Confirm how to terminate work independently of the interface. Review whether transcripts, commands, and remote credentials persist, and decide which repositories are appropriate for experimental tooling.\n\nAgent-oriented terminals are valuable precisely because ordinary terminals reveal too little about parallel asynchronous work. Their dashboards can reduce attention switching, but they can also make many autonomous processes feel safer than they are. The strongest workflow pairs visibility with mundane controls: isolated branches or worktrees, bounded permissions, reviewable diffs, tests, and a reliable way to stop everything.",
+      "deck": "Kero, Kaku, and Ghostex draw different boundaries around persistent sessions, attention, review, and remote supervision for coding agents.",
+      "id": "editorial:2026-10-25:agent-terminals-become-control-surfaces",
+      "package": {
+        "agentSummary": "Kero keeps coding-agent sessions alive in a daemon, surfaces which panes need attention, and can coordinate local or remote work from one terminal sidebar.",
+        "assessment": {
+          "alternatives": [
+            "Kaku for a polished general Mac terminal",
+            "Ghostex for a fuller chat-and-review workspace"
+          ],
+          "audiences": [
+            "Developers supervising several coding agents",
+            "Teams using remote development hosts"
+          ],
+          "caveats": [
+            "A young project whose workflows may change",
+            "Remote operation adds host and network security responsibilities"
+          ],
+          "complements": [
+            "SSH or Tailscale for remote hosts",
+            "Ghostty themes and configuration"
+          ],
+          "prerequisites": [
+            "A supported macOS, Windows, or Linux system",
+            "An installed coding-agent CLI for agent workflows"
+          ],
+          "useCases": [
+            "Keep long-running agent sessions alive",
+            "Jump to blocked or completed panes",
+            "Drive sessions through a CLI"
+          ]
+        },
+        "category": "developer-tools",
+        "discovery": {
+          "admittedAt": "2026-10-17",
+          "analytics": {
+            "30": {
+              "count": 56,
+              "endDate": "2026-10-25",
+              "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+              "startDate": "2026-09-25"
+            },
+            "365": {
+              "count": 58,
+              "endDate": "2026-10-25",
+              "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+              "startDate": "2025-10-25"
+            },
+            "90": {
+              "count": 56,
+              "endDate": "2026-10-25",
+              "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+              "startDate": "2026-07-27"
+            }
+          },
+          "firstObservedAt": "2026-10-17",
+          "lastVerifiedAt": null,
+          "recentlyDiscovered": false,
+          "status": "official",
+          "trend": {
+            "endDate": "2026-10-25",
+            "growthPercent": null,
+            "installs30d": 56,
+            "previousMonthlyRate": 0.0,
+            "score": 11.00707,
+            "sources": [
+              "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+              "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+            ],
+            "startDate": "2026-07-27"
+          }
+        },
+        "displayName": "Kero",
+        "docs": "https://kero.sh/docs",
+        "homepage": "https://kero.sh/",
+        "id": "brew:cask:kero",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akero",
+        "lastUpdatedAt": "2026-10-25T07:12:48Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/egoist/kero",
+        "researchedAt": "2026-10-25T10:29:27Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Kero upstream repository",
+            "url": "https://github.com/egoist/kero"
+          },
+          {
+            "kind": "primary",
+            "title": "Kero introduction",
+            "url": "https://github.com/egoist/kero/blob/main/docs/index.md"
+          },
+          {
+            "kind": "primary",
+            "title": "Kero v2.0.0 release",
+            "url": "https://github.com/egoist/kero/releases/tag/v2.0.0"
+          }
+        ],
+        "upstreamSummary": "Terminal app optimised for agents",
+        "version": "2.1.18"
+      },
+      "primaryPackageID": "brew:cask:kero",
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Kero keeps coding-agent sessions alive in a daemon, surfaces which panes need attention, and can coordinate local or remote work from one terminal sidebar.",
+          "assessment": {
+            "alternatives": [
+              "Kaku for a polished general Mac terminal",
+              "Ghostex for a fuller chat-and-review workspace"
+            ],
+            "audiences": [
+              "Developers supervising several coding agents",
+              "Teams using remote development hosts"
+            ],
+            "caveats": [
+              "A young project whose workflows may change",
+              "Remote operation adds host and network security responsibilities"
+            ],
+            "complements": [
+              "SSH or Tailscale for remote hosts",
+              "Ghostty themes and configuration"
+            ],
+            "prerequisites": [
+              "A supported macOS, Windows, or Linux system",
+              "An installed coding-agent CLI for agent workflows"
+            ],
+            "useCases": [
+              "Keep long-running agent sessions alive",
+              "Jump to blocked or completed panes",
+              "Drive sessions through a CLI"
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 56,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "startDate": "2026-09-25"
+              },
+              "365": {
+                "count": 58,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+                "startDate": "2025-10-25"
+              },
+              "90": {
+                "count": 56,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+                "startDate": "2026-07-27"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-25",
+              "growthPercent": null,
+              "installs30d": 56,
+              "previousMonthlyRate": 0.0,
+              "score": 11.00707,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+              ],
+              "startDate": "2026-07-27"
+            }
+          },
+          "displayName": "Kero",
+          "docs": "https://kero.sh/docs",
+          "homepage": "https://kero.sh/",
+          "id": "brew:cask:kero",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akero",
+          "lastUpdatedAt": "2026-10-25T07:12:48Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/egoist/kero",
+          "researchedAt": "2026-10-25T10:29:27Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Kero upstream repository",
+              "url": "https://github.com/egoist/kero"
+            },
+            {
+              "kind": "primary",
+              "title": "Kero introduction",
+              "url": "https://github.com/egoist/kero/blob/main/docs/index.md"
+            },
+            {
+              "kind": "primary",
+              "title": "Kero v2.0.0 release",
+              "url": "https://github.com/egoist/kero/releases/tag/v2.0.0"
+            }
+          ],
+          "upstreamSummary": "Terminal app optimised for agents",
+          "version": "2.1.18"
+        },
+        {
+          "agentSummary": "Kaku packages a WezTerm-based Mac terminal with curated themes, fonts, shell integration, shortcuts, and AI-oriented conveniences while retaining Lua customization for deeper tuning.",
+          "assessment": {
+            "alternatives": [
+              "WezTerm directly",
+              "Kero for persistent agent-session supervision"
+            ],
+            "audiences": [
+              "Mac developers wanting a polished terminal",
+              "WezTerm users who prefer curated defaults"
+            ],
+            "caveats": [
+              "Mac-only focus",
+              "Curated defaults may overlap with an existing terminal configuration"
+            ],
+            "complements": [
+              "WezTerm configuration concepts",
+              "Command-line coding agents"
+            ],
+            "prerequisites": [
+              "A supported macOS system"
+            ],
+            "useCases": [
+              "Run shells and coding agents",
+              "Use preconfigured themes and shortcuts",
+              "Extend behavior with Lua"
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 482,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "startDate": "2026-09-25"
+              },
+              "365": {
+                "count": 811,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+                "startDate": "2025-10-25"
+              },
+              "90": {
+                "count": 513,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+                "startDate": "2026-07-27"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-25",
+              "growthPercent": 3009.7,
+              "installs30d": 482,
+              "previousMonthlyRate": 15.5,
+              "score": 26.249943,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+              ],
+              "startDate": "2026-07-27"
+            }
+          },
+          "displayName": "Kaku",
+          "docs": "https://github.com/tw93/Kaku/blob/main/docs/cli.md",
+          "homepage": "https://github.com/tw93/Kaku",
+          "id": "brew:cask:kaku",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akaku",
+          "lastUpdatedAt": "2026-10-22T07:24:46Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/tw93/Kaku",
+          "researchedAt": "2026-10-25T10:29:27Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Kaku upstream repository",
+              "url": "https://github.com/tw93/Kaku"
+            },
+            {
+              "kind": "primary",
+              "title": "Kaku documentation",
+              "url": "https://kaku.fun/docs/"
+            }
+          ],
+          "upstreamSummary": "Terminal optimised for AI coding",
+          "version": "0.26.1"
+        },
+        {
+          "agentSummary": "Ghostex combines persistent multi-agent sessions with chat, diff review, worktrees, browser previews, and mobile access, creating a broader workspace than a conventional terminal emulator.",
+          "assessment": {
+            "alternatives": [
+              "Kero for a narrower terminal-first supervisor",
+              "Kaku for a conventional customizable terminal"
+            ],
+            "audiences": [
+              "Developers coordinating many coding agents",
+              "Users who want desktop and mobile access to sessions"
+            ],
+            "caveats": [
+              "Its broad feature surface increases operational complexity",
+              "Remote and mobile access require careful trust and network configuration"
+            ],
+            "complements": [
+              "Tailscale for remote access",
+              "Git worktrees",
+              "Browser-based prototype review"
+            ],
+            "prerequisites": [
+              "A supported desktop or mobile platform",
+              "At least one coding-agent CLI"
+            ],
+            "useCases": [
+              "Review agent diffs",
+              "Queue follow-up prompts",
+              "Separate tasks with worktrees",
+              "Resume and search prior sessions"
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 298,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "startDate": "2026-09-25"
+              },
+              "365": {
+                "count": 302,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+                "startDate": "2025-10-25"
+              },
+              "90": {
+                "count": 302,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+                "startDate": "2026-07-27"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-25",
+              "growthPercent": null,
+              "installs30d": 298,
+              "previousMonthlyRate": 2.0,
+              "score": 26.657052,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+              ],
+              "startDate": "2026-07-27"
+            }
+          },
+          "displayName": "Ghostex",
+          "docs": "https://github.com/maddada/Ghostex#readme",
+          "homepage": "https://ghostex.dev/",
+          "id": "brew:cask:ghostex",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aghostex",
+          "lastUpdatedAt": "2026-10-25T01:30:02Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/maddada/Ghostex",
+          "researchedAt": "2026-10-25T10:29:27Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Ghostex upstream repository",
+              "url": "https://github.com/maddada/Ghostex"
+            },
+            {
+              "kind": "primary",
+              "title": "Ghostex product site",
+              "url": "https://ghostex.dev"
+            },
+            {
+              "kind": "primary",
+              "title": "Ghostex releases",
+              "url": "https://github.com/maddada/Ghostex/releases"
+            }
+          ],
+          "upstreamSummary": "Workspace for running and reviewing multiple CLI coding agents",
+          "version": "10.34.0"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-10-20T08:23:00Z",
+        "firstStableReleaseSourceURL": "https://github.com/egoist/kero/releases/tag/v2.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Kero upstream repository",
+          "url": "https://github.com/egoist/kero"
+        },
+        {
+          "kind": "primary",
+          "title": "Kero introduction",
+          "url": "https://github.com/egoist/kero/blob/main/docs/index.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Kero remote hosts documentation",
+          "url": "https://github.com/egoist/kero/blob/main/docs/remote.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Kero v2.0.0 release",
+          "url": "https://github.com/egoist/kero/releases/tag/v2.0.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Kaku upstream repository",
+          "url": "https://github.com/tw93/Kaku"
+        },
+        {
+          "kind": "primary",
+          "title": "Kaku documentation",
+          "url": "https://kaku.fun/docs/"
+        },
+        {
+          "kind": "primary",
+          "title": "Ghostex upstream repository",
+          "url": "https://github.com/maddada/Ghostex"
+        },
+        {
+          "kind": "primary",
+          "title": "Ghostex product site",
+          "url": "https://ghostex.dev"
+        }
+      ],
+      "title": "When terminals become control surfaces",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261025T102927Z-7b8f4d42",
+      "id": "new-packages:networking:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Modern network bandwidth testing with TUI",
+          "category": "networking",
+          "displayName": "xfr",
+          "homepage": "https://github.com/lance0/xfr",
+          "id": "brew:xfr",
+          "installURL": "pkgmgrmgr://install?package=brew%3Axfr",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "title": "New Packages in Networking",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20261025T102927Z-7b8f4d42",
+      "id": "for-you:system:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Like which(1) unix command. Find the first instance of an executable in the PATH.",
+          "category": "system",
+          "displayName": "which",
+          "homepage": "https://github.com/npm/node-which#readme",
+          "id": "npm:which",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awhich",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A deep deletion module for node (like `rm -rf`)",
+          "category": "system",
+          "displayName": "rimraf",
+          "homepage": "https://github.com/isaacs/rimraf#readme",
+          "id": "npm:rimraf",
+          "installURL": "pkgmgrmgr://install?package=npm%3Arimraf",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Recursively mkdir, like `mkdir -p`",
+          "category": "system",
+          "displayName": "mkdirp",
+          "homepage": "https://github.com/isaacs/node-mkdirp#readme",
+          "id": "npm:mkdirp",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amkdirp",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a Docker container",
+          "category": "system",
+          "displayName": "is-docker",
+          "homepage": "https://github.com/sindresorhus/is-docker#readme",
+          "id": "npm:is-docker",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-docker",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a container (Docker/Podman)",
+          "category": "system",
+          "displayName": "is-inside-container",
+          "homepage": "https://github.com/sindresorhus/is-inside-container#readme",
+          "id": "npm:is-inside-container",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-inside-container",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "title": "For You in System",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261025T102927Z-7b8f4d42",
+      "id": "recently-updated:language-runtime:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Interpreted, interactive, object-oriented programming language",
+          "category": "language-runtime",
+          "displayName": "python@3.11",
+          "homepage": "https://www.python.org/",
+          "id": "brew:python@3.11",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apython%403.11",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": ".NET Core",
+          "category": "language-runtime",
+          "displayName": "dotnet@8",
+          "homepage": "https://dotnet.microsoft.com/",
+          "id": "brew:dotnet@8",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adotnet%408",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Open-source, cross-platform JavaScript runtime environment",
+          "category": "language-runtime",
+          "displayName": "node@24",
+          "homepage": "https://nodejs.org/",
+          "id": "brew:node@24",
+          "installURL": "pkgmgrmgr://install?package=brew%3Anode%4024",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Stand-alone ClojureScript REPL",
+          "category": "language-runtime",
+          "displayName": "planck",
+          "homepage": "https://planck-repl.org/",
+          "id": "brew:planck",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aplanck",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Functional programming language for building browser-based GUIs",
+          "category": "language-runtime",
+          "displayName": "elm",
+          "homepage": "https://elm-lang.org",
+          "id": "brew:elm",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aelm",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "title": "Recently Updated in Language Runtime",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20261025T102927Z-7b8f4d42",
+      "id": "new-packages:cloud-infrastructure:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Fault-tolerant RPC proxy with re-org-aware permanent caching",
+          "category": "cloud-infrastructure",
+          "displayName": "erpc",
+          "homepage": "https://docs.erpc.cloud/",
+          "id": "brew:erpc",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aerpc",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Command-line interface for Fly.io Sprites",
+          "category": "cloud-infrastructure",
+          "displayName": "Sprites",
+          "homepage": "https://sprites.dev/",
+          "id": "brew:cask:sprites",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asprites",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "title": "New Packages in Cloud Infrastructure",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
         "alt": "Indigo project files flow through a luminous geometric analysis prism and resolve into a network of validated cyan and coral nodes.",
         "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
         "boxColors": {
@@ -464,20 +1075,182 @@
     },
     {
       "batchID": "20261022T070248Z-d7a3111f",
-      "id": "new-packages:networking:20261022T070248Z-f220bb45",
+      "id": "recently-updated:games:20261025T102927Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Modern network bandwidth testing with TUI",
-          "category": "networking",
-          "displayName": "xfr",
-          "homepage": "https://github.com/lance0/xfr",
-          "id": "brew:xfr",
-          "installURL": "pkgmgrmgr://install?package=brew%3Axfr",
+          "agentSummary": "Launcher for eXoDOS and retro game collections",
+          "category": "games",
+          "displayName": "NostalgiApp",
+          "homepage": "https://www.nostalgi.app/",
+          "id": "brew:cask:nostalgiapp",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Anostalgiapp",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Free real-time strategy game like Settlers II",
+          "category": "games",
+          "displayName": "widelands",
+          "homepage": "https://www.widelands.org/",
+          "id": "brew:widelands",
+          "installURL": "pkgmgrmgr://install?package=brew%3Awidelands",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Library for RPG Maker 2000/2003 games data",
+          "category": "games",
+          "displayName": "liblcf",
+          "homepage": "https://easyrpg.org/",
+          "id": "brew:liblcf",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aliblcf",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Free and Open Source empire-building strategy game",
+          "category": "games",
+          "displayName": "freeciv",
+          "homepage": "https://freeciv.org/",
+          "id": "brew:freeciv",
+          "installURL": "pkgmgrmgr://install?package=brew%3Afreeciv",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "RPG Maker 2000/2003 games interpreter",
+          "category": "games",
+          "displayName": "easyrpg-player",
+          "homepage": "https://easyrpg.org/",
+          "id": "brew:easyrpg-player",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aeasyrpg-player",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-10-22T07:02:48Z",
-      "title": "New Packages in Networking",
+      "title": "Recently Updated in Games",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20261022T070248Z-d7a3111f",
+      "id": "for-you:networking:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "ECMAScript parser",
+          "category": "networking",
+          "displayName": "acorn",
+          "homepage": "https://github.com/acornjs/acorn",
+          "id": "npm:acorn",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aacorn",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset",
+          "category": "networking",
+          "displayName": "browserslist",
+          "homepage": "https://github.com/browserslist/browserslist#readme",
+          "id": "npm:browserslist",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abrowserslist",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A library for obtaining browser versions with their maximum supported Baseline feature set and Widely Available status.",
+          "category": "networking",
+          "displayName": "baseline-browser-mapping",
+          "homepage": "https://github.com/web-platform-dx/baseline-browser-mapping#readme",
+          "id": "npm:baseline-browser-mapping",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abaseline-browser-mapping",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
+          "category": "networking",
+          "displayName": "autoprefixer",
+          "homepage": "https://github.com/postcss/autoprefixer#readme",
+          "id": "npm:autoprefixer",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aautoprefixer",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Minimal H(TTP) framework built for high performance and portability.",
+          "category": "networking",
+          "displayName": "h3",
+          "homepage": "https://h3.dev",
+          "id": "npm:h3",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ah3",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "title": "For You in Networking",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261022T070248Z-d7a3111f",
+      "id": "recently-updated:productivity:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Matrix collaboration client",
+          "category": "productivity",
+          "displayName": "Element Nightly",
+          "homepage": "https://element.io/get-started",
+          "id": "brew:cask:element@nightly",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aelement%40nightly",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Open-source markdown editor",
+          "category": "productivity",
+          "displayName": "Zettlr",
+          "homepage": "https://www.zettlr.com/",
+          "id": "brew:cask:zettlr",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Azettlr",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Native Home Assistant agent for desktop/laptop devices",
+          "category": "productivity",
+          "displayName": "go-hass-agent",
+          "homepage": "https://github.com/joshuar/go-hass-agent",
+          "id": "brew:go-hass-agent",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ago-hass-agent",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Launcher tool",
+          "category": "productivity",
+          "displayName": "Wox",
+          "homepage": "https://github.com/Wox-launcher/Wox",
+          "id": "brew:cask:wox",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Awox",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Pie menu",
+          "category": "productivity",
+          "displayName": "Kando",
+          "homepage": "https://kando.menu/",
+          "id": "brew:cask:kando",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akando",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "title": "Recently Updated in Productivity",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20261022T070248Z-d7a3111f",
+      "id": "new-packages:science:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Filter and annotate genetic variants with expressions, for trios and cohorts",
+          "category": "science",
+          "displayName": "slivar",
+          "homepage": "https://github.com/brentp/slivar",
+          "id": "brew:slivar",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aslivar",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "title": "New Packages in Science",
       "type": "newPackages"
     },
     {
@@ -889,75 +1662,129 @@
     },
     {
       "batchID": "20261018T103040Z-fd56ff4d",
-      "id": "recently-updated:toys:20261022T070248Z-f220bb45",
+      "id": "recently-updated:networking:20261025T102927Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Apjanke's fork of the classic cowsay project",
-          "category": "toys",
-          "displayName": "cowsay",
-          "homepage": "https://cowsay.diamonds",
-          "id": "brew:cowsay",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acowsay",
+          "agentSummary": "Web browser",
+          "category": "networking",
+          "displayName": "Google Chrome Canary",
+          "homepage": "https://www.google.com/chrome/canary/",
+          "id": "brew:cask:google-chrome@canary",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agoogle-chrome%40canary",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Control your Nanoleaf lights",
-          "category": "toys",
-          "displayName": "Nanoleaf Desktop App",
-          "homepage": "https://nanoleaf.me/",
-          "id": "brew:cask:nanoleaf",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ananoleaf",
+          "agentSummary": "CLI tool for checking domain availability using RDAP and WHOIS protocols",
+          "category": "networking",
+          "displayName": "domain-check",
+          "homepage": "https://github.com/saidutt46/domain-check",
+          "id": "brew:domain-check",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adomain-check",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Desktop pet that reacts to AI coding agents",
-          "category": "toys",
-          "displayName": "Clawd on Desk",
-          "homepage": "https://github.com/rullerzhou-afk/clawd-on-desk",
-          "id": "brew:cask:clawd-on-desk",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclawd-on-desk",
+          "agentSummary": "API Support for your favorite torrent trackers",
+          "category": "networking",
+          "displayName": "jackett",
+          "homepage": "https://github.com/Jackett/Jackett",
+          "id": "brew:jackett",
+          "installURL": "pkgmgrmgr://install?package=brew%3Ajackett",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Cowsay but with ponies",
-          "category": "toys",
-          "displayName": "ponysay",
-          "homepage": "https://github.com/erkin/ponysay/",
-          "id": "brew:ponysay",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aponysay",
+          "agentSummary": "Open-source download manager",
+          "category": "networking",
+          "displayName": "Motrix",
+          "homepage": "https://motrix.app/",
+          "id": "brew:cask:motrix",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amotrix",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Frontend application for the Buttplug sex toy control library",
-          "category": "toys",
-          "displayName": "Intiface Central",
-          "homepage": "https://github.com/intiface/intiface-central",
-          "id": "brew:cask:intiface-central",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aintiface-central",
+          "agentSummary": "Highly OpenSSH-compatible client with extended features",
+          "category": "networking",
+          "displayName": "trzsz-ssh",
+          "homepage": "https://trzsz.github.io/tssh",
+          "id": "brew:trzsz-ssh",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atrzsz-ssh",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-10-18T10:30:40Z",
-      "title": "Recently Updated in Toys",
+      "title": "Recently Updated in Networking",
       "type": "recentlyUpdated"
     },
     {
       "batchID": "20261018T103040Z-fd56ff4d",
-      "id": "new-packages:system:20261022T070248Z-f220bb45",
+      "id": "new-packages:language-runtime:20261025T102927Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Keep the computer awake with the lid closed and the built-in display dark",
-          "category": "system",
-          "displayName": "Clamshell",
-          "homepage": "https://clamshell.dev/",
-          "id": "brew:cask:clamshell",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclamshell",
+          "agentSummary": "C/C++ and Java libraries for Unicode and globalization",
+          "category": "language-runtime",
+          "displayName": "icu4c@79",
+          "homepage": "https://icu.unicode.org/home",
+          "id": "brew:icu4c@79",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aicu4c%4079",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-10-18T10:30:40Z",
-      "title": "New Packages in System",
+      "title": "New Packages in Language Runtime",
       "type": "newPackages"
+    },
+    {
+      "batchID": "20261018T103040Z-fd56ff4d",
+      "id": "recently-updated:other:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Monero (XMR) CPU miner",
+          "category": "other",
+          "displayName": "xmrig",
+          "homepage": "https://xmrig.com/",
+          "id": "brew:xmrig",
+          "installURL": "pkgmgrmgr://install?package=brew%3Axmrig",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Fork of SQLite that is both Open Source, and Open Contributions",
+          "category": "other",
+          "displayName": "libsql",
+          "homepage": "https://turso.tech/libsql",
+          "id": "brew:libsql",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibsql",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "C++ implementation of STL for extra large data sets",
+          "category": "other",
+          "displayName": "libstxxl",
+          "homepage": "https://stxxl.sourceforge.net/",
+          "id": "brew:libstxxl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibstxxl",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Morse code tutor and command-line tools",
+          "category": "other",
+          "displayName": "unixcw",
+          "homepage": "https://unixcw.sourceforge.net/",
+          "id": "brew:unixcw",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aunixcw",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Generic library support script",
+          "category": "other",
+          "displayName": "libtool",
+          "homepage": "https://www.gnu.org/software/libtool/",
+          "id": "brew:libtool",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibtool",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-18T10:30:40Z",
+      "title": "Recently Updated in Other",
+      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -1219,218 +2046,83 @@
     },
     {
       "batchID": "20261015T075024Z-7e6fc329",
-      "id": "recently-updated:productivity:20261022T070248Z-f220bb45",
+      "id": "new-packages:media:20261025T102927Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Create invoices and estimates",
-          "category": "productivity",
-          "displayName": "GrandTotal",
-          "homepage": "https://www.mediaatelier.com/GrandTotal/",
-          "id": "brew:cask:grandtotal",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agrandtotal",
+          "agentSummary": "Headless FilmCraft CLI and MCP server to edit, render and export video projects",
+          "category": "media",
+          "displayName": "filmcraft-cli",
+          "homepage": "https://getartcraft.com/apps/filmcraft",
+          "id": "brew:filmcraft-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Afilmcraft-cli",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "Excalidraw client",
-          "category": "productivity",
-          "displayName": "ExcalidrawZ",
-          "homepage": "https://excalidrawz.chocoford.com/",
-          "id": "brew:cask:excalidrawz",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aexcalidrawz",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Matrix collaboration client",
-          "category": "productivity",
-          "displayName": "Element Nightly",
-          "homepage": "https://element.io/get-started",
-          "id": "brew:cask:element@nightly",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aelement%40nightly",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Folder synchronization with OneDrive",
-          "category": "productivity",
-          "displayName": "onedrive-cli",
-          "homepage": "https://abraunegg.github.io",
-          "id": "brew:onedrive-cli",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aonedrive-cli",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "AI-assisted Launchpad replacement",
-          "category": "productivity",
-          "displayName": "AppGrid",
-          "homepage": "https://appgridmac.com/",
-          "id": "brew:cask:appgridmac",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aappgridmac",
+          "agentSummary": "Audio recorder and editor",
+          "category": "media",
+          "displayName": "Sound Studio",
+          "homepage": "https://www.felttip.com/ss/",
+          "id": "brew:cask:sound-studio",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asound-studio",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-10-15T07:50:24Z",
-      "title": "Recently Updated in Productivity",
-      "type": "recentlyUpdated"
+      "title": "New Packages in Media",
+      "type": "newPackages"
     },
     {
       "batchID": "20261015T075024Z-7e6fc329",
-      "id": "for-you:games:20261022T070248Z-f220bb45",
+      "id": "for-you:security:20261025T102927Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Query for the status of any game server in Node.JS",
-          "category": "games",
-          "displayName": "gamedig",
-          "homepage": "https://github.com/gamedig/node-gamedig#readme",
-          "id": "npm:gamedig",
-          "installURL": "pkgmgrmgr://install?package=npm%3Agamedig",
+          "agentSummary": "A tiny (117 bytes), secure URL-friendly unique string ID generator",
+          "category": "security",
+          "displayName": "nanoid",
+          "homepage": "https://github.com/ai/nanoid#readme",
+          "id": "npm:nanoid",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ananoid",
           "manager": "npm"
         },
         {
-          "agentSummary": "The Stockfish chess engine in Web Assembly (WASM)",
-          "category": "games",
-          "displayName": "stockfish",
-          "homepage": "https://github.com/nmrugg/stockfish.js#readme",
-          "id": "npm:stockfish",
-          "installURL": "pkgmgrmgr://install?package=npm%3Astockfish",
+          "agentSummary": "Streamable SHA hashes in pure javascript",
+          "category": "security",
+          "displayName": "sha.js",
+          "homepage": "https://github.com/crypto-browserify/sha.js",
+          "id": "npm:sha.js",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asha.js",
           "manager": "npm"
         },
         {
-          "agentSummary": "Rom manager for AdvanceMAME/MESS",
-          "category": "games",
-          "displayName": "advancescan",
-          "homepage": "https://www.advancemame.it/scan-readme.html",
-          "id": "brew:advancescan",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aadvancescan",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Near-future Sci-Fi roguelike and tactical squad combat game",
-          "category": "games",
-          "displayName": "allureofthestars",
-          "homepage": "https://allureofthestars.com/",
-          "id": "brew:allureofthestars",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aallureofthestars",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Dungeon exploration game",
-          "category": "games",
-          "displayName": "angband",
-          "homepage": "https://rephial.org/",
-          "id": "brew:angband",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aangband",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-10-15T07:50:24Z",
-      "title": "For You in Games",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20261015T075024Z-7e6fc329",
-      "id": "recently-updated:science:20261022T070248Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Warehouse of amateur radio information presented in an easy to use interface",
-          "category": "science",
-          "displayName": "GridTracker2",
-          "homepage": "https://gridtracker.org/",
-          "id": "brew:cask:gridtracker2",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Agridtracker2",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Whole-genome association analysis toolset (PLINK 2.0)",
-          "category": "science",
-          "displayName": "plink-ng",
-          "homepage": "https://www.cog-genomics.org/plink/2.0/",
-          "id": "brew:plink-ng",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aplink-ng",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Perl tools for bioinformatics, genomics and life science",
-          "category": "science",
-          "displayName": "bioperl",
-          "homepage": "https://bioperl.org",
-          "id": "brew:bioperl",
-          "installURL": "pkgmgrmgr://install?package=brew%3Abioperl",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Molecule editor and visualiser",
-          "category": "science",
-          "displayName": "Avogadro",
-          "homepage": "https://avogadro.cc/",
-          "id": "brew:cask:avogadro",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aavogadro",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Long read RNA-seq quantification",
-          "category": "science",
-          "displayName": "oarfish",
-          "homepage": "https://github.com/COMBINE-lab/oarfish",
-          "id": "brew:oarfish",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aoarfish",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-10-15T07:50:24Z",
-      "title": "Recently Updated in Science",
-      "type": "recentlyUpdated"
-    },
-    {
-      "batchID": "20261015T075024Z-7e6fc329",
-      "id": "for-you:developer-tools:20261022T070248Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "The semantic version parser used by npm.",
-          "category": "developer-tools",
-          "displayName": "semver",
-          "homepage": "https://github.com/npm/node-semver#readme",
-          "id": "npm:semver",
-          "installURL": "pkgmgrmgr://install?package=npm%3Asemver",
+          "agentSummary": "detect possibly catastrophic, exponential-time regular expressions",
+          "category": "security",
+          "displayName": "safe-regex2",
+          "homepage": "https://github.com/fastify/safe-regex2",
+          "id": "npm:safe-regex2",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asafe-regex2",
           "manager": "npm"
         },
         {
-          "agentSummary": "RFC9562 UUIDs",
-          "category": "developer-tools",
-          "displayName": "uuid",
-          "homepage": "https://github.com/uuidjs/uuid#readme",
-          "id": "npm:uuid",
-          "installURL": "pkgmgrmgr://install?package=npm%3Auuid",
+          "agentSummary": "Optimized bcrypt in plain JavaScript with zero dependencies, with TypeScript support. Compatible to 'bcrypt'.",
+          "category": "security",
+          "displayName": "bcryptjs",
+          "homepage": "https://github.com/dcodeIO/bcrypt.js#readme",
+          "id": "npm:bcryptjs",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abcryptjs",
           "manager": "npm"
         },
         {
-          "agentSummary": "An extremely fast JavaScript and CSS bundler and minifier.",
-          "category": "developer-tools",
-          "displayName": "esbuild",
-          "homepage": "https://github.com/evanw/esbuild#readme",
-          "id": "npm:esbuild",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aesbuild",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "resolve like require.resolve() on behalf of files asynchronously and synchronously",
-          "category": "developer-tools",
-          "displayName": "resolve",
-          "homepage": "https://github.com/browserify/resolve#readme",
-          "id": "npm:resolve",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aresolve",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Native-ESM powered web dev build tool",
-          "category": "developer-tools",
-          "displayName": "vite",
-          "homepage": "https://vite.dev",
-          "id": "npm:vite",
-          "installURL": "pkgmgrmgr://install?package=npm%3Avite",
+          "agentSummary": "Sanitize untrusted HTML (to prevent XSS) with a configuration specified by a Whitelist",
+          "category": "security",
+          "displayName": "xss",
+          "homepage": "https://github.com/leizongmin/js-xss",
+          "id": "npm:xss",
+          "installURL": "pkgmgrmgr://install?package=npm%3Axss",
           "manager": "npm"
         }
       ],
       "publishedAt": "2026-10-15T07:50:24Z",
-      "title": "For You in Developer Tools",
+      "title": "For You in Security",
       "type": "personalizedRecommendations"
     },
     {
@@ -1740,57 +2432,39 @@
     },
     {
       "batchID": "20261012T035302Z-6f4b50fe",
-      "id": "recently-updated:security:20261022T070248Z-f220bb45",
+      "id": "new-packages:productivity:20261025T102927Z-f220bb45",
       "packages": [
         {
-          "agentSummary": "Generates DNS names from existing domain names",
-          "category": "security",
-          "displayName": "dnsgen",
-          "homepage": "https://github.com/AlephNullSK/dnsgen",
-          "id": "brew:dnsgen",
-          "installURL": "pkgmgrmgr://install?package=brew%3Adnsgen",
+          "agentSummary": "WYSIWYG Markdown editor with built-in AI writing tools",
+          "category": "productivity",
+          "displayName": "Textus",
+          "homepage": "https://textus.catvinci.com/",
+          "id": "brew:cask:textus",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atextus",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "OSINT automation tool",
-          "category": "security",
-          "displayName": "bbot",
-          "homepage": "https://www.blacklanternsecurity.com/bbot/",
-          "id": "brew:bbot",
-          "installURL": "pkgmgrmgr://install?package=brew%3Abbot",
+          "agentSummary": "Local-first Markdown editor",
+          "category": "productivity",
+          "displayName": "Writer",
+          "homepage": "https://writer.computer/",
+          "id": "brew:cask:writer",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Awriter",
           "manager": "homebrew"
         },
         {
-          "agentSummary": "File integrity monitoring tool",
-          "category": "security",
-          "displayName": "kekkai",
-          "homepage": "https://github.com/catatsuy/kekkai",
-          "id": "brew:kekkai",
-          "installURL": "pkgmgrmgr://install?package=brew%3Akekkai",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Find and verify credentials",
-          "category": "security",
-          "displayName": "trufflehog",
-          "homepage": "https://trufflesecurity.com/",
-          "id": "brew:trufflehog",
-          "installURL": "pkgmgrmgr://install?package=brew%3Atrufflehog",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Database of public exploits and corresponding vulnerable software",
-          "category": "security",
-          "displayName": "exploitdb",
-          "homepage": "https://www.exploit-db.com/",
-          "id": "brew:exploitdb",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aexploitdb",
+          "agentSummary": "Keyboard shortcut conflict detector",
+          "category": "productivity",
+          "displayName": "HotkeyClash",
+          "homepage": "https://hotkeyclash.com/",
+          "id": "brew:cask:hotkeyclash",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahotkeyclash",
           "manager": "homebrew"
         }
       ],
       "publishedAt": "2026-10-12T03:53:02Z",
-      "title": "Recently Updated in Security",
-      "type": "recentlyUpdated"
+      "title": "New Packages in Productivity",
+      "type": "newPackages"
     },
     {
       "artwork": {
@@ -2114,784 +2788,10 @@
       ],
       "title": "Three Young Rust Tools Rework Document Pipelines",
       "type": "editorial"
-    },
-    {
-      "batchID": "20261008T074826Z-3ab4a1be",
-      "id": "for-you:productivity:20261022T070248Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "A live preview of your emails right in your browser.",
-          "category": "productivity",
-          "displayName": "react-email",
-          "homepage": null,
-          "id": "npm:react-email",
-          "installURL": "pkgmgrmgr://install?package=npm%3Areact-email",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Read and modify Office Add-in manifest files.",
-          "category": "productivity",
-          "displayName": "office-addin-manifest",
-          "homepage": "https://github.com/OfficeDev/Office-Addin-Scripts#readme",
-          "id": "npm:office-addin-manifest",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aoffice-addin-manifest",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "This package helps to transform resources to be used in a typesafe i18next project.",
-          "category": "productivity",
-          "displayName": "i18next-resources-for-ts",
-          "homepage": "https://github.com/i18next/i18next-resources-for-ts",
-          "id": "npm:i18next-resources-for-ts",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ai18next-resources-for-ts",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "A unified, high-performance i18next CLI.",
-          "category": "productivity",
-          "displayName": "i18next-cli",
-          "homepage": "https://github.com/i18next/i18next-cli",
-          "id": "npm:i18next-cli",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ai18next-cli",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "The Bump CLI is used to interact with your API documentation hosted on Bump.sh by using the APIs of developers.bump.sh",
-          "category": "productivity",
-          "displayName": "bump-cli",
-          "homepage": "https://bump.sh",
-          "id": "npm:bump-cli",
-          "installURL": "pkgmgrmgr://install?package=npm%3Abump-cli",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-10-08T07:48:26Z",
-      "title": "For You in Productivity",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "artwork": {
-        "alt": "A luminous violet language-intelligence core sends semantic data streams into three distinct abstract code editor panels.",
-        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#26134F",
-          "backgroundStart": "#090D2D",
-          "foreground": "#F7F4FF"
-        },
-        "license": "OpenAI terms of use",
-        "path": "feed/assets/kotlin-lsp-editor-boundary-2026-10-04.png"
-      },
-      "batchID": "20261004T080130Z-f09b4fea",
-      "body": "## An official server changes the starting point\n\nKotlin developers outside IntelliJ IDEA have long depended on editor-specific plugins, community servers, or a deliberately lighter editing experience. JetBrains' official Kotlin language server changes that baseline. The repository appeared in 2025, and its first published GitHub release in May shipped both a Visual Studio Code extension and a standalone archive for other Language Server Protocol clients. The project now describes itself as official Kotlin support for VS Code, built from IntelliJ IDEA and Kotlin plugin technology.\n\nThat provenance matters more than the badge. Language tooling is not only syntax coloring. Useful completion needs a project model; navigation must understand dependencies; rename needs semantic references; diagnostics must agree with the language and build. Kotlin LSP currently advertises IntelliJ-derived completion, diagnostics, quick fixes, formatting, call hierarchy, imports, hover information, and refactoring. It can import JVM projects using Gradle or Maven, with experimental Android Gradle Plugin support. In practical terms, the server moves a meaningful portion of JetBrains' Kotlin knowledge behind a standard editor protocol.\n\nIt does **not** turn every editor into IntelliJ IDEA. The project is explicitly alpha, Kotlin Multiplatform support is still planned, and the implementation includes proprietary components drawn from JetBrains products. The public repository is primarily a mirror, not a conventional community implementation accepting core contributions. Those constraints should shape expectations from the first installation.\n\n## The protocol is a boundary, not a guarantee\n\nLSP separates language intelligence from the interface that displays it. The server can answer requests for completion, definitions, symbols, edits, and diagnostics; the client decides how those answers fit into buffers, keybindings, panels, and workflows. That boundary creates portability, but it also creates two moving parts. When an action behaves strangely, users must ask whether the problem is in the project import, the server, the protocol exchange, the editor client, or another plugin.\n\nThe Kotlin project says releases are generally tested with Visual Studio Code. That makes VS Code the most direct path: install the Kotlin by JetBrains extension, open a Kotlin workspace, and let the extension activate the bundled server. Visual Studio Code Insiders is useful when extension developers or early adopters need to test upcoming editor behavior, but its frequent preview updates add another source of change. A reproducible report should record both editor and server versions.\n\nNeovim exposes the other side of the bargain. Its built-in LSP client can attach external servers to buffers and provide diagnostics, navigation, completion hooks, and workspace operations. Kotlin LSP publishes a standalone distribution and community-maintained scripts for editors beyond VS Code, so a Neovim setup is possible. It is also less packaged: users are responsible for the launch command, workspace root, capabilities, completion integration, and any plugin interactions. That control is the attraction and the maintenance cost.\n\n## What day-to-day use looks like\n\nA realistic evaluation begins with one ordinary JVM repository, not the most complicated multiplatform build in the company. Confirm that the server imports the Gradle or Maven model, resolves the intended JDK, and reaches a quiet diagnostic state. Then test a short workflow:\n\n- navigate from a call to source and back;\n- rename a symbol across more than one file;\n- apply a quick fix and inspect the resulting edit;\n- compare formatting with the team's committed style;\n- run the real build and test suite after semantic edits.\n\nThe last step is essential. An editor service accelerates feedback; it does not replace the compiler, build tool, or CI. Teams should also measure startup and indexing on representative repositories, because a language server derived from IDE infrastructure has a different resource profile from a minimal syntax plugin. Recent releases have worked on bundle size, caching, Gradle import, completion latency, Maven support, and memory leaks, evidence that the project is actively addressing exactly these operational edges.\n\n## Choose the client by responsibility\n\nFor the smoothest supported path, use the packaged VS Code extension and stay conscious that alpha releases can regress. Use Insiders when testing future editor integration is itself the job, not merely because it is newer. Choose Neovim when explicit configuration and terminal-native editing are worth owning more integration detail. Keep IntelliJ IDEA or Android Studio available when a project depends on mature Kotlin-specific inspections, Android tooling, or workflows the server has not reached.\n\nKotlin LSP is interesting because it is neither a complete IDE replacement nor a thin community bridge. It is a new official boundary around JetBrains' language intelligence. That makes more editor choices credible, while placing new importance on version pinning, reproducible configurations, and clear bug reports across both sides of the protocol.",
-      "deck": "JetBrains' alpha language server brings IntelliJ-derived Kotlin analysis to VS Code and other LSP clients, while making the editor-server boundary impossible to ignore.",
-      "id": "editorial:2026-10-04:kotlin-lsp-moves-language-intelligence-between-editors",
-      "package": {
-        "agentSummary": "JetBrains' official Kotlin language server brings IntelliJ-derived completion, diagnostics, navigation, refactoring, and Gradle or Maven project support to LSP-capable editors.",
-        "assessment": {
-          "alternatives": [
-            "IntelliJ IDEA or Android Studio for the most complete Kotlin IDE experience",
-            "Community Kotlin language servers for workflows the official alpha does not yet support"
-          ],
-          "audiences": [
-            "Kotlin developers who work outside IntelliJ IDEA",
-            "Editor integrators evaluating official Kotlin language intelligence",
-            "Teams using VS Code for JVM projects"
-          ],
-          "caveats": [
-            "The project is explicitly alpha and feature completeness is still evolving",
-            "Kotlin Multiplatform support is not yet available",
-            "Android Gradle Plugin support is experimental",
-            "The implementation includes proprietary JetBrains components and the repository is mainly a read-only mirror"
-          ],
-          "complements": [
-            "Gradle or Maven for project models and dependency resolution",
-            "A Kotlin compiler and project test suite",
-            "Editor-specific LSP configuration and diagnostics tooling"
-          ],
-          "prerequisites": [
-            "A supported macOS, Linux, or Windows system",
-            "An LSP-capable editor or the bundled Visual Studio Code extension",
-            "A compatible JDK and build-tool configuration for the project"
-          ],
-          "useCases": [
-            "Add completion, diagnostics, navigation, formatting, and refactoring to Kotlin workspaces",
-            "Import Gradle and Maven JVM projects into an LSP-based editor",
-            "Test Kotlin editor workflows against JetBrains' evolving language engine"
-          ]
-        },
-        "category": "developer-tools",
-        "displayName": "Kotlin LSP",
-        "docs": "https://github.com/Kotlin/kotlin-lsp#readme",
-        "homepage": "https://github.com/Kotlin/kotlin-lsp",
-        "id": "brew:cask:kotlin-lsp",
-        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akotlin-lsp",
-        "lastUpdatedAt": "2026-10-03T14:41:59Z",
-        "manager": "homebrew",
-        "repository": "https://github.com/Kotlin/kotlin-lsp",
-        "researchedAt": "2026-10-04T08:01:30Z",
-        "sources": [
-          {
-            "kind": "primary",
-            "title": "Official Kotlin language server repository and documentation",
-            "url": "https://github.com/Kotlin/kotlin-lsp"
-          },
-          {
-            "kind": "primary",
-            "title": "First published Kotlin LSP release",
-            "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
-          }
-        ],
-        "upstreamSummary": "Official Kotlin Language Server",
-        "version": "263.6379.0"
-      },
-      "primaryPackageID": "brew:cask:kotlin-lsp",
-      "publishedAt": "2026-10-04T08:01:30Z",
-      "relatedPackages": [
-        {
-          "agentSummary": "JetBrains' official Kotlin language server brings IntelliJ-derived completion, diagnostics, navigation, refactoring, and Gradle or Maven project support to LSP-capable editors.",
-          "assessment": {
-            "alternatives": [
-              "IntelliJ IDEA or Android Studio for the most complete Kotlin IDE experience",
-              "Community Kotlin language servers for workflows the official alpha does not yet support"
-            ],
-            "audiences": [
-              "Kotlin developers who work outside IntelliJ IDEA",
-              "Editor integrators evaluating official Kotlin language intelligence",
-              "Teams using VS Code for JVM projects"
-            ],
-            "caveats": [
-              "The project is explicitly alpha and feature completeness is still evolving",
-              "Kotlin Multiplatform support is not yet available",
-              "Android Gradle Plugin support is experimental",
-              "The implementation includes proprietary JetBrains components and the repository is mainly a read-only mirror"
-            ],
-            "complements": [
-              "Gradle or Maven for project models and dependency resolution",
-              "A Kotlin compiler and project test suite",
-              "Editor-specific LSP configuration and diagnostics tooling"
-            ],
-            "prerequisites": [
-              "A supported macOS, Linux, or Windows system",
-              "An LSP-capable editor or the bundled Visual Studio Code extension",
-              "A compatible JDK and build-tool configuration for the project"
-            ],
-            "useCases": [
-              "Add completion, diagnostics, navigation, formatting, and refactoring to Kotlin workspaces",
-              "Import Gradle and Maven JVM projects into an LSP-based editor",
-              "Test Kotlin editor workflows against JetBrains' evolving language engine"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "Kotlin LSP",
-          "docs": "https://github.com/Kotlin/kotlin-lsp#readme",
-          "homepage": "https://github.com/Kotlin/kotlin-lsp",
-          "id": "brew:cask:kotlin-lsp",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akotlin-lsp",
-          "lastUpdatedAt": "2026-10-03T14:41:59Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/Kotlin/kotlin-lsp",
-          "researchedAt": "2026-10-04T08:01:30Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Official Kotlin language server repository and documentation",
-              "url": "https://github.com/Kotlin/kotlin-lsp"
-            },
-            {
-              "kind": "primary",
-              "title": "First published Kotlin LSP release",
-              "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
-            }
-          ],
-          "upstreamSummary": "Official Kotlin Language Server",
-          "version": "263.6379.0"
-        },
-        {
-          "agentSummary": "Visual Studio Code Insiders delivers Microsoft's frequently updated preview editor, providing the primary tested client for JetBrains' official Kotlin language server extension.",
-          "assessment": {
-            "alternatives": [
-              "Stable Visual Studio Code for a slower release cadence",
-              "Neovim or another editor with an LSP client",
-              "IntelliJ IDEA for deeply integrated Kotlin tooling"
-            ],
-            "audiences": [
-              "Developers who want early access to Visual Studio Code changes",
-              "Extension authors testing against upcoming editor behavior",
-              "Kotlin developers evaluating JetBrains' official VS Code integration"
-            ],
-            "caveats": [
-              "Insiders builds change frequently and may include regressions",
-              "Preview behavior can differ from the stable channel",
-              "An editor update and a language-server update can introduce separate variables during troubleshooting"
-            ],
-            "complements": [
-              "The Kotlin by JetBrains extension",
-              "Extension development and integration test suites",
-              "Stable Visual Studio Code for daily production work"
-            ],
-            "prerequisites": [
-              "Tolerance for frequent preview updates",
-              "A separate plan for stable-editor workflows and settings synchronization"
-            ],
-            "useCases": [
-              "Evaluate preview editor and extension-host changes",
-              "Run the officially tested Kotlin LSP client experience",
-              "Reproduce extension issues against current Insiders builds"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "Visual Studio Code Insiders",
-          "docs": "https://code.visualstudio.com/docs",
-          "homepage": "https://code.visualstudio.com/insiders/",
-          "id": "brew:cask:visual-studio-code@insiders",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Avisual-studio-code%40insiders",
-          "lastUpdatedAt": "2026-10-03T23:15:15Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/microsoft/vscode",
-          "researchedAt": "2026-10-04T08:01:30Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Visual Studio Code Insiders",
-              "url": "https://code.visualstudio.com/insiders/"
-            },
-            {
-              "kind": "primary",
-              "title": "Visual Studio Code source repository",
-              "url": "https://github.com/microsoft/vscode"
-            }
-          ],
-          "upstreamSummary": "Open-source code editor",
-          "version": "1.141.0-insider,1791051985777,429a4ec703266abbd31f6886764e4127955bdc9d"
-        },
-        {
-          "agentSummary": "Neovim combines modal editing with a built-in LSP client, letting users connect Kotlin and other language servers through explicit, scriptable configuration.",
-          "assessment": {
-            "alternatives": [
-              "Visual Studio Code for a packaged extension workflow",
-              "Helix for another terminal editor with integrated language-server support",
-              "IntelliJ IDEA for the most complete Kotlin integration"
-            ],
-            "audiences": [
-              "Terminal-oriented developers who prefer modal editing",
-              "Users who want direct control over language-server configuration",
-              "Plugin authors building editor workflows around Neovim's APIs"
-            ],
-            "caveats": [
-              "The Kotlin project officially tests releases with Visual Studio Code rather than every LSP client",
-              "Users own more of the launch, root-detection, capability, and plugin configuration",
-              "Editor plugins can add compatibility variables beyond the language server itself"
-            ],
-            "complements": [
-              "Completion and snippet plugins",
-              "Treesitter parsers for syntax-aware editing",
-              "Project-specific formatter, linter, and test commands"
-            ],
-            "prerequisites": [
-              "A working Neovim configuration",
-              "A separately installed and configured language server",
-              "Project roots and launch commands appropriate to each server"
-            ],
-            "useCases": [
-              "Connect external language servers to buffers and workspaces",
-              "Build keyboard-driven diagnostics, navigation, completion, and refactoring workflows",
-              "Experiment with the standalone Kotlin LSP outside its primary VS Code client"
-            ]
-          },
-          "category": "developer-tools",
-          "displayName": "neovim",
-          "docs": "https://neovim.io/doc",
-          "homepage": "https://neovim.io/",
-          "id": "brew:neovim",
-          "installURL": "pkgmgrmgr://install?package=brew%3Aneovim",
-          "lastUpdatedAt": "2026-10-03T15:40:59Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/neovim/neovim",
-          "researchedAt": "2026-10-04T08:01:30Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Neovim LSP client documentation",
-              "url": "https://neovim.io/doc/user/lsp.html"
-            },
-            {
-              "kind": "primary",
-              "title": "Neovim source repository",
-              "url": "https://github.com/neovim/neovim"
-            }
-          ],
-          "upstreamSummary": "Ambitious Vim-fork focused on extensibility and agility",
-          "version": "0.12.5"
-        }
-      ],
-      "selection": {
-        "newerOverride": {
-          "reason": "JetBrains introduced its official Kotlin language server and VS Code integration as a new alpha product direction in 2025, with a standalone LSP distribution for other editors.",
-          "sourceURL": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
-        },
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Official Kotlin language server repository and documentation",
-          "url": "https://github.com/Kotlin/kotlin-lsp"
-        },
-        {
-          "kind": "primary",
-          "title": "First published Kotlin LSP release",
-          "url": "https://github.com/Kotlin/kotlin-lsp/releases/tag/kotlin-lsp/v0.252.17811"
-        },
-        {
-          "kind": "primary",
-          "title": "Visual Studio Code Insiders",
-          "url": "https://code.visualstudio.com/insiders/"
-        },
-        {
-          "kind": "primary",
-          "title": "Neovim LSP client documentation",
-          "url": "https://neovim.io/doc/user/lsp.html"
-        }
-      ],
-      "title": "Kotlin LSP Moves Language Intelligence Between Editors",
-      "type": "editorial"
-    },
-    {
-      "batchID": "20261004T080130Z-97631b37",
-      "id": "new-packages:cloud-infrastructure:20261022T070248Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Command-line interface for Fly.io Sprites",
-          "category": "cloud-infrastructure",
-          "displayName": "Sprites",
-          "homepage": "https://sprites.dev/",
-          "id": "brew:cask:sprites",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asprites",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-10-04T08:01:30Z",
-      "title": "New Packages in Cloud Infrastructure",
-      "type": "newPackages"
-    },
-    {
-      "batchID": "20261004T080130Z-97631b37",
-      "id": "for-you:ai:20261022T070248Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "The open agent skills ecosystem",
-          "category": "ai",
-          "displayName": "skills",
-          "homepage": "https://github.com/vercel-labs/skills#readme",
-          "id": "npm:skills",
-          "installURL": "pkgmgrmgr://install?package=npm%3Askills",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Multi-channel AI gateway with extensible messaging integrations",
-          "category": "ai",
-          "displayName": "openclaw",
-          "homepage": "https://github.com/openclaw/openclaw#readme",
-          "id": "npm:openclaw",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aopenclaw",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "opencode-ai is available through npm for installation and management in Package Manager Manager.",
-          "category": "ai",
-          "displayName": "opencode-ai",
-          "homepage": null,
-          "id": "npm:opencode-ai",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aopencode-ai",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "MCP server for Chrome DevTools",
-          "category": "ai",
-          "displayName": "chrome-devtools-mcp",
-          "homepage": "https://github.com/ChromeDevTools/chrome-devtools-mcp#readme",
-          "id": "npm:chrome-devtools-mcp",
-          "installURL": "pkgmgrmgr://install?package=npm%3Achrome-devtools-mcp",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "A home for your AI agents",
-          "category": "ai",
-          "displayName": "agents",
-          "homepage": null,
-          "id": "npm:agents",
-          "installURL": "pkgmgrmgr://install?package=npm%3Aagents",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-10-04T08:01:30Z",
-      "title": "For You in Ai",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "batchID": "20261004T080130Z-97631b37",
-      "id": "new-packages:media:20261022T070248Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Headless FilmCraft CLI and MCP server to edit, render and export video projects",
-          "category": "media",
-          "displayName": "filmcraft-cli",
-          "homepage": "https://getartcraft.com/apps/filmcraft",
-          "id": "brew:filmcraft-cli",
-          "installURL": "pkgmgrmgr://install?package=brew%3Afilmcraft-cli",
-          "manager": "homebrew"
-        },
-        {
-          "agentSummary": "Audio recorder and editor",
-          "category": "media",
-          "displayName": "Sound Studio",
-          "homepage": "https://www.felttip.com/ss/",
-          "id": "brew:cask:sound-studio",
-          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asound-studio",
-          "manager": "homebrew"
-        }
-      ],
-      "publishedAt": "2026-10-04T08:01:30Z",
-      "title": "New Packages in Media",
-      "type": "newPackages"
-    },
-    {
-      "batchID": "20261004T080130Z-97631b37",
-      "id": "for-you:toys:20261022T070248Z-f220bb45",
-      "packages": [
-        {
-          "agentSummary": "Returns from a pool of 15m human-readable IDs",
-          "category": "toys",
-          "displayName": "human-id",
-          "homepage": "https://github.com/RienNeVaPlus/human-id#readme",
-          "id": "npm:human-id",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ahuman-id",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Creates ASCII Art from text. A full implementation of the FIGfont spec.",
-          "category": "toys",
-          "displayName": "figlet",
-          "homepage": "https://github.com/patorjk/figlet.js#readme",
-          "id": "npm:figlet",
-          "installURL": "pkgmgrmgr://install?package=npm%3Afiglet",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Tell Yeoman what to say",
-          "category": "toys",
-          "displayName": "yosay",
-          "homepage": "https://github.com/yeoman/yosay#readme",
-          "id": "npm:yosay",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ayosay",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "Generates lorem ipsum placeholder text for Node.js, Deno, browsers, and React Native. Developed with Bun.",
-          "category": "toys",
-          "displayName": "lorem-ipsum",
-          "homepage": null,
-          "id": "npm:lorem-ipsum",
-          "installURL": "pkgmgrmgr://install?package=npm%3Alorem-ipsum",
-          "manager": "npm"
-        },
-        {
-          "agentSummary": "The Yeoman character in your CLI. Like wat.",
-          "category": "toys",
-          "displayName": "yeoman-character",
-          "homepage": "https://github.com/yeoman/yeoman-character#readme",
-          "id": "npm:yeoman-character",
-          "installURL": "pkgmgrmgr://install?package=npm%3Ayeoman-character",
-          "manager": "npm"
-        }
-      ],
-      "publishedAt": "2026-10-04T08:01:30Z",
-      "title": "For You in Toys",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "artwork": {
-        "alt": "An operator watches luminous workload clusters above guarded infrastructure nodes while abstract deployment sheets flow into the system.",
-        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
-        "boxColors": {
-          "backgroundEnd": "#152B46",
-          "backgroundStart": "#0B192D",
-          "foreground": "#F4F7FF"
-        },
-        "license": "OpenAI terms of use",
-        "path": "feed/assets/sofka-layered-kubernetes-operations-2026-09-30.png"
-      },
-      "batchID": "20260930T090325Z-0c689ed1",
-      "body": "## A new terminal window into the cluster\n\nKubernetes operators rarely lack commands. The harder problem is choosing the right control surface while an incident is unfolding. `kubectl` is exact and scriptable, dashboards are broad, and established terminal interfaces make resource navigation fast. Sofka enters that crowded space with a sharper premise: keep the interface asynchronous, make safety policy enforceable, and explain unhealthy state from cluster evidence rather than an external AI service.\n\nThe project is genuinely young. Its first non-prerelease GitHub release, v0.1.5, appeared in July 2026, and its documentation already describes a surprisingly wide operating surface. Sofka browses built-in resources and CRDs through one pipeline, follows logs, manages background port-forwards, edits resources, restarts rollouts, and exposes native actions for Flux and Argo CD objects. The `X` view assembles a deterministic incident explanation from observed state, while the timeline view emphasizes change over a static snapshot.\n\nThat breadth could sound like another attempt to put every Kubernetes task behind one screen. The more useful reading is different: sofka is strongest when treated as the **observation and interaction layer**, not the sole source of truth. Its read-only mode, per-context settings, production guardrails, action journal, and RBAC-aware checks all acknowledge that a convenient interface can also make dangerous actions convenient.\n\n## What actual use looks like\n\nA practical session begins with the same credential and context material used by other Kubernetes clients. An operator can open pods in the current namespace, start with `-A` for all namespaces, or use a context picker before connecting. During a rollout, the terminal can filter objects, follow logs, inspect live events, compare state changes, and keep port-forwards running without freezing the interface. For automation or a quick confidence check, `sofka --check` performs discovery and exits, while `--snapshot` renders a resource view to standard output without an interactive terminal.\n\nThe interesting day-two features are the ones that reduce context switching. Native Flux and Argo CD actions let an operator reconcile or suspend supported objects without invoking separate CLIs. A Helm inspector decodes release Secrets, custom-resource views honor printer columns, and workspaces can group related resources. None of that removes the need to understand the API beneath the screen. It does make the first five minutes of investigation more coherent.\n\nThere are real tradeoffs. Sofka is evolving quickly, its downloaded macOS binaries are not yet signed or notarized, and a young TUI cannot inherit years of operational familiarity overnight. Teams should begin in read-only mode, confirm how custom resources render, and keep exact commands in runbooks. A terminal that exposes bulk delete or force-delete deserves the same change discipline as any other privileged client.\n\n## Node lifecycle belongs to talosctl\n\nSofka sees Kubernetes resources after a cluster API is available. Talosctl operates a layer lower. It talks to the Talos API to configure machines, inspect services, bootstrap control planes, gather diagnostics, upgrade nodes, and perform lifecycle operations on Talos Linux. Those are machine-management responsibilities, not merely another resource view.\n\nThat boundary matters during failures. If the Kubernetes API is healthy but a workload is stuck, sofka can organize the evidence. If the node operating system, certificates, or Talos services are the problem, talosctl is the appropriate instrument. Sidero Labs also warns that the talosctl version should match the Talos Linux version on the host. Package upgrades therefore need coordination with cluster upgrades rather than an automatic assumption that newest is always best.\n\nThe credentials differ too. Sofka generally follows kubeconfig and Kubernetes RBAC; talosctl uses talosconfig and Talos API roles. Keeping those files separate, narrowly distributed, and auditable preserves the architectural boundary the tools themselves reflect.\n\n## Desired releases belong in Helmfile\n\nHelmfile occupies the third layer: declared deployment intent. Its state files collect Helm releases, repositories, environments, and values in version control. Teams can review a diff in CI, apply a selected environment, and periodically synchronize to reduce configuration skew. That is a different rhythm from an operator navigating a live cluster.\n\nThe separation creates a clean loop:\n\n- **Helmfile** records and reviews what releases should exist.\n- **sofka** shows what workloads are doing now and supports bounded intervention.\n- **talosctl** manages the machines and services beneath Kubernetes when node-level work is necessary.\n\nOverlap still exists. Sofka can inspect Helm data and trigger GitOps actions; Helmfile can surface changes through diff; talosctl exposes an interactive dashboard in the Talos ecosystem. The test is authority, not interface style. Durable application changes should return to version-controlled release state. Node lifecycle changes should use the node-management API. Live diagnosis should begin with the least-mutating view that answers the question.\n\n## A useful newcomer with an explicit boundary\n\nSofka is compelling because it does not merely redraw a table of pods. Its async architecture, deterministic explanations, custom-resource pipeline, and safety controls make a thoughtful case for a modern Kubernetes TUI. The project is still young enough that operators should validate it against their clusters and policies before depending on every feature.\n\nUsed with clear boundaries, however, it fits a mature workflow. Observe and investigate with sofka. Change declared releases through Helmfile and review. Reach for talosctl when the machine layer is actually at fault. The result is not one magical operations console, but something more reliable: three tools whose scopes explain where each change belongs.",
-      "deck": "A young Rust TUI makes a useful distinction visible: observing workloads, managing nodes, and declaring releases are related jobs, not one job.",
-      "id": "editorial:2026-09-30:sofka-three-layers-kubernetes-operations",
-      "package": {
-        "agentSummary": "A fast Rust Kubernetes TUI that combines resource browsing, deterministic incident explanations, GitOps actions, background port-forwards, and enforceable production guardrails.",
-        "assessment": {
-          "alternatives": [
-            "k9s",
-            "Headlamp",
-            "Lens"
-          ],
-          "audiences": [
-            "Kubernetes operators and platform engineers",
-            "SREs who prefer terminal-first incident response",
-            "Flux CD and Argo CD users"
-          ],
-          "caveats": [
-            "The project is young and evolving quickly",
-            "Downloaded macOS release binaries are not yet signed or notarized",
-            "Mutating actions still depend on Kubernetes RBAC and operator judgment"
-          ],
-          "complements": [
-            "kubectl for scripts and exact API operations",
-            "Helmfile for declarative release state",
-            "talosctl for Talos Linux node lifecycle"
-          ],
-          "prerequisites": [
-            "A reachable Kubernetes cluster and valid kubeconfig",
-            "RBAC permissions appropriate to the intended actions"
-          ],
-          "useCases": [
-            "Browse built-in and custom Kubernetes resources",
-            "Inspect unhealthy workloads with deterministic evidence",
-            "Manage logs, port-forwards, rollouts, and selected GitOps actions"
-          ]
-        },
-        "category": "cloud-infrastructure",
-        "displayName": "sofka",
-        "docs": "https://github.com/nklmilojevic/sofka#readme",
-        "homepage": "https://github.com/nklmilojevic/sofka",
-        "id": "brew:sofka",
-        "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
-        "lastUpdatedAt": "2026-09-30T04:05:54Z",
-        "manager": "homebrew",
-        "repository": "https://github.com/nklmilojevic/sofka",
-        "researchedAt": "2026-09-30T09:03:25Z",
-        "sources": [
-          {
-            "kind": "primary",
-            "title": "sofka project documentation",
-            "url": "https://github.com/nklmilojevic/sofka"
-          },
-          {
-            "kind": "primary",
-            "title": "sofka v0.1.5 first stable release",
-            "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
-          }
-        ],
-        "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
-        "version": "0.29.6"
-      },
-      "primaryPackageID": "brew:sofka",
-      "publishedAt": "2026-09-30T09:03:25Z",
-      "relatedPackages": [
-        {
-          "agentSummary": "A fast Rust Kubernetes TUI that combines resource browsing, deterministic incident explanations, GitOps actions, background port-forwards, and enforceable production guardrails.",
-          "assessment": {
-            "alternatives": [
-              "k9s",
-              "Headlamp",
-              "Lens"
-            ],
-            "audiences": [
-              "Kubernetes operators and platform engineers",
-              "SREs who prefer terminal-first incident response",
-              "Flux CD and Argo CD users"
-            ],
-            "caveats": [
-              "The project is young and evolving quickly",
-              "Downloaded macOS release binaries are not yet signed or notarized",
-              "Mutating actions still depend on Kubernetes RBAC and operator judgment"
-            ],
-            "complements": [
-              "kubectl for scripts and exact API operations",
-              "Helmfile for declarative release state",
-              "talosctl for Talos Linux node lifecycle"
-            ],
-            "prerequisites": [
-              "A reachable Kubernetes cluster and valid kubeconfig",
-              "RBAC permissions appropriate to the intended actions"
-            ],
-            "useCases": [
-              "Browse built-in and custom Kubernetes resources",
-              "Inspect unhealthy workloads with deterministic evidence",
-              "Manage logs, port-forwards, rollouts, and selected GitOps actions"
-            ]
-          },
-          "category": "cloud-infrastructure",
-          "displayName": "sofka",
-          "docs": "https://github.com/nklmilojevic/sofka#readme",
-          "homepage": "https://github.com/nklmilojevic/sofka",
-          "id": "brew:sofka",
-          "installURL": "pkgmgrmgr://install?package=brew%3Asofka",
-          "lastUpdatedAt": "2026-09-30T04:05:54Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/nklmilojevic/sofka",
-          "researchedAt": "2026-09-30T09:03:25Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "sofka project documentation",
-              "url": "https://github.com/nklmilojevic/sofka"
-            },
-            {
-              "kind": "primary",
-              "title": "sofka v0.1.5 first stable release",
-              "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
-            }
-          ],
-          "upstreamSummary": "Kubernetes TUI, reimagined in Rust",
-          "version": "0.29.6"
-        },
-        {
-          "agentSummary": "The administrative CLI for Talos Linux, used to configure machines, query the Talos API, inspect services, and manage Kubernetes node lifecycles.",
-          "assessment": {
-            "alternatives": [
-              "Talos Linux API clients",
-              "Distribution-specific node administration tools"
-            ],
-            "audiences": [
-              "Talos Linux cluster administrators",
-              "Platform teams operating immutable Kubernetes nodes"
-            ],
-            "caveats": [
-              "It manages Talos machines rather than serving as a general Kubernetes resource browser",
-              "The CLI version should match the Talos Linux version on managed nodes",
-              "Credential-bearing talosconfig files require careful protection"
-            ],
-            "complements": [
-              "sofka or kubectl for Kubernetes workload inspection",
-              "Omni for managed Talos operations"
-            ],
-            "prerequisites": [
-              "Talos Linux nodes or a planned Talos deployment",
-              "A valid talosconfig with appropriate credentials",
-              "A talosctl version compatible with the cluster"
-            ],
-            "useCases": [
-              "Apply and inspect Talos machine configuration",
-              "Bootstrap, upgrade, reset, and troubleshoot Talos nodes",
-              "Query node services, logs, resources, and health through the Talos API"
-            ]
-          },
-          "category": "cloud-infrastructure",
-          "displayName": "talosctl",
-          "docs": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl",
-          "homepage": "https://www.talos.dev/",
-          "id": "brew:talosctl",
-          "installURL": "pkgmgrmgr://install?package=brew%3Atalosctl",
-          "lastUpdatedAt": "2026-09-30T04:06:27Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/siderolabs/talos",
-          "researchedAt": "2026-09-30T09:03:25Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Official talosctl getting-started guide",
-              "url": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl"
-            },
-            {
-              "kind": "primary",
-              "title": "Talos Linux source repository",
-              "url": "https://github.com/siderolabs/talos"
-            }
-          ],
-          "upstreamSummary": "CLI for out-of-band management of Kubernetes nodes created by Talos",
-          "version": "1.14.2"
-        },
-        {
-          "agentSummary": "A declarative layer over Helm that versions release definitions, coordinates environments and values, previews changes, and reconciles many charts consistently.",
-          "assessment": {
-            "alternatives": [
-              "Direct Helm commands",
-              "Flux HelmRelease resources",
-              "Argo CD Applications"
-            ],
-            "audiences": [
-              "Platform engineers managing multiple Helm releases",
-              "GitOps and CI/CD teams",
-              "Operators maintaining environment-specific chart values"
-            ],
-            "caveats": [
-              "Adds another templating and state layer above Helm",
-              "Repository and environment structure require team conventions",
-              "Synchronization can make broad changes, so diff and review discipline matter"
-            ],
-            "complements": [
-              "sofka for interactive observation after deployment",
-              "Git and CI systems for reviewable change delivery",
-              "Argo CD for GitOps reconciliation"
-            ],
-            "prerequisites": [
-              "Helm knowledge and access to target Kubernetes clusters",
-              "Version-controlled Helmfile state and values"
-            ],
-            "useCases": [
-              "Declare many Helm releases in version-controlled files",
-              "Preview release differences before synchronization",
-              "Apply consistent chart state across environments"
-            ]
-          },
-          "category": "cloud-infrastructure",
-          "displayName": "helmfile",
-          "docs": "https://helmfile.readthedocs.io/en/stable",
-          "homepage": "https://github.com/helmfile/helmfile",
-          "id": "brew:helmfile",
-          "installURL": "pkgmgrmgr://install?package=brew%3Ahelmfile",
-          "lastUpdatedAt": "2026-09-30T04:06:27Z",
-          "manager": "homebrew",
-          "repository": "https://github.com/helmfile/helmfile",
-          "researchedAt": "2026-09-30T09:03:25Z",
-          "sources": [
-            {
-              "kind": "primary",
-              "title": "Official Helmfile documentation",
-              "url": "https://helmfile.readthedocs.io/en/stable/"
-            },
-            {
-              "kind": "primary",
-              "title": "Helmfile source repository",
-              "url": "https://github.com/helmfile/helmfile"
-            }
-          ],
-          "upstreamSummary": "Deploy Kubernetes Helm Charts",
-          "version": "1.8.1"
-        }
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2026-07-03T17:13:21Z",
-        "firstStableReleaseSourceURL": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5",
-        "rationale": "newer"
-      },
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "sofka project documentation and usage guide",
-          "url": "https://github.com/nklmilojevic/sofka"
-        },
-        {
-          "kind": "primary",
-          "title": "sofka v0.1.5 release",
-          "url": "https://github.com/nklmilojevic/sofka/releases/tag/v0.1.5"
-        },
-        {
-          "kind": "primary",
-          "title": "Official talosctl getting-started guide",
-          "url": "https://docs.siderolabs.com/talos/v1.12/getting-started/talosctl"
-        },
-        {
-          "kind": "primary",
-          "title": "Official Helmfile documentation",
-          "url": "https://helmfile.readthedocs.io/en/stable/"
-        }
-      ],
-      "title": "Sofka and the Three Layers of Kubernetes Operations",
-      "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-24T10:28:08Z",
-  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261024T102808Z-51fd5b05.json",
-  "pageID": "20261024T102808Z-3785c68b",
+  "generatedAt": "2026-10-25T10:29:27Z",
+  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261025T102927Z-70e14a1f.json",
+  "pageID": "20261025T102927Z-43eee111",
   "schemaVersion": 2
 }

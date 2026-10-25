@@ -2,6 +2,173 @@
   "content": [
     {
       "artwork": {
+        "alt": "An operator oversees three glowing agent workspaces connected by branching task paths in a dark terminal control room.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#164252",
+          "backgroundStart": "#071B2A",
+          "foreground": "#FFF1D6"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/agent-terminal-workspaces.png"
+      },
+      "body": "## The terminal is becoming a control surface\n\nCoding agents changed the shape of terminal work. A single prompt can run for minutes, stop for a decision, launch tests, or finish while the developer is reading another diff. Multiplying that by several projects turns a row of indistinguishable tabs into an attention problem. Kero’s answer is to treat each command as a durable **session** with an observable state, not merely as a process attached to a window. Its documentation describes working, waiting, idle, error, and exited states, plus a shortcut that jumps to the pane requiring attention. That is a modest idea with practical consequences: the interface is organized around what needs a human next.\n\nKero appeared publicly in 2026, and its v2.0.0 release is the first stable release in the upstream release history. The project is still young, so this is not a claim of mature adoption. It is evidence of a new tool entering a quickly changing category. The useful question is not whether it replaces every terminal, but whether its session model matches how someone actually supervises agents.\n\n## Persistence moves outside the window\n\nKero runs sessions in a small daemon named `kerod`. Closing the graphical application leaves those sessions running; reopening it restores panes and scrollback. The same architecture supports remote hosts over SSH or Tailscale, allowing an agent to continue on a workstation or cloud machine while the laptop sleeps. The Kero CLI can also create sessions, split panes, type input, wait, and read screens. In other words, an agent can operate neighboring sessions as part of a larger task.\n\nThat design is useful when work is long-lived, but it changes the trust boundary. A persistent daemon retains active processes after the window disappears, and remote hosts add credentials, network reachability, and another machine’s security posture. Notifications indicate that work finished or became blocked; they do not prove that the result is correct. A sensible trial should begin with disposable repositories and explicit resource limits.\n\nAn actual evaluation can be concrete:\n\n- Start two agent sessions and one test watcher in a temporary project.\n- Close and reopen Kero, then verify process state and scrollback.\n- Trigger a question or failure and check whether the attention state is accurate.\n- Repeat on a remote host, then confirm which credentials and ports were required.\n\nThese checks measure the documented workflow without treating installation counts as evidence of individual users or reliability.\n\n## Three products, three different boundaries\n\nKaku is closer to a polished general-purpose Mac terminal. It builds on WezTerm, supplies fonts, themes, shell integration, and familiar Mac shortcuts, while retaining Lua customization. It can run coding agents, but its primary promise is a pleasant terminal with useful defaults. Choose that boundary when the terminal itself is the product and agent supervision can remain in ordinary tabs or panes.\n\nGhostex takes the opposite direction. Its upstream documentation describes chat views, readable diffs, queued prompts, worktrees, embedded browser panes, session search, and mobile access. It can hand a session between different agents and lets agents create and steer other sessions through a command. That makes it closer to an integrated agent workspace than a terminal with status indicators. The tradeoff is a larger surface area: more application features, more state, and more remote-access decisions to understand.\n\nKero sits between them. It keeps a terminal-first mental model but adds persistence, status, project grouping, and agent-drivable session control. The comparison is editorial rather than an official compatibility claim: these projects do not need to integrate with one another, and their rapid release cycles make feature matrices perishable.\n\n## Decide by the handoff you need\n\nThe central choice is where the human-agent handoff should live. Kaku leaves it mostly inside the command-line program. Kero elevates session state and attention routing while preserving terminal interaction. Ghostex moves the handoff into chat, review, previews, and cross-device access.\n\nBefore adopting any of them, document the failure path. What happens when an agent requests approval, a daemon restarts, a remote connection drops, or a session consumes excessive resources? Confirm how to terminate work independently of the interface. Review whether transcripts, commands, and remote credentials persist, and decide which repositories are appropriate for experimental tooling.\n\nAgent-oriented terminals are valuable precisely because ordinary terminals reveal too little about parallel asynchronous work. Their dashboards can reduce attention switching, but they can also make many autonomous processes feel safer than they are. The strongest workflow pairs visibility with mundane controls: isolated branches or worktrees, bounded permissions, reviewable diffs, tests, and a reliable way to stop everything.",
+      "deck": "Kero, Kaku, and Ghostex draw different boundaries around persistent sessions, attention, review, and remote supervision for coding agents.",
+      "id": "editorial:2026-10-25:agent-terminals-become-control-surfaces",
+      "primaryPackageID": "brew:cask:kero",
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "relatedPackageIDs": [
+        "brew:cask:kero",
+        "brew:cask:kaku",
+        "brew:cask:ghostex"
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-10-20T08:23:00Z",
+        "firstStableReleaseSourceURL": "https://github.com/egoist/kero/releases/tag/v2.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Kero upstream repository",
+          "url": "https://github.com/egoist/kero"
+        },
+        {
+          "kind": "primary",
+          "title": "Kero introduction",
+          "url": "https://github.com/egoist/kero/blob/main/docs/index.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Kero remote hosts documentation",
+          "url": "https://github.com/egoist/kero/blob/main/docs/remote.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Kero v2.0.0 release",
+          "url": "https://github.com/egoist/kero/releases/tag/v2.0.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Kaku upstream repository",
+          "url": "https://github.com/tw93/Kaku"
+        },
+        {
+          "kind": "primary",
+          "title": "Kaku documentation",
+          "url": "https://kaku.fun/docs/"
+        },
+        {
+          "kind": "primary",
+          "title": "Ghostex upstream repository",
+          "url": "https://github.com/maddada/Ghostex"
+        },
+        {
+          "kind": "primary",
+          "title": "Ghostex product site",
+          "url": "https://ghostex.dev"
+        }
+      ],
+      "title": "When terminals become control surfaces",
+      "type": "editorial"
+    },
+    {
+      "candidatePackageIDs": [
+        "brew:cask:highball",
+        "brew:cask:hol-guard",
+        "brew:sofka",
+        "brew:prek",
+        "brew:tgrep",
+        "brew:oras",
+        "brew:nub",
+        "brew:cask:jarvis322/tap/sysdata",
+        "brew:dekit",
+        "brew:pyrefly",
+        "brew:worktrunk",
+        "brew:plakar",
+        "brew:python@3.15",
+        "brew:uv",
+        "brew:fastapi",
+        "brew:zvec-grep",
+        "brew:fortitude",
+        "brew:buildkite",
+        "brew:gitea-cli",
+        "brew:pgpdump",
+        "brew:cue",
+        "brew:dep-scan",
+        "brew:erpc",
+        "brew:noodle"
+      ],
+      "fallbackPackageIDs": [
+        "brew:noodle",
+        "brew:erpc",
+        "brew:dep-scan",
+        "brew:pgpdump",
+        "brew:gitea-cli",
+        "brew:cue",
+        "brew:zvec-grep",
+        "brew:fortitude",
+        "brew:buildkite",
+        "brew:uv",
+        "brew:python@3.15",
+        "brew:pyrefly",
+        "brew:fastapi",
+        "brew:worktrunk",
+        "brew:plakar",
+        "brew:nub",
+        "brew:dekit",
+        "brew:cask:jarvis322/tap/sysdata",
+        "brew:tgrep",
+        "brew:prek",
+        "brew:oras",
+        "brew:cask:hol-guard",
+        "brew:sofka",
+        "brew:cask:highball"
+      ],
+      "id": "for-you",
+      "title": "For You",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "id": "new-packages",
+      "packageIDs": [
+        "brew:cask:kero",
+        "brew:worldmonitor",
+        "brew:kontext",
+        "brew:cask:textus",
+        "brew:ascelerate",
+        "brew:filmcraft-cli",
+        "brew:cask:pen",
+        "brew:gitea-cli",
+        "brew:cask:writer",
+        "brew:pdfcraft-cli",
+        "brew:xfr",
+        "brew:cask:artcraft-launcher"
+      ],
+      "title": "New Packages",
+      "type": "newPackages"
+    },
+    {
+      "id": "recently-updated",
+      "packageIDs": [
+        "brew:cask:kero",
+        "brew:worldmonitor",
+        "brew:noodle",
+        "brew:kontext",
+        "brew:dep-scan",
+        "brew:cask:textus",
+        "brew:cask:ghostex",
+        "brew:ascelerate",
+        "brew:erpc",
+        "brew:filmcraft-cli",
+        "brew:cask:pen",
+        "brew:gitea-cli"
+      ],
+      "title": "Recently Updated",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
         "alt": "Indigo project files flow through a luminous geometric analysis prism and resolve into a network of validated cyan and coral nodes.",
         "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
         "boxColors": {
@@ -61,101 +228,6 @@
       ],
       "title": "Pyrefly 1.0: A Type Checker Meets the Real Project",
       "type": "editorial"
-    },
-    {
-      "candidatePackageIDs": [
-        "brew:cask:look",
-        "brew:cask:opendisk",
-        "brew:cask:highball",
-        "brew:ratex",
-        "brew:cask:hol-guard",
-        "brew:sofka",
-        "brew:prek",
-        "brew:tgrep",
-        "brew:oras",
-        "brew:nub",
-        "brew:cask:jarvis322/tap/sysdata",
-        "brew:dekit",
-        "brew:pyrefly",
-        "brew:worktrunk",
-        "brew:plakar",
-        "brew:python@3.15",
-        "brew:uv",
-        "brew:fastapi",
-        "brew:zvec-grep",
-        "brew:fortitude",
-        "brew:buildkite",
-        "brew:gitea-cli",
-        "brew:pgpdump",
-        "brew:cue"
-      ],
-      "fallbackPackageIDs": [
-        "brew:pgpdump",
-        "brew:gitea-cli",
-        "brew:cue",
-        "brew:zvec-grep",
-        "brew:fortitude",
-        "brew:buildkite",
-        "brew:uv",
-        "brew:python@3.15",
-        "brew:pyrefly",
-        "brew:fastapi",
-        "brew:worktrunk",
-        "brew:plakar",
-        "brew:nub",
-        "brew:dekit",
-        "brew:cask:jarvis322/tap/sysdata",
-        "brew:tgrep",
-        "brew:prek",
-        "brew:oras",
-        "brew:cask:hol-guard",
-        "brew:sofka",
-        "brew:cask:highball",
-        "brew:ratex",
-        "brew:cask:opendisk",
-        "brew:cask:look"
-      ],
-      "id": "for-you",
-      "title": "For You",
-      "type": "personalizedRecommendations"
-    },
-    {
-      "id": "new-packages",
-      "packageIDs": [
-        "brew:cask:kero",
-        "brew:filmcraft-cli",
-        "brew:cask:pen",
-        "brew:gitea-cli",
-        "brew:cask:writer",
-        "brew:cask:textus",
-        "brew:pdfcraft-cli",
-        "brew:xfr",
-        "brew:cask:artcraft-launcher",
-        "brew:cask:opendisplay-receiver",
-        "brew:zvec-grep",
-        "brew:cask:clamshell"
-      ],
-      "title": "New Packages",
-      "type": "newPackages"
-    },
-    {
-      "id": "recently-updated",
-      "packageIDs": [
-        "brew:cask:kero",
-        "brew:filmcraft-cli",
-        "brew:cask:pen",
-        "brew:gitea-cli",
-        "brew:cask:writer",
-        "brew:cask:textus",
-        "brew:fortitude",
-        "brew:pdfcraft-cli",
-        "brew:buildkite",
-        "brew:xfr",
-        "brew:cask:artcraft-launcher",
-        "brew:cask:opendisplay-receiver"
-      ],
-      "title": "Recently Updated",
-      "type": "recentlyUpdated"
     },
     {
       "artwork": {
@@ -815,72 +887,98 @@
       ],
       "title": "Git-Xet: moving the changed pieces",
       "type": "editorial"
-    },
-    {
-      "artwork": {
-        "alt": "Three luminous paths through a dark abstract desktop converge on tiled windows, a widget-rich dock, and a row of window tabs.",
-        "attribution": "Generated with OpenAI image generation",
-        "boxColors": {
-          "backgroundEnd": "#171746",
-          "backgroundStart": "#050B25",
-          "foreground": "#FFFFFF"
+    }
+  ],
+  "generatedAt": "2026-10-25T10:29:27Z",
+  "packages": {
+    "brew:ascelerate": {
+      "agentSummary": "ascelerate automates App Store Connect work from Xcode archive through upload and review submission, with provisioning, localization, reporting, and machine-readable JSON commands.",
+      "assessment": {
+        "alternatives": [
+          "Apple's web interface",
+          "Fastlane for broader mobile automation"
+        ],
+        "audiences": [
+          "Apple-platform developers",
+          "Release engineers automating App Store workflows"
+        ],
+        "caveats": [
+          "API keys can authorize consequential account changes",
+          "Some workflows still depend on Xcode and Apple service behavior"
+        ],
+        "complements": [
+          "Xcode and xcodebuild",
+          "CI systems consuming JSON output"
+        ],
+        "prerequisites": [
+          "macOS 15 or later",
+          "An App Store Connect API key with appropriate roles"
+        ],
+        "useCases": [
+          "Archive and upload builds",
+          "Manage metadata and screenshots",
+          "Submit versions for review",
+          "Download sales and analytics reports"
+        ]
+      },
+      "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 22,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-25"
+          },
+          "365": {
+            "count": 25,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-25"
+          },
+          "90": {
+            "count": 22,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-27"
+          }
         },
-        "license": "OpenAI terms of use",
-        "path": "feed/assets/rethinking-mac-desktop-2026-09-07.png"
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": null
       },
-      "body": "## The desktop is a navigation system\n\nWindow utilities are often sold as cures for dragging and resizing, but the deeper problem is **retrieval**: after opening a browser, editor, terminal, chat, and documentation, how do you return to the exact window you need? macOS offers overlapping windows, Mission Control, app-centric Command-Tab, and a Dock whose icons usually represent applications rather than individual windows. Three current tools challenge that model at different depths.\n\nOmniWM reorganizes the whole workspace. DockDoor Pro turns the Dock into a control surface. Taskbar makes each window a persistent target. They are not interchangeable skins. Each chooses what should remain visible, what should move automatically, and how much configuration the user should own.\n\n## OmniWM makes space flow\n\nOmniWM is the genuinely new entrant. Its first public tagged release appeared on December 25, 2025, and the project has evolved quickly since. The headline layout borrows from Niri: windows sit in columns on a horizontally scrolling strip, so opening another window extends the workspace instead of repeatedly subdividing one fixed screen. A Hyprland-inspired dwindle mode offers more conventional automatic splitting. Workspaces, trackpad gestures, application rules, a command palette, native tab handling, and `omniwmctl` IPC make the system unusually broad for a young Mac utility.\n\nActual use has moved beyond a quiet repository. A community demonstration of version 0.4.0 drew substantial discussion among Niri users, including reports from people trying its multi-monitor support. The feedback is mixed in the useful sense: some users welcome a Linux-like flow on macOS, while others report awkward behavior with multiple displays or unexpected window placement. The upstream discussion history shows the maintainer actively responding to these cases.\n\nThat friction is structural, not simply unfinished polish. macOS window managers generally steer other applications through Accessibility interfaces rather than replacing the operating system's compositor. Apps can expose unusual auxiliary windows, insist on minimum sizes, or react differently when moved. OmniWM also changes quickly: a recent release renamed configuration fields and advanced its IPC protocol, requiring scripts and clients to update together. The current build targets Apple Silicon and macOS 26 or later, even though earlier releases supported macOS 15. This is an ambitious environment for users willing to tune rules and follow releases, not an invisible utility.\n\n## DockDoor Pro concentrates control at the edge\n\nDockDoor Pro leaves windows overlapping but rebuilds the place used to find them. Hover previews expose individual windows; per-display profiles can show different app sets; app focus can switch profiles automatically. The same strip can hold folders, files, app groups, a file tray, media controls, audio-device switching, and widget stacks. A control drawer reaches sleep, restart, shortcuts, and other actions.\n\nThe attraction is consolidation. Instead of memorizing a tiler's directional grammar, a user can keep spatially familiar icons and add richer previews and controls. Independent walkthroughs document the replacement in use, and reviews praise the scope. Yet breadth is also its tax: the official feature inventory advertises more than 300 settings across 16 preference pages. The app can hide the native Dock, but macOS may still surface Apple's Dock in system-controlled places such as Mission Control. Users should expect to spend time deciding which profiles, widgets, gestures, and visual effects actually reduce work.\n\nDockDoor Pro is also a separate commercial product from DockDoor Free. The free app augments Apple's Dock with previews; Pro substitutes its own Dock environment. Running both is generally unnecessary. That distinction matters when evaluating permissions, purchasing, and how difficult it will be to return to stock behavior.\n\n## Taskbar favors one-click certainty\n\nTaskbar begins with a narrower observation: app icons are poor targets when one app owns several windows. Its developer describes trying Command-Tab, Mission Control, Dock menus, and another Windows-style replacement before building a persistent strip of individual window buttons. The benefit is mundane and powerful—targets remain visible and tend to stay in predictable positions, so reaching a particular document can become one click rather than an app switch followed by another selection.\n\nThe project is not new; its developer says it followed roughly eighteen months of development, and the product has continued through multi-monitor work and repeated manual regression testing. That history makes it the conservative comparison here. It does less than DockDoor Pro and imposes less of a worldview than OmniWM. It also remains commercial and closed source, and a permanent task strip consumes screen space.\n\n## Choose the object you want to navigate\n\nThe cleanest decision is to identify the object your attention follows:\n\n- Choose **OmniWM** when you think in workspaces, columns, and keyboard-directed layouts, and accept active configuration.\n- Choose **DockDoor Pro** when applications remain the anchor but the Dock should expose previews, profiles, files, and controls.\n- Choose **Taskbar** when individual windows should remain visible as stable, clickable destinations.\n\nAll three need privileged visibility into windows to deliver their central features, so review requested Accessibility and screen-recording permissions and test with the applications and monitors that define your real workload. A demo with tidy browser windows proves little about IDE dialogs, floating palettes, remote desktops, or apps with rigid dimensions.\n\nThe most interesting lesson is that desktop productivity is not synonymous with maximum automation. OmniWM reduces manual placement by imposing flow; DockDoor Pro reduces trips elsewhere by concentrating controls; Taskbar reduces ambiguity by exposing every destination. The right replacement is the one whose organizing unit matches how you remember your work.",
-      "deck": "OmniWM, DockDoor Pro, and Taskbar challenge different parts of macOS window navigation—and reveal why no single desktop model fits every multitasker.",
-      "id": "editorial:2026-09-07:three-ways-to-rebuild-the-mac-desktop",
-      "primaryPackageID": "brew:cask:omniwm",
-      "publishedAt": "2026-09-07T06:31:55Z",
-      "relatedPackageIDs": [
-        "brew:cask:omniwm",
-        "brew:cask:dockdoor-pro",
-        "brew:cask:taskbar"
-      ],
-      "selection": {
-        "firstStableReleaseAt": "2025-12-25T21:17:10Z",
-        "firstStableReleaseSourceURL": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0",
-        "rationale": "newer"
-      },
+      "displayName": "ascelerate",
+      "docs": "https://ascelerate.dev/docs",
+      "homepage": "https://ascelerate.dev",
+      "id": "brew:ascelerate",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aascelerate",
+      "lastUpdatedAt": "2026-10-24T20:53:28Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/keremerkan/ascelerate",
+      "researchedAt": "2026-10-25T10:29:27Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "OmniWM official site and documentation",
-          "url": "https://omniwm.app/"
+          "title": "ascelerate upstream repository",
+          "url": "https://github.com/keremerkan/ascelerate"
         },
         {
           "kind": "primary",
-          "title": "OmniWM v0.1.0 first public release",
-          "url": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0"
+          "title": "ascelerate documentation",
+          "url": "https://ascelerate.dev"
         },
         {
           "kind": "primary",
-          "title": "DockDoor Pro complete feature list",
-          "url": "https://pro.dockdoor.net/features/"
-        },
-        {
-          "kind": "primary",
-          "title": "Taskbar developer introduction and history",
-          "url": "https://lawand.io/taskbar/intro/"
-        },
-        {
-          "kind": "independent",
-          "title": "Niri community discussion of OmniWM v0.4.0",
-          "url": "https://www.reddit.com/r/niri/comments/1ruh6um/omni_macos_niri_v040/"
-        },
-        {
-          "kind": "independent",
-          "title": "ScreencastsOnline DockDoor walkthrough",
-          "url": "https://www.screencastsonline.com/tutorials/macos/dock-tips-dockdoor"
+          "title": "ascelerate initial v0.1.0 release",
+          "url": "https://github.com/keremerkan/ascelerate/releases/tag/v0.1.0"
         }
       ],
-      "title": "Three Ways to Rebuild the Mac Desktop",
-      "type": "editorial"
-    }
-  ],
-  "generatedAt": "2026-10-24T10:28:08Z",
-  "packages": {
+      "upstreamSummary": "Command-line tool for the App Store Connect API",
+      "version": "0.26.5"
+    },
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
       "assessment": {
@@ -1174,93 +1272,6 @@
       "upstreamSummary": "Installer and updater for the Craft App Suite",
       "version": "0.7.0"
     },
-    "brew:cask:clamshell": {
-      "agentSummary": "Clamshell keeps supported Apple-silicon MacBooks awake with the lid closed, adding deliberate arming, thermal safeguards, optional low-battery protection, and scriptable controls.",
-      "assessment": {
-        "alternatives": [
-          "Apple's supported closed-display mode with an external display.",
-          "Amphetamine or carefully reviewed built-in power-management commands."
-        ],
-        "audiences": [
-          "Apple-silicon MacBook owners who need deliberate closed-lid operation.",
-          "People running long local builds, downloads, or agent tasks."
-        ],
-        "caveats": [
-          "The application is paid after its trial period.",
-          "A closed lid can worsen heat dissipation, and long battery-powered sessions increase drain.",
-          "It does not support Intel Macs or older macOS releases."
-        ],
-        "complements": [
-          "Remote-access software and battery monitoring.",
-          "Shortcuts or scripts that make activation explicit."
-        ],
-        "prerequisites": [
-          "An Apple-silicon MacBook running macOS 14 or later.",
-          "A power, battery, and thermal plan appropriate for the workload."
-        ],
-        "useCases": [
-          "Keep a supported MacBook awake for a bounded task without an external display.",
-          "Arm or disarm closed-lid operation through Shortcuts and scripts."
-        ]
-      },
-      "category": "system",
-      "discovery": {
-        "admittedAt": "2026-10-22",
-        "analytics": {
-          "30": {
-            "count": 2,
-            "endDate": "2026-10-22",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "startDate": "2026-09-22"
-          },
-          "365": {
-            "count": 2,
-            "endDate": "2026-10-22",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
-            "startDate": "2025-10-22"
-          },
-          "90": {
-            "count": 2,
-            "endDate": "2026-10-22",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
-            "startDate": "2026-07-24"
-          }
-        },
-        "firstObservedAt": "2026-10-22",
-        "lastVerifiedAt": null,
-        "recentlyDiscovered": true,
-        "status": "official",
-        "trend": null
-      },
-      "displayName": "Clamshell",
-      "docs": "https://clamshell.dev/",
-      "homepage": "https://clamshell.dev/",
-      "id": "brew:cask:clamshell",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclamshell",
-      "lastUpdatedAt": "2026-10-21T14:33:57Z",
-      "manager": "homebrew",
-      "repository": null,
-      "researchedAt": "2026-10-22T07:02:48Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Clamshell changelog",
-          "url": "https://clamshell.dev/changelog"
-        },
-        {
-          "kind": "primary",
-          "title": "Clamshell closed-lid operation guide",
-          "url": "https://clamshell.dev/guides/keep-macbook-awake-lid-closed"
-        },
-        {
-          "kind": "primary",
-          "title": "Clamshell privacy policy",
-          "url": "https://clamshell.dev/privacy"
-        }
-      ],
-      "upstreamSummary": "Keep the computer awake with the lid closed and the built-in display dark",
-      "version": "1.4.24,228"
-    },
     "brew:cask:claudoscope": {
       "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
       "assessment": {
@@ -1321,69 +1332,105 @@
       "upstreamSummary": "Menu bar dashboard for Claude Code sessions",
       "version": "1.4.0"
     },
-    "brew:cask:dockdoor-pro": {
-      "agentSummary": "Commercial Dock replacement layers window previews, per-display profiles, app groups, widgets, file staging, media controls, gestures, and extensive customization onto macOS.",
+    "brew:cask:ghostex": {
+      "agentSummary": "Ghostex combines persistent multi-agent sessions with chat, diff review, worktrees, browser previews, and mobile access, creating a broader workspace than a conventional terminal emulator.",
       "assessment": {
         "alternatives": [
-          "DockDoor Free",
-          "Taskbar",
-          "Sidebar",
-          "The built-in macOS Dock"
+          "Kero for a narrower terminal-first supervisor",
+          "Kaku for a conventional customizable terminal"
         ],
         "audiences": [
-          "Heavy Mac multitaskers",
-          "Users wanting a customizable Dock",
-          "Multi-display users with context-specific app sets"
+          "Developers coordinating many coding agents",
+          "Users who want desktop and mobile access to sessions"
         ],
         "caveats": [
-          "Replaces rather than merely augments normal Dock behavior",
-          "More than 300 settings increase tuning overhead",
-          "The native Dock can still appear in OS-controlled interfaces"
+          "Its broad feature surface increases operational complexity",
+          "Remote and mobile access require careful trust and network configuration"
         ],
         "complements": [
-          "Apple Music or Spotify for media widgets",
-          "macOS Shortcuts for quick actions"
+          "Tailscale for remote access",
+          "Git worktrees",
+          "Browser-based prototype review"
         ],
         "prerequisites": [
-          "Compatible macOS version",
-          "Accessibility and screen-recording permissions",
-          "Paid license after trial"
+          "A supported desktop or mobile platform",
+          "At least one coding-agent CLI"
         ],
         "useCases": [
-          "Switching directly among application windows",
-          "Maintaining separate Dock profiles",
-          "Keeping controls and widgets at the screen edge"
+          "Review agent diffs",
+          "Queue follow-up prompts",
+          "Separate tasks with worktrees",
+          "Resume and search prior sessions"
         ]
       },
-      "category": "system",
-      "displayName": "DockDoor Pro",
-      "docs": "https://pro.dockdoor.net/",
-      "homepage": "https://pro.dockdoor.net/",
-      "id": "brew:cask:dockdoor-pro",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adockdoor-pro",
-      "lastUpdatedAt": "2026-09-07T03:48:57Z",
+      "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 298,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-25"
+          },
+          "365": {
+            "count": 302,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-25"
+          },
+          "90": {
+            "count": 302,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-27"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-25",
+          "growthPercent": null,
+          "installs30d": 298,
+          "previousMonthlyRate": 2.0,
+          "score": 26.657052,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+          ],
+          "startDate": "2026-07-27"
+        }
+      },
+      "displayName": "Ghostex",
+      "docs": "https://github.com/maddada/Ghostex#readme",
+      "homepage": "https://ghostex.dev/",
+      "id": "brew:cask:ghostex",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aghostex",
+      "lastUpdatedAt": "2026-10-25T01:30:02Z",
       "manager": "homebrew",
-      "repository": null,
-      "researchedAt": "2026-09-07T06:31:55Z",
+      "repository": "https://github.com/maddada/Ghostex",
+      "researchedAt": "2026-10-25T10:29:27Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "DockDoor Pro official feature list",
-          "url": "https://pro.dockdoor.net/features/"
+          "title": "Ghostex upstream repository",
+          "url": "https://github.com/maddada/Ghostex"
         },
         {
-          "kind": "independent",
-          "title": "ScreencastsOnline DockDoor walkthrough",
-          "url": "https://www.screencastsonline.com/tutorials/macos/dock-tips-dockdoor"
+          "kind": "primary",
+          "title": "Ghostex product site",
+          "url": "https://ghostex.dev"
         },
         {
-          "kind": "independent",
-          "title": "AppAddict DockDoor Pro review",
-          "url": "https://appaddict.app/post/dockdoor-pro-the-dock-apple-wouldn-t-build"
+          "kind": "primary",
+          "title": "Ghostex releases",
+          "url": "https://github.com/maddada/Ghostex/releases"
         }
       ],
-      "upstreamSummary": "Dock replacement with widgets, profiles and window previews",
-      "version": "1.3.3"
+      "upstreamSummary": "Workspace for running and reviewing multiple CLI coding agents",
+      "version": "10.34.0"
     },
     "brew:cask:highball": {
       "agentSummary": "Highball runs Windows games on Apple Silicon through managed Wine-based engines, pairing launcher automation with an open compatibility database and per-game renderer guidance.",
@@ -1595,29 +1642,32 @@
       "upstreamSummary": "Menu bar app that shows what is inside macOS System Data and deletes it item by item",
       "version": "1.9.0"
     },
-    "brew:cask:kero": {
-      "agentSummary": "Kero groups persistent terminal sessions by project, highlights agents needing attention, and exposes CLI controls for starting, splitting, reading, and waiting on panes.",
+    "brew:cask:kaku": {
+      "agentSummary": "Kaku packages a WezTerm-based Mac terminal with curated themes, fonts, shell integration, shortcuts, and AI-oriented conveniences while retaining Lua customization for deeper tuning.",
       "assessment": {
         "alternatives": [
-          "A conventional terminal multiplexer such as tmux or Zellij, with separate notification and orchestration tooling."
+          "WezTerm directly",
+          "Kero for persistent agent-session supervision"
         ],
         "audiences": [
-          "Developers supervising multiple coding agents or long-running terminal tasks."
+          "Mac developers wanting a polished terminal",
+          "WezTerm users who prefer curated defaults"
         ],
         "caveats": [
-          "Agent hooks and skills modify each supported agent's local configuration and may require approval.",
-          "Persistent sessions and restored scrollback create local state that users should manage deliberately."
+          "Mac-only focus",
+          "Curated defaults may overlap with an existing terminal configuration"
         ],
         "complements": [
-          "Claude Code, Codex, Pi, OpenCode, lazygit, test watchers, and development servers."
+          "WezTerm configuration concepts",
+          "Command-line coding agents"
         ],
         "prerequisites": [
-          "A supported macOS, Windows, or Linux system.",
-          "Separately installed coding-agent CLIs for agent workflows."
+          "A supported macOS system"
         ],
         "useCases": [
-          "Keep agent sessions alive outside the window and jump to work requiring attention.",
-          "Drive terminal panes from scripts or agents through the Kero CLI."
+          "Run shells and coding agents",
+          "Use preconfigured themes and shortcuts",
+          "Extend behavior with Lua"
         ]
       },
       "category": "developer-tools",
@@ -1625,53 +1675,162 @@
         "admittedAt": "2026-10-17",
         "analytics": {
           "30": {
-            "count": 1,
-            "endDate": "2026-10-24",
+            "count": 482,
+            "endDate": "2026-10-25",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "startDate": "2026-09-24"
+            "startDate": "2026-09-25"
           },
           "365": {
-            "count": 3,
-            "endDate": "2026-10-24",
+            "count": 811,
+            "endDate": "2026-10-25",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
-            "startDate": "2025-10-24"
+            "startDate": "2025-10-25"
           },
           "90": {
-            "count": 1,
-            "endDate": "2026-10-24",
+            "count": 513,
+            "endDate": "2026-10-25",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
-            "startDate": "2026-07-26"
+            "startDate": "2026-07-27"
           }
         },
         "firstObservedAt": "2026-10-17",
         "lastVerifiedAt": null,
         "recentlyDiscovered": false,
         "status": "official",
-        "trend": null
+        "trend": {
+          "endDate": "2026-10-25",
+          "growthPercent": 3009.7,
+          "installs30d": 482,
+          "previousMonthlyRate": 15.5,
+          "score": 26.249943,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+          ],
+          "startDate": "2026-07-27"
+        }
+      },
+      "displayName": "Kaku",
+      "docs": "https://github.com/tw93/Kaku/blob/main/docs/cli.md",
+      "homepage": "https://github.com/tw93/Kaku",
+      "id": "brew:cask:kaku",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akaku",
+      "lastUpdatedAt": "2026-10-22T07:24:46Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/tw93/Kaku",
+      "researchedAt": "2026-10-25T10:29:27Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Kaku upstream repository",
+          "url": "https://github.com/tw93/Kaku"
+        },
+        {
+          "kind": "primary",
+          "title": "Kaku documentation",
+          "url": "https://kaku.fun/docs/"
+        }
+      ],
+      "upstreamSummary": "Terminal optimised for AI coding",
+      "version": "0.26.1"
+    },
+    "brew:cask:kero": {
+      "agentSummary": "Kero keeps coding-agent sessions alive in a daemon, surfaces which panes need attention, and can coordinate local or remote work from one terminal sidebar.",
+      "assessment": {
+        "alternatives": [
+          "Kaku for a polished general Mac terminal",
+          "Ghostex for a fuller chat-and-review workspace"
+        ],
+        "audiences": [
+          "Developers supervising several coding agents",
+          "Teams using remote development hosts"
+        ],
+        "caveats": [
+          "A young project whose workflows may change",
+          "Remote operation adds host and network security responsibilities"
+        ],
+        "complements": [
+          "SSH or Tailscale for remote hosts",
+          "Ghostty themes and configuration"
+        ],
+        "prerequisites": [
+          "A supported macOS, Windows, or Linux system",
+          "An installed coding-agent CLI for agent workflows"
+        ],
+        "useCases": [
+          "Keep long-running agent sessions alive",
+          "Jump to blocked or completed panes",
+          "Drive sessions through a CLI"
+        ]
+      },
+      "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 56,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-25"
+          },
+          "365": {
+            "count": 58,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-25"
+          },
+          "90": {
+            "count": 56,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-27"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-25",
+          "growthPercent": null,
+          "installs30d": 56,
+          "previousMonthlyRate": 0.0,
+          "score": 11.00707,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+          ],
+          "startDate": "2026-07-27"
+        }
       },
       "displayName": "Kero",
       "docs": "https://kero.sh/docs",
       "homepage": "https://kero.sh/",
       "id": "brew:cask:kero",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akero",
-      "lastUpdatedAt": "2026-10-24T10:06:06Z",
+      "lastUpdatedAt": "2026-10-25T07:12:48Z",
       "manager": "homebrew",
       "repository": "https://github.com/egoist/kero",
-      "researchedAt": "2026-10-24T10:28:08Z",
+      "researchedAt": "2026-10-25T10:29:27Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Kero introduction and session model",
-          "url": "https://kero.sh/docs"
+          "title": "Kero upstream repository",
+          "url": "https://github.com/egoist/kero"
         },
         {
           "kind": "primary",
-          "title": "Kero coding-agent integration",
-          "url": "https://kero.sh/docs/agents"
+          "title": "Kero introduction",
+          "url": "https://github.com/egoist/kero/blob/main/docs/index.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Kero v2.0.0 release",
+          "url": "https://github.com/egoist/kero/releases/tag/v2.0.0"
         }
       ],
       "upstreamSummary": "Terminal app optimised for agents",
-      "version": "2.1.12"
+      "version": "2.1.18"
     },
     "brew:cask:kotlin-lsp": {
       "agentSummary": "JetBrains' official Kotlin language server brings IntelliJ-derived completion, diagnostics, navigation, refactoring, and Gradle or Maven project support to LSP-capable editors.",
@@ -1731,284 +1890,6 @@
       ],
       "upstreamSummary": "Official Kotlin Language Server",
       "version": "263.6379.0"
-    },
-    "brew:cask:look": {
-      "agentSummary": "Look is a free, open-source keyboard launcher for macOS, Windows, and Linux, combining application search, clipboard history, commands, and configurable local workflows.",
-      "assessment": {
-        "alternatives": [
-          "Spotlight",
-          "Raycast",
-          "Alfred"
-        ],
-        "audiences": [
-          "Keyboard-oriented users who want a free, open-source launcher",
-          "People who prefer local workflows without an account"
-        ],
-        "caveats": [
-          "Look does not provide an extension store, so integrations rely on its shipped commands and configurable sources",
-          "Replacing Command-Space requires changing Spotlight's keyboard shortcut",
-          "The project is young and its interface and configuration may evolve quickly"
-        ],
-        "complements": [
-          "A preferred terminal and code editor configured in Look",
-          "Custom local sources for projects, SSH hosts, or other frequently used items"
-        ],
-        "prerequisites": [
-          "A supported macOS installation for this cask",
-          "A free global shortcut, commonly reassigned from Spotlight"
-        ],
-        "useCases": [
-          "Launching applications and finding files from a global shortcut",
-          "Searching clipboard history and running built-in commands",
-          "Opening selected locations in a configured editor, terminal, or file manager"
-        ]
-      },
-      "category": "productivity",
-      "displayName": "Look",
-      "docs": "https://github.com/kunkka19xx/look",
-      "homepage": "https://github.com/kunkka19xx/look",
-      "id": "brew:cask:look",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Alook",
-      "lastUpdatedAt": "2026-09-23T05:49:38Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/kunkka19xx/look",
-      "researchedAt": "2026-09-23T12:18:07Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Look upstream repository and user guide",
-          "url": "https://github.com/kunkka19xx/look"
-        },
-        {
-          "kind": "primary",
-          "title": "Look v0.1.0 initial release",
-          "url": "https://github.com/kunkka19xx/look/releases/tag/v0.1.0"
-        },
-        {
-          "kind": "independent",
-          "title": "Homebrew cask listing for Look",
-          "url": "https://formulae.brew.sh/cask/look"
-        }
-      ],
-      "upstreamSummary": "Keyboard-first local launcher",
-      "version": "0.7.1"
-    },
-    "brew:cask:omniwm": {
-      "agentSummary": "Mac window manager brings scrolling columns and dwindle tiling to configurable workspaces, with multi-monitor routing and scriptable controls for users comfortable tuning desktop behavior.",
-      "assessment": {
-        "alternatives": [
-          "AeroSpace",
-          "yabai",
-          "Amethyst"
-        ],
-        "audiences": [
-          "Keyboard-oriented Mac users",
-          "Users familiar with Linux tiling desktops"
-        ],
-        "caveats": [
-          "Application window constraints can disrupt expected tiling",
-          "Rapid development requires attention to configuration changes",
-          "Test multi-monitor behavior against your own workflow"
-        ],
-        "complements": [
-          "Raycast or shell scripts using omniwmctl"
-        ],
-        "prerequisites": [
-          "Apple Silicon Mac running macOS 26 or later",
-          "Accessibility permission"
-        ],
-        "useCases": [
-          "Navigating scrolling window columns",
-          "Assigning layouts per workspace",
-          "Automating window and monitor routing"
-        ]
-      },
-      "category": "productivity",
-      "displayName": "OmniWM",
-      "docs": "https://omniwm.app/",
-      "homepage": "https://omniwm.app/",
-      "id": "brew:cask:omniwm",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aomniwm",
-      "lastUpdatedAt": "2026-09-10T02:09:45Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/BarutSRB/OmniWM",
-      "researchedAt": "2026-09-10T06:20:30Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "OmniWM upstream documentation",
-          "url": "https://github.com/BarutSRB/OmniWM"
-        },
-        {
-          "kind": "primary",
-          "title": "OmniWM initial release v0.1.0",
-          "url": "https://github.com/BarutSRB/OmniWM/releases/tag/v0.1.0"
-        },
-        {
-          "kind": "primary",
-          "title": "OmniWM requirements and known limitations",
-          "url": "https://omniwm.app/help/known-limitations/"
-        },
-        {
-          "kind": "independent",
-          "title": "Niri community discussion of OmniWM in use",
-          "url": "https://www.reddit.com/r/niri/comments/1ruh6um/omni_macos_niri_v040/"
-        }
-      ],
-      "upstreamSummary": "Tiling window manager",
-      "version": "0.6.9"
-    },
-    "brew:cask:opendisk": {
-      "agentSummary": "OpenDisk visualizes macOS storage as an interactive sunburst, streams scan results, supports incremental rescans, and helps review large files before deliberate cleanup.",
-      "assessment": {
-        "alternatives": [
-          "DaisyDisk",
-          "GrandPerspective",
-          "Disk Inventory X"
-        ],
-        "audiences": [
-          "Mac users investigating disk-space pressure",
-          "Users seeking an open-source visual storage analyzer"
-        ],
-        "caveats": [
-          "Without Full Disk Access, macOS hides locations and reported totals will be incomplete",
-          "Deletion remains consequential even when the visualization is accurate; review collected files first",
-          "Published performance comparisons are maintainer-run benchmarks and may not generalize to every disk"
-        ],
-        "complements": [
-          "Time Machine or another backup before deleting important data",
-          "Finder for inspecting candidate files in context"
-        ],
-        "prerequisites": [
-          "A supported macOS installation",
-          "Full Disk Access for complete system-wide scan results"
-        ],
-        "useCases": [
-          "Exploring folder sizes through an interactive sunburst and sortable list",
-          "Searching a scanned volume for large files",
-          "Reviewing purgeable space and collecting selected items for deletion"
-        ]
-      },
-      "category": "system",
-      "displayName": "OpenDisk",
-      "docs": "https://github.com/137137137/OpenDisk#readme",
-      "homepage": "https://opendisk.app/",
-      "id": "brew:cask:opendisk",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopendisk",
-      "lastUpdatedAt": "2026-09-22T22:29:53Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/137137137/OpenDisk",
-      "researchedAt": "2026-09-23T12:18:07Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "OpenDisk upstream repository and technical documentation",
-          "url": "https://github.com/137137137/OpenDisk"
-        },
-        {
-          "kind": "primary",
-          "title": "OpenDisk v1.0.0 initial release",
-          "url": "https://github.com/137137137/OpenDisk/releases/tag/v1.0.0"
-        },
-        {
-          "kind": "independent",
-          "title": "Homebrew cask listing for OpenDisk",
-          "url": "https://formulae.brew.sh/cask/opendisk"
-        }
-      ],
-      "upstreamSummary": "Disk space analyser",
-      "version": "1.2.1"
-    },
-    "brew:cask:opendisplay-receiver": {
-      "agentSummary": "OpenDisplay Receiver turns a spare Mac into an extended display for another Mac over Wi-Fi or cable, with Retina resolution but no receiver-side input forwarding yet.",
-      "assessment": {
-        "alternatives": [
-          "Apple AirPlay to Mac, Luna Display, or Duet Display for other Mac-to-Mac display workflows."
-        ],
-        "audiences": [
-          "Mac users repurposing an older Mac as an additional monitor."
-        ],
-        "caveats": [
-          "Input from the receiving Mac's keyboard and mouse is not yet forwarded.",
-          "The sender relies on Apple's private CGVirtualDisplay API and may be affected by macOS changes.",
-          "The upstream privacy documentation notes a current Wi-Fi encryption caveat, so trusted networks are important."
-        ],
-        "complements": [
-          "A reliable Wi-Fi network, Ethernet link, Thunderbolt or USB4 cable, or supported USB-C data link."
-        ],
-        "prerequisites": [
-          "OpenDisplay on the sending Mac and OpenDisplay Receiver on the spare Mac.",
-          "macOS 14 or newer on the sender and macOS 12 or newer on the receiver.",
-          "Local Network and screen-capture permissions as prompted."
-        ],
-        "useCases": [
-          "Extend a sending Mac desktop onto a spare Mac over local networking or a supported cable.",
-          "Reuse a Retina display without a subscription or vendor-hosted relay."
-        ]
-      },
-      "category": "productivity",
-      "discovery": {
-        "admittedAt": "2026-10-19",
-        "analytics": {
-          "30": {
-            "count": 58,
-            "endDate": "2026-10-23",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "startDate": "2026-09-23"
-          },
-          "365": {
-            "count": 58,
-            "endDate": "2026-10-23",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
-            "startDate": "2025-10-23"
-          },
-          "90": {
-            "count": 58,
-            "endDate": "2026-10-23",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
-            "startDate": "2026-07-25"
-          }
-        },
-        "firstObservedAt": "2026-10-19",
-        "lastVerifiedAt": null,
-        "recentlyDiscovered": true,
-        "status": "official",
-        "trend": {
-          "endDate": "2026-10-23",
-          "growthPercent": null,
-          "installs30d": 58,
-          "previousMonthlyRate": 0.0,
-          "score": 11.276571,
-          "sources": [
-            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
-          ],
-          "startDate": "2026-07-25"
-        }
-      },
-      "displayName": "OpenDisplay Receiver",
-      "docs": "https://github.com/peetzweg/opendisplay#readme",
-      "homepage": "https://opendisplay.app/",
-      "id": "brew:cask:opendisplay-receiver",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aopendisplay-receiver",
-      "lastUpdatedAt": "2026-10-22T16:45:46Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/peetzweg/opendisplay",
-      "researchedAt": "2026-10-23T08:21:21Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "OpenDisplay upstream documentation",
-          "url": "https://github.com/peetzweg/opendisplay"
-        },
-        {
-          "kind": "primary",
-          "title": "OpenDisplay privacy documentation",
-          "url": "https://peetzweg.github.io/opendisplay/privacy.html"
-        }
-      ],
-      "upstreamSummary": "Receiver that turns a computer into a second display for OpenDisplay",
-      "version": "1.26.0"
     },
     "brew:cask:pen": {
       "agentSummary": "pen.dev combines a design canvas with embedded and external agents, Figma and web imports, and exports spanning code, raster images, and PDF.",
@@ -2202,90 +2083,33 @@
       "upstreamSummary": "Monitor listening ports and kill their processes",
       "version": "3.4.0"
     },
-    "brew:cask:taskbar": {
-      "agentSummary": "Taskbar replaces app-centric Dock switching with persistent buttons for individual windows, emphasizing predictable one-click access, multi-monitor behavior, and a deliberately narrower feature set.",
-      "assessment": {
-        "alternatives": [
-          "DockDoor Pro",
-          "uBar",
-          "Sidebar",
-          "The built-in macOS Dock"
-        ],
-        "audiences": [
-          "Mac users accustomed to Windows taskbars",
-          "People juggling many windows per application",
-          "Users prioritizing stable pointer targets"
-        ],
-        "caveats": [
-          "Commercial closed-source application",
-          "Intentionally less expansive than widget-heavy Dock replacements",
-          "Changes a foundational navigation habit and needs an adjustment period"
-        ],
-        "complements": [
-          "A keyboard launcher",
-          "macOS Mission Control"
-        ],
-        "prerequisites": [
-          "macOS",
-          "Accessibility and screen-recording permissions",
-          "Paid license after trial"
-        ],
-        "useCases": [
-          "Switching to a specific window in one click",
-          "Showing window buttons on multiple monitors",
-          "Keeping frequently used windows spatially predictable"
-        ]
-      },
-      "category": null,
-      "displayName": "Taskbar",
-      "docs": null,
-      "homepage": "https://lawand.io/taskbar/",
-      "id": "brew:cask:taskbar",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ataskbar",
-      "lastUpdatedAt": "2026-09-06T16:27:51Z",
-      "manager": "homebrew",
-      "repository": null,
-      "researchedAt": "2026-09-07T06:31:55Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Taskbar developer introduction",
-          "url": "https://lawand.io/taskbar/intro/"
-        },
-        {
-          "kind": "primary",
-          "title": "Taskbar official product page",
-          "url": "https://lawand.io/taskbar/"
-        }
-      ],
-      "upstreamSummary": "Windows-style taskbar as a Dock replacement",
-      "version": "1.6.3,2026,09"
-    },
     "brew:cask:textus": {
-      "agentSummary": "Textus is a cross-platform, local-first Markdown editor offering rendered writing modes, exports, optional bring-your-own-model AI assistance, and plain files without required accounts or telemetry.",
+      "agentSummary": "Textus combines rendered Markdown editing with optional bring-your-own-model writing tools, while keeping documents local and supporting fully offline editing without AI.",
       "assessment": {
         "alternatives": [
-          "Typora or a source-oriented Markdown editor for users who do not need Textus's AI workflow."
+          "A conventional text editor",
+          "Obsidian or Typora for established Markdown workflows"
         ],
         "audiences": [
-          "Writers who want a visual Markdown editor while retaining portable plain-text files.",
-          "Users who prefer to choose their own hosted or local language model."
+          "Writers who prefer plain Markdown files",
+          "Users wanting optional local or hosted AI assistance"
         ],
         "caveats": [
-          "Hosted AI requests go directly to the selected provider and may incur provider charges.",
-          "The editor works offline, but hosted AI features do not."
+          "Hosted AI sends selected context to the chosen provider",
+          "The project is young and its editor behavior is still evolving"
         ],
         "complements": [
-          "Git or another file-sync workflow for versioning the underlying Markdown files.",
-          "Ollama for keeping optional model inference local."
+          "Ollama for local-model workflows",
+          "Git for versioning Markdown files"
         ],
         "prerequisites": [
-          "A supported macOS, Windows, or Linux system.",
-          "An external model account, API key, or local Ollama instance only when AI features are used."
+          "A supported desktop system",
+          "Provider credentials only when enabling hosted AI"
         ],
         "useCases": [
-          "Write Markdown with rendered formatting, math, tables, diagrams, and focused editing modes.",
-          "Export documents to PDF, Word, or HTML and optionally review AI-proposed edits."
+          "Edit rendered Markdown",
+          "Review AI suggestions",
+          "Work offline without enabling AI"
         ]
       },
       "category": "productivity",
@@ -2293,22 +2117,22 @@
         "admittedAt": "2026-10-20",
         "analytics": {
           "30": {
-            "count": 120,
-            "endDate": "2026-10-23",
+            "count": 127,
+            "endDate": "2026-10-25",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "startDate": "2026-09-23"
+            "startDate": "2026-09-25"
           },
           "365": {
-            "count": 120,
-            "endDate": "2026-10-23",
+            "count": 127,
+            "endDate": "2026-10-25",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
-            "startDate": "2025-10-23"
+            "startDate": "2025-10-25"
           },
           "90": {
-            "count": 120,
-            "endDate": "2026-10-23",
+            "count": 127,
+            "endDate": "2026-10-25",
             "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
-            "startDate": "2026-07-25"
+            "startDate": "2026-07-27"
           }
         },
         "firstObservedAt": "2026-10-20",
@@ -2316,16 +2140,16 @@
         "recentlyDiscovered": true,
         "status": "official",
         "trend": {
-          "endDate": "2026-10-23",
+          "endDate": "2026-10-25",
           "growthPercent": null,
-          "installs30d": 120,
+          "installs30d": 127,
           "previousMonthlyRate": 0.0,
-          "score": 17.746534,
+          "score": 18.321771,
           "sources": [
             "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
             "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
           ],
-          "startDate": "2026-07-25"
+          "startDate": "2026-07-27"
         }
       },
       "displayName": "Textus",
@@ -2333,24 +2157,29 @@
       "homepage": "https://textus.catvinci.com/",
       "id": "brew:cask:textus",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atextus",
-      "lastUpdatedAt": "2026-10-23T08:00:37Z",
+      "lastUpdatedAt": "2026-10-25T02:01:11Z",
       "manager": "homebrew",
       "repository": "https://github.com/CatVinci-Studio/Textus",
-      "researchedAt": "2026-10-23T08:21:21Z",
+      "researchedAt": "2026-10-25T10:29:27Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Textus upstream documentation",
+          "title": "Textus upstream repository",
           "url": "https://github.com/CatVinci-Studio/Textus"
         },
         {
           "kind": "primary",
-          "title": "Textus initial release",
+          "title": "Textus product documentation",
+          "url": "https://textus.catvinci.com/"
+        },
+        {
+          "kind": "primary",
+          "title": "Textus initial v0.1.0 release",
           "url": "https://github.com/CatVinci-Studio/Textus/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "WYSIWYG Markdown editor with built-in AI writing tools",
-      "version": "1.1.2"
+      "version": "1.2.1"
     },
     "brew:cask:trilium-notes": {
       "agentSummary": "Trilium Notes organizes a local personal knowledge base as linked, hierarchical notes, with self-hosted synchronization, scripting, relations, and structured attributes for deeper workflows.",
@@ -2920,6 +2749,101 @@
       "upstreamSummary": "Process manager for dev and prod",
       "version": "0.10.2"
     },
+    "brew:dep-scan": {
+      "agentSummary": "OWASP dep-scan audits projects and container images for known vulnerabilities, license risks, and reachable data flows, supporting local scans and CI security pipelines.",
+      "assessment": {
+        "alternatives": [
+          "OSV-Scanner",
+          "Trivy",
+          "language-specific dependency audit tools"
+        ],
+        "audiences": [
+          "Application-security teams",
+          "Developers adding dependency checks to CI"
+        ],
+        "caveats": [
+          "Vulnerability matches require triage",
+          "Reachability support differs by language",
+          "Database freshness affects results"
+        ],
+        "complements": [
+          "CycloneDX SBOM generation",
+          "CI and application-security posture platforms"
+        ],
+        "prerequisites": [
+          "A supported standalone binary, Python environment, or container runtime",
+          "Access to vulnerability data sources"
+        ],
+        "useCases": [
+          "Scan source repositories",
+          "Audit container images",
+          "Prioritize findings with reachability data"
+        ]
+      },
+      "category": "security",
+      "discovery": {
+        "admittedAt": "2026-10-18",
+        "analytics": {
+          "30": {
+            "count": 36,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-25"
+          },
+          "365": {
+            "count": 36,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-25"
+          },
+          "90": {
+            "count": 36,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-27"
+          }
+        },
+        "firstObservedAt": "2026-10-18",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-25",
+          "growthPercent": null,
+          "installs30d": 36,
+          "previousMonthlyRate": 0.0,
+          "score": 7.949919,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-27"
+        }
+      },
+      "displayName": "dep-scan",
+      "docs": "https://depscan.readthedocs.io/",
+      "homepage": "https://github.com/owasp-dep-scan/dep-scan",
+      "id": "brew:dep-scan",
+      "installURL": "pkgmgrmgr://install?package=brew%3Adep-scan",
+      "lastUpdatedAt": "2026-10-25T02:25:48Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/owasp-dep-scan/dep-scan",
+      "researchedAt": "2026-10-25T10:29:27Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "OWASP dep-scan upstream repository",
+          "url": "https://github.com/OWASP-dep-scan/dep-scan"
+        },
+        {
+          "kind": "primary",
+          "title": "OWASP dep-scan documentation",
+          "url": "https://depscan.readthedocs.io/"
+        }
+      ],
+      "upstreamSummary": "Security and risk audit tool for project dependencies and container images",
+      "version": "6.3.0"
+    },
     "brew:diskwatch": {
       "agentSummary": "Presents read-only disk capacity, I/O, latency, health, volume, and hot-file signals in one terminal dashboard, with explicit limits for unavailable measurements.",
       "assessment": {
@@ -3015,6 +2939,100 @@
       ],
       "upstreamSummary": "Cross-platform disk diagnostics TUI",
       "version": "0.6.1"
+    },
+    "brew:erpc": {
+      "agentSummary": "eRPC fronts blockchain RPC providers with retries, failover, routing, and reorganization-aware caching, targeting read-heavy indexers and applications spanning EVM and Solana networks.",
+      "assessment": {
+        "alternatives": [
+          "Direct provider integration",
+          "A general-purpose reverse proxy with custom cache rules"
+        ],
+        "audiences": [
+          "Blockchain infrastructure operators",
+          "Teams building read-heavy indexers and frontends"
+        ],
+        "caveats": [
+          "Caching semantics must match chain finality expectations",
+          "A proxy becomes another service to secure and operate"
+        ],
+        "complements": [
+          "Managed RPC providers",
+          "Self-hosted blockchain nodes",
+          "Prometheus-compatible monitoring"
+        ],
+        "prerequisites": [
+          "Configured upstream RPC endpoints",
+          "Operational monitoring and capacity planning"
+        ],
+        "useCases": [
+          "Route requests across upstream providers",
+          "Cache chain-aware responses",
+          "Fail over around provider errors"
+        ]
+      },
+      "category": "cloud-infrastructure",
+      "discovery": {
+        "admittedAt": "2026-10-23",
+        "analytics": {
+          "30": {
+            "count": 30,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-25"
+          },
+          "365": {
+            "count": 30,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-25"
+          },
+          "90": {
+            "count": 30,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-27"
+          }
+        },
+        "firstObservedAt": "2026-10-23",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-25",
+          "growthPercent": null,
+          "installs30d": 30,
+          "previousMonthlyRate": 0.0,
+          "score": 6.867974,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-27"
+        }
+      },
+      "displayName": "erpc",
+      "docs": "https://docs.erpc.cloud/",
+      "homepage": "https://docs.erpc.cloud/",
+      "id": "brew:erpc",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aerpc",
+      "lastUpdatedAt": "2026-10-24T14:15:39Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/erpc/erpc",
+      "researchedAt": "2026-10-25T10:29:27Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "eRPC upstream repository",
+          "url": "https://github.com/erpc/erpc"
+        },
+        {
+          "kind": "primary",
+          "title": "eRPC documentation",
+          "url": "https://docs.erpc.cloud/"
+        }
+      ],
+      "upstreamSummary": "Fault-tolerant RPC proxy with re-org-aware permanent caching",
+      "version": "0.4.0"
     },
     "brew:fastapi": {
       "agentSummary": "FastAPI turns standard Python type hints into request parsing, runtime validation, OpenAPI schemas, interactive documentation, and editor assistance for typed web APIs.",
@@ -3516,6 +3534,93 @@
       "upstreamSummary": "Jupyter notebooks as Markdown documents, Julia, Python or R scripts",
       "version": "1.19.5"
     },
+    "brew:kontext": {
+      "agentSummary": "Kontext inserts local policy checks before supported AI-agent actions, records authorization evidence, and lets teams begin in observe mode before enabling enforcement.",
+      "assessment": {
+        "alternatives": [
+          "Native agent permission prompts",
+          "Sandboxing or endpoint-control tools"
+        ],
+        "audiences": [
+          "Security teams governing coding agents",
+          "Developers auditing consequential agent actions"
+        ],
+        "caveats": [
+          "Coverage varies by agent and hook",
+          "Documented fail-open cases require careful threat-model review"
+        ],
+        "complements": [
+          "Existing agent permission controls",
+          "Organizational policy review"
+        ],
+        "prerequisites": [
+          "A supported agent such as Claude Code or Codex",
+          "macOS for the documented self-serve setup"
+        ],
+        "useCases": [
+          "Observe tool actions before enforcing policy",
+          "Deny supported risky actions",
+          "Review an authorization ledger"
+        ]
+      },
+      "category": "security",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 14,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-25"
+          },
+          "365": {
+            "count": 14,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-25"
+          },
+          "90": {
+            "count": 14,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-27"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": null
+      },
+      "displayName": "kontext",
+      "docs": "https://docs.kontext.security/",
+      "homepage": "https://kontext.security",
+      "id": "brew:kontext",
+      "installURL": "pkgmgrmgr://install?package=brew%3Akontext",
+      "lastUpdatedAt": "2026-10-25T02:50:22Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/kontext-security/kontext",
+      "researchedAt": "2026-10-25T10:29:27Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Kontext upstream repository",
+          "url": "https://github.com/kontext-security/kontext"
+        },
+        {
+          "kind": "primary",
+          "title": "Kontext documentation",
+          "url": "https://docs.kontext.security/getting-started/welcome"
+        },
+        {
+          "kind": "primary",
+          "title": "Kontext v0.1.0 release",
+          "url": "https://github.com/kontext-security/kontext/releases/tag/v0.1.0"
+        }
+      ],
+      "upstreamSummary": "Identity, credentials, and governance for AI agents",
+      "version": "1.13.1"
+    },
     "brew:neovim": {
       "agentSummary": "Neovim combines modal editing with a built-in LSP client, letting users connect Kotlin and other language servers through explicit, scriptable configuration.",
       "assessment": {
@@ -3576,65 +3681,97 @@
       "version": "0.12.5"
     },
     "brew:noodle": {
-      "agentSummary": "Noodle keeps API requests in reviewable YAML collections, combining an interactive terminal client with repeatable CLI runs, assertions, captures, scripting, and guarded secret storage.",
+      "agentSummary": "Noodle is a terminal REST client with file-based collections, keeping repeatable requests beside project files while offering an interactive interface for sending and inspecting calls.",
       "assessment": {
         "alternatives": [
-          "Slumber for a mature source-first terminal HTTP client",
-          "curl or HTTPie for individual command-line requests",
-          "Graphical clients such as Postman or Insomnia"
+          "HTTPie or curl for direct commands",
+          "GUI clients such as Bruno or Insomnia"
         ],
         "audiences": [
-          "Developers who want API collections beside application code",
-          "Terminal-first teams reviewing HTTP workflows in Git"
+          "API developers who work primarily in terminals",
+          "Teams wanting reviewable request collections"
         ],
         "caveats": [
-          "The project is young and its collection format is still evolving",
-          "Timeline history can contain response data and should normally stay out of version control",
-          "Collection scripts are trusted code and can read selected secrets"
+          "Request files can expose secrets if handled carelessly",
+          "Terminal interaction may be less suitable for visual API exploration"
         ],
         "complements": [
-          "Git for reviewing and sharing request definitions",
-          "A CI system for repeatable collection runs"
+          "Git for sharing request collections",
+          "Local development servers"
         ],
         "prerequisites": [
-          "A terminal on a supported Linux or macOS system",
-          "An initialized directory of YAML requests for collection workflows"
+          "Terminal access",
+          "Network credentials appropriate for the tested API"
         ],
         "useCases": [
-          "Explore and edit HTTP requests in a terminal interface",
-          "Run ordered API checks with environments, assertions, captures, and data files",
-          "Import existing OpenAPI, Postman, or Insomnia collections"
+          "Organize REST requests as files",
+          "Send and inspect API calls interactively",
+          "Keep examples with a project"
         ]
       },
       "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 118,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-25"
+          },
+          "365": {
+            "count": 153,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-25"
+          },
+          "90": {
+            "count": 153,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-27"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-25",
+          "growthPercent": 574.3,
+          "installs30d": 118,
+          "previousMonthlyRate": 17.5,
+          "score": 10.250249,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-27"
+        }
+      },
       "displayName": "noodle",
       "docs": "https://noodlerest.dev/docs",
       "homepage": "https://noodlerest.dev",
       "id": "brew:noodle",
       "installURL": "pkgmgrmgr://install?package=brew%3Anoodle",
-      "lastUpdatedAt": "2026-10-14T19:58:08Z",
+      "lastUpdatedAt": "2026-10-25T03:42:27Z",
       "manager": "homebrew",
       "repository": "https://github.com/wilfredinni/noodle",
-      "researchedAt": "2026-10-15T07:50:24Z",
+      "researchedAt": "2026-10-25T10:29:27Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Noodle project repository",
+          "title": "Noodle upstream repository",
           "url": "https://github.com/wilfredinni/noodle"
         },
         {
           "kind": "primary",
-          "title": "Noodle collections guide",
-          "url": "https://noodlerest.dev/docs/guides/collections/"
-        },
-        {
-          "kind": "primary",
-          "title": "Noodle v0.1.0 release",
-          "url": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0"
+          "title": "Noodle documentation",
+          "url": "https://noodlerest.dev"
         }
       ],
       "upstreamSummary": "Terminal REST client with file-based collections",
-      "version": "0.10.0"
+      "version": "0.10.2"
     },
     "brew:nub": {
       "agentSummary": "Nub combines TypeScript execution, package installation, script running, and Node version management over stock Node, trading a unified workflow for another fast-moving toolchain dependency.",
@@ -4451,59 +4588,6 @@
       "upstreamSummary": "Interpreted, interactive, object-oriented programming language",
       "version": "3.15.0"
     },
-    "brew:ratex": {
-      "agentSummary": "ratex is an experimental Rust TeX engine emphasizing fast compilation and a compact command-line workflow, best suited to curious TeX users testing an emerging implementation.",
-      "assessment": {
-        "alternatives": [
-          "Tectonic",
-          "pdfTeX, XeTeX, or LuaTeX"
-        ],
-        "audiences": [
-          "TeX users evaluating alternative engines",
-          "Rust developers interested in typesetting systems"
-        ],
-        "caveats": [
-          "The upstream repository is days old, so independent compatibility and stability evidence is limited",
-          "Validate complex documents and output fidelity before relying on it in publishing workflows"
-        ],
-        "complements": [
-          "TeX editors and PDF viewers",
-          "Version control for comparing generated artifacts"
-        ],
-        "prerequisites": [
-          "Existing TeX documents and enough familiarity to verify their rendering",
-          "Tolerance for a very young project and changing behavior"
-        ],
-        "useCases": [
-          "Experiment with self-contained TeX compilation from the terminal",
-          "Compare document compatibility against established TeX engines"
-        ]
-      },
-      "category": "developer-tools",
-      "displayName": "ratex",
-      "docs": "https://github.com/leoliu0/ratex#readme",
-      "homepage": "https://github.com/leoliu0/ratex",
-      "id": "brew:ratex",
-      "installURL": "pkgmgrmgr://install?package=brew%3Aratex",
-      "lastUpdatedAt": "2026-09-24T09:38:21Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/leoliu0/ratex",
-      "researchedAt": "2026-09-24T10:23:50Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "ratex upstream repository and README",
-          "url": "https://github.com/leoliu0/ratex"
-        },
-        {
-          "kind": "primary",
-          "title": "ratex performance and compatibility methodology",
-          "url": "https://github.com/leoliu0/ratex/blob/main/PERFORMANCE.md"
-        }
-      ],
-      "upstreamSummary": "Fast TeX engine written in Rust",
-      "version": "0.4.3"
-    },
     "brew:slumber": {
       "agentSummary": "Slumber is a mature source-first HTTP client whose local collections drive a terminal interface, command-line automation, Python access, profiles, templates, imports, and response history.",
       "assessment": {
@@ -5131,6 +5215,93 @@
       "upstreamSummary": "CLI for Git worktree management, designed for parallel AI agent workflows",
       "version": "0.81.0"
     },
+    "brew:worldmonitor": {
+      "agentSummary": "World Monitor’s CLI brings a broad global-intelligence dashboard into terminal workflows, exposing news, geopolitical, infrastructure, market, and risk views from one project.",
+      "assessment": {
+        "alternatives": [
+          "Dedicated news terminals",
+          "Separate market, weather, and conflict-monitoring tools"
+        ],
+        "audiences": [
+          "Analysts who prefer terminal dashboards",
+          "Developers integrating situational-awareness data"
+        ],
+        "caveats": [
+          "Aggregated intelligence still requires source verification",
+          "Coverage and availability depend on upstream data providers"
+        ],
+        "complements": [
+          "The World Monitor web dashboards",
+          "Its language SDKs and API"
+        ],
+        "prerequisites": [
+          "Network access to the project data services",
+          "A terminal suitable for the dashboard"
+        ],
+        "useCases": [
+          "Review global news and risk signals",
+          "Explore infrastructure and market views",
+          "Script queries through the CLI"
+        ]
+      },
+      "category": "data",
+      "discovery": {
+        "admittedAt": "2026-10-21",
+        "analytics": {
+          "30": {
+            "count": 10,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-25"
+          },
+          "365": {
+            "count": 10,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-25"
+          },
+          "90": {
+            "count": 10,
+            "endDate": "2026-10-25",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-27"
+          }
+        },
+        "firstObservedAt": "2026-10-21",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": null
+      },
+      "displayName": "worldmonitor",
+      "docs": "https://www.worldmonitor.app/docs/api-reference",
+      "homepage": "https://worldmonitor.app/docs/cli",
+      "id": "brew:worldmonitor",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aworldmonitor",
+      "lastUpdatedAt": "2026-10-25T06:13:38Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/koala73/worldmonitor",
+      "researchedAt": "2026-10-25T10:29:27Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "World Monitor upstream repository",
+          "url": "https://github.com/koala73/worldmonitor"
+        },
+        {
+          "kind": "primary",
+          "title": "World Monitor CLI documentation",
+          "url": "https://www.worldmonitor.app/docs/cli-dashboard"
+        },
+        {
+          "kind": "primary",
+          "title": "World Monitor earliest upstream release",
+          "url": "https://github.com/koala73/worldmonitor/releases/tag/v2.2.0"
+        }
+      ],
+      "upstreamSummary": "Command-line client for the World Monitor global intelligence API",
+      "version": "0.2.0"
+    },
     "brew:xfr": {
       "agentSummary": "xfr measures network throughput through a live terminal interface, supporting TCP, UDP, QUIC, parallel streams, automation formats, and multi-client serving while using its own non-iperf protocol.",
       "assessment": {
@@ -5296,7 +5467,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-24T10:26:37Z",
+    "generatedAt": "2026-10-25T10:27:53Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
