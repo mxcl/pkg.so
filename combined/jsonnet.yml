@@ -74,6 +74,31 @@ history:
       reformat source, and use manifests to generate non-JSON output. The language is
       side-effect free and designed for modular configuration data rather than general
       application programming.
+related-packages:
+  - id: brew:go-jsonnet
+    reason: >
+      Choose go-jsonnet when you want a production-ready pure-Go implementation or an
+      embeddable Go API instead of the original C++ implementation.
+    rel: alternative
+    sources:
+      - https://github.com/google/jsonnet
+      - https://github.com/google/go-jsonnet
+  - id: brew:jsonnet-bundler
+    reason: >
+      jsonnet-bundler records and vendors reusable Jsonnet libraries in
+      `jsonnetfile.json` for resolution through Jsonnet import paths.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jsonnet-bundler/jsonnet-bundler
+      - https://jsonnet.org/learning/getting_started.html
+  - id: brew:tanka
+    reason: >
+      Grafana Tanka uses Jsonnet to define Kubernetes resources and adds environment,
+      diff, and deployment workflows around the generated configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://tanka.dev/jsonnet/overview/
+      - https://jsonnet.org/
 category: developer-tools
 package-manager:
   apk: jsonnet

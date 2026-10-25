@@ -52,6 +52,31 @@ history:
       The canonical examples are piping a web service response through `jsonpp`,
       formatting a JSON file from disk, and using `-s` when the input stream is one
       already formatted JSON object.
+related-packages:
+  - id: brew:jq
+    reason: >
+      Choose jq when you need to query or transform JSON as well as pretty-print it;
+      jsonpp is smaller in scope and dedicated to formatting.
+    rel: alternative
+    sources:
+      - https://github.com/jmhodges/jsonpp
+      - https://jqlang.github.io/jq/manual/
+  - id: brew:jsonfmt
+    reason: >
+      Choose jsonfmt for gofmt-style checking and in-place rewriting of JSON files;
+      jsonpp is better suited to formatting files or piped output for immediate reading.
+    rel: alternative
+    sources:
+      - https://github.com/jmhodges/jsonpp
+      - https://github.com/caarlos0/jsonfmt
+  - id: brew:jless
+    reason: >
+      Choose jless when large JSON or YAML documents need interactive navigation,
+      search, and collapsing instead of a formatted stream written to standard output.
+    rel: alternative
+    sources:
+      - https://github.com/jmhodges/jsonpp
+      - https://jless.io/user-guide/
 tags:
   - cli
   - formatter

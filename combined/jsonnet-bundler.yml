@@ -60,6 +60,31 @@ history:
       A typical project runs `jb init`, gains a `jsonnetfile.json`, installs a
       dependency from a GitHub repository, imports files from the vendored package, and
       passes `-J vendor` to Jsonnet so imports resolve through the vendor tree.
+related-packages:
+  - id: brew:jsonnet
+    reason: >
+      jsonnet-bundler installs libraries for the original Jsonnet interpreter, which
+      resolves the vendored sources through its `-J vendor` import path.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jsonnet-bundler/jsonnet-bundler
+      - https://github.com/google/jsonnet
+  - id: brew:go-jsonnet
+    reason: >
+      go-jsonnet is a production-ready Jsonnet implementation that can evaluate
+      libraries installed into a project by jsonnet-bundler.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jsonnet-bundler/jsonnet-bundler
+      - https://github.com/google/go-jsonnet
+  - id: brew:tanka
+    reason: >
+      Tanka officially recommends jsonnet-bundler for installing and publishing the
+      Jsonnet libraries used in its Kubernetes configuration workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://tanka.dev/libraries/install-publish/
+      - https://github.com/jsonnet-bundler/jsonnet-bundler
 category: developer-tools
 package-manager:
   apk: jsonnet-bundler
