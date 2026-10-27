@@ -74,6 +74,24 @@ history:
       The config file convention in this batch, .kube-linter.yaml, matches the tool's
       configurable-policy role: teams can enable, disable, or define checks around their
       own Kubernetes baseline instead of accepting a single universal rule set.
+related-packages:
+  - id: brew:kube-score
+    reason: >
+      Choose kube-score for an opinionated reliability-and-security assessment with a
+      scoring-oriented workflow; choose KubeLinter when you need configurable or custom
+      checks and first-class Helm chart linting.
+    rel: alternative
+    sources:
+      - https://github.com/stackrox/kube-linter
+      - https://github.com/zegl/kube-score
+  - id: brew:kubeconform
+    reason: >
+      Run Kubeconform before KubeLinter when you want schema and type validation
+      followed by configurable best-practice and security checks.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/yannh/kubeconform
+      - https://github.com/stackrox/kube-linter
 category: developer-tools
 package-manager:
   brew: kube-linter

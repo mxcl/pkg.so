@@ -70,6 +70,40 @@ history:
       Annotations such as kube-score/ignore and kube-score/enable let users suppress or
       opt into checks on individual objects, which keeps the linter usable in
       repositories where not every workload has the same operational constraints.
+related-packages:
+  - id: brew:kube-linter
+    reason: >
+      Choose KubeLinter when you need custom policy checks and direct Helm chart
+      analysis; choose kube-score for its concise, opinionated reliability-and-security
+      recommendations.
+    rel: alternative
+    sources:
+      - https://github.com/zegl/kube-score
+      - https://github.com/stackrox/kube-linter
+  - id: brew:kubeconform
+    reason: >
+      Use Kubeconform to catch schema, field-type, and API-shape errors before
+      kube-score evaluates operational reliability and security practices.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/yannh/kubeconform
+      - https://github.com/zegl/kube-score
+  - id: brew:helm
+    reason: >
+      Render a chart with helm template and pipe the resulting manifests into
+      kube-score, as demonstrated by kube-score's official usage documentation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/zegl/kube-score
+      - https://docs.helm.sh/docs/v3/helm/helm_template/
+  - id: brew:kustomize
+    reason: >
+      Pipe kustomize build output into kube-score to analyze the fully customized
+      manifests that will be deployed.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/zegl/kube-score
+      - https://kustomize.io/
 category: developer-tools
 package-manager:
   brew: kube-score

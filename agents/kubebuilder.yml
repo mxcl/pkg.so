@@ -92,6 +92,33 @@ history:
       Kubebuilder is not just a one-shot template generator. Its plugin versioning,
       migrations, and library hooks support long-lived projects that may need to adopt
       newer Kubernetes APIs or scaffolding layouts without abandoning existing code.
+related-packages:
+  - id: brew:operator-sdk
+    reason: >
+      Choose Operator SDK when you want an operator-focused toolkit with broader
+      language and lifecycle extensions; it uses Kubebuilder's library and plugin system
+      underneath its Go scaffolding.
+    rel: alternative
+    sources:
+      - https://github.com/kubernetes-sigs/kubebuilder
+      - https://github.com/operator-framework/operator-sdk
+  - id: brew:kustomize
+    reason: >
+      Kubebuilder-generated projects use Kustomize to assemble CRDs, RBAC, manager,
+      webhook, and deployment manifests through their generated Make targets.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kubernetes-sigs/kubebuilder
+      - https://book.kubebuilder.io/quick-start
+      - https://kustomize.io/
+  - id: brew:kubernetes-cli
+    reason: >
+      Kubebuilder's documented test and deployment workflow uses kubectl to apply
+      generated sample resources and Kustomize directories to a cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://book.kubebuilder.io/quick-start
+      - https://kubernetes.io/docs/reference/kubectl/
 tags:
   - api-development
   - cli
