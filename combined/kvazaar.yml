@@ -52,6 +52,24 @@ history:
       targeting x86, x64, PowerPC, and ARM on Windows, Linux, and macOS. Its goals
       include coding efficiency close to HM, portability, real-time speed, and optimized
       compute and memory use.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Use FFmpeg with its `libkvazaar` encoder to add demuxing, filtering, audio
+      processing, and container output around Kvazaar's HEVC encoding.
+    rel: adjacent_workflow
+    sources:
+      - https://ffmpeg.org/ffmpeg-codecs.html#libkvazaar
+      - https://ultravideo.fi/kvazaar.html
+  - id: brew:x265
+    reason: >
+      Choose x265 as an alternative production-oriented H.265/HEVC encoder with a
+      different implementation and tuning ecosystem; choose Kvazaar for its academic,
+      research-friendly codebase.
+    rel: alternative
+    sources:
+      - https://x265.readthedocs.io/en/stable/
+      - https://ultravideo.fi/kvazaar.html
 category: media
 package-manager:
   brew: kvazaar

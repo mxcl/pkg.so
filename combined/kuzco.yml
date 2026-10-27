@@ -46,6 +46,23 @@ history:
       documents Homebrew, Go, Apt, and source installation, requires Ollama for
       model-backed recommendations, and exposes commands such as `recommend`, `fix`,
       `list`, and `version`.
+related-packages:
+  - id: brew:ollama
+    reason: >
+      Kuzco requires Ollama to run the local language models that generate its
+      infrastructure recommendations and fixes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/RoseSecurity/Kuzco#installation
+      - https://docs.ollama.com/
+  - id: brew:opentofu
+    reason: >
+      Use OpenTofu to author and execute the infrastructure configurations that Kuzco's
+      `recommend` and `fix` commands are designed to review.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/RoseSecurity/Kuzco
+      - https://opentofu.org/docs/
 category: ai
 package-manager:
   brew: kuzco

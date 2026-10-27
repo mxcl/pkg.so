@@ -56,6 +56,25 @@ history:
       Users create a Kuzu database either on disk or in memory, define a structured
       property graph schema, import data from files, and query with Cypher. The docs
       emphasize that embedded use avoids installing or managing an external DBMS server.
+related-packages:
+  - id: brew:neo4j
+    reason: >
+      Choose Neo4j when you want a maintained, server-oriented property-graph database
+      and Cypher ecosystem; choose Kuzu only for its archived embedded, in-process
+      model.
+    rel: alternative
+    sources:
+      - https://github.com/kuzudb/kuzu
+      - https://neo4j.com/docs/getting-started/
+  - id: brew:duckdb
+    reason: >
+      Use DuckDB alongside Kuzu for embedded SQL analytics over tabular data; Kuzu's
+      official DuckDB extension was designed to attach DuckDB databases and scan their
+      tables from graph workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://kuzudb.github.io/docs/extensions/duckdb/
+      - https://duckdb.org/docs/stable/
 tags:
   - cli
   - cypher

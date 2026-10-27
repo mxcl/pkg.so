@@ -54,6 +54,23 @@ history:
       test path/to/test-suite`. The getting-started docs require Kubernetes and kubectl
       1.13 or later, and the repository includes `kuttl-test.yaml` as the conventional
       suite configuration file.
+related-packages:
+  - id: brew:kind
+    reason: >
+      Use kind to provide the disposable Kubernetes-in-Docker control plane that KUTTL
+      supports for integration and operator test suites.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kudobuilder/kuttl/blob/main/docs/testing.md
+      - https://kind.sigs.k8s.io/
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl to inspect and manage the cluster resources exercised by KUTTL, which
+      itself installs and runs as the `kubectl kuttl` plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kudobuilder/kuttl
+      - https://kubernetes.io/docs/reference/kubectl/
 tags:
   - cli
   - kubectl-plugin
