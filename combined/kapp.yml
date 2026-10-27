@@ -57,6 +57,39 @@ history:
       let kapp converge live resources while waiting for readiness. Because it works
       without server-side components, custom CRDs, or cluster-admin privileges, it fits
       constrained clusters and simple CI runners.
+related-packages:
+  - id: brew:ytt
+    reason: >
+      Use ytt to template and overlay structured YAML, then pipe the rendered Kubernetes
+      resources to kapp for deployment.
+    rel: adjacent_workflow
+    sources:
+      - https://carvel.dev/kapp/
+      - https://carvel.dev/blog/deploying-apps-with-ytt-kbld-kapp/
+  - id: brew:kbld
+    reason: >
+      Use kbld to build or resolve container images to immutable digests before kapp
+      applies the resulting Kubernetes configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://carvel.dev/blog/deploying-apps-with-ytt-kbld-kapp/
+      - https://carvel.dev/kbld/
+  - id: brew:kustomize
+    reason: >
+      Kustomize can produce customized Kubernetes YAML that kapp then diffs, applies,
+      and monitors as an application.
+    rel: adjacent_workflow
+    sources:
+      - https://carvel.dev/kapp/
+      - https://kubectl.docs.kubernetes.io/references/kustomize/
+  - id: brew:helm
+    reason: >
+      Helm can render charts into standard Kubernetes YAML for kapp to deploy when users
+      want Helm packaging with kapp's explicit apply and wait behavior.
+    rel: adjacent_workflow
+    sources:
+      - https://carvel.dev/kapp/
+      - https://helm.sh/docs/helm/helm_template/
 category: developer-tools
 package-manager:
   apk: kapp

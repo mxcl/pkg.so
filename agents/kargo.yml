@@ -4,8 +4,12 @@ repo: null
 docs:
   - https://docs.kargo.io/
   - https://github.com/akuity/kargo#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.config/kargo/config
+credentials-file-location:
+  unix:
+    - ~/.config/kargo/config
 history:
   adoption-history:
     - >
@@ -60,6 +64,17 @@ history:
       coordinate promotion steps, and hand off synchronization to Argo CD. The CLI
       package matters for operators who create and inspect Kargo resources from local
       shells or CI jobs.
+related-packages:
+  - id: brew:argocd
+    reason: >
+      Kargo supplies multi-stage promotion and verification above Argo CD, which then
+      synchronizes the promoted desired state into Kubernetes clusters.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.kargo.io/
+      - >
+        https://akuity.io/blog/announcing-kargo-version-1-0-now-generally-available-on-the-akuity-platform
+      - https://argo-cd.readthedocs.io/
 tags:
   - application-lifecycle
   - cli

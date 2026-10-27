@@ -6,8 +6,14 @@ docs:
   - https://docs.karakeep.app/
   - https://docs.karakeep.app/command-line
   - https://github.com/karakeep-app/karakeep#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/karakeep/config.json
+    - ~/.config/karakeep/config.json
+credentials-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/karakeep/config.json
+    - ~/.config/karakeep/config.json
 history:
   adoption-history:
     - >
@@ -61,6 +67,15 @@ history:
       extensions, mobile apps, API clients, or CLI, and use search, lists, tags, OCR,
       RSS imports, and summarization to manage the saved collection. The Homebrew
       package covers the CLI side of that larger self-hosted application.
+related-packages:
+  - id: brew:ollama
+    reason: >
+      Karakeep officially supports Ollama as a local model server for automatic tagging,
+      summarization, embeddings, and semantic search.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.karakeep.app/configuration/different-ai-providers/
+      - https://docs.ollama.com/
 category: productivity
 package-manager:
   brew: karakeep

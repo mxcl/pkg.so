@@ -59,6 +59,31 @@ history:
       member clusters, apply resources into the control plane, inspect resources across
       member clusters, and promote resources from legacy clusters. Its command surface
       mirrors kubectl-style administration but targets a federated control plane.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl operates the Kubernetes clusters and APIs that Karmada federates, while
+      karmadactl adds Karmada-specific control-plane and cluster-registration commands.
+    rel: adjacent_workflow
+    sources:
+      - https://karmada.io/docs/installation/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:fluxcd
+    reason: >
+      Karmada officially documents using Flux controllers on member clusters to
+      reconcile HelmRelease and Kustomization resources propagated through Karmada.
+    rel: adjacent_workflow
+    sources:
+      - https://karmada.io/docs/userguide/cicd/working-with-flux/
+      - https://fluxcd.io/flux/
+  - id: brew:helm
+    reason: >
+      Karmada's documented Flux workflow propagates applications packaged as Helm charts
+      across member clusters and customizes them with Karmada policies.
+    rel: adjacent_workflow
+    sources:
+      - https://karmada.io/docs/userguide/cicd/working-with-flux/
+      - https://helm.sh/docs/
 tags:
   - cli
   - cluster-federation
