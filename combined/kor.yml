@@ -5,7 +5,8 @@ repo: https://github.com/yonahd/kor
 docs:
   - https://github.com/yonahd/kor#readme
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.kube/config
 history:
   adoption-history:
     - >
@@ -63,6 +64,16 @@ history:
       in-cluster for scheduled scans and metrics. The README also documents labels for
       ignoring resources or forcing cleanup decisions, which is important because
       Kubernetes cleanup can be risky when ownership is unclear.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Kor is distributed as a kubectl plugin through Krew and uses the same
+      kubeconfig-based cluster access, making kubectl its natural companion for
+      inspecting or correcting flagged resources.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/yonahd/kor#readme
+      - https://kubernetes.io/docs/reference/kubectl/
 category: cloud-infrastructure
 package-manager:
   brew: kor

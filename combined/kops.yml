@@ -78,6 +78,24 @@ history:
       For package-manager users, the value is that installing one CLI gives access to a
       whole cluster lifecycle workflow rather than only a client for an already-existing
       control plane.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kOps creates and exports kubeconfig entries for kubectl, which operators then use
+      to manage workloads and resources inside the resulting cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://kops.sigs.k8s.io/getting_started/kubectl/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:eksctl
+    reason: >
+      Choose eksctl for an Amazon EKS-specific cluster lifecycle, while kOps is suited
+      to provisioning Kubernetes and its infrastructure across the cloud providers kOps
+      supports.
+    rel: alternative
+    sources:
+      - https://kops.sigs.k8s.io/
+      - https://eksctl.io/
 category: cloud-infrastructure
 package-manager:
   brew: kops
