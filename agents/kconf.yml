@@ -48,6 +48,26 @@ history:
       kconf is used to add kubeconfig files, optionally rename contexts on import, list
       contexts, print one context's config, switch contexts, and set namespaces while
       leaving kubectl pointed at its default config path.
+related-packages:
+  - id: brew:kubectx
+    reason: >
+      Choose kubectx when you primarily need fast context and namespace switching,
+      previous-context shortcuts, interactive selection, or isolated/read-only shells;
+      choose kconf when importing and consolidating kubeconfig files is central.
+    rel: alternative
+    sources:
+      - https://github.com/particledecay/kconf
+      - https://github.com/ahmetb/kubectx
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl is the downstream client that reads the kubeconfig entries and current
+      context managed by kconf, so the two tools form the practical
+      configuration-and-cluster-operation workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/particledecay/kconf
+      - https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
+      - https://kubernetes.io/docs/reference/kubectl/
 tags:
   - cli
   - configuration

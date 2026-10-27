@@ -59,6 +59,23 @@ history:
       them, and emits YAML with digest-pinned images. Its docs also cover lock files,
       registry pushes, packaging images into tarballs, and relocation between
       registries.
+related-packages:
+  - id: brew:ytt
+    reason: >
+      Use ytt before kbld when manifests need structure-aware templating or overlays;
+      Carvel's documented pipeline sends ytt output into kbld for image processing.
+    rel: adjacent_workflow
+    sources:
+      - https://carvel.dev/blog/deploying-apps-with-ytt-kbld-kapp/
+      - https://carvel.dev/kbld/
+  - id: brew:kapp
+    reason: >
+      Use kapp after kbld to diff, apply, converge, and wait for the digest-pinned
+      Kubernetes resources emitted by kbld.
+    rel: adjacent_workflow
+    sources:
+      - https://carvel.dev/blog/deploying-apps-with-ytt-kbld-kapp/
+      - https://carvel.dev/kbld/
 tags:
   - carvel
   - cli
