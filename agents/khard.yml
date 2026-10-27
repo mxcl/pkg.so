@@ -70,6 +70,24 @@ history:
       CardDAV by vdirsyncer, then use khard to list, search, show, edit, create, remove,
       and query contacts. It is commonly wired into mail-client address completion,
       especially mutt-style workflows.
+related-packages:
+  - id: brew:vdirsyncer
+    reason: >
+      Pair vdirsyncer with khard to synchronize khard's local vCard directories with
+      CardDAV servers; khard's official documentation identifies a vdir synchronizer as
+      a primary companion.
+    rel: adjacent_workflow
+    sources:
+      - https://khard.readthedocs.io/en/latest/
+      - https://vdirsyncer.pimutils.org/en/stable/tutorial.html
+  - id: brew:mutt
+    reason: >
+      Mutt can use khard as its external address book for recipient completion and can
+      pipe senders into khard, following khard's documented integration recipe.
+    rel: adjacent_workflow
+    sources:
+      - https://khard.readthedocs.io/en/latest/examples/mutt.html
+      - https://www.mutt.org/doc/manual/
 tags:
   - address-book
   - carddav
