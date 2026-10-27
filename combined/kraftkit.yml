@@ -4,7 +4,8 @@ homepage: https://unikraft.org/docs/cli
 repo: https://github.com/unikraft/kraftkit
 docs:
   - https://unikraft.org/docs/cli
-config-file-location: null
+config-file-location:
+  unix: ~/.config/kraftkit/config.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,6 +71,16 @@ history:
       package, pull, push, run, start, stop, inspect, and deploy Unikraft unikernels;
       the official CLI reference also documents local runtime, networking, volume,
       compose, cloud, image, service, autoscale, certificate, and completion commands.
+related-packages:
+  - id: brew:qemu
+    reason: >
+      QEMU is a documented local hypervisor backend used by kraft run to instantiate
+      supported Unikraft images and is also useful for inspecting or debugging the
+      resulting virtual machines directly.
+    rel: adjacent_workflow
+    sources:
+      - https://unikraft.org/docs/cli/running
+      - https://www.qemu.org/docs/master/
 category: cloud-infrastructure
 package-manager:
   apk: kraftkit

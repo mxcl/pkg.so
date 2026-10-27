@@ -50,6 +50,34 @@ history:
       Upstream warns of a directory-watching race when several events happen rapidly and
       notes that writes to existing files inside a watched directory require also
       watching the contained paths.
+related-packages:
+  - id: brew:fswatch
+    reason: >
+      Choose fswatch when the same event-streaming workflow must operate across macOS,
+      BSD, Linux, Solaris, or Windows rather than relying on kqwait's compact
+      kqueue-oriented interface.
+    rel: alternative
+    sources:
+      - https://github.com/sschober/kqwait#readme
+      - https://emcrisostomo.github.io/fswatch/documentation.html
+  - id: brew:watchexec
+    reason: >
+      Choose watchexec when the desired outcome is to supervise and rerun a command
+      after recursive file changes, with ignore-file handling and cross-platform process
+      management built in.
+    rel: alternative
+    sources:
+      - https://github.com/sschober/kqwait#readme
+      - https://watchexec.github.io/docs/
+  - id: brew:inotify-tools
+    reason: >
+      On Linux, choose inotify-tools for native inotify-based monitoring, recursive
+      watches, event selection, and continuous output; kqwait's own README identifies
+      inotifywait as its model.
+    rel: alternative
+    sources:
+      - https://github.com/sschober/kqwait#readme
+      - https://github.com/inotify-tools/inotify-tools#readme
 category: system
 package-manager:
   brew: kqwait
