@@ -53,6 +53,24 @@ history:
       Operationally, kubernetes-cli@1.34 behaves like kubectl: it reads kubeconfig,
       chooses a context, and sends API requests to the selected cluster. The package's
       value is version selection, not a separate command surface.
+related-packages:
+  - id: brew:krew
+    reason: >
+      Krew discovers and installs community kubectl plugins that appear as additional
+      kubectl subcommands.
+    rel: adjacent_workflow
+    sources:
+      - https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/
+      - https://sigs.k8s.io/krew/
+  - id: brew:helm
+    reason: >
+      Use Helm alongside kubectl when Kubernetes applications should be installed,
+      upgraded, and rolled back as versioned charts rather than managed as individual
+      manifests.
+    rel: adjacent_workflow
+    sources:
+      - https://helm.sh/docs/intro/introduction/
+      - https://helm.sh/docs/intro/quickstart/
 tags:
   - cli
   - cluster-management

@@ -48,6 +48,35 @@ history:
       A typical workflow creates or exports a Kubernetes Secret manifest, pipes it
       through kubeseal, commits the resulting SealedSecret YAML, and lets the in-cluster
       controller unseal it back into a normal Kubernetes Secret.
+related-packages:
+  - id: brew:fluxcd
+    reason: >
+      Flux has a dedicated Sealed Secrets workflow that installs the controller,
+      reconciles encrypted resources from Git, and turns them into Kubernetes Secrets in
+      the target cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://fluxcd.io/flux/guides/sealed-secrets/
+      - https://github.com/bitnami/sealed-secrets/blob/main/README.md
+  - id: brew:sops
+    reason: >
+      Choose SOPS as an alternative when you need file-level secret encryption backed by
+      age, OpenPGP, or cloud KMS keys instead of a SealedSecret custom resource and
+      cluster-resident controller.
+    rel: alternative
+    sources:
+      - https://fluxcd.io/flux/guides/mozilla-sops/
+      - https://fluxcd.io/flux/security/secrets-management/
+      - https://github.com/bitnami/sealed-secrets/blob/main/README.md
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl creates the plaintext Secret input and applies the resulting SealedSecret,
+      forming the command-line workflow documented by both Sealed Secrets and Flux.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bitnami/sealed-secrets/blob/main/README.md
+      - https://fluxcd.io/flux/guides/sealed-secrets/
+      - https://kubernetes.io/docs/reference/kubectl/
 tags:
   - cli
   - controller
