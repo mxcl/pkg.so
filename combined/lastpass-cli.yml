@@ -81,6 +81,32 @@ history:
       The documented storage paths include encrypted vault blobs and session tokens, so
       the tool sits directly in the secrets-management path for shell scripts and
       interactive terminal use.
+related-packages:
+  - id: brew:bitwarden-cli
+    reason: >
+      Choose Bitwarden CLI for a full-featured cross-platform vault client that supports
+      Bitwarden cloud or a self-hosted server and can directly import a LastPass CSV
+      export.
+    rel: alternative
+    sources:
+      - https://lastpass.github.io/lastpass-cli/lpass.1.html
+      - https://bitwarden.com/help/cli/
+  - id: cask:1password-cli
+    reason: >
+      Choose 1Password CLI when the workflow centers on injecting account-managed
+      secrets into commands, environment variables, scripts, and configuration files.
+    rel: alternative
+    sources:
+      - https://lastpass.github.io/lastpass-cli/lpass.1.html
+      - https://developer.1password.com/docs/cli/secrets-scripts
+  - id: brew:pass-import
+    reason: >
+      Use pass-import when migrating from LastPass because it explicitly supports
+      LastPass CSV data and direct lpass-based import or export workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lastpass/lastpass-cli
+      - https://github.com/roddhjav/pass-import
 category: security
 package-manager:
   apk: lastpass-cli

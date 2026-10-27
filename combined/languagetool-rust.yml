@@ -60,6 +60,25 @@ history:
       `ltrs` CLI with commands such as `ping`, `languages`, and `check`. By default, the
       CLI uses the public LanguageTool API, while users can point it at their own
       server.
+related-packages:
+  - id: brew:languagetool
+    reason: >
+      Install LanguageTool alongside ltrs when you want the official proofreading engine
+      running locally instead of sending checks to the public API.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jeertmans/languagetool-rust
+      - https://dev.languagetool.org/http-server
+  - id: brew:harper
+    reason: >
+      Choose Harper when the requirement is an entirely local English grammar engine and
+      language server rather than a Rust client for a multilingual LanguageTool HTTP
+      service.
+    rel: alternative
+    sources:
+      - https://github.com/jeertmans/languagetool-rust
+      - https://writewithharper.com/
+      - https://writewithharper.com/docs/integrations/language-server
 category: developer-tools
 package-manager:
   brew: languagetool-rust

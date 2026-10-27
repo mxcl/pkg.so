@@ -61,6 +61,25 @@ history:
       Users apply the tools from a shell or by drag-and-drop on Windows. Typical jobs
       include making mosaics, extracting rectangular regions, and splitting tiled TIFFs
       into independent files while avoiding whole-image decoding.
+related-packages:
+  - id: brew:libtiff
+    reason: >
+      LibTIFF provides the underlying TIFF library plus general inspection, conversion,
+      cropping, and splitting commands that complement LargeTIFFTools' specialized
+      huge-image operations.
+    rel: adjacent_workflow
+    sources:
+      - https://pperso.ijclab.in2p3.fr/page_perso/Deroulers/software/largetifftools
+      - https://libtiff.gitlab.io/libtiff/tools.html
+  - id: brew:imagemagick
+    reason: >
+      Choose ImageMagick when broad format conversion and general image manipulation
+      matter more than LargeTIFFTools' memory-conscious specialization for exceptionally
+      large TIFF images.
+    rel: alternative
+    sources:
+      - https://pperso.ijclab.in2p3.fr/page_perso/Deroulers/software/largetifftools
+      - https://imagemagick.org/command-line-processing
 category: media
 package-manager:
   brew: largetifftools
