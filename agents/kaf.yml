@@ -65,6 +65,33 @@ history:
       Because Kafka credentials and cluster definitions can live in the Kaf
       configuration file, the package is part of the user's data-infrastructure access
       surface, not merely a display utility.
+related-packages:
+  - id: brew:kafkactl
+    reason: >
+      Choose kafkactl when you need a broader kubectl-style administration surface
+      including ACLs, schemas, SCRAM users, Kubernetes-assisted access, and named
+      contexts; Kaf offers a smaller overlapping Kafka CLI.
+    rel: alternative
+    sources:
+      - https://github.com/birdayz/kaf
+      - https://github.com/deviceinsight/kafkactl
+  - id: brew:kcat
+    reason: >
+      Choose kcat for a lightweight, pipe-oriented Kafka producer and consumer with
+      metadata inspection; choose Kaf when you also need higher-level topic and
+      consumer-group administration.
+    rel: alternative
+    sources:
+      - https://github.com/birdayz/kaf
+      - https://github.com/edenhill/kcat
+  - id: brew:kafka
+    reason: >
+      Apache Kafka supplies the brokers, topics, records, and consumer groups that Kaf
+      connects to and administers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/birdayz/kaf
+      - https://kafka.apache.org/documentation/
 tags:
   - apache-kafka
   - cli

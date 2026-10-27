@@ -63,6 +63,50 @@ history:
       manage topics, inspect consumer groups, produce and consume records, and work with
       Avro, JSON Schema, and Protobuf payloads. Credentials may live in the config file,
       OS keyring, or Kubernetes secrets depending on the deployment model.
+related-packages:
+  - id: brew:kafka
+    reason: >
+      Apache Kafka supplies the brokers and APIs that kafkactl administers, making the
+      Kafka distribution the foundational companion package for local clusters and
+      bundled tooling.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/deviceinsight/kafkactl
+      - https://kafka.apache.org/documentation/
+  - id: brew:kaf
+    reason: >
+      Choose Kaf for a smaller kubectl-inspired Kafka CLI focused on clusters, topics,
+      records, and consumer groups; choose kafkactl for broader ACL, schema, user,
+      context, and Kubernetes-assisted workflows.
+    rel: alternative
+    sources:
+      - https://github.com/deviceinsight/kafkactl
+      - https://github.com/birdayz/kaf
+  - id: brew:kcat
+    reason: >
+      Choose kcat for lightweight, pipe-oriented production, consumption, and metadata
+      inspection; choose kafkactl when you need a larger Kafka administration command
+      set and named contexts.
+    rel: alternative
+    sources:
+      - https://github.com/deviceinsight/kafkactl
+      - https://github.com/edenhill/kcat
+  - id: brew:kafkactl-aws-plugin
+    reason: >
+      Install the AWS plugin beside kafkactl when an AWS-hosted Kafka-compatible cluster
+      requires kafkactl's OAuth token-provider integration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/deviceinsight/kafkactl
+      - https://github.com/deviceinsight/kafkactl-plugins/blob/main/aws/README.adoc
+  - id: brew:kafkactl-azure-plugin
+    reason: >
+      Install the Azure plugin beside kafkactl for passwordless OAuth access to Azure
+      Event Hubs through its Kafka-compatible endpoint.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/deviceinsight/kafkactl
+      - https://github.com/deviceinsight/kafkactl-plugins/blob/main/azure/README.adoc
 category: developer-tools
 package-manager:
   brew: kafkactl

@@ -77,6 +77,25 @@ history:
       configuration, the package has an operational security dimension: it is not just a
       read-only formatter, but a tool that may combine Kubernetes access with AI
       provider credentials.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl supplies the kubeconfig-centered Kubernetes access and general
+      resource-management workflow that K8sGPT builds on with automated diagnosis and AI
+      explanations.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/k8sgpt-ai/k8sgpt/blob/main/SECURITY_SELF_ASSESSMENT.md
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:k9s
+    reason: >
+      Use K9s to interactively inspect and manage cluster resources, then K8sGPT when
+      you want analyzer-driven fault detection and plain-language explanations for the
+      same Kubernetes environment.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/derailed/k9s
+      - https://github.com/k8sgpt-ai/k8sgpt
 category: ai
 package-manager:
   brew: k8sgpt
