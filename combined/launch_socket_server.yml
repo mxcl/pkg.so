@@ -4,7 +4,8 @@ homepage: https://github.com/mistydemeo/launch_socket_server
 repo: https://github.com/mistydemeo/launch_socket_server
 docs:
   - https://github.com/mistydemeo/launch_socket_server#readme
-config-file-location: null
+config-file-location:
+  macos: /Library/LaunchDaemons/<identifier>.plist
 credentials-file-location: null
 history:
   adoption-history:
@@ -47,6 +48,7 @@ history:
       Users create a launch daemon plist that has launchd listen on a privileged port,
       then configure launch_socket_server to start the real server as a less-privileged
       user and pass the socket path through LAUNCH_PROGRAM_SOCKET_PATH.
+related-packages: []
 category: networking
 package-manager:
   brew: launch_socket_server
