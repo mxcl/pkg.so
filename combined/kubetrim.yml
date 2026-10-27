@@ -6,7 +6,9 @@ docs:
   - https://github.com/alexellis/kubetrim#readme
 config-file-location:
   unix: ~/.local/kubetrim/keep.txt
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.kube/config
+  windows: $HOME\.kube\config
 history:
   adoption-history:
     - >
@@ -52,6 +54,16 @@ history:
       --write=false for a dry run, and can keep unreachable contexts by listing them in
       ~/.local/kubetrim/keep.txt. The README also suggests cron or shell startup usage
       for people who accumulate short-lived clusters.
+related-packages:
+  - id: brew:kubectx
+    reason: >
+      Choose kubectx for explicit interactive context switching or deletion; choose
+      kubetrim when you want connectivity-based cleanup of both stale context and
+      cluster entries.
+    rel: alternative
+    sources:
+      - https://github.com/alexellis/kubetrim#readme
+      - https://github.com/ahmetb/kubectx#readme
 category: cloud-infrastructure
 package-manager:
   brew: kubetrim

@@ -5,7 +5,9 @@ repo: https://github.com/kubeshark/kubeshark
 docs:
   - https://docs.kubeshark.com/
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.kube/config
+  windows: $HOME\.kube\config
 history:
   adoption-history:
     - >
@@ -60,6 +62,24 @@ history:
       Users install Kubeshark with Helm or Homebrew, port-forward the frontend service,
       and query live or retained traffic through the dashboard, KFL filters, PCAP
       exports, APIs, or MCP integrations.
+related-packages:
+  - id: brew:wireshark
+    reason: >
+      Choose Wireshark for general desktop packet capture and deep protocol analysis;
+      choose Kubeshark when capture, filtering, and endpoint identity must be
+      Kubernetes-aware.
+    rel: alternative
+    sources:
+      - https://www.wireshark.org/docs/
+      - https://github.com/kubeshark/kubeshark
+  - id: brew:helm
+    reason: >
+      Helm is Kubeshark's officially recommended cluster installation method and is also
+      used to uninstall the deployed components after an investigation.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.kubeshark.com/en/install
+      - https://helm.sh/docs/
 category: cloud-infrastructure
 package-manager:
   brew: kubeshark

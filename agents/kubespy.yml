@@ -4,7 +4,11 @@ repo: null
 docs:
   - https://github.com/pulumi/kubespy#readme
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.kube/config
+  windows:
+    - $HOME\.kube\config
 history:
   adoption-history:
     - >
@@ -55,6 +59,18 @@ history:
       status diffs, object changes, or a higher-level trace of related resources. The
       README also documents use as a kubectl plugin by installing it as kubectl-spy,
       reflecting the Kubernetes 1.12 plugin convention.
+related-packages:
+  - id: brew:pulumi
+    reason: >
+      Pulumi can create or update Kubernetes resources while kubespy, which originated
+      from Pulumi's deployment-status work, provides a live view of the resulting object
+      transitions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/pulumi/kubespy#readme
+      - >
+        https://www.pulumi.com/blog/kubespy-and-the-lifecycle-of-a-kubernetes-pod-in-four-images/
+      - https://www.pulumi.com/docs/iac/clouds/kubernetes/
 tags:
   - cli
   - kubernetes

@@ -4,8 +4,14 @@ repo: null
 docs:
   - https://docs.kubetail.com/
   - https://www.kubetail.com/docs
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.kubetail/config.yaml
+credentials-file-location:
+  unix:
+    - ~/.kube/config
+  windows:
+    - $HOME\.kube\config
 history:
   adoption-history:
     - >
@@ -61,6 +67,16 @@ history:
       logs from multiple pods and containers. The docs emphasize that Kubetail reads
       through the Kubernetes API, so teams can tail logs without first shipping them to
       an external logging backend.
+related-packages:
+  - id: brew:stern
+    reason: >
+      Choose Stern for a compact terminal-focused multi-pod log tailer with
+      regular-expression selection and output templates; choose Kubetail when you also
+      want a browser dashboard and chronological multi-container views.
+    rel: alternative
+    sources:
+      - https://github.com/stern/stern#readme
+      - https://github.com/kubetail-org/kubetail#readme
 tags:
   - cli
   - dashboard

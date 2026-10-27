@@ -11,7 +11,9 @@ config-file-location:
     - ~/.zshrc
     - ~/.config/fish/config.fish
   windows: PowerShell profile
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.kube/config
+  windows: $HOME\.kube\config
 history:
   adoption-history:
     - >
@@ -58,6 +60,16 @@ history:
       kubesess works by creating context files under `~/.kube/kubesess/cache` and
       prepending the chosen file to `KUBECONFIG`; the official troubleshooting guide
       identifies that directory as disposable generated state.
+related-packages:
+  - id: brew:kubectx
+    reason: >
+      Choose kubectx and kubens when you want established, single-purpose context and
+      namespace switchers; choose kubesess when each shell must retain an independent
+      selection.
+    rel: alternative
+    sources:
+      - https://github.com/Ramilito/kubesess#readme
+      - https://github.com/ahmetb/kubectx#readme
 category: cloud-infrastructure
 package-manager:
   brew: kubesess
