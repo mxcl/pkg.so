@@ -4,7 +4,13 @@ repo: https://github.com/jython/jython
 docs:
   - https://www.jython.org/jython-old-sites/docs/index.html
   - https://www.jython.org/
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.jython
+    - <Jython root>/registry
+  windows:
+    - '%USERPROFILE%\.jython'
+    - <Jython root>\registry
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,6 +69,17 @@ history:
       Java APIs or to embed Python-like extension points in Java software. Official
       documentation emphasizes Java package access, Java bytecode compilation, and
       integration with Java platform classes.
+related-packages:
+  - id: brew:python@3.14
+    reason: >
+      Choose CPython for current Python 3 language and native-extension compatibility;
+      choose Jython specifically when direct JVM embedding and Java-class access are
+      required.
+    rel: alternative
+    sources:
+      - https://github.com/jython/jython
+      - https://www.jython.org/
+      - https://docs.python.org/3.14/
 tags:
   - cli
   - interpreter
