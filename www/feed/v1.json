@@ -100,11 +100,11 @@
         "brew:noodle"
       ],
       "fallbackPackageIDs": [
+        "brew:gitea-cli",
         "brew:noodle",
         "brew:erpc",
         "brew:dep-scan",
         "brew:pgpdump",
-        "brew:gitea-cli",
         "brew:cue",
         "brew:zvec-grep",
         "brew:fortitude",
@@ -132,18 +132,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
+        "brew:cask:magpie",
+        "brew:kontext",
+        "brew:gitea-cli",
+        "brew:ascelerate",
+        "brew:cask:peel",
+        "brew:filmcraft-cli",
         "brew:cask:kero",
         "brew:worldmonitor",
-        "brew:kontext",
         "brew:cask:textus",
-        "brew:ascelerate",
-        "brew:filmcraft-cli",
         "brew:cask:pen",
-        "brew:gitea-cli",
         "brew:cask:writer",
-        "brew:pdfcraft-cli",
-        "brew:xfr",
-        "brew:cask:artcraft-launcher"
+        "brew:pdfcraft-cli"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -151,18 +151,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:magpie",
+        "brew:kontext",
+        "brew:gitea-cli",
+        "brew:ascelerate",
+        "brew:cask:peel",
+        "brew:filmcraft-cli",
         "brew:cask:kero",
         "brew:worldmonitor",
         "brew:noodle",
-        "brew:kontext",
         "brew:dep-scan",
         "brew:cask:textus",
-        "brew:cask:ghostex",
-        "brew:ascelerate",
-        "brew:erpc",
-        "brew:filmcraft-cli",
-        "brew:cask:pen",
-        "brew:gitea-cli"
+        "brew:cask:ghostex"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -889,36 +889,34 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-25T10:29:27Z",
+  "generatedAt": "2026-10-27T06:08:57Z",
   "packages": {
     "brew:ascelerate": {
-      "agentSummary": "ascelerate automates App Store Connect work from Xcode archive through upload and review submission, with provisioning, localization, reporting, and machine-readable JSON commands.",
+      "agentSummary": "ascelerate exposes App Store Connect through a Swift command-line interface designed for scripts, structured JSON output, releases, metadata, pricing, and media workflows.",
       "assessment": {
         "alternatives": [
-          "Apple's web interface",
-          "Fastlane for broader mobile automation"
+          "Apple's web interface for occasional manual administration",
+          "Other App Store Connect automation suites when cross-platform binaries are required"
         ],
         "audiences": [
-          "Apple-platform developers",
-          "Release engineers automating App Store workflows"
+          "Apple-platform developers and release engineers",
+          "Teams automating App Store Connect administration"
         ],
         "caveats": [
-          "API keys can authorize consequential account changes",
-          "Some workflows still depend on Xcode and Apple service behavior"
+          "Prebuilt binaries are Apple Silicon only",
+          "The distributed binary is not signed or notarized, so macOS quarantine handling may be required"
         ],
         "complements": [
-          "Xcode and xcodebuild",
-          "CI systems consuming JSON output"
+          "Xcode build and signing pipelines",
+          "CI systems that consume stable JSON output"
         ],
         "prerequisites": [
-          "macOS 15 or later",
-          "An App Store Connect API key with appropriate roles"
+          "App Store Connect API credentials",
+          "macOS 13 or newer for the distributed binary"
         ],
         "useCases": [
-          "Archive and upload builds",
-          "Manage metadata and screenshots",
-          "Submit versions for review",
-          "Download sales and analytics reports"
+          "Manage apps, versions, pricing, events, localizations, and media",
+          "Integrate App Store Connect operations into scripts and coding-agent workflows"
         ]
       },
       "category": "developer-tools",
@@ -926,58 +924,69 @@
         "admittedAt": "2026-10-17",
         "analytics": {
           "30": {
-            "count": 22,
-            "endDate": "2026-10-25",
+            "count": 30,
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
-            "startDate": "2026-09-25"
+            "startDate": "2026-09-26"
           },
           "365": {
-            "count": 25,
-            "endDate": "2026-10-25",
+            "count": 33,
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
-            "startDate": "2025-10-25"
+            "startDate": "2025-10-26"
           },
           "90": {
-            "count": 22,
-            "endDate": "2026-10-25",
+            "count": 30,
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
-            "startDate": "2026-07-27"
+            "startDate": "2026-07-28"
           }
         },
         "firstObservedAt": "2026-10-17",
         "lastVerifiedAt": null,
         "recentlyDiscovered": false,
         "status": "official",
-        "trend": null
+        "trend": {
+          "endDate": "2026-10-26",
+          "growthPercent": null,
+          "installs30d": 30,
+          "previousMonthlyRate": 0.0,
+          "score": 6.867974,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+          ],
+          "startDate": "2026-07-28"
+        }
       },
       "displayName": "ascelerate",
       "docs": "https://ascelerate.dev/docs",
       "homepage": "https://ascelerate.dev",
       "id": "brew:ascelerate",
       "installURL": "pkgmgrmgr://install?package=brew%3Aascelerate",
-      "lastUpdatedAt": "2026-10-24T20:53:28Z",
+      "lastUpdatedAt": "2026-10-26T18:46:18Z",
       "manager": "homebrew",
       "repository": "https://github.com/keremerkan/ascelerate",
-      "researchedAt": "2026-10-25T10:29:27Z",
+      "researchedAt": "2026-10-27T06:08:57Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "ascelerate upstream repository",
+          "title": "ascelerate documentation",
+          "url": "https://ascelerate.dev/docs"
+        },
+        {
+          "kind": "primary",
+          "title": "ascelerate repository",
           "url": "https://github.com/keremerkan/ascelerate"
         },
         {
           "kind": "primary",
-          "title": "ascelerate documentation",
-          "url": "https://ascelerate.dev"
-        },
-        {
-          "kind": "primary",
-          "title": "ascelerate initial v0.1.0 release",
+          "title": "ascelerate v0.1.0",
           "url": "https://github.com/keremerkan/ascelerate/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Command-line tool for the App Store Connect API",
-      "version": "0.26.5"
+      "version": "0.27.0"
     },
     "brew:bashka": {
       "agentSummary": "Bashka statically inspects curl-piped shell installers, follows forwarded scripts, scores risky behavior, and lets users review findings before deciding whether execution is acceptable.",
@@ -1179,98 +1188,6 @@
       ],
       "upstreamSummary": "Time tracker",
       "version": "0.13.2"
-    },
-    "brew:cask:artcraft-launcher": {
-      "agentSummary": "ArtCraft Launcher installs, verifies, updates, and opens Craft Suite applications across desktop platforms, selecting architecture-specific releases while remaining an early-alpha manager for one software ecosystem.",
-      "assessment": {
-        "alternatives": [
-          "Install each Craft application directly from its signed upstream release.",
-          "Use the operating system's package manager where a suite application is available."
-        ],
-        "audiences": [
-          "Users adopting several applications from the Craft App Suite."
-        ],
-        "caveats": [
-          "The project explicitly describes itself as early alpha.",
-          "It manages only the Craft Suite rather than general-purpose software.",
-          "Installation behavior and privilege prompts vary by platform and package format."
-        ],
-        "complements": [
-          "PdfCraft, PhotoCraft, and other applications in the Craft Suite.",
-          "Operating-system package records or backups for tracking installed applications."
-        ],
-        "prerequisites": [
-          "A supported macOS, Windows, Linux, or FreeBSD system.",
-          "System authorization when the chosen installation format requires it."
-        ],
-        "useCases": [
-          "Discover installed Craft applications and available updates in one interface.",
-          "Select, checksum-verify, install, update, and launch platform-appropriate builds."
-        ]
-      },
-      "category": "productivity",
-      "discovery": {
-        "admittedAt": "2026-10-17",
-        "analytics": {
-          "30": {
-            "count": 352,
-            "endDate": "2026-10-23",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "startDate": "2026-09-23"
-          },
-          "365": {
-            "count": 352,
-            "endDate": "2026-10-23",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
-            "startDate": "2025-10-23"
-          },
-          "90": {
-            "count": 352,
-            "endDate": "2026-10-23",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
-            "startDate": "2026-07-25"
-          }
-        },
-        "firstObservedAt": "2026-10-17",
-        "lastVerifiedAt": null,
-        "recentlyDiscovered": false,
-        "status": "official",
-        "trend": {
-          "endDate": "2026-10-23",
-          "growthPercent": null,
-          "installs30d": 352,
-          "previousMonthlyRate": 0.0,
-          "score": 30.376089,
-          "sources": [
-            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
-          ],
-          "startDate": "2026-07-25"
-        }
-      },
-      "displayName": "ArtCraft Launcher",
-      "docs": "https://getartcraft.com/apps",
-      "homepage": "https://github.com/storytold/craft-launcher",
-      "id": "brew:cask:artcraft-launcher",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aartcraft-launcher",
-      "lastUpdatedAt": "2026-10-23T01:07:58Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/storytold/craft-launcher",
-      "researchedAt": "2026-10-23T08:21:21Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "ArtCraft Launcher upstream documentation",
-          "url": "https://github.com/storytold/craft-launcher"
-        },
-        {
-          "kind": "primary",
-          "title": "ArtCraft Launcher initial release",
-          "url": "https://github.com/storytold/craft-launcher/releases/tag/v0.1.0"
-        }
-      ],
-      "upstreamSummary": "Installer and updater for the Craft App Suite",
-      "version": "0.7.0"
     },
     "brew:cask:claudoscope": {
       "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
@@ -1890,6 +1807,151 @@
       ],
       "upstreamSummary": "Official Kotlin Language Server",
       "version": "263.6379.0"
+    },
+    "brew:cask:magpie": {
+      "agentSummary": "Magpie routes multiple AI coding agents through one local model gateway, centralizing provider accounts, model selection, quota failover, and agent-specific configuration.",
+      "assessment": {
+        "alternatives": [
+          "Configure each coding agent and provider independently",
+          "Use a provider-specific gateway when multi-agent configuration is unnecessary"
+        ],
+        "audiences": [
+          "Developers who use several AI coding agents or model providers",
+          "Teams testing subscription and API-backed models across compatible agents"
+        ],
+        "caveats": [
+          "A local gateway becomes part of every configured agent's request path",
+          "Windows and Linux desktop builds are not yet signed according to the official reference"
+        ],
+        "complements": [
+          "Claude Code, Codex, Gemini CLI, and OpenCode",
+          "Local model servers and hosted model-provider accounts"
+        ],
+        "prerequisites": [
+          "A supported desktop platform or command-line environment",
+          "Provider credentials or compatible signed-in subscriptions for the models being used"
+        ],
+        "useCases": [
+          "Switch models for supported coding agents from one interface",
+          "Route agent traffic through a local gateway with account and quota failover"
+        ]
+      },
+      "category": "ai",
+      "discovery": {
+        "admittedAt": "2026-10-26",
+        "analytics": {
+          "30": {
+            "count": 18,
+            "endDate": "2026-10-26",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-26"
+          },
+          "365": {
+            "count": 18,
+            "endDate": "2026-10-26",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-26"
+          },
+          "90": {
+            "count": 18,
+            "endDate": "2026-10-26",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-28"
+          }
+        },
+        "firstObservedAt": "2026-10-26",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": null
+      },
+      "displayName": "magpie",
+      "docs": "https://usemagpie.ai/docs/integrate",
+      "homepage": "https://usemagpie.ai/",
+      "id": "brew:cask:magpie",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amagpie",
+      "lastUpdatedAt": "2026-10-27T04:13:56Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/yetone/magpie-releases",
+      "researchedAt": "2026-10-27T06:08:57Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Magpie project repository",
+          "url": "https://github.com/yetone/magpie"
+        },
+        {
+          "kind": "primary",
+          "title": "Magpie reference documentation",
+          "url": "https://github.com/yetone/magpie/blob/main/docs/reference.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Magpie releases",
+          "url": "https://github.com/yetone/magpie-releases/releases"
+        }
+      ],
+      "upstreamSummary": "Model gateway for AI coding agents",
+      "version": "0.1.1550"
+    },
+    "brew:cask:peel": {
+      "agentSummary": "Peel uninstalls macOS applications, traces associated files, explains each match, and adds disk-cleaning and system-tuning tools in a native desktop interface.",
+      "assessment": {
+        "alternatives": [
+          "Delete applications manually and inspect Library directories yourself",
+          "Use a dedicated disk visualizer when uninstalling applications is not the goal"
+        ],
+        "audiences": [
+          "Mac users who want transparent application cleanup",
+          "Administrators investigating disk usage before deleting files"
+        ],
+        "caveats": [
+          "Cleanup tools can remove valuable data if matches are accepted without review",
+          "The project targets macOS and tests behavior separately across supported system versions"
+        ],
+        "complements": [
+          "macOS storage-management tools",
+          "Backups before broad cleanup operations"
+        ],
+        "prerequisites": [
+          "A supported recent macOS release",
+          "Careful review of proposed deletions and any requested helper privileges"
+        ],
+        "useCases": [
+          "Remove an application together with attributable support files",
+          "Review large or unnecessary files before reclaiming storage"
+        ]
+      },
+      "category": "system",
+      "discovery": {},
+      "displayName": "Peel",
+      "docs": "https://github.com/TuguiDragos/Peel#readme",
+      "homepage": "https://peel.tuguidragos.com/",
+      "id": "brew:cask:peel",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apeel",
+      "lastUpdatedAt": "2026-10-26T04:53:54Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/TuguiDragos/Peel",
+      "researchedAt": "2026-10-27T06:08:57Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Peel project site",
+          "url": "https://peel.tuguidragos.com/"
+        },
+        {
+          "kind": "primary",
+          "title": "Peel repository",
+          "url": "https://github.com/TuguiDragos/Peel"
+        },
+        {
+          "kind": "primary",
+          "title": "Peel v1.0.1",
+          "url": "https://github.com/TuguiDragos/Peel/releases/tag/v1.0.1"
+        }
+      ],
+      "upstreamSummary": "App uninstaller and disk space cleaner",
+      "version": "1.2.1"
     },
     "brew:cask:pen": {
       "agentSummary": "pen.dev combines a design canvas with embedded and external agents, Figma and web imports, and exports spanning code, raster images, and PDF.",
@@ -3135,28 +3197,31 @@
       "version": "0.155.0"
     },
     "brew:filmcraft-cli": {
-      "agentSummary": "FilmCraft's headless CLI and MCP server expose the same editing engine as its desktop video editor, enabling scripted or agent-driven renders and exports.",
+      "agentSummary": "FilmCraft CLI provides headless editing, rendering, export, and MCP automation for FilmCraft projects, bringing nonlinear video workflows into scripts and agent toolchains.",
       "assessment": {
         "alternatives": [
-          "FFmpeg for lower-level scripted transforms, or established nonlinear editors for mature plugin ecosystems."
+          "Use FilmCraft's desktop interface for interactive editing",
+          "Use FFmpeg directly for lower-level transcoding and filter pipelines"
         ],
         "audiences": [
-          "Video engineers, automation authors, and developers building agent-assisted media workflows."
+          "Video teams automating repeatable edits and renders",
+          "Developers connecting media workflows to MCP-capable agents"
         ],
         "caveats": [
-          "The project documents limited real-world testing outside macOS and gaps in delivery codecs and plugin hosting.",
-          "The MCP server can read and write wherever its user account can, so it should run with appropriately limited permissions."
+          "The project is early 0.x software with a rapidly evolving command surface",
+          "Complex edits and codec combinations should be tested before unattended production rendering"
         ],
         "complements": [
-          "The FilmCraft desktop editor, FFmpeg-based verification, and MCP-capable coding agents."
+          "The FilmCraft desktop editor",
+          "MCP clients and media-processing pipelines"
         ],
         "prerequisites": [
-          "Media compatible with FilmCraft's current codec support.",
-          "An MCP client only when using the MCP mode."
+          "FilmCraft-compatible project and media files",
+          "Sufficient compute and codec support for the intended render workload"
         ],
         "useCases": [
-          "Edit and render FilmCraft projects headlessly.",
-          "Expose editing commands to an MCP client or bridge to the running desktop app."
+          "Edit, inspect, render, and export FilmCraft projects without the desktop UI",
+          "Expose supported project operations through an MCP server"
         ]
       },
       "category": "media",
@@ -3164,22 +3229,22 @@
         "admittedAt": "2026-10-17",
         "analytics": {
           "30": {
-            "count": 10,
-            "endDate": "2026-10-24",
+            "count": 27,
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
-            "startDate": "2026-09-24"
+            "startDate": "2026-09-26"
           },
           "365": {
-            "count": 10,
-            "endDate": "2026-10-24",
+            "count": 27,
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
-            "startDate": "2025-10-24"
+            "startDate": "2025-10-26"
           },
           "90": {
-            "count": 10,
-            "endDate": "2026-10-24",
+            "count": 27,
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
-            "startDate": "2026-07-26"
+            "startDate": "2026-07-28"
           }
         },
         "firstObservedAt": "2026-10-17",
@@ -3193,24 +3258,29 @@
       "homepage": "https://getartcraft.com/apps/filmcraft",
       "id": "brew:filmcraft-cli",
       "installURL": "pkgmgrmgr://install?package=brew%3Afilmcraft-cli",
-      "lastUpdatedAt": "2026-10-24T06:07:11Z",
+      "lastUpdatedAt": "2026-10-25T14:35:31Z",
       "manager": "homebrew",
       "repository": "https://github.com/storytold/filmcraft",
-      "researchedAt": "2026-10-24T10:28:08Z",
+      "researchedAt": "2026-10-27T06:08:57Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "FilmCraft repository and architecture",
+          "title": "FilmCraft repository",
           "url": "https://github.com/storytold/filmcraft"
         },
         {
           "kind": "primary",
-          "title": "FilmCraft agent and MCP documentation",
+          "title": "FilmCraft agent documentation",
           "url": "https://github.com/storytold/filmcraft/blob/main/docs/agents.md"
+        },
+        {
+          "kind": "primary",
+          "title": "FilmCraft v0.1.0",
+          "url": "https://github.com/storytold/filmcraft/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Headless FilmCraft CLI and MCP server to edit, render and export video projects",
-      "version": "0.12.0"
+      "version": "0.13.0"
     },
     "brew:fortitude": {
       "agentSummary": "Fortitude is a Rust-built Fortran linter with more than one hundred rules, automatic fixes, configurable selections, multiple CI formats, and a tree-sitter parser aimed at scientific codebases.",
@@ -3350,29 +3420,32 @@
       "version": "0.2.1"
     },
     "brew:gitea-cli": {
-      "agentSummary": "Gitea's new gt client manages repositories, issues, pull requests, Actions, releases, packages, and authentication, with JSON output intended for automation and CI.",
+      "agentSummary": "Gitea CLI is the official gt client for repositories, issues, pull requests, Actions, packages, releases, and repeatable terminal or CI automation.",
       "assessment": {
         "alternatives": [
-          "The older tea CLI, direct Gitea API calls, or the web interface."
+          "The older tea client for installations that cannot yet move to Gitea 28",
+          "Direct Gitea API calls for narrowly scoped integrations"
         ],
         "audiences": [
-          "Gitea users who want a first-party terminal and CI interface."
+          "Gitea users who prefer terminal workflows",
+          "Teams automating Gitea operations in CI"
         ],
         "caveats": [
-          "The 0.x command surface and human-readable output may still change before 1.0.",
-          "gt is intentionally separate from tea and uses a different configuration directory."
+          "The 0.x command surface and text output may still change",
+          "gt uses separate configuration and does not migrate tea settings"
         ],
         "complements": [
-          "A Gitea server, Git, shell completion, and CI runners."
+          "Gitea servers and Actions runners",
+          "Git command-line workflows"
         ],
         "prerequisites": [
-          "Gitea 28 or newer.",
-          "Git for clone, checkout, and push operations.",
-          "A fresh gt login or token; tea configuration is not migrated."
+          "A Gitea 28 or newer instance",
+          "Git for clone, checkout, and push operations",
+          "An OAuth login or access token"
         ],
         "useCases": [
-          "Manage repository collaboration and Actions from a terminal.",
-          "Produce JSON output for scripts and CI workflows."
+          "Manage repositories, issues, pull requests, releases, and Actions",
+          "Produce machine-readable output for scripts and CI jobs"
         ]
       },
       "category": "developer-tools",
@@ -3380,22 +3453,22 @@
         "admittedAt": "2026-10-24",
         "analytics": {
           "30": {
-            "count": 9,
-            "endDate": "2026-10-24",
+            "count": 20,
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
-            "startDate": "2026-09-24"
+            "startDate": "2026-09-26"
           },
           "365": {
-            "count": 9,
-            "endDate": "2026-10-24",
+            "count": 20,
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
-            "startDate": "2025-10-24"
+            "startDate": "2025-10-26"
           },
           "90": {
-            "count": 9,
-            "endDate": "2026-10-24",
+            "count": 20,
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
-            "startDate": "2026-07-26"
+            "startDate": "2026-07-28"
           }
         },
         "firstObservedAt": "2026-10-24",
@@ -3409,20 +3482,20 @@
       "homepage": "https://gitea.com/gitea/cli",
       "id": "brew:gitea-cli",
       "installURL": "pkgmgrmgr://install?package=brew%3Agitea-cli",
-      "lastUpdatedAt": "2026-10-23T16:54:15Z",
+      "lastUpdatedAt": "2026-10-26T18:52:46Z",
       "manager": "homebrew",
       "repository": "https://gitea.com/gitea/cli",
-      "researchedAt": "2026-10-24T10:28:08Z",
+      "researchedAt": "2026-10-27T06:08:57Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Gitea announcement of gt 0.1.0",
-          "url": "https://blog.gitea.com/release-of-gitea-cli-0.1.0/"
+          "title": "Gitea CLI documentation",
+          "url": "https://docs.gitea.com/cli/"
         },
         {
           "kind": "primary",
-          "title": "Official Gitea CLI documentation",
-          "url": "https://docs.gitea.com/cli/"
+          "title": "Gitea CLI 0.1.0 announcement",
+          "url": "https://blog.gitea.com/release-of-gitea-cli-0.1.0/"
         }
       ],
       "upstreamSummary": "Official command-line tool for Gitea",
@@ -3535,32 +3608,31 @@
       "version": "1.19.5"
     },
     "brew:kontext": {
-      "agentSummary": "Kontext inserts local policy checks before supported AI-agent actions, records authorization evidence, and lets teams begin in observe mode before enabling enforcement.",
+      "agentSummary": "Kontext discovers AI agents, maps identities and permissions, and enforces runtime policy so operators can govern agent access across development and infrastructure workflows.",
       "assessment": {
         "alternatives": [
-          "Native agent permission prompts",
-          "Sandboxing or endpoint-control tools"
+          "Manually isolate each agent with separate operating-system accounts and credentials",
+          "Use provider-specific controls when only one agent platform is in scope"
         ],
         "audiences": [
-          "Security teams governing coding agents",
-          "Developers auditing consequential agent actions"
+          "Security and platform teams operating AI agents",
+          "Developers who need governed agent credentials and permissions"
         ],
         "caveats": [
-          "Coverage varies by agent and hook",
-          "Documented fail-open cases require careful threat-model review"
+          "Runtime enforcement adds an operational policy layer that teams must maintain",
+          "Coverage should be verified for every agent and execution environment before relying on it"
         ],
         "complements": [
-          "Existing agent permission controls",
-          "Organizational policy review"
+          "AI coding agents and MCP-based toolchains",
+          "Existing identity, secrets, and audit systems"
         ],
         "prerequisites": [
-          "A supported agent such as Claude Code or Codex",
-          "macOS for the documented self-serve setup"
+          "A supported environment where agents and their credentials can be observed",
+          "Security ownership for defining and reviewing enforcement policy"
         ],
         "useCases": [
-          "Observe tool actions before enforcing policy",
-          "Deny supported risky actions",
-          "Review an authorization ledger"
+          "Discover agent processes and their effective access",
+          "Apply runtime policy and audit agent actions"
         ]
       },
       "category": "security",
@@ -3569,21 +3641,21 @@
         "analytics": {
           "30": {
             "count": 14,
-            "endDate": "2026-10-25",
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
-            "startDate": "2026-09-25"
+            "startDate": "2026-09-26"
           },
           "365": {
             "count": 14,
-            "endDate": "2026-10-25",
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
-            "startDate": "2025-10-25"
+            "startDate": "2025-10-26"
           },
           "90": {
             "count": 14,
-            "endDate": "2026-10-25",
+            "endDate": "2026-10-26",
             "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
-            "startDate": "2026-07-27"
+            "startDate": "2026-07-28"
           }
         },
         "firstObservedAt": "2026-10-17",
@@ -3597,25 +3669,25 @@
       "homepage": "https://kontext.security",
       "id": "brew:kontext",
       "installURL": "pkgmgrmgr://install?package=brew%3Akontext",
-      "lastUpdatedAt": "2026-10-25T02:50:22Z",
+      "lastUpdatedAt": "2026-10-26T19:31:08Z",
       "manager": "homebrew",
       "repository": "https://github.com/kontext-security/kontext",
-      "researchedAt": "2026-10-25T10:29:27Z",
+      "researchedAt": "2026-10-27T06:08:57Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Kontext upstream repository",
+          "title": "Kontext documentation",
+          "url": "https://docs.kontext.security/"
+        },
+        {
+          "kind": "primary",
+          "title": "Kontext repository",
           "url": "https://github.com/kontext-security/kontext"
         },
         {
           "kind": "primary",
-          "title": "Kontext documentation",
-          "url": "https://docs.kontext.security/getting-started/welcome"
-        },
-        {
-          "kind": "primary",
-          "title": "Kontext v0.1.0 release",
-          "url": "https://github.com/kontext-security/kontext/releases/tag/v0.1.0"
+          "title": "Kontext releases",
+          "url": "https://github.com/kontext-security/kontext/releases"
         }
       ],
       "upstreamSummary": "Identity, credentials, and governance for AI agents",
@@ -5302,87 +5374,6 @@
       "upstreamSummary": "Command-line client for the World Monitor global intelligence API",
       "version": "0.2.0"
     },
-    "brew:xfr": {
-      "agentSummary": "xfr measures network throughput through a live terminal interface, supporting TCP, UDP, QUIC, parallel streams, automation formats, and multi-client serving while using its own non-iperf protocol.",
-      "assessment": {
-        "alternatives": [
-          "iperf3 for an established ecosystem and protocol-compatible peers."
-        ],
-        "audiences": [
-          "Network engineers and homelab operators who want interactive throughput tests.",
-          "Automation authors who need JSON, streaming JSON, or CSV results."
-        ],
-        "caveats": [
-          "xfr uses its own protocol and cannot connect to iperf3 servers.",
-          "QUIC and MPTCP support vary by platform and network path.",
-          "Benchmark traffic can saturate links, so tests should be scheduled deliberately."
-        ],
-        "complements": [
-          "Prometheus when optional metrics need longer-term collection.",
-          "Packet capture and operating-system network tools for diagnosing unexpected results."
-        ],
-        "prerequisites": [
-          "xfr on both peers, preferably at the same version.",
-          "Required firewall access, normally including TCP and UDP port 5201."
-        ],
-        "useCases": [
-          "Measure TCP, UDP, QUIC, or Linux MPTCP performance between controlled endpoints.",
-          "Observe multiple clients through a server dashboard or export results for scripts."
-        ]
-      },
-      "category": "networking",
-      "discovery": {
-        "admittedAt": "2026-10-22",
-        "analytics": {
-          "30": {
-            "count": 16,
-            "endDate": "2026-10-23",
-            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
-            "startDate": "2026-09-23"
-          },
-          "365": {
-            "count": 16,
-            "endDate": "2026-10-23",
-            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
-            "startDate": "2025-10-23"
-          },
-          "90": {
-            "count": 16,
-            "endDate": "2026-10-23",
-            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
-            "startDate": "2026-07-25"
-          }
-        },
-        "firstObservedAt": "2026-10-22",
-        "lastVerifiedAt": null,
-        "recentlyDiscovered": true,
-        "status": "official",
-        "trend": null
-      },
-      "displayName": "xfr",
-      "docs": "https://github.com/lance0/xfr#readme",
-      "homepage": "https://github.com/lance0/xfr",
-      "id": "brew:xfr",
-      "installURL": "pkgmgrmgr://install?package=brew%3Axfr",
-      "lastUpdatedAt": "2026-10-23T01:33:11Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/lance0/xfr",
-      "researchedAt": "2026-10-23T08:21:21Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "xfr upstream documentation",
-          "url": "https://github.com/lance0/xfr"
-        },
-        {
-          "kind": "primary",
-          "title": "xfr comparison and migration guide",
-          "url": "https://github.com/lance0/xfr/blob/master/docs/COMPARISON.md"
-        }
-      ],
-      "upstreamSummary": "Modern network bandwidth testing with TUI",
-      "version": "0.12.1"
-    },
     "brew:zvec-grep": {
       "agentSummary": "zvec-grep builds local workspace indexes combining exact, BM25, and vector search for people and agents, with multi-format parsing, source-linked results, and optional remote embeddings.",
       "assessment": {
@@ -5467,7 +5458,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-25T10:27:53Z",
+    "generatedAt": "2026-10-27T06:07:22Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
