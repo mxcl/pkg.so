@@ -5,7 +5,11 @@ docs:
   - https://kompose.io/
   - https://kompose.io/user-guide
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - $DOCKER_CONFIG/config.json
+    - ~/.docker/config.json
+    - ~/.dockercfg
 history:
   adoption-history:
     - >
@@ -59,6 +63,23 @@ history:
       YAML such as Deployments and Services. The project warns that conversion from
       Compose to Kubernetes may not be exact, framing Kompose as a convenience and
       migration aid rather than a perfect semantic compiler.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Kompose generates Kubernetes manifests, and kubectl is the official CLI used in
+      Kompose's documented workflow to apply and inspect those resources.
+    rel: adjacent_workflow
+    sources:
+      - https://kompose.io/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:minikube
+    reason: >
+      Kompose's official beginner guide uses minikube to provide a local Kubernetes
+      cluster on which users convert and deploy a Compose application.
+    rel: adjacent_workflow
+    sources:
+      - https://kompose.io/getting-started/
+      - https://minikube.sigs.k8s.io/docs/
 tags:
   - cli
   - containers
