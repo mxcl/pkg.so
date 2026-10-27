@@ -5,7 +5,12 @@ repo: https://github.com/skyhook-io/radar
 docs:
   - https://radarhq.io/docs
   - https://radarhq.io/product/mcp
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.radar/config.json
+    - ~/.radar/settings.json
+    - ~/.radar/clusters.json
+    - ~/.kube/config
 credentials-file-location:
   unix: ~/.kube/config
 history:
@@ -74,6 +79,34 @@ history:
       Its localhost MCP endpoint can be registered with supported AI clients so agents
       can query correlated cluster state. The server respects the kubeconfig identity's
       Kubernetes RBAC permissions.
+related-packages:
+  - id: cask:headlamp
+    reason: >
+      Choose Headlamp when you want an official Kubernetes SIG UI project centered on
+      extensibility and plugin-built experiences; choose Radar for integrated
+      troubleshooting views and a built-in MCP server.
+    rel: alternative
+    sources:
+      - https://radarhq.io/blog/introducing-radar-modern-kubernetes-visibility
+      - https://headlamp.dev/
+  - id: cask:freelens
+    reason: >
+      Choose FreeLens when you prefer a community-maintained, free Kubernetes desktop
+      IDE descended from the Lens interface; Radar instead emphasizes a native local
+      binary, correlated operational evidence, and MCP.
+    rel: alternative
+    sources:
+      - https://radarhq.io/blog/introducing-radar-modern-kubernetes-visibility
+      - https://github.com/freelensapp/freelens
+  - id: cask:lens
+    reason: >
+      Choose Lens for its established desktop Kubernetes IDE and commercial agent
+      platform; Radar is the Apache-licensed local-first option with no account required
+      for OSS use.
+    rel: alternative
+    sources:
+      - https://radarhq.io/blog/introducing-radar-modern-kubernetes-visibility
+      - https://lenshq.io/
 category: cloud-infrastructure
 package-manager:
   brew: kubectl-radar

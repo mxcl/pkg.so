@@ -8,7 +8,8 @@ config-file-location:
   unix:
     - ~/.kube/config
     - ~/.kube/color.yaml
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.kube/config
 history:
   adoption-history:
     - >
@@ -52,6 +53,33 @@ history:
       statefulsets, nodes, and other Kubernetes resources. The README documents filters,
       label selectors, all-namespace mode, hotkeys, environment-variable-backed flags,
       and an option to restart the watch when kubeconfig changes.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl's native `get --watch` for an unembellished stream; kubectl-klock
+      provides a continuously redrawn table, filtering, hotkeys, and other readability
+      features.
+    rel: alternative
+    sources:
+      - https://github.com/applejag/kubectl-klock#readme
+      - https://kubernetes.io/docs/reference/kubectl/kubectl/
+  - id: brew:kubecolor
+    reason: >
+      kubectl-klock uses kubecolor's coloring logic, environment variables, presets, and
+      `~/.kube/color.yaml`, so kubecolor documentation is the companion workflow for
+      customizing its display.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/applejag/kubectl-klock#readme
+      - https://kubecolor.github.io/customizing/themes/
+  - id: brew:kubectx
+    reason: >
+      kubectx switches kubectl contexts, and klock's documented `--watch-kubeconfig`
+      mode restarts its watch when tools such as kubectx modify kubeconfig.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/applejag/kubectl-klock#readme
+      - https://github.com/ahmetb/kubectx
 category: cloud-infrastructure
 package-manager:
   brew: kubectl-klock

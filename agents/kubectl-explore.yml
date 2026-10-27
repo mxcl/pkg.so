@@ -6,7 +6,9 @@ docs:
 config-file-location:
   unix:
     - ~/.kube/config
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.kube/config
 history:
   adoption-history:
     - >
@@ -53,6 +55,16 @@ history:
       Users invoke it as `kubectl explore`, optionally with a resource such as `pod` or
       `sts`, or with a regex-like path filter. The README validates it as a standard
       kubectl plugin by pointing users to Kubernetes' plugin documentation.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Choose kubectl's built-in `explain` command when you already know the exact
+      resource or field path; kubectl-explore adds fuzzy discovery for the same
+      schema-inspection task.
+    rel: alternative
+    sources:
+      - https://github.com/keisku/kubectl-explore#readme
+      - https://kubernetes.io/docs/reference/kubectl/kubectl/
 tags:
   - cli
   - fuzzy-finder

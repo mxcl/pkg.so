@@ -7,7 +7,8 @@ docs:
   - https://github.com/rook/kubectl-rook-ceph#readme
 config-file-location:
   unix: ~/.kube/config
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.kube/config
 history:
   adoption-history:
     - >
@@ -70,6 +71,16 @@ history:
       Because the plugin operates through kubectl contexts and namespaces, its
       credentials story is inherited from Kubernetes kubeconfig rather than from a
       separate Ceph credential file.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl is the host command used to invoke `kubectl rook-ceph` and provides the
+      contexts and namespace selection through which the plugin reaches a Rook-managed
+      cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rook/kubectl-rook-ceph#readme
+      - https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/
 category: developer-tools
 package-manager:
   brew: kubectl-rook-ceph

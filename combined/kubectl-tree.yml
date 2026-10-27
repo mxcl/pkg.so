@@ -6,7 +6,8 @@ docs:
   - https://github.com/ahmetb/kubectl-tree#readme
 config-file-location:
   unix: ~/.kube/config
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.kube/config
 history:
   adoption-history:
     - >
@@ -67,6 +68,15 @@ history:
       The package is commonly useful when answering why an object exists, what
       controller owns it, or how custom resources fan out into lower-level Kubernetes
       objects.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl supplies the cluster context and plugin invocation mechanism used by
+      kubectl-tree, making it the required companion for ownership-tree inspection.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ahmetb/kubectl-tree#readme
+      - https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/
 category: developer-tools
 package-manager:
   brew: kubectl-tree
