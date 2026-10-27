@@ -4,7 +4,10 @@ homepage: https://github.com/sauljabin/kaskade
 repo: https://github.com/sauljabin/kaskade
 docs:
   - https://github.com/sauljabin/kaskade#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/kaskade/settings.yaml
+    - ~/.config/kaskade/settings.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -51,6 +54,25 @@ history:
     - >
       The documented command shape separates admin and consumer modes, for example
       connecting with a bootstrap server and then selecting a topic for consumption.
+related-packages:
+  - id: brew:kafkactl
+    reason: >
+      Choose kafkactl when you want scriptable commands for Kafka topics, consumer
+      groups, ACLs, users, production, and consumption rather than Kaskade's interactive
+      TUI.
+    rel: alternative
+    sources:
+      - https://github.com/sauljabin/kaskade#readme
+      - https://deviceinsight.github.io/kafkactl/
+  - id: brew:kcat
+    reason: >
+      Choose kcat for a small non-JVM Kafka producer and consumer that composes readily
+      in shell pipelines; choose Kaskade for interactive topic administration and record
+      browsing.
+    rel: alternative
+    sources:
+      - https://github.com/sauljabin/kaskade#readme
+      - https://github.com/edenhill/kcat
 category: data
 package-manager:
   brew: kaskade

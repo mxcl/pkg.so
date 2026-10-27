@@ -57,6 +57,23 @@ history:
       The documented usage accepts URLs from flags, files, or stdin and emits results to
       stdout, files, or JSON. Its headless mode targets JavaScript-heavy sites and
       single-page applications that plain HTTP crawlers can miss.
+related-packages:
+  - id: brew:httpx
+    reason: >
+      httpx can probe a domain list for reachable HTTP services and pipe those live
+      targets directly into Katana for endpoint crawling.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.projectdiscovery.io/opensource/katana/running
+      - https://docs.projectdiscovery.io/opensource/httpx/overview
+  - id: brew:nuclei
+    reason: >
+      Nuclei can consume Katana URL or structured output to run template-based
+      vulnerability checks against the endpoints the crawler discovers.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.projectdiscovery.io/opensource/katana/running
+      - https://docs.projectdiscovery.io/tools/nuclei/input-formats
 category: security
 package-manager:
   apk: katana

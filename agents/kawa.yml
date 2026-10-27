@@ -4,7 +4,11 @@ repo: https://gitlab.com/kashell/Kawa
 docs:
   - https://www.gnu.org/software/kawa
   - https://www.gnu.org/software/kawa/pt01.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.kawarc.scm
+  windows:
+    - '%USERPROFILE%\kawarc.scm'
 credentials-file-location: null
 history:
   adoption-history:
@@ -59,6 +63,26 @@ history:
       Users run Kawa as an interactive language, a compiler to Java bytecode, or a
       Java-integrated scripting system. Its documentation emphasizes REPL use, static
       checking, modularity, and direct Java method and class access.
+related-packages:
+  - id: brew:guile
+    reason: >
+      GNU Guile is an alternative Scheme runtime optimized for embedding in C and C++
+      applications and for GNU extension-language work; choose Kawa when JVM bytecode
+      and Java-library interoperability are central.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/kawa/Features.html
+      - https://www.gnu.org/software/guile/
+      - https://www.gnu.org/software/guile/manual/guile.html
+  - id: brew:mit-scheme
+    reason: >
+      MIT/GNU Scheme is an alternative complete Scheme development environment with its
+      own compiler, debugger, editor, and runtime library; choose Kawa for Java
+      integration and portable JVM deployment.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/kawa/Features.html
+      - https://www.gnu.org/software/mit-scheme/
 tags:
   - cli
   - compiler
