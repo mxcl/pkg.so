@@ -5,7 +5,11 @@ docs:
   - https://k3d.io/
   - https://k3d.io/stable
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ${KUBECONFIG}
+    - ~/.kube/config
+    - ~/.k3d/kubeconfig-<cluster-name>.yaml
 history:
   adoption-history:
     - >
@@ -64,6 +68,33 @@ history:
       then use kubeconfig output with kubectl and other Kubernetes tools. It is often
       used in CI jobs, demos, local operator development, and quick reproduction
       environments.
+related-packages:
+  - id: brew:kind
+    reason: >
+      Choose kind when Kubernetes conformance and upstream Kubernetes testing are the
+      priority; choose k3d for lightweight local clusters based on k3s.
+    rel: alternative
+    sources:
+      - https://k3d.io/
+      - https://kind.sigs.k8s.io/docs/user/quick-start/
+  - id: brew:minikube
+    reason: >
+      Minikube is an alternative local Kubernetes environment with VM and
+      container-driver choices plus built-in addons, while k3d specializes in
+      containerized k3s clusters.
+    rel: alternative
+    sources:
+      - https://k3d.io/
+      - https://minikube.sigs.k8s.io/docs/start/
+      - https://minikube.sigs.k8s.io/docs/drivers/
+  - id: brew:kubernetes-cli
+    reason: >
+      k3d writes or updates kubeconfig so kubectl can immediately manage the local
+      cluster, making the Kubernetes CLI its standard downstream companion.
+    rel: adjacent_workflow
+    sources:
+      - https://k3d.io/stable/usage/kubeconfig/
+      - https://kubernetes.io/docs/reference/kubectl/
 tags:
   - cli
   - docker

@@ -60,6 +60,23 @@ history:
       A typical workflow runs `k3sup install` against the first host, then `k3sup join`
       for additional agents or servers. The tool handles SSH, remote installation, token
       handling, and kubeconfig retrieval so users can move directly to kubectl.
+related-packages:
+  - id: brew:k0sctl
+    reason: >
+      Choose k0sctl when you want declarative YAML-based lifecycle management for k0s;
+      k3sup offers a smaller imperative SSH bootstrap workflow for k3s.
+    rel: alternative
+    sources:
+      - https://github.com/alexellis/k3sup
+      - https://docs.k0sproject.io/stable/k0sctl-install/
+  - id: brew:kubernetes-cli
+    reason: >
+      k3sup retrieves and rewrites kubeconfig specifically so the local kubectl client
+      can manage the newly installed k3s cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/alexellis/k3sup#readme
+      - https://kubernetes.io/docs/reference/kubectl/
 tags:
   - bootstrap
   - cli

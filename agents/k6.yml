@@ -76,6 +76,35 @@ history:
       often checking thresholds in CI. More advanced setups send metrics to
       observability backends, run distributed tests, use extensions, or execute tests
       through Grafana Cloud k6.
+related-packages:
+  - id: brew:jmeter
+    reason: >
+      Apache JMeter is a mature Java-based alternative with GUI-authored `.jmx` test
+      plans and CLI load execution, while k6 emphasizes code-first JavaScript or
+      TypeScript tests and a single CLI binary.
+    rel: alternative
+    sources:
+      - https://grafana.com/docs/k6/latest/
+      - https://jmeter.apache.org/usermanual/get-started.html
+      - https://jmeter.apache.org/usermanual/best-practices.html
+  - id: brew:grafana
+    reason: >
+      Grafana is the natural visualization companion for k6 results, and Grafana
+      documents dashboards and cloud workflows that correlate load-test output with
+      operational telemetry.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/k6/latest/results-output/grafana-dashboards/
+      - https://grafana.com/docs/grafana/latest/
+  - id: brew:prometheus
+    reason: >
+      k6 can send real-time test metrics through Prometheus remote write, allowing
+      Prometheus-compatible storage and queries to participate in the
+      performance-testing workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/k6/latest/results-output/real-time/prometheus-remote-write/
+      - https://prometheus.io/docs/specs/prw/remote_write_spec/
 tags:
   - cli
   - go
