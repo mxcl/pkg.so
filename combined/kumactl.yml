@@ -7,7 +7,8 @@ docs:
   - https://kuma.io/docs/latest/introduction/install
 config-file-location:
   unix: ~/.kumactl/config
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.kumactl/config
 history:
   adoption-history:
     - >
@@ -66,6 +67,36 @@ history:
       distribution, including kuma-cp, kuma-dp, and Envoy. Operators use kumactl to
       interact with the Kuma control plane and its resources, while Kubernetes users can
       also work through CRDs and non-Kubernetes users can work through the REST API.
+related-packages:
+  - id: brew:istioctl
+    reason: >
+      Choose istioctl when operating an Istio mesh, especially for Istio installation,
+      configuration validation, and proxy diagnostics; Kuma additionally targets VM and
+      hybrid environments.
+    rel: alternative
+    sources:
+      - https://kuma.io/
+      - https://istio.io/latest/docs/setup/install/istioctl/
+      - https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/
+  - id: brew:linkerd
+    reason: >
+      Choose the Linkerd CLI for a Kubernetes-focused Linkerd mesh with built-in
+      installation, injection, health checks, and metrics commands.
+    rel: alternative
+    sources:
+      - https://kuma.io/
+      - https://linkerd.io/docs/reference/cli/
+      - https://linkerd.io/docs/reference/architecture/
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl alongside kumactl in Kubernetes environments because Kuma recommends
+      Kubernetes-native resource management there while kumactl handles Kuma-specific
+      inspection and control-plane operations.
+    rel: adjacent_workflow
+    sources:
+      - https://kuma.io/docs/3.0.x/introduction/install/
+      - https://kuma.io/docs/2.14.x/explore/cli/
+      - https://kubernetes.io/docs/reference/kubectl/
 category: cloud-infrastructure
 package-manager:
   apk: kuma-cp

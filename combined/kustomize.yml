@@ -71,6 +71,33 @@ history:
       create environment-specific overlays such as development, staging, and production.
       `kustomize build` emits the rendered YAML, commonly piped to `kubectl apply -f -`
       or used by GitOps controllers.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl embeds Kustomize and can render or apply a kustomization directly with
+      `kubectl kustomize` and `kubectl apply -k`.
+    rel: adjacent_workflow
+    sources:
+      - https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/
+      - https://github.com/kubernetes-sigs/kustomize
+  - id: brew:helm
+    reason: >
+      Choose Helm when you need distributable, versioned charts and managed install,
+      upgrade, or rollback releases; choose Kustomize when preserving and patching plain
+      Kubernetes YAML is the priority.
+    rel: alternative
+    sources:
+      - https://kubernetes.io/docs/concepts/workloads/management/
+      - https://helm.sh/docs/intro/introduction/
+      - https://github.com/kubernetes-sigs/kustomize
+  - id: brew:kustomizer
+    reason: >
+      Kustomizer can build compatible Kustomize overlays and then package, publish, or
+      deploy the rendered configuration as OCI artifacts.
+    rel: adjacent_workflow
+    sources:
+      - https://kustomizer.dev/
+      - https://github.com/kubernetes-sigs/kustomize
 category: cloud-infrastructure
 package-manager:
   apk: kustomize

@@ -5,7 +5,8 @@ repo: https://github.com/stefanprodan/kustomizer
 docs:
   - https://kustomizer.dev/
   - https://kustomizer.dev/install
-config-file-location: null
+config-file-location:
+  unix: ~/.kustomizer/config
 credentials-file-location: null
 history:
   adoption-history:
@@ -52,6 +53,49 @@ history:
       artifacts, and apply those artifacts into clusters. The command reference and Flux
       guide emphasize registries such as GHCR, Docker Hub, ACR, ECR, GCR, Artifactory,
       and self-hosted registries.
+related-packages:
+  - id: brew:fluxcd
+    reason: >
+      Publish Kustomizer's Flux-compatible OCI artifacts in CI, then use Flux to pull
+      and continuously reconcile them inside the cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://kustomizer.dev/guides/fluxcd/
+      - https://fluxcd.io/flux/components/source/ocirepositories/
+  - id: brew:kustomize
+    reason: >
+      Kustomizer consumes Kustomize-compatible overlays and extends that workflow with
+      OCI distribution, ordered server-side apply, inventory, and pruning.
+    rel: adjacent_workflow
+    sources:
+      - https://kustomizer.dev/
+      - https://github.com/kubernetes-sigs/kustomize
+  - id: brew:cosign
+    reason: >
+      Use cosign with Kustomizer to sign and verify Kubernetes configuration artifacts
+      and release checksums as part of an OCI supply-chain workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://kustomizer.dev/
+      - https://kustomizer.dev/install/
+      - https://docs.sigstore.dev/cosign/verifying/verify/
+  - id: brew:age
+    reason: >
+      Use age keys with Kustomizer when OCI artifacts contain sensitive Kubernetes
+      configuration that must be encrypted for specific recipients.
+    rel: adjacent_workflow
+    sources:
+      - https://kustomizer.dev/
+      - https://github.com/FiloSottile/age
+  - id: brew:kubernetes-cli
+    reason: >
+      Choose kubectl for direct general-purpose cluster administration; Kustomizer adds
+      ordered application, readiness waiting, inventory tracking, and pruning for
+      packaged configuration.
+    rel: alternative
+    sources:
+      - https://kustomizer.dev/
+      - https://kubernetes.io/docs/reference/kubectl/
 category: cloud-infrastructure
 package-manager:
   brew: kustomizer
