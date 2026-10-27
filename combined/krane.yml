@@ -4,7 +4,10 @@ homepage: https://github.com/Shopify/krane
 repo: https://github.com/Shopify/krane
 docs:
   - https://github.com/Shopify/krane#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $KUBECONFIG
+    - ~/.kube/config
 credentials-file-location:
   unix:
     - $KUBECONFIG
@@ -65,6 +68,15 @@ history:
       krane is commonly used where a deploy job needs to apply manifests, wait for
       workload rollout, print actionable failure information, and optionally run one-off
       tasks or render templates before deploy.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      krane invokes kubectl to apply Kubernetes resources, so kubectl is the required
+      adjacent client for its verified deployment workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Shopify/krane
+      - https://kubernetes.io/docs/reference/kubectl/
 category: cloud-infrastructure
 package-manager:
   apk: krane

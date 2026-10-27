@@ -4,7 +4,11 @@ homepage: https://github.com/ksh93/ksh
 repo: https://github.com/ksh93/ksh
 docs:
   - https://github.com/ksh93/ksh#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - /etc/profile
+    - ~/.profile
+    - $ENV
 credentials-file-location: null
 history:
   adoption-history:
@@ -65,6 +69,25 @@ history:
       and through related tools such as rksh and shcomp. It matters most where
       shell-language compatibility, arithmetic and scripting features, or existing ksh
       scripts are more important than using bash or zsh.
+related-packages:
+  - id: brew:mksh
+    reason: >
+      mksh is another maintained Korn-shell-family interpreter derived from the pdksh
+      lineage; choose it for MirBSD's smaller, actively portable implementation rather
+      than strict ksh93 lineage compatibility.
+    rel: alternative
+    sources:
+      - https://github.com/ksh93/ksh
+      - https://mbsd.evolvis.org/mksh.htm
+  - id: brew:bash
+    reason: >
+      Bash is a Bourne-family command and scripting shell with broader GNU/Linux default
+      deployment; choose ksh93 when KornShell-specific language compatibility is
+      required.
+    rel: alternative
+    sources:
+      - https://github.com/ksh93/ksh
+      - https://www.gnu.org/software/bash/manual/bash.html
 category: language-runtime
 package-manager:
   brew: ksh93
