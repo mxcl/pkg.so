@@ -4,7 +4,9 @@ repo: null
 docs:
   - https://keploy.io/docs
   - https://github.com/keploy/keploy#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ./keploy.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -67,6 +69,23 @@ history:
       Package users usually care about Keploy when they want integration tests without
       hand-writing large mock suites, especially for services that depend on databases,
       queues, or external APIs.
+related-packages:
+  - id: cask:docker-desktop
+    reason: >
+      Use Docker Desktop for Keploy's officially documented container workflow when
+      recording applications and dependencies that run in Docker on macOS or Windows.
+    rel: adjacent_workflow
+    sources:
+      - https://keploy.io/docs/concepts/installation/
+      - https://docs.docker.com/desktop/
+  - id: brew:jenkins
+    reason: >
+      Use Jenkins to run Keploy's documented CI replay workflow and inject the required
+      Keploy API key through Jenkins credentials.
+    rel: adjacent_workflow
+    sources:
+      - https://keploy.io/docs/ci-cd/jenkins/
+      - https://www.jenkins.io/doc/
 tags:
   - api-testing
   - cli

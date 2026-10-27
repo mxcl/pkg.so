@@ -46,6 +46,16 @@ history:
       directory, store it locally or in S3, and run periodic verification from cron or
       monitoring systems. The README emphasizes excluding only generated files such as
       logs, caches, uploads, and NFS mounts.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      Use AWS CLI to configure versioning, encryption, and lifecycle controls for the S3
+      bucket that stores Kekkai manifests, following Kekkai's official production
+      guidance.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/catatsuy/kekkai#s3-configuration
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
 tags:
   - cli
   - file-integrity
