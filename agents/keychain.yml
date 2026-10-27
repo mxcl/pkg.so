@@ -3,7 +3,9 @@ display-name: Keychain
 repo: null
 docs:
   - https://github.com/danielrobbins/keychain#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.keychainrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -66,6 +68,23 @@ history:
       for every new session. The 3.0 beta changelog focuses on multi-terminal
       coordination and more reliable GPG warm-up, which are exactly the rough edges
       users hit in modern terminal multiplexers, IDE terminals, and WSL sessions.
+related-packages:
+  - id: brew:openssh
+    reason: >
+      OpenSSH supplies the ssh-agent and ssh-add programs that Keychain coordinates, so
+      it is the essential underlying package for Keychain's primary workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/danielrobbins/keychain
+      - https://www.openssh.com/manual.html
+  - id: brew:gnupg
+    reason: >
+      GnuPG complements Keychain when users want Keychain to warm native GPG signing or
+      decryption credentials while GnuPG continues to manage gpg-agent.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/danielrobbins/keychain
+      - https://gnupg.org/documentation/index.html
 tags:
   - authentication
   - cli

@@ -7,7 +7,9 @@ config-file-location:
   unix:
     - keydb.conf
     - /etc/keydb/6379.conf
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - /etc/keydb/keydb.conf
 history:
   adoption-history:
     - >
@@ -72,6 +74,26 @@ history:
       behavior matter. The command-line package includes server, CLI, benchmark,
       sentinel, and database-check utilities mirroring familiar Redis operational
       workflows.
+related-packages:
+  - id: brew:redis
+    reason: >
+      Redis is the original in-memory data-structure server from which KeyDB was forked;
+      choose Redis when upstream Redis features and its current ecosystem are more
+      important than KeyDB's multithreaded architecture.
+    rel: alternative
+    sources:
+      - https://docs.keydb.dev/docs/about/
+      - https://redis.io/docs/latest/get-started/
+  - id: brew:valkey
+    reason: >
+      Valkey is a vendor-neutral BSD-licensed continuation of Redis OSS with documented
+      Redis OSS 7.2 compatibility; choose it when open governance and that migration
+      lineage matter more than KeyDB's active-replication and multithreading focus.
+    rel: alternative
+    sources:
+      - https://docs.keydb.dev/docs/about/
+      - https://valkey.io/topics/migration/
+      - https://valkey.io/docs/topics/introduction/
 tags:
   - cli
   - database
