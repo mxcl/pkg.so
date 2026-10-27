@@ -5,7 +5,8 @@ repo: https://github.com/openkim/kim-api
 docs:
   - https://kim-api.readthedocs.io/en/latest
   - https://openkim.org/kim-api
-config-file-location: null
+config-file-location:
+  unix: ~/.kim-api/<kim-api-uid>/config
 credentials-file-location: null
 history:
   adoption-history:
@@ -82,6 +83,16 @@ history:
       researchers interact with simulator-specific commands, but the API standardizes
       the boundary where the simulator asks an interatomic model for energies, forces,
       neighbor lists, species, units, and metadata.
+related-packages:
+  - id: brew:lammps
+    reason: >
+      LAMMPS provides dedicated `kim` commands for loading OpenKIM interatomic models
+      through KIM API, making it a directly supported simulation frontend for the
+      library.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.lammps.org/kim_commands.html
+      - https://openkim.org/projects-using-kim/
 category: science
 package-manager:
   brew: kim-api
