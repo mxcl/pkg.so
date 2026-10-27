@@ -3,7 +3,9 @@ display-name: KubeHound
 repo: null
 docs:
   - https://kubehound.io/
-config-file-location: null
+config-file-location:
+  unix:
+    - ./kubehound.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -71,6 +73,15 @@ history:
       The documentation says KubeHound can identify more than 25 attacks, including
       container escape and lateral movement techniques, and can answer questions such as
       whether a path exists from a specific container to a node or cluster-admin role.
+related-packages:
+  - id: brew:kubectx
+    reason: >
+      KubeHound's official setup guide recommends kubectx as an optional way to select
+      the cluster context before collecting and analyzing attack paths.
+    rel: adjacent_workflow
+    sources:
+      - https://kubehound.io/user-guide/getting-started/
+      - https://github.com/ahmetb/kubectx#readme
 tags:
   - attack-graph
   - attack-paths
