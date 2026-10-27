@@ -1,7 +1,92 @@
 id: brew:spidermonkey@140
-display-name: spidermonkey@140
+display-name: SpiderMonkey 140
 homepage: https://spidermonkey.dev
-repo: null
+repo: https://github.com/mozilla-firefox/firefox
+docs:
+  - https://spidermonkey.dev/docs
+  - https://firefox-source-docs.mozilla.org/js
+  - https://github.com/mozilla-spidermonkey/spidermonkey-embedding-examples
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      SpiderMonkey began inside Netscape and became part of the Mozilla codebase when
+      Netscape opened its browser sources in 1998. It remains Firefox's JavaScript
+      engine and is also used or embedded by projects such as Servo.
+  package-nerd-significance:
+    - >
+      SpiderMonkey is one of the foundational JavaScript implementations and a useful
+      package for engine developers, embedders, conformance work, and comparisons with
+      V8, JavaScriptCore, QuickJS, and other runtimes. The versioned Homebrew formula
+      exposes the standalone shell and development configuration without requiring a
+      complete Firefox installation.
+  project-history:
+    - >
+      Brendan Eich wrote the first SpiderMonkey implementation in 1995 while creating
+      JavaScript at Netscape. The engine subsequently moved into the open Mozilla
+      browser codebase and evolved from a C interpreter into Mozilla's C++, Rust, and
+      JavaScript implementation of ECMAScript and WebAssembly.
+    - >
+      Its execution architecture accumulated interpreters and several generations of
+      just-in-time compilers. Mozilla enabled the Warp frontend by default in Firefox 83
+      in 2020, simplifying the optimizing tier around shared CacheIR information while
+      retaining SpiderMonkey's long-running focus on browser responsiveness and
+      standards compatibility.
+  related-projects:
+    - >
+      SpiderMonkey's primary source lives in the Firefox repository under js/src.
+      Mozilla also maintains a separate repository of embedding examples, while Firefox
+      Source Docs publishes version-specific build, test, internals, and Debugger API
+      documentation.
+  sources:
+    - https://blog.mozilla.org/javascript/2014/
+    - https://firefox-source-docs.mozilla.org/js/
+    - https://github.com/mozilla-firefox/firefox/tree/main/js/src
+    - https://github.com/mozilla-spidermonkey
+    - https://hacks.mozilla.org/2020/11/warp-improved-js-performance-in-firefox-83/
+    - https://spidermonkey.dev/
+    - https://www.mozilla.org/en-US/about/history/
+  summary:
+    - >
+      SpiderMonkey is Mozilla's embeddable JavaScript and WebAssembly engine. It powers
+      Firefox, provides a standalone JavaScript shell, and exposes APIs for C++ and Rust
+      embedding.
+  timeline:
+    - '1995: Brendan Eich wrote the first SpiderMonkey implementation at Netscape.'
+    - >
+      1998: Netscape released its browser source and the engine became part of the
+      Mozilla project.
+    - '2020: Mozilla enabled the Warp optimizing frontend by default in Firefox 83.'
+  usage:
+    - >
+      Homebrew users run JavaScript through the versioned js140 shell or use
+      js140-config to obtain compiler and linker settings. Engine developers build and
+      test SpiderMonkey from the Firefox source tree, while application developers use
+      the documented JSAPI and official embedding examples to host JavaScript or
+      WebAssembly.
+related-packages:
+  - id: brew:quickjs
+    reason: >
+      Choose QuickJS when a compact standalone C engine, qjs shell, and qjsc compiler
+      are more important than SpiderMonkey's Firefox-derived optimizing engine and JSAPI
+      ecosystem.
+    rel: alternative
+    sources:
+      - https://spidermonkey.dev/
+      - https://bellard.org/quickjs/
+      - https://bellard.org/quickjs/quickjs.html
+  - id: brew:jerryscript
+    reason: >
+      Choose JerryScript for microcontroller-class memory constraints and snapshot-based
+      embedded deployment; choose SpiderMonkey for Firefox-grade ECMAScript,
+      WebAssembly, JIT, and debugging infrastructure.
+    rel: alternative
+    sources:
+      - https://spidermonkey.dev/
+      - https://jerryscript.net/
+      - https://github.com/jerryscript-project/jerryscript#readme
+category: language-runtime
 package-manager:
   brew: spidermonkey@140
   macports: spidermonkey
@@ -10,6 +95,15 @@ package-manager-match:
   macports: fallback
 package-manager-url: https://formulae.brew.sh/formula/spidermonkey@140
 license: MPL-2.0
+tags:
+  - cli
+  - embeddable
+  - engine
+  - javascript
+  - jit
+  - runtime
+  - shell
+  - webassembly
 description: JavaScript-C Engine
 executables:
   - js140

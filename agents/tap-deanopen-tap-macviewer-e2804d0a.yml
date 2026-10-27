@@ -1,0 +1,112 @@
+id: cask:deanopen/tap/macviewer
+display-name: MacViewer
+repo: null
+docs:
+  - https://github.com/DeanOpen/MacViewer/blob/main/README.en.md
+  - https://github.com/DeanOpen/MacViewer#readme
+config-file-location: null
+credentials-file-location:
+  macos:
+    - macOS Keychain when the user chooses to remember a remote-access password
+history:
+  adoption-history:
+    - >
+      MacViewer is distributed as a native macOS application, through the developer's
+      Homebrew tap, and from the project's releases. The same source repository later
+      incorporated the experimental LinuxViewer port for Linux systems.
+  package-nerd-significance:
+    - >
+      MacViewer fills a packaging gap left by UltraViewer's Windows-only client: it
+      provides an independent native macOS implementation without Wine or a Windows
+      executable. The package is also unusual among remote-desktop clients for exposing
+      a permission-gated local MCP server to coding assistants.
+  project-history:
+    - >
+      MacViewer was developed as an independent, open-source SwiftUI and AppKit client
+      compatible with UltraViewer. It can both control a remote UltraViewer or MacViewer
+      machine and, with explicit macOS Screen Recording and Accessibility permissions,
+      share the Mac for incoming control.
+    - >
+      The project expanded beyond basic display and input to cover multiple monitors,
+      encrypted relay or local-network connections, audio reception, chat, clipboard
+      synchronization, file transfer, screenshots, recordings, and an experimental Linux
+      implementation.
+  related-projects:
+    - >
+      UltraViewer is the interoperable Windows remote-desktop product, but MacViewer is
+      not an official UltraViewer product and is not affiliated with its developer.
+      LinuxViewer is maintained inside the MacViewer repository as a Rust port for
+      Linux. The built-in MCP server can be configured in assistants including Claude
+      Code, Codex, Gemini CLI, Cursor, Zed, and VS Code.
+  sources:
+    - https://github.com/DeanOpen/MacViewer#readme
+    - https://github.com/DeanOpen/MacViewer/blob/main/README.en.md
+    - https://github.com/DeanOpen/MacViewer/tree/main/LinuxViewer
+  summary:
+    - >
+      MacViewer is an independent native macOS remote-desktop client compatible with
+      UltraViewer, supporting both outbound control and consent-based access to the Mac.
+  timeline:
+    - >
+      2026: The project documented Homebrew tap distribution, bidirectional remote
+      access, and an experimental LinuxViewer port.
+  usage:
+    - >
+      To control another machine, the user enters the ID and password shown by
+      UltraViewer or MacViewer and explicitly enables input control. To share a Mac, the
+      user grants Screen Recording and Accessibility permissions, starts sharing, and
+      approves the incoming connection. Remembered passwords use macOS Keychain;
+      connection history stores IDs but not passwords.
+    - >
+      An optional local MCP server lets an explicitly approved assistant inspect and
+      operate an already-open remote session. Screen viewing, input, clipboard access,
+      and connection management remain separately permission-gated in MacViewer.
+related-packages:
+  - id: cask:claude-code
+    reason: >
+      MacViewer documents a direct Claude Code MCP setup that lets the assistant view
+      and, with explicit per-session permissions, operate an already-open remote desktop
+      connection.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/DeanOpen/MacViewer#readme
+      - https://code.claude.com/docs/en/mcp
+tags:
+  - file-transfer
+  - macos
+  - mcp-server
+  - native-app
+  - remote-desktop
+  - remote-support
+  - screen-sharing
+  - swiftui
+  - ultraviewer-compatible
+provenance:
+  category-sources:
+    - https://github.com/DeanOpen/MacViewer#readme
+    - source_facts.description
+  display-name-sources:
+    - current_curation.display-name
+    - https://github.com/DeanOpen/MacViewer#readme
+  docs-sources:
+    - https://github.com/DeanOpen/MacViewer#readme
+    - https://github.com/DeanOpen/MacViewer/blob/main/README.en.md
+  history-sources:
+    - https://github.com/DeanOpen/MacViewer#readme
+    - https://github.com/DeanOpen/MacViewer/blob/main/README.en.md
+    - https://github.com/DeanOpen/MacViewer/tree/main/LinuxViewer
+  repo-sources:
+    - source_facts.repo is already populated, so the requested enrichment value is null.
+  tags-sources:
+    - https://github.com/DeanOpen/MacViewer#readme
+    - https://github.com/DeanOpen/MacViewer/blob/main/README.en.md
+    - source_facts.description
+category-confidence: high
+category-path:
+  - productivity
+  - remote-desktop
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
