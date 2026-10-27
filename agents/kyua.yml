@@ -3,7 +3,10 @@ display-name: Kyua
 repo: null
 docs:
   - https://github.com/freebsd/kyua#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.kyua/kyua.conf
+    - /etc/kyua/kyua.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -85,6 +88,16 @@ history:
       The 0.12 release in November 2015 added parallel test execution, a significant
       improvement for large system test suites where individual tests are often
       I/O-bound or process-bound rather than CPU-bound.
+related-packages:
+  - id: brew:atf
+    reason: >
+      ATF provides the C, C++, and shell libraries used to author many tests that Kyua
+      executes, making it the primary companion package for developing Kyua-compatible
+      test suites.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/freebsd/kyua
+      - https://github.com/freebsd/atf
 tags:
   - cli
   - freebsd

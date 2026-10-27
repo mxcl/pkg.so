@@ -82,6 +82,24 @@ history:
       The `kyverno` CLI is used for testing and applying policies outside the cluster,
       which made the Homebrew package useful to developers building policy libraries or
       checking manifests before deployment.
+related-packages:
+  - id: brew:kustomize
+    reason: >
+      Kustomize renders environment-specific Kubernetes manifests that can be piped
+      directly into `kyverno apply` for policy validation before deployment.
+    rel: adjacent_workflow
+    sources:
+      - https://kyverno.io/docs/subprojects/kyverno-cli/
+      - https://kubectl.docs.kubernetes.io/references/kustomize/
+  - id: brew:cosign
+    reason: >
+      Cosign signs and verifies container artifacts, while Kyverno can enforce
+      image-signature requirements at Kubernetes admission and documents Cosign-based
+      verification of its own releases.
+    rel: adjacent_workflow
+    sources:
+      - https://kyverno.io/docs/guides/security/
+      - https://docs.sigstore.dev/cosign/
 tags:
   - admission-control
   - cli
