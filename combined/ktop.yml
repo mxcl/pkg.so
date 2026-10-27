@@ -62,6 +62,31 @@ history:
       ktop uses `$KUBECONFIG` or `~/.kube/config`, supports context and namespace
       selection, and can use Prometheus scraping, Kubernetes Metrics Server, or a
       no-metrics fallback that shows resource requests and limits.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl alongside ktop for resource mutations and detailed API operations
+      after ktop's dashboard identifies a workload that needs attention.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/vladimirvivien/ktop
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:krew
+    reason: >
+      Krew provides ktop's officially documented kubectl-plugin installation and update
+      workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/vladimirvivien/ktop
+      - https://krew.sigs.k8s.io/docs/
+  - id: brew:k9s
+    reason: >
+      Choose K9s when you want a broader interactive Kubernetes resource-management TUI;
+      choose ktop when the primary task is top-style metrics, drill-down, and logs.
+    rel: alternative
+    sources:
+      - https://github.com/vladimirvivien/ktop
+      - https://k9scli.io/
 category: cloud-infrastructure
 package-manager:
   brew: ktop

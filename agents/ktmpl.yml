@@ -56,6 +56,32 @@ history:
       ktmpl reads a Kubernetes manifest template from a file or stdin, accepts values
       with command-line parameters or YAML parameter files, can base64-encode secret
       data, and writes the processed manifest to stdout for use with kubectl.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl after ktmpl to inspect or apply the rendered Kubernetes manifests,
+      matching ktmpl's documented pipe-oriented workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jimmycuadra/ktmpl#readme
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:kustomize
+    reason: >
+      Choose Kustomize when you want declarative bases, overlays, and patches while
+      retaining plain Kubernetes YAML instead of using ktmpl's parameterized templates.
+    rel: alternative
+    sources:
+      - https://github.com/jimmycuadra/ktmpl#readme
+      - https://github.com/kubernetes-sigs/kustomize#readme
+  - id: brew:helm
+    reason: >
+      Choose Helm when you need reusable charts plus dependency, installation, upgrade,
+      and rollback lifecycle management rather than only rendering parameterized
+      manifests.
+    rel: alternative
+    sources:
+      - https://github.com/jimmycuadra/ktmpl#readme
+      - https://helm.sh/docs/intro/using_helm/
 tags:
   - cli
   - kubernetes

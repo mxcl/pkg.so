@@ -54,6 +54,32 @@ history:
       Users install the kty CLI, install kty resources into a cluster namespace, and
       connect with SSH. The documented workflow can open a TUI dashboard, execute shells
       in pods, stream logs, forward traffic, and copy files through scp or sftp.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl complements kty by handling the documented RBAC checks, resource
+      installation verification, rollout status, and emergency port-forwarding workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://kty.dev/getting-started
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      Helm installs kty's officially published OCI chart and exposes its OpenID,
+      ingress, and autoscaling configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://kty.dev/installation/helm
+      - https://helm.sh/docs/
+  - id: brew:k9s
+    reason: >
+      Choose K9s for a local kubeconfig-driven resource-management TUI; choose kty when
+      operators need remotely exposed SSH access, tunnels, and SCP or SFTP workflows.
+    rel: alternative
+    sources:
+      - https://kty.dev/architecture
+      - https://kty.dev/usage
+      - https://k9scli.io/
 category: cloud-infrastructure
 package-manager:
   brew: kty
