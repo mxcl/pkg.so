@@ -85,6 +85,23 @@ history:
       dependencies. That constraint is part of the tool's appeal: it turns the boring
       case of a static Go binary into a very short path from source to signed or
       traceable container artifact.
+related-packages:
+  - id: brew:skaffold
+    reason: >
+      Skaffold embeds ko as a builder, combining ko's Go image construction with an
+      iterative Kubernetes build-and-deploy workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://skaffold.dev/docs/builders/builder-types/ko/
+      - https://ko.build/
+  - id: brew:cosign
+    reason: >
+      Use cosign after ko publishes an OCI image to sign that registry artifact and let
+      downstream users verify its provenance.
+    rel: adjacent_workflow
+    sources:
+      - https://ko.build/reference/ko_build/
+      - https://docs.sigstore.dev/cosign/signing/signing_with_containers/
 tags:
   - cli
   - containers
