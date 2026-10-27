@@ -78,6 +78,24 @@ history:
     - >
       The CLI is most relevant in automated delivery systems where build, artifact,
       pull-request, and deployment events need to be linked into an auditable trail.
+related-packages:
+  - id: brew:snyk-cli
+    reason: >
+      Use Snyk CLI to produce code, container, or IaC scan results in SARIF form, then
+      pass that file to `kosli attest snyk` as delivery evidence.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.snyk.io/developer-tools/snyk-cli
+      - https://docs.kosli.com/client_reference/kosli_attest_snyk
+  - id: brew:sonar-scanner
+    reason: >
+      Run SonarScanner to create a SonarQube analysis, then use `kosli attest sonar` to
+      retrieve its quality-gate result and attach it to a Kosli artifact or trail.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/scanners/sonarscanner
+      - https://docs.kosli.com/client_reference/kosli_attest_sonar
 category: developer-tools
 package-manager:
   brew: kosli-cli

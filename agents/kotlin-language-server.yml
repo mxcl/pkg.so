@@ -81,6 +81,33 @@ history:
     - >
       Its practical use was strongest for Kotlin/JVM projects where editor users wanted
       language intelligence without opening the project in IntelliJ IDEA.
+related-packages:
+  - id: cask:kotlin-lsp
+    reason: >
+      Choose JetBrains' official Kotlin LSP for current language support and
+      IntelliJ-powered features; the fwcd server's own README identifies it as the
+      successor and considers this community implementation deprecated.
+    rel: alternative
+    sources:
+      - https://github.com/fwcd/kotlin-language-server#readme
+      - https://kotlinlang.org/docs/kotlin-lsp.html
+  - id: brew:gradle
+    reason: >
+      Use Gradle to declare and resolve a Kotlin project's dependencies, which the
+      community language server can inspect when constructing its analysis classpath.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fwcd/kotlin-language-server#packaging
+      - https://docs.gradle.org/current/userguide/dependency_management.html
+  - id: brew:maven
+    reason: >
+      Use Maven for Kotlin/JVM project dependencies when the language server should
+      derive its analysis classpath from a Maven build instead of a manual
+      `kls-classpath` script.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fwcd/kotlin-language-server#packaging
+      - https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
 tags:
   - cli
   - editor-tooling
