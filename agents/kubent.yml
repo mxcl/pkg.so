@@ -6,7 +6,9 @@ docs:
 config-file-location:
   unix:
     - ~/.kube/config
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.kube/config
 history:
   adoption-history:
     - >
@@ -55,6 +57,32 @@ history:
       then asks it to collect live resources, Helm manifests, or local YAML/JSON files
       and report API versions that match its deprecation rules. The project also
       documents JSON and CI-friendly output modes for automated gates.
+related-packages:
+  - id: brew:pluto
+    reason: >
+      Pluto is an alternative deprecated-API scanner with an especially explicit
+      workflow for code repositories, Helm charts, and distinguishing deprecated APIs
+      from APIs already removed.
+    rel: alternative
+    sources:
+      - https://github.com/doitintl/kube-no-trouble
+      - https://github.com/FairwindsOps/pluto
+  - id: brew:kubernetes-cli
+    reason: >
+      kubent uses kubectl's current context and kubeconfig conventions to authenticate
+      to and inspect a live Kubernetes cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/doitintl/kube-no-trouble
+      - https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
+  - id: brew:helm
+    reason: >
+      kubent's Helm v3 collector examines manifests stored with Helm releases, so it can
+      find deprecated APIs in applications managed by Helm.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/doitintl/kube-no-trouble
+      - https://helm.sh/docs/intro/introduction/
 tags:
   - api-deprecation
   - cli

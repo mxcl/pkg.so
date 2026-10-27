@@ -58,6 +58,33 @@ history:
       Kubernetes versions, addons, certificates, and worker nodes. The 1.0 release made
       the apply command central to provisioning, upgrades, repair, and disaster-recovery
       workflows.
+related-packages:
+  - id: brew:kops
+    reason: >
+      kOps is an alternative production-cluster lifecycle CLI that also provisions cloud
+      infrastructure, with official support concentrated on AWS and GCE rather than
+      KubeOne's broader cloud, virtualization, and static-worker model.
+    rel: alternative
+    sources:
+      - https://docs.kubermatic.com/kubeone/
+      - https://kops.sigs.k8s.io/
+  - id: brew:clusterctl
+    reason: >
+      clusterctl offers a Kubernetes Cluster API alternative built around provider
+      components and a management cluster, whereas KubeOne manages a cluster directly
+      from its manifest and infrastructure inputs.
+    rel: alternative
+    sources:
+      - https://docs.kubermatic.com/kubeone/
+      - https://cluster-api.sigs.k8s.io/user/quick-start
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl is the standard client for inspecting and operating the Kubernetes cluster
+      after KubeOne provisions and reconciles it.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.kubermatic.com/kubeone/v1.10/tutorials/creating-clusters/
+      - https://kubernetes.io/docs/reference/kubectl/
 category: developer-tools
 package-manager:
   brew: kubeone

@@ -59,6 +59,40 @@ history:
       commands around cluster bootstrap. The README also points users to release
       binaries and the Gruntwork installer, reflecting its role as a companion binary to
       published infrastructure modules.
+related-packages:
+  - id: brew:awscli
+    reason: >
+      For EKS users, aws eks update-kubeconfig and aws eks get-token are the official
+      AWS CLI alternatives to kubergrunt's configure and token commands.
+    rel: alternative
+    sources:
+      - https://github.com/gruntwork-io/kubergrunt/blob/main/README.md
+      - https://docs.aws.amazon.com/cli/latest/reference/eks/update-kubeconfig.html
+      - https://docs.aws.amazon.com/cli/latest/reference/eks/get-token.html
+  - id: brew:aws-iam-authenticator
+    reason: >
+      aws-iam-authenticator is a standalone alternative for producing the temporary EKS
+      authentication token whose behavior kubergrunt embeds.
+    rel: alternative
+    sources:
+      - https://github.com/gruntwork-io/kubergrunt/blob/main/README.md
+      - https://github.com/kubernetes-sigs/aws-iam-authenticator
+  - id: brew:kubernetes-cli
+    reason: >
+      kubergrunt's EKS configure command prepares kubectl contexts, and kubectl
+      subsequently invokes its token command to authenticate to the cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gruntwork-io/kubergrunt/blob/main/README.md
+      - https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
+  - id: brew:helm
+    reason: >
+      kubergrunt documents helper commands for Helm deployment and TLS/access setup,
+      complementing Helm's application-release workflow on Kubernetes.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gruntwork-io/kubergrunt/blob/main/README.md
+      - https://helm.sh/docs/intro/introduction/
 tags:
   - cli
   - eks

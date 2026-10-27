@@ -59,6 +59,57 @@ history:
       then communicates with the API server. Kubernetes documentation says kubectl looks
       for config in $HOME/.kube/config by default, while KUBECONFIG and --kubeconfig
       allow explicit or merged configuration files.
+related-packages:
+  - id: brew:k9s
+    reason: >
+      K9s is an interactive terminal UI over Kubernetes resources and is preferable for
+      continuous navigation and observation, while kubectl remains the broader
+      scriptable command client.
+    rel: alternative
+    sources:
+      - https://k9scli.io/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      Helm packages and manages Kubernetes applications as chart releases, complementing
+      kubectl's lower-level resource inspection and mutation commands.
+    rel: adjacent_workflow
+    sources:
+      - https://helm.sh/docs/intro/introduction/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:kustomize
+    reason: >
+      Kustomize builds declarative manifest variants and is also integrated into kubectl
+      through apply -k, making the standalone package useful when an independent
+      Kustomize workflow is preferred.
+    rel: adjacent_workflow
+    sources:
+      - https://kustomize.io/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:krew
+    reason: >
+      Krew installs and updates external kubectl plugins, extending kubectl with
+      independently packaged subcommands.
+    rel: adjacent_workflow
+    sources:
+      - https://krew.sigs.k8s.io/docs/user-guide/setup/install/
+      - https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/
+  - id: brew:minikube
+    reason: >
+      minikube creates a local development Kubernetes cluster and configures kubectl to
+      access it, providing a direct create-then-operate workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://minikube.sigs.k8s.io/docs/start/
+      - https://minikube.sigs.k8s.io/docs/handbook/kubectl/
+  - id: brew:kind
+    reason: >
+      kind creates container-based local Kubernetes clusters and generates kubeconfig
+      data that kubectl uses to inspect and operate those clusters.
+    rel: adjacent_workflow
+    sources:
+      - https://kind.sigs.k8s.io/docs/user/quick-start
+      - https://kubernetes.io/docs/reference/kubectl/
 category: cloud-infrastructure
 package-manager:
   apk: kubectl

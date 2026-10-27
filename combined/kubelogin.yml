@@ -74,6 +74,23 @@ history:
       The default token cache path documented by the README is ~/.kube/cache/oidc-login,
       and kubectl oidc-login clean deletes cached credentials so the next kubectl run
       starts a fresh browser login.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubelogin implements the external credential flow that kubectl invokes from a
+      kubeconfig user.exec entry when a cluster uses OIDC authentication.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/int128/kubelogin/blob/master/docs/setup.md
+      - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+  - id: brew:krew
+    reason: >
+      Krew installs and updates kubelogin under its kubectl plugin name, oidc-login, for
+      users who prefer Kubernetes' plugin workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/int128/kubelogin
+      - https://krew.sigs.k8s.io/plugins/
 category: developer-tools
 package-manager:
   apk: kubectl-oidc_login
