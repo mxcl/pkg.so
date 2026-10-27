@@ -70,6 +70,25 @@ history:
       and package tests see analyseplugin, applyplugin, and listplugins. The LADSPA_PATH
       environment variable is part of the historical packaging story because it gives
       hosts a standard way to find installed plugin shared libraries.
+related-packages:
+  - id: brew:lv2
+    reason: >
+      Choose LV2 when developing a newer, extensible audio-plugin ecosystem with richer
+      metadata and features; retain LADSPA for its deliberately small ABI and broad
+      legacy-host compatibility.
+    rel: alternative
+    sources:
+      - https://www.ladspa.org/
+      - https://lv2plug.in/
+      - https://lv2plug.in/pages/projects.html
+  - id: brew:csound
+    reason: >
+      Csound is a practical companion host: its optional `dssi4cs` module loads and
+      processes installed LADSPA effects discovered through `LADSPA_PATH`.
+    rel: adjacent_workflow
+    sources:
+      - https://csound.com/manual/plugin/dssi4cs/
+      - https://www.ladspa.org/
 category: media
 package-manager:
   brew: ladspa-sdk

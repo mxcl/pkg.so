@@ -57,6 +57,31 @@ history:
       Ladybug through language bindings. The docs emphasize in-process use with no
       external DBMS server, plus interoperability with formats and systems such as
       Parquet, Arrow, and DuckDB.
+related-packages:
+  - id: brew:kuzu
+    reason: >
+      Kuzu is the direct predecessor for maintaining existing Kuzu applications and
+      data, while Ladybug is the actively developed successor for new deployments.
+    rel: alternative
+    sources:
+      - https://ladybugdb.com/
+      - https://github.com/kuzudb/kuzu
+  - id: brew:duckdb
+    reason: >
+      Ladybug's official DuckDB extension attaches DuckDB databases so relational tables
+      can be scanned or copied into graph workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ladybugdb.com/extensions/attach/duckdb/
+      - https://duckdb.org/docs
+  - id: brew:neo4j
+    reason: >
+      Ladybug provides an official Neo4j extension specifically for migrating Neo4j
+      graph data into an embedded Ladybug database.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.ladybugdb.com/extensions/
+      - https://neo4j.com/docs
 tags:
   - cli
   - columnar

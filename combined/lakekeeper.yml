@@ -60,6 +60,37 @@ history:
       the /catalog endpoint, and manage warehouses, storage profiles, credentials, and
       permissions through Lakekeeper's management layer. The project also implements an
       S3 remote signing API for warehouse access.
+related-packages:
+  - id: brew:apache-polaris
+    reason: >
+      Apache Polaris is the closest catalog alternative: it also implements the Iceberg
+      REST API and emphasizes Apache-governed, multi-engine interoperability, while
+      Lakekeeper offers a Rust-native binary and its own access-control stack.
+    rel: alternative
+    sources:
+      - https://docs.lakekeeper.io/
+      - https://polaris.apache.org/
+      - https://polaris.apache.org/releases/1.4.0/
+  - id: brew:trino
+    reason: >
+      Lakekeeper officially documents Trino as a query-engine client, including REST
+      catalog setup, OAuth, vended credentials, nested namespaces, and an OPA bridge for
+      shared authorization.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.lakekeeper.io/docs/latest/engines/
+      - https://docs.lakekeeper.io/docs/latest/opa/
+      - https://trino.io/docs/current/connector/iceberg.html
+  - id: brew:openfga
+    reason: >
+      OpenFGA is a supported Lakekeeper authorization backend for enforcing fine-grained
+      relationship-based permissions across projects, warehouses, namespaces, and
+      tables.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.lakekeeper.io/docs/latest/authorization/
+      - https://docs.lakekeeper.io/docs/latest/authorization-openfga/
+      - https://openfga.dev/docs
 category: data
 package-manager:
   brew: lakekeeper
