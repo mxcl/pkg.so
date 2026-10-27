@@ -57,6 +57,16 @@ history:
       and TCP ports that process should access. The README also documents a systemd
       integration pattern for wrapping services such as nginx with reduced filesystem
       and network permissions.
+related-packages:
+  - id: brew:bubblewrap
+    reason: >
+      Choose bubblewrap when a sandbox needs mount, user, PID, IPC, or network
+      namespaces and the caller will construct the full policy; choose Landrun for a
+      smaller Landlock-based filesystem and network permission model.
+    rel: alternative
+    sources:
+      - https://github.com/Zouuup/landrun
+      - https://github.com/containers/bubblewrap
 tags:
   - cli
   - landlock
