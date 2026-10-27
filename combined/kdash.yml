@@ -5,8 +5,10 @@ repo: https://github.com/kdash-rs/kdash
 docs:
   - https://github.com/kdash-rs/kdash#readme
   - https://kdash-rs.github.io/
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix: ~/.config/kdash/config.yaml
+credentials-file-location:
+  unix: ~/.kube/config
 history:
   adoption-history:
     - >
@@ -65,6 +67,27 @@ history:
       kubeconfig. The interface supports keyboard navigation across resources, logs,
       YAML, describe output, filtering, namespace changes, context switching, copying,
       secret decoding, port-forwarding, and action menus.
+related-packages:
+  - id: brew:k9s
+    reason: >
+      K9s is the closest terminal-dashboard alternative, with a mature plugin and
+      customization ecosystem; KDash offers a Rust-based interface with its own
+      troubleshooting and resource-action workflow.
+    rel: alternative
+    sources:
+      - https://github.com/kdash-rs/kdash#readme
+      - https://k9scli.io/
+      - https://github.com/derailed/k9s#readme
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl complements KDash as Kubernetes' primary scriptable CLI, using the same
+      kubeconfig-based cluster access for automation and commands outside the dashboard
+      workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kdash-rs/kdash#readme
+      - https://kubernetes.io/docs/concepts/overview/kubectl/
+      - https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
 category: cloud-infrastructure
 package-manager:
   brew: kdash

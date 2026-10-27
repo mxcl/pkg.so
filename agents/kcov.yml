@@ -58,6 +58,25 @@ history:
       arguments. Users filter included or excluded paths, merge multiple coverage runs,
       and publish reports to CI services such as Coveralls, Codecov, Jenkins, SonarQube,
       GitHub Actions, and GitLab CI.
+related-packages:
+  - id: brew:gcovr
+    reason: >
+      Choose gcovr for compiler-instrumented GCC/gcov coverage and a broad selection of
+      CI report formats; choose kcov when coverage without special compilation flags or
+      coverage of shell and Python programs is important.
+    rel: alternative
+    sources:
+      - https://github.com/SimonKagstrom/kcov#readme
+      - https://gcovr.com/en/stable/
+  - id: brew:lcov
+    reason: >
+      Choose LCOV for an established gcov/llvm-cov trace-processing and HTML-report
+      workflow, while kcov is designed to collect coverage directly from debug
+      information and scripts.
+    rel: alternative
+    sources:
+      - https://github.com/SimonKagstrom/kcov#readme
+      - https://github.com/linux-test-project/lcov/blob/master/README.rst
 tags:
   - cli
   - code-coverage
