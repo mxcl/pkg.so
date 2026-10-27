@@ -57,6 +57,47 @@ history:
       Users query it with `lbdbq <something>`. The official page says lbdbq invokes
       modules to gather matching person records from sources such as received-mail
       address lists, YP maps, and finger lookups.
+related-packages:
+  - id: brew:mutt
+    reason: >
+      Mutt's external address-query interface directly motivated lbdb, which supplies
+      address matches while composing mail in Mutt.
+    rel: adjacent_workflow
+    sources:
+      - https://www.spinnaker.de/lbdb/
+      - https://www.mutt.org/
+  - id: brew:abook
+    reason: >
+      lbdb's `m_abook` module queries one or more abook files, combining abook's
+      editable terminal address book with lbdb's federated lookup.
+    rel: adjacent_workflow
+    sources:
+      - https://www.spinnaker.de/lbdb/
+      - https://abook.sourceforge.io/
+  - id: brew:khard
+    reason: >
+      lbdb's `m_khard` module queries CardDAV-backed address books through khard, making
+      khard-managed vCards available to lbdb consumers.
+    rel: adjacent_workflow
+    sources:
+      - https://www.spinnaker.de/lbdb/
+      - https://khard.readthedocs.io/en/latest/
+  - id: brew:mu
+    reason: >
+      lbdb's `m_mu` module extracts address matches from mu's indexed Maildir, pairing
+      fast mail indexing with Mutt-style address completion.
+    rel: adjacent_workflow
+    sources:
+      - https://www.spinnaker.de/lbdb/
+      - https://www.djcbsoftware.nl/code/mu/
+  - id: brew:notmuch
+    reason: >
+      lbdb's `m_notmuch_addrlookup` module searches addresses in a Notmuch mail
+      database, exposing indexed correspondents through lbdb queries.
+    rel: adjacent_workflow
+    sources:
+      - https://www.spinnaker.de/lbdb/
+      - https://notmuchmail.org/
 category: productivity
 package-manager:
   brew: lbdb
