@@ -5,7 +5,8 @@ repo: https://github.com/kubenetworks/kubevpn
 docs:
   - https://kubevpn.dev/docs
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix: ~/.kube/config
 history:
   adoption-history:
     - >
@@ -57,6 +58,15 @@ history:
       lets local tools access services through Kubernetes names or service IPs. The
       README and quickstart also describe inbound interception and running a pod
       workload locally with cluster-like network, volume, and environment behavior.
+related-packages:
+  - id: brew:helm
+    reason: >
+      Helm can preinstall and manage KubeVPN's in-cluster traffic-manager chart, while
+      the KubeVPN CLI handles developer connections and traffic interception.
+    rel: adjacent_workflow
+    sources:
+      - https://kubevpn.dev/docs/quickstart/
+      - https://helm.sh/docs/
 category: cloud-infrastructure
 package-manager:
   brew: kubevpn

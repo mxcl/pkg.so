@@ -6,7 +6,9 @@ docs:
 config-file-location:
   unix:
     - ~/.kube/kubie.yaml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.kube/config
 history:
   adoption-history:
     - >
@@ -59,6 +61,16 @@ history:
       Kubernetes config files. Its configuration lives at `~/.kube/kubie.yaml` and
       controls shell behavior, kubeconfig include/exclude patterns, prompt behavior, and
       interactive menu settings.
+related-packages:
+  - id: brew:kubectx
+    reason: >
+      Choose kubectx and its kubens companion for a simpler context-and-namespace
+      switching workflow; choose kubie when you need shell isolation, split kubeconfigs,
+      direct command execution, or kubeconfig linting.
+    rel: alternative
+    sources:
+      - https://github.com/kubie-org/kubie
+      - https://github.com/ahmetb/kubectx
 tags:
   - cli
   - context-switching
