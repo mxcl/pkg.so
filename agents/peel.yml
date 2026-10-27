@@ -1,0 +1,142 @@
+id: cask:peel
+display-name: Peel
+repo: null
+docs:
+  - https://github.com/TuguiDragos/Peel#readme
+  - https://github.com/TuguiDragos/Peel/blob/main/ARCHITECTURE.md
+  - https://github.com/TuguiDragos/Peel/blob/main/GUIDE.md
+  - https://github.com/TuguiDragos/Peel/blob/main/SAFETY.md
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Peel is distributed from its official GitHub repository and through Homebrew. It
+      targets macOS Tahoe and later and includes a SwiftUI application, Finder
+      extension, privileged helper, and bundled peel command-line tool.
+    - >
+      The project explicitly credits AppCleaner and Pearcleaner as inspirations while
+      distinguishing itself through explainable file matching, reversible history,
+      cleanup tools, macOS tweaks, Terminal setup, and command-line access.
+  package-nerd-significance:
+    - >
+      Peel treats uninstalling as an inspectable and mostly reversible operation: it
+      explains why files belong to an application, moves selected items to the Trash,
+      records history, and refuses protected or uncertain data.
+    - >
+      It is also unusually broad for a macOS uninstaller package. The graphical app and
+      CLI cover leftover files, caches, orphaned files, duplicate files, build
+      artifacts, Homebrew-aware removal, system tweaks, Terminal setup, and Finder
+      integration.
+    - >
+      For automation-minded users, the bundled peel CLI supports plans, dry runs,
+      confirmation control, consistent exit statuses, and shared removal history without
+      using the privileged helper.
+  project-history:
+    - >
+      Țugui Dragoș-Constantin created Peel as a free, open-source macOS uninstaller and
+      disk-space utility. The official project describes an intensive initial build
+      period and credits AppCleaner and Pearcleaner as product inspirations.
+    - >
+      The implementation grew into four programs—a SwiftUI app, root helper, Finder
+      extension, and command-line tool—with most logic isolated in the tested PeelCore
+      Swift package.
+  related-projects:
+    - >
+      AppCleaner and Pearcleaner are explicitly credited as inspirations for Peel's
+      application-removal workflow.
+    - >
+      Sparkle supplies opt-in signed application updates, while Apple's Swift Argument
+      Parser underpins the peel command-line interface.
+  sources:
+    - https://github.com/TuguiDragos/Peel
+    - https://github.com/TuguiDragos/Peel/blob/main/ARCHITECTURE.md
+    - https://github.com/TuguiDragos/Peel/blob/main/SAFETY.md
+    - https://peel.tuguidragos.com/
+  summary:
+    - >
+      Peel is a free, open-source macOS application uninstaller and disk-space cleaner
+      that explains discovered files, moves removable data to the Trash, and keeps
+      history for restoration.
+  timeline:
+    - >
+      2026: Peel's official repository identifies the project and copyright under its
+      current author and GPL licensing.
+    - >
+      Current project: Peel combines an app, Finder extension, privileged helper, and
+      command-line interface in one maintained codebase.
+  usage:
+    - >
+      Users select an installed application, inspect the files Peel associates with it,
+      and move the application and selected leftovers to the Trash. History can restore
+      items that remain there.
+    - >
+      Additional workflows scan caches, orphaned files, projects, duplicates, and build
+      artifacts; manage Homebrew applications; adjust supported macOS settings; and
+      configure Terminal and Git.
+    - >
+      The peel CLI supports scripted inspection and cleanup, including dry-run mode,
+      while applying the same safety rules and history model as the application.
+related-packages:
+  - id: cask:appcleaner
+    reason: >
+      Choose AppCleaner for a small drag-and-drop uninstaller focused on finding related
+      files; Peel adds explainable matches, restoration history, broader cleanup tools,
+      Finder integration, and a CLI.
+    rel: alternative
+    sources:
+      - https://github.com/TuguiDragos/Peel
+      - https://freemacsoft.net/appcleaner/
+  - id: cask:pearcleaner
+    reason: >
+      Choose Pearcleaner for another dedicated macOS app-cleaner workflow; Peel
+      explicitly names it as an inspiration and adds its own reversible history, safety
+      explanations, system tools, and CLI.
+    rel: alternative
+    sources:
+      - https://github.com/TuguiDragos/Peel
+      - https://github.com/alienator88/Pearcleaner
+tags:
+  - app-uninstaller
+  - cache-cleaner
+  - cli
+  - disk-cleanup
+  - duplicate-finder
+  - finder-extension
+  - leftover-files
+  - macos
+provenance:
+  category-sources:
+    - https://github.com/TuguiDragos/Peel
+    - https://peel.tuguidragos.com/
+  display-name-sources:
+    - https://github.com/TuguiDragos/Peel
+    - https://peel.tuguidragos.com/
+  docs-sources:
+    - >
+      The official architecture and safety documents explain on-disk state, protected
+      locations, removal decisions, and the privileged helper.
+    - >
+      The official repository README and guide document normal use, restoration,
+      privacy, compatibility, and command-line operation.
+  history-sources:
+    - https://github.com/TuguiDragos/Peel
+    - https://github.com/TuguiDragos/Peel/blob/main/ARCHITECTURE.md
+    - https://github.com/TuguiDragos/Peel/blob/main/SAFETY.md
+    - https://peel.tuguidragos.com/
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository discovery was intentionally
+      skipped as instructed.
+  tags-sources:
+    - https://github.com/TuguiDragos/Peel
+    - https://github.com/TuguiDragos/Peel/blob/main/ARCHITECTURE.md
+category-confidence: high
+category-path:
+  - system
+  - cleanup
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

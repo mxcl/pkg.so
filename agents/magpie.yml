@@ -1,0 +1,130 @@
+id: cask:magpie
+display-name: magpie
+repo: null
+docs:
+  - https://usemagpie.ai/docs/integrate
+  - https://usemagpie.ai/docs/intent
+  - https://usemagpie.ai/docs/start
+config-file-location:
+  unix:
+    - ~/.config/magpie/settings.json
+  windows:
+    - ~/.config/magpie/settings.json
+credentials-file-location:
+  unix:
+    - ~/.config/magpie/providers.json
+  windows:
+    - ~/.config/magpie/providers.json
+history:
+  adoption-history:
+    - >
+      magpie supports macOS, Windows, and Linux and recognizes a growing range of coding
+      agents, including Claude Code, Codex, Gemini CLI, OpenCode, Goose, Cursor CLI, and
+      Copilot CLI. It also integrates subscription accounts, API-key providers,
+      compatible endpoints, Ollama, and LM Studio.
+  package-nerd-significance:
+    - >
+      magpie addresses the increasingly fragmented configuration layer around AI coding
+      agents. Instead of configuring each agent independently for every model provider,
+      users maintain providers and routing centrally while magpie writes narrowly scoped
+      entries into each agent's native configuration.
+    - >
+      Its local OpenAI-, Anthropic-, and Gemini-compatible gateway makes otherwise
+      incompatible agents and model providers interoperable, while routing groups
+      support multiple accounts, fallback, quota-aware selection, and intent-based
+      routing.
+  project-history:
+    - >
+      magpie was developed as an open-source local model gateway and configuration
+      application for AI coding agents. The project combines a desktop interface,
+      terminal operation, and a loopback gateway listening by default on 127.0.0.1:3425.
+  related-projects:
+    - >
+      Claude Code, Codex, Gemini CLI, OpenCode, and other coding agents can be
+      configured to send requests through magpie.
+    - Ollama and LM Studio can supply locally hosted models to magpie without API keys.
+  sources:
+    - https://github.com/yetone/magpie-releases
+    - https://usemagpie.ai/
+    - https://usemagpie.ai/docs/integrate
+    - https://usemagpie.ai/docs/start
+  summary:
+    - >
+      magpie is a local model gateway and configuration hub that lets multiple AI coding
+      agents use models from subscriptions, API vendors, compatible endpoints, and local
+      runtimes.
+  timeline:
+    - >
+      Initial direction: magpie unified model selection and provider setup for coding
+      agents behind a local gateway.
+    - >
+      Current project: The application supports desktop, terminal, tray, daemon, and
+      browser-oriented operation across macOS, Windows, and Linux.
+  usage:
+    - >
+      Users add subscription accounts, provider API keys, or local endpoints once, then
+      select a model or routing group for each detected coding agent. magpie updates
+      that agent's native configuration and serves requests through its local gateway.
+    - >
+      The application can remain in the tray, run only the gateway, or install a launchd
+      or systemd service. New agent sessions pick up model changes after their
+      configuration is rewritten.
+related-packages:
+  - id: brew:ollama
+    reason: >
+      Use Ollama to run open models locally, then add it as an on-machine provider in
+      magpie so coding agents can reach those models through magpie's gateway.
+    rel: adjacent_workflow
+    sources:
+      - https://usemagpie.ai/docs/start
+      - https://ollama.com/
+  - id: cask:lm-studio
+    reason: >
+      LM Studio can serve downloaded local models through compatible APIs, while magpie
+      exposes those models to its configured coding agents as an on-machine provider.
+    rel: adjacent_workflow
+    sources:
+      - https://usemagpie.ai/docs/start
+      - https://lmstudio.ai/docs/app
+tags:
+  - ai
+  - api-proxy
+  - coding-agents
+  - llm
+  - local-models
+  - model-gateway
+  - model-routing
+  - multi-provider
+provenance:
+  category-sources:
+    - https://usemagpie.ai/
+    - https://usemagpie.ai/docs/start
+  display-name-sources:
+    - https://usemagpie.ai/
+    - https://usemagpie.ai/docs/start
+  docs-sources:
+    - >
+      The dedicated official documentation covers providers, agent configuration,
+      routing groups, terminal operation, application integration, and intent routing.
+  history-sources:
+    - https://github.com/yetone/magpie-releases
+    - https://usemagpie.ai/
+    - https://usemagpie.ai/docs/integrate
+    - https://usemagpie.ai/docs/start
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository discovery was intentionally
+      skipped as instructed.
+  tags-sources:
+    - https://usemagpie.ai/
+    - https://usemagpie.ai/docs/integrate
+    - https://usemagpie.ai/docs/start
+category-confidence: high
+category-path:
+  - ai
+  - model-gateways
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

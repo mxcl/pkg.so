@@ -1,10 +1,101 @@
 id: cask:gram
 display-name: Gram
 homepage: https://gram-editor.com/
-repo: null
+repo: https://codeberg.org/GramEditor/gram
+docs:
+  - https://gram-editor.com/docs
+  - https://gram-editor.com/docs/configuring-gram
+config-file-location:
+  unix:
+    - ~/.config/gram/settings.jsonc
+    - $XDG_CONFIG_HOME/gram/settings.json (Linux when XDG_CONFIG_HOME is set)
+    - .gram/settings.jsonc (per-project)
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Gram provides binaries for macOS, Linux, and Windows, has FreeBSD support, and is
+      packaged for macOS through Homebrew. Its documentation describes it as a
+      work-in-progress community project used daily by its maintainer and a small
+      contributor community.
+  package-nerd-significance:
+    - >
+      Gram is notable as a Zed hard fork that deliberately removes AI integration,
+      telemetry, proprietary server dependencies, subscriptions, and involuntary updates
+      while retaining a modern editor architecture.
+    - >
+      For package users, it offers an unusual middle ground: a cross-platform graphical
+      IDE with remote SSH development, DAP debugging, Git integration, Jupyter
+      workflows, modal editing, and partial compatibility with Zed extensions.
+  project-history:
+    - >
+      Gram began as a hard fork of the Zed editor. Its stated direction emphasizes
+      stability, reliability, user respect, and writing code by hand rather than
+      AI-centered editing or monetization.
+  related-projects:
+    - >
+      Zed is Gram's upstream origin and remains close enough that Gram documents
+      migration from Zed and partial support for Zed WebAssembly extensions.
+    - Visual Studio Code is another migration source covered by Gram's official documentation.
+  sources:
+    - https://gram-editor.com/
+    - https://gram-editor.com/docs/
+    - https://gram-editor.com/docs/migrate/vs-code/
+    - https://gram-editor.com/docs/migrate/zed/
+  summary:
+    - >
+      Gram is a community-developed source-code editor and IDE focused on stability and
+      conventional hand-written development without bundled AI, subscriptions,
+      telemetry, or proprietary server components.
+  timeline:
+    - 'Project origin: Gram began as a hard fork of Zed.'
+    - >
+      Current development: The project is cross-platform and remains explicitly
+      described as a work in progress.
+  usage:
+    - >
+      Developers use Gram for local or SSH-based editing, built-in Git workflows,
+      language-server features, DAP debugging, Jupyter-style REPL work, and Vim or Helix
+      modal editing.
+    - >
+      Configuration can be managed through the Settings Editor, a user JSONC file, or
+      project-local .gram/settings.jsonc files.
+related-packages:
+  - id: cask:zed
+    reason: >
+      Choose Zed for the upstream editor experience with first-party collaboration and
+      AI tools; choose Gram for its hard-forked, no-bundled-AI and no-telemetry
+      direction.
+    rel: alternative
+    sources:
+      - https://gram-editor.com/docs/
+      - https://gram-editor.com/docs/migrate/zed/
+      - https://zed.dev/docs/
+  - id: cask:visual-studio-code
+    reason: >
+      Choose Visual Studio Code for its broad extension ecosystem and
+      Microsoft-supported tooling; Gram is a smaller community editor with built-in Git,
+      DAP, SSH, and documented VS Code migration.
+    rel: alternative
+    sources:
+      - https://gram-editor.com/docs/
+      - https://gram-editor.com/docs/migrate/vs-code/
+      - https://code.visualstudio.com/docs
+category: developer-tools
 package-manager:
   brew-cask: gram
 package-manager-url: https://formulae.brew.sh/cask/gram
+tags:
+  - code-editor
+  - debugger
+  - git
+  - helix
+  - ide
+  - jupyter
+  - language-server
+  - privacy
+  - remote-development
+  - vim
 description: Code editor focused on stability, without AI, subscriptions, or telemetry
 applications:
   - Gram.app
