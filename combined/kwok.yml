@@ -4,8 +4,10 @@ homepage: https://kwok.sigs.k8s.io
 repo: https://github.com/kubernetes-sigs/kwok
 docs:
   - https://kwok.sigs.k8s.io/docs
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix: ~/.kwok/kwok.yaml
+credentials-file-location:
+  unix: ~/.kube/config
 history:
   adoption-history:
     - >
@@ -58,6 +60,32 @@ history:
       delete local simulated clusters. Package-manager users care about having both
       binaries available for fast CI jobs, controller load tests, scheduler experiments,
       and demos that need Kubernetes API behavior without worker-node cost.
+related-packages:
+  - id: brew:kind
+    reason: >
+      Choose kind when tests must run real pod containers; KWOK's official comparison
+      recommends kwokctl instead when simulated API objects are sufficient and much
+      larger scale is desired.
+    rel: alternative
+    sources:
+      - https://kwok.sigs.k8s.io/
+      - https://kind.sigs.k8s.io/docs/
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl works against KWOK's Kubernetes-compatible API and is the natural
+      companion for creating, inspecting, and modifying the simulated resources.
+    rel: adjacent_workflow
+    sources:
+      - https://kubernetes.io/blog/2023/03/01/introducing-kwok/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      Helm can install and exercise chart-generated Kubernetes objects against a KWOK
+      cluster when a test needs API behavior without executing the resulting pods.
+    rel: adjacent_workflow
+    sources:
+      - https://kubernetes.io/blog/2023/03/01/introducing-kwok/
+      - https://helm.sh/docs/
 category: cloud-infrastructure
 package-manager:
   brew: kwok

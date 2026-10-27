@@ -63,6 +63,34 @@ history:
       Common uses include cache servers, persistent key-value services, HTTP-accessible
       storage, replicated small databases, and Lua-extended operations close to the
       data.
+related-packages:
+  - id: brew:kyoto-cabinet
+    reason: >
+      Kyoto Cabinet is Kyoto Tycoon's embedded storage foundation and is the appropriate
+      choice when an application needs local in-process DBM access rather than a network
+      server.
+    rel: adjacent_workflow
+    sources:
+      - https://dbmx.net/kyototycoon/
+      - https://dbmx.net/kyotocabinet/
+  - id: brew:redis
+    reason: >
+      Choose Redis when the application needs a broader, actively developed set of
+      native data structures and server-side operations; Kyoto Tycoon is a simpler Kyoto
+      Cabinet-backed cache and byte-oriented storage server.
+    rel: alternative
+    sources:
+      - https://dbmx.net/kyototycoon/
+      - https://redis.io/docs/latest/develop/data-types/
+  - id: brew:memcached
+    reason: >
+      Choose Memcached for a deliberately minimal volatile cache; Kyoto Tycoon adds
+      persistent Kyoto Cabinet storage, replication, scripting, and an included
+      memcached-protocol plugin.
+    rel: alternative
+    sources:
+      - https://dbmx.net/kyototycoon/spex.html
+      - https://docs.memcached.org/
 tags:
   - cache
   - cli
@@ -100,8 +128,8 @@ provenance:
     - https://dbmx.net/kyototycoon/spex.html
   repo-sources:
     - >
-      source_facts.repo is empty. The official homepage publishes source packages but
-      identifies no official HTTP(S) source-control repository.
+      https://dbmx.net/kyototycoon/ (official upstream provides source packages but no
+      official HTTP source-control repository page)
   tags-sources:
     - >
       Official Kyoto Tycoon page describes cache, persistent storage, HTTP protocol, and

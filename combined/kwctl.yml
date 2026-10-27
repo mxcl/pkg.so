@@ -66,6 +66,24 @@ history:
       policy build tools so a policy can be pulled or run locally before a cluster
       admission rule is created. It is also used to annotate WebAssembly modules with
       Kubewarden metadata and push policies as OCI artifacts.
+related-packages:
+  - id: brew:opa
+    reason: >
+      Choose Open Policy Agent for a general-purpose Rego policy engine; Kubewarden can
+      execute Rego policies compiled to WebAssembly when the same policy work needs
+      Kubewarden's Kubernetes admission and OCI workflow.
+    rel: alternative
+    sources:
+      - https://www.kubewarden.io/blog/2021/12/first-year-of-kubewarden/
+      - https://www.openpolicyagent.org/docs/kubernetes/primer
+  - id: brew:cosign
+    reason: >
+      Use cosign alongside kwctl when signing and independently verifying OCI policy
+      artifacts in the Sigstore supply-chain workflow supported by Kubewarden.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.kubewarden.io/reference/kwctl-cli/
+      - https://docs.sigstore.dev/cosign/verifying/verify/
 category: cloud-infrastructure
 package-manager:
   brew: kwctl

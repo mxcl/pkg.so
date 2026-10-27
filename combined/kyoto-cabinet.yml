@@ -65,6 +65,32 @@ history:
       kcpolymgr, and test tools. Typical uses are local key-value indexes, caches,
       compact persistent maps, data conversion jobs, and applications that need hash or
       ordered B+ tree storage behind a simple API.
+related-packages:
+  - id: brew:tkrzw
+    reason: >
+      Choose Tkrzw for the maintained successor to Kyoto Cabinet; the Kyoto Cabinet
+      author explicitly recommends it for new embedded DBM work.
+    rel: alternative
+    sources:
+      - https://dbmx.net/kyotocabinet/
+      - https://dbmx.net/tkrzw/
+  - id: brew:kyoto-tycoon
+    reason: >
+      Add Kyoto Tycoon when a Kyoto Cabinet database must be shared safely by remote or
+      multiple processes through HTTP and other network protocols.
+    rel: adjacent_workflow
+    sources:
+      - https://dbmx.net/kyotocabinet/
+      - https://dbmx.net/kyototycoon/
+  - id: brew:tokyo-cabinet
+    reason: >
+      Tokyo Cabinet is the older C-based member of the same DBM lineage; choose it for
+      compatibility with existing Tokyo Cabinet applications rather than Kyoto Cabinet's
+      C++ object-oriented API.
+    rel: alternative
+    sources:
+      - https://dbmx.net/kyotocabinet/spex.html
+      - https://dbmx.net/tokyocabinet/
 category: data
 package-manager:
   brew: kyoto-cabinet

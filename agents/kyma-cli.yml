@@ -61,6 +61,24 @@ history:
       applications into a Kyma environment. In package-manager terms it is a focused
       Kubernetes distribution tool: small binary, SAP/Kyma-specific verbs, and a close
       relationship to the platform's module lifecycle.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl complements Kyma CLI for applying and inspecting the underlying Kubernetes
+      resources, and Kyma's official installation workflow explicitly requires both
+      tools.
+    rel: adjacent_workflow
+    sources:
+      - https://kyma-project.io/02-get-started/01-quick-install.html
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:k3d
+    reason: >
+      k3d creates the local Kubernetes cluster used by Kyma's official standalone
+      quick-install workflow before Kyma CLI manages the platform and its modules.
+    rel: adjacent_workflow
+    sources:
+      - https://kyma-project.io/02-get-started/01-quick-install.html
+      - https://k3d.io/
 tags:
   - cli
   - cloud-native
