@@ -47,6 +47,23 @@ history:
       Create profiles and source-to-destination tasks in the TUI, preview changes with
       `p`, and run them with `r`. The same profiles work through `lazyrsync list` and
       `lazyrsync run`, allowing verified tasks to be scheduled without the TUI.
+related-packages:
+  - id: brew:rsync
+    reason: >
+      Install rsync 3.1 or later as the required transfer engine used for lazyrsync
+      previews, progress reporting, synchronization, and snapshots.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/westpoint-io/lazyrsync#install
+      - https://rsync.samba.org/documentation.html
+  - id: brew:openssh
+    reason: >
+      Install OpenSSH for lazyrsync tasks that synchronize to SSH-style remote paths or
+      run unattended with key-based authentication.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/westpoint-io/lazyrsync#readme
+      - https://www.openssh.com/manual.html
 tags:
   - backup
   - cli
