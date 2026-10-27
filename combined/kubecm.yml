@@ -66,6 +66,25 @@ history:
       Because kubeconfig files may contain sensitive access material, KubeCM is
       operationally adjacent to credentials even though it does not define a separate
       credentials store of its own.
+related-packages:
+  - id: brew:kubectx
+    reason: >
+      Choose kubectx for a narrower context-and-namespace switching workflow; choose
+      KubeCM when you also need kubeconfig merging, cleanup, importing, or
+      registry-based distribution.
+    rel: alternative
+    sources:
+      - https://kubecm.cloud/
+      - https://github.com/ahmetb/kubectx/blob/master/README.md
+  - id: brew:kubie
+    reason: >
+      Choose Kubie when isolated per-shell contexts, namespace switching, and split
+      kubeconfig discovery matter more than KubeCM's broader file-management and
+      registry features.
+    rel: alternative
+    sources:
+      - https://kubecm.cloud/
+      - https://github.com/kubie-org/kubie
 category: developer-tools
 package-manager:
   brew: kubecm

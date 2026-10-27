@@ -76,6 +76,33 @@ history:
       Its package-manager role is to put an AI command generator and executor beside
       kubectl rather than inside the cluster, so installation is a developer-workstation
       concern.
+related-packages:
+  - id: brew:k8sgpt
+    reason: >
+      Choose K8sGPT for analyzer-driven cluster diagnosis and optional AI explanations;
+      choose kubectl-ai for broader conversational Kubernetes operations, custom tools,
+      and MCP client/server workflows.
+    rel: alternative
+    sources:
+      - https://github.com/GoogleCloudPlatform/kubectl-ai
+      - https://k8sgpt.ai/docs/reference/cli
+      - https://k8sgpt.ai/docs/getting-started/installation
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl-ai requires an installed and configured kubectl and uses it as a built-in
+      tool for carrying out the Kubernetes operations inferred from user requests.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/GoogleCloudPlatform/kubectl-ai
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:krew
+    reason: >
+      Krew installs kubectl-ai as the `ai` kubectl plugin, after which users invoke it
+      through `kubectl ai`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/GoogleCloudPlatform/kubectl-ai
+      - https://krew.sigs.k8s.io/
 category: ai
 package-manager:
   brew: kubectl-ai

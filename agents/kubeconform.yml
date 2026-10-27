@@ -76,6 +76,24 @@ history:
       The package matters in validation pipelines because it gives maintainers a fast,
       scriptable check for Kubernetes resource structure without needing live cluster
       access.
+related-packages:
+  - id: brew:kube-linter
+    reason: >
+      Run Kubeconform for Kubernetes and CRD schema validity, then KubeLinter for
+      configurable production-readiness and security checks on the same YAML or Helm
+      output.
+    rel: adjacent_workflow
+    sources:
+      - https://kubeconform.mandragor.org/docs/overview/
+      - https://docs.kubelinter.io/
+  - id: brew:kube-score
+    reason: >
+      Use kube-score after schema validation when you also want recommendations about
+      the reliability and security characteristics of Kubernetes objects.
+    rel: adjacent_workflow
+    sources:
+      - https://kubeconform.mandragor.org/docs/overview/
+      - https://kube-score.com/
 tags:
   - ci
   - cli

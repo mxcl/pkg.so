@@ -68,6 +68,23 @@ history:
       The plugin uses the normal kubectl configuration path through `~/.kube/config`, so
       it fits existing Kubernetes authentication and context workflows rather than
       defining a separate credentials store.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl discovers `kubectl-cnpg` as the `kubectl cnpg` plugin and supplies its
+      cluster contexts, API connectivity, and authentication.
+    rel: adjacent_workflow
+    sources:
+      - https://cloudnative-pg.io/docs/current/kubectl-plugin/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:krew
+    reason: >
+      CloudNativePG officially documents Krew for installing and upgrading the plugin as
+      `cnpg` within the kubectl plugin ecosystem.
+    rel: adjacent_workflow
+    sources:
+      - https://cloudnative-pg.io/docs/current/kubectl-plugin/
+      - https://krew.sigs.k8s.io/
 category: developer-tools
 package-manager:
   apk: kubectl-cnpg
