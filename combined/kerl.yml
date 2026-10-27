@@ -66,6 +66,25 @@ history:
       In package-manager workflows, kerl is often the lower-level build engine beneath
       friendlier version managers, especially when macOS, Linux distro, OpenSSL,
       wxWidgets, or documentation-build quirks matter.
+related-packages:
+  - id: brew:asdf
+    reason: >
+      Choose asdf when you want project-level .tool-versions switching across multiple
+      language ecosystems; its official Erlang plugin uses kerl as the underlying OTP
+      build engine.
+    rel: alternative
+    sources:
+      - https://github.com/asdf-vm/asdf-erlang
+      - https://asdf-vm.com/guide/getting-started.html
+  - id: brew:erlang
+    reason: >
+      Choose the packaged Erlang/OTP runtime when one system-managed installation is
+      sufficient; use kerl when you need custom builds or several independently
+      activated OTP installations.
+    rel: alternative
+    sources:
+      - https://github.com/kerl/kerl
+      - https://www.erlang.org/docs
 category: language-runtime
 package-manager:
   brew: kerl
