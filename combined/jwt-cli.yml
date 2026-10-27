@@ -60,6 +60,24 @@ history:
       TOKEN`, and as a pipeline component, for example extracting an access token with
       `curl` and `jq` and piping it into `jwt decode -`. Encoding support lets
       developers create test tokens without reaching for a web UI.
+related-packages:
+  - id: brew:jq
+    reason: >
+      Use jq with jwt-cli to extract tokens from JSON API responses or further process
+      jwt-cli's JSON decoding output in shell pipelines.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mike-engel/jwt-cli#readme
+      - https://jqlang.github.io/jq/manual/
+  - id: brew:jwt-hack
+    reason: >
+      Choose jwt-hack when you need offensive JWT testing such as weak-secret cracking,
+      attack-payload generation, or vulnerability scanning rather than routine token
+      encoding and decoding.
+    rel: alternative
+    sources:
+      - https://github.com/mike-engel/jwt-cli#readme
+      - https://github.com/hahwul/jwt-hack#readme
 category: security
 package-manager:
   apk: jwt-cli
