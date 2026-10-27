@@ -71,6 +71,24 @@ history:
       file with inserted and deleted text marked using standard LaTeX packages. Users
       then compile the generated file to inspect revisions, or use `latexrevise` and
       `latexdiff-vc` for accepting changes or comparing version-control revisions.
+related-packages:
+  - id: brew:git
+    reason: >
+      Git works with the bundled `latexdiff-vc` wrapper to compare historical revisions
+      of a LaTeX document without manually exporting both source versions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ftilmann/latexdiff/blob/master/latexdiff-vc
+      - https://git-scm.com/docs
+  - id: brew:latexindent
+    reason: >
+      latexindent.pl explicitly recommends using latexdiff to inspect whether a
+      formatting pass changed document content, making the two tools complementary in a
+      safe LaTeX cleanup workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cmhughes/latexindent.pl#readme
+      - https://www.ctan.org/pkg/latexdiff?lang=en
 category: productivity
 package-manager:
   brew: latexdiff

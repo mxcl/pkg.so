@@ -68,6 +68,26 @@ history:
       chaining, and output-format options. The manual's examples cover comparing
       chromosomes, aligning shotgun reads to a chromosome, self-alignment, and working
       with seed, HSP, gapped-alignment, and chaining stages.
+related-packages:
+  - id: brew:minimap2
+    reason: >
+      Choose minimap2 when one fast aligner must cover long reads, spliced transcripts,
+      short reads, and assembly-to-assembly alignment; choose LASTZ when
+      BLASTZ-compatible controls and its established whole-genome workflow are
+      important.
+    rel: alternative
+    sources:
+      - https://lastz.github.io/lastz/
+      - https://github.com/lh3/minimap2
+  - id: brew:mummer
+    reason: >
+      Choose MUMmer for a suite centered on large-genome and assembly comparison with
+      tools such as nucmer, dnadiff, and mummerplot; LASTZ is a focused pairwise aligner
+      with BLASTZ-compatible syntax and broader output-format controls.
+    rel: alternative
+    sources:
+      - https://lastz.github.io/lastz/
+      - https://github.com/mummer4/mummer
 category: science
 package-manager:
   brew: lastz
