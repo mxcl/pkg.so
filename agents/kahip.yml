@@ -5,7 +5,11 @@ docs:
   - https://github.com/KaHIP/KaHIP/tree/master/manual
   - https://algo2.iti.kit.edu/documents/kahip/index.html
   - https://github.com/KaHIP/KaHIP#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.kagent/config.yaml
+  windows:
+    - '%USERPROFILE%\.kagent\config.yaml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -55,6 +59,23 @@ history:
       graphchecker, partition with kaffpa or kaffpaE, run distributed partitioning with
       parhip, evaluate cuts, compute node separators, or call the library and Python
       interface from larger workflows.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl to inspect and verify the Kubernetes workloads and resources created
+      by kagent, as shown in the official installation procedure.
+    rel: adjacent_workflow
+    sources:
+      - https://www.kagent.dev/docs/kagent/1.x/setup/installation/
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:helm
+    reason: >
+      Use Helm when you need direct chart-based installation or detailed control of
+      kagent deployment values instead of the guided CLI installer.
+    rel: adjacent_workflow
+    sources:
+      - https://www.kagent.dev/docs/kagent/1.x/setup/installation/
+      - https://helm.sh/docs/
 tags:
   - algorithms
   - c-plus-plus
