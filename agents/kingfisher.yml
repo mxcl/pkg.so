@@ -3,7 +3,9 @@ display-name: Kingfisher
 repo: null
 docs:
   - https://github.com/mongodb/kingfisher#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - kingfisher.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -60,6 +62,27 @@ history:
       CLI can emit JSON, SARIF, TOON, and HTML reports, validate supported secrets
       against provider APIs, revoke selected secret types, and open a local or hosted
       report viewer.
+related-packages:
+  - id: brew:trufflehog
+    reason: >
+      Choose TruffleHog when its established verified-secret workflow and extensive
+      remote-source integrations best match your audit; Kingfisher emphasizes
+      high-throughput scanning plus validation, blast-radius, and response features.
+    rel: alternative
+    sources:
+      - >
+        https://www.mongodb.com/company/blog/product-release-announcements/introducing-kingfisher-real-time-secret-detection-validation
+      - https://github.com/trufflesecurity/trufflehog
+  - id: brew:gitleaks
+    reason: >
+      Choose Gitleaks for a focused, configurable Git, directory, stdin, pre-commit, and
+      CI scanner; choose Kingfisher when live validation and broader response analysis
+      are central requirements.
+    rel: alternative
+    sources:
+      - >
+        https://www.mongodb.com/company/blog/product-release-announcements/introducing-kingfisher-real-time-secret-detection-validation
+      - https://github.com/gitleaks/gitleaks
 tags:
   - cli
   - credential-detection
