@@ -3,7 +3,21 @@ display-name: Kibi
 repo: null
 docs:
   - https://github.com/ilai-deutel/kibi#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/kibi/config.ini
+    - ~/.config/kibi/config.ini
+    - $XDG_CONFIG_DIRS/kibi/config.ini
+    - /etc/kibi/config.ini
+    - /etc/xdg/kibi/config.ini
+    - $XDG_DATA_HOME/kibi/syntax.d/<file_name>.ini
+    - ~/.local/share/kibi/syntax.d/<file_name>.ini
+    - $XDG_DATA_DIRS/kibi/syntax.d/<file_name>.ini
+    - /usr/local/share/kibi/syntax.d/<file_name>.ini
+    - /usr/share/kibi/syntax.d/<file_name>.ini
+  windows:
+    - '%APPDATA%\Kibi\config.ini'
+    - '%APPDATA%\Kibi\syntax.d\<file_name>.ini'
 credentials-file-location: null
 history:
   adoption-history:
@@ -46,6 +60,25 @@ history:
       Kibi is used as a lightweight terminal editor for opening files or scratch
       buffers, especially when a user wants a tiny, auditable editor with modern
       conveniences rather than a full editor ecosystem.
+related-packages:
+  - id: brew:micro
+    reason: >
+      Choose micro when you want a more extensible terminal editor with mouse support,
+      splits, multiple cursors, and Lua plugins; choose Kibi when its tiny, deliberately
+      constrained implementation is the attraction.
+    rel: alternative
+    sources:
+      - https://github.com/ilai-deutel/kibi#readme
+      - https://github.com/micro-editor/micro#readme
+  - id: brew:nano
+    reason: >
+      Choose GNU nano for a mature, broadly familiar modeless editor and established
+      nanorc ecosystem; choose Kibi for its modern Rust implementation and strict
+      1024-line design challenge.
+    rel: alternative
+    sources:
+      - https://github.com/ilai-deutel/kibi#readme
+      - https://www.nano-editor.org/dist/latest/nano.html
 tags:
   - cli
   - rust
