@@ -55,6 +55,33 @@ history:
       lazydocker gives one terminal window for container state, logs, restarts, shell
       access, and Docker Compose workflows. Its README frames the tool as an answer to
       juggling `docker compose ps`, logs, restarts, and multiple terminal windows.
+related-packages:
+  - id: brew:docker
+    reason: >
+      Docker supplies the daemon, objects, contexts, and commands that lazydocker
+      exposes through its terminal interface.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jesseduffield/lazydocker
+      - https://docs.docker.com/reference/cli/docker/
+  - id: brew:docker-compose
+    reason: >
+      lazydocker integrates Docker Compose service status, logs, starts, stops,
+      restarts, rebuilds, and project commands into its project-oriented panels.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jesseduffield/lazydocker
+      - https://github.com/jesseduffield/lazydocker/blob/master/docs/Config.md
+      - https://docs.docker.com/compose/
+  - id: brew:ctop
+    reason: >
+      Choose ctop when compact real-time container metrics are the main goal; choose
+      lazydocker when you also need Docker Compose awareness and broader management
+      commands.
+    rel: alternative
+    sources:
+      - https://github.com/jesseduffield/lazydocker
+      - https://github.com/bcicen/ctop
 category: developer-tools
 package-manager:
   apk: lazydocker
