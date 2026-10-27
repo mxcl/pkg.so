@@ -73,6 +73,34 @@ history:
       lets KLEE model command-line arguments, files, environment variables, and other
       parts of a Unix process environment, making it especially attractive for testing
       command-line utilities.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      KLEE executes LLVM bitcode and its official build instructions require a
+      compatible LLVM and Clang toolchain to compile programs for symbolic execution.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/klee/klee#readme
+      - https://klee-se.org/releases/docs/v3.2/build/build-from-source/
+      - https://llvm.org/docs/
+  - id: brew:stp
+    reason: >
+      STP is KLEE's historically best-supported constraint-solver backend and can be
+      selected directly through KLEE's solver-chain options.
+    rel: adjacent_workflow
+    sources:
+      - https://klee-se.org/docs/solver-chain/
+      - https://klee-se.org/releases/docs/v3.2/build/build-from-source/
+      - https://stp.github.io/
+  - id: brew:z3
+    reason: >
+      Z3 is an officially supported KLEE constraint-solver backend and is useful when
+      users want an alternative to STP or need solver cross-checking.
+    rel: adjacent_workflow
+    sources:
+      - https://klee-se.org/docs/solver-chain/
+      - https://klee-se.org/releases/docs/v3.2/build/build-from-source/
+      - https://microsoft.github.io/z3guide/
 category: developer-tools
 package-manager:
   brew: klee
