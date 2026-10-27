@@ -6,7 +6,9 @@ docs:
 config-file-location:
   unix:
     - ~/.config/ktea/config.yaml
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.config/ktea/config.yaml
 history:
   adoption-history:
     - >
@@ -52,6 +54,34 @@ history:
       Users configure clusters in ~/.config/ktea/config.yaml or through the TUI, then
       navigate topics, schemas, consumer lag, records, and Kafka Connect resources with
       keyboard-driven tables.
+related-packages:
+  - id: brew:kafkactl
+    reason: >
+      Choose kafkactl instead when Kafka administration needs a scriptable kubectl-style
+      CLI with contexts, ACL operations, schemas, and credential-keyring support rather
+      than an interactive TUI.
+    rel: alternative
+    sources:
+      - https://github.com/jonas-grgt/ktea#features
+      - https://deviceinsight.github.io/kafkactl/
+  - id: brew:kaf
+    reason: >
+      Choose Kaf for a lightweight command-oriented Kafka workflow that can inspect
+      groups and topics, produce or consume records, reset offsets, and compose
+      operations in shell pipelines.
+    rel: alternative
+    sources:
+      - https://github.com/jonas-grgt/ktea#features
+      - https://github.com/birdayz/kaf#readme
+  - id: brew:kcat
+    reason: >
+      Choose kcat when the main requirement is a small non-JVM producer, consumer,
+      metadata inspector, or pipe-friendly Kafka debugging tool rather than cluster
+      administration through a TUI.
+    rel: alternative
+    sources:
+      - https://github.com/jonas-grgt/ktea#features
+      - https://github.com/edenhill/kcat#readme
 tags:
   - cli
   - kafka

@@ -48,6 +48,31 @@ history:
       Typical use is to define SOPS creation rules in .sops.yaml, add a KSOPS generator
       to kustomization.yaml, and run kustomize with plugin support so encrypted Secrets
       or ConfigMaps are decrypted during the build.
+related-packages:
+  - id: brew:sops
+    reason: >
+      SOPS encrypts the resource files that KSOPS decrypts while Kustomize builds
+      Kubernetes manifests.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/viaduct-ai/kustomize-sops#getting-started-tutorial
+      - https://getsops.io/docs/
+  - id: brew:kustomize
+    reason: >
+      Kustomize loads KSOPS as a generator plugin, so it is the manifest-building
+      command used to execute the KSOPS workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/viaduct-ai/kustomize-sops#overview
+      - https://kubectl.docs.kubernetes.io/references/kustomize/
+  - id: brew:argocd
+    reason: >
+      KSOPS documents an Argo CD integration for decrypting SOPS resources as part of a
+      Kubernetes GitOps deployment.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
+      - https://argo-cd.readthedocs.io/
 category: security
 package-manager:
   brew: ksops

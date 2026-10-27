@@ -53,6 +53,26 @@ history:
       autocorrect violations. Teams commonly add it to build pipelines, pre-commit
       hooks, editor workflows, or Gradle/Maven tasks, with .editorconfig and baseline
       files used when defaults need project-level adjustment.
+related-packages:
+  - id: brew:ktfmt
+    reason: >
+      Choose ktfmt when deterministic, minimally configurable Kotlin formatting is more
+      important than ktlint's lint rules, reporters, baselines, and custom-rule
+      extension model.
+    rel: alternative
+    sources:
+      - https://github.com/Kotlin/ktfmt#ktfmt-vs-ktlint-vs-intellij
+      - https://ktlint.github.io/ktlint/latest/
+  - id: brew:detekt
+    reason: >
+      detekt complements ktlint with broader Kotlin static analysis and officially
+      provides a ktlint wrapper so formatting rules can participate in one detekt
+      quality gate.
+    rel: adjacent_workflow
+    sources:
+      - https://detekt.dev/extensions.html/
+      - https://detekt.dev/docs/rules/ktlint/
+      - https://ktlint.github.io/ktlint/latest/
 tags:
   - cli
   - formatter
