@@ -3,7 +3,19 @@ display-name: Kanata Tray
 repo: null
 docs:
   - https://github.com/rszyma/kanata-tray#readme
-config-file-location: null
+config-file-location:
+  linux:
+    - ~/.config/kanata-tray/kanata-tray.toml
+    - <kanata-tray executable directory>/kanata-tray.toml
+    - $KANATA_TRAY_CONFIG_DIR/kanata-tray.toml
+  macos:
+    - ~/Library/Application Support/kanata-tray/kanata-tray.toml
+    - <kanata-tray executable directory>/kanata-tray.toml
+    - $KANATA_TRAY_CONFIG_DIR/kanata-tray.toml
+  windows:
+    - C:\Users\<YourUsername>\AppData\Roaming\kanata-tray\kanata-tray.toml
+    - <kanata-tray executable directory>\kanata-tray.toml
+    - '%KANATA_TRAY_CONFIG_DIR%\kanata-tray.toml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -53,6 +65,15 @@ history:
       configuration file on first run. Users define presets that point at Kanata
       executables and configuration files, then switch or autorun those presets from the
       tray.
+related-packages:
+  - id: brew:kanata
+    reason: >
+      Kanata is the required keyboard-remapping engine that Kanata Tray launches,
+      monitors, and controls through its presets and tray actions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rszyma/kanata-tray#readme
+      - https://github.com/jtroo/kanata#readme
 tags:
   - cli
   - desktop-utility

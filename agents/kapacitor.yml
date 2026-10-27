@@ -64,6 +64,31 @@ history:
       subscribes to InfluxDB data, and routes alerts or computed output through
       handlers. The kapacitor CLI and HTTP API are used to define tasks, manage
       recordings, inspect task state, and administer the daemon.
+related-packages:
+  - id: brew:influxdb@1
+    reason: >
+      InfluxDB 1.x is the native time-series database source for Kapacitor stream
+      subscriptions and batch queries in the established TICK stack workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/kapacitor/v1/introduction/getting-started/
+      - https://docs.influxdata.com/platform/getting-started/
+  - id: brew:telegraf
+    reason: >
+      Telegraf collects system metrics and writes them to InfluxDB before Kapacitor
+      processes them in the official getting-started workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/kapacitor/v1/introduction/getting-started/
+      - https://docs.influxdata.com/telegraf/v1/
+  - id: brew:chronograf
+    reason: >
+      Chronograf provides a graphical interface for creating and managing Kapacitor
+      alert rules, TICKscripts, connections, and event-handler settings.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.influxdata.com/chronograf/v1/guides/create-alert-rules/
+      - https://docs.influxdata.com/chronograf/v1/guides/configuring-alert-endpoints/
 tags:
   - alerts
   - cli

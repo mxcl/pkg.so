@@ -69,6 +69,24 @@ history:
       The official man page documents C3-style configuration files searched at
       `$HOME/.kanif.conf`, `/etc/kanif.conf`, and `/etc/c3.conf`, and also allows
       command-line host lists for less static setups.
+related-packages:
+  - id: brew:taktuk
+    reason: >
+      TakTuk is the required large-scale remote-execution engine that Kanif wraps with a
+      simpler cluster-administration interface.
+    rel: adjacent_workflow
+    sources:
+      - https://taktuk.gitlabpages.inria.fr/kanif.html
+      - https://taktuk.gitlabpages.inria.fr/documentation.html
+  - id: brew:pdsh
+    reason: >
+      pdsh is an alternative parallel remote shell whose range, timeout, and
+      output-handling conventions Kanif intentionally emulates, while Kanif delegates
+      execution to TakTuk.
+    rel: alternative
+    sources:
+      - https://taktuk.gitlabpages.inria.fr/kanif.html
+      - https://github.com/chaos/pdsh#readme
 category: system
 package-manager:
   brew: kanif
