@@ -59,6 +59,33 @@ history:
       file, and apply that delta with the old file to reproduce the new file. The rdiff
       executable exposes the same operations for shell pipelines and package-maintainer
       tests.
+related-packages:
+  - id: brew:rsync
+    reason: >
+      Choose rsync when you need a complete local or remote synchronization command with
+      transport and metadata handling; librsync supplies only the reusable delta
+      algorithm and cannot speak to an rsync server.
+    rel: alternative
+    sources:
+      - https://librsync.github.io/
+      - https://rsync.samba.org/documentation.html
+  - id: brew:rdiff-backup
+    reason: >
+      rdiff-backup uses librsync's delta capabilities to maintain a directly browsable
+      current mirror plus historical reverse increments, adding retention and
+      remote-backup behavior around the library.
+    rel: adjacent_workflow
+    sources:
+      - https://librsync.github.io/
+      - https://rdiff-backup.net/
+  - id: brew:duplicity
+    reason: >
+      duplicity is an officially identified librsync user that adds encrypted
+      incremental backups and remote-storage backends around the delta engine.
+    rel: adjacent_workflow
+    sources:
+      - https://librsync.github.io/
+      - https://duplicity.us/
 category: networking
 package-manager:
   apk: librsync

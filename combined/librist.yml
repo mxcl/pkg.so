@@ -81,6 +81,16 @@ history:
       ristsrppasswd, and a Prometheus exporter. Typical use is sending, receiving,
       relaying, or tunnelling UDP media streams with RIST recovery and optional security
       features.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg's documented `rist` network protocol is implemented through librist, so the
+      two packages form a direct workflow for encoding, muxing, sending, and receiving
+      RIST media streams.
+    rel: adjacent_workflow
+    sources:
+      - https://ffmpeg.org/ffmpeg-protocols.html
+      - https://ffmpeg.org/doxygen/trunk/librist_8c.html
 category: networking
 package-manager:
   apk: librist

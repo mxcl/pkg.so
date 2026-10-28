@@ -69,6 +69,25 @@ history:
       from other languages, or invoke rsvg-convert to render SVG documents to other
       formats. Desktop environments also use the gdk-pixbuf SVG loader and thumbnailer
       artifacts produced by the build.
+related-packages:
+  - id: brew:resvg
+    reason: >
+      resvg is a portable, all-Rust alternative for static SVG rendering when a small
+      self-contained CLI or reproducible cross-platform output is preferable to
+      librsvg's GNOME and Cairo integration.
+    rel: alternative
+    sources:
+      - https://github.com/linebender/resvg/blob/main/README.md
+      - https://gnome.pages.gitlab.gnome.org/librsvg/Rsvg-2.0/overview.html
+  - id: brew:cairo
+    reason: >
+      librsvg renders SVG documents into Cairo contexts, so Cairo is the documented
+      companion API when an application needs to compose SVG output with other vector or
+      raster drawing.
+    rel: adjacent_workflow
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/librsvg/Rsvg-2.0/overview.html
+      - https://www.cairographics.org/manual/
 tags:
   - cairo
   - cli
