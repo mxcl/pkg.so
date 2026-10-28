@@ -3,7 +3,13 @@ display-name: LE text editor
 repo: null
 docs:
   - https://github.com/lavv17/le#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.le/syntax
+    - <CWD>/.le.syntax
+    - ~/.le/keymap
+    - ~/.le/keymap-$TERM
+    - ~/.le/colors-$TERM
 credentials-file-location: null
 history:
   adoption-history:
@@ -82,6 +88,26 @@ history:
       Its configuration model is file-based and terminal-oriented: syntax rules can live
       in package data, ~/.le/syntax, or ./.le.syntax; keymaps and colors can be dumped
       and customized in ~/.le or package data locations.
+related-packages:
+  - id: brew:bvi
+    reason: >
+      Choose bvi when vi-style modal commands, Ex scripting, and byte-level logical
+      operations are preferable; choose LE when one editor must handle conventional
+      text, rectangular blocks, syntax highlighting, and binary or hex data.
+    rel: alternative
+    sources:
+      - https://raw.githubusercontent.com/lavv17/le/master/FEATURES
+      - https://bvi.sourceforge.net/man_bvi.html
+      - https://bvi.sourceforge.net/overview.php
+  - id: brew:hexcurse
+    reason: >
+      Choose Hexcurse for a focused ncurses hex editor with EBCDIC display and
+      configurable byte width; choose LE for broader text-editing, block,
+      syntax-highlighting, and mmap workflows alongside hex mode.
+    rel: alternative
+    sources:
+      - https://raw.githubusercontent.com/lavv17/le/master/FEATURES
+      - https://github.com/LonnyGomes/hexcurse#readme
 tags:
   - binary-editor
   - cli

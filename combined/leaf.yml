@@ -47,6 +47,36 @@ history:
       The CLI watches the working directory, applies include/exclude filters, and runs
       one or more commands on file updates. Its default config path is <CWD>/.leaf.yml,
       which keeps it close to the project being reloaded.
+related-packages:
+  - id: brew:watchexec
+    reason: >
+      Choose Watchexec for cross-platform recursive watching with ignore-file discovery,
+      event debouncing, process-group control, and extensive filtering; choose leaf for
+      a smaller project-local ordered command chain configured in .leaf.yml.
+    rel: alternative
+    sources:
+      - https://github.com/vrongmeal/leaf#readme
+      - https://watchexec.github.io/
+      - https://github.com/watchexec/watchexec
+  - id: brew:reflex
+    reason: >
+      Choose Reflex when regular-expression and glob matching, changed-file
+      substitution, or several concurrent watches in one configuration are important;
+      leaf instead emphasizes exclusions, filters, and sequential command lists in a
+      structured project file.
+    rel: alternative
+    sources:
+      - https://github.com/vrongmeal/leaf#readme
+      - https://github.com/cespare/reflex#readme
+  - id: brew:entr
+    reason: >
+      Choose entr for a minimal Unix pipeline that reads watched paths from standard
+      input and uses kqueue or inotify; choose leaf when you want recursive project
+      watching, built-in filters, and a checked-in configuration file.
+    rel: alternative
+    sources:
+      - https://github.com/vrongmeal/leaf#readme
+      - https://github.com/eradman/entr#readme
 category: developer-tools
 package-manager:
   brew: leaf
