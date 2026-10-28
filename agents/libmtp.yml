@@ -69,6 +69,23 @@ history:
       the bundled commands such as mtp-detect, mtp-files, mtp-getfile, and mtp-sendfile.
       The upstream site asks users with unrecognized devices to submit USB IDs and
       mtp-detect output, reflecting the device-quirk maintenance model.
+related-packages:
+  - id: brew:simple-mtpfs
+    reason: >
+      Use simple-mtpfs with libmtp when you want an attached MTP device presented as a
+      FUSE-mounted filesystem.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/phatina/simple-mtpfs#readme
+  - id: brew:libgphoto2
+    reason: >
+      Choose libgphoto2 when a camera-oriented workflow also needs MTP access; libmtp
+      instead exposes a dedicated MTP object API and tracks libgphoto2's PTP
+      implementation.
+    rel: alternative
+    sources:
+      - https://github.com/libmtp/libmtp#readme
+      - https://github.com/gphoto/libgphoto2/blob/master/README.md
 tags:
   - cli
   - device-access
