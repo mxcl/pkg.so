@@ -1,0 +1,2878 @@
+{
+  "content": [
+    {
+      "artwork": {
+        "alt": "An operator oversees three glowing agent workspaces connected by branching task paths in a dark terminal control room.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#164252",
+          "backgroundStart": "#071B2A",
+          "foreground": "#FFF1D6"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/agent-terminal-workspaces.png"
+      },
+      "batchID": "20261025T102927Z-fa7c6db9",
+      "body": "## The terminal is becoming a control surface\n\nCoding agents changed the shape of terminal work. A single prompt can run for minutes, stop for a decision, launch tests, or finish while the developer is reading another diff. Multiplying that by several projects turns a row of indistinguishable tabs into an attention problem. Kero’s answer is to treat each command as a durable **session** with an observable state, not merely as a process attached to a window. Its documentation describes working, waiting, idle, error, and exited states, plus a shortcut that jumps to the pane requiring attention. That is a modest idea with practical consequences: the interface is organized around what needs a human next.\n\nKero appeared publicly in 2026, and its v2.0.0 release is the first stable release in the upstream release history. The project is still young, so this is not a claim of mature adoption. It is evidence of a new tool entering a quickly changing category. The useful question is not whether it replaces every terminal, but whether its session model matches how someone actually supervises agents.\n\n## Persistence moves outside the window\n\nKero runs sessions in a small daemon named `kerod`. Closing the graphical application leaves those sessions running; reopening it restores panes and scrollback. The same architecture supports remote hosts over SSH or Tailscale, allowing an agent to continue on a workstation or cloud machine while the laptop sleeps. The Kero CLI can also create sessions, split panes, type input, wait, and read screens. In other words, an agent can operate neighboring sessions as part of a larger task.\n\nThat design is useful when work is long-lived, but it changes the trust boundary. A persistent daemon retains active processes after the window disappears, and remote hosts add credentials, network reachability, and another machine’s security posture. Notifications indicate that work finished or became blocked; they do not prove that the result is correct. A sensible trial should begin with disposable repositories and explicit resource limits.\n\nAn actual evaluation can be concrete:\n\n- Start two agent sessions and one test watcher in a temporary project.\n- Close and reopen Kero, then verify process state and scrollback.\n- Trigger a question or failure and check whether the attention state is accurate.\n- Repeat on a remote host, then confirm which credentials and ports were required.\n\nThese checks measure the documented workflow without treating installation counts as evidence of individual users or reliability.\n\n## Three products, three different boundaries\n\nKaku is closer to a polished general-purpose Mac terminal. It builds on WezTerm, supplies fonts, themes, shell integration, and familiar Mac shortcuts, while retaining Lua customization. It can run coding agents, but its primary promise is a pleasant terminal with useful defaults. Choose that boundary when the terminal itself is the product and agent supervision can remain in ordinary tabs or panes.\n\nGhostex takes the opposite direction. Its upstream documentation describes chat views, readable diffs, queued prompts, worktrees, embedded browser panes, session search, and mobile access. It can hand a session between different agents and lets agents create and steer other sessions through a command. That makes it closer to an integrated agent workspace than a terminal with status indicators. The tradeoff is a larger surface area: more application features, more state, and more remote-access decisions to understand.\n\nKero sits between them. It keeps a terminal-first mental model but adds persistence, status, project grouping, and agent-drivable session control. The comparison is editorial rather than an official compatibility claim: these projects do not need to integrate with one another, and their rapid release cycles make feature matrices perishable.\n\n## Decide by the handoff you need\n\nThe central choice is where the human-agent handoff should live. Kaku leaves it mostly inside the command-line program. Kero elevates session state and attention routing while preserving terminal interaction. Ghostex moves the handoff into chat, review, previews, and cross-device access.\n\nBefore adopting any of them, document the failure path. What happens when an agent requests approval, a daemon restarts, a remote connection drops, or a session consumes excessive resources? Confirm how to terminate work independently of the interface. Review whether transcripts, commands, and remote credentials persist, and decide which repositories are appropriate for experimental tooling.\n\nAgent-oriented terminals are valuable precisely because ordinary terminals reveal too little about parallel asynchronous work. Their dashboards can reduce attention switching, but they can also make many autonomous processes feel safer than they are. The strongest workflow pairs visibility with mundane controls: isolated branches or worktrees, bounded permissions, reviewable diffs, tests, and a reliable way to stop everything.",
+      "deck": "Kero, Kaku, and Ghostex draw different boundaries around persistent sessions, attention, review, and remote supervision for coding agents.",
+      "id": "editorial:2026-10-25:agent-terminals-become-control-surfaces",
+      "package": {
+        "agentSummary": "Kero keeps coding-agent sessions alive in a daemon, surfaces which panes need attention, and can coordinate local or remote work from one terminal sidebar.",
+        "assessment": {
+          "alternatives": [
+            "Kaku for a polished general Mac terminal",
+            "Ghostex for a fuller chat-and-review workspace"
+          ],
+          "audiences": [
+            "Developers supervising several coding agents",
+            "Teams using remote development hosts"
+          ],
+          "caveats": [
+            "A young project whose workflows may change",
+            "Remote operation adds host and network security responsibilities"
+          ],
+          "complements": [
+            "SSH or Tailscale for remote hosts",
+            "Ghostty themes and configuration"
+          ],
+          "prerequisites": [
+            "A supported macOS, Windows, or Linux system",
+            "An installed coding-agent CLI for agent workflows"
+          ],
+          "useCases": [
+            "Keep long-running agent sessions alive",
+            "Jump to blocked or completed panes",
+            "Drive sessions through a CLI"
+          ]
+        },
+        "category": "developer-tools",
+        "discovery": {
+          "admittedAt": "2026-10-17",
+          "analytics": {
+            "30": {
+              "count": 56,
+              "endDate": "2026-10-25",
+              "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+              "startDate": "2026-09-25"
+            },
+            "365": {
+              "count": 58,
+              "endDate": "2026-10-25",
+              "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+              "startDate": "2025-10-25"
+            },
+            "90": {
+              "count": 56,
+              "endDate": "2026-10-25",
+              "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+              "startDate": "2026-07-27"
+            }
+          },
+          "firstObservedAt": "2026-10-17",
+          "lastVerifiedAt": null,
+          "recentlyDiscovered": false,
+          "status": "official",
+          "trend": {
+            "endDate": "2026-10-25",
+            "growthPercent": null,
+            "installs30d": 56,
+            "previousMonthlyRate": 0.0,
+            "score": 11.00707,
+            "sources": [
+              "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+              "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+            ],
+            "startDate": "2026-07-27"
+          }
+        },
+        "displayName": "Kero",
+        "docs": "https://kero.sh/docs",
+        "homepage": "https://kero.sh/",
+        "id": "brew:cask:kero",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akero",
+        "lastUpdatedAt": "2026-10-25T07:12:48Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/egoist/kero",
+        "researchedAt": "2026-10-25T10:29:27Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Kero upstream repository",
+            "url": "https://github.com/egoist/kero"
+          },
+          {
+            "kind": "primary",
+            "title": "Kero introduction",
+            "url": "https://github.com/egoist/kero/blob/main/docs/index.md"
+          },
+          {
+            "kind": "primary",
+            "title": "Kero v2.0.0 release",
+            "url": "https://github.com/egoist/kero/releases/tag/v2.0.0"
+          }
+        ],
+        "upstreamSummary": "Terminal app optimised for agents",
+        "version": "2.1.18"
+      },
+      "primaryPackageID": "brew:cask:kero",
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Kero keeps coding-agent sessions alive in a daemon, surfaces which panes need attention, and can coordinate local or remote work from one terminal sidebar.",
+          "assessment": {
+            "alternatives": [
+              "Kaku for a polished general Mac terminal",
+              "Ghostex for a fuller chat-and-review workspace"
+            ],
+            "audiences": [
+              "Developers supervising several coding agents",
+              "Teams using remote development hosts"
+            ],
+            "caveats": [
+              "A young project whose workflows may change",
+              "Remote operation adds host and network security responsibilities"
+            ],
+            "complements": [
+              "SSH or Tailscale for remote hosts",
+              "Ghostty themes and configuration"
+            ],
+            "prerequisites": [
+              "A supported macOS, Windows, or Linux system",
+              "An installed coding-agent CLI for agent workflows"
+            ],
+            "useCases": [
+              "Keep long-running agent sessions alive",
+              "Jump to blocked or completed panes",
+              "Drive sessions through a CLI"
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 56,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "startDate": "2026-09-25"
+              },
+              "365": {
+                "count": 58,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+                "startDate": "2025-10-25"
+              },
+              "90": {
+                "count": 56,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+                "startDate": "2026-07-27"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-25",
+              "growthPercent": null,
+              "installs30d": 56,
+              "previousMonthlyRate": 0.0,
+              "score": 11.00707,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+              ],
+              "startDate": "2026-07-27"
+            }
+          },
+          "displayName": "Kero",
+          "docs": "https://kero.sh/docs",
+          "homepage": "https://kero.sh/",
+          "id": "brew:cask:kero",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akero",
+          "lastUpdatedAt": "2026-10-25T07:12:48Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/egoist/kero",
+          "researchedAt": "2026-10-25T10:29:27Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Kero upstream repository",
+              "url": "https://github.com/egoist/kero"
+            },
+            {
+              "kind": "primary",
+              "title": "Kero introduction",
+              "url": "https://github.com/egoist/kero/blob/main/docs/index.md"
+            },
+            {
+              "kind": "primary",
+              "title": "Kero v2.0.0 release",
+              "url": "https://github.com/egoist/kero/releases/tag/v2.0.0"
+            }
+          ],
+          "upstreamSummary": "Terminal app optimised for agents",
+          "version": "2.1.18"
+        },
+        {
+          "agentSummary": "Kaku packages a WezTerm-based Mac terminal with curated themes, fonts, shell integration, shortcuts, and AI-oriented conveniences while retaining Lua customization for deeper tuning.",
+          "assessment": {
+            "alternatives": [
+              "WezTerm directly",
+              "Kero for persistent agent-session supervision"
+            ],
+            "audiences": [
+              "Mac developers wanting a polished terminal",
+              "WezTerm users who prefer curated defaults"
+            ],
+            "caveats": [
+              "Mac-only focus",
+              "Curated defaults may overlap with an existing terminal configuration"
+            ],
+            "complements": [
+              "WezTerm configuration concepts",
+              "Command-line coding agents"
+            ],
+            "prerequisites": [
+              "A supported macOS system"
+            ],
+            "useCases": [
+              "Run shells and coding agents",
+              "Use preconfigured themes and shortcuts",
+              "Extend behavior with Lua"
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 482,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "startDate": "2026-09-25"
+              },
+              "365": {
+                "count": 811,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+                "startDate": "2025-10-25"
+              },
+              "90": {
+                "count": 513,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+                "startDate": "2026-07-27"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-25",
+              "growthPercent": 3009.7,
+              "installs30d": 482,
+              "previousMonthlyRate": 15.5,
+              "score": 26.249943,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+              ],
+              "startDate": "2026-07-27"
+            }
+          },
+          "displayName": "Kaku",
+          "docs": "https://github.com/tw93/Kaku/blob/main/docs/cli.md",
+          "homepage": "https://github.com/tw93/Kaku",
+          "id": "brew:cask:kaku",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akaku",
+          "lastUpdatedAt": "2026-10-22T07:24:46Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/tw93/Kaku",
+          "researchedAt": "2026-10-25T10:29:27Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Kaku upstream repository",
+              "url": "https://github.com/tw93/Kaku"
+            },
+            {
+              "kind": "primary",
+              "title": "Kaku documentation",
+              "url": "https://kaku.fun/docs/"
+            }
+          ],
+          "upstreamSummary": "Terminal optimised for AI coding",
+          "version": "0.26.1"
+        },
+        {
+          "agentSummary": "Ghostex combines persistent multi-agent sessions with chat, diff review, worktrees, browser previews, and mobile access, creating a broader workspace than a conventional terminal emulator.",
+          "assessment": {
+            "alternatives": [
+              "Kero for a narrower terminal-first supervisor",
+              "Kaku for a conventional customizable terminal"
+            ],
+            "audiences": [
+              "Developers coordinating many coding agents",
+              "Users who want desktop and mobile access to sessions"
+            ],
+            "caveats": [
+              "Its broad feature surface increases operational complexity",
+              "Remote and mobile access require careful trust and network configuration"
+            ],
+            "complements": [
+              "Tailscale for remote access",
+              "Git worktrees",
+              "Browser-based prototype review"
+            ],
+            "prerequisites": [
+              "A supported desktop or mobile platform",
+              "At least one coding-agent CLI"
+            ],
+            "useCases": [
+              "Review agent diffs",
+              "Queue follow-up prompts",
+              "Separate tasks with worktrees",
+              "Resume and search prior sessions"
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 298,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "startDate": "2026-09-25"
+              },
+              "365": {
+                "count": 302,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+                "startDate": "2025-10-25"
+              },
+              "90": {
+                "count": 302,
+                "endDate": "2026-10-25",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+                "startDate": "2026-07-27"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-25",
+              "growthPercent": null,
+              "installs30d": 298,
+              "previousMonthlyRate": 2.0,
+              "score": 26.657052,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+              ],
+              "startDate": "2026-07-27"
+            }
+          },
+          "displayName": "Ghostex",
+          "docs": "https://github.com/maddada/Ghostex#readme",
+          "homepage": "https://ghostex.dev/",
+          "id": "brew:cask:ghostex",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aghostex",
+          "lastUpdatedAt": "2026-10-25T01:30:02Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/maddada/Ghostex",
+          "researchedAt": "2026-10-25T10:29:27Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Ghostex upstream repository",
+              "url": "https://github.com/maddada/Ghostex"
+            },
+            {
+              "kind": "primary",
+              "title": "Ghostex product site",
+              "url": "https://ghostex.dev"
+            },
+            {
+              "kind": "primary",
+              "title": "Ghostex releases",
+              "url": "https://github.com/maddada/Ghostex/releases"
+            }
+          ],
+          "upstreamSummary": "Workspace for running and reviewing multiple CLI coding agents",
+          "version": "10.34.0"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-10-20T08:23:00Z",
+        "firstStableReleaseSourceURL": "https://github.com/egoist/kero/releases/tag/v2.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Kero upstream repository",
+          "url": "https://github.com/egoist/kero"
+        },
+        {
+          "kind": "primary",
+          "title": "Kero introduction",
+          "url": "https://github.com/egoist/kero/blob/main/docs/index.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Kero remote hosts documentation",
+          "url": "https://github.com/egoist/kero/blob/main/docs/remote.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Kero v2.0.0 release",
+          "url": "https://github.com/egoist/kero/releases/tag/v2.0.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Kaku upstream repository",
+          "url": "https://github.com/tw93/Kaku"
+        },
+        {
+          "kind": "primary",
+          "title": "Kaku documentation",
+          "url": "https://kaku.fun/docs/"
+        },
+        {
+          "kind": "primary",
+          "title": "Ghostex upstream repository",
+          "url": "https://github.com/maddada/Ghostex"
+        },
+        {
+          "kind": "primary",
+          "title": "Ghostex product site",
+          "url": "https://ghostex.dev"
+        }
+      ],
+      "title": "When terminals become control surfaces",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261025T102927Z-7b8f4d42",
+      "id": "recently-updated:media:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Audible audiobook manager and liberator",
+          "category": "media",
+          "displayName": "Libation",
+          "homepage": "https://getlibation.com/",
+          "id": "brew:cask:libation",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Alibation",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Traditional Chinese eBook service",
+          "category": "media",
+          "displayName": "Readmoo 看書",
+          "homepage": "https://readmoo.com/",
+          "id": "brew:cask:readmoreading",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Areadmoreading",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Sparse volumetric data processing toolkit",
+          "category": "media",
+          "displayName": "openvdb",
+          "homepage": "https://www.openvdb.org/",
+          "id": "brew:openvdb",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aopenvdb",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Photoshop alternative",
+          "category": "media",
+          "displayName": "Compositor",
+          "homepage": "https://robbietilton.com/compositor",
+          "id": "brew:cask:robbietilton-compositor",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Arobbietilton-compositor",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Media system",
+          "category": "media",
+          "displayName": "Jellyfin",
+          "homepage": "https://jellyfin.org/",
+          "id": "brew:cask:jellyfin",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ajellyfin",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "title": "Recently Updated in Media",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20261025T102927Z-7b8f4d42",
+      "id": "for-you:other:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "opencontrol is available through npm for installation and management in Package Manager Manager.",
+          "category": "other",
+          "displayName": "opencontrol",
+          "homepage": null,
+          "id": "npm:opencontrol",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aopencontrol",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "conjure-lite is available through npm for installation and management in Package Manager Manager.",
+          "category": "other",
+          "displayName": "conjure-lite",
+          "homepage": null,
+          "id": "npm:conjure-lite",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aconjure-lite",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "dooboolab welcome console message.",
+          "category": "other",
+          "displayName": "dooboolab-welcome",
+          "homepage": null,
+          "id": "npm:dooboolab-welcome",
+          "installURL": "pkgmgrmgr://install?package=npm%3Adooboolab-welcome",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "bluefairy is available through npm for installation and management in Package Manager Manager.",
+          "category": "other",
+          "displayName": "bluefairy",
+          "homepage": null,
+          "id": "npm:bluefairy",
+          "installURL": "pkgmgrmgr://install?package=npm%3Abluefairy",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Dash - Reinventing Cryptocurrency",
+          "category": "other",
+          "displayName": "Dash Core",
+          "homepage": "https://www.dash.org/",
+          "id": "brew:cask:dash-dash",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Adash-dash",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "title": "For You in Other",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261025T102927Z-7b8f4d42",
+      "id": "new-packages:networking:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Modern network bandwidth testing with TUI",
+          "category": "networking",
+          "displayName": "xfr",
+          "homepage": "https://github.com/lance0/xfr",
+          "id": "brew:xfr",
+          "installURL": "pkgmgrmgr://install?package=brew%3Axfr",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "title": "New Packages in Networking",
+      "type": "newPackages"
+    },
+    {
+      "batchID": "20261025T102927Z-7b8f4d42",
+      "id": "recently-updated:other:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Monero (XMR) CPU miner",
+          "category": "other",
+          "displayName": "xmrig",
+          "homepage": "https://xmrig.com/",
+          "id": "brew:xmrig",
+          "installURL": "pkgmgrmgr://install?package=brew%3Axmrig",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Fork of SQLite that is both Open Source, and Open Contributions",
+          "category": "other",
+          "displayName": "libsql",
+          "homepage": "https://turso.tech/libsql",
+          "id": "brew:libsql",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibsql",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "C++ implementation of STL for extra large data sets",
+          "category": "other",
+          "displayName": "libstxxl",
+          "homepage": "https://stxxl.sourceforge.net/",
+          "id": "brew:libstxxl",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibstxxl",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Morse code tutor and command-line tools",
+          "category": "other",
+          "displayName": "unixcw",
+          "homepage": "https://unixcw.sourceforge.net/",
+          "id": "brew:unixcw",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aunixcw",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Generic library support script",
+          "category": "other",
+          "displayName": "libtool",
+          "homepage": "https://www.gnu.org/software/libtool/",
+          "id": "brew:libtool",
+          "installURL": "pkgmgrmgr://install?package=brew%3Alibtool",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-25T10:29:27Z",
+      "title": "Recently Updated in Other",
+      "type": "recentlyUpdated"
+    },
+    {
+      "artwork": {
+        "alt": "Indigo project files flow through a luminous geometric analysis prism and resolve into a network of validated cyan and coral nodes.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#102B55",
+          "backgroundStart": "#081A35",
+          "foreground": "#F7FBFF"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/pyrefly-static-analysis-2026-10-22.png"
+      },
+      "batchID": "20261022T070248Z-74faafac",
+      "body": "## From alpha to stable\n\nMeta introduced Pyrefly publicly in May 2025 as a type checker and language-server project derived from its experience with Pyre. One year later, the [Pyrefly 1.0 release notes](https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md) marked the project stable on May 12, 2026. The notes say it had become the default type checker for Instagram and was adopted by projects including PyTorch and JAX. Those are upstream claims, but they establish a stronger production story than a synthetic benchmark alone.\n\nStability does not mean every Python project will receive the same diagnostics as mypy, Pyright, or ty. Pyrefly performs aggressive inference even when code has few annotations. That can reveal real inconsistencies in lightly typed code, while also flagging patterns that a more gradual checker accepts. The practical question is therefore not whether one checker wins in the abstract, but whether its model helps a particular codebase.\n\n## Migration is an experiment, not a switch\n\nPyrefly's [migration guide](https://pyrefly.org/en/docs/migrating-to-pyrefly/) recommends an incremental route: generate configuration, run it alongside an existing checker, and use a baseline or targeted suppressions to isolate new findings from inherited work. This lets a team compare diagnostic categories before changing a required CI gate. **A baseline is a migration instrument, not proof that existing errors are harmless**; assign owners and reduce it over time.\n\nAn independent evaluation from [Posit](https://opensource.posit.co/blog/2026-03-31_python-type-checkers/) compared Pyrefly, ty, Basedpyright, and Zuban across editor features, correctness, performance, and ecosystem health. Posit chose Pyrefly for Positron's data-science IDE workload, citing its inference and language-server experience, but explicitly said it was not a runaway winner. Basedpyright was more mature, while ty had a different gradual philosophy and faster measurements in Posit's setup. That is a useful pattern for adoption: test representative repositories and interactive tasks, document what matters, and preserve an exit path.\n\n## Let uv fix the environment boundary\n\nA checker can only reason about imports it resolves. If a developer's editor, a local command, and CI point at different interpreters or dependency sets, their results may disagree before the checker evaluates any interesting application logic. uv can make that boundary explicit by managing Python versions, locking dependencies, and synchronizing an environment from the lockfile. Its [project documentation](https://docs.astral.sh/uv/concepts/projects/sync/) explains that exact synchronization also removes packages absent from the lockfile, so teams should review the first sync rather than treating it as a harmless install command.\n\nFor a trial, pin the checker in the project or CI tool environment, select the same supported Python version everywhere, and run Pyrefly through the same locked context. uv is a companion here, not a requirement: an existing reproducible environment manager can serve the same purpose. The important result is that a diagnostic can be reproduced by another developer and by CI.\n\n## FastAPI makes annotations operational\n\nFastAPI is a revealing test case because type hints cross the boundary between editor assistance and runtime behavior. The framework uses annotations to parse requests, validate values, build OpenAPI schemas, and drive interactive documentation. Its [response-model guide](https://github.com/fastapi/fastapi/blob/master/docs/en/docs/tutorial/response-model.md) also shows how declared output types affect validation, documentation, and serialization.\n\nPyrefly can catch mismatched calls and inconsistent application types before execution, but it cannot prove that an HTTP client sends the expected payload, authentication rules hold, or a database transaction behaves correctly. Keep runtime and integration tests. During migration, compare generated OpenAPI output and send representative requests through the service; this catches changes at the framework boundary that static analysis is not designed to observe.\n\n## A practical rollout\n\nStart with one service or library whose owners can judge the results. Record the current checker's output, run Pyrefly beside it, and classify the differences instead of immediately suppressing them. Generate configuration with the migration tooling, review every broad exclusion, and create a baseline only for findings that cannot be addressed in the trial.\n\nNext, reproduce the environment in CI, pinning the interpreter and dependencies with uv or the team's existing lock workflow. For a FastAPI service, run both the static check and the API test suite, then compare its OpenAPI schema. Promote Pyrefly to a required check only after the team has defined ownership for new diagnostics and a schedule for shrinking the baseline. Stable software makes that evaluation reasonable; a measured rollout makes it trustworthy.",
+      "deck": "A stable checker is only the start; environments, migration strategy, and runtime API boundaries determine whether its diagnostics become useful engineering feedback.",
+      "id": "editorial:2026-10-22:pyrefly-stable-types-in-a-real-python-project",
+      "package": {
+        "agentSummary": "Pyrefly combines a fast Python type checker with language-server features, incremental migration tools, configuration presets, and production use across large Meta and open-source codebases.",
+        "assessment": {
+          "alternatives": [
+            "mypy.",
+            "Pyright or Basedpyright.",
+            "ty."
+          ],
+          "audiences": [
+            "Python teams adding static analysis to application or library code.",
+            "IDE users who want navigation and diagnostics from the same engine."
+          ],
+          "caveats": [
+            "Aggressive inference can produce different diagnostics from gradual or established checkers.",
+            "A baseline can make migration manageable but may also conceal debt if it is never reduced.",
+            "Performance and compatibility should be measured on the team's own repositories and CI environment."
+          ],
+          "complements": [
+            "uv for reproducible Python environments.",
+            "FastAPI for a framework where annotations also shape API behavior.",
+            "Runtime tests such as pytest."
+          ],
+          "prerequisites": [
+            "A Python project whose dependencies and interpreter can be resolved consistently.",
+            "Review of generated configuration, diagnostics, and suppression baselines."
+          ],
+          "useCases": [
+            "Run type checks in continuous integration.",
+            "Provide language-server navigation, hover information, and diagnostics.",
+            "Migrate incrementally from an existing checker using a baseline."
+          ]
+        },
+        "category": "developer-tools",
+        "discovery": {
+          "admittedAt": "2026-10-17",
+          "analytics": {
+            "30": {
+              "count": 1408,
+              "endDate": "2026-10-22",
+              "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+              "startDate": "2026-09-22"
+            },
+            "365": {
+              "count": 5245,
+              "endDate": "2026-10-22",
+              "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+              "startDate": "2025-10-22"
+            },
+            "90": {
+              "count": 1588,
+              "endDate": "2026-10-22",
+              "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+              "startDate": "2026-07-24"
+            }
+          },
+          "firstObservedAt": "2026-10-17",
+          "lastVerifiedAt": null,
+          "recentlyDiscovered": false,
+          "status": "official",
+          "trend": {
+            "endDate": "2026-10-22",
+            "growthPercent": 1464.4,
+            "installs30d": 1408,
+            "previousMonthlyRate": 90.0,
+            "score": 27.486851,
+            "sources": [
+              "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+              "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+            ],
+            "startDate": "2026-07-24"
+          }
+        },
+        "displayName": "pyrefly",
+        "docs": "https://pyrefly.org/",
+        "homepage": "https://pyrefly.org/",
+        "id": "brew:pyrefly",
+        "installURL": "pkgmgrmgr://install?package=brew%3Apyrefly",
+        "lastUpdatedAt": "2026-10-15T18:41:02Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/facebook/pyrefly",
+        "researchedAt": "2026-10-22T07:02:48Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Pyrefly 1.0 stable release notes",
+            "url": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md"
+          },
+          {
+            "kind": "primary",
+            "title": "Pyrefly migration guide",
+            "url": "https://pyrefly.org/en/docs/migrating-to-pyrefly/"
+          },
+          {
+            "kind": "independent",
+            "title": "Posit's Python type-checker evaluation",
+            "url": "https://opensource.posit.co/blog/2026-03-31_python-type-checkers/"
+          }
+        ],
+        "upstreamSummary": "Fast type checker and IDE for Python",
+        "version": "1.4.0"
+      },
+      "primaryPackageID": "brew:pyrefly",
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Pyrefly combines a fast Python type checker with language-server features, incremental migration tools, configuration presets, and production use across large Meta and open-source codebases.",
+          "assessment": {
+            "alternatives": [
+              "mypy.",
+              "Pyright or Basedpyright.",
+              "ty."
+            ],
+            "audiences": [
+              "Python teams adding static analysis to application or library code.",
+              "IDE users who want navigation and diagnostics from the same engine."
+            ],
+            "caveats": [
+              "Aggressive inference can produce different diagnostics from gradual or established checkers.",
+              "A baseline can make migration manageable but may also conceal debt if it is never reduced.",
+              "Performance and compatibility should be measured on the team's own repositories and CI environment."
+            ],
+            "complements": [
+              "uv for reproducible Python environments.",
+              "FastAPI for a framework where annotations also shape API behavior.",
+              "Runtime tests such as pytest."
+            ],
+            "prerequisites": [
+              "A Python project whose dependencies and interpreter can be resolved consistently.",
+              "Review of generated configuration, diagnostics, and suppression baselines."
+            ],
+            "useCases": [
+              "Run type checks in continuous integration.",
+              "Provide language-server navigation, hover information, and diagnostics.",
+              "Migrate incrementally from an existing checker using a baseline."
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 1408,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "startDate": "2026-09-22"
+              },
+              "365": {
+                "count": 5245,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+                "startDate": "2025-10-22"
+              },
+              "90": {
+                "count": 1588,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+                "startDate": "2026-07-24"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-22",
+              "growthPercent": 1464.4,
+              "installs30d": 1408,
+              "previousMonthlyRate": 90.0,
+              "score": 27.486851,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+              ],
+              "startDate": "2026-07-24"
+            }
+          },
+          "displayName": "pyrefly",
+          "docs": "https://pyrefly.org/",
+          "homepage": "https://pyrefly.org/",
+          "id": "brew:pyrefly",
+          "installURL": "pkgmgrmgr://install?package=brew%3Apyrefly",
+          "lastUpdatedAt": "2026-10-15T18:41:02Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/facebook/pyrefly",
+          "researchedAt": "2026-10-22T07:02:48Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Pyrefly 1.0 stable release notes",
+              "url": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md"
+            },
+            {
+              "kind": "primary",
+              "title": "Pyrefly migration guide",
+              "url": "https://pyrefly.org/en/docs/migrating-to-pyrefly/"
+            },
+            {
+              "kind": "independent",
+              "title": "Posit's Python type-checker evaluation",
+              "url": "https://opensource.posit.co/blog/2026-03-31_python-type-checkers/"
+            }
+          ],
+          "upstreamSummary": "Fast type checker and IDE for Python",
+          "version": "1.4.0"
+        },
+        {
+          "agentSummary": "uv manages Python interpreters, environments, dependencies, lockfiles, workspaces, scripts, and tools through one fast CLI, with exact synchronization and a shared package cache.",
+          "assessment": {
+            "alternatives": [
+              "pip, venv, and pip-tools.",
+              "Poetry or PDM.",
+              "pyenv for interpreter selection."
+            ],
+            "audiences": [
+              "Python application and library maintainers.",
+              "Teams standardizing local and continuous-integration environments."
+            ],
+            "caveats": [
+              "Exact synchronization removes packages that are not represented by the lockfile.",
+              "Managed Python distributions may differ from system or organization-provided interpreters.",
+              "Migration should include review of dependency resolution and CI cache behavior."
+            ],
+            "complements": [
+              "Pyrefly in a pinned analysis environment.",
+              "FastAPI application projects and their test suites."
+            ],
+            "prerequisites": [
+              "A reviewed pyproject configuration and lockfile policy.",
+              "CI cache and interpreter choices that match the project's support matrix."
+            ],
+            "useCases": [
+              "Lock and synchronize project dependencies.",
+              "Install and select Python versions.",
+              "Run tools, scripts, and workspace commands."
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 210512,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "startDate": "2026-09-22"
+              },
+              "365": {
+                "count": 1964266,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+                "startDate": "2025-10-22"
+              },
+              "90": {
+                "count": 550091,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+                "startDate": "2026-07-24"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-22",
+              "growthPercent": 24.0,
+              "installs30d": 210512,
+              "previousMonthlyRate": 169789.5,
+              "score": 3.291987,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+              ],
+              "startDate": "2026-07-24"
+            }
+          },
+          "displayName": "uv",
+          "docs": "https://docs.astral.sh/uv",
+          "homepage": "https://docs.astral.sh/uv/",
+          "id": "brew:uv",
+          "installURL": "pkgmgrmgr://install?package=brew%3Auv",
+          "lastUpdatedAt": "2026-10-22T04:52:41Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/astral-sh/uv",
+          "researchedAt": "2026-10-22T07:02:48Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "uv project repository and feature overview",
+              "url": "https://github.com/astral-sh/uv"
+            },
+            {
+              "kind": "primary",
+              "title": "uv project locking and synchronization",
+              "url": "https://docs.astral.sh/uv/concepts/projects/sync/"
+            },
+            {
+              "kind": "primary",
+              "title": "uv Python version management",
+              "url": "https://docs.astral.sh/uv/concepts/python-versions/"
+            }
+          ],
+          "upstreamSummary": "Extremely fast Python package installer and resolver, written in Rust",
+          "version": "0.13.4"
+        },
+        {
+          "agentSummary": "FastAPI turns standard Python type hints into request parsing, runtime validation, OpenAPI schemas, interactive documentation, and editor assistance for typed web APIs.",
+          "assessment": {
+            "alternatives": [
+              "Django REST Framework.",
+              "Flask combined with a validation and schema library.",
+              "Litestar."
+            ],
+            "audiences": [
+              "Python teams building typed HTTP APIs.",
+              "Developers who want API schemas derived from application declarations."
+            ],
+            "caveats": [
+              "A static checker does not replace tests of network inputs, authentication, persistence, or deployment behavior.",
+              "Response annotations and explicit response models need deliberate review to avoid unintended serialization.",
+              "Blocking work inside asynchronous handlers can still harm service performance."
+            ],
+            "complements": [
+              "Pyrefly for static feedback on application code.",
+              "uv for locking and synchronizing the service environment."
+            ],
+            "prerequisites": [
+              "A supported Python environment with an ASGI server and Pydantic dependencies.",
+              "Runtime, integration, and schema tests in addition to static analysis."
+            ],
+            "useCases": [
+              "Validate and parse typed request data.",
+              "Serialize response models and generate OpenAPI documentation.",
+              "Build asynchronous or synchronous ASGI services."
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 495,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "startDate": "2026-09-22"
+              },
+              "365": {
+                "count": 7038,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+                "startDate": "2025-10-22"
+              },
+              "90": {
+                "count": 1108,
+                "endDate": "2026-10-22",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+                "startDate": "2026-07-24"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-22",
+              "growthPercent": 61.5,
+              "installs30d": 495,
+              "previousMonthlyRate": 306.5,
+              "score": 3.535127,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+              ],
+              "startDate": "2026-07-24"
+            }
+          },
+          "displayName": "fastapi",
+          "docs": "https://fastapi.tiangolo.com/",
+          "homepage": "https://fastapi.tiangolo.com/",
+          "id": "brew:fastapi",
+          "installURL": "pkgmgrmgr://install?package=brew%3Afastapi",
+          "lastUpdatedAt": "2026-10-22T04:33:33Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/fastapi/fastapi",
+          "researchedAt": "2026-10-22T07:02:48Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "FastAPI and Python type hints",
+              "url": "https://github.com/fastapi/fastapi/blob/master/docs/en/docs/python-types.md"
+            },
+            {
+              "kind": "primary",
+              "title": "FastAPI response models",
+              "url": "https://github.com/fastapi/fastapi/blob/master/docs/en/docs/tutorial/response-model.md"
+            },
+            {
+              "kind": "primary",
+              "title": "FastAPI project overview",
+              "url": "https://github.com/fastapi/fastapi/blob/master/README.md?plain=1"
+            }
+          ],
+          "upstreamSummary": "CLI for FastAPI framework",
+          "version": "0.155.0"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-05-12T00:00:00Z",
+        "firstStableReleaseSourceURL": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Pyrefly 1.0 stable release notes",
+          "url": "https://github.com/facebook/pyrefly/blob/main/release_notes/release-notes-v1.0.0.md"
+        },
+        {
+          "kind": "primary",
+          "title": "Meta's introduction to Pyrefly",
+          "url": "https://engineering.fb.com/2025/05/15/developer-tools/introducing-pyrefly-a-new-type-checker-and-ide-experience-for-python/"
+        },
+        {
+          "kind": "primary",
+          "title": "Pyrefly migration guide",
+          "url": "https://pyrefly.org/en/docs/migrating-to-pyrefly/"
+        },
+        {
+          "kind": "independent",
+          "title": "Posit's Python type-checker evaluation",
+          "url": "https://opensource.posit.co/blog/2026-03-31_python-type-checkers/"
+        },
+        {
+          "kind": "primary",
+          "title": "uv project locking and synchronization",
+          "url": "https://docs.astral.sh/uv/concepts/projects/sync/"
+        },
+        {
+          "kind": "primary",
+          "title": "FastAPI response models",
+          "url": "https://github.com/fastapi/fastapi/blob/master/docs/en/docs/tutorial/response-model.md"
+        }
+      ],
+      "title": "Pyrefly 1.0: A Type Checker Meets the Real Project",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261022T070248Z-d7a3111f",
+      "id": "for-you:language-runtime:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Runtime typescript and ESM support for Node.js",
+          "category": "language-runtime",
+          "displayName": "jiti",
+          "homepage": "https://github.com/unjs/jiti#readme",
+          "id": "npm:jiti",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ajiti",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Vite as Node.js runtime",
+          "category": "language-runtime",
+          "displayName": "vite-node",
+          "homepage": "https://github.com/antfu-collective/vite-node#readme",
+          "id": "npm:vite-node",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avite-node",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "👷 workerd, Cloudflare's JavaScript/Wasm Runtime",
+          "category": "language-runtime",
+          "displayName": "workerd",
+          "homepage": "https://github.com/cloudflare/workerd#readme",
+          "id": "npm:workerd",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aworkerd",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Run any Edge Function from CLI or Node.js module.",
+          "category": "language-runtime",
+          "displayName": "edge-runtime",
+          "homepage": "https://edge-runtime.vercel.app/packages/runtime",
+          "id": "npm:edge-runtime",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aedge-runtime",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "node",
+          "category": "language-runtime",
+          "displayName": "node",
+          "homepage": "https://github.com/aredridel/node-bin-gen#readme",
+          "id": "npm:node",
+          "installURL": "pkgmgrmgr://install?package=npm%3Anode",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "title": "For You in Language Runtime",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261022T070248Z-d7a3111f",
+      "id": "recently-updated:productivity:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Google Suite CLI",
+          "category": "productivity",
+          "displayName": "gogcli",
+          "homepage": "https://gogcli.sh",
+          "id": "brew:gogcli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Agogcli",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Collect, organize, cite, and share research sources",
+          "category": "productivity",
+          "displayName": "Zotero Beta",
+          "homepage": "https://www.zotero.org/",
+          "id": "brew:cask:zotero@beta",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Azotero%40beta",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "AI voice dictation that turns speech into polished text",
+          "category": "productivity",
+          "displayName": "Typeless",
+          "homepage": "https://typeless.com/",
+          "id": "brew:cask:typeless",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atypeless",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Write, view, manage and share content-rich notes",
+          "category": "productivity",
+          "displayName": "Synology Note Station Client",
+          "homepage": "https://www.synology.com/en-us/dsm/packages/NoteStation",
+          "id": "brew:cask:synology-note-station-client",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asynology-note-station-client",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Save articles to read, highlight key content, and organise notes for review",
+          "category": "productivity",
+          "displayName": "Readwise Reader",
+          "homepage": "https://readwise.io/read/",
+          "id": "brew:cask:reader",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Areader",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "title": "Recently Updated in Productivity",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20261022T070248Z-d7a3111f",
+      "id": "for-you:cloud-infrastructure:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Fun, full-featured, fully-local simulator for Cloudflare Workers",
+          "category": "cloud-infrastructure",
+          "displayName": "miniflare",
+          "homepage": "https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#readme",
+          "id": "npm:miniflare",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aminiflare",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Command-line interface for all things Cloudflare Workers",
+          "category": "cloud-infrastructure",
+          "displayName": "wrangler",
+          "homepage": "https://github.com/cloudflare/workers-sdk#readme",
+          "id": "npm:wrangler",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awrangler",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "AWS CDK Toolkit CLI, the command line tool for CDK apps",
+          "category": "cloud-infrastructure",
+          "displayName": "aws-cdk",
+          "homepage": "https://github.com/aws/aws-cdk",
+          "id": "npm:aws-cdk",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aaws-cdk",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The command-line interface for Vercel",
+          "category": "cloud-infrastructure",
+          "displayName": "vercel",
+          "homepage": "https://vercel.com",
+          "id": "npm:vercel",
+          "installURL": "pkgmgrmgr://install?package=npm%3Avercel",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Supabase CLI",
+          "category": "cloud-infrastructure",
+          "displayName": "supabase",
+          "homepage": "https://github.com/supabase/cli#readme",
+          "id": "npm:supabase",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asupabase",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "title": "For You in Cloud Infrastructure",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261022T070248Z-d7a3111f",
+      "id": "new-packages:language-runtime:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "JavaScript-C Engine",
+          "category": "language-runtime",
+          "displayName": "spidermonkey@140",
+          "homepage": "https://spidermonkey.dev",
+          "id": "brew:spidermonkey@140",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aspidermonkey%40140",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "C/C++ and Java libraries for Unicode and globalization",
+          "category": "language-runtime",
+          "displayName": "icu4c@79",
+          "homepage": "https://icu.unicode.org/home",
+          "id": "brew:icu4c@79",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aicu4c%4079",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-22T07:02:48Z",
+      "title": "New Packages in Language Runtime",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
+        "alt": "An unattended diagnostic workstation links glowing network paths to layered disk maps in a dark geometric systems landscape.",
+        "attribution": "Generated by OpenAI image generation for Package Manager Manager",
+        "boxColors": {
+          "backgroundEnd": "#123746",
+          "backgroundStart": "#081826",
+          "foreground": "#F7FAFC"
+        },
+        "license": "OpenAI-generated artwork; use permitted for this editorial",
+        "path": "feed/assets/diagnose-before-you-kill.png"
+      },
+      "batchID": "20261018T103040Z-ef34dedb",
+      "body": "## A port conflict is a symptom, not a diagnosis\n\nThe familiar development error—an address is already in use—looks like a one-line problem. The tempting response is also one line: find a PID and kill it. That works until the process is a database with unflushed work, a container runtime supporting another project, or a service that will immediately restart. **PortKiller** packages this common investigation into a desktop tool, showing local listeners and their owners before offering the consequential action. Its first v1.0.0 release appeared in December 2025, and the project has since expanded beyond its original macOS implementation.\n\nThat visible sequence matters. Discovery comes before intervention: identify the port, inspect the process, decide whether it is stale, and only then stop it. PortKiller shortens the path, but it cannot supply the missing operational context. A familiar executable name may still belong to the wrong workspace; a process may be supervised; a privileged service may require administrative approval. The polished button does not make termination reversible.\n\n## Two interfaces for the same local question\n\nPortKiller is aimed at developers who want a persistent desktop view, watched ports, and a direct action. **portop** approaches the same question from the terminal. The young project exposes TCP and UDP port ownership in a keyboard-driven interface, making it convenient in an SSH session or beside a terminal-native workflow. Its earliest published release dates to August 2026, so its pre-1.0 status should be read literally: useful ideas are arriving quickly, but interface and platform behavior may still move.\n\nThe tools overlap, yet they encourage different habits:\n\n- Use PortKiller when a visual, always-nearby monitor reduces repeated local friction.\n- Use portop when inspection belongs in the terminal or on a remote machine.\n- Fall back to `lsof`, `ss`, or `netstat` when the result must be scripted, recorded, or reproduced precisely.\n\nIn every case, verify the command line, parent process, working context, and restart policy before terminating anything. Process details can also be incomplete without elevated privileges. Running the whole inspector as an administrator merely to see more is not automatically the safer tradeoff; grant only the access the diagnosis actually requires.\n\n## When the busy port is not the real bottleneck\n\nLocal failures often travel in packs. A server that appears hung may be blocked on storage, rebuilding an index, rotating logs, or waiting while a nearly full volume struggles. **DiskWatch** broadens the investigation without becoming a general system monitor. Its terminal dashboard brings together capacity, device and filesystem views, read/write rates, latency, SMART health, volume topology, and recently changing paths. The project first published releases in May 2026 and explicitly frames itself as read-only.\n\nIts most useful design choice may be the honesty of its gaps. The upstream guide distinguishes measurements available on macOS from those available on Linux, says when `smartctl` is needed, and notes that hot-file watchers report path events—not byte counts or the responsible PID. Some latency values are rolling approximations rather than true per-operation histograms. That makes the dashboard a triage surface, not forensic proof. A suspicious path should lead to a platform tracer or application log; a SMART warning should lead to backup verification and the drive vendor's diagnostics.\n\nDiskWatch also rejects several seductive forms of scope creep. It does not delete files, repair disks, persist a monitoring database, or claim to benchmark maximum performance. Those omissions keep observation separate from mutation, the same boundary that matters when resolving a port conflict.\n\n## Prefer a ladder of evidence\n\nThese three packages are best understood as rungs on a diagnostic ladder. Start with the narrowest view that can answer the question. PortKiller or portop can reveal who owns the socket. Service-manager state and logs can explain why it exists. DiskWatch can show whether storage pressure is part of the behavior. Lower-level operating-system tools can then confirm the specific hypothesis.\n\nA practical workflow is simple:\n\n1. **Observe** the listener or resource pressure without changing state.\n2. **Identify** the owning process, project, supervisor, and affected data.\n3. **Confirm** with a scriptable native tool when the decision carries risk.\n4. **Act** only after choosing a graceful shutdown path or accepting the cost of force.\n\nThe attraction of these newer tools is not that they replace Unix diagnostics. They organize the first minute of an investigation. Done well, that minute prevents a small port collision from turning into a lost database session—or a disk warning from being dismissed as just another stuck server.",
+      "deck": "PortKiller, portop, and DiskWatch represent a useful new generation of local observability tools: immediate answers, narrow scope, and clearer boundaries around destructive action.",
+      "id": "editorial:2026-10-18:diagnose-the-port-before-you-kill-it",
+      "package": {
+        "agentSummary": "Monitors local ports from a desktop menu-bar application and can terminate owning processes, favoring quick intervention while making destructive actions deliberately visible.",
+        "assessment": {
+          "alternatives": [
+            "portop",
+            "lsof followed by kill",
+            "Operating-system activity monitors"
+          ],
+          "audiences": [
+            "Application developers repeatedly encountering occupied local ports",
+            "Desktop users who want a visible port monitor"
+          ],
+          "caveats": [
+            "Terminating the wrong process can discard work or interrupt another service",
+            "Platform implementations and feature coverage differ",
+            "Protected or privileged processes may require elevated permission"
+          ],
+          "complements": [
+            "Terminal socket inspection tools",
+            "Container and local-development dashboards"
+          ],
+          "prerequisites": [
+            "A supported desktop operating system",
+            "Permission to inspect and terminate the selected process"
+          ],
+          "useCases": [
+            "Find the process holding a development server port",
+            "Stop a selected local process after verifying its identity",
+            "Keep watched ports visible from the desktop"
+          ]
+        },
+        "category": "developer-tools",
+        "discovery": {
+          "admittedAt": "2026-10-18",
+          "analytics": {
+            "30": {
+              "count": 17,
+              "endDate": "2026-10-18",
+              "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+              "startDate": "2026-09-18"
+            },
+            "365": {
+              "count": 17,
+              "endDate": "2026-10-18",
+              "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+              "startDate": "2025-10-18"
+            },
+            "90": {
+              "count": 17,
+              "endDate": "2026-10-18",
+              "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+              "startDate": "2026-07-20"
+            }
+          },
+          "firstObservedAt": "2026-10-18",
+          "lastVerifiedAt": null,
+          "recentlyDiscovered": true,
+          "status": "official",
+          "trend": null
+        },
+        "displayName": "PortKiller",
+        "docs": "https://github.com/productdevbook/port-killer#readme",
+        "homepage": "https://github.com/productdevbook/port-killer",
+        "id": "brew:cask:portkiller",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aportkiller",
+        "lastUpdatedAt": "2026-10-17T13:09:36Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/productdevbook/port-killer",
+        "researchedAt": "2026-10-18T10:30:40Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "PortKiller repository and product guide",
+            "url": "https://github.com/productdevbook/port-killer"
+          },
+          {
+            "kind": "primary",
+            "title": "PortKiller release history",
+            "url": "https://github.com/productdevbook/port-killer/releases"
+          }
+        ],
+        "upstreamSummary": "Monitor listening ports and kill their processes",
+        "version": "3.4.0"
+      },
+      "primaryPackageID": "brew:cask:portkiller",
+      "publishedAt": "2026-10-18T10:30:40Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Monitors local ports from a desktop menu-bar application and can terminate owning processes, favoring quick intervention while making destructive actions deliberately visible.",
+          "assessment": {
+            "alternatives": [
+              "portop",
+              "lsof followed by kill",
+              "Operating-system activity monitors"
+            ],
+            "audiences": [
+              "Application developers repeatedly encountering occupied local ports",
+              "Desktop users who want a visible port monitor"
+            ],
+            "caveats": [
+              "Terminating the wrong process can discard work or interrupt another service",
+              "Platform implementations and feature coverage differ",
+              "Protected or privileged processes may require elevated permission"
+            ],
+            "complements": [
+              "Terminal socket inspection tools",
+              "Container and local-development dashboards"
+            ],
+            "prerequisites": [
+              "A supported desktop operating system",
+              "Permission to inspect and terminate the selected process"
+            ],
+            "useCases": [
+              "Find the process holding a development server port",
+              "Stop a selected local process after verifying its identity",
+              "Keep watched ports visible from the desktop"
+            ]
+          },
+          "category": "developer-tools",
+          "discovery": {
+            "admittedAt": "2026-10-18",
+            "analytics": {
+              "30": {
+                "count": 17,
+                "endDate": "2026-10-18",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+                "startDate": "2026-09-18"
+              },
+              "365": {
+                "count": 17,
+                "endDate": "2026-10-18",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+                "startDate": "2025-10-18"
+              },
+              "90": {
+                "count": 17,
+                "endDate": "2026-10-18",
+                "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+                "startDate": "2026-07-20"
+              }
+            },
+            "firstObservedAt": "2026-10-18",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": true,
+            "status": "official",
+            "trend": null
+          },
+          "displayName": "PortKiller",
+          "docs": "https://github.com/productdevbook/port-killer#readme",
+          "homepage": "https://github.com/productdevbook/port-killer",
+          "id": "brew:cask:portkiller",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aportkiller",
+          "lastUpdatedAt": "2026-10-17T13:09:36Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/productdevbook/port-killer",
+          "researchedAt": "2026-10-18T10:30:40Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "PortKiller repository and product guide",
+              "url": "https://github.com/productdevbook/port-killer"
+            },
+            {
+              "kind": "primary",
+              "title": "PortKiller release history",
+              "url": "https://github.com/productdevbook/port-killer/releases"
+            }
+          ],
+          "upstreamSummary": "Monitor listening ports and kill their processes",
+          "version": "3.4.0"
+        },
+        {
+          "agentSummary": "Shows TCP and UDP listeners in a keyboard-driven terminal interface, linking ports to processes and offering focused inspection before an operator decides what to stop.",
+          "assessment": {
+            "alternatives": [
+              "lsof",
+              "ss",
+              "netstat"
+            ],
+            "audiences": [
+              "Developers diagnosing local port conflicts",
+              "Operators who prefer keyboard-driven terminal tools"
+            ],
+            "caveats": [
+              "It is a young pre-1.0 project with a changing interface",
+              "Process visibility can be limited by operating-system permissions"
+            ],
+            "complements": [
+              "lsof and ss for scriptable follow-up",
+              "Application logs and service managers"
+            ],
+            "prerequisites": [
+              "A supported macOS or Linux terminal",
+              "Sufficient operating-system permission to inspect process ownership"
+            ],
+            "useCases": [
+              "Identify which process owns a listening TCP or UDP port",
+              "Watch local socket activity without assembling several shell commands"
+            ]
+          },
+          "category": "networking",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 162,
+                "endDate": "2026-10-18",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "startDate": "2026-09-18"
+              },
+              "365": {
+                "count": 162,
+                "endDate": "2026-10-18",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+                "startDate": "2025-10-18"
+              },
+              "90": {
+                "count": 162,
+                "endDate": "2026-10-18",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+                "startDate": "2026-07-20"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-18",
+              "growthPercent": null,
+              "installs30d": 162,
+              "previousMonthlyRate": 0.0,
+              "score": 20.906466,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+              ],
+              "startDate": "2026-07-20"
+            }
+          },
+          "displayName": "portop",
+          "docs": "https://github.com/padovanl/portop#readme",
+          "homepage": "https://github.com/padovanl/portop",
+          "id": "brew:portop",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aportop",
+          "lastUpdatedAt": "2026-10-18T02:56:37Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/padovanl/portop",
+          "researchedAt": "2026-10-18T10:30:40Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "portop repository and usage guide",
+              "url": "https://github.com/padovanl/portop"
+            },
+            {
+              "kind": "primary",
+              "title": "portop upstream releases",
+              "url": "https://github.com/padovanl/portop/releases"
+            }
+          ],
+          "upstreamSummary": "Terminal UI showing which processes are using TCP and UDP ports",
+          "version": "0.3.0"
+        },
+        {
+          "agentSummary": "Presents read-only disk capacity, I/O, latency, health, volume, and hot-file signals in one terminal dashboard, with explicit limits for unavailable measurements.",
+          "assessment": {
+            "alternatives": [
+              "iostat plus df and smartctl",
+              "btop",
+              "Platform storage utilities"
+            ],
+            "audiences": [
+              "Developers investigating a suddenly busy workstation",
+              "Operators diagnosing one macOS or Linux host"
+            ],
+            "caveats": [
+              "Hot-file watchers report changed paths rather than bytes or responsible processes",
+              "Some latency and queue metrics are estimates or unavailable by platform",
+              "It diagnoses but does not clean, repair, benchmark, or back up disks"
+            ],
+            "complements": [
+              "smartctl",
+              "iostat and platform-specific tracing",
+              "Backup and capacity-management systems"
+            ],
+            "prerequisites": [
+              "A supported macOS or Linux host",
+              "smartmontools when full SMART attribute tables are needed"
+            ],
+            "useCases": [
+              "Correlate disk throughput, latency, capacity, and health",
+              "See recently changing paths before choosing a deeper tracing tool",
+              "Check a host interactively over SSH"
+            ]
+          },
+          "category": "system",
+          "discovery": {
+            "admittedAt": "2026-10-17",
+            "analytics": {
+              "30": {
+                "count": 216,
+                "endDate": "2026-10-18",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "startDate": "2026-09-18"
+              },
+              "365": {
+                "count": 734,
+                "endDate": "2026-10-18",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+                "startDate": "2025-10-18"
+              },
+              "90": {
+                "count": 555,
+                "endDate": "2026-10-18",
+                "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+                "startDate": "2026-07-20"
+              }
+            },
+            "firstObservedAt": "2026-10-17",
+            "lastVerifiedAt": null,
+            "recentlyDiscovered": false,
+            "status": "official",
+            "trend": {
+              "endDate": "2026-10-18",
+              "growthPercent": 27.4,
+              "installs30d": 216,
+              "previousMonthlyRate": 169.5,
+              "score": 1.283071,
+              "sources": [
+                "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+                "https://formulae.brew.sh/api/analytics/install-on-request/90d.json"
+              ],
+              "startDate": "2026-07-20"
+            }
+          },
+          "displayName": "diskwatch",
+          "docs": "https://github.com/matthart1983/diskwatch#readme",
+          "homepage": "https://www.netwatchlabs.com/labs/diskwatch",
+          "id": "brew:diskwatch",
+          "installURL": "pkgmgrmgr://install?package=brew%3Adiskwatch",
+          "lastUpdatedAt": "2026-10-18T00:15:15Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/matthart1983/diskwatch",
+          "researchedAt": "2026-10-18T10:30:40Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "DiskWatch repository and measurement guide",
+              "url": "https://github.com/matthart1983/diskwatch"
+            },
+            {
+              "kind": "primary",
+              "title": "DiskWatch release history",
+              "url": "https://github.com/matthart1983/diskwatch/releases"
+            }
+          ],
+          "upstreamSummary": "Cross-platform disk diagnostics TUI",
+          "version": "0.6.1"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2025-12-16T02:25:02Z",
+        "firstStableReleaseSourceURL": "https://github.com/productdevbook/port-killer/releases/tag/v1.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "PortKiller repository and product guide",
+          "url": "https://github.com/productdevbook/port-killer"
+        },
+        {
+          "kind": "primary",
+          "title": "PortKiller v1.0.0 release",
+          "url": "https://github.com/productdevbook/port-killer/releases/tag/v1.0.0"
+        },
+        {
+          "kind": "primary",
+          "title": "portop repository and usage guide",
+          "url": "https://github.com/padovanl/portop"
+        },
+        {
+          "kind": "primary",
+          "title": "DiskWatch repository and measurement guide",
+          "url": "https://github.com/matthart1983/diskwatch"
+        }
+      ],
+      "title": "Diagnose the port before you kill it",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261018T103040Z-fd56ff4d",
+      "id": "for-you:system:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Like which(1) unix command. Find the first instance of an executable in the PATH.",
+          "category": "system",
+          "displayName": "which",
+          "homepage": "https://github.com/npm/node-which#readme",
+          "id": "npm:which",
+          "installURL": "pkgmgrmgr://install?package=npm%3Awhich",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "A deep deletion module for node (like `rm -rf`)",
+          "category": "system",
+          "displayName": "rimraf",
+          "homepage": "https://github.com/isaacs/rimraf#readme",
+          "id": "npm:rimraf",
+          "installURL": "pkgmgrmgr://install?package=npm%3Arimraf",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Recursively mkdir, like `mkdir -p`",
+          "category": "system",
+          "displayName": "mkdirp",
+          "homepage": "https://github.com/isaacs/node-mkdirp#readme",
+          "id": "npm:mkdirp",
+          "installURL": "pkgmgrmgr://install?package=npm%3Amkdirp",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a Docker container",
+          "category": "system",
+          "displayName": "is-docker",
+          "homepage": "https://github.com/sindresorhus/is-docker#readme",
+          "id": "npm:is-docker",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-docker",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Check if the process is running inside a container (Docker/Podman)",
+          "category": "system",
+          "displayName": "is-inside-container",
+          "homepage": "https://github.com/sindresorhus/is-inside-container#readme",
+          "id": "npm:is-inside-container",
+          "installURL": "pkgmgrmgr://install?package=npm%3Ais-inside-container",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-18T10:30:40Z",
+      "title": "For You in System",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261018T103040Z-fd56ff4d",
+      "id": "new-packages:science:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Filter and annotate genetic variants with expressions, for trios and cohorts",
+          "category": "science",
+          "displayName": "slivar",
+          "homepage": "https://github.com/brentp/slivar",
+          "id": "brew:slivar",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aslivar",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-18T10:30:40Z",
+      "title": "New Packages in Science",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
+        "alt": "Reviewable request cards flow into ivory files, then branch through glowing braided connections toward distinct API environments and a central vault.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#102F3C",
+          "backgroundStart": "#071A25",
+          "foreground": "#F4E7D2"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/noodle-file-first-api-workflows-20261015.png"
+      },
+      "batchID": "20261015T075024Z-e26bf66f",
+      "body": "## The collection is a directory, not a database\n\nAPI clients often begin as scratchpads: send a request, inspect the response, and keep enough state around to repeat it. Noodle makes a stronger choice. A collection is a directory of readable YAML request files, with dotenv-style environments and optional settings alongside them. The same files feed its terminal interface and command-line runner. That makes an API workflow visible to an editor, a diff, and ordinary repository review rather than trapping the useful definition inside one application's private store.\n\nThe [collections guide](https://noodlerest.dev/docs/guides/collections/) explains the boundary carefully. Noodle creates `.noodle` UI state and `.timeline` response history inside a collection, but warns that timeline data may include sensitive payloads and should stay out of version control. The durable request definition and the local execution residue occupy neighboring directories, not the same trust category. A good adoption therefore starts with ignore rules and a review of exactly which files a team intends to share.\n\n## Exploration and automation use the same source\n\nNoodle's terminal workspace can edit, send, and inspect a single request, but the collection model continues into ordered runs. Environments select endpoints and ordinary variables; captured response values can feed later requests; assertions can fail checks; CSV or JSON rows can drive repeated iterations. The [runner documentation](https://noodlerest.dev/docs/guides/collection-runner/) describes selection, ordering, fail-fast behavior, tags, and data files. The CLI can run the same collection in CI and return structured results.\n\nThat continuity is the main appeal. A request investigated interactively does not need to be translated into a separate test format before it becomes repeatable. It also creates a responsibility: a successful interactive request is not automatically a durable test. Teams still need explicit assertions, controlled test data, stable environments, and failure handling. Formatting and audit commands can modify files, so their diffs belong in review just like changes made in an editor.\n\nSecrets receive a similarly explicit boundary. Declarations remain in environment files while values can live in the operating-system credential vault or process environment. The documentation notes that scripts can read selected secrets and should be treated as trusted code. On headless Linux, vault access also depends on a usable D-Bus session and unlocked keyring. File-first is helpful because the behavior is inspectable; it does not make an untrusted collection safe to execute.\n\n## Slumber shows the established version of the idea\n\nNoodle is not the first terminal client to make source files central. [Slumber](https://github.com/LucasPickering/slumber) defines request recipes in a collection file and exposes them through a TUI, CLI, and Python package. It supports profiles, dynamic templates, imports, JSONPath response browsing, and locally stored history. Its February 2026 5.0 release reorganized commands and redesigned the interface while keeping collection-format breakage relatively narrow, useful evidence that source-first clients still have compatibility decisions to manage as they mature.\n\nThe structural difference is worth testing rather than declaring a winner. Noodle's directory of per-request YAML files can align naturally with a project's folders and granular diffs. Slumber's collection and recipe model is established, compact, and backed by years of releases. Both can keep request definitions local and reviewable; both can also evaluate dynamic behavior, retain response history, or expose secrets when configured carelessly. `curl` or HTTPie remains a simpler fit when a team only needs a few independent commands.\n\n## Early usage evidence is small but concrete\n\nNoodle's first non-prerelease, [v0.1.0](https://github.com/wilfredinni/noodle/releases/tag/v0.1.0), appeared on July 3, 2026. At research time, Homebrew's public formula analytics reported 83 install events across the available 90-day and 365-day windows, including 48 in the last 30 days. These are manager-specific events, not unique users, and they exclude direct installers and upgrades outside Homebrew. They show real packaging activity, but not broad adoption or production reliability.\n\nFor comparison, the same Homebrew endpoint reported 495 Slumber install events in its 365-day window. That difference is consistent with Slumber's longer history, but the counts are too narrow to rank the tools' total audiences. GitHub release assets and repository interest have similar limitations: they indicate retrieval or attention, not whether a collection became part of a dependable team workflow.\n\n## Evaluate the boundary before the feature list\n\nA useful trial starts with one noncritical API and a deliberately small collection. Import or write a few requests, place the shareable files under Git, and confirm that UI state, response history, and secret values remain outside the commit. Run the same request interactively and from the CLI, then add one assertion and one captured value. Review what appears in logs and structured output when the request fails.\n\nNext, ask another developer to reproduce the run from a clean checkout using their own environment values. If the collection requires scripts, review them as executable code. If CI is the destination, verify headless secret injection rather than assuming a desktop keyring will exist. Finally, repeat the exercise in Slumber or a few explicit shell commands. The important result is not the richest terminal screen. It is a request workflow whose source, secrets, generated history, and automation behavior have boundaries the whole team can explain.",
+      "deck": "A new terminal client treats request definitions as ordinary project files; the useful test is how safely those files move from exploration to automation.",
+      "id": "editorial:2026-10-15:noodle-file-first-api-workflows",
+      "package": {
+        "agentSummary": "Noodle keeps API requests in reviewable YAML collections, combining an interactive terminal client with repeatable CLI runs, assertions, captures, scripting, and guarded secret storage.",
+        "assessment": {
+          "alternatives": [
+            "Slumber for a mature source-first terminal HTTP client",
+            "curl or HTTPie for individual command-line requests",
+            "Graphical clients such as Postman or Insomnia"
+          ],
+          "audiences": [
+            "Developers who want API collections beside application code",
+            "Terminal-first teams reviewing HTTP workflows in Git"
+          ],
+          "caveats": [
+            "The project is young and its collection format is still evolving",
+            "Timeline history can contain response data and should normally stay out of version control",
+            "Collection scripts are trusted code and can read selected secrets"
+          ],
+          "complements": [
+            "Git for reviewing and sharing request definitions",
+            "A CI system for repeatable collection runs"
+          ],
+          "prerequisites": [
+            "A terminal on a supported Linux or macOS system",
+            "An initialized directory of YAML requests for collection workflows"
+          ],
+          "useCases": [
+            "Explore and edit HTTP requests in a terminal interface",
+            "Run ordered API checks with environments, assertions, captures, and data files",
+            "Import existing OpenAPI, Postman, or Insomnia collections"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "noodle",
+        "docs": "https://noodlerest.dev/docs",
+        "homepage": "https://noodlerest.dev",
+        "id": "brew:noodle",
+        "installURL": "pkgmgrmgr://install?package=brew%3Anoodle",
+        "lastUpdatedAt": "2026-10-14T19:58:08Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/wilfredinni/noodle",
+        "researchedAt": "2026-10-15T07:50:24Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Noodle project repository",
+            "url": "https://github.com/wilfredinni/noodle"
+          },
+          {
+            "kind": "primary",
+            "title": "Noodle collections guide",
+            "url": "https://noodlerest.dev/docs/guides/collections/"
+          },
+          {
+            "kind": "primary",
+            "title": "Noodle v0.1.0 release",
+            "url": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0"
+          }
+        ],
+        "upstreamSummary": "Terminal REST client with file-based collections",
+        "version": "0.10.0"
+      },
+      "primaryPackageID": "brew:noodle",
+      "publishedAt": "2026-10-15T07:50:24Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Noodle keeps API requests in reviewable YAML collections, combining an interactive terminal client with repeatable CLI runs, assertions, captures, scripting, and guarded secret storage.",
+          "assessment": {
+            "alternatives": [
+              "Slumber for a mature source-first terminal HTTP client",
+              "curl or HTTPie for individual command-line requests",
+              "Graphical clients such as Postman or Insomnia"
+            ],
+            "audiences": [
+              "Developers who want API collections beside application code",
+              "Terminal-first teams reviewing HTTP workflows in Git"
+            ],
+            "caveats": [
+              "The project is young and its collection format is still evolving",
+              "Timeline history can contain response data and should normally stay out of version control",
+              "Collection scripts are trusted code and can read selected secrets"
+            ],
+            "complements": [
+              "Git for reviewing and sharing request definitions",
+              "A CI system for repeatable collection runs"
+            ],
+            "prerequisites": [
+              "A terminal on a supported Linux or macOS system",
+              "An initialized directory of YAML requests for collection workflows"
+            ],
+            "useCases": [
+              "Explore and edit HTTP requests in a terminal interface",
+              "Run ordered API checks with environments, assertions, captures, and data files",
+              "Import existing OpenAPI, Postman, or Insomnia collections"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "noodle",
+          "docs": "https://noodlerest.dev/docs",
+          "homepage": "https://noodlerest.dev",
+          "id": "brew:noodle",
+          "installURL": "pkgmgrmgr://install?package=brew%3Anoodle",
+          "lastUpdatedAt": "2026-10-14T19:58:08Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/wilfredinni/noodle",
+          "researchedAt": "2026-10-15T07:50:24Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Noodle project repository",
+              "url": "https://github.com/wilfredinni/noodle"
+            },
+            {
+              "kind": "primary",
+              "title": "Noodle collections guide",
+              "url": "https://noodlerest.dev/docs/guides/collections/"
+            },
+            {
+              "kind": "primary",
+              "title": "Noodle v0.1.0 release",
+              "url": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0"
+            }
+          ],
+          "upstreamSummary": "Terminal REST client with file-based collections",
+          "version": "0.10.0"
+        },
+        {
+          "agentSummary": "Slumber is a mature source-first HTTP client whose local collections drive a terminal interface, command-line automation, Python access, profiles, templates, imports, and response history.",
+          "assessment": {
+            "alternatives": [
+              "Noodle for directory-based YAML requests and collection runs",
+              "curl or HTTPie for lightweight individual requests",
+              "Graphical API clients"
+            ],
+            "audiences": [
+              "Developers seeking an established terminal HTTP client",
+              "Teams that want shareable request recipes under version control"
+            ],
+            "caveats": [
+              "Dynamic templates can execute commands, so shared collections require code-review discipline",
+              "Major releases can reorganize commands or adjust the collection format",
+              "Local request history may retain sensitive response data"
+            ],
+            "complements": [
+              "Git for source-first collection review",
+              "Shell scripts or Python programs that call its noninteractive interfaces"
+            ],
+            "prerequisites": [
+              "A supported terminal environment",
+              "A Slumber collection file for reusable recipes"
+            ],
+            "useCases": [
+              "Define and execute reusable HTTP request recipes",
+              "Switch endpoints and credentials through profiles and templates",
+              "Use the same collections from a TUI, CLI, or Python package"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "slumber",
+          "docs": "https://slumber.lucaspickering.me/",
+          "homepage": "https://slumber.lucaspickering.me/",
+          "id": "brew:slumber",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aslumber",
+          "lastUpdatedAt": "2026-10-15T01:22:14Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/LucasPickering/slumber",
+          "researchedAt": "2026-10-15T07:50:24Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Slumber project repository",
+              "url": "https://github.com/LucasPickering/slumber"
+            },
+            {
+              "kind": "primary",
+              "title": "Slumber official documentation",
+              "url": "https://slumber.lucaspickering.me/"
+            },
+            {
+              "kind": "primary",
+              "title": "Slumber release history",
+              "url": "https://github.com/LucasPickering/slumber/releases"
+            }
+          ],
+          "upstreamSummary": "Terminal-based HTTP/REST client",
+          "version": "5.4.0"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-03T20:32:47Z",
+        "firstStableReleaseSourceURL": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Noodle project repository",
+          "url": "https://github.com/wilfredinni/noodle"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle collections guide",
+          "url": "https://noodlerest.dev/docs/guides/collections/"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle collection runner guide",
+          "url": "https://noodlerest.dev/docs/guides/collection-runner/"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle automation and secret-handling guide",
+          "url": "https://noodlerest.dev/docs/guides/automation/"
+        },
+        {
+          "kind": "primary",
+          "title": "Noodle v0.1.0 release",
+          "url": "https://github.com/wilfredinni/noodle/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew analytics for Noodle",
+          "url": "https://formulae.brew.sh/api/formula/noodle.json"
+        },
+        {
+          "kind": "primary",
+          "title": "Slumber project documentation",
+          "url": "https://github.com/LucasPickering/slumber"
+        },
+        {
+          "kind": "primary",
+          "title": "Slumber release history",
+          "url": "https://github.com/LucasPickering/slumber/releases"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew analytics for Slumber",
+          "url": "https://formulae.brew.sh/api/formula/slumber.json"
+        }
+      ],
+      "title": "Noodle and the API Collection You Can Review",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261015T075024Z-7e6fc329",
+      "id": "for-you:games:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Query for the status of any game server in Node.JS",
+          "category": "games",
+          "displayName": "gamedig",
+          "homepage": "https://github.com/gamedig/node-gamedig#readme",
+          "id": "npm:gamedig",
+          "installURL": "pkgmgrmgr://install?package=npm%3Agamedig",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The Stockfish chess engine in Web Assembly (WASM)",
+          "category": "games",
+          "displayName": "stockfish",
+          "homepage": "https://github.com/nmrugg/stockfish.js#readme",
+          "id": "npm:stockfish",
+          "installURL": "pkgmgrmgr://install?package=npm%3Astockfish",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Rom manager for AdvanceMAME/MESS",
+          "category": "games",
+          "displayName": "advancescan",
+          "homepage": "https://www.advancemame.it/scan-readme.html",
+          "id": "brew:advancescan",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aadvancescan",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Near-future Sci-Fi roguelike and tactical squad combat game",
+          "category": "games",
+          "displayName": "allureofthestars",
+          "homepage": "https://allureofthestars.com/",
+          "id": "brew:allureofthestars",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aallureofthestars",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Dungeon exploration game",
+          "category": "games",
+          "displayName": "angband",
+          "homepage": "https://rephial.org/",
+          "id": "brew:angband",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aangband",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-15T07:50:24Z",
+      "title": "For You in Games",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "artwork": {
+        "alt": "A dark control room where flowing code fragments pass through a luminous lens, usage gauges, and a protective checkpoint.",
+        "attribution": "Generated with OpenAI image_gen for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#123A46",
+          "backgroundStart": "#0B1C2B",
+          "foreground": "#F5F1E8"
+        },
+        "license": "AI-generated artwork; no third-party source artwork used.",
+        "path": "feed/assets/claudoscope-observe-govern.png"
+      },
+      "batchID": "20261012T035302Z-e305f29e",
+      "body": "## The transcript is becoming an operations surface\n\nCoding agents leave more behind than a patch. Their local records can contain prompts, tool calls, plans, model usage, file edits, and the moments when a person had to intervene. That material is useful for debugging both the software change and the way the agent was directed, but raw transcript files are awkward to inspect repeatedly.\n\n[Claudoscope](https://claudoscope.com/) turns that local trail into a native macOS dashboard. Its upstream documentation describes views for sessions, touched files, costs, configuration health, and project activity. The app reads Claude Code and Cowork records already stored on the machine; its [privacy statement](https://claudoscope.com/privacy) says transcript content, prompts, code, and detected secrets are processed locally rather than uploaded. That boundary matters because an observability tool can otherwise become a second destination for sensitive development data.\n\nClaudoscope is genuinely young. The repository and public releases began in March 2026, followed by a stable 1.0 release in July. The [1.0 notes](https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0) describe a persistent local session index, optional cost alerts, lifecycle notifications, per-session file history, and configuration linting. Those notes also report testing against a corpus of roughly 3,000 session files. That is useful evidence of the workload the author designed for, though it is not an independent performance benchmark.\n\n## Three questions, three different tools\n\nA viewer can answer **what happened in this session?** It cannot automatically answer every neighboring question. A practical local stack separates at least three jobs:\n\n- Claudoscope reconstructs and presents Claude Code or Cowork activity on a supported Mac.\n- [ccusage](https://ccusage.com/guide/all-reports) aggregates local usage into daily, weekly, monthly, session, and active-block reports across multiple supported coding agents.\n- [HOL Guard](https://hol.org/guard/features) evaluates supported actions against local policy, routes ambiguous cases for approval, and records receipts where its integrations expose an enforcement point.\n\nThe distinction is temporal as well as functional. Claudoscope and ccusage primarily help after records exist, even when they update live. Guard aims to intervene before supported actions execute. None of them replaces a provider invoice, source control review, operating-system isolation, or the agent's native permission model. Treating them as interchangeable would hide the most important design constraint: each observes a different slice of the workflow.\n\n## Usage evidence without pretending it proves everything\n\nThere are early signs that developers want this visibility. Homebrew's cask API recorded 20 Claudoscope installs in its available 30-day window when this article was researched. That is a modest, manager-specific count, not a census; direct downloads and updates are outside it. The upstream repository also showed public issue and contribution activity, but stars are interest signals rather than proof of sustained use.\n\nccusage has a broader observable footprint. The npm registry reported 776,090 downloads for the package from September 11 through October 10, 2026. Downloads can include automation, repeated installs, and mirrors, so they should not be converted into user counts. They do show that terminal-first usage reporting is not merely a hypothetical need. Its [JSON documentation](https://ccusage.com/guide/json-output) also makes the integration story concrete: every report type can be emitted as structured data, with an option to omit cost fields while retaining token, model, date, and projection information.\n\nHOL Guard is newer and should be evaluated by boundary rather than marketing breadth. Its [setup guide](https://hol.org/guard/docs/guard/get-started) documents different approval paths for different agents and explicitly preserves native controls. That variability is a caveat, but also a sign of an honest integration model: protection is only as strong as the events an agent exposes and the path that can actually block them.\n\n## A disciplined evaluation loop\n\nStart with a narrow question instead of installing an entire observability stack at once. For session review, compare Claudoscope's reconstruction with a known transcript and the resulting Git diff. Check whether cost estimates agree closely enough with the provider's billing view for your models, and confirm that opt-in configuration changes produce recoverable backups. Apple Silicon and macOS 14 are current prerequisites.\n\nFor reporting, run ccusage against a small date range and inspect both the table and JSON forms. Unknown pricing can produce incomplete cost figures, while differing agent formats can limit cross-tool symmetry. For runtime policy, use Guard's documented dry-run and status checks first, then test one harmless action that should be allowed and one controlled action that should require review. Keep native permissions enabled.\n\nThe valuable pattern is **observe, reconcile, then govern**. A session viewer makes agent behavior legible, a usage reporter makes trends comparable, and a runtime guard can add policy at supported decision points. Keeping those roles separate makes the resulting evidence easier to trust—and makes it clearer where human review is still doing the real work.",
+      "deck": "Session viewers, usage reports, and runtime guards expose different parts of an AI coding workflow; the useful stack begins by keeping those boundaries clear.",
+      "id": "editorial:2026-10-12:claudoscope-observing-agent-work",
+      "package": {
+        "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
+        "assessment": {
+          "alternatives": [
+            "Read Claude Code transcript files directly",
+            "Use ccusage when terminal reports are sufficient"
+          ],
+          "audiences": [
+            "Apple Silicon Mac users who run Claude Code or Cowork regularly",
+            "Developers who want a visual audit trail for local coding sessions"
+          ],
+          "caveats": [
+            "It is currently limited to Apple Silicon Macs",
+            "Cost figures are estimates and should be reconciled with provider billing",
+            "Some features can modify Claude Code configuration, but they are opt-in and create backups"
+          ],
+          "complements": [
+            "ccusage for scriptable and cross-agent usage reports",
+            "HOL Guard for supported pre-execution policy checks and approval receipts"
+          ],
+          "prerequisites": [
+            "macOS 14 or later on Apple Silicon",
+            "Claude Code or Cowork session data already present on the Mac"
+          ],
+          "useCases": [
+            "Inspect session history, touched files, plans, token use, and estimated cost",
+            "Watch active sessions and configure optional cost or lifecycle notifications",
+            "Review Claude Code configuration health and locally detected secrets"
+          ]
+        },
+        "category": "developer-tools",
+        "displayName": "Claudoscope",
+        "docs": "https://claudoscope.com/",
+        "homepage": "https://claudoscope.com/",
+        "id": "brew:cask:claudoscope",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclaudoscope",
+        "lastUpdatedAt": "2026-10-11T17:47:59Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/cordwainersmith/Claudoscope",
+        "researchedAt": "2026-10-12T03:53:02Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "Claudoscope upstream repository and requirements",
+            "url": "https://github.com/cordwainersmith/Claudoscope"
+          },
+          {
+            "kind": "primary",
+            "title": "Claudoscope privacy and local-data boundary",
+            "url": "https://claudoscope.com/privacy"
+          },
+          {
+            "kind": "primary",
+            "title": "Claudoscope 1.0 release notes",
+            "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+          }
+        ],
+        "upstreamSummary": "Menu bar dashboard for Claude Code sessions",
+        "version": "1.4.0"
+      },
+      "primaryPackageID": "brew:cask:claudoscope",
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "Claudoscope turns local Claude Code and Cowork transcripts into a native Mac dashboard for sessions, costs, files, configuration health, and opt-in alerts.",
+          "assessment": {
+            "alternatives": [
+              "Read Claude Code transcript files directly",
+              "Use ccusage when terminal reports are sufficient"
+            ],
+            "audiences": [
+              "Apple Silicon Mac users who run Claude Code or Cowork regularly",
+              "Developers who want a visual audit trail for local coding sessions"
+            ],
+            "caveats": [
+              "It is currently limited to Apple Silicon Macs",
+              "Cost figures are estimates and should be reconciled with provider billing",
+              "Some features can modify Claude Code configuration, but they are opt-in and create backups"
+            ],
+            "complements": [
+              "ccusage for scriptable and cross-agent usage reports",
+              "HOL Guard for supported pre-execution policy checks and approval receipts"
+            ],
+            "prerequisites": [
+              "macOS 14 or later on Apple Silicon",
+              "Claude Code or Cowork session data already present on the Mac"
+            ],
+            "useCases": [
+              "Inspect session history, touched files, plans, token use, and estimated cost",
+              "Watch active sessions and configure optional cost or lifecycle notifications",
+              "Review Claude Code configuration health and locally detected secrets"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "Claudoscope",
+          "docs": "https://claudoscope.com/",
+          "homepage": "https://claudoscope.com/",
+          "id": "brew:cask:claudoscope",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aclaudoscope",
+          "lastUpdatedAt": "2026-10-11T17:47:59Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/cordwainersmith/Claudoscope",
+          "researchedAt": "2026-10-12T03:53:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "Claudoscope upstream repository and requirements",
+              "url": "https://github.com/cordwainersmith/Claudoscope"
+            },
+            {
+              "kind": "primary",
+              "title": "Claudoscope privacy and local-data boundary",
+              "url": "https://claudoscope.com/privacy"
+            },
+            {
+              "kind": "primary",
+              "title": "Claudoscope 1.0 release notes",
+              "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+            }
+          ],
+          "upstreamSummary": "Menu bar dashboard for Claude Code sessions",
+          "version": "1.4.0"
+        },
+        {
+          "agentSummary": "ccusage reads local coding-agent usage files and produces terminal or JSON reports across days, sessions, models, costs, and active usage blocks.",
+          "assessment": {
+            "alternatives": [
+              "Provider billing dashboards",
+              "Custom scripts that parse local session records"
+            ],
+            "audiences": [
+              "Developers who prefer terminal-native reporting",
+              "Teams building their own local usage dashboards or scripts"
+            ],
+            "caveats": [
+              "Reported costs depend on current pricing data and model recognition",
+              "Local logs measure recorded activity rather than the provider's final invoice",
+              "Feature depth varies by source because agent log formats differ"
+            ],
+            "complements": [
+              "Claudoscope for a native macOS session viewer",
+              "Shell tools or dashboards that consume its JSON output"
+            ],
+            "prerequisites": [
+              "Local usage files from a supported coding agent",
+              "A terminal environment capable of running the packaged CLI"
+            ],
+            "useCases": [
+              "Compare daily, weekly, monthly, session, and block-level usage",
+              "Export structured JSON for dashboards and automation",
+              "Review multiple supported coding-agent data sources in a unified view"
+            ]
+          },
+          "category": "ai",
+          "displayName": "ccusage",
+          "docs": "https://ccusage.com/guide",
+          "homepage": "https://github.com/ccusage/ccusage",
+          "id": "brew:ccusage",
+          "installURL": "pkgmgrmgr://install?package=brew%3Accusage",
+          "lastUpdatedAt": "2026-10-11T23:35:21Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/ccusage/ccusage",
+          "researchedAt": "2026-10-12T03:53:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "ccusage unified report documentation",
+              "url": "https://ccusage.com/guide/all-reports"
+            },
+            {
+              "kind": "primary",
+              "title": "ccusage JSON output documentation",
+              "url": "https://ccusage.com/guide/json-output"
+            },
+            {
+              "kind": "independent",
+              "title": "npm download statistics for ccusage",
+              "url": "https://api.npmjs.org/downloads/point/last-month/ccusage"
+            }
+          ],
+          "upstreamSummary": "CLI tool for analyzing Claude Code usage from local JSONL files",
+          "version": "20.0.30"
+        },
+        {
+          "agentSummary": "HOL Guard adds local policy checks, approvals, and receipts around supported coding-agent actions, while retaining each agent's native permission model and documented boundaries.",
+          "assessment": {
+            "alternatives": [
+              "Rely exclusively on each agent's native approvals",
+              "Use operating-system sandboxing and organization-specific policy tooling"
+            ],
+            "audiences": [
+              "Developers using coding agents with access to files, commands, packages, or MCP tools",
+              "Teams seeking a consistent local review trail across supported agents"
+            ],
+            "caveats": [
+              "Coverage depends on the events and enforcement points exposed by each integration",
+              "It supplements rather than replaces native permissions and sandboxing",
+              "Cloud synchronization and team features are separate from the local-first core"
+            ],
+            "complements": [
+              "Claudoscope for post-session visibility",
+              "Native agent sandboxes and permission prompts"
+            ],
+            "prerequisites": [
+              "A supported operating system and coding-agent integration",
+              "Initial setup and policy review for the selected harness"
+            ],
+            "useCases": [
+              "Review supported risky actions before execution",
+              "Record local approval receipts and inspect policy decisions",
+              "Apply package, secret, plugin, and agent-configuration checks"
+            ]
+          },
+          "category": "security",
+          "displayName": "HOL Guard",
+          "docs": "https://github.com/hashgraph-online/hol-guard/blob/main/docs/guard/get-started.md",
+          "homepage": "https://hol.org/guard",
+          "id": "brew:cask:hol-guard",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Ahol-guard",
+          "lastUpdatedAt": "2026-10-12T01:54:58Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/hashgraph-online/hol-guard",
+          "researchedAt": "2026-10-12T03:53:02Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "HOL Guard upstream repository and security boundaries",
+              "url": "https://github.com/hashgraph-online/hol-guard"
+            },
+            {
+              "kind": "primary",
+              "title": "HOL Guard local-first setup and approval flow",
+              "url": "https://hol.org/guard/docs/guard/get-started"
+            },
+            {
+              "kind": "primary",
+              "title": "HOL Guard feature and compatibility matrix",
+              "url": "https://hol.org/guard/features"
+            }
+          ],
+          "upstreamSummary": "Local-first runtime firewall for AI coding agents",
+          "version": "3.0.132"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-07-27T14:36:05Z",
+        "firstStableReleaseSourceURL": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Claudoscope upstream repository",
+          "url": "https://github.com/cordwainersmith/Claudoscope"
+        },
+        {
+          "kind": "primary",
+          "title": "Claudoscope 1.0 release notes",
+          "url": "https://github.com/cordwainersmith/Claudoscope/releases/tag/v1.0.0"
+        },
+        {
+          "kind": "primary",
+          "title": "Claudoscope privacy statement",
+          "url": "https://claudoscope.com/privacy"
+        },
+        {
+          "kind": "independent",
+          "title": "Homebrew Claudoscope cask record and install analytics",
+          "url": "https://formulae.brew.sh/api/cask/claudoscope.json"
+        },
+        {
+          "kind": "primary",
+          "title": "ccusage unified report documentation",
+          "url": "https://ccusage.com/guide/all-reports"
+        },
+        {
+          "kind": "independent",
+          "title": "npm download statistics for ccusage",
+          "url": "https://api.npmjs.org/downloads/point/last-month/ccusage"
+        },
+        {
+          "kind": "primary",
+          "title": "HOL Guard local-first setup guide",
+          "url": "https://hol.org/guard/docs/guard/get-started"
+        }
+      ],
+      "title": "Claudoscope and the missing view of agent work",
+      "type": "editorial"
+    },
+    {
+      "batchID": "20261012T035302Z-6f4b50fe",
+      "id": "recently-updated:security:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "Database of public exploits and corresponding vulnerable software",
+          "category": "security",
+          "displayName": "exploitdb",
+          "homepage": "https://www.exploit-db.com/",
+          "id": "brew:exploitdb",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aexploitdb",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Network security monitor",
+          "category": "security",
+          "displayName": "zeek",
+          "homepage": "https://zeek.org/",
+          "id": "brew:zeek",
+          "installURL": "pkgmgrmgr://install?package=brew%3Azeek",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Searches Hash APIs to crack your hash quickly",
+          "category": "security",
+          "displayName": "search-that-hash",
+          "homepage": "https://github.com/Jayy001/Search-That-Hash",
+          "id": "brew:search-that-hash",
+          "installURL": "pkgmgrmgr://install?package=brew%3Asearch-that-hash",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Open-source, non-custodial, privacy focused Bitcoin wallet",
+          "category": "security",
+          "displayName": "Wasabi Wallet",
+          "homepage": "https://github.com/zkSNACKs/WalletWasabi/",
+          "id": "brew:cask:wasabi-wallet",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Awasabi-wallet",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Tools for one-time password authentication systems",
+          "category": "security",
+          "displayName": "oath-toolkit",
+          "homepage": "https://oath-toolkit.codeberg.page/",
+          "id": "brew:oath-toolkit",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aoath-toolkit",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "title": "Recently Updated in Security",
+      "type": "recentlyUpdated"
+    },
+    {
+      "batchID": "20261012T035302Z-6f4b50fe",
+      "id": "for-you:media:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "SVGO is a Node.js library and command-line application for optimizing vector images.",
+          "category": "media",
+          "displayName": "svgo",
+          "homepage": "https://svgo.dev",
+          "id": "npm:svgo",
+          "installURL": "pkgmgrmgr://install?package=npm%3Asvgo",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "get dimensions of any image file",
+          "category": "media",
+          "displayName": "image-size",
+          "homepage": null,
+          "id": "npm:image-size",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aimage-size",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "Fast math typesetting for the web.",
+          "category": "media",
+          "displayName": "katex",
+          "homepage": "https://katex.org",
+          "id": "npm:katex",
+          "installURL": "pkgmgrmgr://install?package=npm%3Akatex",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "QRCode / 2d Barcode api with both server side and client side support using canvas",
+          "category": "media",
+          "displayName": "qrcode",
+          "homepage": null,
+          "id": "npm:qrcode",
+          "installURL": "pkgmgrmgr://install?package=npm%3Aqrcode",
+          "manager": "npm"
+        },
+        {
+          "agentSummary": "The smallest and fastest pixel-level image comparison library.",
+          "category": "media",
+          "displayName": "pixelmatch",
+          "homepage": "https://github.com/mapbox/pixelmatch#readme",
+          "id": "npm:pixelmatch",
+          "installURL": "pkgmgrmgr://install?package=npm%3Apixelmatch",
+          "manager": "npm"
+        }
+      ],
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "title": "For You in Media",
+      "type": "personalizedRecommendations"
+    },
+    {
+      "batchID": "20261012T035302Z-6f4b50fe",
+      "id": "new-packages:developer-tools:20261025T102927Z-f220bb45",
+      "packages": [
+        {
+          "agentSummary": "AI agents that build iOS apps and handle App Store review",
+          "category": "developer-tools",
+          "displayName": "AirBuild",
+          "homepage": "https://air.build/",
+          "id": "brew:cask:airbuild",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aairbuild",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Official command-line tool for Gitea",
+          "category": "developer-tools",
+          "displayName": "gitea-cli",
+          "homepage": "https://gitea.com/gitea/cli",
+          "id": "brew:gitea-cli",
+          "installURL": "pkgmgrmgr://install?package=brew%3Agitea-cli",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Command-line tool for the App Store Connect API",
+          "category": "developer-tools",
+          "displayName": "ascelerate",
+          "homepage": "https://ascelerate.dev",
+          "id": "brew:ascelerate",
+          "installURL": "pkgmgrmgr://install?package=brew%3Aascelerate",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "Terminal app optimised for agents",
+          "category": "developer-tools",
+          "displayName": "Kero",
+          "homepage": "https://kero.sh/",
+          "id": "brew:cask:kero",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Akero",
+          "manager": "homebrew"
+        },
+        {
+          "agentSummary": "CLI to migrate repositories from GitHub, GitLab and Gitea into Gitea",
+          "category": "developer-tools",
+          "displayName": "gitea-importer",
+          "homepage": "https://gitea.com/gitea/importer",
+          "id": "brew:gitea-importer",
+          "installURL": "pkgmgrmgr://install?package=brew%3Agitea-importer",
+          "manager": "homebrew"
+        }
+      ],
+      "publishedAt": "2026-10-12T03:53:02Z",
+      "title": "New Packages in Developer Tools",
+      "type": "newPackages"
+    },
+    {
+      "artwork": {
+        "alt": "Layered image panels, marked-up document sheets, and geometric page components connect through glowing orange and cyan paths.",
+        "attribution": "Generated with OpenAI image generation for Package Manager Manager.",
+        "boxColors": {
+          "backgroundEnd": "#2B3442",
+          "backgroundStart": "#06182A",
+          "foreground": "#F7F2E8"
+        },
+        "license": "OpenAI terms of use",
+        "path": "feed/assets/rust-document-tools-2026-10-08.png"
+      },
+      "batchID": "20261008T074826Z-7d13ac9a",
+      "body": "## Three projects, one recurring instinct\n\nPhotoCraft, typdiff, and TeXres are not a suite. They do not share a maintainer, file format, or promised integration. What connects them is a young-project instinct: take a workflow normally spread across a large application or distribution, rebuild a focused path in Rust, and expose enough structure that users can inspect the result. Each project published its first non-prerelease build in 2026. That makes them interesting experiments, not automatic replacements for mature tools.\n\nPhotoCraft is the broadest bet. Its first release appeared on October 2, two days after the public repository was created. The project describes a native editor with layers, masks, adjustments, type, vectors, brushes, local selection tools, GPU rendering, and layered PSD or PSB support. It targets desktop platforms and the browser, while its engine-first architecture also supports command-line and structured automation. The ambition is immediately legible: familiar image-editing concepts, local files, and a permissively licensed implementation rather than a web wrapper.\n\nThe project is equally direct about its state. Its repository labels the application **early alpha**. The roadmap warns that a feature-surface estimate can overstate user-facing readiness, and the issue tracker contains reports about brush behavior, transforms, large documents, and interface details. That public friction is useful evidence of actual testing, but it is also a reason to work on copies and keep an established editor nearby. Homebrew now distributes the application, which lowers the evaluation barrier without changing those maturity facts.\n\n## A diff that remains a document\n\ntypdiff makes a narrower intervention. Given old and new Typst sources, it emits another Typst document containing addition and deletion markup. It parses headings, paragraphs, and list structures, performs block and word comparisons, and uses character-level handling for Chinese, Japanese, and Korean text. The resulting source can be compiled into a visual PDF redline. That is different from merely coloring a raw text patch: the review artifact remains inside the document system.\n\nIts first v0.1.0 release arrived on February 18. An independent Typst feature discussion supplies an early usage signal: participants describe visual diffs as useful for manuscripts, peer-review responses, legal redlines, internal documentation, and CI artifacts, and later point to typdiff as a working parser-aware option. That discussion does not prove broad adoption, but it demonstrates a concrete need outside the project’s own README.\n\nThe boundaries matter. Raw blocks, equations, and function calls are atomic, so reviewers should not assume every semantic change receives a fine-grained explanation. typdiff produces Typst; a separate Typst compiler produces the PDF. For source review, ordinary Git diff remains simpler. The tool becomes valuable when a reader needs a document-shaped comparison rather than only changed lines.\n\n## A TeX distribution compressed into one executable\n\nTeXres tackles packaging rather than editing or comparison. Its first v0.1.0 release appeared on September 16. The project combines pdfLaTeX, XeLaTeX, LuaLaTeX, formats, a package archive, fonts, BibTeX, and Biber in a Rust-written distribution that says it downloads nothing during a build. The front-end reruns the necessary passes until references converge, supports watch mode, and offers C and WebAssembly interfaces for in-memory compilation. Its CI compares output with TeX Live 2026.\n\nThat design promises a smaller operational surface, not a simpler language. LaTeX documents can depend on obscure packages, engine behavior, fonts, and years of compatibility assumptions. TeXres uses a bundled font set rather than system fonts; additional fonts must travel with the project. ARM64 Linux requires a recent glibc, while musl systems are unsupported. A responsible trial starts with representative documents and compares PDFs, logs, bibliography output, links, and font substitution before changing a production pipeline.\n\n## Evaluate outcomes, not implementation language\n\nRust is part of all three stories, but it is not the user benefit by itself. The measurable questions sit at the workflow boundary:\n\n- Does PhotoCraft round-trip the layered files and color modes a team actually uses?\n- Does typdiff make review faster without hiding important source changes?\n- Does TeXres reproduce the documents, packages, fonts, and bibliography behavior a project depends on?\n\nThe projects’ youth makes those tests especially important. PhotoCraft already attracts active bug reports and package-manager distribution; typdiff has surfaced in a pre-existing community discussion about visual review; TeXres exposes hundreds of commits and explicit compatibility claims in public. Those are meaningful usage and development signals, but none is a guarantee of production fitness.\n\nThe compelling shared direction is control. Image operations stay local and scriptable. A diff becomes inspectable source rather than an opaque screenshot. A typesetting environment can travel as a bounded executable and archive. If those properties solve a real constraint, each tool now has enough public evidence for a careful pilot. The right next step is not wholesale migration; it is one representative file, one reproducible comparison, and a written record of what still fails.",
+      "deck": "PhotoCraft, typdiff, and TeXres take sharply different approaches to making creative and publishing workflows local, inspectable, and easier to package.",
+      "id": "editorial:2026-10-08:three-young-rust-tools-rework-document-pipelines",
+      "package": {
+        "agentSummary": "PhotoCraft is an early-alpha, native Rust image editor pursuing layered PSD compatibility, local processing, GPU rendering, and cross-platform builds while openly tracking substantial gaps.",
+        "assessment": {
+          "alternatives": [
+            "GIMP or Krita for established open-source raster editing",
+            "Adobe Photoshop or Affinity Photo for mature commercial workflows"
+          ],
+          "audiences": [
+            "Designers and photographers willing to test an early open-source image editor",
+            "Rust contributors interested in graphics, color, file formats, or desktop UI",
+            "Teams evaluating local, automation-friendly creative software"
+          ],
+          "caveats": [
+            "The project explicitly labels itself early alpha and asks users to expect rough edges",
+            "Roadmap parity percentages measure feature surface and can overstate user-facing readiness",
+            "Open issues document gaps in brushes, transforms, large-document performance, and interface behavior"
+          ],
+          "complements": [
+            "A mature image editor for unsupported or production-critical operations",
+            "Representative layered files for compatibility testing",
+            "Color-managed displays and documented export checks"
+          ],
+          "prerequisites": [
+            "A supported macOS, Windows, Linux, FreeBSD, or modern browser environment",
+            "Backups or duplicate files when evaluating early-alpha editing workflows",
+            "Tolerance for missing tools, rough edges, and rapid project change"
+          ],
+          "useCases": [
+            "Editing layered raster documents with masks, adjustments, type, vectors, and brushes",
+            "Testing PSD and PSB round trips against real project files",
+            "Driving image-editing operations through a CLI or structured control channel"
+          ]
+        },
+        "category": "media",
+        "displayName": "PhotoCraft",
+        "docs": "https://getartcraft.com/apps/photocraft",
+        "homepage": "https://getartcraft.com/apps/photocraft",
+        "id": "brew:cask:photocraft",
+        "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aphotocraft",
+        "lastUpdatedAt": "2026-10-07T11:50:50Z",
+        "manager": "homebrew",
+        "repository": "https://github.com/storytold/photocraft",
+        "researchedAt": "2026-10-08T07:48:26Z",
+        "sources": [
+          {
+            "kind": "primary",
+            "title": "PhotoCraft product overview",
+            "url": "https://getartcraft.com/apps/photocraft"
+          },
+          {
+            "kind": "primary",
+            "title": "PhotoCraft source, architecture, and alpha status",
+            "url": "https://github.com/storytold/photocraft"
+          },
+          {
+            "kind": "independent",
+            "title": "PhotoCraft availability in Homebrew",
+            "url": "https://formulae.brew.sh/cask/photocraft"
+          }
+        ],
+        "upstreamSummary": "Image editor",
+        "version": "0.3.0"
+      },
+      "primaryPackageID": "brew:cask:photocraft",
+      "publishedAt": "2026-10-08T07:48:26Z",
+      "relatedPackages": [
+        {
+          "agentSummary": "PhotoCraft is an early-alpha, native Rust image editor pursuing layered PSD compatibility, local processing, GPU rendering, and cross-platform builds while openly tracking substantial gaps.",
+          "assessment": {
+            "alternatives": [
+              "GIMP or Krita for established open-source raster editing",
+              "Adobe Photoshop or Affinity Photo for mature commercial workflows"
+            ],
+            "audiences": [
+              "Designers and photographers willing to test an early open-source image editor",
+              "Rust contributors interested in graphics, color, file formats, or desktop UI",
+              "Teams evaluating local, automation-friendly creative software"
+            ],
+            "caveats": [
+              "The project explicitly labels itself early alpha and asks users to expect rough edges",
+              "Roadmap parity percentages measure feature surface and can overstate user-facing readiness",
+              "Open issues document gaps in brushes, transforms, large-document performance, and interface behavior"
+            ],
+            "complements": [
+              "A mature image editor for unsupported or production-critical operations",
+              "Representative layered files for compatibility testing",
+              "Color-managed displays and documented export checks"
+            ],
+            "prerequisites": [
+              "A supported macOS, Windows, Linux, FreeBSD, or modern browser environment",
+              "Backups or duplicate files when evaluating early-alpha editing workflows",
+              "Tolerance for missing tools, rough edges, and rapid project change"
+            ],
+            "useCases": [
+              "Editing layered raster documents with masks, adjustments, type, vectors, and brushes",
+              "Testing PSD and PSB round trips against real project files",
+              "Driving image-editing operations through a CLI or structured control channel"
+            ]
+          },
+          "category": "media",
+          "displayName": "PhotoCraft",
+          "docs": "https://getartcraft.com/apps/photocraft",
+          "homepage": "https://getartcraft.com/apps/photocraft",
+          "id": "brew:cask:photocraft",
+          "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Aphotocraft",
+          "lastUpdatedAt": "2026-10-07T11:50:50Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/storytold/photocraft",
+          "researchedAt": "2026-10-08T07:48:26Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "PhotoCraft product overview",
+              "url": "https://getartcraft.com/apps/photocraft"
+            },
+            {
+              "kind": "primary",
+              "title": "PhotoCraft source, architecture, and alpha status",
+              "url": "https://github.com/storytold/photocraft"
+            },
+            {
+              "kind": "independent",
+              "title": "PhotoCraft availability in Homebrew",
+              "url": "https://formulae.brew.sh/cask/photocraft"
+            }
+          ],
+          "upstreamSummary": "Image editor",
+          "version": "0.3.0"
+        },
+        {
+          "agentSummary": "typdiff compares two Typst sources and emits compilable Typst with structural and word-level change markup, including character-level handling for Chinese, Japanese, and Korean text.",
+          "assessment": {
+            "alternatives": [
+              "A raw Git text diff for source-level review",
+              "latexdiff for LaTeX documents",
+              "Manual tracked-change workflows in a word processor"
+            ],
+            "audiences": [
+              "Typst authors reviewing revisions to papers, reports, or documentation",
+              "Academic and technical writers who need a printable redline",
+              "Teams adding human-readable document comparison to review pipelines"
+            ],
+            "caveats": [
+              "Raw blocks, equations, and function calls are treated as atomic rather than diffed internally",
+              "The output adds markup but still depends on Typst for PDF rendering",
+              "A young parser-aware tool may encounter valid Typst constructs not covered by its current tests"
+            ],
+            "complements": [
+              "Git for selecting document revisions",
+              "Typst for compiling the generated comparison",
+              "Continuous integration artifacts for reviewable PDFs"
+            ],
+            "prerequisites": [
+              "Two Typst source files representing old and new revisions",
+              "A Typst compiler when a rendered PDF is required"
+            ],
+            "useCases": [
+              "Generate a visual Typst document showing additions and deletions",
+              "Compare headings, paragraphs, lists, and modified text within blocks",
+              "Produce a PDF redline by compiling the generated Typst source"
+            ]
+          },
+          "category": "developer-tools",
+          "displayName": "typdiff",
+          "docs": "https://github.com/sou1118/typdiff#readme",
+          "homepage": "https://github.com/sou1118/typdiff",
+          "id": "brew:typdiff",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atypdiff",
+          "lastUpdatedAt": "2026-10-08T00:44:54Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/sou1118/typdiff",
+          "researchedAt": "2026-10-08T07:48:26Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "typdiff documentation and implementation overview",
+              "url": "https://github.com/sou1118/typdiff"
+            },
+            {
+              "kind": "primary",
+              "title": "typdiff initial v0.1.0 release",
+              "url": "https://github.com/sou1118/typdiff/releases/tag/v0.1.0"
+            },
+            {
+              "kind": "independent",
+              "title": "Typst community discussion of visual document diffs",
+              "url": "https://github.com/typst/typst/issues/3049"
+            }
+          ],
+          "upstreamSummary": "Diff tool that generates Typst documents highlighting differences between inputs",
+          "version": "0.1.3"
+        },
+        {
+          "agentSummary": "TeXres packages TeX engines, formats, fonts, bibliography tools, and an archive into one Rust executable, aiming for reproducible builds without runtime package downloads.",
+          "assessment": {
+            "alternatives": [
+              "TeX Live for the broadest established package ecosystem",
+              "MiKTeX for on-demand package management",
+              "Tectonic for another self-contained TeX-oriented workflow"
+            ],
+            "audiences": [
+              "LaTeX authors who want a compact, self-contained toolchain",
+              "Teams seeking repeatable document builds without runtime package fetching",
+              "Developers embedding TeX compilation through C or WebAssembly interfaces"
+            ],
+            "caveats": [
+              "Its rapid pre-1.0 development warrants testing output on production documents",
+              "System fonts are not used; additional fonts must be placed with the project",
+              "ARM64 Linux builds require glibc 2.36 or newer and musl-based systems are unsupported"
+            ],
+            "complements": [
+              "A source editor with SyncTeX-aware PDF navigation",
+              "typdiff or latexdiff for revision review",
+              "Continuous integration checks against representative documents"
+            ],
+            "prerequisites": [
+              "A supported macOS, Windows, or glibc-based Linux system",
+              "Project-local font files when the bundled font set is insufficient",
+              "Compatibility testing against the packages and macros used by each document"
+            ],
+            "useCases": [
+              "Compile pdfLaTeX, XeLaTeX, or LuaLaTeX documents from one distribution",
+              "Run bibliography passes and repeated compilation until references converge",
+              "Watch project inputs and rebuild PDFs after meaningful file changes"
+            ]
+          },
+          "category": "productivity",
+          "displayName": "texres",
+          "docs": "https://github.com/leoliu0/texres#readme",
+          "homepage": "https://github.com/leoliu0/texres",
+          "id": "brew:texres",
+          "installURL": "pkgmgrmgr://install?package=brew%3Atexres",
+          "lastUpdatedAt": "2026-10-07T18:45:57Z",
+          "manager": "homebrew",
+          "repository": "https://github.com/leoliu0/texres",
+          "researchedAt": "2026-10-08T07:48:26Z",
+          "sources": [
+            {
+              "kind": "primary",
+              "title": "TeXres documentation and compatibility notes",
+              "url": "https://github.com/leoliu0/texres"
+            },
+            {
+              "kind": "primary",
+              "title": "TeXres initial v0.1.0 release",
+              "url": "https://github.com/leoliu0/texres/releases/tag/v0.1.0"
+            },
+            {
+              "kind": "independent",
+              "title": "TeXres availability in Homebrew",
+              "url": "https://formulae.brew.sh/formula/texres"
+            }
+          ],
+          "upstreamSummary": "Fast TeX engine written in Rust",
+          "version": "0.7.3"
+        }
+      ],
+      "selection": {
+        "firstStableReleaseAt": "2026-10-02T00:09:14Z",
+        "firstStableReleaseSourceURL": "https://github.com/storytold/photocraft/releases/tag/v0.1.0",
+        "rationale": "newer"
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "PhotoCraft product overview",
+          "url": "https://getartcraft.com/apps/photocraft"
+        },
+        {
+          "kind": "primary",
+          "title": "PhotoCraft source, status, and architecture",
+          "url": "https://github.com/storytold/photocraft"
+        },
+        {
+          "kind": "primary",
+          "title": "PhotoCraft first v0.1.0 release",
+          "url": "https://github.com/storytold/photocraft/releases/tag/v0.1.0"
+        },
+        {
+          "kind": "independent",
+          "title": "PhotoCraft availability in Homebrew",
+          "url": "https://formulae.brew.sh/cask/photocraft"
+        },
+        {
+          "kind": "primary",
+          "title": "typdiff documentation and implementation overview",
+          "url": "https://github.com/sou1118/typdiff"
+        },
+        {
+          "kind": "independent",
+          "title": "Typst community discussion of visual document diffs",
+          "url": "https://github.com/typst/typst/issues/3049"
+        },
+        {
+          "kind": "primary",
+          "title": "TeXres documentation and compatibility notes",
+          "url": "https://github.com/leoliu0/texres"
+        },
+        {
+          "kind": "primary",
+          "title": "TeXres first v0.1.0 release",
+          "url": "https://github.com/leoliu0/texres/releases/tag/v0.1.0"
+        }
+      ],
+      "title": "Three Young Rust Tools Rework Document Pipelines",
+      "type": "editorial"
+    }
+  ],
+  "generatedAt": "2026-10-27T06:08:57Z",
+  "nextPageURL": "https://pkg.so/discover/feed/v2/pages/20261027T060857Z-72258a01.json",
+  "pageID": "20261027T060857Z-acfba95c",
+  "schemaVersion": 2
+}
