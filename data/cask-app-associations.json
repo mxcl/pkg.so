@@ -325,11 +325,11 @@
     "anythingllm": {
       "bundle_identifier": "com.anythingllm",
       "confidence": "high",
-      "evidence_hash": "58f857a9c9d91e72a117d3280cd7b2e94181614c601729556227d5dadec1d8f4",
-      "reason": "A recent macOS crash report in the vendor\u2019s official repository names com.anythingllm as the AnythingLLM application coalition and distinguishes the nested helper as com.anythingllm.helper.",
+      "evidence_hash": "3d9466eff9357088313f828c5159717e193e4d00afba9cc86c497824f89d5330",
+      "reason": "The official repository contains a macOS crash report identifying /Applications/AnythingLLM.app as com.anythingllm; com.anythingllm.helper is explicitly a bundled helper.",
       "sources": [
-        "https://anythingllm.com/download",
-        "https://github.com/Mintplex-Labs/anything-llm/issues/5621"
+        "https://formulae.brew.sh/api/cask/anythingllm.json",
+        "https://github.com/Mintplex-Labs/anything-llm/issues/3401"
       ]
     },
     "anytype": {
@@ -1117,12 +1117,12 @@
     },
     "butterkit": {
       "bundle_identifier": "app.butterkit.direct",
-      "confidence": "high",
-      "evidence_hash": "84944b367d4a308efa2772ab429eec45c2f551cf1a4bc9b181f8a8f7b40402a1",
-      "reason": "Homebrew identifies the primary ButterKit .app and lists app.butterkit.direct for its sandbox container, caches, and recent documents; the only alternative is explicitly a group-container identifier.",
+      "confidence": "medium",
+      "evidence_hash": "f9c926fb224d87531f31c8b0c27b4d053cb7a8ddb5730cb65df437ee520585a0",
+      "reason": "The cask installs ButterKit\u2019s official direct-distribution build, whose app-specific container, cache, and recent-document paths use app.butterkit.direct; group.app.butterkit is explicitly a shared group-container identifier.",
       "sources": [
-        "https://butterkit.app/",
-        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/b/butterkit.rb"
+        "https://butterkit.app/docs/licensing/activation/how-to-activate/",
+        "https://formulae.brew.sh/api/cask/butterkit.json"
       ]
     },
     "bwana": {
@@ -6537,6 +6537,16 @@
         "https://github.com/nodebox/nodebox/blob/master/build.xml"
       ]
     },
+    "nook": {
+      "bundle_identifier": "com.gstudios.nook",
+      "confidence": "high",
+      "evidence_hash": "de47b5ad1096d3e3f2cedfaca3c87256bbb728c01e09486474aa450500cdeb48",
+      "reason": "Nook\u2019s official release notes explicitly state that the app bundle identifier changed from the older io.browsewithnook.nook identity to com.gstudios.nook beginning with the release line installed by the current cask.",
+      "sources": [
+        "https://formulae.brew.sh/cask/nook",
+        "https://github.com/nook-browser/Nook/releases"
+      ]
+    },
     "notebooks": {
       "bundle_identifier": "com.aschmid.notebooks2",
       "confidence": "high",
@@ -6605,6 +6615,16 @@
       "sources": [
         "https://formulae.brew.sh/cask/nuclino",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/n/nuclino.rb"
+      ]
+    },
+    "nvalt": {
+      "bundle_identifier": "net.elasticthreads.nv",
+      "confidence": "medium",
+      "evidence_hash": "bac73d33c9638db536026341669bfadeb97d0c35f9d375f5b36f81399867f385",
+      "reason": "The official cask\u2019s sole nvALT.app artifact and its net.elasticthreads.nv preference domain agree with the identity used by the vendor\u2019s official nvALT source project, but no directly rendered current Info.plist was available.",
+      "sources": [
+        "https://formulae.brew.sh/api/cask/nvalt.json",
+        "https://github.com/ttscoff/nv"
       ]
     },
     "nvidia-sync": {
@@ -7852,6 +7872,16 @@
       "reason": "The official Xcode project identifies Proxy Audio Device Settings.app as the application target and assigns this PRODUCT_BUNDLE_IDENTIFIER; the similar ProxyAudioDevice identifier belongs to the audio driver.",
       "sources": [
         "https://github.com/briankendall/proxy-audio-device/blob/master/proxyAudioDevice.xcodeproj/project.pbxproj"
+      ]
+    },
+    "prusaslicer@preview": {
+      "bundle_identifier": null,
+      "confidence": "low",
+      "evidence_hash": "1f44ed45a6f606c87cdf591735c84a2b0e27d3d561988a8981f188b4c73232ea",
+      "reason": "The official PrusaSlicer repository documents this exact CFBundleIdentifier, including the malformed trailing slash, in the installed macOS 3.0 alpha app's Info.plist.",
+      "sources": [
+        "https://github.com/prusa3d/PrusaSlicer/issues/15818",
+        "https://github.com/prusa3d/PrusaSlicer/releases/tag/version_3.0.0-alpha12"
       ]
     },
     "publii": {
@@ -10503,11 +10533,12 @@
     },
     "vivid-app": {
       "bundle_identifier": "com.goodsnooze.vivid",
-      "confidence": "high",
-      "evidence_hash": "25018f2bbc8c5890a86c9ccd2a7e5652045db91c59e439c7b250670270ae9343",
-      "reason": "Homebrew identifies Vivid.app and consistently uses com.goodsnooze.vivid for its preferences, HTTP storage, and ordinary cache. The alternative is explicitly a Bugsnag shared-data directory name, not the application bundle identifier.",
+      "confidence": "medium",
+      "evidence_hash": "63cc3afe86a6bd4ceffa651d860c337d94d0c9dff63be7cbff4ee5e345ae8e71",
+      "reason": "The official cask associates Vivid.app\u2019s preferences, caches, and HTTP storage with com.goodsnooze.vivid; bugsnag-shared-com.goodsnooze.vivid is clearly the Bugsnag shared-storage namespace rather than the primary app identifier.",
       "sources": [
-        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/v/vivid-app.rb",
+        "https://apps.apple.com/us/app/vivid-double-your-brightness/id6443470555",
+        "https://formulae.brew.sh/api/cask/vivid-app.json",
         "https://www.getvivid.app/"
       ]
     },
@@ -10866,10 +10897,10 @@
     "wox": {
       "bundle_identifier": "com.github.wox",
       "confidence": "high",
-      "evidence_hash": "5ed2431e353fe0c7971a43be84341f4786bc540b389dd3f581e4648f748b93b6",
-      "reason": "The official repository\u2019s macOS Info.plist directly declares com.github.wox as Wox.app\u2019s CFBundleIdentifier.",
+      "evidence_hash": "8487790cd363e4f17d7db62cd6e3f7a6eca7c307b426d071ecc48eb7c1632478",
+      "reason": "The official Wox macOS Info.plist directly declares this identifier, and its Makefile packages that manifest into Wox.app.",
       "sources": [
-        "https://formulae.brew.sh/cask/wox",
+        "https://github.com/Wox-launcher/Wox/blob/master/Makefile",
         "https://github.com/Wox-launcher/Wox/blob/master/assets/mac/Info.plist"
       ]
     },
