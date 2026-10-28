@@ -72,6 +72,51 @@ history:
       challenge method. DNS-01 support is especially important for wildcard certificates
       and machines that cannot expose HTTP challenges; the docs maintain per-provider
       credential and environment-variable pages for that integration surface.
+related-packages:
+  - id: brew:certbot
+    reason: >
+      Choose Certbot for a Python-based ACME client with first-party Apache and Nginx
+      integration; choose lego for a portable Go binary or an embeddable Go library with
+      a particularly broad DNS-provider catalog.
+    rel: alternative
+    sources:
+      - https://certbot.eff.org/docs/
+      - https://go-acme.github.io/lego/
+  - id: brew:acme.sh
+    reason: >
+      Choose acme.sh when a shell-only ACME client suits minimal Unix systems or
+      appliances; choose lego when a compiled Go binary and Go library API are
+      preferable.
+    rel: alternative
+    sources:
+      - https://github.com/acmesh-official/acme.sh
+      - https://go-acme.github.io/lego/
+  - id: brew:dehydrated
+    reason: >
+      Choose dehydrated for a small hook-oriented Bash ACME workflow using standard Unix
+      tools; choose lego for native multi-platform distribution and built-in
+      DNS-provider implementations.
+    rel: alternative
+    sources:
+      - https://github.com/dehydrated-io/dehydrated
+      - https://go-acme.github.io/lego/
+  - id: brew:caddy
+    reason: >
+      Caddy is a practical adjacent choice when certificate acquisition and renewal
+      should be integrated directly into an automatic-HTTPS web server instead of
+      managed as a separate ACME command.
+    rel: adjacent_workflow
+    sources:
+      - https://caddyserver.com/docs/automatic-https
+      - https://go-acme.github.io/lego/
+  - id: brew:traefik
+    reason: >
+      Traefik complements the same ACME operations in a provider-driven reverse-proxy
+      workflow, especially for Docker and Kubernetes routing.
+    rel: adjacent_workflow
+    sources:
+      - https://doc.traefik.io/traefik/https/acme/
+      - https://go-acme.github.io/lego/
 category: security
 package-manager:
   apk: lego

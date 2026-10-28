@@ -3,7 +3,11 @@ display-name: legit
 repo: https://github.com/frostming/legit
 docs:
   - https://frostming.github.io/legit
-config-file-location: null
+config-file-location:
+  unix:
+    - .git/config
+    - ~/.gitconfig
+    - ~/.config/git/config
 credentials-file-location: null
 history:
   adoption-history:
@@ -57,6 +61,16 @@ history:
       commands are deliberately narrower than raw Git: switch branches while preserving
       worktree changes, sync a published branch, publish or unpublish branches, and list
       branch publication status.
+related-packages:
+  - id: brew:git-extras
+    reason: >
+      Choose git-extras for a large collection of independent Git subcommands, including
+      feature, release, branch-cleanup, and repository-inspection tools; choose legit
+      for a smaller opinionated publish-and-sync workflow.
+    rel: alternative
+    sources:
+      - https://frostming.github.io/legit/
+      - https://github.com/tj/git-extras/blob/main/Commands.md
 tags:
   - cli
   - git

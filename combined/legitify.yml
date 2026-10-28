@@ -55,6 +55,25 @@ history:
       actions, branch protection, and other SCM resources. Its Homebrew packaging
       matters because security teams can hand developers a familiar install path instead
       of a vendor-only SaaS workflow.
+related-packages:
+  - id: brew:gh
+    reason: >
+      GitHub CLI is the documented host for the official `gh-legitify` extension,
+      allowing Legitify audits to run as `gh legitify`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Legit-Labs/legitify
+      - https://github.com/Legit-Labs/gh-legitify
+      - https://cli.github.com/manual/gh_extension
+  - id: brew:scorecard
+    reason: >
+      The official `gh-legitify` extension can run OpenSSF Scorecard during analysis,
+      combining Legitify's SCM configuration policies with Scorecard's repository
+      security-health checks.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/Legit-Labs/gh-legitify
+      - https://github.com/ossf/scorecard
 category: security
 package-manager:
   brew: legitify
