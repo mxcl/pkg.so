@@ -68,6 +68,35 @@ history:
       modes. Leapp can generate temporary credentials through STS, rotate them, and
       configure AWS credential_process entries such as credential_process=leapp session
       generate SESSION_ID for tools that use the AWS credential chain.
+related-packages:
+  - id: cask:leapp
+    reason: >
+      Install the Leapp desktop application alongside this CLI because the official CLI
+      documentation states that the desktop app must be installed and running, and the
+      CLI operates on its workspaces and sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.leapp.cloud/latest/cli/
+      - https://github.com/Noovolari/leapp#readme
+  - id: brew:awscli
+    reason: >
+      Use AWS CLI with Leapp because Leapp can write standard AWS profiles or supply
+      temporary credentials through `credential_process`, which AWS CLI officially
+      supports as an external credential source.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.leapp.cloud/latest/security/credential-process/
+      - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html
+  - id: brew:granted
+    reason: >
+      Choose Granted for an AWS-focused, shell-first role-assumption and browser-console
+      workflow; choose Leapp when you want a desktop-managed session model with AWS and
+      Azure support plus a companion CLI.
+    rel: alternative
+    sources:
+      - https://docs.granted.dev/getting-started/
+      - https://docs.leapp.cloud/latest/cli/
+      - https://github.com/Noovolari/leapp#readme
 tags:
   - aws
   - azure
