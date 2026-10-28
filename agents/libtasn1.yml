@@ -75,6 +75,23 @@ history:
     - >
       Its common role is not as an end-user utility but as a low-level dependency for
       software that needs strict certificate, key, or protocol data handling.
+related-packages:
+  - id: brew:gnutls
+    reason: >
+      GnuTLS uses Libtasn1 for ASN.1 and DER handling, so it is the natural adjacent
+      package when building or diagnosing the TLS stack that consumes this library.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/libtasn1/
+      - https://gnutls.org/manual/gnutls.html
+  - id: brew:p11-kit
+    reason: >
+      p11-kit is an officially identified Libtasn1 consumer and complements it in PKCS
+      #11 module discovery and system trust-policy workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/libtasn1/
+      - https://p11-glue.github.io/p11-glue/p11-kit/manual/
 tags:
   - cli
   - not-completed
