@@ -92,6 +92,24 @@ history:
       drivers, and command-line workflows can compile or run against PostgreSQL.
       Developers use `pg_config` to find build flags, `psql` for interactive sessions,
       and the dump/restore utilities for movement between PostgreSQL instances.
+related-packages:
+  - id: brew:postgresql@18
+    reason: >
+      Install PostgreSQL 18 when the libpq client tools must be paired with a locally
+      operated current-major PostgreSQL server.
+    rel: adjacent_workflow
+    sources:
+      - https://www.postgresql.org/docs/18/index.html
+      - https://www.postgresql.org/docs/current/libpq.html
+  - id: brew:libpq@17
+    reason: >
+      Choose libpq@17 instead when builds or operational scripts must remain pinned to
+      the PostgreSQL 17 client headers and utilities rather than track the current libpq
+      line.
+    rel: alternative
+    sources:
+      - https://www.postgresql.org/docs/17/libpq.html
+      - https://www.postgresql.org/support/versioning/
 category: developer-tools
 package-manager:
   apk: libpq

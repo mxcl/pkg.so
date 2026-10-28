@@ -82,6 +82,15 @@ history:
       script, or backup workflow expects PostgreSQL 16 client headers or tools. It is
       especially useful when `pg_dump`, `pg_restore`, `psql`, or `pg_config` need to
       come from the 16.x line rather than an unversioned formula.
+related-packages:
+  - id: brew:postgresql@16
+    reason: >
+      Install PostgreSQL 16 alongside libpq@16 when the pinned client library and
+      utilities need a locally operated server from the same major line.
+    rel: adjacent_workflow
+    sources:
+      - https://www.postgresql.org/docs/16/index.html
+      - https://www.postgresql.org/docs/16/libpq.html
 category: developer-tools
 package-manager:
   apk: libpq
