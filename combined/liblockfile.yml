@@ -57,6 +57,16 @@ history:
       The library is used by programs that need NFS-safe lock creation. The dotlockfile
       command is used directly in scripts or as the setgid mail helper that lets
       mailbox-locking programs avoid carrying setgid mail themselves.
+related-packages:
+  - id: brew:flock
+    reason: >
+      Choose flock for portable advisory locking around ordinary commands; retain
+      liblockfile when mailbox-compatible dot locks or its explicitly NFS-safe
+      link-based algorithm are required.
+    rel: alternative
+    sources:
+      - https://github.com/miquels/liblockfile#readme
+      - https://github.com/discoteq/flock/blob/master/README.md
 category: system
 package-manager:
   apk: liblockfile
