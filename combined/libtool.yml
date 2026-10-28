@@ -73,6 +73,23 @@ history:
       compiling source packages: it creates libtool object files, links libtool
       archives, manages PIC/non-PIC builds, and emits platform-specific install or
       runtime-linking commands.
+related-packages:
+  - id: brew:autoconf
+    reason: >
+      Use Autoconf with Libtool to generate portable configure scripts and initialize
+      Libtool through macros such as LT_INIT.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/libtool/manual/libtool.html
+      - https://www.gnu.org/software/automake/faq/autotools-faq.html
+  - id: brew:automake
+    reason: >
+      Use Automake with Libtool when Makefile.am should generate portable rules for
+      building and installing Libtool libraries.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/libtool/manual/libtool.html
+      - https://www.gnu.org/software/automake/faq/autotools-faq.html
 category: other
 package-manager:
   apk: libltdl

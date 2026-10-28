@@ -81,6 +81,24 @@ history:
       Because TIFF is a container-like image format with many tags, compression modes,
       and historical edge cases, LibTIFF often serves as the shared compatibility layer
       instead of each application implementing the format independently.
+related-packages:
+  - id: brew:imagemagick
+    reason: >
+      Choose ImageMagick when the goal is end-user image conversion or manipulation
+      across TIFF and many other formats; LibTIFF provides the lower-level TIFF-specific
+      library and utilities.
+    rel: adjacent_workflow
+    sources:
+      - https://imagemagick.org/formats/
+      - https://libtiff.gitlab.io/libtiff/tools.html
+  - id: brew:gdal
+    reason: >
+      Use GDAL alongside LibTIFF for geospatial TIFF and BigTIFF datasets, including
+      GeoTIFF metadata, raster overviews, and geospatial conversion workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://gdal.org/en/stable/drivers/raster/gtiff.html
+      - https://libtiff.gitlab.io/libtiff/specification/bigtiff.html
 category: other
 package-manager:
   brew: libtiff

@@ -64,6 +64,24 @@ history:
       traffic captures from offline files or live interfaces. Developers link against
       the library when they need one API over multiple capture formats and, in the 4.0
       line, when they need parallel packet processing.
+related-packages:
+  - id: brew:wireshark
+    reason: >
+      Choose Wireshark when interactive inspection and broad protocol dissection matter
+      more than embedding a format-independent trace-processing API; its pcap inputs can
+      participate in the same capture-file workflow.
+    rel: alternative
+    sources:
+      - https://github.com/LibtraceTeam/libtrace/wiki
+      - https://www.wireshark.org/docs/wsug_html_chunked/ChIOOpenSection
+  - id: brew:tcpdump
+    reason: >
+      Choose tcpdump for a compact command-line capture and packet-display workflow; its
+      pcap files can feed subsequent libtrace processing and analysis.
+    rel: alternative
+    sources:
+      - https://github.com/LibtraceTeam/libtrace
+      - https://www.wireshark.org/docs/wsug_html_chunked/ChIOOpenSection
 tags:
   - cli
   - network-analysis
