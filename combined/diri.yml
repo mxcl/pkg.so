@@ -2,9 +2,144 @@ id: cask:diri
 display-name: diri
 homepage: https://diri.sh/
 repo: https://github.com/cristicretu/diri
+docs:
+  - https://diri.sh/docs
+  - https://diri.sh/docs/agents
+  - https://diri.sh/docs/mcp
+  - https://diri.sh/guides
+config-file-location:
+  linux: ~/.config/diri
+  macos:
+    - ~/Library/Application Support/diri
+    - ~/Library/Application Support/Dirijor/manifests/overrides/
+credentials-file-location:
+  macos:
+    - ~/Library/Application Support/Dirijor/accounts.json
+    - ~/Library/Application Support/Dirijor/codex-logins/
+    - ~/Library/Application Support/Dirijor/claude-logins/
+history:
+  adoption-history:
+    - >
+      diri targets the emerging workflow in which developers supervise several terminal
+      coding agents instead of interacting with one conversation at a time. Its bundled
+      agent catalog supports numerous independent CLIs while giving Claude Code and
+      Codex especially deep status and conversation-resume integration.
+    - >
+      The project also extends beyond local macOS sessions: its official documentation
+      covers remote SSH hosts, a Linux beta, persistent background sessions, Git
+      worktrees, agent-to-agent delegation, notes, and scheduled recipes.
+  package-nerd-significance:
+    - >
+      diri treats coding-agent orchestration as a local developer-tooling problem rather
+      than a hosted service. It runs already-installed CLIs and existing provider
+      accounts, while a background engine and per-session terminal holders keep work
+      alive when the graphical application closes.
+    - >
+      Its manifest-driven agent support is notable for packagers and tool integrators:
+      command discovery, resume behavior, approval keys, hooks, and terminal-screen
+      status rules are described as data, allowing new agents to be added without
+      redesigning the application.
+  project-history:
+    - >
+      diri was developed as a native workspace for supervising parallel coding-agent
+      sessions. Its architecture separates the desktop interface, a persistent Engine
+      that owns session state and worktrees, and small terminal-holder processes that
+      keep individual sessions running across application or Engine restarts.
+    - >
+      The project subsequently exposed its Engine through a bundled MCP server and
+      command-line interface, allowing agents to start helpers, delegate tasks, inspect
+      results, and integrate worktree changes from inside an existing session.
+  related-projects:
+    - >
+      Claude Code and Codex receive the deepest documented status, resume, account, and
+      orchestration integration.
+    - >
+      Cursor and Gemini CLI are among the separately installed terminal agents that diri
+      can discover and launch.
+    - >
+      Git worktrees and SSH hosts provide task isolation and remote execution for
+      parallel sessions.
+  sources:
+    - https://diri.sh/
+    - https://diri.sh/docs/
+    - https://diri.sh/docs/accounts/
+    - https://diri.sh/docs/agents/
+    - https://diri.sh/docs/install/
+    - https://diri.sh/docs/mcp/
+    - https://github.com/cristicretu/diri
+  summary:
+    - >
+      diri is a native terminal workspace for running, monitoring, and reviewing many
+      coding agents in parallel. It combines persistent sessions, live agent status, Git
+      worktree isolation, diff review, remote hosts, and an MCP interface through which
+      agents can coordinate helpers.
+  timeline:
+    - >
+      Initial design: diri separates its desktop application from a persistent session
+      Engine and per-session terminal holders.
+    - >
+      Later development: Git worktree review, remote hosts, notes, schedules, account
+      switching, and a built-in agent-orchestration MCP server expand the workflow.
+  usage:
+    - >
+      Developers add a project folder, select an installed agent, and start one or many
+      sessions. Each task can receive its own Git worktree, while the interface shows
+      whether sessions are working, waiting for input, or finished and presents their
+      changes for review.
+    - >
+      Advanced workflows use the bundled `dirijor` MCP server or CLI to spawn helpers,
+      hand out tasks, read results, and integrate work. Agents and their provider
+      accounts remain separately installed; diri orchestrates the local CLIs rather than
+      supplying its own model service.
+related-packages:
+  - id: cask:claude-code
+    reason: >
+      Install Claude Code as a first-class agent inside diri to gain hook-based status,
+      exact conversation resume and forking, quick approvals, and automatic MCP
+      orchestration.
+    rel: adjacent_workflow
+    sources:
+      - https://diri.sh/docs/agents/
+      - https://diri.sh/docs/mcp/
+  - id: cask:codex
+    reason: >
+      Install Codex as a first-class diri agent for exact conversation resume and
+      forking, quick approvals, account profiles, and automatic access to diri's
+      orchestration tools.
+    rel: adjacent_workflow
+    sources:
+      - https://diri.sh/docs/agents/
+      - https://diri.sh/docs/accounts/
+      - https://diri.sh/docs/mcp/
+  - id: cask:cursor
+    reason: >
+      Use Cursor's terminal agent inside diri when you want screen-based status, exact
+      resume, quick approvals, and automatic MCP integration in the same multi-agent
+      workspace.
+    rel: adjacent_workflow
+    sources:
+      - https://diri.sh/docs/agents/
+      - https://diri.sh/docs/mcp/
+  - id: brew:gemini-cli
+    reason: >
+      Use Gemini CLI inside diri when you want it launched and monitored beside other
+      agents, accepting the documented limitation that its integration is less extensive
+      than Claude Code or Codex.
+    rel: adjacent_workflow
+    sources:
+      - https://diri.sh/docs/agents/
+      - https://diri.sh/docs/quickstart/
+category: developer-tools
 package-manager:
   brew-cask: diri
 package-manager-url: https://formulae.brew.sh/cask/diri
+tags:
+  - agent-orchestration
+  - coding-agents
+  - developer-tools
+  - git-worktrees
+  - mcp
+  - terminal-workspace
 description: Terminal workspace for running coding agents in parallel
 applications:
   - diri.app
