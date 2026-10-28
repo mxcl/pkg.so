@@ -3,7 +3,10 @@ display-name: Ledit
 repo: null
 docs:
   - https://github.com/chetmurthy/ledit#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $LEDITRC
+    - ~/.leditrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -55,6 +58,16 @@ history:
       Users run `ledit` in front of another interactive command to get line editing,
       history navigation, reverse search, and configurable key bindings without changing
       the wrapped program.
+related-packages:
+  - id: brew:rlwrap
+    reason: >
+      rlwrap is the closest alternative for adding editing and persistent history to
+      interactive commands, using GNU Readline and offering programmable filters instead
+      of Ledit's OCaml implementation.
+    rel: alternative
+    sources:
+      - https://github.com/chetmurthy/ledit#readme
+      - https://github.com/hanslub42/rlwrap#readme
 tags:
   - cli
   - interactive-shell
