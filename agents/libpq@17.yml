@@ -84,6 +84,33 @@ history:
       `pg_config`, and libpq headers for builds or operational scripts. The versioned
       formula is useful when application infrastructure has standardized on PostgreSQL
       17 but a workstation or build host also carries another PostgreSQL major.
+related-packages:
+  - id: brew:libpq
+    reason: >
+      Choose the unversioned formula when you want Homebrew's current default PostgreSQL
+      client line instead of remaining pinned to major version 17.
+    rel: alternative
+    sources:
+      - https://formulae.brew.sh/formula/libpq
+      - https://formulae.brew.sh/formula/libpq@17
+      - https://www.postgresql.org/support/versioning/
+  - id: brew:libpq@16
+    reason: >
+      Choose this when builds or administrative workflows must remain aligned with the
+      supported PostgreSQL 16 client toolchain.
+    rel: alternative
+    sources:
+      - https://formulae.brew.sh/formula/libpq@16
+      - https://formulae.brew.sh/formula/libpq@17
+      - https://www.postgresql.org/support/versioning/
+  - id: brew:postgresql@17
+    reason: >
+      Install the full PostgreSQL 17 package when the version-matched libpq clients must
+      be paired with a locally managed PostgreSQL 17 server.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/postgresql@17
+      - https://www.postgresql.org/docs/17/index.html
 tags:
   - c-api
   - cli
