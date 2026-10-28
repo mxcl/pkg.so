@@ -5,7 +5,11 @@ repo: https://github.com/ldc-developers/ldc
 docs:
   - https://github.com/ldc-developers/ldc#readme
   - https://wiki.dlang.org/LDC
-config-file-location: null
+config-file-location:
+  unix:
+    - /etc/ldc2.conf
+    - <ldc2 executable directory>/../etc/ldc2.conf
+  windows: <LDC installation directory>\etc\ldc2.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -83,6 +87,15 @@ history:
       The compiler is commonly selected when D code needs LLVM optimization,
       cross-compilation targets, sanitizer or profiling support, or integration with
       LLVM-adjacent workflows.
+related-packages:
+  - id: brew:dub
+    reason: >
+      Use DUB with LDC to resolve D packages and build or run D projects; DUB officially
+      supports LDC and translates common DMD-style compiler flags.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dlang/dub
+      - https://github.com/ldc-developers/ldc
 category: language-runtime
 package-manager:
   apk: ldc
