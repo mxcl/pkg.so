@@ -70,6 +70,34 @@ history:
       code through a common client/configuration layer. Credentials live in
       provider-specific configuration, so automation can swap DNS providers with less
       custom glue.
+related-packages:
+  - id: brew:dehydrated
+    reason: >
+      Use dehydrated with Lexicon's documented generic hook when a shell-based ACME
+      client must create and remove DNS-01 challenge records through any supported
+      provider.
+    rel: adjacent_workflow
+    sources:
+      - https://dns-lexicon.github.io/dns-lexicon/user_guide.html
+      - https://github.com/dehydrated-io/dehydrated
+  - id: brew:certbot
+    reason: >
+      Use Certbot with Lexicon's included hook when certificate issuance needs
+      provider-neutral DNS-01 record automation rather than a provider-specific Certbot
+      plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://dns-lexicon.github.io/dns-lexicon/user_guide.html
+      - https://eff-certbot.readthedocs.io/en/latest/using.html
+  - id: brew:octodns
+    reason: >
+      Choose octoDNS as an alternative when you want declarative, source-controlled
+      reconciliation of whole DNS zones; choose Lexicon for imperative record operations
+      from a CLI or Python code.
+    rel: alternative
+    sources:
+      - https://dns-lexicon.github.io/dns-lexicon/introduction.html
+      - https://github.com/octodns/octodns
 tags:
   - automation
   - cli

@@ -68,6 +68,23 @@ history:
       `less` so the filter is called automatically. Once installed, it makes `less
       archive.tar.gz`, `less file.pdf`, or nested archive inspection behave like
       ordinary paging instead of a manual extract-convert-open workflow.
+related-packages:
+  - id: brew:less
+    reason: >
+      less is the pager that invokes lesspipe through LESSOPEN, so both packages are
+      required for the documented transparent file-preprocessing workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://lesspipe.org/docs.html
+      - https://www.greenwoodsoftware.com/less/faq.html
+  - id: brew:bat
+    reason: >
+      Install bat when you want lesspipe to use its documented optional syntax-coloring
+      path for source files before sending output to less.
+    rel: adjacent_workflow
+    sources:
+      - https://lesspipe.org/docs.html
+      - https://github.com/sharkdp/bat
 category: system
 package-manager:
   brew: lesspipe
