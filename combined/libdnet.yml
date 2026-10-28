@@ -63,6 +63,24 @@ history:
       writing per-OS code. The package also ships `dnet` and `dnet-config`, making it
       useful both as a development library and as an installed build dependency for
       older networking tools.
+related-packages:
+  - id: brew:libpcap
+    reason: >
+      Use libpcap alongside libdnet when a program must capture packets as well as
+      construct, transmit, or manipulate them; the official dnet(3) manual explicitly
+      describes the APIs as complementary.
+    rel: adjacent_workflow
+    sources:
+      - https://libdnet.sourceforge.net/dnet.3.txt
+      - https://www.tcpdump.org/manpages/pcap.3pcap.html
+  - id: brew:fragroute
+    reason: >
+      fragroute is a concrete libdnet-based workflow for intercepting and rewriting
+      outbound traffic during IDS and network-stack testing.
+    rel: adjacent_workflow
+    sources:
+      - https://libdnet.sourceforge.net/
+      - https://www.monkey.org/~dugsong/fragroute/
 category: networking
 package-manager:
   apk: libdnet
