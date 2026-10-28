@@ -77,6 +77,16 @@ history:
       For developers, libsepol is the lower-level library to use when the task is
       reading, writing, checking, or transforming SELinux binary policy rather than
       asking the running system for a process or file context.
+related-packages:
+  - id: brew:libselinux
+    reason: >
+      Pair libsepol with libselinux when policy manipulation must be combined with
+      runtime SELinux operations such as reading contexts, testing enforcement state, or
+      loading policy into the system.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/SELinuxProject/selinux/wiki/Userspace-Packages
+      - https://github.com/SELinuxProject/selinux-notebook/blob/main/src/userspace_libraries.md
 category: security
 package-manager:
   apk: libsepol

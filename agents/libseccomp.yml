@@ -58,6 +58,17 @@ history:
       filter into the kernel, and optionally use tools such as scmp_sys_resolver while
       developing policies. The library docs emphasize tests that can run even on systems
       without seccomp-BPF, plus live tests for systems with kernel support.
+related-packages:
+  - id: brew:bubblewrap
+    reason: >
+      Use libseccomp to generate a compiled cBPF policy and pass it to bubblewrap's
+      --seccomp or --add-seccomp-fd option when a namespace sandbox also needs syscall
+      filtering.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/seccomp/libseccomp
+      - https://github.com/containers/bubblewrap/blob/main/README.md
+      - https://github.com/containers/bubblewrap/blob/main/bwrap.xml
 tags:
   - cli
   - linux
