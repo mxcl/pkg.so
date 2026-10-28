@@ -6,7 +6,11 @@ docs:
   - https://www.chatzi.org/lci/documentation
   - https://github.com/chatziko/lci#readme
   - https://www.chatzi.org/lci
-config-file-location: null
+config-file-location:
+  unix:
+    - $CMAKE_INSTALL_PREFIX/share/lci/.lcirc
+    - ~/.lcirc
+    - ./.lcirc
 credentials-file-location: null
 history:
   adoption-history:
@@ -62,6 +66,7 @@ history:
       `.lcirc` library supplies common encodings and functions, while the documentation
       presents the interpreter as pure lambda calculus extended with syntax that remains
       encoded in the calculus.
+related-packages: []
 category: language-runtime
 package-manager:
   brew: lci

@@ -74,6 +74,35 @@ history:
       unwanted paths, merges trace files, and renders the result with `genhtml`. Related
       utilities convert data from Perl, Python, LLVM, and XML coverage formats into LCOV
       trace data.
+related-packages:
+  - id: brew:gcovr
+    reason: >
+      Choose gcovr for a streamlined gcov reporting CLI and numerous CI-oriented output
+      formats; its official comparison notes that LCOV is preferable when Linux-kernel
+      capture or extensive tracefile merging is required.
+    rel: alternative
+    sources:
+      - https://www.gcovr.com/en/stable/faq.html
+      - https://gcovr.com/en/stable/
+      - https://github.com/linux-test-project/lcov
+  - id: brew:kcov
+    reason: >
+      Choose kcov when DWARF-based collection without special compilation switches is
+      more useful than LCOV's gcov-oriented capture workflow, including coverage for
+      compiled programs, Python, and Bash.
+    rel: alternative
+    sources:
+      - https://github.com/SimonKagstrom/kcov
+      - https://github.com/linux-test-project/lcov
+  - id: brew:codecov-cli
+    reason: >
+      Use Codecov CLI after LCOV to upload the generated LCOV text report to Codecov for
+      hosted processing and presentation.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.codecov.com/docs/codecov-uploader
+      - https://docs.codecov.com/v4.6/docs/supported-report-formats
+      - https://github.com/linux-test-project/lcov
 category: developer-tools
 package-manager:
   apk: lcov
