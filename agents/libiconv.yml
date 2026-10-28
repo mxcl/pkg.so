@@ -65,6 +65,15 @@ history:
       Developers link against libiconv through iconv_open, iconv, and iconv_close, while
       users can call the iconv program to convert files or streams between encodings.
       Build systems commonly surface it through LIBICONV or LTLIBICONV substitutions.
+related-packages:
+  - id: brew:gettext
+    reason: >
+      GNU gettext uses libiconv for message conversion on relevant platforms, and GNU
+      documents their unusual first-install bootstrap relationship.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/libiconv/
+      - https://www.gnu.org/software/gettext/manual/
 tags:
   - character-encoding
   - charset-conversion

@@ -80,6 +80,40 @@ history:
       and linking higher-level image software against a shared HEIF/AVIF implementation.
       Codec details are delegated to companion libraries or plugins such as libaom for
       AV1 support.
+related-packages:
+  - id: brew:imagemagick
+    reason: >
+      ImageMagick is a documented libheif consumer, so installing it provides a broader
+      command-line image-processing workflow around HEIC and AVIF files.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/strukturag/libheif
+      - https://imagemagick.org/
+  - id: brew:x265
+    reason: >
+      libheif uses x265 as an HEVC encoder backend when writing HEIC images; choose it
+      when HEIC encoding is required and its GPL licensing is acceptable.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/strukturag/libheif
+      - https://bitbucket.org/multicoreware/x265_git/wiki/Home
+  - id: brew:ffmpeg
+    reason: >
+      libheif documents FFmpeg as an optional decoding backend for several codecs,
+      making it useful when a build needs FFmpeg-supported decoding or hardware-assisted
+      HEVC paths.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/strukturag/libheif
+      - https://ffmpeg.org/documentation.html
+  - id: brew:openjpeg
+    reason: >
+      libheif can use OpenJPEG to decode and encode JPEG 2000 or decode HTJ2K image data
+      stored in HEIF containers.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/strukturag/libheif
+      - https://www.openjpeg.org/
 category: media
 package-manager:
   apk: heif-thumbnailer
