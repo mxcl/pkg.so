@@ -56,6 +56,33 @@ history:
       users run bsdtar, bsdcpio, bsdcat, or bsdunzip. The project site emphasizes
       automatic handling of archive-plus-compression combinations such as tar.gz and
       support for POSIX-like systems plus Windows.
+related-packages:
+  - id: brew:gnu-tar
+    reason: >
+      Choose GNU tar when the workflow is specifically tar-focused and needs GNU tar’s
+      archive-manipulation semantics; libarchive’s bsdtar is broader across archive
+      formats.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/tar/
+      - https://www.libarchive.org/
+  - id: brew:p7zip
+    reason: >
+      Choose p7zip when creating 7z archives with its extended codec set is the primary
+      task; libarchive is preferable for a single streaming API and CLI suite spanning
+      many archive families.
+    rel: alternative
+    sources:
+      - https://github.com/p7zip-project/p7zip
+      - https://github.com/libarchive/libarchive/wiki/LibarchiveFormats
+  - id: brew:zstd
+    reason: >
+      Install zstd when building or using libarchive workflows that need native
+      Zstandard compression and decompression support through libzstd.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/libarchive/libarchive/wiki/LibarchiveFormats
+      - https://facebook.github.io/zstd/
 category: developer-tools
 package-manager:
   apk: libarchive

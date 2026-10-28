@@ -59,6 +59,24 @@ history:
       Developers use libadwaita through the C API, GObject introspection bindings,
       GtkBuilder UI files, and the adwaita-1 demo. The package is pulled in by many
       GNOME apps rather than run directly by end users.
+related-packages:
+  - id: brew:gtk4
+    reason: >
+      GTK 4 provides the underlying widget toolkit that libadwaita supplements with
+      GNOME-specific adaptive widgets, styles, and design patterns.
+    rel: adjacent_workflow
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/libadwaita/doc/main/
+      - https://gnome.pages.gitlab.gnome.org/gtk/gtk4/
+  - id: brew:libhandy
+    reason: >
+      Choose libhandy for an application that must remain on GTK 3; libadwaita is its
+      GTK 4 successor and requires a GTK 3-to-4 migration.
+    rel: alternative
+    sources:
+      - >
+        https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1.0/migrating-libhandy-1-4-to-libadwaita.html
+      - https://gitlab.gnome.org/GNOME/libhandy
 category: developer-tools
 package-manager:
   apk: libadwaita
