@@ -90,6 +90,32 @@ history:
       implementation; it supplies lower-level cryptographic operations. That boundary is
       important for users choosing between Libgcrypt, GPGME, and the GnuPG command-line
       tools.
+related-packages:
+  - id: brew:libgpg-error
+    reason: >
+      Install Libgpg-error alongside Libgcrypt when building the GnuPG library stack,
+      because it provides Libgcrypt's shared error-code and runtime layer.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnupg.org/software/libgpg-error/
+      - https://www.gnupg.org/documentation/manuals/gcrypt/
+  - id: brew:gnupg
+    reason: >
+      Choose GnuPG when the task is complete OpenPGP encryption, signing, or key
+      management; Libgcrypt supplies lower-level cryptographic primitives used by that
+      ecosystem.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnupg.org/software/libgcrypt/index.html
+      - https://www.gnupg.org/
+  - id: brew:gpgme
+    reason: >
+      Choose GPGME when an application needs the supported high-level API to GnuPG
+      engines rather than direct access to Libgcrypt primitives.
+    rel: alternative
+    sources:
+      - https://www.gnupg.org/software/gpgme/index.html
+      - https://www.gnupg.org/software/libgcrypt/index.html
 tags:
   - c-library
   - cli

@@ -76,6 +76,31 @@ history:
       Developers use the C library when they need direct access to GeoTIFF key
       directories rather than a full GIS framework. That makes it useful as a dependency
       under larger geospatial applications and as a command-line diagnostic package.
+related-packages:
+  - id: brew:libtiff
+    reason: >
+      Use LibTIFF with libgeotiff for the underlying TIFF image and tag access; upstream
+      lists it as a direct dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/OSGeo/libgeotiff
+      - https://libtiff.gitlab.io/libtiff/
+  - id: brew:proj
+    reason: >
+      Use PROJ alongside libgeotiff for coordinate-reference definitions and
+      transformations; upstream lists PROJ as a direct dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/OSGeo/libgeotiff
+      - https://proj.org/en/stable/
+  - id: brew:gdal
+    reason: >
+      Choose GDAL when you need a higher-level GeoTIFF raster driver, format conversion,
+      and broader GIS workflows rather than only GeoTIFF key manipulation.
+    rel: alternative
+    sources:
+      - https://gdal.org/en/stable/drivers/raster/gtiff.html
+      - https://github.com/OSGeo/libgeotiff
 tags:
   - c-library
   - cli
