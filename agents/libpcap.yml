@@ -82,6 +82,24 @@ history:
     - >
       The small `pcap-config` utility is package-nerd visible because build systems and
       ports use it to discover compiler and linker flags for libpcap.
+related-packages:
+  - id: brew:tcpdump
+    reason: >
+      Install tcpdump for a compact command-line packet analyzer built directly on
+      libpcap's capture API and filter language.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/the-tcpdump-group/tcpdump/blob/master/INSTALL.md
+      - https://github.com/the-tcpdump-group/libpcap
+  - id: brew:wireshark
+    reason: >
+      Install Wireshark when you want graphical or TShark-based protocol analysis; its
+      official documentation identifies libpcap as the Unix live-capture layer.
+    rel: adjacent_workflow
+    sources:
+      - https://www.wireshark.org/docs/wsdg_html_chunked/ChWorksCapturePackets.html
+      - https://wiki.wireshark.org/libpcap
+      - https://github.com/the-tcpdump-group/libpcap
 tags:
   - c-library
   - cli
