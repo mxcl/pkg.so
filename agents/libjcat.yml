@@ -67,6 +67,15 @@ history:
       verify a catalog against a public certificate. Version 2.0.0 added support for
       signing the checksum of a large payload instead of loading the whole payload for
       signature verification.
+related-packages:
+  - id: brew:fwupd
+    reason: >
+      fwupd consumes Jcat catalogs in the LVFS firmware workflow to verify detached
+      checksums and signatures for firmware payloads and metadata.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hughsie/libjcat#readme
+      - https://github.com/fwupd/fwupd/blob/main/docs/only-trusted.md
 tags:
   - checksums
   - cli
