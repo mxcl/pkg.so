@@ -60,6 +60,24 @@ history:
       credentials and candidates, and then move data through libnice APIs or through
       nicesrc and nicesink GStreamer elements. The reference manual separates ICE, STUN,
       TURN, and pseudo-TCP APIs.
+related-packages:
+  - id: brew:gstreamer
+    reason: >
+      Use GStreamer with libnice when carrying real-time media through ICE: libnice
+      officially supplies nicesrc and nicesink elements for insertion into GStreamer
+      pipelines.
+    rel: adjacent_workflow
+    sources:
+      - https://libnice.freedesktop.org/
+      - https://gstreamer.freedesktop.org/documentation/
+  - id: brew:coturn
+    reason: >
+      Use coturn as the deployed TURN relay service when a libnice NiceAgent needs relay
+      candidates because direct peer-to-peer connectivity cannot be established.
+    rel: adjacent_workflow
+    sources:
+      - https://libnice.freedesktop.org/libnice/class.Agent.html
+      - https://github.com/coturn/coturn#readme
 tags:
   - cli
   - glib

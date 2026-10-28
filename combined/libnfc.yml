@@ -70,6 +70,23 @@ history:
       nfc-list, nfc-poll, nfc-scan-device, nfc-mfclassic, nfc-mfultralight, and pn53x
       utilities. Official configuration examples use /etc/nfc/libnfc.conf and per-device
       files under /etc/nfc/devices.d when built with sysconfdir=/etc.
+related-packages:
+  - id: brew:libfreefare
+    reason: >
+      Use libfreefare above libnfc when an application needs a higher-level C API for
+      MIFARE and other supported RFID card operations rather than raw reader access.
+    rel: adjacent_workflow
+    sources:
+      - https://nfc-tools.github.io/
+      - https://github.com/nfc-tools/libfreefare
+  - id: brew:pcsc-lite
+    reason: >
+      Use pcsc-lite alongside libnfc when accessing compatible readers through libnfc's
+      PC/SC driver instead of a direct USB driver.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nfc-tools/libnfc/blob/master/README.md
+      - https://pcsclite.apdu.fr/
 category: networking
 package-manager:
   apk: libnfc
