@@ -66,6 +66,40 @@ history:
       clusters, resource types, resources, owned objects, and containers as a navigable
       hierarchy. Users can inspect YAML and logs, manage resources, run cluster actions,
       and customize behavior in `~/.config/lfk/config.yaml`.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      LFK officially requires a configured `kubectl` and also supports running kubectl
+      commands inside its command bar, so the Kubernetes CLI is its primary companion.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/janosmiko/lfk#install
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:k9s
+    reason: >
+      K9s is an alternative terminal UI for interacting with Kubernetes clusters; choose
+      it when its established resource-view and plugin workflow is preferable to LFK's
+      Miller-column navigation.
+    rel: alternative
+    sources:
+      - https://github.com/janosmiko/lfk#readme
+      - https://k9scli.io/
+  - id: brew:helm
+    reason: >
+      LFK documents Helm as an optional dependency and exposes Helm release management
+      within its Kubernetes interface.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/janosmiko/lfk#install
+      - https://helm.sh/docs/
+  - id: brew:trivy
+    reason: >
+      LFK documents Trivy as an optional dependency for image vulnerability scanning
+      from the cluster interface.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/janosmiko/lfk#install
+      - https://trivy.dev/
 category: cloud-infrastructure
 package-manager:
   brew: lfk

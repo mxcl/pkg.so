@@ -7,7 +7,57 @@ docs:
 config-file-location:
   unix: ~/.lexido/remoteConfig.json
 credentials-file-location: null
-history: null
+history:
+  adoption-history:
+    - >
+      The official README documented distribution through Homebrew, the Arch User
+      Repository, release binaries, and source builds. The repository was archived by
+      its owner in November 2025, making Lexido a historical example of the first wave
+      of small generative-AI shell assistants.
+  package-nerd-significance:
+    - >
+      Lexido packaged prompt-to-command assistance as a standalone Go executable and
+      supported both a hosted Gemini workflow and local inference through Ollama. Its
+      flexible remote API template also illustrates how early AI CLI packages exposed
+      generic endpoint, header, request-body, and response-field configuration.
+  project-history:
+    - >
+      Lexido was developed by micr0-dev as a cross-platform command-line assistant
+      powered initially by Gemini 1.5 Flash. Later functionality added local model
+      execution through Ollama and configurable remote API requests.
+    - The owner archived the official repository on November 21, 2025, leaving it read-only.
+  related-projects:
+    - Ollama is the explicitly documented local-model backend for Lexido.
+  sources:
+    - https://github.com/micr0-dev/lexido
+  summary:
+    - >
+      Lexido is a generative-AI terminal assistant that suggests commands using
+      information about the user's system and current shell context.
+  timeline:
+    - >
+      Early development: Lexido introduced contextual command suggestions, piped input,
+      and continued conversations.
+    - >
+      Later development: Local inference through Ollama and configurable remote API
+      integration were added.
+    - '2025: The owner archived the official repository on November 21.'
+  usage:
+    - >
+      Users pass a natural-language request to `lexido`, optionally pipe command output
+      into it, or continue an earlier interaction with `-c`. Local mode uses Ollama,
+      while remote mode reads endpoint, headers, request templates, and response
+      extraction rules from `~/.lexido/remoteConfig.json`.
+related-packages:
+  - id: brew:ollama
+    reason: >
+      Lexido officially supports Ollama as its local inference backend, so install
+      Ollama when command suggestions should run against locally managed models instead
+      of a remote API.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/micr0-dev/lexido#running-locally
+      - https://ollama.com/
 category: ai
 package-manager:
   brew: lexido
