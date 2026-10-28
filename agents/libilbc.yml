@@ -66,6 +66,16 @@ history:
       running ilbc_test against raw 8 kHz mono PCM samples. The codec remains relevant
       where narrowband speech compatibility and packet-loss behavior matter more than
       modern wideband audio quality.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg can use libilbc as an optional iLBC decoder wrapper when built with
+      --enable-libilbc, placing the standalone codec inside a general media-processing
+      workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://ffmpeg.org/ffmpeg-codecs.html#libilbc
+      - https://github.com/TimothyGu/libilbc
 tags:
   - audio-codec
   - cli

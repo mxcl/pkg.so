@@ -76,6 +76,15 @@ history:
       the library for IDNA lookup and registration conversions. The manual emphasizes
       correct locale and UTF-8 handling because feeding bytes in the wrong character set
       can produce errors or wrong output.
+related-packages:
+  - id: brew:libidn
+    reason: >
+      Choose GNU Libidn only when maintaining software that specifically requires legacy
+      IDNA2003 or Stringprep behavior; Libidn2 is the documented IDNA2008 successor.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/libidn/
+      - https://www.gnu.org/software/libidn/libidn2/manual/libidn2.html
 tags:
   - cli
   - dns
