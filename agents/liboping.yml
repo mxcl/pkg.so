@@ -70,6 +70,26 @@ history:
       The README documents the permissions issue that matters to packagers: raw sockets
       require elevated privileges, so Linux packages may use cap_net_raw while other
       Unix systems may need a setuid-root installation strategy.
+related-packages:
+  - id: brew:fping
+    reason: >
+      Choose fping for a mature script-oriented multi-host probing utility; unlike
+      liboping's reusable library and dual-stack oping interface, fping focuses on
+      efficient, parseable command-line checks.
+    rel: alternative
+    sources:
+      - https://noping.cc/documentation/oping/
+      - https://fping.org/
+      - https://fping.org/fping.8.html
+  - id: brew:collectd
+    reason: >
+      Use collectd when liboping-style latency and packet-loss measurements should feed
+      a persistent metrics pipeline through collectd's Ping plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://collectd.org/documentation/manpages/collectd.conf.html
+      - https://www.collectd.org/documentation/faq.html
+      - https://noping.cc/documentation/liboping/
 tags:
   - c-library
   - cli

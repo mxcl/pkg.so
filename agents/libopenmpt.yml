@@ -84,6 +84,32 @@ history:
     - >
       The library also provides a libmodplug compatibility layer, which helps projects
       migrate from older module-decoding APIs while using OpenMPT playback behavior.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Use FFmpeg when tracked modules must be decoded or transcoded inside a broad
+      command-line and library media workflow; OpenMPT documents FFmpeg's libopenmpt
+      demuxer.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.openmpt.org/Libopenmpt
+      - https://ffmpeg.org/documentation.html
+  - id: brew:gstreamer
+    reason: >
+      Use GStreamer to incorporate libopenmpt decoding into graph-based multimedia
+      applications through its documented openmptdec plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.openmpt.org/Libopenmpt
+      - https://gstreamer.freedesktop.org/documentation/
+  - id: brew:mpd
+    reason: >
+      Use Music Player Daemon when module playback should be served by a persistent,
+      remotely controlled music player; OpenMPT lists MPD as a libopenmpt adopter.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.openmpt.org/Libopenmpt
+      - https://mpd.readthedocs.io/en/stable/user.html
 tags:
   - audio
   - cli
