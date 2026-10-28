@@ -6,7 +6,52 @@ docs:
   - https://github.com/swanandx/lemmeknow#readme
 config-file-location: null
 credentials-file-location: null
-history: null
+history:
+  adoption-history:
+    - >
+      The project supports several adoption paths: a standalone executable, installation
+      through Cargo or Nix, embedding as a Rust crate, and compilation to WebAssembly.
+  package-nerd-significance:
+    - >
+      lemmeknow packages a large identification-pattern collection into a fast native
+      CLI and reusable Rust library. It is useful for security triage, CTF work, malware
+      analysis, and examining unfamiliar strings without assembling a collection of
+      one-off regular expressions.
+  project-history:
+    - >
+      The project describes itself as inspired by the Python utility pyWhat,
+      reimplementing the broad string-identification concept in Rust and exposing it
+      through both a command-line interface and a library API.
+  related-projects:
+    - pyWhat inspired the project and addresses the same broad artifact-identification task.
+    - lemmeknow-frontend demonstrates the library's WebAssembly support.
+  sources:
+    - https://docs.rs/lemmeknow/
+    - https://github.com/swanandx/lemmeknow
+  summary:
+    - >
+      lemmeknow is a Rust command-line tool and library that identifies mysterious text
+      and recognizes artifacts in files, captured network data, malware strings, and
+      similar input.
+  timeline:
+    - 'Project lineage: lemmeknow was created as a Rust tool inspired by pyWhat.'
+  usage:
+    - >
+      Users pass text or a filename to the lemmeknow executable. Human-readable output
+      is the default, while --json produces structured results suitable for scripts.
+    - >
+      Rust applications can depend on the lemmeknow crate with default features disabled
+      when they need the recognition engine without the standalone CLI.
+related-packages:
+  - id: brew:pywhat
+    reason: >
+      pyWhat inspired lemmeknow and performs the same broad artifact-identification
+      task; choose it when a Python-based workflow or its documented packet-capture
+      support is preferable.
+    rel: alternative
+    sources:
+      - https://github.com/swanandx/lemmeknow
+      - https://github.com/bee-san/pyWhat
 category: developer-tools
 package-manager:
   brew: lemmeknow

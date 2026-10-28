@@ -57,6 +57,24 @@ history:
       Users write a context-free grammar and run lemon to emit C parser code. Compared
       with yacc and bison, Lemon uses different grammar syntax, expects the tokenizer to
       call the parser, and emphasizes reentrant and thread-safe generated parsers.
+related-packages:
+  - id: brew:bison
+    reason: >
+      GNU Bison is the established yacc-compatible alternative; choose it for yacc
+      grammar compatibility and its wider parser skeleton ecosystem, while Lemon offers
+      its own error-resistant grammar syntax and tokenizer-driven reentrant interface.
+    rel: alternative
+    sources:
+      - https://sqlite.org/lemon.html
+      - https://www.gnu.org/software/bison/manual/
+  - id: brew:sqlite
+    reason: >
+      SQLite is Lemon's parent project and primary consumer: its SQL parser and FTS5
+      query parser are generated from Lemon grammars.
+    rel: adjacent_workflow
+    sources:
+      - https://sqlite.org/lemon.html
+      - https://sqlite.org/
 category: developer-tools
 package-manager:
   brew: lemon

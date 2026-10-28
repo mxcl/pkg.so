@@ -61,6 +61,23 @@ history:
       transforming, analyzing, and writing images. The package also includes
       command-line programs such as file conversion and PDF/PostScript helpers that
       expose common library workflows.
+related-packages:
+  - id: brew:tesseract
+    reason: >
+      Tesseract uses Leptonica for image loading and preprocessing, so the two form the
+      standard packaged OCR engine and document-image library stack.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/DanBloomberg/leptonica
+      - https://github.com/tesseract-ocr/tesseract
+  - id: brew:jbig2enc
+    reason: >
+      jbig2enc is an official downstream Leptonica user that combines Leptonica's image
+      handling with JBIG2 compression for multipage binary documents.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/DanBloomberg/leptonica
+      - https://github.com/agl/jbig2enc
 tags:
   - c-library
   - cli

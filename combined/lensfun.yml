@@ -4,7 +4,13 @@ homepage: https://lensfun.github.io/
 repo: https://github.com/lensfun/lensfun
 docs:
   - https://lensfun.github.io/
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.local/share/lensfun/*.xml
+    - ~/.local/share/lensfun/version_x/*.xml
+  windows:
+    - '%USERPROFILE%/AppData/Local/lensfun/*.xml'
+    - '%USERPROFILE%/AppData/Local/lensfun/version_x/*.xml'
 credentials-file-location: null
 history:
   adoption-history:
@@ -66,6 +72,24 @@ history:
       algorithms based on the matched equipment profile. The project also ships tools
       such as lensfun-update-data and lenstool for maintaining or testing the database
       outside a larger photo application.
+related-packages:
+  - id: cask:rawtherapee
+    reason: >
+      RawTherapee directly integrates Lensfun for equipment-specific correction,
+      providing an end-user raw-photo workflow around Lensfun's library and profile
+      database.
+    rel: adjacent_workflow
+    sources:
+      - https://lensfun.github.io/usage/
+      - https://rawpedia.rawtherapee.com/Lens/Geometry
+  - id: brew:exiv2
+    reason: >
+      Lensfun's FAQ recommends Exiv2 for inspecting camera and lens metadata when an
+      editor selects the wrong profile, making it a practical diagnostic companion.
+    rel: adjacent_workflow
+    sources:
+      - https://lensfun.github.io/faq/
+      - https://exiv2.org/
 category: media
 package-manager:
   apk: lensfun
