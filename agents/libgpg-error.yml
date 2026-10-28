@@ -81,6 +81,32 @@ history:
       At build time, gpgrt-config and gpg-error-config help downstream software discover
       headers, compiler flags, and linker flags, making the package part of the familiar
       Unix library toolchain.
+related-packages:
+  - id: brew:gnupg
+    reason: >
+      GnuPG is the principal application suite built on this shared error/runtime layer;
+      install it when the goal is encryption, signing, or key management rather than
+      library development.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnupg.org/software/libgpg-error/
+      - https://www.gnupg.org/documentation/manuals/gnupg/
+  - id: brew:libgcrypt
+    reason: >
+      Libgcrypt uses Libgpg-error for the common error-handling scheme and supplies the
+      cryptographic primitives needed by the wider GnuPG stack.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnupg.org/software/libraries.html
+      - https://gnupg.org/documentation/manuals/gcrypt.pdf
+  - id: brew:gpgme
+    reason: >
+      GPGME depends on Libgpg-error and provides the higher-level application API for
+      driving GnuPG engines.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnupg.org/software/libraries.html
+      - https://gnupg.org/documentation/manuals/gpgme/Encrypting-a-Plaintext.html
 tags:
   - c-library
   - cli
