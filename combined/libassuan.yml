@@ -58,6 +58,23 @@ history:
       sockets. The protocol is mostly text based, supports client/server communication
       with a back channel, descriptor passing for bulk data, and optional
       confidentiality features for parts of a conversation.
+related-packages:
+  - id: brew:gnupg
+    reason: >
+      GnuPG is the principal application stack for which Assuan was designed and uses
+      the library for communication among specialized cryptographic components.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnupg.org/software/libassuan/index.html
+      - https://www.gnupg.org/software/libraries.html
+  - id: brew:gpgme
+    reason: >
+      GPGME exposes the Assuan protocol so applications can send transactions to the
+      GnuPG agent or another Assuan server through its higher-level API.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnupg.org/documentation/manuals/gpgme/Assuan.html
+      - https://www.gnupg.org/documentation/manuals/gpgme/Using-the-Assuan-protocol.html
 category: security
 package-manager:
   apk: libassuan

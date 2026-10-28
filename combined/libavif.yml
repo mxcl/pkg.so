@@ -58,6 +58,39 @@ history:
       library when they need AVIF support without embedding the full details of AV1
       codec selection, metadata handling, tiling, alpha, gain maps, and color
       conversion.
+related-packages:
+  - id: brew:aom
+    reason: >
+      libaom is libavif's official full encoder-and-decoder back end and is the usual
+      choice when both AVIF creation and reading are required.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/AOMediaCodec/libavif#codec-dependencies
+      - https://aomedia.googlesource.com/aom
+  - id: brew:dav1d
+    reason: >
+      dav1d is a decoding-only back end documented by libavif and is useful when the
+      workflow prioritizes fast AVIF reading rather than encoding.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/AOMediaCodec/libavif#codec-dependencies
+      - https://code.videolan.org/videolan/dav1d
+  - id: brew:rav1e
+    reason: >
+      rav1e is an encoder back end supported by libavif for AVIF creation when a
+      Rust-based AV1 encoder is preferred.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/AOMediaCodec/libavif#codec-dependencies
+      - https://github.com/xiph/rav1e
+  - id: brew:svt-av1
+    reason: >
+      SVT-AV1 is an encoder back end supported by libavif for AVIF workflows that favor
+      its scalable, performance-oriented AV1 implementation.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/AOMediaCodec/libavif#codec-dependencies
+      - https://gitlab.com/AOMediaCodec/SVT-AV1
 category: media
 package-manager:
   apk: libavif
