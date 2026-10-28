@@ -68,6 +68,17 @@ history:
       application, then creating arenas and pools appropriate to their object model. The
       manual positions it as a system that can cooperate with malloc/free or C++
       new/delete rather than requiring an immediate rewrite of all memory management.
+related-packages:
+  - id: brew:jemalloc
+    reason: >
+      Choose jemalloc when you need a largely drop-in malloc implementation focused on
+      fragmentation and threaded scalability; choose MPS when the application can
+      integrate explicit pools, object scanning, and garbage-collection policies.
+    rel: alternative
+    sources:
+      - https://www.ravenbrook.com/project/mps/
+      - https://jemalloc.net/
+      - https://jemalloc.net/jemalloc.3.html
 category: system
 package-manager:
   brew: libmps
