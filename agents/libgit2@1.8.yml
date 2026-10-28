@@ -4,7 +4,15 @@ repo: null
 docs:
   - https://libgit2.org/docs
   - https://libgit2.org/docs/reference
-config-file-location: null
+config-file-location:
+  linux:
+    - /etc/gitconfig
+  unix:
+    - $XDG_CONFIG_HOME/git/config
+    - ~/.config/git/config
+    - ~/.gitconfig
+    - $GIT_DIR/config
+    - $GIT_DIR/config.worktree
 credentials-file-location: null
 history:
   adoption-history:
@@ -88,6 +96,17 @@ history:
       The versioned Homebrew formula matters because native Git bindings often pin to a
       libgit2 major or minor ABI. Keeping libgit2@1.8 lets dependent software build
       against the 1.8 API/ABI while the unversioned formula can move on.
+related-packages:
+  - id: brew:git
+    reason: >
+      Choose Git for the canonical interactive and scripted command-line client; choose
+      libgit2 1.8 when an application specifically needs the embeddable 1.8 C API and
+      ABI.
+    rel: alternative
+    sources:
+      - https://git-scm.com/
+      - https://libgit2.org/
+      - https://github.com/libgit2/libgit2/blob/main/docs/changelog.md
 tags:
   - api
   - c-library
