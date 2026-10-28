@@ -62,6 +62,31 @@ history:
       playlists, navigate titles, and support Java-based BD-J menus. Users normally
       experience it through a player such as VLC, mpv, MPlayer, Kodi, or FFmpeg builds
       rather than by invoking libbluray directly.
+related-packages:
+  - id: cask:vlc
+    reason: >
+      VLC is a user-facing media player explicitly identified by VideoLAN as a libbluray
+      consumer, making it the natural companion for graphical Blu-ray playback.
+    rel: adjacent_workflow
+    sources:
+      - https://www.videolan.org/developers/libbluray.html
+      - https://www.videolan.org/vlc/
+  - id: brew:mpv
+    reason: >
+      mpv provides command-line Blu-ray playback and documents its direct reliance on
+      libbluray for disc navigation, region handling, and BD-J menus.
+    rel: adjacent_workflow
+    sources:
+      - https://mpv.io/manual/stable/
+      - https://videolan.videolan.me/libbluray/
+  - id: brew:libaacs
+    reason: >
+      libaacs complements libbluray by implementing AACS handling, which VideoLAN notes
+      is separately required for many protected commercial discs.
+    rel: adjacent_workflow
+    sources:
+      - https://www.videolan.org/developers/libbluray.html
+      - https://www.videolan.org/developers/libaacs.html
 category: media
 package-manager:
   apk: libbluray

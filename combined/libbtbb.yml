@@ -61,6 +61,26 @@ history:
       Users install libbtbb as a C library and headers, then consume it through
       Ubertooth utilities, packet decoders, and Wireshark-related workflows. The README
       notes use with Ubertooth devices and GR-Bluetooth/USRP.
+related-packages:
+  - id: brew:ubertooth
+    reason: >
+      Ubertooth supplies the hardware-facing host utilities and firmware that pair
+      directly with libbtbb for capturing and decoding Bluetooth traffic.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/greatscottgadgets/ubertooth
+      - https://github.com/greatscottgadgets/libbtbb
+      - https://ubertooth.readthedocs.io/en/latest/build_guide.html
+  - id: brew:wireshark
+    reason: >
+      Wireshark is the documented analysis endpoint for Ubertooth Bluetooth captures,
+      with BLE support built in and workflows for traffic decoded through the libbtbb
+      ecosystem.
+    rel: adjacent_workflow
+    sources:
+      - https://ubertooth.readthedocs.io/en/latest/build_guide.html
+      - https://ubertooth.readthedocs.io/en/latest/capturing_BLE_Wireshark.html
+      - https://www.wireshark.org/docs/
 category: networking
 package-manager:
   brew: libbtbb

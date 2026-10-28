@@ -63,6 +63,26 @@ history:
       The bsc executable compresses large files in blocks, while libbsc exposes the same
       algorithms for memory blocks. The README documents multicore block processing and
       optional NVIDIA CUDA acceleration on supported GPUs.
+related-packages:
+  - id: brew:zstd
+    reason: >
+      Choose Zstandard for a standardized general-purpose format with a wide
+      speed-versus-ratio range and very fast decoding; choose libbsc when experimenting
+      with block-sorting compression and its optional GPU acceleration.
+    rel: alternative
+    sources:
+      - https://github.com/IlyaGrebnov/libbsc
+      - https://facebook.github.io/zstd/
+  - id: brew:bzip2
+    reason: >
+      Choose bzip2 when compatibility with the long-established .bz2 ecosystem matters;
+      choose libbsc for its newer high-performance block-sorting implementation,
+      multicore processing, and optional CUDA support.
+    rel: alternative
+    sources:
+      - https://github.com/IlyaGrebnov/libbsc
+      - https://sourceware.org/bzip2/
+      - https://sourceware.org/bzip2/manual/manual.html
 category: data
 package-manager:
   brew: libbsc
