@@ -2,9 +2,84 @@ id: cask:privadovpn
 display-name: PrivadoVPN
 homepage: https://privadovpn.com/
 repo: null
+docs:
+  - https://support.privadovpn.com/kb/article/915-privadovpn-macos-setup
+  - https://support.privadovpn.com/kb/article/916-privadovpn-for-mac-features-overview
+  - https://support.privadovpn.com/setup-guides
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      PrivadoVPN expanded from enterprise Windows and Android applications into a
+      consumer service offering both free and paid access. macOS and iOS clients arrived
+      in 2020, free-account support followed in 2021, and support broadened to
+      television platforms and additional VPN features.
+  package-nerd-significance:
+    - >
+      PrivadoVPN represents the packaged, account-backed end of the VPN-client spectrum:
+      protocol selection, network extensions, kill-switch behavior, automatic
+      connection, and split routing are presented through one native client rather than
+      assembled from separate command-line components and configuration files.
+  project-history:
+    - >
+      PrivadoVPN says it began in 2019 to address the lack of reliable free VPN service.
+      The company is based in Switzerland and describes its service as zero-log,
+      supported by a team with prior secure-infrastructure experience.
+    - >
+      The service launched commercially in December 2019, added macOS and iOS clients in
+      October 2020, implemented WireGuard in November 2021, and introduced split
+      tunneling in February 2022.
+  related-projects:
+    - >
+      The macOS client supports IKEv2, WireGuard, and OpenVPN. PrivadoVPN also publishes
+      an official workflow for using its generated OpenVPN configurations with the
+      independent Tunnelblick client.
+  sources:
+    - https://privadovpn.com/about-us/
+    - https://support.privadovpn.com/kb/article/915-privadovpn-macos-setup/
+    - https://support.privadovpn.com/kb/article/916-privadovpn-for-mac-features-overview/
+    - https://www.privadovpn.com/company/media/
+  summary:
+    - >
+      PrivadoVPN is a Switzerland-based VPN service and native client offering free and
+      paid accounts, multiple VPN protocols, a kill switch, automatic connection, and
+      per-application split routing.
+  timeline:
+    - '2019-04: PrivadoVPN launched Windows and Android applications as an enterprise service.'
+    - '2019-12: A commercial service launched with a free VPN offering.'
+    - '2020-10: macOS and iOS applications launched.'
+    - '2021-11: WireGuard protocol support was introduced.'
+    - '2022-02: Split tunneling was introduced.'
+  usage:
+    - >
+      On macOS, users sign in with a Privado username or email and password, authorize
+      the helper and optional network extensions, and connect to the best available or a
+      selected server. Advanced settings include protocol choice, kill switch,
+      auto-connect, and SmartRoute split tunneling.
+related-packages:
+  - id: cask:tunnelblick
+    reason: >
+      Use Tunnelblick with PrivadoVPN-generated OpenVPN profiles when you prefer an
+      open-source macOS OpenVPN client and manual control instead of PrivadoVPN's native
+      application.
+    rel: adjacent_workflow
+    sources:
+      - https://support.privadovpn.com/kb/article/361-macos-openvpn-manual-setup-tunnelblick/
+      - https://tunnelblick.net/
+category: security
 package-manager:
   brew-cask: privadovpn
 package-manager-url: https://formulae.brew.sh/cask/privadovpn
+tags:
+  - kill-switch
+  - macos
+  - network-security
+  - openvpn
+  - privacy
+  - split-tunneling
+  - vpn
+  - wireguard
 description: VPN client
 applications:
   - PrivadoVPN.app
