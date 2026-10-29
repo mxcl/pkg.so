@@ -73,6 +73,24 @@ history:
     - >
       Because the formula is tied to llvm@20, it is most useful when a project is
       intentionally testing or building against the LLVM 20 toolchain line.
+related-packages:
+  - id: brew:llvm@20
+    reason: >
+      Install the matching LLVM 20 package for the compiler, libraries, and utilities
+      aligned with this linker; Homebrew declares it as lld@20's version-matched
+      dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/lld@20
+      - https://releases.llvm.org/20.1.0/docs/GettingStarted.html
+  - id: brew:binutils
+    reason: >
+      Choose GNU Binutils when exact GNU ld behavior or the accompanying GNU binary
+      utilities matter more than LLD's speed and LLVM integration.
+    rel: alternative
+    sources:
+      - https://lld.llvm.org/
+      - https://www.gnu.org/software/binutils/binutils.html
 tags:
   - cli
   - compiler-toolchain

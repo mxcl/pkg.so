@@ -74,6 +74,26 @@ history:
       Application-specific and language-REPL initialization files take precedence over
       the general home-directory file; a working-directory `.lldbinit` is not sourced by
       default for security reasons.
+related-packages:
+  - id: brew:gdb
+    reason: >
+      Choose GDB for its broader documented language range and established GNU or
+      remote-debugging workflows; LLDB provides an official command map to ease
+      switching between the two debuggers.
+    rel: alternative
+    sources:
+      - https://lldb.llvm.org/use/map.html
+      - https://www.gnu.org/software/gdb/
+  - id: brew:llvm
+    reason: >
+      Use LLVM alongside LLDB for the compiler infrastructure, libraries, and Clang
+      tooling that LLDB integrates with and that Homebrew declares as its direct
+      dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://lldb.llvm.org/resources/build.html
+      - https://lldb.llvm.org/resources/overview.html
+      - https://formulae.brew.sh/formula/lldb
 category: developer-tools
 package-manager:
   apk: lldb

@@ -70,6 +70,24 @@ history:
       Because lld is usually selected through compiler-driver flags, versioned
       installations let build systems point PATH or explicit tool variables at the older
       linker without changing every package on the machine.
+related-packages:
+  - id: brew:llvm@19
+    reason: >
+      Use the matching LLVM 19 package for Clang, LLVM libraries, and other tools
+      aligned with this linker; Homebrew declares it as lld@19's version-matched
+      dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/lld@19
+      - https://releases.llvm.org/19.1.0/docs/GettingStarted.html
+  - id: brew:binutils
+    reason: >
+      Choose GNU Binutils when a build requires GNU ld or the wider GNU binary-tool
+      suite instead of LLD's faster, mostly GNU-compatible linker implementation.
+    rel: alternative
+    sources:
+      - https://lld.llvm.org/
+      - https://www.gnu.org/software/binutils/binutils.html
 category: developer-tools
 package-manager:
   brew: lld@19

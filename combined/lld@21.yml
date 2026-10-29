@@ -70,6 +70,23 @@ history:
     - >
       Because it is a versioned formula, lld@21 is a deliberate opt-in package for
       pinned toolchains rather than the general Homebrew lld default.
+related-packages:
+  - id: brew:llvm@21
+    reason: >
+      Use the matching LLVM 21 package for Clang, LLVM libraries, and companion tools
+      aligned with this linker; it is lld@21's declared Homebrew dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://formulae.brew.sh/formula/lld@21
+      - https://releases.llvm.org/21.1.0/docs/GettingStarted.html
+  - id: brew:binutils
+    reason: >
+      Use GNU Binutils when a project depends on exact GNU ld behavior or needs the
+      broader GNU assembler and binary-utility suite.
+    rel: alternative
+    sources:
+      - https://lld.llvm.org/
+      - https://www.gnu.org/software/binutils/binutils.html
 category: developer-tools
 package-manager:
   apk: lld21
