@@ -51,6 +51,34 @@ history:
       host-specific adds. Users keep a Git repository of dotfiles, while lnk restores
       files to their original paths as symlinks and can keep host-specific files under
       hostname-based subdirectories.
+related-packages:
+  - id: brew:chezmoi
+    reason: >
+      Choose chezmoi when dotfiles need templates, scripts, secret-manager integration,
+      and substantial per-machine variation; choose lnk for a smaller Git-and-symlink
+      workflow without a separate configuration language.
+    rel: alternative
+    sources:
+      - https://github.com/yarlson/lnk
+      - https://www.chezmoi.io/what-does-chezmoi-do/
+  - id: brew:yadm
+    reason: >
+      Choose yadm for a Git-like dotfiles repository with alternates, bootstrapping, and
+      encryption; choose lnk when explicit add, pull, doctor, and host-specific symlink
+      operations are preferable.
+    rel: alternative
+    sources:
+      - https://github.com/yarlson/lnk
+      - https://yadm.io/
+  - id: brew:stow
+    reason: >
+      Choose GNU Stow for general-purpose symlink-farm management organized as packages;
+      choose lnk when Git synchronization and dotfile-specific host handling should be
+      built into the command.
+    rel: alternative
+    sources:
+      - https://github.com/yarlson/lnk
+      - https://www.gnu.org/software/stow/manual/stow.html
 category: developer-tools
 package-manager:
   brew: lnk

@@ -51,6 +51,33 @@ history:
       language table with files, total lines, blank lines, comments, and code. It is
       used for quick repository sizing, comparing implementation-language mix, and
       sanity-checking source tree growth.
+related-packages:
+  - id: brew:tokei
+    reason: >
+      Choose Tokei when correctness, library embedding, and structured output matter
+      more than loc's narrow emphasis on raw counting speed; loc's own README recommends
+      considering Tokei for accuracy.
+    rel: alternative
+    sources:
+      - https://github.com/cgag/loc
+      - https://github.com/XAMPPRocky/tokei
+  - id: brew:cloc
+    reason: >
+      Choose cloc for its mature language coverage, archive and repository handling,
+      diff features, and broad portability; choose loc for a small compiled Rust counter
+      optimized for fast local scans.
+    rel: alternative
+    sources:
+      - https://github.com/cgag/loc
+      - https://github.com/AlDanial/cloc
+  - id: brew:scc
+    reason: >
+      Choose scc when line counts should include complexity and COCOMO cost estimates;
+      choose loc when a simpler language-and-line summary is sufficient.
+    rel: alternative
+    sources:
+      - https://github.com/cgag/loc
+      - https://github.com/boyter/scc
 tags:
   - cli
   - code-analysis

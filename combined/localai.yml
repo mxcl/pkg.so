@@ -5,8 +5,13 @@ repo: https://github.com/mudler/LocalAI
 docs:
   - https://localai.io
   - https://localai.io/basics/getting_started
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - models/*.yaml
+    - BASEPATH/configuration/runtime_settings.json
+    - BASEPATH/configuration/external_backends.json
+credentials-file-location:
+  unix: BASEPATH/configuration/api_keys.json
 history:
   adoption-history:
     - >
@@ -109,6 +114,27 @@ history:
       treat containers as the fullest-feature path because some Python-based and heavy
       media backends are not included in all binaries. The binary reference documents
       direct Linux and macOS downloads and notes backend limitations for binary builds.
+related-packages:
+  - id: brew:ollama
+    reason: >
+      Choose Ollama for a streamlined model pull-and-run workflow with its own local
+      API; choose LocalAI when broader OpenAI and Anthropic compatibility, multiple
+      interchangeable backends, and wider multimodal orchestration are required.
+    rel: alternative
+    sources:
+      - https://localai.io/docs/
+      - https://localai.io/docs/getting-started/
+      - https://docs.ollama.com/
+      - https://github.com/ollama/ollama
+  - id: brew:llama.cpp
+    reason: >
+      Use llama.cpp directly when a focused C/C++ GGUF inference runtime and its native
+      CLI or server are sufficient; use it alongside LocalAI when LocalAI's API and
+      orchestration layer should manage llama.cpp-backed models.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mudler/LocalAI
+      - https://github.com/ggml-org/llama.cpp
 category: ai
 package-manager:
   brew: localai
