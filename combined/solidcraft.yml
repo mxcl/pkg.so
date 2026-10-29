@@ -2,9 +2,106 @@ id: cask:solidcraft
 display-name: SolidCraft
 homepage: https://solidcraft.io/
 repo: https://github.com/tangency-labs/solidcraft
+docs:
+  - https://docs.solidcraft.io/
+  - https://docs.solidcraft.io/guide/getting-started.html
+  - https://solidcraft.io/docs
+config-file-location:
+  linux:
+    - ~/.local/share/solidcraft/app.ron
+    - ~/.local/share/solidcraft/graphics.json
+  macos:
+    - ~/Library/Application Support/SolidCraft/app.ron
+    - ~/Library/Application Support/SolidCraft/graphics.json
+  windows:
+    - '%APPDATA%\SolidCraft\app.ron'
+    - '%APPDATA%\SolidCraft\graphics.json'
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      SolidCraft is distributed as a desktop application, browser application, headless
+      CLI, and MCP server. That range supports interactive modeling, scripted validation
+      and export, and CAD workflows driven by AI agents.
+    - >
+      Official documentation describes SolidCraft as early software: core sketching,
+      solid modeling, parameters, assemblies, sheet-metal work, and a subset of
+      enclosure design are available, while surfaces, drawings, CAM, and simulation
+      remain roadmap work.
+  package-nerd-significance:
+    - >
+      SolidCraft is interesting to package maintainers because it is a pure-Rust
+      parametric CAD stack spanning native GPU-rendered desktop builds, WebAssembly, a
+      headless CLI, and MCP automation. It offers an unusually modern systems-language
+      approach to a software category commonly built from large C++ geometry and GUI
+      stacks.
+    - >
+      Its command architecture is also distinctive: toolbar actions, dialogs, scripts,
+      the CLI, the control channel, and MCP all invoke the same JSON-parameterized
+      command engine.
+  project-history:
+    - >
+      SolidCraft was created by Tangency Labs as an open-source parametric 3D CAD
+      application written in Rust. The project developed around constraint-based
+      sketches, a rebuildable feature timeline, parameters and expressions, solid
+      modeling, and portable native and web front ends.
+    - >
+      The project was previously released under another product name. Its compatibility
+      documentation preserves earlier designs and settings, while newer designs use the
+      `.sc` filename extension. Public development continues through frequent GitHub
+      releases and an openly maintained roadmap.
+  related-projects:
+    - FreeCAD is used by SolidCraft's official reference tests when checking modeling results.
+    - SolidCraft's MCP server exposes its modeling command engine to compatible AI clients.
+  sources:
+    - https://docs.solidcraft.io/
+    - https://docs.solidcraft.io/guide/getting-started.html
+    - https://github.com/tangency-labs/solidcraft
+    - https://github.com/tangency-labs/solidcraft/blob/main/ROADMAP.md
+  summary:
+    - >
+      SolidCraft is an open-source parametric 3D CAD system written in Rust, with
+      desktop, browser, command-line, and MCP interfaces backed by one scriptable
+      command engine.
+  timeline:
+    - >
+      2026: SolidCraft documentation described native desktop, browser, CLI, and MCP
+      interfaces under the SolidCraft name.
+    - >
+      2026: Public releases continued the project's early 0.x development and backward
+      compatibility with designs saved under its previous name.
+  usage:
+    - >
+      Users create constrained sketches, turn profiles into solids, organize features on
+      a timeline, and drive geometry with unit-aware expressions and named parameters.
+      Changing a parameter rebuilds dependent features.
+    - >
+      Automation users run `solidcraft-cli` command scripts for headless modeling,
+      measurement, and export, or connect an AI client to the MCP server. Designs are
+      stored in `.sc` files, with older `.solidcraft` files retained for compatibility.
+related-packages:
+  - id: cask:freecad
+    reason: >
+      Choose FreeCAD when you need a mature parametric CAD ecosystem with built-in
+      drawing, BIM, CAM, CNC, finite-element analysis, or community workbenches that
+      SolidCraft still lists as deferred or early.
+    rel: alternative
+    sources:
+      - https://docs.solidcraft.io/
+      - https://www.freecad.org/features
+category: science
 package-manager:
   brew-cask: solidcraft
 package-manager-url: https://formulae.brew.sh/cask/solidcraft
+tags:
+  - 3d-modeling
+  - cad
+  - constraint-modeling
+  - mcp
+  - open-source
+  - parametric-modeling
+  - rust
+  - solid-modeling
 description: Parametric 3D CAD modeller
 applications:
   - SolidCraft.app

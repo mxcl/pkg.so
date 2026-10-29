@@ -69,6 +69,25 @@ history:
       unicode::unicode. Users can inspect text with the unicode-query CLI, while
       applications use the library for width decisions, segmentation, conversion, and
       Unicode property lookup.
+related-packages:
+  - id: cask:contour
+    reason: >
+      Install Contour when you want the terminal emulator whose Unicode rendering
+      workflow is the primary documented production use of libunicode.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/contour-terminal/libunicode
+      - https://contour-terminal.org/
+  - id: brew:icu4c@79
+    reason: >
+      Choose ICU4C when you need a mature, broad C/C++ internationalization stack
+      covering locale data, formatting, collation, conversion, and Unicode services
+      beyond libunicode's focused modern C++ text-processing API.
+    rel: alternative
+    sources:
+      - https://github.com/contour-terminal/libunicode#readme
+      - https://unicode-org.github.io/icu/userguide/
+      - https://unicode-org.github.io/icu/userguide/icu/services.html
 category: developer-tools
 package-manager:
   apk: libunicode
