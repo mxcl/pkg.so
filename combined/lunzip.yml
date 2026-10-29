@@ -52,6 +52,31 @@ history:
       Users run Lunzip to decompress `.lz` files and to feed uncompressed tar data into
       tools such as tar. Its package role is extraction-focused rather than
       configuration-driven, so no official config or credentials file is documented.
+related-packages:
+  - id: brew:lzip
+    reason: >
+      Choose lzip when you need to create as well as extract `.lz` files; Lunzip
+      deliberately provides decompression only and targets smaller installations.
+    rel: alternative
+    sources:
+      - https://www.nongnu.org/lzip/lunzip.html
+      - https://www.nongnu.org/lzip/
+  - id: brew:lziprecover
+    reason: >
+      Choose lziprecover when an `.lz` file may be damaged, because it can decompress
+      normally while also repairing errors and merging usable data from damaged copies.
+    rel: alternative
+    sources:
+      - https://www.nongnu.org/lzip/lunzip.html
+      - https://www.nongnu.org/lzip/manual/lziprecover_manual.html
+  - id: brew:tarlz
+    reason: >
+      Use Tarlz when the workflow must create, append, inspect, or recover structured
+      `tar.lz` archives instead of only streaming one through Lunzip into tar.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/lzip/lunzip.html
+      - https://www.nongnu.org/lzip/manual/tarlz_manual.html
 category: system
 package-manager:
   brew: lunzip

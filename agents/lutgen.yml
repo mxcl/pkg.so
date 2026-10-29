@@ -4,7 +4,17 @@ repo: null
 docs:
   - https://github.com/ozwaldorf/lutgen-rs#readme
   - https://lut.sh
-config-file-location: null
+config-file-location:
+  linux:
+    - $LUTGEN_DIR
+    - $XDG_CONFIG_HOME/lutgen
+    - ~/.config/lutgen
+  macos:
+    - $LUTGEN_DIR
+    - ~/Library/Application Support/lutgen
+  windows:
+    - '%LUTGEN_DIR%'
+    - '%APPDATA%\lutgen'
 credentials-file-location: null
 history:
   adoption-history:
@@ -66,6 +76,15 @@ history:
       The README emphasizes applying palettes to images and producing Hald CLUT-style
       outputs, and the Nix flake supports running both `lutgen` and `lutgen-studio`
       directly.
+related-packages:
+  - id: brew:imagemagick
+    reason: >
+      Use ImageMagick to apply Lutgen-generated Hald CLUT images in broader scripted
+      conversion and compositing pipelines using its documented `-hald-clut` operation.
+    rel: adjacent_workflow
+    sources:
+      - https://lut.sh/examples
+      - https://imagemagick.org/command-line-options/
 tags:
   - cli
   - color-grading
