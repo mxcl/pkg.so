@@ -95,6 +95,25 @@ history:
       warns that it supports official active Node.js builds and depends on an
       appropriate LLDB installation, which is why package-manager integration is
       practical rather than cosmetic.
+related-packages:
+  - id: brew:node
+    reason: >
+      llnode requires the Node.js executable that produced a process or core dump so it
+      can interpret the associated V8 state, making Node.js the central runtime in its
+      debugging workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nodejs/llnode
+      - https://nodejs.org/en/learn/getting-started/introduction-to-nodejs
+  - id: brew:llvm
+    reason: >
+      llnode is an LLDB plugin, and the official installation guide documents LLVM/LLDB
+      as its native-debugger prerequisite when the platform does not provide a suitable
+      LLDB.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nodejs/llnode
+      - https://lldb.llvm.org/
 category: developer-tools
 package-manager:
   brew: llnode

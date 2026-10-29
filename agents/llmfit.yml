@@ -3,8 +3,14 @@ display-name: llmfit
 repo: https://github.com/AlexsJones/llmfit
 docs:
   - https://github.com/AlexsJones/llmfit#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/llmfit/
+    - ~/.config/llmfit/ (default when XDG_CONFIG_HOME is unset)
+credentials-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/llmfit/github_token
+    - ~/.config/llmfit/github_token (default when XDG_CONFIG_HOME is unset)
 history:
   adoption-history:
     - >
@@ -54,6 +60,25 @@ history:
       Users run llmfit as an interactive TUI or use command-line recommendation modes.
       The tool is packaged through Homebrew, MacPorts, Nix, Scoop, Cargo/Python-style
       installers, containers, and project-provided release binaries.
+related-packages:
+  - id: brew:ollama
+    reason: >
+      Use Ollama to run and manage local models after llmfit has identified suitable
+      choices; llmfit explicitly supports Ollama as a local provider and can work with
+      its installed models.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/AlexsJones/llmfit
+      - https://github.com/ollama/ollama
+  - id: brew:llama.cpp
+    reason: >
+      Use llama.cpp as an inference runtime for GGUF models selected by llmfit; llmfit
+      documents llama.cpp as a supported provider for local discovery, downloads,
+      serving, and benchmarking workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/AlexsJones/llmfit
+      - https://github.com/ggml-org/llama.cpp
 tags:
   - ai
   - cli

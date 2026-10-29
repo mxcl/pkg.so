@@ -73,6 +73,16 @@ history:
       Its package-manager value is strongest on Unix-like systems where a small daemon
       can make server-to-switch topology visible without installing a full
       network-management stack.
+related-packages:
+  - id: brew:net-snmp
+    reason: >
+      Use Net-SNMP alongside lldpd when LLDP neighbor data should be exposed through
+      SNMP, because lldpd documents an AgentX subagent that connects to a master agent
+      such as Net-SNMP.
+    rel: adjacent_workflow
+    sources:
+      - https://lldpd.github.io/usage.html
+      - http://www.net-snmp.org/
 tags:
   - cli
   - daemon
