@@ -66,6 +66,25 @@ history:
       encrypt, and decrypt XML documents, usually while selecting a crypto backend and
       supplying keys, certificates, or trust material through command-line options or
       application code.
+related-packages:
+  - id: brew:libxml2
+    reason: >
+      Use libxml2 alongside XML Security Library for the underlying XML parsing and
+      canonicalization layer on which xmlsec is explicitly based.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lsh123/xmlsec/wiki
+      - https://github.com/lsh123/xmlsec/blob/master/docs/md/tutorial/install.md
+      - https://gnome.pages.gitlab.gnome.org/libxml2/devhelp/
+  - id: brew:openssl@3
+    reason: >
+      Choose OpenSSL 3 as xmlsec's cryptographic backend when OpenSSL-compatible key,
+      certificate, and algorithm support is required; upstream lists it as a supported
+      and recommended backend.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lsh123/xmlsec/blob/master/docs/md/tutorial/install.md
+      - https://docs.openssl.org/3.0/
 category: security
 package-manager:
   brew: libxmlsec1

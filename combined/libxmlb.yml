@@ -59,6 +59,24 @@ history:
       Typical usage is to compile XML metadata into an .xmlb file and query it with
       xb-tool or through the library API. It is a cache/query accelerator, not a
       general-purpose XML replacement.
+related-packages:
+  - id: brew:appstream
+    reason: >
+      Use AppStream with libxmlb when building or querying standardized Linux
+      software-component catalogs; AppStream officially lists libxmlb as a required
+      indexing dependency.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/ximion/appstream#build--install
+      - https://www.freedesktop.org/software/appstream/docs/
+  - id: brew:fwupd
+    reason: >
+      fwupd uses libxmlb to process LVFS firmware metadata, making it a concrete
+      downstream workflow for the binary metadata cache.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fwupd/fwupd/blob/main/meson.build
+      - https://github.com/fwupd/fwupd#readme
 category: system
 package-manager:
   apk: libxmlb

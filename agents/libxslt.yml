@@ -64,6 +64,32 @@ history:
       generation, language bindings, or applications that need an embeddable C XSLT
       engine rather than a JVM or browser runtime. Its tight pairing with libxml2 made
       it a standard dependency for XML-heavy C, Python, and desktop software stacks.
+related-packages:
+  - id: brew:libxml2
+    reason: >
+      Use libxml2 with libxslt for the underlying XML parsing, XPath, tree, and catalog
+      facilities on which the XSLT engine is explicitly based.
+    rel: adjacent_workflow
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/libxslt/devhelp/
+      - https://gnome.pages.gitlab.gnome.org/libxml2/devhelp/
+  - id: brew:docbook-xsl
+    reason: >
+      Apply the DocBook XSL stylesheets with libxslt's xsltproc to transform DocBook XML
+      into HTML, XSL-FO, manual pages, and related documentation outputs.
+    rel: adjacent_workflow
+    sources:
+      - https://docbook.org/stylesheets/
+      - https://gnome.pages.gitlab.gnome.org/libxslt/xsltproc.html
+  - id: brew:xmlstarlet
+    reason: >
+      Use XMLStarlet beside libxslt when shell workflows need higher-level XML
+      selection, editing, validation, and transformation commands built on libxml2 and
+      libxslt.
+    rel: adjacent_workflow
+    sources:
+      - https://xmlstar.sourceforge.net/doc/UG/xmlstarlet-ug.html
+      - https://gnome.pages.gitlab.gnome.org/libxslt/xsltproc.html
 tags:
   - c-library
   - cli
