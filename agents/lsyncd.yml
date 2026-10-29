@@ -79,6 +79,25 @@ history:
       trees, especially one-way sync from a secure area to a less secure mirror, and
       points users at specialized tools such as git-annex for bidirectional or
       conflict-aware workflows.
+related-packages:
+  - id: brew:rsync
+    reason: >
+      Lsyncd uses rsync as its default synchronization backend, batching filesystem
+      changes before invoking it for local or remote one-way transfers.
+    rel: adjacent_workflow
+    sources:
+      - https://lsyncd.github.io/lsyncd/
+      - https://lsyncd.github.io/lsyncd/manual/config/layer4/
+      - https://rsync.samba.org/documentation.html
+  - id: brew:openssh
+    reason: >
+      OpenSSH complements Lsyncd's `rsyncssh` mode, which uses SSH commands to handle
+      moves efficiently on the remote host instead of retransferring moved files.
+    rel: adjacent_workflow
+    sources:
+      - https://lsyncd.github.io/lsyncd/
+      - https://lsyncd.github.io/lsyncd/manual/config/layer4/
+      - https://www.openssh.com/manual.html
 tags:
   - cli
   - daemon
