@@ -55,6 +55,24 @@ history:
       inspect `litani dump-run` output or the generated dashboard. The tool is most
       useful when an existing build needs reporting, dependency ordering, and durable
       run metadata without rewriting the build in a new DSL.
+related-packages:
+  - id: brew:ninja
+    reason: >
+      Litani generates a Ninja build and invokes Ninja to execute its accumulated job
+      graph, so Ninja is its documented execution backend.
+    rel: adjacent_workflow
+    sources:
+      - https://awslabs.github.io/aws-build-accumulator/
+      - https://ninja-build.org/manual
+  - id: brew:cmake
+    reason: >
+      CMake is a broader cross-platform build-system generator to consider when a
+      project needs a declarative project model and multiple native backends rather than
+      Litani's command accumulation and reporting workflow.
+    rel: alternative
+    sources:
+      - https://awslabs.github.io/aws-build-accumulator/
+      - https://cmake.org/about/
 category: developer-tools
 package-manager:
   brew: litani

@@ -75,6 +75,16 @@ history:
       For package users, the key operational detail is version compatibility: the README
       maps litmusctl releases such as 1.19.0 through 1.26.0 to supported Chaos Center
       version ranges.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      litmusctl requires Kubernetes cluster access and documents using kubectl
+      underneath to apply delegate manifests, making the packaged kubectl client a
+      direct operational companion.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/litmuschaos/litmusctl
+      - https://kubernetes.io/docs/reference/kubectl/
 category: cloud-infrastructure
 package-manager:
   brew: litmusctl
