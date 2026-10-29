@@ -3,8 +3,14 @@ display-name: Lighthouse
 repo: null
 docs:
   - https://lighthouse.sigmaprime.io/
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.lighthouse/{network}/validators/validator_definitions.yml
+credentials-file-location:
+  unix:
+    - ~/.lighthouse/{network}/validators/**/voting-keystore.json
+    - ~/.lighthouse/{network}/secrets/*
+    - ~/.lighthouse/{network}/validators/api-token.txt
 history:
   adoption-history:
     - >
@@ -67,6 +73,25 @@ history:
       validating. The command-line surface also includes account and validator
       utilities, making the package relevant both to long-running infrastructure and to
       one-off validator administration.
+related-packages:
+  - id: brew:ethereum
+    reason: >
+      Geth supplies the execution layer that Lighthouse connects to through the
+      authenticated Engine API, so the two packages form a complete proof-of-stake
+      Ethereum node.
+    rel: adjacent_workflow
+    sources:
+      - https://geth.ethereum.org/docs/getting-started/consensus-clients
+      - https://lighthouse-book.sigmaprime.io/run_a_node.html
+  - id: brew:teku
+    reason: >
+      Teku is a Java-based alternative Ethereum consensus client; choose it instead of
+      the Rust-based Lighthouse when Java deployment or the Consensys ecosystem is a
+      better operational fit.
+    rel: alternative
+    sources:
+      - https://docs.teku.consensys.io/introduction
+      - https://lighthouse.sigmaprime.io/
 tags:
   - blockchain
   - cli
