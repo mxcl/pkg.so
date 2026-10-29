@@ -81,6 +81,24 @@ history:
       The CLI is package-manager-friendly because it is a single Go-built executable
       that talks to Kubernetes APIs and controls cluster-side components rather than
       embedding a long-lived desktop service.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      Use kubectl alongside liqoctl to inspect and manage the Kubernetes resources and
+      clusters that liqoctl configures; both use the standard kubeconfig access model.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.liqo.io/en/stable/installation/liqoctl.html
+      - https://kubernetes.io/docs/reference/kubectl/
+      - https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
+  - id: brew:helm
+    reason: >
+      Helm complements liqoctl when operators need to inspect or customize the
+      chart-based installation that liqoctl orchestrates for Liqo components.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.liqo.io/en/v0.9.3/installation/install.html
+      - https://helm.sh/docs/
 category: cloud-infrastructure
 package-manager:
   brew: liqoctl
