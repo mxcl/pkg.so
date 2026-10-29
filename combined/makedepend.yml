@@ -65,6 +65,15 @@ history:
       A typical makefile target runs makedepend with compiler flags and sources, using a
       marker line such as '# DO NOT DELETE THIS LINE -- make depend depends on it.' so
       the generated dependency section can be replaced on later runs.
+related-packages:
+  - id: brew:make
+    reason: >
+      makedepend generates C header dependency rules inside a makefile, and GNU Make
+      consumes those rules to rebuild affected targets.
+    rel: adjacent_workflow
+    sources:
+      - https://gitlab.freedesktop.org/xorg/util/makedepend/-/raw/master/makedepend.man
+      - https://www.gnu.org/software/make/manual/
 category: developer-tools
 package-manager:
   apk: makedepend
