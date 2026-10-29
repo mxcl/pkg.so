@@ -81,6 +81,25 @@ history:
       stored in `/etc/lynis` or discoverable with `lynis show profiles`; the default
       profile warns users to put local changes in `custom.prf` beside `default.prf`
       rather than editing the default file.
+related-packages:
+  - id: brew:rkhunter
+    reason: >
+      Choose Rootkit Hunter when the job is specifically detecting rootkits and
+      malicious system components; Lynis was created as its broader system-auditing
+      successor.
+    rel: alternative
+    sources:
+      - https://cisofy.com/docs/en/lynis/introduction-to-lynis/
+      - https://rkhunter.sourceforge.net/
+  - id: brew:chkrootkit
+    reason: >
+      Use Chkrootkit alongside Lynis when a hardening audit should be complemented by a
+      dedicated rootkit scan, a workflow explicitly listed in Lynis's malware-control
+      guidance.
+    rel: adjacent_workflow
+    sources:
+      - https://cisofy.com/lynis/controls/HRDN-7230/
+      - https://www.chkrootkit.org/
 tags:
   - cli
   - hardening

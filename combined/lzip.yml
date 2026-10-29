@@ -77,6 +77,49 @@ history:
       For archive pipelines, lzip is commonly paired with tar as .tar.lz. The manual
       highlights multimember output, concatenated stream handling, volume splitting, and
       cooperation with lziprecover for damaged files.
+related-packages:
+  - id: brew:plzip
+    reason: >
+      Use Plzip for large files on multiprocessor systems when parallel lzip-format
+      compression is more valuable than Lzip's slightly better compression ratio.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/lzip/
+      - https://www.nongnu.org/lzip/plzip.html
+  - id: brew:lziprecover
+    reason: >
+      Use Lziprecover to repair damaged `.lz` files, merge independently damaged copies,
+      or extract intact members after corruption.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/lzip/
+      - https://www.nongnu.org/lzip/manual/lziprecover_manual.html
+  - id: brew:tarlz
+    reason: >
+      Use Tarlz to create compressed tar archives whose tar-member and lzip-member
+      alignment improves parallelism and limits corruption loss.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/lzip/
+      - https://www.nongnu.org/lzip/manual/tarlz_manual.html
+  - id: brew:gzip
+    reason: >
+      Choose Gzip for the most conventional and widely interoperable Unix compression
+      workflow; choose Lzip when stronger integrity and damaged-file recovery are
+      priorities.
+    rel: alternative
+    sources:
+      - https://www.nongnu.org/lzip/
+      - https://www.gnu.org/software/gzip/
+  - id: brew:bzip2
+    reason: >
+      Choose Bzip2 when compatibility with established `.bz2` archives is required;
+      Lzip's official design instead emphasizes LZMA compression, multimember streams,
+      and recovery tooling.
+    rel: alternative
+    sources:
+      - https://www.nongnu.org/lzip/
+      - https://sourceware.org/bzip2/
 category: system
 package-manager:
   apk: lzip

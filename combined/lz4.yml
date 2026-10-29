@@ -84,6 +84,23 @@ history:
       API when data needs a self-describing stream format. High-compression mode is
       useful for precompressed assets, but the package's everyday reputation comes from
       the fast path.
+related-packages:
+  - id: brew:zstd
+    reason: >
+      Choose Zstandard when you want a wider speed-versus-ratio range and generally
+      denser output; choose LZ4 when maximum decode throughput is the priority.
+    rel: alternative
+    sources:
+      - https://lz4.github.io/lz4/
+      - https://facebook.github.io/zstd/
+  - id: brew:xz
+    reason: >
+      Choose XZ when high compression ratio and an established `.xz` archival format
+      matter more than LZ4's latency and throughput advantages.
+    rel: alternative
+    sources:
+      - https://lz4.github.io/lz4/
+      - https://tukaani.org/xz/
 category: system
 package-manager:
   apk: lz4

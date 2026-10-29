@@ -96,6 +96,23 @@ history:
       file, with Unix default placement at `/usr/local/lib/lynx.cfg`; it also documents
       `~/.lynxrc` as the personal options file and notes that `-cfg` or the `LYNX_CFG`
       environment variable can override the configuration path.
+related-packages:
+  - id: brew:w3m
+    reason: >
+      Choose w3m when terminal browsing must double as a pager or an HTML-to-plain-text
+      formatter; its official site explicitly describes Lynx as a neighboring browser.
+    rel: alternative
+    sources:
+      - https://w3m.sourceforge.net/eng/
+      - https://lynx.invisible-island.net/lynx_help/about_lynx.html
+  - id: brew:links
+    reason: >
+      Choose Links when you want both terminal browsing and an optional graphics mode
+      with tables, frames, images, menus, and mouse support.
+    rel: alternative
+    sources:
+      - https://links.twibright.com/features.php
+      - https://lynx.invisible-island.net/lynx_help/about_lynx.html
 tags:
   - cli
   - terminal-browser
@@ -130,10 +147,12 @@ provenance:
     - source_facts.package-manager
   repo-sources:
     - >
-      The official development page documents RCS-based maintenance and published source
-      snapshots, but no official HTTP(S) source-control repository page:
-      https://invisible-island.net/lynx/lynx-develop.html
-    - source_facts.repo is empty.
+      https://lynx.invisible-island.net/current/ — official development source is
+      published as snapshots rather than a repository browser.
+    - >
+      https://www.invisible-island.net/lynx/lynx-develop.html — official development
+      history says releases are produced from the maintainer's local RCS archives and
+      does not expose an official HTTP(S) source-control project page.
   tags-sources:
     - current_curation.tags includes cli
     - 'source_facts.description: text-based web browser'
