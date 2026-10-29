@@ -77,6 +77,25 @@ history:
       In package ecosystems, LuaJIT is commonly selected when a project targets Lua 5.1
       semantics but wants faster execution, C interop through FFI, or compatibility with
       ecosystems such as OpenResty and LuaJIT-oriented LuaRocks modules.
+related-packages:
+  - id: brew:lua
+    reason: >
+      Choose stock Lua when you want the reference language implementation or newer
+      language semantics instead of LuaJIT's performance-oriented Lua 5.1-compatible
+      runtime and extensions.
+    rel: alternative
+    sources:
+      - https://luajit.org/luajit.html
+      - https://www.lua.org/manual/
+  - id: brew:luajit-openresty
+    reason: >
+      Choose OpenResty's LuaJIT branch when an OpenResty workload requires its
+      additional APIs, JIT defaults, fixes, and optimizations while remaining
+      synchronized with upstream LuaJIT.
+    rel: alternative
+    sources:
+      - https://github.com/openresty/luajit2#readme
+      - https://openresty.org/en/luajit.html
 tags:
   - cli
   - ffi

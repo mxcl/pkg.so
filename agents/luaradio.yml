@@ -56,6 +56,40 @@ history:
       Common use cases include rapid prototyping of software radios, modulation and
       demodulation utilities, signal-processing experiments, and embedding Lua-defined
       processing in an existing radio application.
+related-packages:
+  - id: brew:gnuradio
+    reason: >
+      Choose GNU Radio when you need its larger block ecosystem, broader hardware
+      support, graphical flow-graph tooling, or higher overall maturity; choose LuaRadio
+      for a smaller, script-first and embeddable workflow.
+    rel: alternative
+    sources:
+      - https://luaradio.io/docs/comparison-gnuradio.html
+      - https://www.gnuradio.org/
+  - id: brew:librtlsdr
+    reason: >
+      LuaRadio's RtlSdrSource uses librtlsdr to receive samples from inexpensive RTL-SDR
+      USB devices.
+    rel: adjacent_workflow
+    sources:
+      - https://luaradio.io/docs/supported-hardware.html
+      - https://github.com/steve-m/librtlsdr#readme
+  - id: brew:hackrf
+    reason: >
+      LuaRadio provides HackRF source and sink blocks through libhackrf, enabling
+      receive and transmit flow graphs with HackRF hardware.
+    rel: adjacent_workflow
+    sources:
+      - https://luaradio.io/docs/supported-hardware.html
+      - https://hackrf.readthedocs.io/en/latest/
+  - id: brew:luajit
+    reason: >
+      LuaRadio is built on LuaJIT and uses its FFI to access acceleration libraries and
+      SDR hardware interfaces.
+    rel: adjacent_workflow
+    sources:
+      - https://luaradio.io/
+      - https://luajit.org/extensions.html
 tags:
   - cli
   - flow-graph

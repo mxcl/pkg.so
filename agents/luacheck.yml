@@ -96,6 +96,33 @@ history:
       upward, a platform-specific default config path, or a custom --config path. Config
       files are Lua scripts that set options such as std, globals, read_globals, ignore,
       enable, line length, and per-path overrides.
+related-packages:
+  - id: brew:lua-language-server
+    reason: >
+      Choose Lua Language Server when you want undefined-global, unused-code, and
+      related diagnostics integrated with completion, annotations, and other LSP editor
+      features.
+    rel: alternative
+    sources:
+      - https://luacheck.readthedocs.io/en/stable/
+      - https://github.com/LuaLS/lua-language-server/wiki/Diagnostics
+  - id: brew:luarocks
+    reason: >
+      LuaRocks is Luacheck's officially documented package-installation route and fits
+      Lua projects that already manage development tools as rocks.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lunarmodules/luacheck#installation
+      - https://luarocks.org/docs
+  - id: brew:busted
+    reason: >
+      Luacheck recognizes Busted specification paths and supplies a built-in Busted
+      global set, so it can lint Lua test suites without flagging the framework's DSL
+      globals.
+    rel: adjacent_workflow
+    sources:
+      - https://luacheck.readthedocs.io/en/stable/config.html
+      - https://lunarmodules.github.io/busted/
 tags:
   - cli
   - code-quality

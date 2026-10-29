@@ -83,6 +83,39 @@ history:
       upload the rockspec. LuaRocks can build from source, make from a local checkout,
       pack source or binary rocks, and publish artifacts that users install without
       needing the original source-control tool.
+related-packages:
+  - id: brew:lua
+    reason: >
+      LuaRocks installs modules into Lua-version-specific trees for use by the Lua
+      interpreter, making stock Lua its foundational runtime companion.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/luarocks/luarocks#readme
+      - https://www.lua.org/manual/
+  - id: brew:luajit
+    reason: >
+      LuaJIT is a common LuaRocks runtime target for Lua 5.1-compatible modules and
+      packages that use LuaJIT's FFI.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/luarocks/luarocks#readme
+      - https://luajit.org/extensions.html
+  - id: brew:busted
+    reason: >
+      Busted officially recommends installation through LuaRocks and can run package
+      test suites across Lua and LuaJIT runtimes.
+    rel: adjacent_workflow
+    sources:
+      - https://lunarmodules.github.io/busted/
+      - https://luarocks.org/docs
+  - id: brew:luacheck
+    reason: >
+      Luacheck is distributed as a rock, so LuaRocks can install the linter alongside a
+      project's other Lua development dependencies.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lunarmodules/luacheck#installation
+      - https://luarocks.org/docs
 category: developer-tools
 package-manager:
   apk: luarocks
