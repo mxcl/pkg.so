@@ -52,6 +52,35 @@ history:
       Administrators mount or connect movie and TV libraries, configure TMDb metadata,
       create users and roles, and trigger scans. Playback can use direct streaming or
       on-the-fly HLS transcoding with FFmpeg, including Chromecast and AirPlay targets.
+related-packages:
+  - id: cask:jellyfin
+    reason: >
+      Choose Jellyfin for a larger community-developed, fully free-software media-server
+      ecosystem with numerous official clients; choose Lunarr for its newer, compact
+      movie-and-TV-focused server and local, SFTP, or WebDAV library support.
+    rel: alternative
+    sources:
+      - https://github.com/lunarr-app/lunarr-go
+      - https://jellyfin.org/docs/general/about/
+  - id: cask:plex-media-server
+    reason: >
+      Plex Media Server is the proprietary, account-connected alternative that Lunarr
+      explicitly positions itself against; choose Plex when its broad commercial client
+      ecosystem and remote-access service are more important than Lunarr's open
+      self-hosted design.
+    rel: alternative
+    sources:
+      - https://github.com/lunarr-app/lunarr-go
+      - https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/
+  - id: brew:ffmpeg
+    reason: >
+      Lunarr uses FFmpeg for media probing and on-the-fly HLS transcoding, so the FFmpeg
+      package is the directly documented media-processing component for non-direct-play
+      content.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lunarr-app/lunarr-go
+      - https://ffmpeg.org/about.html
 category: media
 package-manager:
   brew: lunarr

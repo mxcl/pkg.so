@@ -5,8 +5,10 @@ repo: https://github.com/minoki/LunarML
 docs:
   - https://lunarml.readthedocs.io/en/latest
   - https://github.com/minoki/LunarML#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix: ./.env
+credentials-file-location:
+  unix: ./.env
 history:
   adoption-history:
     - >
@@ -73,6 +75,16 @@ history:
       The README also documents `check`, `help`, and `version` subcommands, Docker
       invocation, `make install`, and build/test targets for Lua, LuaJIT, and Node.js
       back ends.
+related-packages:
+  - id: brew:mlton
+    reason: >
+      MLton is LunarML's documented build-time compiler, so install it when building
+      LunarML's faster native executable from source rather than using the precompiled
+      Lua, Node.js, or container forms.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/minoki/LunarML
+      - https://github.com/MLton/mlton
 category: developer-tools
 package-manager:
   brew: lunarml

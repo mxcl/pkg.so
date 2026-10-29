@@ -1,6 +1,6 @@
 id: brew:luit
 display-name: luit
-repo: null
+repo: https://github.com/ThomasDickey/luit-snapshots
 docs:
   - https://invisible-island.net/luit/luit.html
   - https://invisible-island.net/luit/manpage/luit.html
@@ -77,6 +77,16 @@ history:
       Power users and packagers use options such as `-list-fontenc` and `-encoding` to
       inspect and choose encoding tables, especially when diagnosing missing CJK or
       legacy encoding data.
+related-packages:
+  - id: brew:xterm
+    reason: >
+      xterm can invoke luit automatically when a program using a legacy locale needs to
+      communicate with a UTF-8 terminal, making the two tools a directly documented
+      terminal workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://invisible-island.net/luit/manpage/luit.html
+      - https://invisible-island.net/xterm/
 tags:
   - cli
   - encoding
@@ -117,9 +127,10 @@ provenance:
     - https://invisible-island.net/luit/manpage/luit.html
   repo-sources:
     - >
-      source_facts.repo is empty. Current upstream publishes source archives rather than
-      an official source-control project page; the archived X.Org repository explicitly
-      redirects users to Invisible Island.
+      The repository is published by luit maintainer Thomas E. Dickey as snapshots of
+      his official Invisible Island releases.
+    - https://github.com/ThomasDickey/luit-snapshots
+    - https://invisible-island.net/luit/luit.html
   tags-sources:
     - >
       Official Invisible Island page says luit converts application output from locale
