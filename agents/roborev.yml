@@ -1,0 +1,115 @@
+id: brew:roborev
+display-name: RoboRev
+repo: null
+docs:
+  - https://www.roborev.io/docs
+  - https://github.com/kenn-io/roborev#readme
+config-file-location:
+  unix:
+    - ~/.roborev/config.toml
+    - .roborev.toml
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      RoboRev is distributed as a release binary, Linux package, Go module, and Homebrew
+      formula. Its documentation integrates the tool with a broad set of coding agents,
+      including Codex, Claude Code, Gemini CLI, GitHub Copilot, Cursor, and OpenCode.
+  package-nerd-significance:
+    - >
+      RoboRev packages AI review as a persistent local service rather than a one-shot
+      prompt. Its daemon, SQLite review history, Git hooks, terminal interface, and
+      optional browser interface make agent feedback part of a repeatable development
+      loop.
+    - >
+      Its provider-independent design is useful to developers who want one review queue
+      while experimenting with different coding-agent CLIs and models.
+  project-history:
+    - >
+      Kenn Software developed RoboRev as an open-source background review daemon for Git
+      commits. The project expanded from automatic post-commit reviews into agent hooks,
+      automated fix-and-review loops, targeted code analysis, pull-request integrations,
+      and optional PostgreSQL synchronization.
+  related-projects:
+    - >
+      RoboRev officially supports Codex, Claude Code, Gemini CLI, Copilot, OpenCode,
+      Cursor, and other coding agents as interchangeable review or repair backends.
+  sources:
+    - https://github.com/kenn-io/roborev
+    - https://www.roborev.io/docs/
+    - https://www.roborev.io/docs/installation/
+  summary:
+    - >
+      RoboRev is an open-source local code-review daemon and CLI. It watches Git
+      development activity, sends changes to supported AI coding agents, records
+      findings, and feeds those findings back into terminal, browser, and agent-assisted
+      repair workflows.
+  timeline:
+    - >
+      2026: RoboRev documented post-commit review, agent-hook, automated repair, CI, and
+      multi-machine synchronization workflows.
+    - >
+      2026: Official installation options included Homebrew, release binaries, Linux
+      packages, and source builds.
+  usage:
+    - >
+      A developer initializes a repository with `roborev init`; subsequent commits are
+      queued for background review. Findings can be inspected in the TUI or browser
+      interface and addressed manually or through the `fix` and `refine` agent
+      workflows.
+    - >
+      Global configuration is stored in `~/.roborev/config.toml`, while a repository can
+      supply `.roborev.toml`. Runtime review data defaults to `~/.roborev`, but the
+      official documentation does not identify a separate credentials file.
+related-packages:
+  - id: cask:codex
+    reason: >
+      Codex is an officially supported RoboRev backend, so an existing Codex
+      installation can perform reviews and fixes managed by RoboRev.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kenn-io/roborev
+      - https://github.com/openai/codex
+  - id: brew:gemini-cli
+    reason: >
+      Gemini CLI is an officially supported agent backend that RoboRev can invoke while
+      retaining review history and orchestration in RoboRev.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/kenn-io/roborev
+      - https://github.com/google-gemini/gemini-cli
+tags:
+  - ai
+  - cli
+  - code-review
+  - developer-tools
+  - git
+  - local-first
+provenance:
+  category-sources:
+    - https://www.roborev.io/docs/
+    - source_facts.description
+  display-name-sources:
+    - https://github.com/kenn-io/roborev
+    - https://www.roborev.io/
+  docs-sources:
+    - https://github.com/kenn-io/roborev
+    - https://www.roborev.io/docs/
+  history-sources:
+    - https://github.com/kenn-io/roborev
+    - https://www.roborev.io/docs/
+    - https://www.roborev.io/docs/installation/
+  repo-sources:
+    - source_facts.repo
+  tags-sources:
+    - https://github.com/kenn-io/roborev
+    - https://www.roborev.io/docs/
+category-confidence: high
+category-path:
+  - developer-tools
+  - code-review
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

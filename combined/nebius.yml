@@ -1,10 +1,81 @@
 id: cask:nebius
-display-name: nebius
+display-name: Nebius CLI
 homepage: https://docs.nebius.com/cli
 repo: null
+docs:
+  - https://docs.nebius.com/cli
+  - https://docs.nebius.com/cli/reference
+config-file-location:
+  unix: ~/.nebius/config.yaml
+credentials-file-location:
+  unix: ~/.nebius/credentials.json
+history:
+  adoption-history:
+    - >
+      Nebius opened its AI cloud platform to general access in April 2024 with
+      management through the console, CLI, API, and Terraform provider. The CLI became
+      the shell-oriented interface for users managing the platform's compute, storage,
+      Kubernetes, networking, IAM, and AI resources.
+  package-nerd-significance:
+    - >
+      Nebius CLI is the package-managed control-plane client for an AI-focused European
+      cloud. It exposes the platform's APIs to shell scripts and automation without
+      requiring all administration to pass through the web console.
+    - >
+      Profiles are particularly important operationally: official guidance recommends
+      one profile per project so region and parent-resource context remain explicit.
+  project-history:
+    - >
+      Nebius introduced broad access to its AI infrastructure platform in April 2024,
+      then launched a newly built AI-native platform in October 2024. The CLI
+      accompanied the platform as one of its principal resource-management interfaces.
+    - >
+      The command surface grew with the cloud platform and now covers services including
+      compute, storage, managed Kubernetes, networking, IAM, registries, observability,
+      quotas, billing, AI services, and configuration profiles.
+  related-projects:
+    - >
+      Nebius also publishes APIs, language SDKs, and a Terraform provider. The CLI
+      serves imperative and interactive administration, while Terraform provides
+      declarative infrastructure management.
+  sources:
+    - https://docs.nebius.com/cli
+    - https://docs.nebius.com/cli/configure
+    - https://nebius.com/blog/posts/platform-access-is-open-to-everyone
+    - https://nebius.com/blog/posts/we-launch-a-new-ai-platform
+  summary:
+    - >
+      Nebius CLI is the official command-line interface for managing Nebius AI Cloud
+      resources and profiles. It provides terminal access to the cloud's infrastructure,
+      platform, IAM, and AI-service APIs.
+  timeline:
+    - >
+      2024: Nebius opened its AI cloud platform to general access with CLI, API,
+      console, and Terraform management.
+    - '2024: Nebius launched a newly built AI-native cloud platform.'
+    - >
+      2026: The CLI reference covered resource families spanning infrastructure, IAM,
+      billing, AI services, and developer tooling.
+  usage:
+    - >
+      Users create a profile, authenticate as a user or service account, select a
+      project, and run service-specific commands. The CLI supports structured output and
+      can be used interactively or in scripts and CI environments.
+    - >
+      Official Nebius repositories document the CLI profile in `~/.nebius/config.yaml`
+      and treat `~/.nebius/credentials.json` as sensitive credential material.
+related-packages: []
+category: cloud-infrastructure
 package-manager:
   brew-cask: nebius
 package-manager-url: https://formulae.brew.sh/cask/nebius
+tags:
+  - ai-infrastructure
+  - automation
+  - cli
+  - cloud
+  - iam
+  - resource-management
 description: Command-line interface for Nebius
 executables:
   - nebius
