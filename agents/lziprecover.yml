@@ -1,6 +1,6 @@
 id: brew:lziprecover
 display-name: Lziprecover
-repo: null
+repo: https://cvs.savannah.nongnu.org/viewvc?root=lzip
 docs:
   - https://www.nongnu.org/lzip/manual/lziprecover_manual.html
   - https://www.nongnu.org/lzip/lziprecover.html
@@ -67,6 +67,24 @@ history:
     - >
       The official page gives the common tar pipeline pattern with lziprecover writing
       decompressed data to stdout and tar reading it from stdin.
+related-packages:
+  - id: brew:lzip
+    reason: >
+      Use Lzip to create and normally decompress .lz archives; Lziprecover is its
+      specialized companion for testing, repairing, and salvaging damaged archives.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/lzip/lziprecover.html
+      - https://www.nongnu.org/lzip/manual/lzip_manual.html
+  - id: brew:ddrescue
+    reason: >
+      Image failing media with GNU ddrescue first, then use Lziprecover on the rescued
+      .lz file; the Lziprecover project explicitly recommends this combination for
+      storage-media corruption.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/lzip/lziprecover.html
+      - https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html
 tags:
   - cli
   - data-recovery
@@ -102,10 +120,9 @@ provenance:
     - source_facts.package-manager
   repo-sources:
     - >
-      The official project page distributes release archives and accepts patches through
-      the official mailing list but identifies no official HTTP(S) source-control
-      repository: https://www.nongnu.org/lzip/lziprecover.html
-    - source_facts.repo is empty.
+      The official Lziprecover page identifies it as part of the Savannah-hosted lzip
+      project; the URL is the lzip project's official CVS browser rather than a
+      dedicated Lziprecover repository.
   tags-sources:
     - current_curation.tags includes cli
     - official lziprecover page describes recovery and decompression use
@@ -118,5 +135,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high

@@ -1,7 +1,7 @@
 id: brew:lziprecover
 display-name: Lziprecover
 homepage: https://www.nongnu.org/lzip/lziprecover.html
-repo: null
+repo: https://cvs.savannah.nongnu.org/viewvc?root=lzip
 docs:
   - https://www.nongnu.org/lzip/manual/lziprecover_manual.html
   - https://www.nongnu.org/lzip/lziprecover.html
@@ -68,6 +68,24 @@ history:
     - >
       The official page gives the common tar pipeline pattern with lziprecover writing
       decompressed data to stdout and tar reading it from stdin.
+related-packages:
+  - id: brew:lzip
+    reason: >
+      Use Lzip to create and normally decompress .lz archives; Lziprecover is its
+      specialized companion for testing, repairing, and salvaging damaged archives.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/lzip/lziprecover.html
+      - https://www.nongnu.org/lzip/manual/lzip_manual.html
+  - id: brew:ddrescue
+    reason: >
+      Image failing media with GNU ddrescue first, then use Lziprecover on the rescued
+      .lz file; the Lziprecover project explicitly recommends this combination for
+      storage-media corruption.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/lzip/lziprecover.html
+      - https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html
 category: system
 package-manager:
   brew: lziprecover

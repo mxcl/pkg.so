@@ -72,6 +72,25 @@ history:
     - >
       The upstream format documentation supports implementers who need to write or audit
       their own depackers, which is common in size-constrained retro projects.
+related-packages:
+  - id: brew:lz4
+    reason: >
+      Choose LZ4 for mainstream systems and library integration; LZSA explicitly borrows
+      LZ4's fast-decoding design direction but adapts it to 8-bit CPUs and tiny assembly
+      depackers.
+    rel: alternative
+    sources:
+      - https://github.com/emmanuel-marty/lzsa#readme
+      - https://lz4.github.io/lz4/
+  - id: brew:exomizer
+    reason: >
+      Choose Exomizer when its self-extracting and memory-oriented retro targets fit the
+      build better; LZSA's upstream material compares it with other size-focused 8-bit
+      packers while emphasizing faster decoding.
+    rel: alternative
+    sources:
+      - https://github.com/emmanuel-marty/lzsa#readme
+      - https://bitbucket.org/magli143/exomizer/src/master/exo31info.txt
 category: system
 package-manager:
   brew: lzsa
