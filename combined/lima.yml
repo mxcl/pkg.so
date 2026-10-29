@@ -67,6 +67,32 @@ history:
       guest via the lima wrapper or connect container tools to sockets exposed by the
       VM. Templates cover common setups such as containerd, Docker, Podman, Kubernetes,
       and Apptainer.
+related-packages:
+  - id: brew:colima
+    reason: >
+      Choose Colima when you want a simpler Docker-, containerd-, or Kubernetes-focused
+      interface that uses Lima underneath and supplies opinionated runtime setup.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/abiosoft/colima#readme
+      - https://lima-vm.io/docs/examples/containers/
+  - id: brew:nerdctl
+    reason: >
+      nerdctl provides the Docker-compatible command workflow for Lima's built-in
+      containerd environment and can be invoked against containers inside a Lima
+      instance.
+    rel: adjacent_workflow
+    sources:
+      - https://lima-vm.io/docs/examples/containers/containerd/
+      - https://github.com/containerd/nerdctl#readme
+  - id: brew:socket_vmnet
+    reason: >
+      socket_vmnet adds managed shared or bridged macOS networking when a Lima VM must
+      be reachable by IP or communicate through Apple's vmnet.framework.
+    rel: adjacent_workflow
+    sources:
+      - https://lima-vm.io/docs/config/network/vmnet/
+      - https://github.com/lima-vm/socket_vmnet#readme
 category: system
 package-manager:
   apk: lima

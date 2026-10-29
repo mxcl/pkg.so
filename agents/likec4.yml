@@ -68,6 +68,33 @@ history:
       diagrams, and keep those models under version control with the rest of the system.
       The package is most relevant to teams that want architecture documentation to
       change through code review instead of through separate drawing tools.
+related-packages:
+  - id: brew:structurizr-cli
+    reason: >
+      Choose Structurizr CLI when strict C4-model compatibility and the reference
+      Structurizr DSL ecosystem matter more than LikeC4's customizable notation and
+      arbitrary nesting.
+    rel: alternative
+    sources:
+      - https://github.com/likec4/likec4
+      - https://docs.structurizr.com/
+      - https://docs.structurizr.com/cli
+  - id: brew:d2
+    reason: >
+      LikeC4 can export a model to D2, after which the D2 CLI can render or further
+      process the generated textual diagram.
+    rel: adjacent_workflow
+    sources:
+      - https://likec4.dev/tooling/cli/
+      - https://d2lang.com/tour/intro/
+  - id: brew:mermaid-cli
+    reason: >
+      LikeC4's CLI can export Mermaid source, and mermaid-cli can render that exported
+      source in documentation or CI pipelines.
+    rel: adjacent_workflow
+    sources:
+      - https://likec4.dev/tooling/cli/
+      - https://github.com/mermaid-js/mermaid-cli#readme
 tags:
   - architecture-as-code
   - c4-model
