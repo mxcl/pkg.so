@@ -94,6 +94,41 @@ history:
       generate LLVM IR, ship compiler plugins, or need MLIR and TableGen tooling. In
       package-manager culture, llvm is less a single command than a large toolchain
       substrate whose installed prefix can change the behavior of many builds.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      Choose GCC when you need its broader integrated language collection, including
+      Fortran, Ada, D, and Go; LLVM's bundled Clang primarily targets the C language
+      family.
+    rel: alternative
+    sources:
+      - https://gcc.gnu.org/onlinedocs/gcc/G_002b_002b-and-GCC.html
+      - https://clang.llvm.org/
+  - id: brew:cmake
+    reason: >
+      CMake is LLVM's documented configuration and build-system generator, and it can
+      generate Ninja, Make, or IDE build files for LLVM projects.
+    rel: adjacent_workflow
+    sources:
+      - https://llvm.org/docs/GettingStarted.html
+      - https://llvm.org/docs/CMake.html
+      - https://cmake.org/cmake/help/latest/guide/tutorial/Before%20You%20Begin.html
+  - id: brew:ninja
+    reason: >
+      LLVM documents Ninja as the generator used by most LLVM developers and uses it
+      throughout its recommended build-and-test workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://llvm.org/docs/GettingStarted.html
+      - https://ninja-build.org/
+  - id: brew:include-what-you-use
+    reason: >
+      Include What You Use analyzes C and C++ includes through Clang internals and
+      documents how to build against or inside a matching LLVM/Clang tree.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/include-what-you-use/include-what-you-use
+      - https://github.com/include-what-you-use/include-what-you-use/blob/master/README.md
 tags:
   - clang
   - cli

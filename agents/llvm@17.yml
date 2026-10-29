@@ -77,6 +77,38 @@ history:
       It is a good pinned target for projects that have already adapted to opaque
       pointers and want a stable LLVM 17 build dependency rather than tracking the
       current Homebrew llvm formula.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      Choose GCC when you need its additional integrated languages; choose LLVM 17 for
+      software tied to LLVM/Clang 17 or requiring the completed opaque-pointer model.
+    rel: alternative
+    sources:
+      - https://gcc.gnu.org/onlinedocs/gcc/G_002b_002b-and-GCC.html
+      - https://releases.llvm.org/17.0.1/docs/GettingStarted.html
+  - id: brew:include-what-you-use
+    reason: >
+      Include What You Use publishes a clang_17 compatibility branch because its C and
+      C++ include analysis directly consumes Clang internals.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/include-what-you-use/include-what-you-use/blob/master/README.md
+  - id: brew:cmake
+    reason: >
+      CMake is the documented LLVM configuration system and can configure standalone
+      projects against an installed LLVM 17 prefix.
+    rel: adjacent_workflow
+    sources:
+      - https://releases.llvm.org/17.0.1/docs/GettingStarted.html
+      - https://releases.llvm.org/17.0.1/docs/CMake.html
+  - id: brew:ninja
+    reason: >
+      Ninja runs CMake-generated LLVM builds and check targets and is the build backend
+      recommended for fast LLVM development cycles.
+    rel: adjacent_workflow
+    sources:
+      - https://releases.llvm.org/17.0.1/docs/GettingStarted.html
+      - https://ninja-build.org/
 tags:
   - clang
   - cli

@@ -78,6 +78,38 @@ history:
       It is commonly used as a pinned build dependency for language runtimes, compiler
       plugins, static-analysis tools, and projects whose test suites are validated
       against LLVM 16 behavior.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      Choose GCC for its broader integrated language suite; choose LLVM 16 when
+      downstream code is pinned to the LLVM/Clang 16 library, plugin, or IR contract.
+    rel: alternative
+    sources:
+      - https://gcc.gnu.org/onlinedocs/gcc/G_002b_002b-and-GCC.html
+      - https://releases.llvm.org/16.0.0/docs/GettingStarted.html
+  - id: brew:include-what-you-use
+    reason: >
+      Include What You Use publishes a clang_16 branch to match the Clang internals used
+      by LLVM 16 and analyze C and C++ include dependencies.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/include-what-you-use/include-what-you-use/blob/master/README.md
+  - id: brew:cmake
+    reason: >
+      LLVM's official build instructions use CMake for configuration and for locating
+      installed LLVM prefixes in standalone subproject builds.
+    rel: adjacent_workflow
+    sources:
+      - https://releases.llvm.org/16.0.0/docs/GettingStarted.html
+      - https://releases.llvm.org/16.0.0/docs/CMake.html
+  - id: brew:ninja
+    reason: >
+      Ninja is a documented LLVM build backend used to compile and run LLVM's check
+      targets from CMake-generated build files.
+    rel: adjacent_workflow
+    sources:
+      - https://releases.llvm.org/16.0.0/docs/GettingStarted.html
+      - https://ninja-build.org/
 category: developer-tools
 package-manager:
   apk: llvm16

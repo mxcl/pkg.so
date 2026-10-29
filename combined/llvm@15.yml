@@ -76,6 +76,39 @@ history:
       It is most useful when a build explicitly requires LLVM 15 or when maintainers
       need to test code against the opaque-pointer default before moving to later LLVM
       releases.
+related-packages:
+  - id: brew:gcc
+    reason: >
+      Choose GCC when its additional integrated language frontends are more important;
+      choose LLVM 15 when a project requires the LLVM/Clang 15 APIs or opaque-pointer
+      transition behavior.
+    rel: alternative
+    sources:
+      - https://gcc.gnu.org/onlinedocs/gcc/G_002b_002b-and-GCC.html
+      - https://releases.llvm.org/15.0.0/docs/GettingStarted.html
+  - id: brew:include-what-you-use
+    reason: >
+      Include What You Use publishes a clang_15 compatibility branch because its
+      analyzer depends on matching Clang internals.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/include-what-you-use/include-what-you-use/blob/master/README.md
+  - id: brew:cmake
+    reason: >
+      CMake is LLVM's documented build configuration system and supports standalone
+      subproject builds against an installed LLVM prefix.
+    rel: adjacent_workflow
+    sources:
+      - https://releases.llvm.org/15.0.0/docs/GettingStarted.html
+      - https://releases.llvm.org/15.0.0/docs/CMake.html
+  - id: brew:ninja
+    reason: >
+      Ninja executes CMake-generated LLVM builds and tests and is the fast build backend
+      favored in LLVM's documented workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://releases.llvm.org/15.0.0/docs/GettingStarted.html
+      - https://ninja-build.org/
 category: developer-tools
 package-manager:
   apk: llvm15
