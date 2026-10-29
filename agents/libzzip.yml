@@ -68,6 +68,32 @@ history:
       use magic wrappers such as zzip_open, zzip_read, and zzip_close. The extension I/O
       layer lets applications recognize ZIP-derived formats such as JAR or game-resource
       extensions and route reads through custom handlers.
+related-packages:
+  - id: brew:libzip
+    reason: >
+      Choose libzip when software must create, update, encrypt, or otherwise modify ZIP
+      archives; ZZIPlib is optimized for lightweight read access and file-like resource
+      loading.
+    rel: alternative
+    sources:
+      - https://zziplib.sourceforge.net/
+      - https://libzip.org/documentation/
+  - id: brew:libarchive
+    reason: >
+      Choose libarchive for streaming access across many archive formats; choose ZZIPlib
+      when ZIP-only, POSIX-like resource access is the central requirement.
+    rel: alternative
+    sources:
+      - https://zziplib.sourceforge.net/
+      - https://www.libarchive.org/
+  - id: brew:zip
+    reason: >
+      Use the Zip command to create the resource archives that a deployed application
+      later reads through ZZIPlib's lightweight runtime API.
+    rel: adjacent_workflow
+    sources:
+      - https://zziplib.sourceforge.net/zzip-zip.html
+      - https://infozip.sourceforge.net/Zip.html
 tags:
   - archive
   - cli

@@ -63,6 +63,34 @@ history:
       OTP token work. It is most useful for test vectors, provisioning scripts,
       compatibility tooling, and software that needs to parse or generate Yubico OTP
       values without pulling in higher-level device-management stacks.
+related-packages:
+  - id: brew:ykpers
+    reason: >
+      Use YubiKey Personalization to program and inspect legacy OTP slots on physical
+      YubiKeys, then use libyubikey for the corresponding low-level modhex and OTP data
+      handling.
+    rel: adjacent_workflow
+    sources:
+      - https://developers.yubico.com/yubico-c/
+      - https://developers.yubico.com/yubikey-personalization/
+  - id: brew:ykman
+    reason: >
+      Choose YubiKey Manager for current device administration across OTP, FIDO, PIV,
+      OATH, and OpenPGP; libyubikey remains the narrower library for legacy Yubico OTP
+      encoding and parsing.
+    rel: alternative
+    sources:
+      - https://developers.yubico.com/yubico-c/
+      - https://developers.yubico.com/yubikey-manager/
+      - https://developers.yubico.com/yubikey-manager/Config_Reference.html
+  - id: brew:libfido2
+    reason: >
+      Choose libfido2 when implementing modern FIDO U2F or FIDO2 authentication over USB
+      or NFC instead of the legacy Yubico OTP workflow handled by libyubikey.
+    rel: alternative
+    sources:
+      - https://developers.yubico.com/yubico-c/
+      - https://developers.yubico.com/libfido2/
 tags:
   - authentication
   - c
