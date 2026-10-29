@@ -65,6 +65,24 @@ history:
       Package users mostly encounter log4c through development packages, headers,
       libraries, generated Doxygen documentation, pkg-config or log4c-config metadata,
       and build scripts that need a C logging backend.
+related-packages:
+  - id: brew:zlog
+    reason: >
+      Choose zlog when you want a newer pure-C logging library with CMake support,
+      thread-safety claims, and a rule-based configuration model; choose log4c for its
+      log4j-style category, appender, and layout API.
+    rel: alternative
+    sources:
+      - https://log4c.sourceforge.net/
+      - https://github.com/HardySimpson/zlog#readme
+  - id: brew:log4cpp
+    reason: >
+      Choose log4cpp for a C++ class-based implementation of the log4j logging model;
+      log4c provides the corresponding framework and API conventions for C programs.
+    rel: alternative
+    sources:
+      - https://log4c.sourceforge.net/
+      - https://log4cpp.sourceforge.net/
 category: developer-tools
 package-manager:
   brew: log4c
