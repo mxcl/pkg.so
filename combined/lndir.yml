@@ -83,6 +83,25 @@ history:
     - >
       The tool has no project-level configuration or credentials. Its behavior is driven
       by command-line options such as -silent, -ignorelinks, and -withrevinfo.
+related-packages:
+  - id: brew:imake
+    reason: >
+      Use lndir to create the shadow source tree used by classic X11 builds, then use
+      imake to generate the platform-specific Makefiles within that historical build
+      workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://www.x.org/releases/X11R6.7.0/PDF/BUILD.pdf
+      - https://www.x.org/NewModuleGuidelines/
+  - id: brew:makedepend
+    reason: >
+      makedepend complements lndir in legacy X.Org build trees by generating C header
+      dependencies while lndir keeps generated build files separate from the shared
+      sources.
+    rel: adjacent_workflow
+    sources:
+      - https://www.x.org/NewModuleGuidelines/
+      - https://www.x.org/releases/X11R6.7.0/PDF/BUILD.pdf
 category: developer-tools
 package-manager:
   brew: lndir
