@@ -97,6 +97,48 @@ history:
       not ABI compatible. The official version history states that different versions
       can have different APIs and virtual machines, so applications embedding Lua and C
       libraries for Lua must be rebuilt for a new version.
+related-packages:
+  - id: brew:luajit
+    reason: >
+      Choose LuaJIT when Lua 5.1 compatibility, high execution speed, or its FFI is more
+      important than following the current reference-Lua language line.
+    rel: alternative
+    sources:
+      - https://luajit.org/luajit.html
+      - https://luajit.org/extensions.html
+      - https://www.lua.org/versions.html
+  - id: brew:lua@5.4
+    reason: >
+      Choose the versioned Lua 5.4 formula when an embedded application or native module
+      requires the 5.4 API, ABI, or virtual machine instead of current Lua.
+    rel: alternative
+    sources:
+      - https://www.lua.org/versions.html
+      - https://www.lua.org/manual/5.4/
+  - id: brew:luarocks
+    reason: >
+      Use LuaRocks alongside Lua to discover and install version-compatible Lua modules
+      and their dependencies.
+    rel: adjacent_workflow
+    sources:
+      - https://luarocks.org/docs
+      - https://luarocks.org/about
+  - id: brew:lua-language-server
+    reason: >
+      Use Lua Language Server with Lua projects for completion, navigation, diagnostics,
+      annotations, formatting, and configurable runtime-version awareness.
+    rel: adjacent_workflow
+    sources:
+      - https://luals.github.io/
+      - https://luals.github.io/wiki/configuration/
+  - id: brew:luacheck
+    reason: >
+      Use Luacheck in Lua command-line and CI workflows to detect undefined globals,
+      unused variables, syntax errors, and other static-analysis issues.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lunarmodules/luacheck
+      - https://luacheck.readthedocs.io/en/stable/
 category: language-runtime
 package-manager:
   apk: lua5.5

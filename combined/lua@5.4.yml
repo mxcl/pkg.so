@@ -77,6 +77,50 @@ history:
       Packagers treat lua@5.4 as a compatibility runtime. It lets formulas pin to Lua
       5.4 while the unversioned lua package moves forward, reducing accidental ABI and
       behavior changes for embedded users.
+related-packages:
+  - id: brew:lua
+    reason: >
+      Choose the unversioned Lua formula for the current reference-language release;
+      retain lua@5.4 when API, ABI, bytecode, or language compatibility requires the 5.4
+      line.
+    rel: alternative
+    sources:
+      - https://www.lua.org/versions.html
+      - https://www.lua.org/manual/
+  - id: brew:luajit
+    reason: >
+      Choose LuaJIT instead when Lua 5.1 compatibility, JIT compilation, or its FFI is
+      required rather than Lua 5.4 semantics.
+    rel: alternative
+    sources:
+      - https://luajit.org/luajit.html
+      - https://luajit.org/extensions.html
+      - https://www.lua.org/versions.html
+  - id: brew:luarocks
+    reason: >
+      Use LuaRocks alongside Lua 5.4 to install modules selected from its
+      version-specific 5.4 manifests.
+    rel: adjacent_workflow
+    sources:
+      - https://luarocks.org/docs
+      - https://luarocks.org/about
+  - id: brew:lua-language-server
+    reason: >
+      Configure Lua Language Server for Lua 5.4 to obtain editor completion, navigation,
+      diagnostics, and type analysis using the intended runtime semantics.
+    rel: adjacent_workflow
+    sources:
+      - https://luals.github.io/wiki/introduction/
+      - https://luals.github.io/wiki/configuration/
+  - id: brew:luacheck
+    reason: >
+      Use Luacheck with Lua 5.4 projects for scriptable linting and CI checks; its
+      official documentation identifies Lua 5.4 as a supported runtime and syntax
+      target.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lunarmodules/luacheck
+      - https://luacheck.readthedocs.io/en/stable/
 category: language-runtime
 package-manager:
   apk: lua5.4

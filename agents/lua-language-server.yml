@@ -80,6 +80,24 @@ history:
       Typical package-manager usage is installing the binary into PATH and letting
       editor configuration discover it. Project teams add .luarc.json when they need
       shared runtime version, library paths, diagnostics settings, or hints.
+related-packages:
+  - id: brew:lua
+    reason: >
+      Install the mainline Lua runtime alongside LuaLS when developing or running
+      standard Lua programs whose runtime version and libraries the server models.
+    rel: adjacent_workflow
+    sources:
+      - https://luals.github.io/wiki/introduction/
+      - https://www.lua.org/manual/
+  - id: brew:luarocks
+    reason: >
+      Use LuaRocks with LuaLS projects to install modules, then expose the relevant rock
+      tree through LuaLS runtime paths or workspace libraries as shown in the official
+      configuration guide.
+    rel: adjacent_workflow
+    sources:
+      - https://luals.github.io/wiki/configuration/
+      - https://luarocks.org/docs
 tags:
   - cli
   - developer-tool

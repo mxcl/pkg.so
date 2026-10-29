@@ -65,6 +65,23 @@ history:
       the output as a generalized Buchi automaton, Buchi automaton, or Spin never claim.
       The package is most relevant in workflows that generate or test temporal
       properties before feeding them to a model checker.
+related-packages:
+  - id: brew:spin
+    reason: >
+      Use Spin with LTL2BA-generated never claims to verify temporal properties of
+      Promela system models.
+    rel: adjacent_workflow
+    sources:
+      - https://lsv.ens-paris-saclay.fr/~gastin/ltl2ba/
+      - https://spinroot.com/spin/Man/Manual.html
+  - id: brew:graphviz
+    reason: >
+      Install Graphviz when LTL2BA output needs to be rendered as an automaton diagram,
+      because the official service uses Graphviz's dot program for drawings.
+    rel: adjacent_workflow
+    sources:
+      - https://lsv.ens-paris-saclay.fr/~gastin/ltl2ba/
+      - https://graphviz.org/documentation/
 tags:
   - buchi-automata
   - cli
@@ -95,8 +112,9 @@ provenance:
     - source_facts.package-manager
   repo-sources:
     - >
-      source_facts.repo is empty. The official project page offers a source download but
-      does not identify an official HTTP(S) source-control repository.
+      The official project and download pages do not identify a public source-control
+      repository: https://lsv.ens-paris-saclay.fr/~gastin/ltl2ba/
+    - https://lsv.ens-paris-saclay.fr/~gastin/ltl2ba/download.php
   tags-sources:
     - >
       source_facts.description identifies LTL-to-Buchi automata translation;
@@ -109,5 +127,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: medium
 history-confidence: medium
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high
