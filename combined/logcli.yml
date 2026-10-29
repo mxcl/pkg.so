@@ -67,6 +67,31 @@ history:
       The docs recommend matching the logcli version to the Loki server version and
       downloading binaries from Loki releases or building `cmd/logcli/logcli` from the
       Loki source tree.
+related-packages:
+  - id: brew:loki
+    reason: >
+      LogCLI is Loki's dedicated command-line client, so install Loki when you need to
+      operate the server that stores logs and executes LogQL queries.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/loki/latest/query/logcli/
+      - https://github.com/grafana/loki
+  - id: brew:grafana-alloy
+    reason: >
+      Use Grafana Alloy to collect, transform, and send logs into Loki before querying
+      them with LogCLI; Grafana recommends Alloy as Loki's primary ingestion method.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/loki/latest/send-data/alloy/
+      - https://grafana.com/docs/loki/latest/query/logcli/
+  - id: brew:grafana
+    reason: >
+      Use Grafana when the same Loki data and LogQL queries need interactive
+      exploration, Logs Drilldown, or dashboards instead of terminal output.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/loki/latest/visualize/grafana/
+      - https://grafana.com/docs/loki/latest/query/logcli/
 category: cloud-infrastructure
 package-manager:
   brew: logcli

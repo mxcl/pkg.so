@@ -75,6 +75,25 @@ history:
       lists, and rule directories such as cracking.d, violations.d, violations.ignore.d,
       and ignore.d.*. The logcheck-database documentation emphasizes writing precise
       extended regular expressions and testing new rules with logcheck-test.
+related-packages:
+  - id: brew:rsyslog
+    reason: >
+      Use rsyslog to collect and write the system log streams that logcheck periodically
+      filters for unusual entries; Debian explicitly lists rsyslog as a compatible
+      system-log daemon for this workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://packages.debian.org/sid/logcheck
+      - https://www.rsyslog.com/
+  - id: brew:syslog-ng
+    reason: >
+      Use syslog-ng as an alternative log-producing daemon upstream of logcheck when its
+      routing and collection model fits the host; Debian lists it among compatible
+      system-log-daemon providers.
+    rel: adjacent_workflow
+    sources:
+      - https://packages.debian.org/sid/logcheck
+      - https://www.syslog-ng.com/community/
 category: security
 package-manager:
   apk: logcheck
