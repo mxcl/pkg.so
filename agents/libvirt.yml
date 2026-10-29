@@ -92,6 +92,31 @@ history:
       On developer workstations it is often the package behind local KVM/QEMU workflows;
       on servers it is the control plane layer used by provisioning, monitoring, and
       orchestration software that needs stable VM lifecycle operations.
+related-packages:
+  - id: brew:virt-manager
+    reason: >
+      Choose virt-manager when you want a graphical libvirt frontend plus virt-install,
+      virt-clone, and virt-xml command-line workflows for creating and managing guests.
+    rel: adjacent_workflow
+    sources:
+      - https://libvirt.org/apps.html
+      - https://github.com/virt-manager/virt-manager
+  - id: brew:qemu
+    reason: >
+      Use QEMU as the machine emulator and virtualizer backend while libvirt supplies
+      its higher-level lifecycle, storage, networking, and remote-management interface.
+    rel: adjacent_workflow
+    sources:
+      - https://libvirt.org/drvqemu.html
+      - https://www.qemu.org/docs/master/system/index.html
+  - id: brew:terraform-provider-libvirt
+    reason: >
+      Use the Terraform provider to manage libvirt domains, networks, storage pools, and
+      volumes declaratively through the libvirt API.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dmacvicar/terraform-provider-libvirt
+      - https://libvirt.org/docs.html
 tags:
   - c-api
   - cli
