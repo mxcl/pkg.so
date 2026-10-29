@@ -64,6 +64,32 @@ history:
       directory, an `_lv` file for MSDOS, and the `LV` environment variable.
       Command-line options are read last, so they override file and environment
       settings.
+related-packages:
+  - id: brew:less
+    reason: >
+      Choose less for the conventional general-purpose Unix pager; choose lv when
+      automatic character-set conversion and multilingual searching are central
+      requirements.
+    rel: alternative
+    sources:
+      - https://salsa.debian.org/debian/lv/-/raw/master/lv.1
+      - https://www.greenwoodsoftware.com/less/index.html
+  - id: brew:nkf
+    reason: >
+      Use nkf when the main job is noninteractive character-encoding detection or
+      conversion rather than lv's interactive viewing and searching.
+    rel: alternative
+    sources:
+      - https://salsa.debian.org/debian/lv/-/raw/master/lv.1
+      - https://github.com/nurse/nkf/blob/master/nkf.1
+  - id: brew:grep
+    reason: >
+      Use GNU grep for conventional stream-oriented pattern matching; lv's `lgrep` mode
+      is useful when matching must account for multilingual input conversion.
+    rel: alternative
+    sources:
+      - https://salsa.debian.org/debian/lv/-/raw/master/lv.1
+      - https://www.gnu.org/software/grep/manual/grep.html
 category: developer-tools
 package-manager:
   brew: lv

@@ -54,6 +54,41 @@ history:
     - >
       FFmpeg is documented as a prerequisite for final media merging rather than for the
       download itself, which is a common packaging detail for media downloaders.
+related-packages:
+  - id: brew:yt-dlp
+    reason: >
+      Choose yt-dlp for its broader extractor ecosystem and extensive
+      format/post-processing controls; Lux offers a simpler Go-based downloader and
+      explicitly lists youtube-dl-family tools as comparable projects.
+    rel: alternative
+    sources:
+      - https://github.com/iawia002/lux#readme
+      - https://github.com/yt-dlp/yt-dlp#readme
+  - id: brew:you-get
+    reason: >
+      Choose you-get for a Python-based downloader with strong coverage of both Chinese
+      and international media sites; Lux lists it as a similar project and provides a Go
+      implementation.
+    rel: alternative
+    sources:
+      - https://github.com/iawia002/lux#readme
+      - https://github.com/soimort/you-get#readme
+  - id: brew:ffmpeg
+    reason: >
+      Lux documents FFmpeg as the prerequisite that merges downloaded audio and video
+      streams into the final media file.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/iawia002/lux#readme
+      - https://ffmpeg.org/documentation.html
+  - id: brew:aria2
+    reason: >
+      Lux can send transfers to an aria2 RPC server for delegated downloading, with
+      multipart merging handled separately.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/iawia002/lux#readme
+      - https://aria2.github.io/manual/en/html/aria2c.html
 category: media
 package-manager:
   brew: lux
