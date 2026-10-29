@@ -68,6 +68,35 @@ history:
       The Homebrew formula tests the Unix command by compressing a WAV fixture to APE,
       verifying the APE file, decompressing it back to WAV, and comparing hashes, which
       captures the package's command-line purpose.
+related-packages:
+  - id: brew:flac
+    reason: >
+      Choose FLAC for an open, patent-unencumbered lossless format with exceptionally
+      broad software and hardware support; Monkey's Audio also recognizes it as an
+      external encoding option.
+    rel: alternative
+    sources:
+      - https://www.monkeysaudio.com/help.html
+      - https://www.xiph.org/flac/index.html
+      - https://www.xiph.org/flac/documentation_tools_flac.html
+  - id: brew:wavpack
+    reason: >
+      Choose WavPack when you need lossless audio plus its distinctive hybrid
+      lossy-and-correction-file mode, which Monkey's Audio lists among its external
+      encoding choices.
+    rel: alternative
+    sources:
+      - https://www.monkeysaudio.com/help.html
+      - https://www.wavpack.com/
+      - https://www.wavpack.com/wavpack_doc.html
+  - id: brew:ffmpeg
+    reason: >
+      Use FFmpeg before `mac` to decode other media formats into a piped WAV stream for
+      Monkey's Audio compression, following the upstream help example.
+    rel: adjacent_workflow
+    sources:
+      - https://www.monkeysaudio.com/help.html
+      - https://ffmpeg.org/ffmpeg.html
 tags:
   - ape
   - audio-codec
@@ -102,9 +131,7 @@ provenance:
     - https://www.monkeysaudio.com/license.html
     - https://www.monkeysaudio.com/versionhistory.html
   repo-sources:
-    - >
-      The official project distributes source through its SDK but does not identify an
-      official HTTP(S) source-control project page.
+    - https://www.monkeysaudio.com/developers.html
   tags-sources:
     - source_facts.description identifies Monkey's Audio as a lossless codec.
     - source_facts.source-archive filename MAC SDK supports codec/SDK tagging.
