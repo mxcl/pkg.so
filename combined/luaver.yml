@@ -60,6 +60,33 @@ history:
       It is most useful when a developer needs to test Lua libraries against several
       Lua, LuaJIT, and LuaRocks combinations while keeping rock trees and shell state
       separated.
+related-packages:
+  - id: brew:lua
+    reason: >
+      Install Lua through luaver when projects must be tested against several
+      reference-interpreter versions instead of the single version selected by the
+      system package manager.
+    rel: adjacent_workflow
+    sources:
+      - https://dhavalkapil.com/luaver/
+      - https://www.lua.org/about.html
+  - id: brew:luajit
+    reason: >
+      luaver can install and switch LuaJIT alongside standard Lua, making LuaJIT the
+      documented alternate runtime in a multi-version test setup.
+    rel: adjacent_workflow
+    sources:
+      - https://dhavalkapil.com/luaver/
+      - https://luajit.org/luajit.html
+  - id: brew:luarocks
+    reason: >
+      luaver installs LuaRocks versions and keeps their rock trees associated with the
+      selected Lua runtime, preventing dependencies from different runtimes from being
+      mixed.
+    rel: adjacent_workflow
+    sources:
+      - https://dhavalkapil.com/blogs/Lua-Version-Manager/
+      - https://luarocks.org/
 category: developer-tools
 package-manager:
   brew: luaver
