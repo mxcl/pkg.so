@@ -3,7 +3,9 @@ display-name: Lisette
 repo: null
 docs:
   - https://lisette.run/
-config-file-location: null
+config-file-location:
+  unix:
+    - <project-root>/lisette.toml
 credentials-file-location: null
 history:
   adoption-history:
@@ -57,6 +59,15 @@ history:
       Users install the `lis` command and compile `.lis` programs to Go. The examples in
       the README and site focus on pattern matching, `Result` and `Option`-style error
       handling, typed channels, pipelines, and direct calls into Go packages.
+related-packages:
+  - id: brew:go
+    reason: >
+      Lisette compiles to Go and imports Go standard-library and module packages, so the
+      Go toolchain supplies the target runtime and broader dependency ecosystem.
+    rel: adjacent_workflow
+    sources:
+      - https://lisette.run/
+      - https://go.dev/doc/
 tags:
   - cli
   - compiler
