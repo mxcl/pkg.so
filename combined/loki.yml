@@ -84,6 +84,31 @@ history:
       Operators send logs to Loki with agents such as Grafana Alloy, then query them
       from Grafana using LogQL. Loki's distinction is that labels are indexed, while log
       lines remain compressed payloads.
+related-packages:
+  - id: brew:grafana-alloy
+    reason: >
+      Use Grafana Alloy as the officially recommended collector to gather, transform,
+      and send logs into Loki.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/loki/latest/send-data/alloy/
+      - https://grafana.com/docs/alloy/latest/
+  - id: brew:grafana
+    reason: >
+      Use Grafana to add Loki as a data source and explore LogQL results through Logs
+      Drilldown, Explore, and persistent dashboards.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/loki/latest/visualize/grafana/
+      - https://grafana.com/docs/grafana/latest/datasources/loki/
+  - id: brew:logcli
+    reason: >
+      Use LogCLI to run LogQL queries and scripted administrative analysis directly
+      against a Loki server without Grafana's graphical interface.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/loki/latest/query/logcli/
+      - https://grafana.com/docs/loki/latest/query/logcli/getting-started/
 category: data
 package-manager:
   apk: loki
