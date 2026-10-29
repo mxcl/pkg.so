@@ -3,7 +3,12 @@ display-name: mactop
 repo: null
 docs:
   - https://github.com/metaspartan/mactop#readme
-config-file-location: null
+config-file-location:
+  macos:
+    - $XDG_CONFIG_HOME/mactop/config.json
+    - ~/.mactop/config.json
+    - $XDG_CONFIG_HOME/mactop/theme.json
+    - ~/.mactop/theme.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -47,6 +52,25 @@ history:
       documents flags for update interval, foreground and background colors, headless
       JSON output, output formats such as YAML and CSV, Prometheus metrics, and optional
       menu bar mode.
+related-packages:
+  - id: brew:asitop
+    reason: >
+      asitop is a lighter Python and powermetrics-based Apple Silicon monitor; choose it
+      for a narrow CPU/GPU/power dashboard, while mactop provides broader native
+      telemetry and core monitoring without sudo.
+    rel: alternative
+    sources:
+      - https://github.com/metaspartan/mactop#readme
+      - https://tlkh.github.io/asitop/
+  - id: cask:stats
+    reason: >
+      Stats is a graphical macOS menu-bar monitor for CPU, GPU, memory, disk, network,
+      battery, fans, and sensors; choose it over mactop when a persistent GUI is more
+      useful than a terminal or structured-output workflow.
+    rel: alternative
+    sources:
+      - https://github.com/metaspartan/mactop#readme
+      - https://github.com/exelban/stats
 tags:
   - apple-silicon
   - cli

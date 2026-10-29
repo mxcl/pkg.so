@@ -4,8 +4,12 @@ repo: null
 docs:
   - https://beringresearch.github.io/macpine
   - https://github.com/beringresearch/macpine#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  macos:
+    - ~/.macpine/<instance-name>/config.yaml
+credentials-file-location:
+  macos:
+    - ~/.macpine/<instance-name>/config.yaml
 history:
   adoption-history:
     - >
@@ -51,6 +55,33 @@ history:
       create a VM, architecture and resource flags for customized instances, `alpine
       ssh` and `alpine exec` to enter or run commands, and `alpine publish` and `alpine
       import` for instance archive sharing.
+related-packages:
+  - id: brew:lima
+    reason: >
+      Choose Lima for general-purpose Linux virtual machines with automatic file sharing
+      and port forwarding; choose macpine when an Alpine-focused workflow and its
+      `alpine` lifecycle commands are preferable.
+    rel: alternative
+    sources:
+      - https://beringresearch.github.io/macpine/
+      - https://lima-vm.io/
+  - id: brew:colima
+    reason: >
+      Choose Colima when the main goal is a ready-to-use Docker, containerd, Kubernetes,
+      or Incus runtime; macpine is oriented toward directly managed Alpine VM instances.
+    rel: alternative
+    sources:
+      - https://beringresearch.github.io/macpine/
+      - https://colima.run/
+  - id: brew:qemu
+    reason: >
+      QEMU is macpine's documented virtualization dependency and is the lower-level
+      choice when users need machine or architecture options beyond macpine's
+      Alpine-specific abstraction.
+    rel: adjacent_workflow
+    sources:
+      - https://beringresearch.github.io/macpine/install/
+      - https://www.qemu.org/
 tags:
   - cli
   - linux-vm
