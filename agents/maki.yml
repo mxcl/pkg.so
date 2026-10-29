@@ -18,7 +18,11 @@ config-file-location:
     - '%APPDATA%\maki\providers.toml'
     - '%APPDATA%\maki\permissions.toml'
     - '%APPDATA%\maki\mcp.toml'
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.local/state/maki/auth/
+  windows:
+    - '%APPDATA%\maki\auth\'
 history:
   adoption-history:
     - >
@@ -75,6 +79,23 @@ history:
       Global behavior is configured in init.lua, while trusted repositories can supply a
       project-local .maki directory. Plugins can add tools, commands, keymaps, hooks,
       and provider integrations.
+related-packages:
+  - id: brew:aider
+    reason: >
+      Choose Aider for a mature Git-centered AI pair-programming workflow; choose Maki
+      when native Rust execution and Neovim-like Lua extensibility are priorities.
+    rel: alternative
+    sources:
+      - https://aider.chat/docs/
+      - https://maki.sh/docs/
+  - id: cask:zed
+    reason: >
+      Maki can run an Agent Client Protocol server on standard input/output so Zed can
+      provide the editor-side interface for Maki sessions.
+    rel: adjacent_workflow
+    sources:
+      - https://maki.sh/docs/cli/
+      - https://zed.dev/docs/ai/external-agents
 tags:
   - agent-client-protocol
   - ai-coding-agent

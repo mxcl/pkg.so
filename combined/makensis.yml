@@ -4,7 +4,9 @@ homepage: https://nsis.sourceforge.net/
 repo: https://sourceforge.net/p/nsis/code/HEAD/tree
 docs:
   - https://nsis.sourceforge.io/Docs
-config-file-location: null
+config-file-location:
+  unix: $PREFIX/etc/nsisconf.nsh
+  windows: <directory containing makensis.exe>\nsisconf.nsh
 credentials-file-location: null
 history:
   adoption-history:
@@ -70,6 +72,16 @@ history:
       `.nsi` files as text files containing commands, comments, variables, sections,
       pages, and installer behavior; build systems typically pass the script to
       `makensis` and publish the generated Windows installer.
+related-packages:
+  - id: brew:msitools
+    reason: >
+      Choose msitools when the required deliverable is a standard MSI package or you
+      need to inspect MSI tables; choose makensis for a highly scriptable standalone
+      NSIS executable installer.
+    rel: alternative
+    sources:
+      - https://nsis.sourceforge.io/Main_Page
+      - https://wiki.gnome.org/msitools
 category: developer-tools
 package-manager:
   brew: makensis
