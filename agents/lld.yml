@@ -73,6 +73,25 @@ history:
       For package-manager users, installing lld separately from a full compiler bundle
       can make it easier to test linker behavior, speed up builds, or build toolchains
       that intentionally mix compiler and linker components.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      Use LLVM with LLD when you want Clang and the wider LLVM toolchain to compile,
+      optimize, and inspect objects before selecting LLD for the final link stage.
+    rel: adjacent_workflow
+    sources:
+      - https://llvm.org/docs/
+      - https://lld.llvm.org/
+      - https://clang.llvm.org/docs/ClangCommandLineReference.html
+  - id: brew:mold
+    reason: >
+      Choose mold when maximum native link speed on its supported platforms is the
+      priority; choose LLD for direct LLVM integration and its ELF, Mach-O, PE/COFF, and
+      WebAssembly linker family.
+    rel: alternative
+    sources:
+      - https://github.com/rui314/mold#readme
+      - https://lld.llvm.org/
 tags:
   - cli
   - compiler-toolchain

@@ -69,6 +69,25 @@ history:
       For package users, Lizard matters most when reproducing older benchmark
       comparisons or handling data produced with the Lizard format; for new compression
       choices, upstream points readers toward LZ4 and zstd performance progress.
+related-packages:
+  - id: brew:lz4
+    reason: >
+      Choose LZ4 for a maintained, broadly adopted fast codec; Lizard was derived from
+      LZ4 but uses an incompatible format and upstream now directs attention to LZ4's
+      performance progress.
+    rel: alternative
+    sources:
+      - https://github.com/inikep/lizard#readme
+      - https://github.com/lz4/lz4
+  - id: brew:zstd
+    reason: >
+      Choose Zstandard for a maintained general-purpose codec with a wide speed-to-ratio
+      range; Lizard upstream identifies modern Zstandard as having surpassed Lizard's
+      former niche.
+    rel: alternative
+    sources:
+      - https://github.com/inikep/lizard#readme
+      - https://github.com/facebook/zstd
 tags:
   - archive-utility
   - cli

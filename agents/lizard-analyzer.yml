@@ -68,6 +68,24 @@ history:
       Because it intentionally measures how complex code looks rather than trying to
       fully compile or semantically resolve a project, it fits quick scans, pre-commit
       checks, and repository audits where low setup cost matters.
+related-packages:
+  - id: brew:pmccabe
+    reason: >
+      Choose pmccabe for a compact C/C++-focused McCabe complexity and line-count tool;
+      choose Lizard for broader language coverage, configurable metrics, duplicate
+      detection, and structured reports.
+    rel: alternative
+    sources:
+      - https://gitlab.com/pmccabe/pmccabe#readme
+      - https://github.com/terryyin/lizard#readme
+  - id: brew:cppcheck
+    reason: >
+      Use Cppcheck alongside Lizard when a C or C++ workflow needs defect and
+      undefined-behavior checks in addition to Lizard's structural complexity metrics.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/cppcheck-opensource/cppcheck
+      - https://github.com/terryyin/lizard#readme
 tags:
   - cli
   - code-metrics
