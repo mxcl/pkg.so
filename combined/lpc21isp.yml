@@ -58,6 +58,17 @@ history:
       Package users install the `lpc21isp` executable and use it from scripts or
       terminal sessions to transfer a firmware image through a supported serial
       bootloader. It has no documented project configuration or credential file.
+related-packages:
+  - id: brew:open-ocd
+    reason: >
+      Choose OpenOCD when programming must be performed through a JTAG or SWD debug
+      adapter and the same session should also support on-chip debugging; lpc21isp
+      targets serial ROM-bootloader ISP instead.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/projects/lpc21isp/
+      - https://openocd.org/doc/html/Debug-Adapter-Configuration.html
+      - https://openocd.org/doc/html/Flash-Programming.html
 category: developer-tools
 package-manager:
   brew: lpc21isp

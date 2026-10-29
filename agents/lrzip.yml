@@ -3,7 +3,11 @@ display-name: lrzip
 repo: https://github.com/ckolivas/lrzip
 docs:
   - https://github.com/ckolivas/lrzip#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ./lrzip.conf
+    - ~/.lrzip/lrzip.conf
+    - /etc/lrzip/lrzip.conf
 credentials-file-location: null
 history:
   adoption-history:
@@ -67,6 +71,34 @@ history:
       The tool has no documented persistent config or credentials. Tuning is by CLI
       options such as compression backend, level, thread count, and memory/window
       behavior.
+related-packages:
+  - id: brew:rzip
+    reason: >
+      Choose rzip for the simpler original long-range compressor with a fixed bzip2
+      second stage; lrzip extends that design with scalable memory handling, multiple
+      back ends, streaming, and wrapper commands.
+    rel: alternative
+    sources:
+      - https://rzip.samba.org/
+      - https://github.com/ckolivas/lrzip#readme
+  - id: brew:xz
+    reason: >
+      Choose XZ Utils when standardized .xz interoperability, liblzma embedding, and
+      gzip-like Unix tooling matter more than lrzip's specialized long-distance
+      redundancy pass.
+    rel: alternative
+    sources:
+      - https://tukaani.org/xz/
+      - https://github.com/ckolivas/lrzip#readme
+  - id: brew:zstd
+    reason: >
+      Choose Zstandard when high throughput and fast decompression are the main
+      priorities; choose lrzip when large inputs contain distant repetition and maximum
+      ratio can justify greater memory and CPU use.
+    rel: alternative
+    sources:
+      - https://github.com/facebook/zstd#readme
+      - https://github.com/ckolivas/lrzip#readme
 tags:
   - archiving
   - cli
