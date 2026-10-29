@@ -58,6 +58,39 @@ history:
       dependency manifests and output paths. The generated com.mono0926.LicensePlist
       files are copied into Settings.bundle so licenses appear inside the iOS Settings
       app.
+related-packages:
+  - id: brew:cocoapods
+    reason: >
+      LicensePlist reads the Pods directory produced by CocoaPods and converts those
+      dependency licenses into application acknowledgement files.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mono0926/LicensePlist
+      - https://guides.cocoapods.org/using/using-cocoapods.html
+  - id: brew:carthage
+    reason: >
+      LicensePlist can inspect a Carthage Cartfile as an input when generating the
+      application's acknowledgement bundle.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mono0926/LicensePlist
+      - https://github.com/Carthage/Carthage
+  - id: brew:mint
+    reason: >
+      LicensePlist can be installed through Mint and can scan Mintfile dependencies for
+      inclusion in generated acknowledgements.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mono0926/LicensePlist
+      - https://github.com/yonaskolb/Mint
+  - id: brew:licensefinder
+    reason: >
+      Choose LicenseFinder when the goal is dependency-license policy enforcement and
+      approval tracking rather than generating Apple Settings.bundle acknowledgements.
+    rel: alternative
+    sources:
+      - https://github.com/pivotal/LicenseFinder
+      - https://github.com/mono0926/LicensePlist
 tags:
   - cli
   - ios

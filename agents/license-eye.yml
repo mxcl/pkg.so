@@ -63,6 +63,33 @@ history:
       dependency files such as pom.xml, Cargo.toml, package.json, go.mod, and
       Gemfile.lock, then run the CLI or GitHub Actions in check, fix, diff, resolve, or
       dependency-check modes.
+related-packages:
+  - id: brew:addlicense
+    reason: >
+      Choose addlicense for a smaller recursive header-only checker and fixer;
+      SkyWalking Eyes additionally resolves and checks dependency licenses.
+    rel: alternative
+    sources:
+      - https://github.com/google/addlicense
+      - https://github.com/apache/skywalking-eyes
+  - id: brew:reuse
+    reason: >
+      Choose REUSE when the goal is compliance with the REUSE specification and SPDX
+      per-file metadata; SkyWalking Eyes instead centers configurable headers plus
+      dependency-license compatibility.
+    rel: alternative
+    sources:
+      - https://reuse.software/tutorial/
+      - https://github.com/apache/skywalking-eyes
+  - id: brew:licensed
+    reason: >
+      Choose Licensed when dependency-license records should be cached and reviewed as
+      repository artifacts; SkyWalking Eyes is broader because it also checks and
+      repairs source headers.
+    rel: alternative
+    sources:
+      - https://github.com/licensee/licensed
+      - https://github.com/apache/skywalking-eyes
 tags:
   - cli
   - dependency-licenses

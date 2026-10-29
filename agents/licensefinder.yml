@@ -61,6 +61,24 @@ history:
       Users run license_finder after installing project dependencies. The tool records
       approvals and permitted licenses, exits non-zero for unapproved dependencies, and
       can run in CI to catch new dependency-license work items.
+related-packages:
+  - id: brew:licensed
+    reason: >
+      Choose Licensed when you prefer cached per-dependency license records and status
+      checks; choose LicenseFinder for its broad native-package-manager adapters and
+      auditable approval decision log.
+    rel: alternative
+    sources:
+      - https://github.com/licensee/licensed
+      - https://github.com/pivotal/LicenseFinder
+  - id: brew:licensee
+    reason: >
+      Use Licensee alongside LicenseFinder to identify the repository's own license,
+      while LicenseFinder discovers and evaluates licenses belonging to dependencies.
+    rel: adjacent_workflow
+    sources:
+      - https://licensee.github.io/licensee/what-we-look-at/
+      - https://github.com/pivotal/LicenseFinder
 tags:
   - cli
   - dependencies

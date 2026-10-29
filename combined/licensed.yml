@@ -64,6 +64,24 @@ history:
       A project adds a .licensed.yml file, runs Licensed to cache dependency records,
       and then runs status or verification commands to catch newly introduced, stale, or
       disallowed dependency licenses.
+related-packages:
+  - id: brew:licensefinder
+    reason: >
+      Choose LicenseFinder when you want a broad package-manager scanner with an
+      auditable dependency_decisions.yml approval log; Licensed instead maintains cached
+      license records and validates their status.
+    rel: alternative
+    sources:
+      - https://github.com/pivotal/LicenseFinder
+      - https://github.com/licensee/licensed
+  - id: brew:licensee
+    reason: >
+      Use Licensee alongside Licensed to identify the license of a project itself, while
+      Licensed inventories and checks the licenses of that project's dependencies.
+    rel: adjacent_workflow
+    sources:
+      - https://licensee.github.io/licensee/what-we-look-at/
+      - https://github.com/licensee/licensed
 category: developer-tools
 package-manager:
   brew: licensed

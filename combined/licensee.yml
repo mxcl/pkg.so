@@ -60,6 +60,33 @@ history:
       An `OCTOKIT_ACCESS_TOKEN` environment variable can be supplied when scanning
       private GitHub repositories or avoiding API rate limits; the official
       documentation does not identify a credentials file.
+related-packages:
+  - id: brew:licensed
+    reason: >
+      Use Licensed after Licensee when you also need to cache dependency-license records
+      and enforce a dependency policy; Licensee itself primarily identifies the
+      repository's own license.
+    rel: adjacent_workflow
+    sources:
+      - https://licensee.github.io/licensee/what-we-look-at/
+      - https://github.com/licensee/licensed
+  - id: brew:reuse
+    reason: >
+      Use REUSE to create and lint standardized SPDX licensing metadata; Licensee can
+      then recognize the top-level LICENSES directory used by REUSE-compliant
+      repositories.
+    rel: adjacent_workflow
+    sources:
+      - https://reuse.software/spec/
+      - https://licensee.github.io/licensee/what-we-look-at/
+  - id: brew:licensefinder
+    reason: >
+      Use LicenseFinder alongside Licensee when the audit must cover dependency licenses
+      and approval decisions in addition to detecting the repository's own license.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/pivotal/LicenseFinder
+      - https://licensee.github.io/licensee/what-we-look-at/
 category: developer-tools
 package-manager:
   brew: licensee
