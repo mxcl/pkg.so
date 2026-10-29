@@ -4,7 +4,10 @@ homepage: http://xmlsoft.org/
 repo: https://gitlab.gnome.org/GNOME/libxml2
 docs:
   - https://gnome.pages.gitlab.gnome.org/libxml2/devhelp
-config-file-location: null
+config-file-location:
+  unix:
+    - ${sysconfdir}/xml/catalog
+    - /etc/xml/catalog
 credentials-file-location: null
 history:
   adoption-history:
@@ -68,6 +71,34 @@ history:
       using xmllint in scripts and tests, and using xmlcatalog where systems rely on XML
       catalog resolution. It is also a dependency layer for related XML software such as
       libxslt and xmlsec.
+related-packages:
+  - id: brew:xmlstarlet
+    reason: >
+      Choose XMLStarlet for a broader shell-oriented XML editing and transformation
+      interface; it is implemented using libxml2 and libxslt, while libxml2's xmllint
+      focuses on parsing, querying, formatting, and validation.
+    rel: alternative
+    sources:
+      - https://xmlstar.sourceforge.net/doc/UG/xmlstarlet-ug.html
+      - https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html
+  - id: brew:libxslt
+    reason: >
+      libxslt is built on libxml2 and adds XSLT transformations, including the xsltproc
+      command for applying stylesheets to XML documents.
+    rel: adjacent_workflow
+    sources:
+      - https://gnome.pages.gitlab.gnome.org/libxslt/devhelp/index.html
+      - https://gnome.pages.gitlab.gnome.org/libxslt/xsltproc.html
+      - https://gnome.pages.gitlab.gnome.org/libxml2/
+  - id: brew:libxmlsec1
+    reason: >
+      XML Security Library uses libxml2's XML structures and parsing APIs to add XML
+      Signature and XML Encryption workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lsh123/xmlsec
+      - https://github.com/lsh123/xmlsec/blob/master/src/xmltree.c
+      - https://gnome.pages.gitlab.gnome.org/libxml2/
 category: developer-tools
 package-manager:
   apk: libxml2

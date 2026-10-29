@@ -63,6 +63,23 @@ history:
       GGA, meta-GGA, hybrid, and related functionals. Packagers care about ABI,
       bindings, and the xc-info tool because downstream scientific packages often need a
       consistent functional catalog across C, Fortran, and Python interfaces.
+related-packages:
+  - id: brew:cp2k
+    reason: >
+      CP2K officially documents enabling Libxc to provide a wider choice of
+      exchange-correlation functionals in DFT calculations.
+    rel: adjacent_workflow
+    sources:
+      - https://manual.cp2k.org/trunk/technologies/libraries.html
+      - https://libxc.gitlab.io/
+  - id: brew:nwchem
+    reason: >
+      NWChem officially supports building against Libxc, so the packages work together
+      when NWChem users need Libxc-provided DFT functionals.
+    rel: adjacent_workflow
+    sources:
+      - https://nwchemgit.github.io/Interfaces-with-External-Software.html
+      - https://libxc.gitlab.io/
 tags:
   - cli
   - computational-chemistry
