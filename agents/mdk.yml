@@ -4,7 +4,10 @@ repo: https://git.savannah.gnu.org/cgit/mdk.git
 docs:
   - https://www.gnu.org/software/mdk/manual
   - https://www.gnu.org/software/mdk/mdk.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.mdk/mixvm.config
+    - ~/.mdk/mixguile.scm
 credentials-file-location: null
 history:
   adoption-history:
@@ -72,6 +75,15 @@ history:
       There is no credential flow. Configuration in the manual is runtime-oriented
       simulator configuration and build/install flags, not a documented per-user config
       file location suitable for this schema.
+related-packages:
+  - id: brew:guile
+    reason: >
+      GNU MDK's `mixguile` command and optional embedded interpreters use GNU Guile to
+      script and extend the MIX virtual machine with Scheme.
+    rel: adjacent_workflow
+    sources:
+      - https://www.gnu.org/software/mdk/manual/mdk.html
+      - https://www.gnu.org/software/guile/
 tags:
   - cli
   - development-kit

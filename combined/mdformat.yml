@@ -73,6 +73,25 @@ history:
       Configuration is resolved from a TOML file named `.mdformat.toml`, searched upward
       from the formatted file or from the current working directory for standard input.
       Command-line arguments take precedence over configuration values.
+related-packages:
+  - id: brew:prettier
+    reason: >
+      Choose Prettier when one formatter must cover Markdown together with JavaScript,
+      TypeScript, CSS, HTML, YAML, and other web formats; choose mdformat for a
+      Python-native, CommonMark-focused and extensible Markdown formatter.
+    rel: alternative
+    sources:
+      - https://github.com/hukkin/mdformat#why-not-use-prettier-instead
+      - https://prettier.io/docs/en/
+  - id: brew:pre-commit
+    reason: >
+      mdformat officially publishes a pre-commit hook, so pre-commit can run and enforce
+      Markdown formatting automatically before changes are committed or in CI.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://mdformat.readthedocs.io/en/stable/users/installation_and_usage.html#usage-as-a-pre-commit-hook
+      - https://pre-commit.com/
 category: developer-tools
 package-manager:
   brew: mdformat

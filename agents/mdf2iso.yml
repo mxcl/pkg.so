@@ -70,6 +70,25 @@ history:
     - >
       There is no official configuration or credential flow. It is a direct file
       conversion tool intended for local disk-image files.
+related-packages:
+  - id: brew:iat
+    reason: >
+      Choose Iso9660 Analyzer Tool when the source may be MDF or one of several other
+      legacy CD-image formats and the desired result is ISO-9660; mdf2iso additionally
+      offers CUE/BIN and TOC/DAT output modes.
+    rel: alternative
+    sources:
+      - https://salsa.debian.org/debian/mdf2iso/-/blob/master/debian/mdf2iso.1
+      - https://sourceforge.net/projects/iat.berlios/
+      - https://packages.debian.org/sid/iat
+  - id: brew:xorriso
+    reason: >
+      After mdf2iso creates an ISO image, GNU xorriso can inspect, extract, modify,
+      verify, or record the resulting ISO-9660 filesystem.
+    rel: adjacent_workflow
+    sources:
+      - https://salsa.debian.org/debian/mdf2iso/-/blob/master/debian/mdf2iso.1
+      - https://www.gnu.org/software/xorriso/
 tags:
   - cli
   - converter
