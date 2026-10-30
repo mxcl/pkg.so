@@ -80,6 +80,26 @@ history:
       The suite installs several algorithm-specific command names, including `md5deep`,
       `sha1deep`, `sha256deep`, `tigerdeep`, and `whirlpooldeep`, plus the broader
       `hashdeep` interface.
+related-packages:
+  - id: brew:rhash
+    reason: >
+      RHash is a maintained alternative for recursive, multi-algorithm hashing and
+      manifest verification, with additional formats and magnet-link support;
+      md5deep/hashdeep is stronger for forensic known-set matching and audit reports.
+    rel: alternative
+    sources:
+      - https://github.com/jessek/hashdeep/blob/master/README.md
+      - https://rhash.sourceforge.io/
+      - https://rhash.sourceforge.io/manpage.php
+  - id: brew:coreutils
+    reason: >
+      GNU Coreutils is the simpler alternative when scripts only require standard
+      `md5sum`, `sha1sum`, SHA-2, or `cksum` creation and verification rather than
+      recursive forensic auditing.
+    rel: alternative
+    sources:
+      - https://github.com/jessek/hashdeep/blob/master/README.md
+      - https://www.gnu.org/software/coreutils/manual/coreutils.html
 tags:
   - checksums
   - cli

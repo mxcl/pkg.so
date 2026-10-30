@@ -66,6 +66,33 @@ history:
     - >
       Homebrew's recorded executable for this formula is `ripemd160sum`, while the
       upstream page documents the full md5sum, sha1sum, and ripemd160sum toolset.
+related-packages:
+  - id: brew:coreutils
+    reason: >
+      GNU Coreutils is the broad, actively documented replacement for standard checksum
+      scripts, supplying `md5sum`, `sha1sum`, SHA-2 utilities, and the multi-algorithm
+      `cksum` interface.
+    rel: alternative
+    sources:
+      - http://microbrew.org/tools/md5sha1sum
+      - https://www.gnu.org/software/coreutils/manual/coreutils.html
+  - id: brew:rhash
+    reason: >
+      RHash is preferable when RIPEMD-160 must be combined with recursive directory
+      processing, multi-digest output, or hash-file verification.
+    rel: alternative
+    sources:
+      - http://microbrew.org/tools/md5sha1sum
+      - https://rhash.sourceforge.io/
+      - https://rhash.sourceforge.io/manpage.php
+  - id: brew:md5deep
+    reason: >
+      md5deep/hashdeep is the alternative for recursive file-set hashing, known-hash
+      matching, and forensic audits rather than simple drop-in checksum commands.
+    rel: alternative
+    sources:
+      - http://microbrew.org/tools/md5sha1sum
+      - https://github.com/jessek/hashdeep/blob/master/README.md
 tags:
   - checksums
   - cli
@@ -101,10 +128,8 @@ provenance:
     - http://microbrew.org/tools/md5sha1sum/README
     - source_facts.package-manager
   repo-sources:
-    - >
-      The official Microbrew project page distributes source archives but does not
-      identify an official HTTP(S) source-control repository.
-    - source_facts.repo is empty.
+    - http://microbrew.org/tools/md5sha1sum
+    - source_facts.repo
   tags-sources:
     - source_facts.description says hash utilities.
     - >
