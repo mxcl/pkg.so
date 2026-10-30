@@ -38,6 +38,16 @@ history:
       dependencies, making it convenient for macOS users building embedded images
       outside an IDE. Compared with mkspiffs, its niche is the LittleFS format rather
       than SPIFFS.
+related-packages:
+  - id: brew:platformio
+    reason: >
+      PlatformIO can select LittleFS in `platformio.ini`, build a project's data
+      directory into a filesystem image, and upload it with the `uploadfs` target using
+      its packaged mklittlefs tooling.
+    rel: adjacent_workflow
+    sources:
+      - https://registry.platformio.org/tools/platformio/tool-mklittlefs
+      - https://docs.platformio.org/en/latest/platforms/espressif8266.html
 category: developer-tools
 package-manager:
   brew: mklittlefs
