@@ -68,6 +68,33 @@ history:
       than by hand-running it. The README documents direct client usage with
       `meek-client --url=... --front=...`, server-side `meek-server`, and helper
       components for reflector services and browser-based TLS camouflage.
+related-packages:
+  - id: brew:tor
+    reason: >
+      Run meek as a pluggable transport for the tor daemon when direct access to the Tor
+      network is censored.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/meek/-/blob/main/README.md
+      - https://support.torproject.org/little-t-tor/circumvention/using-bridges/
+  - id: brew:snowflake
+    reason: >
+      Choose Snowflake instead when volunteer-operated ephemeral WebRTC proxies work
+      better than meek's cloud-site camouflage in the affected network.
+    rel: alternative
+    sources:
+      - https://support.torproject.org/tor-browser/circumvention/unblocking-tor/
+      - https://support.torproject.org/anti-censorship/what-is-snowflake/
+  - id: brew:obfs4proxy
+    reason: >
+      Choose obfs4proxy when bridge-based traffic obfuscation is effective and obtaining
+      an obfs4 bridge is practical, rather than relying on meek's cloud-provider
+      technique.
+    rel: alternative
+    sources:
+      - https://support.torproject.org/tor-browser/circumvention/unblocking-tor/
+      - https://community.torproject.org/relay/setup/bridge/
 category: networking
 package-manager:
   apk: meek

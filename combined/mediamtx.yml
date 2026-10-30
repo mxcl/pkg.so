@@ -8,7 +8,8 @@ docs:
   - https://mediamtx.org/docs/usage/configuration
 config-file-location:
   unix: mediamtx.yml
-credentials-file-location: null
+credentials-file-location:
+  unix: mediamtx.yml
 history:
   adoption-history:
     - >
@@ -73,6 +74,39 @@ history:
       use the control API. The official configuration documentation says the release
       bundle includes the configuration file and that changes can be hot-reloaded when
       possible.
+related-packages:
+  - id: brew:ffmpeg
+    reason: >
+      Use FFmpeg to publish files or devices into MediaMTX and to read or record its
+      streams; the official basic-usage guide provides commands for both directions.
+    rel: adjacent_workflow
+    sources:
+      - https://mediamtx.org/docs/features/basic-usage
+      - https://ffmpeg.org/documentation.html
+  - id: brew:gstreamer
+    reason: >
+      Choose GStreamer when a pipeline needs to publish to or consume MediaMTX through
+      RTSP, RTMP, HLS, SRT, or WebRTC components.
+    rel: adjacent_workflow
+    sources:
+      - https://mediamtx.org/docs/read/gstreamer
+      - https://gstreamer.freedesktop.org/documentation/
+  - id: cask:obs
+    reason: >
+      OBS Studio can publish live productions to MediaMTX and can also consume MediaMTX
+      streams as part of a broadcasting workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://mediamtx.org/docs/features/publish-and-read
+      - https://obsproject.com/kb/
+  - id: cask:vlc
+    reason: >
+      VLC provides a convenient desktop and command-line reader for diagnosing and
+      viewing MediaMTX network streams.
+    rel: adjacent_workflow
+    sources:
+      - https://mediamtx.org/docs/features/basic-usage
+      - https://docs.videolan.me/vlc-user/en/index.html
 category: networking
 package-manager:
   brew: mediamtx

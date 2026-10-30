@@ -69,6 +69,41 @@ history:
       `medusa.json`, then run campaigns with commands such as `medusa fuzz
       --target-contracts ... --test-limit ...`. Official docs recommend placing target
       contracts and fuzz limits in the project configuration file.
+related-packages:
+  - id: brew:echidna
+    reason: >
+      Choose Echidna for Crytic's older and more extensively tested property fuzzer;
+      medusa's official FAQ describes medusa as the newer Go/geth-based alternative with
+      a native API direction.
+    rel: alternative
+    sources:
+      - https://secure-contracts.com/program-analysis/medusa/docs/src/faq.html
+      - https://github.com/crytic/echidna
+  - id: brew:crytic-compile
+    reason: >
+      Use crytic-compile as medusa's compilation layer for Foundry, Hardhat, and other
+      supported smart-contract project layouts.
+    rel: adjacent_workflow
+    sources:
+      - https://secure-contracts.com/program-analysis/medusa/docs/src/cli/init.html
+      - https://github.com/crytic/crytic-compile
+  - id: brew:slither-analyzer
+    reason: >
+      Install Slither alongside medusa when you want static analysis and the improved
+      fuzz-value generation recommended by medusa's installation guide.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://secure-contracts.com/program-analysis/medusa/docs/src/getting_started/installation.html
+      - https://github.com/crytic/slither
+  - id: brew:foundry
+    reason: >
+      Use Foundry to build and test the Solidity project, then let medusa consume the
+      project through its documented crytic-compile workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://secure-contracts.com/program-analysis/medusa/docs/src/cli/init.html
+      - https://getfoundry.sh/
 tags:
   - cli
   - fuzzer
