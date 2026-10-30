@@ -78,6 +78,33 @@ history:
       For pushing to a registry, the README says credentials can be supplied on the
       command line, via credential helper support similar to the Docker client, or
       through an existing Docker client configuration.
+related-packages:
+  - id: brew:skopeo
+    reason: >
+      Choose skopeo when you need broader daemonless registry operations—such as
+      copying, deleting, or synchronizing images—in addition to inspecting image
+      manifests.
+    rel: alternative
+    sources:
+      - https://github.com/estesp/manifest-tool
+      - https://github.com/podman-container-tools/skopeo
+  - id: brew:docker
+    reason: >
+      Choose Docker's built-in `docker manifest` workflow when you already use the
+      Docker CLI and do not need a separate manifest-only executable.
+    rel: alternative
+    sources:
+      - https://github.com/estesp/manifest-tool
+      - https://docs.docker.com/reference/cli/docker/manifest/
+  - id: brew:docker-buildx
+    reason: >
+      Use Docker Buildx to build and publish the architecture-specific images or
+      multi-platform output that manifest-tool can subsequently inspect or assemble into
+      an index.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/estesp/manifest-tool
+      - https://docs.docker.com/build/building/multi-platform/
 tags:
   - cli
   - containers
