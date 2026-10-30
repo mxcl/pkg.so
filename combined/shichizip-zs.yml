@@ -1,0 +1,82 @@
+id: cask:shichizip-zs
+display-name: ShichiZip ZS
+homepage: https://github.com/idawnlight/ShichiZip
+repo: https://github.com/idawnlight/ShichiZip
+docs:
+  - https://github.com/idawnlight/ShichiZip#readme
+  - https://github.com/idawnlight/ShichiZip/blob/main/BUILD.md
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      ShichiZip ZS is published alongside the mainline application in upstream releases
+      for Apple Silicon and Intel. The official README documents installation through
+      the `shichizip-zs` Homebrew cask and through the ShichiZip tap, while MacPorts
+      exposes the equivalent functionality with its `+zstd` variant.
+  package-nerd-significance:
+    - >
+      ShichiZip ZS is useful to archive-format enthusiasts because it preserves the
+      native macOS ShichiZip interface while selecting an alternative 7-Zip engine with
+      Zstandard and additional codec support.
+    - >
+      The separate cask makes the codec trade-off visible and reproducible at
+      package-selection time instead of hiding it behind an in-application option.
+  project-history:
+    - >
+      ShichiZip ZS developed as a sibling build of ShichiZip rather than an independent
+      interface. Both variants share the Swift and Objective-C++ application code, but
+      the ZS target links against the vendored mcmilk/7-Zip-zstd source tree.
+    - >
+      The project's build system maintains separate schemes, test targets, archive-core
+      frameworks, and release artifacts for the mainline and ZS variants.
+  related-projects:
+    - ShichiZip is the mainline sibling linked against the regular 7-Zip source tree.
+    - >
+      mcmilk/7-Zip-zstd is the upstream engine used by this variant; it extends 7-Zip
+      with Zstandard and other codecs.
+  sources:
+    - 'Official README: https://github.com/idawnlight/ShichiZip#readme'
+    - 'Official build documentation: https://github.com/idawnlight/ShichiZip/blob/main/BUILD.md'
+  summary:
+    - >
+      ShichiZip ZS is the Zstandard-enabled edition of the native ShichiZip archive
+      manager for macOS. It uses the same application interface as mainline ShichiZip
+      but links against the 7-Zip-zstd engine.
+  timeline:
+    - >
+      Project development: Added a ZS build target sharing the ShichiZip application
+      code while using the 7-Zip-zstd upstream tree.
+    - >
+      Current packaging: Distributed as the separate `shichizip-zs` Homebrew cask and as
+      the MacPorts `+zstd` variant.
+  usage:
+    - >
+      Users choose ShichiZip ZS when they want ShichiZip's graphical archive browsing,
+      smart extraction, Finder integration, and Quick Look support together with the
+      extra codecs supplied by 7-Zip-zstd.
+    - >
+      Install the packaged variant with `brew install --cask shichizip-zs`; developers
+      select the ShichiZipZS build and test schemes documented in BUILD.md.
+category: system
+package-manager:
+  brew-cask: shichizip-zs
+package-manager-url: https://formulae.brew.sh/cask/shichizip-zs
+tags:
+  - 7zip
+  - 7zip-zstd
+  - archive-manager
+  - compression
+  - extraction
+  - finder
+  - gui
+  - macos
+  - quick-look
+  - zstandard
+description: 7-Zip derivative GUI based on mcmilk/7-Zip-zstd
+applications:
+  - ShichiZip ZS.app
+provenance:
+  cask: shichizip-zs
+  provider: brew-cask
+  source: https://formulae.brew.sh/api/cask.json

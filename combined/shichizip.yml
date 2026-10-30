@@ -1,0 +1,83 @@
+id: cask:shichizip
+display-name: ShichiZip
+homepage: https://github.com/idawnlight/ShichiZip
+repo: https://github.com/idawnlight/ShichiZip
+docs:
+  - https://github.com/idawnlight/ShichiZip#readme
+  - https://github.com/idawnlight/ShichiZip/blob/main/BUILD.md
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The official README documents binary distribution through GitHub releases and
+      availability through both Homebrew Cask and MacPorts. It notes that MacPorts
+      builds from source and is not the same binary distributed in upstream releases.
+    - >
+      Upstream releases provide both Apple Silicon and Intel builds and expose the
+      mainline and Zstandard-backed variants as separate Homebrew casks.
+  package-nerd-significance:
+    - >
+      ShichiZip fills a familiar gap for Mac package users who want broad 7-Zip format
+      compatibility but prefer a native graphical file manager over command-line tools
+      or cross-platform interfaces.
+    - >
+      Its packaging is unusually explicit about provenance: upstream binary releases,
+      MacPorts source builds, and a separate Homebrew tap for nightly or faster-moving
+      packages are documented as distinct installation channels.
+  project-history:
+    - >
+      ShichiZip was created as a native macOS derivative of 7-Zip, rebuilding much of
+      the 7-Zip File Manager experience for the platform while adding Finder and Quick
+      Look integration.
+    - >
+      The project vendors upstream 7-Zip sources as submodules and applies
+      project-specific patches. The mainline application links against the regular 7-Zip
+      tree, while a sibling build links against 7-Zip-zstd.
+  related-projects:
+    - 7-Zip is the principal upstream archive engine and user-interface inspiration.
+    - ShichiZip ZS is the sibling build based on mcmilk/7-Zip-zstd.
+  sources:
+    - 'Official README: https://github.com/idawnlight/ShichiZip#readme'
+    - 'Official build documentation: https://github.com/idawnlight/ShichiZip/blob/main/BUILD.md'
+  summary:
+    - >
+      ShichiZip is a native macOS graphical archive manager derived from 7-Zip. It
+      provides broad archive-format support, smart extraction, archive browsing, Finder
+      integration, and Quick Look previews.
+  timeline:
+    - >
+      Project development: Rebuilt the 7-Zip File Manager experience as a native macOS
+      application.
+    - >
+      Current packaging: Upstream publishes mainline and Zstandard variants for Intel
+      and Apple Silicon and documents Homebrew Cask and MacPorts installation.
+  usage:
+    - >
+      Users open or browse archives in the graphical file manager, extract them with
+      automatic destination handling, create supported archives, and preview archives or
+      contained files through Quick Look.
+    - >
+      The mainline Homebrew package is installed with `brew install --cask shichizip`;
+      developers can build the native app from the vendored upstream sources using Zig,
+      XcodeGen, and Xcode as documented upstream.
+category: system
+package-manager:
+  brew-cask: shichizip
+package-manager-url: https://formulae.brew.sh/cask/shichizip
+tags:
+  - 7zip
+  - archive-manager
+  - compression
+  - extraction
+  - finder
+  - gui
+  - macos
+  - quick-look
+description: 7-Zip derivative GUI
+applications:
+  - ShichiZip.app
+provenance:
+  cask: shichizip
+  provider: brew-cask
+  source: https://formulae.brew.sh/api/cask.json

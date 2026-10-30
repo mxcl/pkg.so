@@ -1568,20 +1568,20 @@
     "cockatrice": {
       "bundle_identifier": "com.cockatrice.cockatrice",
       "confidence": "high",
-      "evidence_hash": "14b20579df890920a7c8427e4167baec910b2261482ca942bb8959a7f050cde1",
-      "reason": "Cockatrice is the suite's primary client; the official build defines its macOS GUI identifier separately from Oracle and Servatrice, matching the cask's client identifier.",
+      "evidence_hash": "f82e79546391681c72e52f001f777aa5d833bd1c584a8daa71f2dad0726071da",
+      "reason": "Cockatrice is the primary client; Oracle is the card-data utility and Servatrice is the server. The cask\u2019s quit metadata maps each app to its corresponding identifier.",
       "sources": [
-        "https://formulae.brew.sh/cask/cockatrice",
-        "https://github.com/Cockatrice/Cockatrice/blob/master/cockatrice/CMakeLists.txt"
+        "https://github.com/Cockatrice/Cockatrice",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/c/cockatrice.rb"
       ]
     },
     "cocoapacketanalyzer": {
       "bundle_identifier": "com.tastycocoabytes.CocoaPacketAnalyzer",
-      "confidence": "medium",
-      "evidence_hash": "c15efa1581c5aea4da31641b083d11438f3de7046e106a6d8721ac44fc58e254",
-      "reason": "Homebrew installs CocoaPacketAnalyzer.app and associates this base identifier with its preferences and saved state; the suffixed candidate is explicitly a Quick Look extension.",
+      "confidence": "high",
+      "evidence_hash": "4f64f0aa9c61fc18167a18c0e15b0089ffe98b59632baa52b7abebdf3ce2fc59",
+      "reason": "The cask installs CocoaPacketAnalyzer.app and associates this identifier with its preferences and saved state; the other candidates are explicitly named app extensions.",
       "sources": [
-        "https://formulae.brew.sh/cask/cocoapacketanalyzer",
+        "https://apps.apple.com/us/app/cocoa-packet-analyzer/id418357707?mt=12",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/c/cocoapacketanalyzer.rb"
       ]
     },
@@ -1718,10 +1718,10 @@
     "copilot-money": {
       "bundle_identifier": "com.copilot.production",
       "confidence": "high",
-      "evidence_hash": "54e95b07cc722c535f0d9508a5514d12ba931c7ead3a4ec289dc7a91bdbb05e4",
-      "reason": "Homebrew installs Copilot.app and identifies its sandbox container as com.copilot.production; the group container uses the corresponding group-prefixed identifier.",
+      "evidence_hash": "604d8ab97150ca202e90d7d00c2e879eff5c75dab947e37abd19769447751a58",
+      "reason": "This is the application-container identifier for Copilot.app. The only alternative starts with group. and is explicitly the shared group-container identifier.",
       "sources": [
-        "https://formulae.brew.sh/cask/copilot-money",
+        "https://apps.apple.com/us/app/copilot-track-budget-money/id1447330651",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/c/copilot-money.rb"
       ]
     },
@@ -1765,6 +1765,16 @@
         "https://formulae.brew.sh/cask/cpu-info",
         "https://github.com/kamgurgul/cpu-info",
         "https://github.com/kamgurgul/cpu-info/releases/tag/jvm-1.10.0"
+      ]
+    },
+    "craft": {
+      "bundle_identifier": "com.lukilabs.lukiapp.Craft",
+      "confidence": "high",
+      "evidence_hash": "f146611b2394d6c2eba12352759abc9235d12ddc66e886458acdcc3ee7290c25",
+      "reason": "The cask associates Craft.app with application containers under this identifier. The alternative starts with group. and names the app\u2019s share group, not the main bundle.",
+      "sources": [
+        "https://apps.apple.com/us/app/craft-notes-documents-ai/id1487937127",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/c/craft.rb"
       ]
     },
     "creality-print": {
@@ -1970,10 +1980,10 @@
     "dbgate": {
       "bundle_identifier": "org.dbgate",
       "confidence": "high",
-      "evidence_hash": "38a838e777be9d78d22eca19989280a5fec9af5d235c1a453ce215303e6547aa",
-      "reason": "DbGate\u2019s official Electron build manifest sets appId to org.dbgate for the DbGate macOS application.",
+      "evidence_hash": "6015744ae25e8674a88a4e88f3671dd539f410f7fa39b80399e1be837edf9b01",
+      "reason": "The official DbGate Electron build manifest sets appId to org.dbgate and productName to DbGate.",
       "sources": [
-        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/d/dbgate.rb",
+        "https://formulae.brew.sh/cask/dbgate",
         "https://github.com/dbgate/dbgate/blob/master/app/package.json"
       ]
     },
@@ -2548,11 +2558,11 @@
     "duplicati": {
       "bundle_identifier": "com.duplicati.app",
       "confidence": "high",
-      "evidence_hash": "6c6f3a26c17c2407fd3455c322c04463a89680dee088e846fbe75b01f2c4f775",
-      "reason": "Duplicati's official build source assigns com.duplicati.app to the package installed at /Applications/Duplicati.app, and an official-repository issue includes macOS launch diagnostics explicitly reporting this value as Duplicati.app's CFBundleIdentifier.",
+      "evidence_hash": "1b9d6e772d81ca3fac7cb9c6c5434e67772c25e1d5a7a1ed1ca5a0a8dfe5aea2",
+      "reason": "Duplicati\u2019s official packaging code assigns com.duplicati.app to the package installed as /Applications/Duplicati.app; the separately named daemon identifier is not the app.",
       "sources": [
-        "https://github.com/duplicati/duplicati/blob/master/ReleaseBuilder/Build/Command.CreatePackage.cs",
-        "https://github.com/duplicati/duplicati/issues/4837"
+        "https://formulae.brew.sh/cask/duplicati",
+        "https://github.com/duplicati/duplicati/blob/master/ReleaseBuilder/Build/Command.CreatePackage.cs"
       ]
     },
     "dusklight": {
@@ -3316,8 +3326,8 @@
     "foobar2000": {
       "bundle_identifier": "com.foobar2000.mac",
       "confidence": "medium",
-      "evidence_hash": "0ed0caa75cb3db0dca46abbb924d5560af7335d8a859e469a8306a5fc0ed3e33",
-      "reason": "Homebrew installs foobar2000.app and associates it with the identically named macOS preference domain. The vendor page confirms this is the native macOS application, though no official public manifest exposes CFBundleIdentifier directly.",
+      "evidence_hash": "1f8ce11609833461078b1e17cd4430242ec004b42a12e0977692c86de613ee05",
+      "reason": "The official cask installs foobar2000.app and uses com.foobar2000.mac as its macOS preference domain; the vendor confirms this is the native macOS application, but no public official manifest directly exposes CFBundleIdentifier.",
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/foobar2000.rb",
         "https://www.foobar2000.org/mac"
@@ -3395,10 +3405,10 @@
     "freelens": {
       "bundle_identifier": "app.freelens.Freelens",
       "confidence": "high",
-      "evidence_hash": "afc1366d2ff1282ee9fc219e8f55cb030642c69bdbc476df6af08ce71cfb13a2",
-      "reason": "Freelens' official electron-builder manifest explicitly sets the macOS appId to app.freelens.Freelens.",
+      "evidence_hash": "fbd688637cedec40fa3e0478224c51b9da073aaaf5794b1e8f3d652b3c4a822b",
+      "reason": "Freelens' official electron-builder manifest explicitly assigns app.freelens.Freelens as the application ID used for the packaged macOS app.",
       "sources": [
-        "https://formulae.brew.sh/api/cask/freelens.json",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/f/freelens.rb",
         "https://github.com/freelensapp/freelens/blob/main/freelens/electron-builder.yml"
       ]
     },
@@ -4091,6 +4101,16 @@
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/h/holst.rb"
       ]
     },
+    "home-assistant": {
+      "bundle_identifier": "io.robbie.HomeAssistant",
+      "confidence": "high",
+      "evidence_hash": "17561f0e7744b42212600b8bb6fcd0d1247eb44dfff22d4da576b5b81e95d42a",
+      "reason": "An official repository crash report identifies /Applications/Home Assistant.app directly as io.robbie.HomeAssistant; the other candidate is its shared group-container identifier.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/h/home-assistant.rb",
+        "https://github.com/home-assistant/iOS/issues/2563"
+      ]
+    },
     "houdahspot": {
       "bundle_identifier": "com.houdah.HoudahSpot4",
       "confidence": "high",
@@ -4641,11 +4661,11 @@
     "jprofiler": {
       "bundle_identifier": null,
       "confidence": "low",
-      "evidence_hash": "38ba033fdbb9799b6247bc56a260bb05a3d82229f4c73d46fa05496640718a71",
-      "reason": "Official sources confirm JProfiler.app but do not expose its CFBundleIdentifier; the preference domains are insufficient to identify it reliably.",
+      "evidence_hash": "cc44265d9d9f31ce74e9ea06a667313a1bdf42c38be096bfa2ce577ee28c42bd",
+      "reason": "Official sources identify JProfiler.app but do not expose its CFBundleIdentifier. Its install4j and JProfiler preference domains are insufficient to distinguish the primary bundle identifier reliably.",
       "sources": [
         "https://formulae.brew.sh/cask/jprofiler",
-        "https://www.ej-technologies.com/resources/jprofiler/help/doc/JProfiler.pdf"
+        "https://www.ej-technologies.com/resources/jprofiler/help/doc/main/installing.html"
       ]
     },
     "jslegendre-themeengine": {
@@ -5223,10 +5243,10 @@
     "libation": {
       "bundle_identifier": "org.libation.macos",
       "confidence": "high",
-      "evidence_hash": "5b98f8c7cc97fd2eaf1cce50bd1c6de188694acd9fa504b001b898882e93cce9",
-      "reason": "A macOS crash report in Libation's official repository directly identifies Libation.app with this identifier.",
+      "evidence_hash": "e9a99317e33663cd419a51fbd58fc3eb0799f273f27142fac7260e08234b6d76",
+      "reason": "A macOS crash report in Libation's official repository directly identifies /Applications/Libation.app with Identifier org.libation.macos.",
       "sources": [
-        "https://formulae.brew.sh/cask/libation",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/l/libation.rb",
         "https://github.com/rmcrackan/Libation/issues/1028"
       ]
     },
@@ -5533,6 +5553,16 @@
         "https://formulae.brew.sh/cask/mac-mouse-fix@2",
         "https://github.com/noah-nuebling/mac-mouse-fix/blob/master/Mouse%20Fix.xcodeproj/project.pbxproj",
         "https://github.com/noah-nuebling/mac-mouse-fix/releases/tag/2.2.5"
+      ]
+    },
+    "macdirstat": {
+      "bundle_identifier": "io.github.phalladar.MacDirStat",
+      "confidence": "medium",
+      "evidence_hash": "cf44b4c8087a4675b054e833d672fe63d3e87a841c9603513c9e6991c4b06488",
+      "reason": "The official cask installs MacDirStat.app and associates its preferences with io.github.phalladar.MacDirStat. This strongly indicates the main bundle identifier, although a directly rendered Info.plist was unavailable.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/macdirstat.rb",
+        "https://github.com/phalladar/MacDirStat"
       ]
     },
     "macdroid": {
@@ -6098,6 +6128,16 @@
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/minecraft.rb"
       ]
     },
+    "minecraft-education": {
+      "bundle_identifier": "com.microsoft.minecraft-edu",
+      "confidence": "high",
+      "evidence_hash": "be5dd19f7d1482dd0271252471ee09f628853a392de1df35ed5898f54ebe4447",
+      "reason": "Official Minecraft Education support diagnostics identify the macOS app namespace as com.microsoft.minecraft-edu; com.microsoft.minecraftpe is legacy data from the Bedrock-derived app.",
+      "sources": [
+        "https://edusupport.minecraft.net/hc/en-us/community/posts/32520352948884-Minecraft-Education-not-working-with-Sequoia",
+        "https://formulae.brew.sh/cask/minecraft-education"
+      ]
+    },
     "mini-vmac": {
       "bundle_identifier": "com.gryphel.minivmac",
       "confidence": "high",
@@ -6156,6 +6196,16 @@
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/mkvtools.rb",
         "https://www.emmgunn.com/mkvtools-home/"
+      ]
+    },
+    "monet": {
+      "bundle_identifier": "io.github.zenolab124.monet",
+      "confidence": "high",
+      "evidence_hash": "27996a261930de420be6d647711034c810badc1bc36e282b0f3181d10cd76300",
+      "reason": "This is Monet.app's preference, cache, application-support, saved-state, and WebKit domain. The other candidates are an app-group identifier and the widget extension.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/m/monet.rb",
+        "https://github.com/zenolab124/monet"
       ]
     },
     "monofocus": {
@@ -8066,10 +8116,10 @@
     "quiet": {
       "bundle_identifier": null,
       "confidence": "low",
-      "evidence_hash": "167986848f963c80e976d93cd3760f1ad6365954310cd75d1537da396f222365",
-      "reason": "Quiet's official desktop build manifest explicitly sets electron-builder appId to Quiet for the primary product named Quiet.",
+      "evidence_hash": "2b12f31ef997d9c92c955ad1ae9eb946db27371de709e5a1c5a8141a237cbf7a",
+      "reason": "The official Electron packaging manifest sets productName to Quiet and appId\u2014the macOS bundle identifier\u2014to Quiet; Homebrew installs the resulting Quiet.app.",
       "sources": [
-        "https://github.com/TryQuiet/quiet",
+        "https://formulae.brew.sh/cask/quiet",
         "https://raw.githubusercontent.com/TryQuiet/quiet/develop/packages/desktop/package.json"
       ]
     },
@@ -8211,6 +8261,16 @@
       "sources": [
         "https://formulae.brew.sh/cask/receipts-space",
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/r/receipts-space.rb"
+      ]
+    },
+    "recut": {
+      "bundle_identifier": "co.tinywins.recut",
+      "confidence": "high",
+      "evidence_hash": "4f59a57f45647d69909d0a1944d6374189f034e3100a8c7d024db086e7a5fb2c",
+      "reason": "Homebrew associates co.tinywins.recut with Recut's current app support, caches, logs, and macOS recent-documents registration; com.tinywins.recut remains only in older preference/cache state.",
+      "sources": [
+        "https://getrecut.com/recut-crashing-windows/",
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/r/recut.rb"
       ]
     },
     "reflect": {
@@ -8442,6 +8502,16 @@
       "sources": [
         "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/r/roboform.rb",
         "https://help.roboform.com/hc/en-us/articles/231105388-RoboForm-app-installation"
+      ]
+    },
+    "rocket-typist": {
+      "bundle_identifier": "com.witt-software.Rocket-Typist-2",
+      "confidence": "high",
+      "evidence_hash": "fbaa9e134869bb707ced09605b831b18417556e31679155652b20f286a8d332d",
+      "reason": "This base identifier owns Rocket Typist's application support, preferences, caches, and HTTP storage; the longer candidate is explicitly the bundled Share Text extension.",
+      "sources": [
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/r/rocket-typist.rb",
+        "https://witt-software.com/rockettypist/"
       ]
     },
     "roku-remote-tool": {
@@ -8880,18 +8950,20 @@
     "shichizip": {
       "bundle_identifier": "ee.dawn.ShichiZip",
       "confidence": "high",
-      "evidence_hash": "61c40d8938e36a5d2f88d9c11b4bc4527bc3817d13874a7c5571e246fe0aeda4",
-      "reason": "The vendor's XcodeGen manifest defines the ShichiZip macOS application target with PRODUCT_BUNDLE_IDENTIFIER ee.dawn.ShichiZip.",
+      "evidence_hash": "1c9d1918f1c07154d749f07d76ef2762f67e6c24a1598b4eeabe93dfa1e678f4",
+      "reason": "The official XcodeGen manifest declares the macOS ShichiZip application target's PRODUCT_BUNDLE_IDENTIFIER as ee.dawn.ShichiZip; the listed candidates are Finder Quick Action extensions.",
       "sources": [
+        "https://formulae.brew.sh/cask/shichizip",
         "https://github.com/idawnlight/ShichiZip/blob/main/project/specs/apps.yml"
       ]
     },
     "shichizip-zs": {
       "bundle_identifier": "ee.dawn.ShichiZipZS",
       "confidence": "high",
-      "evidence_hash": "51d717c1dbf0ef1180a40d8656d6c14a42ae9a4145104c27ae64517e858767fd",
-      "reason": "The vendor's XcodeGen manifest defines the ShichiZipZS macOS application target, whose product is ShichiZip ZS.app, with PRODUCT_BUNDLE_IDENTIFIER ee.dawn.ShichiZipZS.",
+      "evidence_hash": "94218022b4931d40c17f8b5d511e88040f507f2db62db8b72bfef26962f02471",
+      "reason": "The official XcodeGen manifest defines the ShichiZipZS application target with PRODUCT_BUNDLE_IDENTIFIER ee.dawn.ShichiZipZS and PRODUCT_NAME ShichiZip ZS; the other candidates are Quick Action extensions.",
       "sources": [
+        "https://formulae.brew.sh/cask/shichizip-zs",
         "https://github.com/idawnlight/ShichiZip/blob/main/project/specs/apps.yml"
       ]
     },
@@ -9355,10 +9427,10 @@
     "status": {
       "bundle_identifier": "im.status.ethereum.desktop",
       "confidence": "high",
-      "evidence_hash": "d3cb506db29d876d6676dd9abb1675c957a6382397289d0923f8fd1858a2a4af",
-      "reason": "The official macOS build copies the production Info.plist into Status.app and uses this identifier when notarizing that bundle.",
+      "evidence_hash": "70d5930a06d4c0707d38d2097305c0ccd7b9e50f29238f51b9453ad957af0da7",
+      "reason": "The official production build defines Status.app as the outer macOS bundle and sets its macOS bundle ID to im.status.ethereum.desktop.",
       "sources": [
-        "https://github.com/status-im/status-app/blob/master/Info.plist",
+        "https://formulae.brew.sh/cask/status",
         "https://github.com/status-im/status-app/blob/master/Makefile"
       ]
     },
@@ -10169,11 +10241,11 @@
     "tresorit": {
       "bundle_identifier": "com.tresorit.mac",
       "confidence": "medium",
-      "evidence_hash": "3584fff147a81252990d9746db0729ea5f151fd3ab31c48b311ed4d7df1f22e7",
-      "reason": "Homebrew installs Tresorit.app and its cask metadata identifies com.tresorit.mac as the app's macOS preference domain; no official manifest was available to elevate confidence.",
+      "evidence_hash": "11a7da71b6b61ac42a241137758417652166cc5046c7bfd0411668c1c1c076a7",
+      "reason": "The official cask associates Tresorit.app with com.tresorit.mac preferences; the alternatives are a team-prefixed group container and explicitly named File Provider/Finder extensions.",
       "sources": [
-        "https://formulae.brew.sh/cask/tresorit",
-        "https://support.tresorit.com/hc/en-us/articles/216468567-Changelogs-macOS"
+        "https://github.com/Homebrew/homebrew-cask/blob/HEAD/Casks/t/tresorit.rb",
+        "https://support.tresorit.com/hc/en-us/articles/216468567-macOS-changelog"
       ]
     },
     "trex": {
@@ -10275,6 +10347,17 @@
       "sources": [
         "https://www.tyme-app.com/en/faq/",
         "https://www.tyme-app.com/en/scripting/"
+      ]
+    },
+    "typewhisper": {
+      "bundle_identifier": "com.typewhisper.mac",
+      "confidence": "high",
+      "evidence_hash": "8425025474f30cf57e14bb9919a3e79b68b5c0d53f757317f5a3a310293b88db",
+      "reason": "TypeWhisper\u2019s official documentation identifies com.typewhisper.mac as the production direct-download app domain and uses it for macOS privacy-permission resets; the other candidates are its group container, action, and widget.",
+      "sources": [
+        "https://formulae.brew.sh/cask/typewhisper",
+        "https://www.typewhisper.com/en/docs/mac/managed-settings/",
+        "https://www.typewhisper.com/en/docs/mac/troubleshooting/"
       ]
     },
     "typinator": {

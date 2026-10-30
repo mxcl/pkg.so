@@ -1,0 +1,97 @@
+id: cask:libation
+display-name: Libation
+homepage: https://getlibation.com/
+repo: https://github.com/rmcrackan/Libation
+docs:
+  - https://getlibation.com/docs
+config-file-location:
+  linux: ~/.local/share/Libation/Settings.json
+  macos: ~/Library/Application Support/Libation/Settings.json
+  windows: '%USERPROFILE%\Libation\Settings.json'
+credentials-file-location:
+  linux: ~/.local/share/Libation/AccountsSettings.json
+  macos: ~/Library/Application Support/Libation/AccountsSettings.json
+  windows: '%USERPROFILE%\Libation\AccountsSettings.json'
+history:
+  adoption-history:
+    - >
+      Libation evolved from Windows-oriented scraping and external-decryption workflows
+      into an Audible API-based application with native decryption and a SQLite library.
+      Its Chardonnay interface extended full support across Windows, macOS, and Linux,
+      while Docker and CLI support made it useful in automated audiobook-server
+      workflows.
+    - >
+      The project has become a prominent open-source option for users who want local,
+      DRM-free backups of books in their Audible libraries. Integration with
+      Audiobookshelf and support for multiple Audible regions connect it to the broader
+      self-hosted media ecosystem.
+  package-nerd-significance:
+    - >
+      Libation turns a vendor-managed Audible collection into ordinary local audio files
+      that can be backed up, tagged, searched, and played with independent software. Its
+      GUI, CLI, Docker image, configurable naming templates, and Audiobookshelf upload
+      support make it particularly attractive to self-hosters and archival-minded users.
+  project-history:
+    - >
+      The early Libation versions scraped Audible library pages, used browser cookies,
+      and delegated decryption to inAudible. Version 2 moved decryption in-process,
+      while version 3 switched to the Audible API and then from LocalDB to SQLite.
+      Version 3.1.0 was identified by the project as its first public release.
+    - >
+      Later development produced a cross-platform .NET application with desktop and
+      command-line interfaces. The project now downloads, decrypts, organizes, searches,
+      and exports Audible libraries on Windows, macOS, and Linux.
+  related-projects:
+    - Audible
+    - AAXClean
+    - Audiobookshelf
+    - audible-cli
+    - Docker
+  sources:
+    - https://getlibation.com/docs/
+    - https://getlibation.com/docs/advanced/command-line-interface
+    - https://getlibation.com/docs/installation/docker
+    - https://github.com/rmcrackan/Libation
+    - https://github.com/rmcrackan/Libation/blob/master/Source/REFERENCE.txt
+  summary:
+    - >
+      Libation is a free, open-source Audible library manager that downloads audiobooks,
+      removes their DRM, organizes metadata, and saves playable local files. It provides
+      desktop, command-line, and container-oriented workflows.
+  timeline:
+    - 'Version 1: Library scraping used browser cookies and inAudible.'
+    - 'Version 2: Native decryption replaced the inAudible dependency.'
+    - 'Version 3.0: The application moved to the Audible API.'
+    - 'Version 3.0.3: SQLite replaced LocalDB.'
+    - 'Version 3.1.0: First public release.'
+    - >
+      Later releases: Cross-platform desktop, CLI, Docker, and Audiobookshelf workflows
+      matured.
+  usage:
+    - >
+      Users add one or more Audible accounts, scan their libraries, and “liberate”
+      selected or all titles into local M4B or MP3-oriented collections. Advanced users
+      automate scans and downloads through LibationCli or Docker, customize output paths
+      and filenames, and optionally upload completed books to Audiobookshelf.
+category: media
+package-manager:
+  brew-cask: libation
+package-manager-url: https://formulae.brew.sh/cask/libation
+tags:
+  - audible
+  - audiobooks
+  - audiobookshelf
+  - cli
+  - docker
+  - downloader
+  - drm-removal
+  - library-manager
+  - m4b
+  - mp3
+description: Audible audiobook manager and liberator
+applications:
+  - Libation.app
+provenance:
+  cask: libation
+  provider: brew-cask
+  source: https://formulae.brew.sh/api/cask.json
