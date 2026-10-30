@@ -37,6 +37,26 @@ history:
       kramdown-rfc and metanorma-ietf, with a package-manager niche as a single CLI for
       authors who want local Markdown-to-RFCXML conversion in scripts, Makefiles, and
       continuous document builds.
+related-packages:
+  - id: brew:xml2rfc
+    reason: >
+      Mmark generates RFCXML, and xml2rfc is the documented next step for producing
+      validated text, HTML, PDF, and other IETF document renderings.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mmarkdown/mmark/blob/master/README.md
+      - https://authors.ietf.org/rendering-and-converting
+      - https://github.com/ietf-tools/xml2rfc
+  - id: brew:idnits
+    reason: >
+      Use idnits after rendering an Internet-Draft to catch IETF formatting and policy
+      issues before submission; the official Author Tools workflow supports both Mmark
+      input and idnits validation.
+    rel: adjacent_workflow
+    sources:
+      - https://authors.ietf.org/author-tools-web-service
+      - https://authors.ietf.org/document-validation
+      - https://github.com/mmarkdown/mmark/blob/master/README.md
 category: developer-tools
 package-manager:
   brew: mmark
