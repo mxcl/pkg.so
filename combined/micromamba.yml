@@ -50,7 +50,12 @@ config-file-location:
     - '{target_prefix}\.mambarc'
     - '%CONDARC%'
     - '%MAMBARC%'
-credentials-file-location: null
+credentials-file-location:
+  linux:
+    - $XDG_CONFIG_HOME/micasa/config.toml
+    - ~/.config/micasa/config.toml
+  macos: ~/Library/Application Support/micasa/config.toml
+  windows: '%APPDATA%\micasa\config.toml'
 history:
   project-history:
     - >
@@ -83,6 +88,7 @@ history:
       pieces. For package-manager users, micromamba fills the bootstrapper niche: create
       or run conda environments quickly without first carrying an entire conda
       distribution.
+related-packages: []
 category: developer-tools
 package-manager:
   brew: micromamba
