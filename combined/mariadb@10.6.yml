@@ -120,6 +120,41 @@ history:
       Configuration uses MariaDB's standard option-file hierarchy. MariaDB docs list
       Unix-like my.cnf locations and Windows my.ini/my.cnf locations, and client options
       may avoid insecure command-line passwords by using option files.
+related-packages:
+  - id: brew:mariadb@12.3
+    reason: >
+      MariaDB Foundation recommends evaluating a recent LTS such as 12.3 when leaving
+      the end-of-life 10.6 branch, provided the application and upgrade are tested
+      first.
+    rel: alternative
+    sources:
+      - >
+        https://mariadb.org/mariadb-server-12-3-11-8-11-4-and-10-11-q3-2026-maintenance-releases-and-goodbye-10-6/
+      - https://mariadb.org/mariadb-server-12-3-lts-released/
+  - id: brew:mariadb@10.11
+    reason: >
+      Choose MariaDB 10.11 as the closest maintained 10.x LTS alternative when remaining
+      within the 10.x generation simplifies compatibility work.
+    rel: alternative
+    sources:
+      - https://mariadb.org/mariadb-10-11-is-lts/
+      - https://mariadb.org/mariadb-server-10-6-reaches-end-of-life-on-july-6th/
+  - id: brew:mysql@8.4
+    reason: >
+      Choose MySQL 8.4 when Oracle MySQL LTS behavior or vendor certification is
+      required rather than MariaDB's independently developed server.
+    rel: alternative
+    sources:
+      - https://dev.mysql.com/doc/refman/8.4/en/
+      - >
+        https://mariadb.com/docs/release-notes/community-server/about/compatibility-and-differences/mariadb-vs-mysql-compatibility
+  - id: brew:mariadb-connector-c
+    reason: >
+      Use MariaDB Connector/C for supported C and C++ client connectivity while
+      maintaining or migrating a MariaDB 10.6 deployment.
+    rel: adjacent_workflow
+    sources:
+      - https://mariadb.com/docs/connectors/mariadb-connector-c
 category: data
 package-manager:
   apk: mariadb

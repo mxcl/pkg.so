@@ -121,6 +121,32 @@ history:
       with other MariaDB packages, users should treat option files as both configuration
       and possible credential stores when client groups contain passwords or TLS key
       settings.
+related-packages:
+  - id: brew:mariadb@12.3
+    reason: >
+      Choose MariaDB 12.3 for the newest maintained LTS generation when you can test the
+      major-version upgrade and do not need 10.11 compatibility.
+    rel: alternative
+    sources:
+      - https://mariadb.org/mariadb-server-12-3-lts-released/
+      - https://mariadb.org/about/
+  - id: brew:mysql@8.4
+    reason: >
+      Choose MySQL 8.4 when Oracle MySQL LTS compatibility or its vendor ecosystem is
+      required; MariaDB documents substantial protocol compatibility but also increasing
+      implementation differences.
+    rel: alternative
+    sources:
+      - https://dev.mysql.com/doc/refman/8.4/en/
+      - >
+        https://mariadb.com/docs/release-notes/community-server/about/compatibility-and-differences/mariadb-vs-mysql-compatibility
+  - id: brew:mariadb-connector-c
+    reason: >
+      Use MariaDB Connector/C to connect C and C++ applications to MariaDB 10.11 through
+      MariaDB's supported native client API.
+    rel: adjacent_workflow
+    sources:
+      - https://mariadb.com/docs/connectors/mariadb-connector-c
 tags:
   - cli
   - database

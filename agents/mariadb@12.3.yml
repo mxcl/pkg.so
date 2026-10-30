@@ -91,6 +91,40 @@ history:
       file, although prompting for a password or using an external secret store avoids
       keeping a plaintext password in a broadly readable file. MariaDB does not support
       MySQL's `.mylogin.cnf` credential format.
+related-packages:
+  - id: brew:mariadb@11.4
+    reason: >
+      Choose MariaDB 11.4 when an application requires the established 11.x LTS baseline
+      or when its mature deployment history outweighs 12.3's newer features.
+    rel: alternative
+    sources:
+      - https://mariadb.org/11-4-lts/
+      - https://mariadb.org/about/
+  - id: brew:mariadb@11.8
+    reason: >
+      Choose MariaDB 11.8 when production or vendor certification is tied to the 2025
+      LTS and a 12.3 major upgrade has not yet been validated.
+    rel: alternative
+    sources:
+      - https://mariadb.org/11-8-lts-released/
+      - https://mariadb.org/mariadb-server-12-3-lts-released/
+  - id: brew:mysql@8.4
+    reason: >
+      Choose MySQL 8.4 when Oracle MySQL LTS compatibility or vendor certification is
+      required; MariaDB remains protocol-compatible in many areas but is independently
+      implemented.
+    rel: alternative
+    sources:
+      - https://dev.mysql.com/doc/refman/8.4/en/
+      - >
+        https://mariadb.com/docs/release-notes/community-server/about/compatibility-and-differences/mariadb-vs-mysql-compatibility
+  - id: brew:mariadb-connector-c
+    reason: >
+      Use MariaDB Connector/C as the official client library for C and C++ applications
+      connecting to MariaDB 12.3.
+    rel: adjacent_workflow
+    sources:
+      - https://mariadb.com/docs/connectors/mariadb-connector-c
 tags:
   - cli
   - client-server

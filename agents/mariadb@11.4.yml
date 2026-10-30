@@ -116,6 +116,32 @@ history:
       MariaDB 11.4 release notes call out dump/client compatibility behavior around a
       new sandbox command in mariadb-dump output. That is exactly the kind of packaging
       detail that makes version pinning useful for database users and tooling authors.
+related-packages:
+  - id: brew:mariadb@12.3
+    reason: >
+      Choose MariaDB 12.3 for the latest LTS feature generation when application testing
+      permits a major upgrade; retain 11.4 when its established compatibility baseline
+      matters more.
+    rel: alternative
+    sources:
+      - https://mariadb.org/mariadb-server-12-3-lts-released/
+      - https://mariadb.org/about/
+  - id: brew:mysql@8.4
+    reason: >
+      Choose MySQL 8.4 when Oracle MySQL LTS compatibility and its specific ecosystem
+      are required rather than MariaDB 11.4 features.
+    rel: alternative
+    sources:
+      - https://dev.mysql.com/doc/refman/8.4/en/
+      - >
+        https://mariadb.com/docs/release-notes/community-server/about/compatibility-and-differences/mariadb-vs-mysql-compatibility
+  - id: brew:mariadb-connector-c
+    reason: >
+      Use MariaDB Connector/C as the official native client library for C and C++
+      programs connecting to MariaDB 11.4.
+    rel: adjacent_workflow
+    sources:
+      - https://mariadb.com/docs/connectors/mariadb-connector-c
 tags:
   - cli
   - database

@@ -125,6 +125,39 @@ history:
       server. Package users should also watch release notes before upgrades because even
       LTS maintenance releases can change packaged tools, plugins, security fixes, and
       client/server behavior.
+related-packages:
+  - id: brew:mariadb@12.3
+    reason: >
+      Choose MariaDB 12.3 for the subsequent LTS generation and its longer current
+      Community maintenance horizon when upgrade testing permits.
+    rel: alternative
+    sources:
+      - https://mariadb.org/mariadb-server-12-3-lts-released/
+      - https://mariadb.org/about/
+  - id: brew:mariadb@11.4
+    reason: >
+      Choose MariaDB 11.4 when an existing deployment requires its earlier 11.x
+      compatibility baseline or its Community maintenance window through 2029.
+    rel: alternative
+    sources:
+      - https://mariadb.org/11-4-lts/
+      - https://mariadb.org/about/
+  - id: brew:mysql@8.4
+    reason: >
+      Choose MySQL 8.4 for Oracle's MySQL LTS implementation when MySQL-specific
+      behavior or certification is more important than MariaDB 11.8 features.
+    rel: alternative
+    sources:
+      - https://dev.mysql.com/doc/refman/8.4/en/
+      - >
+        https://mariadb.com/docs/release-notes/community-server/about/compatibility-and-differences/mariadb-vs-mysql-compatibility
+  - id: brew:mariadb-connector-c
+    reason: >
+      Use MariaDB Connector/C for official C and C++ application connectivity to a
+      MariaDB 11.8 server.
+    rel: adjacent_workflow
+    sources:
+      - https://mariadb.com/docs/connectors/mariadb-connector-c
 category: data
 package-manager:
   apk: mariadb
