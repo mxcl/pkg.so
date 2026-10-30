@@ -108,6 +108,34 @@ history:
       package has state: upgrading the formula can also mean upgrading server binaries,
       data directories, plugins, dump compatibility, and client tools. MariaDB's release
       notes and LTS policy therefore matter more than the version number alone.
+related-packages:
+  - id: brew:mariadb-connector-c
+    reason: >
+      MariaDB Connector/C provides the official native client headers and library for
+      applications that connect to MariaDB without requiring the complete server
+      package.
+    rel: adjacent_workflow
+    sources:
+      - https://mariadb.com/docs/connectors/mariadb-connector-c/mariadb-connector-c-guide
+      - https://mariadb.com/docs/server/
+  - id: brew:mysql
+    reason: >
+      MySQL serves the same relational-database role and remains substantially
+      compatible, but MariaDB documents meaningful feature and protocol differences that
+      should be evaluated before choosing or migrating.
+    rel: alternative
+    sources:
+      - https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/
+      - https://dev.mysql.com/doc/refman/en/
+  - id: brew:mycli
+    reason: >
+      mycli is an interactive SQL client with completion, highlighting, and history
+      search that officially supports connecting to MariaDB servers.
+    rel: adjacent_workflow
+    sources:
+      - https://www.mycli.net/
+      - >
+        https://mariadb.com/docs/server/clients-and-utilities/server-client-software/client-libraries/connect-and-query
 tags:
   - cli
   - database

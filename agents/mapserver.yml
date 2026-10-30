@@ -83,6 +83,32 @@ history:
       Package users care about both the CGI/server binary and the helper utilities.
       mapserv is the recognizable runtime, but tools such as map2img and shptree make it
       possible to test rendering and prepare data from the command line.
+related-packages:
+  - id: brew:gdal
+    reason: >
+      MapServer uses GDAL/OGR to access raster and vector formats, while GDAL's
+      command-line utilities can inspect, convert, and prepare those datasets before
+      publication.
+    rel: adjacent_workflow
+    sources:
+      - https://www.osgeo.org/projects/mapserver/
+      - https://gdal.org/en/stable/programs/index.html
+  - id: brew:postgis
+    reason: >
+      MapServer documents native PostGIS layers, making PostGIS a practical database
+      backend for spatial data that MapServer publishes.
+    rel: adjacent_workflow
+    sources:
+      - https://mapserver.org/input/vector/postgis.html
+      - https://postgis.net/documentation/
+  - id: brew:proj
+    reason: >
+      MapServer relies on PROJ for on-the-fly coordinate transformations, and PROJ's
+      utilities help inspect or test the coordinate systems referenced by Mapfiles.
+    rel: adjacent_workflow
+    sources:
+      - https://www.osgeo.org/projects/mapserver/
+      - https://proj.org/apps/index.html
 tags:
   - cli
   - geospatial
