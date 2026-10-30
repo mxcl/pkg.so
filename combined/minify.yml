@@ -38,6 +38,26 @@ history:
       offering bindings outside Go, including JavaScript and .NET bindings noted by the
       project. Hugo community discussions and issues around Hugo's --minify behavior
       show the library's use inside static-site generation workflows.
+related-packages:
+  - id: brew:esbuild
+    reason: >
+      Choose esbuild when the main task is JavaScript, TypeScript, JSX, or CSS
+      transformation and dependency bundling as well as minification; choose Minify for
+      broader HTML, JSON, SVG, and XML coverage and simple filesystem-oriented
+      processing.
+    rel: alternative
+    sources:
+      - https://github.com/tdewolff/minify
+      - https://esbuild.github.io/api/
+  - id: brew:hugo
+    reason: >
+      Hugo exposes tdewolff-specific minification settings for HTML, CSS, JavaScript,
+      JSON, SVG, and XML, making it a documented higher-level site-building workflow
+      around this minifier family.
+    rel: adjacent_workflow
+    sources:
+      - https://gohugo.io/configuration/minify/
+      - https://github.com/tdewolff/minify
 category: developer-tools
 package-manager:
   apk: minify

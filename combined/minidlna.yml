@@ -5,7 +5,8 @@ repo: https://sourceforge.net/p/minidlna/git
 docs:
   - https://minidlna.sourceforge.net/
   - https://sourceforge.net/p/minidlna/wiki/Home
-config-file-location: null
+config-file-location:
+  unix: /etc/minidlna.conf
 credentials-file-location: null
 history:
   project-history:
@@ -35,6 +36,17 @@ history:
       daemon for machines that already hold media files and need standards-based
       discovery and streaming, especially NAS boxes, home servers, routers, and small
       Linux hosts.
+related-packages:
+  - id: cask:jellyfin
+    reason: >
+      Choose Jellyfin when you want accounts, rich library management, dedicated
+      clients, remote access, and transcoding in addition to optional DLNA service;
+      ReadyMedia remains the smaller choice for straightforward LAN DLNA serving.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/p/minidlna/wiki/Home/
+      - https://jellyfin.org/docs/general/quick-start/
+      - https://jellyfin.org/docs/general/post-install/networking/dlna/
 category: media
 package-manager:
   apk: minidlna
