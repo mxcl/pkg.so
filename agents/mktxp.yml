@@ -12,7 +12,10 @@ config-file-location:
     - ~/mktxp/_mktxp.conf
     - /etc/mktxp/mktxp.conf
     - /etc/mktxp/_mktxp.conf
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.config/mktxp/mktxp.conf
+    - /etc/mktxp/mktxp.conf
 history:
   adoption-history:
     - >
@@ -89,6 +92,24 @@ history:
       system options. The README documents XDG-style local configuration under
       ~/.config/mktxp, legacy local configuration under ~/mktxp, and container-oriented
       configuration under /etc/mktxp via --cfg-dir or bind mounts.
+related-packages:
+  - id: brew:prometheus
+    reason: >
+      Prometheus is the documented collector for MKTXP's RouterOS metrics endpoint and
+      is the next component in the standard monitoring workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/akpw/mktxp/blob/main/docs/exporter.md
+      - https://github.com/prometheus/prometheus
+  - id: brew:grafana
+    reason: >
+      Grafana provides the dashboards used to visualize MKTXP metrics, and upstream's
+      mktxp-stack ships a preconfigured MKTXP Grafana dashboard.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/akpw/mktxp/blob/main/README.md
+      - https://github.com/akpw/mktxp-stack
+      - https://github.com/grafana/grafana
 tags:
   - cli
   - grafana
