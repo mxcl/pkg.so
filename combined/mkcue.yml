@@ -49,6 +49,31 @@ history:
     - >
       Its role is metadata extraction for audio-CD backups rather than general cue-sheet
       editing.
+related-packages:
+  - id: brew:abcde
+    reason: >
+      Use mkcue with abcde when ripping an audio CD as a single lossless file plus a CUE
+      sheet; Debian and abcde document mkcue as part of that workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://packages.debian.org/sid/mkcue
+      - https://abcde.einval.com/wiki/
+  - id: brew:cuetools
+    reason: >
+      Use cuetools after mkcue to print or convert the generated CUE metadata, extract
+      track breakpoints, or apply tags.
+    rel: adjacent_workflow
+    sources:
+      - https://packages.debian.org/sid/mkcue
+      - https://github.com/svend/cuetools
+  - id: brew:flac
+    reason: >
+      Use FLAC to store the lossless single-file audio image paired with mkcue's CUE
+      sheet in the archival workflow documented by Debian.
+    rel: adjacent_workflow
+    sources:
+      - https://packages.debian.org/sid/mkcue
+      - https://xiph.org/flac/
 category: media
 package-manager:
   brew: mkcue

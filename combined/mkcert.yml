@@ -37,6 +37,24 @@ history:
       Homebrew, MacPorts, Linux packages, and prebuilt binaries cover the usual
       developer platforms, while the README leaves web-server configuration to the user
       after the certificate and key are generated.
+related-packages:
+  - id: brew:gimmecert
+    reason: >
+      Choose Gimmecert for an explicit per-project CA hierarchy with server and client
+      certificates; choose mkcert when automatic local browser and operating-system
+      trust is the priority.
+    rel: alternative
+    sources:
+      - https://github.com/FiloSottile/mkcert#readme
+      - https://gimmecert.readthedocs.io/en/stable/usage.html
+  - id: brew:nss
+    reason: >
+      Install NSS alongside mkcert when certutil is needed to add the local CA to
+      Firefox or another NSS trust store on macOS or Linux.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/FiloSottile/mkcert#readme
+      - https://firefox-source-docs.mozilla.org/security/nss/index.html
 category: security
 package-manager:
   apk: mkcert
