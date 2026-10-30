@@ -35,6 +35,32 @@ history:
       modern font consumers. Its packaging across Homebrew, Debian, Fedora, MacPorts,
       Nix, Ubuntu, and openSUSE reflects that it is infrastructure for a specialized
       publishing niche rather than an end-user font editor.
+related-packages:
+  - id: brew:fontforge
+    reason: >
+      Choose FontForge when you need an interactive or scriptable font editor; mftrace's
+      own manual says FontForge can duplicate bitmap tracing and also performs mftrace's
+      simplification, hinting, and additional-format generation.
+    rel: alternative
+    sources:
+      - https://github.com/hanwen/mftrace#readme
+      - https://fontforge.org/en-US/documentation/
+  - id: brew:potrace
+    reason: >
+      Potrace is mftrace's recommended tracing backend and is the documented faster
+      choice for converting the intermediate bitmap glyphs into outlines.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hanwen/mftrace#readme
+      - https://potrace.sourceforge.net/
+  - id: brew:autotrace
+    reason: >
+      AutoTrace is the officially supported alternative tracing backend for mftrace when
+      Potrace is unsuitable for a particular font workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hanwen/mftrace#readme
+      - https://github.com/autotrace/autotrace
 tags:
   - cli
   - fonts

@@ -6,7 +6,12 @@ docs:
   - https://github.com/mgba-emu/mgba/wiki
   - https://github.com/mgba-emu/mgba#readme
   - https://mgba.io/
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/mgba
+    - ~/.config/mgba
+  windows:
+    - '%APPDATA%\mGBA'
 credentials-file-location: null
 history:
   project-history:
@@ -42,6 +47,25 @@ history:
       macOS and Linux users a maintained route to the desktop emulator, while distro
       packages such as `libmgba-dev` expose the emulator library for software that
       embeds or integrates mGBA.
+related-packages:
+  - id: cask:retroarch-metal
+    reason: >
+      Use RetroArch when you want mGBA as one core inside a unified multi-system
+      frontend; mGBA officially supplies a libretro core, though its FAQ warns that the
+      core can lag behind standalone upstream.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mgba-emu/mgba#readme
+      - https://mgba.io/faq.html
+      - https://docs.libretro.com/library/mgba/
+  - id: cask:dolphin
+    reason: >
+      Dolphin works with mGBA for GameCube-to-Game-Boy-Advance link-cable and Game Boy
+      Player workflows documented by both emulator projects.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mgba-emu/mgba#readme
+      - https://dolphin-emu.org/blog/2021/07/21/integrated-gba/
 tags:
   - cli
   - emulator
