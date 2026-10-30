@@ -3,7 +3,10 @@ display-name: Miller
 repo: null
 docs:
   - https://github.com/johnkerl/miller
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.mlrrc
+    - ./.mlrrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -47,6 +50,25 @@ history:
       implementation with no runtime dependencies. This made Miller easier to distribute
       as a small CLI while keeping its niche as a data-aware companion to the
       traditional Unix toolkit, jq, xsv, csvtk, q, Nushell, pandas, and SQL databases.
+related-packages:
+  - id: brew:csvkit
+    reason: >
+      Choose csvkit when a suite of focused Python commands for conversion, inspection,
+      joins, statistics, and SQL-oriented CSV work fits the workflow; choose Miller for
+      one streaming multi-format executable with a record-processing DSL.
+    rel: alternative
+    sources:
+      - https://miller.readthedocs.io/en/latest/
+      - https://csvkit.readthedocs.io/en/latest/
+  - id: brew:jq
+    reason: >
+      Use jq beside Miller when a pipeline needs jq's dedicated JSON query language,
+      while Miller handles CSV, TSV, JSON Lines, and other record-oriented formats
+      before or after that JSON stage.
+    rel: adjacent_workflow
+    sources:
+      - https://miller.readthedocs.io/en/latest/file-formats/
+      - https://jqlang.org/manual/
 tags:
   - cli
   - csv
