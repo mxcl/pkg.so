@@ -122,18 +122,18 @@
     {
       "id": "new-packages",
       "packageIDs": [
-        "brew:gitea-importer",
         "brew:cask:solidcraft",
-        "brew:cask:kero",
         "brew:cask:magpie",
+        "brew:lovable-oj",
+        "brew:entire-cli",
+        "brew:gitea-importer",
+        "brew:cask:kero",
         "brew:kontext",
         "brew:filmcraft-cli",
         "brew:gitea-cli",
         "brew:ascelerate",
         "brew:cask:peel",
-        "brew:worldmonitor",
-        "brew:cask:textus",
-        "brew:cask:pen"
+        "brew:worldmonitor"
       ],
       "title": "New Packages",
       "type": "newPackages"
@@ -141,18 +141,18 @@
     {
       "id": "recently-updated",
       "packageIDs": [
-        "brew:gitea-importer",
         "brew:cask:solidcraft",
-        "brew:cask:kero",
         "brew:cask:magpie",
+        "brew:lovable-oj",
+        "brew:entire-cli",
+        "brew:gitea-importer",
+        "brew:cask:kero",
         "brew:kontext",
         "brew:filmcraft-cli",
         "brew:gitea-cli",
         "brew:ascelerate",
         "brew:cask:peel",
-        "brew:worldmonitor",
-        "brew:noodle",
-        "brew:dep-scan"
+        "brew:worldmonitor"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -873,7 +873,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-29T07:01:34Z",
+  "generatedAt": "2026-10-30T07:06:07Z",
   "packages": {
     "brew:ascelerate": {
       "agentSummary": "ascelerate exposes App Store Connect through a Swift command-line interface designed for scripts, structured JSON output, releases, metadata, pricing, and media workflows.",
@@ -1734,34 +1734,31 @@
       "version": "263.6379.0"
     },
     "brew:cask:magpie": {
-      "agentSummary": "Magpie provides one desktop and terminal interface for routing coding agents to different model providers, with signed cross-platform builds and Homebrew-managed updates.",
+      "agentSummary": "Magpie provides one local gateway for assigning models and provider accounts across coding agents, with desktop, command-line, routing, privacy, and MCP management features.",
       "assessment": {
         "alternatives": [
-          "Configure each agent and model provider directly",
-          "Use a general-purpose model gateway"
+          "Configure models and credentials separately in each coding agent",
+          "Use provider-specific gateways when cross-agent routing is not required"
         ],
         "audiences": [
-          "Developers comparing model providers behind familiar coding agents",
-          "Teams wanting one local control surface for several agent-model combinations"
+          "Developers using several coding agents or model providers",
+          "Teams wanting local control over model routing and provider-account selection"
         ],
         "caveats": [
-          "Requests and code context may reach whichever external model provider is selected",
-          "Provider compatibility, pricing, and behavior can change independently",
-          "The releases repository contains distribution artifacts; consult the main source repository for implementation details"
+          "A local gateway becomes another component in the request path",
+          "Model behavior, availability, pricing, and data handling still depend on the selected providers"
         ],
         "complements": [
-          "Codex, Claude Code, and other supported coding-agent clients",
-          "Provider-specific usage and billing controls"
+          "Codex, Claude Code, Gemini CLI, and other agents documented by Magpie",
+          "Local or remote MCP servers managed through Magpie's hub"
         ],
         "prerequisites": [
-          "Accounts and credentials for selected model providers",
-          "A supported macOS, Windows, or Linux system",
-          "GTK 3 and WebKitGTK 4.1 for the Linux desktop build"
+          "At least one supported coding agent and model-provider account",
+          "Provider credentials and responsibility for each provider's usage charges"
         ],
         "useCases": [
-          "Route supported coding-agent workflows to selected model providers",
-          "Use either a desktop application or terminal-only client",
-          "Install signed, notarized macOS builds through Homebrew"
+          "Choose a different model or provider account for each supported agent",
+          "Route requests through a local gateway and manage shared MCP integrations"
         ]
       },
       "category": "ai",
@@ -1809,29 +1806,24 @@
       "homepage": "https://usemagpie.ai/",
       "id": "brew:cask:magpie",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Amagpie",
-      "lastUpdatedAt": "2026-10-29T01:27:30Z",
+      "lastUpdatedAt": "2026-10-30T04:23:49Z",
       "manager": "homebrew",
       "repository": "https://github.com/yetone/magpie-releases",
-      "researchedAt": "2026-10-29T07:01:34Z",
+      "researchedAt": "2026-10-30T07:06:07Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "Magpie source repository",
-          "url": "https://github.com/yetone/magpie"
-        },
-        {
-          "kind": "primary",
-          "title": "Magpie signed-build and installation documentation",
-          "url": "https://github.com/yetone/magpie-releases"
-        },
-        {
-          "kind": "primary",
-          "title": "Magpie product site",
+          "title": "Magpie product overview",
           "url": "https://usemagpie.ai/"
+        },
+        {
+          "kind": "primary",
+          "title": "Magpie setup and routing documentation",
+          "url": "https://usemagpie.ai/docs/start"
         }
       ],
       "upstreamSummary": "Model gateway for AI coding agents",
-      "version": "0.1.1975"
+      "version": "0.1.2100"
     },
     "brew:cask:peel": {
       "agentSummary": "Peel uninstalls macOS applications, traces associated files, explains each match, and adds disk-cleaning and system-tuning tools in a native desktop interface.",
@@ -1891,57 +1883,6 @@
       ],
       "upstreamSummary": "App uninstaller and disk space cleaner",
       "version": "1.2.1"
-    },
-    "brew:cask:pen": {
-      "agentSummary": "pen.dev combines a design canvas with embedded and external agents, Figma and web imports, and exports spanning code, raster images, and PDF.",
-      "assessment": {
-        "alternatives": [
-          "Figma or other established design tools, paired with separate code-generation workflows."
-        ],
-        "audiences": [
-          "Product designers and developers exploring agent-assisted design-to-code workflows."
-        ],
-        "caveats": [
-          "Agent actions and generated code require review; stopping an agent leaves completed canvas changes in place.",
-          "Imported web layers do not preserve JavaScript interactions, and importing signed-in pages can expose private content."
-        ],
-        "complements": [
-          "Claude Code, Codex, VS Code, Cursor, Figma assets, and local web-development servers."
-        ],
-        "prerequisites": [
-          "A pen.dev sign-in and configured model provider for agent features.",
-          "The desktop application must remain open for connected desktop-agent workflows."
-        ],
-        "useCases": [
-          "Create or revise canvas elements with embedded, IDE, or terminal agents.",
-          "Import Figma files or web layouts and export code or presentation assets."
-        ]
-      },
-      "category": "developer-tools",
-      "discovery": {},
-      "displayName": "pen.dev",
-      "docs": "https://docs.pen.dev/",
-      "homepage": "https://pen.dev/",
-      "id": "brew:cask:pen",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Apen",
-      "lastUpdatedAt": "2026-10-23T20:49:35Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/highagency/pen-desktop-releases",
-      "researchedAt": "2026-10-24T10:28:08Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "pen.dev AI agents and skills",
-          "url": "https://docs.pen.dev/core-concepts/ai-agents"
-        },
-        {
-          "kind": "primary",
-          "title": "pen.dev import and export documentation",
-          "url": "https://docs.pen.dev/core-concepts/import-and-export"
-        }
-      ],
-      "upstreamSummary": "Agentic design canvas",
-      "version": "1.2.19"
     },
     "brew:cask:photocraft": {
       "agentSummary": "PhotoCraft is an early-alpha Rust image editor pursuing layered PSD compatibility, native and web builds, local processing, automation, and measurable feature-parity goals.",
@@ -2085,34 +2026,31 @@
       "version": "3.4.0"
     },
     "brew:cask:solidcraft": {
-      "agentSummary": "SolidCraft is a young Rust parametric CAD application for constrained sketches and timeline-based solids, available on desktop, web, and through an MCP interface.",
+      "agentSummary": "SolidCraft is an early open-source parametric CAD system in Rust, spanning desktop, browser, command-line automation, and an MCP server for agent-driven modeling.",
       "assessment": {
         "alternatives": [
-          "FreeCAD",
-          "OpenSCAD",
-          "Commercial parametric CAD suites"
+          "FreeCAD for a more established open-source parametric CAD ecosystem",
+          "Blender for mesh-first modeling and rendering rather than feature-history CAD"
         ],
         "audiences": [
-          "Makers and engineers evaluating open-source parametric CAD",
-          "Developers experimenting with programmatic or agent-driven modeling"
+          "Makers and engineers exploring open-source parametric CAD",
+          "Developers automating 3D modeling through scripts or MCP"
         ],
         "caveats": [
-          "The project is very new and may not cover mature CAD workflows or file interoperability",
-          "Browser, desktop, and MCP surfaces may differ in capability",
-          "Validate exported geometry before fabrication or engineering use"
+          "Upstream describes SolidCraft as early but usable for simple parts",
+          "Complex-model compatibility and feature maturity should be tested before production adoption"
         ],
         "complements": [
-          "STEP or mesh tooling for downstream fabrication workflows",
-          "Version control for model and automation assets"
+          "3D printing and fabrication toolchains that consume STEP, 3MF, STL, or related formats",
+          "Coding agents that can connect to the built-in MCP server"
         ],
         "prerequisites": [
-          "A supported desktop platform or modern browser",
-          "Familiarity with parametric sketch and feature concepts"
+          "Comfort evaluating an early-stage CAD application for non-critical work",
+          "A supported desktop platform or a modern browser"
         ],
         "useCases": [
-          "Create dimensioned sketches and rebuildable solid models",
-          "Try the same modeling workflow on desktop or in a browser",
-          "Automate supported modeling operations through MCP"
+          "Create constrained sketches and rebuild solids from editable parameters",
+          "Export common manufacturing and mesh formats from desktop, browser, or headless workflows"
         ]
       },
       "category": "science",
@@ -2149,127 +2087,24 @@
       "homepage": "https://solidcraft.io/",
       "id": "brew:cask:solidcraft",
       "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Asolidcraft",
-      "lastUpdatedAt": "2026-10-29T04:34:12Z",
+      "lastUpdatedAt": "2026-10-30T04:53:18Z",
       "manager": "homebrew",
       "repository": "https://github.com/tangency-labs/solidcraft",
-      "researchedAt": "2026-10-29T07:01:34Z",
+      "researchedAt": "2026-10-30T07:06:07Z",
       "sources": [
         {
           "kind": "primary",
-          "title": "SolidCraft upstream repository and feature overview",
+          "title": "SolidCraft repository and feature overview",
           "url": "https://github.com/tangency-labs/solidcraft"
         },
         {
           "kind": "primary",
           "title": "SolidCraft documentation",
           "url": "https://docs.solidcraft.io/"
-        },
-        {
-          "kind": "primary",
-          "title": "SolidCraft v0.1.0 initial release",
-          "url": "https://github.com/tangency-labs/solidcraft/releases/tag/v0.1.0"
         }
       ],
       "upstreamSummary": "Parametric 3D CAD modeller",
-      "version": "0.25.1"
-    },
-    "brew:cask:textus": {
-      "agentSummary": "Textus combines rendered Markdown editing with optional bring-your-own-model writing tools, while keeping documents local and supporting fully offline editing without AI.",
-      "assessment": {
-        "alternatives": [
-          "A conventional text editor",
-          "Obsidian or Typora for established Markdown workflows"
-        ],
-        "audiences": [
-          "Writers who prefer plain Markdown files",
-          "Users wanting optional local or hosted AI assistance"
-        ],
-        "caveats": [
-          "Hosted AI sends selected context to the chosen provider",
-          "The project is young and its editor behavior is still evolving"
-        ],
-        "complements": [
-          "Ollama for local-model workflows",
-          "Git for versioning Markdown files"
-        ],
-        "prerequisites": [
-          "A supported desktop system",
-          "Provider credentials only when enabling hosted AI"
-        ],
-        "useCases": [
-          "Edit rendered Markdown",
-          "Review AI suggestions",
-          "Work offline without enabling AI"
-        ]
-      },
-      "category": "productivity",
-      "discovery": {
-        "admittedAt": "2026-10-20",
-        "analytics": {
-          "30": {
-            "count": 127,
-            "endDate": "2026-10-25",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "startDate": "2026-09-25"
-          },
-          "365": {
-            "count": 127,
-            "endDate": "2026-10-25",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
-            "startDate": "2025-10-25"
-          },
-          "90": {
-            "count": 127,
-            "endDate": "2026-10-25",
-            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
-            "startDate": "2026-07-27"
-          }
-        },
-        "firstObservedAt": "2026-10-20",
-        "lastVerifiedAt": null,
-        "recentlyDiscovered": true,
-        "status": "official",
-        "trend": {
-          "endDate": "2026-10-25",
-          "growthPercent": null,
-          "installs30d": 127,
-          "previousMonthlyRate": 0.0,
-          "score": 18.321771,
-          "sources": [
-            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
-            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
-          ],
-          "startDate": "2026-07-27"
-        }
-      },
-      "displayName": "Textus",
-      "docs": "https://github.com/CatVinci-Studio/Textus#readme",
-      "homepage": "https://textus.catvinci.com/",
-      "id": "brew:cask:textus",
-      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Atextus",
-      "lastUpdatedAt": "2026-10-25T02:01:11Z",
-      "manager": "homebrew",
-      "repository": "https://github.com/CatVinci-Studio/Textus",
-      "researchedAt": "2026-10-25T10:29:27Z",
-      "sources": [
-        {
-          "kind": "primary",
-          "title": "Textus upstream repository",
-          "url": "https://github.com/CatVinci-Studio/Textus"
-        },
-        {
-          "kind": "primary",
-          "title": "Textus product documentation",
-          "url": "https://textus.catvinci.com/"
-        },
-        {
-          "kind": "primary",
-          "title": "Textus initial v0.1.0 release",
-          "url": "https://github.com/CatVinci-Studio/Textus/releases/tag/v0.1.0"
-        }
-      ],
-      "upstreamSummary": "WYSIWYG Markdown editor with built-in AI writing tools",
-      "version": "1.2.1"
+      "version": "0.27.0"
     },
     "brew:cask:trilium-notes": {
       "agentSummary": "Trilium Notes organizes a local personal knowledge base as linked, hierarchical notes, with self-hosted synchronization, scripting, relations, and structured attributes for deeper workflows.",
@@ -2941,6 +2776,60 @@
       ],
       "upstreamSummary": "Cross-platform disk diagnostics TUI",
       "version": "0.6.1"
+    },
+    "brew:entire-cli": {
+      "agentSummary": "Entire CLI records coding-agent sessions beside Git commits, supports multiple agents, and adds searchable checkpoints while warning that public repositories can expose transcripts.",
+      "assessment": {
+        "alternatives": [
+          "Native transcript or session-history features supplied by individual coding agents",
+          "Conventional commit messages and pull-request notes when full session capture is unnecessary"
+        ],
+        "audiences": [
+          "Developers using coding agents who need durable session provenance",
+          "Teams reviewing agent-assisted changes through Git-centered workflows"
+        ],
+        "caveats": [
+          "Checkpoint transcripts pushed to a public repository can be read by anyone",
+          "Secret redaction is best effort, so outgoing checkpoints require review and careful destination configuration"
+        ],
+        "complements": [
+          "Claude Code, Codex, Cursor, Copilot CLI, OpenCode, and other documented agent integrations",
+          "entire-brain and entire-graph for project memory and code mapping"
+        ],
+        "prerequisites": [
+          "Git and a local Git repository",
+          "An Entire account for hosted repositories, mirrors, Trails, and authenticated platform features"
+        ],
+        "useCases": [
+          "Capture prompts, transcripts, and touched files as checkpoints linked to commits",
+          "Search prior agent work and resume sessions across supported coding agents"
+        ]
+      },
+      "category": "developer-tools",
+      "discovery": {},
+      "displayName": "entire-cli",
+      "docs": "https://docs.entire.com/",
+      "homepage": "https://entire.io",
+      "id": "brew:entire-cli",
+      "installURL": "pkgmgrmgr://install?package=brew%3Aentire-cli",
+      "lastUpdatedAt": "2026-10-29T23:41:37Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/entireio/cli",
+      "researchedAt": "2026-10-30T07:06:07Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Entire CLI repository and workflow guide",
+          "url": "https://github.com/entireio/cli"
+        },
+        {
+          "kind": "primary",
+          "title": "Entire security documentation",
+          "url": "https://docs.entire.com/security"
+        }
+      ],
+      "upstreamSummary": "Capture AI agent sessions in your Git workflow",
+      "version": "0.12.2"
     },
     "brew:erpc": {
       "agentSummary": "eRPC fronts blockchain RPC providers with retries, failover, routing, and reorganization-aware caching, targeting read-heavy indexers and applications spanning EVM and Solana networks.",
@@ -3643,6 +3532,87 @@
       ],
       "upstreamSummary": "Identity, credentials, and governance for AI agents",
       "version": "1.16.1"
+    },
+    "brew:lovable-oj": {
+      "agentSummary": "OJ is an experimental Rust-native frontend toolchain focused on lower memory and cold-start costs, while supporting React, streaming SSR, HMR, and Vite-style plugins.",
+      "assessment": {
+        "alternatives": [
+          "Vite for a mature ecosystem and broader compatibility",
+          "Vite's bundled development mode when reload speed matters more than memory footprint"
+        ],
+        "audiences": [
+          "React teams running many local, CI, agent, or multi-tenant builds",
+          "Frontend tooling developers willing to evaluate an experimental Vite alternative"
+        ],
+        "caveats": [
+          "Upstream explicitly labels OJ experimental",
+          "Its published benchmark reports production builds slower than Vite on the tested large application"
+        ],
+        "complements": [
+          "Vite or Rollup-style plugins hosted through OJ's persistent Node plugin process",
+          "TanStack Start applications using OJ's documented direct integration"
+        ],
+        "prerequisites": [
+          "An existing React application and familiarity with modern frontend build tooling",
+          "A platform supported by the embedded V8 builds listed upstream"
+        ],
+        "useCases": [
+          "Run development servers and production builds for existing React applications",
+          "Serve streaming SSR while retaining hydration, Fast Refresh, and HMR"
+        ]
+      },
+      "category": "developer-tools",
+      "discovery": {
+        "admittedAt": "2026-10-29",
+        "analytics": {
+          "30": {
+            "count": 7,
+            "endDate": "2026-10-29",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/30d.json",
+            "startDate": "2026-09-29"
+          },
+          "365": {
+            "count": 7,
+            "endDate": "2026-10-29",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/365d.json",
+            "startDate": "2025-10-29"
+          },
+          "90": {
+            "count": 7,
+            "endDate": "2026-10-29",
+            "source": "https://formulae.brew.sh/api/analytics/install-on-request/90d.json",
+            "startDate": "2026-07-31"
+          }
+        },
+        "firstObservedAt": "2026-10-29",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": true,
+        "status": "official",
+        "trend": null
+      },
+      "displayName": "lovable-oj",
+      "docs": "https://github.com/lovablelabs/oj#readme",
+      "homepage": "https://github.com/lovablelabs/oj",
+      "id": "brew:lovable-oj",
+      "installURL": "pkgmgrmgr://install?package=brew%3Alovable-oj",
+      "lastUpdatedAt": "2026-10-30T03:35:39Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/lovablelabs/oj",
+      "researchedAt": "2026-10-30T07:06:07Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "OJ repository and technical documentation",
+          "url": "https://github.com/lovablelabs/oj"
+        },
+        {
+          "kind": "primary",
+          "title": "Lovable's OJ launch and rollout article",
+          "url": "https://lovable.dev/blog/faster-previews-oj"
+        }
+      ],
+      "upstreamSummary": "Experimental next generation frontend tooling",
+      "version": "0.2.52"
     },
     "brew:neovim": {
       "agentSummary": "Neovim combines modal editing with a built-in LSP client, letting users connect Kotlin and other language servers through explicit, scriptable configuration.",
@@ -5317,7 +5287,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-29T06:59:48Z",
+    "generatedAt": "2026-10-30T07:04:25Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
