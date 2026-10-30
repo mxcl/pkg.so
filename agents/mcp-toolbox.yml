@@ -5,7 +5,11 @@ docs:
   - https://github.com/googleapis/genai-toolbox#readme
   - https://googleapis.github.io/genai-toolbox
   - https://googleapis.github.io/genai-toolbox/getting-started/introduction
-config-file-location: null
+config-file-location:
+  unix:
+    - ./tools.yaml
+  windows:
+    - .\tools.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -85,6 +89,23 @@ history:
       schemas, executing SQL, wrapping predefined production queries, adding semantic
       search or NL2SQL features, and using authentication, connection pooling, and
       observability rather than handing every MCP client a raw database script.
+related-packages:
+  - id: brew:mcptools
+    reason: >
+      MCP Tools can inspect, call, test, and proxy the custom database tools exposed by
+      a Toolbox server.
+    rel: adjacent_workflow
+    sources:
+      - https://mcp-toolbox.dev/documentation/introduction/
+      - https://github.com/f/mcptools#readme
+  - id: brew:mcpm
+    reason: >
+      MCPM can manage and expose the Toolbox server across client configurations while
+      Toolbox remains responsible for database sources and tool definitions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/googleapis/mcp-toolbox#readme
+      - https://mcpm.sh/
 tags:
   - agents
   - ai
