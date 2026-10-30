@@ -36,6 +36,37 @@ history:
       less feature-heavy than modern portfolio solvers, but valuable because its
       codebase is readable, MIT-licensed, and historically central to SAT-solver
       education and experimentation.
+related-packages:
+  - id: brew:cadical
+    reason: >
+      Choose CaDiCaL for a modern, actively developed CDCL solver with an incremental
+      C++ API and proof support; MiniSat remains valuable as the smaller historical
+      reference implementation.
+    rel: alternative
+    sources:
+      - https://minisat.se/
+      - https://fmv.jku.at/cadical/
+      - https://github.com/arminbiere/cadical#readme
+  - id: brew:cryptominisat
+    reason: >
+      Choose CryptoMiniSat when multi-threading, native XOR-clause reasoning, or Python
+      bindings matter; both accept general SAT workloads, while MiniSat emphasizes a
+      compact, easily modified core.
+    rel: alternative
+    sources:
+      - https://minisat.se/
+      - https://www.msoos.org/cryptominisat5/
+      - https://github.com/msoos/cryptominisat#readme
+  - id: brew:kissat
+    reason: >
+      Choose Kissat for a modern competition-oriented non-incremental solver, while
+      MiniSat is a better fit when its classic incremental and embeddable design is
+      specifically required.
+    rel: alternative
+    sources:
+      - https://minisat.se/
+      - https://fmv.jku.at/kissat/
+      - https://github.com/arminbiere/kissat#readme
 category: developer-tools
 package-manager:
   brew: minisat

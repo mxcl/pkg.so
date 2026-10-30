@@ -5,7 +5,10 @@ repo: https://github.com/jedisct1/minisign
 docs:
   - https://jedisct1.github.io/minisign
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - $MINISIGN_CONFIG_DIR/minisign.key
+    - ~/.minisign/minisign.key
 history:
   project-history:
     - >
@@ -36,6 +39,26 @@ history:
       Homebrew, Alpine, Debian, Fedora, MacPorts, Nix, Arch, Scoop, Ubuntu, WinGet, and
       openSUSE, which fits that role as a small security utility expected to be present
       across many operating systems.
+related-packages:
+  - id: brew:minizign
+    reason: >
+      Choose minizign for the maintainer-recommended Zig implementation, zero-dependency
+      cross-compilation, and newer feature development while retaining the Minisign
+      signing workflow.
+    rel: alternative
+    sources:
+      - https://github.com/jedisct1/minisign#readme
+      - https://github.com/jedisct1/zig-minisign#readme
+  - id: brew:signify-osx
+    reason: >
+      On macOS, signify-osx provides an audit-oriented port of OpenBSD signify; choose
+      it for direct signify behavior, while Minisign adds its signed trusted-comment
+      convention and can produce signatures that signify verifies.
+    rel: alternative
+    sources:
+      - https://jedisct1.github.io/minisign/
+      - https://github.com/jpouellet/signify-osx#readme
+      - https://man.openbsd.org/signify.1
 category: security
 package-manager:
   apk: minisign
