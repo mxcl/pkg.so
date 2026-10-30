@@ -25,6 +25,16 @@ history:
       chronological stream that downstream log analyzers can consume. Homebrew and
       Ubuntu packaging preserve it as a small legacy sysadmin command rather than a
       general observability platform.
+related-packages:
+  - id: brew:goaccess
+    reason: >
+      Use MergeLog to chronologically combine Common Log Format streams from several
+      servers, then pipe or pass the result to GoAccess for interactive analysis and
+      reporting.
+    rel: adjacent_workflow
+    sources:
+      - https://mergelog.sourceforge.net/
+      - https://goaccess.io/man
 tags:
   - apache
   - c
@@ -59,10 +69,8 @@ provenance:
     - https://mergelog.sourceforge.net/
     - https://sourceforge.net/projects/mergelog/
   repo-sources:
-    - >
-      The official SourceForge project exposes releases and trackers, but no verifiable
-      HTTP(S) source-control repository page was found.
-    - source_facts.repo is empty.
+    - https://mergelog.sourceforge.net/
+    - https://sourceforge.net/projects/mergelog/
   tags-sources:
     - >
       Official SourceForge homepage describes merging httpd Common Log Format logs and
