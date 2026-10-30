@@ -81,6 +81,25 @@ history:
       The default configuration file is `/etc/masscan/masscan.conf`, and command-line
       settings override that default. The README recommends using exclude files for
       Internet-scale scans and includes prominent cautions about scanning responsibly.
+related-packages:
+  - id: brew:nmap
+    reason: >
+      Choose Nmap for intensive host, service, OS, and script-based inspection; choose
+      MASSCAN when rapidly finding open ports across very large address ranges is the
+      primary task.
+    rel: alternative
+    sources:
+      - https://github.com/robertdavidgraham/masscan#comparison-with-nmap
+      - https://nmap.org/book/man.html
+  - id: brew:zmap
+    reason: >
+      ZMap is an alternative optimized for research-oriented, Internet-wide single-port
+      measurements, while MASSCAN supports arbitrary port and address ranges through a
+      more Nmap-like interface.
+    rel: alternative
+    sources:
+      - https://github.com/robertdavidgraham/masscan#design
+      - https://zmap.io/about
 category: security
 package-manager:
   apk: masscan

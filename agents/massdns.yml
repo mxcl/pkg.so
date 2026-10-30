@@ -71,6 +71,16 @@ history:
       The README emphasizes operational caution: public resolvers may be unreliable or
       generate abuse complaints, and users should adjust concurrency and prefer trusted
       resolvers when authenticity matters.
+related-packages:
+  - id: brew:unbound
+    reason: >
+      Run MassDNS against a local Unbound resolver when result authenticity matters;
+      MassDNS's official guidance specifically recommends this workflow instead of
+      trusting its included public-resolver list.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/blechschmidt/massdns#result-authenticity
+      - https://unbound.docs.nlnetlabs.nl/en/latest/use-cases/home-resolver.html
 tags:
   - bulk-lookups
   - cli
