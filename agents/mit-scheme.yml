@@ -5,7 +5,10 @@ docs:
   - https://www.gnu.org/software/mit-scheme/documentation/stable/mit-scheme-ref.html
   - https://www.gnu.org/software/mit-scheme/documentation/stable/mit-scheme-user.html
   - https://www.gnu.org/software/mit-scheme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.scheme.init
+    - ~/.edwin
 credentials-file-location: null
 history:
   sources:
@@ -31,6 +34,34 @@ history:
       the traditional Lisp/Scheme runtime niche, appearing as `mit-scheme` across
       Homebrew, Debian, Ubuntu, and MacPorts with executables including `scheme` and
       `mit-scheme`.
+related-packages:
+  - id: brew:guile
+    reason: >
+      Choose GNU Guile when Scheme is needed primarily as an embeddable extension
+      language in the GNU ecosystem; MIT/GNU Scheme instead emphasizes its integrated
+      compiler, debugger, editor, and runtime environment.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/mit-scheme/
+      - https://www.gnu.org/software/guile/
+  - id: brew:chezscheme
+    reason: >
+      Choose Chez Scheme for a Scheme system centered on high-performance optimizing
+      compilation and whole-program compilation rather than MIT/GNU Scheme's integrated
+      Edwin-based environment.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/mit-scheme/
+      - https://cisco.github.io/ChezScheme/
+  - id: brew:minimal-racket
+    reason: >
+      Choose minimal Racket for Racket's language-oriented programming ecosystem and
+      module tooling; choose MIT/GNU Scheme when compatibility with the traditional MIT
+      Scheme environment is the priority.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/mit-scheme/
+      - https://racket-lang.org/
 tags:
   - cli
   - compiler

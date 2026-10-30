@@ -30,6 +30,43 @@ history:
       GitHub CLI or container image checks. This puts mk in the same
       workflow-normalization niche as make, tox, npm scripts, and task runners, but with
       auto-detection and little per-repository setup.
+related-packages:
+  - id: brew:make
+    reason: >
+      mk discovers documented Makefile targets and exposes them through its normalized
+      command interface, while GNU Make remains the underlying dependency-graph and
+      build executor.
+    rel: adjacent_workflow
+    sources:
+      - https://mk.readthedocs.io/tools/
+      - https://www.gnu.org/software/make/manual/
+  - id: brew:tox
+    reason: >
+      mk exposes tox environments as discoverable commands, letting contributors use a
+      consistent mk interface while tox creates and runs the underlying Python test
+      environments.
+    rel: adjacent_workflow
+    sources:
+      - https://mk.readthedocs.io/tools/
+      - https://tox.wiki/en/latest/
+  - id: brew:go-task
+    reason: >
+      mk recognizes Taskfiles and surfaces their tasks, so Task can define repository
+      automation while mk provides cross-repository command discovery.
+    rel: adjacent_workflow
+    sources:
+      - https://mk.readthedocs.io/tools/
+      - https://taskfile.dev/docs/
+  - id: brew:prek
+    reason: >
+      Current mk releases detect prek-compatible hook configuration and expose a lint
+      action, pairing mk's command normalization with prek's multi-language hook
+      execution.
+    rel: adjacent_workflow
+    sources:
+      - https://mk.readthedocs.io/tools/
+      - https://mk.readthedocs.io/CHANGELOG/
+      - https://prek.j178.dev/
 tags:
   - build-automation
   - cli
