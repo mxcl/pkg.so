@@ -59,6 +59,16 @@ history:
       ./my-key --seed "..."` or stdin/stdout pipelines to reconstruct the key. Users
       normally verify the restored public-key fingerprint and can use `ssh-keygen -c`
       afterward to add back a public-key comment.
+related-packages:
+  - id: brew:openssh
+    reason: >
+      Use OpenSSH's `ssh-keygen` alongside Melt to verify the restored key's fingerprint
+      and reapply a public-key comment, as documented by Melt's official recovery
+      instructions.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/charmbracelet/melt#restoring-the-memo
+      - https://www.openssh.com/manual.html
 tags:
   - cli
   - ed25519
