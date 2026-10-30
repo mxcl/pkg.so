@@ -82,6 +82,24 @@ history:
       include/mbedtls/mbedtls_config.h or an alternate MBEDTLS_CONFIG_FILE. That makes
       the package unusually sensitive to distribution build flags, enabled algorithms,
       and ABI compatibility.
+related-packages:
+  - id: brew:wolfssl
+    reason: >
+      Choose wolfSSL as an alternative embedded-oriented C TLS stack when its OpenSSL
+      compatibility layer, commercial support, or wolfCrypt certification path better
+      fits the target product.
+    rel: alternative
+    sources:
+      - https://www.trustedfirmware.org/projects/mbed-tls
+      - https://www.wolfssl.com/products/wolfssl/
+  - id: brew:openssl@3
+    reason: >
+      Choose OpenSSL 3 when software targets the mainstream OpenSSL APIs or provider
+      architecture rather than Mbed TLS's compact embedded and PSA-oriented interfaces.
+    rel: alternative
+    sources:
+      - https://www.trustedfirmware.org/projects/mbed-tls
+      - https://docs.openssl.org/3.0/man7/migration_guide/
 category: security
 package-manager:
   apk: mbedtls3
