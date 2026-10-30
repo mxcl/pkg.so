@@ -9,7 +9,11 @@ config-file-location:
   unix:
     - .mimocode/mimocode.json
     - ~/.config/mimocode/mimocode.json
-credentials-file-location: null
+credentials-file-location:
+  linux:
+    - $XDG_DATA_HOME/mimocode/auth.json
+    - ~/.local/share/mimocode/auth.json
+  macos: ~/Library/Application Support/mimocode/auth.json
 history:
   project-history:
     - >
@@ -36,6 +40,16 @@ history:
       support plus persistent memory and task orchestration. Its niche is among agentic
       coding CLIs such as OpenCode, Claude Code, and Codex-style local agents, with the
       main distinguishing feature being explicit cross-session memory.
+related-packages:
+  - id: brew:opencode
+    reason: >
+      Choose OpenCode for the upstream general-purpose terminal coding agent; choose
+      MiMo Code when Xiaomi's persistent memory, checkpoints, task tracking, and
+      long-horizon orchestration are the priority.
+    rel: alternative
+    sources:
+      - https://mimo.xiaomi.com/blog/mimo-code-long-horizon
+      - https://opencode.ai/docs/
 category: ai
 package-manager:
   brew: mimo-code

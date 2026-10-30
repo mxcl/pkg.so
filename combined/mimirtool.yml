@@ -49,6 +49,31 @@ history:
       standalone `mimirtool` executable, while upstream also publishes release binaries
       from the Grafana Mimir GitHub releases. It is best understood as the
       administrative companion to Grafana Mimir, not a general observability client.
+related-packages:
+  - id: brew:prometheus
+    reason: >
+      Use Prometheus as the scrape, rule, remote-read, or local-TSDB side of workflows
+      that Mimirtool validates, exports, or backfills into Mimir.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/mimir/latest/manage/tools/mimirtool/
+      - https://prometheus.io/docs/introduction/overview/
+  - id: brew:grafana
+    reason: >
+      Use Grafana to build dashboards, then use Mimirtool's analyze commands to identify
+      which metrics those dashboards and hosted instances consume.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/mimir/latest/manage/tools/mimirtool/
+      - https://grafana.com/docs/grafana/latest/
+  - id: brew:cortex
+    reason: >
+      Use Mimirtool's config conversion support when migrating a Cortex deployment to
+      Grafana Mimir.
+    rel: adjacent_workflow
+    sources:
+      - https://grafana.com/docs/mimir/latest/manage/tools/mimirtool/
+      - https://cortexmetrics.io/docs/
 category: cloud-infrastructure
 package-manager:
   brew: mimirtool
