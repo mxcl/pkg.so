@@ -1,0 +1,130 @@
+id: brew:lovable-oj
+display-name: OJ
+repo: null
+docs:
+  - https://github.com/lovablelabs/oj/blob/main/docs/development/testing.md
+  - https://github.com/lovablelabs/oj#readme
+  - https://github.com/lovablelabs/oj/blob/main/CHANGELOG.md
+config-file-location:
+  unix:
+    - ./oj.plugins.mjs
+    - ./vite.config.ts
+    - ./vite.config.js
+    - ./vite.config.mjs
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      OJ is published as a Rust CLI and supports Linux, macOS, and Windows targets for
+      which rusty_v8 provides prebuilt static libraries. It can run React and TanStack
+      Start applications and reuse significant portions of existing Vite configuration.
+    - >
+      The project remains explicitly experimental. Its compatibility goal is to run
+      production React applications without source changes while offering a lower-memory
+      development process for CI, coding agents, and multi-tenant environments.
+  package-nerd-significance:
+    - >
+      OJ is notable for embedding V8 in a Rust-native frontend toolchain while
+      maintaining compatibility with React Fast Refresh, HMR, Vite/Rollup-style plugins,
+      common asset modes, and production builds through Rolldown. It targets the process
+      and memory overhead that becomes conspicuous when many builds run concurrently.
+    - >
+      For toolchain enthusiasts, OJ is also an unusually direct compatibility
+      experiment: it can consume Vite configuration and plugins while independently
+      implementing development-server, transformation, SSR, and framework behavior.
+  project-history:
+    - >
+      Raphael Amorim created OJ, after which the project moved to Lovable for continued
+      maintenance. It evolved into an experimental Rust-native build tool focused on
+      React applications, embedded V8, and compatibility with established Vite
+      workflows.
+    - >
+      During 2026, the project iterated rapidly across TanStack Start support, streaming
+      SSR, persistent plugin hosts, bundled development, Fast Refresh, HMR, CSS
+      handling, asset pipelines, Web Workers, and Vite-compatible configuration
+      behavior.
+  related-projects:
+    - >
+      Vite is OJ's principal compatibility target and benchmark reference; OJ can read
+      Vite configuration and run Vite/Rollup-style plugins.
+    - >
+      Rolldown provides the production linker, while OXC components underpin parts of
+      OJ's transformation pipeline.
+  sources:
+    - 'Official README: https://github.com/lovablelabs/oj#readme'
+    - 'Official changelog: https://github.com/lovablelabs/oj/blob/main/CHANGELOG.md'
+  summary:
+    - >
+      OJ is an experimental Rust-native frontend build tool maintained by Lovable,
+      designed to run React and TanStack Start applications with low memory use and fast
+      startup while retaining substantial Vite compatibility.
+  timeline:
+    - >
+      2026: OJ is transferred from creator Raphael Amorim to Lovable for continued
+      maintenance.
+    - >
+      2026: Rapid 0.2-series development expands Vite compatibility, TanStack Start
+      support, SSR, plugins, HMR, assets, CSS, and worker handling.
+  usage:
+    - >
+      Run `oj dev` in a frontend application for the development server and `oj build`
+      for production output. SSR and TanStack Start workflows are supported through
+      additional entry-point and application-root arguments.
+    - >
+      Projects can place `oj.plugins.mjs` at the application root, supply an explicit
+      configuration path, or let OJ consume `vite.config` values and plugins. This
+      supports incremental evaluation without requiring an application-wide source
+      conversion.
+related-packages:
+  - id: brew:vite
+    reason: >
+      Choose Vite for the established Node-based frontend toolchain and broader
+      ecosystem; choose OJ when lower cold-start and memory overhead matter, while
+      retaining documented Vite configuration and plugin compatibility.
+    rel: alternative
+    sources:
+      - https://github.com/lovablelabs/oj#readme
+      - https://vite.dev/guide/
+tags:
+  - build-tool
+  - cli
+  - frontend
+  - hmr
+  - react
+  - rolldown
+  - rust
+  - ssr
+  - tanstack-start
+  - vite-compatible
+provenance:
+  category-sources:
+    - https://github.com/lovablelabs/oj#readme
+    - source_facts.description
+  display-name-sources:
+    - https://github.com/lovablelabs/oj#readme
+  docs-sources:
+    - >
+      The official README is the primary user guide and documents quick start, SSR,
+      plugins, Vite configuration compatibility, targets, and testing.
+    - >
+      The official repository supplies development testing documentation and a
+      maintained changelog.
+  history-sources:
+    - 'Official README: https://github.com/lovablelabs/oj#readme'
+    - 'Official changelog: https://github.com/lovablelabs/oj/blob/main/CHANGELOG.md'
+  repo-sources:
+    - >
+      source_facts.repo is already populated, so the repository is intentionally
+      returned as null.
+  tags-sources:
+    - https://github.com/lovablelabs/oj#readme
+    - https://github.com/lovablelabs/oj/blob/main/CHANGELOG.md
+category-confidence: high
+category-path:
+  - developer-tools
+  - frontend-build-tools
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

@@ -2,10 +2,101 @@ id: brew:upki
 display-name: upki
 homepage: https://github.com/rustls/upki
 repo: https://github.com/rustls/upki
+docs:
+  - https://docs.rs/rustls-upki
+  - https://github.com/rustls/upki#readme
+  - https://github.com/rustls/upki/blob/main/PACKAGING.md
+config-file-location:
+  unix: /etc/upki/config.toml
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The project is structured for several consumers: a command-line monitor, a C FFI,
+      an OpenSSL verification callback, a rustls certificate verifier, and direct
+      readers of the cached revocation data.
+    - >
+      Its packaging guide asks distributions to ship a system-wide configuration,
+      arrange regular low-privilege `upki fetch` runs, and expose a durable cache to
+      applications that need certificate-revocation checks.
+  package-nerd-significance:
+    - >
+      upki moves browser-grade certificate-revocation infrastructure toward a reusable,
+      platform-independent system component. Package maintainers matter to its design
+      because fresh revocation data should be fetched centrally and shared rather than
+      downloaded independently by every application.
+    - >
+      The project is also notable for bridging multiple TLS ecosystems—command-line
+      monitoring, C, OpenSSL, and rustls—around a common privacy-preserving revocation
+      cache and C2SP-specified data format.
+  project-history:
+    - >
+      The rustls project created upki to provide reliable, privacy-preserving, efficient
+      certificate revocation based on foundational Mozilla work. Its initial
+      implementation uses CRLite Clubcard data for publicly trusted certificate
+      authorities.
+    - >
+      The stated roadmap extends beyond revocation toward intermediate-certificate
+      preloading, certificate-transparency enforcement, common root-distrust processes,
+      and Merkle Tree Certificate deployment.
+  related-projects:
+    - Mozilla's foundational CRLite work informs upki's revocation design.
+    - >
+      The repository provides first-party adapters for OpenSSL and rustls consumers,
+      plus a C interface and a command-line checker.
+  sources:
+    - 'Official README: https://github.com/rustls/upki#readme'
+    - 'Official packaging guide: https://github.com/rustls/upki/blob/main/PACKAGING.md'
+    - 'Official rustls-upki API documentation: https://docs.rs/rustls-upki/'
+  summary:
+    - >
+      upki is a rustls project for platform-independent, browser-grade certificate
+      infrastructure, initially focused on privacy-preserving certificate-revocation
+      checking with centrally synchronized CRLite Clubcard data.
+  timeline:
+    - >
+      Initial phase: Implement CRLite-based revocation checking, synchronization, CLI,
+      C, OpenSSL, and rustls interfaces.
+    - >
+      Planned phases: Add intermediate preloading, certificate-transparency enforcement,
+      root-distrust processes, and Merkle Tree Certificate support.
+  usage:
+    - >
+      Run `upki fetch` to synchronize revocation data, ideally through a package-managed
+      system service or timer. Packagers configure a shared cache and an HTTPS data
+      source in `/etc/upki/config.toml`.
+    - >
+      Pipe certificate chains into `upki revocation check` for monitoring, testing, and
+      alerting, or integrate the libraries through the C FFI, OpenSSL verification
+      callback, or rustls server-certificate verifier.
+    - >
+      The synchronized cache can also be consumed directly using the documented C2SP
+      upki-revocation format.
+related-packages:
+  - id: brew:openssl@3
+    reason: >
+      Use upki's first-party `upki-openssl` verification callback with OpenSSL when an
+      application needs browser-grade revocation checks during its existing TLS
+      certificate-verification flow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/rustls/upki#readme
+      - https://docs.openssl.org/3.0/man3/SSL_CTX_set_verify/
+category: security
 package-manager:
   brew: upki
 package-manager-url: https://formulae.brew.sh/formula/upki
 license: Apache-2.0 OR MIT
+tags:
+  - certificate-revocation
+  - cli
+  - crlite
+  - cryptography
+  - openssl
+  - pki
+  - rust
+  - rustls
+  - tls
 description: Implements platform-independent browser-grade certificate infrastructure
 executables:
   - upki

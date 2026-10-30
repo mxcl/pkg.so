@@ -1,11 +1,92 @@
 id: brew:calcure
-display-name: calcure
+display-name: Calcure
 homepage: https://anufrievroman.gitbook.io/calcure
-repo: null
+repo: https://github.com/anufrievroman/calcure
+docs:
+  - https://anufrievroman.gitbook.io/calcure
+  - https://anufrievroman.gitbook.io/calcure/keys
+  - https://anufrievroman.gitbook.io/calcure/settings
+  - https://anufrievroman.gitbook.io/calcure/syncing-with-clouds
+config-file-location:
+  unix: ~/.config/calcure/config.ini
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Calcure is distributed through Homebrew, PyPI/pipx, the Arch User Repository, and
+      Nix. Its documentation also provides a Windows installation path using Python and
+      windows-curses.
+  package-nerd-significance:
+    - >
+      Calcure combines a Vim-oriented terminal interface with editable plain-text data,
+      ICS ingestion, calcurse migration, and cloud-sync-friendly storage. That makes it
+      appealing to users who want a personal organizer that remains inspectable and
+      scriptable rather than being tied to a hosted calendar interface.
+  project-history:
+    - >
+      Roman Anufriev began developing Calcure in 2020 as a customizable terminal
+      calendar and task manager. The project grew beyond a calendar view to include
+      subtasks, deadlines, timers, birthdays, weather, holidays, moon phases,
+      Persian-calendar support, and translated interfaces.
+  related-projects:
+    - Calcure can import appointments and tasks from calcurse.
+    - Its ICS workflow can consume files synchronized by tools such as vdirsyncer.
+  sources:
+    - 'Official documentation: https://anufrievroman.gitbook.io/calcure'
+    - 'Official releases: https://github.com/anufrievroman/calcure/releases'
+    - 'Official repository: https://github.com/anufrievroman/calcure'
+  summary:
+    - >
+      Calcure is an open-source terminal calendar and task manager developed by Roman
+      Anufriev since 2020, emphasizing minimal keystrokes, Vim-style navigation,
+      customization, and portable plain-text data.
+  timeline:
+    - '2020: Roman Anufriev begins developing Calcure.'
+    - >
+      2026: Release 3.3 adds a weekly view, custom keybindings, week numbers, additional
+      translations, and expanded scheduling options.
+  usage:
+    - >
+      Users run Calcure interactively in a terminal to manage events, tasks, subtasks,
+      deadlines, and timers. Its interface and keybindings are configurable through
+      files under the Calcure configuration directory.
+    - >
+      Calendar data can be imported from calcurse or read from local and remote ICS
+      sources. The documented cloud workflow pairs Calcure with synchronized ICS files
+      while retaining local, plain-text-oriented control.
+related-packages:
+  - id: brew:calcurse
+    reason: >
+      Choose calcurse for a mature text-based organizer with its own CLI/TUI workflow;
+      Calcure officially supports importing calcurse appointments and tasks when
+      migrating.
+    rel: alternative
+    sources:
+      - https://github.com/anufrievroman/calcure
+      - https://calcurse.org/
+  - id: brew:vdirsyncer
+    reason: >
+      Use vdirsyncer to synchronize CalDAV calendars into local ICS/vdir data that
+      Calcure can display in its documented cloud-calendar workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://anufrievroman.gitbook.io/calcure/syncing-with-clouds
+      - https://github.com/pimutils/vdirsyncer
+category: productivity
 package-manager:
   brew: calcure
 package-manager-url: https://formulae.brew.sh/formula/calcure
 license: MIT
+tags:
+  - calendar
+  - cli
+  - ics
+  - plain-text
+  - python
+  - task-manager
+  - terminal
+  - tui
+  - vim-keybindings
 description: Modern TUI calendar and task manager
 executables:
   - calcure

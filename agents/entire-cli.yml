@@ -1,0 +1,157 @@
+id: brew:entire-cli
+display-name: Entire CLI
+repo: null
+docs:
+  - https://docs.entire.com/
+  - https://docs.entire.com/agents/overview
+  - https://docs.entire.com/cli-reference/activity
+  - https://docs.entire.com/platforms/cli-and-entire-com
+config-file-location:
+  unix:
+    - .entire/settings.json
+  windows:
+    - .entire\settings.json
+credentials-file-location:
+  unix:
+    - ~/.config/entire/tokens.json
+history:
+  adoption-history:
+    - >
+      Entire expanded from its initial checkpoint workflow to built-in integrations for
+      Claude Code, Codex, Cursor, Copilot CLI, Factory, OpenCode, Pi, and other coding
+      agents. Its Agent Integration Protocol also permits external integrations.
+    - >
+      The CLI is distributed as an open-source, MIT-licensed binary for macOS, Linux,
+      and Windows. It can operate locally without an account for session capture, while
+      hosted search, repository mirroring, and account activity use Entire's service.
+  package-nerd-significance:
+    - >
+      Entire CLI represents a new class of Git-adjacent tooling created for agentic
+      development: it records prompts, transcripts, tool calls, file changes, and token
+      data as checkpoint metadata linked to commits, rather than treating the final diff
+      as the complete development record.
+    - >
+      Its use of Git refs and repository-local settings is noteworthy to package and
+      source-control enthusiasts because agent history can travel with the repository
+      without being mixed into the ordinary branch history. The tool also exposes
+      automation-oriented commands and an MCP server.
+  project-history:
+    - >
+      Entire introduced Checkpoints in February 2026 to bind AI-agent context to Git
+      commits. The CLI subsequently added broader agent support, session inspection and
+      resumption, checkpoint search, imports, redaction, repository mirroring, and
+      agent-oriented command help.
+    - >
+      The project later broadened from local session capture into the command-line
+      client for Entire's distributed Git forge, adding regional mirrors, Entire-native
+      branches, Trails, review and recap workflows, and continuous-memory integrations.
+  related-projects:
+    - >
+      Entire CLI integrates directly with coding agents including Claude Code, Codex,
+      Cursor, Copilot CLI, Factory, OpenCode, and Pi.
+    - >
+      The hosted entire.com interface presents checkpoints, sessions, file diffs, search
+      results, repository mirrors, and shared agent history captured by the CLI.
+  sources:
+    - 'Official agent integration documentation: https://docs.entire.com/agents/overview'
+    - 'Official documentation: https://docs.entire.com/'
+    - 'Official launch-era dispatch: https://entire.io/blog/entire-dispatch-0x0002'
+    - 'Official repository: https://github.com/entireio/cli'
+  summary:
+    - >
+      Entire CLI is an open-source Git companion that captures AI coding-agent sessions
+      as checkpoints linked to commits, making the prompts, transcripts, decisions, and
+      tool activity behind code changes inspectable and reusable.
+  timeline:
+    - >
+      2026-02: Entire introduces Checkpoints for attaching agent-session context to Git
+      history.
+    - >
+      2026: Built-in support expands across major terminal coding agents and external
+      integrations.
+    - >
+      2026: The CLI grows into the terminal client for Entire's distributed Git hosting,
+      regional mirrors, Trails, search, and continuous-memory workflows.
+  usage:
+    - >
+      Run `entire enable` inside a Git repository to configure supported agent hooks and
+      checkpoint capture. Commits made during an agent session link the resulting code
+      to captured prompts, responses, tool calls, and changed files.
+    - >
+      Use session and checkpoint commands to list, explain, resume, import, search,
+      diagnose, or clean captured work. Hosted commands additionally support
+      authentication, regional Git mirrors, cross-repository search, Trails, and account
+      activity.
+    - >
+      Interactive login normally stores tokens in the operating system keyring. On
+      headless systems, Entire supports device-code login with a file-backed token
+      store, while CI can supply `ENTIRE_TOKEN` without writing credentials to disk.
+related-packages:
+  - id: cask:claude-code
+    reason: >
+      Entire provides a native Claude Code integration that captures full transcripts,
+      token information, subagent work, resumable sessions, and imports as Git-linked
+      checkpoints.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.entire.com/agents/overview
+      - https://github.com/anthropics/claude-code
+  - id: cask:codex
+    reason: >
+      Entire's native Codex integration captures transcripts, tokens, file-changing
+      subagents, resumable sessions, and imports alongside commits.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.entire.com/agents/overview
+      - https://github.com/openai/codex
+  - id: cask:cursor-cli
+    reason: >
+      Entire can hook into Cursor sessions to preserve their transcripts and
+      file-changing subagent activity in repository checkpoints.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.entire.com/agents/overview
+      - https://cursor.com/
+tags:
+  - ai-agents
+  - checkpoints
+  - cli
+  - developer-tools
+  - git
+  - session-capture
+  - traceability
+  - transcripts
+provenance:
+  category-sources:
+    - https://docs.entire.com/platforms/cli-and-entire-com
+    - source_facts.description
+  display-name-sources:
+    - https://docs.entire.com/platforms/cli-and-entire-com
+    - https://github.com/entireio/cli
+  docs-sources:
+    - >
+      The official documentation links installation, CLI reference, agent integrations,
+      checkpoint, search, and security material.
+    - https://github.com/entireio/cli#readme
+  history-sources:
+    - 'Official agent integration documentation: https://docs.entire.com/agents/overview'
+    - 'Official documentation: https://docs.entire.com/'
+    - 'Official launch-era dispatch: https://entire.io/blog/entire-dispatch-0x0002'
+    - 'Official repository: https://github.com/entireio/cli'
+  repo-sources:
+    - >
+      source_facts.repo is already populated, so the repository is intentionally
+      returned as null.
+  tags-sources:
+    - https://docs.entire.com/agents/overview
+    - https://docs.entire.com/platforms/cli-and-entire-com
+    - https://github.com/entireio/cli
+category-confidence: high
+category-path:
+  - developer-tools
+  - ai-development
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
