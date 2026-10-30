@@ -49,6 +49,35 @@ history:
       and the minikube docs include workflows for GitHub Actions. In practice,
       developers use it to test manifests, Helm charts, ingress, storage, add-ons, and
       application deployments before moving work to shared or production clusters.
+related-packages:
+  - id: brew:kind
+    reason: >
+      Choose kind for lightweight Kubernetes clusters whose nodes are containers and
+      when testing Kubernetes itself or running CI is the primary goal; minikube offers
+      a broader choice of VM, container, and bare-metal drivers.
+    rel: alternative
+    sources:
+      - https://kind.sigs.k8s.io/
+      - https://minikube.sigs.k8s.io/docs/drivers/
+      - https://kubernetes.io/docs/tasks/tools/
+  - id: brew:k3d
+    reason: >
+      Choose k3d when you specifically want the lightweight k3s distribution running in
+      Docker; minikube instead runs upstream Kubernetes with a wider driver and runtime
+      matrix.
+    rel: alternative
+    sources:
+      - https://k3d.io/
+      - https://minikube.sigs.k8s.io/docs/
+  - id: brew:kubernetes-cli
+    reason: >
+      kubectl is the standard client used to inspect and operate the Kubernetes cluster
+      that minikube creates, with minikube automatically producing the required
+      kubeconfig context.
+    rel: adjacent_workflow
+    sources:
+      - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+      - https://minikube.sigs.k8s.io/docs/commands/
 tags:
   - cli
   - containers

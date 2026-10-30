@@ -6,7 +6,8 @@ docs:
   - https://docs.rs/crate/minijinja-cli
   - https://docs.rs/minijinja/latest/minijinja
   - https://github.com/mitsuhiko/minijinja#readme
-config-file-location: null
+config-file-location:
+  unix: ~/.minijinja.toml
 credentials-file-location: null
 history:
   sources:
@@ -32,6 +33,15 @@ history:
       ecosystem. Its niche is scripting, config generation, release automation, and
       other places where users want Jinja-compatible text generation without embedding
       Python.
+related-packages:
+  - id: brew:jinja2-cli
+    reason: >
+      Choose jinja2-cli when Python's native Jinja2 engine, custom Python filters, or
+      Jinja2 extensions matter more than MiniJinja CLI's compiled Rust implementation.
+    rel: alternative
+    sources:
+      - https://github.com/mitsuhiko/minijinja/blob/main/minijinja-cli/README.md
+      - https://github.com/mattrobenolt/jinja2-cli
 category: developer-tools
 package-manager:
   apk: minijinja-cli

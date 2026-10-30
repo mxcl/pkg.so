@@ -40,6 +40,32 @@ history:
       transcript analysis software. In package managers it sits in the genomics CLI
       niche beside aligners such as BWA-MEM, Bowtie2, BLASR, NGMLR, and GMAP, with its
       reputation tied to speed, accuracy, and long-read versatility.
+related-packages:
+  - id: brew:samtools
+    reason: >
+      Samtools is the standard downstream companion for converting, sorting, indexing,
+      inspecting, and streaming the SAM output produced by minimap2.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lh3/minimap2#general-usage
+      - https://www.htslib.org/doc/samtools.html
+  - id: brew:bwa
+    reason: >
+      Choose BWA when a legacy BWA workflow or exact BWA-MEM-compatible short-read
+      output is required; the BWA project itself directs long-read users to minimap2.
+    rel: alternative
+    sources:
+      - https://github.com/lh3/bwa
+      - https://github.com/lh3/minimap2#users-guide
+  - id: brew:bowtie2
+    reason: >
+      Choose Bowtie 2 for established short-read end-to-end or local-alignment workflows
+      and their tuning model; choose minimap2 when long reads, spliced reads, or
+      assembly alignments are central.
+    rel: alternative
+    sources:
+      - https://github.com/BenLangmead/bowtie2/blob/master/MANUAL.markdown
+      - https://github.com/lh3/minimap2#users-guide
 category: science
 package-manager:
   brew: minimap2
