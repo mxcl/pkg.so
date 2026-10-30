@@ -1,0 +1,143 @@
+id: cask:dynobase
+display-name: Dynobase
+repo: null
+docs:
+  - https://dynobase.dev/
+  - https://dynobase.dev/dynamodb-data-modeling
+  - https://dynobase.dev/dynamodb-workspace-settings
+  - https://dynobase.dev/new-in-3.0
+config-file-location:
+  unix:
+    - ~/.aws/config
+  windows:
+    - '%USERPROFILE%\.aws\config'
+credentials-file-location:
+  unix:
+    - ~/.aws/credentials
+  windows:
+    - '%USERPROFILE%\.aws\credentials'
+history:
+  adoption-history:
+    - >
+      Dynobase gained a place in DynamoDB development workflows as an alternative to
+      repeatedly switching among the AWS console, scripts, profiles, accounts, and
+      Regions. The official site records endorsements from AWS community figures and
+      users from a range of technology organizations.
+    - >
+      The application is distributed for macOS, Windows, and Linux and supports AWS CLI
+      profiles, IAM Identity Center, assumed roles, MFA, temporary credentials,
+      aws-vault, DynamoDB Local, and LocalStack.
+  package-nerd-significance:
+    - >
+      Dynobase turns DynamoDB's API-oriented workflows into a desktop data browser and
+      editor while retaining interoperability with AWS's standard profile and credential
+      files.
+    - >
+      Its import/export, code generation, PartiQL, local-endpoint support, NoSQL
+      Workbench model interchange, and MCP server connect GUI exploration with
+      source-controlled application, infrastructure, and AI-tool workflows.
+  project-history:
+    - >
+      Dynobase was created as a dedicated graphical client for Amazon DynamoDB. Its core
+      workflow combined table browsing, item editing, query construction, saved
+      operations, and code generation across multiple AWS profiles and Regions.
+    - >
+      Dynobase 3.0 broadened that client into a workspace for schema exploration, vector
+      search, model design, backups, streams, local exports, infrastructure generation,
+      and controlled access from compatible MCP clients.
+  related-projects:
+    - Amazon DynamoDB is the managed database that Dynobase operates against.
+    - >
+      AWS CLI and SDK profiles provide Dynobase's standard configuration and
+      authentication inputs.
+    - DynamoDB Local and LocalStack provide local endpoints that Dynobase can browse and edit.
+    - >
+      NoSQL Workbench models can be imported into and exported from Dynobase's
+      single-table designer.
+  sources:
+    - https://dynobase.dev/
+    - https://dynobase.dev/dynamodb-data-modeling/
+    - https://dynobase.dev/dynamodb-workspace-settings/
+    - https://dynobase.dev/new-in-3.0/
+  summary:
+    - >
+      Dynobase is a cross-platform desktop GUI for exploring, querying, editing,
+      modeling, importing, exporting, and administering Amazon DynamoDB data.
+  timeline:
+    - >
+      Early product era: Dynobase established a dedicated desktop alternative to the
+      DynamoDB web console.
+    - >
+      Dynobase 3.0: The product expanded its exploration, modeling, administration,
+      automation, and workspace capabilities.
+  usage:
+    - >
+      Developers select an existing AWS profile or local endpoint, browse tables across
+      Regions, inspect and edit items, build queries or transactions, and generate SDK,
+      CLI, or infrastructure code.
+    - >
+      Dynobase reads standard AWS profiles from the user's `.aws` directory. Its
+      official documentation says workspace exports exclude credentials; credentials
+      remain in the user's AWS configuration or external provider.
+related-packages:
+  - id: cask:nosql-workbench
+    reason: >
+      Choose AWS's NoSQL Workbench for an official free modeling environment with
+      bundled DynamoDB Local; choose Dynobase for broader day-to-day table exploration,
+      multi-profile workflows, editing, and automation. Their model formats can also be
+      exchanged.
+    rel: alternative
+    sources:
+      - https://dynobase.dev/dynamodb-data-modeling/
+      - https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html
+  - id: brew:localstack
+    reason: >
+      Use LocalStack to emulate DynamoDB and other AWS services locally, then connect
+      Dynobase to its endpoint to browse and edit the emulated tables through a GUI.
+    rel: adjacent_workflow
+    sources:
+      - https://dynobase.dev/run-dynamodb-locally/
+      - https://docs.localstack.cloud/
+tags:
+  - aws
+  - database-gui
+  - developer-tool
+  - dynamodb
+  - dynamodb-local
+  - nosql
+  - partiql
+  - table-browser
+provenance:
+  category-sources:
+    - >
+      Official product page identifies Dynobase as a desktop GUI client for DynamoDB:
+      https://dynobase.dev/
+    - source_facts.description
+  display-name-sources:
+    - 'Official product branding: https://dynobase.dev/'
+    - current_curation.display-name
+  docs-sources:
+    - Official product, feature, workspace, authentication, and data-modeling documentation.
+  history-sources:
+    - https://dynobase.dev/
+    - https://dynobase.dev/dynamodb-data-modeling/
+    - https://dynobase.dev/dynamodb-workspace-settings/
+    - https://dynobase.dev/new-in-3.0/
+  repo-sources:
+    - 'Official product page: https://dynobase.dev/'
+    - >
+      The verified Dynobase GitHub organization publishes supporting projects but not
+      the desktop application's source repository: https://github.com/Dynobase
+  tags-sources:
+    - https://dynobase.dev/
+    - https://dynobase.dev/new-in-3.0/
+    - source_facts.description
+category-confidence: high
+category-path:
+  - data
+  - database-client
+display-name-confidence: high
+docs-confidence: high
+history-confidence: medium
+repo-confidence: high
+tags-confidence: high

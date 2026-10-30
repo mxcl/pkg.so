@@ -1,0 +1,126 @@
+id: cask:dcv-viewer
+display-name: Amazon DCV Viewer
+repo: null
+docs:
+  - https://docs.aws.amazon.com/dcv
+  - https://docs.aws.amazon.com/dcv/latest/userguide/client-mac.html
+  - https://docs.aws.amazon.com/dcv/latest/userguide/using-connection-file.html
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      AWS made DCV 2017 available for EC2-hosted workloads without an additional DCV
+      charge, helping connect the protocol with cloud-hosted visualization and
+      high-performance computing.
+    - >
+      DCV clients now span Windows, Linux, macOS, and browsers. AWS also uses the
+      protocol in managed services including Amazon AppStream 2.0 and Amazon WorkSpaces.
+  package-nerd-significance:
+    - >
+      DCV Viewer packages a specialized high-performance remote-display client rather
+      than a general-purpose RDP or VNC viewer. It is particularly relevant on
+      workstations that access GPU-backed engineering, visualization, and
+      high-performance computing workloads.
+    - >
+      The Homebrew cask makes the native macOS client reproducibly installable, while
+      portable `.dcv` connection files can capture per-session client options without
+      imposing a fixed global configuration path.
+  project-history:
+    - >
+      Desktop Cloud Visualization originated at NICE as software for remote access to
+      high-performance visualization workloads. AWS announced its acquisition of NICE in
+      2016 and subsequently integrated DCV more closely with AWS infrastructure.
+    - >
+      The 2024.0 release renamed NICE DCV to Amazon DCV. The underlying protocol
+      continued to provide encrypted pixel streaming from Windows or Linux servers to
+      native and browser clients.
+  related-projects:
+    - Amazon EC2 commonly hosts graphics-intensive applications accessed through DCV.
+    - Amazon AppStream 2.0 and Amazon WorkSpaces use the DCV protocol.
+    - >
+      NICE EnginFrame was another high-performance-computing product maintained by the
+      NICE team acquired by AWS.
+  sources:
+    - >
+      https://aws.amazon.com/about-aws/whats-new/2017/12/aws-and-nice-announce-the-general-availability-of-desktop-cloud-visualization-dcv-2017/
+    - https://aws.amazon.com/blogs/aws/amazon-web-services-to-acquire-nice/
+    - https://aws.amazon.com/blogs/aws/nice-desktop-cloud-visualization-dcv-is-now-amazon-dcv/
+    - https://docs.aws.amazon.com/dcv/latest/userguide/doc-history-release-notes.html
+  summary:
+    - >
+      Amazon DCV Viewer is the native client for Amazon DCV, a high-performance
+      remote-display protocol used to access desktops and graphics-intensive
+      applications running on remote servers.
+  timeline:
+    - '2016: AWS announced its acquisition of NICE.'
+    - '2017: DCV 2017 became generally available, including use on Amazon EC2.'
+    - '2024: NICE DCV was renamed Amazon DCV.'
+    - '2026: Current releases continued macOS client and server support.'
+  usage:
+    - >
+      Users supply the remote server and session information, authenticate using
+      credentials managed by the DCV server, and interact with the streamed desktop
+      through the native viewer.
+    - >
+      The client supports display controls, file transfer, printing, clipboard
+      integration, audio, multiple monitors, smart cards, and `.dcv` connection files.
+      Connection files are user-created at arbitrary paths, so no fixed
+      configuration-file location is documented.
+related-packages:
+  - id: cask:jump-desktop
+    reason: >
+      Choose Jump Desktop when you need a general remote-access client built around
+      Fluid, RDP, or VNC; choose DCV Viewer when the remote environment specifically
+      exposes Amazon DCV, especially for GPU-backed visualization workloads.
+    rel: alternative
+    sources:
+      - https://docs.aws.amazon.com/dcv/latest/userguide/client.html
+      - https://jumpdesktop.com/
+      - https://support.jumpdesktop.com/hc/en-us/articles/216423983-General-Fluid-Remote-Desktop
+tags:
+  - amazon-web-services
+  - dcv
+  - macos
+  - remote-access
+  - remote-desktop
+  - remote-visualization
+  - screen-streaming
+provenance:
+  category-sources:
+    - >
+      Amazon describes DCV as remote-visualization technology for secure access to
+      graphics-intensive remote applications: https://docs.aws.amazon.com/dcv/
+    - source_facts.description
+  display-name-sources:
+    - >
+      Amazon renamed NICE DCV to Amazon DCV in 2024:
+      https://aws.amazon.com/blogs/aws/nice-desktop-cloud-visualization-dcv-is-now-amazon-dcv/
+    - The installed application remains DCV Viewer.app in source_facts.applications.
+  docs-sources:
+    - Amazon DCV documentation index and official client user guide.
+    - Official macOS installation and connection-file documentation.
+  history-sources:
+    - >
+      https://aws.amazon.com/about-aws/whats-new/2017/12/aws-and-nice-announce-the-general-availability-of-desktop-cloud-visualization-dcv-2017/
+    - https://aws.amazon.com/blogs/aws/amazon-web-services-to-acquire-nice/
+    - https://aws.amazon.com/blogs/aws/nice-desktop-cloud-visualization-dcv-is-now-amazon-dcv/
+    - https://docs.aws.amazon.com/dcv/latest/userguide/doc-history-release-notes.html
+  repo-sources:
+    - >
+      Amazon distributes DCV as a product and publishes release notes and client
+      downloads without identifying a public source repository:
+      https://docs.aws.amazon.com/dcv/
+  tags-sources:
+    - https://docs.aws.amazon.com/dcv/
+    - https://docs.aws.amazon.com/dcv/latest/userguide/client.html
+    - source_facts.description
+category-confidence: high
+category-path:
+  - networking
+  - remote-desktop
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

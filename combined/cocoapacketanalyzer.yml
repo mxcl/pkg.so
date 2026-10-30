@@ -2,9 +2,86 @@ id: cask:cocoapacketanalyzer
 display-name: Cocoa Packet Analyzer
 homepage: https://www.tastycocoabytes.com/
 repo: null
+docs:
+  - https://www.tastycocoabytes.com/
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      The application is distributed as a native, notarized macOS utility and through a
+      Homebrew cask. Its official download page retains legacy builds for older macOS
+      generations while current development targets modern macOS.
+  package-nerd-significance:
+    - >
+      Cocoa Packet Analyzer gives Mac users a native alternative to cross-platform
+      packet-analysis suites. Package users may value its macOS integration, Quick Look
+      extension, Swift plug-in SDK, per-application traffic attribution, and built-in
+      HTTPS proxy.
+    - >
+      Its ability to preserve comments and decryption secrets in pcapng files also makes
+      it useful in capture-sharing and archival workflows, although those secrets must
+      be handled as sensitive material.
+  project-history:
+    - >
+      Cocoa Packet Analyzer evolved as a native Mac packet sniffer and protocol
+      analyzer. The current generation was rewritten in Swift and expanded beyond
+      conventional pcap inspection with pcapng support, large-capture indexing, QUIC and
+      HTTP/3 dissection, TLS key-log handling, and a local man-in-the-middle proxy.
+    - >
+      The project maintains distinct current and legacy builds, reflecting the long span
+      of macOS versions on which the application has been distributed.
+  related-projects:
+    - CPAPluginSDK lets developers implement additional protocol analyzers in Swift.
+    - libpcap underpins packet capture and BPF capture-filter behavior.
+    - >
+      The pcap and pcapng formats provide interchange with Wireshark and other
+      network-analysis tools.
+  sources:
+    - https://www.tastycocoabytes.com/
+    - https://www.tastycocoabytes.com/legal.html
+  summary:
+    - >
+      Cocoa Packet Analyzer is a native macOS network protocol analyzer for capturing or
+      opening packet traces, dissecting protocols, following conversations, and
+      decrypting supported TLS, HTTP/2, and HTTP/3 traffic.
+  timeline:
+    - 'Legacy era: Separate builds supported older Intel and pre-macOS-26 systems.'
+    - >
+      Version 4 era: The application adopted a Swift implementation, indexed large
+      captures, and expanded encrypted-protocol and proxy analysis.
+  usage:
+    - >
+      Users can capture Ethernet or Wi-Fi traffic, open pcap or pcapng files, filter
+      decoded fields, inspect their underlying bytes, follow TCP, UDP, or QUIC
+      conversations, and export proxy sessions as HAR.
+    - >
+      TLS traffic can be decrypted using a user-selected SSL key-log file, secrets
+      embedded in pcapng, or the direct-download edition's local proxy. The official
+      documentation does not identify a fixed configuration or credential-file path.
+related-packages:
+  - id: cask:wireshark-app
+    reason: >
+      Choose Wireshark for an open-source, cross-platform analyzer with a much larger
+      dissector ecosystem; choose Cocoa Packet Analyzer for a Mac-native interface,
+      per-application capture attribution, and an integrated HTTPS proxy.
+    rel: alternative
+    sources:
+      - https://www.tastycocoabytes.com/
+      - https://www.wireshark.org/docs/wsug_html_chunked/ChapterIntroduction.html
+category: networking
 package-manager:
   brew-cask: cocoapacketanalyzer
 package-manager-url: https://formulae.brew.sh/cask/cocoapacketanalyzer
+tags:
+  - macos
+  - network-protocol-analyzer
+  - packet-capture
+  - pcap
+  - pcapng
+  - protocol-dissection
+  - tls-decryption
+  - traffic-analysis
 description: Network protocol analyzer and packet sniffer
 applications:
   - CocoaPacketAnalyzer.app
