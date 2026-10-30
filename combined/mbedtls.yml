@@ -68,6 +68,26 @@ history:
       configuration is `include/mbedtls/mbedtls_config.h`, and PSA crypto mechanisms can
       be selected in `tf-psa-crypto/include/psa/crypto_config.h` or overridden with
       compile-time configuration macros.
+related-packages:
+  - id: brew:wolfssl
+    reason: >
+      Choose wolfSSL as an alternative embedded C TLS stack when its OpenSSL
+      compatibility layer, commercial support, dual licensing, or wolfCrypt
+      certification options better match the deployment; Mbed TLS instead centers its
+      modern crypto integration on PSA Crypto.
+    rel: alternative
+    sources:
+      - https://www.trustedfirmware.org/projects/mbed-tls
+      - https://www.wolfssl.com/products/wolfssl/
+  - id: brew:libressl
+    reason: >
+      Choose LibreSSL when you want an OpenBSD-developed OpenSSL fork with libssl,
+      libcrypto, libtls, and familiar OpenSSL-style utilities; choose Mbed TLS for a
+      smaller, highly configurable embedded stack with PSA Crypto integration.
+    rel: alternative
+    sources:
+      - https://www.trustedfirmware.org/projects/mbed-tls
+      - https://www.libressl.org/
 category: security
 package-manager:
   apk: mbedtls
