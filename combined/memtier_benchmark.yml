@@ -37,6 +37,23 @@ history:
       APT/YUM packages, a Homebrew formula, and a Nix package. The Phoronix Test Suite
       added a memtier_benchmark profile in 2019, making it part of reusable public
       benchmark workflows as well as Redis-oriented operations work.
+related-packages:
+  - id: brew:redis
+    reason: >
+      Use Redis as a benchmark target: Redis officially documents memtier_benchmark for
+      generating controlled Redis workloads and populating test databases.
+    rel: adjacent_workflow
+    sources:
+      - https://redis.io/docs/latest/operate/rs/clusters/optimize/memtier-benchmark/
+      - https://github.com/redis/memtier_benchmark#readme
+  - id: brew:memcached
+    reason: >
+      Use Memcached as the alternative benchmark target when testing its text, binary,
+      or meta protocol under multithreaded load.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/redis/memtier_benchmark#readme
+      - https://docs.memcached.org/
 category: developer-tools
 package-manager:
   brew: memtier_benchmark
