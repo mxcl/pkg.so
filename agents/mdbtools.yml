@@ -4,7 +4,17 @@ repo: null
 docs:
   - https://github.com/mdbtools/mdbtools#readme
   - https://github.com/mdbtools/mdbtools/tree/dev/doc
-config-file-location: null
+config-file-location:
+  linux:
+    - /etc/odbcinst.ini
+    - ~/.odbcinst.ini
+    - /etc/odbc.ini
+    - ~/.odbc.ini
+  macos:
+    - /Library/ODBC/odbcinst.ini
+    - ~/Library/ODBC/odbcinst.ini
+    - /Library/ODBC/odbc.ini
+    - ~/Library/ODBC/odbc.ini
 credentials-file-location: null
 history:
   adoption-history:
@@ -81,6 +91,15 @@ history:
       Library and integration users can use `libmdb`, `libmdbsql`, and the ODBC driver.
       The README describes ODBC support for unixODBC or iODBC and notes that man pages
       provide usage instructions for each program.
+related-packages:
+  - id: brew:unixodbc
+    reason: >
+      unixODBC is the documented driver manager for registering the MDB Tools ODBC
+      driver and querying Access files from ODBC clients such as `isql`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mdbtools/mdbtools#readme
+      - https://www.unixodbc.org/doc
 tags:
   - cli
   - database
