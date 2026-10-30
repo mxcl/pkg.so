@@ -39,6 +39,25 @@ history:
       The Homebrew package installs a tiny Go-based CLI alternative to heavier
       internal-CA systems such as step-ca, Vault PKI, or a full ACME deployment when the
       operator controls both the CA and the hosts.
+related-packages:
+  - id: brew:mkcert
+    reason: >
+      Choose mkcert for locally trusted development HTTPS because it installs its
+      generated CA into supported system and browser trust stores; choose minica when
+      you control multiple service hosts and will distribute trust yourself.
+    rel: alternative
+    sources:
+      - https://github.com/jsha/minica
+      - https://github.com/FiloSottile/mkcert
+  - id: brew:step
+    reason: >
+      Choose step when you need broader PKI automation, an online CA client,
+      revocation-capable infrastructure, ACME, SSH certificates, or cryptographic
+      operations beyond minica's static file workflow.
+    rel: alternative
+    sources:
+      - https://github.com/jsha/minica
+      - https://smallstep.com/docs/step-cli/
 category: security
 package-manager:
   brew: minica

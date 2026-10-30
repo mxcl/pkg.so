@@ -35,6 +35,24 @@ history:
       environments. The Homebrew formula exposes that niche directly by installing
       cross-compiler tools with target prefixes such as `i686-w64-mingw32` and
       `x86_64-w64-mingw32`.
+related-packages:
+  - id: brew:llvm
+    reason: >
+      LLVM and Clang can be paired with Mingw-w64's Windows headers and libraries when
+      you prefer a Clang-based cross-toolchain over the formula's GCC-oriented commands.
+    rel: alternative
+    sources:
+      - https://www.mingw-w64.org/
+      - https://www.mingw-w64.org/downloads/
+      - https://clang.llvm.org/docs/CrossCompilation.html
+  - id: brew:cmake
+    reason: >
+      CMake can drive cross-builds through toolchain files and provides MinGW-oriented
+      generators, making it a practical build-system front end for Mingw-w64 projects.
+    rel: adjacent_workflow
+    sources:
+      - https://www.mingw-w64.org/downloads/
+      - https://cmake.org/cmake/help/latest/guide/user-interaction/index.html
 tags:
   - c
   - cli

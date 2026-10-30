@@ -35,6 +35,32 @@ history:
       important: it gives genomics users an installable replacement candidate for
       BWA-MEM where performance and support for newer read types matter more than
       byte-for-byte legacy output.
+related-packages:
+  - id: brew:bwa
+    reason: >
+      Choose BWA when an established pipeline requires legacy BWA-MEM behavior or exact
+      option compatibility; minibwa is the faster successor but does not produce
+      identical alignments.
+    rel: alternative
+    sources:
+      - https://github.com/lh3/minibwa#readme
+      - https://github.com/lh3/bwa
+  - id: brew:minimap2
+    reason: >
+      Choose minimap2 for noisy long reads, spliced RNA-seq, or long contigs, which
+      minibwa explicitly does not support well.
+    rel: alternative
+    sources:
+      - https://github.com/lh3/minibwa#readme
+      - https://github.com/lh3/minimap2
+  - id: brew:samtools
+    reason: >
+      Use SAMtools after minibwa to sort, convert, index, inspect, or otherwise process
+      the SAM alignments it emits.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/lh3/minibwa#readme
+      - https://www.htslib.org/doc/samtools.html
 category: science
 package-manager:
   brew: minibwa

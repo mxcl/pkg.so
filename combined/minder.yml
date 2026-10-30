@@ -36,6 +36,33 @@ history:
       a profile, registers repositories, and enables a secret-scanning rule; the
       profile-and-rules model is the core usage pattern for teams that want
       policy-as-code checks over GitHub repositories and supply-chain artifacts.
+related-packages:
+  - id: brew:scorecard
+    reason: >
+      Use OpenSSF Scorecard directly for standalone repository-security scoring, or
+      apply its checks through Minder when you want centrally managed policies and
+      remediation.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://openssf.org/blog/2024/10/28/openssf-adds-minder-as-a-sandbox-project-to-simplify-the-integration-and-use-of-open-source-security-tools/
+      - https://github.com/ossf/scorecard
+  - id: brew:osv-scanner
+    reason: >
+      OSV-Scanner provides direct CLI and CI dependency scans, while Minder consumes OSV
+      data inside continuously evaluated dependency policies.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.mindersec.dev/
+      - https://google.github.io/osv-scanner/
+  - id: brew:cosign
+    reason: >
+      Cosign signs and verifies artifacts through Sigstore; Minder can enforce policies
+      that check those artifact signatures and attestations.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.mindersec.dev/
+      - https://docs.sigstore.dev/cosign/
 category: security
 package-manager:
   brew: minder
