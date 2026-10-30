@@ -27,6 +27,23 @@ history:
       role overlaps with tcpdump and Wireshark workflows, but with a narrower
       terminal-first focus on making TCP sessions easier to scan rather than offering a
       full graphical protocol analyzer.
+related-packages:
+  - id: brew:tcpdump
+    reason: >
+      Use tcpdump to capture or filter traffic and write a pcap file, then pass that
+      file to miruo for its documented TCP-session-oriented summary.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/KLab/miruo
+      - https://github.com/the-tcpdump-group/tcpdump
+  - id: brew:wireshark
+    reason: >
+      Choose Wireshark when you need broad protocol dissection, display filters, and
+      interactive packet inspection rather than miruo's lightweight TCP-session summary.
+    rel: alternative
+    sources:
+      - https://github.com/KLab/miruo
+      - https://www.wireshark.org/docs/
 category: networking
 package-manager:
   brew: miruo
