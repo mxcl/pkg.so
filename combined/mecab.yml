@@ -4,7 +4,11 @@ homepage: https://taku910.github.io/mecab/
 repo: https://github.com/taku910/mecab
 docs:
   - https://taku910.github.io/mecab
-config-file-location: null
+config-file-location:
+  unix:
+    - /usr/local/etc/mecabrc
+    - ~/.mecabrc
+    - /usr/local/lib/mecab/ipadic/dicrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -59,6 +63,24 @@ history:
       unknown-word handling, partial parsing, soft-wakati output, the C/C++ library
       interface, and script-language bindings. The command-line tools `mecab` and
       `mecab-config` expose those capabilities to packages and build scripts.
+related-packages:
+  - id: brew:kytea
+    reason: >
+      Choose KyTea when you need trainable word segmentation and tagging for Japanese,
+      Chinese, or other unsegmented languages instead of MeCab's CRF-and-dictionary
+      workflow.
+    rel: alternative
+    sources:
+      - https://www.phontron.com/kytea/
+      - https://taku910.github.io/mecab/
+  - id: brew:cabocha
+    reason: >
+      CaboCha accepts MeCab-tagged text and uses MeCab plus a compatible dictionary to
+      extend morphological analysis into Japanese dependency parsing.
+    rel: adjacent_workflow
+    sources:
+      - https://taku910.github.io/cabocha/
+      - https://taku910.github.io/mecab/
 category: data
 package-manager:
   brew: mecab

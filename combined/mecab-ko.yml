@@ -4,7 +4,10 @@ homepage: https://bitbucket.org/eunjeon/mecab-ko
 repo: https://bitbucket.org/eunjeon/mecab-ko
 docs:
   - https://bitbucket.org/eunjeon/mecab-ko
-config-file-location: null
+config-file-location:
+  unix:
+    - /usr/local/etc/mecabrc
+    - ~/.mecabrc
 credentials-file-location: null
 history:
   adoption-history:
@@ -55,6 +58,15 @@ history:
       tarball, run `./configure`, `make`, `make check`, and `make install`.
       Korean-specific behavior is controlled through MeCab dictionary settings such as
       `left-space-penalty-factor` in `dicrc`.
+related-packages:
+  - id: brew:mecab
+    reason: >
+      Choose upstream MeCab for Japanese analysis; choose MeCab-ko when Korean-specific
+      spacing behavior and the mecab-ko dictionary ecosystem are required.
+    rel: alternative
+    sources:
+      - https://bitbucket.org/eunjeon/mecab-ko/raw/master/README.md
+      - https://taku910.github.io/mecab/
 category: data
 package-manager:
   brew: mecab-ko
