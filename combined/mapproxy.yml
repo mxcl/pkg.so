@@ -87,6 +87,23 @@ history:
       mapproxy-seed, because those cover the lifecycle of generating a configuration,
       running a development server, pre-filling tile caches, and deploying the WSGI app
       behind Apache, nginx, Varnish, or another production front end.
+related-packages:
+  - id: brew:mapnik
+    reason: >
+      MapProxy can invoke Mapnik directly from an XML mapfile and cache or expose the
+      resulting rendered maps without an intervening WMS server.
+    rel: adjacent_workflow
+    sources:
+      - https://mapproxy.github.io/mapproxy/latest/sources.html
+      - https://mapnik.org/
+  - id: brew:mapserver
+    reason: >
+      MapProxy can execute MapServer as a configured source, then cache and republish
+      its rendered output through MapProxy services.
+    rel: adjacent_workflow
+    sources:
+      - https://mapproxy.github.io/mapproxy/latest/sources.html
+      - https://mapserver.org/
 category: data
 package-manager:
   brew: mapproxy

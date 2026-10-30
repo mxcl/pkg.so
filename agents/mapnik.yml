@@ -83,6 +83,40 @@ history:
       mapnik-index, shapeindex, svg2png, pgsql2sqlite, and geometry_to_wkb. For package
       users, that makes Mapnik useful both as a dependency for larger map stacks and as
       a toolbox for testing styles and geospatial assets.
+related-packages:
+  - id: brew:mapproxy
+    reason: >
+      MapProxy can call Mapnik directly from a Mapnik XML mapfile, then cache and
+      publish the rendered output through web mapping services.
+    rel: adjacent_workflow
+    sources:
+      - https://mapproxy.github.io/mapproxy/latest/sources.html
+      - https://mapnik.org/
+  - id: brew:imposm3
+    reason: >
+      Imposm3 prepares OpenStreetMap data in PostgreSQL/PostGIS databases optimized for
+      rendering, which Mapnik can read through its PostGIS input plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://imposm.org/docs/imposm3/latest/
+      - https://github.com/mapnik/mapnik/wiki/PostGIS
+  - id: brew:postgis
+    reason: >
+      PostGIS provides the spatial PostgreSQL data source consumed by Mapnik's stable
+      PostGIS input plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mapnik/mapnik/wiki/PostGIS
+      - https://postgis.net/docs/
+  - id: brew:mapserver
+    reason: >
+      Choose MapServer when the primary requirement is a complete web mapping and OGC
+      service engine; choose Mapnik when an embeddable cartographic rendering toolkit
+      and language APIs are the better fit.
+    rel: alternative
+    sources:
+      - https://mapnik.org/
+      - https://mapserver.org/
 tags:
   - cartography
   - cli
