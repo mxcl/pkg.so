@@ -83,6 +83,25 @@ history:
       in bulk into MBTiles, while `mbtiles` examines, copies, validates, compares, and
       diffs MBTiles files. That makes the formula useful both in long-running tile
       services and in offline tile-production jobs.
+related-packages:
+  - id: brew:postgis
+    reason: >
+      PostGIS is Martin's documented database-backed tile source, so install it when
+      Martin must publish vector tiles directly from live PostgreSQL geospatial tables
+      or functions.
+    rel: adjacent_workflow
+    sources:
+      - https://maplibre.org/martin/installation/
+      - https://maplibre.org/martin/run/
+      - https://postgis.net/
+  - id: brew:tippecanoe
+    reason: >
+      Tippecanoe converts GeoJSON, FlatGeobuf, or CSV features into MBTiles or PMTiles
+      archives that Martin can serve as file-backed tile sources.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/felt/tippecanoe
+      - https://maplibre.org/martin/architecture-sources/
 category: data
 package-manager:
   brew: martin
