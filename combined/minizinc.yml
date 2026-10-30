@@ -4,7 +4,10 @@ homepage: https://www.minizinc.org/
 repo: https://github.com/MiniZinc/libminizinc
 docs:
   - https://docs.minizinc.dev/en/stable
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.minizinc/Preferences.json
+    - ~/.minizinc/solvers/*.msc
 credentials-file-location: null
 history:
   adoption-history:
@@ -54,6 +57,33 @@ history:
       the formula brings in solver-related dependencies such as Gecode and COIN-OR
       components, reflecting the package's role as a modeling frontend plus compiler
       rather than a single solver.
+related-packages:
+  - id: brew:gecode
+    reason: >
+      Use Gecode as a constraint-programming backend for MiniZinc models; MiniZinc ships
+      a Gecode-specific library and solver configuration, and Gecode has a long MiniZinc
+      Challenge history.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.minizinc.dev/en/latest/installation.html
+      - https://docs.minizinc.dev/en/stable/fzn-spec.html
+      - https://www.gecode.dev/
+  - id: brew:cbc
+    reason: >
+      Use COIN-OR Cbc as MiniZinc's bundled mixed-integer programming backend when a
+      model is best handled as a MIP rather than by a finite-domain CP solver.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.minizinc.dev/en/latest/installation.html
+      - https://coin-or.github.io/Cbc/
+  - id: brew:highs
+    reason: >
+      Use HiGHS with MiniZinc for linear and mixed-integer optimization models; it is
+      one of the solvers included in the official bundled MiniZinc distribution.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.minizinc.dev/en/latest/installation.html
+      - https://ergo-code.github.io/HiGHS/
 category: science
 package-manager:
   brew: minizinc

@@ -34,6 +34,32 @@ history:
       tools such as SwiftLint, SwiftFormat, SwiftGen, Sourcery, Carthage, and XcodeGen,
       showing its role as dependency management for iOS and Swift developer tooling
       rather than as a general-purpose language package manager.
+related-packages:
+  - id: brew:swiftlint
+    reason: >
+      Mint officially supports installing and running SwiftLint, allowing a project to
+      pin its Swift style checks in Mintfile and use the same linter version locally and
+      in CI.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/yonaskolb/Mint
+      - https://github.com/realm/SwiftLint
+  - id: brew:swiftformat
+    reason: >
+      Mint can install and version-pin SwiftFormat so formatting behavior is
+      reproducible across developer machines and CI jobs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/yonaskolb/Mint
+      - https://github.com/nicklockwood/SwiftFormat
+  - id: brew:xcodegen
+    reason: >
+      Mint's official examples use XcodeGen directly, making it a convenient way to pin
+      and run the project generator before opening or building an Xcode project.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/yonaskolb/Mint
+      - https://yonaskolb.github.io/XcodeGen/
 category: developer-tools
 package-manager:
   brew: mint

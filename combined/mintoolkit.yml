@@ -6,7 +6,9 @@ docs:
   - https://github.com/mintoolkit/mint/tree/master/docs
   - https://slimtoolkit.org/
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  linux: ~/.docker/config.json
+  windows: '%USERPROFILE%/.docker/config.json'
 history:
   sources:
     - https://formulae.brew.sh/formula/mintoolkit
@@ -36,6 +38,25 @@ history:
       slimming and broader container scanners: it tries to discover the files an app
       actually needs, then emits a smaller runtime image and related inspection
       artifacts.
+related-packages:
+  - id: brew:dive
+    reason: >
+      Use dive after building or slimming an image to interactively inspect its layers,
+      file changes, and wasted space; Mint performs the behavioral minification while
+      dive provides a focused layer-level audit.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mintoolkit/mint
+      - https://github.com/wagoodman/dive
+  - id: brew:trivy
+    reason: >
+      Run Trivy against Mint's resulting image when you need a dedicated vulnerability,
+      secret, license, and misconfiguration scan in addition to Mint's image reduction
+      and runtime-derived hardening workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mintoolkit/mint
+      - https://trivy.dev/latest/
 category: cloud-infrastructure
 package-manager:
   apk: slim
