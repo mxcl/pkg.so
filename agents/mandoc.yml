@@ -78,6 +78,36 @@ history:
       The `man.conf` manual documents `/etc/man.conf` as the configuration file for the
       mandoc-family `man`, `apropos`, and `makewhatis` utilities. Its directives can set
       manual search paths and output options, and the file is optional.
+related-packages:
+  - id: brew:groff
+    reason: >
+      GNU groff is the broader alternative when documents require a full programmable
+      roff/troff typesetting suite; mandoc is smaller and deliberately focused on
+      manual-page languages and workflows.
+    rel: alternative
+    sources:
+      - https://mandoc.bsd.lv/
+      - https://mandoc.bsd.lv/man/mdoc.7.html
+      - https://www.gnu.org/software/groff/
+  - id: brew:man-db
+    reason: >
+      man-db is an alternative database-backed `man`, `apropos`, and `whatis` stack
+      commonly paired with groff, while mandoc offers its own integrated formatter,
+      viewer, searcher, and database builder.
+    rel: alternative
+    sources:
+      - https://mandoc.bsd.lv/
+      - https://mandoc.bsd.lv/ports.html
+      - https://man-db.gitlab.io/man-db/
+  - id: brew:texi2mdoc
+    reason: >
+      texi2mdoc converts GNU Texinfo source into `mdoc` input that can then be
+      validated, rendered, and packaged with mandoc.
+    rel: adjacent_workflow
+    sources:
+      - https://mandoc.bsd.lv/
+      - https://mandoc.bsd.lv/texi2mdoc/
+      - https://mandoc.bsd.lv/devhistory.html
 tags:
   - cli
   - compiler

@@ -67,6 +67,26 @@ history:
     - >
       Because it works on formatted nroff rather than owning a whole man-page database,
       man2html is often paired with existing manual systems rather than replacing them.
+related-packages:
+  - id: brew:mandoc
+    reason: >
+      mandoc is a maintained integrated alternative that parses `mdoc` and `man` source
+      directly and emits HTML 5, while man2html converts already formatted nroff text
+      and also supplies a CGI browser.
+    rel: alternative
+    sources:
+      - https://www.nongnu.org/man2html/
+      - https://mandoc.bsd.lv/
+      - https://mandoc.bsd.lv/man/mandoc.1.html
+  - id: brew:groff
+    reason: >
+      GNU groff provides the nroff/roff formatting stage whose text output can be piped
+      into man2html for HTML conversion.
+    rel: adjacent_workflow
+    sources:
+      - https://www.nongnu.org/man2html/
+      - https://www.gnu.org/software/groff/
+      - https://www.gnu.org/software/groff/manual/groff.html
 tags:
   - cgi
   - cli

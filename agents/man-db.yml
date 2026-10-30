@@ -84,6 +84,26 @@ history:
       and `man/man5/manpath.5` for configuration details. Installed paths depend on
       `sysconfdir`, while the upstream `manpath` manual documents `~/.manpath` as the
       default user configuration for `manpath -C`.
+related-packages:
+  - id: brew:mandoc
+    reason: >
+      mandoc is a smaller integrated alternative that can format, search, and index
+      manual pages, while man-db centers the database-backed GNU/Linux-style `man`
+      workflow and normally uses an external formatter.
+    rel: alternative
+    sources:
+      - https://man-db.gitlab.io/man-db/
+      - https://mandoc.bsd.lv/
+      - https://mandoc.bsd.lv/ports.html
+  - id: brew:groff
+    reason: >
+      GNU groff supplies the roff formatter commonly used by man-db to render
+      manual-page source for terminal or other output.
+    rel: adjacent_workflow
+    sources:
+      - https://gitlab.com/man-db/man-db
+      - https://www.gnu.org/software/groff/
+      - https://www.gnu.org/software/groff/manual/groff.html
 tags:
   - cli
   - documentation-system
