@@ -76,6 +76,24 @@ history:
       In remote-to-stdio mode, users run `mcp-proxy` with a local MCP server command and
       a listening port, optionally defining named servers in JSON. This lets remote
       clients reach local stdio MCP servers at URL paths such as `/servers/<name>/`.
+related-packages:
+  - id: brew:mcp-remote
+    reason: >
+      Choose mcp-remote when the primary requirement is connecting an stdio-only client
+      to a remote server with interactive OAuth; choose mcp-proxy for bidirectional
+      stdio/HTTP bridging, named servers, or client-credentials authentication.
+    rel: alternative
+    sources:
+      - https://github.com/sparfenyuk/mcp-proxy
+      - https://github.com/punkpeye/mcp-remote
+  - id: brew:mcp-inspector
+    reason: >
+      The mcp-proxy README specifically recommends MCP Inspector for testing a server
+      exposed through the proxy.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/sparfenyuk/mcp-proxy#testing
+      - https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector
 category: ai
 package-manager:
   brew: mcp-proxy

@@ -5,8 +5,10 @@ repo: https://github.com/modelcontextprotocol/inspector
 docs:
   - https://modelcontextprotocol.io/docs/tools
   - https://github.com/modelcontextprotocol/inspector#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix: ~/.mcp-inspector/mcp.json
+credentials-file-location:
+  unix: ~/.mcp-inspector/secrets.json
 history:
   adoption-history:
     - >
@@ -82,6 +84,27 @@ history:
       clients such as Cursor, Claude Code, or the Inspector CLI. Its docs also warn that
       the proxy can spawn local processes and should not be exposed to untrusted
       networks.
+related-packages:
+  - id: brew:mcp-proxy
+    reason: >
+      Use mcp-proxy to bridge stdio and HTTP transports, then use Inspector to exercise
+      and debug the proxied server; mcp-proxy's own testing instructions recommend
+      Inspector.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/sparfenyuk/mcp-proxy#testing
+      - https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector
+  - id: brew:mcp-remote
+    reason: >
+      mcp-remote adapts an authorized remote server for stdio-only clients, while
+      Inspector provides direct HTTP, SSE, and OAuth-aware diagnostics when that
+      connection needs debugging.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/punkpeye/mcp-remote
+      - https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector
+      - >
+        https://github.com/modelcontextprotocol/inspector/blob/main/docs/mcp-server-configuration.md
 category: ai
 package-manager:
   brew: mcp-inspector

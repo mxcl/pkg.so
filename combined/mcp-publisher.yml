@@ -6,7 +6,9 @@ docs:
   - https://github.com/modelcontextprotocol/registry/tree/main/docs
   - https://github.com/modelcontextprotocol/registry#readme
   - https://modelcontextprotocol.io/registry/quickstart
-config-file-location: null
+config-file-location:
+  unix: server.json
+  windows: server.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -78,6 +80,15 @@ history:
       The official docs describe GitHub, DNS, and HTTP authentication methods. They also
       show that `server.json` contains the server name, repository URL, package
       identifiers, transport type, version, and environment-variable declarations.
+related-packages:
+  - id: brew:mcp-inspector
+    reason: >
+      Use MCP Inspector to exercise and debug an MCP server before creating its
+      `server.json` manifest and publishing that server's metadata with mcp-publisher.
+    rel: adjacent_workflow
+    sources:
+      - https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector
+      - https://modelcontextprotocol.io/registry/quickstart
 category: ai
 package-manager:
   brew: mcp-publisher

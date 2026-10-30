@@ -80,6 +80,28 @@ history:
       `MCP_REMOTE_CONFIG_DIR` points elsewhere. The README also documents a
       `mcp-remote-client` mode for running an authorization flow from the command line
       when troubleshooting stale credentials or token refresh problems.
+related-packages:
+  - id: brew:mcp-proxy
+    reason: >
+      Choose mcp-proxy for bidirectional stdio/HTTP bridging, named-server routing, or
+      noninteractive client-credentials authentication; choose mcp-remote for the
+      focused stdio-client-to-remote-server workflow with interactive OAuth and
+      persistent authorization state.
+    rel: alternative
+    sources:
+      - https://github.com/punkpeye/mcp-remote
+      - https://github.com/sparfenyuk/mcp-proxy
+  - id: brew:mcp-inspector
+    reason: >
+      MCP Inspector can connect directly to remote HTTP or SSE servers and inspect OAuth
+      behavior, making it useful for diagnosing the endpoint that mcp-remote adapts for
+      an stdio-only client.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/punkpeye/mcp-remote
+      - https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector
+      - >
+        https://github.com/modelcontextprotocol/inspector/blob/main/docs/mcp-server-configuration.md
 category: ai
 package-manager:
   brew: mcp-remote
