@@ -28,6 +28,21 @@ history:
       ~/.mkvdts2ac3.rc. Its package-manager niche is therefore not general video
       conversion, but a wrapper around mkvtoolnix and ffmpeg for devices or playback
       chains that accept AC3 more readily than DTS.
+related-packages:
+  - id: brew:mkvtoolnix
+    reason: >
+      MKVToolNix supplies the Matroska inspection, extraction, and remuxing commands
+      used by mkvdts2ac3.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/JakeWharton/mkvdts2ac3#readme
+      - https://mkvtoolnix.download/doc/README.md
+  - id: brew:ffmpeg
+    reason: FFmpeg performs the documented DTS-to-AC-3 encoding stage in mkvdts2ac3's workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/JakeWharton/mkvdts2ac3#readme
+      - https://ffmpeg.org/documentation.html
 tags:
   - ac3
   - audio-conversion

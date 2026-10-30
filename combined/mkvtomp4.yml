@@ -27,6 +27,29 @@ history:
       Adoption appears modest but real through Homebrew packaging; the repository and
       formula position it as a convenience CLI for playback compatibility rather than a
       broad media library or editor.
+related-packages:
+  - id: brew:mkvtoolnix
+    reason: >
+      MKVToolNix provides the Matroska-handling commands explicitly required by
+      mkvtomp4's conversion pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gavinbeatty/mkvtomp4#readme
+      - https://mkvtoolnix.download/doc/README.md
+  - id: brew:gpac
+    reason: mkvtomp4 explicitly uses GPAC's MP4Box to construct its MP4 output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gavinbeatty/mkvtomp4#readme
+      - https://gpac.io/
+  - id: brew:ffmpeg
+    reason: >
+      FFmpeg is mkvtomp4's documented optional tool for audio encoding and subtitle
+      processing.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gavinbeatty/mkvtomp4#readme
+      - https://ffmpeg.org/documentation.html
 category: media
 package-manager:
   brew: mkvtomp4
