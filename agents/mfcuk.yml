@@ -37,6 +37,23 @@ history:
       Debian/Ubuntu, and Nix as a specialist CLI rather than a general NFC SDK; it sits
       beside libnfc, MFOC, Proxmark-oriented tooling, and other MIFARE Classic analysis
       utilities.
+related-packages:
+  - id: brew:mfoc
+    reason: >
+      Choose MFOC when one card key is already known and an offline nested attack is
+      appropriate; choose MFCUK for its documented DarkSide-oriented recovery path.
+    rel: alternative
+    sources:
+      - https://github.com/nfc-tools/mfcuk
+      - https://github.com/nfc-tools/mfoc
+  - id: brew:libnfc
+    reason: >
+      Install libnfc for the reader-access layer used by MFCUK's documented libnfc ports
+      and NFC hardware workflow.
+    rel: adjacent_workflow
+    sources:
+      - https://raw.githubusercontent.com/nfc-tools/mfcuk/master/AUTHORS
+      - https://github.com/nfc-tools/libnfc
 tags:
   - cli
   - mifare-classic

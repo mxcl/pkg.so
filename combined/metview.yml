@@ -58,6 +58,25 @@ history:
       Users retrieve or open GRIB, BUFR, MARS, ODB, NetCDF, ASCII, CSV, and geopoints
       data, then filter, process, inspect, and plot it interactively or from Python and
       Macro scripts.
+related-packages:
+  - id: brew:magics
+    reason: >
+      Use Magics with Metview because ECMWF documents that all Metview graphical output
+      is generated through the Magics plotting library.
+    rel: adjacent_workflow
+    sources:
+      - >
+        https://metview.readthedocs.io/en/latest/tutorials/data_analysis_and_vis/working_with_graphical_output.html
+      - https://confluence.ecmwf.int/display/MAGP/Magics
+  - id: brew:eccodes
+    reason: >
+      Use ecCodes alongside Metview for the GRIB and BUFR decoding infrastructure
+      required by its meteorological data workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://metview.readthedocs.io/en/latest/mv_build/installation_guide.html
+      - https://metview.readthedocs.io/en/latest/mv_build/build_faq.html
+      - https://confluence.ecmwf.int/display/ECC
 category: science
 package-manager:
   brew: metview

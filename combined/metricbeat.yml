@@ -53,6 +53,24 @@ history:
       package-manager terms it is the metrics-focused Beat, adjacent to Filebeat for
       logs, Packetbeat for network data, Heartbeat for uptime, and Auditbeat for
       audit/security events.
+related-packages:
+  - id: brew:heartbeat
+    reason: >
+      Use Heartbeat alongside Metricbeat when the same Elastic observability deployment
+      needs active HTTP, TCP, or ICMP availability checks in addition to host and
+      service metrics.
+    rel: adjacent_workflow
+    sources:
+      - https://www.elastic.co/docs/reference/beats/heartbeat
+      - https://www.elastic.co/docs/reference/beats/metricbeat
+  - id: brew:filebeat
+    reason: >
+      Use Filebeat alongside Metricbeat to correlate application and system logs with
+      the infrastructure metrics sent to the Elastic Stack.
+    rel: adjacent_workflow
+    sources:
+      - https://www.elastic.co/docs/reference/beats/filebeat
+      - https://www.elastic.co/docs/reference/beats/metricbeat
 category: system
 package-manager:
   brew: metricbeat

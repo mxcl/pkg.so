@@ -40,6 +40,24 @@ history:
       commonly appears beside MFCUK and libnfc as part of the NFC/RFID security-research
       toolkit, with MFCUK covering the DarkSide-oriented path and MFOC covering the
       offline nested attack path.
+related-packages:
+  - id: brew:mfcuk
+    reason: >
+      Choose MFCUK when its DarkSide-oriented recovery technique fits the authorized tag
+      assessment; MFOC instead documents an offline nested workflow that needs one known
+      key.
+    rel: alternative
+    sources:
+      - https://github.com/nfc-tools/mfoc
+      - https://github.com/nfc-tools/mfcuk
+  - id: brew:libnfc
+    reason: >
+      Install libnfc as MFOC's documented reader and device-access layer; MFOC's
+      changelog repeatedly tracks libnfc API compatibility.
+    rel: adjacent_workflow
+    sources:
+      - https://raw.githubusercontent.com/nfc-tools/mfoc/master/ChangeLog
+      - https://github.com/nfc-tools/libnfc
 category: security
 package-manager:
   brew: mfoc
