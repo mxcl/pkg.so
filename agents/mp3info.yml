@@ -34,6 +34,24 @@ history:
       reporting. In practice it is used where heavier tag editors are unnecessary: shell
       scripts, archive audits, quick metadata edits, and extraction of MP3 properties
       for reports or filenames.
+related-packages:
+  - id: brew:eye-d3
+    reason: >
+      Choose eyeD3 for maintained ID3v2.3/2.4 editing, plugins, and a Python API; choose
+      MP3Info for a small ID3v1-oriented CLI with flexible technical-property output.
+    rel: alternative
+    sources:
+      - https://www.ibiblio.org/mp3info/mp3info.html
+      - https://eyed3.readthedocs.io/en/latest/
+  - id: brew:id3v2
+    reason: >
+      Choose id3v2 when shell work specifically requires richer ID3v2 tags; choose
+      MP3Info when technical MP3 inspection and established ID3v1 operations are the
+      priority.
+    rel: alternative
+    sources:
+      - https://www.ibiblio.org/mp3info/mp3info.html
+      - https://id3v2.sourceforge.net/
 tags:
   - audio
   - cli
@@ -68,9 +86,8 @@ provenance:
     - https://ibiblio.org/mp3info/mp3info.html
   repo-sources:
     - >
-      source_facts.repo is empty. The official ibiblio project page advertises release
-      archives but no official HTTP(S) source-control repository, so no repository URL
-      is returned.
+      The official homepage publishes source archives but does not identify an official
+      HTTP(S) source-control repository: https://www.ibiblio.org/mp3info/
   tags-sources:
     - source_facts.description identifies MP3 technical info and ID3 1.x tag editing
     - source_facts.executables lists mp3info
