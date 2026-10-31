@@ -37,6 +37,32 @@ history:
       In practice, mpdas is configured with a .mpdasrc-style config containing Last.fm
       and MPD connection details, then run beside MPD so listening history can be
       submitted without involving a desktop music player.
+related-packages:
+  - id: brew:mpdscribble
+    reason: >
+      Choose mpdscribble as the MPD project's own low-resource scrobbler when its
+      idle-mode and playback-edge-case handling are preferable to mpdas's AudioScrobbler
+      2.0 cache and Libre.fm options.
+    rel: alternative
+    sources:
+      - https://github.com/hrkfdn/mpdas
+      - https://www.musicpd.org/clients/mpdscribble/
+  - id: brew:mpd
+    reason: >
+      mpdas connects to MPD through libmpdclient and submits the metadata for songs that
+      MPD plays.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hrkfdn/mpdas
+      - https://mpd.readthedocs.io/en/stable/user.html
+  - id: brew:mpc
+    reason: >
+      mpc can send the documented client-to-client love and unlove messages from the
+      command line to a running mpdas process.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hrkfdn/mpdas
+      - https://www.musicpd.org/clients/mpc/
 category: media
 package-manager:
   brew: mpdas

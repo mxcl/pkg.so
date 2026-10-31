@@ -39,6 +39,35 @@ history:
       releases were treated as non-free by some distributions. The revived mpg123 line
       moved under the LGPL-2.1 license and remained the canonical package for users who
       want the original tool and its library rather than the libmad-based clone.
+related-packages:
+  - id: brew:mpv
+    reason: >
+      Choose mpv when you need an interactive player for many audio and video formats,
+      subtitles, and configurable graphical output rather than mpg123's focused console
+      MPEG-audio playback and library stack.
+    rel: alternative
+    sources:
+      - https://www.mpg123.de/
+      - https://mpv.io/manual/stable/
+  - id: brew:ffmpeg
+    reason: >
+      Choose FFmpeg when MPEG-audio decoding must feed a larger stream-selection,
+      filtering, conversion, or transcoding pipeline rather than a focused player and
+      decoder API.
+    rel: alternative
+    sources:
+      - https://www.mpg123.de/
+      - https://ffmpeg.org/ffmpeg.html
+      - https://ffmpeg.org/ffmpeg-codecs.html
+  - id: brew:mpd
+    reason: >
+      MPD can use libmpg123 as its MPEG-audio decoder backend, pairing mpg123's decoding
+      library with a persistent network-controlled music server.
+    rel: adjacent_workflow
+    sources:
+      - https://mpd.readthedocs.io/en/stable/user.html
+      - https://github.com/MusicPlayerDaemon/MPD/blob/master/NEWS
+      - https://www.mpg123.de/api/
 tags:
   - audio
   - cli

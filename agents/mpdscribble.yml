@@ -39,6 +39,32 @@ history:
     - >
       Packaged as mpdscribble across Homebrew and Linux distributions, it is one of the
       canonical MPD companion daemons rather than a general-purpose Last.fm client.
+related-packages:
+  - id: brew:mpdas
+    reason: >
+      Choose mpdas when AudioScrobbler 2.0, explicit offline caching, user switching, or
+      configurable Libre.fm submission matters more than mpdscribble's MPD-project
+      integration.
+    rel: alternative
+    sources:
+      - https://www.musicpd.org/clients/mpdscribble/
+      - https://github.com/hrkfdn/mpdas
+  - id: brew:mpd
+    reason: >
+      mpdscribble observes tracks played by MPD and submits their listening information
+      to the configured scrobbler.
+    rel: adjacent_workflow
+    sources:
+      - https://www.musicpd.org/clients/mpdscribble/
+      - https://mpd.readthedocs.io/en/stable/user.html
+  - id: brew:mpc
+    reason: >
+      mpc can control the MPD session that mpdscribble monitors and can send the
+      documented love message over MPD's client-to-client protocol.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/MusicPlayerDaemon/mpdscribble
+      - https://www.musicpd.org/clients/mpc/
 tags:
   - audio
   - c-plus-plus
