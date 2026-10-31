@@ -78,6 +78,27 @@ history:
       bindings that still target libnanomsg. New work should usually evaluate `nng`
       first because NNG keeps wire compatibility while adding the maintained API and
       implementation path.
+related-packages:
+  - id: brew:nng
+    reason: >
+      Choose NNG for new C development because the nanomsg project identifies it as the
+      preferred modern implementation while retaining compatibility guidance for
+      existing nanomsg applications.
+    rel: alternative
+    sources:
+      - https://nanomsg.org/
+      - https://nng.nanomsg.org/
+      - https://github.com/nanomsg/nng
+  - id: brew:zeromq
+    reason: >
+      Choose ZeroMQ when its larger bindings ecosystem and ZMTP-based stack better fit
+      the application; nanomsg was a separate C redesign with different API, threading,
+      and protocol choices.
+    rel: alternative
+    sources:
+      - https://nanomsg.org/documentation.html
+      - https://zeromq.org/
+      - https://zguide.zeromq.org/docs
 category: networking
 package-manager:
   apk: nanomsg

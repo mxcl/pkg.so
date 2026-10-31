@@ -77,6 +77,25 @@ history:
       because macOS is the target runtime. The generated C is then carried into
       firmware, RTOS, or embedded Linux builds where normal Google protobuf runtimes
       would be too large or too allocation-heavy.
+related-packages:
+  - id: brew:protobuf
+    reason: >
+      Install Protocol Buffers alongside nanopb when the workflow needs the official
+      `protoc` compiler to parse `.proto` schemas and invoke nanopb's generator plugin.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nanopb/nanopb#using-the-nanopb-library
+      - https://protobuf.dev/
+      - https://github.com/protocolbuffers/protobuf
+  - id: brew:protobuf-c
+    reason: >
+      Choose protobuf-c for general C applications that can use its support library and
+      protoc plugin; choose nanopb when small code size, static field bounds, and
+      microcontroller constraints are the priority.
+    rel: alternative
+    sources:
+      - https://jpa.kapsi.fi/nanopb/docs/
+      - https://github.com/protobuf-c/protobuf-c
 tags:
   - c
   - cli
