@@ -3,8 +3,12 @@ display-name: nak
 repo: null
 docs:
   - https://github.com/fiatjaf/nak#readme
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - ~/.config/nak/bunker/<profile>
+credentials-file-location:
+  unix:
+    - ~/.config/nak/bunker/<profile>
 history:
   adoption-history:
     - >
@@ -62,6 +66,15 @@ history:
       script: publish a test note, inspect relay responses, validate an event, talk to
       relay management APIs, experiment with bunker/nsec flows, or use Nostr as a
       transport for other artifacts.
+related-packages:
+  - id: brew:jq
+    reason: >
+      nak's official examples pipe relay-event JSON into jq to extract content and
+      transform encoded Nostr objects in shell workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/fiatjaf/nak#readme
+      - https://github.com/jqlang/jq
 tags:
   - cli
   - events

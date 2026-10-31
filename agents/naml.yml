@@ -72,6 +72,23 @@ history:
       manifests, turn them into formatted Go that implements a Deployable interface,
       inspect the generated Kubernetes objects, and decide whether code-backed
       deployment makes sense for a project.
+related-packages:
+  - id: brew:kubernetes-cli
+    reason: >
+      NAML's official workflow pipes YAML emitted by `kubectl get` into `naml codify`,
+      so kubectl supplies live cluster objects for conversion to Go.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/krisnova/naml#readme
+      - https://kubernetes.io/docs/reference/kubectl/
+  - id: brew:kind
+    reason: >
+      NAML's README explicitly recommends kind for testing generated Go-backed
+      Kubernetes applications in a local cluster.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/krisnova/naml#readme
+      - https://kind.sigs.k8s.io/
 tags:
   - cli
   - configuration

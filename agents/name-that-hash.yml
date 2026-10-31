@@ -69,6 +69,23 @@ history:
       Package nerds use it before cracking: identify candidate formats, choose likely
       Hashcat or John modes, then feed those guesses into heavier cracking or forensic
       tooling. The JSON output makes it scriptable in pipelines.
+related-packages:
+  - id: brew:hashcat
+    reason: >
+      Name That Hash reports Hashcat mode numbers so an identified hash can be passed
+      into Hashcat for the subsequent password-auditing or recovery step.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bee-san/Name-That-Hash#readme
+      - https://github.com/hashcat/hashcat
+  - id: brew:john-jumbo
+    reason: >
+      Name That Hash reports John the Ripper format information, making John Jumbo a
+      documented next-stage tool after identification.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/bee-san/Name-That-Hash#readme
+      - https://www.openwall.com/john/
 tags:
   - cli
   - forensics

@@ -5,8 +5,24 @@ docs:
   - https://nagios-plugins.org/doc
   - https://nagios-plugins.org/doc/guidelines.html
   - https://nagios-plugins.org/doc/man
-config-file-location: null
-credentials-file-location: null
+config-file-location:
+  unix:
+    - /etc/nagios/plugins.ini
+    - /usr/local/nagios/etc/plugins.ini
+    - /usr/local/etc/nagios/plugins.ini
+    - /etc/opt/nagios/plugins.ini
+    - /etc/nagios-plugins.ini
+    - /usr/local/etc/nagios-plugins.ini
+    - /etc/opt/nagios-plugins.ini
+credentials-file-location:
+  unix:
+    - /etc/nagios/plugins.ini
+    - /usr/local/nagios/etc/plugins.ini
+    - /usr/local/etc/nagios/plugins.ini
+    - /etc/opt/nagios/plugins.ini
+    - /etc/nagios-plugins.ini
+    - /usr/local/etc/nagios-plugins.ini
+    - /etc/opt/nagios-plugins.ini
 history:
   adoption-history:
     - >
@@ -83,6 +99,15 @@ history:
       thresholds, `-t` for timeout, `-v` for verbosity, and `--help` or `--usage` for
       plugin-specific syntax. Performance data after `|` feeds graphing and long-term
       metrics.
+related-packages:
+  - id: brew:nagios
+    reason: >
+      Nagios Core schedules and interprets these plugin commands, making it the primary
+      monitoring engine to pair with the collection.
+    rel: adjacent_workflow
+    sources:
+      - https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/plugins.html
+      - https://www.nagios.org/downloads/nagios-plugins/
 tags:
   - checks
   - cli
