@@ -71,6 +71,41 @@ history:
       isync/mbsync or OfflineIMAP, msmtp, GnuPG, address books, and Notmuch virtual
       mailboxes. The Homebrew formula's dependencies reflect that style: gpgme, notmuch,
       lmdb, lua, ncurses, pcre2, sqlite, OpenSSL, and related libraries.
+related-packages:
+  - id: brew:mutt
+    reason: >
+      Choose Mutt for the more conservative upstream terminal-mail client; NeoMutt keeps
+      much of its workflow and configuration while integrating additional formerly
+      external patches and features.
+    rel: alternative
+    sources:
+      - https://docs.neomutt.org/howto/mutt-migration.html
+      - https://docs.neomutt.org/explanation/history.html
+      - https://www.mutt.org/
+  - id: brew:notmuch
+    reason: >
+      Notmuch indexes a local Maildir for fast full-text search and exposes the results
+      to NeoMutt as virtual mailboxes.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.neomutt.org/tutorials/notmuch-setup.html
+      - https://notmuchmail.org/doc/latest/
+  - id: brew:isync
+    reason: >
+      isync's mbsync executable synchronizes IMAP folders into a local Maildir that
+      NeoMutt can read, including workflows that update Notmuch after each sync.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.neomutt.org/tutorials/mbsync-setup.html
+      - https://isync.sourceforge.io/mbsync.html
+  - id: brew:msmtp
+    reason: >
+      msmtp can serve as NeoMutt's external sendmail backend, adding independent
+      per-account SMTP profiles, logging, and queue-oriented workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.neomutt.org/tutorials/msmtp-setup.html
+      - https://marlam.de/msmtp/documentation
 tags:
   - cli
   - email

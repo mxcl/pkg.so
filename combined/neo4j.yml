@@ -76,6 +76,32 @@ history:
       instance or a production self-managed deployment. Homebrew's formula depends on
       cypher-shell and OpenJDK 21, exposes neo4j and neo4j-admin, and wires a service
       for launching the database under the Homebrew var directories.
+related-packages:
+  - id: cask:neo4j-desktop
+    reason: >
+      Choose Neo4j Desktop for a graphical local development workspace that manages DBMS
+      instances and associated tools, rather than operating the standalone server
+      package directly.
+    rel: alternative
+    sources:
+      - https://neo4j.com/docs/desktop/current/
+      - https://neo4j.com/docs/operations-manual/current/
+  - id: brew:cypher-shell
+    reason: >
+      Cypher Shell is Neo4j's separately installable command-line client for running
+      Cypher and administrative commands against local or remote Neo4j DBMS instances.
+    rel: adjacent_workflow
+    sources:
+      - https://neo4j.com/docs/operations-manual/current/cypher-shell/
+      - https://neo4j.com/docs/operations-manual/current/tools/cypher-shell/
+  - id: brew:neo4j-mcp
+    reason: >
+      Neo4j MCP exposes a running Neo4j database to MCP-compatible clients so assistants
+      and agents can inspect graph schema and execute permitted Cypher operations.
+    rel: adjacent_workflow
+    sources:
+      - https://neo4j.com/docs/mcp/current/
+      - https://neo4j.com/docs/mcp/current/configuration/
 category: data
 package-manager:
   apk: cypher-shell

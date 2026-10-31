@@ -55,6 +55,25 @@ history:
       qemu-system command lines and heavier GUI tools: useful for repeat VM lifecycle
       operations, snapshots, TAP/macvtap networking, VirtFS sharing, and occasional
       VNC/SPICE access from a terminal-first setup.
+related-packages:
+  - id: brew:qemu
+    reason: >
+      QEMU is the underlying emulator nEMU manages, so install it for the system
+      emulation, disk-image, networking, and guest-console capabilities exposed through
+      nEMU.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/nemuTUI/nemu#readme
+      - https://www.qemu.org/docs/master/
+  - id: brew:virt-manager
+    reason: >
+      Choose virt-manager instead when a graphical libvirt-based interface with creation
+      wizards, resource views, and embedded VNC or SPICE consoles is preferable to
+      nEMU's terminal UI.
+    rel: alternative
+    sources:
+      - https://github.com/nemuTUI/nemu#readme
+      - https://virt-manager.org/
 category: system
 package-manager:
   apk: nemu

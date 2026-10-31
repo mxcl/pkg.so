@@ -66,6 +66,32 @@ history:
       at it for CMakeLists.txt completion, diagnostics, and formatting support. The
       README also advertises cargo install, which makes Homebrew one of several
       convenient distribution routes rather than the project's only installation path.
+related-packages:
+  - id: brew:cmake-language-server
+    reason: >
+      Choose cmake-language-server for a smaller Python-based CMake LSP focused on
+      completion, hover documentation, and cmake-format integration; neocmakelsp offers
+      a broader Rust-based feature set.
+    rel: alternative
+    sources:
+      - https://github.com/regen100/cmake-language-server#readme
+      - https://neocmakelsp.github.io/
+  - id: brew:cmake
+    reason: >
+      CMake is the build-system implementation whose language and file API neocmakelsp
+      analyzes to provide project-aware editor features.
+    rel: adjacent_workflow
+    sources:
+      - https://neocmakelsp.github.io/
+      - https://cmake.org/documentation/
+  - id: brew:cmake-lint
+    reason: >
+      neocmakelsp can invoke cmake-lint on file saves when `enable_external_cmake_lint`
+      is enabled in `.neocmake.toml`.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/neocmakelsp/neocmakelsp#cmake-lint-integration
+      - https://github.com/cmake-lint/cmake-lint
 category: developer-tools
 package-manager:
   apk: neocmakelsp
