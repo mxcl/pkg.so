@@ -56,6 +56,24 @@ history:
       maintenance infrastructure rather than a modern compression recommendation: gzip,
       bzip2, xz, and zstd normally win for new data, while ncompress is for historical
       archives and interoperability.
+related-packages:
+  - id: brew:gzip
+    reason: >
+      Choose GNU Gzip for new broadly compatible compressed files; GNU developed it as a
+      replacement for compress, and gunzip can still decode traditional compress files.
+    rel: alternative
+    sources:
+      - https://www.gnu.org/software/gzip/
+      - https://www.gnu.org/s/gzip/manual/html_node/Overview.html
+      - https://vapier.github.io/ncompress/
+  - id: brew:pigz
+    reason: >
+      Choose pigz when you need gzip-compatible output with parallel compression across
+      multiple CPU cores rather than historical .Z output.
+    rel: alternative
+    sources:
+      - https://zlib.net/pigz/
+      - https://vapier.github.io/ncompress/
 tags:
   - cli
   - compression
