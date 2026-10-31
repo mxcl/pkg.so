@@ -44,6 +44,23 @@ history:
       `libmodsecurity-dev` reflects its dual identity as both an installable
       command-line/dev library package and a component embedded by web-server modules,
       reverse proxies, hosting panels, and security stacks.
+related-packages:
+  - id: brew:nginx
+    reason: >
+      Choose nginx as the serving or reverse-proxy layer when deploying libmodsecurity
+      through the project's official nginx connector.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/owasp-modsecurity/ModSecurity-nginx
+      - https://nginx.org/en/docs/
+  - id: brew:httpd
+    reason: >
+      Choose Apache HTTP Server when deploying ModSecurity through its official Apache
+      connector, continuing the project's original integration model.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/owasp-modsecurity/ModSecurity-apache
+      - https://httpd.apache.org/docs/
 tags:
   - cli
   - libmodsecurity
