@@ -65,7 +65,6 @@
     {
       "candidatePackageIDs": [
         "brew:cask:hol-guard",
-        "brew:sofka",
         "brew:prek",
         "brew:tgrep",
         "brew:oras",
@@ -87,9 +86,11 @@
         "brew:dep-scan",
         "brew:erpc",
         "brew:noodle",
-        "brew:cask:kero"
+        "brew:cask:kero",
+        "brew:cask:vercel"
       ],
       "fallbackPackageIDs": [
+        "brew:cask:vercel",
         "brew:cask:kero",
         "brew:gitea-cli",
         "brew:noodle",
@@ -112,8 +113,7 @@
         "brew:tgrep",
         "brew:prek",
         "brew:oras",
-        "brew:cask:hol-guard",
-        "brew:sofka"
+        "brew:cask:hol-guard"
       ],
       "id": "for-you",
       "title": "For You",
@@ -141,6 +141,7 @@
     {
       "id": "recently-updated",
       "packageIDs": [
+        "brew:cask:vercel",
         "brew:cask:solidcraft",
         "brew:cask:magpie",
         "brew:lovable-oj",
@@ -151,8 +152,7 @@
         "brew:filmcraft-cli",
         "brew:gitea-cli",
         "brew:ascelerate",
-        "brew:cask:peel",
-        "brew:worldmonitor"
+        "brew:cask:peel"
       ],
       "title": "Recently Updated",
       "type": "recentlyUpdated"
@@ -873,7 +873,7 @@
       "type": "editorial"
     }
   ],
-  "generatedAt": "2026-10-30T07:06:07Z",
+  "generatedAt": "2026-10-31T06:17:01Z",
   "packages": {
     "brew:ascelerate": {
       "agentSummary": "ascelerate exposes App Store Connect through a Swift command-line interface designed for scripts, structured JSON output, releases, metadata, pricing, and media workflows.",
@@ -2170,6 +2170,98 @@
       ],
       "upstreamSummary": "Hierarchical note taking application",
       "version": "0.106.0"
+    },
+    "brew:cask:vercel": {
+      "agentSummary": "Vercel CLI links local projects, runs the Vercel development environment, manages deployments and platform resources, and supports scripted workflows from a terminal.",
+      "assessment": {
+        "alternatives": [
+          "Provider-specific CLIs such as Netlify CLI or Cloudflare tooling when deploying to those platforms.",
+          "Container or infrastructure deployment tools when Vercel's managed workflow is not the target."
+        ],
+        "audiences": [
+          "Frontend and full-stack developers deploying web applications to Vercel.",
+          "Platform teams automating Vercel projects from local shells or CI."
+        ],
+        "caveats": [
+          "Many commands act on remote Vercel projects and can create or change deployed resources.",
+          "Local behavior may not reproduce every managed production service or platform limit."
+        ],
+        "complements": [
+          "Git-based workflows and CI systems that trigger preview or production deployments.",
+          "Frameworks and build tools supported by the Vercel platform."
+        ],
+        "prerequisites": [
+          "A Vercel account for hosted deployment and project-management workflows.",
+          "A supported project source tree and authentication through the CLI or CI credentials."
+        ],
+        "useCases": [
+          "Link local source trees to Vercel projects and create preview or production deployments.",
+          "Run the Vercel development environment and inspect or manage platform resources through commands."
+        ]
+      },
+      "category": "cloud-infrastructure",
+      "discovery": {
+        "admittedAt": "2026-10-17",
+        "analytics": {
+          "30": {
+            "count": 1277,
+            "endDate": "2026-10-29",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "startDate": "2026-09-29"
+          },
+          "365": {
+            "count": 1277,
+            "endDate": "2026-10-29",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/365d.json",
+            "startDate": "2025-10-29"
+          },
+          "90": {
+            "count": 1277,
+            "endDate": "2026-10-29",
+            "source": "https://formulae.brew.sh/api/analytics/cask-install/90d.json",
+            "startDate": "2026-07-31"
+          }
+        },
+        "firstObservedAt": "2026-10-17",
+        "lastVerifiedAt": null,
+        "recentlyDiscovered": false,
+        "status": "official",
+        "trend": {
+          "endDate": "2026-10-29",
+          "growthPercent": null,
+          "installs30d": 1277,
+          "previousMonthlyRate": 0.0,
+          "score": 50.127643,
+          "sources": [
+            "https://formulae.brew.sh/api/analytics/cask-install/30d.json",
+            "https://formulae.brew.sh/api/analytics/cask-install/90d.json"
+          ],
+          "startDate": "2026-07-31"
+        }
+      },
+      "displayName": "Vercel CLI",
+      "docs": "https://vercel.com/docs/cli",
+      "homepage": "https://vercel.com/docs/cli",
+      "id": "brew:cask:vercel",
+      "installURL": "pkgmgrmgr://install?package=brew%3Acask%3Avercel",
+      "lastUpdatedAt": "2026-10-30T20:19:52Z",
+      "manager": "homebrew",
+      "repository": "https://github.com/vercel/vercel",
+      "researchedAt": "2026-10-31T06:17:01Z",
+      "sources": [
+        {
+          "kind": "primary",
+          "title": "Vercel CLI documentation",
+          "url": "https://vercel.com/docs/cli"
+        },
+        {
+          "kind": "primary",
+          "title": "Vercel CLI source and README",
+          "url": "https://github.com/vercel/vercel/tree/main/packages/cli"
+        }
+      ],
+      "upstreamSummary": "Command-line interface for Vercel",
+      "version": "65.8.0"
     },
     "brew:cask:visual-studio-code@insiders": {
       "agentSummary": "Visual Studio Code Insiders delivers Microsoft's frequently updated preview editor, providing the primary tested client for JetBrains' official Kotlin language server extension.",
@@ -5287,7 +5379,7 @@
   },
   "schemaVersion": 1,
   "source": {
-    "generatedAt": "2026-10-30T07:04:25Z",
+    "generatedAt": "2026-10-31T06:15:32Z",
     "url": "https://www.automicvault.com/db.json"
   }
 }
