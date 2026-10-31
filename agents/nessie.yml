@@ -90,6 +90,24 @@ history:
       image or Kubernetes deployment, wire engines such as Spark, Trino, Hive, or Dremio
       to the catalog, and use branches to isolate ETL or experimentation before merging
       into production.
+related-packages:
+  - id: brew:apache-spark
+    reason: >
+      Use Apache Spark with Nessie for SQL and data-processing workflows over Iceberg
+      tables; Nessie's official quickstart documents the required Spark catalog and
+      extension settings.
+    rel: adjacent_workflow
+    sources:
+      - https://projectnessie.org/guides/try-nessie/
+      - https://spark.apache.org/docs/latest/
+  - id: brew:trino
+    reason: >
+      Use Trino with Nessie when interactive distributed SQL should query Iceberg tables
+      through a Nessie-backed catalog.
+    rel: adjacent_workflow
+    sources:
+      - https://projectnessie.org/guides/trino/
+      - https://trino.io/docs/current/connector/iceberg.html
 tags:
   - apache-iceberg
   - catalog
