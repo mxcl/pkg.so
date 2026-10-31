@@ -1,10 +1,82 @@
 id: cask:switch
-display-name: Switch Audio Converter
+display-name: Switch Audio File Converter
 homepage: https://www.nch.com.au/switch/
 repo: null
+docs:
+  - https://help.nchsoftware.com/help/en/switch/win/index.html
+  - https://www.nch.com.au/switch/faq.html
+  - https://www.nch.com.au/switch/support.html
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Switch is available for Windows and macOS, with a non-commercial free edition
+      covering common formats and paid editions for broader use. Homebrew cask packaging
+      gives macOS users a command-line installation and update path for the otherwise
+      graphical application.
+  package-nerd-significance:
+    - >
+      Switch represents the long-lived commercial GUI side of audio conversion: broad
+      input support, batch conversion, normalization, metadata handling, and media-file
+      audio extraction without requiring users to assemble codec-specific command lines.
+  project-history:
+    - >
+      NCH Software developed Switch as a general-purpose audio file converter and has
+      maintained it through an ongoing sequence of desktop releases. The product grew
+      beyond basic transcoding to include batch processing, effects, normalization, tag
+      editing, cloud inputs, and a command-line integration surface.
+  related-projects:
+    - >
+      NCH’s official help links Switch with WavePad for deeper audio editing and
+      describes command-line operation for system integration.
+  sources:
+    - https://help.nchsoftware.com/help/en/switch/win/index.html
+    - https://www.nch.com.au/switch/
+    - https://www.nch.com.au/switch/versions.html
+  summary:
+    - >
+      Switch Audio File Converter is NCH Software’s graphical batch converter for audio
+      and music files.
+  timeline:
+    - >
+      NCH has maintained Switch across successive Windows and macOS desktop releases,
+      documenting changes on its official versions page.
+  usage:
+    - >
+      Users add files or folders, select an output format and destination, optionally
+      apply normalization or other effects, and run conversions in batches. The official
+      manual also documents a command-line tool for scripted integration.
+related-packages:
+  - id: cask:to-audio-converter
+    reason: >
+      Choose To Audio Converter for a macOS-focused drag-and-drop workflow with
+      automatic encoding decisions, extensive batch processing, loudness normalization,
+      and integrated tag management.
+    rel: alternative
+    sources:
+      - https://www.nch.com.au/switch/
+      - https://amvidia.com/to-audio-converter
+  - id: brew:sox
+    reason: >
+      Choose SoX when you need an open-source command-line converter and audio-effects
+      engine suitable for scripts and automated pipelines instead of a desktop GUI.
+    rel: alternative
+    sources:
+      - https://www.nch.com.au/switch/
+      - https://sourceforge.net/projects/sox/
+category: media
 package-manager:
   brew-cask: switch
 package-manager-url: https://formulae.brew.sh/cask/switch
+tags:
+  - audio-converter
+  - audio-formats
+  - batch-conversion
+  - macos
+  - metadata
+  - normalization
+  - transcoding
 description: Multiple format audio file converter
 applications:
   - Switch.app

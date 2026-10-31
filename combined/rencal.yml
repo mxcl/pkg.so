@@ -2,9 +2,83 @@ id: cask:rencal
 display-name: renCal
 homepage: https://rencal.org/
 repo: https://github.com/t4t5/rencal
+docs:
+  - https://rencal.org/docs/calendar-data
+  - https://rencal.org/docs/developers
+  - https://rencal.org/docs/installation
+config-file-location:
+  unix:
+    - ~/.config/rencal/config.toml
+    - ~/.config/caldir/config.toml
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      renCal ships for Linux and macOS through native packages, AppImage, Nix, Homebrew,
+      and the Arch User Repository. Its Omarchy integration and keyboard-driven
+      interface give it particular visibility among Linux desktop and
+      tiling-window-manager users.
+  package-nerd-significance:
+    - >
+      renCal is unusual among graphical calendars because its calendar store is an open
+      directory of standard iCalendar files. That makes the same data directly
+      accessible to shell scripts, widgets, launchers, agents, and Rust programs through
+      Caldir tooling.
+  project-history:
+    - >
+      T4T5 began publishing renCal releases in April 2026 as a free, open-source desktop
+      calendar. The project quickly added cloud providers, attendee invitations,
+      calendar groups, custom themes, macOS support, command-palette navigation,
+      plugins, and developer-facing Caldir integration.
+  related-projects:
+    - >
+      renCal uses Caldir for local calendar storage and synchronization. Its
+      documentation recommends caldir-cli for shell automation and caldir-core for
+      native Rust integration.
+  sources:
+    - https://rencal.org/
+    - https://rencal.org/changelog/
+    - https://rencal.org/docs/calendar-data/
+    - https://rencal.org/docs/developers/
+  summary:
+    - >
+      renCal is a keyboard-oriented, open-source desktop calendar built around the
+      filesystem-readable Caldir format.
+  timeline:
+    - '2026-04-25: First documented public release, v0.0.1.'
+    - '2026-06-05: v0.1.0 marked the early stable public series.'
+    - >
+      2026-06-22: v0.2.0 introduced the dedicated website, documentation, Board view,
+      and custom themes.
+    - '2026-06-29: v0.4.0 added a command palette and macOS automatic updates.'
+  usage:
+    - >
+      Users connect Google Calendar, iCloud, Outlook, or another CalDAV server and
+      manage events through month, week, agenda, or board-oriented views. Calendar data
+      defaults to ~/caldir/, while application and Caldir settings are editable as TOML.
+related-packages:
+  - id: brew:khal
+    reason: >
+      Choose khal when you prefer a scriptable terminal calendar backed by vdir and
+      vdirsyncer; choose renCal for a graphical desktop interface and bundled provider
+      connections.
+    rel: alternative
+    sources:
+      - https://rencal.org/
+      - https://lostpackets.de/khal/
+category: productivity
 package-manager:
   brew-cask: rencal
 package-manager-url: https://formulae.brew.sh/cask/rencal
+tags:
+  - caldav
+  - caldir
+  - calendar
+  - google-calendar
+  - icloud
+  - keyboard-driven
+  - open-source
+  - outlook
 description: Desktop calendar
 applications:
   - renCal.app

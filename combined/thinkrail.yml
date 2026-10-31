@@ -2,9 +2,74 @@ id: cask:thinkrail
 display-name: ThinkRail
 homepage: https://thinkrail.ai/
 repo: https://github.com/JetBrains/thinkrail
+docs:
+  - https://github.com/JetBrains/thinkrail#readme
+  - https://github.com/JetBrains/thinkrail/blob/main/architecture.md
+  - https://github.com/JetBrains/thinkrail/blob/main/goal-and-requirements.md
+config-file-location:
+  unix: ~/.pi/agent/mcp.json
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      JetBrains publishes ThinkRail as an Apache-licensed project with native desktop
+      packages and a self-contained CLI for macOS, Windows, and Linux. Stable and
+      nightly channels, checksum manifests, and in-product updates make it consumable
+      both as a desktop application and as a terminal-installed development tool.
+  package-nerd-significance:
+    - >
+      ThinkRail is notable for treating agent sessions as reviewable development work
+      rather than an isolated chat. It combines git worktrees, concurrent agents,
+      specifications, skills, MCP servers, terminals, file editing, diffs, and
+      pull-request workflows in one open-source environment.
+  project-history:
+    - >
+      ThinkRail emerged from JetBrains InnovationHub as a lightweight IDE wrapped around
+      the pi coding agent. The project adopted a spec-first architecture in which living
+      SPEC.md files capture intent alongside code, while isolated git worktrees provide
+      separate workspaces for agent tasks.
+  related-projects:
+    - >
+      ThinkRail embeds the pi coding-agent engine and reads the user’s existing pi
+      configuration. Git and GitHub operations are performed through the user’s local
+      git and gh tooling rather than through a separate ThinkRail account.
+  sources:
+    - https://github.com/JetBrains/thinkrail#readme
+    - https://github.com/JetBrains/thinkrail/blob/main/goal-and-requirements.md
+    - https://github.com/JetBrains/thinkrail/releases
+    - https://thinkrail.ai/
+  summary:
+    - >
+      ThinkRail is an open-source agentic IDE that places pi coding-agent sessions
+      inside isolated, reviewable Git workspaces.
+  timeline:
+    - >
+      2026: ThinkRail established stable and nightly packaged release channels across
+      desktop and CLI distributions.
+    - >
+      2026-10-29: v0.3.0 was published with expanded workbench, localization, GitHub
+      workflow, and agent-resource capabilities.
+  usage:
+    - >
+      Developers open or clone a Git repository, create isolated worktree-backed
+      workspaces, and run one or more pi agent sessions while reviewing files, diffs,
+      terminals, specifications, and plans in the same interface. ThinkRail uses
+      provider authentication owned by pi or JetBrains AI and keeps no independent
+      ThinkRail account credentials.
+related-packages: []
+category: developer-tools
 package-manager:
   brew-cask: thinkrail
 package-manager-url: https://formulae.brew.sh/cask/thinkrail
+tags:
+  - agentic-ide
+  - ai-coding
+  - coding-agents
+  - developer-environment
+  - git-worktrees
+  - mcp
+  - pi-agent
+  - spec-driven-development
 description: Agentic development environment
 applications:
   - ThinkRail.app
