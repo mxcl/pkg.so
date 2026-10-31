@@ -77,6 +77,23 @@ history:
       developers use it when debugging shader portability, testing Naga behavior at a
       particular wgpu commit, checking snapshots, or reducing shader translation bugs
       outside a full application.
+related-packages:
+  - id: brew:spirv-tools
+    reason: >
+      Naga's documented development workflow uses SPIRV-Tools to validate generated
+      SPIR-V, making it a concrete downstream check for naga-cli translation work.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gfx-rs/wgpu/blob/trunk/naga/README.md
+      - https://github.com/KhronosGroup/SPIRV-Tools
+  - id: brew:glslang
+    reason: >
+      Naga's documented development workflow uses glslang to validate generated GLSL, so
+      it complements naga-cli when checking translation output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/gfx-rs/wgpu/blob/trunk/naga/README.md
+      - https://github.com/KhronosGroup/glslang
 category: developer-tools
 package-manager:
   brew: naga-cli

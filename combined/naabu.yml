@@ -68,6 +68,23 @@ history:
       port-enumeration stage between subdomain discovery and HTTP/service probing, often
       handing discovered ports to httpx, nuclei, or nmap. The docs call out that SYN
       scans need sufficient privileges, while non-root use falls back to CONNECT scans.
+related-packages:
+  - id: brew:nmap
+    reason: >
+      Naabu can invoke Nmap on discovered ports for deeper service discovery, combining
+      Naabu's fast enumeration with Nmap's broader inspection capabilities.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/projectdiscovery/naabu#nmap-integration
+      - https://nmap.org/book/man.html
+  - id: brew:httpx
+    reason: >
+      ProjectDiscovery documents piping Naabu's discovered ports into httpx to identify
+      reachable HTTP services.
+    rel: adjacent_workflow
+    sources:
+      - https://docs.projectdiscovery.io/opensource/naabu/running
+      - https://github.com/projectdiscovery/httpx
 category: security
 package-manager:
   apk: naabu
