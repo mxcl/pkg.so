@@ -5,7 +5,8 @@ repo: https://github.com/dimonomid/nerdlog
 docs:
   - https://dmitryfrank.com/projects/nerdlog/article
   - https://github.com/dimonomid/nerdlog#readme
-config-file-location: null
+config-file-location:
+  unix: ~/.config/nerdlog/logstreams.yaml
 credentials-file-location: null
 history:
   adoption-history:
@@ -73,6 +74,16 @@ history:
       time range. It is aimed at operators who have SSH access to hosts and want
       Graylog/Kibana-like querying for plain system logs without deploying
       Elasticsearch, agents, collectors, or a log database.
+related-packages:
+  - id: brew:lnav
+    reason: >
+      lnav is a mature terminal log-file navigator for rich local analysis, while
+      Nerdlog is the stronger fit when the defining requirement is SSH-based querying
+      and merging across multiple hosts.
+    rel: alternative
+    sources:
+      - https://github.com/dimonomid/nerdlog
+      - https://docs.lnav.org/en/latest/
 category: developer-tools
 package-manager:
   apk: nerdlog

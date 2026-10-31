@@ -89,6 +89,25 @@ history:
       Its more specialized value is for containerd-native experiments: lazy-pulled
       images, encrypted images, rootless containerd, image signing verification, and
       debugging containerd behavior without going through dockerd.
+related-packages:
+  - id: brew:docker
+    reason: >
+      Docker provides the familiar CLI model that nerdctl intentionally follows; choose
+      Docker when you want the Docker Engine ecosystem, and nerdctl when you need a
+      Docker-like interface directly over containerd.
+    rel: alternative
+    sources:
+      - https://github.com/containerd/nerdctl
+      - https://docs.docker.com/reference/cli/docker/
+  - id: brew:podman
+    reason: >
+      Podman offers another Docker-compatible container workflow but emphasizes a
+      daemonless engine and pods, whereas nerdctl is specifically a client for
+      containerd.
+    rel: alternative
+    sources:
+      - https://github.com/containerd/nerdctl
+      - https://docs.podman.io/en/latest/
 category: developer-tools
 package-manager:
   apk: nerdctl
