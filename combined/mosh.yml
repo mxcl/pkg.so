@@ -38,6 +38,33 @@ history:
       is packaged broadly across Unix-like systems because its main audience is shell
       users who work from laptops, unstable Wi-Fi, cellular links, or roaming networks
       and want terminal sessions to survive connectivity changes.
+related-packages:
+  - id: brew:openssh
+    reason: >
+      OpenSSH provides Mosh's documented authentication and server-bootstrap step and
+      remains the better general-purpose choice for noninteractive commands, forwarding,
+      and file transfer.
+    rel: adjacent_workflow
+    sources:
+      - https://mosh.org/
+      - https://www.openssh.com/manual.html
+  - id: brew:et
+    reason: >
+      Eternal Terminal is an alternative reconnecting remote shell that emphasizes
+      native scrolling and tmux integration, while Mosh emphasizes predictive echo, UDP
+      roaming, and synchronized terminal state.
+    rel: alternative
+    sources:
+      - https://eternalterminal.dev/
+      - https://mosh.org/
+  - id: brew:tmux
+    reason: >
+      tmux complements Mosh by keeping and multiplexing server-side terminal sessions
+      while Mosh supplies the documented roaming transport used to reach them.
+    rel: adjacent_workflow
+    sources:
+      - https://mosh.org/
+      - https://github.com/tmux/tmux/wiki
 category: networking
 package-manager:
   apk: mosh

@@ -64,6 +64,25 @@ history:
     - >
       Users choose mosdepth when they need fast genome-wide or region-based coverage
       calculation and can accept the memory profile of chromosome-sized arrays.
+related-packages:
+  - id: brew:samtools
+    reason: >
+      Choose samtools when coverage calculation must sit inside a broader SAM/BAM/CRAM
+      viewing, conversion, sorting, indexing, and manipulation workflow; its depth
+      command is an official mosdepth comparator.
+    rel: alternative
+    sources:
+      - https://www.htslib.org/doc/samtools-depth.html
+      - https://academic.oup.com/bioinformatics/article/34/5/867/4583630
+  - id: brew:bedtools
+    reason: >
+      Choose BEDTools genomecov when coverage output needs to integrate with its broader
+      genomic-interval toolkit or use its histogram and BedGraph modes; it is also an
+      official mosdepth comparator.
+    rel: alternative
+    sources:
+      - https://bedtools.readthedocs.io/en/latest/content/tools/genomecov.html
+      - https://academic.oup.com/bioinformatics/article/34/5/867/4583630
 tags:
   - bam
   - bioinformatics
