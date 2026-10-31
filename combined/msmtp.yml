@@ -44,6 +44,23 @@ history:
       traditional mail commands. Package managers often provide it as both the `msmtp`
       executable and a sendmail-compatible MTA alternative for scripts, cron jobs, and
       small systems that only need outbound SMTP relay.
+related-packages:
+  - id: brew:mutt
+    reason: >
+      Mutt can invoke msmtp through its `sendmail` setting, giving the mail reader a
+      lightweight, account-aware SMTP delivery backend.
+    rel: adjacent_workflow
+    sources:
+      - https://marlam.de/msmtp/msmtp.html
+      - http://www.mutt.org/
+  - id: brew:mpop
+    reason: >
+      Pair mpop's POP3 mail retrieval with msmtp's SMTP submission when assembling a
+      lightweight send-and-receive command-line mail stack.
+    rel: adjacent_workflow
+    sources:
+      - https://marlam.de/mpop/
+      - https://marlam.de/msmtp/
 category: networking
 package-manager:
   apk: msmtp

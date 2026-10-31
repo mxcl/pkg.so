@@ -36,6 +36,25 @@ history:
       service principals. Its package-manager niche is narrow but important: it
       complements broader AD-join tools by focusing on keytab lifecycle and Kerberos
       principal management for services.
+related-packages:
+  - id: brew:krb5
+    reason: >
+      MIT Kerberos provides the client libraries and keytab-based authentication
+      machinery that msktutil requires when managing Active Directory principals and
+      credentials.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/msktutil/msktutil/blob/master/msktutil.1.in
+      - https://web.mit.edu/kerberos/krb5-latest/doc/basic/keytab_def.html
+  - id: brew:samba
+    reason: >
+      Samba's `net` commands are a broader alternative for Active Directory joining and
+      keytab management, while msktutil offers focused keytab handling and an explicit
+      Samba-secret interoperability mode.
+    rel: alternative
+    sources:
+      - https://github.com/msktutil/msktutil/blob/master/msktutil.1.in
+      - https://www.samba.org/
 tags:
   - active-directory
   - authentication

@@ -4,7 +4,10 @@ repo: null
 docs:
   - https://dlbeer.co.nz/mspdebug
   - https://github.com/dlbeer/mspdebug#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ./.mspdebug
+    - ~/.mspdebug
 credentials-file-location: null
 history:
   project-history:
@@ -34,6 +37,16 @@ history:
       and GDB. The upstream page notes availability in Fedora, Gentoo, OpenBSD ports,
       Debian, and Ubuntu, while Homebrew and other Unix package managers provide it for
       developers who need MSP430 board access from macOS or Linux without vendor IDEs.
+related-packages:
+  - id: brew:gdb
+    reason: >
+      Run MSPDebug as a remote stub so GDB supplies source-level debugging while
+      MSPDebug communicates with and controls the MSP430 target.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dlbeer/mspdebug
+      - https://github.com/dlbeer/mspdebug/blob/master/mspdebug.man
+      - https://www.gnu.org/software/gdb/
 tags:
   - cli
   - debugger

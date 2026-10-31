@@ -35,6 +35,15 @@ history:
       without installing Microsoft's toolchain. Debian packages it as a Windows
       Installer manipulation tool and exposes related libmsi and wixl packages, matching
       the upstream split between the library and command-line tools.
+related-packages:
+  - id: brew:osslsigncode
+    reason: >
+      Use osslsigncode after building an MSI with msitools when the resulting Windows
+      installer needs an Authenticode signature.
+    rel: adjacent_workflow
+    sources:
+      - https://wiki.gnome.org/msitools/
+      - https://github.com/mtrojnar/osslsigncode
 category: developer-tools
 package-manager:
   apk: msitools
