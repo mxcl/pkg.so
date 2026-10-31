@@ -40,6 +40,33 @@ history:
       `jpegtran`, but the README explicitly encourages linking against the C API for
       serious application use. Its package-manager niche is therefore a web/image
       optimization encoder rather than a new image format.
+related-packages:
+  - id: brew:jpeg-turbo
+    reason: >
+      Choose libjpeg-turbo for a general-purpose, high-performance JPEG implementation;
+      choose MozJPEG when offline compression efficiency matters more than encoding
+      speed.
+    rel: alternative
+    sources:
+      - https://github.com/mozilla/mozjpeg#readme
+      - https://www.libjpeg-turbo.org/About/Mozjpeg
+  - id: brew:jpegoptim
+    reason: >
+      jpegoptim provides a file-oriented optimization CLI and officially documents
+      compatibility with MozJPEG as its underlying JPEG library.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tjko/jpegoptim#readme
+      - https://github.com/mozilla/mozjpeg#readme
+  - id: brew:guetzli
+    reason: >
+      Choose Guetzli as a standalone, computation-heavy JPEG encoder experiment; choose
+      MozJPEG for libjpeg-compatible library integration and progressive JPEG
+      optimization.
+    rel: alternative
+    sources:
+      - https://github.com/google/guetzli#readme
+      - https://github.com/mozilla/mozjpeg#readme
 category: media
 package-manager:
   brew: mozjpeg
