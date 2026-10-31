@@ -6110,11 +6110,13 @@ fn search_documents(
         .prepare(
             "SELECT path, title, summary, provider, package_key, rank, search_text
              FROM search_documents
-             WHERE locale = ?1 AND lower(search_text) LIKE ?2 ESCAPE '\\'",
+             WHERE locale = ?1 AND (lower(search_text) LIKE ?2 ESCAPE '\\'
+                OR replace(lower(title), '-', ' ') = ?3
+                OR replace(lower(package_key), '-', ' ') = ?3)",
         )
         .map_err(|err| format!("failed to prepare search: {err}"))?;
     let rows = statement
-        .query_map(params![locale, like_pattern], |row| {
+        .query_map(params![locale, like_pattern, normalized_query], |row| {
             Ok(SearchResult {
                 url: row.get(0)?,
                 title: row.get(1)?,
@@ -6181,19 +6183,25 @@ impl SearchResult {
         if candidates.iter().any(|candidate| *candidate == query) {
             return Some(0);
         }
+        if [title.as_str(), key.as_str()]
+            .iter()
+            .any(|candidate| candidate.replace('-', " ") == query)
+        {
+            return Some(1);
+        }
         if candidates
             .iter()
             .any(|candidate| candidate.starts_with(query))
         {
-            return Some(1);
+            return Some(2);
         }
         if candidates.iter().any(|candidate| candidate.contains(query)) {
-            return Some(2);
+            return Some(3);
         }
         self.search_text
             .to_ascii_lowercase()
             .contains(query)
-            .then_some(3)
+            .then_some(4)
     }
 
     fn match_distance(&self, query: &str) -> usize {
@@ -8180,9 +8188,9 @@ mod tests {
             rank: Some(9),
             search_text: "body match text".to_string(),
         };
-        assert_eq!(ranked.search_rank("exa"), Some(1));
-        assert_eq!(ranked.search_rank("tool"), Some(2));
-        assert_eq!(ranked.search_rank("body"), Some(3));
+        assert_eq!(ranked.search_rank("exa"), Some(2));
+        assert_eq!(ranked.search_rank("tool"), Some(3));
+        assert_eq!(ranked.search_rank("body"), Some(4));
         assert_eq!(ranked.search_rank("absent"), None);
         assert_eq!(ranked.match_distance("exact"), 0);
         assert!(ranked.match_distance("match") < usize::MAX);
@@ -8213,6 +8221,78 @@ mod tests {
                 .collect::<Vec<_>>(),
             vec!["awscli", "aws-cdk", "cloudflared"]
         );
+    }
+
+    #[test]
+    fn search_finds_spaced_package_names_without_matching_only_descriptions() {
+        let db = test_database();
+        let connection = Connection::open(db.path()).unwrap();
+        for name in [
+            "visual-studio-code",
+            "google-chrome",
+            "docker-desktop",
+            "android-platform-tools",
+            "claude-code",
+        ] {
+            let spaced = name.replace('-', " ");
+            for (slug, title, text, locale) in [
+                (name.to_string(), name.to_string(), name.to_string(), "en"),
+                (
+                    format!("{name}-helper"),
+                    format!("{spaced} helper"),
+                    format!("{spaced} helper"),
+                    "en",
+                ),
+                (
+                    format!("{name}-literal"),
+                    spaced.clone(),
+                    spaced.clone(),
+                    "en",
+                ),
+                (
+                    format!("{name}-de"),
+                    name.to_string(),
+                    name.to_string(),
+                    "de",
+                ),
+            ] {
+                connection.execute(
+                    "INSERT INTO search_documents(path, locale, title, summary, provider, package_key, rank, search_text)
+                     VALUES(?1, ?2, ?3, '', 'cask', ?4, 1, ?5)",
+                    params![format!("/pkg/cask/{slug}/"), locale, title, format!("cask:{slug}"), text],
+                ).unwrap();
+            }
+            let page = search_documents(db.path(), &spaced.to_uppercase(), "en", 0, 10).unwrap();
+            assert_eq!(
+                page.results
+                    .iter()
+                    .map(|r| r.package_key.clone())
+                    .collect::<Vec<_>>(),
+                vec![
+                    format!("cask:{name}-literal"),
+                    format!("cask:{name}"),
+                    format!("cask:{name}-helper")
+                ]
+            );
+            let paged = search_documents(db.path(), &spaced, "en", 1, 1).unwrap();
+            assert_eq!(paged.results[0].package_key, format!("cask:{name}"));
+            assert_eq!(paged.total_count, 3);
+            assert_eq!(paged.next_offset, Some(2));
+            assert_eq!(
+                search_documents(db.path(), name, "en", 0, 1)
+                    .unwrap()
+                    .results[0]
+                    .package_key,
+                format!("cask:{name}")
+            );
+            assert_eq!(
+                search_documents(db.path(), &format!("cask:{spaced}"), "en", 0, 1)
+                    .unwrap()
+                    .results[0]
+                    .package_key,
+                format!("cask:{name}")
+            );
+        }
     }
 
     #[test]
