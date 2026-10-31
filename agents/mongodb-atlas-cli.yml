@@ -44,6 +44,24 @@ history:
       create a database user, and connect through mongosh. Package-manager coverage
       across Homebrew, MacPorts, Nix, Scoop, winget, and Linux packages reflects its
       role as MongoDB's cross-platform automation entry point for Atlas.
+related-packages:
+  - id: brew:mongosh
+    reason: >
+      Use mongosh after Atlas CLI provisions a deployment; the official atlas setup
+      workflow can connect directly through the MongoDB Shell.
+    rel: adjacent_workflow
+    sources:
+      - https://www.mongodb.com/docs/atlas/cli/current/
+      - https://www.mongodb.com/docs/atlas/cli/current/command/atlas-setup/
+      - https://www.mongodb.com/docs/mongodb-shell/
+  - id: cask:mongodb-compass
+    reason: >
+      Choose Compass as Atlas CLI's graphical connection target when visual querying and
+      schema exploration are preferable to a terminal shell.
+    rel: adjacent_workflow
+    sources:
+      - https://www.mongodb.com/docs/atlas/cli/current/command/atlas-setup/
+      - https://www.mongodb.com/docs/compass/
 tags:
   - atlas
   - cli

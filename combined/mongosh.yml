@@ -4,7 +4,8 @@ homepage: https://www.mongodb.com/try/download/shell
 repo: https://github.com/mongodb-js/mongosh
 docs:
   - https://www.mongodb.com/docs/mongodb-shell
-config-file-location: null
+config-file-location:
+  unix: ~/.mongoshrc.js
 credentials-file-location: null
 history:
   project-history:
@@ -38,6 +39,25 @@ history:
       MongoDB distributes it as an Apache-2.0 standalone product separate from the
       MongoDB Server, and package managers such as Homebrew, Nix, and Scoop make it
       available independently from server releases.
+related-packages:
+  - id: cask:mongodb-compass
+    reason: >
+      Choose Compass for a visual query, aggregation, and schema-analysis workflow;
+      choose mongosh for a scriptable terminal REPL, noting that Compass also embeds
+      MongoDB Shell.
+    rel: alternative
+    sources:
+      - https://www.mongodb.com/docs/compass/
+      - https://www.mongodb.com/docs/mongodb-shell/
+  - id: brew:mongodb-atlas-cli
+    reason: >
+      Use Atlas CLI to create and administer Atlas deployments, then let its setup
+      workflow connect to the resulting database through mongosh.
+    rel: adjacent_workflow
+    sources:
+      - https://www.mongodb.com/docs/atlas/cli/current/
+      - https://www.mongodb.com/docs/atlas/cli/current/command/atlas-setup/
+      - https://www.mongodb.com/docs/mongodb-shell/
 category: developer-tools
 package-manager:
   brew: mongosh
