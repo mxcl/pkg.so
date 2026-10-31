@@ -47,6 +47,24 @@ history:
       packages and higher-level MongoDB drivers: users rarely run it as an end-user
       database tool, but many builds need its headers, libraries, pkg-config/CMake
       metadata, and small diagnostic utility.
+related-packages:
+  - id: brew:mongo-c-driver@1
+    reason: >
+      Use the versioned 1.x formula only when an existing build still requires the older
+      libmongoc/libbson ABI; new development should use the current driver.
+    rel: alternative
+    sources:
+      - https://formulae.brew.sh/formula/mongo-c-driver@1
+      - https://www.mongodb.com/docs/languages/c/c-driver/v1.x/reference/release-notes/
+      - https://www.mongodb.com/docs/languages/c/c-driver/current/upgrade/
+  - id: brew:mongo-orchestration
+    reason: >
+      Use Mongo Orchestration to provision standalone servers, replica sets, and sharded
+      clusters when integration-testing code built with the C driver.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mongodb/mongo-c-driver
+      - https://github.com/mongodb-labs/mongo-orchestration
 category: data
 package-manager:
   apk: libbson

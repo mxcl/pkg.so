@@ -36,6 +36,24 @@ history:
       headers. It is much more niche than the main formula: Homebrew's package page
       reports far fewer installs than mongo-c-driver, matching its role as a transition
       and compatibility package rather than the default driver.
+related-packages:
+  - id: brew:mongo-c-driver
+    reason: >
+      Migrate to the unversioned formula for the current driver API, newer MongoDB
+      feature support, and the preferred path for new C applications.
+    rel: alternative
+    sources:
+      - https://formulae.brew.sh/formula/mongo-c-driver
+      - https://www.mongodb.com/docs/languages/c/c-driver/current/
+      - https://www.mongodb.com/docs/drivers/compatibility/?driver-language=c
+  - id: brew:mongo-orchestration
+    reason: >
+      Use Mongo Orchestration to create disposable MongoDB topologies when
+      integration-testing legacy applications that still use the 1.x driver.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/mongodb/mongo-c-driver
+      - https://github.com/mongodb-labs/mongo-orchestration
 category: developer-tools
 package-manager:
   apk: libbson
