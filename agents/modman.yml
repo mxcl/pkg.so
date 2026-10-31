@@ -3,7 +3,9 @@ display-name: modman
 repo: null
 docs:
   - https://github.com/colinmollenhour/modman#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ./modman
 credentials-file-location: null
 history:
   project-history:
@@ -38,6 +40,18 @@ history:
       Its niche is historical but still legible: it is not a general package manager so
       much as a symlink-based module layout tool for codebases that predate cleaner
       extension packaging.
+related-packages:
+  - id: brew:composer
+    reason: >
+      Choose Composer for modern PHP dependency resolution and lock files; its
+      custom-installer mechanism also supports modules that must be placed outside
+      `vendor`, while modman only maps separately checked-out files into an application
+      tree.
+    rel: alternative
+    sources:
+      - https://github.com/colinmollenhour/modman
+      - https://getcomposer.org/doc/00-intro.md
+      - https://getcomposer.org/doc/articles/custom-installers.md
 tags:
   - cli
   - deployment
