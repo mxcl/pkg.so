@@ -38,6 +38,32 @@ history:
       formula alongside `mysql@8.0` and the unversioned `mysql`. That makes it the
       Homebrew choice for users who want the MySQL 8.4 LTS server and client tools
       without following the unversioned formula to a newer major series.
+related-packages:
+  - id: brew:mysql@9.7
+    reason: >
+      Choose MySQL 9.7 when access to the final sequential Innovation line is more
+      important than the longer stability window of 8.4 LTS.
+    rel: alternative
+    sources:
+      - https://dev.mysql.com/doc/refman/9.7/en/mysql-releases.html
+      - https://dev.mysql.com/doc/relnotes/mysql/9.7/en/
+  - id: brew:mariadb@11.8
+    reason: >
+      Choose MariaDB 11.8 when a MySQL-compatible LTS alternative is suitable and its
+      documented behavioral differences have been validated for the workload.
+    rel: alternative
+    sources:
+      - https://mariadb.org/11-8-lts-released/
+      - >
+        https://mariadb.com/docs/release-notes/community-server/about/compatibility-and-differences/mariadb-vs-mysql-compatibility
+  - id: brew:mysqltuner
+    reason: >
+      MySQLTuner supports MySQL 8.4 and can analyze a representative workload to produce
+      advisory configuration, capacity, performance, and security findings.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jmrenouard/MySQLTuner-perl
+      - https://github.com/jmrenouard/MySQLTuner-perl/blob/master/USAGE.md
 category: data
 package-manager:
   apk: mysql

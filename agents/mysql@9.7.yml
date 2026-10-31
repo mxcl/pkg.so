@@ -72,6 +72,33 @@ history:
       for queries, administration, backups, imports, checks, routing, and diagnostics.
       Production use requires deliberate management of configuration, credentials, data
       storage, backups, service startup, and version upgrades.
+related-packages:
+  - id: brew:mysql@8.4
+    reason: >
+      Choose MySQL 8.4 when a fixed LTS feature set and longer support period are
+      preferable to the faster 9.7 Innovation cadence.
+    rel: alternative
+    sources:
+      - https://dev.mysql.com/doc/refman/8.4/en/mysql-releases.html
+      - https://dev.mysql.com/doc/refman/9.7/en/mysql-releases.html
+  - id: brew:mariadb@11.8
+    reason: >
+      Choose MariaDB 11.8 when a MySQL-compatible LTS implementation is acceptable and
+      its documented differences have been tested with the application.
+    rel: alternative
+    sources:
+      - https://mariadb.org/11-8-lts-released/
+      - >
+        https://mariadb.com/docs/release-notes/community-server/about/compatibility-and-differences/mariadb-vs-mysql-compatibility
+  - id: brew:mysqltuner
+    reason: >
+      MySQLTuner supports the MySQL 9.7 line and can assess configuration, status,
+      capacity, performance, and security after the server has accumulated
+      representative traffic.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jmrenouard/MySQLTuner-perl
+      - https://github.com/jmrenouard/MySQLTuner-perl/blob/master/USAGE.md
 tags:
   - cli
   - client-server

@@ -3,7 +3,12 @@ display-name: n
 repo: null
 docs:
   - https://github.com/tj/n#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ./.n-node-version
+    - ./.node-version
+    - ./.nvmrc
+    - ./package.json
 credentials-file-location: null
 history:
   adoption-history:
@@ -68,6 +73,33 @@ history:
       that declare a Node range in package.json, while `N_NODE_MIRROR`, `N_ARCH`,
       `--offline`, and `--cleanup` cover mirrors, architecture-specific downloads,
       air-gapped/cache use, and container one-shot installs.
+related-packages:
+  - id: brew:fnm
+    reason: >
+      Choose fnm for a cross-platform Rust implementation with automatic shell-based
+      switching from `.node-version`, `.nvmrc`, or package engine requirements.
+    rel: alternative
+    sources:
+      - https://github.com/Schniz/fnm
+      - https://github.com/Schniz/fnm/blob/master/docs/configuration.md
+      - https://github.com/tj/n
+  - id: brew:nodenv
+    reason: >
+      Choose nodenv when shim-based, automatic per-directory selection from
+      `.node-version` is preferable to n's single active installation prefix.
+    rel: alternative
+    sources:
+      - https://github.com/nodenv/nodenv
+      - https://github.com/tj/n
+  - id: brew:node
+    reason: >
+      A Homebrew Node.js installation provides Node and npm for the documented `npm
+      install -g n` bootstrap workflow, after which n can manage and replace active Node
+      releases.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/tj/n
+      - https://nodejs.org/en/about
 tags:
   - cli
   - javascript

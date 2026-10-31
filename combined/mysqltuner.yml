@@ -7,7 +7,10 @@ docs:
   - https://github.com/jmrenouard/MySQLTuner-perl/blob/master/USAGE.md
   - https://mysqltuner.com/
 config-file-location: null
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.my.cnf
+    - ~/.mylogin.cnf
 history:
   sources:
     - https://formulae.brew.sh/formula/mysqltuner
@@ -34,6 +37,23 @@ history:
       trusting the report. Homebrew packages it as the `mysqltuner` formula, giving DBAs
       and developers a quick CLI audit tool for local, remote, and packaged MySQL
       installations.
+related-packages:
+  - id: brew:mysql@8.4
+    reason: >
+      MySQL 8.4 LTS is a directly supported server target whose configuration and
+      representative runtime statistics MySQLTuner can assess.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jmrenouard/MySQLTuner-perl
+      - https://dev.mysql.com/doc/refman/8.4/en/
+  - id: brew:mariadb@11.8
+    reason: >
+      MariaDB 11.8 is a supported LTS server target for MySQLTuner's configuration,
+      performance, capacity, and security checks.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jmrenouard/MySQLTuner-perl
+      - https://mariadb.org/11-8-lts-released/
 category: data
 package-manager:
   brew: mysqltuner

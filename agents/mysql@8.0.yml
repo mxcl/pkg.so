@@ -37,6 +37,32 @@ history:
       changes through 8.0.46. It is useful where an application, connector,
       authentication behavior, upgrade path, or production compatibility policy still
       depends on the 8.0 series rather than the 8.4 LTS or newer Innovation/LTS model.
+related-packages:
+  - id: brew:mysql@8.4
+    reason: >
+      Choose MySQL 8.4 for the official LTS successor when its longer stable support
+      model and application compatibility have been validated.
+    rel: alternative
+    sources:
+      - https://dev.mysql.com/doc/refman/8.4/en/mysql-releases.html
+      - https://dev.mysql.com/doc/refman/8.4/en/upgrade-prerequisites.html
+  - id: brew:mariadb@11.8
+    reason: >
+      Choose MariaDB 11.8 when a maintained MySQL-compatible LTS server is acceptable
+      and MariaDB-specific behavior has been tested against the application.
+    rel: alternative
+    sources:
+      - https://mariadb.org/11-8-lts-released/
+      - >
+        https://mariadb.com/docs/release-notes/community-server/about/compatibility-and-differences/mariadb-vs-mysql-compatibility
+  - id: brew:mysqltuner
+    reason: >
+      MySQLTuner can inspect an established MySQL 8.0 workload and turn its
+      configuration and status statistics into advisory tuning and security findings.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/jmrenouard/MySQLTuner-perl
+      - https://github.com/jmrenouard/MySQLTuner-perl/blob/master/USAGE.md
 tags:
   - cli
   - database
