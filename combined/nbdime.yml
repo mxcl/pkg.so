@@ -72,6 +72,32 @@ history:
       The Git integration is the package-nerd move: configure nbdime as the diff and
       merge driver so normal git diff and git merge behavior can route .ipynb files
       through notebook-aware tooling while leaving ordinary files alone.
+related-packages:
+  - id: brew:jupytext
+    reason: >
+      Choose Jupytext when cleaner version control is best achieved by pairing notebooks
+      with Markdown or script representations, rather than structurally diffing and
+      merging the .ipynb files themselves.
+    rel: alternative
+    sources:
+      - https://nbdime.readthedocs.io/en/latest/
+      - https://jupytext.readthedocs.io/en/latest/
+  - id: brew:git
+    reason: >
+      Git can invoke nbdime as the registered diff and merge driver for .ipynb files
+      while retaining its normal behavior for other files.
+    rel: adjacent_workflow
+    sources:
+      - https://nbdime.readthedocs.io/en/latest/vcs.html
+      - https://git-scm.com/docs
+  - id: brew:jupyterlab
+    reason: >
+      JupyterLab supplies the notebook workspace in which nbdime's installed server and
+      front-end extensions expose notebook-aware comparisons.
+    rel: adjacent_workflow
+    sources:
+      - https://nbdime.readthedocs.io/en/latest/installing.html
+      - https://jupyterlab.readthedocs.io/en/latest/
 category: developer-tools
 package-manager:
   brew: nbdime

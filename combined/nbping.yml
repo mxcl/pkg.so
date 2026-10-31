@@ -4,7 +4,8 @@ homepage: https://github.com/hanshuaikang/NBping
 repo: https://github.com/hanshuaikang/NBping
 docs:
   - https://github.com/hanshuaikang/NBping#readme
-config-file-location: null
+config-file-location:
+  unix: User-specified YAML file passed with `--config` (for example, `nbping.yaml`)
 credentials-file-location: null
 history:
   adoption-history:
@@ -63,6 +64,42 @@ history:
       Exporter mode is the more operations-flavored path: run nbping exporter with
       targets, interval, and port, then scrape /metrics with Prometheus and visualize
       the latency data in Grafana.
+related-packages:
+  - id: brew:gping
+    reason: >
+      Choose gping for a simpler graphical ping chart that can also graph command
+      execution time, while NBping emphasizes concurrent targets, multiple TUI views,
+      YAML configuration, and exporter mode.
+    rel: alternative
+    sources:
+      - https://github.com/hanshuaikang/NBping
+      - https://github.com/orf/gping
+  - id: brew:mtr
+    reason: >
+      Choose mtr when troubleshooting requires continuous per-hop loss and latency
+      statistics along the network path rather than NBping's endpoint-focused live
+      views.
+    rel: alternative
+    sources:
+      - https://github.com/hanshuaikang/NBping
+      - https://github.com/traviscross/mtr
+      - https://www.bitwizard.nl/mtr/
+  - id: brew:prometheus
+    reason: >
+      NBping's exporter mode exposes a /metrics endpoint specifically intended for
+      Prometheus scraping.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hanshuaikang/NBping
+      - https://prometheus.io/docs/introduction/overview/
+  - id: brew:grafana
+    reason: >
+      The NBping README documents Grafana as the visualization layer for latency metrics
+      collected through its Prometheus exporter.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/hanshuaikang/NBping
+      - https://grafana.com/docs/grafana/latest/
 category: networking
 package-manager:
   brew: nbping
