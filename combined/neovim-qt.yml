@@ -5,7 +5,11 @@ repo: https://github.com/equalsraf/neovim-qt
 docs:
   - https://github.com/equalsraf/neovim-qt/wiki
   - https://github.com/equalsraf/neovim-qt#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/nvim/ginit.vim
+    - ~/.config/nvim/ginit.vim
+  windows: '%LOCALAPPDATA%\nvim\ginit.vim'
 credentials-file-location: null
 history:
   adoption-history:
@@ -66,6 +70,23 @@ history:
       The practical niche is conservative GUI Neovim: Qt widgets, native-ish packaging,
       stable cross-platform behavior, and a familiar Vim/Neovim configuration model
       instead of a heavily opinionated editor shell.
+related-packages:
+  - id: brew:neovim
+    reason: >
+      Neovim Qt is a client for Neovim and requires the nvim editor engine for editing,
+      plugins, and core configuration.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/equalsraf/neovim-qt
+      - https://neovim.io/
+  - id: brew:neovide
+    reason: >
+      Choose Neovide for a Rust and GPU-rendered interface with animation and font
+      shaping; choose Neovim Qt for a lightweight, conventional Qt GUI.
+    rel: alternative
+    sources:
+      - https://neovide.dev/features.html
+      - https://github.com/equalsraf/neovim-qt
 category: developer-tools
 package-manager:
   brew: neovim-qt
