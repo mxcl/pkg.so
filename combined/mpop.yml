@@ -47,6 +47,23 @@ history:
       download. In practice it is used by people who want local control over incoming
       mail with normal Unix tools such as procmail, SpamAssassin, cron, netrc, and local
       mailbox formats rather than a GUI mail client doing retrieval itself.
+related-packages:
+  - id: brew:fetchmail
+    reason: >
+      Choose fetchmail when you need features mpop deliberately omits, including IMAP
+      retrieval, multidrop mailboxes, or a built-in daemon mode.
+    rel: alternative
+    sources:
+      - https://marlam.de/mpop/documentation/
+      - https://www.fetchmail.info/fetchmail-man.html
+  - id: brew:msmtp
+    reason: >
+      Use msmtp as the SMTP delivery component in an mpop workflow when retrieved mail
+      must be forwarded through an SMTP server.
+    rel: adjacent_workflow
+    sources:
+      - https://marlam.de/mpop/documentation/
+      - https://marlam.de/msmtp/
 category: networking
 package-manager:
   apk: mpop
