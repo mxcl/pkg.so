@@ -69,6 +69,24 @@ history:
       The official page's notes on missing values, units, long_name, title, add_offset,
       scale_factor, dimensional variables, and UDUNITS support explain why ncview works
       best on netCDF files that follow common metadata conventions.
+related-packages:
+  - id: brew:nco
+    reason: >
+      Use NCO to derive fields, subset, regrid, edit metadata, or otherwise transform
+      netCDF data, then open the resulting files in Ncview for rapid visual inspection.
+    rel: adjacent_workflow
+    sources:
+      - https://cirrus.ucsd.edu/ncview/
+      - https://nco.sourceforge.net/
+  - id: brew:cdo
+    reason: >
+      Use Climate Data Operators to process or analyze climate and forecast netCDF
+      datasets with chainable CLI operators, then inspect those datasets visually with
+      Ncview.
+    rel: adjacent_workflow
+    sources:
+      - https://cirrus.ucsd.edu/ncview/
+      - https://mpim-sw.gitlab-pages.dkrz.de/cdo/
 tags:
   - cli
   - data-browser
@@ -106,8 +124,9 @@ provenance:
     - https://packages.debian.org/sid/ncview
   repo-sources:
     - >
-      The official homepage distributes source archives but does not identify an
-      official HTTP(S) source-control repository: https://cirrus.ucsd.edu/ncview/
+      The authoritative project page distributes source archives but does not identify
+      an official HTTP(S) source-control repository.
+    - https://cirrus.ucsd.edu/ncview/
   tags-sources:
     - Official ncview homepage says it displays netCDF files and runs on UNIX/X11.
     - source_facts.description identifies netCDF visual browsing.
@@ -118,5 +137,5 @@ category-path:
 display-name-confidence: high
 docs-confidence: high
 history-confidence: high
-repo-confidence: high
+repo-confidence: medium
 tags-confidence: high
