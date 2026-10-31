@@ -5,7 +5,12 @@ repo: https://github.com/dkg/monkeysphere
 docs:
   - https://github.com/dkg/monkeysphere#readme
   - https://manpages.debian.org/bullseye/src%3Amonkeysphere/index.html
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.monkeysphere/monkeysphere.conf
+    - /etc/monkeysphere/monkeysphere.conf
+    - /etc/monkeysphere/monkeysphere-host.conf
+    - /etc/monkeysphere/monkeysphere-authentication.conf
 credentials-file-location: null
 history:
   project-history:
@@ -36,6 +41,24 @@ history:
       signatures from trusted identity certifiers. That makes its package-manager niche
       a specialized PKI bridge for people who already trusted OpenPGP key signing and
       wanted that trust graph to govern SSH host verification or user login access.
+related-packages:
+  - id: brew:gnupg
+    reason: >
+      Monkeysphere relies on GnuPG to track OpenPGP keys, certifications, validity,
+      expiration, and revocation before translating authentication-capable keys into SSH
+      workflows.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dkg/monkeysphere#readme
+      - https://gnupg.org/software/
+  - id: brew:openssh
+    reason: >
+      Monkeysphere works with OpenSSH by maintaining or generating known_hosts and
+      authorized_keys content while leaving normal SSH connections and agents in place.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/dkg/monkeysphere#readme
+      - https://www.openssh.com/
 category: security
 package-manager:
   apk: monkeysphere

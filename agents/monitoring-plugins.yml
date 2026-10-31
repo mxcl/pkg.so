@@ -4,7 +4,12 @@ repo: https://www.monitoring-plugins.org/repositories/monitoring-plugins
 docs:
   - https://www.monitoring-plugins.org/doc/guidelines.html
   - https://www.monitoring-plugins.org/doc/man/index.html
-config-file-location: null
+config-file-location:
+  unix:
+    - /usr/local/etc/monitoring-plugins/monitoring-plugins.ini
+    - /usr/local/etc/monitoring-plugins.ini
+    - /etc/monitoring-plugins/monitoring-plugins.ini
+    - /etc/monitoring-plugins.ini
 credentials-file-location: null
 history:
   project-history:
@@ -37,6 +42,32 @@ history:
       plugins for less common technologies. Its niche in package managers is therefore
       not a daemon but a shared vocabulary of executable checks for Nagios-compatible
       systems including Icinga, Naemon, Shinken, Sensu, and similar tools.
+related-packages:
+  - id: brew:nagios
+    reason: >
+      Nagios Core can schedule these stand-alone checks, interpret their status output,
+      and turn state changes into notifications.
+    rel: adjacent_workflow
+    sources:
+      - https://www.monitoring-plugins.org/
+      - https://www.nagios.org/projects/nagios-core/features/
+  - id: brew:nrpe
+    reason: >
+      NRPE complements the plugin bundle by remotely executing Nagios-compatible checks
+      on Linux and Unix hosts.
+    rel: adjacent_workflow
+    sources:
+      - https://www.monitoring-plugins.org/
+      - https://www.nagios.org/projects/nagios-core-addons/
+  - id: brew:nagios-plugins
+    reason: >
+      Choose Nagios Plugins when you specifically want the Nagios Enterprises-maintained
+      branch; Monitoring Plugins is the independently maintained continuation that
+      adopted a vendor-neutral name in 2014.
+    rel: alternative
+    sources:
+      - https://www.monitoring-plugins.org/doc/faq/fork.html
+      - https://www.nagios.org/downloads/nagios-plugins/
 tags:
   - cli
   - command-line-checks

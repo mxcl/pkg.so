@@ -4,7 +4,10 @@ homepage: https://github.com/bgpkit/monocle
 repo: https://github.com/bgpkit/monocle
 docs:
   - https://github.com/bgpkit/monocle#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/monocle/monocle.toml
+    - ~/.config/monocle/monocle.toml
 credentials-file-location: null
 history:
   project-history:
@@ -37,6 +40,17 @@ history:
       The LACNIC republication of a BGPKIT article by Mingwei Zhang notes version 0.5
       support for Cloudflare Radar BGP routing statistics and prefix-to-origin APIs,
       illustrating how the tool fits into operational routing-analysis workflows.
+related-packages:
+  - id: brew:bgpstream
+    reason: >
+      Choose BGPStream when you need CAIDA's C/C++ and Python framework for streaming
+      large live or historical BGP datasets; choose Monocle for an integrated
+      investigative CLI with archive search, inspection, RPKI, and local database
+      features.
+    rel: alternative
+    sources:
+      - https://github.com/bgpkit/monocle#readme
+      - https://dev.bgpstream.caida.org/
 category: networking
 package-manager:
   brew: monocle

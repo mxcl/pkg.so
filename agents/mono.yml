@@ -4,7 +4,9 @@ repo: https://gitlab.winehq.org/mono/mono
 docs:
   - https://www.mono-project.com/docs
   - https://github.com/mono/mono#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - $prefix/etc/mono/config
 credentials-file-location: null
 history:
   adoption-history:
@@ -50,6 +52,16 @@ history:
       Xamarin/Unity-era workflows. Its importance is historical as much as practical: it
       proved that .NET could be portable years before cross-platform .NET became
       Microsoft's default story.
+related-packages:
+  - id: brew:dotnet
+    reason: >
+      Choose modern .NET for actively maintained cross-platform development; the Mono
+      project explicitly recommends that active Mono users and framework maintainers
+      migrate to it.
+    rel: alternative
+    sources:
+      - https://www.mono-project.com/
+      - https://dotnet.microsoft.com/
 tags:
   - c-sharp
   - cli
