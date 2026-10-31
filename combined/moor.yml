@@ -32,6 +32,32 @@ history:
       alternative for people used to less but wanting code highlighting, smart search,
       decompression, and colored diff/log output without assembling shell aliases around
       less, bat, zless, bzless, or custom filters.
+related-packages:
+  - id: brew:less
+    reason: >
+      Choose less when you want the traditional, widely deployed Unix pager and its
+      mature lesskey configuration model; choose Moor for built-in syntax highlighting,
+      incremental filtering, and transparent decompression.
+    rel: alternative
+    sources:
+      - https://github.com/walles/moor
+      - https://www.greenwoodsoftware.com/less/faq.html
+  - id: brew:bat
+    reason: >
+      Use bat to preprocess and decorate file content, then set BAT_PAGER=moor when you
+      want Moor's interactive search and paging for bat's output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/walles/moor
+      - https://github.com/sharkdp/bat
+  - id: brew:riff
+    reason: >
+      Riff refines diff output and officially prefers Moor as a pager, producing a
+      focused colored-diff workflow for Git and traditional diff output.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/walles/riff
+      - https://github.com/walles/moor
 category: developer-tools
 package-manager:
   apk: moor
