@@ -2,10 +2,125 @@ id: brew:ryl
 display-name: ryl
 homepage: https://ryl-docs.pages.dev
 repo: https://github.com/owenlamont/ryl
+docs:
+  - https://ryl-docs.pages.dev/
+  - https://ryl-docs.pages.dev/editor-integration
+  - https://ryl-docs.pages.dev/formatter
+  - https://ryl-docs.pages.dev/getting-started/quickstart
+config-file-location:
+  linux:
+    - <project>/.ryl.toml
+    - <project>/ryl.toml
+    - <project>/.config/.ryl.toml
+    - <project>/.config/ryl.toml
+    - <project>/pyproject.toml
+    - <project>/.yamllint
+    - <project>/.yamllint.yaml
+    - <project>/.yamllint.yml
+    - ${XDG_CONFIG_HOME:-~/.config}/ryl/.ryl.toml
+    - ${XDG_CONFIG_HOME:-~/.config}/ryl/ryl.toml
+    - ${XDG_CONFIG_HOME:-~/.config}/yamllint/config
+  macos:
+    - <project>/.ryl.toml
+    - <project>/ryl.toml
+    - <project>/.config/.ryl.toml
+    - <project>/.config/ryl.toml
+    - <project>/pyproject.toml
+    - <project>/.yamllint
+    - <project>/.yamllint.yaml
+    - <project>/.yamllint.yml
+    - ~/Library/Application Support/ryl/.ryl.toml
+    - ~/Library/Application Support/ryl/ryl.toml
+    - ~/Library/Application Support/yamllint/config
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      ryl deliberately supports yamllint-compatible YAML configuration and migration
+      while adding native TOML configuration, safe fixes, formatting, editor
+      integration, pre-commit hooks, and an LSP server. This gives existing YAML-heavy
+      repositories an incremental migration path rather than requiring an immediate
+      configuration rewrite.
+    - >
+      The project is packaged for command-line installation and supplies integrations
+      for editors, pre-commit-compatible hook runners, and GitHub Actions.
+  package-nerd-significance:
+    - >
+      ryl belongs to the wave of fast Rust rewrites of developer tooling. It is
+      interesting to package users because it combines linting, migration compatibility,
+      safe autofixes, a formatter, and language-server behavior in one native executable
+      while retaining familiar yamllint conventions.
+  project-history:
+    - >
+      ryl was created by Owen Lamont as a Rust replacement for yamllint, inspired by
+      tools such as Ruff, ty, prek, and rumdl. Its documentation explains that yamllint
+      was the remaining Python linter in the author's otherwise Rust-based toolchain.
+    - >
+      The project evolved from YAML linting and yamllint compatibility toward a broader
+      code-quality tool with safe fixes, a dedicated formatter, embedded-YAML support
+      for Markdown, editor diagnostics, and automated workflow integrations.
+  related-projects:
+    - yamllint is the compatibility and migration baseline that ryl was designed to replace.
+    - >
+      Ruff influenced ryl's command structure and the recommended ordering of lint fixes
+      before formatting.
+    - >
+      Prettier and yamlfmt can be paired with ryl when a project wants a more
+      opinionated canonical formatter.
+  sources:
+    - https://github.com/owenlamont/ryl/releases
+    - https://ryl-docs.pages.dev/
+    - https://ryl-docs.pages.dev/getting-started/quickstart/
+    - https://ryl-docs.pages.dev/using-with-formatters/
+  summary:
+    - >
+      ryl is a Rust-based YAML linter and formatter designed as a fast, largely
+      compatible successor to yamllint.
+  timeline:
+    - '2026: Version 0.21 introduced the explicit `ryl check` linting subcommand.'
+    - >
+      2026: Later releases expanded formatting, editor-server behavior, and GitHub
+      Actions integration.
+  usage:
+    - >
+      Projects commonly run `ryl check` for YAML diagnostics and safe fixes, followed by
+      `ryl format` when canonical layout is desired. It can lint files directly, run
+      through pre-commit or prek, and provide diagnostics and fixes over LSP.
+    - >
+      Configuration is discovered upward from each input file. Native TOML configuration
+      is preferred, while legacy `.yamllint` files and yamllint's global configuration
+      location remain supported for migration compatibility.
+related-packages:
+  - id: brew:yamllint
+    reason: >
+      Choose yamllint for the established Python implementation and ecosystem; choose
+      ryl for a native Rust executable, safe fixes, formatting, and LSP support while
+      retaining yamllint configuration compatibility.
+    rel: alternative
+    sources:
+      - https://ryl-docs.pages.dev/
+      - https://github.com/adrienverge/yamllint
+  - id: brew:prettier
+    reason: >
+      Run Prettier for canonical whole-document YAML layout and ryl for broader YAML
+      lint checks and safe fixes; ryl documents the settings needed to prevent the two
+      tools from fighting.
+    rel: adjacent_workflow
+    sources:
+      - https://ryl-docs.pages.dev/using-with-formatters/
+      - https://prettier.io/docs/
+category: developer-tools
 package-manager:
   brew: ryl
 package-manager-url: https://formulae.brew.sh/formula/ryl
 license: MIT
+tags:
+  - cli
+  - formatter
+  - linter
+  - lsp
+  - rust
+  - yaml
 description: Fast YAML linter and formatter written in Rust
 executables:
   - ryl

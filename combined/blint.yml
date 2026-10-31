@@ -1,11 +1,108 @@
 id: brew:blint
 display-name: blint
 homepage: https://github.com/owasp-dep-scan/blint
-repo: null
+repo: https://github.com/owasp-dep-scan/blint
+docs:
+  - https://github.com/owasp-dep-scan/blint/tree/main/docs
+  - https://github.com/owasp-dep-scan/blint#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      blint is distributed through PyPI, Homebrew, prebuilt executables, and an official
+      container image, making it suitable for local analysis and CI/CD security gates.
+      Its scope has expanded beyond basic hardening flags to cover ELF, PE, Mach-O,
+      WebAssembly, Android, and Apple application bundles.
+  package-nerd-significance:
+    - >
+      Package and supply-chain specialists care about blint because it derives security
+      and component evidence from shipped binaries rather than relying only on source
+      manifests. That is particularly useful for statically linked Go, Rust, and .NET
+      artifacts and mobile packages where conventional dependency manifests may not
+      represent the final deliverable.
+  project-history:
+    - >
+      blint originated in the OWASP dep-scan organization as a binary linter for
+      examining executable security properties and capabilities. It subsequently added
+      CycloneDX SBOM generation, deeper binary metadata, disassembly, call-graph
+      analysis, mobile-package inspection, and reusable Python APIs.
+    - >
+      The 4.0 line was described by its maintainers as the project's largest release,
+      extending blint from hardening-flag inspection into container traversal,
+      disassembly-assisted behavioral analysis, call-graph matching, caching, and
+      broader standalone-binary distribution.
+  related-projects:
+    - >
+      OWASP dep-scan integrates blint as an extension for combining binary-derived
+      evidence with dependency vulnerability analysis.
+    - CycloneDX provides the SBOM data model emitted by blint.
+    - LIEF supplies core executable-format parsing capabilities used by blint.
+  sources:
+    - https://github.com/owasp-dep-scan/blint
+    - https://github.com/owasp-dep-scan/blint/releases
+    - https://github.com/owasp-dep-scan/dep-scan/releases
+  summary:
+    - >
+      blint is an OWASP-hosted command-line binary security analyzer and CycloneDX SBOM
+      generator. It inspects executable hardening, capabilities, dependencies, symbols,
+      application bundles, and other evidence without requiring source code.
+  timeline:
+    - >
+      2026: The 3.x series expanded WebAssembly, Windows, Android, and Apple application
+      analysis.
+    - >
+      2026: Version 4.0 introduced substantially deeper disassembly, behavioral
+      analysis, call-graph, caching, and packaging capabilities.
+  usage:
+    - >
+      Security engineers run blint against executables, mobile packages, WebAssembly
+      components, or container-related inputs to produce findings, detailed metadata,
+      and optional CycloneDX SBOMs. It can also compare artifacts, suggest fuzzing
+      targets, export call graphs, and enforce binary-security expectations in CI.
+    - >
+      Most configuration is supplied through command-line options and environment
+      variables. The official documentation does not identify a conventional default
+      configuration file or credential file.
+related-packages:
+  - id: brew:dep-scan
+    reason: >
+      Use OWASP dep-scan after or alongside blint when you want dependency vulnerability
+      analysis enriched with blint's binary evidence; dep-scan officially integrates
+      blint as an extension.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/owasp-dep-scan/blint
+      - https://github.com/owasp-dep-scan/dep-scan/releases
+  - id: brew:syft
+    reason: >
+      Choose Syft when the primary task is broad package inventory and SBOM generation
+      for container images and filesystems; choose blint when executable hardening and
+      deep binary behavior are central.
+    rel: alternative
+    sources:
+      - https://github.com/owasp-dep-scan/blint
+      - https://github.com/anchore/syft
+  - id: brew:grype
+    reason: >
+      Feed a CycloneDX SBOM produced by blint to Grype when the next step is matching
+      its components against known vulnerabilities.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/owasp-dep-scan/blint
+      - https://github.com/anchore/grype
+category: security
 package-manager:
   brew: blint
 package-manager-url: https://formulae.brew.sh/formula/blint
 license: MIT
+tags:
+  - binary-analysis
+  - cli
+  - cyclonedx
+  - reverse-engineering
+  - sbom
+  - security-linter
 description: Security linter and SBOM generator for binaries
 executables:
   - blint

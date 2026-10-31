@@ -1,0 +1,120 @@
+id: brew:sbomasm
+display-name: sbomasm
+repo: null
+docs:
+  - https://github.com/interlynk-io/sbomasm#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      sbomasm is distributed as a Go command, Homebrew formula, container image, and
+      prebuilt binaries. Its examples target application, container, microservice,
+      procurement, financial-services, and regulated-device SBOM workflows.
+    - >
+      The project supports both CycloneDX and SPDX-oriented workflows and has continued
+      expanding its merge, editing, enrichment, validation, signing, and format support
+      through its 2.x release line.
+  package-nerd-significance:
+    - >
+      SBOM generators often produce one document per build unit, image layer, or
+      language ecosystem. sbomasm addresses the downstream packaging problem: combining
+      those fragments into an application-level bill of materials while preserving
+      dependency and component metadata and correcting gaps needed for compliance or
+      exchange.
+  project-history:
+    - >
+      Interlynk created sbomasm as an open-source toolkit for assembling and editing
+      software bills of materials. The project grew beyond simple merging to include
+      augmentation, component removal, license enrichment, validation, signing and
+      verification, and support for structured application metadata.
+    - >
+      The 2.x series broadened packaging and SBOM-standard support, including continued
+      work on SPDX merge behavior and SPDX 3.0 integration.
+  related-projects:
+    - CycloneDX and SPDX are the principal SBOM standards handled by sbomasm.
+    - >
+      Interlynk maintains other SBOM tools for quality scoring, search, transfer, and
+      exploration.
+    - >
+      SecureSBOM is the external service used by sbomasm's online signing and
+      verification workflow.
+  sources:
+    - https://github.com/interlynk-io/sbomasm
+    - https://github.com/interlynk-io/sbomasm/releases
+  summary:
+    - >
+      sbomasm is Interlynk's command-line toolkit for assembling, augmenting, editing,
+      enriching, signing, verifying, and otherwise preparing SBOM documents.
+  timeline:
+    - '2026: The 2.1 release line expanded SPDX support, including SPDX 3.0 integration.'
+  usage:
+    - >
+      A typical workflow combines SBOMs from services, base images, and application
+      dependencies into one application or container SBOM. Users can then edit missing
+      supplier or license metadata, remove components, enrich data, or prepare documents
+      for procurement and regulatory exchange.
+    - >
+      The `-c` option accepts a user-selected YAML configuration file, but the official
+      documentation does not specify a conventional default configuration-file location.
+      SecureSBOM signing uses the `SECURE_SBOM_API_KEY` environment variable rather than
+      a documented credentials file.
+related-packages:
+  - id: brew:cyclonedx-cli
+    reason: >
+      Choose CycloneDX CLI for format-focused CycloneDX validation, conversion, merge,
+      diff, and signing; choose sbomasm for richer application assembly, augmentation,
+      editing, enrichment, and mixed CycloneDX/SPDX workflows.
+    rel: alternative
+    sources:
+      - https://github.com/interlynk-io/sbomasm
+      - https://github.com/CycloneDX/cyclonedx-cli
+  - id: brew:syft
+    reason: >
+      Use Syft to generate SBOMs from container images and filesystems, then use sbomasm
+      to combine those generated documents into an application-level SBOM.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/anchore/syft
+      - https://github.com/interlynk-io/sbomasm
+  - id: brew:grype
+    reason: >
+      Pass the assembled CycloneDX or SPDX document to Grype when the next workflow
+      stage is scanning its components for known vulnerabilities.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/interlynk-io/sbomasm
+      - https://github.com/anchore/grype
+tags:
+  - cli
+  - cyclonedx
+  - sbom
+  - sbom-assembly
+  - sbom-editing
+  - software-supply-chain
+  - spdx
+provenance:
+  category-sources:
+    - https://github.com/interlynk-io/sbomasm
+    - source_facts.description
+  display-name-sources:
+    - https://github.com/interlynk-io/sbomasm
+    - source_facts.name
+  docs-sources:
+    - https://github.com/interlynk-io/sbomasm
+  history-sources:
+    - https://github.com/interlynk-io/sbomasm
+    - https://github.com/interlynk-io/sbomasm/releases
+  repo-sources:
+    - source_facts.repo (already populated; repository lookup intentionally skipped)
+  tags-sources:
+    - https://github.com/interlynk-io/sbomasm
+category-confidence: high
+category-path:
+  - security
+  - software-supply-chain
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

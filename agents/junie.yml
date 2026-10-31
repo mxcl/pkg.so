@@ -1,0 +1,137 @@
+id: cask:junie
+display-name: Junie
+repo: null
+docs:
+  - https://junie.jetbrains.com/docs/junie-cli-configuration.html
+  - https://junie.jetbrains.com/docs/junie-cli.html
+  - https://junie.jetbrains.com/docs/junie-ide-plugin.html
+  - https://junie.jetbrains.com/docs/parameters.html
+config-file-location:
+  unix:
+    - ~/.junie/config.json
+    - <project-root>/.junie/config.json
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Junie entered an early-access program in January 2025 for JetBrains IDE users and
+      became publicly available across supported JetBrains IDEs in April 2025. It later
+      expanded from its IDE-first origin into a standalone, model-agnostic command-line
+      agent suitable for terminals, CI/CD, GitHub, and GitLab.
+    - >
+      JetBrains subsequently unified Junie more closely with AI Chat and the wider
+      JetBrains IDE toolchain. The product supports JetBrains subscriptions,
+      bring-your-own-key providers, custom endpoints, and local model runtimes.
+  package-nerd-significance:
+    - >
+      Junie is notable among packaged coding agents because it spans both a standalone
+      CLI and deep JetBrains IDE integration. It can use IDE indexes, run
+      configurations, test runners, and debugging facilities while also supporting
+      portable agent conventions such as guidelines, skills, slash commands, MCP
+      servers, and imports from other coding agents.
+  project-history:
+    - >
+      JetBrains announced Junie in January 2025 as an agentic coding collaborator built
+      around project context, delegated multi-step work, testing, and coding guidelines.
+      The initial release targeted IntelliJ IDEA Ultimate and PyCharm Professional
+      through an early-access waitlist.
+    - >
+      Junie became publicly available to JetBrains IDE users in April 2025. JetBrains
+      later introduced Junie CLI, broadening the same agent concept to terminal,
+      automation, and non-JetBrains-editor workflows.
+  related-projects:
+    - JetBrains AI Chat is the recommended IDE surface for selecting and running Junie.
+    - >
+      Junie can detect and import compatible guidelines, skills, commands, and MCP
+      configuration from Claude Code, Codex, and Cursor.
+    - >
+      JetBrains IDEs provide semantic project context, refactoring, run configurations,
+      tests, and debugger capabilities used by Junie.
+  sources:
+    - https://blog.jetbrains.com/blog/2025/04/16/jetbrains-ides-go-ai/
+    - https://blog.jetbrains.com/junie/2025/01/meet-junie-your-coding-agent-by-jetbrains/
+    - >
+      https://blog.jetbrains.com/junie/2026/03/junie-cli-the-llm-agnostic-coding-agent-is-now-in-beta/
+    - https://junie.jetbrains.com/docs/junie-cli.html
+    - https://junie.jetbrains.com/docs/junie-ide-plugin.html
+  summary:
+    - >
+      Junie is JetBrains' AI coding agent for autonomous, multi-step
+      software-development work in JetBrains IDEs, an interactive terminal, and
+      automated workflows.
+  timeline:
+    - '2025: JetBrains announced Junie and opened its early-access waitlist.'
+    - '2025: Junie became publicly available to JetBrains IDE users.'
+    - '2026: Junie CLI expanded the agent to terminals, CI/CD, GitHub, and GitLab.'
+  usage:
+    - >
+      Developers ask Junie to inspect a project, plan and implement changes, run tests
+      or terminal commands, review code, and iterate on follow-up instructions. It can
+      run interactively, headlessly in CI, or from JetBrains AI Chat with IDE-aware
+      tools.
+    - >
+      Junie CLI loads personal configuration from `~/.junie/config.json` and trusted
+      project configuration from `<project-root>/.junie/config.json`. Authentication
+      normally uses a JetBrains account, Junie token, provider environment variable,
+      operating-system secure storage, or CI secret; the official documentation does not
+      establish one portable credentials-file location.
+related-packages:
+  - id: cask:claude-code
+    reason: >
+      Choose Claude Code for an Anthropic-centered terminal agent; choose Junie when
+      JetBrains IDE integration, multiple model providers, or direct import of existing
+      Claude Code configuration is more important.
+    rel: alternative
+    sources:
+      - https://junie.jetbrains.com/docs/slash-commands.html
+      - https://docs.anthropic.com/en/docs/claude-code/getting-started
+  - id: cask:cursor
+    reason: >
+      Choose Cursor for an AI-first editor with its agent built into the editing
+      surface; choose Junie for a standalone CLI plus deep integration with the existing
+      JetBrains IDE family.
+    rel: alternative
+    sources:
+      - https://junie.jetbrains.com/docs/junie-ide-plugin.html
+      - https://junie.jetbrains.com/docs/slash-commands.html
+      - https://docs.cursor.com/en/agent/overview
+tags:
+  - ai-agent
+  - byok
+  - cli
+  - code-review
+  - coding-agent
+  - ide-integration
+provenance:
+  category-sources:
+    - https://junie.jetbrains.com/
+    - https://junie.jetbrains.com/docs/junie-cli.html
+    - source_facts.description
+  display-name-sources:
+    - https://junie.jetbrains.com/
+    - https://www.jetbrains.com/help/ai-assistant/junie-agent.html
+  docs-sources:
+    - https://junie.jetbrains.com/docs/junie-cli.html
+    - https://www.jetbrains.com/help/ai-assistant/junie-agent.html
+  history-sources:
+    - https://blog.jetbrains.com/blog/2025/04/16/jetbrains-ides-go-ai/
+    - https://blog.jetbrains.com/junie/2025/01/meet-junie-your-coding-agent-by-jetbrains/
+    - >
+      https://blog.jetbrains.com/junie/2026/03/junie-cli-the-llm-agnostic-coding-agent-is-now-in-beta/
+    - https://junie.jetbrains.com/docs/junie-cli.html
+    - https://junie.jetbrains.com/docs/junie-ide-plugin.html
+  repo-sources:
+    - source_facts.repo (already populated; repository lookup intentionally skipped)
+  tags-sources:
+    - https://junie.jetbrains.com/
+    - https://junie.jetbrains.com/docs/junie-cli.html
+    - https://www.jetbrains.com/help/ai-assistant/junie-agent.html
+category-confidence: high
+category-path:
+  - ai
+  - coding-agents
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high
