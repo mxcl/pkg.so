@@ -4,7 +4,10 @@ homepage: https://vanheusden.com/multitail/
 repo: https://github.com/folkertvanheusden/multitail
 docs:
   - https://vanheusden.com/multitail
-config-file-location: null
+config-file-location:
+  unix:
+    - /etc/multitail.conf
+    - ~/.multitailrc
 credentials-file-location: null
 history:
   project-history:
@@ -36,6 +39,16 @@ history:
       packaged across Homebrew, MacPorts, Debian/Ubuntu, Fedora, Alpine, Nix, and
       openSUSE-style ecosystems because it remains useful on servers and SSH sessions
       where a single terminal is the whole interface.
+related-packages:
+  - id: brew:lnav
+    reason: >
+      Choose lnav when you need automatic log-format detection, chronological merging,
+      structured analysis, and SQL queries; choose MultiTail when split live panes and
+      explicitly configured color schemes are the priority.
+    rel: alternative
+    sources:
+      - https://www.vanheusden.com/multitail/features.html
+      - https://docs.lnav.org/en/latest/
 category: system
 package-manager:
   apk: multitail
