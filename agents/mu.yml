@@ -32,6 +32,24 @@ history:
       productivity, and Emacs workflows. It is packaged by several Unix-like
       distributions, sometimes under the name `maildir-utils`, while Homebrew and
       similar managers expose it as `mu`.
+related-packages:
+  - id: brew:notmuch
+    reason: >
+      Choose notmuch as an alternative local email index when arbitrary tags, library
+      APIs, and its own editor frontends are more important than mu's bundled mu4e
+      workflow.
+    rel: alternative
+    sources:
+      - https://www.djcbsoftware.nl/code/mu/
+      - https://notmuchmail.org/
+  - id: brew:isync
+    reason: >
+      Use isync's `mbsync` to synchronize IMAP mail into Maildir before mu or mu4e
+      indexes it; the mu4e manual explicitly documents this retrieval command.
+    rel: adjacent_workflow
+    sources:
+      - https://www.djcbsoftware.nl/code/mu/mu4e/Retrieval-and-indexing.html
+      - https://isync.sourceforge.io/mbsync.html
 tags:
   - cli
   - email
