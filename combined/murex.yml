@@ -5,7 +5,10 @@ repo: https://github.com/lmorg/murex
 docs:
   - https://murex.rocks/docs
   - https://github.com/lmorg/murex#readme
-config-file-location: null
+config-file-location:
+  unix:
+    - ~/.murex_preload
+    - ~/.murex_profile
 credentials-file-location: null
 history:
   project-history:
@@ -39,6 +42,17 @@ history:
       for users who work heavily with structured command output. In practice it is
       installed as the murex executable, then used either interactively or for scripts
       that benefit from first-class JSON/YAML/table processing.
+related-packages:
+  - id: brew:nushell
+    reason: >
+      Choose Nushell for a data-first shell with a broad structured-value language and
+      plugin model; choose Murex when Bash-like syntax and direct compatibility with
+      traditional Unix CLI behavior are stronger priorities.
+    rel: alternative
+    sources:
+      - https://murex.rocks/tour.html
+      - https://www.nushell.sh/
+      - https://www.nushell.sh/book/
 category: system
 package-manager:
   apk: murex

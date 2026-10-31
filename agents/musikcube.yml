@@ -7,7 +7,10 @@ docs:
 config-file-location:
   unix:
     - ~/.musikcube/hotkeys.json
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - $XDG_CONFIG_HOME/musikcube/settings.json
+    - ~/.config/musikcube/settings.json
 history:
   project-history:
     - >
@@ -45,6 +48,27 @@ history:
       Package managers expose that as the musikcube terminal client and musikcubed
       daemon/server, making it useful on laptops, shells, and small always-on audio
       boxes.
+related-packages:
+  - id: brew:cmus
+    reason: >
+      Choose cmus for a smaller Unix-focused ncurses player with a scriptable
+      remote-control command; choose musikcube when you want integrated indexing,
+      streaming-server, and remote-client features.
+    rel: alternative
+    sources:
+      - https://github.com/clangen/musikcube
+      - https://cmus.github.io/
+      - https://github.com/cmus/cmus
+  - id: brew:mpd
+    reason: >
+      Choose Music Player Daemon when you want a dedicated background server with a
+      large ecosystem of interchangeable network clients; musikcube instead bundles its
+      terminal player, library, and server.
+    rel: alternative
+    sources:
+      - https://github.com/clangen/musikcube
+      - https://www.musicpd.org/
+      - https://www.musicpd.org/clients/
 tags:
   - audio-server
   - cli

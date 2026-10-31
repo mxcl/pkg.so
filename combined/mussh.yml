@@ -27,6 +27,25 @@ history:
       larger orchestration stack. Packaging in Homebrew and major Linux distributions
       keeps it in the lightweight CLI/sysadmin category alongside tools such as pssh and
       pdsh.
+related-packages:
+  - id: brew:pssh
+    reason: >
+      Choose PSSH when you also need parallel scp, rsync, file collection, or
+      process-killing commands in addition to parallel SSH execution; mussh is the
+      smaller shell-wrapper option.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/projects/mussh/
+      - https://github.com/lilydjwg/pssh
+  - id: brew:pdsh
+    reason: >
+      Choose pdsh for high-fan-out cluster administration with multithreading and
+      optional SSH, Slurm, genders, netgroup, and dsh-group modules; choose mussh for a
+      minimal OpenSSH shell wrapper.
+    rel: alternative
+    sources:
+      - https://sourceforge.net/projects/mussh/
+      - https://github.com/chaos/pdsh
 category: networking
 package-manager:
   brew: mussh
