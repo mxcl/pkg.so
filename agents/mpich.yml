@@ -46,6 +46,25 @@ history:
       clusters, and supercomputing environments. Package-manager users often install it
       as the portable open-source MPI option alongside or instead of Open MPI, vendor
       MPI stacks, or site-provided MPI modules.
+related-packages:
+  - id: brew:open-mpi
+    reason: >
+      Choose Open MPI as an alternative production MPI implementation with its own
+      modular component ecosystem; choose MPICH when software or cluster tooling expects
+      the MPICH implementation or one of its derivative-compatible stacks.
+    rel: alternative
+    sources:
+      - https://www.mpich.org/about/overview/
+      - https://docs.open-mpi.org/en/main/history.html
+      - https://docs.open-mpi.org/
+  - id: brew:hdf5-mpi
+    reason: >
+      Use hdf5-mpi with an MPI implementation such as MPICH when an application needs
+      Parallel HDF5 collective access to shared scientific data files.
+    rel: adjacent_workflow
+    sources:
+      - https://www.mpich.org/about/overview/
+      - https://support.hdfgroup.org/documentation/hdf5/latest/_intro_par_h_d_f5.html
 tags:
   - cli
   - cluster
