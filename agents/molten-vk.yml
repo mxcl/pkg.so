@@ -45,6 +45,24 @@ history:
       command-heavy CLI niche: it ships the runtime and shader-conversion tooling for
       local Vulkan-on-Apple builds. It sits beside the Vulkan SDK and portability-layer
       ecosystem rather than replacing native Vulkan drivers.
+related-packages:
+  - id: brew:spirv-cross
+    reason: >
+      SPIRV-Cross is the shader cross-compiler MoltenVK uses to translate SPIR-V toward
+      Metal Shading Language, making its standalone tools useful when inspecting or
+      preparing the same shader pipeline.
+    rel: adjacent_workflow
+    sources:
+      - https://www.khronos.org/news/press/vulkan-applications-enabled-on-apple-platforms
+      - https://github.com/KhronosGroup/SPIRV-Cross
+  - id: brew:vulkan-tools
+    reason: >
+      Vulkan Tools supplies vulkaninfo and vkcube-style utilities for inspecting and
+      smoke-testing the Vulkan environment in which a MoltenVK-backed application runs.
+    rel: adjacent_workflow
+    sources:
+      - https://github.com/KhronosGroup/MoltenVK
+      - https://github.com/KhronosGroup/Vulkan-Tools
 tags:
   - cli
   - graphics

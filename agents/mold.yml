@@ -43,6 +43,25 @@ history:
       expanded mold's packaging and adoption path, making it easier for distributions,
       build systems, and commercial users to choose it without copyleft-linking
       concerns.
+related-packages:
+  - id: brew:lld
+    reason: >
+      Choose lld when LLVM integration, built-in LTO, PE/COFF, or mature WebAssembly
+      support matters; both are fast GNU-compatible linker replacements directly
+      compared by mold.
+    rel: alternative
+    sources:
+      - https://github.com/rui314/mold
+      - https://lld.llvm.org/
+  - id: brew:wild
+    reason: >
+      Choose Wild for a Rust-based high-speed linker focused on Linux and WebAssembly;
+      mold's official benchmarks compare it directly with Wild and document differing
+      workload compatibility.
+    rel: alternative
+    sources:
+      - https://github.com/rui314/mold
+      - https://github.com/wild-linker/wild
 tags:
   - build-tools
   - cli
