@@ -47,6 +47,26 @@ history:
       distribution packages named `mysql-client`, `mariadb-client`, or platform MySQL
       installers: a small CLI toolbox for SQL sessions, schema inspection, backups,
       imports, and scripted administration.
+related-packages:
+  - id: brew:mycli
+    reason: >
+      Choose mycli for interactive querying with contextual completion, syntax
+      highlighting, and richer history; retain MySQL Client when you also need canonical
+      administration, dump, import, and binary-log utilities.
+    rel: alternative
+    sources:
+      - https://www.mycli.net/
+      - https://dev.mysql.com/doc/refman/8.4/en/mysql.html
+      - https://dev.mysql.com/doc/refman/8.4/en/programs-overview.html
+  - id: brew:mydumper
+    reason: >
+      Use MyDumper alongside the standard clients when a large logical backup or restore
+      needs parallel workers, chunking, streaming, or selective migration features
+      beyond mysqldump.
+    rel: adjacent_workflow
+    sources:
+      - https://mydumper.github.io/mydumper/docs/html/
+      - https://dev.mysql.com/doc/refman/8.4/en/mysqldump.html
 category: data
 package-manager:
   apk: mysql-client

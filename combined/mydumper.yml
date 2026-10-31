@@ -5,7 +5,11 @@ repo: https://github.com/mydumper/mydumper
 docs:
   - https://mydumper.github.io/mydumper/docs/html
   - https://github.com/mydumper/mydumper#readme
-config-file-location: null
+config-file-location:
+  linux: /etc/mydumper.cnf
+  macos:
+    - /usr/local/etc/mydumper.cnf
+    - /opt/homebrew/etc/mydumper.cnf
 credentials-file-location: null
 history:
   project-history:
@@ -42,6 +46,25 @@ history:
       chunks, compress traffic, and restore with MyLoader on the target. Homebrew, Nix,
       and Ubuntu package it as `mydumper`, usually exposing the two command-line
       programs `mydumper` and `myloader`.
+related-packages:
+  - id: brew:mysql-client
+    reason: >
+      Choose MySQL Client's mysqldump for straightforward, portable logical exports;
+      choose MyDumper when parallel backup and restore are important for larger
+      datasets.
+    rel: alternative
+    sources:
+      - https://mydumper.github.io/mydumper/docs/html/
+      - https://dev.mysql.com/doc/refman/8.4/en/mysqldump.html
+  - id: brew:percona-xtrabackup
+    reason: >
+      Choose Percona XtraBackup for physical hot backups on the database host; choose
+      MyDumper for portable logical backups, remote execution, and selective table
+      restores.
+    rel: alternative
+    sources:
+      - https://docs.percona.com/percona-monitoring-and-management/3/apps/mysql-backup.html
+      - https://mydumper.github.io/mydumper/docs/html/
 category: data
 package-manager:
   brew: mydumper

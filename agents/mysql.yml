@@ -46,6 +46,42 @@ history:
       `mysql@8.4` and `mysql@8.0`, and the main formula notes conflicts with MariaDB and
       Percona Server, reflecting MySQL's long-standing relationship with compatible
       forks and alternative server distributions.
+related-packages:
+  - id: brew:mariadb
+    reason: >
+      Choose MariaDB when you want a MySQL-derived server with broad protocol and
+      connector compatibility but its own storage engines and feature direction; review
+      documented divergence before migrating modern deployments.
+    rel: alternative
+    sources:
+      - >
+        https://mariadb.com/docs/release-notes/community-server/about/compatibility-and-differences/mariadb-vs-mysql-compatibility
+      - https://dev.mysql.com/doc/refman/8.4/en/what-is-mysql.html
+  - id: brew:percona-server
+    reason: >
+      Choose Percona Server for MySQL when you need a MySQL Community-compatible server
+      with Percona's additional observability and enterprise-oriented features.
+    rel: alternative
+    sources:
+      - https://docs.percona.com/percona-for-mysql/
+      - https://dev.mysql.com/doc/refman/8.4/en/what-is-mysql.html
+  - id: brew:mycli
+    reason: >
+      Use mycli with a MySQL server when you want an interactive SQL terminal with
+      contextual completion, syntax highlighting, and richer history than the standard
+      shell.
+    rel: adjacent_workflow
+    sources:
+      - https://www.mycli.net/
+      - https://dev.mysql.com/doc/refman/8.4/en/mysql.html
+  - id: brew:mydumper
+    reason: >
+      Use MyDumper alongside MySQL for multithreaded logical backup, restore, and
+      migration workflows that are too large for a comfortable serial mysqldump process.
+    rel: adjacent_workflow
+    sources:
+      - https://mydumper.github.io/mydumper/docs/html/
+      - https://dev.mysql.com/doc/refman/8.4/en/mysqldump.html
 tags:
   - cli
   - database
