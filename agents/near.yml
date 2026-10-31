@@ -12,7 +12,9 @@ config-file-location:
     - ~/Library/Application Support/near-cli/config.toml
   windows:
     - '%APPDATA%\near-cli\config.toml'
-credentials-file-location: null
+credentials-file-location:
+  unix:
+    - ~/.near-credentials/<network-name>/<account-id>/<public-key>.json
 history:
   adoption-history:
     - >
@@ -58,6 +60,7 @@ history:
       subcommands support account management, NEAR and token transfers, staking,
       smart-contract deployment and calls, transaction inspection, and selection among
       mainnet, testnet, and custom network configurations.
+related-packages: []
 tags:
   - blockchain
   - cli

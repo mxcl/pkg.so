@@ -84,6 +84,35 @@ history:
       fallback, TUN setup, firewall rules, logging, and metrics. Package nerds tend to
       compare Nebula with Tailscale, WireGuard mesh tooling, and classic IPSec/OpenVPN,
       valuing its self-hosted CA and explicit group-based firewall model.
+related-packages:
+  - id: brew:tailscale
+    reason: >
+      Choose Tailscale when you want a comparable encrypted mesh VPN with hosted
+      coordination and identity-provider login; choose Nebula when you prefer a
+      completely self-hosted CA and control plane.
+    rel: alternative
+    sources:
+      - https://tailscale.com/compare/nebula
+      - https://nebula.defined.net/docs/
+  - id: brew:wireguard-tools
+    reason: >
+      Choose WireGuard Tools when you want a lower-level, key-exchange-based VPN
+      primitive and will design peer discovery and policy yourself; Nebula adds
+      certificates, lighthouses, NAT traversal, and group-aware firewall rules.
+    rel: alternative
+    sources:
+      - https://www.wireguard.com/
+      - https://nebula.defined.net/docs/
+  - id: brew:tinc
+    reason: >
+      Choose tinc for a mature userspace mesh-VPN daemon with classic per-network host
+      configuration; Nebula provides a newer certificate-identity and lighthouse model
+      whose design was partly informed by tinc.
+    rel: alternative
+    sources:
+      - https://www.tinc-vpn.org/
+      - >
+        https://slack.engineering/introducing-nebula-the-open-source-global-overlay-network-from-slack/
 category: networking
 package-manager:
   apk: nebula
