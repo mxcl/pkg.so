@@ -1,0 +1,103 @@
+id: cask:mactoy
+display-name: Mactoy
+repo: null
+docs:
+  - https://github.com/cashcon57/mactoy#readme
+  - https://github.com/cashcon57/mactoy/blob/main/SECURITY.md
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      Mactoy is distributed as a signed and notarized macOS application. Its project
+      documentation positions it as a native alternative to using a Linux virtual
+      machine, a live environment, or a command-line proof of concept to install Ventoy.
+  package-nerd-significance:
+    - >
+      Mactoy packages unusually privileged, destructive disk operations behind a native
+      SwiftUI interface and a narrowly scoped launchd helper. Its defensive disk
+      identification, signature checks, and explicit permission model are important
+      packaging details for a utility that writes directly to removable media.
+    - >
+      It is also notable as an independent macOS port of Ventoy installation logic: it
+      constructs the disk layout natively while retaining the familiar Ventoy workflow
+      of installing once and subsequently copying multiple boot images onto the data
+      partition.
+  project-history:
+    - >
+      Mactoy began as a native Swift port of a Python proof of concept for installing
+      Ventoy from macOS. The project added a graphical interface, a privileged XPC
+      helper, raw-image flashing, in-place Ventoy updates, partition-style selection,
+      Secure Boot controls, and boot-menu theme management.
+  related-projects:
+    - Ventoy supplies the multiboot system and disk format that Mactoy installs and manages.
+    - >
+      balenaEtcher addresses the related single-image flashing task but does not create
+      a reusable Ventoy multiboot library.
+  sources:
+    - https://github.com/cashcon57/mactoy#readme
+    - https://github.com/cashcon57/mactoy/blob/main/SECURITY.md
+  summary:
+    - >
+      Mactoy is a native macOS application for installing and updating Ventoy on
+      removable drives, managing images on an existing Ventoy drive, and flashing
+      individual raw disk images.
+  timeline:
+    - 'Initial alpha: The Swift port demonstrated end-to-end Ventoy installation on macOS.'
+    - '0.3: In-place Ventoy updates were added.'
+    - '0.4–0.5: Secure Boot and MBR/GPT controls were added.'
+    - '0.7: Boot-menu theme management was added.'
+  usage:
+    - >
+      Users select an external drive, choose between installing Ventoy and flashing a
+      single image, approve the destructive operation, and let Mactoy's privileged
+      helper perform the raw-disk work.
+    - >
+      After a Ventoy installation, ISO, IMG, or WIM files can be copied to the mounted
+      Ventoy volume and selected at boot. Mactoy can also add and remove those images
+      through its management interface.
+related-packages:
+  - id: cask:balenaetcher
+    reason: >
+      Choose balenaEtcher for the narrower, established workflow of flashing one
+      operating-system image; choose Mactoy when you need a reusable Ventoy multiboot
+      drive or Ventoy-specific management.
+    rel: alternative
+    sources:
+      - https://github.com/cashcon57/mactoy#readme
+      - https://github.com/balena-io/etcher#readme
+tags:
+  - disk-imaging
+  - image-flashing
+  - macos
+  - multiboot
+  - removable-media
+  - swiftui
+  - usb
+  - ventoy
+provenance:
+  category-sources:
+    - https://github.com/cashcon57/mactoy#readme
+  display-name-sources:
+    - https://github.com/cashcon57/mactoy#readme
+  docs-sources:
+    - https://github.com/cashcon57/mactoy#readme
+    - https://github.com/cashcon57/mactoy/blob/main/SECURITY.md
+  history-sources:
+    - https://github.com/cashcon57/mactoy#readme
+    - https://github.com/cashcon57/mactoy/blob/main/SECURITY.md
+  repo-sources:
+    - >
+      source_facts.repo is already populated; repository re-determination was
+      intentionally skipped.
+  tags-sources:
+    - https://github.com/cashcon57/mactoy#readme
+category-confidence: high
+category-path:
+  - system
+  - disk-utilities
+display-name-confidence: high
+docs-confidence: high
+history-confidence: high
+repo-confidence: high
+tags-confidence: high

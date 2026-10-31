@@ -2,9 +2,135 @@ id: cask:opencodex
 display-name: OpenCodex
 homepage: https://opencodex.me/
 repo: https://github.com/lidge-jun/opencodex
+docs:
+  - https://opencodex.me/getting-started/installation
+  - https://opencodex.me/getting-started/quickstart
+  - https://opencodex.me/reference/client-support
+  - https://opencodex.me/reference/configuration
+config-file-location:
+  unix:
+    - $OPENCODEX_HOME/config.json (default ~/.opencodex/config.json)
+    - $CODEX_HOME/config.toml (default ~/.codex/config.toml)
+    - $CODEX_HOME/opencodex.config.toml (default ~/.codex/opencodex.config.toml)
+    - $CODEX_HOME/opencodex-catalog.json (default ~/.codex/opencodex-catalog.json)
+  windows:
+    - '%USERPROFILE%\.opencodex\config.json'
+    - '%USERPROFILE%\.codex\config.toml'
+    - '%USERPROFILE%\.codex\opencodex.config.toml'
+    - '%USERPROFILE%\.codex\opencodex-catalog.json'
+credentials-file-location:
+  unix: $OPENCODEX_HOME/auth.json (default ~/.opencodex/auth.json)
+  windows: '%USERPROFILE%\.opencodex\auth.json'
+history:
+  adoption-history:
+    - >
+      OpenCodex broadened from a Codex-oriented local proxy into a gateway supporting
+      Codex CLI, Codex App and SDK workflows, Claude Code, Claude Desktop, Grok Build,
+      and other compatible clients. It is distributed as a desktop application,
+      standalone executable, and npm-installed command-line tool.
+    - >
+      The project maintains provider presets, adapters, client integrations, and a
+      dashboard so users can change model backends while retaining their preferred
+      coding-agent interface.
+  package-nerd-significance:
+    - >
+      OpenCodex exemplifies the rapidly growing package layer between AI coding agents
+      and model providers. It turns protocol translation, provider authentication, model
+      discovery, routing, failover, and account selection into a locally managed
+      service.
+    - >
+      Its reversible edits to Codex configuration and catalogs are especially relevant
+      to package maintainers: starting the proxy integrates it with existing clients,
+      while stop, restore, and eject operations remove generated routing state without
+      deleting the user's native configuration.
+  project-history:
+    - >
+      OpenCodex was created as a local universal-provider proxy for AI coding agents.
+      Its scope expanded to translate between OpenAI Responses, OpenAI-compatible, and
+      Anthropic-style interfaces while preserving streaming, tool calls, reasoning data,
+      and images.
+    - >
+      Later development added provider presets, OAuth login, model combinations, account
+      pooling, sub-agent routing, sidecars for search and vision, a management
+      dashboard, desktop packaging, and explicit integrations for multiple coding
+      clients.
+  related-projects:
+    - >
+      OpenAI Codex is a primary client whose configuration and model catalog OpenCodex
+      can manage reversibly.
+    - >
+      Claude Code is another officially documented client and can route its inference
+      traffic through OpenCodex.
+    - >
+      Provider services and local model servers sit upstream of OpenCodex through
+      built-in or custom adapters.
+  sources:
+    - https://github.com/lidge-jun/opencodex#readme
+    - https://opencodex.me/
+    - https://opencodex.me/getting-started/quickstart/
+    - https://opencodex.me/guides/codex-integration/
+    - https://opencodex.me/reference/client-support/
+  summary:
+    - >
+      OpenCodex is a local proxy and routing layer that lets AI coding clients use
+      multiple hosted or local model providers through their existing interfaces.
+  timeline:
+    - 'Initial project: OpenCodex provided a local provider proxy for Codex workflows.'
+    - >
+      Subsequent development: Support expanded to Claude Code, desktop clients, provider
+      OAuth, routing combinations, account pools, sidecars, and managed sub-agent
+      catalogs.
+  usage:
+    - >
+      Users run the initialization wizard, select a provider and model, supply an API
+      key or OAuth login, and optionally let OpenCodex inject its local endpoint into
+      Codex configuration. The proxy can then be started as a foreground command or
+      managed background service.
+    - >
+      Advanced workflows route different models or tasks to different providers, define
+      failover or weighted combinations, expose routed models to sub-agents, and inspect
+      live requests through the dashboard. Stopping or ejecting the integration restores
+      native Codex routing.
+related-packages:
+  - id: cask:codex
+    reason: >
+      Codex is a primary supported client: OpenCodex can inject its proxy endpoint and
+      synchronized model catalog into Codex, then restore Codex's native configuration
+      when ejected.
+    rel: adjacent_workflow
+    sources:
+      - https://opencodex.me/guides/codex-integration/
+      - https://github.com/openai/codex#readme
+  - id: cask:claude-code
+    reason: >
+      Claude Code can use OpenCodex as its inference gateway, allowing its normal agent
+      interface to reach the providers and routed models configured in OpenCodex.
+    rel: adjacent_workflow
+    sources:
+      - https://opencodex.me/guides/claude-code/
+      - https://github.com/anthropics/claude-code#readme
+  - id: brew:claude-code-router
+    reason: >
+      Choose Claude Code Router for a gateway centered on Claude Code profiles and
+      routing; choose OpenCodex for broader managed integrations spanning Codex, Claude
+      Code, desktop clients, account pools, and sidecars.
+    rel: alternative
+    sources:
+      - https://github.com/musistudio/claude-code-router#readme
+      - https://opencodex.me/reference/client-support/
+category: ai
 package-manager:
   brew-cask: opencodex
 package-manager-url: https://formulae.brew.sh/cask/opencodex
+tags:
+  - ai
+  - claude-code
+  - codex
+  - coding-agents
+  - llm-proxy
+  - model-gateway
+  - oauth
+  - provider-routing
 description: Proxy that connects AI coding agents to other LLM providers
 applications:
   - OpenCodex.app

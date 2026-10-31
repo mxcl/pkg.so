@@ -2,9 +2,81 @@ id: cask:mstcvk/tap/macrar
 display-name: MacRAR
 homepage: https://github.com/mstcvk/MacRAR
 repo: https://github.com/mstcvk/MacRAR
+docs:
+  - https://github.com/mstcvk/MacRAR#readme
+config-file-location: null
+credentials-file-location: null
+history:
+  adoption-history:
+    - >
+      MacRAR is distributed as a signed and notarized macOS application and through its
+      maintainer's Homebrew tap. It integrates with Finder through Quick Actions and
+      registers itself for common archive formats.
+  package-nerd-significance:
+    - >
+      MacRAR combines a native AppKit interface with established command-line archive
+      engines. It bundles the official 7-Zip command-line engine for reading and
+      extracting formats while respecting RARLAB's licensing by requiring users to
+      supply RAR for macOS when they want to create or modify RAR archives.
+    - >
+      Its Finder services, file associations, command-line launch modes, and support for
+      encrypted and multipart archives make it a bridge between traditional Unix archive
+      tools and a WinRAR-like macOS workflow.
+  project-history:
+    - >
+      MacRAR was created as a small native macOS archive manager modeled on WinRAR's
+      browse, extract, and compress workflow. The project added Finder Quick Actions,
+      encrypted and multipart archive support, file associations, and optional RAR
+      creation through RARLAB's separately installed tool.
+  related-projects:
+    - >
+      7-Zip's 7zz engine performs MacRAR's built-in archive reading, extraction,
+      testing, and creation operations.
+    - RARLAB's RAR for macOS optionally enables creation and modification of RAR archives.
+  sources:
+    - https://github.com/mstcvk/MacRAR#readme
+  summary:
+    - >
+      MacRAR is a native macOS archive manager for browsing, extracting, testing, and
+      creating archives in a WinRAR-style interface.
+  timeline:
+    - >
+      Early releases: MacRAR established native archive browsing, extraction,
+      compression, and Finder integration.
+    - >
+      1.4: Bundled RARLAB binaries were removed; 7-Zip remained bundled, while RAR
+      creation began requiring the user's own RARLAB tool.
+  usage:
+    - >
+      Users can open archives as browsable folder trees, preview contained files,
+      extract selected entries, and create 7z, ZIP, TAR, and compressed-TAR archives.
+    - >
+      Finder Quick Actions provide extract, test, and compress commands. RAR archives
+      can be opened with the bundled 7-Zip engine; creating or modifying RAR files
+      requires a separately obtained RARLAB command-line tool.
+related-packages:
+  - id: cask:the-unarchiver
+    reason: >
+      Choose The Unarchiver for a simple extraction-focused default handler with broad
+      legacy-format support; choose MacRAR when you need archive browsing, creation,
+      modification, multipart handling, or WinRAR-style controls.
+    rel: alternative
+    sources:
+      - https://github.com/mstcvk/MacRAR#readme
+      - https://theunarchiver.com/
+category: system
 package-manager:
   brew-cask: mstcvk/tap/macrar
 package-manager-url: https://github.com/mstcvk/homebrew-tap/blob/HEAD/Casks/macrar.rb
+tags:
+  - 7z
+  - archives
+  - compression
+  - encrypted-archives
+  - finder-integration
+  - macos
+  - rar
+  - zip
 description: WinRAR-style archive manager (RAR, ZIP, 7z, TAR and 30+ formats)
 applications:
   - MacRAR.app
